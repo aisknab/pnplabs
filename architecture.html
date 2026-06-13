@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNP Labs — Technical architecture</title>
+  <meta name="description" content="Architecture map for the finite-certificate proof stack, package checker, and final acceptance route.">
+  <link rel="canonical" href="https://pnplabs.com.au/architecture.html">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PNP Labs — Technical architecture">
+  <meta property="og:description" content="Architecture map for the finite-certificate proof stack, package checker, and final acceptance route.">
+  <meta property="og:url" content="https://pnplabs.com.au/architecture.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/pnp-labs-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="PNP Labs home">
+        <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" alt=""></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>Proof artefact systems</span></span>
+      </a>
+      <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="paper.html">Paper guide</a>
+<a class="active" aria-current="page" href="architecture.html">Architecture</a>
+<a href="verify.html">Verify</a>
+<a href="faq.html">FAQ</a>
+<a href="review.html">Review</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn secondary small" href="review.html#contact">Contact review</a>
+      </div>
+      <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </header>
+  <main id="main">
+
+<section class="page-hero">
+  <span class="eyebrow">Technical architecture</span>
+  <h1>Architecture of the proof-report stack.</h1>
+  <p class="lede">The report uses a layered package architecture. This map groups the components by review function: local rewrites, residual witnesses, selector realization, ZeroSlack, locked NAND, final replay, and release sealing.</p>
+</section>
+<div class="shell">
+  <section class="section">
+    <div class="section-head"><div><div class="section-label">Layer map</div><h2>Audit layers.</h2></div><p>Each layer carries a distinct review obligation. The central invariant is that constructive savings compile to VerifyDWexp, not to quotient equalities, sidecars, or bounds-only evidence.</p></div>
+    <div class="grid three path">
+      <article class="card"><h3>Direct-wire foundations</h3><p>Carriers, open functions, compatible supports, replacement, charge ownership, full/quotient projection, and mode firewall.</p></article>
+      <article class="card"><h3>Local routing and normalization</h3><p>Traceable normalization, finite tables, critical windows, branch-cycle and unary routers, bounded splices, and ledgers.</p></article>
+      <article class="card"><h3>Hereditary and budget closure</h3><p>Hereditary normal forms, budget envelopes, sidecar records, rank-negative blocker edges, and acyclicity.</p></article>
+      <article class="card"><h3>Residual witness cellization</h3><p>BCEL-ready positive nuclei, side-tight optima, request envelopes, activation cancellation, shadows, PkgC, and BN6 packets.</p></article>
+      <article class="card"><h3>Selectors and ZeroSlack</h3><p>Pair, triple, and spine selectors; typed realizer bots; charge-surplus gains; selector silence; HB closure; ZeroSlack contradiction.</p></article>
+      <article class="card"><h3>Locked NAND and final seal</h3><p>SAT threshold construction, residual slack bound, CheckPCCPackexp, final replay, final certificate, release gate, and proof report.</p></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="section-head"><div><div class="section-label">Package ledger</div><h2>High-level package roles.</h2></div></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Package family</th><th>Audit question</th><th>Expected evidence</th></tr></thead>
+        <tbody>
+          <tr><td><strong>E / N / FT / X</strong></td><td>Do local transformations compile to full-mode verified direct-wire gains?</td><td>Frontier exactness, obligation lifecycle, finite coverage, route priority, and gain compilation.</td></tr>
+          <tr><td><strong>BC / UN / HN / BUD</strong></td><td>Are governed structures routed, solved, or sidecar-blocked without circular justification?</td><td>Transition audits, BWL exactness, budget dynamic programs, and blocker-indexed sidecars.</td></tr>
+          <tr><td><strong>RW / BN2–BN6 / PkgC</strong></td><td>Does positive residual slack force a concrete packet prototype?</td><td>BCEL nuclei, side-tight bases, activation antichains, full-shadow localization, and constant-cut hypergraphs.</td></tr>
+          <tr><td><strong>Packet / R / HB / O</strong></td><td>Does every packet yield a selector, and every unblocked selector yield a checked gain?</td><td>Faithful seeds, typed bots, charge-surplus injections, rank induction, selector silence, and ZeroSlack.</td></tr>
+          <tr><td><strong>G / Final / PACK</strong></td><td>Does accepted package checking imply a polynomial SAT decision?</td><td>Locked NAND threshold, framework match, import graph, no-hidden-minimization scan, bounds, and final replay.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><div class="section-label">Trust boundaries</div><h2>Primary trust boundaries.</h2></div></div>
+    <div class="grid three">
+      <article class="card"><h3>Generator boundary</h3><p>The deterministic generator is not the trusted object. The checker validates the generated package, rows, proof references, imports, bounds, and final theorem linkage.</p></article>
+      <article class="card"><h3>Constructive firewall</h3><p>Quotient equality, route tokens, sidecar records, and bounds-only evidence cannot stand in for full-mode replacement proofs.</p></article>
+      <article class="card"><h3>Release custody</h3><p>Source/checker provenance is separated from the durable artefact-bearing release, with manifest and checksum records available for review.</p></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="callout"><div><div class="section-label">Reviewer invariant</div><h2>Constructive savings terminate at VerifyDWexp.</h2><p>Any claimed constructive saving must pass through the direct-wire verifier. A saving that relies only on quotient equality, a route token, a sidecar, or a bounds-only certificate is outside the stated acceptance discipline.</p></div><a class="btn primary" href="verify.html">Verification protocol</a></div>
+  </section>
+</div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div>
+        <a class="brand" href="index.html" aria-label="PNP Labs home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" alt=""></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>Formal verification software and proof artefact systems.</span></span>
+        </a>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Independent technical review invited.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="paper.html">Paper guide</a>
+        <a href="verify.html">Verify</a>
+        <a href="review.html#contact">Review contact</a>
+        <a href="mailto:security@pnplabs.com.au">Security</a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>

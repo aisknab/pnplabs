@@ -1,0 +1,9 @@
+{
+  "name": "PNP Labs",
+  "short_name": "PNP Labs",
+  "description": "Verification-first proof artefact portal for independent mathematical review.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#07111f"
+}

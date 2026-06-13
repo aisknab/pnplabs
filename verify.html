@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNP Labs — Verify the release seal</title>
+  <meta name="description" content="Artefact verification and regeneration workflow for the PNP Labs proof-report release seal.">
+  <link rel="canonical" href="https://pnplabs.com.au/verify.html">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PNP Labs — Verify the release seal">
+  <meta property="og:description" content="Artefact verification and regeneration workflow for the PNP Labs proof-report release seal.">
+  <meta property="og:url" content="https://pnplabs.com.au/verify.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/pnp-labs-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="PNP Labs home">
+        <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" alt=""></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>Proof artefact systems</span></span>
+      </a>
+      <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
+<a href="index.html">Home</a>
+<a href="paper.html">Paper guide</a>
+<a href="architecture.html">Architecture</a>
+<a class="active" aria-current="page" href="verify.html">Verify</a>
+<a href="faq.html">FAQ</a>
+<a href="review.html">Review</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn secondary small" href="review.html#contact">Contact review</a>
+      </div>
+      <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </header>
+  <main id="main">
+
+<section class="page-hero">
+  <span class="eyebrow">Independent verification</span>
+  <h1>Verification protocol for the sealed proof-report release.</h1>
+  <p class="lede">Independent review can proceed in two complementary modes: verification of the committed artefact bundle, and regeneration of the compact and full proof-report records from the recorded source/checker revision.</p>
+</section>
+<div class="shell">
+  <section class="section">
+    <div class="grid two">
+      <article class="card"><div class="kicker">Mode A</div><h2>Artefact verification</h2><p>Check out the sealed artefact release, verify durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full proof-report records.</p></article>
+      <article class="card"><div class="kicker">Mode B</div><h2>Regeneration verification</h2><p>Check out the recorded source/checker revision, run validation, regenerate compact and full proof reports, and confirm the accepted theorem fields and package/replay/certificate linkage.</p></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="section-head"><div><div class="section-label">Release identifiers</div><h2>Sealed revision and artefact bundle.</h2></div><p>These identifiers are taken from the bundled canonical proof report.</p></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Object</th><th>Identifier</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Source/checker tag</strong></td><td><code>final-pnp-proof-report-hardened-7072f8d</code></td></tr>
+          <tr><td><strong>Source/checker commit</strong></td><td><code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code></td></tr>
+          <tr><td><strong>Sealed artefact tag</strong></td><td><code>final-pnp-proof-report-artifacts-hardened-7072f8d-sealed</code></td></tr>
+          <tr><td><strong>Artefact bundle</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/</code></td></tr>
+          <tr><td><strong>Manifest</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/release-seal.json</code></td></tr>
+          <tr><td><strong>Checksum ledger</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="section-head"><div><div class="section-label">Commands</div><h2>Regeneration flow.</h2></div><p>Run from a clean checkout of the recorded source/checker revision.</p></div>
+    <div class="code-block">
+      <button class="btn secondary small copy-btn" type="button" data-copy="#regen-code">Copy</button>
+      <pre id="regen-code">git checkout final-pnp-proof-report-hardened-7072f8d
+B=proof-artifacts/final-pnp-proof-report-hardened-7072f8d
+npm run validate
+node ./bin/write-final-pnp-proof-report0.mjs "$B/compact"
+node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><div class="section-label">Success criteria</div><h2>Acceptance criteria.</h2></div></div>
+    <div class="grid three">
+      <article class="card"><h3>Accepted final report</h3><p><code>CheckFinalPNPProofReport0</code> accepts with theorem statement <code>P = NP</code> and antecedent <code>CheckPCCPackexp(GeneratePCCPack()) = accept</code>.</p></article>
+      <article class="card"><h3>Accepted linkage</h3><p>The package checker, acceptance run, replay, final verdict, final certificate, release audit, and release gate all accept.</p></article>
+      <article class="card"><h3>Canonical-byte discipline</h3><p>Hash lookups are followed by full key or canonical-byte comparison, and generator drift is rejected by canonical-byte comparison.</p></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="section-head"><div><div class="section-label">External audit checklist</div><h2>Baseline checks for independent review.</h2></div></div>
+    <div class="grid two path">
+      <article class="card"><h3>Rebuild the reports</h3><p>Run validation, compact report generation, and full report generation in a clean environment.</p></article>
+      <article class="card"><h3>Inspect no-hidden-minimization</h3><p>Confirm executable occurrences of hidden minimization symbols are rejected after macro and alias expansion.</p></article>
+      <article class="card"><h3>Audit the mode firewall</h3><p>Verify quotient equalities are not consumed as constructive full-mode replacements.</p></article>
+      <article class="card"><h3>Check the final framework match</h3><p>Confirm Package O and Package G use the same NAND syntax, output convention, charge convention, minimum-size notion, and slack definition.</p></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="callout"><div><div class="section-label">Access</div><h2>Repository and artefact access.</h2><p>Use the review channel for source access, sealed artefact access, institutional coordination, and reproduction support.</p></div><a class="btn primary" href="review.html#contact">Request access</a></div>
+  </section>
+</div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div>
+        <a class="brand" href="index.html" aria-label="PNP Labs home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" alt=""></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>Formal verification software and proof artefact systems.</span></span>
+        </a>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Independent technical review invited.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="paper.html">Paper guide</a>
+        <a href="verify.html">Verify</a>
+        <a href="review.html#contact">Review contact</a>
+        <a href="mailto:security@pnplabs.com.au">Security</a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>

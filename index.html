@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNP Labs — Machine-checkable proof-report materials for P = NP</title>
+  <meta name="description" content="Public portal for the locked NAND residual-slack proof report, release seal, and independent verification workflow.">
+  <link rel="canonical" href="https://pnplabs.com.au/">
+  <meta name="theme-color" content="#07111f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PNP Labs — Machine-checkable proof-report materials for P = NP">
+  <meta property="og:description" content="Public portal for the locked NAND residual-slack proof report, release seal, and independent verification workflow.">
+  <meta property="og:url" content="https://pnplabs.com.au/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/pnp-labs-mark.svg" type="image/svg+xml">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <link rel="preload" href="assets/styles.css" as="style">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="PNP Labs home">
+        <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" alt=""></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>Proof artefact systems</span></span>
+      </a>
+      <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
+<a class="active" aria-current="page" href="index.html">Home</a>
+<a href="paper.html">Paper guide</a>
+<a href="architecture.html">Architecture</a>
+<a href="verify.html">Verify</a>
+<a href="faq.html">FAQ</a>
+<a href="review.html">Review</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn secondary small" href="review.html#contact">Contact review</a>
+      </div>
+      <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </header>
+  <main id="main">
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Machine-checkable proof report</span>
+      <h1>A finite certificate route to P = NP, presented for independent verification.</h1>
+      <p class="lede">PNP Labs provides the public technical record for the locked NAND residual-slack proof-report claim: the canonical report, theorem boundary, release seal, artefact locations, verification protocol, and review channels.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="paper.html">Read the paper guide</a>
+        <a class="btn secondary" href="verify.html">Verify the release seal</a>
+        <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download proof report</a>
+      </div>
+    </div>
+    <aside class="hero-card" aria-label="Current proof-report boundary">
+      <h2>Current theorem record</h2>
+      <p>The accepted report states the public theorem at a precise checker boundary:</p>
+      <div class="code-block" style="margin-top:1rem"><pre>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</pre></div>
+      <div class="stat-grid">
+        <div class="stat"><strong>1121</strong><span>passing tests in the sealed validation run</span></div>
+        <div class="stat"><strong>0</strong><span>reported failures or cancellations</span></div>
+        <div class="stat"><strong>2</strong><span>verification modes: artefact and regeneration</span></div>
+        <div class="stat"><strong>≤4</strong><span>residual slack for locked NAND SAT instances</span></div>
+      </div>
+      <div class="notice"><strong>Review posture:</strong> the generator is not treated as a source of trust. The focus is the checked package, replay stack, final certificate, release gate, and proof report.</div>
+    </aside>
+  </div>
+</section>
+<div class="shell">
+  <section id="significance" class="section impact-section" aria-labelledby="impact-title">
+    <div class="impact-panel">
+      <div class="impact-copy">
+        <div class="section-label">Significance</div>
+        <h2 id="impact-title">A claim about the limit of efficient computation.</h2>
+        <p class="impact-lede">P versus NP is the divide between efficient verification and efficient discovery. This release asserts that the divide can be crossed: SAT is decided in polynomial time through a locked NAND residual-slack construction and an accepted proof-package checker boundary.</p>
+        <p>If that boundary survives independent review, the consequence is not incremental. It would settle P versus NP in the affirmative and force a re-examination of optimisation, automated reasoning, program verification, proof search, design automation, and assumptions built on computational hardness.</p>
+      </div>
+      <div class="impact-grid" aria-label="Claim, route, and review standard">
+        <article>
+          <span>01</span>
+          <h3>The assertion</h3>
+          <p>The public theorem is stated at a precise boundary: accepted generated package implies P = NP. The site begins there so the claim can be read, challenged, and checked without ambiguity.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>The route</h3>
+          <p>The report embeds SAT into locked NAND exact minimization with constant residual slack, then uses residual-band minimization, package acceptance, replay, and certificate linkage to extract the decision procedure.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>The obligation</h3>
+          <p>A claim of this scale must be reproducible. The report, release seal, checksum ledger, artefact paths, regeneration commands, and review channels are presented as first-class materials.</p>
+        </article>
+      </div>
+      <div class="impact-footer">
+        <p>The immediate purpose of this site is disciplined scrutiny: understand the theorem boundary, follow the proof route, verify the release record, and identify the first point at which a reviewer agrees or objects.</p>
+        <a class="btn primary" href="paper.html">Proceed to the paper guide</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Technical orientation</div>
+        <h2>Claim boundary, proof route, and verification record.</h2>
+      </div>
+      <p>The material is structured for technical review. It identifies the theorem being asserted, the structure of the argument, and the artefacts required to reproduce or audit the accepted report.</p>
+    </div>
+    <div class="grid three path">
+      <article class="card"><h3>Establish the claim boundary</h3><p>Read the conditional theorem statement together with the checker trust model. The public claim is tied to package acceptance and replay, not to the generator itself.</p></article>
+      <article class="card"><h3>Follow the proof route</h3><p>Review the reduction from SAT to locked NAND exact minimization, the residual-band minimization argument, and the ZeroSlack closure.</p></article>
+      <article class="card"><h3>Verify the release record</h3><p>Check the sealed artefact bundle, or regenerate the compact and full reports from the recorded source/checker revision and compare the accepted fields.</p></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Proof route</div>
+        <h2>Argument structure at a glance.</h2>
+      </div>
+      <p>A compact view of the dependency chain used throughout the technical report.</p>
+    </div>
+    <div class="flow" aria-label="Proof route flow">
+      <div class="flow-step"><strong>Boolean input</strong><span>Convert a formula or circuit into a NAND circuit.</span></div>
+      <div class="flow-step"><strong>Locked NAND word</strong><span>Construct a multi-output direct-wire instance with a constant residual band.</span></div>
+      <div class="flow-step"><strong>Residual minimization</strong><span>Use the proof-carrying package to return exact minimizers inside the residual band.</span></div>
+      <div class="flow-step"><strong>Package acceptance</strong><span>Check rows, kernels, imports, bounds, replay, and final-certificate linkage.</span></div>
+      <div class="flow-step"><strong>SAT threshold</strong><span>Decide satisfiability by comparing the minimum size against the locked NAND threshold.</span></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Review paths</div>
+        <h2>Review tracks by discipline.</h2>
+      </div>
+    </div>
+    <div class="grid three">
+      <article class="card"><div class="kicker">Complexity theory</div><h3>Reduction, threshold, and theorem extraction</h3><p>Read the claim boundary, locked NAND SAT embedding, residual slack bound, residual-band minimization theorem, and final SAT decision rule.</p><div class="pill-row"><a class="pill" href="paper.html">Paper guide</a><a class="pill" href="architecture.html">Architecture</a></div></article>
+      <article class="card"><div class="kicker">Formal methods</div><h3>Checker discipline and artefact integrity</h3><p>Prioritise canonical bytes, row keys, proof references, import acyclicity, no-hidden-minimization scanning, and replay determinism.</p><div class="pill-row"><a class="pill" href="verify.html">Verify</a><a class="pill" href="architecture.html">Package map</a></div></article>
+      <article class="card"><div class="kicker">Public and institutional framing</div><h3>Status language and review record</h3><p>Use precise language: PNP Labs has released a machine-checkable proof-report claim for independent technical review.</p><div class="pill-row"><a class="pill" href="faq.html">FAQ</a><a class="pill" href="review.html#contact">Contact</a></div></article>
+    </div>
+  </section>
+  <section class="section compact">
+    <div class="callout">
+      <div>
+        <div class="section-label">Independent review</div>
+        <h2>A public claim with a reproducible audit record.</h2>
+        <p>The report, theorem boundary, release identifiers, verification commands, and review channels are maintained together to support direct external assessment.</p>
+      </div>
+      <a class="btn primary" href="review.html#contact">Contact review</a>
+    </div>
+  </section>
+</div>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div>
+        <a class="brand" href="index.html" aria-label="PNP Labs home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" alt=""></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>Formal verification software and proof artefact systems.</span></span>
+        </a>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Independent technical review invited.</p>
+      </div>
+      <div class="footer-links" aria-label="Footer links">
+        <a href="paper.html">Paper guide</a>
+        <a href="verify.html">Verify</a>
+        <a href="review.html#contact">Review contact</a>
+        <a href="mailto:security@pnplabs.com.au">Security</a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
