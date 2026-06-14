@@ -1,5 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PNP Labs mark">
-  <rect x="4" y="4" width="56" height="56" rx="6" fill="#f5f6f7" stroke="#181b20" stroke-width="3"/>
-  <text x="32" y="38" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="20" font-weight="700" fill="#181b20">PNP</text>
-  <path d="M13 52h38" stroke="#7a1f2b" stroke-width="3" stroke-linecap="square"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PNP Labs accepted checker mark">
+  <rect x="3" y="3" width="58" height="58" rx="8" fill="#111720" stroke="#181b20" stroke-width="3"/>
+  <path d="M13 14h38" stroke="#0f5f73" stroke-width="4" stroke-linecap="square"/>
+  <path d="M14 24h10m-10 8h17m-17 8h11" stroke="#d6dbe1" stroke-width="3.5" stroke-linecap="square"/>
+  <circle cx="44" cy="31" r="10" fill="#2f6846" stroke="#d8f1df" stroke-width="2"/>
+  <path d="M38.5 31.5l3.8 3.8 7.3-8.6" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="square" stroke-linejoin="miter"/>
+  <text x="32" y="53" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8" font-weight="800" letter-spacing=".5" fill="#f4f7fa">P=NP</text>
 </svg>
