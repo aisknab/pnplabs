@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PNP Labs — Machine-checkable proof-report materials for P = NP</title>
-  <meta name="description" content="Public portal for the locked NAND residual-slack proof report, release seal, and independent verification workflow.">
+  <meta name="description" content="Locked NAND residual-slack proof-report materials, release seal, and independent verification workflow.">
   <link rel="canonical" href="https://pnplabs.com.au/">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PNP Labs — Machine-checkable proof-report materials for P = NP">
-  <meta property="og:description" content="Public portal for the locked NAND residual-slack proof report, release seal, and independent verification workflow.">
+  <meta property="og:description" content="Locked NAND residual-slack proof-report materials, release seal, and independent verification workflow.">
   <meta property="og:url" content="https://pnplabs.com.au/">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/pnp-labs-mark.svg" type="image/svg+xml">
@@ -42,33 +42,66 @@
   </header>
   <main id="main">
 
-<section class="hero">
-  <div class="hero-grid">
-    <div>
-      <span class="eyebrow">Public proof-report release</span>
-      <h1>PNP Labs: a formal proof-report claim for P = NP.</h1>
-      <p class="lede">PNP Labs provides the public technical record for the locked NAND residual-slack proof-report claim: the canonical report, theorem boundary, release seal, artefact locations, verification protocol, and review channels.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="paper.html">Read the paper guide</a>
-        <a class="btn secondary" href="verify.html">Verify the release seal</a>
-        <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download proof report</a>
+<section class="hero artifact-hero" aria-labelledby="hero-title">
+  <div class="artifact-wrap">
+    <div class="release-strip" aria-label="Release seal summary">
+      <div>
+        <span>Release seal</span>
+        <strong>final-pnp-proof-report-hardened-7072f8d</strong>
+      </div>
+      <div>
+        <span>Checker state</span>
+        <strong class="accept-state">accepted boundary</strong>
+      </div>
+      <div>
+        <span>SHA256</span>
+        <code>08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae</code>
       </div>
     </div>
-    <aside class="hero-card" aria-label="Current proof-report boundary">
-      <h2>Current theorem record</h2>
-      <p>The accepted report states the public theorem at a precise checker boundary:</p>
-      <div class="code-block theorem-code" style="margin-top:1rem"><pre>CheckPCCPackexp(
+
+    <div class="artifact-grid">
+      <div class="artifact-copy">
+        <span class="eyebrow">Sealed proof dossier</span>
+        <h1 id="hero-title">Machine-checkable proof-report claim for P = NP.</h1>
+        <p class="lede">Review begins with concrete artefacts: the canonical report, accepted checker boundary, release seal, checksum, and two verification paths.</p>
+
+        <div class="boundary-panel" aria-label="Accepted theorem boundary">
+          <div class="boundary-head">
+            <span>Accepted theorem boundary</span>
+            <strong>accept</strong>
+          </div>
+          <pre>CheckPCCPackexp(
   GeneratePCCPack()
 ) = accept
-⇒ P = NP</pre></div>
-      <div class="stat-grid">
-        <div class="stat"><strong>1121</strong><span>passing tests in the sealed validation run</span></div>
-        <div class="stat"><strong>0</strong><span>reported failures or cancellations</span></div>
-        <div class="stat"><strong>2</strong><span>verification modes: artefact and regeneration</span></div>
-        <div class="stat"><strong>≤4</strong><span>residual slack for locked NAND SAT instances</span></div>
+⇒ P = NP</pre>
+          <div class="boundary-ledger" aria-label="Validation and review facts">
+            <div><span>Validation</span><strong>1121 passed</strong></div>
+            <div><span>Failures</span><strong>0 reported</strong></div>
+            <div><span>Review modes</span><strong>artefact + regeneration</strong></div>
+            <div><span>Residual slack</span><strong>≤4 locked NAND</strong></div>
+          </div>
+        </div>
+
+        <p class="review-note"><strong>Trust boundary:</strong> the generator is not treated as a source of trust. The focus is the checked package, replay stack, final certificate, release gate, and proof report.</p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="verify.html">Verify the release seal</a>
+          <a class="btn secondary" href="paper.html">Read the paper guide</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download proof report</a>
+        </div>
       </div>
-      <div class="notice"><strong>Review posture:</strong> the generator is not treated as a source of trust. The focus is the checked package, replay stack, final certificate, release gate, and proof report.</div>
-    </aside>
+
+      <aside class="artifact-preview" aria-label="Canonical proof report preview">
+        <a class="report-preview" href="downloads/canonical_proof_report.pdf" aria-label="Open canonical proof report PDF">
+          <img src="assets/proof-report-cover.webp" width="720" height="1018" alt="Preview of the canonical proof report title page" fetchpriority="high">
+          <span class="stamp" aria-hidden="true">sealed<br>7072f8d</span>
+        </a>
+        <div class="artifact-meta">
+          <h2>Canonical release artefact</h2>
+          <p>56-page proof report · source <code>7072f8d</code> · paper, TeX, verification protocol, and contact channel.</p>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 <div class="shell">
@@ -77,14 +110,14 @@
       <div class="impact-copy">
         <div class="section-label">Significance</div>
         <h2 id="impact-title">A claim at the boundary of efficient computation.</h2>
-        <p class="impact-lede">P versus NP is the divide between efficient verification and efficient discovery. This release asserts that the divide can be crossed: SAT is decided in polynomial time through a locked NAND residual-slack construction and an accepted proof-package checker boundary.</p>
+        <p class="impact-lede">P versus NP is the divide between efficient verification and efficient discovery. The release asserts that the divide can be crossed: SAT is decided in polynomial time through a locked NAND residual-slack construction and an accepted proof-package checker boundary.</p>
         <p>If that boundary survives independent review, the consequence is not incremental. It would settle P versus NP in the affirmative and force a re-examination of optimisation, automated reasoning, program verification, proof search, design automation, and assumptions built on computational hardness.</p>
       </div>
       <div class="impact-grid" aria-label="Claim, route, and review standard">
         <article>
           <span>01</span>
           <h3>The assertion</h3>
-          <p>The public theorem is stated at a precise boundary: accepted generated package implies P = NP. The site begins there so the claim can be read, challenged, and checked without ambiguity.</p>
+          <p>The public theorem is stated at a precise boundary: accepted generated package implies P = NP. The claim can be read, challenged, and checked against that boundary without ambiguity.</p>
         </article>
         <article>
           <span>02</span>
@@ -94,11 +127,11 @@
         <article>
           <span>03</span>
           <h3>The obligation</h3>
-          <p>A claim of this scale must be reproducible. The report, release seal, checksum ledger, artefact paths, regeneration commands, and review channels are presented as first-class materials.</p>
+          <p>A claim of this scale must be reproducible. The report, release seal, checksum ledger, artefact paths, regeneration commands, and review channels are kept together for audit.</p>
         </article>
       </div>
       <div class="impact-footer">
-        <p>The immediate purpose of this site is disciplined scrutiny: understand the theorem boundary, follow the proof route, verify the release record, and identify the first point at which a reviewer agrees or objects.</p>
+        <p>Disciplined scrutiny starts with the theorem boundary, proof route, release record, and the first point where the argument either holds or fails.</p>
         <a class="btn primary" href="paper.html">Proceed to the paper guide</a>
       </div>
     </div>
@@ -109,7 +142,7 @@
         <div class="section-label">Technical orientation</div>
         <h2>Claim boundary, proof route, and verification record.</h2>
       </div>
-      <p>The material is structured for technical review. It identifies the theorem being asserted, the structure of the argument, and the artefacts required to reproduce or audit the accepted report.</p>
+      <p>Technical review begins with the asserted theorem, the structure of the argument, and the artefacts required to reproduce or audit the accepted report.</p>
     </div>
     <div class="grid three path">
       <article class="card"><h3>Establish the claim boundary</h3><p>Read the conditional theorem statement together with the checker trust model. The public claim is tied to package acceptance and replay, not to the generator itself.</p></article>
