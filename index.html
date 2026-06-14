@@ -118,22 +118,22 @@
         <p class="impact-lede">P versus NP is the divide between efficient verification and efficient discovery. The release asserts that the divide can be crossed: SAT is decided in polynomial time through a locked NAND residual-slack construction and an accepted proof-package checker boundary.</p>
         <p>If that boundary survives independent review, the consequence is not incremental. It would settle P versus NP in the affirmative and force a re-examination of optimisation, automated reasoning, program verification, proof search, design automation, and assumptions built on computational hardness.</p>
       </div>
-      <div class="impact-grid" aria-label="Claim, route, and review standard">
-        <article>
-          <span>01</span>
-          <h3>The assertion</h3>
-          <p>The public theorem is stated at a precise boundary: accepted generated package implies P = NP. The claim can be read, challenged, and checked against that boundary without ambiguity.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>The route</h3>
-          <p>The report embeds SAT into locked NAND exact minimization with constant residual slack, then uses residual-band minimization, package acceptance, replay, and certificate linkage to extract the decision procedure.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>The obligation</h3>
-          <p>A claim of this scale must be reproducible. The report, release seal, checksum ledger, artefact paths, regeneration commands, and review channels are kept together for audit.</p>
-        </article>
+      <div class="claim-ledger" aria-label="Claim, route, and review standard">
+        <div class="claim-record">
+          <span class="record-index">01</span>
+          <div><h3>The assertion</h3><p>The public theorem is stated at a precise boundary: accepted generated package implies P = NP.</p></div>
+          <code>CheckPCCPackexp(...) = accept</code>
+        </div>
+        <div class="claim-record">
+          <span class="record-index">02</span>
+          <div><h3>The route</h3><p>SAT is embedded into locked NAND exact minimization, then passed through residual-band minimization, package acceptance, replay, and certificate linkage.</p></div>
+          <code>SAT → locked NAND → PCCMin</code>
+        </div>
+        <div class="claim-record">
+          <span class="record-index">03</span>
+          <div><h3>The obligation</h3><p>The report, release seal, checksum ledger, artefact paths, regeneration commands, and review channels are kept together for audit.</p></div>
+          <code>report + seal + SHA256SUMS</code>
+        </div>
       </div>
       <div class="impact-footer">
         <p>Disciplined scrutiny starts with the theorem boundary, proof route, release record, and the first point where the argument either holds or fails.</p>
@@ -149,10 +149,25 @@
       </div>
       <p>Technical review begins with the asserted theorem, the structure of the argument, and the artefacts required to reproduce or audit the accepted report.</p>
     </div>
-    <div class="grid three path">
-      <article class="card"><h3>Establish the claim boundary</h3><p>Read the conditional theorem statement together with the checker trust model. The public claim is tied to package acceptance and replay, not to the generator itself.</p></article>
-      <article class="card"><h3>Follow the proof route</h3><p>Review the reduction from SAT to locked NAND exact minimization, the residual-band minimization argument, and the ZeroSlack closure.</p></article>
-      <article class="card"><h3>Verify the release record</h3><p>Check the sealed artefact bundle, or regenerate the compact and full reports from the recorded source/checker revision and compare the accepted fields.</p></article>
+    <div class="audit-queue" aria-label="Technical review queue">
+      <div class="audit-item">
+        <span>Boundary</span>
+        <h3>Establish the claim boundary</h3>
+        <p>Read the conditional theorem statement together with the checker trust model.</p>
+        <code>antecedent ⇒ consequent</code>
+      </div>
+      <div class="audit-item">
+        <span>Route</span>
+        <h3>Follow the proof route</h3>
+        <p>Review the SAT reduction, residual-band minimization argument, and ZeroSlack closure.</p>
+        <code>locked NAND + residual slack ≤4</code>
+      </div>
+      <div class="audit-item">
+        <span>Seal</span>
+        <h3>Verify the release record</h3>
+        <p>Check the sealed artefact bundle, or regenerate accepted compact and full reports.</p>
+        <code>artefact mode + regeneration mode</code>
+      </div>
     </div>
   </section>
   <section class="section compact">
@@ -163,12 +178,37 @@
       </div>
       <p>A compact view of the dependency chain used throughout the technical report.</p>
     </div>
-    <div class="flow" aria-label="Proof route flow">
-      <div class="flow-step"><strong>Boolean input</strong><span>Convert a formula or circuit into a NAND circuit.</span></div>
-      <div class="flow-step"><strong>Locked NAND word</strong><span>Construct a multi-output direct-wire instance with a constant residual band.</span></div>
-      <div class="flow-step"><strong>Residual minimization</strong><span>Use the proof-carrying package to return exact minimizers inside the residual band.</span></div>
-      <div class="flow-step"><strong>Package acceptance</strong><span>Check rows, kernels, imports, bounds, replay, and final-certificate linkage.</span></div>
-      <div class="flow-step"><strong>SAT threshold</strong><span>Decide satisfiability by comparing the minimum size against the locked NAND threshold.</span></div>
+    <div class="proof-pipeline" aria-label="Proof route pipeline">
+      <div class="pipeline-stage">
+        <span>input</span>
+        <strong>Boolean instance</strong>
+        <code>Φ</code>
+        <p>Formula or circuit input.</p>
+      </div>
+      <div class="pipeline-stage">
+        <span>embed</span>
+        <strong>Locked NAND word</strong>
+        <code>CΦ</code>
+        <p>Tagged direct-wire instance with constant residual band.</p>
+      </div>
+      <div class="pipeline-stage">
+        <span>minimize</span>
+        <strong>Residual band</strong>
+        <code>μ(CΦ)</code>
+        <p>Exact minimizer returned inside the residual band.</p>
+      </div>
+      <div class="pipeline-stage">
+        <span>check</span>
+        <strong>Package acceptance</strong>
+        <code>accept</code>
+        <p>Rows, imports, bounds, replay, and certificate linkage.</p>
+      </div>
+      <div class="pipeline-stage final">
+        <span>decide</span>
+        <strong>SAT threshold</strong>
+        <code>P = NP</code>
+        <p>Satisfiability follows from the locked NAND threshold comparison.</p>
+      </div>
     </div>
   </section>
   <section class="section">
@@ -178,10 +218,37 @@
         <h2>Review tracks by discipline.</h2>
       </div>
     </div>
-    <div class="grid three">
-      <article class="card"><div class="kicker">Complexity theory</div><h3>Reduction, threshold, and theorem extraction</h3><p>Read the claim boundary, locked NAND SAT embedding, residual slack bound, residual-band minimization theorem, and final SAT decision rule.</p><div class="pill-row"><a class="pill" href="paper.html">Paper guide</a><a class="pill" href="architecture.html">Architecture</a></div></article>
-      <article class="card"><div class="kicker">Formal methods</div><h3>Checker discipline and artefact integrity</h3><p>Prioritise canonical bytes, row keys, proof references, import acyclicity, no-hidden-minimization scanning, and replay determinism.</p><div class="pill-row"><a class="pill" href="verify.html">Verify</a><a class="pill" href="architecture.html">Package map</a></div></article>
-      <article class="card"><div class="kicker">Public and institutional framing</div><h3>Status language and review record</h3><p>Use precise language: PNP Labs has released a machine-checkable proof-report claim for independent technical review.</p><div class="pill-row"><a class="pill" href="faq.html">FAQ</a><a class="pill" href="review.html#contact">Contact</a></div></article>
+    <div class="review-lanes" aria-label="Review tracks by discipline">
+      <section class="review-lane">
+        <div class="lane-head"><span>Complexity</span><h3>Reduction, threshold, theorem extraction</h3></div>
+        <ul>
+          <li>Claim boundary</li>
+          <li>Locked NAND SAT embedding</li>
+          <li>Residual slack bound</li>
+          <li>Final SAT decision rule</li>
+        </ul>
+        <div class="pill-row"><a class="pill" href="paper.html">Paper guide</a><a class="pill" href="architecture.html">Architecture</a></div>
+      </section>
+      <section class="review-lane">
+        <div class="lane-head"><span>Formal methods</span><h3>Checker discipline and artefact integrity</h3></div>
+        <ul>
+          <li>Canonical bytes and row keys</li>
+          <li>Proof references and import acyclicity</li>
+          <li>No-hidden-minimization scan</li>
+          <li>Replay determinism</li>
+        </ul>
+        <div class="pill-row"><a class="pill" href="verify.html">Verify</a><a class="pill" href="architecture.html">Package map</a></div>
+      </section>
+      <section class="review-lane">
+        <div class="lane-head"><span>Institutional</span><h3>Status language and review record</h3></div>
+        <ul>
+          <li>Public claim wording</li>
+          <li>Internal acceptance versus external confirmation</li>
+          <li>Review contact and source access</li>
+          <li>Security disclosure path</li>
+        </ul>
+        <div class="pill-row"><a class="pill" href="faq.html">FAQ</a><a class="pill" href="review.html#contact">Contact</a></div>
+      </section>
     </div>
   </section>
   <section class="section compact">
