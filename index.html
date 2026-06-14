@@ -6,7 +6,7 @@
   <title>PNP Labs — Machine-checkable proof-report materials for P = NP</title>
   <meta name="description" content="Public portal for the locked NAND residual-slack proof report, release seal, and independent verification workflow.">
   <link rel="canonical" href="https://pnplabs.com.au/">
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PNP Labs — Machine-checkable proof-report materials for P = NP">
   <meta property="og:description" content="Public portal for the locked NAND residual-slack proof report, release seal, and independent verification workflow.">
@@ -45,8 +45,8 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <span class="eyebrow">Machine-checkable proof report</span>
-      <h1>A finite certificate route to P = NP, presented for independent verification.</h1>
+      <span class="eyebrow">Public proof-report release</span>
+      <h1>PNP Labs: a formal proof-report claim for P = NP.</h1>
       <p class="lede">PNP Labs provides the public technical record for the locked NAND residual-slack proof-report claim: the canonical report, theorem boundary, release seal, artefact locations, verification protocol, and review channels.</p>
       <div class="hero-actions">
         <a class="btn primary" href="paper.html">Read the paper guide</a>
@@ -57,7 +57,10 @@
     <aside class="hero-card" aria-label="Current proof-report boundary">
       <h2>Current theorem record</h2>
       <p>The accepted report states the public theorem at a precise checker boundary:</p>
-      <div class="code-block" style="margin-top:1rem"><pre>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</pre></div>
+      <div class="code-block theorem-code" style="margin-top:1rem"><pre>CheckPCCPackexp(
+  GeneratePCCPack()
+) = accept
+⇒ P = NP</pre></div>
       <div class="stat-grid">
         <div class="stat"><strong>1121</strong><span>passing tests in the sealed validation run</span></div>
         <div class="stat"><strong>0</strong><span>reported failures or cancellations</span></div>
@@ -73,7 +76,7 @@
     <div class="impact-panel">
       <div class="impact-copy">
         <div class="section-label">Significance</div>
-        <h2 id="impact-title">A claim about the limit of efficient computation.</h2>
+        <h2 id="impact-title">A claim at the boundary of efficient computation.</h2>
         <p class="impact-lede">P versus NP is the divide between efficient verification and efficient discovery. This release asserts that the divide can be crossed: SAT is decided in polynomial time through a locked NAND residual-slack construction and an accepted proof-package checker boundary.</p>
         <p>If that boundary survives independent review, the consequence is not incremental. It would settle P versus NP in the affirmative and force a re-examination of optimisation, automated reasoning, program verification, proof search, design automation, and assumptions built on computational hardness.</p>
       </div>
