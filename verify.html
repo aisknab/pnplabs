@@ -47,12 +47,58 @@
   <span class="eyebrow">Independent verification</span>
   <h1>Verification protocol for the sealed proof-report release.</h1>
   <p class="lede">Independent review can proceed in two complementary modes: verification of the committed artefact bundle, and regeneration of the compact and full proof-report records from the recorded source/checker revision.</p>
+  <div class="hero-actions"><a class="btn primary" href="#seal-console">Run browser check</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download proof report</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="grid two">
       <article class="card"><div class="kicker">Mode A</div><h2>Artefact verification</h2><p>Check out the sealed artefact release, verify durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full proof-report records.</p></article>
       <article class="card"><div class="kicker">Mode B</div><h2>Regeneration verification</h2><p>Check out the recorded source/checker revision, run validation, regenerate compact and full proof reports, and confirm the accepted theorem fields and package/replay/certificate linkage.</p></article>
+    </div>
+  </section>
+  <section id="seal-console" class="section compact seal-console-section" aria-labelledby="seal-console-title">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Release seal console</div>
+        <h2 id="seal-console-title">Compute the bundled report digest in-browser.</h2>
+      </div>
+      <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest.</p>
+    </div>
+    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae">
+      <div class="seal-console-head">
+        <div>
+          <span class="console-kicker">Mode A · artefact bytes</span>
+          <h3>Canonical proof-report seal check</h3>
+        </div>
+        <div class="console-controls">
+          <span class="console-status" data-seal-status>idle</span>
+          <button class="btn primary" type="button" data-seal-run>Run check</button>
+          <button class="btn secondary" type="button" data-seal-reset>Reset</button>
+        </div>
+      </div>
+      <div class="seal-console-grid">
+        <div class="seal-terminal" role="log" aria-live="polite" aria-label="Release seal console output">
+          <ol class="seal-output" data-seal-output>
+            <li><span>target</span><code>canonical_proof_report.pdf</code></li>
+            <li><span>expect</span><code>08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae</code></li>
+            <li><span>ready</span><code>press Run check to fetch bytes, hash locally, and compare</code></li>
+          </ol>
+        </div>
+        <div class="seal-readout" aria-label="Digest comparison">
+          <div class="digest-row">
+            <span>Expected SHA-256</span>
+            <code id="expected-digest">08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae</code>
+            <button class="btn secondary small" type="button" data-copy="#expected-digest">Copy</button>
+          </div>
+          <div class="digest-row">
+            <span>Computed SHA-256</span>
+            <code id="computed-digest" data-seal-computed>not run</code>
+            <button class="btn secondary small" type="button" data-copy="#computed-digest">Copy</button>
+          </div>
+          <div class="seal-result" data-seal-result>Awaiting browser check.</div>
+          <p>This checks the bundled PDF bytes against the published digest. Source regeneration and full artefact-bundle audit remain separate review steps.</p>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section compact">
