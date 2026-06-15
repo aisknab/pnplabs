@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — FAQ and public status</title>
-  <meta name="description" content="Public status, careful wording, and technical answers for the PNP Labs machine-checkable P versus NP proof-report claim.">
+  <title>PNP Labs — Current status and FAQ</title>
+  <meta name="description" content="Current status and technical answers for the PNP Labs machine-checkable P versus NP claim.">
   <link rel="canonical" href="https://pnplabs.com.au/faq.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PNP Labs — FAQ and public status">
-  <meta property="og:description" content="Public status, careful wording, and technical answers for the PNP Labs machine-checkable P versus NP proof-report claim.">
+  <meta property="og:title" content="PNP Labs — Current status and FAQ">
+  <meta property="og:description" content="Current status and technical answers for the PNP Labs machine-checkable P versus NP claim.">
   <meta property="og:url" content="https://pnplabs.com.au/faq.html">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -25,18 +25,18 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim under review</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim under review</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
-<a href="paper.html">Evaluation guide</a>
+<a href="paper.html">Review guide</a>
 <a href="architecture.html">Architecture</a>
 <a href="verify.html">Verify</a>
 <a class="active" aria-current="page" href="faq.html">FAQ</a>
 <a href="review.html">Review</a>
       </nav>
       <div class="header-cta">
-        <a class="btn secondary small" href="review.html#contact">Review status</a>
+        <a class="btn secondary small" href="review.html#contact">Review contact</a>
       </div>
       <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
@@ -45,25 +45,25 @@
 
 <section class="page-hero">
   <span class="eyebrow">FAQ</span>
-  <h1>Public status and careful wording.</h1>
-  <p class="lede">PNP Labs has released a machine-checkable P versus NP proof-report claim for independent review. It has not yet received external community verification, and public wording should not imply consensus.</p>
+  <h1>Current status of the claim.</h1>
+  <p class="lede">PNP Labs has released a machine-checkable P versus NP claim for independent review. It has not yet been externally verified by the wider research community.</p>
 </section>
 <div class="shell">
   <section class="section">
     <div class="faq-list">
-      <details open><summary>Has external verification been completed?</summary><p>No. PNP Labs has released a machine-checkable P versus NP proof-report claim and invites independent verification. Community review, institutional assessment, and external formal audit are separate from the release's internal checker acceptance record.</p></details>
-      <details><summary>What is PNP Labs claiming?</summary><p>PNP Labs presents a machine-checkable finite-certificate proof-report claim for P = NP over the locked NAND residual-slack package. The public theorem boundary is <code>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</code>.</p></details>
-      <details><summary>What does the seal or browser check prove?</summary><p>It proves only release-byte identity for the bundled file being checked: the computed SHA-256 matches the published digest. It does not validate the theorem claim, review the mathematical argument, or replace source regeneration.</p></details>
-      <details><summary>Why is the checker record so prominent?</summary><p>The release claim is tied to executable artefacts. Reviewers need to know exactly which finite package, acceptance run, replay, final certificate, release gate, and proof-report records are being relied on.</p></details>
+      <details open><summary>Has anyone outside PNP Labs verified it?</summary><p>No. PNP Labs has released a machine-checkable P versus NP claim and invites independent verification. Community review, institutional assessment, and external formal audit are separate from the release's internal checker acceptance record.</p></details>
+      <details><summary>What is PNP Labs claiming?</summary><p>PNP Labs presents a machine-checkable finite-certificate claim for P = NP over the locked NAND residual-slack package. The public theorem boundary is <code>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</code>.</p></details>
+      <details><summary>What does the browser check show?</summary><p>It only shows that the bundled file matches the published SHA-256 digest. It does not validate the theorem claim, review the mathematical argument, or replace source regeneration.</p></details>
+      <details><summary>Why does the site focus on the checker record?</summary><p>The release claim is tied to executable artefacts. Reviewers need to know exactly which finite package, acceptance run, replay, final certificate, release gate, and report records are being relied on.</p></details>
       <details><summary>What is the locked NAND role?</summary><p>The locked NAND construction encodes SAT into an exact-minimization threshold for a tagged multi-output direct-wire word. The report states that these instances have residual slack at most four, allowing the residual-band minimizer to be applied.</p></details>
-      <details><summary>What should a technical reviewer inspect first?</summary><p>For first-pass review, prioritise the claim boundary, locked NAND threshold, residual slack bound, residual-band exact minimization theorem, no-hidden-minimization scan, final package acceptance, and acceptance-replay linkage.</p></details>
-      <details><summary>What is the difference between artefact checking and regeneration?</summary><p>Artefact checking compares the committed sealed bundle and checksum ledger. Regeneration checks that the recorded source/checker revision emits checker-accepted compact and full proof-report records with the expected theorem fields and linkage.</p></details>
-      <details><summary>How should media or institutions describe the release?</summary><p>Recommended public wording: "PNP Labs has released a machine-checkable finite-certificate proof-report claim for P = NP and is inviting independent technical verification." Avoid language implying external consensus unless that evidence exists.</p></details>
+      <details><summary>Where can a technical reviewer start?</summary><p>For first-pass review, prioritise the claim boundary, locked NAND threshold, residual slack bound, residual-band exact minimization theorem, no-hidden-minimization scan, final package acceptance, and acceptance-replay linkage.</p></details>
+      <details><summary>What is the difference between checking files and regenerating reports?</summary><p>File checking compares the committed sealed bundle and checksum ledger. Regeneration checks that the recorded source/checker revision emits checker-accepted compact and full report records with the expected theorem statements and linkage.</p></details>
+      <details><summary>What public description is accurate?</summary><p>Recommended wording: "PNP Labs has released a machine-checkable finite-certificate claim for P = NP and is inviting independent technical verification." Avoid language implying external consensus unless that evidence exists.</p></details>
       <details><summary>Where do review requests and security disclosures go?</summary><p>Technical review and source repository access requests go to <a href="mailto:review@pnplabs.com.au">review@pnplabs.com.au</a>. Security issues and suspected artefact-integrity concerns go to <a href="mailto:security@pnplabs.com.au">security@pnplabs.com.au</a>.</p></details>
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Public framing</div><h2>Current public status.</h2><p>A claim of this scale requires a clear theorem boundary, reproducible artefacts, named review channels, and a visible distinction between internal checker acceptance and external confirmation.</p></div><a class="btn primary" href="review.html">Review channels</a></div>
+    <div class="callout"><div><div class="section-label">Status</div><h2>What is known today.</h2><p>The release provides a theorem boundary, report files, checksum records, and review channels. External confirmation remains separate from the internal checker acceptance record.</p></div><a class="btn primary" href="review.html">Review channels</a></div>
   </section>
 </div>
 
@@ -73,12 +73,12 @@
       <div>
         <a class="brand" href="index.html" aria-label="PNP Labs home">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim released for independent review.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim released for independent review.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Proof-report claim released for independent review; external community verification not yet established.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · P versus NP claim released for independent review; external community verification not yet established.</p>
       </div>
       <div class="footer-links" aria-label="Footer links">
-        <a href="paper.html">Evaluation guide</a>
+        <a href="paper.html">Review guide</a>
         <a href="verify.html">Verify</a>
         <a href="review.html#contact">Review contact</a>
         <a href="mailto:security@pnplabs.com.au">Security</a>

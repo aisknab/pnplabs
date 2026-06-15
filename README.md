@@ -7,10 +7,10 @@ The site is written for public credibility across technical readers, institution
 ## Included pages
 
 - `index.html` — primary landing page and argument-route overview.
-- `paper.html` — evaluation guide for the canonical proof-report claim.
+- `paper.html` — review guide for the canonical report.
 - `architecture.html` — package-stack architecture and reviewer invariant.
 - `verify.html` — artefact verification and regeneration protocol.
-- `faq.html` — careful public and technical framing.
+- `faq.html` — current status and technical framing.
 - `review.html` — review tracks, contact channels, and request template.
 - `downloads/canonical_proof_report.pdf` — bundled canonical report.
 - `downloads/canonical_proof_report.tex` — bundled TeX source.
@@ -43,4 +43,4 @@ Then enable GitHub Pages from the repository root, or connect the repository to 
 
 ## Copy principle
 
-The site uses public-credibility language. It presents the proof-report claim clearly, states that external community verification has not yet been established, names the internal checker record, and gives reviewers a direct path to inspect public artefacts or request source repository access.
+The site uses public-credibility language. It presents the claim clearly, states that external community verification has not yet been established, names the internal checker record, and gives reviewers a direct path to inspect public artefacts or request source repository access.

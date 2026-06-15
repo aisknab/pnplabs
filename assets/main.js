@@ -72,7 +72,7 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
       output.replaceChildren();
       addLine('target', artifactLabel);
       addLine('expect', expected);
-      addLine('ready', 'press Run check to fetch bytes, hash locally, and compare');
+      addLine('ready', 'press Run check to fetch the file, hash locally, and compare');
     }
   }
 
@@ -88,7 +88,7 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
     setState('running', 'running');
     if (runButton) runButton.disabled = true;
     if (computed) computed.textContent = 'computing...';
-    if (result) result.textContent = 'Checking bundled report bytes...';
+    if (result) result.textContent = 'Checking bundled report file...';
     if (output) output.replaceChildren();
 
     try {
@@ -109,7 +109,7 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
       if (actual === expected) {
         addLine('ok', 'computed digest matches the published release digest');
         setState('verified', 'matched');
-        if (result) result.textContent = 'Digest match: bundled canonical report matches the published SHA-256. This confirms bytes only.';
+        if (result) result.textContent = 'Digest match: bundled canonical report matches the published SHA-256. This confirms file identity only.';
       } else {
         addLine('fail', 'computed digest does not match the published release seal');
         setState('failed', 'mismatch');

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — Architecture of the claim evaluation stack</title>
-  <meta name="description" content="Plain-language and technical architecture map for evaluating the PNP Labs proof-report claim, checker package, and release record.">
+  <title>PNP Labs — How the claim is organised for review</title>
+  <meta name="description" content="How the PNP Labs P versus NP claim, checker package, and release record are organised for review.">
   <link rel="canonical" href="https://pnplabs.com.au/architecture.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PNP Labs — Architecture of the claim evaluation stack">
-  <meta property="og:description" content="Plain-language and technical architecture map for evaluating the PNP Labs proof-report claim, checker package, and release record.">
+  <meta property="og:title" content="PNP Labs — How the claim is organised for review">
+  <meta property="og:description" content="How the PNP Labs P versus NP claim, checker package, and release record are organised for review.">
   <meta property="og:url" content="https://pnplabs.com.au/architecture.html">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -25,18 +25,18 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim under review</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim under review</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
-<a href="paper.html">Evaluation guide</a>
+<a href="paper.html">Review guide</a>
 <a class="active" aria-current="page" href="architecture.html">Architecture</a>
 <a href="verify.html">Verify</a>
 <a href="faq.html">FAQ</a>
 <a href="review.html">Review</a>
       </nav>
       <div class="header-cta">
-        <a class="btn secondary small" href="review.html#contact">Review status</a>
+        <a class="btn secondary small" href="review.html#contact">Review contact</a>
       </div>
       <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
@@ -44,13 +44,13 @@
   <main id="main">
 
 <section class="page-hero">
-  <span class="eyebrow">Architecture map</span>
-  <h1>How the proof-report claim is organised for review.</h1>
-  <p class="lede">The release is organised as a chain of reviewable records: local transformations, residual witnesses, selector realization, ZeroSlack, locked NAND, final replay, and release sealing. This page gives the plain structure before the package names become technical.</p>
+  <span class="eyebrow">Architecture</span>
+  <h1>How the claim is organised for review.</h1>
+  <p class="lede">The release is organised as a chain of reviewable records: local transformations, residual witnesses, selector realization, ZeroSlack, locked NAND, final replay, and release sealing. This page gives the structure behind the technical package names.</p>
 </section>
 <div class="shell">
   <section class="section">
-    <div class="section-head"><div><div class="section-label">Layer map</div><h2>Audit layers and review obligations.</h2></div><p>Each layer should answer one question: does the previous record justify the next one under the checker discipline? The central invariant is that constructive savings compile to VerifyDWexp, not to quotient equalities, sidecars, or bounds-only evidence.</p></div>
+    <div class="section-head"><div><div class="section-label">Layer map</div><h2>Review layers.</h2></div><p>Each layer has one basic question: does the previous record justify the next one under the checker discipline? The central invariant is that constructive savings compile to VerifyDWexp, not to quotient equalities, sidecars, or bounds-only evidence.</p></div>
     <div class="grid three path">
       <article class="card"><h3>Direct-wire foundations</h3><p>Carriers, open functions, compatible supports, replacement, charge ownership, full/quotient projection, and mode firewall.</p></article>
       <article class="card"><h3>Local routing and normalization</h3><p>Traceable normalization, finite tables, critical windows, branch-cycle and unary routers, bounded splices, and ledgers.</p></article>
@@ -61,7 +61,7 @@
     </div>
   </section>
   <section class="section compact">
-    <div class="section-head"><div><div class="section-label">Package ledger</div><h2>Package roles in the evaluation stack.</h2></div></div>
+    <div class="section-head"><div><div class="section-label">Package ledger</div><h2>What each package family is for.</h2></div></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Package family</th><th>Audit question</th><th>Expected evidence</th></tr></thead>
@@ -84,7 +84,7 @@
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Reviewer invariant</div><h2>Constructive savings must reach VerifyDWexp.</h2><p>Any claimed constructive saving must pass through the direct-wire verifier. A saving that relies only on quotient equality, a route token, a sidecar, or a bounds-only certificate is outside the stated acceptance discipline.</p></div><a class="btn primary" href="verify.html">Check release workflow</a></div>
+    <div class="callout"><div><div class="section-label">Reviewer invariant</div><h2>Every claimed saving must pass the verifier.</h2><p>Any claimed constructive saving must pass through the direct-wire verifier. A saving that relies only on quotient equality, a route token, a sidecar, or a bounds-only certificate is outside the stated acceptance discipline.</p></div><a class="btn primary" href="verify.html">Check the release workflow</a></div>
   </section>
 </div>
 
@@ -94,12 +94,12 @@
       <div>
         <a class="brand" href="index.html" aria-label="PNP Labs home">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim released for independent review.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim released for independent review.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Proof-report claim released for independent review; external community verification not yet established.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · P versus NP claim released for independent review; external community verification not yet established.</p>
       </div>
       <div class="footer-links" aria-label="Footer links">
-        <a href="paper.html">Evaluation guide</a>
+        <a href="paper.html">Review guide</a>
         <a href="verify.html">Verify</a>
         <a href="review.html#contact">Review contact</a>
         <a href="mailto:security@pnplabs.com.au">Security</a>
