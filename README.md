@@ -14,7 +14,7 @@ The site is written for external technical readers: complexity theorists, proof 
 - `review.html` — review tracks, contact channels, and request template.
 - `downloads/canonical_proof_report.pdf` — bundled canonical proof report.
 - `downloads/canonical_proof_report.tex` — bundled TeX source.
-- `assets/` — CSS, JavaScript, manifest, and SVG mark.
+- `assets/` — CSS, JavaScript, manifest, and PNG logo/icon assets.
 
 ## Deployment
 
