@@ -88,7 +88,7 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
     setState('running', 'running');
     if (runButton) runButton.disabled = true;
     if (computed) computed.textContent = 'computing...';
-    if (result) result.textContent = 'Checking bundled proof-report bytes...';
+    if (result) result.textContent = 'Checking bundled report bytes...';
     if (output) output.replaceChildren();
 
     try {
@@ -107,9 +107,9 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
       if (computed) computed.textContent = actual;
 
       if (actual === expected) {
-        addLine('ok', 'computed digest matches the published release seal');
-        setState('verified', 'verified');
-        if (result) result.textContent = 'Digest match: bundled canonical proof report matches the published SHA-256.';
+        addLine('ok', 'computed digest matches the published release digest');
+        setState('verified', 'matched');
+        if (result) result.textContent = 'Digest match: bundled canonical report matches the published SHA-256. This confirms bytes only.';
       } else {
         addLine('fail', 'computed digest does not match the published release seal');
         setState('failed', 'mismatch');

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — Verify the release seal</title>
-  <meta name="description" content="Public verification workflow for the PNP Labs proof-report release seal.">
+  <title>PNP Labs — Release byte checks and regeneration workflow</title>
+  <meta name="description" content="Public release-byte checks and regeneration workflow for evaluating the PNP Labs proof-report claim.">
   <link rel="canonical" href="https://pnplabs.com.au/verify.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PNP Labs — Verify the release seal">
-  <meta property="og:description" content="Public verification workflow for the PNP Labs proof-report release seal.">
+  <meta property="og:title" content="PNP Labs — Release byte checks and regeneration workflow">
+  <meta property="og:description" content="Public release-byte checks and regeneration workflow for evaluating the PNP Labs proof-report claim.">
   <meta property="og:url" content="https://pnplabs.com.au/verify.html">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -25,18 +25,18 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>Checker-boundary artefacts</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim under review</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
-<a href="paper.html">Paper guide</a>
+<a href="paper.html">Evaluation guide</a>
 <a href="architecture.html">Architecture</a>
 <a class="active" aria-current="page" href="verify.html">Verify</a>
 <a href="faq.html">FAQ</a>
 <a href="review.html">Review</a>
       </nav>
       <div class="header-cta">
-        <a class="btn secondary small" href="review.html#contact">Contact review</a>
+        <a class="btn secondary small" href="review.html#contact">Review status</a>
       </div>
       <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
@@ -44,16 +44,16 @@
   <main id="main">
 
 <section class="page-hero">
-  <span class="eyebrow">Independent verification</span>
-  <h1>Verify the sealed proof-report claim.</h1>
-  <p class="lede">Two public checks anchor independent review: verify the committed release bytes, then regenerate the compact and full proof-report records from the recorded source/checker revision.</p>
-  <div class="hero-actions"><a class="btn primary" href="#seal-console">Run browser check</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download proof report</a></div>
+  <span class="eyebrow">Release verification</span>
+  <h1>Check the release bytes and regeneration workflow.</h1>
+  <p class="lede">Two public checks support independent evaluation: confirm the committed release bytes, then regenerate the compact and full proof-report records from the recorded source/checker revision. A digest match confirms file identity; it does not validate the theorem claim.</p>
+  <div class="hero-actions"><a class="btn primary" href="#seal-console">Run browser byte check</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download report</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="grid two">
-      <article class="card"><div class="kicker">Mode A</div><h2>Release-byte verification</h2><p>Check out the sealed release, verify durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full proof-report records.</p></article>
-      <article class="card"><div class="kicker">Mode B</div><h2>Regeneration verification</h2><p>Check out the recorded source/checker revision, run validation, regenerate compact and full proof reports, and confirm the accepted theorem fields and package/replay/certificate linkage.</p></article>
+      <article class="card"><div class="kicker">Mode A</div><h2>Release-byte check</h2><p>Check out the sealed release, compare durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full proof-report records. This is an integrity check, not external validation of the claim.</p></article>
+      <article class="card"><div class="kicker">Mode B</div><h2>Regeneration workflow</h2><p>Check out the recorded source/checker revision, run validation, regenerate compact and full proof-report records, and confirm the internal theorem fields and package/replay/certificate linkage.</p></article>
     </div>
   </section>
   <section id="seal-console" class="section compact seal-console-section" aria-labelledby="seal-console-title">
@@ -62,13 +62,13 @@
         <div class="section-label">Release seal console</div>
         <h2 id="seal-console-title">Compute the bundled report digest in-browser.</h2>
       </div>
-      <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest.</p>
+      <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest. It checks bytes, not theorem correctness.</p>
     </div>
     <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d">
       <div class="seal-console-head">
         <div>
           <span class="console-kicker">Mode A · artefact bytes</span>
-          <h3>Canonical proof-report seal check</h3>
+          <h3>Canonical report byte check</h3>
         </div>
         <div class="console-controls">
           <span class="console-status" data-seal-status>idle</span>
@@ -96,13 +96,13 @@
             <button class="btn secondary small" type="button" data-copy="#computed-digest">Copy</button>
           </div>
           <div class="seal-result" data-seal-result>Awaiting browser check.</div>
-          <p>This checks the bundled PDF bytes against the published digest. Source regeneration and full release-bundle audit remain separate review steps.</p>
+          <p>This checks the bundled PDF bytes against the published digest. It does not validate the P versus NP claim; source regeneration and full release-bundle audit remain separate review steps.</p>
         </div>
       </div>
     </div>
   </section>
   <section class="section compact">
-    <div class="section-head"><div><div class="section-label">Release identifiers</div><h2>Sealed revision and artefact bundle.</h2></div><p>These identifiers are taken from the bundled canonical proof report.</p></div>
+    <div class="section-head"><div><div class="section-label">Release identifiers</div><h2>Sealed revision and artefact bundle.</h2></div><p>These identifiers are taken from the bundled canonical report and identify the released claim record.</p></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Object</th><th>Identifier</th></tr></thead>
@@ -129,15 +129,15 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
     </div>
   </section>
   <section class="section">
-    <div class="section-head"><div><div class="section-label">Success criteria</div><h2>Acceptance criteria.</h2></div></div>
+    <div class="section-head"><div><div class="section-label">Success criteria</div><h2>Internal acceptance criteria.</h2></div></div>
     <div class="grid three">
-      <article class="card"><h3>Accepted final report</h3><p><code>CheckFinalPNPProofReport0</code> accepts with theorem statement <code>P = NP</code> and antecedent <code>CheckPCCPackexp(GeneratePCCPack()) = accept</code>.</p></article>
-      <article class="card"><h3>Accepted linkage</h3><p>The package checker, acceptance run, replay, final verdict, final certificate, release audit, and release gate all accept.</p></article>
+      <article class="card"><h3>Checker-accepted final report</h3><p><code>CheckFinalPNPProofReport0</code> accepts with theorem statement <code>P = NP</code> and antecedent <code>CheckPCCPackexp(GeneratePCCPack()) = accept</code>.</p></article>
+      <article class="card"><h3>Internal linkage acceptance</h3><p>The package checker, acceptance run, replay, final verdict, final certificate, release audit, and release gate all accept.</p></article>
       <article class="card"><h3>Canonical-byte discipline</h3><p>Hash lookups are followed by full key or canonical-byte comparison, and generator drift is rejected by canonical-byte comparison.</p></article>
     </div>
   </section>
   <section class="section compact">
-    <div class="section-head"><div><div class="section-label">External audit checklist</div><h2>Baseline checks for independent review.</h2></div></div>
+    <div class="section-head"><div><div class="section-label">External audit checklist</div><h2>Baseline checks for independent evaluation.</h2></div></div>
     <div class="grid two path">
       <article class="card"><h3>Rebuild the reports</h3><p>Run validation, compact report generation, and full report generation in a clean environment.</p></article>
       <article class="card"><h3>Inspect no-hidden-minimization</h3><p>Confirm executable occurrences of hidden minimization symbols are rejected after macro and alias expansion.</p></article>
@@ -146,7 +146,7 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Access</div><h2>Source repository access.</h2><p>Use the review channel for source repository access, institutional coordination, and reproduction support.</p></div><a class="btn primary" href="review.html#contact">Request repo access</a></div>
+    <div class="callout"><div><div class="section-label">Access</div><h2>Source repository access.</h2><p>Use the review channel for source repository access, institutional coordination, and reproduction support while evaluating the claim.</p></div><a class="btn primary" href="review.html#contact">Request repo access</a></div>
   </section>
 </div>
 
@@ -156,12 +156,12 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
       <div>
         <a class="brand" href="index.html" aria-label="PNP Labs home">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>Formal verification software and checker-boundary artefacts.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim released for independent review.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Independent technical review invited.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Proof-report claim released for independent review; external community verification not yet established.</p>
       </div>
       <div class="footer-links" aria-label="Footer links">
-        <a href="paper.html">Paper guide</a>
+        <a href="paper.html">Evaluation guide</a>
         <a href="verify.html">Verify</a>
         <a href="review.html#contact">Review contact</a>
         <a href="mailto:security@pnplabs.com.au">Security</a>

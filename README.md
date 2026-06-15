@@ -2,17 +2,17 @@
 
 This package is a complete static site for `https://pnplabs.com.au/`.
 
-The site is written for external technical readers: complexity theorists, proof engineers, institutional reviewers, and security auditors. The public pages avoid owner-facing notes and foreground the theorem boundary, artefact seal, verification workflow, and review channels.
+The site is written for public credibility across technical readers, institutional reviewers, media, and security auditors. The public pages foreground the release status, theorem boundary, artefact seal, verification workflow, and review channels without implying external community verification.
 
 ## Included pages
 
-- `index.html` — primary landing page and proof-route overview.
-- `paper.html` — reading guide for the canonical proof report.
+- `index.html` — primary landing page and argument-route overview.
+- `paper.html` — evaluation guide for the canonical proof-report claim.
 - `architecture.html` — package-stack architecture and reviewer invariant.
 - `verify.html` — artefact verification and regeneration protocol.
 - `faq.html` — careful public and technical framing.
 - `review.html` — review tracks, contact channels, and request template.
-- `downloads/canonical_proof_report.pdf` — bundled canonical proof report.
+- `downloads/canonical_proof_report.pdf` — bundled canonical report.
 - `downloads/canonical_proof_report.tex` — bundled TeX source.
 - `assets/` — CSS, JavaScript, manifest, and PNG logo/icon assets.
 
@@ -43,4 +43,4 @@ Then enable GitHub Pages from the repository root, or connect the repository to 
 
 ## Copy principle
 
-The site uses verification-first language. It presents the proof-report claim clearly, names the checker boundary, avoids implying external consensus, and gives reviewers a direct path to inspect public artefacts or request source repository access.
+The site uses public-credibility language. It presents the proof-report claim clearly, states that external community verification has not yet been established, names the internal checker record, and gives reviewers a direct path to inspect public artefacts or request source repository access.

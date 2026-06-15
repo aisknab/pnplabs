@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — Paper guide</title>
-  <meta name="description" content="A structured guide to the locked NAND residual-slack proof report and checker boundary.">
+  <title>PNP Labs — P versus NP claim evaluation guide</title>
+  <meta name="description" content="A reader map for evaluating the PNP Labs P versus NP proof-report claim, checker record, release files, and verification workflow.">
   <link rel="canonical" href="https://pnplabs.com.au/paper.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PNP Labs — Paper guide">
-  <meta property="og:description" content="A structured guide to the locked NAND residual-slack proof report and checker boundary.">
+  <meta property="og:title" content="PNP Labs — P versus NP claim evaluation guide">
+  <meta property="og:description" content="A reader map for evaluating the PNP Labs P versus NP proof-report claim, checker record, release files, and verification workflow.">
   <meta property="og:url" content="https://pnplabs.com.au/paper.html">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -25,18 +25,18 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>Checker-boundary artefacts</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim under review</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
-<a class="active" aria-current="page" href="paper.html">Paper guide</a>
+<a class="active" aria-current="page" href="paper.html">Evaluation guide</a>
 <a href="architecture.html">Architecture</a>
 <a href="verify.html">Verify</a>
 <a href="faq.html">FAQ</a>
 <a href="review.html">Review</a>
       </nav>
       <div class="header-cta">
-        <a class="btn secondary small" href="review.html#contact">Contact review</a>
+        <a class="btn secondary small" href="review.html#contact">Review status</a>
       </div>
       <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
@@ -44,31 +44,31 @@
   <main id="main">
 
 <section class="page-hero">
-  <span class="eyebrow">Paper guide</span>
-  <h1>Read the proof report from the checker boundary outward.</h1>
-  <p class="lede">The report presents a finite-certificate route through locked NAND exact minimization, residual-band descent, generated package checking, and final acceptance replay. First-pass review should begin at the checker boundary, then follow the dependencies into the proof route.</p>
-  <div class="hero-actions"><a class="btn primary" href="downloads/canonical_proof_report.pdf">Download PDF</a><a class="btn secondary" href="downloads/canonical_proof_report.tex">Download TeX</a><a class="btn secondary" href="verify.html">Verification protocol</a></div>
+  <span class="eyebrow">Evaluation guide</span>
+  <h1>Read the proof-report claim from the checker record outward.</h1>
+  <p class="lede">This page is a reader map for evaluating the released claim. It points to the conditional theorem boundary, locked NAND exact minimization route, generated package checking, final acceptance replay, and release records; it does not imply external validation.</p>
+  <div class="hero-actions"><a class="btn primary" href="downloads/canonical_proof_report.pdf">Download report</a><a class="btn secondary" href="downloads/canonical_proof_report.tex">Download TeX</a><a class="btn secondary" href="verify.html">Check release bytes</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="section-head">
-      <div><div class="section-label">Claim boundary</div><h2>The checked theorem boundary.</h2></div>
-      <p>The public theorem uses a conditional accepted-checker statement. The report records the accepted package/replay/certificate chain that discharges that condition in the sealed artefact stack.</p>
+      <div><div class="section-label">Claim boundary</div><h2>The conditional theorem boundary.</h2></div>
+      <p>The public theorem uses a conditional checker-acceptance statement. The report records the internal package/replay/certificate chain that is claimed to discharge that condition in the sealed artefact stack.</p>
     </div>
     <div class="grid two">
-      <article class="card accent"><div class="kicker">Public theorem</div><h3>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</h3><p>The theorem field is tied to the executable acceptance boundary. Review should first establish what accepted, what was replayed, and how the accepted records link to the final statement.</p></article>
-      <article class="card"><div class="kicker">Trust model</div><h3>Generator untrusted; package checked</h3><p>The generator emits the package, but the release claim is made at the level of checked artefacts: package checker, acceptance run, replay, final verdict, final certificate, release audit, release gate, and proof report.</p></article>
+      <article class="card accent"><div class="kicker">Public theorem</div><h3>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</h3><p>The theorem field is tied to internal checker acceptance. Review should first establish what accepted, what was replayed, and how those records link to the final P = NP claim.</p></article>
+      <article class="card"><div class="kicker">Trust model</div><h3>Generator untrusted; package checked</h3><p>The generator emits the package, but the release claim is made at the level of checked artefacts: package checker, acceptance run, replay, final verdict, final certificate, release audit, release gate, and proof-report claim.</p></article>
     </div>
   </section>
   <section class="section compact">
-    <div class="section-head"><div><div class="section-label">Reading order</div><h2>Suggested order for technical review.</h2></div><p>Begin with dependency structure, then move into line-by-line verification.</p></div>
+    <div class="section-head"><div><div class="section-label">Reading order</div><h2>Suggested order for evaluating the claim.</h2></div><p>Begin with public status and dependency structure, then move into line-by-line technical review.</p></div>
     <div class="grid three path">
-      <article class="card"><h3>Executive status and claim boundary</h3><p>Confirm the theorem record, antecedent, consequent, conditional flag, and checker trust model.</p></article>
+      <article class="card"><h3>Public status and claim boundary</h3><p>Confirm the theorem record, antecedent, consequent, conditional flag, checker trust model, and lack of implied external consensus.</p></article>
       <article class="card"><h3>Direct-wire framework</h3><p>Track carriers, open functions, compatible supports, replacement, charge ownership, and the mode firewall.</p></article>
       <article class="card"><h3>Residual-band minimization</h3><p>Follow NormalizeOrGain, HResolve, BudgetResolve, selector realization, HB closure, ZeroSlack, and PCCMin.</p></article>
       <article class="card"><h3>Locked NAND SAT embedding</h3><p>Check the threshold construction, macro distinctness, trace equivalence, final-lock separation, and residual slack bound.</p></article>
-      <article class="card"><h3>CheckPack and package manifest</h3><p>Audit row keys, proof references, import graph, no-hidden-minimization scanning, reflection, and polynomial bounds.</p></article>
-      <article class="card"><h3>Final release seal</h3><p>Inspect accepted report fields, digest ledger, sealed release identifiers, and the two independent verification modes.</p></article>
+      <article class="card"><h3>CheckPack and package manifest</h3><p>Audit row keys, package references, import graph, no-hidden-minimization scanning, reflection, and polynomial bounds.</p></article>
+      <article class="card"><h3>Final release record</h3><p>Inspect checker-accepted report fields, digest ledger, sealed release identifiers, and the two independent verification modes.</p></article>
     </div>
   </section>
   <section class="section">
@@ -79,7 +79,7 @@
         <tbody>
           <tr><td><strong>Residual slack</strong></td><td>Λ(C) = |C| − μ(C), the gap between a circuit and its minimum equivalent size.</td><td>The descent measure is residual slack, not root circuit size.</td></tr>
           <tr><td><strong>Locked NAND</strong></td><td>A tagged multi-output direct-wire construction used to encode SAT into an exact-minimization threshold.</td><td>The SAT decision depends on the threshold gap and residual slack bound.</td></tr>
-          <tr><td><strong>PCCPack</strong></td><td>The generated proof-carrying package checked by CheckPCCPackexp.</td><td>Package acceptance is the antecedent of the public theorem boundary.</td></tr>
+          <tr><td><strong>PCCPack</strong></td><td>The generated package checked by CheckPCCPackexp.</td><td>Package acceptance is the antecedent of the public theorem boundary.</td></tr>
           <tr><td><strong>ZeroSlack</strong></td><td>The no-gain branch that derives zero residual slack from selector silence and HN/BUD closure.</td><td>It is the bridge from exhaustive negative evidence to exact minimization.</td></tr>
           <tr><td><strong>Mode firewall</strong></td><td>The discipline preventing quotient-mode equality from being consumed as a constructive full-mode replacement.</td><td>It protects the soundness of every claimed saving.</td></tr>
           <tr><td><strong>No-hidden minimization</strong></td><td>A scan rejecting executable uses of hidden minimization or canonical optimality symbols.</td><td>It supports the claim that the checker remains explicit and polynomial.</td></tr>
@@ -88,7 +88,7 @@
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Report files</div><h2>Canonical proof report.</h2><p>The bundled PDF is the reference report. The TeX source is provided for search, citation, and technical cross-reference.</p></div><a class="btn primary" href="downloads/canonical_proof_report.pdf">Download PDF</a></div>
+    <div class="callout"><div><div class="section-label">Report files</div><h2>Canonical report files.</h2><p>The bundled PDF is the reference document for the released proof-report claim. The TeX source is provided for search, citation, and technical cross-reference.</p></div><a class="btn primary" href="downloads/canonical_proof_report.pdf">Download report</a></div>
   </section>
 </div>
 
@@ -98,12 +98,12 @@
       <div>
         <a class="brand" href="index.html" aria-label="PNP Labs home">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.png" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>Formal verification software and checker-boundary artefacts.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>Proof-report claim released for independent review.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Independent technical review invited.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Proof-report claim released for independent review; external community verification not yet established.</p>
       </div>
       <div class="footer-links" aria-label="Footer links">
-        <a href="paper.html">Paper guide</a>
+        <a href="paper.html">Evaluation guide</a>
         <a href="verify.html">Verify</a>
         <a href="review.html#contact">Review contact</a>
         <a href="mailto:security@pnplabs.com.au">Security</a>
