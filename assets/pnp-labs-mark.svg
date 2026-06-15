@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="pnp-mark-title pnp-mark-desc">
-  <title id="pnp-mark-title">PNP Labs proof monogram</title>
-  <desc id="pnp-mark-desc">A compact P and N monogram on a dark verification tile.</desc>
+  <title id="pnp-mark-title">PNP Labs equation mark</title>
+  <desc id="pnp-mark-desc">The equation P equals NP on a dark verification tile, with the equality highlighted in red.</desc>
   <rect width="64" height="64" fill="#0d1117"/>
-  <path fill="#a72032" d="M28.5 48.7 48.5 18.7 43.5 15.3 23.5 45.3Z"/>
-  <path fill="#f5f1e8" fill-rule="evenodd" d="M16 50V14h18.2C43 14 48 19.5 48 28s-5 14-13.8 14H24v8Zm8-28v12h10.2c4 0 6.4-2.4 6.4-6s-2.4-6-6.4-6Z"/>
-  <rect x="43" y="14" width="8" height="36" rx="4" fill="#f5f1e8"/>
+  <g fill="#f5f1e8" font-family="'Times New Roman', Times, Georgia, serif" font-size="20.8" font-weight="700">
+    <text x="9.8" y="39.8">P</text>
+    <text x="34.5" y="39.8">NP</text>
+  </g>
+  <rect x="24.75" y="27.25" width="7.5" height="2.8" rx="1.4" fill="#a72032"/>
+  <rect x="24.75" y="33.5" width="7.5" height="2.8" rx="1.4" fill="#a72032"/>
 </svg>
