@@ -35,7 +35,7 @@ Then enable GitHub Pages from the repository root, or connect the repository to 
 
 ## Production checklist
 
-1. Confirm the public repository or access process for reviewers.
+1. Confirm the public repository URL or source repository access process for reviewers.
 2. Confirm the current source tag, artefact tag, validation count, manifest path, and checksum ledger.
 3. Decide whether the TeX source should remain publicly downloadable.
 4. Add a privacy policy before adding analytics or third-party scripts.
@@ -43,4 +43,4 @@ Then enable GitHub Pages from the repository root, or connect the repository to 
 
 ## Copy principle
 
-The site uses verification-first language. It presents the proof-report claim clearly, names the checker boundary, avoids implying external consensus, and gives reviewers a direct path to inspect or reproduce the artefact stack.
+The site uses verification-first language. It presents the proof-report claim clearly, names the checker boundary, avoids implying external consensus, and gives reviewers a direct path to inspect public artefacts or request source repository access.

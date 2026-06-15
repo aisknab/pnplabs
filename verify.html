@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PNP Labs — Verify the release seal</title>
-  <meta name="description" content="Artefact verification and regeneration workflow for the PNP Labs proof-report release seal.">
+  <meta name="description" content="Public verification workflow for the PNP Labs proof-report release seal.">
   <link rel="canonical" href="https://pnplabs.com.au/verify.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PNP Labs — Verify the release seal">
-  <meta property="og:description" content="Artefact verification and regeneration workflow for the PNP Labs proof-report release seal.">
+  <meta property="og:description" content="Public verification workflow for the PNP Labs proof-report release seal.">
   <meta property="og:url" content="https://pnplabs.com.au/verify.html">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/pnp-labs-mark.svg" type="image/svg+xml">
@@ -45,14 +45,14 @@
 
 <section class="page-hero">
   <span class="eyebrow">Independent verification</span>
-  <h1>Verification protocol for the sealed proof-report release.</h1>
-  <p class="lede">Independent review can proceed in two complementary modes: verification of the committed artefact bundle, and regeneration of the compact and full proof-report records from the recorded source/checker revision.</p>
+  <h1>Verify the sealed proof-report claim.</h1>
+  <p class="lede">Two public checks anchor independent review: verify the committed release bytes, then regenerate the compact and full proof-report records from the recorded source/checker revision.</p>
   <div class="hero-actions"><a class="btn primary" href="#seal-console">Run browser check</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download proof report</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="grid two">
-      <article class="card"><div class="kicker">Mode A</div><h2>Artefact verification</h2><p>Check out the sealed artefact release, verify durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full proof-report records.</p></article>
+      <article class="card"><div class="kicker">Mode A</div><h2>Release-byte verification</h2><p>Check out the sealed release, verify durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full proof-report records.</p></article>
       <article class="card"><div class="kicker">Mode B</div><h2>Regeneration verification</h2><p>Check out the recorded source/checker revision, run validation, regenerate compact and full proof reports, and confirm the accepted theorem fields and package/replay/certificate linkage.</p></article>
     </div>
   </section>
@@ -64,7 +64,7 @@
       </div>
       <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest.</p>
     </div>
-    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae">
+    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d">
       <div class="seal-console-head">
         <div>
           <span class="console-kicker">Mode A · artefact bytes</span>
@@ -80,14 +80,14 @@
         <div class="seal-terminal" role="log" aria-live="polite" aria-label="Release seal console output">
           <ol class="seal-output" data-seal-output>
             <li><span>target</span><code>canonical_proof_report.pdf</code></li>
-            <li><span>expect</span><code>08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae</code></li>
+            <li><span>expect</span><code>53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d</code></li>
             <li><span>ready</span><code>press Run check to fetch bytes, hash locally, and compare</code></li>
           </ol>
         </div>
         <div class="seal-readout" aria-label="Digest comparison">
           <div class="digest-row">
             <span>Expected SHA-256</span>
-            <code id="expected-digest">08afa96dc212888e7ae8f920fb61614efd02084bf0a3ad180efbcde78a2158ae</code>
+            <code id="expected-digest">53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d</code>
             <button class="btn secondary small" type="button" data-copy="#expected-digest">Copy</button>
           </div>
           <div class="digest-row">
@@ -96,7 +96,7 @@
             <button class="btn secondary small" type="button" data-copy="#computed-digest">Copy</button>
           </div>
           <div class="seal-result" data-seal-result>Awaiting browser check.</div>
-          <p>This checks the bundled PDF bytes against the published digest. Source regeneration and full artefact-bundle audit remain separate review steps.</p>
+          <p>This checks the bundled PDF bytes against the published digest. Source regeneration and full release-bundle audit remain separate review steps.</p>
         </div>
       </div>
     </div>
@@ -146,7 +146,7 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Access</div><h2>Repository and artefact access.</h2><p>Use the review channel for source access, sealed artefact access, institutional coordination, and reproduction support.</p></div><a class="btn primary" href="review.html#contact">Request access</a></div>
+    <div class="callout"><div><div class="section-label">Access</div><h2>Source repository access.</h2><p>Use the review channel for source repository access, institutional coordination, and reproduction support.</p></div><a class="btn primary" href="review.html#contact">Request repo access</a></div>
   </section>
 </div>
 
