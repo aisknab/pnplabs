@@ -14,7 +14,16 @@ The site is written for public credibility across technical readers, institution
 - `review.html` — review tracks, contact channels, and request template.
 - `downloads/canonical_proof_report.pdf` — bundled canonical report.
 - `downloads/canonical_proof_report.tex` — bundled TeX source.
-- `assets/` — CSS, JavaScript, manifest, and PNG logo/icon assets.
+- `downloads/release-seal.json` — site-level manifest for bundled public report files.
+- `downloads/SHA256SUMS` — SHA-256 ledger for bundled public report files.
+- `.well-known/security.txt` — security disclosure contact metadata.
+- `assets/` — CSS, JavaScript, manifest, SVG logo, image, and icon assets.
+
+The pages load `assets/styles.min.css`. Regenerate it from `assets/styles.css` after CSS edits:
+
+```bash
+npx clean-css-cli -o assets/styles.min.css assets/styles.css
+```
 
 ## Deployment
 
@@ -31,7 +40,7 @@ git remote add origin <YOUR_GITHUB_REPO_URL>
 git push -u origin main
 ```
 
-Then enable GitHub Pages from the repository root, or connect the repository to Cloudflare Pages, Netlify, or Vercel.
+Then enable GitHub Pages from the repository root, or connect the repository to Cloudflare Pages, Netlify, or Vercel. Public hosting should serve only the HTML pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, and `CNAME`.
 
 ## Production checklist
 

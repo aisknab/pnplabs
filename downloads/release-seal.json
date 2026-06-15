@@ -1,0 +1,34 @@
+{
+  "scope": "bundled public website artefacts",
+  "status": "file identity only; not theorem validation",
+  "generated_utc": "2026-06-15T00:00:00Z",
+  "source_checker_tag": "final-pnp-proof-report-hardened-7072f8d",
+  "source_checker_commit": "7072f8d0bda6d44d240f9bb3fad624fd357e1278",
+  "sealed_artefact_tag": "final-pnp-proof-report-artifacts-hardened-7072f8d-sealed",
+  "files": [
+    {
+      "path": "downloads/canonical_proof_report.pdf",
+      "bytes": 920490,
+      "sha256": "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d",
+      "role": "canonical report PDF"
+    },
+    {
+      "path": "downloads/canonical-proof-report.pdf",
+      "bytes": 920490,
+      "sha256": "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d",
+      "role": "hyphenated alias for canonical report PDF"
+    },
+    {
+      "path": "downloads/canonical_proof_report.tex",
+      "bytes": 177304,
+      "sha256": "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7",
+      "role": "canonical report TeX source"
+    },
+    {
+      "path": "downloads/canonical-proof-report.tex",
+      "bytes": 177304,
+      "sha256": "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7",
+      "role": "hyphenated alias for canonical report TeX source"
+    }
+  ]
+}

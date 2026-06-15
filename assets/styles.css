@@ -1320,6 +1320,7 @@ details p {
   margin-top: auto;
   padding-top: 1rem;
 }
+.file-links { margin-top: 1rem; }
 .pill {
   display: inline-flex;
   align-items: center;
@@ -1517,13 +1518,18 @@ details p {
     display: none;
   }
   .release-strip div:nth-child(3) {
-    display: none;
+    display: block;
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
   }
   .release-strip span {
     font-size: .66rem;
   }
   .release-strip strong {
     font-size: .78rem;
+  }
+  .release-strip code {
+    font-size: .66rem;
   }
   .artifact-copy h1 {
     font-size: 2.08rem;
@@ -1595,9 +1601,14 @@ details p {
   .boundary-ledger strong {
     font-size: .78rem;
   }
-  .review-note,
   .artifact-preview {
     display: none;
+  }
+  .review-note {
+    margin-top: .72rem;
+    padding-left: .72rem;
+    font-size: .9rem;
+    line-height: 1.5;
   }
   .artifact-hero .hero-actions {
     display: grid;

@@ -1,3 +1,7 @@
 User-agent: *
+Disallow: /CODEX_PROMPT.md
+Disallow: /README.md
+Disallow: /package.json
+Disallow: /server.mjs
 Allow: /
 Sitemap: https://pnplabs.com.au/sitemap.xml

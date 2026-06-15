@@ -11,6 +11,29 @@ const ROOT = path.resolve(
 const HOST = process.env.HOST || "0.0.0.0";
 const PORT = Number(process.env.PORT || 3013);
 
+const PUBLIC_ROOT_FILES = new Set([
+  "/404.html",
+  "/architecture.html",
+  "/CNAME",
+  "/faq.html",
+  "/index.html",
+  "/paper.html",
+  "/review.html",
+  "/robots.txt",
+  "/security.txt",
+  "/sitemap.xml",
+  "/verify.html"
+]);
+
+const PUBLIC_EXACT_FILES = new Set([
+  "/.well-known/security.txt"
+]);
+
+const PUBLIC_PREFIXES = [
+  "/assets/",
+  "/downloads/"
+];
+
 const MIME = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -30,7 +53,11 @@ const MIME = {
   ".zip": "application/zip"
 };
 
-function resolveStaticPath(urlPath) {
+const MIME_BY_BASENAME = {
+  "SHA256SUMS": "text/plain; charset=utf-8"
+};
+
+function normalizeUrlPath(urlPath) {
   let decoded;
 
   try {
@@ -39,7 +66,16 @@ function resolveStaticPath(urlPath) {
     return null;
   }
 
-  let clean = path.normalize(decoded).replace(/^(\.\.[/\\])+/, "");
+  if (!decoded.startsWith("/")) {
+    decoded = `/${decoded}`;
+  }
+
+  const segments = decoded.split("/");
+  if (segments.some((segment) => segment === "..")) {
+    return null;
+  }
+
+  let clean = path.posix.normalize(decoded);
 
   if (clean === "/" || clean === "." || clean === "") {
     clean = "/index.html";
@@ -49,19 +85,66 @@ function resolveStaticPath(urlPath) {
     clean += "index.html";
   }
 
+  return clean;
+}
+
+function isPublicPath(clean) {
+  if (PUBLIC_ROOT_FILES.has(clean) || PUBLIC_EXACT_FILES.has(clean)) {
+    return true;
+  }
+
+  if (PUBLIC_PREFIXES.some((prefix) => clean.startsWith(prefix))) {
+    const segments = clean.split("/").filter(Boolean);
+    return !segments.some((segment) => segment.startsWith("."));
+  }
+
+  return false;
+}
+
+function isBlockedPath(clean) {
+  const segments = clean.split("/").filter(Boolean);
+
+  if (segments.some((segment) => segment.startsWith("."))) {
+    return !PUBLIC_EXACT_FILES.has(clean);
+  }
+
+  return segments.some((segment) =>
+    [
+      "_headers",
+      "CODEX_PROMPT.md",
+      "package.json",
+      "README.md",
+      "server.mjs"
+    ].includes(segment)
+  );
+}
+
+function resolveStaticPath(urlPath) {
+  const clean = normalizeUrlPath(urlPath);
+
+  if (!clean) {
+    return { status: "forbidden" };
+  }
+
+  if (!isPublicPath(clean)) {
+    return { status: isBlockedPath(clean) ? "forbidden" : "not-found" };
+  }
+
   const absolute = path.resolve(ROOT, "." + clean);
 
   if (absolute !== ROOT && !absolute.startsWith(ROOT + path.sep)) {
-    return null;
+    return { status: "forbidden" };
   }
 
-  return absolute;
+  return { status: "ok", filePath: absolute };
 }
 
 function sendSecurityHeaders(res) {
   res.setHeader("X-Content-Type-Options", "nosniff");
   res.setHeader("X-Frame-Options", "DENY");
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
+  res.setHeader("Permissions-Policy", "camera=(), geolocation=(), microphone=(), payment=(), usb=()");
   res.setHeader(
     "Content-Security-Policy",
     "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
@@ -78,9 +161,9 @@ async function serveFile(req, res) {
     return;
   }
 
-  let filePath = resolveStaticPath(url.pathname);
+  const resolution = resolveStaticPath(url.pathname);
 
-  if (!filePath) {
+  if (!resolution || resolution.status === "forbidden") {
     sendSecurityHeaders(res);
     res.writeHead(403);
     res.end("Forbidden");
@@ -88,6 +171,12 @@ async function serveFile(req, res) {
   }
 
   let statusCode = 200;
+  let filePath = resolution.filePath;
+
+  if (resolution.status === "not-found") {
+    statusCode = 404;
+    filePath = path.join(ROOT, "404.html");
+  }
 
   try {
     const info = await stat(filePath);
@@ -111,7 +200,7 @@ async function serveFile(req, res) {
   }
 
   const ext = path.extname(filePath).toLowerCase();
-  const contentType = MIME[ext] || "application/octet-stream";
+  const contentType = MIME_BY_BASENAME[path.basename(filePath)] || MIME[ext] || "application/octet-stream";
 
   sendSecurityHeaders(res);
   res.setHeader("Content-Type", contentType);
