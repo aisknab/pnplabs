@@ -1,4 +1,9 @@
 
+document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
+  link.media = 'all';
+  link.removeAttribute('data-deferred-style');
+});
+
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 if (menuButton && nav) {

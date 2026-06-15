@@ -25,6 +25,8 @@ The pages load `assets/styles.min.css`. Regenerate it from `assets/styles.css` a
 npx clean-css-cli -o assets/styles.min.css assets/styles.css
 ```
 
+The first viewport also uses an inline critical CSS block in each HTML page. If that block changes, update the matching `style-src` SHA-256 hash in `_headers` and `server.mjs`.
+
 ## Deployment
 
 There is no build step. Upload the contents of this directory to the web root so that `index.html` is served at `/`.

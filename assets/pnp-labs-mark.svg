@@ -1,13 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="pnp-mark-title pnp-mark-desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="pnp-mark-title pnp-mark-desc">
   <title id="pnp-mark-title">PNP Labs proof seal</title>
   <desc id="pnp-mark-desc">A formal proof-seal tile showing P equals NP with a red theorem rule.</desc>
-  <rect x="2.625" y="2.625" width="58.75" height="58.75" rx="8.5" fill="#f6f1e8" stroke="#181b20" stroke-width="2.75"/>
-  <rect x="8.25" y="8.25" width="47.5" height="47.5" rx="5" fill="none" stroke="#181b20" stroke-width="1"/>
-  <g fill="#181b20" font-family="Georgia, 'Times New Roman', Times, serif" font-size="14" font-weight="700">
-    <text x="14" y="37.75">P</text>
-    <text x="36" y="37.75">NP</text>
+  <rect x="4" y="0" width="504" height="512" rx="108" fill="#181b20"/>
+  <rect x="27" y="22" width="459" height="468" rx="84" fill="#f9f4e9"/>
+  <g fill="#181b20" font-family="Georgia, 'Times New Roman', 'Noto Serif', 'Liberation Serif', serif" font-size="160" font-weight="700">
+    <text x="50" y="305">P</text>
+    <text x="0" y="305" transform="translate(273 0) scale(.88 1)">N</text>
+    <text x="0" y="305" transform="translate(382 0) scale(.96 1)">P</text>
   </g>
-  <rect x="27.5" y="29.75" width="6.5" height="2" rx="1" fill="#8b1e2d"/>
-  <rect x="27.5" y="34.875" width="6.5" height="2" rx="1" fill="#8b1e2d"/>
-  <rect x="18.25" y="45.375" width="27.5" height="2.125" rx="1.0625" fill="#8b1e2d"/>
+  <rect x="175" y="228" width="76" height="17" rx="3" fill="#870d19"/>
+  <rect x="175" y="260" width="76" height="17" rx="3" fill="#870d19"/>
+  <rect x="140" y="397" width="232" height="16" rx="3" fill="#870d19"/>
 </svg>

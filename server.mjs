@@ -147,7 +147,7 @@ function sendSecurityHeaders(res) {
   res.setHeader("Permissions-Policy", "camera=(), geolocation=(), microphone=(), payment=(), usb=()");
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    "default-src 'self'; img-src 'self' data:; style-src 'self' 'sha256-xYFFM6WE1nrMju6f+uvjLsSC4rb22e5i+9hWRaG8wk8='; script-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
   );
 }
 
