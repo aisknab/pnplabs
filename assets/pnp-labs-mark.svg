@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="pnp-mark-title pnp-mark-desc">
-  <title id="pnp-mark-title">PNP Labs equation mark</title>
-  <desc id="pnp-mark-desc">The equation P equals NP on a dark verification tile, with the equality highlighted in red.</desc>
-  <rect width="64" height="64" fill="#0d1117"/>
-  <g fill="#f5f1e8" font-family="'Times New Roman', Times, Georgia, serif" font-size="20.8" font-weight="700">
-    <text x="9.8" y="39.8">P</text>
-    <text x="34.5" y="39.8">NP</text>
+  <title id="pnp-mark-title">PNP Labs proof seal</title>
+  <desc id="pnp-mark-desc">A formal proof-seal tile showing P equals NP with a red theorem rule.</desc>
+  <rect x="2.625" y="2.625" width="58.75" height="58.75" rx="8.5" fill="#f6f1e8" stroke="#181b20" stroke-width="2.75"/>
+  <rect x="8.25" y="8.25" width="47.5" height="47.5" rx="5" fill="none" stroke="#181b20" stroke-width="1"/>
+  <g fill="#181b20" font-family="Georgia, 'Times New Roman', Times, serif" font-size="14" font-weight="700">
+    <text x="14" y="37.75">P</text>
+    <text x="36" y="37.75">NP</text>
   </g>
-  <rect x="24.75" y="27.25" width="7.5" height="2.8" rx="1.4" fill="#a72032"/>
-  <rect x="24.75" y="33.5" width="7.5" height="2.8" rx="1.4" fill="#a72032"/>
+  <rect x="27.5" y="29.75" width="6.5" height="2" rx="1" fill="#8b1e2d"/>
+  <rect x="27.5" y="34.875" width="6.5" height="2" rx="1" fill="#8b1e2d"/>
+  <rect x="18.25" y="45.375" width="27.5" height="2.125" rx="1.0625" fill="#8b1e2d"/>
 </svg>
