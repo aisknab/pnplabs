@@ -1,7 +1,7 @@
 import { readFileSync, statSync } from "node:fs";
 import { createHash } from "node:crypto";
 
-// Purpose: verify the public website's bundled report files against the local
+// Purpose: verify the public website's bundled public files against the local
 // release-seal manifest and SHA256SUMS ledger.
 // Inputs: downloads/release-seal.json, downloads/SHA256SUMS, and listed files.
 // Outputs: per-file digest confirmations and a final file-identity-only summary.

@@ -54,6 +54,7 @@ npm test                   # all local checks
 
 - `index.html`, `paper.html`, `architecture.html`, `verify.html`, `faq.html`, `review.html` - static public pages.
 - `downloads/canonical_proof_report.pdf` and `downloads/canonical_proof_report.tex` - bundled report artefacts.
+- `downloads/source-checker-release.json` - source/checker audit-target reference; it does not establish theorem correctness.
 - `downloads/release-seal.json` and `downloads/SHA256SUMS` - public file-identity manifest and ledger.
 - `tools/` - local smoke-test and fixture-check scripts.
 - `tests/negative/` - negative fixture tests.

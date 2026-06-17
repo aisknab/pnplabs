@@ -1,0 +1,26 @@
+{
+  "kind": "PNPSourceCheckerReleaseReference",
+  "version": 1,
+  "sourceRepo": "aisknab/pnp",
+  "sourceTag": "final-pnp-proof-report-hardened-7072f8d",
+  "sourceCommit": "7072f8d0bda6d44d240f9bb3fad624fd357e1278",
+  "artifactTag": "final-pnp-proof-report-artifacts-hardened-7072f8d-sealed",
+  "docsTag": "final-pnp-proof-report-docs-hardened-7072f8d-sealed",
+  "artifactBundlePath": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/",
+  "expectedValidation": {
+    "tests": 1121,
+    "pass": 1121,
+    "fail": 0,
+    "cancelled": 0
+  },
+  "claimBoundary": {
+    "antecedent": "CheckPCCPackexp(GeneratePCCPack())=accept",
+    "consequent": "P = NP",
+    "conditional": true
+  },
+  "notes": [
+    "This manifest identifies the source/checker audit target.",
+    "It does not establish theorem correctness.",
+    "The pnplabs checkout does not contain or execute the full checker."
+  ]
+}

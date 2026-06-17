@@ -29,6 +29,12 @@
       "bytes": 177304,
       "sha256": "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7",
       "role": "hyphenated alias for canonical report TeX source"
+    },
+    {
+      "path": "downloads/source-checker-release.json",
+      "bytes": 893,
+      "sha256": "7c2845c2ef0878764f662650cb829313040e3f8cd2d8ad61be9c43f51f3f9cbc",
+      "role": "source/checker release audit-target reference; file identity only, not theorem validation"
     }
   ]
 }

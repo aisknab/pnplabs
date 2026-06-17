@@ -47,6 +47,7 @@ The local public manifest records these file hashes:
 | `downloads/canonical-proof-report.pdf` | `53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d` |
 | `downloads/canonical_proof_report.tex` | `414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7` |
 | `downloads/canonical-proof-report.tex` | `414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7` |
+| `downloads/source-checker-release.json` | `7c2845c2ef0878764f662650cb829313040e3f8cd2d8ad61be9c43f51f3f9cbc` |
 
 ### Expected Runtime Range
 
@@ -64,10 +65,10 @@ For this checkout, compare file identity with:
 
 ```bash
 npm run verify:seal
-sha256sum downloads/canonical_proof_report.pdf downloads/canonical_proof_report.tex
+sha256sum downloads/canonical_proof_report.pdf downloads/canonical_proof_report.tex downloads/source-checker-release.json
 ```
 
-The first command compares files against `downloads/release-seal.json` and `downloads/SHA256SUMS`. The second command is an independent shell-level digest check on systems that provide `sha256sum`.
+The first command compares files against `downloads/release-seal.json` and `downloads/SHA256SUMS`. The second command is an independent shell-level digest check on systems that provide `sha256sum`. These checks verify artefact identity only, not theorem correctness.
 
 ## Source/Checker Reproduction
 

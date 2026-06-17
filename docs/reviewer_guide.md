@@ -21,7 +21,7 @@ These checks do not establish theorem correctness. A theorem audit requires the 
 | Mathematical route | SAT is reduced to exact residual-band minimization over a locked NAND construction; accepted package sufficiency implies `P = NP`. | Described in `downloads/canonical_proof_report.tex` and PDF. | Check definitions, reductions, bounds, and theorem dependencies directly. |
 | Generated finite package | `GeneratePCCPack()` is claimed to emit the package whose acceptance discharges the antecedent. | Referenced by report and site; implementation not present here. | Obtain and inspect the source/checker revision. |
 | Checker stack | `CheckPCCPackexp0`, acceptance replay, final certificate, release gate, and `CheckFinalPNPProofReport0` are claimed to accept. | Claimed in report; not re-executable from this public checkout. | Re-run from source/checker tag and audit checker soundness. |
-| Public file seal | SHA-256 hashes bind bundled report files to the manifest. | Executable here with `npm run verify:seal`. | Treat a match as file identity only. |
+| Public file seal | SHA-256 hashes bind listed public files to the manifest. | Executable here with `npm run verify:seal`. | Treat a match as file identity only. |
 | Minimal examples | Tiny fixtures demonstrate terminology and named rejection modes. | Executable here with `npm run examples:minimal` and `npm run test:negative`. | Use for onboarding only; do not treat as proof evidence. |
 | Assumptions | Correct mathematics, sound checker implementation, faithful generator, deterministic canonical encoding, and valid build environment. | Not discharged by hash checks. | Audit or replace each trusted component. |
 
