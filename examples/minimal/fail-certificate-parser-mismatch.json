@@ -1,0 +1,54 @@
+{
+  "name": "fail-certificate-parser-mismatch",
+  "description": "Failing fixture: the certificate claims to parse different human-readable source text.",
+  "sourceText": "minimal locked NAND fixture: NAND(a,b)=not(a and b); size=6; mu=2; residual=4",
+  "pccpack": {
+    "version": "review-fixture-v1",
+    "packageId": "minimal-pack",
+    "rows": [
+      {
+        "rowKey": "locked-nand-truth",
+        "schema": "truth-table"
+      }
+    ],
+    "importGraphAcyclic": true,
+    "noDuplicateRowKeys": true,
+    "executableRows": [
+      {
+        "id": "truth-evaluator",
+        "code": "return boundedTruthTable(row);"
+      }
+    ]
+  },
+  "lockedNand": {
+    "gate": "NAND",
+    "truthTableBinary": "1110",
+    "lockInputs": [
+      "lock"
+    ],
+    "slotsDisjoint": true,
+    "macroOutputsDistinct": true
+  },
+  "circuit": {
+    "size": 6
+  },
+  "certificate": {
+    "minimumSize": 2,
+    "residualSlack": 4,
+    "residualSlackLimit": 4,
+    "parsedSourceSha256": "8c2ae9cfa973260bdf52d3dcde26652ff593068848c5f60dd0e51242597c519e",
+    "zeroSlack": {
+      "status": "not-applicable",
+      "positiveResidualWitness": true
+    }
+  },
+  "modeUse": {
+    "quotientEqualityUsedAsFullReplacement": false,
+    "fullLiftRequired": true,
+    "openObligations": 0
+  },
+  "seal": {
+    "payloadText": "minimal release payload: fixture identity only",
+    "sha256": "2d5f81b0c568db6c12788938327d982ac9cec0b74d2e9f8ea698f504217b1ccb"
+  }
+}

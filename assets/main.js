@@ -1,4 +1,10 @@
 
+// Purpose: support static-site navigation and browser-side release digest checks.
+// Inputs: DOM elements annotated with data-* attributes and bundled report bytes.
+// Outputs: UI state updates showing menu state, copy status, or SHA-256 match/mismatch.
+// Invariants enforced: Web Crypto digest comparison against the page's expected hash.
+// Assumptions not checked: theorem correctness; digest equality is file identity only.
+// Failure modes: unavailable Web Crypto, fetch failure, or digest mismatch.
 document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
   link.media = 'all';
   link.removeAttribute('data-deferred-style');

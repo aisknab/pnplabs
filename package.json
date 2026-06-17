@@ -4,7 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "verify:seal": "node tools/verify-release-seal.mjs",
+    "examples:minimal": "node tools/run-minimal-examples.mjs",
+    "test:unit": "node --test tests/unit/*.test.mjs",
+    "test:negative": "node --test tests/negative/*.test.mjs",
+    "test:docs": "node tools/check-doc-links.mjs",
+    "repro:smoke": "npm run verify:seal && npm run examples:minimal",
+    "test": "npm run test:unit && npm run verify:seal && npm run examples:minimal && npm run test:negative && npm run repro:smoke && npm run test:docs"
   },
   "engines": {
     "node": ">=20"

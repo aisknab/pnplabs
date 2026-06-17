@@ -1,0 +1,54 @@
+{
+  "name": "fail-hidden-minimization-attempt",
+  "description": "Failing fixture: an executable row calls a forbidden exact-minimization symbol.",
+  "sourceText": "minimal locked NAND fixture: NAND(a,b)=not(a and b); size=6; mu=2; residual=4",
+  "pccpack": {
+    "version": "review-fixture-v1",
+    "packageId": "minimal-pack",
+    "rows": [
+      {
+        "rowKey": "locked-nand-truth",
+        "schema": "truth-table"
+      }
+    ],
+    "importGraphAcyclic": true,
+    "noDuplicateRowKeys": true,
+    "executableRows": [
+      {
+        "id": "bad-row",
+        "code": "return minimumEquivalent(row);"
+      }
+    ]
+  },
+  "lockedNand": {
+    "gate": "NAND",
+    "truthTableBinary": "1110",
+    "lockInputs": [
+      "lock"
+    ],
+    "slotsDisjoint": true,
+    "macroOutputsDistinct": true
+  },
+  "circuit": {
+    "size": 6
+  },
+  "certificate": {
+    "minimumSize": 2,
+    "residualSlack": 4,
+    "residualSlackLimit": 4,
+    "parsedSourceSha256": "7f4a7365c1556125730264981ded63b5b3a4702e4e7962c38205826bb43e4738",
+    "zeroSlack": {
+      "status": "not-applicable",
+      "positiveResidualWitness": true
+    }
+  },
+  "modeUse": {
+    "quotientEqualityUsedAsFullReplacement": false,
+    "fullLiftRequired": true,
+    "openObligations": 0
+  },
+  "seal": {
+    "payloadText": "minimal release payload: fixture identity only",
+    "sha256": "2d5f81b0c568db6c12788938327d982ac9cec0b74d2e9f8ea698f504217b1ccb"
+  }
+}

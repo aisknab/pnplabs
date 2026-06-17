@@ -1,23 +1,64 @@
-# PNP Labs static website
+# PNP Labs proof review package
 
-This package is a complete static site for `https://pnplabs.com.au/`.
+This repository is the public website, report, checksum manifest, reviewer documentation, and smoke-test harness for a claimed proof of `P = NP`.
 
-The site is written for public credibility across technical readers, institutional reviewers, media, and security auditors. The public pages foreground the release status, theorem boundary, artefact seal, verification workflow, and review channels without implying external community verification.
+The extraordinary claim is not externally accepted by virtue of this repository. The bundled report states that a generated finite proof-carrying package over a locked NAND residual-slack construction is accepted by a checker stack, and that this acceptance yields `P = NP`. This checkout does not include the full source/checker implementation named by the report.
 
-## Included pages
+Current verification status:
 
-- `index.html` — primary landing page and argument-route overview.
-- `paper.html` — review guide for the canonical report.
-- `architecture.html` — package-stack architecture and reviewer invariant.
-- `verify.html` — artefact verification and regeneration protocol.
-- `faq.html` — current status and technical framing.
-- `review.html` — review tracks, contact channels, and request template.
-- `downloads/canonical_proof_report.pdf` — bundled canonical report.
-- `downloads/canonical_proof_report.tex` — bundled TeX source.
-- `downloads/release-seal.json` — site-level manifest for bundled public report files.
-- `downloads/SHA256SUMS` — SHA-256 ledger for bundled public report files.
-- `.well-known/security.txt` — security disclosure contact metadata.
-- `assets/` — CSS, JavaScript, manifest, SVG logo, image, and icon assets.
+- Public file identity can be checked here with SHA-256.
+- Minimal reviewer examples and negative fixtures can be run here.
+- Theorem correctness, checker soundness, and full source/checker reproduction remain external-review tasks.
+
+A hash check can establish only that local bytes match `downloads/release-seal.json` and `downloads/SHA256SUMS`. It cannot establish theorem correctness.
+
+The checker claim, as stated by the report, is that `CheckPCCPackexp(GeneratePCCPack())=accept` is replayed through final certificate, release gate, and `CheckFinalPNPProofReport0`. To audit that claim, reviewers need the source/checker revision `final-pnp-proof-report-hardened-7072f8d` at commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`.
+
+Run the smallest local verification:
+
+```bash
+npm test
+```
+
+Reviewers should start with:
+
+- [docs/reviewer_guide.md](docs/reviewer_guide.md)
+- [docs/proof_pipeline.md](docs/proof_pipeline.md)
+- [docs/trust_model.md](docs/trust_model.md)
+- [docs/terminology_crosswalk.md](docs/terminology_crosswalk.md)
+- [docs/audit_questions.md](docs/audit_questions.md)
+- [docs/reproducibility.md](docs/reproducibility.md)
+- [examples/minimal/README.md](examples/minimal/README.md)
+
+## Local Commands
+
+```bash
+npm run test:unit          # fixture-checker unit tests
+npm run verify:seal        # public file identity only
+npm run examples:minimal   # educational pass/fail fixtures
+npm run test:negative      # named negative fixture tests
+npm run repro:smoke        # public reproducibility smoke test
+npm run test:docs          # local documentation link check
+npm test                   # all local checks
+```
+
+## Included Public Files
+
+- `index.html`, `paper.html`, `architecture.html`, `verify.html`, `faq.html`, `review.html` - static public pages.
+- `downloads/canonical_proof_report.pdf` and `downloads/canonical_proof_report.tex` - bundled report artefacts.
+- `downloads/release-seal.json` and `downloads/SHA256SUMS` - public file-identity manifest and ledger.
+- `tools/` - local smoke-test and fixture-check scripts.
+- `tests/negative/` - negative fixture tests.
+- `docs/` - reviewer-first audit documentation.
+- `examples/minimal/` - minimal pass/fail examples for terminology onboarding.
+
+## Website Development
+
+There is no build step for the static site. Run the local server with:
+
+```bash
+npm start
+```
 
 The pages load `assets/styles.min.css`. Regenerate it from `assets/styles.css` after CSS edits:
 
@@ -27,31 +68,6 @@ npx clean-css-cli -o assets/styles.min.css assets/styles.css
 
 The first viewport also uses an inline critical CSS block in each HTML page. If that block changes, update the matching `style-src` SHA-256 hash in `_headers` and `server.mjs`.
 
-## Deployment
+## Deployment Boundary
 
-There is no build step. Upload the contents of this directory to the web root so that `index.html` is served at `/`.
-
-### GitHub Pages
-
-```bash
-git init
-git add .
-git commit -m "Launch PNP Labs site"
-git branch -M main
-git remote add origin <YOUR_GITHUB_REPO_URL>
-git push -u origin main
-```
-
-Then enable GitHub Pages from the repository root, or connect the repository to Cloudflare Pages, Netlify, or Vercel. Public hosting should serve only the HTML pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, and `CNAME`.
-
-## Production checklist
-
-1. Confirm the public repository URL or source repository access process for reviewers.
-2. Confirm the current source tag, artefact tag, validation count, manifest path, and checksum ledger.
-3. Decide whether the TeX source should remain publicly downloadable.
-4. Add a privacy policy before adding analytics or third-party scripts.
-5. Keep the review and security addresses monitored.
-
-## Copy principle
-
-The site uses public-credibility language. It presents the claim clearly, states that external community verification has not yet been established, names the internal checker record, and gives reviewers a direct path to inspect public artefacts or request source repository access.
+Public hosting should serve only the static pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, and `CNAME`. Do not present this website checkout as a substitute for the source/checker repository.

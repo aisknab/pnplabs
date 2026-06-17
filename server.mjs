@@ -4,6 +4,12 @@ import { stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Purpose: serve only the public static website files during local review.
+// Inputs: GET/HEAD requests under WEB_ROOT or this repository root.
+// Outputs: static files with security headers, or deterministic 403/404/405/500 responses.
+// Invariants enforced: path normalization, dotfile blocking, explicit public allowlist.
+// Assumptions not checked: theorem correctness and release artefact validity.
+// Failure modes: forbidden path, missing file, unsupported method, or filesystem error.
 const ROOT = path.resolve(
   process.env.WEB_ROOT || path.dirname(fileURLToPath(import.meta.url))
 );
