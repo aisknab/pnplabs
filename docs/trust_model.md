@@ -19,6 +19,15 @@ The practical rule is:
 | `npm run test:docs` | Markdown and HTML local links | Local link targets exist on disk. | Semantic accuracy, mathematical accuracy, or external URL validity. | A local link target is missing. |
 | `npm test` | The commands above plus `npm run repro:smoke` | Aggregated public-checkout smoke status. | Full proof/checker validation. | Any local smoke check fails. |
 
+## External Source/Checker Repository
+
+| Repository | Role | What it verifies | What it does not verify | Audit target |
+| --- | --- | --- | --- | --- |
+| `pnplabs` | Public website, public file-identity checks, toy fixtures, reviewer documentation, and local smoke tests. | Public report file identity, toy fixture pass/fail behavior, negative fixture rejection reasons, and local documentation links. Hashes verify artefact identity only, not theorem correctness. | Theorem correctness, source/checker soundness, full generated-package acceptance, or mathematical consensus. | This checkout. |
+| `pnp` | Source/checker audit target named by the release. | `npm run validate` checks the source/checker package according to its implementation and reported test suite. | External mathematical acceptance, checker soundness beyond what the implementation and tests establish, or community consensus. | `aisknab/pnp@final-pnp-proof-report-hardened-7072f8d:<path>`; see [source_checker_map.md](source_checker_map.md). |
+
+Neither repository by itself establishes external mathematical consensus. A successful `pnp` validation run is an implementation-level reproduction target, not a substitute for reviewing the locked NAND threshold theorem, residual-band minimization route, proof-reference soundness, and public theorem boundary.
+
 ## Claim-Critical Boundaries
 
 | Boundary | What must be true for the claim route | Evidence in this checkout | Required external verification | Failure mode |

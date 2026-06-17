@@ -80,6 +80,24 @@ The report names:
 
 Those source/checker files are not present in this repository. A full theorem-level reproduction requires obtaining that source/checker repository or release bundle, then running the validation commands documented there. The result to compare is not merely a PDF hash; it is the accepted theorem fields, package/replay/certificate linkage, and central canonical-byte digests reported in the final proof report.
 
+### Full Source/Checker Reproduction From Sibling Repo
+
+When both repositories are local siblings, this is the concrete source/checker audit path. The checksum commands verify artefact identity only, not theorem correctness. `npm run validate` checks the `pnp` source/checker package according to its implementation; it is not external mathematical acceptance.
+
+```bash
+cd ../pnp
+git fetch --tags --force
+git checkout final-pnp-proof-report-artifacts-hardened-7072f8d-sealed
+
+BUNDLE=proof-artifacts/final-pnp-proof-report-hardened-7072f8d
+sha256sum -c "$BUNDLE/SHA256SUMS"
+sha256sum -c "$BUNDLE/SHA256SUMS.sha256"
+
+git checkout final-pnp-proof-report-hardened-7072f8d
+npm ci
+npm run validate
+```
+
 ## Troubleshooting
 
 | Symptom | Likely cause | Action |

@@ -16,6 +16,12 @@ It is not evidence of external acceptance or consensus. It also is not the full 
 
 **Checker claim to audit:** the report states that `CheckPCCPackexp(GeneratePCCPack())=accept` is replayed through final certificate, release gate, and `CheckFinalPNPProofReport0`. Auditing that claim requires the source/checker revision `final-pnp-proof-report-hardened-7072f8d` at commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`.
 
+## Full Source/Checker Audit
+
+This website checkout does not run the full source/checker stack. For cross-repo audit targets, use [docs/source_checker_map.md](docs/source_checker_map.md). Source/checker paths there refer to `aisknab/pnp@final-pnp-proof-report-hardened-7072f8d:<path>`.
+
+The sibling source/checker repository can be used to audit the implementation and reproduce its validation run, but that validation is still not external mathematical acceptance.
+
 Run the smallest local verification:
 
 ```bash
