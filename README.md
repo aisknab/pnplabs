@@ -1,20 +1,22 @@
 # PNP Labs public review package
 
-This repository is a public website, report, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for a claimed proof of `P = NP`.
+This checkout is a public website, bundled report, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for a claimed proof of `P = NP`.
 
-It is not evidence of external acceptance or consensus. It also is not the full source/checker repository named by the bundled report.
+It is not evidence of external acceptance or consensus, and it is not the full source/checker repository named by the bundled report.
 
 ## Read This First
 
-**Claim being made:** the report states that a generated finite proof-carrying package over a locked NAND residual-slack construction is accepted by a checker stack, and that this accepted package yields `P = NP`.
+**Claim as stated by the report:** `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP`. The report states that the generated finite proof-carrying package over a locked NAND residual-slack construction is accepted by the sealed checker stack. This README records that claim boundary; it does not establish the claim.
 
-**What this checkout can verify:** public report file identity via SHA-256, minimal educational fixture pass/fail behavior, negative fixture rejection reasons, and local documentation links.
+**Local verification status:** this checkout can verify public report file identity via SHA-256, minimal educational fixture pass/fail behavior, negative fixture rejection reasons, and local documentation links.
 
-**What this checkout cannot verify:** theorem correctness, soundness of the full checker implementation, correctness of the mathematical reductions, completeness of the generated package, or reproduction of the source/checker acceptance run.
+**Not verified here:** theorem correctness, soundness of the full checker implementation, correctness of the mathematical reductions, completeness of the generated package, or reproduction of the source/checker acceptance run.
 
-**Trust boundary:** a hash match verifies artefact identity only. It does not verify theorem correctness. Minimal fixtures demonstrate named invariants only; they are not proof evidence.
+**Trust boundaries:** a hash match verifies artefact identity only. It does not verify theorem correctness. Minimal fixtures demonstrate named local invariants only; they are not proof evidence.
 
 **Checker claim to audit:** the report states that `CheckPCCPackexp(GeneratePCCPack())=accept` is replayed through final certificate, release gate, and `CheckFinalPNPProofReport0`. Auditing that claim requires the source/checker revision `final-pnp-proof-report-hardened-7072f8d` at commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`.
+
+**Terminology status:** [docs/terminology_crosswalk.md](docs/terminology_crosswalk.md) maps internal names to standard terms. Entries whose exact schema, proof obligation, or enforcing source/checker path is not present in this checkout are marked `needs author confirmation`.
 
 ## Full Source/Checker Audit
 

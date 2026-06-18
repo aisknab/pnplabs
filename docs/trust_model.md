@@ -7,6 +7,7 @@ The practical rule is:
 - A local hash check verifies artefact identity only. It does not verify theorem correctness.
 - A local fixture check verifies only the small JSON invariant it names. It does not verify the real generated package.
 - A report-stated checker claim is an audit target unless the reviewer obtains and runs the source/checker revision named by the report.
+- A term whose exact schema, generated artefact, proof obligation, or enforcing source/checker path is not present in this checkout needs author confirmation before it is treated as fully defined.
 
 ## What This Checkout Can Verify
 
@@ -27,6 +28,10 @@ The practical rule is:
 | `pnp` | Source/checker audit target named by the release. | `npm run validate` checks the source/checker package according to its implementation and reported test suite. | External mathematical acceptance, checker soundness beyond what the implementation and tests establish, or community consensus. | `aisknab/pnp@final-pnp-proof-report-hardened-7072f8d:<path>`; see [source_checker_map.md](source_checker_map.md). |
 
 Neither repository by itself establishes external mathematical consensus. A successful `pnp` validation run is an implementation-level reproduction target, not a substitute for reviewing the locked NAND threshold theorem, residual-band minimization route, proof-reference soundness, and public theorem boundary.
+
+## Terminology And Uncertainty
+
+[docs/terminology_crosswalk.md](terminology_crosswalk.md) maps internal vocabulary to standard complexity-theory, proof-engineering, and formal-methods terms. A crosswalk entry is not a trust claim. If this checkout lacks the exact schema, proof rule, generated artefact, or enforcing source/checker path for a term, the crosswalk marks it `needs author confirmation` rather than filling the gap by inference.
 
 ## Claim-Critical Boundaries
 
