@@ -1,10 +1,4 @@
-
-// Purpose: support static-site navigation and browser-side release digest checks.
-// Inputs: DOM elements annotated with data-* attributes and bundled report bytes.
-// Outputs: UI state updates showing menu state, copy status, or SHA-256 match/mismatch.
-// Invariants enforced: Web Crypto digest comparison against the page's expected hash.
-// Assumptions not checked: theorem correctness; digest equality is file identity only.
-// Failure modes: unavailable Web Crypto, fetch failure, or digest mismatch.
+// Purpose: support static-site navigation, release digest checks, and public source links.
 document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
   link.media = 'all';
   link.removeAttribute('data-deferred-style');
@@ -28,7 +22,7 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
       const old = button.textContent;
       button.textContent = 'Copied';
       setTimeout(() => { button.textContent = old; }, 1400);
-    } catch (err) {
+    } catch {
       button.textContent = 'Select text';
     }
   });
@@ -58,12 +52,12 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
   const artifactLabel = consoleRoot.getAttribute('data-label') || artifact;
   const expected = (consoleRoot.getAttribute('data-expected') || '').toLowerCase();
 
-  function setState(state, text) {
+  const setState = (state, text) => {
     consoleRoot.dataset.state = state;
     if (status) status.textContent = text;
-  }
+  };
 
-  function addLine(kind, text) {
+  const addLine = (kind, text) => {
     if (!output) return;
     const item = document.createElement('li');
     if (kind) item.classList.add(kind);
@@ -73,9 +67,9 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
     code.textContent = text;
     item.append(label, code);
     output.append(item);
-  }
+  };
 
-  function resetConsole() {
+  const resetConsole = () => {
     setState('idle', 'idle');
     if (computed) computed.textContent = 'not run';
     if (result) result.textContent = 'Awaiting browser check.';
@@ -85,9 +79,9 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
       addLine('expect', expected);
       addLine('ready', 'press Run check to fetch the file, hash locally, and compare');
     }
-  }
+  };
 
-  async function runSealCheck() {
+  const runSealCheck = async () => {
     if (!artifact || !expected) return;
     if (!globalThis.crypto?.subtle) {
       setState('failed', 'unsupported');
@@ -105,18 +99,13 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
     try {
       addLine('pending', `GET ${artifact}`);
       const response = await fetch(artifact, { cache: 'no-cache' });
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} while fetching ${artifactLabel}`);
-      }
-
+      if (!response.ok) throw new Error(`HTTP ${response.status} while fetching ${artifactLabel}`);
       const buffer = await response.arrayBuffer();
       addLine('ok', `received ${artifactLabel} · ${formatBytes(buffer.byteLength)}`);
       addLine('pending', 'compute SHA-256 with browser Web Crypto');
-
       const digest = await globalThis.crypto.subtle.digest('SHA-256', buffer);
       const actual = toHex(digest);
       if (computed) computed.textContent = actual;
-
       if (actual === expected) {
         addLine('ok', 'computed digest matches the published release digest');
         setState('verified', 'matched');
@@ -134,7 +123,7 @@ document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
     } finally {
       if (runButton) runButton.disabled = false;
     }
-  }
+  };
 
   resetButton?.addEventListener('click', resetConsole);
   runButton?.addEventListener('click', runSealCheck);
@@ -151,3 +140,7 @@ function updateProgress() {
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
+
+import('./public-source-links.js').catch((error) => {
+  console.error('Public source link enhancement failed', error);
+});
