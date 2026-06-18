@@ -3,7 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
-test('public source enhancement parses', () => {
-  const source = readFileSync('assets/public-source-links.js', 'utf8');
-  assert.doesNotThrow(() => new vm.Script(source));
-});
+for (const file of ['assets/main.js', 'assets/public-source-links.js']) {
+  test(`${file} parses`, () => {
+    const source = readFileSync(file, 'utf8');
+    assert.doesNotThrow(() => new vm.Script(source));
+  });
+}
