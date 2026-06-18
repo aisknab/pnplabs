@@ -8,6 +8,8 @@ It is not evidence of external acceptance or consensus, and it is not the full s
 
 **Claim as stated by the report:** `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP`. The report states that the generated finite proof-carrying package over a locked NAND residual-slack construction is accepted by the sealed checker stack. This README records that claim boundary; it does not establish the claim.
 
+**Independent-review status:** as of 18 June 2026, Edward Savage is the only contacted reviewer who provided substantive technical feedback. No contacted reviewer has independently confirmed, reproduced, validated, endorsed, or formally rejected the claimed result. See [EXTERNAL_REVIEW_STATUS.md](EXTERNAL_REVIEW_STATUS.md).
+
 **Local verification status:** this checkout can verify public report file identity via SHA-256, minimal educational fixture pass/fail behavior, negative fixture rejection reasons, and local documentation links.
 
 **Not verified here:** theorem correctness, soundness of the full checker implementation, correctness of the mathematical reductions, completeness of the generated package, or reproduction of the source/checker acceptance run.
@@ -86,4 +88,4 @@ The first viewport also uses an inline critical CSS block in each HTML page. If 
 
 ## Deployment Boundary
 
-Public hosting should serve only the static pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, and `CNAME`. Do not present this website checkout as a substitute for the source/checker repository.
+Public hosting should serve only the static pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, `CNAME`, and public review-status material. Do not present this website checkout as a substitute for the source/checker repository.
