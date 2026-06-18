@@ -4,44 +4,82 @@
 
 `pnplabs` is the public website, public artefact-identity, smoke-test, and reviewer-documentation checkout. It does not contain the full source/checker implementation named by the bundled report, and it cannot execute the theorem-level checker stack.
 
-`pnp` is the source/checker repository named by the report. This file maps public-review terms in `pnplabs` to source/checker audit targets in `pnp`, without copying checker logic into this public website checkout.
+`pnp` is the source/checker repository named by the report. This file maps public-review terms in `pnplabs` to pinned audit targets in `pnp`, without copying checker logic into this public website checkout.
 
-Unless noted otherwise, every source/checker path below means:
+There is no default `pnp` ref for all paths. A path existing at one tag does not establish that the same path existed, had the same contents, or carried the same release identifiers at another tag.
 
-```text
-source/checker audit target: aisknab/pnp@final-pnp-proof-report-hardened-7072f8d:<path>
+## Reference Classes
+
+The canonical public manifest for these coordinates is [downloads/source-checker-release.json](../downloads/source-checker-release.json). It identifies the release target; it does not establish theorem correctness.
+
+| Reference class | Role | Pinned ref | Resolved tag object | Resolved commit | Path class |
+| --- | --- | --- | --- | --- | --- |
+| `sourceRef` | Source/checker implementation and source tests. | `final-pnp-proof-report-hardened-7072f8d` | `9b69c4f8d8d6d62eb359af759288e5794d1c81c2` | `7072f8d0bda6d44d240f9bb3fad624fd357e1278` | Source/checker code. |
+| `docsRef` | Correct 7072f8d release documentation and review handoff files. | `final-pnp-proof-report-docs-hardened-7072f8d-sealed` | `9eeb4b85af1c04c43e6f086debcd3ac37d5d27d1` | `3ba356c79b545d2c734283bf10d85d0710de2b60` | Release documentation. |
+| `artifactRef` | Generated proof-report artefact bundle. | `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed` | `e7ea459c907ed9e334af8c0bd5f3bb117348992d` | `9d1de19f827e5cb6880741352eb2349cbbb45994` | Generated artefacts under `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/`. |
+| `publicCheckout` | Files in this `pnplabs` checkout. | working tree | not applicable | not applicable | Public-review files. |
+
+`CURRENT_RELEASE.md` is not listed as an immutable audit target because it is absent at `sourceRef`, `docsRef`, and `artifactRef` in the sibling checkout inspected for this map. Use [downloads/source-checker-release.json](../downloads/source-checker-release.json) as the canonical public release-reference manifest.
+
+## Coordinate Corrections From This Audit
+
+The previous map incorrectly treated all `pnp` paths as if they belonged to `sourceRef`.
+
+Corrected coordinates:
+
+- `REPRODUCE.md` and `REVIEWER_MAP.md` are release documentation and must be read at `docsRef`; the copies at `sourceRef` contain 8b45da4 release identifiers.
+- `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/**` belongs to `artifactRef`; the bundle is absent at `sourceRef`.
+- The root `REPRODUCE.md` and `REVIEWER_MAP.md` at `artifactRef` contain 8b45da4 release identifiers and are not used as 7072f8d release-document targets.
+- `review/hostile_review_checklist_7072f8d.md` was not found at the pinned refs inspected here; it is not listed as an audit target.
+- `review/external_review_handoff_7072f8d.md` exists at `docsRef` and contains the 7072f8d release identifiers.
+
+Validate the machine-readable coordinate list with:
+
+```bash
+PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
+
+If `PNP_SOURCE_DIR` is unavailable, the cross-repo portion reports an explicit skip. A skip is not evidence that coordinates are valid.
 
 ## Canonical Release Identifiers
 
-These identifiers are populated from `../pnp/CURRENT_RELEASE.md`, `../pnp/REPRODUCE.md`, and `../pnp/REVIEWER_MAP.md`.
+These values are copied from [downloads/source-checker-release.json](../downloads/source-checker-release.json), not from `CURRENT_RELEASE.md`.
 
 | Field | Value |
 | --- | --- |
 | Source repo | `aisknab/pnp` |
 | Source tag | `final-pnp-proof-report-hardened-7072f8d` |
 | Source commit | `7072f8d0bda6d44d240f9bb3fad624fd357e1278` |
-| Artifact tag | `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed` |
 | Docs tag | `final-pnp-proof-report-docs-hardened-7072f8d-sealed` |
-| Artifact bundle path | `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/` |
-| Validation status | `1121 tests, 1121 pass, 0 fail, 0 cancelled` |
-| Theorem boundary | `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP` |
+| Artefact tag | `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed` |
+| Artefact bundle path | `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/` |
+| Validation status reported by the release manifest | `1121 tests, 1121 pass, 0 fail, 0 cancelled` |
+| Theorem boundary stated by the release manifest | `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP` |
+
+The validation status is a release-coordinate and implementation-level reproduction target. It is not external mathematical acceptance.
 
 ## Source/Checker Audit Map
 
-| Review area | Public term | Source/checker files in `pnp` | Tests in `pnp` | What the checker appears to check | What still requires mathematical review | `pnplabs` local status |
+| Review area | Public term | Target class | Pinned ref | Paths | What the target can support | What still requires review |
 | --- | --- | --- | --- | --- | --- | --- |
-| Public theorem boundary | `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP` | `CURRENT_RELEASE.md`; `REPRODUCE.md`; `REVIEWER_MAP.md`; `pcc-check-pcc-pack-exp0.mjs`; `pcc-runall0.mjs`; `pcc-final-proof-report0.mjs` | `test/pcc-check-pcc-pack-exp0.test.mjs`; `test/pcc-runall0.test.mjs` | The source/checker path appears to check that the public conclusion is conditional on accepted `CheckPCCPackexp0` output, that `RunAll0` includes and executes `CheckPCCPackexp0`, and that final public fields match the stated antecedent and consequent. It does not by itself check that the mathematical implication is sound. | Whether accepted package sufficiency really entails `P = NP`; whether the final theorem extraction uses standard complexity-theory assumptions correctly; whether the public boundary is mathematically valid rather than only consistently represented. | Not executable from this checkout. Local docs and smoke tests only preserve the public boundary wording. |
-| Locked NAND | Locked NAND threshold construction | `pcc-gpack0.mjs`; `pcc-global-proof-dag0.mjs`; `REVIEWER_MAP.md`; `review/locked_nand_threshold_hostile_review_round1.md` | `test/pcc-gpack0.test.mjs`; `test/pcc-global-proof-dag0.test.mjs` | The source/checker path appears to check code-level fields and proof references including `CheckGPack0`, `CheckRowFamG0`, `BaselineDerivation0`, `TraceDerivation0`, `ThresholdDerivation0`, `G.BaselineCert.proof`, `G.TraceCert.proof`, and `G.ThresholdCert.proof`, including linkage from `Package.G.LockedNANDThreshold` to the threshold proof node. It does not independently establish that the locked construction is a correct SAT-hard reduction. | Correctness of the locked NAND threshold theorem, baseline and trace derivations, satisfiability preservation, polynomial-size construction, and size/minimum convention alignment. | Only toy locked-NAND fixture checks are local; they do not validate `GPack` or the threshold theorem. |
-| Residual slack / ZeroSlack / residual-band minimization | Residual-band exact minimization and terminal ZeroSlack closure | `pcc-local-packages0.mjs`; `pcc-global-proof-dag0.mjs`; `REVIEWER_MAP.md`; `review/residual_band_zeroslack_hostile_review_round1.md`; `review/hostile_review_checklist_7072f8d.md` | `test/pcc-local-packages0.test.mjs`; `test/pcc-global-proof-dag0.test.mjs` | The source/checker path appears to expose audit targets for `O.ZeroSlackOracle`, `ResidualBandExactMinimization`, `Package.O.ZeroSlackOracle`, `NormalizeOrGain`, `PCCOracle`, `HResolve`, `BudgetResolve`, and `ZeroSlack`. It appears to check named package/DAG obligations and closure fields, but it does not by itself prove that every positive-residual case is covered. | Soundness of the residual-band minimization theorem; whether `ZeroSlack` excludes all positive residual slack; whether the oracle route is complete and polynomial without hidden exact minimization. | Local residual-slack and ZeroSlack fixtures check only small arithmetic and closure flags. |
-| No-hidden minimization | No executable exact-minimization oracle in checked artefacts | `pcc-gpack0.mjs`; `pcc-local-packages0.mjs`; `pcc-global-proof-dag0.mjs`; `pcc-check-pcc-pack-exp0.mjs` | `test/pcc-gpack0.test.mjs`; `test/pcc-local-packages0.test.mjs`; `test/pcc-global-proof-dag0.test.mjs`; `test/pcc-check-pcc-pack-exp0.test.mjs` | The source/checker path appears to check forbidden executable-symbol ledgers and scans using `GPACK_FORBIDDEN_EXEC_SYMBOLS0`, `LOCAL_PACKAGE_FORBIDDEN_EXEC_SYMBOLS0`, `GLOBAL_DAG_FORBIDDEN_EXEC_SYMBOLS0`, and `validateNoHiddenExecutableMin0`; `CheckNoHiddenMin0` is also named in source/checker code. It does not prove that the symbol policy captures every mathematically equivalent hidden minimization route. | Whether macro, alias, template, import, and proof-ref expansion is complete; whether any exact minimization is smuggled through terminology, proof assumptions, or non-executable certificates. | Local negative fixtures use an illustrative regex-style toy scan only. |
-| Mode firewall | Quotient equality is not full constructive replacement | `pcc-global-proof-dag0.mjs`; `pcc-local-packages0.mjs`; `review/hostile_review_checklist_7072f8d.md` | `test/pcc-global-proof-dag0.test.mjs`; `test/pcc-local-packages0.test.mjs` | The source/checker path appears to check `Mode.Firewall`, `ModeLedger`, `quotientNotReplacement`, and `constructiveFirewall` fields, rejecting records where quotient-mode information is used as full constructive replacement without the required firewall discipline. It does not prove that the mathematical quotient/full-mode relation is sound. | Whether every constructive replacement has a valid full-mode lift and discharged obligations; whether quotient abstractions preserve the exact information needed for the theorem. | Local mode-firewall fixtures check only small flags and obligation counts. |
-| PCCPack / CheckPCCPackexp | Generated package acceptance boundary | `pcc-pack-concrete-materialized0.mjs`; `pcc-final-integration-concrete-materialized0.mjs`; `pcc-check-pcc-pack-exp0.mjs`; `pcc-runall0.mjs` | `test/pcc-pack-concrete-materialized0.test.mjs`; `test/pcc-final-integration-concrete-materialized0.test.mjs`; `test/pcc-check-pcc-pack-exp0.test.mjs`; `test/pcc-runall0.test.mjs` | The source/checker path appears to check `CHECK_PCC_PACK_EXP_REQUIRED_COVERAGE_FIELDS0`, `CheckPCCPackexp0`, `CheckConcreteMaterializedPCCPack0`, `publicConclusionOnlyAfterAcceptRun`, `finalTheoremGLinkageComplete`, `finalIntegrationGlobalGLinkageComplete`, and `globalProofDAGHasGThresholdProofNode`. It checks concrete coverage/linkage fields according to the implementation; it does not prove the linked mathematical lemmas are true. | Whether concrete coverage fields correspond to sound proof obligations; whether generated-package acceptance is sufficient for the claimed theorem; whether checker coverage can be independently formalized. | No theorem-level `PCCPack` checker is local. The local fixture `pccpack` object is educational only. |
-| Reproduction | Sealed artefact identity and source/checker validation run | `REPRODUCE.md`; `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/release-seal.json`; `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS`; `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS.sha256` | Commands: `git checkout final-pnp-proof-report-artifacts-hardened-7072f8d-sealed`; `sha256sum -c "$BUNDLE/SHA256SUMS"`; `sha256sum -c "$BUNDLE/SHA256SUMS.sha256"`; `git checkout final-pnp-proof-report-hardened-7072f8d`; `npm ci`; `npm run validate` | The checksum commands verify artefact identity only, not theorem correctness. `npm run validate` checks the source/checker package according to the implementation and reported test suite; it is not external mathematical acceptance. | Independent reproduction from a clean clone; checker soundness; mathematical validity of the reduction, minimization route, proof references, and public theorem boundary. | Local `npm test` is a website smoke test and does not run the source/checker validation suite. |
+| Release-reference manifest | Public release metadata | `pnplabs public-review file` | `publicCheckout` | `downloads/source-checker-release.json` | Names source, docs, artefact refs, bundle path, expected validation counts, and theorem-boundary fields. | It does not verify theorem correctness or source/checker availability. |
+| Public theorem boundary | `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP` | `release documentation` | `docsRef` | `REPRODUCE.md`; `REVIEWER_MAP.md`; `review/external_review_handoff_7072f8d.md` | Documents the 7072f8d release coordinates and reviewer route. | Documentation is not verification evidence; inspect source and generated artefacts independently. |
+| Public theorem boundary | `CheckPCCPackexp(GeneratePCCPack())=accept => P = NP` | `source/checker code` | `sourceRef` | `pcc-check-pcc-pack-exp0.mjs`; `pcc-runall0.mjs`; `pcc-final-proof-report0.mjs`; `test/pcc-check-pcc-pack-exp0.test.mjs`; `test/pcc-runall0.test.mjs` | Lets reviewers inspect implementation surfaces that reportedly check package acceptance, run-all inclusion, final public fields, and tests according to the source/checker implementation. | Whether the checked implication is mathematically sound and whether the checker implementation is sound. |
+| Locked NAND | Locked NAND threshold construction | `source/checker code` | `sourceRef` | `pcc-gpack0.mjs`; `pcc-global-proof-dag0.mjs`; `test/pcc-gpack0.test.mjs`; `test/pcc-global-proof-dag0.test.mjs` | Lets reviewers inspect code-level fields, proof references, and tests for the locked NAND surfaces. | Correctness of the locked NAND threshold theorem, satisfiability preservation, polynomial size, and size/minimum convention alignment. |
+| Locked NAND | Hostile review note | `release documentation` | `docsRef` | `review/locked_nand_threshold_hostile_review_round1.md` | Provides a pinned review document for the locked NAND threshold audit. | Author/reviewer prose is not verification evidence; mathematical reconstruction is still required. |
+| Residual slack / ZeroSlack / residual-band minimization | Residual-band exact minimization and terminal ZeroSlack closure | `source/checker code` | `sourceRef` | `pcc-local-packages0.mjs`; `pcc-global-proof-dag0.mjs`; `test/pcc-local-packages0.test.mjs`; `test/pcc-global-proof-dag0.test.mjs` | Lets reviewers inspect implementation surfaces for Package O, global proof-DAG linkage, and tests according to the source/checker implementation. | Completeness and soundness of the residual-band minimization theorem and ZeroSlack closure. |
+| Residual slack / ZeroSlack / residual-band minimization | Hostile review note | `release documentation` | `docsRef` | `review/residual_band_zeroslack_hostile_review_round1.md` | Provides a pinned review document for residual-band and ZeroSlack questions. | Author/reviewer prose is not verification evidence; formal source evidence and mathematical review remain required. |
+| No-hidden minimization | No executable exact-minimization oracle in checked artefacts | `source/checker code` | `sourceRef` | `pcc-gpack0.mjs`; `pcc-local-packages0.mjs`; `pcc-global-proof-dag0.mjs`; `pcc-check-pcc-pack-exp0.mjs`; related tests listed above | Lets reviewers inspect forbidden executable-symbol ledgers and scans according to the source/checker implementation. | Whether macro, alias, template, import, and proof-ref expansion captures every hidden exact-minimization route. |
+| Mode firewall | Quotient equality is not full constructive replacement | `source/checker code` | `sourceRef` | `pcc-global-proof-dag0.mjs`; `pcc-local-packages0.mjs`; `test/pcc-global-proof-dag0.test.mjs`; `test/pcc-local-packages0.test.mjs` | Lets reviewers inspect mode-ledger and constructive-firewall implementation surfaces. | Whether every quotient-to-full transfer is mathematically sound and fully covered. |
+| PCCPack / `CheckPCCPackexp` | Generated package acceptance boundary | `source/checker code` | `sourceRef` | `pcc-pack-concrete-materialized0.mjs`; `pcc-final-integration-concrete-materialized0.mjs`; `pcc-check-pcc-pack-exp0.mjs`; `pcc-runall0.mjs`; `test/pcc-pack-concrete-materialized0.test.mjs`; `test/pcc-final-integration-concrete-materialized0.test.mjs`; `test/pcc-check-pcc-pack-exp0.test.mjs`; `test/pcc-runall0.test.mjs` | Lets reviewers inspect package coverage, final integration coverage, public-claim boundary, and linkage checks according to the implementation. | Whether the concrete coverage fields correspond to sound proof obligations. |
+| Parser, codec, and digest discipline | Canonical bytes and hash-as-index discipline | `source/checker code` | `sourceRef` | `pcc-core.mjs`; `pcc-check-pcc-pack-exp0.mjs` | Lets reviewers inspect core codec/digest surfaces and their use in package checking. | Parser uniqueness, canonical encoding, and digest discipline still require source audit and adversarial testing. Hashes verify byte identity only, not theorem correctness. |
+| Final certificate and release gate | Final certificate, release gate, and replay linkage | `source/checker code` | `sourceRef` | `pcc-final-pnp-certificate0.mjs`; `pcc-final-pnp-release-gate0.mjs`; `pcc-final-acceptance-replay0.mjs`; `pcc-final-proof-report0.mjs` | Lets reviewers inspect final-certificate, replay, release-gate, and final-report linkage according to the implementation. | Linkage soundness, checker soundness, and mathematical adequacy remain review tasks. |
+| Generated artefact bundle | Proof-report artefact files | `generated artefact` | `artifactRef` | `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/README.md`; `release-seal.json`; `SHA256SUMS`; `SHA256SUMS.sha256`; `validation-summary.json`; `final-pnp-proof-report.summary.json`; `final-pnp-proof-report.full.json` under the bundle path | Provides immutable generated artefact coordinates and file-identity material for the 7072f8d bundle. | Artefact identity does not prove theorem correctness, checker soundness, or mathematical soundness. |
 
 ## Reviewer Warning
 
 - `pnplabs` local checks remain smoke tests only.
 - `pnp` source/checker validation is still not mathematical acceptance.
 - Hashes and seals verify artefact identity only, not theorem correctness.
+- Source disclosure and independent inspection are required for source/checker claims.
 - The key mathematical review targets remain locked NAND threshold correctness, residual-band exact minimization, no-hidden-minimization discipline, proof-ref soundness, and public theorem boundary discipline.

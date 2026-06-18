@@ -16,13 +16,17 @@ It is not evidence of external acceptance or consensus, and it is not the full s
 
 **Checker claim to audit:** the report states that `CheckPCCPackexp(GeneratePCCPack())=accept` is replayed through final certificate, release gate, and `CheckFinalPNPProofReport0`. Auditing that claim requires the source/checker revision `final-pnp-proof-report-hardened-7072f8d` at commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`.
 
-**Terminology status:** [docs/terminology_crosswalk.md](docs/terminology_crosswalk.md) maps internal names to standard terms. Entries whose exact schema, proof obligation, or enforcing source/checker path is not present in this checkout are marked `needs author confirmation`.
+**Release-reference model:** [docs/source_checker_map.md](docs/source_checker_map.md) separates `sourceRef` for source/checker code, `docsRef` for 7072f8d release documentation, and `artifactRef` for generated proof-report artefacts. Do not use one default `pnp` ref for all paths.
+
+**Access boundary:** the source/checker repository is not included in this checkout. If `aisknab/pnp` is private or unavailable to a reviewer, they cannot independently retrieve or run the source/checker validation until access is granted.
+
+**Terminology status:** [docs/terminology_crosswalk.md](docs/terminology_crosswalk.md) maps internal names to standard terms and classifies evidence status. Author clarification may resolve ambiguity, but it is not verification evidence.
 
 ## Full Source/Checker Audit
 
-This website checkout does not run the full source/checker stack. For cross-repo audit targets, use [docs/source_checker_map.md](docs/source_checker_map.md). Source/checker paths there refer to `aisknab/pnp@final-pnp-proof-report-hardened-7072f8d:<path>`.
+This website checkout does not run the full source/checker stack. For cross-repo audit targets, use [docs/source_checker_map.md](docs/source_checker_map.md). Paths there are pinned separately as source/checker code, release documentation, generated artefacts, or public-review files.
 
-The sibling source/checker repository can be used to audit the implementation and reproduce its validation run, but that validation is still not external mathematical acceptance.
+When an authorized sibling source/checker checkout exists, it can be used to audit the implementation and reproduce its validation run. That validation is still not external mathematical acceptance.
 
 Run the smallest local verification:
 
@@ -47,6 +51,7 @@ npm run test:unit          # fixture-checker unit tests
 npm run verify:seal        # public file identity only
 npm run examples:minimal   # educational pass/fail fixtures
 npm run test:negative      # named negative fixture tests
+npm run test:audit-targets # optional cross-repo provenance check; skips if ../pnp is unavailable
 npm run repro:smoke        # public reproducibility smoke test
 npm run test:docs          # local documentation link check
 npm test                   # all local checks

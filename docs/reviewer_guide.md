@@ -74,7 +74,7 @@ The edge from `SEAL` to `PUBLIC` is an identity check, not a soundness check. Th
 3. Confirm that `npm run verify:seal` recomputes file hashes locally.
 4. Confirm that the browser verification in `verify.html` states file identity only.
 5. Inspect `server.mjs` for its public allowlist and path normalization.
-6. Request the source/checker tag and sealed artefact tag named in the report.
+6. Request the source/checker tag, release-documentation tag, and sealed artefact tag named in [source_checker_map.md](source_checker_map.md).
 7. Rebuild from a fresh clone of the source/checker repository, not from this website-only checkout.
 8. Compare regenerated accepted records against the report's theorem fields and central digests.
 

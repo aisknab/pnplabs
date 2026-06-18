@@ -7,7 +7,9 @@ The practical rule is:
 - A local hash check verifies artefact identity only. It does not verify theorem correctness.
 - A local fixture check verifies only the small JSON invariant it names. It does not verify the real generated package.
 - A report-stated checker claim is an audit target unless the reviewer obtains and runs the source/checker revision named by the report.
-- A term whose exact schema, generated artefact, proof obligation, or enforcing source/checker path is not present in this checkout needs author confirmation before it is treated as fully defined.
+- Author clarification may resolve ambiguity in wording or intent, but it is not verification evidence.
+- Source disclosure and independent inspection are required for source/checker claims.
+- Source, release-documentation, and generated-artefact refs are separate provenance boundaries. A path existing at one ref does not establish that it existed at another ref.
 
 ## What This Checkout Can Verify
 
@@ -25,13 +27,26 @@ The practical rule is:
 | Repository | Role | What it verifies | What it does not verify | Audit target |
 | --- | --- | --- | --- | --- |
 | `pnplabs` | Public website, public file-identity checks, toy fixtures, reviewer documentation, and local smoke tests. | Public report file identity, toy fixture pass/fail behavior, negative fixture rejection reasons, and local documentation links. Hashes verify artefact identity only, not theorem correctness. | Theorem correctness, source/checker soundness, full generated-package acceptance, or mathematical consensus. | This checkout. |
-| `pnp` | Source/checker audit target named by the release. | `npm run validate` checks the source/checker package according to its implementation and reported test suite. | External mathematical acceptance, checker soundness beyond what the implementation and tests establish, or community consensus. | `aisknab/pnp@final-pnp-proof-report-hardened-7072f8d:<path>`; see [source_checker_map.md](source_checker_map.md). |
+| `pnp` | Source/checker, release-documentation, and generated-artefact audit target named by the release. | `npm run validate` checks the source/checker package according to its implementation and reported test suite when an authorized checkout is available. | External mathematical acceptance, checker soundness beyond what the implementation and tests establish, community consensus, or source access for reviewers without repository access. | Separate `sourceRef`, `docsRef`, and `artifactRef` coordinates; see [source_checker_map.md](source_checker_map.md). |
 
 Neither repository by itself establishes external mathematical consensus. A successful `pnp` validation run is an implementation-level reproduction target, not a substitute for reviewing the locked NAND threshold theorem, residual-band minimization route, proof-reference soundness, and public theorem boundary.
 
+## Reference Boundaries
+
+The public release-reference model has three `pnp` refs plus this public checkout:
+
+| Boundary | Ref | What belongs there | What does not follow from it |
+| --- | --- | --- | --- |
+| `sourceRef` | `final-pnp-proof-report-hardened-7072f8d` at commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278` | Source/checker code and source tests. | Correct release docs or generated artefact presence. |
+| `docsRef` | `final-pnp-proof-report-docs-hardened-7072f8d-sealed` | Release documentation and review handoff files with 7072f8d identifiers. | Source/checker implementation correctness or generated artefact identity. |
+| `artifactRef` | `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed` | Generated proof-report artefacts under `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/`. | Theorem correctness, checker soundness, or correctness of root release docs at that tag. |
+| `publicCheckout` | this repository working tree | Public report files, public release-reference manifest, local docs, and smoke tests. | Full source/checker execution or theorem-level reproduction. |
+
+The sibling `pnp` repository may be private or unavailable to an external reviewer. In that case, cross-repo coordinate checks must report an explicit skip, and the reviewer still lacks independent source disclosure.
+
 ## Terminology And Uncertainty
 
-[docs/terminology_crosswalk.md](terminology_crosswalk.md) maps internal vocabulary to standard complexity-theory, proof-engineering, and formal-methods terms. A crosswalk entry is not a trust claim. If this checkout lacks the exact schema, proof rule, generated artefact, or enforcing source/checker path for a term, the crosswalk marks it `needs author confirmation` rather than filling the gap by inference.
+[docs/terminology_crosswalk.md](terminology_crosswalk.md) maps internal vocabulary to standard complexity-theory, proof-engineering, and formal-methods terms. A crosswalk entry is not a trust claim. If pinned source, release documentation, and generated artefacts do not resolve a definition, the crosswalk uses `Missing or ambiguous; author clarification requested`. That clarification can guide later audit work, but it does not verify the theorem, checker soundness, or artefact identity.
 
 ## Claim-Critical Boundaries
 

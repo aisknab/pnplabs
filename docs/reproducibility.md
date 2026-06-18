@@ -76,10 +76,11 @@ The report names:
 
 - source/checker tag: `final-pnp-proof-report-hardened-7072f8d`;
 - source/checker commit: `7072f8d0bda6d44d240f9bb3fad624fd357e1278`;
+- release-documentation tag: `final-pnp-proof-report-docs-hardened-7072f8d-sealed`;
 - sealed artefact tag: `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed`;
 - proof-report bundle path: `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/`.
 
-Those source/checker files are not present in this repository. A full theorem-level reproduction requires obtaining that source/checker repository or release bundle, then running the validation commands documented there. The result to compare is not merely a PDF hash; it is the accepted theorem fields, package/replay/certificate linkage, and central canonical-byte digests reported in the final proof report.
+Those source/checker files are not present in this repository. Use the release-documentation tag for 7072f8d reproduction instructions, the source/checker tag for code, and the sealed artefact tag for generated artefacts. A full theorem-level reproduction requires obtaining the source/checker repository or release bundle, then running the validation commands documented at the pinned docs ref. The result to compare is not merely a PDF hash; it is the accepted theorem fields, package/replay/certificate linkage, and central canonical-byte digests reported in the final proof report.
 
 ### Full Source/Checker Reproduction From Sibling Repo
 
