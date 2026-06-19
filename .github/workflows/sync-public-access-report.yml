@@ -1,0 +1,108 @@
+name: sync-public-access-canonical-report
+
+on:
+  push:
+    branches:
+      - docs/sync-public-access-report-7072f8d
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-public-access-report-7072f8d
+  cancel-in-progress: false
+
+env:
+  DOCS_TAG: final-pnp-proof-report-docs-hardened-7072f8d-public-access-sealed
+  PNP_SOURCE_DIR: ${{ github.workspace }}/../pnp-public
+
+jobs:
+  sync:
+    if: ${{ !contains(github.event.head_commit.message || '', 'sync public-access canonical report release') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: docs/sync-public-access-report-7072f8d
+
+      - name: Clone public source/checker repository and pinned documentation tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$PNP_SOURCE_DIR"
+          git clone https://github.com/aisknab/pnp.git "$PNP_SOURCE_DIR"
+          git -C "$PNP_SOURCE_DIR" fetch --tags --force
+          git -C "$PNP_SOURCE_DIR" checkout "$DOCS_TAG"
+          test -f "$PNP_SOURCE_DIR/docs-release/public-access-7072f8d/release-seal.json"
+          node "$PNP_SOURCE_DIR/tools/check-documentation-release.mjs"
+
+      - name: Synchronize canonical report and provenance metadata
+        run: node tools/sync-public-access-docs.mjs
+
+      - name: Regenerate canonical report cover preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends poppler-utils webp
+          tmp="$(mktemp -d)"
+          pdftoppm \
+            -f 1 \
+            -singlefile \
+            -png \
+            -scale-to-x 720 \
+            -scale-to-y -1 \
+            downloads/canonical_proof_report.pdf \
+            "$tmp/proof-report-cover"
+          cwebp -quiet -q 84 "$tmp/proof-report-cover.png" -o assets/proof-report-cover.webp
+
+      - name: Verify PDF, aliases, seal, and source coordinates
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(pdfinfo downloads/canonical_proof_report.pdf | awk '/^Pages:/ {print $2}')" = "56"
+          cmp downloads/canonical_proof_report.pdf downloads/canonical-proof-report.pdf
+          cmp downloads/canonical_proof_report.tex downloads/canonical-proof-report.tex
+          node tools/verify-release-seal.mjs
+          PNP_SOURCE_DIR="$PNP_SOURCE_DIR" node tools/check-cross-repo-targets.mjs --require-source
+          git diff --check
+
+      - name: Run complete PNP Labs test suite
+        run: npm test
+
+      - name: Enforce documentation-only website sync boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          allowed='^(README\.md|index\.html|paper\.html|architecture\.html|verify\.html|faq\.html|review\.html|assets/proof-report-cover\.webp|assets/public-source-links\.js|downloads/|docs/|tests/audit-targets/|tools/sync-public-access-docs\.mjs|\.github/workflows/sync-public-access-report\.yml)'
+          git status --short
+          git status --short | sed -E 's/^.. //' | while IFS= read -r file; do
+            [[ "$file" =~ $allowed ]] || { echo "unexpected changed path: $file" >&2; exit 1; }
+          done
+
+      - name: Commit synchronized public-access report release
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            README.md \
+            index.html \
+            paper.html \
+            architecture.html \
+            verify.html \
+            faq.html \
+            review.html \
+            assets/proof-report-cover.webp \
+            assets/public-source-links.js \
+            downloads \
+            docs \
+            tests/audit-targets \
+            tools/sync-public-access-docs.mjs \
+            .github/workflows/sync-public-access-report.yml
+          git commit -m "docs: sync public-access canonical report release"
+          git push origin HEAD:docs/sync-public-access-report-7072f8d
