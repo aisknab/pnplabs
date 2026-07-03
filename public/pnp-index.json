@@ -1,0 +1,46 @@
+{
+  "kind": "PNPLabsPNPPayloadIndex0",
+  "version": 0,
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourceCommitRef": "main",
+  "syncedOn": "2026-07-03",
+  "status": "status-bound-public-review-payloads-ready",
+  "claimBoundary": {
+    "publicTheoremEmissionAllowed": false,
+    "finalTheoremReady": false,
+    "activeFinalNodeIds": [],
+    "remainingBlockers": [
+      "Release.UnrestrictedFinalSoundness",
+      "ExternalReview.Acceptance"
+    ]
+  },
+  "payloads": [
+    {
+      "id": "pnp-status",
+      "path": "/public/pnp-status.json",
+      "description": "Compact mirror of the current PNP status boundary and status-bound coordinates."
+    },
+    {
+      "id": "pnp-public-review",
+      "path": "/public/pnp-public-review.json",
+      "description": "Reviewer entrypoint, handoff, and public-review boundary summary."
+    },
+    {
+      "id": "pnp-theorem-emission-gate",
+      "path": "/public/pnp-theorem-emission-gate.json",
+      "description": "Status-bound public theorem-emission gate, currently denied and non-activating."
+    },
+    {
+      "id": "pnp-external-review-status",
+      "path": "/public/pnp-external-review-status.json",
+      "description": "External-review status, currently not accepted and still release-blocking."
+    }
+  ],
+  "statusPage": "/status.html",
+  "verificationCommand": "npm run pnp:verify",
+  "nonClaims": [
+    "These static payloads mirror the current aisknab/pnp public-review boundary.",
+    "These static payloads are not independent mathematical validation.",
+    "These static payloads do not activate public theorem emission or clear release blockers."
+  ]
+}
