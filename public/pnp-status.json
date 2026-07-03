@@ -1,0 +1,70 @@
+{
+  "kind": "PNPLabsPNPStatusMirror0",
+  "version": 0,
+  "status": "public-review-self-verification-stack-in-progress",
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourceCommitRef": "main",
+  "syncedOn": "2026-07-03",
+  "sourceFiles": {
+    "PNP_STATUS.json": {
+      "path": "PNP_STATUS.json",
+      "blobSha": "17e8b5678e75c9f25f1f482f4660d26de000f2a7"
+    },
+    "PUBLIC_REVIEW.json": {
+      "path": "PUBLIC_REVIEW.json",
+      "blobSha": "f4e4fa5471f969d9b466f43036234a34a769cc30"
+    },
+    "PUBLIC_THEOREM_EMISSION_GATE.json": {
+      "path": "release/PUBLIC_THEOREM_EMISSION_GATE.json",
+      "blobSha": "45a3f7e4708202f21c355f0c3b44d25acf51f514"
+    },
+    "EXTERNAL_REVIEW_STATUS.json": {
+      "path": "review/EXTERNAL_REVIEW_STATUS.json",
+      "blobSha": "6677592776e0f42ad55af32d0f7b66499c48e4f2"
+    }
+  },
+  "project": "PNP",
+  "claimStatus": "internal-proof-certificate-stack-under-public-review-boundary",
+  "publicTheoremEmissionAllowed": false,
+  "finalTheoremReady": false,
+  "activeFinalNodeIds": [],
+  "remainingBlockers": [
+    "Release.UnrestrictedFinalSoundness",
+    "ExternalReview.Acceptance"
+  ],
+  "verificationCommand": "npm run pnp:verify",
+  "freshCloneVerification": [
+    "git clone https://github.com/aisknab/pnp.git",
+    "cd pnp",
+    "npm ci",
+    "npm run pnp:verify"
+  ],
+  "primaryCoordinates": {
+    "publicReviewEntrypointCoordinate": "PNP-PUBLIC-REVIEW-ENTRYPOINT-2026-06-27-01",
+    "publicReviewHandoffCoordinate": "PNP-PUBLIC-REVIEW-HANDOFF-2026-06-27-01",
+    "publicReviewBoundaryCoordinate": "PNP-PUBLIC-REVIEW-BOUNDARY-2026-06-27-01",
+    "historicalReportSanitizedCoordinate": "PNP-HISTORICAL-REPORT-SANITIZED-2026-06-27-01",
+    "historicalTheoremAnchorsCoordinate": "PNP-HISTORICAL-THEOREM-ANCHORS-2026-06-27-01",
+    "directBindingIndexCoordinate": "PNP-DIRECT-BINDING-INDEX-2026-06-27-01",
+    "section22DirectBindingRunnerCoordinate": "PNP-SECTION22-DIRECT-BINDING-RUNNER-2026-06-27-01",
+    "releaseLadderCoordinate": "PNP-RELEASE-LADDER-2026-06-27-01",
+    "gapLedgerCoordinate": "PNP-GAP-LEDGER-2026-06-27-01",
+    "externalReviewStatusCoordinate": "PNP-EXTERNAL-REVIEW-STATUS-2026-06-27-01",
+    "releaseBlockerClearanceCoordinate": "PNP-RELEASE-BLOCKER-CLEARANCE-2026-06-27-01",
+    "publicTheoremEmissionPreflightCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-PREFLIGHT-2026-06-27-01",
+    "publicTheoremEmissionDenialCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-DENIAL-2026-06-27-01",
+    "publicTheoremEmissionNegativeTransitionsCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-NEGATIVE-TRANSITIONS-2026-06-27-01",
+    "publicTheoremEmissionGateCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-GATE-2026-06-27-01"
+  },
+  "publicPayloads": {
+    "publicReview": "/public/pnp-public-review.json",
+    "theoremEmissionGate": "/public/pnp-theorem-emission-gate.json",
+    "externalReviewStatus": "/public/pnp-external-review-status.json"
+  },
+  "nonClaims": [
+    "This payload mirrors the current public-review status from aisknab/pnp; it is not independent theorem validation.",
+    "This payload does not activate public theorem emission.",
+    "This payload does not clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance.",
+    "The current root canonical report in aisknab/pnp is a sanitized status notice; older sealed artifacts may still contain direct theorem-emission wording as historical records."
+  ]
+}
