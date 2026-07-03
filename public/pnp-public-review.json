@@ -1,0 +1,62 @@
+{
+  "kind": "PNPLabsPNPPublicReviewPayload0",
+  "version": 0,
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourceCommitRef": "main",
+  "syncedOn": "2026-07-03",
+  "status": "public-review-ready-non-activating",
+  "claimBoundary": {
+    "publicTheoremEmissionAllowed": false,
+    "finalTheoremReady": false,
+    "activeFinalNodeIds": [],
+    "remainingBlockers": [
+      "Release.UnrestrictedFinalSoundness",
+      "ExternalReview.Acceptance"
+    ]
+  },
+  "coordinates": {
+    "publicReviewEntrypointCoordinate": "PNP-PUBLIC-REVIEW-ENTRYPOINT-2026-06-27-01",
+    "publicReviewHandoffCoordinate": "PNP-PUBLIC-REVIEW-HANDOFF-2026-06-27-01",
+    "publicReviewBoundaryCoordinate": "PNP-PUBLIC-REVIEW-BOUNDARY-2026-06-27-01",
+    "publicSurfaceBaseline": "PUBLIC-SURFACE-BASELINE-2026-06-27-NO-HIDDEN-ORACLE-01",
+    "historicalReportSupersessionCoordinate": "PNP-HISTORICAL-REPORT-SUPERSESSION-2026-06-27-01",
+    "historicalReportSanitizedCoordinate": "PNP-HISTORICAL-REPORT-SANITIZED-2026-06-27-01",
+    "historicalTheoremAnchorsCoordinate": "PNP-HISTORICAL-THEOREM-ANCHORS-2026-06-27-01",
+    "directBindingIndexCoordinate": "PNP-DIRECT-BINDING-INDEX-2026-06-27-01",
+    "section22DirectBindingRunnerCoordinate": "PNP-SECTION22-DIRECT-BINDING-RUNNER-2026-06-27-01"
+  },
+  "reviewerStart": {
+    "authoritativeHandoffPath": "release/PUBLIC_REVIEW_HANDOFF.md",
+    "rootEntrypointPath": "PUBLIC_REVIEW.md",
+    "primaryCommands": [
+      "npm ci",
+      "npm run pnp:verify"
+    ],
+    "standaloneCommands": [
+      "node pcc-public-review-entrypoint0.mjs --json",
+      "node pcc-public-review-handoff0.mjs --json",
+      "node pcc-public-review-boundary0.mjs --json",
+      "node pcc-public-surface-baseline0.mjs --json",
+      "node pcc-historical-report-supersession0.mjs --json",
+      "node pcc-historical-theorem-anchors0.mjs --json",
+      "node pcc-direct-binding-index0.mjs --json",
+      "node scripts/verify-section22-direct-bindings.mjs --json"
+    ]
+  },
+  "representedSurfaces": {
+    "publicReviewEntrypointReady": true,
+    "publicReviewHandoffReady": true,
+    "publicReviewBoundaryReady": true,
+    "historicalReportSanitized": true,
+    "historicalTheoremAnchorsNonEmitting": true,
+    "section22ExecutableSurfaceIndexed": true,
+    "section22RunnerBound": true,
+    "oneCommandVerifierVisible": true,
+    "directTheoremEmissionAllowedByReviewSurface": false
+  },
+  "nonClaims": [
+    "This public-review payload is not a theorem-activation surface.",
+    "This public-review payload does not mark any Section 22 theorem-ledger row as fully discharged.",
+    "This public-review payload keeps historical theorem-emission artifacts fenced by the sanitized, status-bound public-review boundary."
+  ]
+}

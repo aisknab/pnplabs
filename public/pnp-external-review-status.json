@@ -1,0 +1,55 @@
+{
+  "kind": "PNPLabsPNPExternalReviewStatusPayload0",
+  "version": 0,
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourceCommitRef": "main",
+  "syncedOn": "2026-07-03",
+  "coordinate": "PNP-EXTERNAL-REVIEW-STATUS-2026-06-27-01",
+  "status": "external-review-not-accepted",
+  "claimBoundary": {
+    "publicTheoremEmissionAllowed": false,
+    "finalTheoremReady": false,
+    "activeFinalNodeIds": [],
+    "remainingBlockers": [
+      "Release.UnrestrictedFinalSoundness",
+      "ExternalReview.Acceptance"
+    ]
+  },
+  "externalReview": {
+    "externalReviewStatusReady": true,
+    "externalReviewAcceptanceClaimed": false,
+    "independentReviewAcceptanceConfirmed": false,
+    "noIndependentReviewerConfirmed": true,
+    "externalReviewBlockerStillActive": true,
+    "substantiveFeedbackRecorded": true,
+    "substantiveFeedbackIsAcceptance": false,
+    "publicTheoremEmissionAllowedByExternalReview": false
+  },
+  "requiredCoordinates": {
+    "externalReviewStatusCoordinate": "PNP-EXTERNAL-REVIEW-STATUS-2026-06-27-01",
+    "publicReviewChecklistCoordinate": "PNP-PUBLIC-REVIEW-CHECKLIST-2026-06-27-01",
+    "publicReviewEntrypointCoordinate": "PNP-PUBLIC-REVIEW-ENTRYPOINT-2026-06-27-01",
+    "publicReviewHandoffCoordinate": "PNP-PUBLIC-REVIEW-HANDOFF-2026-06-27-01",
+    "publicReviewBoundaryCoordinate": "PNP-PUBLIC-REVIEW-BOUNDARY-2026-06-27-01",
+    "releaseLadderCoordinate": "PNP-RELEASE-LADDER-2026-06-27-01",
+    "gapLedgerCoordinate": "PNP-GAP-LEDGER-2026-06-27-01"
+  },
+  "releaseLadderBlocker": {
+    "id": "PublicTheoremEmissionCandidate",
+    "state": "blocked",
+    "blocker": "ExternalReview.Acceptance"
+  },
+  "gap": {
+    "id": "GAP-002-ExternalReviewAcceptance",
+    "status": "blocked-release-gap",
+    "severity": "activation-blocking",
+    "blocker": "ExternalReview.Acceptance"
+  },
+  "verificationCommand": "node pcc-external-review-status0.mjs --json",
+  "nonClaims": [
+    "This payload does not activate public theorem emission.",
+    "This payload does not clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance.",
+    "This payload does not claim independent external review acceptance.",
+    "Outreach and substantive feedback remain review metadata, not proof evidence."
+  ]
+}

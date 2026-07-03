@@ -30,6 +30,38 @@ This website checkout does not run the full source/checker stack. For cross-repo
 
 When an authorized sibling source/checker checkout exists, it can be used to audit the implementation and reproduce its validation run. That validation is still not external mathematical acceptance.
 
+## Status-bound source/checker payloads
+
+The current public-review source/checker repository state is mirrored into static payloads under `public/`. These payloads are site-facing summaries only; the source of truth remains `aisknab/pnp` and the reviewer command remains:
+
+```bash
+git clone https://github.com/aisknab/pnp.git
+cd pnp
+npm ci
+npm run pnp:verify
+```
+
+Current mirrored boundary:
+
+```text
+publicTheoremEmissionAllowed = false
+finalTheoremReady = false
+activeFinalNodeIds = []
+remainingBlockers = [
+  "Release.UnrestrictedFinalSoundness",
+  "ExternalReview.Acceptance"
+]
+```
+
+Static payloads added for public consumers:
+
+- [`public/pnp-status.json`](public/pnp-status.json) - compact status and coordinate mirror.
+- [`public/pnp-public-review.json`](public/pnp-public-review.json) - public-review entrypoint, handoff, and boundary summary.
+- [`public/pnp-theorem-emission-gate.json`](public/pnp-theorem-emission-gate.json) - status-bound theorem-emission gate summary, currently denied.
+- [`public/pnp-external-review-status.json`](public/pnp-external-review-status.json) - external-review status summary, currently not accepted.
+
+These payloads do not activate public theorem emission, clear release blockers, or independently validate the mathematical claim.
+
 Run the smallest local verification:
 
 ```bash
@@ -62,6 +94,7 @@ npm test                   # all local checks
 ## Included Public Files
 
 - `index.html`, `paper.html`, `architecture.html`, `verify.html`, `faq.html`, `review.html` - static public pages.
+- `public/pnp-status.json`, `public/pnp-public-review.json`, `public/pnp-theorem-emission-gate.json`, `public/pnp-external-review-status.json` - status-bound source/checker public-review payloads mirrored from `aisknab/pnp`.
 - `downloads/canonical_proof_report.pdf` and `downloads/canonical_proof_report.tex` - bundled report artefacts.
 - `downloads/source-checker-release.json` - source/checker audit-target reference; it does not establish theorem correctness.
 - `downloads/release-seal.json` and `downloads/SHA256SUMS` - public file-identity manifest and ledger.
