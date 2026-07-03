@@ -53,8 +53,11 @@ remainingBlockers = [
 ]
 ```
 
-Static payloads added for public consumers:
+The public status page is [`status.html`](status.html).
 
+Static payloads for public consumers:
+
+- [`public/pnp-index.json`](public/pnp-index.json) - payload index.
 - [`public/pnp-status.json`](public/pnp-status.json) - compact status and coordinate mirror.
 - [`public/pnp-public-review.json`](public/pnp-public-review.json) - public-review entrypoint, handoff, and boundary summary.
 - [`public/pnp-theorem-emission-gate.json`](public/pnp-theorem-emission-gate.json) - status-bound theorem-emission gate summary, currently denied.
@@ -70,6 +73,7 @@ npm test
 
 Reviewers should start with:
 
+- [status.html](status.html)
 - [docs/reviewer_guide.md](docs/reviewer_guide.md)
 - [docs/proof_pipeline.md](docs/proof_pipeline.md)
 - [docs/trust_model.md](docs/trust_model.md)
@@ -93,8 +97,8 @@ npm test                   # all local checks
 
 ## Included Public Files
 
-- `index.html`, `paper.html`, `architecture.html`, `verify.html`, `faq.html`, `review.html` - static public pages.
-- `public/pnp-status.json`, `public/pnp-public-review.json`, `public/pnp-theorem-emission-gate.json`, `public/pnp-external-review-status.json` - status-bound source/checker public-review payloads mirrored from `aisknab/pnp`.
+- `index.html`, `status.html`, `paper.html`, `architecture.html`, `verify.html`, `faq.html`, `review.html` - static public pages.
+- `public/pnp-index.json`, `public/pnp-status.json`, `public/pnp-public-review.json`, `public/pnp-theorem-emission-gate.json`, `public/pnp-external-review-status.json` - status-bound source/checker public-review payloads mirrored from `aisknab/pnp`.
 - `downloads/canonical_proof_report.pdf` and `downloads/canonical_proof_report.tex` - bundled report artefacts.
 - `downloads/source-checker-release.json` - source/checker audit-target reference; it does not establish theorem correctness.
 - `downloads/release-seal.json` and `downloads/SHA256SUMS` - public file-identity manifest and ledger.
