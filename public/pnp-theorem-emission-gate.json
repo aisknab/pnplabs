@@ -1,0 +1,50 @@
+{
+  "kind": "PNPLabsPNPTheoremEmissionGatePayload0",
+  "version": 0,
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourceCommitRef": "main",
+  "syncedOn": "2026-07-03",
+  "coordinate": "PNP-PUBLIC-THEOREM-EMISSION-GATE-2026-06-27-01",
+  "status": "public-theorem-emission-gate-denied",
+  "claimBoundary": {
+    "publicTheoremEmissionAllowed": false,
+    "finalTheoremReady": false,
+    "activeFinalNodeIds": [],
+    "remainingBlockers": ["Release.UnrestrictedFinalSoundness", "ExternalReview.Acceptance"]
+  },
+  "gate": {
+    "publicTheoremEmissionGateReady": true,
+    "publicTheoremEmissionGatePassed": false,
+    "publicTheoremEmissionDenied": true,
+    "currentDeniedStateAccepted": true,
+    "statusBound": true,
+    "allNegativeTransitionsRejected": true,
+    "releaseBlockersStillActive": true,
+    "publicTheoremEmissionAllowedByGate": false,
+    "finalTheoremReadyByGate": false,
+    "gateIsActivationSurface": false,
+    "gateBindingRequiresFuturePR": false
+  },
+  "requiredCoordinates": {
+    "publicTheoremEmissionGateCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-GATE-2026-06-27-01",
+    "publicTheoremEmissionNegativeTransitionsCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-NEGATIVE-TRANSITIONS-2026-06-27-01",
+    "publicTheoremEmissionDenialCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-DENIAL-2026-06-27-01",
+    "publicTheoremEmissionPreflightCoordinate": "PNP-PUBLIC-THEOREM-EMISSION-PREFLIGHT-2026-06-27-01",
+    "releaseBlockerClearanceCoordinate": "PNP-RELEASE-BLOCKER-CLEARANCE-2026-06-27-01",
+    "externalReviewStatusCoordinate": "PNP-EXTERNAL-REVIEW-STATUS-2026-06-27-01",
+    "publicReviewBoundaryCoordinate": "PNP-PUBLIC-REVIEW-BOUNDARY-2026-06-27-01"
+  },
+  "deniedReasons": [
+    "Status.PublicTheoremEmissionAllowedFalse",
+    "Status.FinalTheoremReadyFalse",
+    "Status.RemainingBlockersActive",
+    "ReleaseBlockerClearance.NotAccepted",
+    "ExternalReview.AcceptanceNotClaimed"
+  ],
+  "verificationCommand": "node pcc-public-theorem-emission-gate0.mjs --json",
+  "nonClaims": [
+    "This payload does not activate public theorem emission.",
+    "This payload does not clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance.",
+    "This payload does not claim unrestricted final soundness or independent external review acceptance."
+  ]
+}
