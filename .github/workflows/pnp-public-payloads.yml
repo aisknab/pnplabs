@@ -1,0 +1,18 @@
+name: pnp-public-payloads
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  pnp-public-payloads:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check PNP public payload boundary
+        run: node --test tests/unit/pnp-public-payloads.test.mjs
