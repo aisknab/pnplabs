@@ -3,7 +3,7 @@
   "version": 0,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-03",
+  "syncedOn": "2026-07-04",
   "status": "status-bound-public-review-payloads-ready",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": false,
@@ -34,9 +34,15 @@
       "id": "pnp-external-review-status",
       "path": "/public/pnp-external-review-status.json",
       "description": "External-review status, currently not accepted and still release-blocking."
+    },
+    {
+      "id": "pnp-verification-runs",
+      "path": "/public/pnp-verification-runs.json",
+      "description": "Public registry for reproducible verifier run reports."
     }
   ],
   "statusPage": "/status.html",
+  "verificationRunsPage": "/verification-runs.html",
   "verificationCommand": "npm run pnp:verify",
   "nonClaims": [
     "These static payloads mirror the current aisknab/pnp public-review boundary.",

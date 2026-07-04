@@ -66,6 +66,16 @@ npm run pnp:verify</code></pre>
     </section>
 
     <section class="section compact">
+      <div class="section-label">Run reports</div>
+      <h2>Submit a reproducible verifier run</h2>
+      <p>People who run the source/checker verifier can submit reproducible run evidence for inclusion in the public run registry. The registry records machine-verifier reproduction reports, not automatic release activation.</p>
+      <ul>
+        <li><a href="verification-runs.html">Verification run registry page</a></li>
+        <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a></li>
+      </ul>
+    </section>
+
+    <section class="section compact">
       <div class="section-label">Public payloads</div>
       <h2>Status-bound JSON surfaces</h2>
       <p>These static payloads mirror the current public-review boundary for site consumers. The source of truth remains the <code>aisknab/pnp</code> repository.</p>
@@ -75,6 +85,7 @@ npm run pnp:verify</code></pre>
         <li><a href="public/pnp-public-review.json"><code>public/pnp-public-review.json</code></a> — public-review entrypoint and boundary summary.</li>
         <li><a href="public/pnp-theorem-emission-gate.json"><code>public/pnp-theorem-emission-gate.json</code></a> — theorem-emission gate, currently denied.</li>
         <li><a href="public/pnp-external-review-status.json"><code>public/pnp-external-review-status.json</code></a> — external-review status, currently not accepted.</li>
+        <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> — public verifier run registry.</li>
       </ul>
     </section>
 

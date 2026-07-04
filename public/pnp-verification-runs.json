@@ -1,0 +1,48 @@
+{
+  "kind": "PNPLabsPNPVerificationRunRegistry0",
+  "version": 0,
+  "status": "verification-run-registry-ready",
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourceCommitRef": "main",
+  "syncedOn": "2026-07-04",
+  "purpose": "Record public run reports from people who cloned the source/checker repository, ran the verifier, and submitted reproducible evidence.",
+  "claimBoundary": {
+    "publicTheoremEmissionAllowed": false,
+    "finalTheoremReady": false,
+    "activeFinalNodeIds": [],
+    "remainingBlockers": [
+      "Release.UnrestrictedFinalSoundness",
+      "ExternalReview.Acceptance"
+    ]
+  },
+  "primaryCommand": [
+    "git clone https://github.com/aisknab/pnp.git",
+    "cd pnp",
+    "npm ci",
+    "npm run pnp:verify"
+  ],
+  "submissionPath": {
+    "kind": "github-issue-template",
+    "repository": "https://github.com/aisknab/pnplabs",
+    "template": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml"
+  },
+  "acceptedRunRecordFields": [
+    "runnerNameOrHandle",
+    "dateUtc",
+    "pnpCommit",
+    "environment",
+    "commandsRun",
+    "verdictTag",
+    "claimStatus",
+    "publicTheoremEmissionAllowed",
+    "finalTheoremReady",
+    "remainingBlockers",
+    "artifactsOrLogs"
+  ],
+  "runs": [],
+  "nonClaims": [
+    "A run record means someone reports running the verifier and reproducing the stated machine result.",
+    "A run record is not automatically a mathematical endorsement, theorem activation, or release-blocker clearance.",
+    "This registry does not activate public theorem emission or clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance."
+  ]
+}

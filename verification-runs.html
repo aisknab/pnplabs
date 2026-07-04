@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PNP Labs — verification run registry</title>
+  <meta name="description" content="Submit and inspect public run reports for the PNP source/checker verifier.">
+  <link rel="canonical" href="https://pnplabs.com.au/verification-runs.html">
+  <link rel="stylesheet" href="assets/styles.min.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>verification runs</span></span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="status.html">Status</a>
+        <a href="verify.html">Verify</a>
+        <a href="review.html">Review</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-hero">
+      <span class="eyebrow">Public reproducibility</span>
+      <h1>Verification run registry</h1>
+      <p class="lede">Clone the source/checker repository, run the verifier, inspect the result, and submit reproducible run evidence.</p>
+      <div class="hero-actions"><a class="btn primary" href="public/pnp-verification-runs.json">Open registry JSON</a><a class="btn secondary" href="verify.html">Verification instructions</a></div>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Run command</div>
+      <h2>Run the source/checker verifier</h2>
+      <pre><code>git clone https://github.com/aisknab/pnp.git
+cd pnp
+npm ci
+npm run pnp:verify</code></pre>
+      <p>Attach the final verifier JSON or a CI log showing the final verdict. The canonical local output is <code>artifacts/pnp-verify-all/latest-verdict.json</code>.</p>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Registry status</div>
+      <h2>Current public run records</h2>
+      <p>The machine-readable registry is <a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a>. It starts empty and should only list submitted run reports with enough information for someone else to reproduce the run.</p>
+      <pre><code>runs = []</code></pre>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Boundary</div>
+      <h2>What a run report means</h2>
+      <p>A run report means someone reports running the verifier and reproducing the stated machine result. It is not automatically theorem activation or release-blocker clearance.</p>
+      <div class="boundary-panel"><div class="boundary-head"><span>Current release boundary</span><strong>non-activating</strong></div><pre>publicTheoremEmissionAllowed = false
+finalTheoremReady = false
+activeFinalNodeIds = []
+remainingBlockers = [
+  "Release.UnrestrictedFinalSoundness",
+  "ExternalReview.Acceptance"
+]</pre></div>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Submission checklist</div>
+      <h2>What to include</h2>
+      <ul>
+        <li>Runner name or handle to list publicly.</li>
+        <li>UTC date and exact <code>aisknab/pnp</code> commit or ref tested.</li>
+        <li>OS, CPU architecture, Node version, npm version, and container or VM details if used.</li>
+        <li>Commands run and any deviations from the canonical command.</li>
+        <li>Final verifier JSON, logs, CI link, or checksums sufficient for reproduction.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
