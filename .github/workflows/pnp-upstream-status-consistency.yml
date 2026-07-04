@@ -1,0 +1,82 @@
+name: pnp-upstream-status-consistency
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  pnp-upstream-status-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Compare public payloads with upstream PNP status
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+
+          const upstreamBase = 'https://raw.githubusercontent.com/aisknab/pnp/main';
+          const blockers = ['Release.UnrestrictedFinalSoundness', 'ExternalReview.Acceptance'];
+
+          async function localJson(path) {
+            return JSON.parse(await readFile(path, 'utf8'));
+          }
+
+          async function upstreamJson(path) {
+            const url = `${upstreamBase}/${path}`;
+            const res = await fetch(url, { headers: { accept: 'application/json' } });
+            if (!res.ok) throw new Error(`failed to fetch ${url}: ${res.status} ${res.statusText}`);
+            return res.json();
+          }
+
+          function assertBoundary(boundary, label) {
+            assert.equal(boundary.publicTheoremEmissionAllowed, false, `${label}: public theorem emission must stay disabled`);
+            assert.equal(boundary.finalTheoremReady, false, `${label}: final theorem must stay not ready`);
+            assert.deepEqual(boundary.activeFinalNodeIds, [], `${label}: active final nodes must stay empty`);
+            assert.deepEqual(boundary.remainingBlockers, blockers, `${label}: blockers must remain exact`);
+          }
+
+          const [siteStatus, siteReview, siteGate, siteExternal, upstreamStatus, upstreamGate, upstreamExternal] = await Promise.all([
+            localJson('public/pnp-status.json'),
+            localJson('public/pnp-public-review.json'),
+            localJson('public/pnp-theorem-emission-gate.json'),
+            localJson('public/pnp-external-review-status.json'),
+            upstreamJson('PNP_STATUS.json'),
+            upstreamJson('release/PUBLIC_THEOREM_EMISSION_GATE.json'),
+            upstreamJson('review/EXTERNAL_REVIEW_STATUS.json')
+          ]);
+
+          assertBoundary(siteStatus, 'site status payload');
+          assertBoundary(siteReview.claimBoundary, 'site public-review payload');
+          assertBoundary(siteGate.claimBoundary, 'site theorem-emission gate payload');
+          assertBoundary(siteExternal.claimBoundary, 'site external-review payload');
+          assertBoundary(upstreamStatus, 'upstream PNP_STATUS.json');
+          assertBoundary(upstreamGate.claimBoundary, 'upstream theorem-emission gate');
+          assertBoundary(upstreamExternal.claimBoundary, 'upstream external-review status');
+
+          const coordinatePairs = [
+            ['publicTheoremEmissionGateCoordinate', siteGate.coordinate, upstreamStatus.publicTheoremEmissionGateCoordinate],
+            ['externalReviewStatusCoordinate', siteExternal.coordinate, upstreamStatus.externalReviewStatusCoordinate],
+            ['publicReviewBoundaryCoordinate', siteReview.coordinates.publicReviewBoundaryCoordinate, upstreamStatus.publicReviewBoundaryCoordinate],
+            ['publicReviewEntrypointCoordinate', siteReview.coordinates.publicReviewEntrypointCoordinate, upstreamStatus.publicReviewEntrypointCoordinate],
+            ['section22DirectBindingRunnerCoordinate', siteReview.coordinates.section22DirectBindingRunnerCoordinate, upstreamStatus.section22DirectBindingRunnerCoordinate]
+          ];
+
+          for (const [name, site, upstream] of coordinatePairs) {
+            assert.equal(site, upstream, `${name}: site payload drifted from upstream PNP_STATUS.json`);
+          }
+
+          assert.equal(siteGate.gate.publicTheoremEmissionGatePassed, upstreamGate.publicTheoremEmissionGatePassed, 'gate pass flag drift');
+          assert.equal(siteGate.gate.publicTheoremEmissionDenied, upstreamGate.publicTheoremEmissionDenied, 'gate denial flag drift');
+          assert.equal(siteGate.gate.publicTheoremEmissionAllowedByGate, upstreamGate.publicTheoremEmissionAllowedByGate, 'gate theorem-emission flag drift');
+          assert.equal(siteExternal.externalReview.externalReviewAcceptanceClaimed, upstreamExternal.externalReviewAcceptanceClaimed, 'external-review acceptance flag drift');
+          assert.equal(siteExternal.externalReview.independentReviewAcceptanceConfirmed, upstreamExternal.independentReviewAcceptanceConfirmed, 'independent-review confirmation flag drift');
+
+          console.log('PNP upstream status consistency accepted');
+          NODE
