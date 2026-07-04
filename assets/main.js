@@ -21,7 +21,61 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
+function ensureHomepageStatusBoundary() {
+  const hero = document.querySelector('.artifact-hero .artifact-copy');
+  if (!hero) return;
+
+  const title = hero.querySelector('#hero-title');
+  if (title) title.textContent = 'A machine-checkable P versus NP route under public review.';
+
+  const lede = hero.querySelector('.lede');
+  if (lede) {
+    lede.textContent = 'This site mirrors the current status-bound public-review boundary from the source/checker repository. Public theorem emission is disabled while release blockers remain active.';
+  }
+
+  const trace = hero.querySelector('.checker-trace');
+  if (trace) {
+    trace.innerHTML = '<span>pnp:verify</span><span>public theorem emission</span><strong>disabled</strong>';
+  }
+
+  const firstNote = hero.querySelector('.review-note');
+  if (firstNote) {
+    firstNote.innerHTML = '<strong>Current status:</strong> the source/checker stack is under public review, the theorem-emission gate is denied, and independent external acceptance is not claimed.';
+  }
+
+  const panel = hero.querySelector('.boundary-panel');
+  if (panel) {
+    panel.innerHTML = `<div class="boundary-head">
+            <span>Current release boundary</span>
+            <strong>non-activating</strong>
+          </div>
+          <pre>publicTheoremEmissionAllowed = false
+finalTheoremReady = false
+activeFinalNodeIds = []
+remainingBlockers = [
+  "Release.UnrestrictedFinalSoundness",
+  "ExternalReview.Acceptance"
+]</pre>
+          <div class="boundary-ledger">
+            <div><span>Theorem emission</span><strong>disabled</strong></div>
+            <div><span>Gate result</span><strong>denied</strong></div>
+            <div><span>External review</span><strong>not accepted</strong></div>
+            <div><span>Status source</span><strong>pnp:verify</strong></div>
+          </div>`;
+  }
+
+  const actions = hero.querySelector('.hero-actions');
+  if (actions && !actions.querySelector('a[href="status.html"]')) {
+    const statusButton = document.createElement('a');
+    statusButton.className = 'btn primary';
+    statusButton.href = 'status.html';
+    statusButton.textContent = 'View current status';
+    actions.prepend(statusButton);
+  }
+}
+
 ensureStatusLink();
+ensureHomepageStatusBoundary();
 
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {
