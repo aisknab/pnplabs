@@ -1,0 +1,19 @@
+name: public-overclaim-guard
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  public-overclaim-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check active public surfaces for overclaims
+        run: node --test tests/unit/public-overclaim-guard.test.mjs
