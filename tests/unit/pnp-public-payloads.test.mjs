@@ -76,3 +76,21 @@ test('site navigation enhancement exposes the status page', async () => {
   assert.match(script, /textContent = 'Status'/);
   assert.match(script, /ensureStatusLink\(\);/);
 });
+
+test('homepage script rewrites the hero to the current non-activation boundary', async () => {
+  const script = await readFile(new URL('../../assets/main.js', import.meta.url), 'utf8');
+  for (const fragment of [
+    'function ensureHomepageStatusBoundary()',
+    'A machine-checkable P versus NP route under public review.',
+    'Public theorem emission is disabled while release blockers remain active.',
+    'public theorem emission</span><strong>disabled</strong>',
+    'publicTheoremEmissionAllowed = false',
+    'finalTheoremReady = false',
+    'Release.UnrestrictedFinalSoundness',
+    'ExternalReview.Acceptance',
+    'View current status',
+    'ensureHomepageStatusBoundary();'
+  ]) {
+    assert.match(script, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing homepage-boundary script fragment: ${fragment}`);
+  }
+});
