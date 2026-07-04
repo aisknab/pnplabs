@@ -68,3 +68,11 @@ test('status page links every public PNP payload and reviewer command', async ()
     assert.match(html, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing status-page fragment: ${fragment}`);
   }
 });
+
+test('site navigation enhancement exposes the status page', async () => {
+  const script = await readFile(new URL('../../assets/main.js', import.meta.url), 'utf8');
+  assert.match(script, /function ensureStatusLink\(\)/);
+  assert.match(script, /href = 'status\.html'/);
+  assert.match(script, /textContent = 'Status'/);
+  assert.match(script, /ensureStatusLink\(\);/);
+});

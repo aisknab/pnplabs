@@ -6,6 +6,23 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
+
+function ensureStatusLink() {
+  if (!nav || nav.querySelector('a[href="status.html"]')) return;
+  const statusLink = document.createElement('a');
+  statusLink.href = 'status.html';
+  statusLink.textContent = 'Status';
+  if (location.pathname.endsWith('/status.html')) {
+    statusLink.classList.add('active');
+    statusLink.setAttribute('aria-current', 'page');
+  }
+  const homeLink = nav.querySelector('a[href="index.html"]');
+  if (homeLink?.nextSibling) nav.insertBefore(statusLink, homeLink.nextSibling);
+  else nav.prepend(statusLink);
+}
+
+ensureStatusLink();
+
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
