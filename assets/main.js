@@ -73,8 +73,122 @@ remainingBlockers = []</pre>
   }
 }
 
+function currentPageName() {
+  const last = location.pathname.split('/').filter(Boolean).pop();
+  return last || 'index.html';
+}
+
+function rewritePageHero({ eyebrow, title, lede, primaryHref, primaryText, secondaryHref, secondaryText }) {
+  const hero = document.querySelector('.page-hero');
+  if (!hero) return;
+  const eyebrowEl = hero.querySelector('.eyebrow');
+  if (eyebrowEl && eyebrow) eyebrowEl.textContent = eyebrow;
+  const h1 = hero.querySelector('h1');
+  if (h1) h1.textContent = title;
+  const ledeEl = hero.querySelector('.lede');
+  if (ledeEl) ledeEl.textContent = lede;
+  const actions = hero.querySelector('.hero-actions');
+  if (actions) {
+    actions.innerHTML = '';
+    const primary = document.createElement('a');
+    primary.className = 'btn primary';
+    primary.href = primaryHref;
+    primary.textContent = primaryText;
+    actions.append(primary);
+    if (secondaryHref && secondaryText) {
+      const secondary = document.createElement('a');
+      secondary.className = 'btn secondary';
+      secondary.href = secondaryHref;
+      secondary.textContent = secondaryText;
+      actions.append(secondary);
+    }
+  }
+}
+
+function insertAfterPageHero(id, html) {
+  if (document.getElementById(id)) return;
+  const hero = document.querySelector('.page-hero');
+  if (!hero) return;
+  const template = document.createElement('template');
+  template.innerHTML = html.trim();
+  const node = template.content.firstElementChild;
+  hero.insertAdjacentElement('afterend', node);
+}
+
+function ensureActivatedVerificationCopy() {
+  rewritePageHero({
+    eyebrow: 'Activated verification',
+    title: 'Verify the activated P = NP theorem-emission status.',
+    lede: 'Run the source/checker verifier, inspect the activated status payload, and submit reproducible run evidence. External review remains audit evidence, not a theorem premise.',
+    primaryHref: 'public/pnp-status.json',
+    primaryText: 'Open activated status JSON',
+    secondaryHref: 'verification-runs.html',
+    secondaryText: 'Submit a verifier run',
+  });
+  insertAfterPageHero('activated-verification-copy', `<section class="section compact" id="activated-verification-copy">
+      <div class="boundary-panel">
+        <div class="boundary-head"><span>Activated verification boundary</span><strong>checker trust model</strong></div>
+        <pre>publicTheoremEmissionAllowed = true
+publicTheoremStatement = "P = NP"
+remainingBlockers = []
+externalReviewIsMathematicalPremise = false</pre>
+      </div>
+      <div class="grid two path" style="margin-top:1.2rem">
+        <article class="card"><h3>Run the one-command verifier</h3><p>Use <code>npm run pnp:verify</code> in <code>aisknab/pnp</code> to reproduce the repository-level audit trail.</p></article>
+        <article class="card"><h3>Check the activation gates</h3><p>Focused checks include <code>npm run proof:public-theorem-activation</code> and <code>npm run proof:unrestricted-final-soundness-release</code>.</p></article>
+        <article class="card"><h3>Inspect the status payload</h3><p>The active public status surface is <code>public/pnp-status.json</code>, mirrored from the source/checker repository.</p></article>
+        <article class="card"><h3>Submit reproducible evidence</h3><p>Verifier runs can be added to the public run registry as audit and reproducibility evidence.</p></article>
+      </div>
+    </section>`);
+}
+
+function ensureActivatedFAQCopy() {
+  rewritePageHero({
+    eyebrow: 'Activated FAQ',
+    title: 'Activated theorem-status FAQ.',
+    lede: 'Answers here now reflect the activated checker-trust status: public theorem emission is enabled by the accepted proof stack, while independent review remains an audit layer.',
+    primaryHref: 'status.html',
+    primaryText: 'View activated status',
+    secondaryHref: 'public/pnp-status.json',
+    secondaryText: 'Open status JSON',
+  });
+  insertAfterPageHero('activated-faq-copy', `<section class="section compact" id="activated-faq-copy">
+      <div class="section-label">Activated theorem-status FAQ</div>
+      <div class="grid two path">
+        <article class="card"><h3>Does the site now permit the theorem statement?</h3><p>Yes. The activated payload records <code>publicTheoremEmissionAllowed = true</code> and <code>publicTheoremStatement = "P = NP"</code> under the repository checker trust model.</p></article>
+        <article class="card"><h3>Is external review a theorem premise?</h3><p>No. The payload records <code>externalReviewIsMathematicalPremise = false</code>. External review remains invited as reproducibility and audit evidence.</p></article>
+        <article class="card"><h3>What should reviewers run?</h3><p>Start with <code>npm run pnp:verify</code>, then inspect the focused activation scripts and submit reproducible verifier-run evidence.</p></article>
+        <article class="card"><h3>What is the active status source?</h3><p>The active site status is <code>public/pnp-status.json</code>, mirrored from <code>aisknab/pnp</code> after public theorem activation.</p></article>
+      </div>
+    </section>`);
+}
+
+function ensureActivatedReviewCopy() {
+  rewritePageHero({
+    eyebrow: 'Audit and reproducibility',
+    title: 'Reviewer and verifier roles after activation.',
+    lede: 'Public theorem emission is activated under the source/checker trust model. Independent reviewers are invited to reproduce, audit, and challenge the proof stack rather than serve as a theorem premise.',
+    primaryHref: 'verification-runs.html',
+    primaryText: 'Submit verifier run evidence',
+    secondaryHref: 'status.html',
+    secondaryText: 'View activated status',
+  });
+  insertAfterPageHero('activated-review-copy', `<section class="section compact" id="activated-review-copy">
+      <div class="section-label">Post-activation review role</div>
+      <div class="callout"><div><h2>External review remains audit evidence.</h2><p>The current activation state records <code>externalReviewAcceptanceRequiredForEmission = false</code> and <code>externalReviewIsMathematicalPremise = false</code>. Reviewers can still contribute by running the verifier, reporting counterexamples, checking hash-bound artifacts, and submitting reproducible run reports.</p></div><a class="btn primary" href="verification-runs.html">Add a verification run</a></div>
+    </section>`);
+}
+
+function ensureActivatedPageCopy() {
+  const page = currentPageName();
+  if (page === 'verify.html') ensureActivatedVerificationCopy();
+  if (page === 'faq.html') ensureActivatedFAQCopy();
+  if (page === 'review.html') ensureActivatedReviewCopy();
+}
+
 ensureStatusLink();
 ensureHomepageStatusBoundary();
+ensureActivatedPageCopy();
 
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {
