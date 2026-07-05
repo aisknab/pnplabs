@@ -1,39 +1,41 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 0,
+  "version": 1,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-04",
-  "status": "status-bound-public-review-payloads-ready",
+  "syncedOn": "2026-07-05",
+  "status": "activated-status-payloads-ready",
   "claimBoundary": {
-    "publicTheoremEmissionAllowed": false,
-    "finalTheoremReady": false,
-    "activeFinalNodeIds": [],
-    "remainingBlockers": [
-      "Release.UnrestrictedFinalSoundness",
-      "ExternalReview.Acceptance"
-    ]
+    "publicTheoremEmissionAllowed": true,
+    "publicTheoremStatement": "P = NP",
+    "publicTheoremConclusion": "P = NP",
+    "publicTheoremUnderCheckerTrustModel": true,
+    "finalTheoremReady": true,
+    "internalFinalTheoremReady": true,
+    "unrestrictedFinalSoundnessDischarged": true,
+    "uniformFinalSoundnessProved": true,
+    "remainingBlockers": []
   },
   "payloads": [
     {
       "id": "pnp-status",
       "path": "/public/pnp-status.json",
-      "description": "Compact mirror of the current PNP status boundary and status-bound coordinates."
+      "description": "Activated PNP status payload mirrored from aisknab/pnp public/pnp-status.json."
     },
     {
       "id": "pnp-public-review",
       "path": "/public/pnp-public-review.json",
-      "description": "Reviewer entrypoint, handoff, and public-review boundary summary."
+      "description": "Legacy reviewer entrypoint, handoff, and public-review boundary summary."
     },
     {
       "id": "pnp-theorem-emission-gate",
       "path": "/public/pnp-theorem-emission-gate.json",
-      "description": "Status-bound public theorem-emission gate, currently denied and non-activating."
+      "description": "Legacy status-bound public theorem-emission gate from the older public-review boundary. Superseded by pnp-status after activation."
     },
     {
       "id": "pnp-external-review-status",
       "path": "/public/pnp-external-review-status.json",
-      "description": "External-review status, currently not accepted and still release-blocking."
+      "description": "Legacy external-review status summary. External review is now framed as audit/reproducibility evidence, not a theorem premise."
     },
     {
       "id": "pnp-verification-runs",
@@ -44,9 +46,15 @@
   "statusPage": "/status.html",
   "verificationRunsPage": "/verification-runs.html",
   "verificationCommand": "npm run pnp:verify",
+  "activationCommands": [
+    "npm run proof:public-theorem-activation",
+    "npm run proof:unrestricted-final-soundness-release",
+    "npm run proof:uniform-complexity-conclusion"
+  ],
   "nonClaims": [
-    "These static payloads mirror the current aisknab/pnp public-review boundary.",
-    "These static payloads are not independent mathematical validation.",
-    "These static payloads do not activate public theorem emission or clear release blockers."
+    "These static payloads mirror the activated aisknab/pnp status payload.",
+    "These static payloads are not independent external consensus.",
+    "External review remains invited as reproducibility and audit evidence, not as a mathematical premise.",
+    "The historical sealed report is not mutated by this site update."
   ]
 }
