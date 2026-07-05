@@ -108,8 +108,7 @@ function rewritePageHero({ eyebrow, title, lede, primaryHref, primaryText, secon
 function insertAfterPageHero(id, html) {
   if (document.getElementById(id)) return;
   const hero = document.querySelector('.page-hero');
-  const main = document.querySelector('main');
-  if (!hero || !main) return;
+  if (!hero) return;
   const template = document.createElement('template');
   template.innerHTML = html.trim();
   const node = template.content.firstElementChild;
@@ -321,7 +320,7 @@ function updateProgress() {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   const pct = height > 0 ? (scrollTop / height) * 100 : 0;
-  progress.style.width = `${Math.max(0, Math.min(100, pct)}%`;
+  progress.style.width = `${Math.max(0, Math.min(100, pct))}%`;
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
