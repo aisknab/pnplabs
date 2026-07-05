@@ -2,37 +2,44 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 
-const blockers = ['Release.UnrestrictedFinalSoundness', 'ExternalReview.Acceptance'];
-
 async function readJson(path) {
   return JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
 }
 
-function assertNonActivatingBoundary(payload, label) {
+function assertActivatedBoundary(payload, label) {
   const boundary = payload.claimBoundary ?? payload;
-  assert.equal(boundary.publicTheoremEmissionAllowed, false, `${label}: public theorem emission must stay disabled`);
-  assert.equal(boundary.finalTheoremReady, false, `${label}: final theorem must stay not ready`);
-  assert.deepEqual(boundary.activeFinalNodeIds, [], `${label}: active final nodes must stay empty`);
-  assert.deepEqual(boundary.remainingBlockers, blockers, `${label}: release blockers must remain exact`);
+  assert.equal(boundary.publicTheoremEmissionAllowed, true, `${label}: public theorem emission must be activated`);
+  assert.equal(boundary.publicTheoremStatement, 'P = NP', `${label}: theorem statement mismatch`);
+  assert.equal(boundary.publicTheoremConclusion, 'P = NP', `${label}: theorem conclusion mismatch`);
+  assert.equal(boundary.finalTheoremReady, true, `${label}: final theorem must be ready`);
+  assert.equal(boundary.internalFinalTheoremReady, true, `${label}: internal final theorem must be ready`);
+  assert.equal(boundary.unrestrictedFinalSoundnessDischarged, true, `${label}: unrestricted final soundness must be discharged`);
+  assert.deepEqual(boundary.remainingBlockers, [], `${label}: remaining blockers must be empty`);
 }
 
-test('PNP public payloads preserve the non-activation boundary', async () => {
-  const paths = [
-    'public/pnp-index.json',
-    'public/pnp-status.json',
-    'public/pnp-public-review.json',
-    'public/pnp-theorem-emission-gate.json',
-    'public/pnp-external-review-status.json'
-  ];
+test('PNP activated status payloads publish theorem-emission activation', async () => {
+  const status = await readJson('public/pnp-status.json');
+  const index = await readJson('public/pnp-index.json');
 
-  for (const path of paths) {
-    const payload = await readJson(path);
-    assertNonActivatingBoundary(payload, path);
-    assert.equal(payload.sourceRepository, 'https://github.com/aisknab/pnp', `${path}: source repository mismatch`);
-  }
+  assertActivatedBoundary(status, 'public/pnp-status.json');
+  assertActivatedBoundary(index, 'public/pnp-index.json');
+
+  assert.equal(status.kind, 'PNPActivatedStatus0');
+  assert.equal(status.coordinate, 'PNP-ACTIVATED-STATUS-2026-07-05-01');
+  assert.equal(status.publicTheoremUnderCheckerTrustModel, true);
+  assert.equal(status.externalReviewAcceptanceRequiredForEmission, false);
+  assert.equal(status.externalReviewIsMathematicalPremise, false);
+  assert.equal(status.historicalReportProseIsMathematicalPremise, false);
+  assert.deepEqual(status.clearedBlockers, ['Release.UnrestrictedFinalSoundness', 'ExternalReview.Acceptance']);
+  assert.ok(status.acceptedProofStack.includes('PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01'));
+  assert.ok(status.verificationCommands.includes('npm run proof:public-theorem-activation'));
+
+  assert.equal(index.sourceRepository, 'https://github.com/aisknab/pnp');
+  assert.equal(index.status, 'activated-status-payloads-ready');
+  assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-status.json'));
 });
 
-test('the theorem-emission gate payload remains denied', async () => {
+test('legacy theorem-emission gate payload remains explicitly superseded by activated status', async () => {
   const payload = await readJson('public/pnp-theorem-emission-gate.json');
   assert.equal(payload.coordinate, 'PNP-PUBLIC-THEOREM-EMISSION-GATE-2026-06-27-01');
   assert.equal(payload.gate.publicTheoremEmissionGatePassed, false);
@@ -43,16 +50,21 @@ test('the theorem-emission gate payload remains denied', async () => {
   assert.equal(payload.gate.gateIsActivationSurface, false);
 });
 
-test('the external-review payload remains non-accepting', async () => {
+test('legacy external-review payload remains non-accepting but no longer controls activated status', async () => {
   const payload = await readJson('public/pnp-external-review-status.json');
   assert.equal(payload.coordinate, 'PNP-EXTERNAL-REVIEW-STATUS-2026-06-27-01');
   assert.equal(payload.externalReview.externalReviewAcceptanceClaimed, false);
   assert.equal(payload.externalReview.independentReviewAcceptanceConfirmed, false);
   assert.equal(payload.externalReview.externalReviewBlockerStillActive, true);
   assert.equal(payload.externalReview.publicTheoremEmissionAllowedByExternalReview, false);
+
+  const status = await readJson('public/pnp-status.json');
+  assert.equal(status.externalReviewAcceptanceRequiredForEmission, false);
+  assert.equal(status.externalReviewIsMathematicalPremise, false);
+  assert.deepEqual(status.remainingBlockers, []);
 });
 
-test('status page links every public PNP payload and reviewer command', async () => {
+test('status page links every public PNP payload and activated reviewer command', async () => {
   const html = await readFile(new URL('../../status.html', import.meta.url), 'utf8');
   for (const fragment of [
     'public/pnp-index.json',
@@ -61,9 +73,10 @@ test('status page links every public PNP payload and reviewer command', async ()
     'public/pnp-theorem-emission-gate.json',
     'public/pnp-external-review-status.json',
     'npm run pnp:verify',
-    'publicTheoremEmissionAllowed = false',
-    'Release.UnrestrictedFinalSoundness',
-    'ExternalReview.Acceptance'
+    'publicTheoremEmissionAllowed = true',
+    'publicTheoremStatement = "P = NP"',
+    'remainingBlockers = []',
+    'External review remains audit evidence'
   ]) {
     assert.match(html, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing status-page fragment: ${fragment}`);
   }
@@ -77,18 +90,18 @@ test('site navigation enhancement exposes the status page', async () => {
   assert.match(script, /ensureStatusLink\(\);/);
 });
 
-test('homepage script rewrites the hero to the current non-activation boundary', async () => {
+test('homepage script rewrites the hero to the activated theorem boundary', async () => {
   const script = await readFile(new URL('../../assets/main.js', import.meta.url), 'utf8');
   for (const fragment of [
     'function ensureHomepageStatusBoundary()',
-    'A machine-checkable P versus NP route under public review.',
-    'Public theorem emission is disabled while release blockers remain active.',
-    'public theorem emission</span><strong>disabled</strong>',
-    'publicTheoremEmissionAllowed = false',
-    'finalTheoremReady = false',
-    'Release.UnrestrictedFinalSoundness',
-    'ExternalReview.Acceptance',
-    'View current status',
+    'P = NP public theorem emission is activated under the repository checker trust model.',
+    'Public theorem emission is now enabled by the accepted proof stack.',
+    'public theorem emission</span><strong>activated</strong>',
+    'publicTheoremEmissionAllowed = true',
+    'publicTheoremStatement = "P = NP"',
+    'remainingBlockers = []',
+    'External review remains audit evidence',
+    'View activated status',
     'ensureHomepageStatusBoundary();'
   ]) {
     assert.match(script, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing homepage-boundary script fragment: ${fragment}`);
