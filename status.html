@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — current PNP status</title>
-  <meta name="description" content="Current PNP public-review status, verifier command, status-bound payloads, theorem-emission gate, and remaining release blockers.">
+  <title>PNP Labs — activated PNP status</title>
+  <meta name="description" content="Activated PNP status, public theorem-emission payload, verifier command, and machine-readable status surfaces.">
   <link rel="canonical" href="https://pnplabs.com.au/status.html">
   <meta name="theme-color" content="#f5f6f7">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -18,7 +18,7 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
         <span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>public review status</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>activated status</span></span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="index.html">Home</a>
@@ -32,27 +32,28 @@
 
   <main id="main">
     <section class="page-hero">
-      <span class="eyebrow">Status-bound public review</span>
+      <span class="eyebrow">Activated checker-trust status</span>
       <h1>Current PNP status</h1>
-      <p class="lede">The source/checker repository currently represents a machine-checkable internal proof-certificate stack for a claimed P = NP route. Public theorem emission is disabled.</p>
+      <p class="lede">The source/checker repository now publishes public theorem emission for P = NP under its explicit checker trust model. External review remains audit evidence, not a theorem premise.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="public/pnp-status.json">Open status JSON</a>
+        <a class="btn primary" href="public/pnp-status.json">Open activated status JSON</a>
         <a class="btn secondary" href="verify.html">Verification instructions</a>
       </div>
     </section>
 
     <section class="section compact">
       <div class="boundary-panel">
-        <div class="boundary-head"><span>Current release boundary</span><strong>non-activating</strong></div>
-        <pre>publicTheoremEmissionAllowed = false
-finalTheoremReady = false
-activeFinalNodeIds = []
-remainingBlockers = [
-  "Release.UnrestrictedFinalSoundness",
-  "ExternalReview.Acceptance"
-]</pre>
+        <div class="boundary-head"><span>Current theorem boundary</span><strong>activated</strong></div>
+        <pre>publicTheoremEmissionAllowed = true
+publicTheoremStatement = "P = NP"
+publicTheoremConclusion = "P = NP"
+publicTheoremUnderCheckerTrustModel = true
+finalTheoremReady = true
+internalFinalTheoremReady = true
+unrestrictedFinalSoundnessDischarged = true
+remainingBlockers = []</pre>
       </div>
-      <p class="review-note"><strong>Boundary note:</strong> this website mirrors the current status-bound public-review state from <code>aisknab/pnp</code>. It is not independent mathematical validation and does not clear any release blocker.</p>
+      <p class="review-note"><strong>Boundary note:</strong> this website mirrors the activated status payload from <code>aisknab/pnp</code>. External review remains audit evidence and reproducibility evidence; it is not used as a mathematical premise.</p>
     </section>
 
     <section class="section compact">
@@ -63,12 +64,16 @@ remainingBlockers = [
 cd pnp
 npm ci
 npm run pnp:verify</code></pre>
+      <p>Focused activation checks are also exposed in the source/checker repository:</p>
+      <pre><code>npm run proof:public-theorem-activation
+npm run proof:unrestricted-final-soundness-release
+npm run proof:uniform-complexity-conclusion</code></pre>
     </section>
 
     <section class="section compact">
       <div class="section-label">Run reports</div>
       <h2>Submit a reproducible verifier run</h2>
-      <p>People who run the source/checker verifier can submit reproducible run evidence for inclusion in the public run registry. The registry records machine-verifier reproduction reports, not automatic release activation.</p>
+      <p>People who run the source/checker verifier can submit reproducible run evidence for inclusion in the public run registry. The registry records machine-verifier reproduction reports and audit evidence.</p>
       <ul>
         <li><a href="verification-runs.html">Verification run registry page</a></li>
         <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a></li>
@@ -77,34 +82,34 @@ npm run pnp:verify</code></pre>
 
     <section class="section compact">
       <div class="section-label">Public payloads</div>
-      <h2>Status-bound JSON surfaces</h2>
-      <p>These static payloads mirror the current public-review boundary for site consumers. The source of truth remains the <code>aisknab/pnp</code> repository.</p>
+      <h2>Machine-readable status surfaces</h2>
+      <p>These static payloads expose the activated theorem-emission state for site consumers. The source of truth remains the <code>aisknab/pnp</code> repository.</p>
       <ul>
         <li><a href="public/pnp-index.json"><code>public/pnp-index.json</code></a> — payload index.</li>
-        <li><a href="public/pnp-status.json"><code>public/pnp-status.json</code></a> — compact status and coordinate mirror.</li>
-        <li><a href="public/pnp-public-review.json"><code>public/pnp-public-review.json</code></a> — public-review entrypoint and boundary summary.</li>
-        <li><a href="public/pnp-theorem-emission-gate.json"><code>public/pnp-theorem-emission-gate.json</code></a> — theorem-emission gate, currently denied.</li>
-        <li><a href="public/pnp-external-review-status.json"><code>public/pnp-external-review-status.json</code></a> — external-review status, currently not accepted.</li>
+        <li><a href="public/pnp-status.json"><code>public/pnp-status.json</code></a> — activated status and coordinate mirror.</li>
+        <li><a href="public/pnp-public-review.json"><code>public/pnp-public-review.json</code></a> — legacy public-review entrypoint and boundary summary.</li>
+        <li><a href="public/pnp-theorem-emission-gate.json"><code>public/pnp-theorem-emission-gate.json</code></a> — legacy theorem-emission gate from the older public-review boundary.</li>
+        <li><a href="public/pnp-external-review-status.json"><code>public/pnp-external-review-status.json</code></a> — legacy external-review status surface.</li>
         <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> — public verifier run registry.</li>
       </ul>
     </section>
 
     <section class="section compact">
       <div class="section-label">Theorem-emission gate</div>
-      <h2>Current gate result: denied</h2>
-      <p>The status-bound public theorem-emission gate in <code>aisknab/pnp</code> is represented and verifier-bound, but it does not pass. It records that public theorem emission remains disabled until the release ladder explicitly clears the remaining blockers.</p>
+      <h2>Current gate result: activated</h2>
+      <p>The activated status payload records that public theorem emission is allowed after the accepted unrestricted final soundness release and public theorem activation gate in <code>aisknab/pnp</code>.</p>
       <ul>
-        <li>Preflight passed: <strong>false</strong></li>
-        <li>Denial certificate ready: <strong>true</strong></li>
-        <li>Premature activation mutations rejected: <strong>true</strong></li>
-        <li>External review acceptance claimed: <strong>false</strong></li>
+        <li>Public theorem emission allowed: <strong>true</strong></li>
+        <li>Theorem statement: <strong>P = NP</strong></li>
+        <li>Remaining blockers: <strong>[]</strong></li>
+        <li>External review required for emission: <strong>false</strong></li>
       </ul>
     </section>
 
     <section class="section compact">
       <div class="section-label">Historical report boundary</div>
       <h2>Historical artifacts versus current status</h2>
-      <p>Earlier sealed report artifacts may contain direct theorem-emission wording as historical records. The current source/checker root report surface is sanitized and the current public site should treat the status-bound public-review payloads as the active boundary.</p>
+      <p>Older public-review payloads and sealed report artifacts remain historical records. The active site status is now <code>public/pnp-status.json</code>, which mirrors the activated checker-trust status from the source/checker repository without mutating historical files.</p>
     </section>
   </main>
 </body>

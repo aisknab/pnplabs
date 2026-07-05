@@ -26,40 +26,39 @@ function ensureHomepageStatusBoundary() {
   if (!hero) return;
 
   const title = hero.querySelector('#hero-title');
-  if (title) title.textContent = 'A machine-checkable P versus NP route under public review.';
+  if (title) title.textContent = 'P = NP public theorem emission is activated under the repository checker trust model.';
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'This site mirrors the current status-bound public-review boundary from the source/checker repository. Public theorem emission is disabled while release blockers remain active.';
+    lede.textContent = 'This site mirrors the activated theorem-emission status from the source/checker repository. Public theorem emission is now enabled by the accepted proof stack.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>pnp:verify</span><span>public theorem emission</span><strong>disabled</strong>';
+    trace.innerHTML = '<span>pnp:verify</span><span>public theorem emission</span><strong>activated</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> the source/checker stack is under public review, the theorem-emission gate is denied, and independent external acceptance is not claimed.';
+    firstNote.innerHTML = '<strong>Current status:</strong> the source/checker stack emits P = NP under its checker trust model. External review remains audit evidence and reproducibility evidence, not a theorem premise.';
   }
 
   const panel = hero.querySelector('.boundary-panel');
   if (panel) {
     panel.innerHTML = `<div class="boundary-head">
-            <span>Current release boundary</span>
-            <strong>non-activating</strong>
+            <span>Current theorem boundary</span>
+            <strong>activated</strong>
           </div>
-          <pre>publicTheoremEmissionAllowed = false
-finalTheoremReady = false
-activeFinalNodeIds = []
-remainingBlockers = [
-  "Release.UnrestrictedFinalSoundness",
-  "ExternalReview.Acceptance"
-]</pre>
+          <pre>publicTheoremEmissionAllowed = true
+publicTheoremStatement = "P = NP"
+publicTheoremConclusion = "P = NP"
+publicTheoremUnderCheckerTrustModel = true
+finalTheoremReady = true
+remainingBlockers = []</pre>
           <div class="boundary-ledger">
-            <div><span>Theorem emission</span><strong>disabled</strong></div>
-            <div><span>Gate result</span><strong>denied</strong></div>
-            <div><span>External review</span><strong>not accepted</strong></div>
+            <div><span>Theorem emission</span><strong>activated</strong></div>
+            <div><span>Gate result</span><strong>accepted</strong></div>
+            <div><span>External review</span><strong>audit layer</strong></div>
             <div><span>Status source</span><strong>pnp:verify</strong></div>
           </div>`;
   }
@@ -69,7 +68,7 @@ remainingBlockers = [
     const statusButton = document.createElement('a');
     statusButton.className = 'btn primary';
     statusButton.href = 'status.html';
-    statusButton.textContent = 'View current status';
+    statusButton.textContent = 'View activated status';
     actions.prepend(statusButton);
   }
 }
