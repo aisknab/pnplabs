@@ -15,14 +15,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Compare public payloads with upstream PNP status
+      - name: Compare activated public payload with upstream PNP status
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
           import { readFile } from 'node:fs/promises';
 
           const upstreamBase = 'https://raw.githubusercontent.com/aisknab/pnp/main';
-          const blockers = ['Release.UnrestrictedFinalSoundness', 'ExternalReview.Acceptance'];
+          const activeFinalNodeIds = [
+            'UFS-001-InputFamilyUniformity',
+            'UFS-002-LockedNANDConstructionUniformPolynomial',
+            'UFS-003-ThresholdEquivalenceAllInputs',
+            'UFS-004-ResidualBandMinimizerUniformPolynomial',
+            'UFS-005-ZeroSlackContradictionUniform',
+            'UFS-006-NoHiddenOracleSemanticCompleteness',
+            'UFS-007-ComplexityConclusionUniform',
+            'UFS-008-ReleaseTransitionFromProofOnly',
+            'PUBLIC-THEOREM-ACTIVATION',
+          ];
 
           async function localJson(path) {
             return JSON.parse(await readFile(path, 'utf8'));
@@ -35,48 +45,48 @@ jobs:
             return res.json();
           }
 
-          function assertBoundary(boundary, label) {
-            assert.equal(boundary.publicTheoremEmissionAllowed, false, `${label}: public theorem emission must stay disabled`);
-            assert.equal(boundary.finalTheoremReady, false, `${label}: final theorem must stay not ready`);
-            assert.deepEqual(boundary.activeFinalNodeIds, [], `${label}: active final nodes must stay empty`);
-            assert.deepEqual(boundary.remainingBlockers, blockers, `${label}: blockers must remain exact`);
+          function stableStringify(value) {
+            if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
+            if (value !== null && typeof value === 'object') return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(',')}}`;
+            return JSON.stringify(value);
           }
 
-          const [siteStatus, siteReview, siteGate, siteExternal, upstreamStatus, upstreamGate, upstreamExternal] = await Promise.all([
+          function assertActivatedBoundary(payload, label) {
+            assert.equal(payload.kind, 'PNPActivatedStatus0', `${label}: kind mismatch`);
+            assert.equal(payload.coordinate, 'PNP-ACTIVATED-STATUS-2026-07-05-01', `${label}: coordinate mismatch`);
+            assert.equal(payload.status, 'public-theorem-emission-activated', `${label}: status mismatch`);
+            assert.equal(payload.publicTheoremActivationCoordinate, 'PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01', `${label}: activation coordinate mismatch`);
+            assert.equal(payload.publicTheoremEmissionAllowed, true, `${label}: public theorem emission must be activated`);
+            assert.equal(payload.publicTheoremStatement, 'P = NP', `${label}: theorem statement mismatch`);
+            assert.equal(payload.publicTheoremConclusion, 'P = NP', `${label}: theorem conclusion mismatch`);
+            assert.equal(payload.publicTheoremUnderCheckerTrustModel, true, `${label}: checker-trust flag mismatch`);
+            assert.equal(payload.finalTheoremReady, true, `${label}: final theorem must be ready`);
+            assert.equal(payload.internalFinalTheoremReady, true, `${label}: internal final theorem must be ready`);
+            assert.equal(payload.unrestrictedFinalSoundnessDischarged, true, `${label}: unrestricted final soundness must be discharged`);
+            assert.equal(payload.uniformFinalSoundnessProved, true, `${label}: uniform final soundness must be proved`);
+            assert.equal(payload.externalReviewAcceptanceRequiredForEmission, false, `${label}: external review must not be required for emission`);
+            assert.equal(payload.externalReviewIsMathematicalPremise, false, `${label}: external review must not be a mathematical premise`);
+            assert.equal(payload.historicalReportProseIsMathematicalPremise, false, `${label}: historical report prose must not be a premise`);
+            assert.deepEqual(payload.remainingBlockers, [], `${label}: blockers must be empty`);
+            assert.deepEqual(payload.activeFinalNodeIds, activeFinalNodeIds, `${label}: active final nodes mismatch`);
+          }
+
+          const [siteStatus, index, upstreamStatus] = await Promise.all([
             localJson('public/pnp-status.json'),
-            localJson('public/pnp-public-review.json'),
-            localJson('public/pnp-theorem-emission-gate.json'),
-            localJson('public/pnp-external-review-status.json'),
-            upstreamJson('PNP_STATUS.json'),
-            upstreamJson('release/PUBLIC_THEOREM_EMISSION_GATE.json'),
-            upstreamJson('review/EXTERNAL_REVIEW_STATUS.json')
+            localJson('public/pnp-index.json'),
+            upstreamJson('public/pnp-status.json'),
           ]);
 
-          assertBoundary(siteStatus, 'site status payload');
-          assertBoundary(siteReview.claimBoundary, 'site public-review payload');
-          assertBoundary(siteGate.claimBoundary, 'site theorem-emission gate payload');
-          assertBoundary(siteExternal.claimBoundary, 'site external-review payload');
-          assertBoundary(upstreamStatus, 'upstream PNP_STATUS.json');
-          assertBoundary(upstreamGate.claimBoundary, 'upstream theorem-emission gate');
-          assertBoundary(upstreamExternal.claimBoundary, 'upstream external-review status');
+          assertActivatedBoundary(siteStatus, 'site activated status payload');
+          assertActivatedBoundary(upstreamStatus, 'upstream activated status payload');
 
-          const coordinatePairs = [
-            ['publicTheoremEmissionGateCoordinate', siteGate.coordinate, upstreamStatus.publicTheoremEmissionGateCoordinate],
-            ['externalReviewStatusCoordinate', siteExternal.coordinate, upstreamStatus.externalReviewStatusCoordinate],
-            ['publicReviewBoundaryCoordinate', siteReview.coordinates.publicReviewBoundaryCoordinate, upstreamStatus.publicReviewBoundaryCoordinate],
-            ['publicReviewEntrypointCoordinate', siteReview.coordinates.publicReviewEntrypointCoordinate, upstreamStatus.publicReviewEntrypointCoordinate],
-            ['section22DirectBindingRunnerCoordinate', siteReview.coordinates.section22DirectBindingRunnerCoordinate, upstreamStatus.section22DirectBindingRunnerCoordinate]
-          ];
+          assert.equal(stableStringify(siteStatus), stableStringify(upstreamStatus), 'site activated status payload drifted from upstream pnp/public/pnp-status.json');
 
-          for (const [name, site, upstream] of coordinatePairs) {
-            assert.equal(site, upstream, `${name}: site payload drifted from upstream PNP_STATUS.json`);
-          }
+          assert.equal(index.status, 'activated-status-payloads-ready', 'index status mismatch');
+          assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, true, 'index theorem emission must be activated');
+          assert.equal(index.claimBoundary.publicTheoremStatement, 'P = NP', 'index theorem statement mismatch');
+          assert.deepEqual(index.claimBoundary.remainingBlockers, [], 'index remaining blockers must be empty');
+          assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-status.json'), 'index must include pnp-status payload');
 
-          assert.equal(siteGate.gate.publicTheoremEmissionGatePassed, upstreamGate.publicTheoremEmissionGatePassed, 'gate pass flag drift');
-          assert.equal(siteGate.gate.publicTheoremEmissionDenied, upstreamGate.publicTheoremEmissionDenied, 'gate denial flag drift');
-          assert.equal(siteGate.gate.publicTheoremEmissionAllowedByGate, upstreamGate.publicTheoremEmissionAllowedByGate, 'gate theorem-emission flag drift');
-          assert.equal(siteExternal.externalReview.externalReviewAcceptanceClaimed, upstreamExternal.externalReviewAcceptanceClaimed, 'external-review acceptance flag drift');
-          assert.equal(siteExternal.externalReview.independentReviewAcceptanceConfirmed, upstreamExternal.independentReviewAcceptanceConfirmed, 'independent-review confirmation flag drift');
-
-          console.log('PNP upstream status consistency accepted');
+          console.log('Activated PNP upstream status consistency accepted');
           NODE
