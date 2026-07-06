@@ -1,12 +1,12 @@
-name: PNP verification run report
-description: Report a reproducible run of the PNP source/checker verifier.
-title: "PNP verification run: <handle> <YYYY-MM-DD>"
+name: PNP activated verification run report
+description: Report a reproducible run of the PNP source/checker verifier and activated theorem-emission status.
+title: "PNP activated verification run: <handle> <YYYY-MM-DD>"
 labels: ["pnp-verification-run"]
 body:
   - type: markdown
     attributes:
       value: |
-        Use this form after cloning `aisknab/pnp` and running the verifier.
+        Use this form after cloning `aisknab/pnp`, running the verifier, and checking the activated status payload.
 
         Primary command:
 
@@ -17,7 +17,16 @@ body:
         npm run pnp:verify
         ```
 
-        A run report records reproducible machine evidence. It is not, by itself, theorem activation or release-blocker clearance.
+        Focused activation checks:
+
+        ```bash
+        npm run proof:activated-pnp-status
+        npm run proof:public-theorem-activation
+        npm run proof:unrestricted-final-soundness-release
+        npm run proof:uniform-complexity-conclusion
+        ```
+
+        A run report records reproducible machine evidence for the activated checker-trust status. It is not, by itself, independent external consensus or peer-review acceptance.
 
   - type: input
     id: runner
@@ -32,7 +41,7 @@ body:
     id: date-utc
     attributes:
       label: Run date in UTC
-      placeholder: "2026-07-04"
+      placeholder: "2026-07-06"
     validations:
       required: true
 
@@ -61,12 +70,16 @@ body:
     id: commands
     attributes:
       label: Commands run
-      description: Include every command needed to reproduce your run.
+      description: Include every command needed to reproduce your run, including any focused activation checks.
       value: |
         git clone https://github.com/aisknab/pnp.git
         cd pnp
         npm ci
         npm run pnp:verify
+        npm run proof:activated-pnp-status
+        npm run proof:public-theorem-activation
+        npm run proof:unrestricted-final-soundness-release
+        npm run proof:uniform-complexity-conclusion
     validations:
       required: true
 
@@ -76,19 +89,49 @@ body:
       label: Verifier result
       description: Paste the final JSON summary or the relevant final lines from `artifacts/pnp-verify-all/latest-verdict.json`.
       placeholder: |
-        tag:
+        tag: accept
         claimStatus:
-        publicTheoremEmissionAllowed:
-        finalTheoremReady:
-        remainingBlockers:
+        publicTheoremEmissionAllowed: true
+        publicTheoremStatement: P = NP
+        publicTheoremConclusion: P = NP
+        finalTheoremReady: true
+        unrestrictedFinalSoundnessDischarged: true
+        remainingBlockers: []
     validations:
       required: true
+
+  - type: textarea
+    id: activated-status
+    attributes:
+      label: Activated status payload fields
+      description: Paste the key fields from `status/ACTIVATED_PNP_STATUS.json` or `public/pnp-status.json` in the source/checker checkout.
+      placeholder: |
+        kind: PNPActivatedStatus0
+        coordinate: PNP-ACTIVATED-STATUS-2026-07-05-01
+        publicTheoremActivationCoordinate: PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01
+        externalReviewIsMathematicalPremise: false
+        statusPayloadSha256:
+    validations:
+      required: true
+
+  - type: textarea
+    id: proof-script-outputs
+    attributes:
+      label: Focused proof-script outputs
+      description: Paste accept summaries, JSON paths, CI artifact links, or SHA-256 digests for the focused activation scripts if run separately.
+      placeholder: |
+        proof:activated-pnp-status:
+        proof:public-theorem-activation:
+        proof:unrestricted-final-soundness-release:
+        proof:uniform-complexity-conclusion:
+    validations:
+      required: false
 
   - type: textarea
     id: artifacts
     attributes:
       label: Logs or artifact links
-      description: Attach logs, CI run links, commit links, or checksums. Do not paste secrets.
+      description: Attach logs, CI run links, commit links, checksums, or artifact links. Do not paste secrets.
     validations:
       required: false
 
@@ -99,7 +142,9 @@ body:
       options:
         - label: I ran the commands above or an equivalent documented command sequence.
           required: true
-        - label: I understand this report records a verifier run and is not automatically theorem activation or release-blocker clearance.
+        - label: I understand this report records a verifier run and is not independent external consensus or peer-review acceptance.
+          required: true
+        - label: I understand external review is audit evidence and not a mathematical premise for theorem emission.
           required: true
         - label: I am willing for my submitted name or handle to be listed in the public verification-run registry if accepted.
           required: true
