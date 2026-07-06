@@ -28,7 +28,7 @@
       <span class="eyebrow">Activated public reproducibility</span>
       <h1>Activated verification run registry</h1>
       <p class="lede">Clone the source/checker repository, run the verifier, reproduce the activated theorem-emission status, and submit reproducible run evidence.</p>
-      <div class="hero-actions"><a class="btn primary" href="public/pnp-verification-runs.json">Open registry JSON</a><a class="btn secondary" href="verify.html">Verification instructions</a></div>
+      <div class="hero-actions"><a class="btn primary" href="public/pnp-verification-runs.json">Open registry JSON</a><a class="btn secondary" href="verifier-run-digests.html">Compare run digests</a></div>
     </section>
     <section class="section compact">
       <div class="section-label">Run command</div>
@@ -57,6 +57,13 @@ npm run pnp:normalize-run -- --write imports/pnp-verifier-runs/&lt;record&gt;.js
 npm run pnp:import-run -- --check imports/pnp-verifier-runs/&lt;record&gt;.json public/pnp-verification-runs.json
 npm run pnp:import-run -- --write imports/pnp-verifier-runs/&lt;record&gt;.json public/pnp-verification-runs.json</code></pre>
       <p>The normalizer stores <code>normalizedDigests</code> with <code>runRecordNormalizedSha256</code>, <code>verdictNormalizedSha256</code>, <code>activatedStatusNormalizedSha256</code>, <code>proofScriptOutputsNormalizedSha256</code>, and <code>artifactsOrLogsNormalizedSha256</code>. It normalizes timestamps, line endings, ANSI escapes, blank lines, and trailing whitespace so logs can be compared across CI providers.</p>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Digest comparison</div>
+      <h2>Compare normalized digests between runs</h2>
+      <p>The comparison page explains how two activated run records are compared field-by-field using the digest policy <code>PNPVerifierRunDigestComparison0</code>.</p>
+      <pre><code>npm run pnp:compare-runs -- --json &lt;left-run.json&gt; &lt;right-run.json&gt;</code></pre>
+      <p><a href="verifier-run-digests.html">Open the verifier-run digest comparison page</a> or inspect <a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a>.</p>
     </section>
     <section class="section compact">
       <div class="section-label">Registry status</div>

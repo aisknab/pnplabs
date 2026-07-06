@@ -1,7 +1,7 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 4,
-  "status": "activated-verification-run-registry-normalized-import-ready",
+  "version": 5,
+  "status": "activated-verification-run-registry-comparison-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
@@ -60,6 +60,22 @@
       "proofScriptOutputsNormalizedSha256",
       "artifactsOrLogsNormalizedSha256"
     ]
+  },
+  "comparisonWorkflow": {
+    "kind": "PNPVerifierRunDigestComparison0",
+    "status": "ready",
+    "page": "verifier-run-digests.html",
+    "payload": "public/pnp-verifier-run-digest-comparison.json",
+    "tool": "tools/compare-pnp-verifier-runs.mjs",
+    "command": "npm run pnp:compare-runs -- --json <left-run.json> <right-run.json>",
+    "defaultRequiredDigestKeys": [
+      "verdictNormalizedSha256",
+      "activatedStatusNormalizedSha256",
+      "proofScriptOutputsNormalizedSha256"
+    ],
+    "comparesStatusPayloadDigest": true,
+    "comparesPnpCommit": true,
+    "externalReviewIsMathematicalPremise": false
   },
   "importWorkflow": {
     "kind": "PNPVerifierRunImportWorkflow0",
