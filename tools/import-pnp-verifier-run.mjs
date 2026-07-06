@@ -5,6 +5,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
 
+import { AttachPNPActivatedRunRecordDigests0 } from './normalize-pnp-verifier-run.mjs';
+
 const REGISTRY_PATH = 'public/pnp-verification-runs.json';
 const ACTIVATED_STATUS_COORDINATE = 'PNP-ACTIVATED-STATUS-2026-07-05-01';
 const PUBLIC_ACTIVATION_COORDINATE = 'PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01';
@@ -52,6 +54,10 @@ export function ValidatePNPActivatedRunRecord0(record) {
   if (!Array.isArray(record.nonClaims) || record.nonClaims.length < 2) return reject0('RunRecord.NonClaims', ['nonClaims'], 'nonClaims must document record scope');
   const nonClaimText = record.nonClaims.join('\n');
   if (!/not an external-consensus claim/i.test(nonClaimText)) return reject0('RunRecord.NonClaimsExternalConsensus', ['nonClaims'], 'nonClaims must state the record is not an external-consensus claim');
+  if (record.normalizedDigests !== undefined) {
+    const digestCheck = validateNormalizedDigests0(record.normalizedDigests);
+    if (digestCheck.tag === 'reject') return digestCheck;
+  }
   return { tag: 'accept', recordId: record.recordId, statusPayloadSha256: record.statusPayloadSha256 };
 }
 
@@ -79,12 +85,21 @@ export function ImportPNPActivatedRunRecord0(registry, record, options = {}) {
   const recordCheck = ValidatePNPActivatedRunRecord0(record);
   if (recordCheck.tag === 'reject') return recordCheck;
   if (registry.runs.some((existing) => existing.recordId === record.recordId)) return reject0('ImportRun.DuplicateRecordId', ['runs', record.recordId], 'run record already exists');
+  const attach = AttachPNPActivatedRunRecordDigests0(record);
+  if (attach.tag === 'reject') return attach;
   const next = structuredClone0(registry);
   next.version = Number.isSafeInteger(next.version) ? next.version + 1 : 1;
   next.status = 'activated-verification-run-registry-imported';
   next.syncedOn = options.syncedOn ?? next.syncedOn;
-  next.runs.push(record);
-  return { tag: 'accept', registry: next, importedRecordId: record.recordId, runCount: next.runs.length, registrySha256: sha256Text0(stableStringify0(next)) };
+  next.runs.push(attach.record);
+  return {
+    tag: 'accept',
+    registry: next,
+    importedRecordId: record.recordId,
+    runCount: next.runs.length,
+    normalizedDigests: attach.normalizedDigests,
+    registrySha256: sha256Text0(stableStringify0(next)),
+  };
 }
 
 async function main0() {
@@ -126,5 +141,6 @@ function structuredClone0(value) { return JSON.parse(JSON.stringify(value)); }
 function normalizeError0(error) { return { name: error?.name ?? 'Error', message: error?.message ?? String(error), code: error?.code ?? null }; }
 function validateVerdict0(verdict) { if (!plain0(verdict)) return reject0('RunRecord.VerdictShape', ['verdict'], 'verdict must be an object'); const exact = { tag: 'accept', publicTheoremEmissionAllowed: true, publicTheoremStatement: 'P = NP', publicTheoremConclusion: 'P = NP', finalTheoremReady: true, unrestrictedFinalSoundnessDischarged: true }; for (const [key, expected] of Object.entries(exact)) if (verdict[key] !== expected) return reject0('RunRecord.VerdictField', ['verdict', key], 'verdict field mismatch', { expected, actual: verdict[key] }); if (!sameArray0(verdict.remainingBlockers, [])) return reject0('RunRecord.VerdictBlockers', ['verdict', 'remainingBlockers'], 'verdict remaining blockers must be empty', { actual: verdict.remainingBlockers }); return { tag: 'accept' }; }
 function validateActivatedStatus0(status) { if (!plain0(status)) return reject0('RunRecord.ActivatedStatusShape', ['activatedStatus'], 'activated status must be an object'); const exact = { kind: 'PNPActivatedStatus0', coordinate: ACTIVATED_STATUS_COORDINATE, publicTheoremActivationCoordinate: PUBLIC_ACTIVATION_COORDINATE, unrestrictedFinalSoundnessReleaseCoordinate: RELEASE_COORDINATE, externalReviewIsMathematicalPremise: false }; for (const [key, expected] of Object.entries(exact)) if (status[key] !== expected) return reject0('RunRecord.ActivatedStatusField', ['activatedStatus', key], 'activated status field mismatch', { expected, actual: status[key] }); return { tag: 'accept' }; }
+function validateNormalizedDigests0(value) { if (!plain0(value)) return reject0('RunRecord.NormalizedDigestShape', ['normalizedDigests'], 'normalizedDigests must be an object'); if (value.policy !== 'PNPActivatedRunDigestNormalization0') return reject0('RunRecord.NormalizedDigestPolicy', ['normalizedDigests', 'policy'], 'normalized digest policy mismatch', { actual: value.policy }); for (const key of ['runRecordNormalizedSha256', 'verdictNormalizedSha256', 'activatedStatusNormalizedSha256', 'proofScriptOutputsNormalizedSha256', 'artifactsOrLogsNormalizedSha256']) if (typeof value[key] !== 'string' || !/^[0-9a-f]{64}$/u.test(value[key])) return reject0('RunRecord.NormalizedDigestHex', ['normalizedDigests', key], 'normalized digest must be lowercase SHA-256 hex', { actual: value[key] }); return { tag: 'accept' }; }
 
 if (import.meta.url === `file://${process.argv[1]}`) main0();
