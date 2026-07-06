@@ -12,5 +12,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Unit, negative, example, reproducibility, and docs checks
-        run: npm test
+      - name: Public payload unit tests
+        run: node --test tests/unit/pnp-public-payloads.test.mjs
+      - name: Activated copy unit tests
+        run: node --test tests/unit/pnp-activated-copy-refresh.test.mjs
+      - name: Activated overclaim guard unit tests
+        run: node --test tests/unit/pnp-activated-overclaim-guard.test.mjs
+      - name: Activated verification-run schema unit tests
+        run: node --test tests/unit/pnp-activated-verification-run-schema.test.mjs
+      - name: Remaining unit tests
+        run: |
+          shopt -s nullglob
+          files=()
+          for f in tests/unit/*.test.mjs; do
+            case "$f" in
+              tests/unit/pnp-public-payloads.test.mjs|tests/unit/pnp-activated-copy-refresh.test.mjs|tests/unit/pnp-activated-overclaim-guard.test.mjs|tests/unit/pnp-activated-verification-run-schema.test.mjs) ;;
+              *) files+=("$f") ;;
+            esac
+          done
+          if [ "${#files[@]}" -gt 0 ]; then
+            node --test "${files[@]}"
+          fi
+      - name: Release seal and minimal examples
+        run: npm run repro:smoke
+      - name: Negative fixture tests
+        run: npm run test:negative
+      - name: Documentation link checks
+        run: npm run test:docs

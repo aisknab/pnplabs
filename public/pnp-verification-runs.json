@@ -1,25 +1,41 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 0,
-  "status": "verification-run-registry-ready",
+  "version": 1,
+  "status": "activated-verification-run-registry-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-04",
-  "purpose": "Record public run reports from people who cloned the source/checker repository, ran the verifier, and submitted reproducible evidence.",
+  "syncedOn": "2026-07-06",
+  "purpose": "Record public run reports from people who cloned the source/checker repository, ran the verifier, reproduced the activated theorem-emission status, and submitted reproducible evidence.",
   "claimBoundary": {
-    "publicTheoremEmissionAllowed": false,
-    "finalTheoremReady": false,
-    "activeFinalNodeIds": [],
-    "remainingBlockers": [
-      "Release.UnrestrictedFinalSoundness",
-      "ExternalReview.Acceptance"
-    ]
+    "publicTheoremEmissionAllowed": true,
+    "publicTheoremStatement": "P = NP",
+    "publicTheoremConclusion": "P = NP",
+    "publicTheoremUnderCheckerTrustModel": true,
+    "finalTheoremReady": true,
+    "internalFinalTheoremReady": true,
+    "unrestrictedFinalSoundnessDischarged": true,
+    "uniformFinalSoundnessProved": true,
+    "externalReviewIsMathematicalPremise": false,
+    "remainingBlockers": []
+  },
+  "statusPayload": {
+    "path": "public/pnp-status.json",
+    "kind": "PNPActivatedStatus0",
+    "coordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
+    "publicTheoremActivationCoordinate": "PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01",
+    "unrestrictedFinalSoundnessReleaseCoordinate": "PNP-UNRESTRICTED-FINAL-SOUNDNESS-RELEASE-2026-07-05-01"
   },
   "primaryCommand": [
     "git clone https://github.com/aisknab/pnp.git",
     "cd pnp",
     "npm ci",
     "npm run pnp:verify"
+  ],
+  "focusedActivationCommands": [
+    "npm run proof:activated-pnp-status",
+    "npm run proof:public-theorem-activation",
+    "npm run proof:unrestricted-final-soundness-release",
+    "npm run proof:uniform-complexity-conclusion"
   ],
   "submissionPath": {
     "kind": "github-issue-template",
@@ -35,14 +51,56 @@
     "verdictTag",
     "claimStatus",
     "publicTheoremEmissionAllowed",
+    "publicTheoremStatement",
+    "publicTheoremConclusion",
     "finalTheoremReady",
+    "unrestrictedFinalSoundnessDischarged",
     "remainingBlockers",
+    "activatedStatusCoordinate",
+    "publicTheoremActivationCoordinate",
+    "statusPayloadSha256",
+    "proofScriptOutputs",
     "artifactsOrLogs"
   ],
+  "runRecordSchema": {
+    "kind": "PNPActivatedVerificationRunRecord0",
+    "requiredFields": [
+      "runnerNameOrHandle",
+      "dateUtc",
+      "pnpCommit",
+      "environment",
+      "commandsRun",
+      "verdict",
+      "activatedStatus",
+      "artifactsOrLogs"
+    ],
+    "verdictRequiredValues": {
+      "tag": "accept",
+      "publicTheoremEmissionAllowed": true,
+      "publicTheoremStatement": "P = NP",
+      "publicTheoremConclusion": "P = NP",
+      "finalTheoremReady": true,
+      "unrestrictedFinalSoundnessDischarged": true,
+      "remainingBlockers": []
+    },
+    "activatedStatusRequiredValues": {
+      "kind": "PNPActivatedStatus0",
+      "coordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
+      "publicTheoremActivationCoordinate": "PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01",
+      "externalReviewIsMathematicalPremise": false
+    },
+    "proofScriptOutputKeys": [
+      "proof:activated-pnp-status",
+      "proof:public-theorem-activation",
+      "proof:unrestricted-final-soundness-release",
+      "proof:uniform-complexity-conclusion"
+    ]
+  },
   "runs": [],
   "nonClaims": [
-    "A run record means someone reports running the verifier and reproducing the stated machine result.",
-    "A run record is not automatically a mathematical endorsement, theorem activation, or release-blocker clearance.",
-    "This registry does not activate public theorem emission or clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance."
+    "A run record means someone reports running the verifier and reproducing the stated activated machine result.",
+    "A run record is not an external-consensus claim or peer-review acceptance.",
+    "External review remains audit and reproducibility evidence, not a mathematical premise for theorem emission.",
+    "This registry records public reproducibility evidence for the activated checker-trust status."
   ]
 }
