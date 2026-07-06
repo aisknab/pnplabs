@@ -65,13 +65,15 @@ test('comparison matrix rejects duplicate record identifiers', async () => {
   assert.equal(out.coord, 'Matrix.DuplicateRecordIds');
 });
 
-test('comparison matrix page and payload index link the matrix payload', async () => {
+test('comparison matrix page and payload index link the matrix and summary payloads', async () => {
   const html = await readText('verifier-run-digests.html');
   const index = await readJson('public/pnp-index.json');
 
   for (const fragment of [
     'public/pnp-verifier-run-comparison-matrix.json',
+    'public/pnp-verifier-run-matrix-summary.json',
     'npm run pnp:run-matrix -- --json',
+    'npm run pnp:run-summary -- --json',
     'registryRunCount = 1',
     'pairCount = 1',
     'acceptedPairCount = 1',
@@ -82,7 +84,9 @@ test('comparison matrix page and payload index link the matrix payload', async (
     assert.equal(html.includes(fragment), true, `missing matrix page fragment: ${fragment}`);
   }
 
-  assert.equal(index.version, 3);
+  assert.equal(index.version, 4);
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-comparison-matrix.json'));
+  assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-matrix-summary.json'));
   assert.equal(index.verifierRunComparisonMatrixPayload, '/public/pnp-verifier-run-comparison-matrix.json');
+  assert.equal(index.verifierRunMatrixSummaryPayload, '/public/pnp-verifier-run-matrix-summary.json');
 });
