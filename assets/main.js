@@ -63,6 +63,31 @@ remainingBlockers = []</pre>
           </div>`;
   }
 
+  if (!hero.querySelector('[data-homepage-matrix-summary]')) {
+    const badge = document.createElement('div');
+    badge.className = 'boundary-panel';
+    badge.setAttribute('data-homepage-matrix-summary', '');
+    badge.innerHTML = `<div class="boundary-head">
+            <span>Verifier-run matrix badge</span>
+            <strong>passing</strong>
+          </div>
+          <pre>badge.state = passing
+badge.text = "1 public run; 1/1 required comparisons passing"
+metrics.registryRunCount = 1
+metrics.acceptedPairCount = 1
+metrics.requiredMismatchPairCount = 0
+metrics.diagonalAccepts = true</pre>
+          <div class="boundary-ledger">
+            <div><span>Run records</span><strong>1 public run</strong></div>
+            <div><span>Required pairs</span><strong>1/1 passing</strong></div>
+            <div><span>Required mismatches</span><strong>0</strong></div>
+            <div><span>Badge payload</span><strong>matrix summary</strong></div>
+          </div>`;
+    const anchor = hero.querySelector('.boundary-panel');
+    if (anchor) anchor.insertAdjacentElement('afterend', badge);
+    else hero.append(badge);
+  }
+
   const actions = hero.querySelector('.hero-actions');
   if (actions && !actions.querySelector('a[href="status.html"]')) {
     const statusButton = document.createElement('a');
@@ -70,6 +95,20 @@ remainingBlockers = []</pre>
     statusButton.href = 'status.html';
     statusButton.textContent = 'View activated status';
     actions.prepend(statusButton);
+  }
+  if (actions && !actions.querySelector('a[href="public/pnp-verifier-run-matrix-summary.json"]')) {
+    const matrixButton = document.createElement('a');
+    matrixButton.className = 'btn secondary';
+    matrixButton.href = 'public/pnp-verifier-run-matrix-summary.json';
+    matrixButton.textContent = 'Run matrix badge';
+    actions.append(matrixButton);
+  }
+  if (actions && !actions.querySelector('a[href="verifier-run-digests.html"]')) {
+    const digestButton = document.createElement('a');
+    digestButton.className = 'btn secondary';
+    digestButton.href = 'verifier-run-digests.html';
+    digestButton.textContent = 'Compare run digests';
+    actions.append(digestButton);
   }
 }
 
