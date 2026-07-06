@@ -72,10 +72,10 @@ test('digest comparison rejects disabled theorem emission before comparing diges
   assert.equal(out.coord, 'CompareRun.VerdictField');
 });
 
-test('registry exposes the digest comparison workflow and matrix workflow', async () => {
+test('registry exposes the digest comparison, matrix, and badge workflows', async () => {
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(registry.version, 6);
-  assert.equal(registry.status, 'activated-verification-run-registry-matrix-ready');
+  assert.equal(registry.version, 7);
+  assert.equal(registry.status, 'activated-verification-run-registry-badge-ready');
   assert.equal(registry.comparisonWorkflow.status, 'ready');
   assert.equal(registry.comparisonWorkflow.tool, 'tools/compare-pnp-verifier-runs.mjs');
   assert.equal(registry.comparisonWorkflow.page, 'verifier-run-digests.html');
@@ -84,15 +84,20 @@ test('registry exposes the digest comparison workflow and matrix workflow', asyn
   assert.equal(registry.matrixWorkflow.status, 'ready');
   assert.equal(registry.matrixWorkflow.payload, 'public/pnp-verifier-run-comparison-matrix.json');
   assert.equal(registry.matrixWorkflow.tool, 'tools/generate-pnp-verifier-run-matrix.mjs');
+  assert.equal(registry.badgeSummaryWorkflow.status, 'ready');
+  assert.equal(registry.badgeSummaryWorkflow.payload, 'public/pnp-verifier-run-matrix-summary.json');
+  assert.equal(registry.badgeSummaryWorkflow.tool, 'tools/generate-pnp-verifier-run-summary.mjs');
 });
 
-test('verifier-run digest comparison page documents the comparison command, matrix command, and boundary', async () => {
+test('verifier-run digest comparison page documents the comparison command, matrix command, badge command, and boundary', async () => {
   const html = await readText('verifier-run-digests.html');
   for (const fragment of [
     'Compare activated verifier runs by normalized digest.',
     'npm run pnp:compare-runs -- --json',
     'npm run pnp:run-matrix -- --json',
+    'npm run pnp:run-summary -- --json',
     'verifier-run-comparison-matrix-ready',
+    'badge.state = passing',
     'verdictNormalizedSha256',
     'activatedStatusNormalizedSha256',
     'proofScriptOutputsNormalizedSha256',
@@ -104,8 +109,10 @@ test('verifier-run digest comparison page documents the comparison command, matr
     'externalReviewIsMathematicalPremise = false',
     'public/pnp-verifier-run-digest-comparison.json',
     'public/pnp-verifier-run-comparison-matrix.json',
+    'public/pnp-verifier-run-matrix-summary.json',
     'tools/compare-pnp-verifier-runs.mjs',
-    'tools/generate-pnp-verifier-run-matrix.mjs'
+    'tools/generate-pnp-verifier-run-matrix.mjs',
+    'tools/generate-pnp-verifier-run-summary.mjs'
   ]) {
     assert.equal(html.includes(fragment), true, `missing digest page fragment: ${fragment}`);
   }

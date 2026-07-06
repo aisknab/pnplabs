@@ -1,6 +1,6 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 3,
+  "version": 4,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
@@ -51,12 +51,18 @@
       "id": "pnp-verifier-run-comparison-matrix",
       "path": "/public/pnp-verifier-run-comparison-matrix.json",
       "description": "Static matrix of normalized digest comparisons over the public activated verifier-run registry."
+    },
+    {
+      "id": "pnp-verifier-run-matrix-summary",
+      "path": "/public/pnp-verifier-run-matrix-summary.json",
+      "description": "Compact badge summary of the public verifier-run comparison matrix."
     }
   ],
   "statusPage": "/status.html",
   "verificationRunsPage": "/verification-runs.html",
   "verifierRunDigestComparisonPage": "/verifier-run-digests.html",
   "verifierRunComparisonMatrixPayload": "/public/pnp-verifier-run-comparison-matrix.json",
+  "verifierRunMatrixSummaryPayload": "/public/pnp-verifier-run-matrix-summary.json",
   "verificationCommand": "npm run pnp:verify",
   "activationCommands": [
     "npm run proof:public-theorem-activation",

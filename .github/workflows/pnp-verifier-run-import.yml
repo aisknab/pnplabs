@@ -7,16 +7,19 @@ on:
       - 'public/pnp-verification-runs.json'
       - 'public/pnp-verifier-run-digest-comparison.json'
       - 'public/pnp-verifier-run-comparison-matrix.json'
+      - 'public/pnp-verifier-run-matrix-summary.json'
       - 'verifier-run-digests.html'
       - 'tools/import-pnp-verifier-run.mjs'
       - 'tools/normalize-pnp-verifier-run.mjs'
       - 'tools/compare-pnp-verifier-runs.mjs'
       - 'tools/generate-pnp-verifier-run-matrix.mjs'
+      - 'tools/generate-pnp-verifier-run-summary.mjs'
       - 'tests/fixtures/pnp-activated-verifier-run.import.json'
       - 'tests/unit/pnp-verifier-run-import.test.mjs'
       - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
       - 'tests/unit/pnp-verifier-run-digest-comparison.test.mjs'
       - 'tests/unit/pnp-verifier-run-comparison-matrix.test.mjs'
+      - 'tests/unit/pnp-verifier-run-matrix-summary.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
   push:
     branches:
@@ -26,16 +29,19 @@ on:
       - 'public/pnp-verification-runs.json'
       - 'public/pnp-verifier-run-digest-comparison.json'
       - 'public/pnp-verifier-run-comparison-matrix.json'
+      - 'public/pnp-verifier-run-matrix-summary.json'
       - 'verifier-run-digests.html'
       - 'tools/import-pnp-verifier-run.mjs'
       - 'tools/normalize-pnp-verifier-run.mjs'
       - 'tools/compare-pnp-verifier-runs.mjs'
       - 'tools/generate-pnp-verifier-run-matrix.mjs'
+      - 'tools/generate-pnp-verifier-run-summary.mjs'
       - 'tests/fixtures/pnp-activated-verifier-run.import.json'
       - 'tests/unit/pnp-verifier-run-import.test.mjs'
       - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
       - 'tests/unit/pnp-verifier-run-digest-comparison.test.mjs'
       - 'tests/unit/pnp-verifier-run-comparison-matrix.test.mjs'
+      - 'tests/unit/pnp-verifier-run-matrix-summary.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
   workflow_dispatch:
 
@@ -56,6 +62,9 @@ jobs:
       - name: Generate verifier run comparison matrix
         run: |
           npm run pnp:run-matrix -- --json public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json
+      - name: Generate verifier run matrix summary
+        run: |
+          npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json
       - name: Validate import tool with sample source-checker run
         run: |
           npm run pnp:import-run -- --check tests/fixtures/pnp-activated-verifier-run.import.json public/pnp-verification-runs.json
@@ -81,3 +90,5 @@ jobs:
         run: node --test tests/unit/pnp-verifier-run-digest-comparison.test.mjs
       - name: Comparison matrix unit tests
         run: node --test tests/unit/pnp-verifier-run-comparison-matrix.test.mjs
+      - name: Matrix badge summary unit tests
+        run: node --test tests/unit/pnp-verifier-run-matrix-summary.test.mjs

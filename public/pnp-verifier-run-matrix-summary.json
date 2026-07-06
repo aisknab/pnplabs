@@ -1,0 +1,50 @@
+{
+  "kind": "PNPVerifierRunMatrixBadgeSummary0",
+  "version": 0,
+  "status": "verifier-run-matrix-badge-summary-ready",
+  "sourceMatrix": "public/pnp-verifier-run-comparison-matrix.json",
+  "sourceRegistry": "public/pnp-verification-runs.json",
+  "generatedBy": "tools/generate-pnp-verifier-run-summary.mjs",
+  "badge": {
+    "label": "Verifier-run matrix",
+    "state": "passing",
+    "tone": "success",
+    "text": "1 public run; 1/1 required comparisons passing",
+    "shortText": "1 run / matrix passing"
+  },
+  "metrics": {
+    "registryRunCount": 1,
+    "pairCount": 1,
+    "acceptedPairCount": 1,
+    "rejectedPairCount": 0,
+    "requiredMismatchPairCount": 0,
+    "allRequiredPairsAccept": true,
+    "allRequiredPairsMatch": true,
+    "diagonalAccepts": true
+  },
+  "requiredDigestKeys": [
+    "verdictNormalizedSha256",
+    "activatedStatusNormalizedSha256",
+    "proofScriptOutputsNormalizedSha256"
+  ],
+  "recordIds": [
+    "pnplabs-ci-pr16-2026-07-06"
+  ],
+  "links": {
+    "registry": "public/pnp-verification-runs.json",
+    "matrix": "public/pnp-verifier-run-comparison-matrix.json",
+    "comparisonPolicy": "public/pnp-verifier-run-digest-comparison.json",
+    "page": "verifier-run-digests.html"
+  },
+  "boundary": {
+    "publicTheoremEmissionAllowed": true,
+    "publicTheoremStatement": "P = NP",
+    "remainingBlockers": [],
+    "externalReviewIsMathematicalPremise": false
+  },
+  "nonClaims": [
+    "The matrix badge is a compact reproducibility summary for activated checker-trust verifier runs.",
+    "A passing badge is not an external-consensus claim or peer-review acceptance."
+  ],
+  "summarySha256": "aa108a890dce3de30e25af5963ef9cb1323dd8299051f48864ce59c360605e3f"
+}

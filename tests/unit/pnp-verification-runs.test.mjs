@@ -18,11 +18,11 @@ function assertActivatedBoundary(boundary, label) {
   assert.deepEqual(boundary.remainingBlockers, [], `${label}: blockers must be empty`);
 }
 
-test('verification run registry is matrix-ready, comparison-ready, normalized, and activated-status aware', async () => {
+test('verification run registry is badge-ready, matrix-ready, comparison-ready, normalized, and activated-status aware', async () => {
   const payload = await readJson('public/pnp-verification-runs.json');
   assert.equal(payload.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(payload.version, 6);
-  assert.equal(payload.status, 'activated-verification-run-registry-matrix-ready');
+  assert.equal(payload.version, 7);
+  assert.equal(payload.status, 'activated-verification-run-registry-badge-ready');
   assert.equal(payload.sourceRepository, 'https://github.com/aisknab/pnp');
   assertActivatedBoundary(payload.claimBoundary, 'verification run registry');
   assert.equal(payload.runs.length, 1);
@@ -55,6 +55,10 @@ test('verification run registry is matrix-ready, comparison-ready, normalized, a
   assert.equal(payload.matrixWorkflow.payload, 'public/pnp-verifier-run-comparison-matrix.json');
   assert.equal(payload.matrixWorkflow.includesSelfComparisons, true);
   assert.ok(payload.matrixWorkflow.defaultRequiredDigestKeys.includes('verdictNormalizedSha256'));
+  assert.equal(payload.badgeSummaryWorkflow.status, 'ready');
+  assert.equal(payload.badgeSummaryWorkflow.tool, 'tools/generate-pnp-verifier-run-summary.mjs');
+  assert.equal(payload.badgeSummaryWorkflow.payload, 'public/pnp-verifier-run-matrix-summary.json');
+  assert.equal(payload.badgeSummaryWorkflow.exposesStatusBadge, true);
 });
 
 test('first-party CI run record binds successful site status workflows', async () => {
@@ -92,9 +96,11 @@ test('verification run page invites activated source checker runs and shows seed
     'npm run pnp:verify',
     'npm run proof:activated-pnp-status',
     'npm run pnp:compare-runs',
+    'npm run pnp:run-summary',
     'verifier-run-digests.html',
     'public/pnp-verifier-run-digest-comparison.json',
     'public/pnp-verifier-run-comparison-matrix.json',
+    'public/pnp-verifier-run-matrix-summary.json',
     'public/pnp-verification-runs.json',
     'publicTheoremEmissionAllowed = true',
     'publicTheoremStatement = "P = NP"',
@@ -109,8 +115,9 @@ test('verification run page invites activated source checker runs and shows seed
   }
 });
 
-test('status page links the verification run registry', async () => {
+test('status page links the verification run registry and matrix summary', async () => {
   const html = await readFile(new URL('../../status.html', import.meta.url), 'utf8');
   assert.match(html, /verification-runs\.html/);
   assert.match(html, /public\/pnp-verification-runs\.json/);
+  assert.match(html, /public\/pnp-verifier-run-matrix-summary\.json/);
 });

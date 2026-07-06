@@ -29,7 +29,19 @@
       <span class="eyebrow">Normalized reproducibility comparison</span>
       <h1>Compare activated verifier runs by normalized digest.</h1>
       <p class="lede">Use normalized digest fields to compare activated checker-trust verifier runs across local machines and CI systems without depending on raw log formatting.</p>
-      <div class="hero-actions"><a class="btn primary" href="public/pnp-verifier-run-comparison-matrix.json">Open comparison matrix</a><a class="btn secondary" href="verification-runs.html">Run registry</a></div>
+      <div class="hero-actions"><a class="btn primary" href="public/pnp-verifier-run-matrix-summary.json">Open matrix badge summary</a><a class="btn secondary" href="verification-runs.html">Run registry</a></div>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Matrix badge summary</div>
+      <h2>Current compact summary: passing</h2>
+      <pre><code>badge.state = passing
+badge.text = "1 public run; 1/1 required comparisons passing"
+metrics.registryRunCount = 1
+metrics.acceptedPairCount = 1
+metrics.requiredMismatchPairCount = 0
+metrics.diagonalAccepts = true</code></pre>
+      <p>The compact payload <a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> is intended for dashboards and page badges.</p>
     </section>
 
     <section class="section compact">
@@ -41,9 +53,10 @@
 
     <section class="section compact">
       <div class="section-label">Matrix command</div>
-      <h2>Generate a static comparison matrix</h2>
+      <h2>Generate a static comparison matrix and compact badge</h2>
       <pre><code>npm run pnp:run-matrix -- --json public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json
-npm run pnp:run-matrix -- --write public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json</code></pre>
+npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json
+npm run pnp:run-summary -- --write public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json</code></pre>
       <p>The matrix compares every run against every other run in the registry, including self-comparisons. Current matrix status: <code>verifier-run-comparison-matrix-ready</code>.</p>
     </section>
 
@@ -91,16 +104,18 @@ finalTheoremReady = true
 unrestrictedFinalSoundnessDischarged = true
 remainingBlockers = []
 externalReviewIsMathematicalPremise = false</pre></div>
-      <p>A digest match is reproducibility metadata for activated checker-trust verifier runs. It is not an external-consensus claim or peer-review acceptance. A digest mismatch is a triage signal; it does not by itself refute the source/checker proof stack.</p>
+      <p>A digest match is reproducibility metadata for activated checker-trust verifier runs. It is not an external-consensus claim or peer-review acceptance. A digest mismatch is a triage signal for the run-evidence layer.</p>
     </section>
 
     <section class="section compact">
       <div class="section-label">Payloads</div>
       <h2>Machine-readable comparison surfaces</h2>
       <ul>
+        <li><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> — compact badge summary for matrix dashboards.</li>
         <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a> — static matrix over the public activated run registry.</li>
         <li><a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a> — comparison policy payload.</li>
         <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> — run registry with comparison workflow metadata.</li>
+        <li><a href="tools/generate-pnp-verifier-run-summary.mjs"><code>tools/generate-pnp-verifier-run-summary.mjs</code></a> — local badge summary generator.</li>
         <li><a href="tools/generate-pnp-verifier-run-matrix.mjs"><code>tools/generate-pnp-verifier-run-matrix.mjs</code></a> — local matrix generator.</li>
         <li><a href="tools/compare-pnp-verifier-runs.mjs"><code>tools/compare-pnp-verifier-runs.mjs</code></a> — local comparison utility.</li>
         <li><a href="tools/normalize-pnp-verifier-run.mjs"><code>tools/normalize-pnp-verifier-run.mjs</code></a> — normalization utility.</li>

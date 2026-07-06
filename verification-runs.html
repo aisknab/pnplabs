@@ -28,7 +28,17 @@
       <span class="eyebrow">Activated public reproducibility</span>
       <h1>Activated verification run registry</h1>
       <p class="lede">Clone the source/checker repository, run the verifier, reproduce the activated theorem-emission status, and submit reproducible run evidence.</p>
-      <div class="hero-actions"><a class="btn primary" href="public/pnp-verification-runs.json">Open registry JSON</a><a class="btn secondary" href="verifier-run-digests.html">Compare run digests</a></div>
+      <div class="hero-actions"><a class="btn primary" href="public/pnp-verification-runs.json">Open registry JSON</a><a class="btn secondary" href="public/pnp-verifier-run-matrix-summary.json">Matrix badge summary</a></div>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Matrix badge summary</div>
+      <h2>Verifier-run matrix status: passing</h2>
+      <div class="grid two path">
+        <article class="card"><h3>1 public run</h3><p>The registry currently contains one public first-party site CI seed record: <code>pnplabs-ci-pr16-2026-07-06</code>.</p></article>
+        <article class="card"><h3>1/1 required comparisons passing</h3><p>Required comparisons over <code>verdictNormalizedSha256</code>, <code>activatedStatusNormalizedSha256</code>, and <code>proofScriptOutputsNormalizedSha256</code> currently pass.</p></article>
+        <article class="card"><h3>No required mismatches</h3><p><code>requiredMismatchPairCount = 0</code>, <code>rejectedPairCount = 0</code>, and <code>diagonalAccepts = true</code>.</p></article>
+        <article class="card"><h3>Badge payload</h3><p><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> exposes the compact badge state for dashboards.</p></article>
+      </div>
     </section>
     <section class="section compact">
       <div class="section-label">Run command</div>
@@ -62,8 +72,9 @@ npm run pnp:import-run -- --write imports/pnp-verifier-runs/&lt;record&gt;.json 
       <div class="section-label">Digest comparison</div>
       <h2>Compare normalized digests between runs</h2>
       <p>The comparison page explains how two activated run records are compared field-by-field using the digest policy <code>PNPVerifierRunDigestComparison0</code>.</p>
-      <pre><code>npm run pnp:compare-runs -- --json &lt;left-run.json&gt; &lt;right-run.json&gt;</code></pre>
-      <p><a href="verifier-run-digests.html">Open the verifier-run digest comparison page</a>, inspect <a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a>, or inspect the generated matrix at <a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a>.</p>
+      <pre><code>npm run pnp:compare-runs -- --json &lt;left-run.json&gt; &lt;right-run.json&gt;
+npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json</code></pre>
+      <p><a href="verifier-run-digests.html">Open the verifier-run digest comparison page</a>, inspect <a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a>, inspect the generated matrix at <a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a>, or inspect the badge summary at <a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a>.</p>
     </section>
     <section class="section compact">
       <div class="section-label">Registry status</div>

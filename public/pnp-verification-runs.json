@@ -1,11 +1,11 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 6,
-  "status": "activated-verification-run-registry-matrix-ready",
+  "version": 7,
+  "status": "activated-verification-run-registry-badge-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
-  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence with normalized digest fields and a generated comparison matrix.",
+  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence with normalized digest fields, a generated comparison matrix, and compact badge summaries.",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
@@ -91,6 +91,18 @@
       "activatedStatusNormalizedSha256",
       "proofScriptOutputsNormalizedSha256"
     ],
+    "externalReviewIsMathematicalPremise": false
+  },
+  "badgeSummaryWorkflow": {
+    "kind": "PNPVerifierRunMatrixBadgeSummary0",
+    "status": "ready",
+    "payload": "public/pnp-verifier-run-matrix-summary.json",
+    "tool": "tools/generate-pnp-verifier-run-summary.mjs",
+    "command": "npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json",
+    "writeCommand": "npm run pnp:run-summary -- --write public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json",
+    "sourceMatrix": "public/pnp-verifier-run-comparison-matrix.json",
+    "page": "verifier-run-digests.html",
+    "exposesStatusBadge": true,
     "externalReviewIsMathematicalPremise": false
   },
   "importWorkflow": {
