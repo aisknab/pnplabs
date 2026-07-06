@@ -5,7 +5,7 @@
   "sourceRegistry": "public/pnp-verification-runs.json",
   "comparisonPolicyPayload": "public/pnp-verifier-run-digest-comparison.json",
   "generatedBy": "tools/generate-pnp-verifier-run-matrix.mjs",
-  "generatedFromRegistryStatus": "activated-verification-run-registry-comparison-ready",
+  "generatedFromRegistryStatus": "activated-verification-run-registry-matrix-ready",
   "registryRunCount": 1,
   "pairCount": 1,
   "acceptedPairCount": 1,
@@ -67,5 +67,5 @@
     "A matrix reject cell is a triage signal; it does not by itself refute the source/checker proof stack.",
     "The source/checker verifier remains the proof-stack reproduction target."
   ],
-  "matrixSha256": "7ab8a6e880d763616c7328f826b45e501443ac8dba74c848cbc8f958a42fdc48"
+  "matrixSha256": "b1df5f9f6ba18643d3b6259efc66a0031b1f3a35c8c14f6022c5346ea613fd2e"
 }
