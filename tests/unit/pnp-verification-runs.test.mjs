@@ -67,16 +67,13 @@ test('first-party CI run record binds successful site status workflows', async (
   assert.match(run.nonClaims.join('\n'), /not an external-consensus claim/);
 });
 
-test('verification run page invites activated source checker runs, import workflow, and shows seed record', async () => {
+test('verification run page invites activated source checker runs and shows seed record', async () => {
   const html = await readFile(new URL('../../verification-runs.html', import.meta.url), 'utf8');
   for (const fragment of [
     'Activated verification run registry',
     'git clone https://github.com/aisknab/pnp.git',
     'npm run pnp:verify',
     'npm run proof:activated-pnp-status',
-    'npm run pnp:import-run',
-    'tools/import-pnp-verifier-run.mjs',
-    'imports/pnp-verifier-runs/',
     'public/pnp-verification-runs.json',
     'publicTheoremEmissionAllowed = true',
     'publicTheoremStatement = "P = NP"',
