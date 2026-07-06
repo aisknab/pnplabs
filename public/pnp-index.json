@@ -1,9 +1,9 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 1,
+  "version": 2,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-05",
+  "syncedOn": "2026-07-06",
   "status": "activated-status-payloads-ready",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
@@ -41,10 +41,16 @@
       "id": "pnp-verification-runs",
       "path": "/public/pnp-verification-runs.json",
       "description": "Public registry for reproducible verifier run reports."
+    },
+    {
+      "id": "pnp-verifier-run-digest-comparison",
+      "path": "/public/pnp-verifier-run-digest-comparison.json",
+      "description": "Policy payload for comparing normalized digest fields across activated verifier run records."
     }
   ],
   "statusPage": "/status.html",
   "verificationRunsPage": "/verification-runs.html",
+  "verifierRunDigestComparisonPage": "/verifier-run-digests.html",
   "verificationCommand": "npm run pnp:verify",
   "activationCommands": [
     "npm run proof:public-theorem-activation",
