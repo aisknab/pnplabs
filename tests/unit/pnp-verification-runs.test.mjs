@@ -18,11 +18,11 @@ function assertActivatedBoundary(boundary, label) {
   assert.deepEqual(boundary.remainingBlockers, [], `${label}: blockers must be empty`);
 }
 
-test('verification run registry is comparison-ready, normalized, and activated-status aware', async () => {
+test('verification run registry is matrix-ready, comparison-ready, normalized, and activated-status aware', async () => {
   const payload = await readJson('public/pnp-verification-runs.json');
   assert.equal(payload.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(payload.version, 5);
-  assert.equal(payload.status, 'activated-verification-run-registry-comparison-ready');
+  assert.equal(payload.version, 6);
+  assert.equal(payload.status, 'activated-verification-run-registry-matrix-ready');
   assert.equal(payload.sourceRepository, 'https://github.com/aisknab/pnp');
   assertActivatedBoundary(payload.claimBoundary, 'verification run registry');
   assert.equal(payload.runs.length, 1);
@@ -50,6 +50,11 @@ test('verification run registry is comparison-ready, normalized, and activated-s
   assert.equal(payload.comparisonWorkflow.page, 'verifier-run-digests.html');
   assert.equal(payload.comparisonWorkflow.payload, 'public/pnp-verifier-run-digest-comparison.json');
   assert.ok(payload.comparisonWorkflow.defaultRequiredDigestKeys.includes('proofScriptOutputsNormalizedSha256'));
+  assert.equal(payload.matrixWorkflow.status, 'ready');
+  assert.equal(payload.matrixWorkflow.tool, 'tools/generate-pnp-verifier-run-matrix.mjs');
+  assert.equal(payload.matrixWorkflow.payload, 'public/pnp-verifier-run-comparison-matrix.json');
+  assert.equal(payload.matrixWorkflow.includesSelfComparisons, true);
+  assert.ok(payload.matrixWorkflow.defaultRequiredDigestKeys.includes('verdictNormalizedSha256'));
 });
 
 test('first-party CI run record binds successful site status workflows', async () => {
@@ -89,6 +94,7 @@ test('verification run page invites activated source checker runs and shows seed
     'npm run pnp:compare-runs',
     'verifier-run-digests.html',
     'public/pnp-verifier-run-digest-comparison.json',
+    'public/pnp-verifier-run-comparison-matrix.json',
     'public/pnp-verification-runs.json',
     'publicTheoremEmissionAllowed = true',
     'publicTheoremStatement = "P = NP"',
