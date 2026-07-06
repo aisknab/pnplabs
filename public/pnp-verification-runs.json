@@ -1,11 +1,11 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 5,
-  "status": "activated-verification-run-registry-comparison-ready",
+  "version": 6,
+  "status": "activated-verification-run-registry-matrix-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
-  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence with normalized digest fields for comparison.",
+  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence with normalized digest fields and a generated comparison matrix.",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
@@ -75,6 +75,22 @@
     ],
     "comparesStatusPayloadDigest": true,
     "comparesPnpCommit": true,
+    "externalReviewIsMathematicalPremise": false
+  },
+  "matrixWorkflow": {
+    "kind": "PNPVerifierRunComparisonMatrix0",
+    "status": "ready",
+    "payload": "public/pnp-verifier-run-comparison-matrix.json",
+    "tool": "tools/generate-pnp-verifier-run-matrix.mjs",
+    "command": "npm run pnp:run-matrix -- --json public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json",
+    "writeCommand": "npm run pnp:run-matrix -- --write public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json",
+    "usesComparisonWorkflow": true,
+    "includesSelfComparisons": true,
+    "defaultRequiredDigestKeys": [
+      "verdictNormalizedSha256",
+      "activatedStatusNormalizedSha256",
+      "proofScriptOutputsNormalizedSha256"
+    ],
     "externalReviewIsMathematicalPremise": false
   },
   "importWorkflow": {
