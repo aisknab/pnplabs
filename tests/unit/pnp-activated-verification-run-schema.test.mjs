@@ -88,7 +88,7 @@ test('verification run issue template asks for activated status evidence', async
     ACTIVATED_STATUS_COORDINATE,
     PUBLIC_ACTIVATION_COORDINATE,
     'statusPayloadSha256',
-    'independent external consensus or peer-review acceptance',
+    'not an external-consensus claim or peer-review acceptance',
     'external review is audit evidence and not a mathematical premise'
   ]) {
     assert.match(template, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing issue-template fragment: ${fragment}`);
@@ -109,7 +109,9 @@ test('verification-runs page displays activated run-submission boundary and focu
     'npm run proof:public-theorem-activation',
     ACTIVATED_STATUS_COORDINATE,
     PUBLIC_ACTIVATION_COORDINATE,
-    'status/ACTIVATED_PNP_STATUS.json'
+    'status/ACTIVATED_PNP_STATUS.json',
+    'not an external-consensus claim or peer-review acceptance',
+    '<script src="assets/main.js" defer></script>'
   ]) {
     assert.match(html, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing verification-runs fragment: ${fragment}`);
   }
