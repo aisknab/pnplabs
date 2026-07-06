@@ -32,7 +32,7 @@ test('import tool validates current seeded registry and imports a new source-che
   assert.equal(imported.tag, 'accept');
   assert.equal(imported.importedRecordId, 'example-source-checker-run-2026-07-06');
   assert.equal(imported.runCount, 2);
-  assert.equal(imported.registry.version, 5);
+  assert.equal(imported.registry.version, 6);
   assert.equal(imported.registry.status, 'activated-verification-run-registry-imported');
   assert.equal(imported.registry.runs.at(-1).recordClass, 'source-checker-verifier-run');
   assert.equal(imported.registry.runs.at(-1).normalizedDigests.policy, 'PNPActivatedRunDigestNormalization0');
