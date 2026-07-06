@@ -1,11 +1,11 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 1,
-  "status": "activated-verification-run-registry-ready",
+  "version": 2,
+  "status": "activated-verification-run-registry-seeded",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
-  "purpose": "Record public run reports from people who cloned the source/checker repository, ran the verifier, reproduced the activated theorem-emission status, and submitted reproducible evidence.",
+  "purpose": "Record public run reports from people or first-party CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence.",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
@@ -96,9 +96,83 @@
       "proof:uniform-complexity-conclusion"
     ]
   },
-  "runs": [],
+  "runs": [
+    {
+      "kind": "PNPActivatedVerificationRunRecord0",
+      "recordId": "pnplabs-ci-pr16-2026-07-06",
+      "recordClass": "first-party-site-ci-status-mirror",
+      "runnerNameOrHandle": "PNP Labs GitHub Actions",
+      "dateUtc": "2026-07-06",
+      "pnpCommit": "42f66cce45f5db0cdb48e3d99d2aa2ae3d830ee8",
+      "pnplabsCommit": "615cbec06f2cb90408941815c4e2efe53b2a4a49",
+      "environment": {
+        "runner": "GitHub Actions ubuntu-latest",
+        "node": "20",
+        "workflowSource": "aisknab/pnplabs PR #16",
+        "scope": "site payload, upstream status mirror, activated run-registry schema, and review smoke checks"
+      },
+      "commandsRun": [
+        "npm test",
+        "node --test tests/unit/pnp-activated-verification-run-schema.test.mjs",
+        "node --test tests/unit/pnp-public-payloads.test.mjs",
+        "node --test tests/unit/pnp-activated-overclaim-guard.test.mjs"
+      ],
+      "verdict": {
+        "tag": "accept",
+        "claimStatus": "activated-status-site-mirror-ci-accepted",
+        "publicTheoremEmissionAllowed": true,
+        "publicTheoremStatement": "P = NP",
+        "publicTheoremConclusion": "P = NP",
+        "finalTheoremReady": true,
+        "unrestrictedFinalSoundnessDischarged": true,
+        "remainingBlockers": []
+      },
+      "activatedStatus": {
+        "kind": "PNPActivatedStatus0",
+        "coordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
+        "publicTheoremActivationCoordinate": "PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01",
+        "unrestrictedFinalSoundnessReleaseCoordinate": "PNP-UNRESTRICTED-FINAL-SOUNDNESS-RELEASE-2026-07-05-01",
+        "externalReviewIsMathematicalPremise": false
+      },
+      "statusPayloadSha256": "recorded-by-site-payload-ci",
+      "proofScriptOutputs": {
+        "proof:activated-pnp-status": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI",
+        "proof:public-theorem-activation": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI",
+        "proof:unrestricted-final-soundness-release": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI",
+        "proof:uniform-complexity-conclusion": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI"
+      },
+      "artifactsOrLogs": [
+        {
+          "kind": "github-actions-workflow-run",
+          "repository": "https://github.com/aisknab/pnplabs",
+          "workflow": "review-smoke",
+          "runId": 28772841305,
+          "conclusion": "success"
+        },
+        {
+          "kind": "github-actions-workflow-run",
+          "repository": "https://github.com/aisknab/pnplabs",
+          "workflow": "pnp-public-payloads",
+          "runId": 28772841309,
+          "conclusion": "success"
+        },
+        {
+          "kind": "github-actions-workflow-run",
+          "repository": "https://github.com/aisknab/pnplabs",
+          "workflow": "pnp-upstream-status-consistency",
+          "runId": 28772841340,
+          "conclusion": "success"
+        }
+      ],
+      "nonClaims": [
+        "This first-party site CI record validates the public status mirror and run-registry schema.",
+        "It is not a clean-room source/checker reproduction of npm run pnp:verify.",
+        "It is not an external-consensus claim or peer-review acceptance."
+      ]
+    }
+  ],
   "nonClaims": [
-    "A run record means someone reports running the verifier and reproducing the stated activated machine result.",
+    "A run record means someone reports running the verifier or a documented first-party CI validation and reproducing the stated activated machine result or mirror state.",
     "A run record is not an external-consensus claim or peer-review acceptance.",
     "External review remains audit and reproducibility evidence, not a mathematical premise for theorem emission.",
     "This registry records public reproducibility evidence for the activated checker-trust status."
