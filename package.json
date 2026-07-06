@@ -11,6 +11,7 @@
     "pnp:normalize-run": "node tools/normalize-pnp-verifier-run.mjs",
     "pnp:compare-runs": "node tools/compare-pnp-verifier-runs.mjs",
     "pnp:run-matrix": "node tools/generate-pnp-verifier-run-matrix.mjs",
+    "pnp:run-summary": "node tools/generate-pnp-verifier-run-summary.mjs",
     "test:unit": "node --test tests/unit/*.test.mjs",
     "test:negative": "node --test tests/negative/*.test.mjs",
     "test:audit-targets": "node --test tests/audit-targets/*.test.mjs && node tools/check-cross-repo-targets.mjs",
