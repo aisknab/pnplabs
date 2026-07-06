@@ -12,5 +12,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - name: Unit, negative, example, reproducibility, and docs checks
-        run: npm test
+      - name: Unit tests
+        run: npm run test:unit
+      - name: Release seal and minimal examples
+        run: npm run repro:smoke
+      - name: Negative fixture tests
+        run: npm run test:negative
+      - name: Documentation link checks
+        run: npm run test:docs
