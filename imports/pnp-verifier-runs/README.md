@@ -16,6 +16,31 @@ external-source-checker-verifier-run
 first-party-source-checker-ci
 ```
 
+Normalize an import candidate before review:
+
+```bash
+npm run pnp:normalize-run -- --json imports/pnp-verifier-runs/<record>.json
+```
+
+Attach normalized digests in-place:
+
+```bash
+npm run pnp:normalize-run -- --write imports/pnp-verifier-runs/<record>.json
+```
+
+The normalizer writes:
+
+```text
+normalizedDigests.policy = PNPActivatedRunDigestNormalization0
+normalizedDigests.runRecordNormalizedSha256
+normalizedDigests.verdictNormalizedSha256
+normalizedDigests.activatedStatusNormalizedSha256
+normalizedDigests.proofScriptOutputsNormalizedSha256
+normalizedDigests.artifactsOrLogsNormalizedSha256
+```
+
+It normalizes timestamps, ANSI escapes, line endings, blank lines, and trailing whitespace so verifier logs can be compared across CI providers.
+
 Check an import candidate without editing the registry:
 
 ```bash
