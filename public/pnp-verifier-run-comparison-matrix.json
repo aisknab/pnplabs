@@ -5,7 +5,7 @@
   "sourceRegistry": "public/pnp-verification-runs.json",
   "comparisonPolicyPayload": "public/pnp-verifier-run-digest-comparison.json",
   "generatedBy": "tools/generate-pnp-verifier-run-matrix.mjs",
-  "generatedFromRegistryStatus": "activated-verification-run-registry-matrix-ready",
+  "generatedFromRegistryStatus": "activated-verification-run-registry-badge-ready",
   "registryRunCount": 1,
   "pairCount": 1,
   "acceptedPairCount": 1,
