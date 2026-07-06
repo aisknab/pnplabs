@@ -20,20 +20,20 @@ test('import tool validates the sample source-checker verifier run record', asyn
   assert.equal(out.statusPayloadSha256, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 });
 
-test('import tool validates current matrix-ready registry and imports a new source-checker run with normalized digests', async () => {
+test('import tool validates current badge-ready registry and imports a new source-checker run with normalized digests', async () => {
   const registry = await readJson('public/pnp-verification-runs.json');
   const record = await readJson('tests/fixtures/pnp-activated-verifier-run.import.json');
 
   const registryCheck = ValidatePNPVerificationRunRegistry0(registry);
   assert.equal(registryCheck.tag, 'accept');
   assert.equal(registryCheck.runCount, 1);
-  assert.equal(registry.version, 6);
+  assert.equal(registry.version, 7);
 
   const imported = ImportPNPActivatedRunRecord0(registry, record, { syncedOn: '2026-07-06' });
   assert.equal(imported.tag, 'accept');
   assert.equal(imported.importedRecordId, 'example-source-checker-run-2026-07-06');
   assert.equal(imported.runCount, 2);
-  assert.equal(imported.registry.version, 7);
+  assert.equal(imported.registry.version, 8);
   assert.equal(imported.registry.status, 'activated-verification-run-registry-imported');
   assert.equal(imported.registry.runs.at(-1).recordClass, 'source-checker-verifier-run');
   assert.equal(imported.registry.runs.at(-1).normalizedDigests.policy, 'PNPActivatedRunDigestNormalization0');
