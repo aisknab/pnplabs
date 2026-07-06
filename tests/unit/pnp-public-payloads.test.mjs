@@ -38,7 +38,9 @@ test('PNP activated status payloads publish theorem-emission activation', async 
   assert.equal(index.status, 'activated-status-payloads-ready');
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-status.json'));
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-comparison-matrix.json'));
+  assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-matrix-summary.json'));
   assert.equal(index.verifierRunComparisonMatrixPayload, '/public/pnp-verifier-run-comparison-matrix.json');
+  assert.equal(index.verifierRunMatrixSummaryPayload, '/public/pnp-verifier-run-matrix-summary.json');
 });
 
 test('legacy theorem-emission gate payload remains explicitly superseded by activated status', async () => {
@@ -77,6 +79,8 @@ test('status page links every public PNP payload and activated reviewer command'
     'public/pnp-verification-runs.json',
     'public/pnp-verifier-run-digest-comparison.json',
     'public/pnp-verifier-run-comparison-matrix.json',
+    'public/pnp-verifier-run-matrix-summary.json',
+    '1 public run; 1/1 required comparisons passing',
     'npm run pnp:verify',
     'publicTheoremEmissionAllowed = true',
     'publicTheoremStatement = "P = NP"',
