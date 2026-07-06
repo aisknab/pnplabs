@@ -29,7 +29,7 @@
       <span class="eyebrow">Normalized reproducibility comparison</span>
       <h1>Compare activated verifier runs by normalized digest.</h1>
       <p class="lede">Use normalized digest fields to compare activated checker-trust verifier runs across local machines and CI systems without depending on raw log formatting.</p>
-      <div class="hero-actions"><a class="btn primary" href="public/pnp-verifier-run-digest-comparison.json">Open comparison JSON</a><a class="btn secondary" href="verification-runs.html">Run registry</a></div>
+      <div class="hero-actions"><a class="btn primary" href="public/pnp-verifier-run-comparison-matrix.json">Open comparison matrix</a><a class="btn secondary" href="verification-runs.html">Run registry</a></div>
     </section>
 
     <section class="section compact">
@@ -37,6 +37,14 @@
       <h2>Compare two run records</h2>
       <pre><code>npm run pnp:compare-runs -- --json &lt;left-run.json&gt; &lt;right-run.json&gt;</code></pre>
       <p>The comparison utility normalizes missing digest fields on the fly, then compares the activated verdict, activated status, focused proof-script outputs, raw-log evidence digests, and full normalized run record digests.</p>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Matrix command</div>
+      <h2>Generate a static comparison matrix</h2>
+      <pre><code>npm run pnp:run-matrix -- --json public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json
+npm run pnp:run-matrix -- --write public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json</code></pre>
+      <p>The matrix compares every run against every other run in the registry, including self-comparisons. Current matrix status: <code>verifier-run-comparison-matrix-ready</code>.</p>
     </section>
 
     <section class="section compact">
@@ -48,6 +56,18 @@
         <article class="card"><h3>proofScriptOutputsNormalizedSha256</h3><p>Focused proof-script accept outputs match after normalization.</p></article>
         <article class="card"><h3>Optional full evidence match</h3><p><code>artifactsOrLogsNormalizedSha256</code> and <code>runRecordNormalizedSha256</code> help compare raw log evidence and full metadata, but runner names and CI links may intentionally differ.</p></article>
       </div>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Current matrix</div>
+      <h2>Static matrix over public run records</h2>
+      <pre><code>registryRunCount = 1
+pairCount = 1
+acceptedPairCount = 1
+requiredMismatchPairCount = 0
+allRequiredPairsAccept = true
+diagonalAccepts = true</code></pre>
+      <p>The current matrix has one self-comparison for <code>pnplabs-ci-pr16-2026-07-06</code>. Future imported runs will add rows and columns.</p>
     </section>
 
     <section class="section compact">
@@ -78,8 +98,10 @@ externalReviewIsMathematicalPremise = false</pre></div>
       <div class="section-label">Payloads</div>
       <h2>Machine-readable comparison surfaces</h2>
       <ul>
+        <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a> — static matrix over the public activated run registry.</li>
         <li><a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a> — comparison policy payload.</li>
         <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> — run registry with comparison workflow metadata.</li>
+        <li><a href="tools/generate-pnp-verifier-run-matrix.mjs"><code>tools/generate-pnp-verifier-run-matrix.mjs</code></a> — local matrix generator.</li>
         <li><a href="tools/compare-pnp-verifier-runs.mjs"><code>tools/compare-pnp-verifier-runs.mjs</code></a> — local comparison utility.</li>
         <li><a href="tools/normalize-pnp-verifier-run.mjs"><code>tools/normalize-pnp-verifier-run.mjs</code></a> — normalization utility.</li>
       </ul>

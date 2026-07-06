@@ -29,8 +29,8 @@ test('verification run registry uses activated theorem-emission boundary', async
   const registry = await readJson('public/pnp-verification-runs.json');
 
   assert.equal(registry.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(registry.version, 5);
-  assert.equal(registry.status, 'activated-verification-run-registry-comparison-ready');
+  assert.equal(registry.version, 6);
+  assert.equal(registry.status, 'activated-verification-run-registry-matrix-ready');
   assert.equal(registry.claimBoundary.publicTheoremEmissionAllowed, true);
   assert.equal(registry.claimBoundary.publicTheoremStatement, 'P = NP');
   assert.equal(registry.claimBoundary.publicTheoremConclusion, 'P = NP');
@@ -55,6 +55,9 @@ test('verification run registry uses activated theorem-emission boundary', async
   assert.equal(registry.comparisonWorkflow.status, 'ready');
   assert.equal(registry.comparisonWorkflow.tool, 'tools/compare-pnp-verifier-runs.mjs');
   assert.equal(registry.comparisonWorkflow.page, 'verifier-run-digests.html');
+  assert.equal(registry.matrixWorkflow.status, 'ready');
+  assert.equal(registry.matrixWorkflow.tool, 'tools/generate-pnp-verifier-run-matrix.mjs');
+  assert.equal(registry.matrixWorkflow.payload, 'public/pnp-verifier-run-comparison-matrix.json');
 
   for (const command of REQUIRED_FOCUSED_COMMANDS) {
     assert.ok(registry.focusedActivationCommands.includes(command), `missing focused command: ${command}`);
@@ -129,6 +132,7 @@ test('verification-runs page displays activated run-submission boundary and focu
     'npm run proof:activated-pnp-status',
     'npm run proof:public-theorem-activation',
     'npm run pnp:compare-runs',
+    'public/pnp-verifier-run-comparison-matrix.json',
     'verifier-run-digests.html',
     ACTIVATED_STATUS_COORDINATE,
     PUBLIC_ACTIVATION_COORDINATE,

@@ -1,0 +1,71 @@
+{
+  "kind": "PNPVerifierRunComparisonMatrix0",
+  "version": 0,
+  "status": "verifier-run-comparison-matrix-ready",
+  "sourceRegistry": "public/pnp-verification-runs.json",
+  "comparisonPolicyPayload": "public/pnp-verifier-run-digest-comparison.json",
+  "generatedBy": "tools/generate-pnp-verifier-run-matrix.mjs",
+  "generatedFromRegistryStatus": "activated-verification-run-registry-matrix-ready",
+  "registryRunCount": 1,
+  "pairCount": 1,
+  "acceptedPairCount": 1,
+  "rejectedPairCount": 0,
+  "requiredMismatchPairCount": 0,
+  "requiredDigestKeys": [
+    "verdictNormalizedSha256",
+    "activatedStatusNormalizedSha256",
+    "proofScriptOutputsNormalizedSha256"
+  ],
+  "allRequiredPairsAccept": true,
+  "allRequiredPairsMatch": true,
+  "diagonalAccepts": true,
+  "recordIds": [
+    "pnplabs-ci-pr16-2026-07-06"
+  ],
+  "records": [
+    {
+      "recordId": "pnplabs-ci-pr16-2026-07-06",
+      "recordClass": "first-party-site-ci-status-mirror",
+      "runnerNameOrHandle": "PNP Labs GitHub Actions",
+      "dateUtc": "2026-07-06",
+      "pnpCommit": "42f66cce45f5db0cdb48e3d99d2aa2ae3d830ee8",
+      "publicTheoremEmissionAllowed": true,
+      "publicTheoremStatement": "P = NP",
+      "remainingBlockers": [],
+      "hasNormalizedDigests": true
+    }
+  ],
+  "rows": [
+    {
+      "recordId": "pnplabs-ci-pr16-2026-07-06",
+      "cells": [
+        {
+          "leftIndex": 0,
+          "rightIndex": 0,
+          "leftRecordId": "pnplabs-ci-pr16-2026-07-06",
+          "rightRecordId": "pnplabs-ci-pr16-2026-07-06",
+          "tag": "accept",
+          "requiredMismatches": [],
+          "allDigestKeysMatch": true,
+          "statusPayloadDigestMatch": true,
+          "pnpCommitMatch": true,
+          "comparisonSha256": "1e6d8ae31371ec250d0dc74f833d720e7c132f3f5f3ddf1c8dad3949435cf1da",
+          "digestMatches": {
+            "runRecordNormalizedSha256": true,
+            "verdictNormalizedSha256": true,
+            "activatedStatusNormalizedSha256": true,
+            "proofScriptOutputsNormalizedSha256": true,
+            "artifactsOrLogsNormalizedSha256": true
+          }
+        }
+      ]
+    }
+  ],
+  "nonClaims": [
+    "The comparison matrix is reproducibility metadata for activated checker-trust verifier runs.",
+    "A matrix accept cell is not an external-consensus claim or peer-review acceptance.",
+    "A matrix reject cell is a triage signal; it does not by itself refute the source/checker proof stack.",
+    "The source/checker verifier remains the proof-stack reproduction target."
+  ],
+  "matrixSha256": "b1df5f9f6ba18643d3b6259efc66a0031b1f3a35c8c14f6022c5346ea613fd2e"
+}

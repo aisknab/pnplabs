@@ -72,22 +72,27 @@ test('digest comparison rejects disabled theorem emission before comparing diges
   assert.equal(out.coord, 'CompareRun.VerdictField');
 });
 
-test('registry exposes the digest comparison workflow and page', async () => {
+test('registry exposes the digest comparison workflow and matrix workflow', async () => {
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(registry.version, 5);
-  assert.equal(registry.status, 'activated-verification-run-registry-comparison-ready');
+  assert.equal(registry.version, 6);
+  assert.equal(registry.status, 'activated-verification-run-registry-matrix-ready');
   assert.equal(registry.comparisonWorkflow.status, 'ready');
   assert.equal(registry.comparisonWorkflow.tool, 'tools/compare-pnp-verifier-runs.mjs');
   assert.equal(registry.comparisonWorkflow.page, 'verifier-run-digests.html');
   assert.equal(registry.comparisonWorkflow.payload, 'public/pnp-verifier-run-digest-comparison.json');
   assert.equal(registry.comparisonWorkflow.externalReviewIsMathematicalPremise, false);
+  assert.equal(registry.matrixWorkflow.status, 'ready');
+  assert.equal(registry.matrixWorkflow.payload, 'public/pnp-verifier-run-comparison-matrix.json');
+  assert.equal(registry.matrixWorkflow.tool, 'tools/generate-pnp-verifier-run-matrix.mjs');
 });
 
-test('verifier-run digest comparison page documents the comparison command and boundary', async () => {
+test('verifier-run digest comparison page documents the comparison command, matrix command, and boundary', async () => {
   const html = await readText('verifier-run-digests.html');
   for (const fragment of [
     'Compare activated verifier runs by normalized digest.',
     'npm run pnp:compare-runs -- --json',
+    'npm run pnp:run-matrix -- --json',
+    'verifier-run-comparison-matrix-ready',
     'verdictNormalizedSha256',
     'activatedStatusNormalizedSha256',
     'proofScriptOutputsNormalizedSha256',
@@ -98,7 +103,9 @@ test('verifier-run digest comparison page documents the comparison command and b
     'remainingBlockers = []',
     'externalReviewIsMathematicalPremise = false',
     'public/pnp-verifier-run-digest-comparison.json',
-    'tools/compare-pnp-verifier-runs.mjs'
+    'public/pnp-verifier-run-comparison-matrix.json',
+    'tools/compare-pnp-verifier-runs.mjs',
+    'tools/generate-pnp-verifier-run-matrix.mjs'
   ]) {
     assert.equal(html.includes(fragment), true, `missing digest page fragment: ${fragment}`);
   }
