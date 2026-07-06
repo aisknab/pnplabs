@@ -1,0 +1,49 @@
+name: pnp-verifier-run-import
+
+on:
+  pull_request:
+    paths:
+      - 'imports/pnp-verifier-runs/**'
+      - 'public/pnp-verification-runs.json'
+      - 'tools/import-pnp-verifier-run.mjs'
+      - 'tests/fixtures/pnp-activated-verifier-run.import.json'
+      - 'tests/unit/pnp-verifier-run-import.test.mjs'
+      - '.github/workflows/pnp-verifier-run-import.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'imports/pnp-verifier-runs/**'
+      - 'public/pnp-verification-runs.json'
+      - 'tools/import-pnp-verifier-run.mjs'
+      - 'tests/fixtures/pnp-activated-verifier-run.import.json'
+      - 'tests/unit/pnp-verifier-run-import.test.mjs'
+      - '.github/workflows/pnp-verifier-run-import.yml'
+  workflow_dispatch:
+
+jobs:
+  pnp-verifier-run-import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate import tool with sample source-checker run
+        run: |
+          npm run pnp:import-run -- --check tests/fixtures/pnp-activated-verifier-run.import.json public/pnp-verification-runs.json
+      - name: Validate committed import candidates
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(imports/pnp-verifier-runs/*.json)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No committed import candidates to validate."
+            exit 0
+          fi
+          for file in "${files[@]}"; do
+            echo "Checking $file"
+            npm run pnp:import-run -- --check "$file" public/pnp-verification-runs.json
+          done
+      - name: Import utility unit tests
+        run: node --test tests/unit/pnp-verifier-run-import.test.mjs
