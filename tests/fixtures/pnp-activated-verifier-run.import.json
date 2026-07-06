@@ -1,0 +1,60 @@
+{
+  "kind": "PNPActivatedVerificationRunRecord0",
+  "recordId": "example-source-checker-run-2026-07-06",
+  "recordClass": "source-checker-verifier-run",
+  "runnerNameOrHandle": "Example Source Checker Runner",
+  "dateUtc": "2026-07-06",
+  "pnpCommit": "42f66cce45f5db0cdb48e3d99d2aa2ae3d830ee8",
+  "environment": {
+    "runner": "local example",
+    "os": "ubuntu-latest equivalent",
+    "node": "20",
+    "npm": "10",
+    "scope": "sample source-checker verifier run record for import-tool tests"
+  },
+  "commandsRun": [
+    "git clone https://github.com/aisknab/pnp.git",
+    "cd pnp",
+    "npm ci",
+    "npm run pnp:verify",
+    "npm run proof:activated-pnp-status",
+    "npm run proof:public-theorem-activation",
+    "npm run proof:unrestricted-final-soundness-release",
+    "npm run proof:uniform-complexity-conclusion"
+  ],
+  "verdict": {
+    "tag": "accept",
+    "claimStatus": "public-theorem-emission-activated-under-checker-trust-model",
+    "publicTheoremEmissionAllowed": true,
+    "publicTheoremStatement": "P = NP",
+    "publicTheoremConclusion": "P = NP",
+    "finalTheoremReady": true,
+    "unrestrictedFinalSoundnessDischarged": true,
+    "remainingBlockers": []
+  },
+  "activatedStatus": {
+    "kind": "PNPActivatedStatus0",
+    "coordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
+    "publicTheoremActivationCoordinate": "PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01",
+    "unrestrictedFinalSoundnessReleaseCoordinate": "PNP-UNRESTRICTED-FINAL-SOUNDNESS-RELEASE-2026-07-05-01",
+    "externalReviewIsMathematicalPremise": false
+  },
+  "statusPayloadSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "proofScriptOutputs": {
+    "proof:activated-pnp-status": "accept: PNP-ACTIVATED-STATUS-2026-07-05-01",
+    "proof:public-theorem-activation": "accept: PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01",
+    "proof:unrestricted-final-soundness-release": "accept: PNP-UNRESTRICTED-FINAL-SOUNDNESS-RELEASE-2026-07-05-01",
+    "proof:uniform-complexity-conclusion": "accept: PNP-UNIFORM-COMPLEXITY-CONCLUSION-2026-07-05-01"
+  },
+  "artifactsOrLogs": [
+    {
+      "kind": "local-log",
+      "label": "example import fixture",
+      "uri": "tests/fixtures/pnp-activated-verifier-run.import.json"
+    }
+  ],
+  "nonClaims": [
+    "This sample record is test fixture data for the import workflow.",
+    "It is not an external-consensus claim or peer-review acceptance."
+  ]
+}
