@@ -51,13 +51,19 @@ npm run proof:uniform-complexity-conclusion</code></pre>
     <section class="section compact">
       <div class="section-label">Registry status</div>
       <h2>Current public run records</h2>
-      <p>The machine-readable registry is <a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a>. It starts empty and should only list submitted run reports with enough information for someone else to reproduce the activated machine result.</p>
-      <pre><code>runs = []</code></pre>
+      <p>The machine-readable registry is <a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a>. It now includes one first-party site CI seed record and remains open to submitted run reports with enough information for someone else to reproduce the activated machine result.</p>
+      <pre><code>runs = [
+  "pnplabs-ci-pr16-2026-07-06"
+]</code></pre>
+      <div class="grid two path" style="margin-top:1.2rem">
+        <article class="card"><h3>pnplabs-ci-pr16-2026-07-06</h3><p>First-party site CI record for PR #16. It validates the public status mirror, activated registry schema, public payload tests, and upstream status consistency.</p></article>
+        <article class="card"><h3>Scope note</h3><p>This seed record is not a clean-room source/checker reproduction of <code>npm run pnp:verify</code>. It is a first-party CI status-mirror record for the public site.</p></article>
+      </div>
     </section>
     <section class="section compact">
       <div class="section-label">Boundary</div>
       <h2>What a run report means</h2>
-      <p>A run report means someone reports running the verifier and reproducing the activated checker-trust status. It is not an external-consensus claim or peer-review acceptance.</p>
+      <p>A run report means someone reports running the verifier or a documented first-party CI validation and reproducing the activated checker-trust status or mirror state. It is not an external-consensus claim or peer-review acceptance.</p>
       <div class="boundary-panel"><div class="boundary-head"><span>Current activated boundary</span><strong>activated</strong></div><pre>publicTheoremEmissionAllowed = true
 publicTheoremStatement = "P = NP"
 publicTheoremConclusion = "P = NP"
