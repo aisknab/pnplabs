@@ -99,7 +99,7 @@
   "runs": [],
   "nonClaims": [
     "A run record means someone reports running the verifier and reproducing the stated activated machine result.",
-    "A run record is not automatically independent external consensus or peer-review acceptance.",
+    "A run record is not an external-consensus claim or peer-review acceptance.",
     "External review remains audit and reproducibility evidence, not a mathematical premise for theorem emission.",
     "This registry records public reproducibility evidence for the activated checker-trust status."
   ]
