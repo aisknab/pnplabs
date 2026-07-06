@@ -29,8 +29,8 @@ test('verification run registry uses activated theorem-emission boundary', async
   const registry = await readJson('public/pnp-verification-runs.json');
 
   assert.equal(registry.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(registry.version, 1);
-  assert.equal(registry.status, 'activated-verification-run-registry-ready');
+  assert.equal(registry.version, 2);
+  assert.equal(registry.status, 'activated-verification-run-registry-seeded');
   assert.equal(registry.claimBoundary.publicTheoremEmissionAllowed, true);
   assert.equal(registry.claimBoundary.publicTheoremStatement, 'P = NP');
   assert.equal(registry.claimBoundary.publicTheoremConclusion, 'P = NP');
@@ -43,6 +43,8 @@ test('verification run registry uses activated theorem-emission boundary', async
   assert.equal(registry.statusPayload.coordinate, ACTIVATED_STATUS_COORDINATE);
   assert.equal(registry.statusPayload.publicTheoremActivationCoordinate, PUBLIC_ACTIVATION_COORDINATE);
   assert.equal(registry.statusPayload.unrestrictedFinalSoundnessReleaseCoordinate, 'PNP-UNRESTRICTED-FINAL-SOUNDNESS-RELEASE-2026-07-05-01');
+  assert.equal(registry.runs.length, 1);
+  assert.equal(registry.runs[0].recordId, 'pnplabs-ci-pr16-2026-07-06');
 
   for (const command of REQUIRED_FOCUSED_COMMANDS) {
     assert.ok(registry.focusedActivationCommands.includes(command), `missing focused command: ${command}`);
@@ -115,6 +117,7 @@ test('verification-runs page displays activated run-submission boundary and focu
     ACTIVATED_STATUS_COORDINATE,
     PUBLIC_ACTIVATION_COORDINATE,
     'status/ACTIVATED_PNP_STATUS.json',
+    'pnplabs-ci-pr16-2026-07-06',
     '<script src="assets/main.js" defer></script>'
   ], 'verification-runs page');
 
