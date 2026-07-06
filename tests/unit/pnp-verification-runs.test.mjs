@@ -18,11 +18,11 @@ function assertActivatedBoundary(boundary, label) {
   assert.deepEqual(boundary.remainingBlockers, [], `${label}: blockers must be empty`);
 }
 
-test('verification run registry is seeded and activated-status aware', async () => {
+test('verification run registry is seeded, import-ready, and activated-status aware', async () => {
   const payload = await readJson('public/pnp-verification-runs.json');
   assert.equal(payload.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(payload.version, 2);
-  assert.equal(payload.status, 'activated-verification-run-registry-seeded');
+  assert.equal(payload.version, 3);
+  assert.equal(payload.status, 'activated-verification-run-registry-import-ready');
   assert.equal(payload.sourceRepository, 'https://github.com/aisknab/pnp');
   assertActivatedBoundary(payload.claimBoundary, 'verification run registry');
   assert.equal(payload.runs.length, 1);
@@ -34,6 +34,11 @@ test('verification run registry is seeded and activated-status aware', async () 
   assert.ok(payload.acceptedRunRecordFields.includes('proofScriptOutputs'));
   assert.equal(payload.statusPayload.coordinate, 'PNP-ACTIVATED-STATUS-2026-07-05-01');
   assert.equal(payload.statusPayload.publicTheoremActivationCoordinate, 'PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01');
+  assert.equal(payload.importWorkflow.status, 'ready');
+  assert.equal(payload.importWorkflow.tool, 'tools/import-pnp-verifier-run.mjs');
+  assert.equal(payload.importWorkflow.ciWorkflow, '.github/workflows/pnp-verifier-run-import.yml');
+  assert.ok(payload.importWorkflow.acceptedRecordClasses.includes('source-checker-verifier-run'));
+  assert.equal(payload.importWorkflow.requiresFocusedProofScriptOutputs, true);
 });
 
 test('first-party CI run record binds successful site status workflows', async () => {
