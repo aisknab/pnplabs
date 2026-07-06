@@ -7,6 +7,7 @@
     "start": "node server.mjs",
     "verify:seal": "node tools/verify-release-seal.mjs",
     "examples:minimal": "node tools/run-minimal-examples.mjs",
+    "pnp:import-run": "node tools/import-pnp-verifier-run.mjs",
     "test:unit": "node --test tests/unit/*.test.mjs",
     "test:negative": "node --test tests/negative/*.test.mjs",
     "test:audit-targets": "node --test tests/audit-targets/*.test.mjs && node tools/check-cross-repo-targets.mjs",
