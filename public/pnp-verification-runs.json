@@ -1,11 +1,11 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 2,
-  "status": "activated-verification-run-registry-seeded",
+  "version": 3,
+  "status": "activated-verification-run-registry-import-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
-  "purpose": "Record public run reports from people or first-party CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence.",
+  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence.",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
@@ -41,6 +41,24 @@
     "kind": "github-issue-template",
     "repository": "https://github.com/aisknab/pnplabs",
     "template": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml"
+  },
+  "importWorkflow": {
+    "kind": "PNPVerifierRunImportWorkflow0",
+    "status": "ready",
+    "importDirectory": "imports/pnp-verifier-runs/",
+    "tool": "tools/import-pnp-verifier-run.mjs",
+    "checkCommand": "npm run pnp:import-run -- --check imports/pnp-verifier-runs/<record>.json public/pnp-verification-runs.json",
+    "writeCommand": "npm run pnp:import-run -- --write imports/pnp-verifier-runs/<record>.json public/pnp-verification-runs.json",
+    "ciWorkflow": ".github/workflows/pnp-verifier-run-import.yml",
+    "acceptedRecordClasses": [
+      "source-checker-verifier-run",
+      "external-source-checker-verifier-run",
+      "first-party-source-checker-ci"
+    ],
+    "rejectsDuplicateRecordIds": true,
+    "requiresActivatedStatusDigest": true,
+    "requiresFocusedProofScriptOutputs": true,
+    "externalReviewIsMathematicalPremise": false
   },
   "acceptedRunRecordFields": [
     "runnerNameOrHandle",
