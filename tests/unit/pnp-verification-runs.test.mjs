@@ -18,11 +18,11 @@ function assertActivatedBoundary(boundary, label) {
   assert.deepEqual(boundary.remainingBlockers, [], `${label}: blockers must be empty`);
 }
 
-test('verification run registry is seeded, import-ready, and activated-status aware', async () => {
+test('verification run registry is seeded, import-ready, normalized, and activated-status aware', async () => {
   const payload = await readJson('public/pnp-verification-runs.json');
   assert.equal(payload.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(payload.version, 3);
-  assert.equal(payload.status, 'activated-verification-run-registry-import-ready');
+  assert.equal(payload.version, 4);
+  assert.equal(payload.status, 'activated-verification-run-registry-normalized-import-ready');
   assert.equal(payload.sourceRepository, 'https://github.com/aisknab/pnp');
   assertActivatedBoundary(payload.claimBoundary, 'verification run registry');
   assert.equal(payload.runs.length, 1);
@@ -32,6 +32,7 @@ test('verification run registry is seeded, import-ready, and activated-status aw
   assert.ok(payload.acceptedRunRecordFields.includes('verdictTag'));
   assert.ok(payload.acceptedRunRecordFields.includes('activatedStatusCoordinate'));
   assert.ok(payload.acceptedRunRecordFields.includes('proofScriptOutputs'));
+  assert.ok(payload.acceptedRunRecordFields.includes('normalizedDigests'));
   assert.equal(payload.statusPayload.coordinate, 'PNP-ACTIVATED-STATUS-2026-07-05-01');
   assert.equal(payload.statusPayload.publicTheoremActivationCoordinate, 'PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01');
   assert.equal(payload.importWorkflow.status, 'ready');
@@ -39,6 +40,11 @@ test('verification run registry is seeded, import-ready, and activated-status aw
   assert.equal(payload.importWorkflow.ciWorkflow, '.github/workflows/pnp-verifier-run-import.yml');
   assert.ok(payload.importWorkflow.acceptedRecordClasses.includes('source-checker-verifier-run'));
   assert.equal(payload.importWorkflow.requiresFocusedProofScriptOutputs, true);
+  assert.equal(payload.importWorkflow.attachesNormalizedDigests, true);
+  assert.equal(payload.normalizationWorkflow.status, 'ready');
+  assert.equal(payload.normalizationWorkflow.tool, 'tools/normalize-pnp-verifier-run.mjs');
+  assert.ok(payload.normalizationWorkflow.storedDigestFields.includes('runRecordNormalizedSha256'));
+  assert.ok(payload.runRecordSchema.normalizedDigestFields.includes('artifactsOrLogsNormalizedSha256'));
 });
 
 test('first-party CI run record binds successful site status workflows', async () => {
@@ -57,6 +63,7 @@ test('first-party CI run record binds successful site status workflows', async (
   assert.deepEqual(run.verdict.remainingBlockers, []);
   assert.equal(run.activatedStatus.coordinate, 'PNP-ACTIVATED-STATUS-2026-07-05-01');
   assert.equal(run.activatedStatus.externalReviewIsMathematicalPremise, false);
+  assert.equal(run.normalizedDigests.policy, 'PNPActivatedRunDigestNormalization0');
 
   const successfulWorkflows = new Set(run.artifactsOrLogs.filter((entry) => entry.conclusion === 'success').map((entry) => entry.workflow));
   for (const workflow of ['review-smoke', 'pnp-public-payloads', 'pnp-upstream-status-consistency']) {
@@ -80,7 +87,9 @@ test('verification run page invites activated source checker runs and shows seed
     'unrestrictedFinalSoundnessDischarged = true',
     'remainingBlockers = []',
     'externalReviewIsMathematicalPremise = false',
-    'pnplabs-ci-pr16-2026-07-06'
+    'pnplabs-ci-pr16-2026-07-06',
+    'tools/normalize-pnp-verifier-run.mjs',
+    'normalizedDigests'
   ]) {
     assert.match(html, new RegExp(fragment.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `missing fragment: ${fragment}`);
   }

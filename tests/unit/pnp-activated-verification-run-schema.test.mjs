@@ -29,8 +29,8 @@ test('verification run registry uses activated theorem-emission boundary', async
   const registry = await readJson('public/pnp-verification-runs.json');
 
   assert.equal(registry.kind, 'PNPLabsPNPVerificationRunRegistry0');
-  assert.equal(registry.version, 3);
-  assert.equal(registry.status, 'activated-verification-run-registry-import-ready');
+  assert.equal(registry.version, 4);
+  assert.equal(registry.status, 'activated-verification-run-registry-normalized-import-ready');
   assert.equal(registry.claimBoundary.publicTheoremEmissionAllowed, true);
   assert.equal(registry.claimBoundary.publicTheoremStatement, 'P = NP');
   assert.equal(registry.claimBoundary.publicTheoremConclusion, 'P = NP');
@@ -47,14 +47,18 @@ test('verification run registry uses activated theorem-emission boundary', async
   assert.equal(registry.runs[0].recordId, 'pnplabs-ci-pr16-2026-07-06');
   assert.equal(registry.importWorkflow.status, 'ready');
   assert.equal(registry.importWorkflow.tool, 'tools/import-pnp-verifier-run.mjs');
+  assert.equal(registry.importWorkflow.attachesNormalizedDigests, true);
   assert.ok(registry.importWorkflow.acceptedRecordClasses.includes('source-checker-verifier-run'));
+  assert.equal(registry.normalizationWorkflow.status, 'ready');
+  assert.equal(registry.normalizationWorkflow.tool, 'tools/normalize-pnp-verifier-run.mjs');
+  assert.ok(registry.normalizationWorkflow.storedDigestFields.includes('runRecordNormalizedSha256'));
 
   for (const command of REQUIRED_FOCUSED_COMMANDS) {
     assert.ok(registry.focusedActivationCommands.includes(command), `missing focused command: ${command}`);
   }
 });
 
-test('verification run schema requires activated status and focused proof-script evidence fields', async () => {
+test('verification run schema requires activated status, proof-script evidence, and normalized digest fields', async () => {
   const registry = await readJson('public/pnp-verification-runs.json');
   const fields = new Set(registry.acceptedRunRecordFields);
 
@@ -67,6 +71,7 @@ test('verification run schema requires activated status and focused proof-script
     'publicTheoremActivationCoordinate',
     'statusPayloadSha256',
     'proofScriptOutputs',
+    'normalizedDigests',
   ]) {
     assert.ok(fields.has(field), `missing accepted run field: ${field}`);
   }
@@ -83,6 +88,9 @@ test('verification run schema requires activated status and focused proof-script
 
   for (const key of ['proof:activated-pnp-status', 'proof:public-theorem-activation', 'proof:unrestricted-final-soundness-release', 'proof:uniform-complexity-conclusion']) {
     assert.ok(registry.runRecordSchema.proofScriptOutputKeys.includes(key), `missing proof output key: ${key}`);
+  }
+  for (const key of ['runRecordNormalizedSha256', 'verdictNormalizedSha256', 'activatedStatusNormalizedSha256', 'proofScriptOutputsNormalizedSha256', 'artifactsOrLogsNormalizedSha256']) {
+    assert.ok(registry.runRecordSchema.normalizedDigestFields.includes(key), `missing normalized digest field: ${key}`);
   }
 });
 

@@ -6,8 +6,10 @@ on:
       - 'imports/pnp-verifier-runs/**'
       - 'public/pnp-verification-runs.json'
       - 'tools/import-pnp-verifier-run.mjs'
+      - 'tools/normalize-pnp-verifier-run.mjs'
       - 'tests/fixtures/pnp-activated-verifier-run.import.json'
       - 'tests/unit/pnp-verifier-run-import.test.mjs'
+      - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
   push:
     branches:
@@ -16,8 +18,10 @@ on:
       - 'imports/pnp-verifier-runs/**'
       - 'public/pnp-verification-runs.json'
       - 'tools/import-pnp-verifier-run.mjs'
+      - 'tools/normalize-pnp-verifier-run.mjs'
       - 'tests/fixtures/pnp-activated-verifier-run.import.json'
       - 'tests/unit/pnp-verifier-run-import.test.mjs'
+      - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
   workflow_dispatch:
 
@@ -29,6 +33,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Normalize sample source-checker run
+        run: |
+          npm run pnp:normalize-run -- --json tests/fixtures/pnp-activated-verifier-run.import.json
       - name: Validate import tool with sample source-checker run
         run: |
           npm run pnp:import-run -- --check tests/fixtures/pnp-activated-verifier-run.import.json public/pnp-verification-runs.json
@@ -43,7 +50,10 @@ jobs:
           fi
           for file in "${files[@]}"; do
             echo "Checking $file"
+            npm run pnp:normalize-run -- --json "$file"
             npm run pnp:import-run -- --check "$file" public/pnp-verification-runs.json
           done
       - name: Import utility unit tests
         run: node --test tests/unit/pnp-verifier-run-import.test.mjs
+      - name: Normalization utility unit tests
+        run: node --test tests/unit/pnp-verifier-run-normalization.test.mjs

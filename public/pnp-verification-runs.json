@@ -1,11 +1,11 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 3,
-  "status": "activated-verification-run-registry-import-ready",
+  "version": 4,
+  "status": "activated-verification-run-registry-normalized-import-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-06",
-  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence.",
+  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence with normalized digest fields for comparison.",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
@@ -42,6 +42,25 @@
     "repository": "https://github.com/aisknab/pnplabs",
     "template": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml"
   },
+  "normalizationWorkflow": {
+    "kind": "PNPActivatedRunDigestNormalization0",
+    "status": "ready",
+    "tool": "tools/normalize-pnp-verifier-run.mjs",
+    "command": "npm run pnp:normalize-run -- --json imports/pnp-verifier-runs/<record>.json",
+    "writeCommand": "npm run pnp:normalize-run -- --write imports/pnp-verifier-runs/<record>.json",
+    "attachedByImportTool": true,
+    "normalizesAnsiEscapes": true,
+    "normalizesTimestamps": true,
+    "normalizesLineEndings": true,
+    "normalizesTrailingWhitespace": true,
+    "storedDigestFields": [
+      "runRecordNormalizedSha256",
+      "verdictNormalizedSha256",
+      "activatedStatusNormalizedSha256",
+      "proofScriptOutputsNormalizedSha256",
+      "artifactsOrLogsNormalizedSha256"
+    ]
+  },
   "importWorkflow": {
     "kind": "PNPVerifierRunImportWorkflow0",
     "status": "ready",
@@ -58,6 +77,7 @@
     "rejectsDuplicateRecordIds": true,
     "requiresActivatedStatusDigest": true,
     "requiresFocusedProofScriptOutputs": true,
+    "attachesNormalizedDigests": true,
     "externalReviewIsMathematicalPremise": false
   },
   "acceptedRunRecordFields": [
@@ -78,6 +98,7 @@
     "publicTheoremActivationCoordinate",
     "statusPayloadSha256",
     "proofScriptOutputs",
+    "normalizedDigests",
     "artifactsOrLogs"
   ],
   "runRecordSchema": {
@@ -112,6 +133,13 @@
       "proof:public-theorem-activation",
       "proof:unrestricted-final-soundness-release",
       "proof:uniform-complexity-conclusion"
+    ],
+    "normalizedDigestFields": [
+      "runRecordNormalizedSha256",
+      "verdictNormalizedSha256",
+      "activatedStatusNormalizedSha256",
+      "proofScriptOutputsNormalizedSha256",
+      "artifactsOrLogsNormalizedSha256"
     ]
   },
   "runs": [
@@ -158,6 +186,14 @@
         "proof:public-theorem-activation": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI",
         "proof:unrestricted-final-soundness-release": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI",
         "proof:uniform-complexity-conclusion": "covered by upstream activated status payload mirror, not re-run inside pnplabs CI"
+      },
+      "normalizedDigests": {
+        "policy": "PNPActivatedRunDigestNormalization0",
+        "runRecordNormalizedSha256": "recorded-by-source-checker-run-digest-normalization",
+        "verdictNormalizedSha256": "recorded-by-source-checker-run-digest-normalization",
+        "activatedStatusNormalizedSha256": "recorded-by-source-checker-run-digest-normalization",
+        "proofScriptOutputsNormalizedSha256": "recorded-by-source-checker-run-digest-normalization",
+        "artifactsOrLogsNormalizedSha256": "recorded-by-source-checker-run-digest-normalization"
       },
       "artifactsOrLogs": [
         {

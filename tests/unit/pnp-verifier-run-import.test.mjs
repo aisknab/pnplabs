@@ -20,7 +20,7 @@ test('import tool validates the sample source-checker verifier run record', asyn
   assert.equal(out.statusPayloadSha256, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 });
 
-test('import tool validates current seeded registry and imports a new source-checker run', async () => {
+test('import tool validates current seeded registry and imports a new source-checker run with normalized digests', async () => {
   const registry = await readJson('public/pnp-verification-runs.json');
   const record = await readJson('tests/fixtures/pnp-activated-verifier-run.import.json');
 
@@ -32,9 +32,12 @@ test('import tool validates current seeded registry and imports a new source-che
   assert.equal(imported.tag, 'accept');
   assert.equal(imported.importedRecordId, 'example-source-checker-run-2026-07-06');
   assert.equal(imported.runCount, 2);
-  assert.equal(imported.registry.version, 4);
+  assert.equal(imported.registry.version, 5);
   assert.equal(imported.registry.status, 'activated-verification-run-registry-imported');
   assert.equal(imported.registry.runs.at(-1).recordClass, 'source-checker-verifier-run');
+  assert.equal(imported.registry.runs.at(-1).normalizedDigests.policy, 'PNPActivatedRunDigestNormalization0');
+  assert.match(imported.registry.runs.at(-1).normalizedDigests.runRecordNormalizedSha256, /^[0-9a-f]{64}$/);
+  assert.match(imported.normalizedDigests.artifactsOrLogsNormalizedSha256, /^[0-9a-f]{64}$/);
   assert.match(imported.registrySha256, /^[0-9a-f]{64}$/);
 });
 
