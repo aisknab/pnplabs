@@ -26,7 +26,7 @@ body:
         npm run proof:uniform-complexity-conclusion
         ```
 
-        A run report records reproducible machine evidence for the activated checker-trust status. It is not, by itself, independent external consensus or peer-review acceptance.
+        A run report records reproducible machine evidence for the activated checker-trust status. It is not, by itself, an external-consensus claim or peer-review acceptance.
 
   - type: input
     id: runner
@@ -142,7 +142,7 @@ body:
       options:
         - label: I ran the commands above or an equivalent documented command sequence.
           required: true
-        - label: I understand this report records a verifier run and is not independent external consensus or peer-review acceptance.
+        - label: I understand this report records a verifier run and is not an external-consensus claim or peer-review acceptance.
           required: true
         - label: I understand external review is audit evidence and not a mathematical premise for theorem emission.
           required: true
