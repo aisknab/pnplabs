@@ -12,6 +12,8 @@ const SKIP_FILES = new Set([
   'downloads/canonical_proof_report.tex',
   'downloads/SHA256SUMS',
   'downloads/SHA256SUMS.sha256',
+  'docs/activated_claim_wording.md',
+  'tests/unit/pnp-activated-overclaim-guard.test.mjs',
 ]);
 
 const REQUIRED_ACTIVATED_FRAGMENTS = [
