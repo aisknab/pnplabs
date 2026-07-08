@@ -18,7 +18,7 @@ function assertActivatedBoundary(boundary, label) {
   assert.deepEqual(boundary.remainingBlockers, [], `${label}: blockers must be empty`);
 }
 
-test('verification run registry is badge-ready, matrix-ready, comparison-ready, normalized, and activated-status aware', async () => {
+test('verification run registry remains badge-ready, matrix-ready, comparison-ready, normalized, and activated-status aware', async () => {
   const payload = await readJson('public/pnp-verification-runs.json');
   assert.equal(payload.kind, 'PNPLabsPNPVerificationRunRegistry0');
   assert.equal(payload.version, 7);
@@ -88,16 +88,22 @@ test('first-party CI run record binds successful site status workflows', async (
   assert.match(run.nonClaims.join('\n'), /not an external-consensus claim/);
 });
 
-test('verification run page invites activated source checker runs and shows seed record', async () => {
+test('verification run page invites one-command source checker uploads and shows seed record', async () => {
   const html = await readFile(new URL('../../verification-runs.html', import.meta.url), 'utf8');
   for (const fragment of [
     'Activated verification run registry',
     'git clone https://github.com/aisknab/pnp.git',
+    'npm run verify',
+    'Upload verification run to PNP Labs? [y/N]',
+    'artifacts/pnplabs-upload/latest-run-record.json',
+    'artifacts/pnplabs-upload/latest-issue-body.md',
+    'PNPActivatedVerificationRunRecord0',
     'npm run pnp:verify',
     'npm run proof:activated-pnp-status',
     'npm run pnp:compare-runs',
     'npm run pnp:run-summary',
     'verifier-run-digests.html',
+    'public/pnp-one-command-upload.json',
     'public/pnp-verifier-run-digest-comparison.json',
     'public/pnp-verifier-run-comparison-matrix.json',
     'public/pnp-verifier-run-matrix-summary.json',
@@ -115,9 +121,10 @@ test('verification run page invites activated source checker runs and shows seed
   }
 });
 
-test('status page links the verification run registry and matrix summary', async () => {
+test('status page links the verification run registry, one-command upload, and matrix summary', async () => {
   const html = await readFile(new URL('../../status.html', import.meta.url), 'utf8');
   assert.match(html, /verification-runs\.html/);
+  assert.match(html, /public\/pnp-one-command-upload\.json/);
   assert.match(html, /public\/pnp-verification-runs\.json/);
   assert.match(html, /public\/pnp-verifier-run-matrix-summary\.json/);
 });
