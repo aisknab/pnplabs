@@ -27,8 +27,20 @@
     <section class="page-hero">
       <span class="eyebrow">Activated public reproducibility</span>
       <h1>Activated verification run registry</h1>
-      <p class="lede">Clone the source/checker repository, run the verifier, reproduce the activated theorem-emission status, and submit reproducible run evidence.</p>
-      <div class="hero-actions"><a class="btn primary" href="public/pnp-verification-runs.json">Open registry JSON</a><a class="btn secondary" href="public/pnp-verifier-run-matrix-summary.json">Matrix badge summary</a></div>
+      <p class="lede">Run the source/checker verifier, then type <code>y</code> when prompted to upload reproducible run evidence to PNP Labs.</p>
+      <div class="hero-actions"><a class="btn primary" href="public/pnp-one-command-upload.json">One-command upload JSON</a><a class="btn secondary" href="public/pnp-verification-runs.json">Open registry JSON</a></div>
+    </section>
+    <section class="section compact">
+      <div class="section-label">One-command verifier upload</div>
+      <h2>Run, then upload with one prompt</h2>
+      <pre><code>git clone https://github.com/aisknab/pnp.git
+cd pnp
+npm ci
+npm run verify
+# Verify complete.
+# Upload verification run to PNP Labs? [y/N]</code></pre>
+      <p>Type <code>y</code> or <code>yes</code> to submit automatically when <code>PNPLABS_UPLOAD_TOKEN</code>, <code>GITHUB_TOKEN</code>, <code>GH_TOKEN</code>, or an authenticated <code>gh</code> CLI is available.</p>
+      <p>If credentials are unavailable, the CLI writes <code>artifacts/pnplabs-upload/latest-run-record.json</code> and <code>artifacts/pnplabs-upload/latest-issue-body.md</code>, then prints a prefilled PNP Labs issue URL.</p>
     </section>
     <section class="section compact">
       <div class="section-label">Matrix badge summary</div>
@@ -42,12 +54,9 @@
     </section>
     <section class="section compact">
       <div class="section-label">Run command</div>
-      <h2>Run the source/checker verifier</h2>
-      <pre><code>git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run pnp:verify</code></pre>
-      <p>Attach the final verifier JSON or a CI log showing the final verdict. The canonical local output is <code>artifacts/pnp-verify-all/latest-verdict.json</code>.</p>
+      <h2>Underlying verifier command</h2>
+      <pre><code>npm run pnp:verify</code></pre>
+      <p>The one-command wrapper runs the repository verifier and prepares an importable <code>PNPActivatedVerificationRunRecord0</code> for PNP Labs.</p>
     </section>
     <section class="section compact">
       <div class="section-label">Focused activation checks</div>
@@ -85,7 +94,7 @@ npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json
 ]</code></pre>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>pnplabs-ci-pr16-2026-07-06</h3><p>First-party site CI record for PR #16. It validates the public status mirror, activated registry schema, public payload tests, and upstream status consistency.</p></article>
-        <article class="card"><h3>Scope note</h3><p>This seed record is not a clean-room source/checker reproduction of <code>npm run pnp:verify</code>. It is a first-party CI status-mirror record for the public site.</p></article>
+        <article class="card"><h3>Scope note</h3><p>This seed record is not a clean-room source/checker reproduction of <code>npm run verify</code>. It is a first-party CI status-mirror record for the public site.</p></article>
       </div>
     </section>
     <section class="section compact">
@@ -109,7 +118,7 @@ externalReviewIsMathematicalPremise = false</pre></div>
         <li>UTC date and exact <code>aisknab/pnp</code> commit or ref tested.</li>
         <li>OS, CPU architecture, Node version, npm version, and container or VM details if used.</li>
         <li>Commands run and any deviations from the canonical command.</li>
-        <li>Final verifier JSON, logs, CI link, or checksums sufficient for reproduction.</li>
+        <li>Final verifier JSON, generated issue body, logs, CI link, or checksums sufficient for reproduction.</li>
         <li>Activated status coordinate <code>PNP-ACTIVATED-STATUS-2026-07-05-01</code> and public theorem activation coordinate <code>PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01</code>.</li>
         <li>SHA-256 digest or artifact link for <code>public/pnp-status.json</code> or <code>status/ACTIVATED_PNP_STATUS.json</code>, where available.</li>
         <li>Focused proof-script outputs for <code>proof:activated-pnp-status</code>, <code>proof:public-theorem-activation</code>, <code>proof:unrestricted-final-soundness-release</code>, and <code>proof:uniform-complexity-conclusion</code>, where available.</li>
