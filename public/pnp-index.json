@@ -1,9 +1,9 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 4,
+  "version": 5,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-06",
+  "syncedOn": "2026-07-08",
   "status": "activated-status-payloads-ready",
   "claimBoundary": {
     "publicTheoremEmissionAllowed": true,
@@ -21,6 +21,11 @@
       "id": "pnp-status",
       "path": "/public/pnp-status.json",
       "description": "Activated PNP status payload mirrored from aisknab/pnp public/pnp-status.json."
+    },
+    {
+      "id": "pnp-one-command-upload",
+      "path": "/public/pnp-one-command-upload.json",
+      "description": "One-command source/checker verifier upload flow: npm run verify, then type y to submit the run report."
     },
     {
       "id": "pnp-public-review",
@@ -63,7 +68,9 @@
   "verifierRunDigestComparisonPage": "/verifier-run-digests.html",
   "verifierRunComparisonMatrixPayload": "/public/pnp-verifier-run-comparison-matrix.json",
   "verifierRunMatrixSummaryPayload": "/public/pnp-verifier-run-matrix-summary.json",
-  "verificationCommand": "npm run pnp:verify",
+  "oneCommandUploadPayload": "/public/pnp-one-command-upload.json",
+  "verificationCommand": "npm run verify",
+  "uploadPrompt": "Upload verification run to PNP Labs? [y/N]",
   "activationCommands": [
     "npm run proof:public-theorem-activation",
     "npm run proof:unrestricted-final-soundness-release",
