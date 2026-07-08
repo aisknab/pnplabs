@@ -63,31 +63,6 @@ remainingBlockers = []</pre>
           </div>`;
   }
 
-  if (!hero.querySelector('[data-homepage-one-command-upload]')) {
-    const upload = document.createElement('div');
-    upload.className = 'boundary-panel';
-    upload.setAttribute('data-homepage-one-command-upload', '');
-    upload.innerHTML = `<div class="boundary-head">
-            <span>One-command verifier upload</span>
-            <strong>ready</strong>
-          </div>
-          <pre>git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run verify
-# Verify complete.
-# Upload verification run to PNP Labs? [y/N]</pre>
-          <div class="boundary-ledger">
-            <div><span>User input</span><strong>type y</strong></div>
-            <div><span>Auto upload</span><strong>token or gh</strong></div>
-            <div><span>Fallback</span><strong>issue body file</strong></div>
-            <div><span>Run record</span><strong>PNPActivatedVerificationRunRecord0</strong></div>
-          </div>`;
-    const anchor = hero.querySelector('[data-homepage-matrix-summary]') ?? hero.querySelector('.boundary-panel');
-    if (anchor) anchor.insertAdjacentElement('afterend', upload);
-    else hero.append(upload);
-  }
-
   if (!hero.querySelector('[data-homepage-matrix-summary]')) {
     const badge = document.createElement('div');
     badge.className = 'boundary-panel';
@@ -111,6 +86,31 @@ metrics.diagonalAccepts = true</pre>
     const anchor = hero.querySelector('.boundary-panel');
     if (anchor) anchor.insertAdjacentElement('afterend', badge);
     else hero.append(badge);
+  }
+
+  if (!hero.querySelector('[data-homepage-one-command-upload]')) {
+    const upload = document.createElement('div');
+    upload.className = 'boundary-panel';
+    upload.setAttribute('data-homepage-one-command-upload', '');
+    upload.innerHTML = `<div class="boundary-head">
+            <span>One-command verifier upload</span>
+            <strong>ready</strong>
+          </div>
+          <pre>git clone https://github.com/aisknab/pnp.git
+cd pnp
+npm ci
+npm run verify
+# Verify complete.
+# Upload verification run to PNP Labs? [y/N]</pre>
+          <div class="boundary-ledger">
+            <div><span>User input</span><strong>type y</strong></div>
+            <div><span>Auto upload</span><strong>token or gh</strong></div>
+            <div><span>Fallback</span><strong>issue body file</strong></div>
+            <div><span>Run record</span><strong>PNPActivatedVerificationRunRecord0</strong></div>
+          </div>`;
+    const anchor = hero.querySelector('[data-homepage-matrix-summary]') ?? hero.querySelector('.boundary-panel');
+    if (anchor) anchor.insertAdjacentElement('afterend', upload);
+    else hero.append(upload);
   }
 
   const actions = hero.querySelector('.hero-actions');
@@ -391,7 +391,7 @@ function updateProgress() {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   const pct = height > 0 ? (scrollTop / height) * 100 : 0;
-  progress.style.width = `${Math.max(0, Math.min(100, pct)}%`;
+  progress.style.width = `${Math.max(0, Math.min(100, pct))}%`;
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
