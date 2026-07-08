@@ -14,13 +14,16 @@ on:
       - 'tools/compare-pnp-verifier-runs.mjs'
       - 'tools/generate-pnp-verifier-run-matrix.mjs'
       - 'tools/generate-pnp-verifier-run-summary.mjs'
+      - 'tools/extract-pnp-verification-run-from-issue.mjs'
       - 'tests/fixtures/pnp-activated-verifier-run.import.json'
       - 'tests/unit/pnp-verifier-run-import.test.mjs'
       - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
       - 'tests/unit/pnp-verifier-run-digest-comparison.test.mjs'
       - 'tests/unit/pnp-verifier-run-comparison-matrix.test.mjs'
       - 'tests/unit/pnp-verifier-run-matrix-summary.test.mjs'
+      - 'tests/unit/pnp-verification-issue-ingest.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
+      - '.github/workflows/pnp-verification-run-issue-ingest.yml'
   push:
     branches:
       - main
@@ -36,13 +39,16 @@ on:
       - 'tools/compare-pnp-verifier-runs.mjs'
       - 'tools/generate-pnp-verifier-run-matrix.mjs'
       - 'tools/generate-pnp-verifier-run-summary.mjs'
+      - 'tools/extract-pnp-verification-run-from-issue.mjs'
       - 'tests/fixtures/pnp-activated-verifier-run.import.json'
       - 'tests/unit/pnp-verifier-run-import.test.mjs'
       - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
       - 'tests/unit/pnp-verifier-run-digest-comparison.test.mjs'
       - 'tests/unit/pnp-verifier-run-comparison-matrix.test.mjs'
       - 'tests/unit/pnp-verifier-run-matrix-summary.test.mjs'
+      - 'tests/unit/pnp-verification-issue-ingest.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
+      - '.github/workflows/pnp-verification-run-issue-ingest.yml'
   workflow_dispatch:
 
 jobs:
@@ -82,6 +88,8 @@ jobs:
             npm run pnp:normalize-run -- --json "$file"
             npm run pnp:import-run -- --check "$file" public/pnp-verification-runs.json
           done
+      - name: Issue ingest unit tests
+        run: node --test tests/unit/pnp-verification-issue-ingest.test.mjs
       - name: Import utility unit tests
         run: node --test tests/unit/pnp-verifier-run-import.test.mjs
       - name: Normalization utility unit tests
