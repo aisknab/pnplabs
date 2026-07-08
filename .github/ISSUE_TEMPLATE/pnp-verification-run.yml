@@ -23,6 +23,15 @@ body:
 
         Type `y` or `yes` to submit automatically when `PNPLABS_UPLOAD_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN`, or authenticated `gh` is available.
 
+        Focused activation checks remain accepted as supporting evidence:
+
+        ```bash
+        npm run proof:activated-pnp-status
+        npm run proof:public-theorem-activation
+        npm run proof:unrestricted-final-soundness-release
+        npm run proof:uniform-complexity-conclusion
+        ```
+
         If automatic upload is unavailable, paste the generated body from:
 
         ```text
