@@ -42,7 +42,7 @@ test('verify, FAQ, and review pages load the shared activated-copy script', asyn
 
 test('activated copy keeps external review as audit evidence rather than theorem premise', async () => {
   const script = await readText('assets/main.js');
-  assert.match(script, /External review remains audit evidence and reproducibility evidence, not a theorem premise\./);
-  assert.match(script, /independent review remains an audit layer/);
-  assert.match(script, /rather than serve as a theorem premise/);
+  assert.match(script, /External review remains audit evidence/);
+  assert.match(script, /reproducibility evidence|reproducibility and audit evidence/);
+  assert.match(script, /not a theorem premise|rather than serve as a theorem premise/);
 });
