@@ -6,15 +6,18 @@ async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
 
-test('shared site script refreshes verify, FAQ, and review pages for activated theorem status', async () => {
+test('shared site script refreshes verify, FAQ, and review pages for one-command activated upload', async () => {
   const script = await readText('assets/main.js');
 
   for (const fragment of [
     'function ensureActivatedVerificationCopy()',
-    'Verify the activated P = NP theorem-emission status.',
-    'Open activated status JSON',
+    'Run the verifier, then upload the run with one prompt.',
+    'Open one-command JSON',
     'Submit a verifier run',
-    'npm run proof:public-theorem-activation',
+    'npm run verify',
+    'Upload verification run to PNP Labs? [y/N]',
+    'artifacts/pnplabs-upload/latest-issue-body.md',
+    'PNPActivatedVerificationRunRecord0',
     'function ensureActivatedFAQCopy()',
     'Activated theorem-status FAQ.',
     'Does the site now permit the theorem statement?',
