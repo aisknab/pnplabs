@@ -84,9 +84,10 @@ test('comparison matrix page and payload index link the matrix and summary paylo
     assert.equal(html.includes(fragment), true, `missing matrix page fragment: ${fragment}`);
   }
 
-  assert.equal(index.version, 4);
+  assert.equal(index.version, 5);
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-comparison-matrix.json'));
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-matrix-summary.json'));
+  assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-one-command-upload.json'));
   assert.equal(index.verifierRunComparisonMatrixPayload, '/public/pnp-verifier-run-comparison-matrix.json');
   assert.equal(index.verifierRunMatrixSummaryPayload, '/public/pnp-verifier-run-matrix-summary.json');
 });

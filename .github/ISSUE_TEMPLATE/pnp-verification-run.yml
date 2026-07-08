@@ -6,24 +6,36 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form after cloning `aisknab/pnp`, running the verifier, and checking the activated status payload.
-
-        Primary command:
+        The preferred path is now the one-command verifier upload flow:
 
         ```bash
         git clone https://github.com/aisknab/pnp.git
         cd pnp
         npm ci
-        npm run pnp:verify
+        npm run verify
         ```
 
-        Focused activation checks:
+        When the verifier completes, it asks:
+
+        ```text
+        Upload verification run to PNP Labs? [y/N]
+        ```
+
+        Type `y` or `yes` to submit automatically when `PNPLABS_UPLOAD_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN`, or authenticated `gh` is available.
+
+        Focused activation checks remain accepted as supporting evidence:
 
         ```bash
         npm run proof:activated-pnp-status
         npm run proof:public-theorem-activation
         npm run proof:unrestricted-final-soundness-release
         npm run proof:uniform-complexity-conclusion
+        ```
+
+        If automatic upload is unavailable, paste the generated body from:
+
+        ```text
+        artifacts/pnplabs-upload/latest-issue-body.md
         ```
 
         A run report records reproducible machine evidence for the activated checker-trust status. It is not, by itself, an external-consensus claim or peer-review acceptance.
@@ -41,7 +53,7 @@ body:
     id: date-utc
     attributes:
       label: Run date in UTC
-      placeholder: "2026-07-06"
+      placeholder: "2026-07-08"
     validations:
       required: true
 
@@ -70,16 +82,12 @@ body:
     id: commands
     attributes:
       label: Commands run
-      description: Include every command needed to reproduce your run, including any focused activation checks.
+      description: Include every command needed to reproduce your run. The preferred sequence is below.
       value: |
         git clone https://github.com/aisknab/pnp.git
         cd pnp
         npm ci
-        npm run pnp:verify
-        npm run proof:activated-pnp-status
-        npm run proof:public-theorem-activation
-        npm run proof:unrestricted-final-soundness-release
-        npm run proof:uniform-complexity-conclusion
+        npm run verify
     validations:
       required: true
 
@@ -87,7 +95,7 @@ body:
     id: verdict
     attributes:
       label: Verifier result
-      description: Paste the final JSON summary or the relevant final lines from `artifacts/pnp-verify-all/latest-verdict.json`.
+      description: Paste the final JSON summary, the generated issue body summary, or relevant final lines from `artifacts/pnp-verify-all/latest-verdict.json`.
       placeholder: |
         tag: accept
         claimStatus:
@@ -104,7 +112,7 @@ body:
     id: activated-status
     attributes:
       label: Activated status payload fields
-      description: Paste the key fields from `status/ACTIVATED_PNP_STATUS.json` or `public/pnp-status.json` in the source/checker checkout.
+      description: Paste the key fields from `status/ACTIVATED_PNP_STATUS.json`, `public/pnp-status.json`, or the generated `latest-run-record.json`.
       placeholder: |
         kind: PNPActivatedStatus0
         coordinate: PNP-ACTIVATED-STATUS-2026-07-05-01
@@ -118,7 +126,7 @@ body:
     id: proof-script-outputs
     attributes:
       label: Focused proof-script outputs
-      description: Paste accept summaries, JSON paths, CI artifact links, or SHA-256 digests for the focused activation scripts if run separately.
+      description: Paste accept summaries, JSON paths, generated proofScriptOutputs, CI artifact links, or SHA-256 digests for the focused activation scripts if available.
       placeholder: |
         proof:activated-pnp-status:
         proof:public-theorem-activation:
@@ -131,7 +139,7 @@ body:
     id: artifacts
     attributes:
       label: Logs or artifact links
-      description: Attach logs, CI run links, commit links, checksums, or artifact links. Do not paste secrets.
+      description: Attach logs, CI run links, commit links, checksums, generated issue body, or artifact links. Do not paste secrets.
     validations:
       required: false
 

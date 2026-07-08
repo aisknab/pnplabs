@@ -1,0 +1,64 @@
+{
+  "kind": "PNPOneCommandVerifierUpload0",
+  "version": 0,
+  "status": "one-command-verifier-upload-ready",
+  "sourceRepository": "https://github.com/aisknab/pnp",
+  "sourcePr": "https://github.com/aisknab/pnp/pull/176",
+  "sourceMergeCommit": "888ab7405d16414b60ceeb6d12f4a431d6c22a12",
+  "primaryCommand": [
+    "git clone https://github.com/aisknab/pnp.git",
+    "cd pnp",
+    "npm ci",
+    "npm run verify"
+  ],
+  "interactivePrompt": "Upload verification run to PNP Labs? [y/N]",
+  "yesAnswers": [
+    "y",
+    "yes"
+  ],
+  "nonInteractiveCommand": "PNPLABS_UPLOAD_TOKEN=<github-token> npm run pnp:verify:upload",
+  "automaticUploadCredentials": [
+    "PNPLABS_UPLOAD_TOKEN",
+    "GITHUB_TOKEN",
+    "GH_TOKEN",
+    "authenticated GitHub CLI gh"
+  ],
+  "manualFallbackOutputs": [
+    "artifacts/pnplabs-upload/latest-run-record.json",
+    "artifacts/pnplabs-upload/latest-issue-body.md",
+    "prefilled PNP Labs issue URL"
+  ],
+  "submittedRecordKind": "PNPActivatedVerificationRunRecord0",
+  "submittedRecordRequiredFields": [
+    "pnpCommit",
+    "publicTheoremEmissionAllowed",
+    "publicTheoremStatement",
+    "publicTheoremConclusion",
+    "finalTheoremReady",
+    "unrestrictedFinalSoundnessDischarged",
+    "remainingBlockers",
+    "activatedStatusCoordinate",
+    "publicTheoremActivationCoordinate",
+    "statusPayloadSha256",
+    "environment",
+    "commandsRun",
+    "proofScriptOutputs"
+  ],
+  "claimBoundary": {
+    "publicTheoremEmissionAllowed": true,
+    "publicTheoremStatement": "P = NP",
+    "publicTheoremConclusion": "P = NP",
+    "finalTheoremReady": true,
+    "unrestrictedFinalSoundnessDischarged": true,
+    "remainingBlockers": [],
+    "externalReviewIsMathematicalPremise": false
+  },
+  "targetRegistry": "public/pnp-verification-runs.json",
+  "targetIssueTemplate": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml",
+  "docs": "docs/one_command_verify_upload.md",
+  "nonClaims": [
+    "The upload report is reproducibility evidence for an activated checker-trust verifier run.",
+    "A submitted run report is not an external-consensus claim or peer-review acceptance.",
+    "External review remains audit evidence and not a mathematical premise for theorem emission."
+  ]
+}

@@ -36,7 +36,10 @@ test('PNP activated status payloads publish theorem-emission activation', async 
 
   assert.equal(index.sourceRepository, 'https://github.com/aisknab/pnp');
   assert.equal(index.status, 'activated-status-payloads-ready');
+  assert.equal(index.verificationCommand, 'npm run verify');
+  assert.equal(index.oneCommandUploadPayload, '/public/pnp-one-command-upload.json');
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-status.json'));
+  assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-one-command-upload.json'));
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-comparison-matrix.json'));
   assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-verifier-run-matrix-summary.json'));
   assert.equal(index.verifierRunComparisonMatrixPayload, '/public/pnp-verifier-run-comparison-matrix.json');
@@ -73,6 +76,7 @@ test('status page links every public PNP payload and activated reviewer command'
   for (const fragment of [
     'public/pnp-index.json',
     'public/pnp-status.json',
+    'public/pnp-one-command-upload.json',
     'public/pnp-public-review.json',
     'public/pnp-theorem-emission-gate.json',
     'public/pnp-external-review-status.json',
@@ -81,7 +85,8 @@ test('status page links every public PNP payload and activated reviewer command'
     'public/pnp-verifier-run-comparison-matrix.json',
     'public/pnp-verifier-run-matrix-summary.json',
     '1 public run; 1/1 required comparisons passing',
-    'npm run pnp:verify',
+    'npm run verify',
+    'Upload verification run to PNP Labs? [y/N]',
     'publicTheoremEmissionAllowed = true',
     'publicTheoremStatement = "P = NP"',
     'remainingBlockers = []',
@@ -99,17 +104,18 @@ test('site navigation enhancement exposes the status page', async () => {
   assert.match(script, /ensureStatusLink\(\);/);
 });
 
-test('homepage script rewrites the hero to the activated theorem boundary', async () => {
+test('homepage script rewrites the hero to the activated theorem and upload boundary', async () => {
   const script = await readFile(new URL('../../assets/main.js', import.meta.url), 'utf8');
   for (const fragment of [
     'function ensureHomepageStatusBoundary()',
     'P = NP public theorem emission is activated under the repository checker trust model.',
     'Public theorem emission is now enabled by the accepted proof stack.',
-    'public theorem emission</span><strong>activated</strong>',
+    'npm run verify</span><span>upload run report</span><strong>activated</strong>',
     'publicTheoremEmissionAllowed = true',
     'publicTheoremStatement = "P = NP"',
     'remainingBlockers = []',
-    'External review remains audit evidence',
+    'Upload verification run to PNP Labs? [y/N]',
+    'public/pnp-one-command-upload.json',
     'View activated status',
     'ensureHomepageStatusBoundary();'
   ]) {

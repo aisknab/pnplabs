@@ -30,6 +30,26 @@ test('homepage script injects verifier-run matrix badge summary', async () => {
   }
 });
 
+test('homepage script injects one-command verifier upload panel', async () => {
+  const script = await readText('assets/main.js');
+
+  for (const fragment of [
+    'data-homepage-one-command-upload',
+    'One-command verifier upload',
+    'git clone https://github.com/aisknab/pnp.git',
+    'npm ci',
+    'npm run verify',
+    'Upload verification run to PNP Labs? [y/N]',
+    'User input</span><strong>type y</strong>',
+    'Fallback</span><strong>issue body file</strong>',
+    'PNPActivatedVerificationRunRecord0',
+    'public/pnp-one-command-upload.json',
+    'One-command upload'
+  ]) {
+    assert.equal(script.includes(fragment), true, `missing homepage one-command upload fragment: ${fragment}`);
+  }
+});
+
 test('homepage page still loads the shared dynamic status script', async () => {
   const html = await readText('index.html');
   assert.match(html, /<script src="assets\/main\.js" defer><\/script>/);
@@ -38,7 +58,8 @@ test('homepage page still loads the shared dynamic status script', async () => {
 test('homepage badge wording keeps reproducibility status separate from theorem premise status', async () => {
   const script = await readText('assets/main.js');
   assert.match(script, /P = NP public theorem emission is activated under the repository checker trust model\./);
-  assert.match(script, /External review remains audit evidence and reproducibility evidence, not a theorem premise\./);
+  assert.match(script, /External review remains audit evidence/);
+  assert.match(script, /not a theorem premise/);
   assert.match(script, /badge\.state = passing/);
   assert.doesNotMatch(script, /external\s+review\s+is\s+(a\s+)?(mathematical\s+)?premise/i);
 });

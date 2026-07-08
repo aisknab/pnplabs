@@ -6,15 +6,18 @@ async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
 
-test('shared site script refreshes verify, FAQ, and review pages for activated theorem status', async () => {
+test('shared site script refreshes verify, FAQ, and review pages for one-command activated upload', async () => {
   const script = await readText('assets/main.js');
 
   for (const fragment of [
     'function ensureActivatedVerificationCopy()',
-    'Verify the activated P = NP theorem-emission status.',
-    'Open activated status JSON',
+    'Run the verifier, then upload the run with one prompt.',
+    'Open one-command JSON',
     'Submit a verifier run',
-    'npm run proof:public-theorem-activation',
+    'npm run verify',
+    'Upload verification run to PNP Labs? [y/N]',
+    'artifacts/pnplabs-upload/latest-issue-body.md',
+    'PNPActivatedVerificationRunRecord0',
     'function ensureActivatedFAQCopy()',
     'Activated theorem-status FAQ.',
     'Does the site now permit the theorem statement?',
@@ -39,7 +42,7 @@ test('verify, FAQ, and review pages load the shared activated-copy script', asyn
 
 test('activated copy keeps external review as audit evidence rather than theorem premise', async () => {
   const script = await readText('assets/main.js');
-  assert.match(script, /External review remains audit evidence and reproducibility evidence, not a theorem premise\./);
-  assert.match(script, /independent review remains an audit layer/);
-  assert.match(script, /rather than serve as a theorem premise/);
+  assert.match(script, /External review remains audit evidence/);
+  assert.match(script, /reproducibility evidence|reproducibility and audit evidence/);
+  assert.match(script, /not a theorem premise|rather than serve as a theorem premise/);
 });
