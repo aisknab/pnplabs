@@ -35,12 +35,12 @@ function ensureHomepageStatusBoundary() {
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>pnp:verify</span><span>public theorem emission</span><strong>activated</strong>';
+    trace.innerHTML = '<span>npm run verify</span><span>upload run report</span><strong>activated</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> the source/checker stack emits P = NP under its checker trust model. External review remains audit evidence and reproducibility evidence, not a theorem premise.';
+    firstNote.innerHTML = '<strong>Current status:</strong> the source/checker stack emits P = NP under its checker trust model. Run <code>npm run verify</code>, then type <code>y</code> when prompted to upload the verifier-run report to PNP Labs.';
   }
 
   const panel = hero.querySelector('.boundary-panel');
@@ -58,9 +58,34 @@ remainingBlockers = []</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>activated</strong></div>
             <div><span>Gate result</span><strong>accepted</strong></div>
-            <div><span>External review</span><strong>audit layer</strong></div>
+            <div><span>Upload command</span><strong>npm run verify</strong></div>
             <div><span>Status source</span><strong>pnp:verify</strong></div>
           </div>`;
+  }
+
+  if (!hero.querySelector('[data-homepage-one-command-upload]')) {
+    const upload = document.createElement('div');
+    upload.className = 'boundary-panel';
+    upload.setAttribute('data-homepage-one-command-upload', '');
+    upload.innerHTML = `<div class="boundary-head">
+            <span>One-command verifier upload</span>
+            <strong>ready</strong>
+          </div>
+          <pre>git clone https://github.com/aisknab/pnp.git
+cd pnp
+npm ci
+npm run verify
+# Verify complete.
+# Upload verification run to PNP Labs? [y/N]</pre>
+          <div class="boundary-ledger">
+            <div><span>User input</span><strong>type y</strong></div>
+            <div><span>Auto upload</span><strong>token or gh</strong></div>
+            <div><span>Fallback</span><strong>issue body file</strong></div>
+            <div><span>Run record</span><strong>PNPActivatedVerificationRunRecord0</strong></div>
+          </div>`;
+    const anchor = hero.querySelector('[data-homepage-matrix-summary]') ?? hero.querySelector('.boundary-panel');
+    if (anchor) anchor.insertAdjacentElement('afterend', upload);
+    else hero.append(upload);
   }
 
   if (!hero.querySelector('[data-homepage-matrix-summary]')) {
@@ -95,6 +120,13 @@ metrics.diagonalAccepts = true</pre>
     statusButton.href = 'status.html';
     statusButton.textContent = 'View activated status';
     actions.prepend(statusButton);
+  }
+  if (actions && !actions.querySelector('a[href="public/pnp-one-command-upload.json"]')) {
+    const uploadButton = document.createElement('a');
+    uploadButton.className = 'btn secondary';
+    uploadButton.href = 'public/pnp-one-command-upload.json';
+    uploadButton.textContent = 'One-command upload';
+    actions.append(uploadButton);
   }
   if (actions && !actions.querySelector('a[href="public/pnp-verifier-run-matrix-summary.json"]')) {
     const matrixButton = document.createElement('a');
@@ -156,11 +188,11 @@ function insertAfterPageHero(id, html) {
 
 function ensureActivatedVerificationCopy() {
   rewritePageHero({
-    eyebrow: 'Activated verification',
-    title: 'Verify the activated P = NP theorem-emission status.',
-    lede: 'Run the source/checker verifier, inspect the activated status payload, and submit reproducible run evidence. External review remains audit evidence, not a theorem premise.',
-    primaryHref: 'public/pnp-status.json',
-    primaryText: 'Open activated status JSON',
+    eyebrow: 'One-command activated verification',
+    title: 'Run the verifier, then upload the run with one prompt.',
+    lede: 'Run npm run verify in the source/checker repository. When the verifier completes, type y to upload reproducible run evidence to PNP Labs. External review remains audit evidence, not a theorem premise.',
+    primaryHref: 'public/pnp-one-command-upload.json',
+    primaryText: 'Open one-command JSON',
     secondaryHref: 'verification-runs.html',
     secondaryText: 'Submit a verifier run',
   });
@@ -173,10 +205,10 @@ remainingBlockers = []
 externalReviewIsMathematicalPremise = false</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
-        <article class="card"><h3>Run the one-command verifier</h3><p>Use <code>npm run pnp:verify</code> in <code>aisknab/pnp</code> to reproduce the repository-level audit trail.</p></article>
-        <article class="card"><h3>Check the activation gates</h3><p>Focused checks include <code>npm run proof:public-theorem-activation</code> and <code>npm run proof:unrestricted-final-soundness-release</code>.</p></article>
-        <article class="card"><h3>Inspect the status payload</h3><p>The active public status surface is <code>public/pnp-status.json</code>, mirrored from the source/checker repository.</p></article>
-        <article class="card"><h3>Submit reproducible evidence</h3><p>Verifier runs can be added to the public run registry as audit and reproducibility evidence.</p></article>
+        <article class="card"><h3>Run the one-command verifier</h3><p>Use <code>npm run verify</code> in <code>aisknab/pnp</code>. It runs the repository verifier and then asks whether to upload the run to PNP Labs.</p></article>
+        <article class="card"><h3>Type y to upload</h3><p>The CLI asks <code>Upload verification run to PNP Labs? [y/N]</code>. Type <code>y</code> or <code>yes</code> to submit with a token or authenticated <code>gh</code>.</p></article>
+        <article class="card"><h3>Manual fallback</h3><p>If upload credentials are unavailable, the CLI writes <code>artifacts/pnplabs-upload/latest-issue-body.md</code> and prints a prefilled issue URL.</p></article>
+        <article class="card"><h3>Importable evidence</h3><p>The issue body includes an importable <code>PNPActivatedVerificationRunRecord0</code> with activated theorem fields and environment metadata.</p></article>
       </div>
     </section>`);
 }
@@ -188,15 +220,15 @@ function ensureActivatedFAQCopy() {
     lede: 'Answers here now reflect the activated checker-trust status: public theorem emission is enabled by the accepted proof stack, while independent review remains an audit layer.',
     primaryHref: 'status.html',
     primaryText: 'View activated status',
-    secondaryHref: 'public/pnp-status.json',
-    secondaryText: 'Open status JSON',
+    secondaryHref: 'public/pnp-one-command-upload.json',
+    secondaryText: 'One-command upload JSON',
   });
   insertAfterPageHero('activated-faq-copy', `<section class="section compact" id="activated-faq-copy">
       <div class="section-label">Activated theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the site now permit the theorem statement?</h3><p>Yes. The activated payload records <code>publicTheoremEmissionAllowed = true</code> and <code>publicTheoremStatement = "P = NP"</code> under the repository checker trust model.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. The payload records <code>externalReviewIsMathematicalPremise = false</code>. External review remains invited as reproducibility and audit evidence.</p></article>
-        <article class="card"><h3>What should reviewers run?</h3><p>Start with <code>npm run pnp:verify</code>, then inspect the focused activation scripts and submit reproducible verifier-run evidence.</p></article>
+        <article class="card"><h3>What should reviewers run?</h3><p>Start with <code>npm run verify</code>. It runs the verifier and then asks whether to upload the run record to PNP Labs.</p></article>
         <article class="card"><h3>What is the active status source?</h3><p>The active site status is <code>public/pnp-status.json</code>, mirrored from <code>aisknab/pnp</code> after public theorem activation.</p></article>
       </div>
     </section>`);
@@ -209,12 +241,12 @@ function ensureActivatedReviewCopy() {
     lede: 'Public theorem emission is activated under the source/checker trust model. Independent reviewers are invited to reproduce, audit, and challenge the proof stack rather than serve as a theorem premise.',
     primaryHref: 'verification-runs.html',
     primaryText: 'Submit verifier run evidence',
-    secondaryHref: 'status.html',
-    secondaryText: 'View activated status',
+    secondaryHref: 'public/pnp-one-command-upload.json',
+    secondaryText: 'One-command upload JSON',
   });
   insertAfterPageHero('activated-review-copy', `<section class="section compact" id="activated-review-copy">
       <div class="section-label">Post-activation review role</div>
-      <div class="callout"><div><h2>External review remains audit evidence.</h2><p>The current activation state records <code>externalReviewAcceptanceRequiredForEmission = false</code> and <code>externalReviewIsMathematicalPremise = false</code>. Reviewers can still contribute by running the verifier, reporting counterexamples, checking hash-bound artifacts, and submitting reproducible run reports.</p></div><a class="btn primary" href="verification-runs.html">Add a verification run</a></div>
+      <div class="callout"><div><h2>External review remains audit evidence.</h2><p>The current activation state records <code>externalReviewAcceptanceRequiredForEmission = false</code> and <code>externalReviewIsMathematicalPremise = false</code>. Reviewers can still contribute by running <code>npm run verify</code>, uploading verifier-run evidence, reporting counterexamples, and checking hash-bound artifacts.</p></div><a class="btn primary" href="verification-runs.html">Add a verification run</a></div>
     </section>`);
 }
 
@@ -359,7 +391,7 @@ function updateProgress() {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - window.innerHeight;
   const pct = height > 0 ? (scrollTop / height) * 100 : 0;
-  progress.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+  progress.style.width = `${Math.max(0, Math.min(100, pct)}%`;
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
