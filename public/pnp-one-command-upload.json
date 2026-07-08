@@ -1,7 +1,7 @@
 {
   "kind": "PNPOneCommandVerifierUpload0",
-  "version": 0,
-  "status": "one-command-verifier-upload-ready",
+  "version": 1,
+  "status": "one-command-verifier-upload-and-issue-ingest-ready",
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourcePr": "https://github.com/aisknab/pnp/pull/176",
   "sourceMergeCommit": "888ab7405d16414b60ceeb6d12f4a431d6c22a12",
@@ -28,6 +28,18 @@
     "artifacts/pnplabs-upload/latest-issue-body.md",
     "prefilled PNP Labs issue URL"
   ],
+  "issueIngestWorkflow": {
+    "kind": "PNPVerificationRunIssueIngestWorkflow0",
+    "status": "ready",
+    "workflow": ".github/workflows/pnp-verification-run-issue-ingest.yml",
+    "trigger": "issues opened, edited, or labeled with pnp-verification-run",
+    "extractor": "tools/extract-pnp-verification-run-from-issue.mjs",
+    "opensRegistryUpdatePullRequest": true,
+    "normalizesDigests": true,
+    "importsRegistryRecord": true,
+    "regeneratesComparisonMatrix": true,
+    "regeneratesMatrixSummary": true
+  },
   "submittedRecordKind": "PNPActivatedVerificationRunRecord0",
   "submittedRecordRequiredFields": [
     "pnpCommit",
