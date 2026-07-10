@@ -31,7 +31,7 @@ jobs:
 
           function assertFormalBoundary(payload, label) {
             assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-08', `${label}: coordinate mismatch`);
+            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09', `${label}: coordinate mismatch`);
             assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
             assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
             assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
@@ -109,6 +109,21 @@ jobs:
             assert.equal(payload.leanGlobalSlackLawFormalized, false, `${label}: global slack law must remain incomplete`);
             assert.equal(payload.leanLockedNANDBuilderFormalized, false, `${label}: locked-NAND builder must remain incomplete`);
             assert.equal(payload.leanLockedNANDThresholdFormalized, false, `${label}: locked-NAND threshold must remain incomplete`);
+            assert.equal(payload.leanResidualRoutesListedGainScanFormalized, true, `${label}: explicit-list gain scan must be formalized`);
+            assert.equal(payload.leanResidualRoutesAxiomAuditPassed, true, `${label}: residual-route axiom audit must pass`);
+            assert.equal(payload.leanResidualRoutesGainSoundnessFormalized, true, `${label}: listed gain soundness must be formalized`);
+            assert.equal(payload.leanResidualRoutesStrictResidualDescentFormalized, true, `${label}: strict residual descent must be formalized`);
+            assert.equal(payload.leanResidualRoutesExactResultProofBearing, true, `${label}: exact results must remain proof-bearing`);
+            assert.equal(payload.leanResidualRoutesZeroSlackResultProofBearing, true, `${label}: ZeroSlack results must remain proof-bearing`);
+            assert.equal(payload.leanResidualRoutesUnresolvedFailClosed, true, `${label}: unresolved scan must fail closed`);
+            assert.equal(payload.leanResidualRoutesScope, 'explicit-caller-supplied-finite-candidate-list', `${label}: residual-route scope mismatch`);
+            assert.equal(payload.leanResidualRoutesCandidateListCompletenessFormalized, false, `${label}: candidate-list completeness must remain incomplete`);
+            assert.equal(payload.leanResidualRoutesGlobalGainCompletenessFormalized, false, `${label}: global-gain completeness must remain incomplete`);
+            assert.equal(payload.leanZeroSlackPositiveSlackContradictionFormalized, false, `${label}: ZeroSlack contradiction must remain incomplete`);
+            assert.equal(payload.leanZeroSlackCompletenessFormalized, false, `${label}: ZeroSlack completeness must remain incomplete`);
+            assert.equal(payload.leanPCCMinLoopExactnessFormalized, false, `${label}: PCCMin loop exactness must remain incomplete`);
+            assert.equal(payload.leanPCCMinPolynomialRuntimeFormalized, false, `${label}: PCCMin polynomial runtime must remain incomplete`);
+            assert.equal(payload.leanResidualBandMinimizerFormalized, false, `${label}: residual-band minimizer must remain incomplete`);
             assert.equal(payload.lockedNANDOutputConvention, 'ordered-multi-output-baseline-coordinates-plus-final-coordinate', `${label}: locked-NAND output convention mismatch`);
             assert.equal(payload.legacySyntheticLockedNANDM2FixtureStatus, 'quarantined-internally-inconsistent', `${label}: legacy m=2 fixture must remain quarantined`);
             assert.equal(payload.legacySyntheticLockedNANDM2HonestBaseline, 86, `${label}: honest legacy baseline mismatch`);
@@ -160,6 +175,7 @@ jobs:
               'node --test audits/lean-nand-reference-minimum0.test.mjs',
               'node --test audits/lean-locked-nand-baseline0.test.mjs',
               'node --test audits/lean-locked-nand-threshold-boundary0.test.mjs',
+              'node --test audits/lean-residual-routes0.test.mjs',
               'lake build PNP',
               'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
@@ -173,10 +189,11 @@ jobs:
               'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean',
             ], `${label}: verification commands mismatch`);
             assert.equal(payload.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json', `${label}: archive manifest mismatch`);
             assert.equal(payload.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d', `${label}: replay command mismatch`);
-            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-CONDITIONAL-THRESHOLD-BOUNDARY-08', `${label}: public-surface baseline mismatch`);
+            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09', `${label}: public-surface baseline mismatch`);
             assert.deepEqual(payload.remainingBlockers, [
               'Formal.ConcreteComplexityModel',
               'Formal.ConcreteSAT',
@@ -197,6 +214,10 @@ jobs:
             assert.ok(payload.nonClaims.includes('The residual-slack-at-most-four result is conditional on that six-field premise package; it is not an unconditional result for the report locked-NAND family.'), `${label}: conditional-slack non-claim missing`);
             assert.ok(payload.nonClaims.includes('Against the hostile-review inventory, DirectWireOutputLowerBound and the model-level ZeroOutputConvention are now discharged, while global MacroDistinct, TraceEquivalence, FinalLockSeparation, carrier layout, and uniform polynomial premise construction remain missing.'), `${label}: hostile-review mapping non-claim missing`);
             assert.ok(payload.nonClaims.includes('The conditional module quantifies an arbitrary satisfiable proposition and baseline natural number; it does not identify them with source-circuit SAT and lockedBaselineCount, enforce answer-independent uniform construction, or connect the candidate boundary to the abstract PNP.LockedNANDThreshold language.'), `${label}: arbitrary-parameter non-claim missing`);
+            assert.ok(payload.nonClaims.includes('The executable residual-route scan is complete only for the explicit finite implementation list supplied by its caller; unresolved excludes no unlisted gain and does not imply global minimality or ZeroSlack.'), `${label}: explicit-list scope non-claim missing`);
+            assert.ok(payload.nonClaims.includes('An empty-list scan is formally shown to remain unresolved on a positive-slack implementation, so search failure cannot be promoted to zero residual slack.'), `${label}: positive-slack regression non-claim missing`);
+            assert.ok(payload.nonClaims.includes('Exact and ZeroSlack route results require Lean proofs of semantic minimality and are never manufactured by the executable gain scanner; no BCEL, HN/BUD, selector, PCCMin-loop, or residual-band completeness follows.'), `${label}: proof-bearing route non-claim missing`);
+            assert.ok(payload.nonClaims.includes('The residual-route equivalence check exhausts finite Boolean valuations and has no polynomial-runtime claim.'), `${label}: residual-route runtime non-claim missing`);
           }
 
           const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));
@@ -210,8 +231,25 @@ jobs:
           assert.equal(stableStringify(siteStatus), stableStringify(upstreamStatus), 'site status payload drifted from upstream pnp/public/pnp-status.json');
 
           assert.equal(index.status, 'formal-reconstruction-status-payloads-ready');
+          assert.equal(index.version, 13);
+          assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09');
+          assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09');
           assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
           assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, false);
           assert.equal(index.claimBoundary.publicTheoremStatement, null);
+          assert.equal(index.claimBoundary.leanResidualRoutesListedGainScanFormalized, true);
+          assert.equal(index.claimBoundary.leanResidualRoutesStrictResidualDescentFormalized, true);
+          assert.equal(index.claimBoundary.leanResidualRoutesExactResultProofBearing, true);
+          assert.equal(index.claimBoundary.leanResidualRoutesZeroSlackResultProofBearing, true);
+          assert.equal(index.claimBoundary.leanResidualRoutesUnresolvedFailClosed, true);
+          assert.equal(index.claimBoundary.leanResidualRoutesCandidateListCompletenessFormalized, false);
+          assert.equal(index.claimBoundary.leanResidualRoutesGlobalGainCompletenessFormalized, false);
+          assert.equal(index.claimBoundary.leanZeroSlackCompletenessFormalized, false);
+          assert.equal(index.claimBoundary.leanPCCMinLoopExactnessFormalized, false);
+          assert.equal(index.claimBoundary.leanPCCMinPolynomialRuntimeFormalized, false);
+          assert.equal(index.claimBoundary.leanResidualBandMinimizerFormalized, false);
+          assert.equal(index.claimBoundary.rootLeanTheoremPresent, false);
+          assert.equal(index.claimBoundary.projectSpecificAxiomsRemaining, true);
+          assert.equal(index.claimBoundary.remainingBlockers.length, 7);
           assert.equal(index.historicalRunIntakeFrozen, true);
           NODE
