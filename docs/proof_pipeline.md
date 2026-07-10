@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 28 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 34 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 2,168 public declarations;
-- 789 theorem-kind declarations;
-- 708 assumption-free theorem-kind declarations;
-- 24 source-closure modules;
-- 33 excluded private compiler auxiliaries;
+- 2,484 public declarations;
+- 883 theorem-kind declarations;
+- 793 assumption-free theorem-kind declarations;
+- 26 source-closure modules;
+- 36 excluded private compiler auxiliaries;
 - five project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,11 +49,12 @@ An earned milestone requires all of the following:
 3. every declaration has an empty axiom closure;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The seven earned scopes are:
+The eight earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
 | Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, fuel-bounded execution, and natural-polynomial transition bounds | No concrete P, NP, reductions, SAT, NP-completeness, or `P = NP` |
+| Concrete P, NP, and reductions | Finite charged pipelines, bounded certificates, polynomial reductions, and the NP-complete-in-P implication | No compiler/refinement to one raw machine, concrete SAT, or root theorem |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -72,7 +73,7 @@ immutable and contains only `Classical.choice`, `Quot.sound`, and `propext`.
 
 This pass is intentionally non-activating:
 
-- `PNP.Main.ConcretePEqualsNP` is absent;
+- `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free charged-pipeline definition, not a proof;
 - `PNP.Main.p_eq_np` is absent;
 - the expected activation fingerprints are unset;
 - unset fingerprints are unconfigured and never match null actual values;
@@ -89,7 +90,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment six-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seven-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
@@ -100,7 +101,7 @@ it is not a claim of universal cross-toolchain reproducibility.
 
 The seven current blockers are:
 
-1. `Formal.ConcreteComplexityModel`;
+1. `Formal.ConcreteComplexityMachineLink`;
 2. `Formal.ConcreteSAT`;
 3. `Formal.LockedNANDThreshold`;
 4. `Formal.ResidualBandMinimizer`;

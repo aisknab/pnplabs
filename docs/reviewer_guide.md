@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a six-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 2,168 public declarations across 24 modules,
-including 789 theorem-kind declarations, 708 assumption-free theorem-kind declarations, and five
-disclosed project axioms. Thirty-three private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a seven-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 2,484 public declarations across 26 modules,
+including 883 theorem-kind declarations, 793 assumption-free theorem-kind declarations, and five
+disclosed project axioms. Thirty-six private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target and compatibility-root theorem are
 absent, its reviewed activation fingerprints are intentionally unset, all seven formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current six-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current seven-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 56-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 28 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | Twenty-eight reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Seven narrowly scoped formal milestones | Global locked-NAND construction, complete residual search, SAT in P, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 34 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | Thirty-four reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Eight narrowly scoped formal milestones | Global locked-NAND construction, complete residual search, SAT in P, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `3def3c09ddc6641e3201cc5e3cf9fe379e432e85`.
+   `bd7e84a49e027020f2d6f6fc4c3cac1f7541aace`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 28 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 34 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone has an empty axiom closure and matches the pinned complete
    Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -109,7 +109,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current six-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current seven-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

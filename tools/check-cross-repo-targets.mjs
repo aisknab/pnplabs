@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "3def3c09ddc6641e3201cc5e3cf9fe379e432e85";
-const REVIEWED_CORE_TREE = "e535f11cbf7bf7b4ba92f61324a11b647cbf803c";
+const REVIEWED_CORE_COMMIT = "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace";
+const REVIEWED_CORE_TREE = "50d5debda67073ab23caab45f89341b9a63e436c";
 
 const KIND_TO_REF = new Map([
   ["current core publication file", "currentCoreRef"],
@@ -110,8 +110,8 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   if (manifest.source?.commit !== expectedIdentity.commit || manifest.source?.tree !== expectedIdentity.tree || manifest.source?.ref !== expectedIdentity.commit) failures.push("formal-publication manifest core pin mismatch");
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
-  if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== false || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 7) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 6) failures.push("formal-publication report must have exactly six pages");
+  if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 7) failures.push("formal-publication manifest blocker boundary mismatch");
+  if (manifest.artifacts?.report?.pageCount !== 7) failures.push("formal-publication report must have exactly seven pages");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
 }
 
@@ -150,7 +150,7 @@ function validateCurrentPayloads(contents, failures) {
   }
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
-    if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate !== null) failures.push("public inventory unexpectedly contains publication targets");
+    if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
   }
 }
 

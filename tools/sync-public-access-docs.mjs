@@ -17,8 +17,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "3def3c09ddc6641e3201cc5e3cf9fe379e432e85";
-const CORE_TREE = "e535f11cbf7bf7b4ba92f61324a11b647cbf803c";
+const CORE_COMMIT = "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace";
+const CORE_TREE = "50d5debda67073ab23caab45f89341b9a63e436c";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -26,26 +26,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 239965,
-    sha256: "3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974"
+    bytes: 241760,
+    sha256: "2dfc1b6b6792947fdbce055c849e5b293d63d44892eb673f7c03559dcb2f238d"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 13644,
-    sha256: "8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2"
+    bytes: 14950,
+    sha256: "feeaaf482d597a0b6cb590abb01dd210707241ac22eef39c001e526b362df496"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 43825,
-    sha256: "39624ada2e5ba32fc199de2ff6248d2d45f69eeb0a4eb03caf4b0adea17c9b88"
+    bytes: 48322,
+    sha256: "e40098829ed054bfbb1857c44a5d9795d44bfcf08c18f2a213ededa47a0ba2f0"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 368198,
-    sha256: "2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966"
+    bytes: 410648,
+    sha256: "91b4db358afb1156eb39f3d97f49a5bb85a97f0b65ff1a879a51a6552ae15663"
   }
 ];
 
@@ -137,7 +137,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "8c7e82ee687fd06d05c629edf47ff89617c0ed8caa4cefba8faab2b46e133679") {
+  if (sha256(map) !== "3f99368d729fb278339da66abca283cdaae823c5a614ddfaa893becab1014b6a") {
     fail("pinned formal-publication map digest mismatch");
   }
 }
@@ -146,7 +146,7 @@ function checkPdfPageCount(pdfPath) {
   const result = spawnSync("pdfinfo", [pdfPath], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
   if (result.status !== 0) fail(`pdfinfo failed for ${pdfPath}: ${(result.stderr || result.stdout || "pdfinfo unavailable").trim()}`);
   const match = result.stdout.match(/^Pages:\s+(\d+)\s*$/m);
-  if (!match || Number(match[1]) !== 6) fail(`${pdfPath}: expected exactly six pages`);
+  if (!match || Number(match[1]) !== 7) fail(`${pdfPath}: expected exactly seven pages`);
 }
 
 function assertCorePayloadBoundary(sourcePath, buffer) {
@@ -157,8 +157,8 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 7) fail("core status blocker boundary mismatch");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
-    if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate !== null) fail("core inventory unexpectedly contains a publication root");
-    if (payload.declarationCount !== 2168 || payload.theoremCount !== 789 || payload.assumptionFreeTheoremCount !== 708 || payload.axiomCount !== 5) fail("core inventory counts mismatch");
+    if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");
+    if (payload.declarationCount !== 2484 || payload.theoremCount !== 883 || payload.assumptionFreeTheoremCount !== 793 || payload.axiomCount !== 5) fail("core inventory counts mismatch");
   }
 }
 

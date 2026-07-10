@@ -47,7 +47,11 @@ function makeProject(t) {
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
     compatibilityRootCandidate: null,
-    concreteTargetCandidate: null
+    concreteTargetCandidate: {
+      name: "PNP.Main.ConcretePEqualsNP",
+      kind: "definition",
+      axioms: []
+    }
   });
   const publicationMap = json({ kind: "TestPublicationMap", gate: { passed: false } });
 
@@ -90,7 +94,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 6,
+        pageCount: 7,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -102,7 +106,7 @@ function makeProject(t) {
       publicTheoremEmissionAllowed: false,
       publicTheoremStatement: null,
       compatibilityRootPresent: false,
-      concreteTargetPresent: false,
+      concreteTargetPresent: true,
       projectSpecificAxiomsRemaining: true,
       remainingBlockerCount: 7
     },
