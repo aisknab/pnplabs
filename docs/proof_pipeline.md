@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 22 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 28 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 1,761 public declarations;
-- 662 theorem-kind declarations;
-- 589 assumption-free theorem-kind declarations;
-- 22 source-closure modules;
+- 2,168 public declarations;
+- 789 theorem-kind declarations;
+- 708 assumption-free theorem-kind declarations;
+- 24 source-closure modules;
 - 33 excluded private compiler auxiliaries;
 - five project axioms.
 
@@ -49,10 +49,11 @@ An earned milestone requires all of the following:
 3. every declaration has an empty axiom closure;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The six earned scopes are:
+The seven earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
+| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, fuel-bounded execution, and natural-polynomial transition bounds | No concrete P, NP, reductions, SAT, NP-completeness, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |

@@ -6,8 +6,8 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a six-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 1,761 public declarations across 22 modules,
-including 662 theorem-kind declarations, 589 assumption-free theorem-kind declarations, and five
+Lean theorem inventory. The inventory contains 2,168 public declarations across 24 modules,
+including 789 theorem-kind declarations, 708 assumption-free theorem-kind declarations, and five
 disclosed project axioms. Thirty-three private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target and compatibility-root theorem are
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 22 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | Twenty-two reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Six narrowly scoped formal milestones | Global locked-NAND construction, complete residual search, SAT in P, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 28 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | Twenty-eight reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Seven narrowly scoped formal milestones | Global locked-NAND construction, complete residual search, SAT in P, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `c686bfc602b4cb19c89a3c33fff39720058fa198`.
+   `3def3c09ddc6641e3201cc5e3cf9fe379e432e85`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 22 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 28 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone has an empty axiom closure and matches the pinned complete
    Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,9 +72,10 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns six local or conditional milestones: typed direct-wire semantics, finite
-reference enumeration/minimum, concrete framed replacement/slack, five local locked-NAND baselines,
-a six-premise conditional threshold boundary, and explicit-list residual-route soundness.
+The formal inventory earns seven foundation, local, or conditional milestones: the concrete
+bitstring/machine/cost kernel, typed direct-wire semantics, finite reference enumeration/minimum,
+concrete framed replacement/slack, five local locked-NAND baselines, a six-premise conditional
+threshold boundary, and explicit-list residual-route soundness.
 
 Review the gaps between those scopes and the target theorem:
 

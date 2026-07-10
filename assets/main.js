@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10';
-const STATUS_SHA256 = 'bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10';
-const INVENTORY_SHA256 = '4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28';
-const SOURCE_CLOSURE_SHA256 = '0c96305d4f2235aae359c865e91e0f58cafa4d20d9b040a16e992846360cfa3f';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-11';
+const STATUS_SHA256 = '39624ada2e5ba32fc199de2ff6248d2d45f69eeb0a4eb03caf4b0adea17c9b88';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-MACHINE-KERNEL-11';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-11';
+const INVENTORY_SHA256 = '2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966';
+const SOURCE_CLOSURE_SHA256 = '6daa2a068fedab6cf0bda8da63267a220e8f6ab6568a8881f9d00872bd251a54';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 1761,
-  theorems: 662,
-  assumptionFreeTheorems: 589,
+  declarations: 2168,
+  theorems: 789,
+  assumptionFreeTheorems: 708,
   excludedPrivateDeclarations: 33,
-  modules: 22,
+  modules: 24,
   axioms: 5,
 });
 
@@ -56,6 +56,7 @@ const REMAINING_BLOCKERS = Object.freeze([
 ]);
 
 const MILESTONE_IDS = Object.freeze([
+  'concrete-machine-cost-kernel',
   'direct-wire-semantics',
   'finite-enumeration-minimum',
   'framed-replacement-slack',
@@ -145,13 +146,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 5,
-    constructor: 68,
-    definition: 914,
-    inductive: 56,
+    constructor: 86,
+    definition: 1158,
+    inductive: 65,
     opaque: 0,
     quotient: 0,
-    recursor: 56,
-    theorem: 662,
+    recursor: 65,
+    theorem: 789,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -218,7 +219,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 6;
+    const shouldBeEarned = index < 7;
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
       || !Array.isArray(row.theoremRows)
@@ -379,12 +380,12 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 1,761 exported public declarations, including 662 theorem-kind declarations and 589 assumption-free theorem-kind declarations across 22 modules. Six scoped milestones are earned; three global milestones, including the concrete publication root, are not formalized.';
+    lede.textContent = 'The compiled Lean environment contains 2,168 exported public declarations, including 789 theorem-kind declarations and 708 assumption-free theorem-kind declarations across 24 modules. Seven scoped milestones are earned; three global milestones, including the concrete publication root, are not formalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>compiled inventory checked</span><span>six scoped milestones</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>compiled inventory checked</span><span>seven scoped milestones</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
@@ -490,7 +491,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Six scoped milestones are earned from pinned, assumption-free theorem rows. Three global milestones—locked-NAND construction, ZeroSlack/PCCMin/polynomial runtime, and the concrete publication root—remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Seven scoped milestones are earned from pinned, assumption-free theorem rows. Three global milestones—locked-NAND construction, ZeroSlack/PCCMin/polynomial runtime, and the concrete publication root—remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -509,7 +510,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 1,761-declaration inventory, 22 pinned theorem candidates, whole-source closure, six earned scoped milestones, three unearned global milestones, and concrete publication gate. Null fingerprints never match; the abstract <code>PNP.PEqualsNP</code> bridge is ineligible; five project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 2,168-declaration inventory, 28 pinned theorem candidates, whole-source closure, seven earned scoped milestones, three unearned global milestones, and concrete publication gate. Null fingerprints never match; the abstract <code>PNP.PEqualsNP</code> bridge is ineligible; five project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 239,507 | `3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a` |
-| `downloads/canonical-proof-report.pdf` | 239,507 | `3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a` |
-| `downloads/canonical_proof_report.tex` | 13,256 | `05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0` |
-| `downloads/canonical-proof-report.tex` | 13,256 | `05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0` |
-| `public/pnp-status.json` | 39,919 | `bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d` |
-| `public/pnp-theorem-inventory.json` | 312,181 | `4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28` |
+| `downloads/canonical_proof_report.pdf` | 239,965 | `3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974` |
+| `downloads/canonical-proof-report.pdf` | 239,965 | `3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974` |
+| `downloads/canonical_proof_report.tex` | 13,644 | `8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2` |
+| `downloads/canonical-proof-report.tex` | 13,644 | `8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2` |
+| `public/pnp-status.json` | 43,825 | `39624ada2e5ba32fc199de2ff6248d2d45f69eeb0a4eb03caf4b0adea17c9b88` |
+| `public/pnp-theorem-inventory.json` | 368,198 | `2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966` |
 
 The PDF must have six A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout c686bfc602b4cb19c89a3c33fff39720058fa198
+git -C ../pnp checkout 3def3c09ddc6641e3201cc5e3cf9fe379e432e85
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 1,761 public declarations, 662 theorem-kind declarations,
-589 assumption-free theorem-kind declarations, 33 excluded private auxiliaries, 22 modules, and
+Expected compiled inventory counts are 2,168 public declarations, 789 theorem-kind declarations,
+708 assumption-free theorem-kind declarations, 33 excluded private auxiliaries, 24 modules, and
 five project axioms. The publication gate must remain false with seven blockers.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
