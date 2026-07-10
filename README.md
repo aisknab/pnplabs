@@ -20,9 +20,9 @@ rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Lean now derives a conditional locked-NAND semantic boundary from a six-field proof package: typed baseline and full candidates, baseline output conditions, first-output preservation, an unsatisfiable final-zero law, and satisfiable final-output laws. Given those premises, the unsatisfiable minimum is the baseline, the satisfiable minimum lies from baseline plus one through baseline plus four, the corresponding threshold iff holds, and residual slack is at most four.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Lean now provides an executable residual-route scan over an explicit caller-supplied finite list of typed implementations. A returned candidate is proved to belong to that list, compute the same finite Boolean function with fewer gates, and strictly decrease exhaustive reference residual slack.
 
-That six-field package is not instantiated for source circuits. The module's proposition and baseline number are arbitrary; they are not connected to circuit SAT and `lockedBaselineCount`, and the structure does not enforce answer-independent uniform construction. Global carrier layout, cross-instance `BaselineDistinct`, `TraceEquivalence`, derived final-output laws, the polynomial locked-NAND builder, report threshold, unconditional slack-at-most-four theorem, SAT conclusion, and root theorem remain unfinished. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
+The scan fails closed: `unresolved` means only that no gain appeared in that supplied list. Lean proves an empty-list scan can remain unresolved while residual slack is one. The executable outcome has only gain and unresolved cases; exact-minimum and ZeroSlack outcomes exist only as separate proof-bearing structures containing semantic-minimality proofs. Candidate-list and global-gain completeness, the ZeroSlack contradiction and completeness theorem, PCCMin loop exactness, the residual-band minimizer, and every polynomial-runtime claim remain unfinished. The earlier conditional locked-NAND boundary also remains uninstantiated. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
 
 The report convention is an ordered multi-output word: its baseline coordinates plus one final coordinate remain exposed. A legacy synthetic `m = 2` seed is quarantined as internally inconsistent: honest baseline/displayed counts are `86/90`, metadata-consistent counts are `95/99`, and stored hybrid counts are `91/95`.
 
@@ -49,6 +49,7 @@ node --test audits/lean-nand-enumerator0.test.mjs
 node --test audits/lean-nand-reference-minimum0.test.mjs
 node --test audits/lean-locked-nand-baseline0.test.mjs
 node --test audits/lean-locked-nand-threshold-boundary0.test.mjs
+node --test audits/lean-residual-routes0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
@@ -62,9 +63,10 @@ lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.l
 lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean
 ```
 
-These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and audit the finite reference semantics plus the conditional locked-NAND boundary. Their success does not instantiate the six premises, prove global locked-NAND distinctness, trace/final laws, an answer-independent polynomial builder, the report threshold or unconditional slack bound, SAT, or the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
+These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and audit the finite reference semantics, conditional locked-NAND boundary, and 30-declaration residual-route layer. Their success does not make the supplied candidate list complete, turn unresolved into global minimality or ZeroSlack, prove PCCMin or residual-band exactness, establish polynomial runtime, instantiate the six locked-NAND premises, prove SAT, or establish the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
 
 The public status page is [`status.html`](status.html).
 

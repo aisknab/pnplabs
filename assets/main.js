@@ -47,7 +47,7 @@ projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
 
 function isConservativeFormalStatus(payload) {
   return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-08'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09'
     && payload.status === 'formal-reconstruction-in-progress'
     && payload.currentStatusAuthority === true
     && payload.mathematicalTheoremEstablished === false
@@ -127,6 +127,21 @@ function isConservativeFormalStatus(payload) {
     && payload.leanGlobalSlackLawFormalized === false
     && payload.leanLockedNANDBuilderFormalized === false
     && payload.leanLockedNANDThresholdFormalized === false
+    && payload.leanResidualRoutesListedGainScanFormalized === true
+    && payload.leanResidualRoutesAxiomAuditPassed === true
+    && payload.leanResidualRoutesGainSoundnessFormalized === true
+    && payload.leanResidualRoutesStrictResidualDescentFormalized === true
+    && payload.leanResidualRoutesExactResultProofBearing === true
+    && payload.leanResidualRoutesZeroSlackResultProofBearing === true
+    && payload.leanResidualRoutesUnresolvedFailClosed === true
+    && payload.leanResidualRoutesScope === 'explicit-caller-supplied-finite-candidate-list'
+    && payload.leanResidualRoutesCandidateListCompletenessFormalized === false
+    && payload.leanResidualRoutesGlobalGainCompletenessFormalized === false
+    && payload.leanZeroSlackPositiveSlackContradictionFormalized === false
+    && payload.leanZeroSlackCompletenessFormalized === false
+    && payload.leanPCCMinLoopExactnessFormalized === false
+    && payload.leanPCCMinPolynomialRuntimeFormalized === false
+    && payload.leanResidualBandMinimizerFormalized === false
     && payload.lockedNANDOutputConvention === 'ordered-multi-output-baseline-coordinates-plus-final-coordinate'
     && payload.legacySyntheticLockedNANDM2FixtureStatus === 'quarantined-internally-inconsistent'
     && payload.legacySyntheticLockedNANDM2HonestBaseline === 86
@@ -186,6 +201,7 @@ function isConservativeFormalStatus(payload) {
       'node --test audits/lean-nand-reference-minimum0.test.mjs',
       'node --test audits/lean-locked-nand-baseline0.test.mjs',
       'node --test audits/lean-locked-nand-threshold-boundary0.test.mjs',
+      'node --test audits/lean-residual-routes0.test.mjs',
       'lake build PNP',
       'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
@@ -199,8 +215,9 @@ function isConservativeFormalStatus(payload) {
       'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean',
     ])
-    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-CONDITIONAL-THRESHOLD-BOUNDARY-08'
+    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09'
     && payload.nonClaims?.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.')
     && payload.nonClaims?.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.')
     && payload.nonClaims?.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer.")
@@ -211,7 +228,11 @@ function isConservativeFormalStatus(payload) {
     && payload.nonClaims?.includes('The proof-bearing conditional locked-NAND semantic boundary is not the report threshold theorem: it assumes typed baseline and full candidates, baseline output conditions, preservation of the first outputs, an unsatisfiable final-zero law, and satisfiable final-output laws instead of constructing them for arbitrary circuits.')
     && payload.nonClaims?.includes('The residual-slack-at-most-four result is conditional on that six-field premise package; it is not an unconditional result for the report locked-NAND family.')
     && payload.nonClaims?.includes('Against the hostile-review inventory, DirectWireOutputLowerBound and the model-level ZeroOutputConvention are now discharged, while global MacroDistinct, TraceEquivalence, FinalLockSeparation, carrier layout, and uniform polynomial premise construction remain missing.')
-    && payload.nonClaims?.includes('The conditional module quantifies an arbitrary satisfiable proposition and baseline natural number; it does not identify them with source-circuit SAT and lockedBaselineCount, enforce answer-independent uniform construction, or connect the candidate boundary to the abstract PNP.LockedNANDThreshold language.');
+    && payload.nonClaims?.includes('The conditional module quantifies an arbitrary satisfiable proposition and baseline natural number; it does not identify them with source-circuit SAT and lockedBaselineCount, enforce answer-independent uniform construction, or connect the candidate boundary to the abstract PNP.LockedNANDThreshold language.')
+    && payload.nonClaims?.includes('The executable residual-route scan is complete only for the explicit finite implementation list supplied by its caller; unresolved excludes no unlisted gain and does not imply global minimality or ZeroSlack.')
+    && payload.nonClaims?.includes('An empty-list scan is formally shown to remain unresolved on a positive-slack implementation, so search failure cannot be promoted to zero residual slack.')
+    && payload.nonClaims?.includes('Exact and ZeroSlack route results require Lean proofs of semantic minimality and are never manufactured by the executable gain scanner; no BCEL, HN/BUD, selector, PCCMin-loop, or residual-band completeness follows.')
+    && payload.nonClaims?.includes('The residual-route equivalence check exhausts finite Boolean valuations and has no polynomial-runtime claim.');
 }
 
 function renderFormalStatus(root, payload, sourceState) {
@@ -252,17 +273,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'Lean now derives the locked-NAND unsat/sat minimum boundary and residual slack at most four from six explicit typed semantic premises. Those premises are not instantiated for source circuits, so the report threshold, root theorem, and five project-specific axioms remain unresolved.';
+    lede.textContent = 'Lean now scans an explicit caller-supplied finite list for a strictly smaller equivalent implementation and proves that every returned gain strictly decreases residual slack. An unresolved scan excludes no unlisted gain and cannot establish ZeroSlack, PCCMin, or the residual-band minimizer.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>conditional threshold deduction checked</span><span>six global premises uninstantiated</span><strong>in progress</strong>';
+    trace.innerHTML = '<span>explicit-list gain scan checked</span><span>positive-slack unresolved regression</span><strong>in progress</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> the new theorem is proof-bearing but conditional. It assumes typed baseline/full candidates, global baseline conditions, initial-output preservation, an unsatisfiable final-zero law, and satisfiable final-output laws. Carrier layout, <code>BaselineDistinct</code>, <code>TraceEquivalence</code>, derived final laws, the answer-independent polynomial builder, report threshold, unconditional slack bound, SAT conclusion, and <code>PNP.Main.p_eq_np</code> remain unfinished.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>firstListedGain</code> is sound for one explicit list, and each proof-bearing gain strictly descends in reference residual slack. <code>ExactMinimumResult</code> and <code>ZeroSlackResult</code> require semantic-minimality proofs; <code>scanListedGains</code> can return only gain or unresolved. Candidate-list/global completeness, the ZeroSlack contradiction, PCCMin, residual-band minimization, polynomiality, SAT, and <code>PNP.Main.p_eq_np</code> remain unfinished.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -342,7 +363,7 @@ projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
-        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the NAND semantics, enumerator, minimum, slack, four local-baseline, and conditional threshold-boundary axiom audits. The 32-declaration boundary transcript is clean, but its six semantic premises remain uninstantiated.</p></article>
+        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the listed Lean axiom audits, including <code>PNPResidualRoutesAxiomAudit.lean</code>. Its 30 declarations are clean; the executable scanner remains limited to one explicit caller-supplied finite list.</p></article>
         <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
@@ -363,7 +384,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is missing?</h3><p>The conditional boundary does not build its six-field package. Carrier layout, global baseline distinctness, <code>TraceEquivalence</code>, derived final-output laws, answer-independent polynomial construction, the locked builder/report threshold, unconditional slack at most four, concrete SAT, and the root theorem remain unfinished.</p></article>
+        <article class="card"><h3>What is missing?</h3><p>The residual-route scanner does not enumerate a complete candidate universe. Unresolved excludes no unlisted gain and cannot prove global minimality or ZeroSlack. The ZeroSlack contradiction, PCCMin loop, residual-band minimizer, polynomial construction, locked threshold, concrete SAT, and root theorem remain unfinished.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -382,7 +403,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the six missing instantiations.</h2><p>The conditional threshold deduction is formalized and axiom-audited, but its baseline/full candidates and four semantic laws are premises. Review global <code>BaselineDistinct</code>, <code>TraceEquivalence</code>, final-output laws, answer-independent polynomial construction, and the absent connection to the report threshold. No <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the fail-closed search boundary.</h2><p>The explicit-list gain scanner is formalized and axiom-audited, but no candidate-list or global-gain completeness theorem exists. Review the positive-slack unresolved regression, proof requirements for exact/ZeroSlack outcomes, the missing BCEL/HN/BUD/selector contradiction, PCCMin loop, residual-band minimizer, and polynomial bounds. No <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">Lean now derives the locked-NAND unsat/sat minimum boundary and residual slack at most four from six explicit typed semantic premises. Those premises are not instantiated for source circuits; no <code>PNP.Main.p_eq_np</code> theorem exists, and five project-specific axioms remain.</p>
+        <p class="lede">Lean now scans an explicit caller-supplied finite implementation list for a strictly smaller equivalent candidate and proves that every returned gain strictly decreases reference residual slack. Unresolved excludes no unlisted gain; no <code>PNP.Main.p_eq_np</code> theorem exists, and five project-specific axioms remain.</p>
         <div class="checker-trace">
-          <span>conditional threshold deduction checked</span>
-          <span>six global premises uninstantiated</span>
+          <span>explicit-list gain scan checked</span>
+          <span>positive-slack unresolved regression</span>
           <strong>in progress</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> the new theorem is proof-bearing but conditional. It assumes typed baseline/full candidates, global baseline conditions, initial-output preservation, an unsatisfiable final-zero law, and satisfiable final-output laws. Carrier layout, <code>BaselineDistinct</code>, <code>TraceEquivalence</code>, derived final laws, the answer-independent polynomial builder, report threshold, unconditional slack bound, SAT conclusion, and <code>PNP.Main.p_eq_np</code> remain unfinished.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>firstListedGain</code> is sound for the supplied list, and proof-bearing gains strictly descend. The executable <code>scanListedGains</code> returns only gain or unresolved; exact and ZeroSlack outcomes require semantic-minimality proofs. Candidate-list/global completeness, the ZeroSlack contradiction, PCCMin, residual-band minimization, polynomiality, SAT, and <code>PNP.Main.p_eq_np</code> remain unfinished.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
