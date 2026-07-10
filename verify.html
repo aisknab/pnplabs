@@ -52,16 +52,16 @@
   <main id="main">
 
 <section class="page-hero">
-  <span class="eyebrow">Formal status and historical checks</span>
-  <h1>Inspect the reconstruction and identify historical files.</h1>
-  <p class="lede">The repository does not currently establish P = NP. Current commands expose formal blockers; report hashes confirm historical file identity only and do not verify theorem correctness.</p>
-  <div class="hero-actions"><a class="btn primary" href="status.html">View current status</a><a class="btn secondary" href="#seal-console">Check historical report file</a></div>
+  <span class="eyebrow">Compiled inventory and report checks</span>
+  <h1>Verify the current six-page report and its Lean inventory.</h1>
+  <p class="lede">The repository does not currently establish P = NP. The report is generated from the compiled declaration inventory; hashes confirm file identity only and do not verify theorem correctness.</p>
+  <div class="hero-actions"><a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a><a class="btn secondary" href="#seal-console">Check current report file</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="grid two">
-      <article class="card"><div class="kicker">Mode A</div><h2>File integrity check</h2><p>Check out the sealed release, compare durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full report records. This is an integrity check, not external validation of the claim.</p></article>
-      <article class="card"><div class="kicker">Mode B</div><h2>Formal reconstruction checks</h2><p>Run the current status command, legacy checker replay, and Lean build. The missing root theorem and axiom audit cannot be replaced by regenerated historical report records.</p></article>
+      <article class="card"><div class="kicker">Mode A</div><h2>Current file integrity</h2><p>Compare the six-page PDF, TeX source, status, and inventory against the exact release ledger. This identifies current bytes; it is not external validation of a theorem.</p></article>
+      <article class="card"><div class="kicker">Mode B</div><h2>Compiled Lean reproduction</h2><p>Build <code>PNP</code>, export the declaration inventory, verify its reviewed SHA-256 and theorem pins, then regenerate the publication status and report.</p></article>
     </div>
   </section>
   <section id="seal-console" class="section compact seal-console-section" aria-labelledby="seal-console-title">
@@ -72,7 +72,7 @@
       </div>
       <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest. It checks file identity, not theorem correctness.</p>
     </div>
-    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d">
+    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a">
       <div class="seal-console-head">
         <div>
           <span class="console-kicker">Mode A · file integrity</span>
@@ -88,14 +88,14 @@
         <div class="seal-terminal" role="log" aria-live="polite" aria-label="Release seal console output">
           <ol class="seal-output" data-seal-output>
             <li><span>target</span><code>canonical_proof_report.pdf</code></li>
-            <li><span>expect</span><code>53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d</code></li>
+            <li><span>expect</span><code>3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a</code></li>
             <li><span>ready</span><code>press Run check to fetch the file, hash locally, and compare</code></li>
           </ol>
         </div>
         <div class="seal-readout">
           <div class="digest-row">
             <span>Expected SHA-256</span>
-            <code id="expected-digest">53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d</code>
+            <code id="expected-digest">3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a</code>
             <button class="btn secondary small" type="button" data-copy="#expected-digest">Copy</button>
           </div>
           <div class="digest-row">
@@ -104,7 +104,7 @@
             <button class="btn secondary small" type="button" data-copy="#computed-digest">Copy</button>
           </div>
           <div class="seal-result" data-seal-result>Awaiting browser check.</div>
-          <p>This checks the bundled historical PDF against the published digest. It does not validate P = NP or discharge any current formal blocker.</p>
+          <p>This checks the current inventory-derived PDF against the published digest. It does not validate P = NP or discharge any current formal blocker.</p>
         </div>
       </div>
     </div>
@@ -123,7 +123,7 @@
           <tr><td><strong>Checksum ledger</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS</code></td></tr>
           <tr><td><strong>Bundled site manifest</strong></td><td><a href="downloads/release-seal.json"><code>downloads/release-seal.json</code></a></td></tr>
           <tr><td><strong>Bundled site checksum ledger</strong></td><td><a href="downloads/SHA256SUMS"><code>downloads/SHA256SUMS</code></a></td></tr>
-          <tr><td><strong>Source access process</strong></td><td><a href="mailto:review@pnplabs.com.au"><code>review@pnplabs.com.au</code></a></td></tr>
+          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/c686bfc602b4cb19c89a3c33fff39720058fa198"><code>c686bfc602b4cb19c89a3c33fff39720058fa198</code></a></td></tr>
         </tbody>
       </table>
     </div>
@@ -132,24 +132,26 @@
       <a class="pill" href="downloads/SHA256SUMS">SHA256SUMS</a>
       <a class="pill" href="downloads/canonical_proof_report.pdf">canonical PDF</a>
       <a class="pill" href="downloads/canonical_proof_report.tex">canonical TeX</a>
-      <a class="pill" href="downloads/source-checker-release.json">source/checker reference</a>
+      <a class="pill" href="downloads/source-checker-release.json">historical source/checker reference</a>
     </div>
   </section>
   <section class="section compact">
-    <div class="section-head"><div><div class="section-label">Commands</div><h2>Regeneration flow.</h2></div><p>Run from a clean checkout of the recorded source/checker revision.</p></div>
+    <div class="section-head"><div><div class="section-label">Commands</div><h2>Current inventory and report flow.</h2></div><p>Run from a clean checkout of the current Lean source repository.</p></div>
     <div class="code-block">
       <button class="btn secondary small copy-btn" type="button" data-copy="#regen-code">Copy</button>
-      <pre id="regen-code">sha256sum -c downloads/SHA256SUMS
-
-git checkout final-pnp-proof-report-hardened-7072f8d
-B=proof-artifacts/final-pnp-proof-report-hardened-7072f8d
-npm run validate
-node ./bin/write-final-pnp-proof-report0.mjs "$B/compact"
-node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
+      <pre id="regen-code">git clone https://github.com/aisknab/pnp.git pnp-review
+cd pnp-review
+git checkout c686bfc602b4cb19c89a3c33fff39720058fa198
+npm ci
+lake build PNP
+npm run pnp:verify -- --no-write
+npm run formal:inventory:check
+npm run formal:publication:check
+npm run report:check</pre>
     </div>
   </section>
   <section class="section">
-    <div class="section-head"><div><div class="section-label">Historical checker output</div><h2>What the legacy assertion checker reported.</h2></div></div>
+    <div class="section-head"><div><div class="section-label">Historical 56-page manuscript</div><h2>What the legacy assertion checker reported.</h2></div><p>Tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, provenance <code>archive/legacy-v0/ARCHIVE.json</code>. Historical only.</p></div>
     <div class="grid three">
       <article class="card"><h3>Assertion-bearing report record</h3><p>The historical record contains the string <code>P = NP</code>. Acceptance verifies record predicates, not the truth of that mathematical statement.</p></article>
       <article class="card"><h3>Historical linkage acceptance</h3><p>The package, replay, certificate, audit, and gate records passed their implemented JavaScript predicates. This is not formal proof of their asserted propositions.</p></article>
@@ -166,7 +168,7 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Access</div><h2>Source repository access.</h2><p>Use the review channel for source repository access, institutional coordination, and reproduction support while evaluating the claim.</p></div><a class="btn primary" href="review.html#contact">Request repo access</a></div>
+    <div class="callout"><div><div class="section-label">Public source</div><h2>Inspect the Lean repository directly.</h2><p>The source, inventory generator, publication map, gate, and report generator are public. Use the review channel for findings or reproduction support.</p></div><a class="btn primary" href="https://github.com/aisknab/pnp">Browse source</a></div>
   </section>
 </div>
 

@@ -1,108 +1,82 @@
-name: sync-public-access-canonical-report
+name: verify-current-formal-publication-artifacts
 
 on:
+  pull_request:
   push:
     branches:
-      - docs/sync-public-access-report-7072f8d
+      - main
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: sync-public-access-report-7072f8d
-  cancel-in-progress: false
+  group: formal-publication-artifacts-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
-  DOCS_TAG: final-pnp-proof-report-docs-hardened-7072f8d-public-access-sealed
-  PNP_SOURCE_DIR: ${{ github.workspace }}/../pnp-public
+  PNP_CORE_COMMIT: c686bfc602b4cb19c89a3c33fff39720058fa198
+  PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
-  sync:
-    if: ${{ !contains(github.event.head_commit.message || '', 'sync public-access canonical report release') }}
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: pnplabs
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out companion repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
+          persist-credentials: false
+          path: pnplabs
+
+      - name: Check out exact reviewed core merge
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+          repository: aisknab/pnp
+          ref: ${{ env.PNP_CORE_COMMIT }}
           fetch-depth: 0
-          ref: docs/sync-public-access-report-7072f8d
+          fetch-tags: true
+          path: pnp
 
-      - name: Clone public source/checker repository and pinned documentation tag
-        shell: bash
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+
+      - name: Install PDF metadata checker
         run: |
-          set -euo pipefail
-          rm -rf "$PNP_SOURCE_DIR"
-          git clone https://github.com/aisknab/pnp.git "$PNP_SOURCE_DIR"
-          git -C "$PNP_SOURCE_DIR" fetch --tags --force
-          git -C "$PNP_SOURCE_DIR" checkout "$DOCS_TAG"
-          test -f "$PNP_SOURCE_DIR/docs-release/public-access-7072f8d/release-seal.json"
-          node "$PNP_SOURCE_DIR/tools/check-documentation-release.mjs"
-
-      - name: Synchronize canonical report and provenance metadata
-        run: node tools/sync-public-access-docs.mjs
-
-      - name: Regenerate canonical report cover preview
-        shell: bash
-        run: |
-          set -euo pipefail
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends poppler-utils webp
-          tmp="$(mktemp -d)"
-          pdftoppm \
-            -f 1 \
-            -singlefile \
-            -png \
-            -scale-to-x 720 \
-            -scale-to-y -1 \
-            downloads/canonical_proof_report.pdf \
-            "$tmp/proof-report-cover"
-          cwebp -quiet -q 84 "$tmp/proof-report-cover.png" -o assets/proof-report-cover.webp
+          sudo apt-get install -y --no-install-recommends poppler-utils
 
-      - name: Verify PDF, aliases, seal, and source coordinates
+      - name: Verify exact core artifacts without writing
+        run: node tools/sync-public-access-docs.mjs --check
+
+      - name: Verify six-page current report and reject historical bytes
         shell: bash
         run: |
           set -euo pipefail
-          test "$(pdfinfo downloads/canonical_proof_report.pdf | awk '/^Pages:/ {print $2}')" = "56"
+          test "$(pdfinfo downloads/canonical_proof_report.pdf | awk '/^Pages:/ {print $2}')" = "6"
           cmp downloads/canonical_proof_report.pdf downloads/canonical-proof-report.pdf
           cmp downloads/canonical_proof_report.tex downloads/canonical-proof-report.tex
+          test "$(sha256sum downloads/canonical_proof_report.pdf | cut -d' ' -f1)" != "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d"
+          test "$(sha256sum downloads/canonical_proof_report.tex | cut -d' ' -f1)" != "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7"
+
+      - name: Verify exact seal and cross-repository coordinates
+        run: |
           node tools/verify-release-seal.mjs
-          PNP_SOURCE_DIR="$PNP_SOURCE_DIR" node tools/check-cross-repo-targets.mjs --require-source
+          node tools/check-cross-repo-targets.mjs --require-source
+
+      - name: Run focused artifact tests
+        run: |
+          node --test tests/unit/formal-publication-artifacts*.test.mjs
+          node --test tests/audit-targets/*.test.mjs
+
+      - name: Enforce read-only workflow
+        shell: bash
+        run: |
+          set -euo pipefail
           git diff --check
-
-      - name: Run complete PNP Labs test suite
-        run: npm test
-
-      - name: Enforce documentation-only website sync boundary
-        shell: bash
-        run: |
-          set -euo pipefail
-          allowed='^(README\.md|index\.html|paper\.html|architecture\.html|verify\.html|faq\.html|review\.html|assets/proof-report-cover\.webp|assets/public-source-links\.js|downloads/|docs/|tests/audit-targets/|tools/sync-public-access-docs\.mjs|\.github/workflows/sync-public-access-report\.yml)'
-          git status --short
-          git status --short | sed -E 's/^.. //' | while IFS= read -r file; do
-            [[ "$file" =~ $allowed ]] || { echo "unexpected changed path: $file" >&2; exit 1; }
-          done
-
-      - name: Commit synchronized public-access report release
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            README.md \
-            index.html \
-            paper.html \
-            architecture.html \
-            verify.html \
-            faq.html \
-            review.html \
-            assets/proof-report-cover.webp \
-            assets/public-source-links.js \
-            downloads \
-            docs \
-            tests/audit-targets \
-            tools/sync-public-access-docs.mjs \
-            .github/workflows/sync-public-access-report.yml
-          git commit -m "docs: sync public-access canonical report release"
-          git push origin HEAD:docs/sync-public-access-report-7072f8d
+          test -z "$(git status --porcelain)"

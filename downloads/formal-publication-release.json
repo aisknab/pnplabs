@@ -1,0 +1,80 @@
+{
+  "kind": "PNPFormalPublicationRelease0",
+  "version": 0,
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-10",
+  "status": "current-formal-reconstruction-publication-theorem-gate-closed",
+  "authority": "current",
+  "source": {
+    "repo": "aisknab/pnp",
+    "commit": "c686bfc602b4cb19c89a3c33fff39720058fa198",
+    "tree": "d5bac85013b7e294e49528f245ad45b0d7abc2be",
+    "ref": "c686bfc602b4cb19c89a3c33fff39720058fa198",
+    "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-10-10",
+    "formalPublicationMapSha256": "e353b13cbe11c8bb92e309692d3ae42692e62fbdd92f3afdfac96ac4878f3ccc",
+    "leanSourceClosureSha256": "0c96305d4f2235aae359c865e91e0f58cafa4d20d9b040a16e992846360cfa3f"
+  },
+  "artifacts": {
+    "status": {
+      "sourcePath": "public/pnp-status.json",
+      "publicPath": "public/pnp-status.json",
+      "bytes": 39919,
+      "sha256": "bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10"
+    },
+    "theoremInventory": {
+      "sourcePath": "public/pnp-theorem-inventory.json",
+      "publicPath": "public/pnp-theorem-inventory.json",
+      "bytes": 312181,
+      "sha256": "4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10",
+      "declarationCount": 1761,
+      "theoremCount": 662,
+      "assumptionFreeTheoremCount": 589,
+      "projectAxiomCount": 5
+    },
+    "report": {
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-10",
+      "pageCount": 6,
+      "pdf": {
+        "sourcePath": "canonical_proof_report.pdf",
+        "publicPaths": [
+          "downloads/canonical_proof_report.pdf",
+          "downloads/canonical-proof-report.pdf"
+        ],
+        "bytes": 239507,
+        "sha256": "3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a"
+      },
+      "tex": {
+        "sourcePath": "canonical_proof_report.tex",
+        "publicPaths": [
+          "downloads/canonical_proof_report.tex",
+          "downloads/canonical-proof-report.tex"
+        ],
+        "bytes": 13256,
+        "sha256": "05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0"
+      }
+    }
+  },
+  "publicationBoundary": {
+    "derivedOnlyFromConcreteGate": true,
+    "concreteGatePassed": false,
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "compatibilityRootPresent": false,
+    "concreteTargetPresent": false,
+    "projectSpecificAxiomsRemaining": true,
+    "remainingBlockerCount": 7
+  },
+  "historicalArchive": {
+    "status": "historical-quarantined-not-current-authority",
+    "metadataPath": "downloads/source-checker-release.json",
+    "sourceTag": "final-pnp-proof-report-hardened-7072f8d",
+    "sourceCommit": "7072f8d0bda6d44d240f9bb3fad624fd357e1278",
+    "oldPdfSha256": "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d",
+    "oldTexSha256": "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7",
+    "currentArtifactEligible": false,
+    "mayActivateTheoremPublication": false
+  }
+}

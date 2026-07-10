@@ -1,107 +1,124 @@
-# Proof Pipeline
+# Formal Evidence Pipeline
 
-## Problem Statement
+## Current Outcome
 
-The standard question is whether every language in NP can be decided by a deterministic polynomial-time algorithm. Because SAT is NP-complete, proving `SAT in P` is sufficient to prove `P = NP`.
+The repository does not establish `P = NP`. The current public surface is generated from a compiled
+Lean theorem inventory, and its concrete publication gate is false.
 
-The report claims to prove `SAT in P` by reducing SAT instances to a constrained NAND minimization problem and then proving that the relevant residual-band exact minimization problem is polynomial when a finite generated package is accepted by the checker stack.
-
-## Claimed Route From SAT To The Target Construction
-
-The report describes a reduction from a SAT formula to a locked multi-output NAND direct-wire word. In conventional terms, this is a many-one reduction from SAT to a circuit-minimization-style decision or optimization task over a restricted NAND representation.
-
-The internal name "locked NAND" refers to the target representation and its macro/slot discipline. The reviewer should first check the usual reduction properties:
-
-- the construction is computable in polynomial time;
-- the constructed object has size polynomial in the SAT instance;
-- satisfiable and unsatisfiable SAT instances map to distinguishable minimization outcomes;
-- the construction does not call an exact minimizer.
-
-## Where Polynomial Time Is Asserted
-
-Polynomial time is asserted at these points:
-
-- SAT-to-locked-NAND construction in Package G;
-- bounded truth-table and finite-table checks in the package schedule;
-- residual-band exact minimization when residual slack is bounded;
-- generated package checking and replay;
-- final SAT decision once the accepted package is available.
-
-The report records Package G as checking polynomial construction and residual slack at most four. It records Package PACK as checking bounds, import discipline, no-hidden-minimization, and generated package sufficiency.
-
-## Where Correctness Is Asserted
-
-Correctness is asserted through:
-
-- mathematical lemmas and theorems in the report;
-- finite proof objects and row-family records in the generated package;
-- checker acceptance records for package, replay, certificate, release gate, and final proof report;
-- canonical-byte comparisons linking generator output to accepted records.
-
-This public checkout contains the report and public file seal. It does not contain the full generated package or source/checker implementation, so checker correctness cannot be re-established from this checkout alone.
-
-## Where Minimality Enters
-
-The report uses the residual slack quantity
-
-```text
-Lambda(C) = |C| - mu(C)
-```
-
-where `|C|` is circuit size and `mu(C)` is the minimum equivalent circuit size in the chosen framework. The proof route is not based on decreasing the root circuit size directly; it is based on bounded residual slack and certified gains or routes.
-
-Minimality is therefore a critical trust point. A reviewer should verify:
-
-- the definition of `mu(C)` and all variants such as open same-frontier minima;
-- that the locked NAND construction and the minimizer package use the same size notion;
-- that no algorithmic step computes `mu(C)` by hidden exhaustive search;
-- that exact-minimization facts appear only as proved/certified fields, not as executable shortcuts.
-
-## Where Hidden Search Could Enter
-
-Hidden exponential work could enter through:
-
-- an executable call to an exact minimizer;
-- unbounded enumeration of candidate circuits, cuts, supports, or truth tables;
-- a macro or generated template expanding into minimization;
-- a digest lookup treated as object equality;
-- a proof reference accepted without checking the referenced node;
-- an import cycle that lets two packages assume each other's conclusion;
-- a quotient-mode equality used as a full-mode constructive replacement.
-
-## How The Checker Is Claimed To Rule Out Hidden Minimization
-
-The report states that the no-hidden-minimization checker expands macros, aliases, generated templates, and imported identifiers before classifying executable occurrences. It rejects executable uses of minimization symbols and aliases such as `minimumEquivalent`, `optimalCircuit`, `exactMinSearch`, `canonicalMinimizer`, and `maximizeGain`.
-
-In this public checkout, `tools/reviewer-fixture-checker.mjs` includes a small educational version of that idea for minimal fixtures. It is not the report's `CheckNoHiddenMin0` and does not validate the theorem.
-
-## Artefacts To Inspect
-
-| Pipeline step | Primary artefact in this checkout | Required external artefact for full audit |
-| --- | --- | --- |
-| SAT problem statement | `downloads/canonical_proof_report.tex` Sections 1 and 18 | None beyond standard SAT/NP definitions |
-| Locked NAND construction | Report Section "Locked NAND and final integration" and Appendix A | Source/checker Package G and `GPack` |
-| Residual slack definition | Report Section "Central scale correction" | Source definitions for `mu`, `mu*`, size, and carrier conventions |
-| Package sufficiency | Report Sections 18 and 20 | Generated `PCCPack`, reflection registry, global proof DAG |
-| Checker acceptance | Report Section "Final proof-report release seal" | `CheckPCCPackexp0`, acceptance run, replay, final certificate, release gate |
-| File identity | `downloads/release-seal.json`, `downloads/SHA256SUMS` | Optional sealed artefact tag for full bundle |
-| Minimal examples | `examples/minimal/` | None; examples are illustrative only |
-
-## Pipeline Diagram
+The pipeline is deliberately one-way:
 
 ```mermaid
-flowchart LR
-  A[SAT formula] --> B[Polynomial locked NAND construction]
-  B --> C[Residual slack <= 4]
-  C --> D[Residual-band minimization theorem]
-  D --> E[Finite proof-carrying package]
-  E --> F[Package checker acceptance]
-  F --> G[Replay and final certificate]
-  G --> H[Final proof-report acceptance]
-  H --> I[Claimed conclusion: P = NP]
-
-  J[Release seal] -. file identity only .-> H
-  K[Minimal fixtures] -. onboarding only .-> F
+flowchart TD
+  SRC[Pinned Lean sources] --> BUILD[Lean 4.31.0 build]
+  BUILD --> INV[Environment declaration and axiom inventory]
+  INV --> PIN[Reviewed type and source fingerprints]
+  PIN --> MILE[Scoped milestones]
+  INV --> GATE[Concrete theorem gate]
+  MILE --> PUB[Status, TeX, and PDF]
+  GATE --> PUB
 ```
 
-The dotted edges are not theorem-soundness evidence.
+Status JSON, website copy, report text, hashes, and checker Booleans are downstream publication
+artefacts. None can flow backward as theorem evidence.
+
+## Inventory Compilation
+
+The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
+walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
+for dependencies. Every public row records name, module, kind, and axiom closure; the 22 reviewed
+milestone candidates additionally record raw kernel types for publication fingerprinting. The
+canonical output records:
+
+- 1,761 public declarations;
+- 662 theorem-kind declarations;
+- 589 assumption-free theorem-kind declarations;
+- 22 source-closure modules;
+- 33 excluded private compiler auxiliaries;
+- five project axioms.
+
+The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
+configuration. Symlinked sources, malformed probe output, private-row forgery, unsorted declarations,
+unknown declaration forms, and byte drift reject.
+
+## Earned Milestones
+
+An earned milestone requires all of the following:
+
+1. every reviewed declaration is present with theorem kind;
+2. every exact domain-separated kernel-type SHA-256 matches;
+3. every declaration has an empty axiom closure;
+4. the complete Lean-source closure matches its reviewed digest.
+
+The six earned scopes are:
+
+| Milestone | Exact scope | Explicit non-claim |
+| --- | --- | --- |
+| Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
+| Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
+| Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
+| Locked-NAND local baselines | Typed local candidates, source-derived counts, and five finite local square minima | No global `BaselineDistinct` or threshold |
+| Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | No uniform construction or premise instantiation |
+| Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
+
+Three global milestones remain unearned: the unconditional locked-NAND construction/threshold, the
+complete ZeroSlack/PCCMin/residual-band polynomial route, and the concrete standard P-vs-NP root.
+
+## Concrete Publication Gate
+
+Publication of any theorem statement requires a concrete standard complexity target and a
+compatibility-root theorem with exact reviewed type/value/source/axiom fingerprints. The allowlist is
+immutable and contains only `Classical.choice`, `Quot.sound`, and `propext`.
+
+This pass is intentionally non-activating:
+
+- `PNP.Main.ConcretePEqualsNP` is absent;
+- `PNP.Main.p_eq_np` is absent;
+- the expected activation fingerprints are unset;
+- unset fingerprints are unconfigured and never match null actual values;
+- the abstract string-handle `PNP.PEqualsNP` bridge is categorically ineligible;
+- five project axioms and seven blockers remain.
+
+Every theorem-emission field is derived from `concretePublicationGate.passed`. Historical accepted
+records, JSON values, checker results, or report wording cannot override it.
+
+## Current Public Artefacts
+
+| Artefact | Role |
+| --- | --- |
+| `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
+| `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
+| `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment six-page report build |
+| `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
+| `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
+
+PDF determinism here means a same-environment double build followed by exact byte comparison in CI;
+it is not a claim of universal cross-toolchain reproducibility.
+
+## Remaining Route To The Target
+
+The seven current blockers are:
+
+1. `Formal.ConcreteComplexityModel`;
+2. `Formal.ConcreteSAT`;
+3. `Formal.LockedNANDThreshold`;
+4. `Formal.ResidualBandMinimizer`;
+5. `Formal.ZeroSlack`;
+6. `Formal.PolynomialRuntimeAndCertificateBounds`;
+7. `Formal.RootTheoremAndAxiomAudit`.
+
+Closing them requires concrete formal definitions, unconditional theorems at the required scopes,
+polynomial bounds, a concrete root theorem, and an acceptable axiom audit. Publication machinery is
+not a substitute for any of those obligations.
+
+## Historical Checker Route
+
+The 56-page 7072f8d manuscript described a SAT-to-locked-NAND, residual-band, `PCCPack`, checker,
+replay, and release-gate route. That material remains useful as a list of proposed obligations and
+implementation audit targets. It is preserved at source tag
+`final-pnp-proof-report-hardened-7072f8d`, commit
+`7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with archive coordinates in
+`archive/legacy-v0/ARCHIVE.json`.
+
+Historical replay can reproduce assertion-checker behavior. It is not current authority, does not
+earn a formal milestone, and cannot satisfy the concrete publication gate.

@@ -1,26 +1,26 @@
 {
-  "kind": "PNPSourceCheckerReleaseReference",
-  "version": 1,
+  "kind": "PNPHistoricalSourceCheckerReleaseReference0",
+  "version": 0,
+  "status": "historical-quarantined-not-current-authority",
+  "authority": "historical-only",
   "sourceRepo": "aisknab/pnp",
   "sourceTag": "final-pnp-proof-report-hardened-7072f8d",
   "sourceCommit": "7072f8d0bda6d44d240f9bb3fad624fd357e1278",
   "artifactTag": "final-pnp-proof-report-artifacts-hardened-7072f8d-sealed",
   "docsTag": "final-pnp-proof-report-docs-hardened-7072f8d-sealed",
   "artifactBundlePath": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/",
-  "expectedValidation": {
-    "tests": 1121,
-    "pass": 1121,
-    "fail": 0,
-    "cancelled": 0
+  "historicalCanonicalReport": {
+    "pdfSha256": "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d",
+    "texSha256": "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7",
+    "pageCount": 56
   },
-  "claimBoundary": {
-    "antecedent": "CheckPCCPackexp(GeneratePCCPack())=accept",
-    "consequent": "P = NP",
-    "conditional": true
-  },
+  "currentArtifactEligible": false,
+  "currentStatusAuthority": false,
+  "mayActivateTheoremPublication": false,
+  "archiveManifestAtCurrentCore": "archive/legacy-v0/ARCHIVE.json",
   "notes": [
-    "This manifest identifies the source/checker audit target.",
-    "It does not establish theorem correctness.",
-    "The pnplabs checkout does not contain or execute the full checker."
+    "This file preserves immutable coordinates for historical review only.",
+    "The 7072f8d checker, report, tags, acceptance records, and digests are not current theorem evidence.",
+    "Current public status and report artifacts are identified by downloads/formal-publication-release.json."
   ]
 }

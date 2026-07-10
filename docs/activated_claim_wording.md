@@ -22,7 +22,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. The typed direct-wire NAND semantics and exact-width bounded syntactic enumerator are formalized and axiom-free. The completeness result covers every typed source, ordered gate pair, topological program, and output tuple, including the unique empty output tuple. Public wording must also state the boundary: this is not canonical or duplicate-free enumeration, and semantic equivalence, exact minimum, compatible replacement and slack, locked-NAND builder and threshold, SAT, and `PNP.Main.p_eq_np` remain unfinished. Five project-specific axioms remain (`PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`).
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Six narrowly scoped milestones are earned from reviewed theorem types, empty axiom closures, and the complete Lean-source digest: direct-wire semantics, finite reference enumeration/minimum, concrete framed replacement/slack, local locked-NAND baselines, a conditional six-premise threshold boundary, and explicit-list residual-route soundness. Public wording must also state the boundary: global locked-NAND construction, premise instantiation, candidate-universe completeness, ZeroSlack, PCCMin, the residual-band minimizer, polynomiality, concrete SAT, and `PNP.Main.p_eq_np` remain unfinished. Five project-specific axioms and seven formal blockers remain. The concrete publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -39,9 +39,9 @@ The following are preserved only for auditability:
 - `PNP-ACTIVATED-STATUS-2026-07-05-01` and related activation coordinates;
 - the activated verifier-run registry and record schema;
 - digest comparison matrices and summaries;
-- the bundled report, until it is regenerated after formal reconstruction.
+- the 56-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the six-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

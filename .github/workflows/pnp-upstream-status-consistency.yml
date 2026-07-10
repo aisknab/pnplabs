@@ -7,249 +7,45 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+env:
+  PNP_CORE_COMMIT: c686bfc602b4cb19c89a3c33fff39720058fa198
+  PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
+
 jobs:
   pnp-upstream-status-consistency:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pnplabs
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - name: Check out companion repository
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+          path: pnplabs
+
+      - name: Check out exact reviewed core merge
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+          repository: aisknab/pnp
+          ref: ${{ env.PNP_CORE_COMMIT }}
+          fetch-depth: 0
+          fetch-tags: true
+          path: pnp
+
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: '20'
-      - name: Compare conservative public payload with upstream PNP status
+          node-version: "20"
+
+      - name: Compare current status and inventory with exact core bytes
+        shell: bash
         run: |
-          node --input-type=module <<'NODE'
-          import assert from 'node:assert/strict';
-          import { readFile } from 'node:fs/promises';
-
-          const upstreamUrl = 'https://raw.githubusercontent.com/aisknab/pnp/main/public/pnp-status.json';
-
-          function stableStringify(value) {
-            if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
-            if (value !== null && typeof value === 'object') return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(',')}}`;
-            return JSON.stringify(value);
-          }
-
-          function assertFormalBoundary(payload, label) {
-            assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09', `${label}: coordinate mismatch`);
-            assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
-            assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
-            assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
-            assert.equal(payload.publicTheoremStatement, null, `${label}: public theorem statement must be null`);
-            assert.equal(payload.finalTheoremReady, false, `${label}: final theorem must not be ready`);
-            assert.equal(payload.satInPConclusionAccepted, false, `${label}: SAT-in-P conclusion must remain unaccepted`);
-            assert.equal(payload.pEqualsNPConclusionAccepted, false, `${label}: P-equals-NP conclusion must remain unaccepted`);
-            assert.equal(payload.rootLeanTheoremPresent, false, `${label}: root theorem must not be marked present`);
-            assert.equal(payload.rootLeanTheoremBuilt, false, `${label}: root theorem must not be marked built`);
-            assert.equal(payload.rootLeanTheoremAxiomAuditPassed, false, `${label}: axiom audit must not be marked passed`);
-            assert.equal(payload.projectSpecificAxiomsRemaining, true, `${label}: project-specific axioms must remain disclosed`);
-            assert.equal(payload.leanToolchain, 'leanprover/lean4:v4.31.0', `${label}: Lean toolchain mismatch`);
-            assert.equal(payload.leanCompilerVersion, '4.31.0', `${label}: Lean version mismatch`);
-            assert.equal(payload.leanCompilerCommit, '68218e876d2a38b1985b8590fff244a83c321783', `${label}: Lean compiler commit mismatch`);
-            assert.equal(payload.lakeVersion, '5.0.0-src+68218e8', `${label}: Lake version mismatch`);
-            assert.equal(payload.elanVersion, '4.2.3', `${label}: Elan version mismatch`);
-            assert.equal(payload.elanReleaseCommit, 'b6cec7e10fe4965a605aaf60d1cb4a5837f0462b', `${label}: Elan release commit mismatch`);
-            assert.equal(payload.elanArchiveSha256, 'df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2', `${label}: Elan archive digest mismatch`);
-            assert.equal(payload.leanBuildTarget, 'PNP', `${label}: Lean build target mismatch`);
-            assert.equal(payload.leanRootModule, 'PNP', `${label}: Lean root module mismatch`);
-            assert.equal(payload.leanRootStatusDeclaration, 'PNP.Main.rootTheoremStatus', `${label}: root-status declaration mismatch`);
-            assert.equal(payload.leanBuildConfigurationPinned, true, `${label}: Lean configuration must be pinned`);
-            assert.equal(payload.explicitLeanRootTargetPresent, true, `${label}: explicit Lean root must be present`);
-            assert.equal(payload.leanLibraryTargetBuilt, true, `${label}: Lean library target must be built`);
-            assert.equal(payload.leanSourcePlaceholderAuditPassed, true, `${label}: placeholder audit must pass`);
-            assert.equal(payload.leanNANDDirectWireCoreFormalized, true, `${label}: direct-wire NAND core must be formalized`);
-            assert.equal(payload.leanNANDDirectWireCoreAxiomAuditPassed, true, `${label}: direct-wire NAND core axiom audit must pass`);
-            assert.equal(payload.leanNANDEnumeratorFormalized, true, `${label}: NAND enumerator must be formalized`);
-            assert.equal(payload.leanNANDEnumeratorAxiomAuditPassed, true, `${label}: NAND enumerator axiom audit must pass`);
-            assert.equal(payload.leanNANDExactWidthEnumerationComplete, true, `${label}: exact-width syntactic enumeration must be complete`);
-            assert.equal(payload.leanNANDEnumeratorUsesOrderedGatePairs, true, `${label}: enumerator must preserve ordered NAND input pairs`);
-            assert.equal(payload.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true, `${label}: enumerator must include the unique empty output tuple`);
-            assert.equal(payload.leanNANDEnumeratorDeduplicated, false, `${label}: enumerator must not be described as deduplicated`);
-            assert.equal(payload.leanNANDTruthTableFormalized, true, `${label}: NAND truth table must be formalized`);
-            assert.equal(payload.leanNANDTruthTableAxiomAuditPassed, true, `${label}: NAND truth-table axiom audit must pass`);
-            assert.equal(payload.leanNANDSemanticEquivalenceDecidable, true, `${label}: finite NAND semantic equivalence must be decidable`);
-            assert.equal(payload.leanNANDMinimumAndSlackFormalized, true, `${label}: reference minimum/slack must be formalized`);
-            assert.equal(payload.leanNANDReferenceMinimumFormalized, true, `${label}: reference minimum must be formalized`);
-            assert.equal(payload.leanNANDReferenceMinimumAxiomAuditPassed, true, `${label}: reference-minimum axiom audit must pass`);
-            assert.equal(payload.leanNANDReferenceMinimumExhaustive, true, `${label}: reference minimum must be marked exhaustive`);
-            assert.equal(payload.leanNANDReferenceMinimumScope, 'finite-boolean-direct-wire-empty-profile', `${label}: reference-minimum scope mismatch`);
-            assert.equal(payload.leanNANDReferenceMinimumPolynomialRuntimeProved, false, `${label}: polynomial runtime must remain unproved`);
-            assert.equal(payload.leanNANDResidualSlackZeroIffMinimumFormalized, true, `${label}: zero-slack equivalence must be formalized`);
-            assert.equal(payload.leanNANDCompositionFormalized, true, `${label}: NAND composition must be formalized`);
-            assert.equal(payload.leanNANDCompositionAxiomAuditPassed, true, `${label}: NAND composition axiom audit must pass`);
-            assert.equal(payload.leanNANDFramedReplacementFormalized, true, `${label}: framed replacement must be formalized`);
-            assert.equal(payload.leanNANDFramedGlobalSlackLawFormalized, true, `${label}: framed slack law must be formalized`);
-            assert.equal(payload.leanNANDFramedSlackAxiomAuditPassed, true, `${label}: framed slack axiom audit must pass`);
-            assert.equal(payload.leanNANDReplacementScope, 'concrete-serial-framed-context', `${label}: replacement scope mismatch`);
-            assert.equal(payload.leanLockedNANDDirectCandidatesFormalized, true, `${label}: typed local locked-NAND candidates must be formalized`);
-            assert.equal(payload.leanLockedNANDDirectAxiomAuditPassed, true, `${label}: typed local candidate audit must pass`);
-            assert.equal(payload.leanLockedNANDInternalMacroConstantsAbsent, true, `${label}: internal macro constants must be absent`);
-            assert.equal(payload.leanDirectWireOutputLowerBoundFormalized, true, `${label}: direct-wire output lower bound must be formalized`);
-            assert.equal(payload.leanDirectWireBaselineAxiomAuditPassed, true, `${label}: direct-wire baseline audit must pass`);
-            assert.equal(payload.leanLockedNANDSourceDerivedCountsFormalized, true, `${label}: source-derived counts must be formalized`);
-            assert.equal(payload.leanLockedNANDBaselineAccountingFormalized, true, `${label}: baseline accounting must be formalized`);
-            assert.equal(payload.leanLockedNANDBaselineAxiomAuditPassed, true, `${label}: baseline accounting audit must pass`);
-            assert.equal(payload.leanLockedNANDConditionalSquareBaselineExactnessFormalized, true, `${label}: conditional square exactness must be formalized`);
-            assert.equal(payload.leanLockedNANDLocalBaselineConditionsFormalized, true, `${label}: local baseline conditions must be formalized`);
-            assert.equal(payload.leanLockedNANDLocalSquareBaselineExactnessFormalized, true, `${label}: five local square minima must be formalized`);
-            assert.equal(payload.leanLockedNANDLocalBaselineAxiomAuditPassed, true, `${label}: local baseline audit must pass`);
-            assert.equal(payload.leanLockedNANDProofScope, 'typed-local-macros-source-derived-counts-and-five-local-square-baselines', `${label}: locked-NAND proof scope mismatch`);
-            assert.equal(payload.leanLockedNANDConditionalThresholdBoundaryFormalized, true, `${label}: conditional threshold boundary must be formalized`);
-            assert.equal(payload.leanLockedNANDConditionalResidualSlackAtMostFourFormalized, true, `${label}: conditional slack bound must be formalized`);
-            assert.equal(payload.leanLockedNANDThresholdBoundaryAxiomAuditPassed, true, `${label}: threshold-boundary audit must pass`);
-            assert.equal(payload.leanLockedNANDThresholdBoundaryScope, 'proof-bearing-typed-candidate-and-semantic-premises-only', `${label}: threshold-boundary scope mismatch`);
-            assert.equal(payload.leanLockedNANDThresholdBoundaryPremisesInstantiated, false, `${label}: threshold premises must remain uninstantiated`);
-            assert.equal(payload.leanLockedNANDGlobalBaselineDistinctFormalized, false, `${label}: global baseline distinctness must remain incomplete`);
-            assert.equal(payload.leanLockedNANDCarrierLayoutFormalized, false, `${label}: carrier layout must remain incomplete`);
-            assert.equal(payload.leanLockedNANDTraceEquivalenceFormalized, false, `${label}: trace equivalence must remain incomplete`);
-            assert.equal(payload.leanLockedNANDDerivedFinalOutputLawsFormalized, false, `${label}: derived final-output laws must remain incomplete`);
-            assert.equal(payload.leanLockedNANDResidualSlackAtMostFourFormalized, false, `${label}: slack-at-most-four must remain incomplete`);
-            assert.equal(payload.leanLockedNANDPolynomialBuilderFormalized, false, `${label}: polynomial builder must remain incomplete`);
-            assert.equal(payload.leanCompatibleReplacementFormalized, false, `${label}: compatible replacement must remain incomplete`);
-            assert.equal(payload.leanGlobalSlackLawFormalized, false, `${label}: global slack law must remain incomplete`);
-            assert.equal(payload.leanLockedNANDBuilderFormalized, false, `${label}: locked-NAND builder must remain incomplete`);
-            assert.equal(payload.leanLockedNANDThresholdFormalized, false, `${label}: locked-NAND threshold must remain incomplete`);
-            assert.equal(payload.leanResidualRoutesListedGainScanFormalized, true, `${label}: explicit-list gain scan must be formalized`);
-            assert.equal(payload.leanResidualRoutesAxiomAuditPassed, true, `${label}: residual-route axiom audit must pass`);
-            assert.equal(payload.leanResidualRoutesGainSoundnessFormalized, true, `${label}: listed gain soundness must be formalized`);
-            assert.equal(payload.leanResidualRoutesStrictResidualDescentFormalized, true, `${label}: strict residual descent must be formalized`);
-            assert.equal(payload.leanResidualRoutesExactResultProofBearing, true, `${label}: exact results must remain proof-bearing`);
-            assert.equal(payload.leanResidualRoutesZeroSlackResultProofBearing, true, `${label}: ZeroSlack results must remain proof-bearing`);
-            assert.equal(payload.leanResidualRoutesUnresolvedFailClosed, true, `${label}: unresolved scan must fail closed`);
-            assert.equal(payload.leanResidualRoutesScope, 'explicit-caller-supplied-finite-candidate-list', `${label}: residual-route scope mismatch`);
-            assert.equal(payload.leanResidualRoutesCandidateListCompletenessFormalized, false, `${label}: candidate-list completeness must remain incomplete`);
-            assert.equal(payload.leanResidualRoutesGlobalGainCompletenessFormalized, false, `${label}: global-gain completeness must remain incomplete`);
-            assert.equal(payload.leanZeroSlackPositiveSlackContradictionFormalized, false, `${label}: ZeroSlack contradiction must remain incomplete`);
-            assert.equal(payload.leanZeroSlackCompletenessFormalized, false, `${label}: ZeroSlack completeness must remain incomplete`);
-            assert.equal(payload.leanPCCMinLoopExactnessFormalized, false, `${label}: PCCMin loop exactness must remain incomplete`);
-            assert.equal(payload.leanPCCMinPolynomialRuntimeFormalized, false, `${label}: PCCMin polynomial runtime must remain incomplete`);
-            assert.equal(payload.leanResidualBandMinimizerFormalized, false, `${label}: residual-band minimizer must remain incomplete`);
-            assert.equal(payload.lockedNANDOutputConvention, 'ordered-multi-output-baseline-coordinates-plus-final-coordinate', `${label}: locked-NAND output convention mismatch`);
-            assert.equal(payload.legacySyntheticLockedNANDM2FixtureStatus, 'quarantined-internally-inconsistent', `${label}: legacy m=2 fixture must remain quarantined`);
-            assert.equal(payload.legacySyntheticLockedNANDM2HonestBaseline, 86, `${label}: honest legacy baseline mismatch`);
-            assert.equal(payload.legacySyntheticLockedNANDM2MetadataConsistentBaseline, 95, `${label}: metadata-consistent legacy baseline mismatch`);
-            assert.equal(payload.legacySyntheticLockedNANDM2StoredBaseline, 91, `${label}: stored legacy baseline mismatch`);
-            assert.equal(payload.legacySyntheticLockedNANDM2HonestDisplayedGateCount, 90, `${label}: honest displayed count mismatch`);
-            assert.equal(payload.legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount, 99, `${label}: metadata-consistent displayed count mismatch`);
-            assert.equal(payload.legacySyntheticLockedNANDM2StoredDisplayedGateCount, 95, `${label}: stored displayed count mismatch`);
-            assert.deepEqual(payload.lockedNANDThresholdHostileReviewLemmaInventory, [
-              'DirectWireOutputLowerBound',
-              'MacroDistinct',
-              'TraceEquivalence',
-              'ZeroOutputConvention',
-              'FinalLockSeparation',
-            ], `${label}: hostile-review inventory mismatch`);
-            assert.deepEqual(payload.leanLockedNANDThresholdPremiseInventory, [
-              'baselineCandidate',
-              'fullCandidate',
-              'baselineConditions',
-              'initialOutputsPreserved',
-              'unsatisfiableFinalZero',
-              'satisfiableFinalConditions',
-            ], `${label}: threshold premise inventory mismatch`);
-            assert.deepEqual(payload.leanLockedNANDThresholdMissingInstantiationInventory, [
-              'baselineCandidate',
-              'fullCandidate',
-              'baselineConditions',
-              'initialOutputsPreserved',
-              'unsatisfiableFinalZero',
-              'satisfiableFinalConditions',
-            ], `${label}: missing-instantiation inventory mismatch`);
-            assert.equal(payload.sorryOrAdmitInRootDependencyClosure, null, `${label}: absent root dependency closure must remain null`);
-            assert.deepEqual(payload.projectSpecificAxiomInventory, [
-              'PNP.SAT',
-              'PNP.LockedNANDThreshold',
-              'PNP.ResidualBandExactMinimization',
-              'PNP.GeneratePCCPack',
-              'PNP.CheckPCCPackexp',
-            ], `${label}: project-specific axiom inventory mismatch`);
-            assert.equal(payload.externalReviewIsMathematicalPremise, false, `${label}: external review must not be a premise`);
-            assert.deepEqual(payload.verificationCommands, [
-              'node pcc-formal-reconstruction-status0.mjs --json',
-              'node pcc-formal-public-surface0.mjs --json',
-              'npm run legacy:v0:check',
-              'npm run pnp:verify -- --no-write',
-              'node --test audits/lean-root-target0.test.mjs',
-              'node --test audits/lean-nand-semantics0.test.mjs',
-              'node --test audits/lean-nand-enumerator0.test.mjs',
-              'node --test audits/lean-nand-reference-minimum0.test.mjs',
-              'node --test audits/lean-locked-nand-baseline0.test.mjs',
-              'node --test audits/lean-locked-nand-threshold-boundary0.test.mjs',
-              'node --test audits/lean-residual-routes0.test.mjs',
-              'lake build PNP',
-              'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
-              'lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean',
-            ], `${label}: verification commands mismatch`);
-            assert.equal(payload.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json', `${label}: archive manifest mismatch`);
-            assert.equal(payload.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d', `${label}: replay command mismatch`);
-            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09', `${label}: public-surface baseline mismatch`);
-            assert.deepEqual(payload.remainingBlockers, [
-              'Formal.ConcreteComplexityModel',
-              'Formal.ConcreteSAT',
-              'Formal.LockedNANDThreshold',
-              'Formal.ResidualBandMinimizer',
-              'Formal.ZeroSlack',
-              'Formal.PolynomialRuntimeAndCertificateBounds',
-              'Formal.RootTheoremAndAxiomAudit',
-            ], `${label}: formal blockers mismatch`);
-            assert.ok(payload.nonClaims.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.'), `${label}: NAND-semantics non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.'), `${label}: NAND-enumerator non-claim missing`);
-            assert.ok(payload.nonClaims.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer."), `${label}: reference-minimum non-claim missing`);
-            assert.ok(payload.nonClaims.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family."), `${label}: framed-replacement non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The typed local locked-NAND candidates, source-derived accounting, conditional square-baseline theorem, and five discharged local square baselines do not prove global cross-instance BaselineDistinct, a locked builder or threshold, residual slack at most four, or polynomial runtime.'), `${label}: locked-NAND local-scope non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The report threshold word is multi-output: its baseline coordinates remain present alongside one final coordinate; a legacy single-output seed is not that construction.'), `${label}: multi-output non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The legacy synthetic m=2 fixture is quarantined as internally inconsistent: honest source-derived baseline/displayed counts are 86/90, metadata-consistent counts are 95/99, and stored hybrid counts are 91/95.'), `${label}: legacy fixture quarantine non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The proof-bearing conditional locked-NAND semantic boundary is not the report threshold theorem: it assumes typed baseline and full candidates, baseline output conditions, preservation of the first outputs, an unsatisfiable final-zero law, and satisfiable final-output laws instead of constructing them for arbitrary circuits.'), `${label}: conditional-boundary non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The residual-slack-at-most-four result is conditional on that six-field premise package; it is not an unconditional result for the report locked-NAND family.'), `${label}: conditional-slack non-claim missing`);
-            assert.ok(payload.nonClaims.includes('Against the hostile-review inventory, DirectWireOutputLowerBound and the model-level ZeroOutputConvention are now discharged, while global MacroDistinct, TraceEquivalence, FinalLockSeparation, carrier layout, and uniform polynomial premise construction remain missing.'), `${label}: hostile-review mapping non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The conditional module quantifies an arbitrary satisfiable proposition and baseline natural number; it does not identify them with source-circuit SAT and lockedBaselineCount, enforce answer-independent uniform construction, or connect the candidate boundary to the abstract PNP.LockedNANDThreshold language.'), `${label}: arbitrary-parameter non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The executable residual-route scan is complete only for the explicit finite implementation list supplied by its caller; unresolved excludes no unlisted gain and does not imply global minimality or ZeroSlack.'), `${label}: explicit-list scope non-claim missing`);
-            assert.ok(payload.nonClaims.includes('An empty-list scan is formally shown to remain unresolved on a positive-slack implementation, so search failure cannot be promoted to zero residual slack.'), `${label}: positive-slack regression non-claim missing`);
-            assert.ok(payload.nonClaims.includes('Exact and ZeroSlack route results require Lean proofs of semantic minimality and are never manufactured by the executable gain scanner; no BCEL, HN/BUD, selector, PCCMin-loop, or residual-band completeness follows.'), `${label}: proof-bearing route non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The residual-route equivalence check exhausts finite Boolean valuations and has no polynomial-runtime claim.'), `${label}: residual-route runtime non-claim missing`);
-          }
-
-          const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));
-          const index = JSON.parse(await readFile('public/pnp-index.json', 'utf8'));
-          const response = await fetch(upstreamUrl, { headers: { accept: 'application/json' } });
-          if (!response.ok) throw new Error(`failed to fetch ${upstreamUrl}: ${response.status} ${response.statusText}`);
-          const upstreamStatus = await response.json();
-
-          assertFormalBoundary(siteStatus, 'site status payload');
-          assertFormalBoundary(upstreamStatus, 'upstream status payload');
-          assert.equal(stableStringify(siteStatus), stableStringify(upstreamStatus), 'site status payload drifted from upstream pnp/public/pnp-status.json');
-
-          assert.equal(index.status, 'formal-reconstruction-status-payloads-ready');
-          assert.equal(index.version, 13);
-          assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09');
-          assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09');
-          assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
-          assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, false);
-          assert.equal(index.claimBoundary.publicTheoremStatement, null);
-          assert.equal(index.claimBoundary.leanResidualRoutesListedGainScanFormalized, true);
-          assert.equal(index.claimBoundary.leanResidualRoutesStrictResidualDescentFormalized, true);
-          assert.equal(index.claimBoundary.leanResidualRoutesExactResultProofBearing, true);
-          assert.equal(index.claimBoundary.leanResidualRoutesZeroSlackResultProofBearing, true);
-          assert.equal(index.claimBoundary.leanResidualRoutesUnresolvedFailClosed, true);
-          assert.equal(index.claimBoundary.leanResidualRoutesCandidateListCompletenessFormalized, false);
-          assert.equal(index.claimBoundary.leanResidualRoutesGlobalGainCompletenessFormalized, false);
-          assert.equal(index.claimBoundary.leanZeroSlackCompletenessFormalized, false);
-          assert.equal(index.claimBoundary.leanPCCMinLoopExactnessFormalized, false);
-          assert.equal(index.claimBoundary.leanPCCMinPolynomialRuntimeFormalized, false);
-          assert.equal(index.claimBoundary.leanResidualBandMinimizerFormalized, false);
-          assert.equal(index.claimBoundary.rootLeanTheoremPresent, false);
-          assert.equal(index.claimBoundary.projectSpecificAxiomsRemaining, true);
-          assert.equal(index.claimBoundary.remainingBlockers.length, 7);
-          assert.equal(index.historicalRunIntakeFrozen, true);
-          NODE
+          set -euo pipefail
+          cmp public/pnp-status.json "$PNP_SOURCE_DIR/public/pnp-status.json"
+          cmp public/pnp-theorem-inventory.json "$PNP_SOURCE_DIR/public/pnp-theorem-inventory.json"
+          node tools/verify-release-seal.mjs
+          node tools/check-cross-repo-targets.mjs --require-source

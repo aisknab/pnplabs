@@ -1,14 +1,23 @@
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { access, readFile, readdir } from 'node:fs/promises';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
+const CORE_COMMIT = 'c686bfc602b4cb19c89a3c33fff39720058fa198';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10';
+const INVENTORY_SHA256 = '4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28';
 
 async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
+}
+
+async function readBytes(path) {
+  return readFile(new URL(`../../${path}`, import.meta.url));
 }
 
 async function readJson(path) {
@@ -24,199 +33,94 @@ try {
   siblingAvailable = false;
 }
 
-test('site status is byte-for-byte identical to the merged authoritative sibling payload', { skip: siblingAvailable ? false : 'sibling pnp checkout unavailable; upstream-consistency CI performs the remote comparison' }, async () => {
-  const site = await readText('public/pnp-status.json');
-  const { stdout: source } = await execFileAsync('git', [
-    '-C',
-    fileURLToPath(siblingRepo),
-    'show',
-    'origin/main:public/pnp-status.json',
-  ], { encoding: 'utf8' });
-  assert.equal(site, source, 'mirror must follow merged upstream main, not unmerged sibling worktree changes');
+test('status and inventory are byte-identical to the pinned merged core publication', { skip: siblingAvailable ? false : 'sibling pnp checkout unavailable; upstream-consistency CI performs the remote comparison' }, async () => {
+  for (const path of ['public/pnp-status.json', 'public/pnp-theorem-inventory.json']) {
+    const site = await readText(path);
+    const { stdout: source } = await execFileAsync('git', [
+      '-C', fileURLToPath(siblingRepo), 'show', `${CORE_COMMIT}:${path}`,
+    ], { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 });
+    assert.equal(site, source, `${path} must match pinned merged core commit`);
+  }
 });
 
-test('current status exposes the incomplete formal reconstruction', async () => {
+test('current status binds the compiled inventory and fails the concrete gate closed', async () => {
   const status = await readJson('public/pnp-status.json');
+  const inventoryBytes = await readBytes('public/pnp-theorem-inventory.json');
+  const inventory = JSON.parse(inventoryBytes);
+
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09');
+  assert.equal(status.coordinate, STATUS_COORDINATE);
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
-  assert.equal(status.mathematicalTheoremEstablished, false);
-  assert.equal(status.publicTheoremEmissionAllowed, false);
-  assert.equal(status.publicTheoremStatement, null);
-  assert.equal(status.publicTheoremConclusion, null);
-  assert.equal(status.finalTheoremReady, false);
-  assert.equal(status.satInPConclusionAccepted, false);
-  assert.equal(status.pEqualsNPConclusionAccepted, false);
-  assert.equal(status.rootLeanTheoremPresent, false);
-  assert.equal(status.rootLeanTheoremBuilt, false);
-  assert.equal(status.rootLeanTheoremAxiomAuditPassed, false);
-  assert.equal(status.projectSpecificAxiomsRemaining, true);
+  assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
-  assert.equal(status.leanCompilerVersion, '4.31.0');
-  assert.equal(status.leanCompilerCommit, '68218e876d2a38b1985b8590fff244a83c321783');
-  assert.equal(status.lakeVersion, '5.0.0-src+68218e8');
-  assert.equal(status.elanVersion, '4.2.3');
-  assert.equal(status.elanReleaseCommit, 'b6cec7e10fe4965a605aaf60d1cb4a5837f0462b');
-  assert.equal(status.elanArchiveSha256, 'df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2');
-  assert.equal(status.leanBuildTarget, 'PNP');
-  assert.equal(status.leanRootModule, 'PNP');
-  assert.equal(status.leanRootStatusDeclaration, 'PNP.Main.rootTheoremStatus');
-  assert.equal(status.leanBuildConfigurationPinned, true);
-  assert.equal(status.explicitLeanRootTargetPresent, true);
-  assert.equal(status.leanLibraryTargetBuilt, true);
-  assert.equal(status.leanSourcePlaceholderAuditPassed, true);
-  assert.equal(status.leanNANDDirectWireCoreFormalized, true);
-  assert.equal(status.leanNANDDirectWireCoreAxiomAuditPassed, true);
-  assert.equal(status.leanNANDEnumeratorFormalized, true);
-  assert.equal(status.leanNANDEnumeratorAxiomAuditPassed, true);
-  assert.equal(status.leanNANDExactWidthEnumerationComplete, true);
-  assert.equal(status.leanNANDEnumeratorUsesOrderedGatePairs, true);
-  assert.equal(status.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true);
-  assert.equal(status.leanNANDEnumeratorDeduplicated, false);
-  assert.equal(status.leanNANDTruthTableFormalized, true);
-  assert.equal(status.leanNANDTruthTableAxiomAuditPassed, true);
-  assert.equal(status.leanNANDSemanticEquivalenceDecidable, true);
-  assert.equal(status.leanNANDMinimumAndSlackFormalized, true);
-  assert.equal(status.leanNANDReferenceMinimumFormalized, true);
-  assert.equal(status.leanNANDReferenceMinimumAxiomAuditPassed, true);
-  assert.equal(status.leanNANDReferenceMinimumExhaustive, true);
-  assert.equal(status.leanNANDReferenceMinimumScope, 'finite-boolean-direct-wire-empty-profile');
-  assert.equal(status.leanNANDReferenceMinimumPolynomialRuntimeProved, false);
-  assert.equal(status.leanNANDResidualSlackZeroIffMinimumFormalized, true);
-  assert.equal(status.leanNANDCompositionFormalized, true);
-  assert.equal(status.leanNANDCompositionAxiomAuditPassed, true);
-  assert.equal(status.leanNANDFramedReplacementFormalized, true);
-  assert.equal(status.leanNANDFramedGlobalSlackLawFormalized, true);
-  assert.equal(status.leanNANDFramedSlackAxiomAuditPassed, true);
-  assert.equal(status.leanNANDReplacementScope, 'concrete-serial-framed-context');
-  assert.equal(status.leanLockedNANDDirectCandidatesFormalized, true);
-  assert.equal(status.leanLockedNANDDirectAxiomAuditPassed, true);
-  assert.equal(status.leanLockedNANDInternalMacroConstantsAbsent, true);
-  assert.equal(status.leanDirectWireOutputLowerBoundFormalized, true);
-  assert.equal(status.leanDirectWireBaselineAxiomAuditPassed, true);
-  assert.equal(status.leanLockedNANDSourceDerivedCountsFormalized, true);
-  assert.equal(status.leanLockedNANDBaselineAccountingFormalized, true);
-  assert.equal(status.leanLockedNANDBaselineAxiomAuditPassed, true);
-  assert.equal(status.leanLockedNANDConditionalSquareBaselineExactnessFormalized, true);
-  assert.equal(status.leanLockedNANDLocalBaselineConditionsFormalized, true);
-  assert.equal(status.leanLockedNANDLocalSquareBaselineExactnessFormalized, true);
-  assert.equal(status.leanLockedNANDLocalBaselineAxiomAuditPassed, true);
-  assert.equal(status.leanLockedNANDProofScope, 'typed-local-macros-source-derived-counts-and-five-local-square-baselines');
-  assert.equal(status.leanLockedNANDConditionalThresholdBoundaryFormalized, true);
-  assert.equal(status.leanLockedNANDConditionalResidualSlackAtMostFourFormalized, true);
-  assert.equal(status.leanLockedNANDThresholdBoundaryAxiomAuditPassed, true);
-  assert.equal(status.leanLockedNANDThresholdBoundaryScope, 'proof-bearing-typed-candidate-and-semantic-premises-only');
-  assert.equal(status.leanLockedNANDThresholdBoundaryPremisesInstantiated, false);
-  assert.equal(status.leanLockedNANDGlobalBaselineDistinctFormalized, false);
-  assert.equal(status.leanLockedNANDCarrierLayoutFormalized, false);
-  assert.equal(status.leanLockedNANDTraceEquivalenceFormalized, false);
-  assert.equal(status.leanLockedNANDDerivedFinalOutputLawsFormalized, false);
-  assert.equal(status.leanLockedNANDResidualSlackAtMostFourFormalized, false);
-  assert.equal(status.leanLockedNANDPolynomialBuilderFormalized, false);
-  assert.equal(status.leanCompatibleReplacementFormalized, false);
-  assert.equal(status.leanGlobalSlackLawFormalized, false);
-  assert.equal(status.leanLockedNANDBuilderFormalized, false);
-  assert.equal(status.leanLockedNANDThresholdFormalized, false);
-  assert.equal(status.leanResidualRoutesListedGainScanFormalized, true);
-  assert.equal(status.leanResidualRoutesAxiomAuditPassed, true);
-  assert.equal(status.leanResidualRoutesGainSoundnessFormalized, true);
-  assert.equal(status.leanResidualRoutesStrictResidualDescentFormalized, true);
-  assert.equal(status.leanResidualRoutesExactResultProofBearing, true);
-  assert.equal(status.leanResidualRoutesZeroSlackResultProofBearing, true);
-  assert.equal(status.leanResidualRoutesUnresolvedFailClosed, true);
-  assert.equal(status.leanResidualRoutesScope, 'explicit-caller-supplied-finite-candidate-list');
-  assert.equal(status.leanResidualRoutesCandidateListCompletenessFormalized, false);
-  assert.equal(status.leanResidualRoutesGlobalGainCompletenessFormalized, false);
-  assert.equal(status.leanZeroSlackPositiveSlackContradictionFormalized, false);
-  assert.equal(status.leanZeroSlackCompletenessFormalized, false);
-  assert.equal(status.leanPCCMinLoopExactnessFormalized, false);
-  assert.equal(status.leanPCCMinPolynomialRuntimeFormalized, false);
-  assert.equal(status.leanResidualBandMinimizerFormalized, false);
-  assert.equal(status.lockedNANDOutputConvention, 'ordered-multi-output-baseline-coordinates-plus-final-coordinate');
-  assert.equal(status.legacySyntheticLockedNANDM2FixtureStatus, 'quarantined-internally-inconsistent');
-  assert.equal(status.legacySyntheticLockedNANDM2HonestBaseline, 86);
-  assert.equal(status.legacySyntheticLockedNANDM2MetadataConsistentBaseline, 95);
-  assert.equal(status.legacySyntheticLockedNANDM2StoredBaseline, 91);
-  assert.equal(status.legacySyntheticLockedNANDM2HonestDisplayedGateCount, 90);
-  assert.equal(status.legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount, 99);
-  assert.equal(status.legacySyntheticLockedNANDM2StoredDisplayedGateCount, 95);
-  assert.deepEqual(status.lockedNANDThresholdHostileReviewLemmaInventory, [
-    'DirectWireOutputLowerBound',
-    'MacroDistinct',
-    'TraceEquivalence',
-    'ZeroOutputConvention',
-    'FinalLockSeparation',
-  ]);
-  assert.deepEqual(status.leanLockedNANDThresholdPremiseInventory, [
-    'baselineCandidate',
-    'fullCandidate',
-    'baselineConditions',
-    'initialOutputsPreserved',
-    'unsatisfiableFinalZero',
-    'satisfiableFinalConditions',
-  ]);
-  assert.deepEqual(status.leanLockedNANDThresholdMissingInstantiationInventory,
-    status.leanLockedNANDThresholdPremiseInventory);
-  assert.equal(status.sorryOrAdmitInRootDependencyClosure, null);
-  assert.deepEqual(status.projectSpecificAxiomInventory, [
-    'PNP.SAT',
+
+  assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
+  assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
+  assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
+  assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
+  assert.equal(inventory.declarationCount, 1761);
+  assert.equal(inventory.theoremCount, 662);
+  assert.equal(inventory.assumptionFreeTheoremCount, 589);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 33);
+  assert.equal(inventory.sourceClosureModuleCount, 22);
+  assert.equal(inventory.axiomCount, 5);
+  assert.deepEqual(inventory.projectAxioms, [
+    'PNP.CheckPCCPackexp',
+    'PNP.GeneratePCCPack',
     'PNP.LockedNANDThreshold',
     'PNP.ResidualBandExactMinimization',
-    'PNP.GeneratePCCPack',
-    'PNP.CheckPCCPackexp',
+    'PNP.SAT',
   ]);
-  assert.equal(status.checkerAcceptanceIsMathematicalProof, false);
-  assert.equal(status.legacyCheckerStackStatus, 'historical-assertion-checker-evidence-only');
-  assert.equal(status.externalReviewIsMathematicalPremise, false);
-  assert.deepEqual(status.verificationCommands, [
-    'node pcc-formal-reconstruction-status0.mjs --json',
-    'node pcc-formal-public-surface0.mjs --json',
-    'npm run legacy:v0:check',
-    'npm run pnp:verify -- --no-write',
-    'node --test audits/lean-root-target0.test.mjs',
-    'node --test audits/lean-nand-semantics0.test.mjs',
-    'node --test audits/lean-nand-enumerator0.test.mjs',
-    'node --test audits/lean-nand-reference-minimum0.test.mjs',
-    'node --test audits/lean-locked-nand-baseline0.test.mjs',
-    'node --test audits/lean-locked-nand-threshold-boundary0.test.mjs',
-    'node --test audits/lean-residual-routes0.test.mjs',
+
+  const gate = status.concretePublicationGate;
+  assert.equal(status.abstractPEqualsNPPublicationEligible, false);
+  assert.equal(status.publicationStatusDerivedOnlyFromConcreteGate, true);
+  assert.equal(gate.abstractPEqualsNPIsPublicationIneligible, true);
+  assert.equal(gate.unsetFingerprintIsIntentionalFailClosedMigrationGate, true);
+  assert.equal(gate.expectedConcreteTargetKernelTypeSha256, null);
+  assert.equal(gate.expectedSourceClosureSha256, null);
+  assert.equal(gate.subchecks.concreteTargetKernelTypeFingerprintConfigured, false);
+  assert.equal(gate.subchecks.concreteTargetKernelTypeFingerprintMatches, false);
+  assert.equal(gate.subchecks.sourceClosureFingerprintConfigured, false);
+  assert.equal(gate.subchecks.sourceClosureFingerprintMatches, false);
+  assert.equal(gate.subchecks.concreteTargetPresent, false);
+  assert.equal(gate.subchecks.compatibilityRootPresent, false);
+  assert.equal(gate.passed, false);
+
+  for (const key of [
+    'mathematicalTheoremEstablished',
+    'publicTheoremEmissionAllowed',
+    'finalTheoremReady',
+    'satInPConclusionAccepted',
+    'pEqualsNPConclusionAccepted',
+    'rootLeanTheoremPresent',
+    'rootLeanTheoremBuilt',
+    'rootLeanTheoremAxiomAuditPassed',
+  ]) assert.equal(status[key], false, key);
+  assert.equal(status.publicTheoremStatement, null);
+  assert.equal(status.publicTheoremConclusion, null);
+  assert.equal(status.projectSpecificAxiomsRemaining, true);
+  assert.deepEqual(status.projectSpecificAxiomInventory, inventory.projectAxioms);
+  assert.equal(status.remainingBlockers.length, 7);
+
+  assert.equal(status.formalPublicationMilestones.length, 9);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [true, true, true, true, true, true, false, false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 6)) {
+    assert.equal(row.allPresent, true, row.id);
+    assert.equal(row.allAssumptionFree, true, row.id);
+    assert.equal(row.allKernelTypesMatch, true, row.id);
+    assert.equal(row.sourceClosureFingerprintMatches, true, row.id);
+  }
+  assert.equal(status.formalPublicationMilestones.at(-1).nonClaim.includes('publication-ineligible'), true);
+
+  for (const command of [
     'lake build PNP',
-    'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
-    'lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean',
-  ]);
-  assert.deepEqual(status.historicalReplayWorkflows, ['.github/workflows/legacy-v0-replay.yml']);
-  assert.equal(status.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json');
-  assert.equal(status.legacyCheckerArchiveCheckCommand, 'npm run legacy:v0:check');
-  assert.equal(status.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d');
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09');
-  assert.ok(status.nonClaims.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.'));
-  assert.ok(status.nonClaims.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.'));
-  assert.ok(status.nonClaims.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer."));
-  assert.ok(status.nonClaims.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family."));
-  assert.ok(status.nonClaims.includes('The typed local locked-NAND candidates, source-derived accounting, conditional square-baseline theorem, and five discharged local square baselines do not prove global cross-instance BaselineDistinct, a locked builder or threshold, residual slack at most four, or polynomial runtime.'));
-  assert.ok(status.nonClaims.includes('The report threshold word is multi-output: its baseline coordinates remain present alongside one final coordinate; a legacy single-output seed is not that construction.'));
-  assert.ok(status.nonClaims.includes('The legacy synthetic m=2 fixture is quarantined as internally inconsistent: honest source-derived baseline/displayed counts are 86/90, metadata-consistent counts are 95/99, and stored hybrid counts are 91/95.'));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('is not the report threshold theorem')));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('conditional on that six-field premise package')));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('arbitrary satisfiable proposition and baseline natural number')));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('explicit finite implementation list supplied by its caller')));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('empty-list scan is formally shown to remain unresolved')));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('never manufactured by the executable gain scanner')));
-  assert.ok(status.nonClaims.some((entry) => entry.includes('no polynomial-runtime claim')));
-  assert.equal(status.remainingFormalObligations.length, 7);
-  assert.deepEqual(status.remainingBlockers, status.remainingFormalObligations);
-  assert.equal(status.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
+    'node scripts/export-lean-theorem-inventory.mjs --check',
+    'node scripts/generate-formal-publication.mjs --check',
+    'npm run report:check',
+  ]) assert.ok(status.verificationCommands.includes(command), command);
 });
 
 test('current status inventories every active companion workflow', async () => {
@@ -225,233 +129,71 @@ test('current status inventories every active companion workflow', async () => {
     .filter((name) => name.endsWith('.yml'))
     .sort()
     .map((name) => `.github/workflows/${name}`);
-
   assert.deepEqual([...status.activeCompanionWorkflows].sort(), names);
 });
 
-test('payload index mirrors the conservative boundary and labels legacy surfaces', async () => {
+test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 13);
-  assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09');
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09');
-  assert.equal(index.status, 'formal-reconstruction-status-payloads-ready');
+  assert.equal(index.version, 14);
+  assert.equal(index.sourceCommitRef, 'c686bfc602b4cb19c89a3c33fff39720058fa198');
+  assert.equal(index.statusCoordinate, STATUS_COORDINATE);
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10');
+  assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
+  assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-10');
+  assert.equal(index.canonicalReportPages, 6);
+  assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
+  assert.equal(index.status, 'formal-publication-inventory-ready');
   assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
   assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, false);
   assert.equal(index.claimBoundary.publicTheoremStatement, null);
-  assert.equal(index.claimBoundary.finalTheoremReady, false);
-  assert.equal(index.claimBoundary.satInPConclusionAccepted, false);
-  assert.equal(index.claimBoundary.pEqualsNPConclusionAccepted, false);
-  assert.equal(index.claimBoundary.rootLeanTheoremPresent, false);
-  assert.equal(index.claimBoundary.projectSpecificAxiomsRemaining, true);
-  assert.equal(index.claimBoundary.leanLibraryTargetBuilt, true);
-  assert.equal(index.claimBoundary.leanNANDDirectWireCoreFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDDirectWireCoreAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDEnumeratorFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDEnumeratorAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDExactWidthEnumerationComplete, true);
-  assert.equal(index.claimBoundary.leanNANDEnumeratorUsesOrderedGatePairs, true);
-  assert.equal(index.claimBoundary.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true);
-  assert.equal(index.claimBoundary.leanNANDEnumeratorDeduplicated, false);
-  assert.equal(index.claimBoundary.leanNANDTruthTableFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDTruthTableAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDSemanticEquivalenceDecidable, true);
-  assert.equal(index.claimBoundary.leanNANDMinimumAndSlackFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDReferenceMinimumFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDReferenceMinimumAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDReferenceMinimumExhaustive, true);
-  assert.equal(index.claimBoundary.leanNANDReferenceMinimumScope, 'finite-boolean-direct-wire-empty-profile');
-  assert.equal(index.claimBoundary.leanNANDReferenceMinimumPolynomialRuntimeProved, false);
-  assert.equal(index.claimBoundary.leanNANDResidualSlackZeroIffMinimumFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDCompositionFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDCompositionAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDFramedReplacementFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDFramedGlobalSlackLawFormalized, true);
-  assert.equal(index.claimBoundary.leanNANDFramedSlackAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDReplacementScope, 'concrete-serial-framed-context');
-  assert.equal(index.claimBoundary.leanLockedNANDDirectCandidatesFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDDirectAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanLockedNANDInternalMacroConstantsAbsent, true);
-  assert.equal(index.claimBoundary.leanDirectWireOutputLowerBoundFormalized, true);
-  assert.equal(index.claimBoundary.leanDirectWireBaselineAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanLockedNANDSourceDerivedCountsFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDBaselineAccountingFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDBaselineAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanLockedNANDConditionalSquareBaselineExactnessFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDLocalBaselineConditionsFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDLocalSquareBaselineExactnessFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDLocalBaselineAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanLockedNANDProofScope, 'typed-local-macros-source-derived-counts-and-five-local-square-baselines');
-  assert.equal(index.claimBoundary.leanLockedNANDConditionalThresholdBoundaryFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDConditionalResidualSlackAtMostFourFormalized, true);
-  assert.equal(index.claimBoundary.leanLockedNANDThresholdBoundaryAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanLockedNANDThresholdBoundaryScope, 'proof-bearing-typed-candidate-and-semantic-premises-only');
-  assert.equal(index.claimBoundary.leanLockedNANDThresholdBoundaryPremisesInstantiated, false);
-  assert.equal(index.claimBoundary.leanLockedNANDGlobalBaselineDistinctFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDCarrierLayoutFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDTraceEquivalenceFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDDerivedFinalOutputLawsFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDResidualSlackAtMostFourFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDPolynomialBuilderFormalized, false);
-  assert.equal(index.claimBoundary.leanCompatibleReplacementFormalized, false);
-  assert.equal(index.claimBoundary.leanGlobalSlackLawFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDBuilderFormalized, false);
-  assert.equal(index.claimBoundary.leanLockedNANDThresholdFormalized, false);
-  assert.equal(index.claimBoundary.leanResidualRoutesListedGainScanFormalized, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesGainSoundnessFormalized, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesStrictResidualDescentFormalized, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesExactResultProofBearing, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesZeroSlackResultProofBearing, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesUnresolvedFailClosed, true);
-  assert.equal(index.claimBoundary.leanResidualRoutesScope, 'explicit-caller-supplied-finite-candidate-list');
-  assert.equal(index.claimBoundary.leanResidualRoutesCandidateListCompletenessFormalized, false);
-  assert.equal(index.claimBoundary.leanResidualRoutesGlobalGainCompletenessFormalized, false);
-  assert.equal(index.claimBoundary.leanZeroSlackPositiveSlackContradictionFormalized, false);
-  assert.equal(index.claimBoundary.leanZeroSlackCompletenessFormalized, false);
-  assert.equal(index.claimBoundary.leanPCCMinLoopExactnessFormalized, false);
-  assert.equal(index.claimBoundary.leanPCCMinPolynomialRuntimeFormalized, false);
-  assert.equal(index.claimBoundary.leanResidualBandMinimizerFormalized, false);
-  assert.equal(index.claimBoundary.lockedNANDOutputConvention, 'ordered-multi-output-baseline-coordinates-plus-final-coordinate');
-  assert.equal(index.claimBoundary.legacySyntheticLockedNANDM2FixtureStatus, 'quarantined-internally-inconsistent');
-  assert.deepEqual([
-    index.claimBoundary.legacySyntheticLockedNANDM2HonestBaseline,
-    index.claimBoundary.legacySyntheticLockedNANDM2HonestDisplayedGateCount,
-    index.claimBoundary.legacySyntheticLockedNANDM2MetadataConsistentBaseline,
-    index.claimBoundary.legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount,
-    index.claimBoundary.legacySyntheticLockedNANDM2StoredBaseline,
-    index.claimBoundary.legacySyntheticLockedNANDM2StoredDisplayedGateCount,
-  ], [86, 90, 95, 99, 91, 95]);
-  assert.deepEqual(index.claimBoundary.lockedNANDThresholdHostileReviewLemmaInventory, [
-    'DirectWireOutputLowerBound',
-    'MacroDistinct',
-    'TraceEquivalence',
-    'ZeroOutputConvention',
-    'FinalLockSeparation',
-  ]);
-  assert.deepEqual(index.claimBoundary.leanLockedNANDThresholdMissingInstantiationInventory,
-    index.claimBoundary.leanLockedNANDThresholdPremiseInventory);
-  assert.deepEqual(index.claimBoundary.projectSpecificAxiomInventory, [
-    'PNP.SAT',
-    'PNP.LockedNANDThreshold',
-    'PNP.ResidualBandExactMinimization',
-    'PNP.GeneratePCCPack',
-    'PNP.CheckPCCPackexp',
-  ]);
+  assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
+  assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
+  assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 1761);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 662);
+  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 589);
   assert.equal(index.claimBoundary.remainingBlockers.length, 7);
-  assert.equal(index.claimBoundary.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
-  assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-semantics0.test.mjs'));
-  assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-enumerator0.test.mjs'));
-  assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-reference-minimum0.test.mjs'));
-  assert.ok(index.verificationCommands.includes('node --test audits/lean-locked-nand-baseline0.test.mjs'));
-  assert.ok(index.verificationCommands.includes('node --test audits/lean-locked-nand-threshold-boundary0.test.mjs'));
-  assert.ok(index.verificationCommands.includes('node --test audits/lean-residual-routes0.test.mjs'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean'));
-  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean'));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('five exact local square minima')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('baseline coordinates plus one final coordinate')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('86/90')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('six typed semantic premises')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('not an unconditional theorem')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('explicit finite implementation list')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('residual slack one')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('cannot be manufactured')));
-  assert.ok(index.nonClaims.some((entry) => entry.includes('PCCMin loop exactness')));
-  assert.equal(index.historicalRunIntakeFrozen, true);
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 6, notFormalized: 3, total: 9 });
+  assert.equal(index.earnedMilestones.length, 6);
+  assert.deepEqual(index.unearnedMilestones, ['global-locked-nand-threshold', 'global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
+  assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
   for (const id of ['pnp-one-command-upload', 'pnp-verification-runs', 'pnp-verifier-run-comparison-matrix', 'pnp-verifier-run-matrix-summary']) {
     assert.equal(index.payloads.find((entry) => entry.id === id).status, 'historical-frozen');
   }
+  for (const command of ['lake build PNP', 'npm run pnp:verify -- --no-write', 'npm run formal:inventory:check', 'npm run formal:publication:check', 'npm run report:check']) {
+    assert.ok(index.verificationCommands.includes(command), command);
+  }
 });
 
-test('status page shows every current false field and the remaining blockers', async () => {
+test('status page has a conservative complete static fallback', async () => {
   const html = await readText('status.html');
   for (const fragment of [
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
-    'finalTheoremReady = false',
-    'rootLeanTheoremPresent = false',
-    'rootLeanTheoremBuilt = false',
-    'rootLeanTheoremAxiomAuditPassed = false',
-    'projectSpecificAxiomsRemaining = true',
-    'Seven obligations remain',
-    'leanprover/lean4:v4.31.0',
-    'Executable finite equivalence, minimum, and framed slack',
-    'leanNANDSemanticEquivalenceDecidable = true',
-    'leanNANDMinimumAndSlackFormalized = true',
-    'leanNANDReferenceMinimumPolynomialRuntimeProved = false',
-    'leanCompatibleReplacementFormalized = false',
-    'concrete-serial-framed-context',
-    'Typed candidates, source-derived counts, and five exact local minima',
-    '10/10',
-    'BaselineDistinct',
-    'leanLockedNANDLocalSquareBaselineExactnessFormalized = true',
-    'ordered-multi-output-baseline-coordinates-plus-final-coordinate',
-    'leanLockedNANDGlobalBaselineDistinctFormalized = false',
-    'leanLockedNANDBuilderFormalized = false',
-    'leanLockedNANDThresholdFormalized = false',
-    'leanLockedNANDResidualSlackAtMostFourFormalized = false',
-    'leanLockedNANDPolynomialBuilderFormalized = false',
-    '86/90',
-    '95/99',
-    '91/95',
-    'Semantic deduction complete; six global premises uninstantiated',
-    'baselineCandidate',
-    'satisfiableFinalConditions',
-    'leanLockedNANDConditionalThresholdBoundaryFormalized = true',
-    'leanLockedNANDThresholdBoundaryPremisesInstantiated = false',
-    'leanLockedNANDCarrierLayoutFormalized = false',
-    'leanLockedNANDTraceEquivalenceFormalized = false',
-    'leanLockedNANDDerivedFinalOutputLawsFormalized = false',
-    'FinalLockSeparation',
-    'not the report threshold theorem',
-    'Explicit-list gain soundness; unresolved remains fail closed',
-    'strictEquivalentGainBool',
-    'firstListedGain',
-    'ListedGainResult',
-    'GainScanOutcome',
-    'ExactMinimumResult',
-    'ZeroSlackResult',
-    'explicit-caller-supplied-finite-candidate-list',
-    'residual slack is one',
-    'leanResidualRoutesListedGainScanFormalized = true',
-    'leanResidualRoutesStrictResidualDescentFormalized = true',
-    'leanResidualRoutesUnresolvedFailClosed = true',
-    'leanResidualRoutesCandidateListCompletenessFormalized = false',
-    'leanResidualRoutesGlobalGainCompletenessFormalized = false',
-    'leanZeroSlackCompletenessFormalized = false',
-    'leanPCCMinLoopExactnessFormalized = false',
-    'leanResidualBandMinimizerFormalized = false',
-    'PNPNANDSemanticsAxiomAudit.lean',
-    'PNPNANDEnumeratorAxiomAudit.lean',
-    'PNPNANDTruthTableAxiomAudit.lean',
-    'PNPNANDMinimumAxiomAudit.lean',
-    'PNPNANDCompositionAxiomAudit.lean',
-    'PNPNANDSlackAxiomAudit.lean',
-    'PNPLockedNANDDirectAxiomAudit.lean',
-    'PNPDirectWireBaselineAxiomAudit.lean',
-    'PNPLockedNANDBaselineAxiomAudit.lean',
-    'PNPLockedNANDLocalBaselineAxiomAudit.lean',
-    'PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
-    'PNPResidualRoutesAxiomAudit.lean',
-    'PNP.CheckPCCPackexp',
+    'concretePublicationGate.passed = false',
+    '1,761',
+    '662',
+    '589',
+    'Six scoped milestones',
+    'three global milestones',
+    'PNP.Main.ConcretePEqualsNP',
+    'PNP.Main.p_eq_np',
+    'null never matches null',
+    'PNP.PEqualsNP',
     'Formal.ResidualBandMinimizer',
     'Formal.RootTheoremAndAxiomAudit',
-    'historical assertion-checker evidence',
+    'PNP.CheckPCCPackexp',
+    'Historical 56-page manuscript',
+    '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 6);
+  assert.equal((html.match(/data-earned="false"/g) || []).length, 3);
 });
 
-test('older public-review payloads are explicitly superseded and non-authoritative', async () => {
+test('older public-review payloads remain explicitly superseded and non-authoritative', async () => {
   for (const path of [
     'public/pnp-public-review.json',
     'public/pnp-theorem-emission-gate.json',
@@ -460,7 +202,6 @@ test('older public-review payloads are explicitly superseded and non-authoritati
     const payload = await readJson(path);
     assert.equal(payload.historical, true, `${path}: historical flag`);
     assert.equal(payload.currentStatusAuthority, false, `${path}: authority flag`);
-    assert.equal(payload.supersededBy, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01', `${path}: supersession coordinate`);
     assert.equal(payload.currentClaimBoundary.mathematicalTheoremEstablished, false, `${path}: theorem boundary`);
     assert.equal(payload.currentClaimBoundary.publicTheoremEmissionAllowed, false, `${path}: emission boundary`);
   }

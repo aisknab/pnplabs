@@ -1,236 +1,154 @@
 {
-  "version": 1,
-  "description": "Pinned cross-repository audit coordinates for pnplabs public review documentation. Hashes and ref checks verify artefact identity and coordinates only, not theorem correctness.",
+  "kind": "PNPLabsCrossRepositoryAuditTargets0",
+  "version": 2,
+  "description": "Exact current formal-publication mirrors pinned to the reviewed core merge. The 7072f8d coordinates are historical quarantine targets only and cannot activate publication.",
   "refs": {
-    "sourceRef": {
+    "currentCoreRef": {
+      "repo": "aisknab/pnp",
+      "ref": "c686bfc602b4cb19c89a3c33fff39720058fa198",
+      "expectedCommit": "c686bfc602b4cb19c89a3c33fff39720058fa198",
+      "expectedTree": "d5bac85013b7e294e49528f245ad45b0d7abc2be",
+      "class": "current formal-reconstruction publication",
+      "status": "current-authority-theorem-gate-closed"
+    },
+    "historicalSourceRef": {
       "repo": "aisknab/pnp",
       "ref": "final-pnp-proof-report-hardened-7072f8d",
       "expectedCommit": "7072f8d0bda6d44d240f9bb3fad624fd357e1278",
-      "class": "source/checker code"
+      "expectedTagObject": "9b69c4f8d8d6d62eb359af759288e5794d1c81c2",
+      "class": "historical source snapshot",
+      "status": "historical-quarantined-not-current-authority"
     },
-    "docsRef": {
+    "historicalDocsRef": {
       "repo": "aisknab/pnp",
       "ref": "final-pnp-proof-report-docs-hardened-7072f8d-sealed",
       "expectedCommit": "3ba356c79b545d2c734283bf10d85d0710de2b60",
-      "class": "release documentation"
+      "expectedTagObject": "9eeb4b85af1c04c43e6f086debcd3ac37d5d27d1",
+      "class": "historical documentation snapshot",
+      "status": "historical-quarantined-not-current-authority"
     },
-    "artifactRef": {
+    "historicalArtifactRef": {
       "repo": "aisknab/pnp",
       "ref": "final-pnp-proof-report-artifacts-hardened-7072f8d-sealed",
       "expectedCommit": "9d1de19f827e5cb6880741352eb2349cbbb45994",
-      "class": "generated artefact"
+      "expectedTagObject": "e7ea459c907ed9e334af8c0bd5f3bb117348992d",
+      "class": "historical generated-artifact snapshot",
+      "status": "historical-quarantined-not-current-authority"
     },
     "publicCheckout": {
       "repo": "pnplabs",
       "ref": "working tree",
-      "class": "pnplabs public-review file"
+      "class": "pnplabs public file"
     }
   },
   "targets": [
     {
-      "id": "public.release_manifest",
-      "kind": "pnplabs public-review file",
+      "id": "core.status",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "public/pnp-status.json"
+    },
+    {
+      "id": "core.inventory",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "public/pnp-theorem-inventory.json"
+    },
+    {
+      "id": "core.report_pdf",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "canonical_proof_report.pdf"
+    },
+    {
+      "id": "core.report_tex",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "canonical_proof_report.tex"
+    },
+    {
+      "id": "core.publication_map",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "publication/FORMAL_PUBLICATION_MAP.json"
+    },
+    {
+      "id": "core.legacy_archive_manifest",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "archive/legacy-v0/ARCHIVE.json"
+    },
+    {
+      "id": "public.formal_publication_manifest",
+      "kind": "pnplabs current release metadata",
       "refClass": "publicCheckout",
-      "path": "downloads/source-checker-release.json",
-      "scanReleaseIdentifiers": true
+      "path": "downloads/formal-publication-release.json"
     },
     {
-      "id": "docs.reproduce",
-      "kind": "release documentation",
-      "refClass": "docsRef",
-      "path": "REPRODUCE.md",
-      "scanReleaseIdentifiers": true
+      "id": "public.status",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "public/pnp-status.json",
+      "mirrorOf": "core.status"
     },
     {
-      "id": "docs.reviewer_map",
-      "kind": "release documentation",
-      "refClass": "docsRef",
-      "path": "REVIEWER_MAP.md",
-      "scanReleaseIdentifiers": true
+      "id": "public.inventory",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "public/pnp-theorem-inventory.json",
+      "mirrorOf": "core.inventory"
     },
     {
-      "id": "docs.external_review_handoff",
-      "kind": "release documentation",
-      "refClass": "docsRef",
-      "path": "review/external_review_handoff_7072f8d.md",
-      "scanReleaseIdentifiers": true
+      "id": "public.report_pdf_underscore",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "downloads/canonical_proof_report.pdf",
+      "mirrorOf": "core.report_pdf"
     },
     {
-      "id": "docs.locked_nand_review",
-      "kind": "release documentation",
-      "refClass": "docsRef",
-      "path": "review/locked_nand_threshold_hostile_review_round1.md"
+      "id": "public.report_pdf_hyphen",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "downloads/canonical-proof-report.pdf",
+      "mirrorOf": "core.report_pdf"
     },
     {
-      "id": "docs.residual_band_review",
-      "kind": "release documentation",
-      "refClass": "docsRef",
-      "path": "review/residual_band_zeroslack_hostile_review_round1.md"
+      "id": "public.report_tex_underscore",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "downloads/canonical_proof_report.tex",
+      "mirrorOf": "core.report_tex"
     },
     {
-      "id": "source.check_pcc_pack_exp",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-check-pcc-pack-exp0.mjs"
+      "id": "public.report_tex_hyphen",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "downloads/canonical-proof-report.tex",
+      "mirrorOf": "core.report_tex"
     },
     {
-      "id": "source.run_all",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-runall0.mjs"
+      "id": "public.historical_manifest",
+      "kind": "pnplabs quarantined historical metadata",
+      "refClass": "publicCheckout",
+      "path": "downloads/source-checker-release.json"
     },
     {
-      "id": "source.final_proof_report",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-final-proof-report0.mjs"
+      "id": "historical.source_report",
+      "kind": "historical source snapshot",
+      "refClass": "historicalSourceRef",
+      "path": "canonical_proof_report.tex"
     },
     {
-      "id": "source.final_pnp_certificate",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-final-pnp-certificate0.mjs"
+      "id": "historical.docs_reproduce",
+      "kind": "historical documentation snapshot",
+      "refClass": "historicalDocsRef",
+      "path": "REPRODUCE.md"
     },
     {
-      "id": "source.final_release_gate",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-final-pnp-release-gate0.mjs"
-    },
-    {
-      "id": "source.final_acceptance_replay",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-final-acceptance-replay0.mjs"
-    },
-    {
-      "id": "source.generate_pcc_pack",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-generate-pcc-pack0.mjs"
-    },
-    {
-      "id": "source.locked_nand_gpack",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-gpack0.mjs"
-    },
-    {
-      "id": "source.global_proof_dag",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-global-proof-dag0.mjs"
-    },
-    {
-      "id": "source.local_packages",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-local-packages0.mjs"
-    },
-    {
-      "id": "source.pack_concrete_materialized",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-pack-concrete-materialized0.mjs"
-    },
-    {
-      "id": "source.final_integration_concrete_materialized",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-final-integration-concrete-materialized0.mjs"
-    },
-    {
-      "id": "source.core_codec_digest",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "pcc-core.mjs"
-    },
-    {
-      "id": "source.test_check_pcc_pack_exp",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-check-pcc-pack-exp0.test.mjs"
-    },
-    {
-      "id": "source.test_run_all",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-runall0.test.mjs"
-    },
-    {
-      "id": "source.test_gpack",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-gpack0.test.mjs"
-    },
-    {
-      "id": "source.test_global_proof_dag",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-global-proof-dag0.test.mjs"
-    },
-    {
-      "id": "source.test_local_packages",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-local-packages0.test.mjs"
-    },
-    {
-      "id": "source.test_pack_concrete_materialized",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-pack-concrete-materialized0.test.mjs"
-    },
-    {
-      "id": "source.test_final_integration_concrete_materialized",
-      "kind": "source/checker code",
-      "refClass": "sourceRef",
-      "path": "test/pcc-final-integration-concrete-materialized0.test.mjs"
-    },
-    {
-      "id": "artifact.bundle_readme",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/README.md",
-      "scanReleaseIdentifiers": true
-    },
-    {
-      "id": "artifact.release_seal",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/release-seal.json",
-      "scanReleaseIdentifiers": true
-    },
-    {
-      "id": "artifact.sha256sums",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS"
-    },
-    {
-      "id": "artifact.sha256sums_sha256",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS.sha256"
-    },
-    {
-      "id": "artifact.validation_summary",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/validation-summary.json",
-      "scanReleaseIdentifiers": true
-    },
-    {
-      "id": "artifact.summary_report",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/final-pnp-proof-report.summary.json"
-    },
-    {
-      "id": "artifact.full_report",
-      "kind": "generated artefact",
-      "refClass": "artifactRef",
-      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/final-pnp-proof-report.full.json"
+      "id": "historical.artifact_seal",
+      "kind": "historical generated-artifact snapshot",
+      "refClass": "historicalArtifactRef",
+      "path": "proof-artifacts/final-pnp-proof-report-hardened-7072f8d/release-seal.json"
     }
   ]
 }
