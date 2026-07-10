@@ -27,7 +27,7 @@ test('site status is byte-for-byte identical to the authoritative sibling payloa
 test('current status exposes the incomplete formal reconstruction', async () => {
   const status = await readJson('public/pnp-status.json');
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-02');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.mathematicalTheoremEstablished, false);
   assert.equal(status.publicTheoremEmissionAllowed, false);
@@ -44,10 +44,15 @@ test('current status exposes the incomplete formal reconstruction', async () => 
   assert.deepEqual(status.verificationCommands, [
     'node pcc-formal-reconstruction-status0.mjs --json',
     'node pcc-formal-public-surface0.mjs --json',
-    'npm run pnp:verify',
+    'npm run legacy:v0:check',
+    'npm run pnp:verify -- --no-write',
     'lake build PNP',
   ]);
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-RECONSTRUCTION-01');
+  assert.deepEqual(status.historicalReplayWorkflows, ['.github/workflows/legacy-v0-replay.yml']);
+  assert.equal(status.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json');
+  assert.equal(status.legacyCheckerArchiveCheckCommand, 'npm run legacy:v0:check');
+  assert.equal(status.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-LEGACY-V0-ARCHIVED-02');
   assert.equal(status.remainingFormalObligations.length, 8);
   assert.deepEqual(status.remainingBlockers, status.remainingFormalObligations);
 });

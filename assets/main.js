@@ -47,7 +47,7 @@ projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
 
 function isConservativeFormalStatus(payload) {
   return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-02'
     && payload.status === 'formal-reconstruction-in-progress'
     && payload.currentStatusAuthority === true
     && payload.mathematicalTheoremEstablished === false
