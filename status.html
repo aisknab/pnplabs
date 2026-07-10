@@ -34,7 +34,7 @@
     <section class="page-hero">
       <span class="eyebrow">Formal reconstruction in progress</span>
       <h1>Current PNP status</h1>
-      <p class="lede">The repository does not currently establish P = NP. The concrete Lean reconstruction, root theorem, and axiom audit remain incomplete.</p>
+      <p class="lede">The pinned Lean <code>PNP</code> library root compiles. The repository still has no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-status.json">Open current status JSON</a>
         <a class="btn secondary" href="https://github.com/aisknab/pnp">Inspect source repository</a>
@@ -59,9 +59,8 @@ projectSpecificAxiomsRemaining = true</pre>
 
     <section class="section compact">
       <div class="section-label">Required formal work</div>
-      <h2>Eight obligations remain</h2>
+      <h2>Seven obligations remain</h2>
       <ol>
-        <li><code>Formal.PinnedLeanBuildAndRootTarget</code></li>
         <li><code>Formal.ConcreteComplexityModel</code></li>
         <li><code>Formal.ConcreteSAT</code></li>
         <li><code>Formal.LockedNANDThreshold</code></li>
@@ -77,9 +76,10 @@ projectSpecificAxiomsRemaining = true</pre>
       <div class="section-label">Formal target</div>
       <h2>What completion must demonstrate</h2>
       <div class="grid two path">
-        <article class="card"><h3>Concrete definitions</h3><p>The Lean development must define the complexity model, SAT, locked-NAND construction, residual minimiser, ZeroSlack argument, and polynomial bounds without replacing the mathematical content with assumptions.</p></article>
+        <article class="card"><h3>Pinned root build</h3><p><code>lake build PNP</code> now compiles the explicit library root under <code>leanprover/lean4:v4.31.0</code>. Its <code>PNP.Main.rootTheoremStatus</code> declaration is status data, not the target theorem.</p></article>
         <article class="card"><h3>Root theorem</h3><p><code>PNP.Main.p_eq_np</code> must be present, build successfully, and pass an axiom audit without project-specific axioms. All three root-theorem status fields are currently false.</p></article>
       </div>
+      <p>Five project-specific axioms remain: <code>PNP.SAT</code>, <code>PNP.LockedNANDThreshold</code>, <code>PNP.ResidualBandExactMinimization</code>, <code>PNP.GeneratePCCPack</code>, and <code>PNP.CheckPCCPackexp</code>.</p>
     </section>
 
     <section class="section compact">
@@ -103,7 +103,9 @@ npm ci
 node pcc-formal-reconstruction-status0.mjs --json
 node pcc-formal-public-surface0.mjs --json
 npm run pnp:verify
-lake build PNP</code></pre>
+node --test audits/lean-root-target0.test.mjs
+lake build PNP
+lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean</code></pre>
       <p>A successful status check or build is necessary but not sufficient. The target theorem is not established unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
 

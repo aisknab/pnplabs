@@ -1,6 +1,6 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 6,
+  "version": 7,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-10",
@@ -16,13 +16,27 @@
     "internalFinalTheoremReady": false,
     "unrestrictedFinalSoundnessDischarged": false,
     "uniformFinalSoundnessProved": false,
+    "leanToolchain": "leanprover/lean4:v4.31.0",
+    "leanBuildTarget": "PNP",
+    "leanRootModule": "PNP",
+    "leanRootStatusDeclaration": "PNP.Main.rootTheoremStatus",
+    "leanBuildConfigurationPinned": true,
+    "explicitLeanRootTargetPresent": true,
+    "leanLibraryTargetBuilt": true,
+    "leanSourcePlaceholderAuditPassed": true,
     "rootLeanTheorem": "PNP.Main.p_eq_np",
     "rootLeanTheoremPresent": false,
     "rootLeanTheoremBuilt": false,
     "rootLeanTheoremAxiomAuditPassed": false,
     "projectSpecificAxiomsRemaining": true,
+    "projectSpecificAxiomInventory": [
+      "PNP.SAT",
+      "PNP.LockedNANDThreshold",
+      "PNP.ResidualBandExactMinimization",
+      "PNP.GeneratePCCPack",
+      "PNP.CheckPCCPackexp"
+    ],
     "remainingBlockers": [
-      "Formal.PinnedLeanBuildAndRootTarget",
       "Formal.ConcreteComplexityModel",
       "Formal.ConcreteSAT",
       "Formal.LockedNANDThreshold",
@@ -95,13 +109,16 @@
     "node pcc-formal-reconstruction-status0.mjs --json",
     "node pcc-formal-public-surface0.mjs --json",
     "npm run pnp:verify",
-    "lake build PNP"
+    "node --test audits/lean-root-target0.test.mjs",
+    "lake build PNP",
+    "lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean"
   ],
   "historicalRunIntakeFrozen": true,
   "historicalActivatedStatusCoordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
   "nonClaims": [
     "The repository does not currently establish P = NP.",
     "The exact current status mirror does not allow public theorem emission.",
+    "The pinned Lean PNP library root compiles, but no PNP.Main.p_eq_np theorem exists and five project-specific axioms remain.",
     "Legacy checker acceptance and activated run records are historical assertion-checker evidence only, not mathematical proof.",
     "External review is optional audit evidence and is not a mathematical premise or release blocker.",
     "Historical report, registry, matrix, badge, and activation coordinates are not active theorem-emission surfaces."

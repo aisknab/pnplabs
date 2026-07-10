@@ -31,7 +31,7 @@ jobs:
 
           function assertFormalBoundary(payload, label) {
             assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-02', `${label}: coordinate mismatch`);
+            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-03', `${label}: coordinate mismatch`);
             assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
             assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
             assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
@@ -41,13 +41,39 @@ jobs:
             assert.equal(payload.rootLeanTheoremBuilt, false, `${label}: root theorem must not be marked built`);
             assert.equal(payload.rootLeanTheoremAxiomAuditPassed, false, `${label}: axiom audit must not be marked passed`);
             assert.equal(payload.projectSpecificAxiomsRemaining, true, `${label}: project-specific axioms must remain disclosed`);
+            assert.equal(payload.leanToolchain, 'leanprover/lean4:v4.31.0', `${label}: Lean toolchain mismatch`);
+            assert.equal(payload.leanCompilerVersion, '4.31.0', `${label}: Lean version mismatch`);
+            assert.equal(payload.leanCompilerCommit, '68218e876d2a38b1985b8590fff244a83c321783', `${label}: Lean compiler commit mismatch`);
+            assert.equal(payload.lakeVersion, '5.0.0-src+68218e8', `${label}: Lake version mismatch`);
+            assert.equal(payload.elanVersion, '4.2.3', `${label}: Elan version mismatch`);
+            assert.equal(payload.elanReleaseCommit, 'b6cec7e10fe4965a605aaf60d1cb4a5837f0462b', `${label}: Elan release commit mismatch`);
+            assert.equal(payload.elanArchiveSha256, 'df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2', `${label}: Elan archive digest mismatch`);
+            assert.equal(payload.leanBuildTarget, 'PNP', `${label}: Lean build target mismatch`);
+            assert.equal(payload.leanRootModule, 'PNP', `${label}: Lean root module mismatch`);
+            assert.equal(payload.leanRootStatusDeclaration, 'PNP.Main.rootTheoremStatus', `${label}: root-status declaration mismatch`);
+            assert.equal(payload.leanBuildConfigurationPinned, true, `${label}: Lean configuration must be pinned`);
+            assert.equal(payload.explicitLeanRootTargetPresent, true, `${label}: explicit Lean root must be present`);
+            assert.equal(payload.leanLibraryTargetBuilt, true, `${label}: Lean library target must be built`);
+            assert.equal(payload.leanSourcePlaceholderAuditPassed, true, `${label}: placeholder audit must pass`);
+            assert.equal(payload.sorryOrAdmitInRootDependencyClosure, null, `${label}: absent root dependency closure must remain null`);
+            assert.deepEqual(payload.projectSpecificAxiomInventory, [
+              'PNP.SAT',
+              'PNP.LockedNANDThreshold',
+              'PNP.ResidualBandExactMinimization',
+              'PNP.GeneratePCCPack',
+              'PNP.CheckPCCPackexp',
+            ], `${label}: project-specific axiom inventory mismatch`);
             assert.equal(payload.externalReviewIsMathematicalPremise, false, `${label}: external review must not be a premise`);
             assert.ok(payload.verificationCommands.includes('node pcc-formal-public-surface0.mjs --json'), `${label}: formal public-surface command missing`);
             assert.ok(payload.verificationCommands.includes('npm run legacy:v0:check'), `${label}: archive check command missing`);
             assert.equal(payload.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json', `${label}: archive manifest mismatch`);
             assert.equal(payload.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d', `${label}: replay command mismatch`);
-            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-LEGACY-V0-ARCHIVED-02', `${label}: public-surface baseline mismatch`);
-            assert.ok(payload.remainingBlockers.length > 0, `${label}: formal blockers must remain active`);
+            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-PINNED-LEAN-ROOT-03', `${label}: public-surface baseline mismatch`);
+            assert.equal(payload.remainingBlockers.length, 7, `${label}: formal blocker count mismatch`);
+            assert.equal(payload.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false, `${label}: pinned-root blocker must be discharged`);
+            assert.ok(payload.verificationCommands.includes('node --test audits/lean-root-target0.test.mjs'), `${label}: Lean root audit command missing`);
+            assert.ok(payload.verificationCommands.includes('lake build PNP'), `${label}: explicit Lean build command missing`);
+            assert.ok(payload.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean'), `${label}: Lean axiom audit command missing`);
           }
 
           const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));

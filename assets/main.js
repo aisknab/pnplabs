@@ -47,7 +47,7 @@ projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
 
 function isConservativeFormalStatus(payload) {
   return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-02'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-03'
     && payload.status === 'formal-reconstruction-in-progress'
     && payload.currentStatusAuthority === true
     && payload.mathematicalTheoremEstablished === false
@@ -59,8 +59,31 @@ function isConservativeFormalStatus(payload) {
     && payload.rootLeanTheoremBuilt === false
     && payload.rootLeanTheoremAxiomAuditPassed === false
     && payload.projectSpecificAxiomsRemaining === true
+    && payload.leanToolchain === 'leanprover/lean4:v4.31.0'
+    && payload.leanCompilerVersion === '4.31.0'
+    && payload.leanCompilerCommit === '68218e876d2a38b1985b8590fff244a83c321783'
+    && payload.lakeVersion === '5.0.0-src+68218e8'
+    && payload.elanVersion === '4.2.3'
+    && payload.elanReleaseCommit === 'b6cec7e10fe4965a605aaf60d1cb4a5837f0462b'
+    && payload.elanArchiveSha256 === 'df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2'
+    && payload.leanBuildTarget === 'PNP'
+    && payload.leanRootModule === 'PNP'
+    && payload.leanRootStatusDeclaration === 'PNP.Main.rootTheoremStatus'
+    && payload.leanBuildConfigurationPinned === true
+    && payload.explicitLeanRootTargetPresent === true
+    && payload.leanLibraryTargetBuilt === true
+    && payload.leanSourcePlaceholderAuditPassed === true
+    && payload.sorryOrAdmitInRootDependencyClosure === null
+    && JSON.stringify(payload.projectSpecificAxiomInventory) === JSON.stringify([
+      'PNP.SAT',
+      'PNP.LockedNANDThreshold',
+      'PNP.ResidualBandExactMinimization',
+      'PNP.GeneratePCCPack',
+      'PNP.CheckPCCPackexp',
+    ])
     && Array.isArray(payload.remainingBlockers)
-    && payload.remainingBlockers.length > 0;
+    && payload.remainingBlockers.length === 7
+    && !payload.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget');
 }
 
 function renderFormalStatus(root, payload, sourceState) {
@@ -101,7 +124,7 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The proposed route is being reconstructed in Lean. Concrete definitions, the root theorem, and an assumption audit remain incomplete.';
+    lede.textContent = 'The pinned Lean PNP library root now compiles. The concrete root theorem does not exist, and five project-specific axioms remain.';
   }
 
   const trace = hero.querySelector('.checker-trace');
@@ -111,7 +134,7 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>publicTheoremEmissionAllowed = false</code>, <code>finalTheoremReady = false</code>, and the required concrete, assumption-audited Lean root theorem is not present.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>lake build PNP</code> compiles the pinned library root, but <code>PNP.Main.p_eq_np</code> does not exist and five project-specific axioms remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -191,7 +214,7 @@ projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
-        <article class="card"><h3>Build Lean</h3><p>Run <code>lake build PNP</code>. A successful partial build is not the absent root theorem or its axiom audit.</p></article>
+        <article class="card"><h3>Build Lean</h3><p>Run <code>lake build PNP</code>. The pinned library root compiles, but that build is not the absent <code>PNP.Main.p_eq_np</code> theorem or a project-axiom-free audit.</p></article>
         <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
@@ -231,7 +254,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>The current payload records <code>mathematicalTheoremEstablished = false</code> and eight formal blockers. Useful review targets the concrete complexity model, SAT formalisation, locked-NAND threshold, residual minimiser, ZeroSlack, polynomial bounds, root theorem, and axiom audit.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>The pinned Lean <code>PNP</code> library root compiles, but no <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
