@@ -31,7 +31,7 @@ jobs:
 
           function assertFormalBoundary(payload, label) {
             assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-07', `${label}: coordinate mismatch`);
+            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-08', `${label}: coordinate mismatch`);
             assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
             assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
             assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
@@ -94,7 +94,15 @@ jobs:
             assert.equal(payload.leanLockedNANDLocalSquareBaselineExactnessFormalized, true, `${label}: five local square minima must be formalized`);
             assert.equal(payload.leanLockedNANDLocalBaselineAxiomAuditPassed, true, `${label}: local baseline audit must pass`);
             assert.equal(payload.leanLockedNANDProofScope, 'typed-local-macros-source-derived-counts-and-five-local-square-baselines', `${label}: locked-NAND proof scope mismatch`);
+            assert.equal(payload.leanLockedNANDConditionalThresholdBoundaryFormalized, true, `${label}: conditional threshold boundary must be formalized`);
+            assert.equal(payload.leanLockedNANDConditionalResidualSlackAtMostFourFormalized, true, `${label}: conditional slack bound must be formalized`);
+            assert.equal(payload.leanLockedNANDThresholdBoundaryAxiomAuditPassed, true, `${label}: threshold-boundary audit must pass`);
+            assert.equal(payload.leanLockedNANDThresholdBoundaryScope, 'proof-bearing-typed-candidate-and-semantic-premises-only', `${label}: threshold-boundary scope mismatch`);
+            assert.equal(payload.leanLockedNANDThresholdBoundaryPremisesInstantiated, false, `${label}: threshold premises must remain uninstantiated`);
             assert.equal(payload.leanLockedNANDGlobalBaselineDistinctFormalized, false, `${label}: global baseline distinctness must remain incomplete`);
+            assert.equal(payload.leanLockedNANDCarrierLayoutFormalized, false, `${label}: carrier layout must remain incomplete`);
+            assert.equal(payload.leanLockedNANDTraceEquivalenceFormalized, false, `${label}: trace equivalence must remain incomplete`);
+            assert.equal(payload.leanLockedNANDDerivedFinalOutputLawsFormalized, false, `${label}: derived final-output laws must remain incomplete`);
             assert.equal(payload.leanLockedNANDResidualSlackAtMostFourFormalized, false, `${label}: slack-at-most-four must remain incomplete`);
             assert.equal(payload.leanLockedNANDPolynomialBuilderFormalized, false, `${label}: polynomial builder must remain incomplete`);
             assert.equal(payload.leanCompatibleReplacementFormalized, false, `${label}: compatible replacement must remain incomplete`);
@@ -109,6 +117,29 @@ jobs:
             assert.equal(payload.legacySyntheticLockedNANDM2HonestDisplayedGateCount, 90, `${label}: honest displayed count mismatch`);
             assert.equal(payload.legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount, 99, `${label}: metadata-consistent displayed count mismatch`);
             assert.equal(payload.legacySyntheticLockedNANDM2StoredDisplayedGateCount, 95, `${label}: stored displayed count mismatch`);
+            assert.deepEqual(payload.lockedNANDThresholdHostileReviewLemmaInventory, [
+              'DirectWireOutputLowerBound',
+              'MacroDistinct',
+              'TraceEquivalence',
+              'ZeroOutputConvention',
+              'FinalLockSeparation',
+            ], `${label}: hostile-review inventory mismatch`);
+            assert.deepEqual(payload.leanLockedNANDThresholdPremiseInventory, [
+              'baselineCandidate',
+              'fullCandidate',
+              'baselineConditions',
+              'initialOutputsPreserved',
+              'unsatisfiableFinalZero',
+              'satisfiableFinalConditions',
+            ], `${label}: threshold premise inventory mismatch`);
+            assert.deepEqual(payload.leanLockedNANDThresholdMissingInstantiationInventory, [
+              'baselineCandidate',
+              'fullCandidate',
+              'baselineConditions',
+              'initialOutputsPreserved',
+              'unsatisfiableFinalZero',
+              'satisfiableFinalConditions',
+            ], `${label}: missing-instantiation inventory mismatch`);
             assert.equal(payload.sorryOrAdmitInRootDependencyClosure, null, `${label}: absent root dependency closure must remain null`);
             assert.deepEqual(payload.projectSpecificAxiomInventory, [
               'PNP.SAT',
@@ -128,6 +159,7 @@ jobs:
               'node --test audits/lean-nand-enumerator0.test.mjs',
               'node --test audits/lean-nand-reference-minimum0.test.mjs',
               'node --test audits/lean-locked-nand-baseline0.test.mjs',
+              'node --test audits/lean-locked-nand-threshold-boundary0.test.mjs',
               'lake build PNP',
               'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
@@ -140,10 +172,11 @@ jobs:
               'lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
             ], `${label}: verification commands mismatch`);
             assert.equal(payload.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json', `${label}: archive manifest mismatch`);
             assert.equal(payload.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d', `${label}: replay command mismatch`);
-            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-LOCAL-BASELINE-07', `${label}: public-surface baseline mismatch`);
+            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-CONDITIONAL-THRESHOLD-BOUNDARY-08', `${label}: public-surface baseline mismatch`);
             assert.deepEqual(payload.remainingBlockers, [
               'Formal.ConcreteComplexityModel',
               'Formal.ConcreteSAT',
@@ -160,6 +193,10 @@ jobs:
             assert.ok(payload.nonClaims.includes('The typed local locked-NAND candidates, source-derived accounting, conditional square-baseline theorem, and five discharged local square baselines do not prove global cross-instance BaselineDistinct, a locked builder or threshold, residual slack at most four, or polynomial runtime.'), `${label}: locked-NAND local-scope non-claim missing`);
             assert.ok(payload.nonClaims.includes('The report threshold word is multi-output: its baseline coordinates remain present alongside one final coordinate; a legacy single-output seed is not that construction.'), `${label}: multi-output non-claim missing`);
             assert.ok(payload.nonClaims.includes('The legacy synthetic m=2 fixture is quarantined as internally inconsistent: honest source-derived baseline/displayed counts are 86/90, metadata-consistent counts are 95/99, and stored hybrid counts are 91/95.'), `${label}: legacy fixture quarantine non-claim missing`);
+            assert.ok(payload.nonClaims.includes('The proof-bearing conditional locked-NAND semantic boundary is not the report threshold theorem: it assumes typed baseline and full candidates, baseline output conditions, preservation of the first outputs, an unsatisfiable final-zero law, and satisfiable final-output laws instead of constructing them for arbitrary circuits.'), `${label}: conditional-boundary non-claim missing`);
+            assert.ok(payload.nonClaims.includes('The residual-slack-at-most-four result is conditional on that six-field premise package; it is not an unconditional result for the report locked-NAND family.'), `${label}: conditional-slack non-claim missing`);
+            assert.ok(payload.nonClaims.includes('Against the hostile-review inventory, DirectWireOutputLowerBound and the model-level ZeroOutputConvention are now discharged, while global MacroDistinct, TraceEquivalence, FinalLockSeparation, carrier layout, and uniform polynomial premise construction remain missing.'), `${label}: hostile-review mapping non-claim missing`);
+            assert.ok(payload.nonClaims.includes('The conditional module quantifies an arbitrary satisfiable proposition and baseline natural number; it does not identify them with source-circuit SAT and lockedBaselineCount, enforce answer-independent uniform construction, or connect the candidate boundary to the abstract PNP.LockedNANDThreshold language.'), `${label}: arbitrary-parameter non-claim missing`);
           }
 
           const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));
