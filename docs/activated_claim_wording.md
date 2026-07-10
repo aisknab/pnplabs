@@ -22,6 +22,8 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Public wording must distinguish that build fact from theorem completion: `PNP.Main.p_eq_np` does not exist, and five project-specific axioms remain (`PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`).
+
 ## Checker wording
 
 Use this boundary when describing the old JavaScript stack:

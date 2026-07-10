@@ -19,6 +19,9 @@ test('shared site script applies conservative formal-reconstruction copy', async
     'publicTheoremEmissionAllowed = false',
     'rootLeanTheoremPresent = false',
     'projectSpecificAxiomsRemaining = true',
+    'leanprover/lean4:v4.31.0',
+    'five project-specific axioms remain',
+    'payload.remainingBlockers.length === 7',
     'activated verifier-run registry and automated submission workflow are frozen',
     'loadFormalReconstructionStatus();',
   ]) {

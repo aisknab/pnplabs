@@ -16,6 +16,8 @@ test('homepage publishes the conservative current theorem boundary', async () =>
     'finalTheoremReady = false',
     'rootLeanTheoremAxiomAuditPassed = false',
     'projectSpecificAxiomsRemaining = true',
+    'five project-specific axioms remain',
+    '7 active',
     'Legacy JavaScript checker acceptance is historical assertion-record evidence only.',
     'View current status',
   ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);

@@ -54,12 +54,13 @@
 <section class="page-hero">
   <span class="eyebrow">FAQ</span>
   <h1>Current status of the claim.</h1>
-  <p class="lede">Formal reconstruction is in progress. The repository does not currently establish P = NP, and the required concrete Lean root theorem and axiom audit remain incomplete.</p>
+  <p class="lede">Formal reconstruction is in progress. The pinned Lean <code>PNP</code> library root compiles, but the root theorem is absent and five project-specific axioms remain.</p>
 </section>
 <div class="shell">
   <section class="section">
     <div class="faq-list">
-      <details open><summary>Does the repository currently establish P = NP?</summary><p>No. The authoritative payload records <code>mathematicalTheoremEstablished = false</code>, <code>publicTheoremEmissionAllowed = false</code>, and eight remaining formal blockers.</p></details>
+      <details open><summary>Does the repository currently establish P = NP?</summary><p>No. The authoritative payload records <code>mathematicalTheoremEstablished = false</code>, <code>publicTheoremEmissionAllowed = false</code>, and seven remaining formal blockers.</p></details>
+      <details><summary>What does the green Lean build establish?</summary><p>It establishes that the pinned <code>PNP</code> library root compiles. It does not supply <code>PNP.Main.p_eq_np</code>; that theorem is absent, and five project-specific axioms remain.</p></details>
       <details><summary>What is PNP Labs working on?</summary><p>PNP Labs is reconstructing a proposed locked-NAND and residual-slack route in Lean. The target is P = NP, but the concrete definitions, proofs, polynomial bounds, root theorem, and axiom audit are incomplete.</p></details>
       <details><summary>What does the browser check show?</summary><p>It only shows that the bundled file matches the published SHA-256 digest. It does not validate the theorem claim, review the mathematical argument, or replace source regeneration.</p></details>
       <details><summary>Why does the site focus on the checker record?</summary><p>The release claim is tied to executable artefacts. Reviewers need to know exactly which finite package, acceptance run, replay, final certificate, release gate, and report records are being relied on.</p></details>
@@ -71,7 +72,7 @@
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Status</div><h2>What is known today.</h2><p>The formal reconstruction has eight active blockers. Historical report, checker, checksum, and run records remain available for audit but do not establish the theorem.</p></div><a class="btn primary" href="status.html">Current status</a></div>
+    <div class="callout"><div><div class="section-label">Status</div><h2>What is known today.</h2><p>The formal reconstruction has seven active blockers. The pinned Lean library root compiles, but no root theorem exists and five project-specific axioms remain.</p></div><a class="btn primary" href="status.html">Current status</a></div>
   </section>
 </div>
 

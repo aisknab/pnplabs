@@ -15,10 +15,12 @@ npm ci
 node pcc-formal-reconstruction-status0.mjs --json
 node pcc-formal-public-surface0.mjs --json
 npm run pnp:verify
+node --test audits/lean-root-target0.test.mjs
 lake build PNP
+lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 ```
 
-These commands expose current status, replay the legacy checker stack, and build the Lean project. They do not establish the target theorem while the concrete root theorem and axiom audit remain incomplete.
+These commands expose current status, replay the legacy checker stack, build the pinned Lean `PNP` library root, and print the bridge's axiom dependencies. They do not establish the target theorem: `PNP.Main.p_eq_np` is absent and five project-specific axioms remain.
 
 ## Freeze controls
 

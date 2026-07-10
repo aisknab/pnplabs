@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The proposed route is being reconstructed in Lean. Concrete definitions, the root theorem, and an assumption audit remain incomplete.</p>
+        <p class="lede">The pinned Lean <code>PNP</code> library root compiles. No <code>PNP.Main.p_eq_np</code> theorem exists, and five project-specific axioms remain.</p>
         <div class="checker-trace">
           <span>formalise definitions</span>
           <span>build root theorem</span>
           <strong>in progress</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>publicTheoremEmissionAllowed = false</code>, <code>finalTheoremReady = false</code>, and the required concrete, assumption-audited Lean root theorem is not present.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>lake build PNP</code> compiles the pinned library root, but <code>PNP.Main.p_eq_np</code> does not exist and five project-specific axioms remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -98,7 +98,7 @@ projectSpecificAxiomsRemaining = true</pre>
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
             <div><span>Root theorem</span><strong>not present</strong></div>
             <div><span>Axiom audit</span><strong>not passed</strong></div>
-            <div><span>Formal blockers</span><strong>8 active</strong></div>
+            <div><span>Formal blockers</span><strong>7 active</strong></div>
           </div>
         </div>
 

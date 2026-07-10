@@ -20,7 +20,9 @@ rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
 ```
 
-The active blockers are the eight entries in `remainingFormalObligations` and `remainingBlockers`, covering a pinned Lean build and root target, concrete complexity and SAT definitions, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
+The pinned `leanprover/lean4:v4.31.0` toolchain now compiles the explicit `PNP` library root, including the non-theorem status declaration `PNP.Main.rootTheoremStatus`. This discharges the build-configuration blocker only. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
+
+The active blockers are the seven entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete complexity and SAT definitions, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
 
 Legacy JavaScript checker acceptance verifies assertion-bearing records under implemented predicates. It is historical assertion-checker evidence only and is not a formal proof of the named mathematical propositions. Earlier activated coordinates, verifier-run records, digest matrices, and badge summaries are preserved only as historical audit records. Their intake is frozen and they are not current theorem-emission surfaces.
 
@@ -37,10 +39,12 @@ npm ci
 node pcc-formal-reconstruction-status0.mjs --json
 node pcc-formal-public-surface0.mjs --json
 npm run pnp:verify
+node --test audits/lean-root-target0.test.mjs
 lake build PNP
+lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 ```
 
-These commands expose the current status, run the repository verifier, and attempt the pinned Lean build. A command succeeding does not by itself establish the target theorem. The required concrete, assumption-audited root theorem is not currently present.
+These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and print the bridge's axiom dependencies. Their success does not establish the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
 
 The public status page is [`status.html`](status.html).
 
