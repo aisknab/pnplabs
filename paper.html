@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — Guide to reviewing the P versus NP claim</title>
-  <meta name="description" content="A guide to the PNP Labs P versus NP claim, checker record, report files, and verification workflow.">
+  <title>PNP Labs — Guide to the P versus NP formal reconstruction</title>
+  <meta name="description" content="A guide to the unfinished PNP Labs formal reconstruction, historical checker records, report files, and open obligations.">
   <link rel="canonical" href="https://pnplabs.com.au/paper.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PNP Labs — Guide to reviewing the P versus NP claim">
-  <meta property="og:description" content="A guide to the PNP Labs P versus NP claim, checker record, report files, and verification workflow.">
+  <meta property="og:title" content="PNP Labs — Guide to the P versus NP formal reconstruction">
+  <meta property="og:description" content="The repository does not currently establish P = NP. Review the unfinished formal route and its historical records.">
   <meta property="og:url" content="https://pnplabs.com.au/paper.html">
   <meta property="og:image" content="https://pnplabs.com.au/assets/linkedin/banner.png">
   <meta property="og:image:width" content="1584">
   <meta property="og:image:height" content="396">
-  <meta property="og:image:alt" content="PNP Labs P versus NP claim under review">
+  <meta property="og:image:alt" content="PNP Labs P versus NP formal reconstruction">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pnplabs.com.au/assets/linkedin/banner.png">
-  <meta name="twitter:image:alt" content="PNP Labs P versus NP claim under review">
+  <meta name="twitter:image:alt" content="PNP Labs P versus NP formal reconstruction">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="assets/site.webmanifest">
@@ -33,7 +33,7 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim under review</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP formal reconstruction</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
@@ -52,31 +52,31 @@
   <main id="main">
 
 <section class="page-hero">
-  <span class="eyebrow">Review guide</span>
-  <h1>Guide to reviewing the P versus NP claim.</h1>
-  <p class="lede">This guide shows how the report, conditional theorem boundary, locked NAND exact minimization route, generated package checking, final acceptance replay, and release records fit together. It does not imply external validation.</p>
-  <div class="hero-actions"><a class="btn primary" href="downloads/canonical_proof_report.pdf">Download report</a><a class="btn secondary" href="downloads/canonical_proof_report.tex">Download TeX</a><a class="btn secondary" href="verify.html">Check release files</a></div>
+  <span class="eyebrow">Formal reconstruction review guide</span>
+  <h1>Review the unfinished P versus NP route.</h1>
+  <p class="lede">The repository does not currently establish P = NP. This guide maps the historical report and checker records to the mathematical statements that still require concrete Lean definitions and proofs.</p>
+  <div class="hero-actions"><a class="btn primary" href="status.html">View current status</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Historical report</a><a class="btn secondary" href="verify.html">Verify artefact identity</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="section-head">
-      <div><div class="section-label">Claim boundary</div><h2>The main conditional theorem.</h2></div>
-      <p>The public theorem uses a conditional checker-acceptance statement. The report records the internal package/replay/certificate chain that is claimed to discharge that condition in the sealed artefact stack.</p>
+      <div><div class="section-label">Historical claim boundary</div><h2>An assertion carried by the legacy checker records.</h2></div>
+      <p>The historical report used a conditional checker-acceptance statement. Legacy checker acceptance verifies assertion-bearing records under implemented predicates; it does not prove the asserted mathematical implication.</p>
     </div>
     <div class="grid two">
-      <article class="card accent"><div class="kicker">Public theorem</div><h3>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</h3><p>The theorem statement is tied to internal checker acceptance. Reviewers can first establish what the checker accepted, what was replayed, and how those records link to the final P = NP claim.</p></article>
-      <article class="card"><div class="kicker">Trust model</div><h3>Generator untrusted; package checked</h3><p>The generator emits the package, but the release claim is made at the level of checked artefacts: package checker, acceptance run, replay, final verdict, final certificate, release audit, release gate, and final report.</p></article>
+      <article class="card accent"><div class="kicker">Historical assertion</div><h3>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</h3><p>This string is preserved as the historical target assertion. It is not an established theorem. The Lean reconstruction must prove the mathematical content instead of trusting assertion fields in a record.</p></article>
+      <article class="card"><div class="kicker">Current trust model</div><h3>Concrete Lean proof and axiom audit required</h3><p>The root theorem <code>PNP.Main.p_eq_np</code> is not currently present or built, and its axiom audit has not passed. Project-specific axioms remain.</p></article>
     </div>
   </section>
   <section class="section compact">
     <div class="section-head"><div><div class="section-label">Reading order</div><h2>Suggested reading order.</h2></div><p>Begin with the public status and dependency structure, then move into line-by-line technical review.</p></div>
     <div class="grid three path">
-      <article class="card"><h3>Status and claim boundary</h3><p>Confirm the theorem record, antecedent, consequent, conditional flag, checker trust model, and lack of implied external consensus.</p></article>
+      <article class="card"><h3>Current status and historical boundary</h3><p>Start with the eight formal blockers, then distinguish old assertion records from the mathematical statements that still require proof.</p></article>
       <article class="card"><h3>Direct-wire framework</h3><p>Track carriers, open functions, compatible supports, replacement, charge ownership, and the mode firewall.</p></article>
       <article class="card"><h3>Residual-band minimization</h3><p>Follow NormalizeOrGain, HResolve, BudgetResolve, selector realization, HB closure, ZeroSlack, and PCCMin.</p></article>
       <article class="card"><h3>Locked NAND SAT embedding</h3><p>Check the threshold construction, macro distinctness, trace equivalence, final-lock separation, and residual slack bound.</p></article>
       <article class="card"><h3>CheckPack and package manifest</h3><p>Audit row keys, package references, import graph, no-hidden-minimization scanning, reflection, and polynomial bounds.</p></article>
-      <article class="card"><h3>Final release record</h3><p>Inspect checker-accepted report statements, digest ledger, sealed release identifiers, and the two independent verification modes.</p></article>
+      <article class="card"><h3>Historical release record</h3><p>Inspect old checker statements, digest ledger, and sealed release identifiers as historical artefact evidence only.</p></article>
     </div>
   </section>
   <section class="section">
@@ -106,9 +106,9 @@
       <div>
         <a class="brand" href="index.html">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim released for independent review.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP formal reconstruction in progress.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · P versus NP claim released for independent review; external community verification not yet established.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Formal reconstruction is in progress; the repository does not currently establish P = NP.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <a href="paper.html">Review guide</a>

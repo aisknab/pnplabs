@@ -61,7 +61,7 @@ if (page === 'review.html') {
 
   const institutional = byText('h3', 'Institutional review');
   if (institutional?.nextElementSibling) {
-    institutional.nextElementSibling.textContent = 'Current status, internal acceptance record, external verification status, public source and release availability, and public citation language.';
+    institutional.nextElementSibling.textContent = 'Current formal-reconstruction status, historical checker records, public source and release availability, open obligations, and conservative citation language.';
   }
 
   const contact = document.querySelector('#contact');
@@ -75,7 +75,7 @@ if (page === 'review.html') {
 
   const template = document.querySelector('#request-template');
   if (template) {
-    template.textContent = `Subject: PNP Labs technical review or status question\n\nHello PNP Labs,\n\nI am reviewing the public PNP Labs P versus NP claim.\n\nPublic source: ${repo}\nPinned ref or file: [source tag / docs tag / artefact tag / exact path]\nPurpose: [technical review / institutional assessment / status clarification / security]\nFinding or question: [include the exact theorem, checker, file, or reproduction step]\n\nPlease respond to the specific finding or question and identify any additional public audit coordinate that is relevant.\n\nRegards,\n[Name]`;
+    template.textContent = `Subject: PNP Labs technical review or status question\n\nHello PNP Labs,\n\nI am reviewing the PNP Labs P versus NP formal reconstruction. I understand that the repository does not currently establish P = NP.\n\nPublic source: ${repo}\nPinned ref or file: [source tag / docs tag / artefact tag / exact path]\nPurpose: [technical review / institutional assessment / status clarification / security]\nFinding or question: [include the exact theorem, checker, file, obligation, or reproduction step]\n\nPlease respond to the specific finding or question and identify any additional public audit coordinate that is relevant.\n\nRegards,\n[Name]`;
   }
 }
 

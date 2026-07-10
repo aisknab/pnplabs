@@ -15,35 +15,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Compare activated public payload with upstream PNP status
+      - name: Compare conservative public payload with upstream PNP status
         run: |
           node --input-type=module <<'NODE'
           import assert from 'node:assert/strict';
           import { readFile } from 'node:fs/promises';
 
-          const upstreamBase = 'https://raw.githubusercontent.com/aisknab/pnp/main';
-          const activeFinalNodeIds = [
-            'UFS-001-InputFamilyUniformity',
-            'UFS-002-LockedNANDConstructionUniformPolynomial',
-            'UFS-003-ThresholdEquivalenceAllInputs',
-            'UFS-004-ResidualBandMinimizerUniformPolynomial',
-            'UFS-005-ZeroSlackContradictionUniform',
-            'UFS-006-NoHiddenOracleSemanticCompleteness',
-            'UFS-007-ComplexityConclusionUniform',
-            'UFS-008-ReleaseTransitionFromProofOnly',
-            'PUBLIC-THEOREM-ACTIVATION',
-          ];
-
-          async function localJson(path) {
-            return JSON.parse(await readFile(path, 'utf8'));
-          }
-
-          async function upstreamJson(path) {
-            const url = `${upstreamBase}/${path}`;
-            const res = await fetch(url, { headers: { accept: 'application/json' } });
-            if (!res.ok) throw new Error(`failed to fetch ${url}: ${res.status} ${res.statusText}`);
-            return res.json();
-          }
+          const upstreamUrl = 'https://raw.githubusercontent.com/aisknab/pnp/main/public/pnp-status.json';
 
           function stableStringify(value) {
             if (Array.isArray(value)) return `[${value.map(stableStringify).join(',')}]`;
@@ -51,42 +29,37 @@ jobs:
             return JSON.stringify(value);
           }
 
-          function assertActivatedBoundary(payload, label) {
-            assert.equal(payload.kind, 'PNPActivatedStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-ACTIVATED-STATUS-2026-07-05-01', `${label}: coordinate mismatch`);
-            assert.equal(payload.status, 'public-theorem-emission-activated', `${label}: status mismatch`);
-            assert.equal(payload.publicTheoremActivationCoordinate, 'PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01', `${label}: activation coordinate mismatch`);
-            assert.equal(payload.publicTheoremEmissionAllowed, true, `${label}: public theorem emission must be activated`);
-            assert.equal(payload.publicTheoremStatement, 'P = NP', `${label}: theorem statement mismatch`);
-            assert.equal(payload.publicTheoremConclusion, 'P = NP', `${label}: theorem conclusion mismatch`);
-            assert.equal(payload.publicTheoremUnderCheckerTrustModel, true, `${label}: checker-trust flag mismatch`);
-            assert.equal(payload.finalTheoremReady, true, `${label}: final theorem must be ready`);
-            assert.equal(payload.internalFinalTheoremReady, true, `${label}: internal final theorem must be ready`);
-            assert.equal(payload.unrestrictedFinalSoundnessDischarged, true, `${label}: unrestricted final soundness must be discharged`);
-            assert.equal(payload.uniformFinalSoundnessProved, true, `${label}: uniform final soundness must be proved`);
-            assert.equal(payload.externalReviewAcceptanceRequiredForEmission, false, `${label}: external review must not be required for emission`);
-            assert.equal(payload.externalReviewIsMathematicalPremise, false, `${label}: external review must not be a mathematical premise`);
-            assert.equal(payload.historicalReportProseIsMathematicalPremise, false, `${label}: historical report prose must not be a premise`);
-            assert.deepEqual(payload.remainingBlockers, [], `${label}: blockers must be empty`);
-            assert.deepEqual(payload.activeFinalNodeIds, activeFinalNodeIds, `${label}: active final nodes mismatch`);
+          function assertFormalBoundary(payload, label) {
+            assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
+            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01', `${label}: coordinate mismatch`);
+            assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
+            assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
+            assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
+            assert.equal(payload.publicTheoremStatement, null, `${label}: public theorem statement must be null`);
+            assert.equal(payload.finalTheoremReady, false, `${label}: final theorem must not be ready`);
+            assert.equal(payload.rootLeanTheoremPresent, false, `${label}: root theorem must not be marked present`);
+            assert.equal(payload.rootLeanTheoremBuilt, false, `${label}: root theorem must not be marked built`);
+            assert.equal(payload.rootLeanTheoremAxiomAuditPassed, false, `${label}: axiom audit must not be marked passed`);
+            assert.equal(payload.projectSpecificAxiomsRemaining, true, `${label}: project-specific axioms must remain disclosed`);
+            assert.equal(payload.externalReviewIsMathematicalPremise, false, `${label}: external review must not be a premise`);
+            assert.ok(payload.verificationCommands.includes('node pcc-formal-public-surface0.mjs --json'), `${label}: formal public-surface command missing`);
+            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-RECONSTRUCTION-01', `${label}: public-surface baseline mismatch`);
+            assert.ok(payload.remainingBlockers.length > 0, `${label}: formal blockers must remain active`);
           }
 
-          const [siteStatus, index, upstreamStatus] = await Promise.all([
-            localJson('public/pnp-status.json'),
-            localJson('public/pnp-index.json'),
-            upstreamJson('public/pnp-status.json'),
-          ]);
+          const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));
+          const index = JSON.parse(await readFile('public/pnp-index.json', 'utf8'));
+          const response = await fetch(upstreamUrl, { headers: { accept: 'application/json' } });
+          if (!response.ok) throw new Error(`failed to fetch ${upstreamUrl}: ${response.status} ${response.statusText}`);
+          const upstreamStatus = await response.json();
 
-          assertActivatedBoundary(siteStatus, 'site activated status payload');
-          assertActivatedBoundary(upstreamStatus, 'upstream activated status payload');
+          assertFormalBoundary(siteStatus, 'site status payload');
+          assertFormalBoundary(upstreamStatus, 'upstream status payload');
+          assert.equal(stableStringify(siteStatus), stableStringify(upstreamStatus), 'site status payload drifted from upstream pnp/public/pnp-status.json');
 
-          assert.equal(stableStringify(siteStatus), stableStringify(upstreamStatus), 'site activated status payload drifted from upstream pnp/public/pnp-status.json');
-
-          assert.equal(index.status, 'activated-status-payloads-ready', 'index status mismatch');
-          assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, true, 'index theorem emission must be activated');
-          assert.equal(index.claimBoundary.publicTheoremStatement, 'P = NP', 'index theorem statement mismatch');
-          assert.deepEqual(index.claimBoundary.remainingBlockers, [], 'index remaining blockers must be empty');
-          assert.ok(index.payloads.some((entry) => entry.path === '/public/pnp-status.json'), 'index must include pnp-status payload');
-
-          console.log('Activated PNP upstream status consistency accepted');
+          assert.equal(index.status, 'formal-reconstruction-status-payloads-ready');
+          assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
+          assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, false);
+          assert.equal(index.claimBoundary.publicTheoremStatement, null);
+          assert.equal(index.historicalRunIntakeFrozen, true);
           NODE

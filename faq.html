@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PNP Labs — Current status and FAQ</title>
-  <meta name="description" content="Current status and technical answers for the PNP Labs machine-checkable P versus NP claim.">
+  <meta name="description" content="Current status and technical answers for the unfinished PNP Labs P versus NP formal reconstruction.">
   <link rel="canonical" href="https://pnplabs.com.au/faq.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
   <meta property="og:title" content="PNP Labs — Current status and FAQ">
-  <meta property="og:description" content="Current status and technical answers for the PNP Labs machine-checkable P versus NP claim.">
+  <meta property="og:description" content="The repository does not currently establish P = NP. Formal reconstruction is in progress.">
   <meta property="og:url" content="https://pnplabs.com.au/faq.html">
   <meta property="og:image" content="https://pnplabs.com.au/assets/linkedin/banner.png">
   <meta property="og:image:width" content="1584">
   <meta property="og:image:height" content="396">
-  <meta property="og:image:alt" content="PNP Labs P versus NP claim under review">
+  <meta property="og:image:alt" content="PNP Labs P versus NP formal reconstruction">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pnplabs.com.au/assets/linkedin/banner.png">
-  <meta name="twitter:image:alt" content="PNP Labs P versus NP claim under review">
+  <meta name="twitter:image:alt" content="PNP Labs P versus NP formal reconstruction">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="assets/site.webmanifest">
@@ -33,7 +33,7 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim under review</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP formal reconstruction</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
@@ -54,24 +54,24 @@
 <section class="page-hero">
   <span class="eyebrow">FAQ</span>
   <h1>Current status of the claim.</h1>
-  <p class="lede">PNP Labs has released a machine-checkable P versus NP claim for independent review. It has not yet been externally verified by the wider research community.</p>
+  <p class="lede">Formal reconstruction is in progress. The repository does not currently establish P = NP, and the required concrete Lean root theorem and axiom audit remain incomplete.</p>
 </section>
 <div class="shell">
   <section class="section">
     <div class="faq-list">
-      <details open><summary>Has anyone outside PNP Labs verified it?</summary><p>No. PNP Labs has released a machine-checkable P versus NP claim and invites independent verification. Community review, institutional assessment, and external formal audit are separate from the release's internal checker acceptance record.</p></details>
-      <details><summary>What is PNP Labs claiming?</summary><p>PNP Labs presents a machine-checkable finite-certificate claim for P = NP over the locked NAND residual-slack package. The public theorem boundary is <code>CheckPCCPackexp(GeneratePCCPack()) = accept ⇒ P = NP</code>.</p></details>
+      <details open><summary>Does the repository currently establish P = NP?</summary><p>No. The authoritative payload records <code>mathematicalTheoremEstablished = false</code>, <code>publicTheoremEmissionAllowed = false</code>, and eight remaining formal blockers.</p></details>
+      <details><summary>What is PNP Labs working on?</summary><p>PNP Labs is reconstructing a proposed locked-NAND and residual-slack route in Lean. The target is P = NP, but the concrete definitions, proofs, polynomial bounds, root theorem, and axiom audit are incomplete.</p></details>
       <details><summary>What does the browser check show?</summary><p>It only shows that the bundled file matches the published SHA-256 digest. It does not validate the theorem claim, review the mathematical argument, or replace source regeneration.</p></details>
       <details><summary>Why does the site focus on the checker record?</summary><p>The release claim is tied to executable artefacts. Reviewers need to know exactly which finite package, acceptance run, replay, final certificate, release gate, and report records are being relied on.</p></details>
       <details><summary>What is the locked NAND role?</summary><p>The locked NAND construction encodes SAT into an exact-minimization threshold for a tagged multi-output direct-wire word. The report states that these instances have residual slack at most four, allowing the residual-band minimizer to be applied.</p></details>
       <details><summary>Where can a technical reviewer start?</summary><p>For first-pass review, prioritise the claim boundary, locked NAND threshold, residual slack bound, residual-band exact minimization theorem, no-hidden-minimization scan, final package acceptance, and acceptance-replay linkage.</p></details>
       <details><summary>What is the difference between checking files and regenerating reports?</summary><p>File checking compares the committed sealed bundle and checksum ledger. Regeneration checks that the recorded source/checker revision emits checker-accepted compact and full report records with the expected theorem statements and linkage.</p></details>
-      <details><summary>What public description is accurate?</summary><p>Recommended wording: "PNP Labs has released a machine-checkable finite-certificate claim for P = NP and is inviting independent technical verification." Avoid language implying external consensus unless that evidence exists.</p></details>
+      <details><summary>What public description is accurate?</summary><p>Recommended wording: "PNP Labs is formally reconstructing a proposed route to P = NP in Lean. The repository does not currently establish the theorem."</p></details>
       <details><summary>Where do review requests and security disclosures go?</summary><p>Technical review and source repository access requests go to <a href="mailto:review@pnplabs.com.au">review@pnplabs.com.au</a>. Security issues and suspected artefact-integrity concerns go to <a href="mailto:security@pnplabs.com.au">security@pnplabs.com.au</a>.</p></details>
     </div>
   </section>
   <section class="section compact">
-    <div class="callout"><div><div class="section-label">Status</div><h2>What is known today.</h2><p>The release provides a theorem boundary, report files, checksum records, and review channels. External confirmation remains separate from the internal checker acceptance record.</p></div><a class="btn primary" href="review.html">Review channels</a></div>
+    <div class="callout"><div><div class="section-label">Status</div><h2>What is known today.</h2><p>The formal reconstruction has eight active blockers. Historical report, checker, checksum, and run records remain available for audit but do not establish the theorem.</p></div><a class="btn primary" href="status.html">Current status</a></div>
   </section>
 </div>
 
@@ -81,9 +81,9 @@
       <div>
         <a class="brand" href="index.html">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim released for independent review.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP formal reconstruction in progress.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · P versus NP claim released for independent review; external community verification not yet established.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Formal reconstruction is in progress; the repository does not currently establish P = NP.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <a href="paper.html">Review guide</a>

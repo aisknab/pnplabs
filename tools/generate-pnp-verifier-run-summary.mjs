@@ -10,28 +10,30 @@ const DEFAULT_SUMMARY_PATH = 'public/pnp-verifier-run-matrix-summary.json';
 export function BuildPNPVerifierRunMatrixSummary0(matrix, options = {}) {
   if (!plain0(matrix)) return reject0('MatrixSummary.Shape', [], 'matrix must be an object');
   if (matrix.kind !== 'PNPVerifierRunComparisonMatrix0') return reject0('MatrixSummary.Kind', ['kind'], 'matrix kind mismatch', { actual: matrix.kind });
-  if (matrix.status !== 'verifier-run-comparison-matrix-ready') return reject0('MatrixSummary.Status', ['status'], 'matrix status mismatch', { actual: matrix.status });
+  if (matrix.status !== 'historical-verifier-run-comparison-matrix-frozen' || matrix.historical !== true || matrix.intakeFrozen !== true) return reject0('MatrixSummary.Status', ['status'], 'matrix must be a frozen historical matrix', { actual: matrix.status });
   const numericFields = ['registryRunCount', 'pairCount', 'acceptedPairCount', 'rejectedPairCount', 'requiredMismatchPairCount'];
   for (const field of numericFields) {
     if (!Number.isSafeInteger(matrix[field]) || matrix[field] < 0) return reject0('MatrixSummary.NumericField', [field], 'matrix numeric field must be a non-negative safe integer', { actual: matrix[field] });
   }
   const passing = matrix.allRequiredPairsAccept === true && matrix.allRequiredPairsMatch === true && matrix.diagonalAccepts === true && matrix.requiredMismatchPairCount === 0 && matrix.rejectedPairCount === 0;
-  const state = passing ? 'passing' : 'attention';
+  const state = 'historical';
   const recordLabel = matrix.registryRunCount === 1 ? '1 public run' : `${matrix.registryRunCount} public runs`;
-  const pairLabel = `${matrix.acceptedPairCount}/${matrix.pairCount} required comparisons passing`;
+  const pairLabel = matrix.pairCount === 1 ? '1 recorded historical comparison' : `${matrix.pairCount} recorded historical comparisons`;
   const summaryCore = {
     kind: 'PNPVerifierRunMatrixBadgeSummary0',
     version: 0,
-    status: 'verifier-run-matrix-badge-summary-ready',
+    status: 'historical-verifier-run-matrix-summary-frozen',
+    historical: true,
+    currentStatusBadge: false,
     sourceMatrix: options.sourceMatrix ?? DEFAULT_MATRIX_PATH,
     sourceRegistry: matrix.sourceRegistry ?? 'public/pnp-verification-runs.json',
     generatedBy: 'tools/generate-pnp-verifier-run-summary.mjs',
     badge: {
-      label: 'Verifier-run matrix',
+      label: 'Historical verifier-run matrix',
       state,
-      tone: passing ? 'success' : 'warning',
-      text: `${recordLabel}; ${pairLabel}`,
-      shortText: passing ? `${matrix.registryRunCount} run / matrix passing` : `${matrix.registryRunCount} run / matrix attention`,
+      tone: 'neutral',
+      text: `Historical snapshot only; ${recordLabel}; ${pairLabel}`,
+      shortText: 'historical snapshot',
     },
     metrics: {
       registryRunCount: matrix.registryRunCount,
@@ -51,16 +53,18 @@ export function BuildPNPVerifierRunMatrixSummary0(matrix, options = {}) {
       comparisonPolicy: matrix.comparisonPolicyPayload ?? 'public/pnp-verifier-run-digest-comparison.json',
       page: 'verifier-run-digests.html',
     },
-    boundary: {
-      publicTheoremEmissionAllowed: true,
-      publicTheoremStatement: 'P = NP',
-      remainingBlockers: [],
+    currentBoundary: {
+      mathematicalTheoremEstablished: false,
+      publicTheoremEmissionAllowed: false,
+      publicTheoremStatement: null,
+      finalTheoremReady: false,
+      projectSpecificAxiomsRemaining: true,
       externalReviewIsMathematicalPremise: false,
     },
     nonClaims: [
-      'The matrix badge is a compact reproducibility summary for activated checker-trust verifier runs.',
-      'A passing badge is not an external-consensus claim or peer-review acceptance.',
-      'A warning badge is a triage signal for the run-evidence layer, not a direct proof-stack refutation.',
+      'The repository does not currently establish P = NP.',
+      'This is neutral historical metadata, not a current green status badge.',
+      'Historical matrix agreement is not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance.',
     ],
   };
   return { tag: 'accept', summary: { ...summaryCore, summarySha256: sha256Text0(stableStringify0(summaryCore)) } };

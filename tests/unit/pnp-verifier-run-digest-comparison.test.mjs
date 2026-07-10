@@ -9,111 +9,54 @@ async function readJson(path) {
   return JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
 }
 
-async function readText(path) {
-  return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
-}
-
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
-test('digest comparison payload exposes normalized comparison policy', async () => {
+test('digest policy is labelled frozen historical metadata', async () => {
   const payload = await readJson('public/pnp-verifier-run-digest-comparison.json');
-
   assert.equal(payload.kind, 'PNPVerifierRunDigestComparison0');
-  assert.equal(payload.status, 'verifier-run-digest-comparison-ready');
-  assert.equal(payload.page, 'verifier-run-digests.html');
-  assert.equal(payload.tool, 'tools/compare-pnp-verifier-runs.mjs');
-  assert.ok(payload.defaultRequiredDigestKeys.includes('verdictNormalizedSha256'));
-  assert.ok(payload.defaultRequiredDigestKeys.includes('activatedStatusNormalizedSha256'));
-  assert.ok(payload.defaultRequiredDigestKeys.includes('proofScriptOutputsNormalizedSha256'));
-  assert.equal(payload.claimBoundaryRequiredValues.publicTheoremEmissionAllowed, true);
-  assert.equal(payload.claimBoundaryRequiredValues.publicTheoremStatement, 'P = NP');
-  assert.deepEqual(payload.claimBoundaryRequiredValues.remainingBlockers, []);
-  assert.equal(payload.claimBoundaryRequiredValues.externalReviewIsMathematicalPremise, false);
+  assert.equal(payload.status, 'historical-verifier-run-digest-comparison-frozen');
+  assert.equal(payload.historical, true);
+  assert.equal(payload.intakeFrozen, true);
+  assert.equal(payload.historicalClaimBoundaryRequiredValues.publicTheoremEmissionAllowed, true);
+  assert.equal(payload.currentClaimBoundary.mathematicalTheoremEstablished, false);
+  assert.equal(payload.currentClaimBoundary.publicTheoremEmissionAllowed, false);
+  assert.equal(payload.currentClaimBoundary.publicTheoremStatement, null);
+  assert.equal(payload.currentClaimBoundary.finalTheoremReady, false);
+  assert.match(payload.nonClaims.join('\n'), /not current theorem-status evidence/);
 });
 
-test('digest comparison accepts identical activated source-checker run records', async () => {
+test('historical digest utility still compares identical archived records', async () => {
   const record = await readJson('tests/fixtures/pnp-activated-verifier-run.import.json');
   const left = AttachPNPActivatedRunRecordDigests0(record).record;
   const right = AttachPNPActivatedRunRecordDigests0(clone(record)).record;
-
   const out = ComparePNPActivatedRunRecords0(left, right);
   assert.equal(out.tag, 'accept');
-  assert.equal(out.policy, 'PNPVerifierRunDigestComparison0');
   assert.deepEqual(out.requiredMismatches, []);
   assert.equal(out.allDigestKeysMatch, true);
-  assert.equal(out.comparisons.verdictNormalizedSha256.match, true);
-  assert.equal(out.comparisons.activatedStatusNormalizedSha256.match, true);
-  assert.equal(out.comparisons.proofScriptOutputsNormalizedSha256.match, true);
-  assert.match(out.comparisonSha256, /^[0-9a-f]{64}$/);
 });
 
-test('digest comparison rejects mismatched activated proof-script outputs by default', async () => {
+test('historical digest utility rejects changed archived checker output', async () => {
   const record = await readJson('tests/fixtures/pnp-activated-verifier-run.import.json');
-  const left = AttachPNPActivatedRunRecordDigests0(record).record;
   const changed = clone(record);
-  changed.proofScriptOutputs['proof:public-theorem-activation'] = 'accept: changed coordinate for test';
-  const right = AttachPNPActivatedRunRecordDigests0(changed).record;
-
-  const out = ComparePNPActivatedRunRecords0(left, right);
+  changed.proofScriptOutputs['proof:public-theorem-activation'] = 'changed historical output';
+  const out = ComparePNPActivatedRunRecords0(
+    AttachPNPActivatedRunRecordDigests0(record).record,
+    AttachPNPActivatedRunRecordDigests0(changed).record,
+  );
   assert.equal(out.tag, 'reject');
   assert.deepEqual(out.requiredMismatches, ['proofScriptOutputsNormalizedSha256']);
-  assert.equal(out.comparisons.proofScriptOutputsNormalizedSha256.match, false);
 });
 
-test('digest comparison rejects disabled theorem emission before comparing digests', async () => {
-  const record = await readJson('tests/fixtures/pnp-activated-verifier-run.import.json');
-  const bad = clone(record);
-  bad.verdict.publicTheoremEmissionAllowed = false;
-
-  const out = ComparePNPActivatedRunRecords0(record, bad);
-  assert.equal(out.tag, 'reject');
-  assert.equal(out.coord, 'CompareRun.VerdictField');
-});
-
-test('registry exposes the digest comparison, matrix, and badge workflows', async () => {
-  const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(registry.version, 7);
-  assert.equal(registry.status, 'activated-verification-run-registry-badge-ready');
-  assert.equal(registry.comparisonWorkflow.status, 'ready');
-  assert.equal(registry.comparisonWorkflow.tool, 'tools/compare-pnp-verifier-runs.mjs');
-  assert.equal(registry.comparisonWorkflow.page, 'verifier-run-digests.html');
-  assert.equal(registry.comparisonWorkflow.payload, 'public/pnp-verifier-run-digest-comparison.json');
-  assert.equal(registry.comparisonWorkflow.externalReviewIsMathematicalPremise, false);
-  assert.equal(registry.matrixWorkflow.status, 'ready');
-  assert.equal(registry.matrixWorkflow.payload, 'public/pnp-verifier-run-comparison-matrix.json');
-  assert.equal(registry.matrixWorkflow.tool, 'tools/generate-pnp-verifier-run-matrix.mjs');
-  assert.equal(registry.badgeSummaryWorkflow.status, 'ready');
-  assert.equal(registry.badgeSummaryWorkflow.payload, 'public/pnp-verifier-run-matrix-summary.json');
-  assert.equal(registry.badgeSummaryWorkflow.tool, 'tools/generate-pnp-verifier-run-summary.mjs');
-});
-
-test('verifier-run digest comparison page documents the comparison command, matrix command, badge command, and boundary', async () => {
-  const html = await readText('verifier-run-digests.html');
+test('digest page states that comparison cannot establish the theorem', async () => {
+  const html = await readFile(new URL('../../verifier-run-digests.html', import.meta.url), 'utf8');
   for (const fragment of [
-    'Compare activated verifier runs by normalized digest.',
-    'npm run pnp:compare-runs -- --json',
-    'npm run pnp:run-matrix -- --json',
-    'npm run pnp:run-summary -- --json',
-    'verifier-run-comparison-matrix-ready',
-    'badge.state = passing',
-    'verdictNormalizedSha256',
-    'activatedStatusNormalizedSha256',
-    'proofScriptOutputsNormalizedSha256',
-    'artifactsOrLogsNormalizedSha256',
-    'runRecordNormalizedSha256',
-    'publicTheoremEmissionAllowed = true',
-    'publicTheoremStatement = "P = NP"',
-    'remainingBlockers = []',
-    'externalReviewIsMathematicalPremise = false',
-    'public/pnp-verifier-run-digest-comparison.json',
-    'public/pnp-verifier-run-comparison-matrix.json',
-    'public/pnp-verifier-run-matrix-summary.json',
-    'tools/compare-pnp-verifier-runs.mjs',
-    'tools/generate-pnp-verifier-run-matrix.mjs',
-    'tools/generate-pnp-verifier-run-summary.mjs'
-  ]) {
-    assert.equal(html.includes(fragment), true, `missing digest page fragment: ${fragment}`);
-  }
+    'Verifier-run digest comparisons are frozen.',
+    'publicTheoremEmissionAllowed = false',
+    'badge.state = "historical"',
+    'badge.tone = "neutral"',
+    'currentStatusBadge = false',
+    'It does not verify the truth of an assertion',
+  ]) assert.equal(html.includes(fragment), true, `missing historical digest fragment: ${fragment}`);
 });

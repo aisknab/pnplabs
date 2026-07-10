@@ -8,71 +8,37 @@ async function readJson(path) {
   return JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
 }
 
-async function readText(path) {
-  return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
-}
-
-test('matrix badge summary payload exposes compact passing state', async () => {
+test('matrix summary is neutral historical metadata rather than a green badge', async () => {
   const summary = await readJson('public/pnp-verifier-run-matrix-summary.json');
-
   assert.equal(summary.kind, 'PNPVerifierRunMatrixBadgeSummary0');
-  assert.equal(summary.status, 'verifier-run-matrix-badge-summary-ready');
-  assert.equal(summary.sourceMatrix, 'public/pnp-verifier-run-comparison-matrix.json');
-  assert.equal(summary.badge.state, 'passing');
-  assert.equal(summary.badge.tone, 'success');
-  assert.equal(summary.badge.text, '1 public run; 1/1 required comparisons passing');
-  assert.equal(summary.metrics.registryRunCount, 1);
-  assert.equal(summary.metrics.pairCount, 1);
-  assert.equal(summary.metrics.acceptedPairCount, 1);
-  assert.equal(summary.metrics.requiredMismatchPairCount, 0);
-  assert.equal(summary.metrics.allRequiredPairsAccept, true);
-  assert.equal(summary.metrics.diagonalAccepts, true);
-  assert.equal(summary.boundary.publicTheoremEmissionAllowed, true);
-  assert.equal(summary.boundary.publicTheoremStatement, 'P = NP');
-  assert.equal(summary.boundary.externalReviewIsMathematicalPremise, false);
+  assert.equal(summary.status, 'historical-verifier-run-matrix-summary-frozen');
+  assert.equal(summary.historical, true);
+  assert.equal(summary.currentStatusBadge, false);
+  assert.equal(summary.badge.state, 'historical');
+  assert.equal(summary.badge.tone, 'neutral');
+  assert.equal(summary.badge.shortText, 'historical snapshot');
+  assert.equal(summary.currentBoundary.mathematicalTheoremEstablished, false);
+  assert.equal(summary.currentBoundary.publicTheoremEmissionAllowed, false);
+  assert.equal(summary.currentBoundary.publicTheoremStatement, null);
+  assert.equal(summary.currentBoundary.finalTheoremReady, false);
   assert.match(summary.summarySha256, /^[0-9a-f]{64}$/);
 });
 
-test('matrix badge generator matches the committed summary core', async () => {
+test('summary generator reproduces the committed neutral summary', async () => {
   const matrix = await readJson('public/pnp-verifier-run-comparison-matrix.json');
   const committed = await readJson('public/pnp-verifier-run-matrix-summary.json');
   const generated = BuildPNPVerifierRunMatrixSummary0(matrix);
-
   assert.equal(generated.tag, 'accept');
-  assert.equal(generated.summary.kind, committed.kind);
-  assert.equal(generated.summary.badge.state, committed.badge.state);
-  assert.equal(generated.summary.badge.text, committed.badge.text);
-  assert.deepEqual(generated.summary.metrics, committed.metrics);
-  assert.deepEqual(generated.summary.recordIds, committed.recordIds);
+  assert.equal(generated.summary.summarySha256, committed.summarySha256);
+  assert.equal(generated.summary.badge.state, 'historical');
+  assert.equal(generated.summary.badge.tone, 'neutral');
 });
 
-test('matrix badge generator switches to attention for required mismatches', async () => {
+test('historical summary never becomes a current green badge even if old pairs agree', async () => {
   const matrix = await readJson('public/pnp-verifier-run-comparison-matrix.json');
-  matrix.requiredMismatchPairCount = 1;
-  matrix.rejectedPairCount = 1;
-  matrix.allRequiredPairsAccept = false;
-  matrix.allRequiredPairsMatch = false;
-
   const generated = BuildPNPVerifierRunMatrixSummary0(matrix);
-  assert.equal(generated.tag, 'accept');
-  assert.equal(generated.summary.badge.state, 'attention');
-  assert.equal(generated.summary.badge.tone, 'warning');
-});
-
-test('matrix badge pages expose compact summary fragments', async () => {
-  const status = await readText('status.html');
-  const runs = await readText('verification-runs.html');
-  const digests = await readText('verifier-run-digests.html');
-  const joined = `${status}\n${runs}\n${digests}`;
-
-  for (const fragment of [
-    'Verifier-run matrix badge',
-    '1 public run; 1/1 required comparisons passing',
-    'public/pnp-verifier-run-matrix-summary.json',
-    'npm run pnp:run-summary',
-    'badge.state = passing',
-    'metrics.requiredMismatchPairCount = 0'
-  ]) {
-    assert.equal(joined.includes(fragment), true, `missing matrix badge fragment: ${fragment}`);
-  }
+  assert.equal(generated.summary.metrics.allRequiredPairsAccept, true);
+  assert.equal(generated.summary.currentStatusBadge, false);
+  assert.notEqual(generated.summary.badge.state, 'passing');
+  assert.notEqual(generated.summary.badge.tone, 'success');
 });

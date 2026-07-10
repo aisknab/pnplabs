@@ -6,60 +6,26 @@ async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
 
-test('homepage script injects verifier-run matrix badge summary', async () => {
-  const script = await readText('assets/main.js');
-
-  for (const fragment of [
-    'data-homepage-matrix-summary',
-    'Verifier-run matrix badge',
-    'badge.state = passing',
-    'badge.text = "1 public run; 1/1 required comparisons passing"',
-    'metrics.registryRunCount = 1',
-    'metrics.acceptedPairCount = 1',
-    'metrics.requiredMismatchPairCount = 0',
-    'metrics.diagonalAccepts = true',
-    'Run records</span><strong>1 public run</strong>',
-    'Required pairs</span><strong>1/1 passing</strong>',
-    'Required mismatches</span><strong>0</strong>',
-    'public/pnp-verifier-run-matrix-summary.json',
-    'verifier-run-digests.html',
-    'Run matrix badge',
-    'Compare run digests'
-  ]) {
-    assert.equal(script.includes(fragment), true, `missing homepage matrix badge script fragment: ${fragment}`);
-  }
-});
-
-test('homepage script injects one-command verifier upload panel', async () => {
-  const script = await readText('assets/main.js');
-
-  for (const fragment of [
-    'data-homepage-one-command-upload',
-    'One-command verifier upload',
-    'git clone https://github.com/aisknab/pnp.git',
-    'npm ci',
-    'npm run verify',
-    'Upload verification run to PNP Labs? [y/N]',
-    'User input</span><strong>type y</strong>',
-    'Fallback</span><strong>issue body file</strong>',
-    'PNPActivatedVerificationRunRecord0',
-    'public/pnp-one-command-upload.json',
-    'One-command upload'
-  ]) {
-    assert.equal(script.includes(fragment), true, `missing homepage one-command upload fragment: ${fragment}`);
-  }
-});
-
-test('homepage page still loads the shared dynamic status script', async () => {
+test('homepage publishes the conservative current theorem boundary', async () => {
   const html = await readText('index.html');
-  assert.match(html, /<script src="assets\/main\.js" defer><\/script>/);
+  for (const fragment of [
+    'The repository does not currently establish P = NP.',
+    'data-formal-status-root',
+    'mathematicalTheoremEstablished = false',
+    'publicTheoremEmissionAllowed = false',
+    'finalTheoremReady = false',
+    'rootLeanTheoremAxiomAuditPassed = false',
+    'projectSpecificAxiomsRemaining = true',
+    'Legacy JavaScript checker acceptance is historical assertion-record evidence only.',
+    'View current status',
+  ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
 });
 
-test('homepage badge wording keeps reproducibility status separate from theorem premise status', async () => {
+test('homepage enhancement removes stale upload and matrix badge elements', async () => {
   const script = await readText('assets/main.js');
-  assert.match(script, /P = NP public theorem emission is activated under the repository checker trust model\./);
-  assert.match(script, /External review remains audit evidence/);
-  assert.match(script, /not a theorem premise/);
-  assert.match(script, /badge\.state = passing/);
-  assert.doesNotMatch(script, /external\s+review\s+is\s+(a\s+)?(mathematical\s+)?premise/i);
+  assert.match(script, /querySelectorAll\('\[data-homepage-matrix-summary\], \[data-homepage-one-command-upload\]'\)/);
+  assert.match(script, /public\/pnp-verifier-run-matrix-summary\.json/);
+  assert.match(script, /public\/pnp-one-command-upload\.json/);
+  assert.doesNotMatch(script, /badge\.state = passing/);
+  assert.doesNotMatch(script, /1 public run; 1\/1 required comparisons passing/);
 });

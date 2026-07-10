@@ -4,8 +4,18 @@
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-03",
-  "status": "public-review-ready-non-activating",
-  "claimBoundary": {
+  "status": "historical-public-review-payload-superseded",
+  "historical": true,
+  "currentStatusAuthority": false,
+  "supersededBy": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01",
+  "currentClaimBoundary": {
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "finalTheoremReady": false,
+    "projectSpecificAxiomsRemaining": true
+  },
+  "historicalClaimBoundary": {
     "publicTheoremEmissionAllowed": false,
     "finalTheoremReady": false,
     "activeFinalNodeIds": [],
@@ -55,6 +65,8 @@
     "directTheoremEmissionAllowedByReviewSurface": false
   },
   "nonClaims": [
+    "This is a superseded historical payload and is not the current status authority.",
+    "The current formal reconstruction does not establish P = NP or permit theorem emission.",
     "This public-review payload is not a theorem-activation surface.",
     "This public-review payload does not mark any Section 22 theorem-ledger row as fully discharged.",
     "This public-review payload keeps historical theorem-emission artifacts fenced by the sanitized, status-bound public-review boundary."

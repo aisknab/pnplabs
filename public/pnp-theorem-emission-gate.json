@@ -5,14 +5,25 @@
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-03",
   "coordinate": "PNP-PUBLIC-THEOREM-EMISSION-GATE-2026-06-27-01",
-  "status": "public-theorem-emission-gate-denied",
-  "claimBoundary": {
+  "status": "historical-public-theorem-emission-gate-superseded",
+  "historical": true,
+  "currentStatusAuthority": false,
+  "supersededBy": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01",
+  "currentClaimBoundary": {
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "finalTheoremReady": false,
+    "projectSpecificAxiomsRemaining": true
+  },
+  "historicalClaimBoundary": {
     "publicTheoremEmissionAllowed": false,
     "finalTheoremReady": false,
     "activeFinalNodeIds": [],
     "remainingBlockers": ["Release.UnrestrictedFinalSoundness", "ExternalReview.Acceptance"]
   },
   "gate": {
+    "historical": true,
     "publicTheoremEmissionGateReady": true,
     "publicTheoremEmissionGatePassed": false,
     "publicTheoremEmissionDenied": true,
@@ -43,6 +54,8 @@
   ],
   "verificationCommand": "node pcc-public-theorem-emission-gate0.mjs --json",
   "nonClaims": [
+    "This is a superseded historical payload and is not the current status authority.",
+    "The current formal reconstruction does not establish P = NP or permit theorem emission.",
     "This payload does not activate public theorem emission.",
     "This payload does not clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance.",
     "This payload does not claim unrestricted final soundness or independent external review acceptance."

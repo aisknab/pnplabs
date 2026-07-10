@@ -1,7 +1,9 @@
 {
   "kind": "PNPVerifierRunDigestComparison0",
   "version": 0,
-  "status": "verifier-run-digest-comparison-ready",
+  "status": "historical-verifier-run-digest-comparison-frozen",
+  "historical": true,
+  "intakeFrozen": true,
   "sourceRegistry": "public/pnp-verification-runs.json",
   "page": "verifier-run-digests.html",
   "tool": "tools/compare-pnp-verifier-runs.mjs",
@@ -18,7 +20,7 @@
     "proofScriptOutputsNormalizedSha256",
     "artifactsOrLogsNormalizedSha256"
   ],
-  "claimBoundaryRequiredValues": {
+  "historicalClaimBoundaryRequiredValues": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
     "publicTheoremConclusion": "P = NP",
@@ -27,17 +29,27 @@
     "remainingBlockers": [],
     "externalReviewIsMathematicalPremise": false
   },
+  "currentClaimBoundary": {
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "publicTheoremConclusion": null,
+    "finalTheoremReady": false,
+    "projectSpecificAxiomsRemaining": true,
+    "externalReviewIsMathematicalPremise": false
+  },
   "comparisonSemantics": {
-    "verdictNormalizedSha256": "The activated theorem verdict fields match after normalization.",
-    "activatedStatusNormalizedSha256": "The activated status coordinates and premise flags match after normalization.",
-    "proofScriptOutputsNormalizedSha256": "Focused proof-script accept outputs match after normalization.",
+    "verdictNormalizedSha256": "Historical activated-status verdict fields match after normalization.",
+    "activatedStatusNormalizedSha256": "Historical activated-status coordinates and premise flags match after normalization.",
+    "proofScriptOutputsNormalizedSha256": "Historical focused checker-script outputs match after normalization.",
     "artifactsOrLogsNormalizedSha256": "Log-like evidence matches after timestamp, ANSI, line-ending, blank-line, and trailing-whitespace normalization.",
     "runRecordNormalizedSha256": "The full normalized run record matches, including runner metadata and evidence references."
   },
   "nonClaims": [
-    "Digest comparison is reproducibility metadata for activated checker-trust verifier runs.",
-    "A digest match is not an external-consensus claim or peer-review acceptance.",
+    "The repository does not currently establish P = NP.",
+    "Digest comparison is historical reproducibility metadata for records created under a superseded activated checker status.",
+    "A digest match is not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance.",
     "A digest mismatch is a triage signal; it does not by itself refute the source/checker proof stack.",
-    "The source/checker verifier remains the proof-stack reproduction target."
+    "No current theorem-status badge may be derived from this frozen policy or its records."
   ]
 }

@@ -55,15 +55,12 @@ test('normalizer attaches all required digest fields to a source-checker verifie
   }
 });
 
-test('import tool stores normalized digests on imported source-checker records', async () => {
+test('frozen import rejects an otherwise normalizable historical record without mutation', async () => {
   const registry = await readJson('public/pnp-verification-runs.json');
   const record = await readJson('tests/fixtures/pnp-activated-verifier-run.import.json');
   const imported = ImportPNPActivatedRunRecord0(registry, record, { syncedOn: '2026-07-06' });
 
-  assert.equal(imported.tag, 'accept');
-  assert.equal(imported.normalizedDigests.policy, 'PNPActivatedRunDigestNormalization0');
-  assert.match(imported.normalizedDigests.runRecordNormalizedSha256, /^[0-9a-f]{64}$/);
-  assert.equal(imported.registry.runs.at(-1).recordId, record.recordId);
-  assert.equal(imported.registry.runs.at(-1).normalizedDigests.policy, 'PNPActivatedRunDigestNormalization0');
-  assert.match(imported.registry.runs.at(-1).normalizedDigests.artifactsOrLogsNormalizedSha256, /^[0-9a-f]{64}$/);
+  assert.equal(imported.tag, 'reject');
+  assert.equal(imported.coord, 'ImportRun.IntakeFrozen');
+  assert.equal(registry.runs.length, 1);
 });

@@ -5,8 +5,18 @@
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-03",
   "coordinate": "PNP-EXTERNAL-REVIEW-STATUS-2026-06-27-01",
-  "status": "external-review-not-accepted",
-  "claimBoundary": {
+  "status": "historical-external-review-status-superseded",
+  "historical": true,
+  "currentStatusAuthority": false,
+  "supersededBy": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01",
+  "currentClaimBoundary": {
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "finalTheoremReady": false,
+    "externalReviewIsMathematicalPremise": false,
+    "externalReviewIsReleaseBlocker": false
+  },
+  "historicalClaimBoundary": {
     "publicTheoremEmissionAllowed": false,
     "finalTheoremReady": false,
     "activeFinalNodeIds": [],
@@ -16,6 +26,7 @@
     ]
   },
   "externalReview": {
+    "historical": true,
     "externalReviewStatusReady": true,
     "externalReviewAcceptanceClaimed": false,
     "independentReviewAcceptanceConfirmed": false,
@@ -47,6 +58,8 @@
   },
   "verificationCommand": "node pcc-external-review-status0.mjs --json",
   "nonClaims": [
+    "This is a superseded historical payload and is not the current status authority.",
+    "External review is optional audit evidence and is not a current mathematical premise or release blocker.",
     "This payload does not activate public theorem emission.",
     "This payload does not clear Release.UnrestrictedFinalSoundness or ExternalReview.Acceptance.",
     "This payload does not claim independent external review acceptance.",
