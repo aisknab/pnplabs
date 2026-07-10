@@ -20,7 +20,7 @@ rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Its typed direct-wire NAND syntax, Boolean evaluation, output wiring, size laws, and small semantic examples are formalized and axiom-free. This milestone does not supply the bounded enumerator, exact minimum, compatible replacement or slack laws, locked-NAND builder or threshold, SAT, or the root theorem. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Its typed direct-wire NAND semantics and exact-width bounded syntactic enumerator are formalized and axiom-free. The enumerator covers every typed source, ordered gate pair, topological program, and output tuple, including the unique empty output tuple. It is intentionally noncanonical and not deduplicated; semantic equivalence, exact minimum, compatible replacement and slack laws, locked-NAND builder and threshold, SAT, and the root theorem remain unfinished. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
 
 The active blockers are the seven entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete complexity and SAT definitions, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
 
@@ -41,12 +41,14 @@ node pcc-formal-public-surface0.mjs --json
 npm run pnp:verify
 node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
+node --test audits/lean-nand-enumerator0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and audit both the bridge dependencies and the axiom-free direct-wire NAND semantics core. Their success does not establish enumeration, minimum size, replacement/slack, the locked builder or threshold, SAT, or the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
+These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and audit the bridge dependencies, direct-wire NAND semantics, and exact-width syntactic enumerator. Their success does not establish canonical or duplicate-free enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder or threshold, SAT, or the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
 
 The public status page is [`status.html`](status.html).
 

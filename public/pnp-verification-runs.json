@@ -24,7 +24,6 @@
     "projectSpecificAxiomsRemaining": true,
     "externalReviewIsMathematicalPremise": false,
     "remainingBlockers": [
-      "Formal.PinnedLeanBuildAndRootTarget",
       "Formal.ConcreteComplexityModel",
       "Formal.ConcreteSAT",
       "Formal.LockedNANDThreshold",
