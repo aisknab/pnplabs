@@ -22,7 +22,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Public wording must distinguish that build fact from theorem completion: `PNP.Main.p_eq_np` does not exist, and five project-specific axioms remain (`PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`).
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. The typed direct-wire NAND syntax, Boolean evaluation, output wiring, size and equivalence laws, and representative small examples are formalized and axiom-free. Public wording must distinguish that foundation from enumeration and theorem completion: the bounded enumerator, exact minimum, compatible replacement and slack, locked-NAND builder and threshold, SAT, and `PNP.Main.p_eq_np` remain unfinished, and five project-specific axioms remain (`PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`).
 
 ## Checker wording
 
