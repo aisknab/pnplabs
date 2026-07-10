@@ -38,7 +38,7 @@ test('site status is byte-for-byte identical to the merged authoritative sibling
 test('current status exposes the incomplete formal reconstruction', async () => {
   const status = await readJson('public/pnp-status.json');
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-05');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-06');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.mathematicalTheoremEstablished, false);
   assert.equal(status.publicTheoremEmissionAllowed, false);
@@ -71,8 +71,22 @@ test('current status exposes the incomplete formal reconstruction', async () => 
   assert.equal(status.leanNANDEnumeratorUsesOrderedGatePairs, true);
   assert.equal(status.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true);
   assert.equal(status.leanNANDEnumeratorDeduplicated, false);
-  assert.equal(status.leanNANDSemanticEquivalenceDecidable, false);
-  assert.equal(status.leanNANDMinimumAndSlackFormalized, false);
+  assert.equal(status.leanNANDTruthTableFormalized, true);
+  assert.equal(status.leanNANDTruthTableAxiomAuditPassed, true);
+  assert.equal(status.leanNANDSemanticEquivalenceDecidable, true);
+  assert.equal(status.leanNANDMinimumAndSlackFormalized, true);
+  assert.equal(status.leanNANDReferenceMinimumFormalized, true);
+  assert.equal(status.leanNANDReferenceMinimumAxiomAuditPassed, true);
+  assert.equal(status.leanNANDReferenceMinimumExhaustive, true);
+  assert.equal(status.leanNANDReferenceMinimumScope, 'finite-boolean-direct-wire-empty-profile');
+  assert.equal(status.leanNANDReferenceMinimumPolynomialRuntimeProved, false);
+  assert.equal(status.leanNANDResidualSlackZeroIffMinimumFormalized, true);
+  assert.equal(status.leanNANDCompositionFormalized, true);
+  assert.equal(status.leanNANDCompositionAxiomAuditPassed, true);
+  assert.equal(status.leanNANDFramedReplacementFormalized, true);
+  assert.equal(status.leanNANDFramedGlobalSlackLawFormalized, true);
+  assert.equal(status.leanNANDFramedSlackAxiomAuditPassed, true);
+  assert.equal(status.leanNANDReplacementScope, 'concrete-serial-framed-context');
   assert.equal(status.leanCompatibleReplacementFormalized, false);
   assert.equal(status.leanGlobalSlackLawFormalized, false);
   assert.equal(status.leanLockedNANDBuilderFormalized, false);
@@ -96,18 +110,25 @@ test('current status exposes the incomplete formal reconstruction', async () => 
     'node --test audits/lean-root-target0.test.mjs',
     'node --test audits/lean-nand-semantics0.test.mjs',
     'node --test audits/lean-nand-enumerator0.test.mjs',
+    'node --test audits/lean-nand-reference-minimum0.test.mjs',
     'lake build PNP',
     'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
     'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
     'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
   ]);
   assert.deepEqual(status.historicalReplayWorkflows, ['.github/workflows/legacy-v0-replay.yml']);
   assert.equal(status.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json');
   assert.equal(status.legacyCheckerArchiveCheckCommand, 'npm run legacy:v0:check');
   assert.equal(status.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d');
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-ENUMERATOR-05');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-REFERENCE-MINIMUM-06');
   assert.ok(status.nonClaims.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.'));
-  assert.ok(status.nonClaims.includes('The exact-width syntactic NAND enumeration does not prove canonical/deduplicated enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder/threshold, SAT, or P = NP.'));
+  assert.ok(status.nonClaims.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.'));
+  assert.ok(status.nonClaims.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer."));
+  assert.ok(status.nonClaims.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family."));
   assert.equal(status.remainingFormalObligations.length, 7);
   assert.deepEqual(status.remainingBlockers, status.remainingFormalObligations);
   assert.equal(status.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
@@ -125,9 +146,9 @@ test('current status inventories every active companion workflow', async () => {
 
 test('payload index mirrors the conservative boundary and labels legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 9);
-  assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-05');
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-ENUMERATOR-05');
+  assert.equal(index.version, 10);
+  assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-06');
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-REFERENCE-MINIMUM-06');
   assert.equal(index.status, 'formal-reconstruction-status-payloads-ready');
   assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
   assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, false);
@@ -144,8 +165,22 @@ test('payload index mirrors the conservative boundary and labels legacy surfaces
   assert.equal(index.claimBoundary.leanNANDEnumeratorUsesOrderedGatePairs, true);
   assert.equal(index.claimBoundary.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true);
   assert.equal(index.claimBoundary.leanNANDEnumeratorDeduplicated, false);
-  assert.equal(index.claimBoundary.leanNANDSemanticEquivalenceDecidable, false);
-  assert.equal(index.claimBoundary.leanNANDMinimumAndSlackFormalized, false);
+  assert.equal(index.claimBoundary.leanNANDTruthTableFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDTruthTableAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanNANDSemanticEquivalenceDecidable, true);
+  assert.equal(index.claimBoundary.leanNANDMinimumAndSlackFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDReferenceMinimumFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDReferenceMinimumAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanNANDReferenceMinimumExhaustive, true);
+  assert.equal(index.claimBoundary.leanNANDReferenceMinimumScope, 'finite-boolean-direct-wire-empty-profile');
+  assert.equal(index.claimBoundary.leanNANDReferenceMinimumPolynomialRuntimeProved, false);
+  assert.equal(index.claimBoundary.leanNANDResidualSlackZeroIffMinimumFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDCompositionFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDCompositionAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanNANDFramedReplacementFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDFramedGlobalSlackLawFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDFramedSlackAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanNANDReplacementScope, 'concrete-serial-framed-context');
   assert.equal(index.claimBoundary.leanCompatibleReplacementFormalized, false);
   assert.equal(index.claimBoundary.leanGlobalSlackLawFormalized, false);
   assert.equal(index.claimBoundary.leanLockedNANDBuilderFormalized, false);
@@ -161,8 +196,13 @@ test('payload index mirrors the conservative boundary and labels legacy surfaces
   assert.equal(index.claimBoundary.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
   assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-semantics0.test.mjs'));
   assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-enumerator0.test.mjs'));
+  assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-reference-minimum0.test.mjs'));
   assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean'));
   assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean'));
+  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean'));
+  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean'));
+  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean'));
+  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean'));
   assert.equal(index.historicalRunIntakeFrozen, true);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   for (const id of ['pnp-one-command-upload', 'pnp-verification-runs', 'pnp-verifier-run-comparison-matrix', 'pnp-verifier-run-matrix-summary']) {
@@ -183,12 +223,18 @@ test('status page shows every current false field and the remaining blockers', a
     'projectSpecificAxiomsRemaining = true',
     'Seven obligations remain',
     'leanprover/lean4:v4.31.0',
-    'Axiom-free NAND semantics and exact-width enumeration',
-    'leanNANDEnumeratorFormalized = true',
-    'leanNANDEnumeratorDeduplicated = false',
-    'leanNANDSemanticEquivalenceDecidable = false',
+    'Executable finite equivalence, minimum, and framed slack',
+    'leanNANDSemanticEquivalenceDecidable = true',
+    'leanNANDMinimumAndSlackFormalized = true',
+    'leanNANDReferenceMinimumPolynomialRuntimeProved = false',
+    'leanCompatibleReplacementFormalized = false',
+    'concrete-serial-framed-context',
     'PNPNANDSemanticsAxiomAudit.lean',
     'PNPNANDEnumeratorAxiomAudit.lean',
+    'PNPNANDTruthTableAxiomAudit.lean',
+    'PNPNANDMinimumAxiomAudit.lean',
+    'PNPNANDCompositionAxiomAudit.lean',
+    'PNPNANDSlackAxiomAudit.lean',
     'PNP.CheckPCCPackexp',
     'Formal.ResidualBandMinimizer',
     'Formal.RootTheoremAndAxiomAudit',

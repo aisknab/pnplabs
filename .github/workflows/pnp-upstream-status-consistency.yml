@@ -31,7 +31,7 @@ jobs:
 
           function assertFormalBoundary(payload, label) {
             assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-05', `${label}: coordinate mismatch`);
+            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-06', `${label}: coordinate mismatch`);
             assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
             assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
             assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
@@ -63,8 +63,22 @@ jobs:
             assert.equal(payload.leanNANDEnumeratorUsesOrderedGatePairs, true, `${label}: enumerator must preserve ordered NAND input pairs`);
             assert.equal(payload.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true, `${label}: enumerator must include the unique empty output tuple`);
             assert.equal(payload.leanNANDEnumeratorDeduplicated, false, `${label}: enumerator must not be described as deduplicated`);
-            assert.equal(payload.leanNANDSemanticEquivalenceDecidable, false, `${label}: semantic equivalence decision must remain incomplete`);
-            assert.equal(payload.leanNANDMinimumAndSlackFormalized, false, `${label}: NAND minimum/slack must remain incomplete`);
+            assert.equal(payload.leanNANDTruthTableFormalized, true, `${label}: NAND truth table must be formalized`);
+            assert.equal(payload.leanNANDTruthTableAxiomAuditPassed, true, `${label}: NAND truth-table axiom audit must pass`);
+            assert.equal(payload.leanNANDSemanticEquivalenceDecidable, true, `${label}: finite NAND semantic equivalence must be decidable`);
+            assert.equal(payload.leanNANDMinimumAndSlackFormalized, true, `${label}: reference minimum/slack must be formalized`);
+            assert.equal(payload.leanNANDReferenceMinimumFormalized, true, `${label}: reference minimum must be formalized`);
+            assert.equal(payload.leanNANDReferenceMinimumAxiomAuditPassed, true, `${label}: reference-minimum axiom audit must pass`);
+            assert.equal(payload.leanNANDReferenceMinimumExhaustive, true, `${label}: reference minimum must be marked exhaustive`);
+            assert.equal(payload.leanNANDReferenceMinimumScope, 'finite-boolean-direct-wire-empty-profile', `${label}: reference-minimum scope mismatch`);
+            assert.equal(payload.leanNANDReferenceMinimumPolynomialRuntimeProved, false, `${label}: polynomial runtime must remain unproved`);
+            assert.equal(payload.leanNANDResidualSlackZeroIffMinimumFormalized, true, `${label}: zero-slack equivalence must be formalized`);
+            assert.equal(payload.leanNANDCompositionFormalized, true, `${label}: NAND composition must be formalized`);
+            assert.equal(payload.leanNANDCompositionAxiomAuditPassed, true, `${label}: NAND composition axiom audit must pass`);
+            assert.equal(payload.leanNANDFramedReplacementFormalized, true, `${label}: framed replacement must be formalized`);
+            assert.equal(payload.leanNANDFramedGlobalSlackLawFormalized, true, `${label}: framed slack law must be formalized`);
+            assert.equal(payload.leanNANDFramedSlackAxiomAuditPassed, true, `${label}: framed slack axiom audit must pass`);
+            assert.equal(payload.leanNANDReplacementScope, 'concrete-serial-framed-context', `${label}: replacement scope mismatch`);
             assert.equal(payload.leanCompatibleReplacementFormalized, false, `${label}: compatible replacement must remain incomplete`);
             assert.equal(payload.leanGlobalSlackLawFormalized, false, `${label}: global slack law must remain incomplete`);
             assert.equal(payload.leanLockedNANDBuilderFormalized, false, `${label}: locked-NAND builder must remain incomplete`);
@@ -86,14 +100,19 @@ jobs:
               'node --test audits/lean-root-target0.test.mjs',
               'node --test audits/lean-nand-semantics0.test.mjs',
               'node --test audits/lean-nand-enumerator0.test.mjs',
+              'node --test audits/lean-nand-reference-minimum0.test.mjs',
               'lake build PNP',
               'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
               'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
             ], `${label}: verification commands mismatch`);
             assert.equal(payload.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json', `${label}: archive manifest mismatch`);
             assert.equal(payload.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d', `${label}: replay command mismatch`);
-            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-ENUMERATOR-05', `${label}: public-surface baseline mismatch`);
+            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-REFERENCE-MINIMUM-06', `${label}: public-surface baseline mismatch`);
             assert.deepEqual(payload.remainingBlockers, [
               'Formal.ConcreteComplexityModel',
               'Formal.ConcreteSAT',
@@ -104,7 +123,9 @@ jobs:
               'Formal.RootTheoremAndAxiomAudit',
             ], `${label}: formal blockers mismatch`);
             assert.ok(payload.nonClaims.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.'), `${label}: NAND-semantics non-claim missing`);
-            assert.ok(payload.nonClaims.includes('The exact-width syntactic NAND enumeration does not prove canonical/deduplicated enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder/threshold, SAT, or P = NP.'), `${label}: NAND-enumerator non-claim missing`);
+            assert.ok(payload.nonClaims.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.'), `${label}: NAND-enumerator non-claim missing`);
+            assert.ok(payload.nonClaims.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer."), `${label}: reference-minimum non-claim missing`);
+            assert.ok(payload.nonClaims.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family."), `${label}: framed-replacement non-claim missing`);
           }
 
           const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));
