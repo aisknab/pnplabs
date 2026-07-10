@@ -20,7 +20,9 @@ rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Its typed direct-wire NAND semantics, exact-width enumeration, executable finite truth-table equivalence, exhaustive empty-profile reference minimum/slack, and concrete serial framed replacement are formalized and axiom-audited. The enumerator remains noncanonical and may contain duplicates. The reference minimum has no polynomial-runtime claim, and replacement does not cover arbitrary support profiles. The locked-NAND builder and threshold, SAT, and the root theorem remain unfinished. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. Its typed direct-wire NAND semantics, exact-width enumeration, executable finite truth-table equivalence, exhaustive empty-profile reference minimum/slack, concrete serial framed replacement, and local locked-NAND candidate/baseline layer are formalized and axiom-audited. Six local gadgets have honest typed gate/output widths, internal macro programs are constant-free, counts are source-derived, and the five square local candidates have exact reference minima. The one-output final conjunction is excluded from that exactness result. Global cross-instance `BaselineDistinct`, the locked-NAND builder and threshold, residual slack at most four, polynomiality, SAT, and the root theorem remain unfinished. No `PNP.Main.p_eq_np` theorem exists, and five project-specific axioms remain: `PNP.SAT`, `PNP.LockedNANDThreshold`, `PNP.ResidualBandExactMinimization`, `PNP.GeneratePCCPack`, and `PNP.CheckPCCPackexp`.
+
+The report convention is an ordered multi-output word: its baseline coordinates plus one final coordinate remain exposed. A legacy synthetic `m = 2` seed is quarantined as internally inconsistent: honest baseline/displayed counts are `86/90`, metadata-consistent counts are `95/99`, and stored hybrid counts are `91/95`.
 
 The active blockers are the seven entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete complexity and SAT definitions, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
 
@@ -43,6 +45,7 @@ node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
 node --test audits/lean-nand-enumerator0.test.mjs
 node --test audits/lean-nand-reference-minimum0.test.mjs
+node --test audits/lean-locked-nand-baseline0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
@@ -51,9 +54,13 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean
 ```
 
-These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and audit the finite reference semantics, minimum, composition, and framed slack results. Their success does not establish canonical or duplicate-free enumeration, polynomial-time minimization, arbitrary-support replacement, the locked builder or threshold, SAT, or the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
+These commands expose the current status, run the repository verifier, build the pinned Lean `PNP` library root, and audit the finite reference semantics, framed slack, and locked-NAND local-baseline results. Their success does not establish canonical or duplicate-free enumeration, polynomial-time minimization, arbitrary-support replacement, global locked-NAND distinctness, the builder or threshold, slack at most four, SAT, or the target theorem: the concrete root theorem is absent and five project-specific axioms remain.
 
 The public status page is [`status.html`](status.html).
 
