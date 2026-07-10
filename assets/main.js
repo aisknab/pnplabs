@@ -47,7 +47,7 @@ projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
 
 function isConservativeFormalStatus(payload) {
   return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-05'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-06'
     && payload.status === 'formal-reconstruction-in-progress'
     && payload.currentStatusAuthority === true
     && payload.mathematicalTheoremEstablished === false
@@ -81,8 +81,22 @@ function isConservativeFormalStatus(payload) {
     && payload.leanNANDEnumeratorUsesOrderedGatePairs === true
     && payload.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple === true
     && payload.leanNANDEnumeratorDeduplicated === false
-    && payload.leanNANDSemanticEquivalenceDecidable === false
-    && payload.leanNANDMinimumAndSlackFormalized === false
+    && payload.leanNANDTruthTableFormalized === true
+    && payload.leanNANDTruthTableAxiomAuditPassed === true
+    && payload.leanNANDSemanticEquivalenceDecidable === true
+    && payload.leanNANDMinimumAndSlackFormalized === true
+    && payload.leanNANDReferenceMinimumFormalized === true
+    && payload.leanNANDReferenceMinimumAxiomAuditPassed === true
+    && payload.leanNANDReferenceMinimumExhaustive === true
+    && payload.leanNANDReferenceMinimumScope === 'finite-boolean-direct-wire-empty-profile'
+    && payload.leanNANDReferenceMinimumPolynomialRuntimeProved === false
+    && payload.leanNANDResidualSlackZeroIffMinimumFormalized === true
+    && payload.leanNANDCompositionFormalized === true
+    && payload.leanNANDCompositionAxiomAuditPassed === true
+    && payload.leanNANDFramedReplacementFormalized === true
+    && payload.leanNANDFramedGlobalSlackLawFormalized === true
+    && payload.leanNANDFramedSlackAxiomAuditPassed === true
+    && payload.leanNANDReplacementScope === 'concrete-serial-framed-context'
     && payload.leanCompatibleReplacementFormalized === false
     && payload.leanGlobalSlackLawFormalized === false
     && payload.leanLockedNANDBuilderFormalized === false
@@ -112,14 +126,21 @@ function isConservativeFormalStatus(payload) {
       'node --test audits/lean-root-target0.test.mjs',
       'node --test audits/lean-nand-semantics0.test.mjs',
       'node --test audits/lean-nand-enumerator0.test.mjs',
+      'node --test audits/lean-nand-reference-minimum0.test.mjs',
       'lake build PNP',
       'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
     ])
-    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-ENUMERATOR-05'
+    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-REFERENCE-MINIMUM-06'
     && payload.nonClaims?.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.')
-    && payload.nonClaims?.includes('The exact-width syntactic NAND enumeration does not prove canonical/deduplicated enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder/threshold, SAT, or P = NP.');
+    && payload.nonClaims?.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.')
+    && payload.nonClaims?.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer.")
+    && payload.nonClaims?.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family.");
 }
 
 function renderFormalStatus(root, payload, sourceState) {
@@ -160,17 +181,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The pinned Lean PNP library root now includes axiom-free direct-wire NAND semantics and exact-width bounded syntactic enumeration. The enumerator is not canonical or deduplicated, and the proof route remains unfinished; the concrete root theorem does not exist, and five project-specific axioms remain.';
+    lede.textContent = 'The pinned Lean PNP library root now includes executable finite truth-table equivalence, an exhaustive empty-profile reference minimum, and concrete serial framed replacement and slack proofs. No polynomial runtime or arbitrary-support theorem is claimed; the concrete root theorem does not exist, and five project-specific axioms remain.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>NAND semantics and enumeration checked</span><span>semantic minimum and proof route</span><strong>in progress</strong>';
+    trace.innerHTML = '<span>finite reference semantics and framed slack checked</span><span>locked-NAND and polynomial proof route</span><strong>in progress</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> typed direct-wire NAND semantics and exact-width bounded syntactic enumeration are axiom-free. The enumeration is intentionally noncanonical and not deduplicated; semantic equivalence, minimum, replacement/slack, locked builder and threshold, SAT, and <code>PNP.Main.p_eq_np</code> remain unfinished, with five project-specific axioms.';
+    firstNote.innerHTML = '<strong>Current status:</strong> executable truth-table equivalence and exhaustive minimum/slack are formalized for finite Boolean direct-wire candidates with an empty profile. Replacement and the slack law cover only concrete serial framed contexts. Polynomial runtime, arbitrary supports, locked-NAND, SAT, and <code>PNP.Main.p_eq_np</code> remain unfinished, with five project-specific axioms.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -250,7 +271,7 @@ projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
-        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the NAND semantics and enumerator axiom audits. Exact-width syntactic completeness is assumption-free, but it is not semantic equivalence, minimum size, the absent <code>PNP.Main.p_eq_np</code> theorem, or a project-axiom-free bridge.</p></article>
+        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the NAND semantics, enumerator, truth-table, minimum, composition, and slack axiom audits. The exhaustive finite reference minimum has no polynomial-runtime claim, and framed replacement is not an arbitrary-support theorem.</p></article>
         <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
@@ -271,7 +292,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is missing?</h3><p>The exact-width enumerator is intentionally noncanonical and not deduplicated. Semantic equivalence, exact minimum, compatible replacement and slack laws, locked-NAND builder and threshold, concrete complexity and SAT definitions, residual-band arguments, polynomial bounds, the root theorem, and its axiom audit remain unfinished.</p></article>
+        <article class="card"><h3>What is missing?</h3><p>The exact-width enumerator remains noncanonical. The executable minimum is exhaustive and empty-profile only, with no polynomial bound; replacement covers concrete serial frames rather than arbitrary supports. The locked-NAND builder and threshold, concrete complexity and SAT definitions, residual-band argument, polynomial bounds, root theorem, and its axiom audit remain unfinished.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -290,7 +311,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>Typed direct-wire NAND semantics and exact-width bounded syntactic enumeration are formalized and axiom-free. The enumerator is noncanonical and not deduplicated; semantic equivalence, minimum, replacement/slack, locked builder and threshold remain unfinished. No <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>Finite truth-table equivalence, exhaustive empty-profile minimum/slack, and concrete serial framed replacement are formalized and axiom-audited. No polynomial-runtime or arbitrary-support claim follows. The locked builder and threshold remain unfinished; no <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
