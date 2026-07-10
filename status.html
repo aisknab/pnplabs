@@ -34,11 +34,21 @@
     <section class="page-hero">
       <span class="eyebrow">Formal reconstruction in progress</span>
       <h1>Current PNP status</h1>
-      <p class="lede">The pinned Lean <code>PNP</code> library root includes executable finite truth-table equivalence, an exhaustive empty-profile reference minimum, and concrete serial framed replacement and slack proofs. These results have no polynomial-runtime or arbitrary-support claim; the repository still has no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
+      <p class="lede">The pinned Lean <code>PNP</code> root now includes typed local locked-NAND candidates, source-derived baseline accounting, and five exact local square-macro minima. These results do not construct the global baseline or threshold; there is still no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-status.json">Open current status JSON</a>
         <a class="btn secondary" href="https://github.com/aisknab/pnp">Inspect source repository</a>
       </div>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Checked locked-NAND local milestone</div>
+      <h2>Typed candidates, source-derived counts, and five exact local minima</h2>
+      <div class="grid two path">
+        <article class="card"><h3>Complete in this milestone</h3><p>Six report-local gadgets have intrinsically typed direct-wire candidates with gate/output widths <code>10/10</code>, <code>2/2</code>, <code>3/3</code>, <code>18/18</code>, <code>2/2</code>, and <code>4/1</code>. Their internal programs are constant-free. The five square candidates have exact empty-context reference minima of 10, 2, 3, 18, and 2 gates. <code>leanLockedNANDLocalSquareBaselineExactnessFormalized = true</code>.</p></article>
+        <article class="card"><h3>Deliberate scope boundary</h3><p>Counts are derived from typed program sources, and the report word remains multi-output under <code>ordered-multi-output-baseline-coordinates-plus-final-coordinate</code>. The one-output final conjunction has no exact four-gate minimum here. Global cross-instance <code>BaselineDistinct</code>, the builder, threshold, slack at most four, and polynomiality remain unproved: <code>leanLockedNANDGlobalBaselineDistinctFormalized = false</code>, <code>leanLockedNANDBuilderFormalized = false</code>, <code>leanLockedNANDThresholdFormalized = false</code>, <code>leanLockedNANDResidualSlackAtMostFourFormalized = false</code>, and <code>leanLockedNANDPolynomialBuilderFormalized = false</code>.</p></article>
+      </div>
+      <p>The legacy synthetic <code>m = 2</code> fixture is quarantined as inconsistent: honest baseline/displayed counts are <code>86/90</code>, metadata-consistent counts are <code>95/99</code>, and its stored hybrid counts are <code>91/95</code>.</p>
     </section>
 
     <section class="section compact" data-formal-status-root data-status-state="fail-closed">
@@ -117,6 +127,7 @@ node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
 node --test audits/lean-nand-enumerator0.test.mjs
 node --test audits/lean-nand-reference-minimum0.test.mjs
+node --test audits/lean-locked-nand-baseline0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
@@ -124,7 +135,11 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean</code></pre>
+lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean</code></pre>
       <p>A successful status check or build is necessary but not sufficient. The target theorem is not established unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
 

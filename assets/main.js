@@ -47,7 +47,7 @@ projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
 
 function isConservativeFormalStatus(payload) {
   return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-06'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-07'
     && payload.status === 'formal-reconstruction-in-progress'
     && payload.currentStatusAuthority === true
     && payload.mathematicalTheoremEstablished === false
@@ -55,6 +55,8 @@ function isConservativeFormalStatus(payload) {
     && payload.publicTheoremStatement === null
     && payload.publicTheoremConclusion === null
     && payload.finalTheoremReady === false
+    && payload.satInPConclusionAccepted === false
+    && payload.pEqualsNPConclusionAccepted === false
     && payload.rootLeanTheoremPresent === false
     && payload.rootLeanTheoremBuilt === false
     && payload.rootLeanTheoremAxiomAuditPassed === false
@@ -97,10 +99,34 @@ function isConservativeFormalStatus(payload) {
     && payload.leanNANDFramedGlobalSlackLawFormalized === true
     && payload.leanNANDFramedSlackAxiomAuditPassed === true
     && payload.leanNANDReplacementScope === 'concrete-serial-framed-context'
+    && payload.leanLockedNANDDirectCandidatesFormalized === true
+    && payload.leanLockedNANDDirectAxiomAuditPassed === true
+    && payload.leanLockedNANDInternalMacroConstantsAbsent === true
+    && payload.leanDirectWireOutputLowerBoundFormalized === true
+    && payload.leanDirectWireBaselineAxiomAuditPassed === true
+    && payload.leanLockedNANDSourceDerivedCountsFormalized === true
+    && payload.leanLockedNANDBaselineAccountingFormalized === true
+    && payload.leanLockedNANDBaselineAxiomAuditPassed === true
+    && payload.leanLockedNANDConditionalSquareBaselineExactnessFormalized === true
+    && payload.leanLockedNANDLocalBaselineConditionsFormalized === true
+    && payload.leanLockedNANDLocalSquareBaselineExactnessFormalized === true
+    && payload.leanLockedNANDLocalBaselineAxiomAuditPassed === true
+    && payload.leanLockedNANDProofScope === 'typed-local-macros-source-derived-counts-and-five-local-square-baselines'
+    && payload.leanLockedNANDGlobalBaselineDistinctFormalized === false
+    && payload.leanLockedNANDResidualSlackAtMostFourFormalized === false
+    && payload.leanLockedNANDPolynomialBuilderFormalized === false
     && payload.leanCompatibleReplacementFormalized === false
     && payload.leanGlobalSlackLawFormalized === false
     && payload.leanLockedNANDBuilderFormalized === false
     && payload.leanLockedNANDThresholdFormalized === false
+    && payload.lockedNANDOutputConvention === 'ordered-multi-output-baseline-coordinates-plus-final-coordinate'
+    && payload.legacySyntheticLockedNANDM2FixtureStatus === 'quarantined-internally-inconsistent'
+    && payload.legacySyntheticLockedNANDM2HonestBaseline === 86
+    && payload.legacySyntheticLockedNANDM2MetadataConsistentBaseline === 95
+    && payload.legacySyntheticLockedNANDM2StoredBaseline === 91
+    && payload.legacySyntheticLockedNANDM2HonestDisplayedGateCount === 90
+    && payload.legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount === 99
+    && payload.legacySyntheticLockedNANDM2StoredDisplayedGateCount === 95
     && payload.sorryOrAdmitInRootDependencyClosure === null
     && JSON.stringify(payload.projectSpecificAxiomInventory) === JSON.stringify([
       'PNP.SAT',
@@ -127,6 +153,7 @@ function isConservativeFormalStatus(payload) {
       'node --test audits/lean-nand-semantics0.test.mjs',
       'node --test audits/lean-nand-enumerator0.test.mjs',
       'node --test audits/lean-nand-reference-minimum0.test.mjs',
+      'node --test audits/lean-locked-nand-baseline0.test.mjs',
       'lake build PNP',
       'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
@@ -135,12 +162,19 @@ function isConservativeFormalStatus(payload) {
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
       'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
     ])
-    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-REFERENCE-MINIMUM-06'
+    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-LOCAL-BASELINE-07'
     && payload.nonClaims?.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.')
     && payload.nonClaims?.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.')
     && payload.nonClaims?.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer.")
-    && payload.nonClaims?.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family.");
+    && payload.nonClaims?.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family.")
+    && payload.nonClaims?.includes('The typed local locked-NAND candidates, source-derived accounting, conditional square-baseline theorem, and five discharged local square baselines do not prove global cross-instance BaselineDistinct, a locked builder or threshold, residual slack at most four, or polynomial runtime.')
+    && payload.nonClaims?.includes('The report threshold word is multi-output: its baseline coordinates remain present alongside one final coordinate; a legacy single-output seed is not that construction.')
+    && payload.nonClaims?.includes('The legacy synthetic m=2 fixture is quarantined as internally inconsistent: honest source-derived baseline/displayed counts are 86/90, metadata-consistent counts are 95/99, and stored hybrid counts are 91/95.');
 }
 
 function renderFormalStatus(root, payload, sourceState) {
@@ -181,17 +215,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The pinned Lean PNP library root now includes executable finite truth-table equivalence, an exhaustive empty-profile reference minimum, and concrete serial framed replacement and slack proofs. No polynomial runtime or arbitrary-support theorem is claimed; the concrete root theorem does not exist, and five project-specific axioms remain.';
+    lede.textContent = 'The pinned Lean PNP root now includes typed local locked-NAND candidates, source-derived baseline accounting, and exact empty-context minima for five square local macros. These local results do not construct the global baseline or threshold; the root theorem is absent and five project-specific axioms remain.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>finite reference semantics and framed slack checked</span><span>locked-NAND and polynomial proof route</span><strong>in progress</strong>';
+    trace.innerHTML = '<span>five local locked-NAND square minima checked</span><span>global locked-NAND and polynomial proof route</span><strong>in progress</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> executable truth-table equivalence and exhaustive minimum/slack are formalized for finite Boolean direct-wire candidates with an empty profile. Replacement and the slack law cover only concrete serial framed contexts. Polynomial runtime, arbitrary supports, locked-NAND, SAT, and <code>PNP.Main.p_eq_np</code> remain unfinished, with five project-specific axioms.';
+    firstNote.innerHTML = '<strong>Current status:</strong> six local macros have typed direct-wire realizations, and five square macros have exact local reference minima. Counts are source-derived and the report word remains multi-output. Global cross-instance <code>BaselineDistinct</code>, the builder, threshold, slack-at-most-four result, polynomiality, SAT conclusion, and <code>PNP.Main.p_eq_np</code> remain unfinished.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -271,7 +305,7 @@ projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
-        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the NAND semantics, enumerator, truth-table, minimum, composition, and slack axiom audits. The exhaustive finite reference minimum has no polynomial-runtime claim, and framed replacement is not an arbitrary-support theorem.</p></article>
+        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the NAND semantics, enumerator, truth-table, minimum, composition, slack, and four locked-NAND local-baseline axiom audits. Five square local minima are exact; the one-output final conjunction and global baseline are excluded.</p></article>
         <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
@@ -292,7 +326,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is missing?</h3><p>The exact-width enumerator remains noncanonical. The executable minimum is exhaustive and empty-profile only, with no polynomial bound; replacement covers concrete serial frames rather than arbitrary supports. The locked-NAND builder and threshold, concrete complexity and SAT definitions, residual-band argument, polynomial bounds, root theorem, and its axiom audit remain unfinished.</p></article>
+        <article class="card"><h3>What is missing?</h3><p>The five exact locked-NAND minima are local square-candidate results. Global cross-instance baseline distinctness, the locked builder and threshold, residual slack at most four, concrete complexity and SAT definitions, residual-band argument, polynomial bounds, root theorem, and its axiom audit remain unfinished.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -311,7 +345,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>Finite truth-table equivalence, exhaustive empty-profile minimum/slack, and concrete serial framed replacement are formalized and axiom-audited. No polynomial-runtime or arbitrary-support claim follows. The locked builder and threshold remain unfinished; no <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>Typed local locked-NAND candidates, source-derived counts, and five exact square-macro minima are formalized and axiom-audited. They do not prove global <code>BaselineDistinct</code>, the builder or threshold, slack at most four, or polynomiality. No <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
