@@ -4,52 +4,52 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "3def3c09ddc6641e3201cc5e3cf9fe379e432e85";
-const CORE_TREE = "e535f11cbf7bf7b4ba92f61324a11b647cbf803c";
+const CORE_COMMIT = "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace";
+const CORE_TREE = "50d5debda67073ab23caab45f89341b9a63e436c";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 239965,
-    sha256: "3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974",
-    role: "current inventory-derived six-page formal-reconstruction report PDF"
+    bytes: 241760,
+    sha256: "2dfc1b6b6792947fdbce055c849e5b293d63d44892eb673f7c03559dcb2f238d",
+    role: "current inventory-derived seven-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 239965,
-    sha256: "3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974",
+    bytes: 241760,
+    sha256: "2dfc1b6b6792947fdbce055c849e5b293d63d44892eb673f7c03559dcb2f238d",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 13644,
-    sha256: "8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2",
+    bytes: 14950,
+    sha256: "feeaaf482d597a0b6cb590abb01dd210707241ac22eef39c001e526b362df496",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 13644,
-    sha256: "8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2",
+    bytes: 14950,
+    sha256: "feeaaf482d597a0b6cb590abb01dd210707241ac22eef39c001e526b362df496",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 43825,
-    sha256: "39624ada2e5ba32fc199de2ff6248d2d45f69eeb0a4eb03caf4b0adea17c9b88",
+    bytes: 48322,
+    sha256: "e40098829ed054bfbb1857c44a5d9795d44bfcf08c18f2a213ededa47a0ba2f0",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 368198,
-    sha256: "2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966",
+    bytes: 410648,
+    sha256: "91b4db358afb1156eb39f3d97f49a5bb85a97f0b65ff1a879a51a6552ae15663",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 3237,
-    sha256: "b28cbd1ec0e110ce8e5b5b4ba5bb9a33d25fc2ef1f083df799f7066740bd07fe",
+    bytes: 3236,
+    sha256: "2846eab9ce4ae853fd8a4ee654eb338b1a2384e602953c850fe2c86d555f296d",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -115,8 +115,8 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-11") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-MACHINE-KERNEL-11") fail("status public-surface coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-12") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-COMPLEXITY-12") fail("status public-surface coordinate mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -131,25 +131,25 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-11") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 2168 || inventory.theoremCount !== 789) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 708 || inventory.axiomCount !== 5) fail("inventory theorem/axiom counts mismatch");
-  if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate !== null) fail("inventory publication targets must remain absent");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-12") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 2484 || inventory.theoremCount !== 883) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 793 || inventory.axiomCount !== 5) fail("inventory theorem/axiom counts mismatch");
+  if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 5) fail("inventory must disclose five project axioms");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-11") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-12") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge");
-  if (manifest.artifacts?.report?.pageCount !== 6) fail("current report must have six pages");
+  if (manifest.artifacts?.report?.pageCount !== 7) fail("current report must have seven pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false) fail("current manifest concrete gate boundary mismatch");
   if (boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) fail("current manifest must fail closed");
-  if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== false || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 7) fail("current manifest blocker boundary mismatch");
+  if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 7) fail("current manifest blocker boundary mismatch");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
 }
 

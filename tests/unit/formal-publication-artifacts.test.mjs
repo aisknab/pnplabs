@@ -40,21 +40,21 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "3def3c09ddc6641e3201cc5e3cf9fe379e432e85");
+  assert.equal(result.coreCommit, "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace");
 });
 
-test("current release is pinned, six-page, and fails closed", () => {
+test("current release is pinned, seven-page, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "3def3c09ddc6641e3201cc5e3cf9fe379e432e85");
-  assert.equal(release.source.tree, "e535f11cbf7bf7b4ba92f61324a11b647cbf803c");
-  assert.equal(release.artifacts.report.pageCount, 6);
+  assert.equal(release.source.commit, "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace");
+  assert.equal(release.source.tree, "50d5debda67073ab23caab45f89341b9a63e436c");
+  assert.equal(release.artifacts.report.pageCount, 7);
   assert.equal(release.publicationBoundary.derivedOnlyFromConcreteGate, true);
   assert.equal(release.publicationBoundary.concreteGatePassed, false);
   assert.equal(release.publicationBoundary.mathematicalTheoremEstablished, false);
   assert.equal(release.publicationBoundary.publicTheoremEmissionAllowed, false);
   assert.equal(release.publicationBoundary.publicTheoremStatement, null);
   assert.equal(release.publicationBoundary.compatibilityRootPresent, false);
-  assert.equal(release.publicationBoundary.concreteTargetPresent, false);
+  assert.equal(release.publicationBoundary.concreteTargetPresent, true);
   assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, true);
   assert.equal(release.publicationBoundary.remainingBlockerCount, 7);
 });
