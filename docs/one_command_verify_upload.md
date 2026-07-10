@@ -17,12 +17,14 @@ node pcc-formal-public-surface0.mjs --json
 npm run pnp:verify
 node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
+node --test audits/lean-nand-enumerator0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, replay the legacy checker stack, build the pinned Lean `PNP` library root, and audit both the bridge dependencies and the axiom-free direct-wire NAND semantics foundation. They do not establish enumeration, minimum size, replacement/slack, the locked builder or threshold, SAT, or the target theorem: `PNP.Main.p_eq_np` is absent and five project-specific axioms remain.
+These commands expose current status, replay the legacy checker stack, build the pinned Lean `PNP` library root, and audit the bridge dependencies, direct-wire NAND semantics, and exact-width syntactic enumerator. They do not establish canonical or deduplicated enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder or threshold, SAT, or the target theorem: `PNP.Main.p_eq_np` is absent and five project-specific axioms remain.
 
 ## Freeze controls
 

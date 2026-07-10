@@ -38,7 +38,7 @@ test('site status is byte-for-byte identical to the merged authoritative sibling
 test('current status exposes the incomplete formal reconstruction', async () => {
   const status = await readJson('public/pnp-status.json');
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-04');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-05');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.mathematicalTheoremEstablished, false);
   assert.equal(status.publicTheoremEmissionAllowed, false);
@@ -65,7 +65,13 @@ test('current status exposes the incomplete formal reconstruction', async () => 
   assert.equal(status.leanSourcePlaceholderAuditPassed, true);
   assert.equal(status.leanNANDDirectWireCoreFormalized, true);
   assert.equal(status.leanNANDDirectWireCoreAxiomAuditPassed, true);
-  assert.equal(status.leanNANDEnumeratorFormalized, false);
+  assert.equal(status.leanNANDEnumeratorFormalized, true);
+  assert.equal(status.leanNANDEnumeratorAxiomAuditPassed, true);
+  assert.equal(status.leanNANDExactWidthEnumerationComplete, true);
+  assert.equal(status.leanNANDEnumeratorUsesOrderedGatePairs, true);
+  assert.equal(status.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true);
+  assert.equal(status.leanNANDEnumeratorDeduplicated, false);
+  assert.equal(status.leanNANDSemanticEquivalenceDecidable, false);
   assert.equal(status.leanNANDMinimumAndSlackFormalized, false);
   assert.equal(status.leanCompatibleReplacementFormalized, false);
   assert.equal(status.leanGlobalSlackLawFormalized, false);
@@ -89,15 +95,19 @@ test('current status exposes the incomplete formal reconstruction', async () => 
     'npm run pnp:verify -- --no-write',
     'node --test audits/lean-root-target0.test.mjs',
     'node --test audits/lean-nand-semantics0.test.mjs',
+    'node --test audits/lean-nand-enumerator0.test.mjs',
     'lake build PNP',
     'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
     'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
   ]);
   assert.deepEqual(status.historicalReplayWorkflows, ['.github/workflows/legacy-v0-replay.yml']);
   assert.equal(status.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json');
   assert.equal(status.legacyCheckerArchiveCheckCommand, 'npm run legacy:v0:check');
   assert.equal(status.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d');
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-SEMANTICS-04');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-ENUMERATOR-05');
+  assert.ok(status.nonClaims.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.'));
+  assert.ok(status.nonClaims.includes('The exact-width syntactic NAND enumeration does not prove canonical/deduplicated enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder/threshold, SAT, or P = NP.'));
   assert.equal(status.remainingFormalObligations.length, 7);
   assert.deepEqual(status.remainingBlockers, status.remainingFormalObligations);
   assert.equal(status.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
@@ -115,9 +125,9 @@ test('current status inventories every active companion workflow', async () => {
 
 test('payload index mirrors the conservative boundary and labels legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 8);
-  assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-04');
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-SEMANTICS-04');
+  assert.equal(index.version, 9);
+  assert.equal(index.statusCoordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-05');
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-ENUMERATOR-05');
   assert.equal(index.status, 'formal-reconstruction-status-payloads-ready');
   assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
   assert.equal(index.claimBoundary.publicTheoremEmissionAllowed, false);
@@ -128,7 +138,13 @@ test('payload index mirrors the conservative boundary and labels legacy surfaces
   assert.equal(index.claimBoundary.leanLibraryTargetBuilt, true);
   assert.equal(index.claimBoundary.leanNANDDirectWireCoreFormalized, true);
   assert.equal(index.claimBoundary.leanNANDDirectWireCoreAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanNANDEnumeratorFormalized, false);
+  assert.equal(index.claimBoundary.leanNANDEnumeratorFormalized, true);
+  assert.equal(index.claimBoundary.leanNANDEnumeratorAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanNANDExactWidthEnumerationComplete, true);
+  assert.equal(index.claimBoundary.leanNANDEnumeratorUsesOrderedGatePairs, true);
+  assert.equal(index.claimBoundary.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple, true);
+  assert.equal(index.claimBoundary.leanNANDEnumeratorDeduplicated, false);
+  assert.equal(index.claimBoundary.leanNANDSemanticEquivalenceDecidable, false);
   assert.equal(index.claimBoundary.leanNANDMinimumAndSlackFormalized, false);
   assert.equal(index.claimBoundary.leanCompatibleReplacementFormalized, false);
   assert.equal(index.claimBoundary.leanGlobalSlackLawFormalized, false);
@@ -144,7 +160,9 @@ test('payload index mirrors the conservative boundary and labels legacy surfaces
   assert.equal(index.claimBoundary.remainingBlockers.length, 7);
   assert.equal(index.claimBoundary.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
   assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-semantics0.test.mjs'));
+  assert.ok(index.verificationCommands.includes('node --test audits/lean-nand-enumerator0.test.mjs'));
   assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean'));
+  assert.ok(index.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean'));
   assert.equal(index.historicalRunIntakeFrozen, true);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   for (const id of ['pnp-one-command-upload', 'pnp-verification-runs', 'pnp-verifier-run-comparison-matrix', 'pnp-verifier-run-matrix-summary']) {
@@ -165,9 +183,12 @@ test('status page shows every current false field and the remaining blockers', a
     'projectSpecificAxiomsRemaining = true',
     'Seven obligations remain',
     'leanprover/lean4:v4.31.0',
-    'Axiom-free direct-wire NAND core',
-    'leanNANDEnumeratorFormalized = false',
+    'Axiom-free NAND semantics and exact-width enumeration',
+    'leanNANDEnumeratorFormalized = true',
+    'leanNANDEnumeratorDeduplicated = false',
+    'leanNANDSemanticEquivalenceDecidable = false',
     'PNPNANDSemanticsAxiomAudit.lean',
+    'PNPNANDEnumeratorAxiomAudit.lean',
     'PNP.CheckPCCPackexp',
     'Formal.ResidualBandMinimizer',
     'Formal.RootTheoremAndAxiomAudit',

@@ -34,7 +34,7 @@
     <section class="page-hero">
       <span class="eyebrow">Formal reconstruction in progress</span>
       <h1>Current PNP status</h1>
-      <p class="lede">The pinned Lean <code>PNP</code> library root includes an axiom-free typed direct-wire NAND semantics core. Enumeration and the proof route remain unfinished; the repository still has no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
+      <p class="lede">The pinned Lean <code>PNP</code> library root includes axiom-free direct-wire NAND semantics and exact-width bounded syntactic enumeration. The enumerator is noncanonical and not deduplicated; the repository still has no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-status.json">Open current status JSON</a>
         <a class="btn secondary" href="https://github.com/aisknab/pnp">Inspect source repository</a>
@@ -59,12 +59,12 @@ projectSpecificAxiomsRemaining = true</pre>
 
     <section class="section compact">
       <div class="section-label">Checked Lean milestone</div>
-      <h2>Axiom-free direct-wire NAND core</h2>
+      <h2>Axiom-free NAND semantics and exact-width enumeration</h2>
       <div class="grid two path">
-        <article class="card"><h3>Complete in this milestone</h3><p>Typed topological NAND programs, Boolean evaluation, ordered output wiring, size laws, equivalence laws, and representative identity, NAND, NOT, and AND examples are formalized. <code>leanNANDDirectWireCoreFormalized = true</code> and its axiom audit passes.</p></article>
-        <article class="card"><h3>Still incomplete</h3><p><code>leanNANDEnumeratorFormalized = false</code>. Exact minimum and slack, compatible replacement, the global slack law, locked-NAND builder and threshold, SAT, and the root theorem also remain false or absent.</p></article>
+        <article class="card"><h3>Complete in this milestone</h3><p>Typed topological NAND semantics and exact-width bounded syntactic enumeration are formalized and axiom-free. Every typed source, ordered gate pair, topological program, and output tuple appears, including the unique empty output tuple. <code>leanNANDEnumeratorFormalized = true</code> and <code>leanNANDEnumeratorAxiomAuditPassed = true</code>.</p></article>
+        <article class="card"><h3>Still incomplete</h3><p>The enumerator is intentionally noncanonical: <code>leanNANDEnumeratorDeduplicated = false</code>. Semantic equivalence decision, exact minimum and slack, compatible replacement, the global slack law, locked-NAND builder and threshold, SAT, and the root theorem remain false or absent; <code>leanNANDSemanticEquivalenceDecidable = false</code>.</p></article>
       </div>
-      <p>This foundational semantics milestone is not a proof of the locked-NAND reduction, SAT in P, or P = NP.</p>
+      <p>Syntactic completeness does not establish semantic equivalence, minimum size, the locked-NAND reduction, SAT in P, or P = NP.</p>
     </section>
 
     <section class="section compact">
@@ -115,9 +115,11 @@ node pcc-formal-public-surface0.mjs --json
 npm run pnp:verify
 node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
+node --test audits/lean-nand-enumerator0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean</code></pre>
+lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean</code></pre>
       <p>A successful status check or build is necessary but not sufficient. The target theorem is not established unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
 

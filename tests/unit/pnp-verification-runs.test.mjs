@@ -18,7 +18,8 @@ test('run registry is a frozen historical snapshot with a conservative current b
   assert.equal(registry.currentClaimBoundary.publicTheoremStatement, null);
   assert.equal(registry.currentClaimBoundary.finalTheoremReady, false);
   assert.equal(registry.currentClaimBoundary.projectSpecificAxiomsRemaining, true);
-  assert.equal(registry.currentClaimBoundary.remainingBlockers.length, 8);
+  assert.equal(registry.currentClaimBoundary.remainingBlockers.length, 7);
+  assert.equal(registry.currentClaimBoundary.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false);
   assert.equal(registry.importWorkflow.status, 'frozen');
   assert.equal(registry.importWorkflow.intakeFrozen, true);
   assert.equal(registry.importWorkflow.acceptsNewRecords, false);
