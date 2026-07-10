@@ -1,69 +1,33 @@
-name: pnp-verification-run-issue-ingest
+name: pnp-verification-run-issue-ingest-frozen
 
 on:
-  issues:
-    types: [opened, edited, labeled]
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
-  issues: write
+  contents: read
 
 jobs:
-  ingest-verifier-run:
-    if: github.event_name == 'workflow_dispatch' || contains(join(github.event.issue.labels.*.name, ','), 'pnp-verification-run')
+  confirm-intake-frozen:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Extract importable verifier run record from issue body
-        id: extract
+      - name: Confirm historical activated-run intake remains frozen
         run: |
-          node tools/extract-pnp-verification-run-from-issue.mjs "$GITHUB_EVENT_PATH" imports/pnp-verifier-runs
-      - name: Normalize extracted verifier run record
-        run: |
-          npm run pnp:normalize-run -- --write "${{ steps.extract.outputs.record_path }}"
-      - name: Import run into registry
-        run: |
-          npm run pnp:import-run -- --write "${{ steps.extract.outputs.record_path }}" public/pnp-verification-runs.json
-      - name: Regenerate matrix and badge summary
-        run: |
-          npm run pnp:run-matrix -- --write public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json
-          npm run pnp:run-summary -- --write public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json
-      - name: Verify ingest tooling and public run surfaces
-        run: |
-          node --test tests/unit/pnp-verification-issue-ingest.test.mjs
-          node --test tests/unit/pnp-verifier-run-import.test.mjs
-          node --test tests/unit/pnp-verifier-run-normalization.test.mjs
-          node --test tests/unit/pnp-verifier-run-comparison-matrix.test.mjs
-          node --test tests/unit/pnp-verifier-run-matrix-summary.test.mjs
-      - name: Open registry update pull request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          branch: pnp-verification-run/${{ steps.extract.outputs.record_id }}
-          title: "verification-run: import ${{ steps.extract.outputs.record_id }}"
-          commit-message: "verification-run: import ${{ steps.extract.outputs.record_id }}"
-          body: |
-            ## Purpose
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
 
-            Imports the verifier run submitted through issue #${{ steps.extract.outputs.issue_number }}.
+          const registry = JSON.parse(await readFile('public/pnp-verification-runs.json', 'utf8'));
+          const upload = JSON.parse(await readFile('public/pnp-one-command-upload.json', 'utf8'));
 
-            ## Imported record
-
-            ```text
-            recordId = ${{ steps.extract.outputs.record_id }}
-            recordPath = ${{ steps.extract.outputs.record_path }}
-            ```
-
-            The workflow extracted the importable `PNPActivatedVerificationRunRecord0`, normalized digest fields, imported it into `public/pnp-verification-runs.json`, regenerated the comparison matrix, and regenerated the badge summary.
-
-            This PR records reproducibility evidence for the activated checker-trust verifier stack. It is not an external-consensus claim or peer-review acceptance.
-          labels: pnp-verification-run
-          add-paths: |
-            imports/pnp-verifier-runs/*.json
-            public/pnp-verification-runs.json
-            public/pnp-verifier-run-comparison-matrix.json
-            public/pnp-verifier-run-matrix-summary.json
+          assert.equal(registry.status, 'historical-activated-verification-run-registry-frozen');
+          assert.equal(registry.intakeFrozen, true);
+          assert.equal(registry.importWorkflow.acceptsNewRecords, false);
+          assert.equal(upload.status, 'historical-activated-run-upload-frozen');
+          assert.equal(upload.intakeFrozen, true);
+          assert.equal(upload.automaticUploadEnabled, false);
+          assert.equal(upload.issueIngestWorkflow.acceptsNewRecords, false);
+          NODE

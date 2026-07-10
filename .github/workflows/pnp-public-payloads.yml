@@ -14,5 +14,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Check PNP public payload boundary
+      - name: Check conservative PNP formal-reconstruction payload boundary
         run: node --test tests/unit/pnp-public-payloads.test.mjs

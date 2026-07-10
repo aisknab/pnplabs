@@ -1,4 +1,4 @@
-name: pnp-verifier-run-import
+name: pnp-historical-verifier-run-records
 
 on:
   pull_request:
@@ -8,95 +8,53 @@ on:
       - 'public/pnp-verifier-run-digest-comparison.json'
       - 'public/pnp-verifier-run-comparison-matrix.json'
       - 'public/pnp-verifier-run-matrix-summary.json'
-      - 'verifier-run-digests.html'
       - 'tools/import-pnp-verifier-run.mjs'
       - 'tools/normalize-pnp-verifier-run.mjs'
       - 'tools/compare-pnp-verifier-runs.mjs'
       - 'tools/generate-pnp-verifier-run-matrix.mjs'
       - 'tools/generate-pnp-verifier-run-summary.mjs'
-      - 'tools/extract-pnp-verification-run-from-issue.mjs'
-      - 'tests/fixtures/pnp-activated-verifier-run.import.json'
-      - 'tests/unit/pnp-verifier-run-import.test.mjs'
-      - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
-      - 'tests/unit/pnp-verifier-run-digest-comparison.test.mjs'
-      - 'tests/unit/pnp-verifier-run-comparison-matrix.test.mjs'
-      - 'tests/unit/pnp-verifier-run-matrix-summary.test.mjs'
-      - 'tests/unit/pnp-verification-issue-ingest.test.mjs'
+      - 'tests/unit/pnp-verifier-run-*.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
-      - '.github/workflows/pnp-verification-run-issue-ingest.yml'
   push:
     branches:
       - main
     paths:
-      - 'imports/pnp-verifier-runs/**'
       - 'public/pnp-verification-runs.json'
       - 'public/pnp-verifier-run-digest-comparison.json'
       - 'public/pnp-verifier-run-comparison-matrix.json'
       - 'public/pnp-verifier-run-matrix-summary.json'
-      - 'verifier-run-digests.html'
       - 'tools/import-pnp-verifier-run.mjs'
-      - 'tools/normalize-pnp-verifier-run.mjs'
-      - 'tools/compare-pnp-verifier-runs.mjs'
       - 'tools/generate-pnp-verifier-run-matrix.mjs'
       - 'tools/generate-pnp-verifier-run-summary.mjs'
-      - 'tools/extract-pnp-verification-run-from-issue.mjs'
-      - 'tests/fixtures/pnp-activated-verifier-run.import.json'
-      - 'tests/unit/pnp-verifier-run-import.test.mjs'
-      - 'tests/unit/pnp-verifier-run-normalization.test.mjs'
-      - 'tests/unit/pnp-verifier-run-digest-comparison.test.mjs'
-      - 'tests/unit/pnp-verifier-run-comparison-matrix.test.mjs'
-      - 'tests/unit/pnp-verifier-run-matrix-summary.test.mjs'
-      - 'tests/unit/pnp-verification-issue-ingest.test.mjs'
       - '.github/workflows/pnp-verifier-run-import.yml'
-      - '.github/workflows/pnp-verification-run-issue-ingest.yml'
   workflow_dispatch:
 
 jobs:
-  pnp-verifier-run-import:
+  historical-run-records:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Normalize sample source-checker run
+      - name: Validate historical normalization and comparison tools
         run: |
           npm run pnp:normalize-run -- --json tests/fixtures/pnp-activated-verifier-run.import.json
-      - name: Compare sample source-checker run with itself
-        run: |
           npm run pnp:compare-runs -- --json tests/fixtures/pnp-activated-verifier-run.import.json tests/fixtures/pnp-activated-verifier-run.import.json
-      - name: Generate verifier run comparison matrix
-        run: |
           npm run pnp:run-matrix -- --json public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json
-      - name: Generate verifier run matrix summary
-        run: |
           npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json
-      - name: Validate import tool with sample source-checker run
+      - name: Confirm imports fail closed because intake is frozen
         run: |
-          npm run pnp:import-run -- --check tests/fixtures/pnp-activated-verifier-run.import.json public/pnp-verification-runs.json
-      - name: Validate committed import candidates
-        shell: bash
-        run: |
-          shopt -s nullglob
-          files=(imports/pnp-verifier-runs/*.json)
-          if [ "${#files[@]}" -eq 0 ]; then
-            echo "No committed import candidates to validate."
-            exit 0
+          if npm run pnp:import-run -- --check tests/fixtures/pnp-activated-verifier-run.import.json public/pnp-verification-runs.json > /tmp/import-output.txt 2>&1; then
+            cat /tmp/import-output.txt
+            echo "historical registry unexpectedly accepted a new record"
+            exit 1
           fi
-          for file in "${files[@]}"; do
-            echo "Checking $file"
-            npm run pnp:normalize-run -- --json "$file"
-            npm run pnp:import-run -- --check "$file" public/pnp-verification-runs.json
-          done
-      - name: Issue ingest unit tests
-        run: node --test tests/unit/pnp-verification-issue-ingest.test.mjs
-      - name: Import utility unit tests
-        run: node --test tests/unit/pnp-verifier-run-import.test.mjs
-      - name: Normalization utility unit tests
-        run: node --test tests/unit/pnp-verifier-run-normalization.test.mjs
-      - name: Digest comparison utility unit tests
-        run: node --test tests/unit/pnp-verifier-run-digest-comparison.test.mjs
-      - name: Comparison matrix unit tests
-        run: node --test tests/unit/pnp-verifier-run-comparison-matrix.test.mjs
-      - name: Matrix badge summary unit tests
-        run: node --test tests/unit/pnp-verifier-run-matrix-summary.test.mjs
+          grep -q 'ImportRun.IntakeFrozen' /tmp/import-output.txt
+      - name: Historical run tooling unit tests
+        run: |
+          node --test tests/unit/pnp-verifier-run-import.test.mjs
+          node --test tests/unit/pnp-verifier-run-normalization.test.mjs
+          node --test tests/unit/pnp-verifier-run-digest-comparison.test.mjs
+          node --test tests/unit/pnp-verifier-run-comparison-matrix.test.mjs
+          node --test tests/unit/pnp-verifier-run-matrix-summary.test.mjs

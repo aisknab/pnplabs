@@ -21,126 +21,110 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-function ensureHomepageStatusBoundary() {
+const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
+  status: 'formal-reconstruction-in-progress',
+  mathematicalTheoremEstablished: false,
+  publicTheoremEmissionAllowed: false,
+  publicTheoremStatement: null,
+  finalTheoremReady: false,
+  rootLeanTheoremPresent: false,
+  rootLeanTheoremBuilt: false,
+  rootLeanTheoremAxiomAuditPassed: false,
+  projectSpecificAxiomsRemaining: true,
+});
+
+function formalStatusFields(payload) {
+  return `status = "${payload.status}"
+mathematicalTheoremEstablished = ${payload.mathematicalTheoremEstablished}
+publicTheoremEmissionAllowed = ${payload.publicTheoremEmissionAllowed}
+publicTheoremStatement = ${payload.publicTheoremStatement === null ? 'null' : JSON.stringify(payload.publicTheoremStatement)}
+finalTheoremReady = ${payload.finalTheoremReady}
+rootLeanTheoremPresent = ${payload.rootLeanTheoremPresent}
+rootLeanTheoremBuilt = ${payload.rootLeanTheoremBuilt}
+rootLeanTheoremAxiomAuditPassed = ${payload.rootLeanTheoremAxiomAuditPassed}
+projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
+}
+
+function isConservativeFormalStatus(payload) {
+  return payload?.kind === 'PNPFormalReconstructionStatus0'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-01'
+    && payload.status === 'formal-reconstruction-in-progress'
+    && payload.currentStatusAuthority === true
+    && payload.mathematicalTheoremEstablished === false
+    && payload.publicTheoremEmissionAllowed === false
+    && payload.publicTheoremStatement === null
+    && payload.publicTheoremConclusion === null
+    && payload.finalTheoremReady === false
+    && payload.rootLeanTheoremPresent === false
+    && payload.rootLeanTheoremBuilt === false
+    && payload.rootLeanTheoremAxiomAuditPassed === false
+    && payload.projectSpecificAxiomsRemaining === true
+    && Array.isArray(payload.remainingBlockers)
+    && payload.remainingBlockers.length > 0;
+}
+
+function renderFormalStatus(root, payload, sourceState) {
+  root.dataset.statusState = sourceState;
+  const label = root.querySelector('[data-formal-status-label]');
+  const fields = root.querySelector('[data-formal-status-fields]');
+  const note = root.querySelector('[data-formal-status-note]');
+  if (label) label.textContent = 'not established';
+  if (fields) fields.textContent = formalStatusFields(payload);
+  if (note) {
+    note.innerHTML = sourceState === 'authoritative-mirror'
+      ? '<strong>Status loaded:</strong> the exact conservative mirror is available. The target theorem remains unestablished and theorem emission remains disabled.'
+      : '<strong>Status unavailable:</strong> the page remains fail closed. It does not infer theorem establishment or theorem-emission permission from missing, malformed, or stale data.';
+  }
+}
+
+async function loadFormalReconstructionStatus() {
+  const roots = [...document.querySelectorAll('[data-formal-status-root]')];
+  if (roots.length === 0) return;
+  roots.forEach((root) => renderFormalStatus(root, FAIL_CLOSED_FORMAL_STATUS, 'fail-closed'));
+  try {
+    const response = await fetch('public/pnp-status.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status} while fetching current PNP status`);
+    const payload = await response.json();
+    if (!isConservativeFormalStatus(payload)) throw new Error('current PNP status failed conservative boundary validation');
+    roots.forEach((root) => renderFormalStatus(root, payload, 'authoritative-mirror'));
+  } catch (error) {
+    console.error('PNP status load failed closed', error);
+  }
+}
+
+function ensureHomepageFormalReconstructionBoundary() {
   const hero = document.querySelector('.artifact-hero .artifact-copy');
   if (!hero) return;
 
   const title = hero.querySelector('#hero-title');
-  if (title) title.textContent = 'P = NP public theorem emission is activated under the repository checker trust model.';
+  if (title) title.textContent = 'The repository does not currently establish P = NP.';
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'This site mirrors the activated theorem-emission status from the source/checker repository. Public theorem emission is now enabled by the accepted proof stack.';
+    lede.textContent = 'The proposed route is being reconstructed in Lean. Concrete definitions, the root theorem, and an assumption audit remain incomplete.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>npm run verify</span><span>upload run report</span><strong>activated</strong>';
+    trace.innerHTML = '<span>formalise definitions</span><span>build root theorem</span><strong>in progress</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> the source/checker stack emits P = NP under its checker trust model. Run <code>npm run verify</code>, then type <code>y</code> when prompted to upload the verifier-run report to PNP Labs.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>publicTheoremEmissionAllowed = false</code>, <code>finalTheoremReady = false</code>, and the required concrete, assumption-audited Lean root theorem is not present.';
   }
 
-  const panel = hero.querySelector('.boundary-panel');
-  if (panel) {
-    panel.innerHTML = `<div class="boundary-head">
-            <span>Current theorem boundary</span>
-            <strong>activated</strong>
-          </div>
-          <pre>publicTheoremEmissionAllowed = true
-publicTheoremStatement = "P = NP"
-publicTheoremConclusion = "P = NP"
-publicTheoremUnderCheckerTrustModel = true
-finalTheoremReady = true
-remainingBlockers = []</pre>
-          <div class="boundary-ledger">
-            <div><span>Theorem emission</span><strong>activated</strong></div>
-            <div><span>Gate result</span><strong>accepted</strong></div>
-            <div><span>Upload command</span><strong>npm run verify</strong></div>
-            <div><span>Status source</span><strong>pnp:verify</strong></div>
-          </div>`;
-  }
-
-  if (!hero.querySelector('[data-homepage-matrix-summary]')) {
-    const badge = document.createElement('div');
-    badge.className = 'boundary-panel';
-    badge.setAttribute('data-homepage-matrix-summary', '');
-    badge.innerHTML = `<div class="boundary-head">
-            <span>Verifier-run matrix badge</span>
-            <strong>passing</strong>
-          </div>
-          <pre>badge.state = passing
-badge.text = "1 public run; 1/1 required comparisons passing"
-metrics.registryRunCount = 1
-metrics.acceptedPairCount = 1
-metrics.requiredMismatchPairCount = 0
-metrics.diagonalAccepts = true</pre>
-          <div class="boundary-ledger">
-            <div><span>Run records</span><strong>1 public run</strong></div>
-            <div><span>Required pairs</span><strong>1/1 passing</strong></div>
-            <div><span>Required mismatches</span><strong>0</strong></div>
-            <div><span>Badge payload</span><strong>matrix summary</strong></div>
-          </div>`;
-    const anchor = hero.querySelector('.boundary-panel');
-    if (anchor) anchor.insertAdjacentElement('afterend', badge);
-    else hero.append(badge);
-  }
-
-  if (!hero.querySelector('[data-homepage-one-command-upload]')) {
-    const upload = document.createElement('div');
-    upload.className = 'boundary-panel';
-    upload.setAttribute('data-homepage-one-command-upload', '');
-    upload.innerHTML = `<div class="boundary-head">
-            <span>One-command verifier upload</span>
-            <strong>ready</strong>
-          </div>
-          <pre>git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run verify
-# Verify complete.
-# Upload verification run to PNP Labs? [y/N]</pre>
-          <div class="boundary-ledger">
-            <div><span>User input</span><strong>type y</strong></div>
-            <div><span>Auto upload</span><strong>token or gh</strong></div>
-            <div><span>Fallback</span><strong>issue body file</strong></div>
-            <div><span>Run record</span><strong>PNPActivatedVerificationRunRecord0</strong></div>
-          </div>`;
-    const anchor = hero.querySelector('[data-homepage-matrix-summary]') ?? hero.querySelector('.boundary-panel');
-    if (anchor) anchor.insertAdjacentElement('afterend', upload);
-    else hero.append(upload);
-  }
-
+  hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
   const actions = hero.querySelector('.hero-actions');
-  if (actions && !actions.querySelector('a[href="status.html"]')) {
-    const statusButton = document.createElement('a');
-    statusButton.className = 'btn primary';
-    statusButton.href = 'status.html';
-    statusButton.textContent = 'View activated status';
-    actions.prepend(statusButton);
-  }
-  if (actions && !actions.querySelector('a[href="public/pnp-one-command-upload.json"]')) {
-    const uploadButton = document.createElement('a');
-    uploadButton.className = 'btn secondary';
-    uploadButton.href = 'public/pnp-one-command-upload.json';
-    uploadButton.textContent = 'One-command upload';
-    actions.append(uploadButton);
-  }
-  if (actions && !actions.querySelector('a[href="public/pnp-verifier-run-matrix-summary.json"]')) {
-    const matrixButton = document.createElement('a');
-    matrixButton.className = 'btn secondary';
-    matrixButton.href = 'public/pnp-verifier-run-matrix-summary.json';
-    matrixButton.textContent = 'Run matrix badge';
-    actions.append(matrixButton);
-  }
-  if (actions && !actions.querySelector('a[href="verifier-run-digests.html"]')) {
-    const digestButton = document.createElement('a');
-    digestButton.className = 'btn secondary';
-    digestButton.href = 'verifier-run-digests.html';
-    digestButton.textContent = 'Compare run digests';
-    actions.append(digestButton);
+  if (actions) {
+    actions.querySelectorAll('a[href="public/pnp-one-command-upload.json"], a[href="public/pnp-verifier-run-matrix-summary.json"], a[href="verifier-run-digests.html"]').forEach((link) => link.remove());
+    if (!actions.querySelector('a[href="status.html"]')) {
+      const statusButton = document.createElement('a');
+      statusButton.className = 'btn primary';
+      statusButton.href = 'status.html';
+      statusButton.textContent = 'View current status';
+      actions.prepend(statusButton);
+    }
   }
 }
 
@@ -186,80 +170,82 @@ function insertAfterPageHero(id, html) {
   hero.insertAdjacentElement('afterend', node);
 }
 
-function ensureActivatedVerificationCopy() {
+function ensureFormalVerificationCopy() {
   rewritePageHero({
-    eyebrow: 'One-command activated verification',
-    title: 'Run the verifier, then upload the run with one prompt.',
-    lede: 'Run npm run verify in the source/checker repository. When the verifier completes, type y to upload reproducible run evidence to PNP Labs. External review remains audit evidence, not a theorem premise.',
-    primaryHref: 'public/pnp-one-command-upload.json',
-    primaryText: 'Open one-command JSON',
-    secondaryHref: 'verification-runs.html',
-    secondaryText: 'Submit a verifier run',
+    eyebrow: 'Formal reconstruction verification',
+    title: 'Inspect the current status and verify historical file identity.',
+    lede: 'The target theorem is not currently established. Status checks expose remaining formal obligations; hash checks verify historical artefact identity only.',
+    primaryHref: 'public/pnp-status.json',
+    primaryText: 'Open current status JSON',
+    secondaryHref: 'status.html',
+    secondaryText: 'View status explanation',
   });
-  insertAfterPageHero('activated-verification-copy', `<section class="section compact" id="activated-verification-copy">
+  insertAfterPageHero('formal-verification-copy', `<section class="section compact" id="formal-verification-copy">
       <div class="boundary-panel">
-        <div class="boundary-head"><span>Activated verification boundary</span><strong>checker trust model</strong></div>
-        <pre>publicTheoremEmissionAllowed = true
-publicTheoremStatement = "P = NP"
-remainingBlockers = []
-externalReviewIsMathematicalPremise = false</pre>
+        <div class="boundary-head"><span>Current verification boundary</span><strong>not established</strong></div>
+        <pre>mathematicalTheoremEstablished = false
+publicTheoremEmissionAllowed = false
+finalTheoremReady = false
+rootLeanTheoremPresent = false
+projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
-        <article class="card"><h3>Run the one-command verifier</h3><p>Use <code>npm run verify</code> in <code>aisknab/pnp</code>. It runs the repository verifier and then asks whether to upload the run to PNP Labs.</p></article>
-        <article class="card"><h3>Type y to upload</h3><p>The CLI asks <code>Upload verification run to PNP Labs? [y/N]</code>. Type <code>y</code> or <code>yes</code> to submit with a token or authenticated <code>gh</code>.</p></article>
-        <article class="card"><h3>Manual fallback</h3><p>If upload credentials are unavailable, the CLI writes <code>artifacts/pnplabs-upload/latest-issue-body.md</code> and prints a prefilled issue URL.</p></article>
-        <article class="card"><h3>Importable evidence</h3><p>The issue body includes an importable <code>PNPActivatedVerificationRunRecord0</code> with activated theorem fields and environment metadata.</p></article>
+        <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
+        <article class="card"><h3>Build Lean</h3><p>Run <code>lake build PNP</code>. A successful partial build is not the absent root theorem or its axiom audit.</p></article>
+        <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
+        <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
 }
 
-function ensureActivatedFAQCopy() {
+function ensureFormalFAQCopy() {
   rewritePageHero({
-    eyebrow: 'Activated FAQ',
-    title: 'Activated theorem-status FAQ.',
-    lede: 'Answers here now reflect the activated checker-trust status: public theorem emission is enabled by the accepted proof stack, while independent review remains an audit layer.',
+    eyebrow: 'Formal reconstruction FAQ',
+    title: 'Current theorem-status FAQ.',
+    lede: 'The repository does not currently establish P = NP. These answers distinguish the unfinished Lean reconstruction from historical checker and report records.',
     primaryHref: 'status.html',
-    primaryText: 'View activated status',
-    secondaryHref: 'public/pnp-one-command-upload.json',
-    secondaryText: 'One-command upload JSON',
+    primaryText: 'View current status',
+    secondaryHref: 'public/pnp-status.json',
+    secondaryText: 'Open status JSON',
   });
-  insertAfterPageHero('activated-faq-copy', `<section class="section compact" id="activated-faq-copy">
-      <div class="section-label">Activated theorem-status FAQ</div>
+  insertAfterPageHero('formal-faq-copy', `<section class="section compact" id="formal-faq-copy">
+      <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
-        <article class="card"><h3>Does the site now permit the theorem statement?</h3><p>Yes. The activated payload records <code>publicTheoremEmissionAllowed = true</code> and <code>publicTheoremStatement = "P = NP"</code> under the repository checker trust model.</p></article>
-        <article class="card"><h3>Is external review a theorem premise?</h3><p>No. The payload records <code>externalReviewIsMathematicalPremise = false</code>. External review remains invited as reproducibility and audit evidence.</p></article>
-        <article class="card"><h3>What should reviewers run?</h3><p>Start with <code>npm run verify</code>. It runs the verifier and then asks whether to upload the run record to PNP Labs.</p></article>
-        <article class="card"><h3>What is the active status source?</h3><p>The active site status is <code>public/pnp-status.json</code>, mirrored from <code>aisknab/pnp</code> after public theorem activation.</p></article>
+        <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
+        <article class="card"><h3>What is missing?</h3><p>Concrete Lean definitions, the locked-NAND and residual-band arguments, polynomial bounds, the root theorem, and its axiom audit remain formal obligations.</p></article>
+        <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
+        <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
     </section>`);
 }
 
-function ensureActivatedReviewCopy() {
+function ensureFormalReviewCopy() {
   rewritePageHero({
-    eyebrow: 'Audit and reproducibility',
-    title: 'Reviewer and verifier roles after activation.',
-    lede: 'Public theorem emission is activated under the source/checker trust model. Independent reviewers are invited to reproduce, audit, and challenge the proof stack rather than serve as a theorem premise.',
-    primaryHref: 'verification-runs.html',
-    primaryText: 'Submit verifier run evidence',
-    secondaryHref: 'public/pnp-one-command-upload.json',
-    secondaryText: 'One-command upload JSON',
+    eyebrow: 'Audit and formal reconstruction',
+    title: 'Review an unfinished formal reconstruction.',
+    lede: 'Reviewers can identify counterexamples, missing definitions, hidden assumptions, invalid reductions, or Lean gaps. Review is valuable audit evidence but not a mathematical premise.',
+    primaryHref: 'status.html',
+    primaryText: 'View current blockers',
+    secondaryHref: 'public/pnp-status.json',
+    secondaryText: 'Open status JSON',
   });
-  insertAfterPageHero('activated-review-copy', `<section class="section compact" id="activated-review-copy">
-      <div class="section-label">Post-activation review role</div>
-      <div class="callout"><div><h2>External review remains audit evidence.</h2><p>The current activation state records <code>externalReviewAcceptanceRequiredForEmission = false</code> and <code>externalReviewIsMathematicalPremise = false</code>. Reviewers can still contribute by running <code>npm run verify</code>, uploading verifier-run evidence, reporting counterexamples, and checking hash-bound artifacts.</p></div><a class="btn primary" href="verification-runs.html">Add a verification run</a></div>
+  insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
+      <div class="section-label">Current review role</div>
+      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>The current payload records <code>mathematicalTheoremEstablished = false</code> and eight formal blockers. Useful review targets the concrete complexity model, SAT formalisation, locked-NAND threshold, residual minimiser, ZeroSlack, polynomial bounds, root theorem, and axiom audit.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
-function ensureActivatedPageCopy() {
+function ensureFormalPageCopy() {
   const page = currentPageName();
-  if (page === 'verify.html') ensureActivatedVerificationCopy();
-  if (page === 'faq.html') ensureActivatedFAQCopy();
-  if (page === 'review.html') ensureActivatedReviewCopy();
+  if (page === 'verify.html') ensureFormalVerificationCopy();
+  if (page === 'faq.html') ensureFormalFAQCopy();
+  if (page === 'review.html') ensureFormalReviewCopy();
 }
 
 ensureStatusLink();
-ensureHomepageStatusBoundary();
-ensureActivatedPageCopy();
+ensureHomepageFormalReconstructionBoundary();
+ensureFormalPageCopy();
+loadFormalReconstructionStatus();
 
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {

@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — Release checks and regeneration</title>
-  <meta name="description" content="File checks and regeneration workflow for reviewing the PNP Labs P versus NP claim.">
+  <title>PNP Labs — Formal status and historical artefact checks</title>
+  <meta name="description" content="Inspect the unfinished PNP formal reconstruction and verify historical report file identity without treating hashes as theorem evidence.">
   <link rel="canonical" href="https://pnplabs.com.au/verify.html">
   <meta name="theme-color" content="#f5f6f7">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="PNP Labs — Release checks and regeneration">
-  <meta property="og:description" content="File checks and regeneration workflow for reviewing the PNP Labs P versus NP claim.">
+  <meta property="og:title" content="PNP Labs — Formal status and historical artefact checks">
+  <meta property="og:description" content="The repository does not currently establish P = NP. Check current formal status and historical file identity.">
   <meta property="og:url" content="https://pnplabs.com.au/verify.html">
   <meta property="og:image" content="https://pnplabs.com.au/assets/linkedin/banner.png">
   <meta property="og:image:width" content="1584">
   <meta property="og:image:height" content="396">
-  <meta property="og:image:alt" content="PNP Labs P versus NP claim under review">
+  <meta property="og:image:alt" content="PNP Labs P versus NP formal reconstruction">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://pnplabs.com.au/assets/linkedin/banner.png">
-  <meta name="twitter:image:alt" content="PNP Labs P versus NP claim under review">
+  <meta name="twitter:image:alt" content="PNP Labs P versus NP formal reconstruction">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="assets/site.webmanifest">
@@ -33,7 +33,7 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html">
         <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim under review</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP formal reconstruction</span></span>
       </a>
       <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
 <a href="index.html">Home</a>
@@ -52,16 +52,16 @@
   <main id="main">
 
 <section class="page-hero">
-  <span class="eyebrow">Release checks</span>
-  <h1>Check the release files and regeneration workflow.</h1>
-  <p class="lede">Two public checks support independent review: confirm the committed release files, then regenerate the compact and full report records from the recorded source/checker revision. A digest match confirms file identity; it does not validate the theorem claim.</p>
-  <div class="hero-actions"><a class="btn primary" href="#seal-console">Run browser file check</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Download report</a></div>
+  <span class="eyebrow">Formal status and historical checks</span>
+  <h1>Inspect the reconstruction and identify historical files.</h1>
+  <p class="lede">The repository does not currently establish P = NP. Current commands expose formal blockers; report hashes confirm historical file identity only and do not verify theorem correctness.</p>
+  <div class="hero-actions"><a class="btn primary" href="status.html">View current status</a><a class="btn secondary" href="#seal-console">Check historical report file</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="grid two">
       <article class="card"><div class="kicker">Mode A</div><h2>File integrity check</h2><p>Check out the sealed release, compare durable files against SHA256SUMS while excluding any SHA256SUMS self-entry, then inspect the compact and full report records. This is an integrity check, not external validation of the claim.</p></article>
-      <article class="card"><div class="kicker">Mode B</div><h2>Regeneration workflow</h2><p>Check out the recorded source/checker revision, run validation, regenerate compact and full report records, and confirm the internal theorem statements and package/replay/certificate linkage.</p></article>
+      <article class="card"><div class="kicker">Mode B</div><h2>Formal reconstruction checks</h2><p>Run the current status command, legacy checker replay, and Lean build. The missing root theorem and axiom audit cannot be replaced by regenerated historical report records.</p></article>
     </div>
   </section>
   <section id="seal-console" class="section compact seal-console-section" aria-labelledby="seal-console-title">
@@ -104,13 +104,13 @@
             <button class="btn secondary small" type="button" data-copy="#computed-digest">Copy</button>
           </div>
           <div class="seal-result" data-seal-result>Awaiting browser check.</div>
-          <p>This checks the bundled PDF against the published digest. It does not validate the P versus NP claim; source regeneration and full release-bundle audit remain separate review steps.</p>
+          <p>This checks the bundled historical PDF against the published digest. It does not validate P = NP or discharge any current formal blocker.</p>
         </div>
       </div>
     </div>
   </section>
   <section class="section compact">
-    <div class="section-head"><div><div class="section-label">Release identifiers</div><h2>Sealed revision and artefact bundle.</h2></div><p>These identifiers are taken from the bundled canonical report and identify the released claim record. The site-level manifest and checksum ledger below cover the public files bundled on this website.</p></div>
+    <div class="section-head"><div><div class="section-label">Historical release identifiers</div><h2>Sealed revision and artefact bundle.</h2></div><p>These identifiers locate the historical report record. They do not override the current formal-reconstruction status or establish theorem correctness.</p></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Object</th><th>Identifier</th></tr></thead>
@@ -149,11 +149,11 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
     </div>
   </section>
   <section class="section">
-    <div class="section-head"><div><div class="section-label">Checker output</div><h2>What the internal checker reports.</h2></div></div>
+    <div class="section-head"><div><div class="section-label">Historical checker output</div><h2>What the legacy assertion checker reported.</h2></div></div>
     <div class="grid three">
-      <article class="card"><h3>Checker-accepted final report</h3><p><code>CheckFinalPNPProofReport0</code> accepts with theorem statement <code>P = NP</code> and antecedent <code>CheckPCCPackexp(GeneratePCCPack()) = accept</code>.</p></article>
-      <article class="card"><h3>Internal linkage acceptance</h3><p>The package checker, acceptance run, replay, final verdict, final certificate, release audit, and release gate all accept.</p></article>
-      <article class="card"><h3>Canonical-byte discipline</h3><p>Hash lookups are followed by full key or canonical-byte comparison, and generator drift is rejected by canonical-byte comparison.</p></article>
+      <article class="card"><h3>Assertion-bearing report record</h3><p>The historical record contains the string <code>P = NP</code>. Acceptance verifies record predicates, not the truth of that mathematical statement.</p></article>
+      <article class="card"><h3>Historical linkage acceptance</h3><p>The package, replay, certificate, audit, and gate records passed their implemented JavaScript predicates. This is not formal proof of their asserted propositions.</p></article>
+      <article class="card"><h3>Canonical-byte discipline</h3><p>Canonical-byte comparisons support historical artefact identity and drift detection. They do not provide theorem evidence.</p></article>
     </div>
   </section>
   <section class="section compact">
@@ -176,9 +176,9 @@ node ./bin/write-final-pnp-proof-report0.mjs "$B/full" --full</pre>
       <div>
         <a class="brand" href="index.html">
           <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
-          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP claim released for independent review.</span></span>
+          <span class="brand-text"><strong>PNP Labs</strong><span>P versus NP formal reconstruction in progress.</span></span>
         </a>
-        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · P versus NP claim released for independent review; external community verification not yet established.</p>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · Formal reconstruction is in progress; the repository does not currently establish P = NP.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <a href="paper.html">Review guide</a>

@@ -1,11 +1,13 @@
 {
   "kind": "PNPVerifierRunComparisonMatrix0",
   "version": 0,
-  "status": "verifier-run-comparison-matrix-ready",
+  "status": "historical-verifier-run-comparison-matrix-frozen",
+  "historical": true,
+  "intakeFrozen": true,
   "sourceRegistry": "public/pnp-verification-runs.json",
   "comparisonPolicyPayload": "public/pnp-verifier-run-digest-comparison.json",
   "generatedBy": "tools/generate-pnp-verifier-run-matrix.mjs",
-  "generatedFromRegistryStatus": "activated-verification-run-registry-badge-ready",
+  "generatedFromRegistryStatus": "historical-activated-verification-run-registry-frozen",
   "registryRunCount": 1,
   "pairCount": 1,
   "acceptedPairCount": 1,
@@ -61,11 +63,18 @@
       ]
     }
   ],
+  "currentBoundary": {
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "finalTheoremReady": false,
+    "projectSpecificAxiomsRemaining": true
+  },
   "nonClaims": [
-    "The comparison matrix is reproducibility metadata for activated checker-trust verifier runs.",
-    "A matrix accept cell is not an external-consensus claim or peer-review acceptance.",
-    "A matrix reject cell is a triage signal; it does not by itself refute the source/checker proof stack.",
-    "The source/checker verifier remains the proof-stack reproduction target."
+    "The repository does not currently establish P = NP.",
+    "This frozen matrix compares historical records from a superseded activated checker status.",
+    "An accept cell is historical reproducibility metadata, not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance.",
+    "No current green status badge may be derived from this matrix."
   ],
-  "matrixSha256": "b1df5f9f6ba18643d3b6259efc66a0031b1f3a35c8c14f6022c5346ea613fd2e"
+  "matrixSha256": "b485c42c0df8bfd9472f7fae0009fd2e9aa1666e1a1d8f3cf3bc3309ba823874"
 }

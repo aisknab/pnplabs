@@ -1,67 +1,50 @@
-# Activated theorem-status wording guard
+# Formal-reconstruction wording guard
 
-This site now mirrors the activated theorem-emission status from `aisknab/pnp`.
+This file supersedes its former activated-status wording. It remains at the same path so old links resolve, but its rules now enforce the current conservative boundary.
 
-The allowed public theorem wording is:
+## Current required wording
 
-```text
-P = NP public theorem emission is activated under the repository checker trust model.
-```
-
-or equivalently:
+Public surfaces must make these facts unambiguous:
 
 ```text
-publicTheoremEmissionAllowed = true
-publicTheoremStatement = "P = NP"
-publicTheoremUnderCheckerTrustModel = true
+status = "formal-reconstruction-in-progress"
+mathematicalTheoremEstablished = false
+publicTheoremEmissionAllowed = false
+publicTheoremStatement = null
+finalTheoremReady = false
+rootLeanTheoremPresent = false
+rootLeanTheoremBuilt = false
+rootLeanTheoremAxiomAuditPassed = false
+projectSpecificAxiomsRemaining = true
 ```
 
-## Required boundary
+The short public statement is:
 
-Every activated public surface must preserve these statements:
+> Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-```text
-externalReviewIsMathematicalPremise = false
-externalReviewAcceptanceRequiredForEmission = false
-remainingBlockers = []
-```
+## Checker wording
 
-External review remains invited as reproducibility, audit, and bug-finding evidence. It is not a theorem premise and is not represented as independent consensus.
+Use this boundary when describing the old JavaScript stack:
 
-## Permitted language
+> Legacy JavaScript checker acceptance verifies assertion-bearing records under implemented predicates. It is historical assertion-checker evidence only and is not a formal proof of the named mathematical propositions.
 
-Use language like:
+Do not describe a passing legacy record, digest match, matrix cell, or site CI run as proof of the assertions stored in that record.
 
-```text
-activated under the repository checker trust model
-source/checker verifier
-machine-readable activated status payload
-external review remains audit evidence
-reproducible verifier run evidence
-```
+## Historical surfaces
 
-## Forbidden language
+The following are preserved only for auditability:
 
-Do not claim:
+- `PNP-ACTIVATED-STATUS-2026-07-05-01` and related activation coordinates;
+- the activated verifier-run registry and record schema;
+- digest comparison matrices and summaries;
+- the bundled report, until it is regenerated after formal reconstruction.
 
-```text
-independent external consensus
-peer-reviewed acceptance
-external review proves the theorem
-external review is the proof premise
-reviewers are vanity
-Clay prize awarded
-practical cures or guaranteed applications
-```
+Every such surface must be labelled historical or superseded. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
-Do not state downstream applications as established consequences on this public site. Applications can be described only as future or potential work after separate extraction, benchmarking, and audit.
+## External review
 
-## Source of truth
+External review is optional audit and bug-finding evidence. It is not a mathematical premise or release blocker. The formal result must stand or fail on its definitions, proofs, build, and axiom audit.
 
-The live site status payload is:
+## Prohibited current wording
 
-```text
-public/pnp-status.json
-```
-
-The legacy public-review payloads remain available as historical surfaces, but they do not override the activated status payload.
+Current public surfaces must not say that theorem emission is enabled, that the final theorem is ready, that blockers are empty, or that the old checker stack emits an established `P = NP` theorem. Historical quotations or archived record fields must be explicitly marked as superseded data.

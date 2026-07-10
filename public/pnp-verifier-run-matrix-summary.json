@@ -1,16 +1,18 @@
 {
   "kind": "PNPVerifierRunMatrixBadgeSummary0",
   "version": 0,
-  "status": "verifier-run-matrix-badge-summary-ready",
+  "status": "historical-verifier-run-matrix-summary-frozen",
+  "historical": true,
+  "currentStatusBadge": false,
   "sourceMatrix": "public/pnp-verifier-run-comparison-matrix.json",
   "sourceRegistry": "public/pnp-verification-runs.json",
   "generatedBy": "tools/generate-pnp-verifier-run-summary.mjs",
   "badge": {
-    "label": "Verifier-run matrix",
-    "state": "passing",
-    "tone": "success",
-    "text": "1 public run; 1/1 required comparisons passing",
-    "shortText": "1 run / matrix passing"
+    "label": "Historical verifier-run matrix",
+    "state": "historical",
+    "tone": "neutral",
+    "text": "Historical snapshot only; 1 public run; 1 recorded historical comparison",
+    "shortText": "historical snapshot"
   },
   "metrics": {
     "registryRunCount": 1,
@@ -36,15 +38,18 @@
     "comparisonPolicy": "public/pnp-verifier-run-digest-comparison.json",
     "page": "verifier-run-digests.html"
   },
-  "boundary": {
-    "publicTheoremEmissionAllowed": true,
-    "publicTheoremStatement": "P = NP",
-    "remainingBlockers": [],
+  "currentBoundary": {
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "finalTheoremReady": false,
+    "projectSpecificAxiomsRemaining": true,
     "externalReviewIsMathematicalPremise": false
   },
   "nonClaims": [
-    "The matrix badge is a compact reproducibility summary for activated checker-trust verifier runs.",
-    "A passing badge is not an external-consensus claim or peer-review acceptance."
+    "The repository does not currently establish P = NP.",
+    "This is neutral historical metadata, not a current green status badge.",
+    "Historical matrix agreement is not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance."
   ],
-  "summarySha256": "aa108a890dce3de30e25af5963ef9cb1323dd8299051f48864ce59c360605e3f"
+  "summarySha256": "9461c8f46c4b2a6b9483c9abe5670de2361697090dedaa22189bd8fb4dc78ab6"
 }

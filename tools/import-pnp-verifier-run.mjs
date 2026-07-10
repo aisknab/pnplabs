@@ -64,10 +64,10 @@ export function ValidatePNPActivatedRunRecord0(record) {
 export function ValidatePNPVerificationRunRegistry0(registry) {
   if (!plain0(registry)) return reject0('Registry.Shape', [], 'registry must be an object');
   if (registry.kind !== 'PNPLabsPNPVerificationRunRegistry0') return reject0('Registry.Kind', ['kind'], 'registry kind mismatch', { actual: registry.kind });
-  if (!plain0(registry.claimBoundary)) return reject0('Registry.ClaimBoundary', ['claimBoundary'], 'registry claim boundary missing');
-  if (registry.claimBoundary.publicTheoremEmissionAllowed !== true) return reject0('Registry.BoundaryEmission', ['claimBoundary', 'publicTheoremEmissionAllowed'], 'registry must use activated theorem boundary');
-  if (registry.claimBoundary.publicTheoremStatement !== 'P = NP') return reject0('Registry.BoundaryTheorem', ['claimBoundary', 'publicTheoremStatement'], 'registry theorem statement mismatch');
-  if (!sameArray0(registry.claimBoundary.remainingBlockers, [])) return reject0('Registry.BoundaryBlockers', ['claimBoundary', 'remainingBlockers'], 'registry remaining blockers must be empty');
+  if (registry.status !== 'historical-activated-verification-run-registry-frozen' || registry.intakeFrozen !== true) return reject0('Registry.Status', ['status'], 'registry must be the frozen historical registry');
+  if (!plain0(registry.currentClaimBoundary)) return reject0('Registry.CurrentClaimBoundary', ['currentClaimBoundary'], 'current claim boundary missing');
+  if (registry.currentClaimBoundary.publicTheoremEmissionAllowed !== false || registry.currentClaimBoundary.mathematicalTheoremEstablished !== false) return reject0('Registry.CurrentBoundary', ['currentClaimBoundary'], 'current claim boundary must remain conservative');
+  if (!plain0(registry.historicalClaimBoundary) || registry.historicalClaimBoundary.publicTheoremEmissionAllowed !== true) return reject0('Registry.HistoricalClaimBoundary', ['historicalClaimBoundary'], 'superseded activated boundary must be preserved as historical data');
   if (!Array.isArray(registry.runs)) return reject0('Registry.Runs', ['runs'], 'registry runs must be an array');
   const seen = new Set();
   for (let i = 0; i < registry.runs.length; i += 1) {
@@ -82,6 +82,7 @@ export function ValidatePNPVerificationRunRegistry0(registry) {
 export function ImportPNPActivatedRunRecord0(registry, record, options = {}) {
   const registryCheck = ValidatePNPVerificationRunRegistry0(registry);
   if (registryCheck.tag === 'reject') return registryCheck;
+  if (registry.intakeFrozen === true) return reject0('ImportRun.IntakeFrozen', ['intakeFrozen'], 'activated-status run intake is frozen during formal reconstruction');
   const recordCheck = ValidatePNPActivatedRunRecord0(record);
   if (recordCheck.tag === 'reject') return recordCheck;
   if (registry.runs.some((existing) => existing.recordId === record.recordId)) return reject0('ImportRun.DuplicateRecordId', ['runs', record.recordId], 'run record already exists');

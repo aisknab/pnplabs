@@ -1,12 +1,40 @@
 {
   "kind": "PNPLabsPNPVerificationRunRegistry0",
-  "version": 7,
-  "status": "activated-verification-run-registry-badge-ready",
+  "version": 8,
+  "status": "historical-activated-verification-run-registry-frozen",
+  "historical": true,
+  "intakeFrozen": true,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-06",
-  "purpose": "Record public run reports from people, source/checker CI jobs, or first-party site CI jobs that reproduced the activated theorem-emission status, validated the status payload, and submitted reproducible evidence with normalized digest fields, a generated comparison matrix, and compact badge summaries.",
-  "claimBoundary": {
+  "syncedOn": "2026-07-10",
+  "purpose": "Preserve, for auditability, the historical run records that were collected against the superseded activated checker status. Intake is frozen and these records are not current theorem-status evidence.",
+  "currentClaimBoundary": {
+    "status": "formal-reconstruction-in-progress",
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "publicTheoremConclusion": null,
+    "finalTheoremReady": false,
+    "internalFinalTheoremReady": false,
+    "unrestrictedFinalSoundnessDischarged": false,
+    "uniformFinalSoundnessProved": false,
+    "rootLeanTheoremPresent": false,
+    "rootLeanTheoremBuilt": false,
+    "rootLeanTheoremAxiomAuditPassed": false,
+    "projectSpecificAxiomsRemaining": true,
+    "externalReviewIsMathematicalPremise": false,
+    "remainingBlockers": [
+      "Formal.PinnedLeanBuildAndRootTarget",
+      "Formal.ConcreteComplexityModel",
+      "Formal.ConcreteSAT",
+      "Formal.LockedNANDThreshold",
+      "Formal.ResidualBandMinimizer",
+      "Formal.ZeroSlack",
+      "Formal.PolynomialRuntimeAndCertificateBounds",
+      "Formal.RootTheoremAndAxiomAudit"
+    ]
+  },
+  "historicalClaimBoundary": {
     "publicTheoremEmissionAllowed": true,
     "publicTheoremStatement": "P = NP",
     "publicTheoremConclusion": "P = NP",
@@ -18,33 +46,35 @@
     "externalReviewIsMathematicalPremise": false,
     "remainingBlockers": []
   },
-  "statusPayload": {
+  "historicalStatusPayload": {
     "path": "public/pnp-status.json",
     "kind": "PNPActivatedStatus0",
     "coordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
     "publicTheoremActivationCoordinate": "PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01",
     "unrestrictedFinalSoundnessReleaseCoordinate": "PNP-UNRESTRICTED-FINAL-SOUNDNESS-RELEASE-2026-07-05-01"
   },
-  "primaryCommand": [
+  "historicalPrimaryCommand": [
     "git clone https://github.com/aisknab/pnp.git",
     "cd pnp",
     "npm ci",
     "npm run pnp:verify"
   ],
-  "focusedActivationCommands": [
+  "historicalFocusedActivationCommands": [
     "npm run proof:activated-pnp-status",
     "npm run proof:public-theorem-activation",
     "npm run proof:unrestricted-final-soundness-release",
     "npm run proof:uniform-complexity-conclusion"
   ],
   "submissionPath": {
-    "kind": "github-issue-template",
+    "kind": "historical-github-issue-template",
+    "status": "closed",
+    "acceptsNewRecords": false,
     "repository": "https://github.com/aisknab/pnplabs",
     "template": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml"
   },
   "normalizationWorkflow": {
     "kind": "PNPActivatedRunDigestNormalization0",
-    "status": "ready",
+    "status": "historical-tooling-only",
     "tool": "tools/normalize-pnp-verifier-run.mjs",
     "command": "npm run pnp:normalize-run -- --json imports/pnp-verifier-runs/<record>.json",
     "writeCommand": "npm run pnp:normalize-run -- --write imports/pnp-verifier-runs/<record>.json",
@@ -63,7 +93,7 @@
   },
   "comparisonWorkflow": {
     "kind": "PNPVerifierRunDigestComparison0",
-    "status": "ready",
+    "status": "historical-tooling-only",
     "page": "verifier-run-digests.html",
     "payload": "public/pnp-verifier-run-digest-comparison.json",
     "tool": "tools/compare-pnp-verifier-runs.mjs",
@@ -79,7 +109,7 @@
   },
   "matrixWorkflow": {
     "kind": "PNPVerifierRunComparisonMatrix0",
-    "status": "ready",
+    "status": "historical-tooling-only",
     "payload": "public/pnp-verifier-run-comparison-matrix.json",
     "tool": "tools/generate-pnp-verifier-run-matrix.mjs",
     "command": "npm run pnp:run-matrix -- --json public/pnp-verification-runs.json public/pnp-verifier-run-comparison-matrix.json",
@@ -95,23 +125,25 @@
   },
   "badgeSummaryWorkflow": {
     "kind": "PNPVerifierRunMatrixBadgeSummary0",
-    "status": "ready",
+    "status": "historical-no-current-badge",
     "payload": "public/pnp-verifier-run-matrix-summary.json",
     "tool": "tools/generate-pnp-verifier-run-summary.mjs",
     "command": "npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json",
     "writeCommand": "npm run pnp:run-summary -- --write public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json",
     "sourceMatrix": "public/pnp-verifier-run-comparison-matrix.json",
     "page": "verifier-run-digests.html",
-    "exposesStatusBadge": true,
+    "exposesStatusBadge": false,
     "externalReviewIsMathematicalPremise": false
   },
   "importWorkflow": {
     "kind": "PNPVerifierRunImportWorkflow0",
-    "status": "ready",
+    "status": "frozen",
+    "intakeFrozen": true,
+    "acceptsNewRecords": false,
     "importDirectory": "imports/pnp-verifier-runs/",
     "tool": "tools/import-pnp-verifier-run.mjs",
     "checkCommand": "npm run pnp:import-run -- --check imports/pnp-verifier-runs/<record>.json public/pnp-verification-runs.json",
-    "writeCommand": "npm run pnp:import-run -- --write imports/pnp-verifier-runs/<record>.json public/pnp-verification-runs.json",
+    "writeCommand": null,
     "ciWorkflow": ".github/workflows/pnp-verifier-run-import.yml",
     "acceptedRecordClasses": [
       "source-checker-verifier-run",
@@ -189,6 +221,7 @@
   "runs": [
     {
       "kind": "PNPActivatedVerificationRunRecord0",
+      "historical": true,
       "recordId": "pnplabs-ci-pr16-2026-07-06",
       "recordClass": "first-party-site-ci-status-mirror",
       "runnerNameOrHandle": "PNP Labs GitHub Actions",
@@ -270,9 +303,11 @@
     }
   ],
   "nonClaims": [
-    "A run record means someone reports running the verifier or a documented first-party CI validation and reproducing the stated activated machine result or mirror state.",
-    "A run record is not an external-consensus claim or peer-review acceptance.",
-    "External review remains audit and reproducibility evidence, not a mathematical premise for theorem emission.",
-    "This registry records public reproducibility evidence for the activated checker-trust status."
+    "The repository does not currently establish P = NP.",
+    "These records concern a superseded activated checker status and are preserved only as historical audit records.",
+    "A historical run record is not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance.",
+    "Legacy checker acceptance verifies assertion-bearing records under implemented predicates; it is not a formal proof of the named mathematical propositions.",
+    "External review is optional audit evidence and is not a mathematical premise or release blocker.",
+    "New records are not accepted into this frozen registry."
   ]
 }

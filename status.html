@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — activated PNP status</title>
-  <meta name="description" content="Activated PNP status, public theorem-emission payload, verifier command, and machine-readable status surfaces.">
+  <title>PNP Labs — formal reconstruction status</title>
+  <meta name="description" content="Current PNP formal-reconstruction status, remaining Lean obligations, and conservative machine-readable status surfaces.">
   <link rel="canonical" href="https://pnplabs.com.au/status.html">
   <meta name="theme-color" content="#f5f6f7">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -18,11 +18,11 @@
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
         <span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span>
-        <span class="brand-text"><strong>PNP Labs</strong><span>activated status</span></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a class="active" href="status.html">Status</a>
+        <a class="active" aria-current="page" href="status.html">Status</a>
         <a href="verify.html">Verify</a>
         <a href="review.html">Review</a>
         <a href="faq.html">FAQ</a>
@@ -32,115 +32,94 @@
 
   <main id="main">
     <section class="page-hero">
-      <span class="eyebrow">Activated checker-trust status</span>
+      <span class="eyebrow">Formal reconstruction in progress</span>
       <h1>Current PNP status</h1>
-      <p class="lede">The source/checker repository now publishes public theorem emission for P = NP under its explicit checker trust model. External review remains audit evidence, not a theorem premise.</p>
+      <p class="lede">The repository does not currently establish P = NP. The concrete Lean reconstruction, root theorem, and axiom audit remain incomplete.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="public/pnp-status.json">Open activated status JSON</a>
-        <a class="btn secondary" href="public/pnp-one-command-upload.json">One-command upload JSON</a>
+        <a class="btn primary" href="public/pnp-status.json">Open current status JSON</a>
+        <a class="btn secondary" href="https://github.com/aisknab/pnp">Inspect source repository</a>
       </div>
     </section>
 
-    <section class="section compact">
+    <section class="section compact" data-formal-status-root data-status-state="fail-closed">
       <div class="boundary-panel">
-        <div class="boundary-head"><span>Current theorem boundary</span><strong>activated</strong></div>
-        <pre>publicTheoremEmissionAllowed = true
-publicTheoremStatement = "P = NP"
-publicTheoremConclusion = "P = NP"
-publicTheoremUnderCheckerTrustModel = true
-finalTheoremReady = true
-internalFinalTheoremReady = true
-unrestrictedFinalSoundnessDischarged = true
-remainingBlockers = []</pre>
+        <div class="boundary-head"><span>Current theorem boundary</span><strong data-formal-status-label>not established</strong></div>
+        <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
+mathematicalTheoremEstablished = false
+publicTheoremEmissionAllowed = false
+publicTheoremStatement = null
+finalTheoremReady = false
+rootLeanTheoremPresent = false
+rootLeanTheoremBuilt = false
+rootLeanTheoremAxiomAuditPassed = false
+projectSpecificAxiomsRemaining = true</pre>
       </div>
-      <p class="review-note"><strong>Boundary note:</strong> this website mirrors the activated status payload from <code>aisknab/pnp</code>. External review remains audit evidence and reproducibility evidence; it is not used as a mathematical premise.</p>
+      <p class="review-note" data-formal-status-note><strong>Status source:</strong> <code>public/pnp-status.json</code> is an exact mirror of <code>aisknab/pnp/public/pnp-status.json</code>. Until a valid conservative payload is fetched, this page remains in the same fail-closed, non-emitting state.</p>
     </section>
 
     <section class="section compact">
-      <div class="section-label">One-command verifier upload</div>
-      <h2>Run the verifier and upload in one prompt</h2>
-      <pre><code>git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run verify
-# Verify complete.
-# Upload verification run to PNP Labs? [y/N]</code></pre>
-      <p>Type <code>y</code> or <code>yes</code> to upload the run report when <code>PNPLABS_UPLOAD_TOKEN</code>, <code>GITHUB_TOKEN</code>, <code>GH_TOKEN</code>, or an authenticated <code>gh</code> CLI is available. Without credentials, the verifier writes <code>artifacts/pnplabs-upload/latest-issue-body.md</code> and prints a prefilled issue URL.</p>
+      <div class="section-label">Required formal work</div>
+      <h2>Eight obligations remain</h2>
+      <ol>
+        <li><code>Formal.PinnedLeanBuildAndRootTarget</code></li>
+        <li><code>Formal.ConcreteComplexityModel</code></li>
+        <li><code>Formal.ConcreteSAT</code></li>
+        <li><code>Formal.LockedNANDThreshold</code></li>
+        <li><code>Formal.ResidualBandMinimizer</code></li>
+        <li><code>Formal.ZeroSlack</code></li>
+        <li><code>Formal.PolynomialRuntimeAndCertificateBounds</code></li>
+        <li><code>Formal.RootTheoremAndAxiomAudit</code></li>
+      </ol>
+      <p>These entries appear in both <code>remainingFormalObligations</code> and <code>remainingBlockers</code>. No site wording, JavaScript checker record, report hash, or review status clears them.</p>
     </section>
 
     <section class="section compact">
-      <div class="section-label">Verifier-run matrix badge</div>
-      <h2>Current public run-evidence summary</h2>
+      <div class="section-label">Formal target</div>
+      <h2>What completion must demonstrate</h2>
       <div class="grid two path">
-        <article class="card"><h3>Matrix status: passing</h3><p><strong>1 public run; 1/1 required comparisons passing.</strong> The current matrix has no rejected pairs, no required mismatches, and an accepting diagonal self-comparison.</p></article>
-        <article class="card"><h3>Required digest checks</h3><p><code>verdictNormalizedSha256</code>, <code>activatedStatusNormalizedSha256</code>, and <code>proofScriptOutputsNormalizedSha256</code> are the default required comparison fields.</p></article>
+        <article class="card"><h3>Concrete definitions</h3><p>The Lean development must define the complexity model, SAT, locked-NAND construction, residual minimiser, ZeroSlack argument, and polynomial bounds without replacing the mathematical content with assumptions.</p></article>
+        <article class="card"><h3>Root theorem</h3><p><code>PNP.Main.p_eq_np</code> must be present, build successfully, and pass an axiom audit without project-specific axioms. All three root-theorem status fields are currently false.</p></article>
       </div>
-      <p><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> exposes this compact status for badges, dashboards, and static clients.</p>
     </section>
 
     <section class="section compact">
-      <div class="section-label">Verifier command</div>
-      <h2>How to reproduce the current status</h2>
-      <p>Clone the source/checker repository and run the one-command verifier wrapper:</p>
+      <div class="section-label">Checker boundary</div>
+      <h2>Legacy acceptance is historical assertion-checker evidence</h2>
+      <p>The legacy JavaScript checker stack verifies assertion-bearing records under implemented predicates. It does not formalise or prove the named mathematical propositions. Its prior activation coordinate, run registry, comparison matrix, and badge are preserved for auditability only.</p>
+      <ul>
+        <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> is a frozen historical registry.</li>
+        <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a> is a historical comparison snapshot.</li>
+        <li><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> is neutral historical metadata, not a current green badge.</li>
+        <li><a href="public/pnp-one-command-upload.json"><code>public/pnp-one-command-upload.json</code></a> records that activated-run intake is frozen.</li>
+      </ul>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Verification commands</div>
+      <h2>Inspect the current reconstruction</h2>
       <pre><code>git clone https://github.com/aisknab/pnp.git
 cd pnp
 npm ci
-npm run verify</code></pre>
-      <p>The wrapper runs the repository-level verifier and prepares the PNP Labs run-record upload. Focused activation checks remain available in the source/checker repository:</p>
-      <pre><code>npm run proof:public-theorem-activation
-npm run proof:unrestricted-final-soundness-release
-npm run proof:uniform-complexity-conclusion</code></pre>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Run reports</div>
-      <h2>Submit a reproducible verifier run</h2>
-      <p>People who run the source/checker verifier can submit reproducible run evidence for inclusion in the public run registry. The registry records machine-verifier reproduction reports and audit evidence.</p>
-      <ul>
-        <li><a href="verification-runs.html">Verification run registry page</a></li>
-        <li><a href="verifier-run-digests.html">Verifier-run digest comparison page</a></li>
-        <li><a href="public/pnp-one-command-upload.json"><code>public/pnp-one-command-upload.json</code></a></li>
-        <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a></li>
-        <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a></li>
-        <li><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a></li>
-      </ul>
+node pcc-formal-reconstruction-status0.mjs --json
+node pcc-formal-public-surface0.mjs --json
+npm run pnp:verify
+lake build PNP</code></pre>
+      <p>A successful status check or build is necessary but not sufficient. The target theorem is not established unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
 
     <section class="section compact">
       <div class="section-label">Public payloads</div>
-      <h2>Machine-readable status surfaces</h2>
-      <p>These static payloads expose the activated theorem-emission state for site consumers. The source of truth remains the <code>aisknab/pnp</code> repository.</p>
+      <h2>Machine-readable surfaces</h2>
       <ul>
-        <li><a href="public/pnp-index.json"><code>public/pnp-index.json</code></a> — payload index.</li>
-        <li><a href="public/pnp-status.json"><code>public/pnp-status.json</code></a> — activated status and coordinate mirror.</li>
-        <li><a href="public/pnp-one-command-upload.json"><code>public/pnp-one-command-upload.json</code></a> — one-command verifier upload flow.</li>
-        <li><a href="public/pnp-public-review.json"><code>public/pnp-public-review.json</code></a> — legacy public-review entrypoint and boundary summary.</li>
-        <li><a href="public/pnp-theorem-emission-gate.json"><code>public/pnp-theorem-emission-gate.json</code></a> — legacy theorem-emission gate from the older public-review boundary.</li>
-        <li><a href="public/pnp-external-review-status.json"><code>public/pnp-external-review-status.json</code></a> — legacy external-review status surface.</li>
-        <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> — public verifier run registry.</li>
-        <li><a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a> — digest comparison policy.</li>
-        <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a> — static comparison matrix over public run records.</li>
-        <li><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> — compact matrix badge summary.</li>
+        <li><a href="public/pnp-index.json"><code>public/pnp-index.json</code></a> is the current payload index.</li>
+        <li><a href="public/pnp-status.json"><code>public/pnp-status.json</code></a> is the exact authoritative mirror.</li>
+        <li><a href="public/pnp-public-review.json"><code>public/pnp-public-review.json</code></a> is a historical public-review payload.</li>
+        <li><a href="public/pnp-theorem-emission-gate.json"><code>public/pnp-theorem-emission-gate.json</code></a> is a historical denied-gate record.</li>
+        <li><a href="public/pnp-external-review-status.json"><code>public/pnp-external-review-status.json</code></a> is a historical review-status record.</li>
       </ul>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Theorem-emission gate</div>
-      <h2>Current gate result: activated</h2>
-      <p>The activated status payload records that public theorem emission is allowed after the accepted unrestricted final soundness release and public theorem activation gate in <code>aisknab/pnp</code>.</p>
-      <ul>
-        <li>Public theorem emission allowed: <strong>true</strong></li>
-        <li>Theorem statement: <strong>P = NP</strong></li>
-        <li>Remaining blockers: <strong>[]</strong></li>
-        <li>External review required for emission: <strong>false</strong></li>
-      </ul>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Historical report boundary</div>
-      <h2>Historical artifacts versus current status</h2>
-      <p>Older public-review payloads and sealed report artifacts remain historical records. The active site status is now <code>public/pnp-status.json</code>, which mirrors the activated checker-trust status from the source/checker repository without mutating historical files.</p>
+      <p>External review is optional audit evidence. It is not a mathematical premise or a release blocker.</p>
     </section>
   </main>
+  <script src="assets/main.js" defer></script>
 </body>
 </html>

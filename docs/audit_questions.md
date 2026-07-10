@@ -1,10 +1,17 @@
 # Audit Questions
 
+> **Current status:** Formal reconstruction is in progress. The repository does not currently
+> establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
+> [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/main/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/main/docs/FORMAL_RECONSTRUCTION.md).
+> Claims and release records below are historical assertion-checker audit targets only.
+
 Use this worksheet to turn review concerns into precise checks. A refutation can be mathematical, implementation-level, or reproducibility-level; record which layer failed.
 
 | Major claim | Where it appears | Supporting file/function/theorem | How to test or inspect it | What would count as a refutation |
 | --- | --- | --- | --- | --- |
-| The public claim is `P = NP` under the accepted package/checker boundary. | `downloads/canonical_proof_report.tex`, "Executive status and claim boundary" | Final accepted finite-certificate theorem; `CheckFinalPNPProofReport0` | Inspect theorem fields in the report and source/checker final proof record. | The accepted theorem field differs, is conditional in an undisclosed way, or is not produced by replay. |
+| The historical report claimed `P = NP` under an accepted package/checker boundary. | `downloads/canonical_proof_report.tex`, "Executive status and claim boundary" | Superseded assertion-bearing final record; `CheckFinalPNPProofReport0` | Inspect historical theorem fields and compare them with the current formal-reconstruction status. | The recorded field differs, is conditional in an undisclosed way, or is presented as current proof authority. |
 | SAT reduces to the locked NAND target in polynomial time. | Report "Locked NAND and final integration" | Package G, `GPack`, `CheckSATDecision`, `CheckSATBounds` | Reconstruct the reduction and check size/time bounds. | A SAT instance maps incorrectly, requires exponential construction, or relies on exact minimization. |
 | Locked NAND macro tables implement the claimed Boolean functions. | Report Appendix A | Macro truth signatures; `CheckGPack` | Independently compute truth tables and compare signatures. | A listed signature is wrong or a macro lacks required lock dependence/disjointness. |
 | Constructed locked NAND instances have residual slack at most four. | Report "Central scale correction" and Package G sections | `Lambda(C)=|C|-mu(C)`; residual slack checks | Verify size convention, minimum-size notion, and slack proof for generated instances. | Any constructed instance has slack greater than four or uses a different minimum notion. |
@@ -19,7 +26,7 @@ Use this worksheet to turn review concerns into precise checks. A refutation can
 | The final certificate is linked to release audit and replay. | Report final release sections | `CheckFinalPNPCertificate0`, `CheckFinalPNPReleaseGate0` | Trace certificate digests and canonical-byte roots into release gate. | Final report accepts with a stale, missing, or unlinked certificate. |
 | Public SHA-256 checks establish file identity only. | `verify.html`, `downloads/release-seal.json`, `docs/trust_model.md` | `tools/verify-release-seal.mjs`, browser Web Crypto flow | Run `npm run verify:seal`; inspect UI copy. | The site or docs imply that a hash match proves theorem correctness. |
 | Minimal examples are not proof evidence. | `examples/minimal/README.md` | `tools/reviewer-fixture-checker.mjs` | Run examples and read fixture comments. | A doc claims fixture acceptance validates the real theorem. |
-| Reproduction from pinned refs yields accepted theorem fields. | Report "Independent verification protocol"; [docs/source_checker_map.md](source_checker_map.md) | `sourceRef`, `docsRef`, and `artifactRef` for the 7072f8d release | Fresh clone of source/checker repo; use `docsRef` for release instructions, `sourceRef` for code, and `artifactRef` for generated artefacts. | Re-run does not accept, theorem fields differ, central canonical digests mismatch without explanation, or a path is validated at the wrong ref. |
+| Historical replay from pinned refs reproduces accepted assertion fields. | Report "Independent verification protocol"; [docs/source_checker_map.md](source_checker_map.md) | `sourceRef`, `docsRef`, and `artifactRef` for the 7072f8d release | Fresh clone of the source/checker repo at the pinned historical refs; treat all acceptance as implementation evidence only. | Replay differs, central canonical digests mismatch without explanation, a path is validated at the wrong ref, or replay acceptance is presented as theorem proof. |
 
 ## Notes For Findings
 

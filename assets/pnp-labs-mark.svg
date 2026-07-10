@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="pnp-mark-title pnp-mark-desc">
-  <title id="pnp-mark-title">PNP Labs proof seal</title>
-  <desc id="pnp-mark-desc">A formal proof-seal tile showing P equals NP with a red theorem rule.</desc>
+  <title id="pnp-mark-title">PNP Labs mark</title>
+  <desc id="pnp-mark-desc">The PNP Labs project mark representing the P versus NP research target.</desc>
   <rect x="4" y="0" width="504" height="512" rx="108" fill="#181b20"/>
   <rect x="27" y="22" width="459" height="468" rx="84" fill="#f9f4e9"/>
   <g fill="#181b20" font-family="Georgia, 'Times New Roman', 'Noto Serif', 'Liberation Serif', serif" font-size="160" font-weight="700">

@@ -3,127 +3,64 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — activated verification run registry</title>
-  <meta name="description" content="Submit and inspect public run reports for the activated PNP source/checker theorem-emission status.">
+  <title>PNP Labs — historical verifier-run registry</title>
+  <meta name="description" content="Frozen historical records from the superseded activated PNP checker status. Not current theorem-status evidence.">
   <link rel="canonical" href="https://pnplabs.com.au/verification-runs.html">
+  <link rel="icon" href="assets/icon-192.png" type="image/png">
   <link rel="stylesheet" href="assets/styles.min.css">
-  <script src="assets/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="nav-wrap">
-      <a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>verification runs</span></span></a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="status.html">Status</a>
-        <a href="verify.html">Verify</a>
-        <a href="review.html">Review</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
-    </div>
-  </header>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span></a>
+    <nav class="nav-links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="status.html">Status</a><a href="verify.html">Verify</a><a href="review.html">Review</a></nav>
+  </div></header>
   <main id="main">
     <section class="page-hero">
-      <span class="eyebrow">Activated public reproducibility</span>
-      <h1>Activated verification run registry</h1>
-      <p class="lede">Run the source/checker verifier, then type <code>y</code> when prompted to upload reproducible run evidence to PNP Labs.</p>
-      <div class="hero-actions"><a class="btn primary" href="public/pnp-one-command-upload.json">One-command upload JSON</a><a class="btn secondary" href="public/pnp-verification-runs.json">Open registry JSON</a></div>
+      <span class="eyebrow">Historical snapshot</span>
+      <h1>Activated verifier-run registry is frozen.</h1>
+      <p class="lede">This page preserves records collected against a superseded checker status. New activated-status records are not accepted, and the registry is not current theorem-status evidence.</p>
+      <div class="hero-actions"><a class="btn primary" href="status.html">View current status</a><a class="btn secondary" href="public/pnp-verification-runs.json">Open historical registry JSON</a></div>
     </section>
     <section class="section compact">
-      <div class="section-label">One-command verifier upload</div>
-      <h2>Run, then upload with one prompt</h2>
-      <pre><code>git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run verify
-# Verify complete.
-# Upload verification run to PNP Labs? [y/N]</code></pre>
-      <p>Type <code>y</code> or <code>yes</code> to submit automatically when <code>PNPLABS_UPLOAD_TOKEN</code>, <code>GITHUB_TOKEN</code>, <code>GH_TOKEN</code>, or an authenticated <code>gh</code> CLI is available.</p>
-      <p>If credentials are unavailable, the CLI writes <code>artifacts/pnplabs-upload/latest-run-record.json</code> and <code>artifacts/pnplabs-upload/latest-issue-body.md</code>, then prints a prefilled PNP Labs issue URL.</p>
+      <div class="boundary-panel"><div class="boundary-head"><span>Current theorem boundary</span><strong>not established</strong></div><pre>mathematicalTheoremEstablished = false
+publicTheoremEmissionAllowed = false
+publicTheoremStatement = null
+finalTheoremReady = false
+rootLeanTheoremPresent = false
+rootLeanTheoremAxiomAuditPassed = false
+projectSpecificAxiomsRemaining = true</pre></div>
     </section>
     <section class="section compact">
-      <div class="section-label">Matrix badge summary</div>
-      <h2>Verifier-run matrix status: passing</h2>
-      <div class="grid two path">
-        <article class="card"><h3>1 public run</h3><p>The registry currently contains one public first-party site CI seed record: <code>pnplabs-ci-pr16-2026-07-06</code>.</p></article>
-        <article class="card"><h3>1/1 required comparisons passing</h3><p>Required comparisons over <code>verdictNormalizedSha256</code>, <code>activatedStatusNormalizedSha256</code>, and <code>proofScriptOutputsNormalizedSha256</code> currently pass.</p></article>
-        <article class="card"><h3>No required mismatches</h3><p><code>requiredMismatchPairCount = 0</code>, <code>rejectedPairCount = 0</code>, and <code>diagonalAccepts = true</code>.</p></article>
-        <article class="card"><h3>Badge payload</h3><p><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> exposes the compact badge state for dashboards.</p></article>
-      </div>
+      <div class="section-label">Intake status</div>
+      <h2>No new activated-status run submissions</h2>
+      <p>The former GitHub issue intake and automated registry-update workflow are disabled. The old schema asserted theorem-emission fields that no longer match the authoritative status, so importing new records under it would be misleading.</p>
+      <p><a href="public/pnp-one-command-upload.json"><code>public/pnp-one-command-upload.json</code></a> publishes the machine-readable freeze notice.</p>
     </section>
     <section class="section compact">
-      <div class="section-label">Run command</div>
-      <h2>Underlying verifier command</h2>
-      <pre><code>npm run pnp:verify</code></pre>
-      <p>The one-command wrapper runs the repository verifier and prepares an importable <code>PNPActivatedVerificationRunRecord0</code> for PNP Labs.</p>
+      <div class="section-label">Preserved record</div>
+      <h2>Historical site-CI seed record</h2>
+      <p><code>pnplabs-ci-pr16-2026-07-06</code> is preserved exactly as evidence of what the old site CI reported at that time. Its nested activated fields are historical data and do not override <a href="public/pnp-status.json"><code>public/pnp-status.json</code></a>.</p>
+      <p>Legacy JavaScript checker acceptance verifies assertion-bearing records under implemented predicates. It is not a formal proof of the named mathematical propositions.</p>
     </section>
     <section class="section compact">
-      <div class="section-label">Focused activation checks</div>
-      <h2>Include activated proof-script evidence when possible</h2>
-      <pre><code>npm run proof:activated-pnp-status
-npm run proof:public-theorem-activation
-npm run proof:unrestricted-final-soundness-release
-npm run proof:uniform-complexity-conclusion</code></pre>
-      <p>These focused outputs make it easier to bind a public run to the activated status coordinate and the theorem-emission gate.</p>
-    </section>
-    <section class="section compact">
-      <div class="section-label">Import workflow</div>
-      <h2>Import and normalize accepted source/checker run records</h2>
-      <p>Add a candidate JSON record under <code>imports/pnp-verifier-runs/</code>, normalize it with <code>tools/normalize-pnp-verifier-run.mjs</code>, then check or write it with <code>tools/import-pnp-verifier-run.mjs</code>.</p>
-      <pre><code>npm run pnp:normalize-run -- --json imports/pnp-verifier-runs/&lt;record&gt;.json
-npm run pnp:normalize-run -- --write imports/pnp-verifier-runs/&lt;record&gt;.json
-npm run pnp:import-run -- --check imports/pnp-verifier-runs/&lt;record&gt;.json public/pnp-verification-runs.json
-npm run pnp:import-run -- --write imports/pnp-verifier-runs/&lt;record&gt;.json public/pnp-verification-runs.json</code></pre>
-      <p>The normalizer stores <code>normalizedDigests</code> with <code>runRecordNormalizedSha256</code>, <code>verdictNormalizedSha256</code>, <code>activatedStatusNormalizedSha256</code>, <code>proofScriptOutputsNormalizedSha256</code>, and <code>artifactsOrLogsNormalizedSha256</code>. It normalizes timestamps, line endings, ANSI escapes, blank lines, and trailing whitespace so logs can be compared across CI providers.</p>
-    </section>
-    <section class="section compact">
-      <div class="section-label">Digest comparison</div>
-      <h2>Compare normalized digests between runs</h2>
-      <p>The comparison page explains how two activated run records are compared field-by-field using the digest policy <code>PNPVerifierRunDigestComparison0</code>.</p>
-      <pre><code>npm run pnp:compare-runs -- --json &lt;left-run.json&gt; &lt;right-run.json&gt;
-npm run pnp:run-summary -- --json public/pnp-verifier-run-comparison-matrix.json public/pnp-verifier-run-matrix-summary.json</code></pre>
-      <p><a href="verifier-run-digests.html">Open the verifier-run digest comparison page</a>, inspect <a href="public/pnp-verifier-run-digest-comparison.json"><code>public/pnp-verifier-run-digest-comparison.json</code></a>, inspect the generated matrix at <a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a>, or inspect the badge summary at <a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a>.</p>
-    </section>
-    <section class="section compact">
-      <div class="section-label">Registry status</div>
-      <h2>Current public run records</h2>
-      <p>The machine-readable registry is <a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a>. It now includes one first-party site CI seed record and remains open to submitted run reports with enough information for someone else to reproduce the activated machine result.</p>
-      <pre><code>runs = [
-  "pnplabs-ci-pr16-2026-07-06"
-]</code></pre>
-      <div class="grid two path" style="margin-top:1.2rem">
-        <article class="card"><h3>pnplabs-ci-pr16-2026-07-06</h3><p>First-party site CI record for PR #16. It validates the public status mirror, activated registry schema, public payload tests, and upstream status consistency.</p></article>
-        <article class="card"><h3>Scope note</h3><p>This seed record is not a clean-room source/checker reproduction of <code>npm run verify</code>. It is a first-party CI status-mirror record for the public site.</p></article>
-      </div>
-    </section>
-    <section class="section compact">
-      <div class="section-label">Boundary</div>
-      <h2>What a run report means</h2>
-      <p>A run report means someone reports running the verifier or a documented first-party CI validation and reproducing the activated checker-trust status or mirror state. It is not an external-consensus claim or peer-review acceptance.</p>
-      <div class="boundary-panel"><div class="boundary-head"><span>Current activated boundary</span><strong>activated</strong></div><pre>publicTheoremEmissionAllowed = true
-publicTheoremStatement = "P = NP"
-publicTheoremConclusion = "P = NP"
-publicTheoremUnderCheckerTrustModel = true
-finalTheoremReady = true
-unrestrictedFinalSoundnessDischarged = true
-remainingBlockers = []
-externalReviewIsMathematicalPremise = false</pre></div>
-    </section>
-    <section class="section compact">
-      <div class="section-label">Submission checklist</div>
-      <h2>What to include</h2>
+      <div class="section-label">Historical comparisons</div>
+      <h2>No current green matrix badge</h2>
+      <p>The comparison matrix and summary remain available only so the earlier record can be audited. The summary now has <code>badge.state = "historical"</code>, <code>badge.tone = "neutral"</code>, and <code>currentStatusBadge = false</code>.</p>
       <ul>
-        <li>Runner name or handle to list publicly.</li>
-        <li>UTC date and exact <code>aisknab/pnp</code> commit or ref tested.</li>
-        <li>OS, CPU architecture, Node version, npm version, and container or VM details if used.</li>
-        <li>Commands run and any deviations from the canonical command.</li>
-        <li>Final verifier JSON, generated issue body, logs, CI link, or checksums sufficient for reproduction.</li>
-        <li>Activated status coordinate <code>PNP-ACTIVATED-STATUS-2026-07-05-01</code> and public theorem activation coordinate <code>PNP-PUBLIC-THEOREM-ACTIVATION-2026-07-05-01</code>.</li>
-        <li>SHA-256 digest or artifact link for <code>public/pnp-status.json</code> or <code>status/ACTIVATED_PNP_STATUS.json</code>, where available.</li>
-        <li>Focused proof-script outputs for <code>proof:activated-pnp-status</code>, <code>proof:public-theorem-activation</code>, <code>proof:unrestricted-final-soundness-release</code>, and <code>proof:uniform-complexity-conclusion</code>, where available.</li>
-        <li>Normalized digest fields under <code>normalizedDigests</code>, generated by <code>npm run pnp:normalize-run</code> or attached during import.</li>
+        <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a></li>
+        <li><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a></li>
+        <li><a href="verifier-run-digests.html">Historical digest comparison explanation</a></li>
       </ul>
+    </section>
+    <section class="section compact">
+      <div class="section-label">Current verification</div>
+      <h2>Use the formal-reconstruction commands</h2>
+      <pre><code>node pcc-formal-reconstruction-status0.mjs --json
+node pcc-formal-public-surface0.mjs --json
+npm run pnp:verify
+lake build PNP</code></pre>
+      <p>These commands expose the unfinished state. They do not establish P = NP unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
   </main>
 </body>

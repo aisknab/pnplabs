@@ -1,85 +1,109 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 5,
+  "version": 6,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
-  "syncedOn": "2026-07-08",
-  "status": "activated-status-payloads-ready",
+  "syncedOn": "2026-07-10",
+  "status": "formal-reconstruction-status-payloads-ready",
   "claimBoundary": {
-    "publicTheoremEmissionAllowed": true,
-    "publicTheoremStatement": "P = NP",
-    "publicTheoremConclusion": "P = NP",
-    "publicTheoremUnderCheckerTrustModel": true,
-    "finalTheoremReady": true,
-    "internalFinalTheoremReady": true,
-    "unrestrictedFinalSoundnessDischarged": true,
-    "uniformFinalSoundnessProved": true,
-    "remainingBlockers": []
+    "status": "formal-reconstruction-in-progress",
+    "targetTheorem": "P = NP",
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "publicTheoremConclusion": null,
+    "finalTheoremReady": false,
+    "internalFinalTheoremReady": false,
+    "unrestrictedFinalSoundnessDischarged": false,
+    "uniformFinalSoundnessProved": false,
+    "rootLeanTheorem": "PNP.Main.p_eq_np",
+    "rootLeanTheoremPresent": false,
+    "rootLeanTheoremBuilt": false,
+    "rootLeanTheoremAxiomAuditPassed": false,
+    "projectSpecificAxiomsRemaining": true,
+    "remainingBlockers": [
+      "Formal.PinnedLeanBuildAndRootTarget",
+      "Formal.ConcreteComplexityModel",
+      "Formal.ConcreteSAT",
+      "Formal.LockedNANDThreshold",
+      "Formal.ResidualBandMinimizer",
+      "Formal.ZeroSlack",
+      "Formal.PolynomialRuntimeAndCertificateBounds",
+      "Formal.RootTheoremAndAxiomAudit"
+    ]
   },
   "payloads": [
     {
       "id": "pnp-status",
       "path": "/public/pnp-status.json",
-      "description": "Activated PNP status payload mirrored from aisknab/pnp public/pnp-status.json."
+      "status": "current",
+      "description": "Exact formal-reconstruction status payload mirrored from aisknab/pnp public/pnp-status.json."
     },
     {
       "id": "pnp-one-command-upload",
       "path": "/public/pnp-one-command-upload.json",
-      "description": "One-command source/checker verifier upload flow: npm run verify, then type y to submit the run report."
+      "status": "historical-frozen",
+      "description": "Freeze notice for the former activated verifier-run upload path."
     },
     {
       "id": "pnp-public-review",
       "path": "/public/pnp-public-review.json",
-      "description": "Legacy reviewer entrypoint, handoff, and public-review boundary summary."
+      "status": "historical",
+      "description": "Historical public-review entrypoint and boundary summary."
     },
     {
       "id": "pnp-theorem-emission-gate",
       "path": "/public/pnp-theorem-emission-gate.json",
-      "description": "Legacy status-bound public theorem-emission gate from the older public-review boundary. Superseded by pnp-status after activation."
+      "status": "historical",
+      "description": "Historical denied theorem-emission gate record."
     },
     {
       "id": "pnp-external-review-status",
       "path": "/public/pnp-external-review-status.json",
-      "description": "Legacy external-review status summary. External review is now framed as audit/reproducibility evidence, not a theorem premise."
+      "status": "historical",
+      "description": "Historical external-review status record. External review is not a current mathematical premise or blocker."
     },
     {
       "id": "pnp-verification-runs",
       "path": "/public/pnp-verification-runs.json",
-      "description": "Public registry for reproducible verifier run reports."
+      "status": "historical-frozen",
+      "description": "Frozen historical registry of activated-status verifier records."
     },
     {
       "id": "pnp-verifier-run-digest-comparison",
       "path": "/public/pnp-verifier-run-digest-comparison.json",
-      "description": "Policy payload for comparing normalized digest fields across activated verifier run records."
+      "status": "historical-frozen",
+      "description": "Historical policy for comparing normalized fields across old activated-status run records."
     },
     {
       "id": "pnp-verifier-run-comparison-matrix",
       "path": "/public/pnp-verifier-run-comparison-matrix.json",
-      "description": "Static matrix of normalized digest comparisons over the public activated verifier-run registry."
+      "status": "historical-frozen",
+      "description": "Frozen historical comparison matrix. It is not a current theorem-status signal."
     },
     {
       "id": "pnp-verifier-run-matrix-summary",
       "path": "/public/pnp-verifier-run-matrix-summary.json",
-      "description": "Compact badge summary of the public verifier-run comparison matrix."
+      "status": "historical-frozen",
+      "description": "Neutral historical matrix summary; no current green badge is published."
     }
   ],
   "statusPage": "/status.html",
-  "verificationRunsPage": "/verification-runs.html",
-  "verifierRunDigestComparisonPage": "/verifier-run-digests.html",
-  "verifierRunComparisonMatrixPayload": "/public/pnp-verifier-run-comparison-matrix.json",
-  "verifierRunMatrixSummaryPayload": "/public/pnp-verifier-run-matrix-summary.json",
-  "oneCommandUploadPayload": "/public/pnp-one-command-upload.json",
-  "verificationCommand": "npm run verify",
-  "uploadPrompt": "Upload verification run to PNP Labs? [y/N]",
-  "activationCommands": [
-    "npm run proof:public-theorem-activation",
-    "npm run proof:unrestricted-final-soundness-release",
-    "npm run proof:uniform-complexity-conclusion"
+  "historicalVerificationRunsPage": "/verification-runs.html",
+  "historicalVerifierRunDigestComparisonPage": "/verifier-run-digests.html",
+  "verificationCommands": [
+    "node pcc-formal-reconstruction-status0.mjs --json",
+    "node pcc-formal-public-surface0.mjs --json",
+    "npm run pnp:verify",
+    "lake build PNP"
   ],
+  "historicalRunIntakeFrozen": true,
+  "historicalActivatedStatusCoordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
   "nonClaims": [
-    "These static payloads mirror the activated aisknab/pnp status payload.",
-    "These static payloads are not independent external consensus.",
-    "External review remains invited as reproducibility and audit evidence, not as a mathematical premise.",
-    "The historical sealed report is not mutated by this site update."
+    "The repository does not currently establish P = NP.",
+    "The exact current status mirror does not allow public theorem emission.",
+    "Legacy checker acceptance and activated run records are historical assertion-checker evidence only, not mathematical proof.",
+    "External review is optional audit evidence and is not a mathematical premise or release blocker.",
+    "Historical report, registry, matrix, badge, and activation coordinates are not active theorem-emission surfaces."
   ]
 }

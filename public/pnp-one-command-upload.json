@@ -1,76 +1,57 @@
 {
   "kind": "PNPOneCommandVerifierUpload0",
-  "version": 1,
-  "status": "one-command-verifier-upload-and-issue-ingest-ready",
+  "version": 2,
+  "status": "historical-activated-run-upload-frozen",
+  "historical": true,
+  "intakeFrozen": true,
+  "automaticUploadEnabled": false,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourcePr": "https://github.com/aisknab/pnp/pull/176",
-  "sourceMergeCommit": "888ab7405d16414b60ceeb6d12f4a431d6c22a12",
-  "primaryCommand": [
-    "git clone https://github.com/aisknab/pnp.git",
-    "cd pnp",
-    "npm ci",
-    "npm run verify"
+  "currentVerificationCommands": [
+    "node pcc-formal-reconstruction-status0.mjs --json",
+    "node pcc-formal-public-surface0.mjs --json",
+    "npm run pnp:verify",
+    "lake build PNP"
   ],
-  "interactivePrompt": "Upload verification run to PNP Labs? [y/N]",
-  "yesAnswers": [
-    "y",
-    "yes"
-  ],
-  "nonInteractiveCommand": "PNPLABS_UPLOAD_TOKEN=<github-token> npm run pnp:verify:upload",
-  "automaticUploadCredentials": [
-    "PNPLABS_UPLOAD_TOKEN",
-    "GITHUB_TOKEN",
-    "GH_TOKEN",
-    "authenticated GitHub CLI gh"
-  ],
-  "manualFallbackOutputs": [
-    "artifacts/pnplabs-upload/latest-run-record.json",
-    "artifacts/pnplabs-upload/latest-issue-body.md",
-    "prefilled PNP Labs issue URL"
-  ],
+  "currentClaimBoundary": {
+    "status": "formal-reconstruction-in-progress",
+    "mathematicalTheoremEstablished": false,
+    "publicTheoremEmissionAllowed": false,
+    "publicTheoremStatement": null,
+    "publicTheoremConclusion": null,
+    "finalTheoremReady": false,
+    "rootLeanTheoremPresent": false,
+    "rootLeanTheoremBuilt": false,
+    "rootLeanTheoremAxiomAuditPassed": false,
+    "projectSpecificAxiomsRemaining": true
+  },
+  "historicalUploadFlow": {
+    "status": "preserved-for-audit-only",
+    "formerPrimaryCommand": [
+      "git clone https://github.com/aisknab/pnp.git",
+      "cd pnp",
+      "npm ci",
+      "npm run verify"
+    ],
+    "formerInteractivePrompt": "Upload verification run to PNP Labs? [y/N]",
+    "formerSubmittedRecordKind": "PNPActivatedVerificationRunRecord0",
+    "formerTargetRegistry": "public/pnp-verification-runs.json",
+    "formerIssueTemplate": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml",
+    "formerIssueIngestWorkflow": ".github/workflows/pnp-verification-run-issue-ingest.yml"
+  },
   "issueIngestWorkflow": {
     "kind": "PNPVerificationRunIssueIngestWorkflow0",
-    "status": "ready",
-    "workflow": ".github/workflows/pnp-verification-run-issue-ingest.yml",
-    "trigger": "issues opened, edited, or labeled with pnp-verification-run",
-    "extractor": "tools/extract-pnp-verification-run-from-issue.mjs",
-    "opensRegistryUpdatePullRequest": true,
-    "normalizesDigests": true,
-    "importsRegistryRecord": true,
-    "regeneratesComparisonMatrix": true,
-    "regeneratesMatrixSummary": true
+    "status": "disabled-and-frozen",
+    "acceptsNewRecords": false,
+    "opensRegistryUpdatePullRequest": false,
+    "regeneratesComparisonMatrix": false,
+    "regeneratesMatrixSummary": false
   },
-  "submittedRecordKind": "PNPActivatedVerificationRunRecord0",
-  "submittedRecordRequiredFields": [
-    "pnpCommit",
-    "publicTheoremEmissionAllowed",
-    "publicTheoremStatement",
-    "publicTheoremConclusion",
-    "finalTheoremReady",
-    "unrestrictedFinalSoundnessDischarged",
-    "remainingBlockers",
-    "activatedStatusCoordinate",
-    "publicTheoremActivationCoordinate",
-    "statusPayloadSha256",
-    "environment",
-    "commandsRun",
-    "proofScriptOutputs"
-  ],
-  "claimBoundary": {
-    "publicTheoremEmissionAllowed": true,
-    "publicTheoremStatement": "P = NP",
-    "publicTheoremConclusion": "P = NP",
-    "finalTheoremReady": true,
-    "unrestrictedFinalSoundnessDischarged": true,
-    "remainingBlockers": [],
-    "externalReviewIsMathematicalPremise": false
-  },
-  "targetRegistry": "public/pnp-verification-runs.json",
-  "targetIssueTemplate": ".github/ISSUE_TEMPLATE/pnp-verification-run.yml",
-  "docs": "docs/one_command_verify_upload.md",
+  "freezeReason": "The activated theorem-emission status was superseded by formal reconstruction. New records using the old activated schema would misrepresent the current theorem boundary.",
   "nonClaims": [
-    "The upload report is reproducibility evidence for an activated checker-trust verifier run.",
-    "A submitted run report is not an external-consensus claim or peer-review acceptance.",
-    "External review remains audit evidence and not a mathematical premise for theorem emission."
+    "The repository does not currently establish P = NP.",
+    "This payload does not offer or authorize activated-status run submission.",
+    "Historical submitted records and comparison artifacts are not current theorem-status evidence.",
+    "Legacy JavaScript checker acceptance is assertion-record evidence only, not mathematical proof.",
+    "External review is optional audit evidence and is not a mathematical premise or release blocker."
   ]
 }

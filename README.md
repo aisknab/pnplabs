@@ -1,91 +1,69 @@
 # PNP Labs public status package
 
-This checkout is a public website, bundled report, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for a claimed proof of `P = NP`.
+This checkout is the public website, historical report bundle, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for the PNP project.
 
-It is not evidence of external consensus, and it is not the full source/checker repository named by the bundled report.
+## Current status
 
-## Read This First
+**Formal reconstruction is in progress. The repository does not currently establish `P = NP`.**
 
-**Activated source/checker status:** the mirrored source/checker status now records `publicTheoremEmissionAllowed = true`, `publicTheoremStatement = "P = NP"`, and `remainingBlockers = []` under the repository checker trust model. See [`status.html`](status.html) and [`public/pnp-status.json`](public/pnp-status.json).
-
-**One-command verifier upload:** the intended public verifier flow is now:
-
-```bash
-git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run verify
-```
-
-After the verifier completes, it asks `Upload verification run to PNP Labs? [y/N]`. Type `y` or `yes` to submit the run report when a GitHub token or authenticated `gh` CLI is available. See [`docs/one_command_verify_upload.md`](docs/one_command_verify_upload.md) and [`public/pnp-one-command-upload.json`](public/pnp-one-command-upload.json).
-
-**Independent-review status:** external review is not treated as a mathematical premise for theorem emission. It remains invited as reproducibility evidence, bug-finding, and audit work. This website does not claim independent external consensus.
-
-**Local verification status:** this checkout can verify public report file identity via SHA-256, minimal educational fixture pass/fail behavior, negative fixture rejection reasons, local documentation links, and the activated status payload shape.
-
-**Trust boundaries:** a hash match verifies artefact identity only. It does not verify theorem correctness. Minimal fixtures demonstrate named local invariants only; they are not proof evidence. The theorem-emission status comes from the source/checker repository.
-
-**Checker claim to audit:** the report and source/checker status state that the accepted proof stack emits `P = NP` under the explicit checker trust model. Auditing that claim requires the source/checker repository `aisknab/pnp` and the verifier command above.
-
-**Release-reference model:** [docs/source_checker_map.md](docs/source_checker_map.md) separates `sourceRef` for source/checker code, `docsRef` for 7072f8d release documentation, and `artifactRef` for generated proof-report artefacts. Do not use one default `pnp` ref for all paths.
-
-**Access boundary:** if `aisknab/pnp` is private or unavailable to a reviewer, they cannot independently retrieve or run the source/checker validation until access is granted.
-
-**Terminology status:** [docs/terminology_crosswalk.md](docs/terminology_crosswalk.md) maps internal names to standard terms and classifies evidence status. Author clarification may resolve ambiguity, but it is not verification evidence.
-
-## Full Source/Checker Audit
-
-This website checkout does not run the full source/checker stack. For cross-repo audit targets, use [docs/source_checker_map.md](docs/source_checker_map.md). Paths there are pinned separately as source/checker code, release documentation, generated artefacts, or public-review files.
-
-When an authorized sibling source/checker checkout exists, it can be used to audit the implementation and reproduce its validation run. That validation is still not external consensus.
-
-## Activated source/checker payloads
-
-The activated source/checker repository state is mirrored into static payloads under `public/`. These payloads are site-facing summaries only; the source of truth remains `aisknab/pnp` and the reviewer command remains:
-
-```bash
-git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-npm run verify
-```
-
-Current mirrored boundary:
+The exact status mirror is [`public/pnp-status.json`](public/pnp-status.json), copied verbatim from `aisknab/pnp/public/pnp-status.json`. Its current boundary is:
 
 ```text
-publicTheoremEmissionAllowed = true
-publicTheoremStatement = "P = NP"
-publicTheoremConclusion = "P = NP"
-publicTheoremUnderCheckerTrustModel = true
-finalTheoremReady = true
-internalFinalTheoremReady = true
-unrestrictedFinalSoundnessDischarged = true
-remainingBlockers = []
+status = "formal-reconstruction-in-progress"
+mathematicalTheoremEstablished = false
+publicTheoremEmissionAllowed = false
+publicTheoremStatement = null
+finalTheoremReady = false
+rootLeanTheoremPresent = false
+rootLeanTheoremBuilt = false
+rootLeanTheoremAxiomAuditPassed = false
+projectSpecificAxiomsRemaining = true
 ```
+
+The active blockers are the eight entries in `remainingFormalObligations` and `remainingBlockers`, covering a pinned Lean build and root target, concrete complexity and SAT definitions, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
+
+Legacy JavaScript checker acceptance verifies assertion-bearing records under implemented predicates. It is historical assertion-checker evidence only and is not a formal proof of the named mathematical propositions. Earlier activated coordinates, verifier-run records, digest matrices, and badge summaries are preserved only as historical audit records. Their intake is frozen and they are not current theorem-emission surfaces.
+
+External review remains welcome as audit and bug-finding evidence, but it is not a mathematical premise or release blocker.
+
+## Authoritative verification
+
+Use the source repository for the current formal reconstruction:
+
+```bash
+git clone https://github.com/aisknab/pnp.git
+cd pnp
+npm ci
+node pcc-formal-reconstruction-status0.mjs --json
+node pcc-formal-public-surface0.mjs --json
+npm run pnp:verify
+lake build PNP
+```
+
+These commands expose the current status, run the repository verifier, and attempt the pinned Lean build. A command succeeding does not by itself establish the target theorem. The required concrete, assumption-audited root theorem is not currently present.
 
 The public status page is [`status.html`](status.html).
 
-Static payloads for public consumers:
+## Public payloads
 
-- [`public/pnp-index.json`](public/pnp-index.json) - payload index.
-- [`public/pnp-status.json`](public/pnp-status.json) - activated status and coordinate mirror.
-- [`public/pnp-one-command-upload.json`](public/pnp-one-command-upload.json) - one-command verifier upload flow.
-- [`public/pnp-public-review.json`](public/pnp-public-review.json) - legacy public-review entrypoint, handoff, and boundary summary.
-- [`public/pnp-theorem-emission-gate.json`](public/pnp-theorem-emission-gate.json) - legacy public-review theorem-emission gate payload, superseded by the activated status payload.
-- [`public/pnp-external-review-status.json`](public/pnp-external-review-status.json) - legacy external-review status summary.
+- [`public/pnp-index.json`](public/pnp-index.json) is the payload index and current conservative boundary summary.
+- [`public/pnp-status.json`](public/pnp-status.json) is the exact authoritative status mirror.
+- [`public/pnp-one-command-upload.json`](public/pnp-one-command-upload.json) records that the former activated-run upload path is frozen.
+- [`public/pnp-verification-runs.json`](public/pnp-verification-runs.json) preserves the old run registry as a frozen historical snapshot.
+- [`public/pnp-verifier-run-comparison-matrix.json`](public/pnp-verifier-run-comparison-matrix.json) and [`public/pnp-verifier-run-matrix-summary.json`](public/pnp-verifier-run-matrix-summary.json) are historical comparison records, not a current green status badge.
+- [`public/pnp-public-review.json`](public/pnp-public-review.json), [`public/pnp-theorem-emission-gate.json`](public/pnp-theorem-emission-gate.json), and [`public/pnp-external-review-status.json`](public/pnp-external-review-status.json) are older audit payloads and do not override the current formal-reconstruction status.
 
-The activated payloads record public theorem emission under the repository checker trust model. They do not claim independent external consensus and do not mutate the historical sealed report.
+## Trust boundaries
 
-Run the smallest local verification:
+- A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
+- The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
+- The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
+- The bundled canonical report is a historical artefact. Its wording is superseded by `public/pnp-status.json` until the report is regenerated after formal reconstruction.
+- A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 
-```bash
-npm test
-```
-
-Reviewers should start with:
+## Reviewer starting points
 
 - [status.html](status.html)
-- [docs/one_command_verify_upload.md](docs/one_command_verify_upload.md)
 - [docs/reviewer_guide.md](docs/reviewer_guide.md)
 - [docs/proof_pipeline.md](docs/proof_pipeline.md)
 - [docs/trust_model.md](docs/trust_model.md)
@@ -94,10 +72,10 @@ Reviewers should start with:
 - [docs/reproducibility.md](docs/reproducibility.md)
 - [examples/minimal/README.md](examples/minimal/README.md)
 
-## Local Commands
+## Local commands
 
 ```bash
-npm run test:unit          # fixture-checker unit tests
+npm run test:unit          # site and fixture-checker unit tests
 npm run verify:seal        # public file identity only
 npm run examples:minimal   # educational pass/fail fixtures
 npm run test:negative      # named negative fixture tests
@@ -107,27 +85,15 @@ npm run test:docs          # local documentation link check
 npm test                   # all local checks
 ```
 
-## Included Public Files
+## Website development
 
-- `index.html`, `status.html`, `paper.html`, `architecture.html`, `verify.html`, `faq.html`, `review.html` - static public pages.
-- `public/pnp-index.json`, `public/pnp-status.json`, `public/pnp-one-command-upload.json`, `public/pnp-public-review.json`, `public/pnp-theorem-emission-gate.json`, `public/pnp-external-review-status.json` - status-bound source/checker payloads mirrored from `aisknab/pnp`.
-- `downloads/canonical_proof_report.pdf` and `downloads/canonical_proof_report.tex` - bundled report artefacts.
-- `downloads/source-checker-release.json` - source/checker audit-target reference; it does not establish theorem correctness.
-- `downloads/release-seal.json` and `downloads/SHA256SUMS` - public file-identity manifest and ledger.
-- `tools/` - local smoke-test and fixture-check scripts.
-- `tests/negative/` - negative fixture tests.
-- `docs/` - reviewer-first audit documentation.
-- `examples/minimal/` - minimal pass/fail examples for terminology onboarding.
-
-## Website Development
-
-There is no build step for the static site. Run the local server with:
+There is no build step for the static site. Run it locally with:
 
 ```bash
 npm start
 ```
 
-The pages load `assets/styles.min.css`. Regenerate it from `assets/styles.css` after CSS edits:
+The pages load `assets/styles.min.css`. If CSS changes, regenerate it from `assets/styles.css` with:
 
 ```bash
 npx clean-css-cli -o assets/styles.min.css assets/styles.css
@@ -135,6 +101,6 @@ npx clean-css-cli -o assets/styles.min.css assets/styles.css
 
 The first viewport also uses an inline critical CSS block in each HTML page. If that block changes, update the matching `style-src` SHA-256 hash in `_headers` and `server.mjs`.
 
-## Deployment Boundary
+## Deployment boundary
 
-Public hosting should serve only the static pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, `CNAME`, and public review-status material. Do not present this website checkout as a substitute for the source/checker repository.
+Public hosting should serve only the static pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, `CNAME`, and public status material. Do not present this website checkout as a substitute for the source repository or its Lean source.

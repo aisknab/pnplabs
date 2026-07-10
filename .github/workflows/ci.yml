@@ -14,11 +14,11 @@ jobs:
           node-version: "20"
       - name: Public payload unit tests
         run: node --test tests/unit/pnp-public-payloads.test.mjs
-      - name: Activated copy unit tests
+      - name: Formal-reconstruction copy and fail-closed tests
         run: node --test tests/unit/pnp-activated-copy-refresh.test.mjs
-      - name: Activated overclaim guard unit tests
+      - name: Superseded-activation overclaim guard tests
         run: node --test tests/unit/pnp-activated-overclaim-guard.test.mjs
-      - name: Activated verification-run schema unit tests
+      - name: Frozen historical verification-run schema tests
         run: node --test tests/unit/pnp-activated-verification-run-schema.test.mjs
       - name: Remaining unit tests
         run: |

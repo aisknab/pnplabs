@@ -18,8 +18,9 @@ export function BuildPNPVerifierRunComparisonMatrix0(registry, options = {}) {
   if (!plain0(registry)) return reject0('Matrix.RegistryShape', [], 'registry must be an object');
   if (registry.kind !== 'PNPLabsPNPVerificationRunRegistry0') return reject0('Matrix.RegistryKind', ['kind'], 'registry kind mismatch', { actual: registry.kind });
   if (!Array.isArray(registry.runs)) return reject0('Matrix.RunsShape', ['runs'], 'registry runs must be an array');
-  if (!plain0(registry.claimBoundary) || registry.claimBoundary.publicTheoremEmissionAllowed !== true || registry.claimBoundary.publicTheoremStatement !== 'P = NP') return reject0('Matrix.ClaimBoundary', ['claimBoundary'], 'registry must use the activated theorem-emission boundary');
-  if (Array.isArray(registry.claimBoundary.remainingBlockers) && registry.claimBoundary.remainingBlockers.length !== 0) return reject0('Matrix.RemainingBlockers', ['claimBoundary', 'remainingBlockers'], 'remaining blockers must be empty');
+  if (registry.status !== 'historical-activated-verification-run-registry-frozen' || registry.intakeFrozen !== true) return reject0('Matrix.RegistryStatus', ['status'], 'registry must be the frozen historical activated-run registry');
+  if (!plain0(registry.historicalClaimBoundary) || registry.historicalClaimBoundary.publicTheoremEmissionAllowed !== true || registry.historicalClaimBoundary.publicTheoremStatement !== 'P = NP') return reject0('Matrix.HistoricalClaimBoundary', ['historicalClaimBoundary'], 'registry must preserve its superseded activated boundary as historical data');
+  if (!plain0(registry.currentClaimBoundary) || registry.currentClaimBoundary.publicTheoremEmissionAllowed !== false || registry.currentClaimBoundary.mathematicalTheoremEstablished !== false) return reject0('Matrix.CurrentClaimBoundary', ['currentClaimBoundary'], 'registry must expose the conservative current boundary');
 
   const requiredKeys = options.requiredKeys ?? registry.comparisonWorkflow?.defaultRequiredDigestKeys ?? DEFAULT_REQUIRED_KEYS;
   if (!Array.isArray(requiredKeys) || requiredKeys.length === 0) return reject0('Matrix.RequiredKeys', ['requiredKeys'], 'required digest keys must be a non-empty array');
@@ -51,7 +52,9 @@ export function BuildPNPVerifierRunComparisonMatrix0(registry, options = {}) {
   const matrixCore = {
     kind: 'PNPVerifierRunComparisonMatrix0',
     version: 0,
-    status: 'verifier-run-comparison-matrix-ready',
+    status: 'historical-verifier-run-comparison-matrix-frozen',
+    historical: true,
+    intakeFrozen: true,
     sourceRegistry: options.sourceRegistry ?? DEFAULT_REGISTRY_PATH,
     comparisonPolicyPayload: 'public/pnp-verifier-run-digest-comparison.json',
     generatedBy: 'tools/generate-pnp-verifier-run-matrix.mjs',
@@ -68,11 +71,18 @@ export function BuildPNPVerifierRunComparisonMatrix0(registry, options = {}) {
     recordIds: ids,
     records: registry.runs.map((run) => summarizeRun0(run)),
     rows,
+    currentBoundary: {
+      mathematicalTheoremEstablished: false,
+      publicTheoremEmissionAllowed: false,
+      publicTheoremStatement: null,
+      finalTheoremReady: false,
+      projectSpecificAxiomsRemaining: true,
+    },
     nonClaims: [
-      'The comparison matrix is reproducibility metadata for activated checker-trust verifier runs.',
-      'A matrix accept cell is not an external-consensus claim or peer-review acceptance.',
-      'A matrix reject cell is a triage signal; it does not by itself refute the source/checker proof stack.',
-      'The source/checker verifier remains the proof-stack reproduction target.'
+      'The repository does not currently establish P = NP.',
+      'This frozen matrix compares historical records from a superseded activated checker status.',
+      'An accept cell is historical reproducibility metadata, not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance.',
+      'No current green status badge may be derived from this matrix.'
     ],
   };
   return { tag: 'accept', matrix: { ...matrixCore, matrixSha256: sha256Text0(stableStringify0(matrixCore)) } };

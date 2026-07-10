@@ -1,7 +1,7 @@
 {
   "name": "PNP Labs",
   "short_name": "PNP Labs",
-  "description": "Checker-boundary proof artefacts for independent mathematical review.",
+  "description": "Formal reconstruction of a proposed P versus NP route; the target theorem is not currently established.",
   "start_url": "/",
   "display": "standalone",
   "icons": [
