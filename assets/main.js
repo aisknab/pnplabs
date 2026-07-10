@@ -21,6 +21,72 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10';
+const STATUS_SHA256 = 'bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10';
+const INVENTORY_SHA256 = '4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28';
+const SOURCE_CLOSURE_SHA256 = '0c96305d4f2235aae359c865e91e0f58cafa4d20d9b040a16e992846360cfa3f';
+
+const INVENTORY_COUNTS = Object.freeze({
+  declarations: 1761,
+  theorems: 662,
+  assumptionFreeTheorems: 589,
+  excludedPrivateDeclarations: 33,
+  modules: 22,
+  axioms: 5,
+});
+
+const PROJECT_AXIOMS = Object.freeze([
+  'PNP.CheckPCCPackexp',
+  'PNP.GeneratePCCPack',
+  'PNP.LockedNANDThreshold',
+  'PNP.ResidualBandExactMinimization',
+  'PNP.SAT',
+]);
+
+const REMAINING_BLOCKERS = Object.freeze([
+  'Formal.ConcreteComplexityModel',
+  'Formal.ConcreteSAT',
+  'Formal.LockedNANDThreshold',
+  'Formal.ResidualBandMinimizer',
+  'Formal.ZeroSlack',
+  'Formal.PolynomialRuntimeAndCertificateBounds',
+  'Formal.RootTheoremAndAxiomAudit',
+]);
+
+const MILESTONE_IDS = Object.freeze([
+  'direct-wire-semantics',
+  'finite-enumeration-minimum',
+  'framed-replacement-slack',
+  'locked-nand-local-baseline',
+  'locked-nand-conditional-threshold',
+  'explicit-residual-routes',
+  'global-locked-nand-threshold',
+  'global-zeroslack-pccmin',
+  'concrete-publication-root',
+]);
+
+const GATE_SUBCHECK_KEYS = Object.freeze([
+  'standardComplexityModelEligible',
+  'concreteTargetPresent',
+  'concreteTargetIsDefinition',
+  'concreteTargetKernelTypeFingerprintConfigured',
+  'concreteTargetKernelTypeFingerprintMatches',
+  'concreteTargetKernelValueFingerprintConfigured',
+  'concreteTargetKernelValueFingerprintMatches',
+  'compatibilityRootPresent',
+  'compatibilityRootIsTheorem',
+  'compatibilityRootHasExactConcreteType',
+  'compatibilityRootKernelTypeFingerprintConfigured',
+  'compatibilityRootKernelTypeFingerprintMatches',
+  'axiomClosureFingerprintConfigured',
+  'axiomClosureFingerprintMatches',
+  'sourceClosureFingerprintConfigured',
+  'sourceClosureFingerprintMatches',
+  'axiomClosureUsesOnlyLeanStandardAllowlist',
+]);
+
 const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   status: 'formal-reconstruction-in-progress',
   mathematicalTheoremEstablished: false,
@@ -42,197 +108,192 @@ finalTheoremReady = ${payload.finalTheoremReady}
 rootLeanTheoremPresent = ${payload.rootLeanTheoremPresent}
 rootLeanTheoremBuilt = ${payload.rootLeanTheoremBuilt}
 rootLeanTheoremAxiomAuditPassed = ${payload.rootLeanTheoremAxiomAuditPassed}
-projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
+projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}
+concretePublicationGate.passed = ${payload.concretePublicationGate?.passed ?? false}`;
 }
 
-function isConservativeFormalStatus(payload) {
-  return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09'
-    && payload.status === 'formal-reconstruction-in-progress'
-    && payload.currentStatusAuthority === true
-    && payload.mathematicalTheoremEstablished === false
-    && payload.publicTheoremEmissionAllowed === false
-    && payload.publicTheoremStatement === null
-    && payload.publicTheoremConclusion === null
-    && payload.finalTheoremReady === false
-    && payload.satInPConclusionAccepted === false
-    && payload.pEqualsNPConclusionAccepted === false
-    && payload.rootLeanTheoremPresent === false
-    && payload.rootLeanTheoremBuilt === false
-    && payload.rootLeanTheoremAxiomAuditPassed === false
-    && payload.projectSpecificAxiomsRemaining === true
-    && payload.leanToolchain === 'leanprover/lean4:v4.31.0'
-    && payload.leanCompilerVersion === '4.31.0'
-    && payload.leanCompilerCommit === '68218e876d2a38b1985b8590fff244a83c321783'
-    && payload.lakeVersion === '5.0.0-src+68218e8'
-    && payload.elanVersion === '4.2.3'
-    && payload.elanReleaseCommit === 'b6cec7e10fe4965a605aaf60d1cb4a5837f0462b'
-    && payload.elanArchiveSha256 === 'df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2'
-    && payload.leanBuildTarget === 'PNP'
-    && payload.leanRootModule === 'PNP'
-    && payload.leanRootStatusDeclaration === 'PNP.Main.rootTheoremStatus'
-    && payload.leanBuildConfigurationPinned === true
-    && payload.explicitLeanRootTargetPresent === true
-    && payload.leanLibraryTargetBuilt === true
-    && payload.leanSourcePlaceholderAuditPassed === true
-    && payload.leanNANDDirectWireCoreFormalized === true
-    && payload.leanNANDDirectWireCoreAxiomAuditPassed === true
-    && payload.leanNANDEnumeratorFormalized === true
-    && payload.leanNANDEnumeratorAxiomAuditPassed === true
-    && payload.leanNANDExactWidthEnumerationComplete === true
-    && payload.leanNANDEnumeratorUsesOrderedGatePairs === true
-    && payload.leanNANDEnumeratorIncludesUniqueEmptyOutputTuple === true
-    && payload.leanNANDEnumeratorDeduplicated === false
-    && payload.leanNANDTruthTableFormalized === true
-    && payload.leanNANDTruthTableAxiomAuditPassed === true
-    && payload.leanNANDSemanticEquivalenceDecidable === true
-    && payload.leanNANDMinimumAndSlackFormalized === true
-    && payload.leanNANDReferenceMinimumFormalized === true
-    && payload.leanNANDReferenceMinimumAxiomAuditPassed === true
-    && payload.leanNANDReferenceMinimumExhaustive === true
-    && payload.leanNANDReferenceMinimumScope === 'finite-boolean-direct-wire-empty-profile'
-    && payload.leanNANDReferenceMinimumPolynomialRuntimeProved === false
-    && payload.leanNANDResidualSlackZeroIffMinimumFormalized === true
-    && payload.leanNANDCompositionFormalized === true
-    && payload.leanNANDCompositionAxiomAuditPassed === true
-    && payload.leanNANDFramedReplacementFormalized === true
-    && payload.leanNANDFramedGlobalSlackLawFormalized === true
-    && payload.leanNANDFramedSlackAxiomAuditPassed === true
-    && payload.leanNANDReplacementScope === 'concrete-serial-framed-context'
-    && payload.leanLockedNANDDirectCandidatesFormalized === true
-    && payload.leanLockedNANDDirectAxiomAuditPassed === true
-    && payload.leanLockedNANDInternalMacroConstantsAbsent === true
-    && payload.leanDirectWireOutputLowerBoundFormalized === true
-    && payload.leanDirectWireBaselineAxiomAuditPassed === true
-    && payload.leanLockedNANDSourceDerivedCountsFormalized === true
-    && payload.leanLockedNANDBaselineAccountingFormalized === true
-    && payload.leanLockedNANDBaselineAxiomAuditPassed === true
-    && payload.leanLockedNANDConditionalSquareBaselineExactnessFormalized === true
-    && payload.leanLockedNANDLocalBaselineConditionsFormalized === true
-    && payload.leanLockedNANDLocalSquareBaselineExactnessFormalized === true
-    && payload.leanLockedNANDLocalBaselineAxiomAuditPassed === true
-    && payload.leanLockedNANDProofScope === 'typed-local-macros-source-derived-counts-and-five-local-square-baselines'
-    && payload.leanLockedNANDConditionalThresholdBoundaryFormalized === true
-    && payload.leanLockedNANDConditionalResidualSlackAtMostFourFormalized === true
-    && payload.leanLockedNANDThresholdBoundaryAxiomAuditPassed === true
-    && payload.leanLockedNANDThresholdBoundaryScope === 'proof-bearing-typed-candidate-and-semantic-premises-only'
-    && payload.leanLockedNANDThresholdBoundaryPremisesInstantiated === false
-    && payload.leanLockedNANDGlobalBaselineDistinctFormalized === false
-    && payload.leanLockedNANDCarrierLayoutFormalized === false
-    && payload.leanLockedNANDTraceEquivalenceFormalized === false
-    && payload.leanLockedNANDDerivedFinalOutputLawsFormalized === false
-    && payload.leanLockedNANDResidualSlackAtMostFourFormalized === false
-    && payload.leanLockedNANDPolynomialBuilderFormalized === false
-    && payload.leanCompatibleReplacementFormalized === false
-    && payload.leanGlobalSlackLawFormalized === false
-    && payload.leanLockedNANDBuilderFormalized === false
-    && payload.leanLockedNANDThresholdFormalized === false
-    && payload.leanResidualRoutesListedGainScanFormalized === true
-    && payload.leanResidualRoutesAxiomAuditPassed === true
-    && payload.leanResidualRoutesGainSoundnessFormalized === true
-    && payload.leanResidualRoutesStrictResidualDescentFormalized === true
-    && payload.leanResidualRoutesExactResultProofBearing === true
-    && payload.leanResidualRoutesZeroSlackResultProofBearing === true
-    && payload.leanResidualRoutesUnresolvedFailClosed === true
-    && payload.leanResidualRoutesScope === 'explicit-caller-supplied-finite-candidate-list'
-    && payload.leanResidualRoutesCandidateListCompletenessFormalized === false
-    && payload.leanResidualRoutesGlobalGainCompletenessFormalized === false
-    && payload.leanZeroSlackPositiveSlackContradictionFormalized === false
-    && payload.leanZeroSlackCompletenessFormalized === false
-    && payload.leanPCCMinLoopExactnessFormalized === false
-    && payload.leanPCCMinPolynomialRuntimeFormalized === false
-    && payload.leanResidualBandMinimizerFormalized === false
-    && payload.lockedNANDOutputConvention === 'ordered-multi-output-baseline-coordinates-plus-final-coordinate'
-    && payload.legacySyntheticLockedNANDM2FixtureStatus === 'quarantined-internally-inconsistent'
-    && payload.legacySyntheticLockedNANDM2HonestBaseline === 86
-    && payload.legacySyntheticLockedNANDM2MetadataConsistentBaseline === 95
-    && payload.legacySyntheticLockedNANDM2StoredBaseline === 91
-    && payload.legacySyntheticLockedNANDM2HonestDisplayedGateCount === 90
-    && payload.legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount === 99
-    && payload.legacySyntheticLockedNANDM2StoredDisplayedGateCount === 95
-    && JSON.stringify(payload.lockedNANDThresholdHostileReviewLemmaInventory) === JSON.stringify([
-      'DirectWireOutputLowerBound',
-      'MacroDistinct',
-      'TraceEquivalence',
-      'ZeroOutputConvention',
-      'FinalLockSeparation',
-    ])
-    && JSON.stringify(payload.leanLockedNANDThresholdPremiseInventory) === JSON.stringify([
-      'baselineCandidate',
-      'fullCandidate',
-      'baselineConditions',
-      'initialOutputsPreserved',
-      'unsatisfiableFinalZero',
-      'satisfiableFinalConditions',
-    ])
-    && JSON.stringify(payload.leanLockedNANDThresholdMissingInstantiationInventory) === JSON.stringify([
-      'baselineCandidate',
-      'fullCandidate',
-      'baselineConditions',
-      'initialOutputsPreserved',
-      'unsatisfiableFinalZero',
-      'satisfiableFinalConditions',
-    ])
-    && payload.sorryOrAdmitInRootDependencyClosure === null
-    && JSON.stringify(payload.projectSpecificAxiomInventory) === JSON.stringify([
-      'PNP.SAT',
-      'PNP.LockedNANDThreshold',
-      'PNP.ResidualBandExactMinimization',
-      'PNP.GeneratePCCPack',
-      'PNP.CheckPCCPackexp',
-    ])
-    && JSON.stringify(payload.remainingBlockers) === JSON.stringify([
-      'Formal.ConcreteComplexityModel',
-      'Formal.ConcreteSAT',
-      'Formal.LockedNANDThreshold',
-      'Formal.ResidualBandMinimizer',
-      'Formal.ZeroSlack',
-      'Formal.PolynomialRuntimeAndCertificateBounds',
-      'Formal.RootTheoremAndAxiomAudit',
-    ])
-    && JSON.stringify(payload.verificationCommands) === JSON.stringify([
-      'node pcc-formal-reconstruction-status0.mjs --json',
-      'node pcc-formal-public-surface0.mjs --json',
-      'npm run legacy:v0:check',
-      'npm run pnp:verify -- --no-write',
-      'node --test audits/lean-root-target0.test.mjs',
-      'node --test audits/lean-nand-semantics0.test.mjs',
-      'node --test audits/lean-nand-enumerator0.test.mjs',
-      'node --test audits/lean-nand-reference-minimum0.test.mjs',
-      'node --test audits/lean-locked-nand-baseline0.test.mjs',
-      'node --test audits/lean-locked-nand-threshold-boundary0.test.mjs',
-      'node --test audits/lean-residual-routes0.test.mjs',
-      'lake build PNP',
-      'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
-      'lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean',
-    ])
-    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09'
-    && payload.nonClaims?.includes('The formalized direct-wire NAND semantics layer does not by itself prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.')
-    && payload.nonClaims?.includes('The exact-width syntactic NAND enumeration remains intentionally noncanonical and may contain duplicates.')
-    && payload.nonClaims?.includes("The exhaustive direct-wire truth-table and reference-minimum computation has no polynomial-runtime claim and does not formalize the report's residual-band minimizer.")
-    && payload.nonClaims?.includes("Replacement and global slack are proved only for the concrete serial framed-context construction, not arbitrary support profiles or the report's locked-NAND family.")
-    && payload.nonClaims?.includes('The typed local locked-NAND candidates, source-derived accounting, conditional square-baseline theorem, and five discharged local square baselines do not prove global cross-instance BaselineDistinct, a locked builder or threshold, residual slack at most four, or polynomial runtime.')
-    && payload.nonClaims?.includes('The report threshold word is multi-output: its baseline coordinates remain present alongside one final coordinate; a legacy single-output seed is not that construction.')
-    && payload.nonClaims?.includes('The legacy synthetic m=2 fixture is quarantined as internally inconsistent: honest source-derived baseline/displayed counts are 86/90, metadata-consistent counts are 95/99, and stored hybrid counts are 91/95.')
-    && payload.nonClaims?.includes('The proof-bearing conditional locked-NAND semantic boundary is not the report threshold theorem: it assumes typed baseline and full candidates, baseline output conditions, preservation of the first outputs, an unsatisfiable final-zero law, and satisfiable final-output laws instead of constructing them for arbitrary circuits.')
-    && payload.nonClaims?.includes('The residual-slack-at-most-four result is conditional on that six-field premise package; it is not an unconditional result for the report locked-NAND family.')
-    && payload.nonClaims?.includes('Against the hostile-review inventory, DirectWireOutputLowerBound and the model-level ZeroOutputConvention are now discharged, while global MacroDistinct, TraceEquivalence, FinalLockSeparation, carrier layout, and uniform polynomial premise construction remain missing.')
-    && payload.nonClaims?.includes('The conditional module quantifies an arbitrary satisfiable proposition and baseline natural number; it does not identify them with source-circuit SAT and lockedBaselineCount, enforce answer-independent uniform construction, or connect the candidate boundary to the abstract PNP.LockedNANDThreshold language.')
-    && payload.nonClaims?.includes('The executable residual-route scan is complete only for the explicit finite implementation list supplied by its caller; unresolved excludes no unlisted gain and does not imply global minimality or ZeroSlack.')
-    && payload.nonClaims?.includes('An empty-list scan is formally shown to remain unresolved on a positive-slack implementation, so search failure cannot be promoted to zero residual slack.')
-    && payload.nonClaims?.includes('Exact and ZeroSlack route results require Lean proofs of semantic minimality and are never manufactured by the executable gain scanner; no BCEL, HN/BUD, selector, PCCMin-loop, or residual-band completeness follows.')
-    && payload.nonClaims?.includes('The residual-route equivalence check exhausts finite Boolean valuations and has no polynomial-runtime claim.');
+function sameJson(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function isSha256(value) {
+  return typeof value === 'string' && /^[0-9a-f]{64}$/.test(value);
+}
+
+function validateInventory(inventory) {
+  if (inventory?.kind !== 'PNPLeanTheoremInventory0'
+    || inventory.coordinate !== INVENTORY_COORDINATE
+    || inventory.environmentProbeComplete !== true
+    || inventory.rootModule !== 'PNP'
+    || inventory.leanToolchain !== 'leanprover/lean4:v4.31.0'
+    || inventory.declarationCount !== INVENTORY_COUNTS.declarations
+    || inventory.theoremCount !== INVENTORY_COUNTS.theorems
+    || inventory.assumptionFreeTheoremCount !== INVENTORY_COUNTS.assumptionFreeTheorems
+    || inventory.excludedPrivateDeclarationCount !== INVENTORY_COUNTS.excludedPrivateDeclarations
+    || inventory.sourceClosureModuleCount !== INVENTORY_COUNTS.modules
+    || inventory.axiomCount !== INVENTORY_COUNTS.axioms
+    || !sameJson(inventory.projectAxioms, PROJECT_AXIOMS)
+    || inventory.compatibilityRootName !== 'PNP.Main.p_eq_np'
+    || inventory.compatibilityRootCandidate !== null
+    || inventory.concreteTargetName !== 'PNP.Main.ConcretePEqualsNP'
+    || inventory.concreteTargetCandidate !== null
+    || !Array.isArray(inventory.declarations)
+    || inventory.declarations.length !== INVENTORY_COUNTS.declarations
+    || !Array.isArray(inventory.sourceClosureModules)
+    || inventory.sourceClosureModules.length !== INVENTORY_COUNTS.modules) return false;
+
+  const kindCounts = inventory.declarationKindCounts;
+  if (!sameJson(kindCounts, {
+    axiom: 5,
+    constructor: 68,
+    definition: 914,
+    inductive: 56,
+    opaque: 0,
+    quotient: 0,
+    recursor: 56,
+    theorem: 662,
+  })) return false;
+
+  const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
+  return theoremRows.length === INVENTORY_COUNTS.theorems
+    && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
+    && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
+    && new Set(inventory.sourceClosureModules).size === INVENTORY_COUNTS.modules;
+}
+
+function deriveGateSubchecks(status, inventory) {
+  const gate = status?.concretePublicationGate || {};
+  const target = inventory?.concreteTargetCandidate;
+  const root = inventory?.compatibilityRootCandidate;
+  const typeConfigured = isSha256(gate.expectedConcreteTargetKernelTypeSha256);
+  const valueConfigured = isSha256(gate.expectedConcreteTargetKernelValueSha256);
+  const rootConfigured = isSha256(gate.expectedRootKernelTypeSha256);
+  const axiomConfigured = isSha256(gate.expectedAxiomClosureSha256);
+  const sourceConfigured = isSha256(gate.expectedSourceClosureSha256);
+  const targetPresent = Boolean(target && target.name === gate.concreteTargetName);
+  const rootPresent = Boolean(root && root.name === gate.compatibilityRootName);
+
+  return {
+    standardComplexityModelEligible: false,
+    concreteTargetPresent: targetPresent,
+    concreteTargetIsDefinition: targetPresent && target.kind === 'definition',
+    concreteTargetKernelTypeFingerprintConfigured: typeConfigured,
+    concreteTargetKernelTypeFingerprintMatches: typeConfigured && gate.actualConcreteTargetKernelTypeSha256 === gate.expectedConcreteTargetKernelTypeSha256,
+    concreteTargetKernelValueFingerprintConfigured: valueConfigured,
+    concreteTargetKernelValueFingerprintMatches: valueConfigured && gate.actualConcreteTargetKernelValueSha256 === gate.expectedConcreteTargetKernelValueSha256,
+    compatibilityRootPresent: rootPresent,
+    compatibilityRootIsTheorem: rootPresent && root.kind === 'theorem',
+    compatibilityRootHasExactConcreteType: false,
+    compatibilityRootKernelTypeFingerprintConfigured: rootConfigured,
+    compatibilityRootKernelTypeFingerprintMatches: rootConfigured && gate.actualRootKernelTypeSha256 === gate.expectedRootKernelTypeSha256,
+    axiomClosureFingerprintConfigured: axiomConfigured,
+    axiomClosureFingerprintMatches: axiomConfigured && gate.actualAxiomClosureSha256 === gate.expectedAxiomClosureSha256,
+    sourceClosureFingerprintConfigured: sourceConfigured,
+    sourceClosureFingerprintMatches: sourceConfigured && gate.actualSourceClosureSha256 === gate.expectedSourceClosureSha256,
+    axiomClosureUsesOnlyLeanStandardAllowlist: rootPresent
+      && Array.isArray(gate.axiomClosure)
+      && gate.axiomClosure.every((axiom) => gate.allowedLeanStandardAxioms?.includes(axiom)),
+  };
+}
+
+function validateConcreteGate(status, inventory) {
+  const gate = status?.concretePublicationGate;
+  if (gate?.kind !== 'PNPConcretePublicationGate0'
+    || gate.compatibilityRootName !== 'PNP.Main.p_eq_np'
+    || gate.concreteTargetName !== 'PNP.Main.ConcretePEqualsNP'
+    || gate.abstractPEqualsNPIsPublicationIneligible !== true
+    || gate.unsetFingerprintIsIntentionalFailClosedMigrationGate !== true
+    || !sameJson(gate.allowedLeanStandardAxioms, ['Classical.choice', 'Quot.sound', 'propext'])
+    || !sameJson(Object.keys(gate.subchecks || {}), GATE_SUBCHECK_KEYS)) return false;
+
+  const derived = deriveGateSubchecks(status, inventory);
+  if (!sameJson(gate.subchecks, derived)) return false;
+  const strictConjunction = GATE_SUBCHECK_KEYS.every((key) => derived[key] === true);
+  return gate.passed === strictConjunction;
+}
+
+function validateMilestones(status) {
+  const milestones = status?.formalPublicationMilestones;
+  if (!Array.isArray(milestones)
+    || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
+
+  return milestones.every((row, index) => {
+    const shouldBeEarned = index < 6;
+    if (row.earned !== shouldBeEarned
+      || row.sourceClosureFingerprintMatches !== true
+      || !Array.isArray(row.theoremRows)
+      || row.theoremRows.length !== row.requiredTheorems?.length) return false;
+    if (shouldBeEarned) {
+      return row.allPresent === true
+        && row.allAssumptionFree === true
+        && row.allKernelTypesMatch === true
+        && row.theoremRows.every((theorem) => theorem.present === true
+          && theorem.kind === 'theorem'
+          && sameJson(theorem.axioms, [])
+          && isSha256(theorem.expectedKernelTypeSha256)
+          && theorem.kernelTypeFingerprintMatches === true
+          && theorem.actualKernelTypeSha256 === theorem.expectedKernelTypeSha256);
+    }
+    return row.status === 'not-formalized'
+      && row.allPresent === false
+      && row.allAssumptionFree === false
+      && row.allKernelTypesMatch === false
+      && row.theoremRows.every((theorem) => theorem.present === false
+        && theorem.expectedKernelTypeSha256 === null
+        && theorem.kernelTypeFingerprintMatches === false);
+  });
+}
+
+function validateStatus(status, inventory) {
+  const gatePassed = status?.concretePublicationGate?.passed === true;
+  return status?.kind === 'PNPFormalReconstructionStatus0'
+    && status.coordinate === STATUS_COORDINATE
+    && status.publicSurfaceBaselineCoordinate === PUBLIC_SURFACE_COORDINATE
+    && status.currentStatusAuthority === true
+    && status.status === 'formal-reconstruction-in-progress'
+    && status.claimStatus === 'formal-reconstruction-in-progress'
+    && status.leanToolchain === 'leanprover/lean4:v4.31.0'
+    && status.leanTheoremInventoryCoordinate === INVENTORY_COORDINATE
+    && status.leanTheoremInventorySha256 === INVENTORY_SHA256
+    && status.leanTheoremInventoryGeneratedFromCompiledEnvironment === true
+    && status.leanTheoremInventoryDeclarationCount === INVENTORY_COUNTS.declarations
+    && status.leanTheoremInventoryTheoremCount === INVENTORY_COUNTS.theorems
+    && status.leanTheoremInventoryAssumptionFreeTheoremCount === INVENTORY_COUNTS.assumptionFreeTheorems
+    && status.leanTheoremInventoryExcludedPrivateDeclarationCount === INVENTORY_COUNTS.excludedPrivateDeclarations
+    && status.leanTheoremInventorySourceClosureModuleCount === INVENTORY_COUNTS.modules
+    && status.concretePublicationGate?.actualSourceClosureSha256 === SOURCE_CLOSURE_SHA256
+    && status.abstractPEqualsNPPublicationEligible === false
+    && status.publicationStatusDerivedOnlyFromConcreteGate === true
+    && validateConcreteGate(status, inventory)
+    && validateMilestones(status)
+    && status.mathematicalTheoremEstablished === gatePassed
+    && status.publicTheoremEmissionAllowed === gatePassed
+    && status.finalTheoremReady === gatePassed
+    && status.internalFinalTheoremReady === gatePassed
+    && status.unrestrictedFinalSoundnessDischarged === gatePassed
+    && status.uniformFinalSoundnessProved === gatePassed
+    && status.satInPConclusionAccepted === gatePassed
+    && status.pEqualsNPConclusionAccepted === gatePassed
+    && (gatePassed || (status.publicTheoremStatement === null && status.publicTheoremConclusion === null))
+    && status.rootLeanTheoremPresent === status.concretePublicationGate.subchecks.compatibilityRootPresent
+    && status.rootLeanTheoremBuilt === gatePassed
+    && status.rootLeanTheoremAxiomAuditPassed === gatePassed
+    && status.projectSpecificAxiomsRemaining === true
+    && sameJson(status.projectSpecificAxiomInventory, PROJECT_AXIOMS)
+    && status.checkerAcceptanceIsMathematicalProof === false
+    && status.externalReviewIsMathematicalPremise === false
+    && sameJson(status.activeFinalNodeIds, [])
+    && sameJson(status.remainingFormalObligations, REMAINING_BLOCKERS)
+    && sameJson(status.remainingBlockers, REMAINING_BLOCKERS);
+}
+
+async function sha256Hex(bytes) {
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function isConservativeFormalStatus(status, inventory) {
+  return validateInventory(inventory) && validateStatus(status, inventory);
 }
 
 function renderFormalStatus(root, payload, sourceState) {
@@ -244,23 +305,68 @@ function renderFormalStatus(root, payload, sourceState) {
   if (fields) fields.textContent = formalStatusFields(payload);
   if (note) {
     note.innerHTML = sourceState === 'authoritative-mirror'
-      ? '<strong>Status loaded:</strong> the exact conservative mirror is available. The target theorem remains unestablished and theorem emission remains disabled.'
-      : '<strong>Status unavailable:</strong> the page remains fail closed. It does not infer theorem establishment or theorem-emission permission from missing, malformed, or stale data.';
+      ? '<strong>Inventory bound:</strong> the compiled Lean inventory matches its reviewed SHA-256, counts, milestone pins, source closure, and conservative gate. The target theorem remains unestablished and theorem emission remains disabled.'
+      : '<strong>Live inventory unavailable:</strong> the page remains fail closed. Missing, malformed, stale, or digest-mismatched data never enables theorem emission.';
   }
 }
 
-async function loadFormalReconstructionStatus() {
+function renderMilestones(milestones) {
+  document.querySelectorAll('[data-formal-milestones]').forEach((root) => {
+    root.replaceChildren(...milestones.map((milestone) => {
+      const card = document.createElement('article');
+      card.className = milestone.earned ? 'card' : 'card accent';
+      card.dataset.milestoneId = milestone.id;
+      card.dataset.earned = String(milestone.earned);
+      const heading = document.createElement('h3');
+      heading.textContent = `${milestone.earned ? 'Formalized' : 'Not formalized'}: ${milestone.title}`;
+      const scope = document.createElement('p');
+      scope.textContent = milestone.scope;
+      const boundary = document.createElement('p');
+      const strong = document.createElement('strong');
+      strong.textContent = 'Boundary: ';
+      boundary.append(strong, milestone.nonClaim);
+      card.append(heading, scope, boundary);
+      return card;
+    }));
+  });
+}
+
+function renderInventoryCounts() {
+  document.querySelectorAll('[data-formal-inventory-counts]').forEach((root) => {
+    root.textContent = `${INVENTORY_COUNTS.declarations.toLocaleString('en-US')} public declarations; ${INVENTORY_COUNTS.theorems} theorem-kind declarations; ${INVENTORY_COUNTS.assumptionFreeTheorems} assumption-free theorem-kind declarations; ${INVENTORY_COUNTS.excludedPrivateDeclarations} private compiler auxiliaries excluded; ${INVENTORY_COUNTS.modules} modules; ${INVENTORY_COUNTS.axioms} project axioms.`;
+  });
+}
+
+async function loadFormalPublication() {
   const roots = [...document.querySelectorAll('[data-formal-status-root]')];
-  if (roots.length === 0) return;
+  const hasInventoryTargets = document.querySelector('[data-formal-milestones], [data-formal-inventory-counts]');
+  if (roots.length === 0 && !hasInventoryTargets) return;
   roots.forEach((root) => renderFormalStatus(root, FAIL_CLOSED_FORMAL_STATUS, 'fail-closed'));
   try {
-    const response = await fetch('public/pnp-status.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status} while fetching current PNP status`);
-    const payload = await response.json();
-    if (!isConservativeFormalStatus(payload)) throw new Error('current PNP status failed conservative boundary validation');
-    roots.forEach((root) => renderFormalStatus(root, payload, 'authoritative-mirror'));
+    const [statusResponse, inventoryResponse] = await Promise.all([
+      fetch('public/pnp-status.json', { cache: 'no-store' }),
+      fetch('public/pnp-theorem-inventory.json', { cache: 'no-store' }),
+    ]);
+    if (!statusResponse.ok || !inventoryResponse.ok) throw new Error('current formal-publication payload fetch failed');
+    const [statusBytes, inventoryBytes] = await Promise.all([
+      statusResponse.arrayBuffer(),
+      inventoryResponse.arrayBuffer(),
+    ]);
+    const [statusDigest, inventoryDigest] = await Promise.all([
+      sha256Hex(statusBytes),
+      sha256Hex(inventoryBytes),
+    ]);
+    if (statusDigest !== STATUS_SHA256) throw new Error('formal-reconstruction status digest mismatch');
+    if (inventoryDigest !== INVENTORY_SHA256) throw new Error('compiled Lean inventory digest mismatch');
+    const decoder = new TextDecoder();
+    const status = JSON.parse(decoder.decode(statusBytes));
+    const inventory = JSON.parse(decoder.decode(inventoryBytes));
+    if (!isConservativeFormalStatus(status, inventory)) throw new Error('formal-publication payloads failed conservative validation');
+    roots.forEach((root) => renderFormalStatus(root, status, 'authoritative-mirror'));
+    renderMilestones(status.formalPublicationMilestones);
+    renderInventoryCounts();
   } catch (error) {
-    console.error('PNP status load failed closed', error);
+    console.error('PNP formal-publication load failed closed', error);
   }
 }
 
@@ -273,17 +379,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'Lean now scans an explicit caller-supplied finite list for a strictly smaller equivalent implementation and proves that every returned gain strictly decreases residual slack. An unresolved scan excludes no unlisted gain and cannot establish ZeroSlack, PCCMin, or the residual-band minimizer.';
+    lede.textContent = 'The compiled Lean environment contains 1,761 exported public declarations, including 662 theorem-kind declarations and 589 assumption-free theorem-kind declarations across 22 modules. Six scoped milestones are earned; three global milestones, including the concrete publication root, are not formalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>explicit-list gain scan checked</span><span>positive-slack unresolved regression</span><strong>in progress</strong>';
+    trace.innerHTML = '<span>compiled inventory checked</span><span>six scoped milestones</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>firstListedGain</code> is sound for one explicit list, and each proof-bearing gain strictly descends in reference residual slack. <code>ExactMinimumResult</code> and <code>ZeroSlackResult</code> require semantic-minimality proofs; <code>scanListedGains</code> can return only gain or unresolved. Candidate-list/global completeness, the ZeroSlack contradiction, PCCMin, residual-band minimization, polynomiality, SAT, and <code>PNP.Main.p_eq_np</code> remain unfinished.';
+    firstNote.innerHTML = '<strong>Current status:</strong> the inventory binds reviewed theorem names to kernel-type fingerprints and a whole-source closure. The abstract string-handle <code>PNP.PEqualsNP</code> bridge is publication-ineligible. <code>PNP.Main.ConcretePEqualsNP</code> and <code>PNP.Main.p_eq_np</code> are absent; five project axioms and seven blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -345,8 +451,8 @@ function insertAfterPageHero(id, html) {
 function ensureFormalVerificationCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction verification',
-    title: 'Inspect the current status and verify historical file identity.',
-    lede: 'The target theorem is not currently established. Status checks expose remaining formal obligations; hash checks verify historical artefact identity only.',
+    title: 'Verify the compiled inventory and current six-page report.',
+    lede: 'The target theorem is not established. The current report is generated from the reviewed compiled inventory; digest checks establish file identity, not mathematical truth.',
     primaryHref: 'public/pnp-status.json',
     primaryText: 'Open current status JSON',
     secondaryHref: 'status.html',
@@ -362,9 +468,9 @@ rootLeanTheoremPresent = false
 projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
-        <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
-        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the listed Lean axiom audits, including <code>PNPResidualRoutesAxiomAudit.lean</code>. Its 30 declarations are clean; the executable scanner remains limited to one explicit caller-supplied finite list.</p></article>
-        <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
+        <article class="card"><h3>Check status and inventory together</h3><p>The browser fetches both payloads concurrently, hashes the raw inventory bytes, validates exact counts and coordinates, and rejects inconsistent gate or milestone rows.</p></article>
+        <article class="card"><h3>Build and inventory Lean</h3><p>Run <code>lake build PNP</code>, <code>npm run formal:inventory:check</code>, and <code>npm run formal:publication:check</code> in the source repository.</p></article>
+        <article class="card"><h3>Check current report identity</h3><p>The six-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
@@ -374,7 +480,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository does not currently establish P = NP. These answers distinguish the unfinished Lean reconstruction from historical checker and report records.',
+    lede: 'The repository does not currently establish P = NP. These answers distinguish the compiled Lean inventory and current six-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -384,7 +490,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is missing?</h3><p>The residual-route scanner does not enumerate a complete candidate universe. Unresolved excludes no unlisted gain and cannot prove global minimality or ZeroSlack. The ZeroSlack contradiction, PCCMin loop, residual-band minimizer, polynomial construction, locked threshold, concrete SAT, and root theorem remain unfinished.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Six scoped milestones are earned from pinned, assumption-free theorem rows. Three global milestones—locked-NAND construction, ZeroSlack/PCCMin/polynomial runtime, and the concrete publication root—remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -403,7 +509,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the fail-closed search boundary.</h2><p>The explicit-list gain scanner is formalized and axiom-audited, but no candidate-list or global-gain completeness theorem exists. Review the positive-slack unresolved regression, proof requirements for exact/ZeroSlack outcomes, the missing BCEL/HN/BUD/selector contradiction, PCCMin loop, residual-band minimizer, and polynomial bounds. No <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 1,761-declaration inventory, 22 pinned theorem candidates, whole-source closure, six earned scoped milestones, three unearned global milestones, and concrete publication gate. Null fingerprints never match; the abstract <code>PNP.PEqualsNP</code> bridge is ineligible; five project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
@@ -417,7 +523,22 @@ function ensureFormalPageCopy() {
 ensureStatusLink();
 ensureHomepageFormalReconstructionBoundary();
 ensureFormalPageCopy();
-loadFormalReconstructionStatus();
+loadFormalPublication();
+
+globalThis.PNPFormalPublication = Object.freeze({
+  STATUS_COORDINATE,
+  PUBLIC_SURFACE_COORDINATE,
+  INVENTORY_COORDINATE,
+  INVENTORY_SHA256,
+  INVENTORY_COUNTS,
+  PROJECT_AXIOMS,
+  MILESTONE_IDS,
+  deriveGateSubchecks,
+  validateConcreteGate,
+  validateInventory,
+  validateMilestones,
+  validateStatus,
+});
 
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {

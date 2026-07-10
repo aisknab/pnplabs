@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -9,299 +10,210 @@ import {
   validateAuditTargets
 } from "../../tools/check-cross-repo-targets.mjs";
 
-const SOURCE_TAG = "final-pnp-proof-report-hardened-7072f8d";
-const DOCS_TAG = "final-pnp-proof-report-docs-hardened-7072f8d-sealed";
-const ARTIFACT_TAG = "final-pnp-proof-report-artifacts-hardened-7072f8d-sealed";
-const BUNDLE = "proof-artifacts/final-pnp-proof-report-hardened-7072f8d";
+function sha256(buffer) {
+  return createHash("sha256").update(buffer).digest("hex");
+}
 
 function git(cwd, args) {
-  const result = spawnSync("git", args, {
-    cwd,
-    encoding: "utf8",
-    stdio: ["ignore", "pipe", "pipe"]
-  });
+  const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
   assert.equal(result.status, 0, result.stderr || result.stdout);
   return result.stdout.trim();
 }
 
-function write(root, relativePath, text) {
+function write(root, relativePath, content) {
   const filePath = path.join(root, relativePath);
   mkdirSync(path.dirname(filePath), { recursive: true });
-  writeFileSync(filePath, text);
+  writeFileSync(filePath, content);
 }
 
-function releaseManifest(sourceCommit) {
-  return {
-    kind: "PNPSourceCheckerReleaseReference",
-    version: 1,
-    sourceRepo: "aisknab/pnp",
-    sourceTag: SOURCE_TAG,
-    sourceCommit,
-    artifactTag: ARTIFACT_TAG,
-    docsTag: DOCS_TAG,
-    artifactBundlePath: `${BUNDLE}/`,
-    expectedValidation: {
-      tests: 1121,
-      pass: 1121,
-      fail: 0,
-      cancelled: 0
-    }
-  };
+function json(value) {
+  return `${JSON.stringify(value, null, 2)}\n`;
 }
 
-function releaseText(sourceCommit, stale = false) {
-  return stale
-    ? [
-        "source commit: 8b45da4ed604a709d244c35acb886c5eee0889cd",
-        "source tag: final-pnp-proof-report-hardened-8b45da4",
-        "sealed artifact tag: final-pnp-proof-report-artifacts-hardened-8b45da4-sealed",
-        "bundle path:",
-        "proof-artifacts/final-pnp-proof-report-hardened-8b45da4/",
-        "tests 1043",
-        "pass 1043",
-        "fail 0",
-        "cancelled 0"
-      ].join("\n")
-    : [
-        `source commit: ${sourceCommit}`,
-        `source tag: ${SOURCE_TAG}`,
-        `sealed artifact tag: ${ARTIFACT_TAG}`,
-        "bundle path:",
-        `${BUNDLE}/`,
-        "tests 1121",
-        "pass 1121",
-        "fail 0",
-        "cancelled 0"
-      ].join("\n");
-}
-
-function validTargets() {
-  return [
-    {
-      id: "public.release_manifest",
-      kind: "pnplabs public-review file",
-      refClass: "publicCheckout",
-      path: "downloads/source-checker-release.json",
-      scanReleaseIdentifiers: true
-    },
-    {
-      id: "source.gpack",
-      kind: "source/checker code",
-      refClass: "sourceRef",
-      path: "pcc-gpack0.mjs"
-    },
-    {
-      id: "docs.reproduce",
-      kind: "release documentation",
-      refClass: "docsRef",
-      path: "REPRODUCE.md",
-      scanReleaseIdentifiers: true
-    },
-    {
-      id: "artifact.release_seal",
-      kind: "generated artefact",
-      refClass: "artifactRef",
-      path: `${BUNDLE}/release-seal.json`,
-      scanReleaseIdentifiers: true
-    }
-  ];
-}
-
-function makeProject(t, targets, options = {}) {
-  const root = mkdtempSync(path.join(tmpdir(), "pnplabs-audit-targets-"));
+function makeProject(t) {
+  const root = mkdtempSync(path.join(tmpdir(), "pnplabs-formal-targets-"));
   const sourceDir = path.join(root, "pnp");
   mkdirSync(sourceDir, { recursive: true });
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+
+  const status = json({
+    kind: "PNPFormalReconstructionStatus0",
+    concretePublicationGate: { passed: false },
+    publicationStatusDerivedOnlyFromConcreteGate: true,
+    mathematicalTheoremEstablished: false,
+    publicTheoremEmissionAllowed: false,
+    publicTheoremStatement: null
+  });
+  const inventory = json({
+    kind: "PNPLeanTheoremInventory0",
+    compatibilityRootCandidate: null,
+    concreteTargetCandidate: null
+  });
+  const publicationMap = json({ kind: "TestPublicationMap", gate: { passed: false } });
+
   git(sourceDir, ["init"]);
   git(sourceDir, ["config", "user.email", "audit@example.invalid"]);
   git(sourceDir, ["config", "user.name", "Audit Test"]);
-
-  write(sourceDir, "pcc-gpack0.mjs", "export const ok = true;\n");
+  write(sourceDir, "public/pnp-status.json", status);
+  write(sourceDir, "public/pnp-theorem-inventory.json", inventory);
+  write(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json", publicationMap);
   git(sourceDir, ["add", "."]);
-  git(sourceDir, ["commit", "-m", "source"]);
-  const sourceCommit = git(sourceDir, ["rev-parse", "HEAD"]);
-  git(sourceDir, ["tag", SOURCE_TAG]);
+  git(sourceDir, ["commit", "-m", "fixture"]);
+  const commit = git(sourceDir, ["rev-parse", "HEAD"]);
+  const tree = git(sourceDir, ["rev-parse", "HEAD^{tree}"]);
 
-  const manifest = releaseManifest(sourceCommit);
-  const text = releaseText(sourceCommit, options.staleReleaseDoc);
-  write(sourceDir, "REPRODUCE.md", text);
-  write(sourceDir, "REVIEWER_MAP.md", text);
-  write(
-    sourceDir,
-    `${BUNDLE}/release-seal.json`,
-    JSON.stringify(
-      {
-        sourceCommit: manifest.sourceCommit,
-        sourceTag: manifest.sourceTag,
-        sealedArtifactTag: manifest.artifactTag,
-        bundlePath: BUNDLE,
-        validation: manifest.expectedValidation
+  write(root, "public/pnp-status.json", status);
+  write(root, "public/pnp-theorem-inventory.json", inventory);
+
+  const release = {
+    kind: "PNPFormalPublicationRelease0",
+    version: 0,
+    status: "current-formal-reconstruction-publication-theorem-gate-closed",
+    authority: "current",
+    source: {
+      commit,
+      tree,
+      ref: commit,
+      formalPublicationMapSha256: sha256(Buffer.from(publicationMap))
+    },
+    artifacts: {
+      status: {
+        sourcePath: "public/pnp-status.json",
+        publicPath: "public/pnp-status.json",
+        bytes: Buffer.byteLength(status),
+        sha256: sha256(Buffer.from(status))
       },
-      null,
-      2
-    )
-  );
-  git(sourceDir, ["add", "."]);
-  git(sourceDir, ["commit", "-m", "docs and artifacts"]);
-  const docsCommit = git(sourceDir, ["rev-parse", "HEAD"]);
-  git(sourceDir, ["tag", DOCS_TAG]);
-  git(sourceDir, ["tag", ARTIFACT_TAG]);
-
-  write(root, "downloads/source-checker-release.json", JSON.stringify(manifest, null, 2));
-  write(
-    root,
-    "audit_targets.json",
-    JSON.stringify(
-      {
-        version: 1,
-        refs: {
-          sourceRef: {
-            ref: SOURCE_TAG,
-            expectedCommit: sourceCommit,
-            class: "source/checker code"
-          },
-          docsRef: {
-            ref: DOCS_TAG,
-            expectedCommit: docsCommit,
-            class: "release documentation"
-          },
-          artifactRef: {
-            ref: ARTIFACT_TAG,
-            expectedCommit: docsCommit,
-            class: "generated artefact"
-          },
-          publicCheckout: {
-            ref: "working tree",
-            class: "pnplabs public-review file"
-          }
-        },
-        targets
+      theoremInventory: {
+        sourcePath: "public/pnp-theorem-inventory.json",
+        publicPath: "public/pnp-theorem-inventory.json",
+        bytes: Buffer.byteLength(inventory),
+        sha256: sha256(Buffer.from(inventory))
       },
-      null,
-      2
-    )
-  );
+      report: {
+        pageCount: 6,
+        pdf: { publicPaths: [] },
+        tex: { publicPaths: [] }
+      }
+    },
+    publicationBoundary: {
+      derivedOnlyFromConcreteGate: true,
+      concreteGatePassed: false,
+      mathematicalTheoremEstablished: false,
+      publicTheoremEmissionAllowed: false,
+      publicTheoremStatement: null,
+      compatibilityRootPresent: false,
+      concreteTargetPresent: false,
+      projectSpecificAxiomsRemaining: true,
+      remainingBlockerCount: 7
+    },
+    historicalArchive: {
+      status: "historical-quarantined-not-current-authority",
+      currentArtifactEligible: false,
+      mayActivateTheoremPublication: false
+    }
+  };
+  write(root, "downloads/formal-publication-release.json", json(release));
 
-  t.after(() => rmSync(root, { recursive: true, force: true }));
-  return { root, sourceDir };
+  const targets = {
+    kind: "PNPLabsCrossRepositoryAuditTargets0",
+    version: 2,
+    refs: {
+      currentCoreRef: {
+        repo: "test/pnp",
+        ref: commit,
+        expectedCommit: commit,
+        expectedTree: tree,
+        class: "current"
+      },
+      publicCheckout: { repo: "test/pnplabs", ref: "working tree", class: "public" }
+    },
+    targets: [
+      { id: "core.status", kind: "current core publication file", refClass: "currentCoreRef", path: "public/pnp-status.json" },
+      { id: "core.inventory", kind: "current core publication file", refClass: "currentCoreRef", path: "public/pnp-theorem-inventory.json" },
+      { id: "core.publication_map", kind: "current core publication file", refClass: "currentCoreRef", path: "publication/FORMAL_PUBLICATION_MAP.json" },
+      { id: "public.formal_publication_manifest", kind: "pnplabs current release metadata", refClass: "publicCheckout", path: "downloads/formal-publication-release.json" },
+      { id: "public.status", kind: "pnplabs current core mirror", refClass: "publicCheckout", path: "public/pnp-status.json", mirrorOf: "core.status" },
+      { id: "public.inventory", kind: "pnplabs current core mirror", refClass: "publicCheckout", path: "public/pnp-theorem-inventory.json", mirrorOf: "core.inventory" }
+    ]
+  };
+  write(root, "docs/audit_targets.json", json(targets));
+
+  return { root, sourceDir, commit, tree, release, targets };
 }
 
-function runProject(project) {
+function validate(project, overrides = {}) {
   return validateAuditTargets({
     root: project.root,
     sourceDir: project.sourceDir,
-    targetsPath: "audit_targets.json",
-    releaseManifestPath: "downloads/source-checker-release.json",
+    expectedCoreIdentity: { commit: project.commit, tree: project.tree },
+    ...overrides
+  });
+}
+
+function expectFailure(project, pattern, overrides = {}) {
+  assert.throws(
+    () => validate(project, overrides),
+    (error) => {
+      assert.ok(error instanceof AuditTargetValidationError);
+      assert.match(error.failures.join("\n"), pattern);
+      return true;
+    }
+  );
+}
+
+test("accepts exact current mirrors pinned to one core commit and tree", (t) => {
+  const project = makeProject(t);
+  const result = validate(project, { requireSource: true });
+  assert.equal(result.skipped, false);
+  assert.equal(result.mirroredTargets, 2);
+  assert.equal(result.refs.currentCoreRef.commit, project.commit);
+  assert.equal(result.refs.currentCoreRef.tree, project.tree);
+});
+
+test("rejects byte drift in a current public mirror", (t) => {
+  const project = makeProject(t);
+  write(project.root, "public/pnp-status.json", "{}\n");
+  expectFailure(project, /release artifact identity mismatch: public\/pnp-status\.json/);
+});
+
+test("rejects a current core target assigned to the public checkout", (t) => {
+  const project = makeProject(t);
+  project.targets.targets[0].refClass = "publicCheckout";
+  write(project.root, "docs/audit_targets.json", json(project.targets));
+  expectFailure(project, /core\.status: current core publication file must use currentCoreRef/);
+});
+
+test("rejects historical refs that are not explicitly quarantined", (t) => {
+  const project = makeProject(t);
+  project.targets.refs.historicalSourceRef = {
+    repo: "test/pnp",
+    ref: project.commit,
+    expectedCommit: project.commit,
+    class: "historical",
+    status: "current"
+  };
+  write(project.root, "docs/audit_targets.json", json(project.targets));
+  expectFailure(project, /historicalSourceRef: historical ref is not explicitly quarantined/);
+});
+
+test("rejects a self-consistent manifest that opens theorem publication", (t) => {
+  const project = makeProject(t);
+  project.release.publicationBoundary.publicTheoremEmissionAllowed = true;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication manifest does not fail closed/);
+});
+
+test("skips only the cross-repository phase when a source checkout is optional", (t) => {
+  const project = makeProject(t);
+  const result = validate(project, { sourceDir: path.join(project.root, "missing-pnp") });
+  assert.equal(result.skipped, true);
+  assert.match(result.skipReason, /not a git checkout/);
+});
+
+test("fails when the exact source checkout is required but absent", (t) => {
+  const project = makeProject(t);
+  expectFailure(project, /not a git checkout/, {
+    sourceDir: path.join(project.root, "missing-pnp"),
     requireSource: true
   });
-}
-
-function expectFailure(t, targets, pattern, options = {}) {
-  const project = makeProject(t, targets, options);
-  let error = null;
-  try {
-    runProject(project);
-  } catch (caught) {
-    error = caught;
-  }
-  assert.ok(error instanceof AuditTargetValidationError);
-  assert.match(error.failures.join("\n"), pattern);
-}
-
-test("valid audit target fixture passes", (t) => {
-  const project = makeProject(t, validTargets());
-  const result = runProject(project);
-  assert.equal(result.skipped, false);
-  assert.equal(result.checkedTargets, 4);
-});
-
-test("reports an explicit skip when the sibling source checkout is unavailable", (t) => {
-  const root = mkdtempSync(path.join(tmpdir(), "pnplabs-audit-targets-missing-"));
-  t.after(() => rmSync(root, { recursive: true, force: true }));
-  const sourceCommit = "7072f8d0bda6d44d240f9bb3fad624fd357e1278";
-  write(root, "downloads/source-checker-release.json", JSON.stringify(releaseManifest(sourceCommit), null, 2));
-  write(
-    root,
-    "audit_targets.json",
-    JSON.stringify(
-      {
-        version: 1,
-        refs: {
-          sourceRef: {
-            ref: SOURCE_TAG,
-            expectedCommit: sourceCommit,
-            class: "source/checker code"
-          },
-          publicCheckout: {
-            ref: "working tree",
-            class: "pnplabs public-review file"
-          }
-        },
-        targets: [
-          validTargets()[0],
-          {
-            id: "source.gpack",
-            kind: "source/checker code",
-            refClass: "sourceRef",
-            path: "pcc-gpack0.mjs"
-          }
-        ]
-      },
-      null,
-      2
-    )
-  );
-
-  const result = validateAuditTargets({
-    root,
-    sourceDir: path.join(root, "missing-pnp"),
-    targetsPath: "audit_targets.json",
-    releaseManifestPath: "downloads/source-checker-release.json"
-  });
-  assert.equal(result.skipped, true);
-  assert.match(result.skipReason, /cross-repo target check skipped/);
-});
-
-test("rejects a source path assigned to docsRef", (t) => {
-  const targets = validTargets();
-  targets[1] = {
-    ...targets[1],
-    refClass: "docsRef"
-  };
-  expectFailure(t, targets, /source\.gpack: source\/checker code must use sourceRef/);
-});
-
-test("rejects a docs file assigned to sourceRef", (t) => {
-  const targets = validTargets();
-  targets[2] = {
-    ...targets[2],
-    refClass: "sourceRef"
-  };
-  expectFailure(t, targets, /docs\.reproduce: release documentation must use docsRef/);
-});
-
-test("rejects a missing path", (t) => {
-  const targets = validTargets();
-  targets[1] = {
-    ...targets[1],
-    path: "missing-source-file.mjs"
-  };
-  expectFailure(t, targets, /source\.gpack: missing path/);
-});
-
-test("rejects a stale release identifier", (t) => {
-  expectFailure(
-    t,
-    validTargets(),
-    /docs\.reproduce .*sourceTag token final-pnp-proof-report-hardened-8b45da4/,
-    { staleReleaseDoc: true }
-  );
-});
-
-test("rejects an artefact path assigned to sourceRef", (t) => {
-  const targets = validTargets();
-  targets[3] = {
-    ...targets[3],
-    refClass: "sourceRef"
-  };
-  expectFailure(t, targets, /artifact\.release_seal: generated artefact must use artifactRef/);
 });

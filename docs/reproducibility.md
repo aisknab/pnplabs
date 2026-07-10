@@ -1,112 +1,115 @@
 # Reproducibility
 
-This file separates reproducibility for this public website checkout from reproducibility for the source/checker release named in the report.
+This document separates current formal-publication reproduction from historical assertion-checker
+replay. Neither route by itself establishes theorem correctness.
 
-## Public Website Checkout
+## Companion Website Checkout
 
-### Required Toolchain
+Requirements:
 
-- OS: Linux, macOS, or Windows with a POSIX-like shell for the commands below.
-- Node.js: version 20 or newer.
-- npm: the version bundled with Node 20 or newer.
-- No package install is required for the current smoke tests because they use only Node built-ins.
+- Node.js 20 or newer;
+- npm bundled with Node 20 or newer;
+- Poppler utilities for independent PDF page/text inspection;
+- a local `aisknab/pnp` checkout only for the optional exact cross-repository check.
 
-This change set was verified on Linux `6.12.90+deb13.1-amd64` with Node `v20.19.2` and npm `10.8.1`.
-
-### Fresh Clone Steps
-
-```bash
-git clone <this-repository-url> pnplabs
-cd pnplabs
-node --version
-npm test
-```
-
-### One-Command Verification
+Run the complete local suite:
 
 ```bash
 npm test
 ```
 
-This runs:
+The suite checks public status/inventory consistency, strict fail-closed rendering, local HTTP
+routes, report aliases, the release seal and checksum ledger, educational fixtures, and local
+documentation links. These are companion-package checks, not Lean proof checks.
 
-- `npm run test:unit`;
-- `npm run verify:seal`;
-- `npm run examples:minimal`;
-- `npm run test:negative`;
-- `npm run repro:smoke`;
-- `npm run test:docs`.
+Current canonical identities:
 
-### Expected Hashes
+| File | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `downloads/canonical_proof_report.pdf` | 239,507 | `3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a` |
+| `downloads/canonical-proof-report.pdf` | 239,507 | `3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a` |
+| `downloads/canonical_proof_report.tex` | 13,256 | `05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0` |
+| `downloads/canonical-proof-report.tex` | 13,256 | `05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0` |
+| `public/pnp-status.json` | 39,919 | `bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d` |
+| `public/pnp-theorem-inventory.json` | 312,181 | `4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28` |
 
-The local public manifest records these file hashes:
+The PDF must have six A4 pages. Both filename styles must be byte-identical.
 
-| File | SHA-256 |
-| --- | --- |
-| `downloads/canonical_proof_report.pdf` | `53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d` |
-| `downloads/canonical-proof-report.pdf` | `53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d` |
-| `downloads/canonical_proof_report.tex` | `414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7` |
-| `downloads/canonical-proof-report.tex` | `414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7` |
-| `downloads/source-checker-release.json` | `7c2845c2ef0878764f662650cb829313040e3f8cd2d8ad61be9c43f51f3f9cbc` |
+## Exact Cross-Repository Mirror Check
 
-### Expected Runtime Range
+Use the exact merged core commit recorded in
+`downloads/formal-publication-release.json`:
 
-On a normal development machine, the public checkout smoke tests should complete in under 10 seconds. They do not run the full proof/checker validation.
+```bash
+git -C ../pnp fetch origin
+git -C ../pnp checkout c686bfc602b4cb19c89a3c33fff39720058fa198
+PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
+PNP_SOURCE_DIR=../pnp npm run test:audit-targets
+```
 
-The bundled report records a source/checker validation duration of `2033521.892701 ms` for the sealed run. That run cannot be reproduced from this website-only checkout.
+The sync command is read-only by default. A deliberate local refresh requires explicit `--write`;
+the GitHub workflow never writes, commits, or pushes. The checker compares current status,
+inventory, TeX, PDF, all aliases, source/report coordinates, page count, forbidden historical
+hashes, and companion release metadata.
 
-### Generated Artefacts
+## Core Lean Inventory Reproduction
 
-The public smoke tests do not generate durable proof artefacts. They print verification output and leave the repository tree unchanged.
+At the same exact core commit, install the pinned toolchain and run:
 
-### Comparing Regenerated And Published Artefacts
+```bash
+lake build PNP
+npm run formal:inventory:check
+npm run formal:publication:check
+npm run report:check
+npm test
+npm run pnp:verify -- --no-write
+```
 
-For this checkout, compare file identity with:
+Expected compiled inventory counts are 1,761 public declarations, 662 theorem-kind declarations,
+589 assumption-free theorem-kind declarations, 33 excluded private auxiliaries, 22 modules, and
+five project axioms. The publication gate must remain false with seven blockers.
+
+`report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
+metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
+arbitrary TeX distributions or operating systems.
+
+## Seal Verification
+
+Run:
 
 ```bash
 npm run verify:seal
-sha256sum downloads/canonical_proof_report.pdf downloads/canonical_proof_report.tex downloads/source-checker-release.json
+sha256sum downloads/canonical_proof_report.pdf \
+  downloads/canonical_proof_report.tex \
+  public/pnp-status.json \
+  public/pnp-theorem-inventory.json
+pdfinfo downloads/canonical_proof_report.pdf
 ```
 
-The first command compares files against `downloads/release-seal.json` and `downloads/SHA256SUMS`. The second command is an independent shell-level digest check on systems that provide `sha256sum`. These checks verify artefact identity only, not theorem correctness.
+The seal rejects duplicate paths, missing or extra ledger entries, malformed hashes, byte-count
+mismatches, and digest mismatches. A successful seal confirms file identity only.
 
-## Source/Checker Reproduction
+## Historical 7072f8d Replay
 
-The report names:
+The former 56-page direct-claim manuscript and assertion-checker release are preserved separately:
 
-- source/checker tag: `final-pnp-proof-report-hardened-7072f8d`;
-- source/checker commit: `7072f8d0bda6d44d240f9bb3fad624fd357e1278`;
-- release-documentation tag: `final-pnp-proof-report-docs-hardened-7072f8d-sealed`;
-- sealed artefact tag: `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed`;
-- proof-report bundle path: `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/`.
+- source tag `final-pnp-proof-report-hardened-7072f8d`;
+- source commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`;
+- documentation tag `final-pnp-proof-report-docs-hardened-7072f8d-sealed`;
+- artefact tag `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed`;
+- archive locator `archive/legacy-v0/ARCHIVE.json`.
 
-Those source/checker files are not present in this repository. Use the release-documentation tag for 7072f8d reproduction instructions, the source/checker tag for code, and the sealed artefact tag for generated artefacts. A full theorem-level reproduction requires obtaining the source/checker repository or release bundle, then running the validation commands documented at the pinned docs ref. The result to compare is not merely a PDF hash; it is the accepted theorem fields, package/replay/certificate linkage, and central canonical-byte digests reported in the final proof report.
-
-### Full Source/Checker Reproduction From Sibling Repo
-
-When both repositories are local siblings, this is the concrete source/checker audit path. The checksum commands verify artefact identity only, not theorem correctness. `npm run validate` checks the `pnp` source/checker package according to its implementation; it is not external mathematical acceptance.
-
-```bash
-cd ../pnp
-git fetch --tags --force
-git checkout final-pnp-proof-report-artifacts-hardened-7072f8d-sealed
-
-BUNDLE=proof-artifacts/final-pnp-proof-report-hardened-7072f8d
-sha256sum -c "$BUNDLE/SHA256SUMS"
-sha256sum -c "$BUNDLE/SHA256SUMS.sha256"
-
-git checkout final-pnp-proof-report-hardened-7072f8d
-npm ci
-npm run validate
-```
+Use the source repository's designated legacy replay command only if historical behavior is the
+audit target. Historical accepted fields are implementation evidence, not current theorem authority,
+and cannot satisfy the concrete publication gate.
 
 ## Troubleshooting
 
 | Symptom | Likely cause | Action |
 | --- | --- | --- |
-| `node: command not found` | Node.js is not installed | Install Node.js 20 or newer. |
-| `npm test` fails in `verify:seal` | A bundled file changed or is missing | Inspect `downloads/release-seal.json`, `downloads/SHA256SUMS`, and the reported file path. |
-| `examples:minimal` fails | A reviewer fixture or fixture checker changed | Run the failing command directly and inspect the named rejection reason. |
-| `test:docs` fails | A local Markdown or HTML link points to a missing file | Fix the link or add the intended file. |
-| Browser digest check fails | The served PDF bytes differ from the expected digest | Use `npm run verify:seal`; do not rely on the bundled artefact until resolved. |
-| Full checker reproduction cannot start | This checkout lacks the source/checker implementation | Request or locate the source/checker release named above. |
+| `node: command not found` | Node.js is absent | Install Node.js 20 or newer |
+| Seal failure | A sealed file, manifest, or ledger drifted | Inspect the exact path and regenerate only from the pinned current core commit |
+| Cross-repo mismatch | Wrong core commit or stale companion copy | Check out the manifest's exact merged commit and rerun `--check` |
+| PDF page/hash mismatch | Wrong report generation environment or historical bytes returned | Reject the artefact; do not repair by copying from a historical tag |
+| Browser status is unavailable | `/public/` route or payload problem | Verify the local server routes and keep the UI fail-closed |
+| Inventory mismatch | Stale or modified compiled evidence | Re-export under the pinned Lean toolchain and investigate before publishing |

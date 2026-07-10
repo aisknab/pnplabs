@@ -16,11 +16,18 @@ test('homepage publishes the conservative current theorem boundary', async () =>
     'finalTheoremReady = false',
     'rootLeanTheoremAxiomAuditPassed = false',
     'projectSpecificAxiomsRemaining = true',
-    'five project-specific axioms remain',
+    'five project axioms and seven blockers remain',
+    'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10',
+    '1,761 exported public declarations',
+    '662 theorem-kind declarations',
+    '589 assumption-free theorem-kind declarations',
+    'concretePublicationGate.passed = false',
+    'Current six-page report',
     '7 active',
     'Legacy JavaScript checker acceptance is historical assertion-record evidence only.',
     'View current status',
   ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
+  assert.doesNotMatch(html, />Historical report</);
 });
 
 test('homepage enhancement removes stale upload and matrix badge elements', async () => {

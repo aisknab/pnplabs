@@ -285,6 +285,9 @@ function main() {
   process.exit(result.accepted ? 0 : 1);
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+const isMain = process.argv[1]
+  && import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isMain) {
   main();
 }

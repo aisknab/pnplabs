@@ -6,91 +6,42 @@ async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
 
-test('shared site script applies conservative formal-reconstruction copy', async () => {
+test('shared site script applies the compiled-inventory publication boundary', async () => {
   const script = await readText('assets/main.js');
   for (const fragment of [
     'FAIL_CLOSED_FORMAL_STATUS',
-    'function isConservativeFormalStatus(payload)',
-    'function ensureHomepageFormalReconstructionBoundary()',
-    'The repository does not currently establish P = NP.',
-    'function ensureFormalVerificationCopy()',
-    'function ensureFormalFAQCopy()',
-    'function ensureFormalReviewCopy()',
-    'publicTheoremEmissionAllowed = false',
-    'rootLeanTheoremPresent = false',
-    'projectSpecificAxiomsRemaining = true',
-    'leanprover/lean4:v4.31.0',
-    'payload.leanNANDDirectWireCoreFormalized === true',
-    'payload.leanNANDDirectWireCoreAxiomAuditPassed === true',
-    'payload.leanNANDEnumeratorFormalized === true',
-    'payload.leanNANDEnumeratorAxiomAuditPassed === true',
-    'payload.leanNANDExactWidthEnumerationComplete === true',
-    'payload.leanNANDEnumeratorDeduplicated === false',
-    'payload.leanNANDTruthTableFormalized === true',
-    'payload.leanNANDTruthTableAxiomAuditPassed === true',
-    'payload.leanNANDSemanticEquivalenceDecidable === true',
-    'payload.leanNANDReferenceMinimumFormalized === true',
-    'payload.leanNANDReferenceMinimumPolynomialRuntimeProved === false',
-    'payload.leanNANDFramedReplacementFormalized === true',
-    'payload.leanCompatibleReplacementFormalized === false',
-    'payload.leanLockedNANDDirectCandidatesFormalized === true',
-    'payload.leanLockedNANDInternalMacroConstantsAbsent === true',
-    'payload.leanDirectWireOutputLowerBoundFormalized === true',
-    'payload.leanLockedNANDSourceDerivedCountsFormalized === true',
-    'payload.leanLockedNANDLocalSquareBaselineExactnessFormalized === true',
-    'payload.leanLockedNANDConditionalThresholdBoundaryFormalized === true',
-    'payload.leanLockedNANDConditionalResidualSlackAtMostFourFormalized === true',
-    'payload.leanLockedNANDThresholdBoundaryAxiomAuditPassed === true',
-    'payload.leanLockedNANDThresholdBoundaryPremisesInstantiated === false',
-    'payload.leanLockedNANDGlobalBaselineDistinctFormalized === false',
-    'payload.leanLockedNANDCarrierLayoutFormalized === false',
-    'payload.leanLockedNANDTraceEquivalenceFormalized === false',
-    'payload.leanLockedNANDDerivedFinalOutputLawsFormalized === false',
-    'payload.leanLockedNANDResidualSlackAtMostFourFormalized === false',
-    'payload.leanLockedNANDPolynomialBuilderFormalized === false',
-    'payload.leanResidualRoutesListedGainScanFormalized === true',
-    'payload.leanResidualRoutesAxiomAuditPassed === true',
-    'payload.leanResidualRoutesGainSoundnessFormalized === true',
-    'payload.leanResidualRoutesStrictResidualDescentFormalized === true',
-    'payload.leanResidualRoutesExactResultProofBearing === true',
-    'payload.leanResidualRoutesZeroSlackResultProofBearing === true',
-    'payload.leanResidualRoutesUnresolvedFailClosed === true',
-    "payload.leanResidualRoutesScope === 'explicit-caller-supplied-finite-candidate-list'",
-    'payload.leanResidualRoutesCandidateListCompletenessFormalized === false',
-    'payload.leanResidualRoutesGlobalGainCompletenessFormalized === false',
-    'payload.leanZeroSlackPositiveSlackContradictionFormalized === false',
-    'payload.leanZeroSlackCompletenessFormalized === false',
-    'payload.leanPCCMinLoopExactnessFormalized === false',
-    'payload.leanPCCMinPolynomialRuntimeFormalized === false',
-    'payload.leanResidualBandMinimizerFormalized === false',
-    'payload.legacySyntheticLockedNANDM2HonestBaseline === 86',
-    'payload.legacySyntheticLockedNANDM2MetadataConsistentBaseline === 95',
-    'payload.legacySyntheticLockedNANDM2StoredBaseline === 91',
-    'explicit-list gain scan checked',
-    'positive-slack unresolved regression',
-    'firstListedGain',
-    'scanListedGains',
-    'ExactMinimumResult',
-    'ZeroSlackResult',
-    'Candidate-list/global completeness',
-    'PNPNANDSemanticsAxiomAudit.lean',
-    'PNPNANDEnumeratorAxiomAudit.lean',
-    'PNPNANDTruthTableAxiomAudit.lean',
-    'PNPNANDMinimumAxiomAudit.lean',
-    'PNPNANDCompositionAxiomAudit.lean',
-    'PNPNANDSlackAxiomAudit.lean',
-    'PNPLockedNANDDirectAxiomAudit.lean',
-    'PNPDirectWireBaselineAxiomAudit.lean',
-    'PNPLockedNANDBaselineAxiomAudit.lean',
-    'PNPLockedNANDLocalBaselineAxiomAudit.lean',
-    'PNPLockedNANDThresholdBoundaryAxiomAudit.lean',
-    'PNPResidualRoutesAxiomAudit.lean',
-    'five project-specific axioms remain',
-    'JSON.stringify(payload.remainingBlockers) === JSON.stringify([',
-    'activated verifier-run registry and automated submission workflow are frozen',
-    'loadFormalReconstructionStatus();',
+    'function isConservativeFormalStatus(status, inventory)',
+    'function validateInventory(inventory)',
+    'function validateConcreteGate(status, inventory)',
+    'function validateMilestones(status)',
+    'function validateStatus(status, inventory)',
+    'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10',
+    'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10',
+    '4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28',
+    'declarations: 1761',
+    'theorems: 662',
+    'assumptionFreeTheorems: 589',
+    'excludedPrivateDeclarations: 33',
+    'modules: 22',
+    'axioms: 5',
+    'PNP.Main.ConcretePEqualsNP',
+    'PNP.Main.p_eq_np',
+    'abstractPEqualsNPPublicationEligible === false',
+    'publicationStatusDerivedOnlyFromConcreteGate === true',
+    'const strictConjunction = GATE_SUBCHECK_KEYS.every',
+    'typeConfigured && gate.actualConcreteTargetKernelTypeSha256',
+    'sourceConfigured && gate.actualSourceClosureSha256',
+    'status.mathematicalTheoremEstablished === gatePassed',
+    'status.publicTheoremEmissionAllowed === gatePassed',
+    'status.formalPublicationMilestones',
+    "fetch('public/pnp-status.json'",
+    "fetch('public/pnp-theorem-inventory.json'",
+    'Promise.all([',
+    'compiled Lean inventory digest mismatch',
+    'renderMilestones(status.formalPublicationMilestones)',
+    'loadFormalPublication();',
   ]) {
-    assert.equal(script.includes(fragment), true, `missing formal-copy fragment: ${fragment}`);
+    assert.equal(script.includes(fragment), true, `missing formal-publication fragment: ${fragment}`);
   }
 });
 
@@ -101,12 +52,13 @@ test('verify, FAQ, review, home, and status pages load the conservative shared s
   }
 });
 
-test('status fetch fails closed before any request or validation succeeds', async () => {
+test('status and inventory loading fails closed before either request validates', async () => {
   const script = await readText('assets/main.js');
   const initialFailClosed = script.indexOf("renderFormalStatus(root, FAIL_CLOSED_FORMAL_STATUS, 'fail-closed')");
   const fetchCall = script.indexOf("fetch('public/pnp-status.json'");
   assert.ok(initialFailClosed >= 0 && initialFailClosed < fetchCall, 'fail-closed state must render before fetch');
-  assert.match(script, /if \(!response\.ok\) throw new Error/);
-  assert.match(script, /if \(!isConservativeFormalStatus\(payload\)\) throw new Error/);
-  assert.match(script, /PNP status load failed closed/);
+  assert.match(script, /if \(!statusResponse\.ok \|\| !inventoryResponse\.ok\) throw new Error/);
+  assert.match(script, /if \(inventoryDigest !== INVENTORY_SHA256\) throw new Error/);
+  assert.match(script, /if \(!isConservativeFormalStatus\(status, inventory\)\) throw new Error/);
+  assert.match(script, /PNP formal-publication load failed closed/);
 });

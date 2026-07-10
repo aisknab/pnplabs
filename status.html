@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — formal reconstruction status</title>
-  <meta name="description" content="Current PNP formal-reconstruction status, remaining Lean obligations, and conservative machine-readable status surfaces.">
+  <title>PNP Labs — compiled Lean inventory status</title>
+  <meta name="description" content="Current compiled Lean theorem inventory, scoped formal milestones, concrete publication gate, and remaining P versus NP obligations.">
   <link rel="canonical" href="https://pnplabs.com.au/status.html">
   <meta name="theme-color" content="#f5f6f7">
   <link rel="icon" href="assets/icon-192.png" type="image/png">
@@ -20,55 +20,29 @@
         <span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span>
         <span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
+      <nav class="nav-links" data-nav aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a class="active" aria-current="page" href="status.html">Status</a>
+        <a href="paper.html">Report</a>
+        <a href="architecture.html">Architecture</a>
         <a href="verify.html">Verify</a>
         <a href="review.html">Review</a>
         <a href="faq.html">FAQ</a>
       </nav>
+      <button class="menu-btn" data-menu type="button" aria-expanded="false">Menu</button>
     </div>
   </header>
 
   <main id="main">
     <section class="page-hero">
-      <span class="eyebrow">Formal reconstruction in progress</span>
-      <h1>Current PNP status</h1>
-      <p class="lede">Lean now implements a fail-closed gain scan over an explicit caller-supplied finite implementation list. Returned gains are sound and strictly decrease reference residual slack; unresolved excludes no unlisted gain and cannot establish ZeroSlack. There is still no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
+      <span class="eyebrow">Compiled Lean inventory · 2026-07-10</span>
+      <h1>The concrete publication gate is closed.</h1>
+      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Six scoped milestones are earned from reviewed theorem names, axiom closures, kernel-type fingerprints, and the whole Lean source closure. Three global milestones remain unearned, so the repository does not establish P = NP.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="public/pnp-status.json">Open current status JSON</a>
-        <a class="btn secondary" href="https://github.com/aisknab/pnp">Inspect source repository</a>
+        <a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a>
+        <a class="btn secondary" href="public/pnp-status.json">Open current status</a>
+        <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Open six-page report</a>
       </div>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Checked residual-route milestone</div>
-      <h2>Explicit-list gain soundness; unresolved remains fail closed</h2>
-      <div class="grid two path">
-        <article class="card"><h3>What the executable scan proves</h3><p><code>strictEquivalentGainBool</code> uses finite truth-table equivalence plus a strict gate-count check. <code>firstListedGain</code> returns the first match from one explicit caller-supplied list, and every <code>ListedGainResult</code> proves list membership, semantic equivalence, fewer gates, and strict residual-slack descent. <code>leanResidualRoutesListedGainScanFormalized = true</code>, <code>leanResidualRoutesGainSoundnessFormalized = true</code>, and <code>leanResidualRoutesStrictResidualDescentFormalized = true</code>.</p></article>
-        <article class="card"><h3>What it cannot infer</h3><p><code>GainScanOutcome</code> has only gain and unresolved constructors. <code>ExactMinimumResult</code> and <code>ZeroSlackResult</code> require Lean proofs of semantic minimality and are never manufactured from search failure. <code>leanResidualRoutesUnresolvedFailClosed = true</code>, while <code>leanResidualRoutesCandidateListCompletenessFormalized = false</code> and <code>leanResidualRoutesGlobalGainCompletenessFormalized = false</code>.</p></article>
-      </div>
-      <p>The scope is <code>explicit-caller-supplied-finite-candidate-list</code>. A formal regression proves an empty-list scan can be unresolved while residual slack is one. Therefore unresolved does not imply global minimum or ZeroSlack. <code>leanZeroSlackPositiveSlackContradictionFormalized = false</code>, <code>leanZeroSlackCompletenessFormalized = false</code>, <code>leanPCCMinLoopExactnessFormalized = false</code>, <code>leanPCCMinPolynomialRuntimeFormalized = false</code>, and <code>leanResidualBandMinimizerFormalized = false</code>.</p>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Checked conditional threshold milestone</div>
-      <h2>Semantic deduction complete; six global premises uninstantiated</h2>
-      <div class="grid two path">
-        <article class="card"><h3>What the theorem proves</h3><p>From <code>baselineCandidate</code>, <code>fullCandidate</code>, <code>baselineConditions</code>, <code>initialOutputsPreserved</code>, <code>unsatisfiableFinalZero</code>, and <code>satisfiableFinalConditions</code>, Lean proves the unsatisfiable minimum equals the baseline, the satisfiable minimum is in <code>[B+1,B+4]</code>, the conditional threshold iff, and conditional residual slack at most four. <code>leanLockedNANDConditionalThresholdBoundaryFormalized = true</code>.</p></article>
-        <article class="card"><h3>What remains unproved</h3><p>The six fields are not constructed for arbitrary circuits. <code>leanLockedNANDThresholdBoundaryPremisesInstantiated = false</code>, <code>leanLockedNANDGlobalBaselineDistinctFormalized = false</code>, <code>leanLockedNANDCarrierLayoutFormalized = false</code>, <code>leanLockedNANDTraceEquivalenceFormalized = false</code>, <code>leanLockedNANDDerivedFinalOutputLawsFormalized = false</code>, <code>leanLockedNANDBuilderFormalized = false</code>, <code>leanLockedNANDThresholdFormalized = false</code>, <code>leanLockedNANDResidualSlackAtMostFourFormalized = false</code>, and <code>leanLockedNANDPolynomialBuilderFormalized = false</code>.</p></article>
-      </div>
-      <p>The hostile-review inventory remains explicit: <code>DirectWireOutputLowerBound</code>, <code>MacroDistinct</code>, <code>TraceEquivalence</code>, <code>ZeroOutputConvention</code>, and <code>FinalLockSeparation</code>. The first and the model-level zero-output convention are discharged; the global source-circuit instantiations are not. This conditional theorem is not the report threshold theorem.</p>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Checked locked-NAND local milestone</div>
-      <h2>Typed candidates, source-derived counts, and five exact local minima</h2>
-      <div class="grid two path">
-        <article class="card"><h3>Complete in this milestone</h3><p>Six report-local gadgets have intrinsically typed direct-wire candidates with gate/output widths <code>10/10</code>, <code>2/2</code>, <code>3/3</code>, <code>18/18</code>, <code>2/2</code>, and <code>4/1</code>. Their internal programs are constant-free. The five square candidates have exact empty-context reference minima of 10, 2, 3, 18, and 2 gates. <code>leanLockedNANDLocalSquareBaselineExactnessFormalized = true</code>.</p></article>
-        <article class="card"><h3>Deliberate scope boundary</h3><p>Counts are derived from typed program sources, and the report word remains multi-output under <code>ordered-multi-output-baseline-coordinates-plus-final-coordinate</code>. The one-output final conjunction has no exact four-gate minimum here. Global cross-instance <code>BaselineDistinct</code>, the builder, threshold, slack at most four, and polynomiality remain unproved: <code>leanLockedNANDGlobalBaselineDistinctFormalized = false</code>, <code>leanLockedNANDBuilderFormalized = false</code>, <code>leanLockedNANDThresholdFormalized = false</code>, <code>leanLockedNANDResidualSlackAtMostFourFormalized = false</code>, and <code>leanLockedNANDPolynomialBuilderFormalized = false</code>.</p></article>
-      </div>
-      <p>The legacy synthetic <code>m = 2</code> fixture is quarantined as inconsistent: honest baseline/displayed counts are <code>86/90</code>, metadata-consistent counts are <code>95/99</code>, and its stored hybrid counts are <code>91/95</code>.</p>
     </section>
 
     <section class="section compact" data-formal-status-root data-status-state="fail-closed">
@@ -82,104 +56,78 @@ finalTheoremReady = false
 rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
-projectSpecificAxiomsRemaining = true</pre>
+projectSpecificAxiomsRemaining = true
+concretePublicationGate.passed = false</pre>
       </div>
-      <p class="review-note" data-formal-status-note><strong>Status source:</strong> <code>public/pnp-status.json</code> is an exact mirror of <code>aisknab/pnp/public/pnp-status.json</code>. Until a valid conservative payload is fetched, this page remains in the same fail-closed, non-emitting state.</p>
+      <p class="review-note" data-formal-status-note><strong>Static fail-closed boundary:</strong> until both current payloads load, hash-bind, and pass their exact consistency checks, this page never infers theorem establishment or theorem-emission permission.</p>
     </section>
 
     <section class="section compact">
-      <div class="section-label">Checked Lean reference milestone</div>
-      <h2>Executable finite equivalence, minimum, and framed slack</h2>
+      <div class="section-head">
+        <div><div class="section-label">Compiled environment</div><h2>Exact inventory counts</h2></div>
+        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10</code>; SHA-256 <code>4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28</code>.</p>
+      </div>
+      <p data-formal-inventory-counts><strong>1,761</strong> public declarations; <strong>662</strong> theorem-kind declarations; <strong>589</strong> assumption-free theorem-kind declarations; <strong>33</strong> private compiler auxiliaries excluded; <strong>22</strong> modules; <strong>5</strong> project axioms.</p>
+      <p>The inventory is emitted from Lean environment constants and axiom collection. It is not inferred from source text, JSON claims, checker acceptance, or report prose.</p>
+    </section>
+
+    <section class="section compact">
+      <div class="section-head">
+        <div><div class="section-label">Inventory-derived publication map</div><h2>Six scoped milestones earned; three global milestones unearned</h2></div>
+        <p>The static rows below are conservative fallback copy. When validation succeeds, JavaScript replaces them from the exact status payload.</p>
+      </div>
+      <div class="grid three path" data-formal-milestones>
+        <article class="card" data-milestone-id="direct-wire-semantics" data-earned="true"><h3>Formalized: Typed direct-wire NAND semantics</h3><p>Typed topological Boolean NAND programs and ordered multi-output direct-wire semantics.</p><p><strong>Boundary:</strong> This does not establish circuit minimization, SAT, or P = NP.</p></article>
+        <article class="card" data-milestone-id="finite-enumeration-minimum" data-earned="true"><h3>Formalized: Finite enumeration, equivalence, and reference minimum</h3><p>Exhaustive finite Boolean direct-wire search under the empty-profile reference model.</p><p><strong>Boundary:</strong> No polynomial-runtime result is obtained from this exhaustive reference search.</p></article>
+        <article class="card" data-milestone-id="framed-replacement-slack" data-earned="true"><h3>Formalized: Concrete framed replacement and slack</h3><p>The concrete serial framed context with support outputs and explicit bypass wires.</p><p><strong>Boundary:</strong> This is not an arbitrary-support replacement theorem for the global family.</p></article>
+        <article class="card" data-milestone-id="locked-nand-local-baseline" data-earned="true"><h3>Formalized: Locked-NAND local candidates and baseline accounting</h3><p>Typed local macro candidates, source-derived counts, and five finite local square baselines.</p><p><strong>Boundary:</strong> Local minima are not a global BaselineDistinct or locked-NAND threshold theorem.</p></article>
+        <article class="card" data-milestone-id="locked-nand-conditional-threshold" data-earned="true"><h3>Formalized with premises: Conditional locked-NAND threshold boundary</h3><p>A proof-bearing six-premise candidate boundary for an arbitrary satisfiable proposition.</p><p><strong>Boundary:</strong> The premises are not instantiated by a uniform SAT-to-locked-NAND builder.</p></article>
+        <article class="card" data-milestone-id="explicit-residual-routes" data-earned="true"><h3>Formalized for an explicit list: Fail-closed residual routes</h3><p>Executable strict-gain search over a caller-supplied finite implementation list.</p><p><strong>Boundary:</strong> Unresolved excludes no gain outside the supplied list and cannot imply ZeroSlack.</p></article>
+        <article class="card accent" data-milestone-id="global-locked-nand-threshold" data-earned="false"><h3>Not formalized: Global locked-NAND construction and threshold</h3><p>A uniform answer-independent SAT instance builder, global baseline, trace equivalence, and threshold.</p><p><strong>Boundary:</strong> The conditional boundary does not discharge this missing theorem.</p></article>
+        <article class="card accent" data-milestone-id="global-zeroslack-pccmin" data-earned="false"><h3>Not formalized: Global ZeroSlack, PCCMin, and polynomial runtime</h3><p>Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.</p><p><strong>Boundary:</strong> Proof-bearing result structures and explicit-list failure do not supply global completeness.</p></article>
+        <article class="card accent" data-milestone-id="concrete-publication-root" data-earned="false"><h3>Not formalized: Concrete standard P-versus-NP target and root theorem</h3><p>Concrete machine semantics, complexity classes, SAT, reductions, and the publication root theorem.</p><p><strong>Boundary:</strong> The current string-handle <code>PNP.PEqualsNP</code> bridge is nonstandard and publication-ineligible.</p></article>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Concrete publication gate</div>
+      <h2>Every required subcheck must be true</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Gate input</th><th>Current result</th><th>Why publication stays closed</th></tr></thead>
+          <tbody>
+            <tr><td>Concrete standard complexity target</td><td><strong>false</strong></td><td><code>PNP.Main.ConcretePEqualsNP</code> is absent.</td></tr>
+            <tr><td>Compatibility root theorem</td><td><strong>false</strong></td><td><code>PNP.Main.p_eq_np</code> is absent.</td></tr>
+            <tr><td>Reviewed kernel fingerprints</td><td><strong>unconfigured</strong></td><td>Expected target/root/closure fingerprints are null; null never matches null.</td></tr>
+            <tr><td>Axiom closure</td><td><strong>false</strong></td><td>No eligible root exists to audit against the immutable Lean-standard allowlist.</td></tr>
+            <tr><td>Abstract bridge eligibility</td><td><strong>false</strong></td><td>The string-handle <code>PNP.PEqualsNP</code> definition is explicitly ineligible.</td></tr>
+            <tr><td>Strict conjunction</td><td><strong>passed = false</strong></td><td>Theorem statement, conclusion, establishment, and emission fields derive only from this gate.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Remaining formal work</div>
+      <h2>Seven blockers and five project axioms remain</h2>
       <div class="grid two path">
-        <article class="card"><h3>Complete in this milestone</h3><p>Truth-table comparison decides semantic equivalence for finite Boolean direct-wire candidates. Exhaustive search returns an exact reference minimum and proves residual slack is zero exactly at minimum. Concrete serial composition, framed replacement, and its framed slack law are axiom-audited. <code>leanNANDSemanticEquivalenceDecidable = true</code> and <code>leanNANDMinimumAndSlackFormalized = true</code>.</p></article>
-        <article class="card"><h3>Deliberate scope boundary</h3><p>The minimum is an exhaustive <code>finite-boolean-direct-wire-empty-profile</code> reference computation and <code>leanNANDReferenceMinimumPolynomialRuntimeProved = false</code>. Replacement covers only <code>concrete-serial-framed-context</code>; the report's arbitrary compatible supports and global slack law remain unproved, so <code>leanCompatibleReplacementFormalized = false</code> and <code>leanGlobalSlackLawFormalized = false</code>.</p></article>
+        <article class="card"><h3>Formal blockers</h3><ol><li><code>Formal.ConcreteComplexityModel</code></li><li><code>Formal.ConcreteSAT</code></li><li><code>Formal.LockedNANDThreshold</code></li><li><code>Formal.ResidualBandMinimizer</code></li><li><code>Formal.ZeroSlack</code></li><li><code>Formal.PolynomialRuntimeAndCertificateBounds</code></li><li><code>Formal.RootTheoremAndAxiomAudit</code></li></ol></article>
+        <article class="card"><h3>Project axioms</h3><ol><li><code>PNP.CheckPCCPackexp</code></li><li><code>PNP.GeneratePCCPack</code></li><li><code>PNP.LockedNANDThreshold</code></li><li><code>PNP.ResidualBandExactMinimization</code></li><li><code>PNP.SAT</code></li></ol></article>
       </div>
-      <p>These finite reference results do not establish the residual-band polynomial minimizer, arbitrary-support replacement, the locked-NAND reduction, SAT in P, or P = NP.</p>
+      <p>No site wording, report digest, Boolean/string field, JavaScript checker acceptance, historical activation record, or review status clears these obligations.</p>
     </section>
 
     <section class="section compact">
-      <div class="section-label">Required formal work</div>
-      <h2>Seven obligations remain</h2>
-      <ol>
-        <li><code>Formal.ConcreteComplexityModel</code></li>
-        <li><code>Formal.ConcreteSAT</code></li>
-        <li><code>Formal.LockedNANDThreshold</code></li>
-        <li><code>Formal.ResidualBandMinimizer</code></li>
-        <li><code>Formal.ZeroSlack</code></li>
-        <li><code>Formal.PolynomialRuntimeAndCertificateBounds</code></li>
-        <li><code>Formal.RootTheoremAndAxiomAudit</code></li>
-      </ol>
-      <p>These entries appear in both <code>remainingFormalObligations</code> and <code>remainingBlockers</code>. No site wording, JavaScript checker record, report hash, or review status clears them.</p>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Formal target</div>
-      <h2>What completion must demonstrate</h2>
+      <div class="section-label">Current and historical reports</div>
+      <h2>Do not conflate the two documents</h2>
       <div class="grid two path">
-        <article class="card"><h3>Pinned root build</h3><p><code>lake build PNP</code> now compiles the explicit library root under <code>leanprover/lean4:v4.31.0</code>. Its <code>PNP.Main.rootTheoremStatus</code> declaration is status data, not the target theorem.</p></article>
-        <article class="card"><h3>Root theorem</h3><p><code>PNP.Main.p_eq_np</code> must be present, build successfully, and pass an axiom audit without project-specific axioms. All three root-theorem status fields are currently false.</p></article>
+        <article class="card"><h3>Current six-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the closed gate, exact counts, scoped milestones, axioms, and blockers.</p></article>
+        <article class="card accent"><h3>Historical 56-page manuscript</h3><p>The old direct-claim manuscript is preserved at tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, with provenance in <code>archive/legacy-v0/ARCHIVE.json</code>. It is not current authority.</p></article>
       </div>
-      <p>Five project-specific axioms remain: <code>PNP.SAT</code>, <code>PNP.LockedNANDThreshold</code>, <code>PNP.ResidualBandExactMinimization</code>, <code>PNP.GeneratePCCPack</code>, and <code>PNP.CheckPCCPackexp</code>.</p>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Checker boundary</div>
-      <h2>Legacy acceptance is historical assertion-checker evidence</h2>
-      <p>The legacy JavaScript checker stack verifies assertion-bearing records under implemented predicates. It does not formalise or prove the named mathematical propositions. Its prior activation coordinate, run registry, comparison matrix, and badge are preserved for auditability only.</p>
-      <ul>
-        <li><a href="public/pnp-verification-runs.json"><code>public/pnp-verification-runs.json</code></a> is a frozen historical registry.</li>
-        <li><a href="public/pnp-verifier-run-comparison-matrix.json"><code>public/pnp-verifier-run-comparison-matrix.json</code></a> is a historical comparison snapshot.</li>
-        <li><a href="public/pnp-verifier-run-matrix-summary.json"><code>public/pnp-verifier-run-matrix-summary.json</code></a> is neutral historical metadata, not a current green badge.</li>
-        <li><a href="public/pnp-one-command-upload.json"><code>public/pnp-one-command-upload.json</code></a> records that activated-run intake is frozen.</li>
-      </ul>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Verification commands</div>
-      <h2>Inspect the current reconstruction</h2>
-      <pre><code>git clone https://github.com/aisknab/pnp.git
-cd pnp
-npm ci
-node pcc-formal-reconstruction-status0.mjs --json
-node pcc-formal-public-surface0.mjs --json
-npm run pnp:verify
-node --test audits/lean-root-target0.test.mjs
-node --test audits/lean-nand-semantics0.test.mjs
-node --test audits/lean-nand-enumerator0.test.mjs
-node --test audits/lean-nand-reference-minimum0.test.mjs
-node --test audits/lean-locked-nand-baseline0.test.mjs
-node --test audits/lean-locked-nand-threshold-boundary0.test.mjs
-node --test audits/lean-residual-routes0.test.mjs
-lake build PNP
-lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDMinimumAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDCompositionAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean</code></pre>
-      <p>A successful status check or build is necessary but not sufficient. The target theorem is not established unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
-    </section>
-
-    <section class="section compact">
-      <div class="section-label">Public payloads</div>
-      <h2>Machine-readable surfaces</h2>
-      <ul>
-        <li><a href="public/pnp-index.json"><code>public/pnp-index.json</code></a> is the current payload index.</li>
-        <li><a href="public/pnp-status.json"><code>public/pnp-status.json</code></a> is the exact authoritative mirror.</li>
-        <li><a href="public/pnp-public-review.json"><code>public/pnp-public-review.json</code></a> is a historical public-review payload.</li>
-        <li><a href="public/pnp-theorem-emission-gate.json"><code>public/pnp-theorem-emission-gate.json</code></a> is a historical denied-gate record.</li>
-        <li><a href="public/pnp-external-review-status.json"><code>public/pnp-external-review-status.json</code></a> is a historical review-status record.</li>
-      </ul>
-      <p>External review is optional audit evidence. It is not a mathematical premise or a release blocker.</p>
     </section>
   </main>
+
+  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>compiled formal inventory</span></span></a><p>The repository does not currently establish P = NP.</p></div><nav class="footer-links" aria-label="Footer"><a href="paper.html">Report</a><a href="verify.html">Verify</a><a href="review.html">Review</a></nav></div></footer>
   <script src="assets/main.js" defer></script>
 </body>
 </html>

@@ -18,6 +18,9 @@
 /downloads/*
   Cache-Control: no-cache
 
+/public/*
+  Cache-Control: no-cache
+
 /CODEX_PROMPT.md
   X-Robots-Tag: noindex, nofollow, noarchive
 

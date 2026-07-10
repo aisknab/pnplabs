@@ -2,117 +2,132 @@
 
 ## Executive Summary
 
-This repository is a public review and artefact-identity package for a claimed proof that `P = NP`.
+This checkout publishes the current formal-reconstruction status of the PNP project. It does not
+establish `P = NP`.
 
-The bundled report states a route from SAT to exact minimization of a specially constrained NAND construction, then to a finite proof-carrying package (`PCCPack`) accepted by an executable checker stack. The public website repository contains the report, release manifest, checksum ledger, browser verification flow, reviewer documentation, minimal reviewer fixtures, and smoke tests. It does not contain the full source/checker implementation referenced by the report.
+The canonical report downloads are now a six-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 1,761 public declarations across 22 modules,
+including 662 theorem-kind declarations, 589 assumption-free theorem-kind declarations, and five
+disclosed project axioms. Thirty-three private compiler auxiliaries are excluded explicitly.
 
-The local executable checks in this repository establish only the following:
+The concrete publication gate is false. Its concrete target and compatibility-root theorem are
+absent, its reviewed activation fingerprints are intentionally unset, all seven formal blockers
+remain, and no JSON field, Boolean, string, hash, historical checker verdict, or website state can
+substitute for the missing Lean evidence.
 
-- bundled public files match `downloads/release-seal.json` and `downloads/SHA256SUMS`;
-- minimal reviewer fixtures accept or reject for named reasons;
-- local documentation links resolve.
+Start with these current-authority files:
 
-These checks do not establish theorem correctness. A theorem audit requires the source/checker revision named in the report: `final-pnp-proof-report-hardened-7072f8d` at commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`.
+- [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
+- [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current six-page report;
+- [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
-## Mathematics, Software, And Assumptions
+The older 56-page direct-claim manuscript remains a historical audit target only. It is located at
+source tag `final-pnp-proof-report-hardened-7072f8d`, commit
+`7072f8d0bda6d44d240f9bb3fad624fd357e1278`, and is indexed by
+`archive/legacy-v0/ARCHIVE.json` in the source repository. It is not served through the canonical
+download aliases.
 
-| Layer | What it says or does | Status in this checkout | Reviewer action |
+## Evidence Layers
+
+| Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Mathematical route | SAT is reduced to exact residual-band minimization over a locked NAND construction; accepted package sufficiency implies `P = NP`. | Described in `downloads/canonical_proof_report.tex` and PDF. | Check definitions, reductions, bounds, and theorem dependencies directly. |
-| Generated finite package | `GeneratePCCPack()` is claimed to emit the package whose acceptance discharges the antecedent. | Referenced by report and site; implementation not present here. | Obtain and inspect the source/checker revision. |
-| Checker stack | `CheckPCCPackexp0`, acceptance replay, final certificate, release gate, and `CheckFinalPNPProofReport0` are claimed to accept. | Claimed in report; not re-executable from this public checkout. | Re-run from source/checker tag and audit checker soundness. |
-| Public file seal | SHA-256 hashes bind listed public files to the manifest. | Executable here with `npm run verify:seal`. | Treat a match as file identity only. |
-| Minimal examples | Tiny fixtures demonstrate terminology and named rejection modes. | Executable here with `npm run examples:minimal` and `npm run test:negative`. | Use for onboarding only; do not treat as proof evidence. |
-| Assumptions | Correct mathematics, sound checker implementation, faithful generator, deterministic canonical encoding, and valid build environment. | Not discharged by hash checks. | Audit or replace each trusted component. |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 22 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | Twenty-two reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Six narrowly scoped formal milestones | Global locked-NAND construction, complete residual search, SAT in P, or `P = NP` |
+| Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
+| Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
+| Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
+| Historical checker archive | Pinned 7072f8d tags, files, and replay route | Historical implementation and assertion-checker auditability | Current theorem authority or mathematical proof |
+| Minimal examples | Small local educational fixtures | Named toy accept/reject behavior | Real package soundness or any theorem conclusion |
 
-## Dependency Graph
+## Current Dependency Boundary
 
 ```mermaid
 flowchart TD
-  SAT[SAT instances] --> LN[Locked NAND construction]
-  LN --> RS[Residual slack bound]
-  RS --> MIN[Residual-band exact minimization claim]
-  MIN --> PACK[PCCPack package sufficiency]
-  GEN[GeneratePCCPack] --> PACK
-  PACK --> CHECK[CheckPCCPackexp0 acceptance]
-  CHECK --> REPLAY[Acceptance replay]
-  REPLAY --> CERT[Final certificate]
-  CERT --> GATE[Release gate]
-  GATE --> REPORT[CheckFinalPNPProofReport0]
-  REPORT --> CLAIM[Reported conclusion: P = NP]
-  REPORT --> SEAL[Release seal and SHA-256 ledger]
-  SEAL --> PUBLIC[Public website artefacts]
+  LEAN[Compiled Lean environment] --> INV[Canonical theorem inventory]
+  INV --> MILE[Scoped milestone ledger]
+  INV --> GATE[Concrete publication gate]
+  MILE --> STATUS[Generated status and report]
+  GATE --> STATUS
+  GATE -. false .-> BLOCK[No theorem emission]
 ```
 
-The edge from `SEAL` to `PUBLIC` is an identity check, not a soundness check. The soundness-critical edges run through the mathematics, package, and checker.
+The status and report are consumers of formal evidence, not premises for it. Publication output is
+allowed only when every concrete-gate subcheck passes. In this release every output field remains
+non-claiming because the gate is false.
 
-## Audit Path: Complexity Theorist
+## Audit Path: Formal Methods
 
-1. Start with `docs/proof_pipeline.md`.
-2. Read `downloads/canonical_proof_report.tex` Sections 1, 18, 20, and Appendix B.
-3. Verify that the SAT-to-locked-NAND construction is polynomial and semantics-preserving.
-4. Verify the residual slack definition `Lambda(C) = |C| - mu(C)` and the claimed constant bound for the constructed instances.
-5. Look for any use of exact minimization inside the asserted polynomial procedure.
-6. Check whether the finite package sufficiency theorem proves an unconditional polynomial SAT algorithm once package acceptance is established.
-7. Record any failed implication in `docs/audit_questions.md` terms.
+1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
+   `c686bfc602b4cb19c89a3c33fff39720058fa198`.
+2. Re-export the inventory and compare it byte-for-byte with
+   `public/pnp-theorem-inventory.json`.
+3. Inspect every one of the 22 reviewed milestone declarations at its exact kernel type.
+4. Confirm that each earned milestone has an empty axiom closure and matches the pinned complete
+   Lean-source digest.
+5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
+6. Inspect the gate's fixed standard-axiom allowlist and verify that unknown, project, and `sorryAx`
+   dependencies reject.
+7. Confirm that null expected fingerprints never compare equal to null actual fingerprints.
 
-## Audit Path: Proof Engineer
+## Audit Path: Complexity Theory
 
-1. Start with `docs/trust_model.md` and `docs/terminology_crosswalk.md`.
-2. Identify every checker named in the report: `CheckPCCPackexp0`, `CheckAcceptRun0`, replay, final certificate, release gate, and `CheckFinalPNPProofReport0`.
-3. Obtain the source/checker revision named in the report.
-4. Audit parser/canonical encoding before proof rules. Parser ambiguity can invalidate all later records.
-5. Audit hash discipline: every digest lookup must be followed by full key or canonical-byte comparison.
-6. Audit the no-hidden-minimization scan after macro, alias, template, and import expansion.
-7. Audit mode-safety and obligation ledgers, especially quotient-to-full transfers.
-8. Re-run the acceptance and replay stack in a clean environment and compare the accepted theorem fields.
+The formal inventory earns six local or conditional milestones: typed direct-wire semantics, finite
+reference enumeration/minimum, concrete framed replacement/slack, five local locked-NAND baselines,
+a six-premise conditional threshold boundary, and explicit-list residual-route soundness.
 
-## Audit Path: Security And Reproducibility Reviewer
+Review the gaps between those scopes and the target theorem:
+
+1. No concrete standard complexity model or concrete SAT theorem is formalized.
+2. The six locked-NAND threshold premises are not instantiated by a uniform polynomial builder.
+3. Local baseline minima do not establish global `BaselineDistinct`, carrier layout, trace
+   equivalence, or the report threshold.
+4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
+   unlisted gain and cannot imply `ZeroSlack`.
+5. PCCMin exactness, the residual-band minimizer, and polynomial runtime/certificate bounds remain
+   unproved.
+6. The concrete root theorem `PNP.Main.p_eq_np` is absent.
+
+Any proof of the final claim must close those gaps with concrete definitions and checked Lean
+theorems; historical package acceptance does not close them.
+
+## Audit Path: Reproducibility And Security
 
 1. Run `npm test` in this checkout.
-2. Inspect `downloads/release-seal.json` and `downloads/SHA256SUMS`.
-3. Confirm that `npm run verify:seal` recomputes file hashes locally.
-4. Confirm that the browser verification in `verify.html` states file identity only.
-5. Inspect `server.mjs` for its public allowlist and path normalization.
-6. Request the source/checker tag, release-documentation tag, and sealed artefact tag named in [source_checker_map.md](source_checker_map.md).
-7. Rebuild from a fresh clone of the source/checker repository, not from this website-only checkout.
-8. Compare regenerated accepted records against the report's theorem fields and central digests.
+2. Run `npm run verify:seal` and compare the four report aliases.
+3. Verify the inventory SHA-256 against `public/pnp-status.json`.
+4. Confirm that the local server exposes both `/public/pnp-status.json` and
+   `/public/pnp-theorem-inventory.json` with no-cache headers.
+5. Run the cross-repository check against the exact merged core commit.
+6. Inspect the report-sync workflow and verify that it is read-only and cannot commit or restore
+   historical report bytes.
+7. Treat every digest match as byte-identity evidence only.
 
-## Audit Path: Skeptical General Technical Reader
+## Historical Audit Path
 
-1. Read the first screen of `README.md`.
-2. Open `docs/proof_pipeline.md` for the conventional pipeline.
-3. Use `docs/terminology_crosswalk.md` to translate internal terms.
-4. Run `npm run verify:seal`; observe that it confirms file identity only.
-5. Run `npm run examples:minimal`; observe named pass/fail examples.
-6. Treat the public report as a claim requiring expert audit, not as external acceptance.
+The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
+in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
+assertion-checker release. References to numbered report sections in historical worksheets refer to
+the manuscript at the pinned 7072f8d source tag, never to the current six-page report.
+
+A historical replay can show that a named implementation produced the recorded acceptance fields.
+It cannot establish the mathematical implications encoded by those fields and cannot activate the
+current publication gate.
 
 ## Fast Falsification Checklist
 
-A serious reviewer should first try to break the claim at these points:
-
-- Find a SAT-to-locked-NAND instance where satisfiability is not preserved.
-- Find a constructed instance whose residual slack is not bounded as claimed.
-- Find a hidden exact-minimization call in the asserted polynomial path after macro and import expansion.
-- Find a quotient equality used as a full-mode replacement without a checked full lift and discharged obligations.
-- Find a package theorem whose reflected checker conclusion is stronger than the checker actually validates.
-- Find a hash lookup used as object equality without canonical-byte or full-key comparison.
-- Find parser ambiguity: two byte strings for one object, one byte string with two parses, or accepted trailing bytes.
-- Find an import cycle or forbidden import that lets Package O and Package G assume each other.
-- Find a mismatch between accepted report fields and the public theorem statement.
-- Find a reproduction path that changes accepted theorem fields, not merely release-context metadata.
+- Change one inventory byte without changing status and confirm rejection.
+- Replace a milestone theorem with a same-name theorem of weaker type and confirm it is unearned.
+- Add a project or unknown axiom to a milestone/root closure and confirm rejection.
+- Set an expected gate fingerprint to null and confirm that it remains unconfigured and nonmatching.
+- Insert the abstract string-handle `PNP.PEqualsNP` type and confirm that it is publication-ineligible.
+- Forge a historical accepted flag or checker Boolean and confirm that theorem output remains false.
+- Remove one blocker or project axiom from public status and confirm rejection.
+- Serve a stale or missing inventory and confirm that the browser remains fail-closed.
+- Replace the canonical PDF with the historical 56-page hash and confirm seal/sync rejection.
 
 ## Not Claimed
 
-This repository, by itself, does not establish any of the following:
-
-- external community acceptance of the proof;
-- correctness of the mathematical argument;
-- correctness or soundness of the source/checker implementation;
-- availability of the full source/checker artefacts in this checkout;
-- theorem validity from a SHA-256 match;
-- theorem validity from the minimal reviewer fixtures;
-- that the public PDF is easier to trust than the source/checker records;
-- that the claim has been validated by a journal, conference, or independent formal-methods group.
-
-The public hash check only answers: "Are these local bytes the same bytes named by the local manifest and checksum ledger?"
+This checkout does not claim external acceptance, journal validation, checker soundness, a complete
+candidate universe, polynomial exact minimization, SAT in P, or `P = NP`. The local checks establish
+only their explicitly named file-identity, consistency, rendering, and toy-fixture properties.

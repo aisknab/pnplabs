@@ -11,20 +11,24 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
+git checkout c686bfc602b4cb19c89a3c33fff39720058fa198
 npm ci
-node pcc-formal-reconstruction-status0.mjs --json
-node pcc-formal-public-surface0.mjs --json
-npm run pnp:verify
+lake build PNP
+node pcc-formal-reconstruction-status0.mjs --json --no-write
+node pcc-formal-public-surface0.mjs --json --no-write
+npm run pnp:verify -- --no-write
+node scripts/export-lean-theorem-inventory.mjs --check
+node scripts/generate-formal-publication.mjs --check
+npm run report:check
 node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
 node --test audits/lean-nand-enumerator0.test.mjs
-lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, replay the legacy checker stack, build the pinned Lean `PNP` library root, and audit the bridge dependencies, direct-wire NAND semantics, and exact-width syntactic enumerator. They do not establish canonical or deduplicated enumeration, semantic equivalence decision, minimum size, replacement/slack, the locked builder or threshold, SAT, or the target theorem: `PNP.Main.p_eq_np` is absent and five project-specific axioms remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They do not instantiate the conditional locked-NAND premises, complete the global candidate universe, turn an unresolved explicit-list scan into ZeroSlack, prove PCCMin or the residual-band minimizer, establish polynomial runtime, formalize concrete SAT, or prove the target theorem. `PNP.Main.p_eq_np` is absent; five project-specific axioms and seven blockers remain.
 
 ## Freeze controls
 

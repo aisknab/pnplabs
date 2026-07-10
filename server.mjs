@@ -1,6 +1,6 @@
 import { createServer } from "node:http";
 import { createReadStream } from "node:fs";
-import { stat } from "node:fs/promises";
+import { lstat, realpath, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -28,6 +28,9 @@ const PUBLIC_ROOT_FILES = new Set([
   "/robots.txt",
   "/security.txt",
   "/sitemap.xml",
+  "/status.html",
+  "/verification-runs.html",
+  "/verifier-run-digests.html",
   "/verify.html"
 ]);
 
@@ -37,7 +40,8 @@ const PUBLIC_EXACT_FILES = new Set([
 
 const PUBLIC_PREFIXES = [
   "/assets/",
-  "/downloads/"
+  "/downloads/",
+  "/public/"
 ];
 
 const MIME = {
@@ -74,6 +78,10 @@ function normalizeUrlPath(urlPath) {
 
   if (!decoded.startsWith("/")) {
     decoded = `/${decoded}`;
+  }
+
+  if (decoded.includes("\\")) {
+    return null;
   }
 
   const segments = decoded.split("/");
@@ -125,7 +133,7 @@ function isBlockedPath(clean) {
   );
 }
 
-function resolveStaticPath(urlPath) {
+function resolveStaticPath(urlPath, root = ROOT) {
   const clean = normalizeUrlPath(urlPath);
 
   if (!clean) {
@@ -136,13 +144,40 @@ function resolveStaticPath(urlPath) {
     return { status: isBlockedPath(clean) ? "forbidden" : "not-found" };
   }
 
-  const absolute = path.resolve(ROOT, "." + clean);
+  const absolute = path.resolve(root, "." + clean);
 
-  if (absolute !== ROOT && !absolute.startsWith(ROOT + path.sep)) {
+  if (absolute !== root && !absolute.startsWith(root + path.sep)) {
     return { status: "forbidden" };
   }
 
-  return { status: "ok", filePath: absolute };
+  return { status: "ok", filePath: absolute, cleanPath: clean };
+}
+
+class ForbiddenStaticPathError extends Error {}
+
+function isContained(root, candidate) {
+  return candidate === root || candidate.startsWith(root + path.sep);
+}
+
+async function resolveSafeRegularFile(root, filePath) {
+  const relative = path.relative(root, filePath);
+  if (path.isAbsolute(relative) || relative === ".." || relative.startsWith(`..${path.sep}`)) {
+    throw new ForbiddenStaticPathError("static path escapes web root");
+  }
+
+  let cursor = root;
+  for (const segment of relative.split(path.sep).filter(Boolean)) {
+    cursor = path.join(cursor, segment);
+    const info = await lstat(cursor);
+    if (info.isSymbolicLink()) throw new ForbiddenStaticPathError("static path contains a symlink");
+  }
+
+  const [rootReal, fileReal] = await Promise.all([realpath(root), realpath(filePath)]);
+  if (!isContained(rootReal, fileReal)) throw new ForbiddenStaticPathError("resolved static path escapes web root");
+  const info = await stat(fileReal);
+  if (info.isDirectory()) return resolveSafeRegularFile(root, path.join(filePath, "index.html"));
+  if (!info.isFile()) throw new ForbiddenStaticPathError("static path is not a regular file");
+  return fileReal;
 }
 
 function sendSecurityHeaders(res) {
@@ -157,7 +192,7 @@ function sendSecurityHeaders(res) {
   );
 }
 
-async function serveFile(req, res) {
+async function serveFile(req, res, root = ROOT) {
   const url = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
 
   if (req.method !== "GET" && req.method !== "HEAD") {
@@ -167,7 +202,7 @@ async function serveFile(req, res) {
     return;
   }
 
-  const resolution = resolveStaticPath(url.pathname);
+  const resolution = resolveStaticPath(url.pathname, root);
 
   if (!resolution || resolution.status === "forbidden") {
     sendSecurityHeaders(res);
@@ -178,25 +213,27 @@ async function serveFile(req, res) {
 
   let statusCode = 200;
   let filePath = resolution.filePath;
+  const cleanPath = resolution.cleanPath || "/404.html";
 
   if (resolution.status === "not-found") {
     statusCode = 404;
-    filePath = path.join(ROOT, "404.html");
+    filePath = path.join(root, "404.html");
   }
 
   try {
-    const info = await stat(filePath);
-
-    if (info.isDirectory()) {
-      filePath = path.join(filePath, "index.html");
-      await stat(filePath);
+    filePath = await resolveSafeRegularFile(root, filePath);
+  } catch (error) {
+    if (error instanceof ForbiddenStaticPathError) {
+      sendSecurityHeaders(res);
+      res.writeHead(403);
+      res.end("Forbidden");
+      return;
     }
-  } catch {
     statusCode = 404;
-    filePath = path.join(ROOT, "404.html");
+    filePath = path.join(root, "404.html");
 
     try {
-      await stat(filePath);
+      filePath = await resolveSafeRegularFile(root, filePath);
     } catch {
       sendSecurityHeaders(res);
       res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
@@ -211,7 +248,11 @@ async function serveFile(req, res) {
   sendSecurityHeaders(res);
   res.setHeader("Content-Type", contentType);
 
-  if (url.pathname.startsWith("/assets/")) {
+  if (cleanPath.startsWith("/public/")
+    || cleanPath === "/assets/main.js"
+    || cleanPath === "/assets/public-source-links.js") {
+    res.setHeader("Cache-Control", "no-cache");
+  } else if (cleanPath.startsWith("/assets/")) {
     res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
   } else {
     res.setHeader("Cache-Control", "no-cache");
@@ -227,15 +268,26 @@ async function serveFile(req, res) {
   createReadStream(filePath).pipe(res);
 }
 
-const server = createServer((req, res) => {
-  serveFile(req, res).catch((error) => {
-    console.error(error);
-    sendSecurityHeaders(res);
-    res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
-    res.end("Internal Server Error");
+function createStaticServer(options = {}) {
+  const root = path.resolve(options.root || ROOT);
+  return createServer((req, res) => {
+    serveFile(req, res, root).catch((error) => {
+      console.error(error);
+      sendSecurityHeaders(res);
+      res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
+      res.end("Internal Server Error");
+    });
   });
-});
+}
 
-server.listen(PORT, HOST, () => {
-  console.log(`PNP Labs static site serving ${ROOT} on http://${HOST}:${PORT}`);
-});
+const isMain = process.argv[1]
+  && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isMain) {
+  const server = createStaticServer();
+  server.listen(PORT, HOST, () => {
+    console.log(`PNP Labs static site serving ${ROOT} on http://${HOST}:${PORT}`);
+  });
+}
+
+export { createStaticServer, resolveStaticPath };

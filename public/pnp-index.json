@@ -1,15 +1,29 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 13,
+  "version": 14,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "main",
+  "sourceCommitRef": "c686bfc602b4cb19c89a3c33fff39720058fa198",
   "syncedOn": "2026-07-10",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-09",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-10-EXPLICIT-RESIDUAL-ROUTES-09",
-  "status": "formal-reconstruction-status-payloads-ready",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10",
+  "leanTheoremInventorySha256": "4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28",
+  "leanSourceClosureSha256": "0c96305d4f2235aae359c865e91e0f58cafa4d20d9b040a16e992846360cfa3f",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-10",
+  "canonicalReportPages": 6,
+  "formalPublicationRelease": "/downloads/formal-publication-release.json",
+  "status": "formal-publication-inventory-ready",
   "claimBoundary": {
     "status": "formal-reconstruction-in-progress",
     "targetTheorem": "P = NP",
+    "abstractPEqualsNPPublicationEligible": false,
+    "publicationStatusDerivedOnlyFromConcreteGate": true,
+    "concretePublicationGatePassed": false,
+    "leanTheoremInventoryDeclarationCount": 1761,
+    "leanTheoremInventoryTheoremCount": 662,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 589,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 33,
+    "leanTheoremInventorySourceClosureModuleCount": 22,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -132,11 +146,11 @@
     "rootLeanTheoremAxiomAuditPassed": false,
     "projectSpecificAxiomsRemaining": true,
     "projectSpecificAxiomInventory": [
-      "PNP.SAT",
+      "PNP.CheckPCCPackexp",
+      "PNP.GeneratePCCPack",
       "PNP.LockedNANDThreshold",
       "PNP.ResidualBandExactMinimization",
-      "PNP.GeneratePCCPack",
-      "PNP.CheckPCCPackexp"
+      "PNP.SAT"
     ],
     "remainingBlockers": [
       "Formal.ConcreteComplexityModel",
@@ -148,12 +162,36 @@
       "Formal.RootTheoremAndAxiomAudit"
     ]
   },
+  "formalPublicationMilestoneCounts": {
+    "earned": 6,
+    "notFormalized": 3,
+    "total": 9
+  },
+  "earnedMilestones": [
+    "direct-wire-semantics",
+    "finite-enumeration-minimum",
+    "framed-replacement-slack",
+    "locked-nand-local-baseline",
+    "locked-nand-conditional-threshold",
+    "explicit-residual-routes"
+  ],
+  "unearnedMilestones": [
+    "global-locked-nand-threshold",
+    "global-zeroslack-pccmin",
+    "concrete-publication-root"
+  ],
   "payloads": [
     {
       "id": "pnp-status",
       "path": "/public/pnp-status.json",
       "status": "current",
       "description": "Exact formal-reconstruction status payload mirrored from aisknab/pnp public/pnp-status.json."
+    },
+    {
+      "id": "pnp-theorem-inventory",
+      "path": "/public/pnp-theorem-inventory.json",
+      "status": "current",
+      "description": "Exact compiled Lean declaration inventory mirrored from aisknab/pnp public/pnp-theorem-inventory.json and hash-bound by the current status."
     },
     {
       "id": "pnp-one-command-upload",
@@ -208,9 +246,13 @@
   "historicalVerificationRunsPage": "/verification-runs.html",
   "historicalVerifierRunDigestComparisonPage": "/verifier-run-digests.html",
   "verificationCommands": [
-    "node pcc-formal-reconstruction-status0.mjs --json",
-    "node pcc-formal-public-surface0.mjs --json",
-    "npm run pnp:verify",
+    "lake build PNP",
+    "node pcc-formal-reconstruction-status0.mjs --json --no-write",
+    "node pcc-formal-public-surface0.mjs --json --no-write",
+    "npm run pnp:verify -- --no-write",
+    "npm run formal:inventory:check",
+    "npm run formal:publication:check",
+    "npm run report:check",
     "node --test audits/lean-root-target0.test.mjs",
     "node --test audits/lean-nand-semantics0.test.mjs",
     "node --test audits/lean-nand-enumerator0.test.mjs",
@@ -218,7 +260,6 @@
     "node --test audits/lean-locked-nand-baseline0.test.mjs",
     "node --test audits/lean-locked-nand-threshold-boundary0.test.mjs",
     "node --test audits/lean-residual-routes0.test.mjs",
-    "lake build PNP",
     "lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean",
     "lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean",
     "lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean",
