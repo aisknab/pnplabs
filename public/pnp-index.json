@@ -1,11 +1,11 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 11,
+  "version": 12,
   "sourceRepository": "https://github.com/aisknab/pnp",
   "sourceCommitRef": "main",
   "syncedOn": "2026-07-10",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-07",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-LOCAL-BASELINE-07",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-08",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-10-LOCKED-NAND-CONDITIONAL-THRESHOLD-BOUNDARY-08",
   "status": "formal-reconstruction-status-payloads-ready",
   "claimBoundary": {
     "status": "formal-reconstruction-in-progress",
@@ -65,7 +65,15 @@
     "leanLockedNANDLocalSquareBaselineExactnessFormalized": true,
     "leanLockedNANDLocalBaselineAxiomAuditPassed": true,
     "leanLockedNANDProofScope": "typed-local-macros-source-derived-counts-and-five-local-square-baselines",
+    "leanLockedNANDConditionalThresholdBoundaryFormalized": true,
+    "leanLockedNANDConditionalResidualSlackAtMostFourFormalized": true,
+    "leanLockedNANDThresholdBoundaryAxiomAuditPassed": true,
+    "leanLockedNANDThresholdBoundaryScope": "proof-bearing-typed-candidate-and-semantic-premises-only",
+    "leanLockedNANDThresholdBoundaryPremisesInstantiated": false,
     "leanLockedNANDGlobalBaselineDistinctFormalized": false,
+    "leanLockedNANDCarrierLayoutFormalized": false,
+    "leanLockedNANDTraceEquivalenceFormalized": false,
+    "leanLockedNANDDerivedFinalOutputLawsFormalized": false,
     "leanLockedNANDResidualSlackAtMostFourFormalized": false,
     "leanLockedNANDPolynomialBuilderFormalized": false,
     "leanCompatibleReplacementFormalized": false,
@@ -80,6 +88,29 @@
     "legacySyntheticLockedNANDM2HonestDisplayedGateCount": 90,
     "legacySyntheticLockedNANDM2MetadataConsistentDisplayedGateCount": 99,
     "legacySyntheticLockedNANDM2StoredDisplayedGateCount": 95,
+    "lockedNANDThresholdHostileReviewLemmaInventory": [
+      "DirectWireOutputLowerBound",
+      "MacroDistinct",
+      "TraceEquivalence",
+      "ZeroOutputConvention",
+      "FinalLockSeparation"
+    ],
+    "leanLockedNANDThresholdPremiseInventory": [
+      "baselineCandidate",
+      "fullCandidate",
+      "baselineConditions",
+      "initialOutputsPreserved",
+      "unsatisfiableFinalZero",
+      "satisfiableFinalConditions"
+    ],
+    "leanLockedNANDThresholdMissingInstantiationInventory": [
+      "baselineCandidate",
+      "fullCandidate",
+      "baselineConditions",
+      "initialOutputsPreserved",
+      "unsatisfiableFinalZero",
+      "satisfiableFinalConditions"
+    ],
     "rootLeanTheorem": "PNP.Main.p_eq_np",
     "rootLeanTheoremPresent": false,
     "rootLeanTheoremBuilt": false,
@@ -170,6 +201,7 @@
     "node --test audits/lean-nand-enumerator0.test.mjs",
     "node --test audits/lean-nand-reference-minimum0.test.mjs",
     "node --test audits/lean-locked-nand-baseline0.test.mjs",
+    "node --test audits/lean-locked-nand-threshold-boundary0.test.mjs",
     "lake build PNP",
     "lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean",
     "lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean",
@@ -181,7 +213,8 @@
     "lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean",
     "lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean",
     "lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean",
-    "lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean"
+    "lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean",
+    "lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean"
   ],
   "historicalRunIntakeFrozen": true,
   "historicalActivatedStatusCoordinate": "PNP-ACTIVATED-STATUS-2026-07-05-01",
@@ -195,6 +228,9 @@
     "Typed local locked-NAND candidates, source-derived accounting, and five exact local square minima do not establish global cross-instance BaselineDistinct, the locked builder or threshold, residual slack at most four, or polynomial runtime.",
     "The report threshold word retains its ordered baseline coordinates plus one final coordinate; the legacy single-output seed is not the report construction.",
     "The legacy synthetic m=2 fixture is quarantined: honest baseline/displayed counts are 86/90, metadata-consistent counts are 95/99, and stored hybrid counts are 91/95.",
+    "The proof-bearing conditional threshold boundary derives results from six typed semantic premises but does not instantiate them for source circuits or prove the report theorem.",
+    "Its residual-slack-at-most-four result is conditional, not an unconditional theorem for the report locked-NAND family.",
+    "Global carrier layout, cross-instance BaselineDistinct, TraceEquivalence, derived final-output laws, answer-independent polynomial construction, the builder, and the report threshold remain incomplete.",
     "Legacy checker acceptance and activated run records are historical assertion-checker evidence only, not mathematical proof.",
     "External review is optional audit evidence and is not a mathematical premise or release blocker.",
     "Historical report, registry, matrix, badge, and activation coordinates are not active theorem-emission surfaces."

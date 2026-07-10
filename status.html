@@ -34,11 +34,21 @@
     <section class="page-hero">
       <span class="eyebrow">Formal reconstruction in progress</span>
       <h1>Current PNP status</h1>
-      <p class="lede">The pinned Lean <code>PNP</code> root now includes typed local locked-NAND candidates, source-derived baseline accounting, and five exact local square-macro minima. These results do not construct the global baseline or threshold; there is still no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
+      <p class="lede">Lean now derives a conditional locked-NAND threshold boundary and residual-slack bound from six proof-bearing typed semantic premises. The premises remain uninstantiated for source circuits; there is still no <code>PNP.Main.p_eq_np</code> theorem, and five project-specific axioms remain.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-status.json">Open current status JSON</a>
         <a class="btn secondary" href="https://github.com/aisknab/pnp">Inspect source repository</a>
       </div>
+    </section>
+
+    <section class="section compact">
+      <div class="section-label">Checked conditional threshold milestone</div>
+      <h2>Semantic deduction complete; six global premises uninstantiated</h2>
+      <div class="grid two path">
+        <article class="card"><h3>What the theorem proves</h3><p>From <code>baselineCandidate</code>, <code>fullCandidate</code>, <code>baselineConditions</code>, <code>initialOutputsPreserved</code>, <code>unsatisfiableFinalZero</code>, and <code>satisfiableFinalConditions</code>, Lean proves the unsatisfiable minimum equals the baseline, the satisfiable minimum is in <code>[B+1,B+4]</code>, the conditional threshold iff, and conditional residual slack at most four. <code>leanLockedNANDConditionalThresholdBoundaryFormalized = true</code>.</p></article>
+        <article class="card"><h3>What remains unproved</h3><p>The six fields are not constructed for arbitrary circuits. <code>leanLockedNANDThresholdBoundaryPremisesInstantiated = false</code>, <code>leanLockedNANDGlobalBaselineDistinctFormalized = false</code>, <code>leanLockedNANDCarrierLayoutFormalized = false</code>, <code>leanLockedNANDTraceEquivalenceFormalized = false</code>, <code>leanLockedNANDDerivedFinalOutputLawsFormalized = false</code>, <code>leanLockedNANDBuilderFormalized = false</code>, <code>leanLockedNANDThresholdFormalized = false</code>, <code>leanLockedNANDResidualSlackAtMostFourFormalized = false</code>, and <code>leanLockedNANDPolynomialBuilderFormalized = false</code>.</p></article>
+      </div>
+      <p>The hostile-review inventory remains explicit: <code>DirectWireOutputLowerBound</code>, <code>MacroDistinct</code>, <code>TraceEquivalence</code>, <code>ZeroOutputConvention</code>, and <code>FinalLockSeparation</code>. The first and the model-level zero-output convention are discharged; the global source-circuit instantiations are not. This conditional theorem is not the report threshold theorem.</p>
     </section>
 
     <section class="section compact">
@@ -128,6 +138,7 @@ node --test audits/lean-nand-semantics0.test.mjs
 node --test audits/lean-nand-enumerator0.test.mjs
 node --test audits/lean-nand-reference-minimum0.test.mjs
 node --test audits/lean-locked-nand-baseline0.test.mjs
+node --test audits/lean-locked-nand-threshold-boundary0.test.mjs
 lake build PNP
 lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
@@ -139,7 +150,8 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSlackAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDDirectAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPDirectWireBaselineAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDBaselineAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean</code></pre>
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDLocalBaselineAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxiomAudit.lean</code></pre>
       <p>A successful status check or build is necessary but not sufficient. The target theorem is not established unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
 
