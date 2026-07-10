@@ -40,13 +40,13 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "c686bfc602b4cb19c89a3c33fff39720058fa198");
+  assert.equal(result.coreCommit, "3def3c09ddc6641e3201cc5e3cf9fe379e432e85");
 });
 
 test("current release is pinned, six-page, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "c686bfc602b4cb19c89a3c33fff39720058fa198");
-  assert.equal(release.source.tree, "d5bac85013b7e294e49528f245ad45b0d7abc2be");
+  assert.equal(release.source.commit, "3def3c09ddc6641e3201cc5e3cf9fe379e432e85");
+  assert.equal(release.source.tree, "e535f11cbf7bf7b4ba92f61324a11b647cbf803c");
   assert.equal(release.artifacts.report.pageCount, 6);
   assert.equal(release.publicationBoundary.derivedOnlyFromConcreteGate, true);
   assert.equal(release.publicationBoundary.concreteGatePassed, false);

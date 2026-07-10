@@ -1,40 +1,40 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-10",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-11",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "c686bfc602b4cb19c89a3c33fff39720058fa198",
-    "tree": "d5bac85013b7e294e49528f245ad45b0d7abc2be",
-    "ref": "c686bfc602b4cb19c89a3c33fff39720058fa198",
+    "commit": "3def3c09ddc6641e3201cc5e3cf9fe379e432e85",
+    "tree": "e535f11cbf7bf7b4ba92f61324a11b647cbf803c",
+    "ref": "3def3c09ddc6641e3201cc5e3cf9fe379e432e85",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-10-10",
-    "formalPublicationMapSha256": "e353b13cbe11c8bb92e309692d3ae42692e62fbdd92f3afdfac96ac4878f3ccc",
-    "leanSourceClosureSha256": "0c96305d4f2235aae359c865e91e0f58cafa4d20d9b040a16e992846360cfa3f"
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-10-11",
+    "formalPublicationMapSha256": "8c7e82ee687fd06d05c629edf47ff89617c0ed8caa4cefba8faab2b46e133679",
+    "leanSourceClosureSha256": "6daa2a068fedab6cf0bda8da63267a220e8f6ab6568a8881f9d00872bd251a54"
   },
   "artifacts": {
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 39919,
-      "sha256": "bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10"
+      "bytes": 43825,
+      "sha256": "39624ada2e5ba32fc199de2ff6248d2d45f69eeb0a4eb03caf4b0adea17c9b88",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-11"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 312181,
-      "sha256": "4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10",
-      "declarationCount": 1761,
-      "theoremCount": 662,
-      "assumptionFreeTheoremCount": 589,
+      "bytes": 368198,
+      "sha256": "2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-11",
+      "declarationCount": 2168,
+      "theoremCount": 789,
+      "assumptionFreeTheoremCount": 708,
       "projectAxiomCount": 5
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-10",
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-11",
       "pageCount": 6,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
@@ -42,8 +42,8 @@
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 239507,
-        "sha256": "3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a"
+        "bytes": 239965,
+        "sha256": "3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -51,8 +51,8 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 13256,
-        "sha256": "05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0"
+        "bytes": 13644,
+        "sha256": "8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2"
       }
     }
   },

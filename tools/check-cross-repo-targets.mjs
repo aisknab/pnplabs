@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "c686bfc602b4cb19c89a3c33fff39720058fa198";
-const REVIEWED_CORE_TREE = "d5bac85013b7e294e49528f245ad45b0d7abc2be";
+const REVIEWED_CORE_COMMIT = "3def3c09ddc6641e3201cc5e3cf9fe379e432e85";
+const REVIEWED_CORE_TREE = "e535f11cbf7bf7b4ba92f61324a11b647cbf803c";
 
 const KIND_TO_REF = new Map([
   ["current core publication file", "currentCoreRef"],

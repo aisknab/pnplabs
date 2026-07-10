@@ -21,9 +21,9 @@ projectSpecificAxiomsRemaining = true
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **1,761** exported public declarations across **22** modules, including **662** theorem-kind declarations and **589** assumption-free theorem-kind declarations. It excludes **33** private compiler auxiliaries and records **five** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **2,168** exported public declarations across **24** modules, including **789** theorem-kind declarations and **708** assumption-free theorem-kind declarations. It excludes **33** private compiler auxiliaries and records **five** project axioms.
 
-The inventory-derived publication map binds 22 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Six scoped milestones are earned: typed direct-wire semantics; finite enumeration/equivalence/reference minimum; concrete framed replacement/slack; local locked-NAND baselines; a conditional six-premise threshold boundary; and explicit-list residual routes. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 28 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Seven scoped milestones are earned: the concrete bitstring/machine/cost foundation; typed direct-wire semantics; finite enumeration/equivalence/reference minimum; concrete framed replacement/slack; local locked-NAND baselines; a conditional six-premise threshold boundary; and explicit-list residual routes. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` and `PNP.Main.p_eq_np` are absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
@@ -40,7 +40,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout c686bfc602b4cb19c89a3c33fff39720058fa198
+git checkout 3def3c09ddc6641e3201cc5e3cf9fe379e432e85
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write

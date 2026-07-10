@@ -37,7 +37,7 @@
     <section class="page-hero">
       <span class="eyebrow">Compiled Lean inventory · 2026-07-10</span>
       <h1>The concrete publication gate is closed.</h1>
-      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Six scoped milestones are earned from reviewed theorem names, axiom closures, kernel-type fingerprints, and the whole Lean source closure. Three global milestones remain unearned, so the repository does not establish P = NP.</p>
+      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Seven scoped milestones are earned from reviewed theorem names, axiom closures, kernel-type fingerprints, and the whole Lean source closure. Three global milestones remain unearned, so the repository does not establish P = NP.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a>
         <a class="btn secondary" href="public/pnp-status.json">Open current status</a>
@@ -65,18 +65,19 @@ concretePublicationGate.passed = false</pre>
     <section class="section compact">
       <div class="section-head">
         <div><div class="section-label">Compiled environment</div><h2>Exact inventory counts</h2></div>
-        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10</code>; SHA-256 <code>4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28</code>.</p>
+        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-10-11</code>; SHA-256 <code>2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966</code>.</p>
       </div>
-      <p data-formal-inventory-counts><strong>1,761</strong> public declarations; <strong>662</strong> theorem-kind declarations; <strong>589</strong> assumption-free theorem-kind declarations; <strong>33</strong> private compiler auxiliaries excluded; <strong>22</strong> modules; <strong>5</strong> project axioms.</p>
+      <p data-formal-inventory-counts><strong>2,168</strong> public declarations; <strong>789</strong> theorem-kind declarations; <strong>708</strong> assumption-free theorem-kind declarations; <strong>33</strong> private compiler auxiliaries excluded; <strong>24</strong> modules; <strong>5</strong> project axioms.</p>
       <p>The inventory is emitted from Lean environment constants and axiom collection. It is not inferred from source text, JSON claims, checker acceptance, or report prose.</p>
     </section>
 
     <section class="section compact">
       <div class="section-head">
-        <div><div class="section-label">Inventory-derived publication map</div><h2>Six scoped milestones earned; three global milestones unearned</h2></div>
+        <div><div class="section-label">Inventory-derived publication map</div><h2>Seven scoped milestones earned; three global milestones unearned</h2></div>
         <p>The static rows below are conservative fallback copy. When validation succeeds, JavaScript replaces them from the exact status payload.</p>
       </div>
       <div class="grid three path" data-formal-milestones>
+        <article class="card" data-milestone-id="concrete-machine-cost-kernel" data-earned="true"><h3>Formalized foundation only: Concrete machine and cost kernel</h3><p>Executable bitstrings and codecs, finite rule-list machine semantics, fuel-bounded execution, and proof-bearing natural-polynomial runtime witnesses.</p><p><strong>Boundary:</strong> This foundation does not yet define concrete P, NP, reductions, SAT, NP-completeness, or P = NP.</p></article>
         <article class="card" data-milestone-id="direct-wire-semantics" data-earned="true"><h3>Formalized: Typed direct-wire NAND semantics</h3><p>Typed topological Boolean NAND programs and ordered multi-output direct-wire semantics.</p><p><strong>Boundary:</strong> This does not establish circuit minimization, SAT, or P = NP.</p></article>
         <article class="card" data-milestone-id="finite-enumeration-minimum" data-earned="true"><h3>Formalized: Finite enumeration, equivalence, and reference minimum</h3><p>Exhaustive finite Boolean direct-wire search under the empty-profile reference model.</p><p><strong>Boundary:</strong> No polynomial-runtime result is obtained from this exhaustive reference search.</p></article>
         <article class="card" data-milestone-id="framed-replacement-slack" data-earned="true"><h3>Formalized: Concrete framed replacement and slack</h3><p>The concrete serial framed context with support outputs and explicit bypass wires.</p><p><strong>Boundary:</strong> This is not an arbitrary-support replacement theorem for the global family.</p></article>

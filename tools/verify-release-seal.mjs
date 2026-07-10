@@ -4,52 +4,52 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "c686bfc602b4cb19c89a3c33fff39720058fa198";
-const CORE_TREE = "d5bac85013b7e294e49528f245ad45b0d7abc2be";
+const CORE_COMMIT = "3def3c09ddc6641e3201cc5e3cf9fe379e432e85";
+const CORE_TREE = "e535f11cbf7bf7b4ba92f61324a11b647cbf803c";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 239507,
-    sha256: "3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a",
+    bytes: 239965,
+    sha256: "3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974",
     role: "current inventory-derived six-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 239507,
-    sha256: "3c20656cb57f41225ba9e6c0aa7d20531ca11461556a866a7f1ad623caba9c4a",
+    bytes: 239965,
+    sha256: "3036013dd22fc81ac1dbee3d46df0983d65720d436701524b2dde0c11bbd0974",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 13256,
-    sha256: "05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0",
+    bytes: 13644,
+    sha256: "8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 13256,
-    sha256: "05aa809ae528aa78a13792a9cf5c6a18d50a82829625f95ce09277b776d532c0",
+    bytes: 13644,
+    sha256: "8ad4a3e2325312dd6fc7b8c2d28fbb933720b939de6cdcf498423149c52b40c2",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 39919,
-    sha256: "bb9b7c543842c57be592f169ec92e4ab54513e5f6618df9291d1a329317fd79d",
+    bytes: 43825,
+    sha256: "39624ada2e5ba32fc199de2ff6248d2d45f69eeb0a4eb03caf4b0adea17c9b88",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 312181,
-    sha256: "4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28",
+    bytes: 368198,
+    sha256: "2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
     bytes: 3237,
-    sha256: "83cd3c5af41a19eb47ac62eda65efc4e6a8275db865e02324a715c755d7f1ccd",
+    sha256: "b28cbd1ec0e110ce8e5b5b4ba5bb9a33d25fc2ef1f083df799f7066740bd07fe",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -115,8 +115,8 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10") fail("status public-surface coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-11") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-MACHINE-KERNEL-11") fail("status public-surface coordinate mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -131,16 +131,16 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 1761 || inventory.theoremCount !== 662) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 589 || inventory.axiomCount !== 5) fail("inventory theorem/axiom counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-11") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 2168 || inventory.theoremCount !== 789) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 708 || inventory.axiomCount !== 5) fail("inventory theorem/axiom counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate !== null) fail("inventory publication targets must remain absent");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 5) fail("inventory must disclose five project axioms");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-10") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-11") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge");
   if (manifest.artifacts?.report?.pageCount !== 6) fail("current report must have six pages");

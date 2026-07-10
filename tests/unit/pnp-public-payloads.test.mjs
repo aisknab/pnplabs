@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = 'c686bfc602b4cb19c89a3c33fff39720058fa198';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-10';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-10';
-const INVENTORY_SHA256 = '4e4ab307d1651bb4440ab983595375a82cc172e418b8901901125d4b756f0b28';
+const CORE_COMMIT = '3def3c09ddc6641e3201cc5e3cf9fe379e432e85';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-11';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-11';
+const INVENTORY_SHA256 = '2636c9dc883d307304fafc7efcc4bfd02912cb3587ed762a13fd0758d603c966';
 
 async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
@@ -50,7 +50,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
 
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-MACHINE-KERNEL-11');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -60,11 +60,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
   assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(inventory.declarationCount, 1761);
-  assert.equal(inventory.theoremCount, 662);
-  assert.equal(inventory.assumptionFreeTheoremCount, 589);
+  assert.equal(inventory.declarationCount, 2168);
+  assert.equal(inventory.theoremCount, 789);
+  assert.equal(inventory.assumptionFreeTheoremCount, 708);
   assert.equal(inventory.excludedPrivateDeclarationCount, 33);
-  assert.equal(inventory.sourceClosureModuleCount, 22);
+  assert.equal(inventory.sourceClosureModuleCount, 24);
   assert.equal(inventory.axiomCount, 5);
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
@@ -105,9 +105,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(status.projectSpecificAxiomInventory, inventory.projectAxioms);
   assert.equal(status.remainingBlockers.length, 7);
 
-  assert.equal(status.formalPublicationMilestones.length, 9);
-  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [true, true, true, true, true, true, false, false, false]);
-  for (const row of status.formalPublicationMilestones.slice(0, 6)) {
+  assert.equal(status.formalPublicationMilestones.length, 10);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [true, true, true, true, true, true, true, false, false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 7)) {
     assert.equal(row.allPresent, true, row.id);
     assert.equal(row.allAssumptionFree, true, row.id);
     assert.equal(row.allKernelTypesMatch, true, row.id);
@@ -134,13 +134,13 @@ test('current status inventories every active companion workflow', async () => {
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 14);
-  assert.equal(index.sourceCommitRef, 'c686bfc602b4cb19c89a3c33fff39720058fa198');
+  assert.equal(index.version, 15);
+  assert.equal(index.sourceCommitRef, '3def3c09ddc6641e3201cc5e3cf9fe379e432e85');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-FORMAL-PUBLICATION-INVENTORY-10');
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-MACHINE-KERNEL-11');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-10');
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-11');
   assert.equal(index.canonicalReportPages, 6);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-publication-inventory-ready');
@@ -150,19 +150,28 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
   assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
   assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
-  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 1761);
-  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 662);
-  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 589);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 2168);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 789);
+  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 708);
   assert.equal(index.claimBoundary.remainingBlockers.length, 7);
-  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 6, notFormalized: 3, total: 9 });
-  assert.equal(index.earnedMilestones.length, 6);
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 7, notFormalized: 3, total: 10 });
+  assert.equal(index.earnedMilestones.length, 7);
   assert.deepEqual(index.unearnedMilestones, ['global-locked-nand-threshold', 'global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
   for (const id of ['pnp-one-command-upload', 'pnp-verification-runs', 'pnp-verifier-run-comparison-matrix', 'pnp-verifier-run-matrix-summary']) {
     assert.equal(index.payloads.find((entry) => entry.id === id).status, 'historical-frozen');
   }
-  for (const command of ['lake build PNP', 'npm run pnp:verify -- --no-write', 'npm run formal:inventory:check', 'npm run formal:publication:check', 'npm run report:check']) {
+  for (const command of [
+    'lake build PNP',
+    'npm run pnp:verify -- --no-write',
+    'npm run formal:inventory:check',
+    'npm run formal:publication:check',
+    'npm run report:check',
+    'node --test audits/lean-concrete-machine0.test.mjs',
+    'lake env lean -DwarningAsError=true lean-audit/PNPConcreteBitStringAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-audit/PNPConcreteMachineAxiomAudit.lean',
+  ]) {
     assert.ok(index.verificationCommands.includes(command), command);
   }
 });
@@ -174,10 +183,10 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '1,761',
-    '662',
-    '589',
-    'Six scoped milestones',
+    '2,168',
+    '789',
+    '708',
+    'Seven scoped milestones',
     'three global milestones',
     'PNP.Main.ConcretePEqualsNP',
     'PNP.Main.p_eq_np',
@@ -189,7 +198,7 @@ test('status page has a conservative complete static fallback', async () => {
     'Historical 56-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
-  assert.equal((html.match(/data-earned="true"/g) || []).length, 6);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 7);
   assert.equal((html.match(/data-earned="false"/g) || []).length, 3);
 });
 
