@@ -47,7 +47,7 @@ projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}`;
 
 function isConservativeFormalStatus(payload) {
   return payload?.kind === 'PNPFormalReconstructionStatus0'
-    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-03'
+    && payload.coordinate === 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-04'
     && payload.status === 'formal-reconstruction-in-progress'
     && payload.currentStatusAuthority === true
     && payload.mathematicalTheoremEstablished === false
@@ -73,6 +73,14 @@ function isConservativeFormalStatus(payload) {
     && payload.explicitLeanRootTargetPresent === true
     && payload.leanLibraryTargetBuilt === true
     && payload.leanSourcePlaceholderAuditPassed === true
+    && payload.leanNANDDirectWireCoreFormalized === true
+    && payload.leanNANDDirectWireCoreAxiomAuditPassed === true
+    && payload.leanNANDEnumeratorFormalized === false
+    && payload.leanNANDMinimumAndSlackFormalized === false
+    && payload.leanCompatibleReplacementFormalized === false
+    && payload.leanGlobalSlackLawFormalized === false
+    && payload.leanLockedNANDBuilderFormalized === false
+    && payload.leanLockedNANDThresholdFormalized === false
     && payload.sorryOrAdmitInRootDependencyClosure === null
     && JSON.stringify(payload.projectSpecificAxiomInventory) === JSON.stringify([
       'PNP.SAT',
@@ -81,9 +89,28 @@ function isConservativeFormalStatus(payload) {
       'PNP.GeneratePCCPack',
       'PNP.CheckPCCPackexp',
     ])
-    && Array.isArray(payload.remainingBlockers)
-    && payload.remainingBlockers.length === 7
-    && !payload.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget');
+    && JSON.stringify(payload.remainingBlockers) === JSON.stringify([
+      'Formal.ConcreteComplexityModel',
+      'Formal.ConcreteSAT',
+      'Formal.LockedNANDThreshold',
+      'Formal.ResidualBandMinimizer',
+      'Formal.ZeroSlack',
+      'Formal.PolynomialRuntimeAndCertificateBounds',
+      'Formal.RootTheoremAndAxiomAudit',
+    ])
+    && JSON.stringify(payload.verificationCommands) === JSON.stringify([
+      'node pcc-formal-reconstruction-status0.mjs --json',
+      'node pcc-formal-public-surface0.mjs --json',
+      'npm run legacy:v0:check',
+      'npm run pnp:verify -- --no-write',
+      'node --test audits/lean-root-target0.test.mjs',
+      'node --test audits/lean-nand-semantics0.test.mjs',
+      'lake build PNP',
+      'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
+      'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
+    ])
+    && payload.publicSurfaceBaselineCoordinate === 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-SEMANTICS-04'
+    && payload.nonClaims?.includes('The formalized direct-wire NAND semantics does not prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.');
 }
 
 function renderFormalStatus(root, payload, sourceState) {
@@ -124,17 +151,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The pinned Lean PNP library root now compiles. The concrete root theorem does not exist, and five project-specific axioms remain.';
+    lede.textContent = 'The pinned Lean PNP library root now includes an axiom-free typed direct-wire NAND semantics core. Enumeration and the proof route remain unfinished; the concrete root theorem does not exist, and five project-specific axioms remain.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>formalise definitions</span><span>build root theorem</span><strong>in progress</strong>';
+    trace.innerHTML = '<span>NAND semantics checked</span><span>enumeration and proof route</span><strong>in progress</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>lake build PNP</code> compiles the pinned library root, but <code>PNP.Main.p_eq_np</code> does not exist and five project-specific axioms remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> the typed direct-wire NAND syntax, evaluation, output wiring, and small examples are axiom-free. This does not provide the enumerator, minimum, replacement/slack route, locked builder or threshold, SAT, or <code>PNP.Main.p_eq_np</code>; five project-specific axioms remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -214,7 +241,7 @@ projectSpecificAxiomsRemaining = true</pre>
       </div>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check formal status and public surface</h3><p>Run <code>node pcc-formal-reconstruction-status0.mjs --json</code> and <code>node pcc-formal-public-surface0.mjs --json</code>, then inspect every remaining obligation and superseded surface.</p></article>
-        <article class="card"><h3>Build Lean</h3><p>Run <code>lake build PNP</code>. The pinned library root compiles, but that build is not the absent <code>PNP.Main.p_eq_np</code> theorem or a project-axiom-free audit.</p></article>
+        <article class="card"><h3>Build and audit Lean</h3><p>Run <code>lake build PNP</code> and the direct-wire NAND axiom audit. The foundational semantics are assumption-free, but that milestone is not the absent <code>PNP.Main.p_eq_np</code> theorem or a project-axiom-free bridge.</p></article>
         <article class="card"><h3>Check file identity</h3><p>Release hashes can identify historical report bytes. They do not verify theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
@@ -235,7 +262,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is missing?</h3><p>Concrete Lean definitions, the locked-NAND and residual-band arguments, polynomial bounds, the root theorem, and its axiom audit remain formal obligations.</p></article>
+        <article class="card"><h3>What is missing?</h3><p>The bounded enumerator, exact minimum, compatible replacement and slack laws, locked-NAND builder and threshold, concrete complexity and SAT definitions, residual-band arguments, polynomial bounds, the root theorem, and its axiom audit remain unfinished.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -254,7 +281,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>The pinned Lean <code>PNP</code> library root compiles, but no <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the unfinished formal route.</h2><p>The typed direct-wire NAND semantics core is formalized and axiom-free. Its enumerator, minimum, replacement/slack route, locked builder and threshold remain unfinished; no <code>PNP.Main.p_eq_np</code> theorem exists, five project-specific axioms remain, and seven formal blockers are active.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

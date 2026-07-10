@@ -31,7 +31,7 @@ jobs:
 
           function assertFormalBoundary(payload, label) {
             assert.equal(payload.kind, 'PNPFormalReconstructionStatus0', `${label}: kind mismatch`);
-            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-03', `${label}: coordinate mismatch`);
+            assert.equal(payload.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-04', `${label}: coordinate mismatch`);
             assert.equal(payload.status, 'formal-reconstruction-in-progress', `${label}: status mismatch`);
             assert.equal(payload.mathematicalTheoremEstablished, false, `${label}: theorem must not be marked established`);
             assert.equal(payload.publicTheoremEmissionAllowed, false, `${label}: theorem emission must fail closed`);
@@ -55,6 +55,14 @@ jobs:
             assert.equal(payload.explicitLeanRootTargetPresent, true, `${label}: explicit Lean root must be present`);
             assert.equal(payload.leanLibraryTargetBuilt, true, `${label}: Lean library target must be built`);
             assert.equal(payload.leanSourcePlaceholderAuditPassed, true, `${label}: placeholder audit must pass`);
+            assert.equal(payload.leanNANDDirectWireCoreFormalized, true, `${label}: direct-wire NAND core must be formalized`);
+            assert.equal(payload.leanNANDDirectWireCoreAxiomAuditPassed, true, `${label}: direct-wire NAND core axiom audit must pass`);
+            assert.equal(payload.leanNANDEnumeratorFormalized, false, `${label}: NAND enumerator must remain incomplete`);
+            assert.equal(payload.leanNANDMinimumAndSlackFormalized, false, `${label}: NAND minimum/slack must remain incomplete`);
+            assert.equal(payload.leanCompatibleReplacementFormalized, false, `${label}: compatible replacement must remain incomplete`);
+            assert.equal(payload.leanGlobalSlackLawFormalized, false, `${label}: global slack law must remain incomplete`);
+            assert.equal(payload.leanLockedNANDBuilderFormalized, false, `${label}: locked-NAND builder must remain incomplete`);
+            assert.equal(payload.leanLockedNANDThresholdFormalized, false, `${label}: locked-NAND threshold must remain incomplete`);
             assert.equal(payload.sorryOrAdmitInRootDependencyClosure, null, `${label}: absent root dependency closure must remain null`);
             assert.deepEqual(payload.projectSpecificAxiomInventory, [
               'PNP.SAT',
@@ -64,16 +72,30 @@ jobs:
               'PNP.CheckPCCPackexp',
             ], `${label}: project-specific axiom inventory mismatch`);
             assert.equal(payload.externalReviewIsMathematicalPremise, false, `${label}: external review must not be a premise`);
-            assert.ok(payload.verificationCommands.includes('node pcc-formal-public-surface0.mjs --json'), `${label}: formal public-surface command missing`);
-            assert.ok(payload.verificationCommands.includes('npm run legacy:v0:check'), `${label}: archive check command missing`);
+            assert.deepEqual(payload.verificationCommands, [
+              'node pcc-formal-reconstruction-status0.mjs --json',
+              'node pcc-formal-public-surface0.mjs --json',
+              'npm run legacy:v0:check',
+              'npm run pnp:verify -- --no-write',
+              'node --test audits/lean-root-target0.test.mjs',
+              'node --test audits/lean-nand-semantics0.test.mjs',
+              'lake build PNP',
+              'lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean',
+              'lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean',
+            ], `${label}: verification commands mismatch`);
             assert.equal(payload.legacyCheckerArchiveManifest, 'archive/legacy-v0/ARCHIVE.json', `${label}: archive manifest mismatch`);
             assert.equal(payload.legacyCheckerReplayCommand, 'npm run legacy:v0:replay -- --output /tmp/pnp-legacy-v0-7072f8d', `${label}: replay command mismatch`);
-            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-PINNED-LEAN-ROOT-03', `${label}: public-surface baseline mismatch`);
-            assert.equal(payload.remainingBlockers.length, 7, `${label}: formal blocker count mismatch`);
-            assert.equal(payload.remainingBlockers.includes('Formal.PinnedLeanBuildAndRootTarget'), false, `${label}: pinned-root blocker must be discharged`);
-            assert.ok(payload.verificationCommands.includes('node --test audits/lean-root-target0.test.mjs'), `${label}: Lean root audit command missing`);
-            assert.ok(payload.verificationCommands.includes('lake build PNP'), `${label}: explicit Lean build command missing`);
-            assert.ok(payload.verificationCommands.includes('lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean'), `${label}: Lean axiom audit command missing`);
+            assert.equal(payload.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-10-NAND-SEMANTICS-04', `${label}: public-surface baseline mismatch`);
+            assert.deepEqual(payload.remainingBlockers, [
+              'Formal.ConcreteComplexityModel',
+              'Formal.ConcreteSAT',
+              'Formal.LockedNANDThreshold',
+              'Formal.ResidualBandMinimizer',
+              'Formal.ZeroSlack',
+              'Formal.PolynomialRuntimeAndCertificateBounds',
+              'Formal.RootTheoremAndAxiomAudit',
+            ], `${label}: formal blockers mismatch`);
+            assert.ok(payload.nonClaims.includes('The formalized direct-wire NAND semantics does not prove enumeration, minimum size, replacement/slack, the locked NAND builder, its threshold, SAT, or P = NP.'), `${label}: NAND non-claim missing`);
           }
 
           const siteStatus = JSON.parse(await readFile('public/pnp-status.json', 'utf8'));
