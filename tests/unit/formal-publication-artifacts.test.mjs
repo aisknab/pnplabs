@@ -40,14 +40,24 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace");
+  assert.equal(result.coreCommit, "52d2f64bc836dd5417d7324a77e94f5a8fb89e48");
 });
 
-test("current release is pinned, seven-page, and fails closed", () => {
+test("current release is pinned, eight-page, exposes CNF-SAT NP membership, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace");
-  assert.equal(release.source.tree, "50d5debda67073ab23caab45f89341b9a63e436c");
-  assert.equal(release.artifacts.report.pageCount, 7);
+  assert.equal(release.source.commit, "52d2f64bc836dd5417d7324a77e94f5a8fb89e48");
+  assert.equal(release.source.proofCommit, "af9dd84fa56b0d3dd679a33e77ec2cc192b6809c");
+  assert.equal(release.source.tree, "c2f06eaebee21e8109ab99b02e9133510cbd1410");
+  assert.equal(release.source.coordinateAloneIsAuthority, false);
+  assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
+  assert.equal(release.artifacts.report.pageCount, 8);
+  assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
+  assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
+  assert.deepEqual(release.earnedBoundary.axiomClosure, []);
+  assert.equal(release.earnedBoundary.auditedDeclarationCount, 766);
+  assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
+  assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, false);
+  assert.equal(release.earnedBoundary.pEqualsNPFormalized, false);
   assert.equal(release.publicationBoundary.derivedOnlyFromConcreteGate, true);
   assert.equal(release.publicationBoundary.concreteGatePassed, false);
   assert.equal(release.publicationBoundary.mathematicalTheoremEstablished, false);

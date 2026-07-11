@@ -8,8 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace";
-const REVIEWED_CORE_TREE = "50d5debda67073ab23caab45f89341b9a63e436c";
+const REVIEWED_CORE_COMMIT = "52d2f64bc836dd5417d7324a77e94f5a8fb89e48";
+const REVIEWED_CORE_TREE = "c2f06eaebee21e8109ab99b02e9133510cbd1410";
+const REVIEWED_PROOF_COMMIT = "af9dd84fa56b0d3dd679a33e77ec2cc192b6809c";
 
 const KIND_TO_REF = new Map([
   ["current core publication file", "currentCoreRef"],
@@ -107,11 +108,12 @@ function validateTargetManifest(manifest, failures) {
 function validateReleaseManifest(manifest, expectedIdentity, failures) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) failures.push("formal-publication manifest kind/version mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") failures.push("formal-publication manifest authority mismatch");
-  if (manifest.source?.commit !== expectedIdentity.commit || manifest.source?.tree !== expectedIdentity.tree || manifest.source?.ref !== expectedIdentity.commit) failures.push("formal-publication manifest core pin mismatch");
+  if (manifest.source?.commit !== expectedIdentity.commit || manifest.source?.proofCommit !== expectedIdentity.proofCommit || manifest.source?.tree !== expectedIdentity.tree || manifest.source?.ref !== expectedIdentity.commit) failures.push("formal-publication manifest core/proof pin mismatch");
+  if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) failures.push("formal-publication manifest identity policy mismatch");
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 7) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 7) failures.push("formal-publication report must have exactly seven pages");
+  if (manifest.artifacts?.report?.pageCount !== 8) failures.push("formal-publication report must have exactly eight pages");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
 }
 
@@ -147,10 +149,14 @@ function validateCurrentPayloads(contents, failures) {
   if (statusBuffer) {
     const status = JSON.parse(statusBuffer.toString("utf8"));
     if (status.concretePublicationGate?.passed !== false || status.publicationStatusDerivedOnlyFromConcreteGate !== true || status.mathematicalTheoremEstablished !== false || status.publicTheoremEmissionAllowed !== false || status.publicTheoremStatement !== null) failures.push("public status does not fail closed");
+    if (status.leanConcreteCNFSATMembershipFormalized !== true || status.leanConcreteCNFSATMembershipTheorem !== "PNP.Concrete.FinalUniversalDesign.cnfSATInNP") failures.push("public status does not expose the earned CNF-SAT NP-membership theorem");
+    if (status.leanConcreteCNFWorkAxiomAuditPassed !== true || status.leanConcreteCNFWorkAuditedDeclarationCount !== 766) failures.push("public status CNF work audit mismatch");
+    if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) failures.push("public status overstates the CNF-SAT result");
   }
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
+    if (inventory.declarationCount !== 4419 || inventory.theoremCount !== 1826 || inventory.assumptionFreeTheoremCount !== 1727 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
   }
 }
 
@@ -160,7 +166,7 @@ export function validateAuditTargets(options = {}) {
   const releaseManifestPath = path.resolve(root, options.releaseManifestPath || DEFAULT_RELEASE_MANIFEST);
   const sourceDir = path.resolve(root, options.sourceDir || process.env.PNP_SOURCE_DIR || DEFAULT_SOURCE_DIR);
   const requireSource = options.requireSource === true;
-  const expectedIdentity = options.expectedCoreIdentity || { commit: REVIEWED_CORE_COMMIT, tree: REVIEWED_CORE_TREE };
+  const expectedIdentity = options.expectedCoreIdentity || { commit: REVIEWED_CORE_COMMIT, proofCommit: REVIEWED_PROOF_COMMIT, tree: REVIEWED_CORE_TREE };
   const targetManifest = readJson(targetsPath);
   const releaseManifest = readJson(releaseManifestPath);
   const failures = [];

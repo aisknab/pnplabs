@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '91b4db358afb1156eb39f3d97f49a5bb85a97f0b65ff1a879a51a6552ae15663');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'a38aac54fc7a117f46d42d2d45414d9bf3bbd301dd74a34cbbd0b61539229b4d');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 8);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 9);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -74,8 +74,33 @@ test('secondary authority fields and blocker ledgers cannot overclaim', () => {
   }
 });
 
+test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', () => {
+  for (const field of [
+    'leanConcreteCNFSATInPFormalized',
+    'leanConcreteCNFNPCompletenessFormalized',
+    'mathematicalTheoremEstablished',
+    'publicTheoremEmissionAllowed',
+    'rootLeanTheoremPresent',
+  ]) {
+    const forged = structuredClone(status);
+    forged[field] = true;
+    assert.equal(validation.validateStatus(forged, inventory), false, field);
+  }
+
+  const missingMembership = structuredClone(inventory);
+  missingMembership.milestoneCandidates = missingMembership.milestoneCandidates
+    .filter((candidate) => candidate.name !== 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
+  assert.equal(validation.validateInventory(missingMembership), false);
+
+  const assumedMembership = structuredClone(inventory);
+  assumedMembership.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumedMembership), false);
+});
+
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'e40098829ed054bfbb1857c44a5d9795d44bfcf08c18f2a213ededa47a0ba2f0'/);
+  assert.match(source, /const STATUS_SHA256 = '77fa271af29b8029de278abded0fb5d7d5acd58c918a0b2c5659e16f0b7dc916'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -86,7 +111,7 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateInventory(changedInventory), false);
 
   const changedStatus = structuredClone(status);
-  changedStatus.formalPublicationMilestones[8].earned = true;
+  changedStatus.formalPublicationMilestones[9].earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
@@ -100,12 +125,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /2,484/);
-  assert.match(statusPage, /Eight scoped milestones/);
+  assert.match(statusPage, /4,419/);
+  assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /seven-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /eight-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);

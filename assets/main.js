@@ -22,19 +22,19 @@ function ensureStatusLink() {
 }
 
 const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-12';
-const STATUS_SHA256 = 'e40098829ed054bfbb1857c44a5d9795d44bfcf08c18f2a213ededa47a0ba2f0';
+const STATUS_SHA256 = '77fa271af29b8029de278abded0fb5d7d5acd58c918a0b2c5659e16f0b7dc916';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-10-CONCRETE-COMPLEXITY-12';
 const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-10-12';
-const INVENTORY_SHA256 = '91b4db358afb1156eb39f3d97f49a5bb85a97f0b65ff1a879a51a6552ae15663';
-const SOURCE_CLOSURE_SHA256 = '0b48d081b1b9ab050184c895c7e1b99ed118c56c9737c7a76a5580dc1bf001be';
+const INVENTORY_SHA256 = 'a38aac54fc7a117f46d42d2d45414d9bf3bbd301dd74a34cbbd0b61539229b4d';
+const SOURCE_CLOSURE_SHA256 = 'd28f000e838fa81710beceb0da7f0a5ad4cb1f665e07e2545274251489015fad';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 2484,
-  theorems: 883,
-  assumptionFreeTheorems: 793,
-  excludedPrivateDeclarations: 36,
-  modules: 26,
-  axioms: 5,
+  declarations: 4419,
+  theorems: 1826,
+  assumptionFreeTheorems: 1727,
+  excludedPrivateDeclarations: 551,
+  modules: 36,
+  axioms: 4,
 });
 
 const PROJECT_AXIOMS = Object.freeze([
@@ -42,7 +42,6 @@ const PROJECT_AXIOMS = Object.freeze([
   'PNP.GeneratePCCPack',
   'PNP.LockedNANDThreshold',
   'PNP.ResidualBandExactMinimization',
-  'PNP.SAT',
 ]);
 
 const REMAINING_BLOCKERS = Object.freeze([
@@ -58,6 +57,7 @@ const REMAINING_BLOCKERS = Object.freeze([
 const MILESTONE_IDS = Object.freeze([
   'concrete-machine-cost-kernel',
   'concrete-complexity-classes',
+  'concrete-cnf-universal-verifier',
   'direct-wire-semantics',
   'finite-enumeration-minimum',
   'framed-replacement-slack',
@@ -99,6 +99,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   rootLeanTheoremBuilt: false,
   rootLeanTheoremAxiomAuditPassed: false,
   projectSpecificAxiomsRemaining: true,
+  leanConcreteCNFSATMembershipFormalized: false,
+  leanConcreteCNFSATInPFormalized: false,
+  leanConcreteCNFNPCompletenessFormalized: false,
 });
 
 function formalStatusFields(payload) {
@@ -111,6 +114,9 @@ rootLeanTheoremPresent = ${payload.rootLeanTheoremPresent}
 rootLeanTheoremBuilt = ${payload.rootLeanTheoremBuilt}
 rootLeanTheoremAxiomAuditPassed = ${payload.rootLeanTheoremAxiomAuditPassed}
 projectSpecificAxiomsRemaining = ${payload.projectSpecificAxiomsRemaining}
+leanConcreteCNFSATMembershipFormalized = ${payload.leanConcreteCNFSATMembershipFormalized ?? false}
+leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
+leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
 concretePublicationGate.passed = ${payload.concretePublicationGate?.passed ?? false}`;
 }
 
@@ -148,18 +154,23 @@ function validateInventory(inventory) {
 
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
-    axiom: 5,
-    constructor: 98,
-    definition: 1350,
-    inductive: 74,
+    axiom: 4,
+    constructor: 249,
+    definition: 2114,
+    inductive: 113,
     opaque: 0,
     quotient: 0,
-    recursor: 74,
-    theorem: 883,
+    recursor: 113,
+    theorem: 1826,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
-  return theoremRows.length === INVENTORY_COUNTS.theorems
+  const membership = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
+  return membership?.kind === 'theorem'
+    && membership.module === 'PNP.Concrete.CNFWorkUniversalCorrectness'
+    && membership.kernelType === 'Lean.Expr.app (Lean.Expr.const `PNP.Concrete.InNP []) (Lean.Expr.const `PNP.Concrete.CNFSAT [])'
+    && sameJson(membership.axioms, [])
+    && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
     && new Set(inventory.sourceClosureModules).size === INVENTORY_COUNTS.modules;
@@ -222,7 +233,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 8;
+    const shouldBeEarned = index < 9;
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
       || !Array.isArray(row.theoremRows)
@@ -284,6 +295,14 @@ function validateStatus(status, inventory) {
     && status.rootLeanTheoremAxiomAuditPassed === gatePassed
     && status.projectSpecificAxiomsRemaining === true
     && sameJson(status.projectSpecificAxiomInventory, PROJECT_AXIOMS)
+    && status.leanConcreteCNFVerifierCorrectnessFormalized === true
+    && status.leanConcreteCNFVerifierNoTimeoutFormalized === true
+    && status.leanConcreteCNFWorkAxiomAuditPassed === true
+    && status.leanConcreteCNFWorkAuditedDeclarationCount === 766
+    && status.leanConcreteCNFSATMembershipFormalized === true
+    && status.leanConcreteCNFSATMembershipTheorem === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP'
+    && status.leanConcreteCNFSATInPFormalized === false
+    && status.leanConcreteCNFNPCompletenessFormalized === false
     && status.checkerAcceptanceIsMathematicalProof === false
     && status.externalReviewIsMathematicalPremise === false
     && sameJson(status.activeFinalNodeIds, [])
@@ -383,17 +402,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 2,484 exported public declarations, including 883 theorem-kind declarations and 793 assumption-free theorem-kind declarations across 26 modules. Eight scoped milestones are earned; three global milestones, including the concrete publication root, are not formalized.';
+    lede.textContent = 'The compiled Lean environment contains 4,419 exported public declarations, including 1,826 theorem-kind declarations and 1,727 assumption-free theorem-kind declarations across 36 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness and NP membership; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>compiled inventory checked</span><span>eight scoped milestones</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>CNFSAT in NP checked</span><span>nine scoped milestones</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> the inventory binds reviewed theorem names to kernel-type fingerprints and a whole-source closure. The finite charged-pipeline target <code>PNP.Main.ConcretePEqualsNP</code> is present as an inactive axiom-free definition; raw-machine linkage and <code>PNP.Main.p_eq_np</code> remain absent. Five project axioms and seven blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP with an empty axiom closure. It does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -455,7 +474,7 @@ function insertAfterPageHero(id, html) {
 function ensureFormalVerificationCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction verification',
-    title: 'Verify the compiled inventory and current seven-page report.',
+    title: 'Verify the compiled inventory and current eight-page report.',
     lede: 'The target theorem is not established. The current report is generated from the reviewed compiled inventory; digest checks establish file identity, not mathematical truth.',
     primaryHref: 'public/pnp-status.json',
     primaryText: 'Open current status JSON',
@@ -474,7 +493,7 @@ projectSpecificAxiomsRemaining = true</pre>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check status and inventory together</h3><p>The browser fetches both payloads concurrently, hashes the raw inventory bytes, validates exact counts and coordinates, and rejects inconsistent gate or milestone rows.</p></article>
         <article class="card"><h3>Build and inventory Lean</h3><p>Run <code>lake build PNP</code>, <code>npm run formal:inventory:check</code>, and <code>npm run formal:publication:check</code> in the source repository.</p></article>
-        <article class="card"><h3>Check current report identity</h3><p>The seven-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
+        <article class="card"><h3>Check current report identity</h3><p>The eight-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
@@ -484,7 +503,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository does not currently establish P = NP. These answers distinguish the compiled Lean inventory and current seven-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, but does not establish CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current eight-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -494,7 +513,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Eight scoped milestones are earned from pinned, assumption-free theorem rows. Three global milestones—locked-NAND construction, ZeroSlack/PCCMin/polynomial runtime, and the concrete publication root—remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Nine scoped milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, and <code>CNFSAT ∈ NP</code>. The deterministic P result, NP-completeness, and concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -513,7 +532,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 2,484-declaration inventory, 34 pinned theorem candidates, whole-source closure, eight earned scoped milestones, three unearned global milestones, and concrete publication gate. The charged-pipeline target is present but inactive; null fingerprints never match; the abstract <code>PNP.PEqualsNP</code> bridge is ineligible; five project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 4,419-declaration inventory, 42 pinned theorem candidates, whole-source closure, nine earned scoped milestones, three unearned global milestones, and concrete publication gate. The earned CNF-SAT theorem is NP membership only; four project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

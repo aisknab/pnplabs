@@ -18,12 +18,15 @@ rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
+leanConcreteCNFSATMembershipFormalized = true
+leanConcreteCNFSATInPFormalized = false
+leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **2,484** exported public declarations across **26** modules, including **883** theorem-kind declarations and **793** assumption-free theorem-kind declarations. It excludes **36** private compiler auxiliaries and records **five** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **4,419** exported public declarations across **36** modules, including **1,826** theorem-kind declarations and **1,727** assumption-free theorem-kind declarations. It excludes **551** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 34 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Eight scoped milestones are earned: the concrete bitstring/machine/cost foundation; the finite charged-pipeline P/NP/reduction interface; typed direct-wire semantics; finite enumeration/equivalence/reference minimum; concrete framed replacement/slack; local locked-NAND baselines; a conditional six-premise threshold boundary; and explicit-list residual routes. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 42 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Nine scoped milestones are earned, adding a concrete universal CNF-SAT verifier with exact accept/reject behavior, no timeout at its polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. This theorem has an empty axiom closure. It proves NP membership only: CNF-SAT in P, CNF-SAT NP-completeness, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while raw-machine compiler/refinement and `PNP.Main.p_eq_np` remain absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
@@ -40,7 +43,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout bd7e84a49e027020f2d6f6fc4c3cac1f7541aace
+git checkout 52d2f64bc836dd5417d7324a77e94f5a8fb89e48
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -52,6 +55,7 @@ npm run report:check
 node --test audits/lean-root-target0.test.mjs
 node --test audits/lean-concrete-machine0.test.mjs
 node --test audits/lean-concrete-complexity0.test.mjs
+node --test audits/lean-concrete-cnf0.test.mjs
 node --test audits/lean-nand-semantics0.test.mjs
 node --test audits/lean-nand-enumerator0.test.mjs
 node --test audits/lean-nand-reference-minimum0.test.mjs
@@ -63,6 +67,14 @@ lake env lean -DwarningAsError=true lean-audit/PNPConcreteBitStringAxiomAudit.le
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteMachineAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteComplexityAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteTargetAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFWorkInputAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFVerifierAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFWorkAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-regression/PNPConcreteCNFWorkCanonical.lean
+lake env lean -DwarningAsError=true lean-regression/PNPConcreteWorkCompilerEdges.lean
+lake env lean -DwarningAsError=true --run lean-regression/PNPConcreteCNFWorkCanonicalExtended.lean
+lake env lean -DwarningAsError=true lean-regression/PNPConcreteCNFWorkExhaustive.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDTruthTableAxiomAudit.lean
@@ -96,7 +108,7 @@ The public status page is [`status.html`](status.html).
 - A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
 - The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
 - The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
-- The bundled canonical PDF and TeX are the current seven-page inventory-derived formal status report. They do not claim P = NP.
+- The bundled canonical PDF and TeX are the current eight-page inventory-derived formal status report. They report `CNFSAT ∈ NP` and explicitly do not claim CNF-SAT in P, NP-completeness, or P = NP.
 - A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 - The historical 56-page claim manuscript remains at tag `final-pnp-proof-report-hardened-7072f8d`, commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with provenance in `archive/legacy-v0/ARCHIVE.json`; it is never current authority.
 

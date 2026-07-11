@@ -20,14 +20,14 @@ The practical rules are:
 | --- | --- | --- | --- |
 | Compiled inventory | Lean 4.31.0 kernel/environment and the small export probe | Name/module/kind/axiom closure for every public declaration; raw type for each reviewed milestone candidate | Toolchain/kernel trust; no widening beyond reviewed exact types |
 | Source closure | SHA-256 implementation and complete tracked path set | Every Lean source plus pinned build configuration | Hash identity is not semantics |
-| Milestone map | Reviewed theorem-name/type pins and fixed source digest | Presence, theorem kind, type match, empty axiom closure, source match | Seven scopes only; no global conclusion |
+| Milestone map | Reviewed theorem-name/type pins and fixed source digest | Presence, theorem kind, type match, empty axiom closure, source match | Nine scopes only; no global conclusion |
 | Concrete gate | Fixed gate logic, reviewed non-null fingerprints, immutable axiom allowlist | Exact concrete target/root/value/type/source/axiom conditions | Gate is false in this release |
 | Generated status/report | Deterministic generator and template | Publication output is a function of inventory/map/gate | Publication is downstream evidence presentation |
 | Companion mirror | Exact cross-repository byte comparison | Status, inventory, TeX, PDF, aliases, manifest, seal | Mirroring does not add theorem evidence |
 
 The abstract `PNP.PEqualsNP` type uses string-handle witnesses and is not a standard concrete
-complexity statement. It is categorically publication-ineligible. The concrete target and
-compatibility root are absent, and unset expected fingerprints remain unconfigured rather than
+complexity statement. It is categorically publication-ineligible. The concrete target exists only
+as an inactive definition, the compatibility root is absent, and unset expected fingerprints remain unconfigured rather than
 matching null actual values.
 
 ## What This Checkout Can Verify
@@ -58,10 +58,10 @@ Historical activation or checker-acceptance fields cannot override the gate.
 | Direct-wire model | Typed NAND semantics, finite enumeration/reference minimum, framed replacement/slack | Connection to a standard complexity reduction |
 | Locked-NAND | Typed local candidates, five local minima, conditional six-premise boundary | Global carrier layout, `BaselineDistinct`, trace/final laws, uniform builder, premise instantiation |
 | Residual routes | Sound strict gain from one explicit supplied list; proof-bearing exact/zero outcomes | Candidate-universe/global completeness, ZeroSlack contradiction, PCCMin, residual-band minimizer |
-| Complexity | None at the required concrete target | Concrete standard P/NP/SAT definitions and polynomial runtime/certificate bounds |
+| Complexity | Concrete charged-pipeline P/NP/reduction definitions and `CNFSAT ∈ NP` | Raw-machine compiler/refinement, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider |
 | Root theorem | No compatibility-root theorem | Exact concrete root, build, and acceptable axiom audit |
 
-Five project axioms and seven formal blockers remain disclosed in `public/pnp-status.json`.
+Four project axioms and seven formal blockers remain disclosed in `public/pnp-status.json`.
 
 ## File Identity And Reproducibility
 
