@@ -139,13 +139,16 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   ]) assert.ok(status.verificationCommands.includes(command), command);
 });
 
-test('current status inventories every active companion workflow', async () => {
+test('current status inventories publication workflows while PNPLabs operational audit remains separate', async () => {
   const status = await readJson('public/pnp-status.json');
+  const operationalWorkflows = new Set(['production-deployment-consistency.yml']);
   const names = (await readdir(new URL('../../.github/workflows/', import.meta.url)))
     .filter((name) => name.endsWith('.yml'))
+    .filter((name) => !operationalWorkflows.has(name))
     .sort()
     .map((name) => `.github/workflows/${name}`);
   assert.deepEqual([...status.activeCompanionWorkflows].sort(), names);
+  assert.deepEqual([...operationalWorkflows], ['production-deployment-consistency.yml']);
 });
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {

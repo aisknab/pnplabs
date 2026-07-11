@@ -1,0 +1,26 @@
+name: production-deployment-consistency
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  production-deployment-consistency:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PRODUCTION_BASE_URL: https://pnplabs.com.au
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+          ref: refs/heads/main
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+      - name: Verify local publication seal
+        run: npm run verify:seal
+      - name: Compare production with this exact commit and tree
+        run: npm run verify:production -- --base-url "$PRODUCTION_BASE_URL" --json

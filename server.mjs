@@ -1,8 +1,16 @@
 import { createServer } from "node:http";
-import { createReadStream } from "node:fs";
+import { createReadStream, realpathSync } from "node:fs";
 import { lstat, realpath, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  EXTENSIONLESS_REDIRECTS,
+  PUBLIC_DIRECTORY_PATHS,
+  PUBLIC_EXACT_PATHS,
+  PUBLIC_ROOT_PATHS,
+  SECURITY_HEADERS,
+  cacheControlForPath
+} from "./public-surface.mjs";
 
 // Purpose: serve only the public static website files during local review.
 // Inputs: GET/HEAD requests under WEB_ROOT or this repository root.
@@ -14,35 +22,12 @@ const ROOT = path.resolve(
   process.env.WEB_ROOT || path.dirname(fileURLToPath(import.meta.url))
 );
 
-const HOST = process.env.HOST || "0.0.0.0";
+const HOST = process.env.HOST || "127.0.0.1";
 const PORT = Number(process.env.PORT || 3013);
 
-const PUBLIC_ROOT_FILES = new Set([
-  "/404.html",
-  "/architecture.html",
-  "/CNAME",
-  "/faq.html",
-  "/index.html",
-  "/paper.html",
-  "/review.html",
-  "/robots.txt",
-  "/security.txt",
-  "/sitemap.xml",
-  "/status.html",
-  "/verification-runs.html",
-  "/verifier-run-digests.html",
-  "/verify.html"
-]);
-
-const PUBLIC_EXACT_FILES = new Set([
-  "/.well-known/security.txt"
-]);
-
-const PUBLIC_PREFIXES = [
-  "/assets/",
-  "/downloads/",
-  "/public/"
-];
+const PUBLIC_ROOT_FILES = new Set(PUBLIC_ROOT_PATHS.map((entry) => `/${entry}`));
+const PUBLIC_EXACT_FILES = new Set(PUBLIC_EXACT_PATHS.map((entry) => `/${entry}`));
+const PUBLIC_PREFIXES = PUBLIC_DIRECTORY_PATHS.map((entry) => `/${entry}/`);
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
@@ -181,15 +166,9 @@ async function resolveSafeRegularFile(root, filePath) {
 }
 
 function sendSecurityHeaders(res) {
-  res.setHeader("X-Content-Type-Options", "nosniff");
-  res.setHeader("X-Frame-Options", "DENY");
-  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
-  res.setHeader("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
-  res.setHeader("Permissions-Policy", "camera=(), geolocation=(), microphone=(), payment=(), usb=()");
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' data:; style-src 'self' 'sha256-xYFFM6WE1nrMju6f+uvjLsSC4rb22e5i+9hWRaG8wk8='; script-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
-  );
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+    res.setHeader(name, value);
+  }
 }
 
 async function serveFile(req, res, root = ROOT) {
@@ -197,8 +176,23 @@ async function serveFile(req, res, root = ROOT) {
 
   if (req.method !== "GET" && req.method !== "HEAD") {
     sendSecurityHeaders(res);
-    res.writeHead(405, { Allow: "GET, HEAD" });
+    res.writeHead(405, {
+      Allow: "GET, HEAD",
+      "Cache-Control": "no-cache",
+      "Content-Type": "text/plain; charset=utf-8"
+    });
     res.end("Method Not Allowed");
+    return;
+  }
+
+  const redirectTarget = EXTENSIONLESS_REDIRECTS[url.pathname];
+  if (redirectTarget) {
+    sendSecurityHeaders(res);
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Location", `${redirectTarget}${url.search}`);
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.writeHead(308);
+    res.end(req.method === "HEAD" ? undefined : `Permanent Redirect: ${redirectTarget}${url.search}`);
     return;
   }
 
@@ -206,7 +200,10 @@ async function serveFile(req, res, root = ROOT) {
 
   if (!resolution || resolution.status === "forbidden") {
     sendSecurityHeaders(res);
-    res.writeHead(403);
+    res.writeHead(403, {
+      "Cache-Control": "no-cache",
+      "Content-Type": "text/plain; charset=utf-8"
+    });
     res.end("Forbidden");
     return;
   }
@@ -225,7 +222,10 @@ async function serveFile(req, res, root = ROOT) {
   } catch (error) {
     if (error instanceof ForbiddenStaticPathError) {
       sendSecurityHeaders(res);
-      res.writeHead(403);
+      res.writeHead(403, {
+        "Cache-Control": "no-cache",
+        "Content-Type": "text/plain; charset=utf-8"
+      });
       res.end("Forbidden");
       return;
     }
@@ -248,15 +248,7 @@ async function serveFile(req, res, root = ROOT) {
   sendSecurityHeaders(res);
   res.setHeader("Content-Type", contentType);
 
-  if (cleanPath.startsWith("/public/")
-    || cleanPath === "/assets/main.js"
-    || cleanPath === "/assets/public-source-links.js") {
-    res.setHeader("Cache-Control", "no-cache");
-  } else if (cleanPath.startsWith("/assets/")) {
-    res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
-  } else {
-    res.setHeader("Cache-Control", "no-cache");
-  }
+  res.setHeader("Cache-Control", cacheControlForPath(cleanPath));
 
   res.writeHead(statusCode);
 
@@ -280,8 +272,16 @@ function createStaticServer(options = {}) {
   });
 }
 
-const isMain = process.argv[1]
-  && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+function isMainModule(argvPath = process.argv[1]) {
+  if (!argvPath) return false;
+  try {
+    return realpathSync(path.resolve(argvPath)) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+}
+
+const isMain = isMainModule();
 
 if (isMain) {
   const server = createStaticServer();
@@ -290,4 +290,4 @@ if (isMain) {
   });
 }
 
-export { createStaticServer, resolveStaticPath };
+export { createStaticServer, isMainModule, resolveStaticPath };
