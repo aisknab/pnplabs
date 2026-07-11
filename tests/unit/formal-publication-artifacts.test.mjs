@@ -138,6 +138,64 @@ test("automation invokes read-only sync and contains no commit or push step", ()
   assert.doesNotMatch(workflow, /contents: write/);
 });
 
+test("production audit is manual and deployment remains fail-closed outside GitHub Actions", () => {
+  const workflow = readFileSync(
+    path.join(root, ".github/workflows/production-deployment-consistency.yml"),
+    "utf8"
+  );
+  assert.match(workflow, /workflow_dispatch:/);
+  assert.doesNotMatch(workflow, /inputs:|\$\{\{\s*inputs\./);
+  assert.match(workflow, /PRODUCTION_BASE_URL: https:\/\/pnplabs\.com\.au/);
+  assert.match(workflow, /ref: refs\/heads\/main/);
+  assert.doesNotMatch(workflow, /^\s+(?:push|pull_request|schedule):/m);
+  assert.match(workflow, /npm run verify:production/);
+  assert.doesNotMatch(workflow, /contents: write|git (?:commit|push)|systemctl|deploy-pnp/);
+
+  const deploy = readFileSync(path.join(root, "deploy/deploy-pnp"), "utf8");
+  assert.match(deploy, /merge-base --is-ancestor/);
+  assert.match(deploy, /REPOSITORY_URL="https:\/\/github\.com\/aisknab\/pnplabs\.git"/);
+  assert.doesNotMatch(deploy, /PNPLABS_REPOSITORY_URL/);
+  assert.match(deploy, /LOCK_DIR="\/run\/pnplabs"/);
+  assert.match(deploy, /install -d -m 0755 -o root -g root "\$LOCK_DIR"/);
+  assert.match(deploy, /umask 077\nexec 9>"\$LOCK_FILE"\numask 022/);
+  assert.match(deploy, /flock -n 9/);
+  assert.match(deploy, /"\$@" 9>&-/);
+  assert.match(deploy, /runuser -u "\$DEPLOY_USER"/);
+  assert.match(deploy, /trap 'rollback 130' INT/);
+  assert.match(deploy, /trap 'rollback 143' TERM/);
+  assert.match(deploy, /for \(\(attempt = 1; attempt <= 30;/);
+  assert.match(deploy, /as_deploy npm --prefix "\$release_dir" test/);
+  assert.match(deploy, /npm --prefix "\$release_dir" run deployment:generate/);
+  assert.match(deploy, /npm --prefix "\$release_dir" run deployment:check/);
+  assert.match(deploy, /as_deploy node "\$release_dir\/tools\/check-production-deployment\.mjs"/);
+  assert.match(deploy, /--expected-site-commit "\$resolved_commit"/);
+  assert.match(deploy, /restored the previous release/);
+  assert.match(deploy, /wait_for_origin "\/index\.html"/);
+  assert.match(deploy, /systemctl stop "\$ORIGIN_SERVICE"/);
+  assert.match(deploy, /as_origin \/usr\/bin\/test -r "\$previous_target\/server\.mjs"/);
+  const freezeIndex = deploy.indexOf('chown -R -h root:root "$release_dir"');
+  const activationIndex = deploy.lastIndexOf('mv -Tf "$next_link" "$CURRENT_LINK"');
+  assert.ok(freezeIndex >= 0 && freezeIndex < activationIndex, "release must become root-owned before activation");
+  assert.match(deploy, /chmod -R a-w,u\+rwX,go\+rX "\$release_dir"/);
+  assert.match(deploy, /as_origin \/usr\/bin\/test -r "\$release_dir\/server\.mjs"/);
+
+  const service = readFileSync(path.join(root, "deploy/pnplabs-origin.service"), "utf8");
+  assert.match(service, /^User=pnplabs-origin$/m);
+  assert.match(service, /^Environment=HOST=127\.0\.0\.1$/m);
+  assert.match(service, /^NoNewPrivileges=true$/m);
+  assert.match(service, /^ProtectSystem=strict$/m);
+  assert.match(service, /^ReadOnlyPaths=\/srv\/pnplabs$/m);
+  assert.match(service, /^ExecStart=\/usr\/local\/libexec\/pnplabs-origin-launcher$/m);
+  const launcher = readFileSync(path.join(root, "deploy/pnplabs-origin-launcher"), "utf8");
+  assert.match(launcher, /^#!\/bin\/bash/);
+  assert.match(launcher, /readlink -f -- "\$\{current_link\}\/server\.mjs"/);
+  assert.match(launcher, /exec \/usr\/bin\/env node "\$server_path"/);
+
+  const staticHeaders = readFileSync(path.join(root, "_headers"), "utf8");
+  assert.match(staticHeaders, /\/\*\n(?:  .+\n)*  Cache-Control: no-cache/);
+  assert.doesNotMatch(staticHeaders, /immutable|max-age=31536000/);
+});
+
 test("every active workflow is read-only and pins credential-free actions", () => {
   for (const name of [
     "ci.yml",
@@ -145,6 +203,7 @@ test("every active workflow is read-only and pins credential-free actions", () =
     "pnp-upstream-status-consistency.yml",
     "pnp-verification-run-issue-ingest.yml",
     "pnp-verifier-run-import.yml",
+    "production-deployment-consistency.yml",
     "sync-public-access-report.yml"
   ]) {
     const workflow = readFileSync(path.join(root, ".github/workflows", name), "utf8");

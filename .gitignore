@@ -1,0 +1,4 @@
+# Generated only inside a staged production release. These files bind deployment
+# identity and therefore cannot truthfully be committed inside that identity.
+/public/deployment-content-manifest.json
+/public/deployment-provenance.json

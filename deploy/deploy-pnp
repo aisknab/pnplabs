@@ -1,0 +1,208 @@
+#!/bin/bash
+set -euo pipefail
+umask 022
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
+export PATH
+
+: "${PNPLABS_COMMIT:?Set PNPLABS_COMMIT to the exact merged 40-hex main commit to deploy}"
+
+if [ "${#PNPLABS_COMMIT}" -ne 40 ]; then
+  echo "PNPLABS_COMMIT must be exactly 40 lowercase hexadecimal characters" >&2
+  exit 2
+fi
+case "$PNPLABS_COMMIT" in
+  *[!0-9a-f]*)
+    echo "PNPLABS_COMMIT must be exactly 40 lowercase hexadecimal characters" >&2
+    exit 2
+    ;;
+esac
+
+REPOSITORY_URL="https://github.com/aisknab/pnplabs.git"
+RELEASE_ROOT="/srv/pnplabs/releases"
+CURRENT_LINK="/srv/pnplabs/current"
+ORIGIN_SERVICE="pnplabs-origin.service"
+PUBLIC_ORIGIN="https://pnplabs.com.au"
+DEPLOY_USER="pnplabs-deploy"
+ORIGIN_USER="pnplabs-origin"
+DEPLOY_CACHE="/var/cache/pnplabs-deploy"
+LOCK_DIR="/run/pnplabs"
+LOCK_FILE="${LOCK_DIR}/deploy.lock"
+
+for command in chmod chown curl flock install runuser stat systemctl; do
+  command -v "$command" >/dev/null
+done
+if ! id "$DEPLOY_USER" >/dev/null 2>&1; then
+  echo "missing unprivileged deployment account: $DEPLOY_USER" >&2
+  exit 1
+fi
+if [ "$(id -u "$DEPLOY_USER")" -eq 0 ]; then
+  echo "deployment account must not be root" >&2
+  exit 1
+fi
+if ! id "$ORIGIN_USER" >/dev/null 2>&1 || [ "$(id -u "$ORIGIN_USER")" -eq 0 ]; then
+  echo "missing or privileged origin account: $ORIGIN_USER" >&2
+  exit 1
+fi
+DEPLOY_GROUP="$(id -gn "$DEPLOY_USER")"
+
+install -d -m 0755 -o root -g root /srv/pnplabs "$RELEASE_ROOT" "$(dirname "$CURRENT_LINK")"
+install -d -m 0750 -o "$DEPLOY_USER" -g "$DEPLOY_GROUP" "$DEPLOY_CACHE"
+if [ -L "$LOCK_DIR" ]; then
+  echo "deployment lock directory must not be a symbolic link" >&2
+  exit 1
+fi
+install -d -m 0755 -o root -g root "$LOCK_DIR"
+if [ -e "$LOCK_FILE" ]; then
+  if [ -L "$LOCK_FILE" ] \
+    || [ ! -f "$LOCK_FILE" ] \
+    || [ "$(stat -c %u "$LOCK_FILE")" -ne 0 ] \
+    || [ "$(stat -c %h "$LOCK_FILE")" -ne 1 ]; then
+    echo "deployment lock file failed ownership, type, or link-count checks" >&2
+    exit 1
+  fi
+fi
+umask 077
+exec 9>"$LOCK_FILE"
+umask 022
+chmod 0600 "$LOCK_FILE"
+if ! flock -n 9; then
+  echo "another PNPLabs deployment is already running" >&2
+  exit 1
+fi
+
+as_deploy() {
+  runuser -u "$DEPLOY_USER" -- env -i \
+    HOME="$DEPLOY_CACHE" \
+    PATH=/usr/local/bin:/usr/bin:/bin \
+    npm_config_cache="$DEPLOY_CACHE/npm" \
+    "$@" 9>&-
+}
+
+as_origin() {
+  runuser -u "$ORIGIN_USER" -- env -i \
+    HOME=/tmp \
+    PATH=/usr/local/bin:/usr/bin:/bin \
+    "$@" 9>&-
+}
+
+wait_for_origin() {
+  local health_path="$1"
+  local attempt
+  for ((attempt = 1; attempt <= 30; attempt += 1)); do
+    if curl --noproxy '*' --fail --silent --max-time 2 \
+      "http://127.0.0.1:3013${health_path}" >/dev/null; then
+      return 0
+    fi
+    sleep 1
+  done
+  return 1
+}
+
+timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
+deployed_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+release_id="${timestamp}-${PNPLABS_COMMIT:0:8}"
+release_dir="${RELEASE_ROOT}/${release_id}"
+next_link="${CURRENT_LINK}.next.$$"
+previous_target=""
+activated=0
+
+rollback() {
+  local exit_status="$1"
+  local restore_failed
+  trap - ERR INT TERM
+  rm -f "$next_link"
+  if [ "$activated" -eq 1 ]; then
+    restore_failed=0
+    if [ -n "$previous_target" ]; then
+      ln -s "$previous_target" "$next_link" || restore_failed=1
+      if [ "$restore_failed" -eq 0 ]; then
+        mv -Tf "$next_link" "$CURRENT_LINK" || restore_failed=1
+      fi
+      if [ "$restore_failed" -eq 0 ]; then
+        if ! systemctl restart "$ORIGIN_SERVICE"; then
+          restore_failed=1
+        elif ! wait_for_origin "/index.html"; then
+          restore_failed=1
+        fi
+      fi
+    else
+      rm -f "$CURRENT_LINK" || restore_failed=1
+      if [ "$restore_failed" -eq 0 ] && ! systemctl stop "$ORIGIN_SERVICE"; then
+        restore_failed=1
+      fi
+    fi
+    if [ "$restore_failed" -eq 0 ]; then
+      echo "deployment failed; restored the previous release" >&2
+    else
+      echo "CRITICAL: deployment failed and automatic rollback was incomplete" >&2
+      exit_status=1
+    fi
+  fi
+  exit "$exit_status"
+}
+trap 'rollback $?' ERR
+trap 'rollback 130' INT
+trap 'rollback 143' TERM
+
+if [ -e "$release_dir" ]; then
+  echo "release directory already exists: $release_dir" >&2
+  exit 1
+fi
+
+install -d -m 0750 -o "$DEPLOY_USER" -g "$DEPLOY_GROUP" "$release_dir"
+as_deploy git clone --no-checkout "$REPOSITORY_URL" "$release_dir"
+as_deploy git -C "$release_dir" checkout --detach "$PNPLABS_COMMIT"
+as_deploy git -C "$release_dir" merge-base --is-ancestor "$PNPLABS_COMMIT" origin/main
+
+resolved_commit="$(as_deploy git -C "$release_dir" rev-parse HEAD)"
+resolved_tree="$(as_deploy git -C "$release_dir" rev-parse 'HEAD^{tree}')"
+main_commit="$(as_deploy git -C "$release_dir" rev-parse origin/main)"
+test "$resolved_commit" = "$PNPLABS_COMMIT"
+test "$resolved_commit" = "$main_commit"
+
+as_deploy npm --prefix "$release_dir" test
+as_deploy npm --prefix "$release_dir" run deployment:generate -- \
+  --site-commit "$resolved_commit" \
+  --site-tree "$resolved_tree" \
+  --deployed-at "$deployed_at" \
+  --release-id "$release_id" \
+  --npm-test-passed
+as_deploy npm --prefix "$release_dir" run deployment:check -- \
+  --site-commit "$resolved_commit" \
+  --site-tree "$resolved_tree"
+
+# Freeze the reviewed stage before it becomes live. Public repository files are
+# readable, directories remain traversable, tracked executable bits are kept,
+# and neither unprivileged account can mutate the active release.
+chown -R -h root:root "$release_dir"
+chmod -R a-w,u+rwX,go+rX "$release_dir"
+as_origin /usr/bin/test -r "$release_dir/server.mjs"
+as_origin /usr/bin/test -r "$release_dir/public/deployment-provenance.json"
+
+if [ -L "$CURRENT_LINK" ]; then
+  previous_target="$(readlink -f "$CURRENT_LINK")"
+  as_origin /usr/bin/test -r "$previous_target/server.mjs"
+elif [ -e "$CURRENT_LINK" ]; then
+  echo "current release path exists but is not a symbolic link: $CURRENT_LINK" >&2
+  exit 1
+fi
+
+ln -s "$release_dir" "$next_link"
+activated=1
+mv -Tf "$next_link" "$CURRENT_LINK"
+systemctl restart "$ORIGIN_SERVICE"
+
+if ! wait_for_origin "/public/deployment-provenance.json"; then
+  echo "origin did not become ready within 30 attempts" >&2
+  false
+fi
+
+as_deploy node "$release_dir/tools/check-production-deployment.mjs" \
+  --root "$release_dir" \
+  --base-url "$PUBLIC_ORIGIN" \
+  --expected-site-commit "$resolved_commit" \
+  --expected-site-tree "$resolved_tree"
+
+activated=0
+trap - ERR INT TERM
+echo "deployed PNPLabs commit $resolved_commit (tree $resolved_tree) as $release_id"

@@ -1,0 +1,37 @@
+[Unit]
+Description=PNPLabs allowlisted static origin
+After=network.target
+
+[Service]
+Type=simple
+User=pnplabs-origin
+Group=pnplabs-origin
+WorkingDirectory=/srv/pnplabs/current
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3013
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+ExecStartPre=/usr/bin/test -r /srv/pnplabs/current/server.mjs
+ExecStart=/usr/local/libexec/pnplabs-origin-launcher
+Restart=on-failure
+RestartSec=2s
+UMask=0022
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+ReadOnlyPaths=/srv/pnplabs
+RemoveIPC=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

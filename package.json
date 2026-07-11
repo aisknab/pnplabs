@@ -6,6 +6,9 @@
   "scripts": {
     "start": "node server.mjs",
     "verify:seal": "node tools/verify-release-seal.mjs",
+    "deployment:generate": "node tools/deployment-provenance.mjs",
+    "deployment:check": "node tools/deployment-provenance.mjs --check",
+    "verify:production": "node tools/check-production-deployment.mjs",
     "examples:minimal": "node tools/run-minimal-examples.mjs",
     "pnp:import-run": "node tools/import-pnp-verifier-run.mjs",
     "pnp:normalize-run": "node tools/normalize-pnp-verifier-run.mjs",

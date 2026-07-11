@@ -128,6 +128,8 @@ The public status page is [`status.html`](status.html).
 ```bash
 npm run test:unit          # site and fixture-checker unit tests
 npm run verify:seal        # public file identity only
+npm run deployment:check  # staged runtime provenance and content closure
+npm run verify:production # compare live production with this exact commit/tree
 npm run examples:minimal   # educational pass/fail fixtures
 npm run test:negative      # named negative fixture tests
 npm run test:audit-targets # optional cross-repo provenance check; skips if ../pnp is unavailable
@@ -155,3 +157,8 @@ The first viewport also uses an inline critical CSS block in each HTML page. If 
 ## Deployment boundary
 
 Public hosting should serve only the static pages, `assets/`, `downloads/`, `robots.txt`, `sitemap.xml`, `security.txt`, `.well-known/security.txt`, `CNAME`, and public status material. Do not present this website checkout as a substitute for the source repository or its Lean source.
+
+The atomic home-server procedure, runtime deployment provenance, Nginx boundary, rollback behavior,
+and manual post-deployment audit are documented in
+[`docs/deployment_verification.md`](docs/deployment_verification.md). Deployment coordinates and
+hashes establish file identity only; they do not establish theorem correctness.

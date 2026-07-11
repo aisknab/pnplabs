@@ -1,0 +1,26 @@
+#!/bin/bash
+set -euo pipefail
+PATH=/usr/local/bin:/usr/bin:/bin
+export PATH
+
+if [ "$#" -gt 2 ]; then
+  echo "usage: pnplabs-origin-launcher [current-link [node-binary]]" >&2
+  exit 2
+fi
+
+current_link="${1:-/srv/pnplabs/current}"
+node_binary="${2:-}"
+server_path="$(readlink -f -- "${current_link}/server.mjs")"
+
+if [ -z "$server_path" ] || [ ! -f "$server_path" ] || [ ! -r "$server_path" ]; then
+  echo "current PNPLabs server entry point is not a readable regular file" >&2
+  exit 1
+fi
+
+# Resolve the release symlink before invoking Node. This also keeps rollback
+# compatible with pre-hardening releases whose old is-main check compared the
+# unresolved argv path with a realpathed import.meta.url.
+if [ -n "$node_binary" ]; then
+  exec "$node_binary" "$server_path"
+fi
+exec /usr/bin/env node "$server_path"
