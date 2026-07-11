@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 241,760 | `2dfc1b6b6792947fdbce055c849e5b293d63d44892eb673f7c03559dcb2f238d` |
-| `downloads/canonical-proof-report.pdf` | 241,760 | `2dfc1b6b6792947fdbce055c849e5b293d63d44892eb673f7c03559dcb2f238d` |
-| `downloads/canonical_proof_report.tex` | 14,950 | `feeaaf482d597a0b6cb590abb01dd210707241ac22eef39c001e526b362df496` |
-| `downloads/canonical-proof-report.tex` | 14,950 | `feeaaf482d597a0b6cb590abb01dd210707241ac22eef39c001e526b362df496` |
-| `public/pnp-status.json` | 48,322 | `e40098829ed054bfbb1857c44a5d9795d44bfcf08c18f2a213ededa47a0ba2f0` |
-| `public/pnp-theorem-inventory.json` | 410,648 | `91b4db358afb1156eb39f3d97f49a5bb85a97f0b65ff1a879a51a6552ae15663` |
+| `downloads/canonical_proof_report.pdf` | 244,277 | `0bb59741841c2b975bacd8c3712f379ab217b0a77ade2a870b5653aa701e5792` |
+| `downloads/canonical-proof-report.pdf` | 244,277 | `0bb59741841c2b975bacd8c3712f379ab217b0a77ade2a870b5653aa701e5792` |
+| `downloads/canonical_proof_report.tex` | 16,507 | `3e48af486e51b68220084ac59eb8c3ec4b27a5c3f6695ec3a5a9f084deeea63f` |
+| `downloads/canonical-proof-report.tex` | 16,507 | `3e48af486e51b68220084ac59eb8c3ec4b27a5c3f6695ec3a5a9f084deeea63f` |
+| `public/pnp-status.json` | 55,154 | `77fa271af29b8029de278abded0fb5d7d5acd58c918a0b2c5659e16f0b7dc916` |
+| `public/pnp-theorem-inventory.json` | 676,899 | `a38aac54fc7a117f46d42d2d45414d9bf3bbd301dd74a34cbbd0b61539229b4d` |
 
-The PDF must have six A4 pages. Both filename styles must be byte-identical.
+The PDF must have eight A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout bd7e84a49e027020f2d6f6fc4c3cac1f7541aace
+git -C ../pnp checkout 52d2f64bc836dd5417d7324a77e94f5a8fb89e48
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 2,484 public declarations, 883 theorem-kind declarations,
-793 assumption-free theorem-kind declarations, 36 excluded private auxiliaries, 26 modules, and
-five project axioms. The publication gate must remain false with seven blockers.
+Expected compiled inventory counts are 4,419 public declarations, 1,826 theorem-kind declarations,
+1,727 assumption-free theorem-kind declarations, 551 excluded private auxiliaries, 36 modules, and
+four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; CNF-SAT in P and NP-completeness must remain false.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

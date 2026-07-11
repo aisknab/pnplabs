@@ -1,49 +1,52 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-10-12",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-11-13",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace",
-    "tree": "50d5debda67073ab23caab45f89341b9a63e436c",
-    "ref": "bd7e84a49e027020f2d6f6fc4c3cac1f7541aace",
+    "commit": "52d2f64bc836dd5417d7324a77e94f5a8fb89e48",
+    "proofCommit": "af9dd84fa56b0d3dd679a33e77ec2cc192b6809c",
+    "tree": "c2f06eaebee21e8109ab99b02e9133510cbd1410",
+    "ref": "52d2f64bc836dd5417d7324a77e94f5a8fb89e48",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
     "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-10-12",
-    "formalPublicationMapSha256": "3f99368d729fb278339da66abca283cdaae823c5a614ddfaa893becab1014b6a",
-    "leanSourceClosureSha256": "0b48d081b1b9ab050184c895c7e1b99ed118c56c9737c7a76a5580dc1bf001be"
+    "formalPublicationMapSha256": "33b5e2f6464b8a2751806817bb155bd4592d6f126eeb42a81e461c3a04b5e491",
+    "leanSourceClosureSha256": "d28f000e838fa81710beceb0da7f0a5ad4cb1f665e07e2545274251489015fad",
+    "coordinateAloneIsAuthority": false,
+    "identityRequiresCommitTreeAndArtifactHashes": true
   },
   "artifacts": {
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 48322,
-      "sha256": "e40098829ed054bfbb1857c44a5d9795d44bfcf08c18f2a213ededa47a0ba2f0",
+      "bytes": 55154,
+      "sha256": "77fa271af29b8029de278abded0fb5d7d5acd58c918a0b2c5659e16f0b7dc916",
       "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-10-12"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 410648,
-      "sha256": "91b4db358afb1156eb39f3d97f49a5bb85a97f0b65ff1a879a51a6552ae15663",
+      "bytes": 676899,
+      "sha256": "a38aac54fc7a117f46d42d2d45414d9bf3bbd301dd74a34cbbd0b61539229b4d",
       "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-10-12",
-      "declarationCount": 2484,
-      "theoremCount": 883,
-      "assumptionFreeTheoremCount": 793,
-      "projectAxiomCount": 5
+      "declarationCount": 4419,
+      "theoremCount": 1826,
+      "assumptionFreeTheoremCount": 1727,
+      "projectAxiomCount": 4
     },
     "report": {
       "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-10-12",
-      "pageCount": 7,
+      "pageCount": 8,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 241760,
-        "sha256": "2dfc1b6b6792947fdbce055c849e5b293d63d44892eb673f7c03559dcb2f238d"
+        "bytes": 244277,
+        "sha256": "0bb59741841c2b975bacd8c3712f379ab217b0a77ade2a870b5653aa701e5792"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -51,10 +54,23 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 14950,
-        "sha256": "feeaaf482d597a0b6cb590abb01dd210707241ac22eef39c001e526b362df496"
+        "bytes": 16507,
+        "sha256": "3e48af486e51b68220084ac59eb8c3ec4b27a5c3f6695ec3a5a9f084deeea63f"
       }
     }
+  },
+  "earnedBoundary": {
+    "scope": "concrete-cnf-sat-verifier-correctness-and-np-membership-only",
+    "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
+    "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
+    "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
+    "axiomClosure": [],
+    "auditedDeclarationCount": 766,
+    "universalVerifierCorrectnessFormalized": true,
+    "verifierNoTimeoutFormalized": true,
+    "cnfSATInPFormalized": false,
+    "cnfSATNPCompletenessFormalized": false,
+    "pEqualsNPFormalized": false
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,

@@ -16,13 +16,16 @@ rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
+leanConcreteCNFSATMembershipFormalized = true
+leanConcreteCNFSATInPFormalized = false
+leanConcreteCNFNPCompletenessFormalized = false
 ```
 
 The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Eight narrowly scoped milestones are earned from reviewed theorem types, empty axiom closures, and the complete Lean-source digest: the concrete bitstring/machine/cost foundation; the finite charged-pipeline P/NP/reduction interface; direct-wire semantics; finite reference enumeration/minimum; concrete framed replacement/slack; local locked-NAND baselines; a conditional six-premise threshold boundary; and explicit-list residual-route soundness. Public wording must also state the boundary: pipeline-to-raw-machine compiler/refinement, global locked-NAND construction, premise instantiation, candidate-universe completeness, ZeroSlack, PCCMin, the residual-band minimizer, polynomiality, concrete SAT, and `PNP.Main.p_eq_np` remain unfinished. Five project-specific axioms and seven formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Nine narrowly scoped milestones are earned from reviewed theorem types, empty axiom closures, and the complete Lean-source digest. The added milestone proves universal concrete CNF-SAT verifier correctness, exact accept/reject behavior, no timeout at a polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. Public wording must state its exact boundary: it does not prove CNF-SAT in P, NP-completeness, or `P = NP`. Pipeline-to-raw-machine compiler/refinement, global locked-NAND construction, premise instantiation, candidate-universe completeness, ZeroSlack, PCCMin, the residual-band minimizer, polynomiality, and `PNP.Main.p_eq_np` remain unfinished. Four project-specific axioms and seven formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -41,7 +44,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 56-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the seven-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the eight-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

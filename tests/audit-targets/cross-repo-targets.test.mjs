@@ -42,10 +42,20 @@ function makeProject(t) {
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
     publicTheoremEmissionAllowed: false,
-    publicTheoremStatement: null
+    publicTheoremStatement: null,
+    leanConcreteCNFSATMembershipFormalized: true,
+    leanConcreteCNFSATMembershipTheorem: "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
+    leanConcreteCNFWorkAxiomAuditPassed: true,
+    leanConcreteCNFWorkAuditedDeclarationCount: 766,
+    leanConcreteCNFSATInPFormalized: false,
+    leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
+    declarationCount: 4419,
+    theoremCount: 1826,
+    assumptionFreeTheoremCount: 1727,
+    axiomCount: 4,
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
       name: "PNP.Main.ConcretePEqualsNP",
@@ -76,9 +86,12 @@ function makeProject(t) {
     authority: "current",
     source: {
       commit,
+      proofCommit: commit,
       tree,
       ref: commit,
-      formalPublicationMapSha256: sha256(Buffer.from(publicationMap))
+      formalPublicationMapSha256: sha256(Buffer.from(publicationMap)),
+      coordinateAloneIsAuthority: false,
+      identityRequiresCommitTreeAndArtifactHashes: true
     },
     artifacts: {
       status: {
@@ -94,7 +107,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 7,
+        pageCount: 8,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -149,7 +162,7 @@ function validate(project, overrides = {}) {
   return validateAuditTargets({
     root: project.root,
     sourceDir: project.sourceDir,
-    expectedCoreIdentity: { commit: project.commit, tree: project.tree },
+    expectedCoreIdentity: { commit: project.commit, proofCommit: project.commit, tree: project.tree },
     ...overrides
   });
 }

@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout bd7e84a49e027020f2d6f6fc4c3cac1f7541aace
+git checkout 52d2f64bc836dd5417d7324a77e94f5a8fb89e48
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They do not instantiate the conditional locked-NAND premises, complete the global candidate universe, turn an unresolved explicit-list scan into ZeroSlack, prove PCCMin or the residual-band minimizer, establish polynomial runtime, formalize concrete SAT, or prove the target theorem. `PNP.Main.p_eq_np` is absent; five project-specific axioms and seven blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem; they do not prove CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
 
 ## Freeze controls
 
