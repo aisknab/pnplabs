@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-12-22</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-12-23</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>6a5073b885cdaed765186ddef2beba44bd29432d88fd4516822ecd94a1b0cb45</code>
+        <code>6f5d04356e86d2c775f7913d5e8e8a891a59559a9dbc533f34ebfa18b619d1fc</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 4,912 exported public declarations, including 2,045 theorem-kind declarations and 1,944 assumption-free theorem-kind declarations across 44 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and bounded internal pipeline-stage bridges; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 5,023 exported public declarations, including 2,081 theorem-kind declarations and 1,980 assumption-free theorem-kind declarations across 45 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, bounded internal pipeline-stage bridges, and a separate terminal raw-output packer; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>CNFSAT in NP checked</span>
-          <span>nine scoped milestones</span>
+          <span>standalone output packer checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Separate assumption-free declarations bridge supplied exact target traces through an internal represented-output handoff. They do not supply target termination, terminal raw-output packing, complete raw refinement, or an external input-size polynomial. The CNF-SAT theorem does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. A separate assumption-free terminal packer produces blank-delimited raw output within <code>18*m^2 + 36*m + 6</code> compiled steps, but it is not launched from the bridge endpoint. Target termination, complete raw refinement, and an external input-size polynomial remain absent. The CNF-SAT theorem does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">

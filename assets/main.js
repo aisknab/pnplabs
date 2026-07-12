@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-12-22';
-const STATUS_SHA256 = 'e7ea701580df8e60c9493a11c3cf80de2d698e926319b52896c0a83d7baf2419';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-12-PIPELINE-STAGE-BRIDGES-22';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-12-22';
-const INVENTORY_SHA256 = '6a5073b885cdaed765186ddef2beba44bd29432d88fd4516822ecd94a1b0cb45';
-const SOURCE_CLOSURE_SHA256 = '584778c158d1d6d3f2b89e8b53390f248d2311cefde7bd98c2a3d508ca1a03a9';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-12-23';
+const STATUS_SHA256 = '4f4f448aca30f9cb5861256433c1d9299c816a4193a1803ddc3ea2dd8f872e95';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-12-TERMINAL-OUTPUT-PACKER-23';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-12-23';
+const INVENTORY_SHA256 = '6f5d04356e86d2c775f7913d5e8e8a891a59559a9dbc533f34ebfa18b619d1fc';
+const SOURCE_CLOSURE_SHA256 = 'befaf6130fb3c1636d3d8e6d4d415231994791d4a7ed7cd9f51cd6b56acb4b22';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 4912,
-  theorems: 2045,
-  assumptionFreeTheorems: 1944,
-  excludedPrivateDeclarations: 749,
-  modules: 44,
+  declarations: 5023,
+  theorems: 2081,
+  assumptionFreeTheorems: 1980,
+  excludedPrivateDeclarations: 950,
+  modules: 45,
   axioms: 4,
 });
 
@@ -104,7 +104,10 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcretePipelineStageBridgesFormalized: false,
   leanConcretePipelineStageBridgesAxiomAuditPassed: false,
   leanConcretePipelineTerminalOutputPackingFormalized: false,
+  leanConcretePipelineTerminalOutputPackerAxiomAuditPassed: false,
+  leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount: 0,
   leanConcretePipelineRawRefinementFormalized: false,
+  leanConcretePipelineExternalInputSizePolynomialFormalized: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
 });
@@ -124,7 +127,10 @@ leanConcretePipelineStateNamespaceAxiomAuditPassed = ${payload.leanConcretePipel
 leanConcretePipelineStageBridgesFormalized = ${payload.leanConcretePipelineStageBridgesFormalized ?? false}
 leanConcretePipelineStageBridgesAxiomAuditPassed = ${payload.leanConcretePipelineStageBridgesAxiomAuditPassed ?? false}
 leanConcretePipelineTerminalOutputPackingFormalized = ${payload.leanConcretePipelineTerminalOutputPackingFormalized ?? false}
+leanConcretePipelineTerminalOutputPackerAxiomAuditPassed = ${payload.leanConcretePipelineTerminalOutputPackerAxiomAuditPassed ?? false}
+leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount = ${payload.leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount ?? 0}
 leanConcretePipelineRawRefinementFormalized = ${payload.leanConcretePipelineRawRefinementFormalized ?? false}
+leanConcretePipelineExternalInputSizePolynomialFormalized = ${payload.leanConcretePipelineExternalInputSizePolynomialFormalized ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
 leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
 concretePublicationGate.passed = ${payload.concretePublicationGate?.passed ?? false}`;
@@ -166,17 +172,18 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 276,
-    definition: 2349,
+    definition: 2424,
     inductive: 119,
     opaque: 0,
     quotient: 0,
     recursor: 119,
-    theorem: 2045,
+    theorem: 2081,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
   const membership = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
+  const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   return membership?.kind === 'theorem'
     && membership.module === 'PNP.Concrete.CNFWorkUniversalCorrectness'
     && membership.kernelType === 'Lean.Expr.app (Lean.Expr.const `PNP.Concrete.InNP []) (Lean.Expr.const `PNP.Concrete.CNFSAT [])'
@@ -184,7 +191,10 @@ function validateInventory(inventory) {
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
-    && inventory.milestoneCandidates.length === 100
+    && packer?.kind === 'theorem'
+    && packer.module === 'PNP.Concrete.TerminalOutputPacker'
+    && sameJson(packer.axioms, [])
+    && inventory.milestoneCandidates.length === 108
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -325,8 +335,11 @@ function validateStatus(status, inventory) {
     && status.leanConcretePipelineStageLaunchFormalized === true
     && status.leanConcretePipelineVerdictPreservationFormalized === true
     && status.leanConcretePipelineInternalOutputHandoffComposed === true
-    && status.leanConcretePipelineTerminalOutputPackingFormalized === false
+    && status.leanConcretePipelineTerminalOutputPackingFormalized === true
+    && status.leanConcretePipelineTerminalOutputPackerAxiomAuditPassed === true
+    && status.leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount === 69
     && status.leanConcretePipelineRawRefinementFormalized === false
+    && status.leanConcretePipelineExternalInputSizePolynomialFormalized === false
     && status.leanConcreteCNFSATInPFormalized === false
     && status.leanConcreteCNFNPCompletenessFormalized === false
     && status.checkerAcceptanceIsMathematicalProof === false
@@ -428,17 +441,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 4,912 exported public declarations, including 2,045 theorem-kind declarations and 1,944 assumption-free theorem-kind declarations across 44 modules. Nine scoped milestones are earned, now including exact internal pipeline stage bridges in addition to concrete CNF-SAT verifier correctness and NP membership; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 5,023 exported public declarations, including 2,081 theorem-kind declarations and 1,980 assumption-free theorem-kind declarations across 45 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, bounded internal stage bridges, and a separate terminal raw-output packer; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>CNFSAT in NP checked</span><span>internal stage bridges checked</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>CNFSAT in NP checked</span><span>standalone output packer checked</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. The finite pipeline now has axiom-free framer-to-simulator and accept/reject-to-handoff launches for supplied exact target runs, but no target-termination proof, terminal raw-output packer, complete pipeline refinement, or external input-size polynomial. It does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. A separate axiom-free terminal packer emits blank-delimited raw output within <code>18m² + 36m + 6</code> compiled steps, but it is not launched from the bridge endpoint. Target termination, complete pipeline refinement, and an external input-size polynomial remain absent. It does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -529,7 +542,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP and exact internal pipeline stage bridges for supplied target traces, but it does not establish target termination, terminal raw-output packing, a complete pipeline refinement, CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current nine-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, exact internal pipeline stage bridges for supplied target traces, and a separate terminal raw-output packer. It does not connect that packer to the bridge or establish target termination, a complete pipeline refinement, CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current nine-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -539,7 +552,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Nine scoped milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, collision-free pipeline namespaces, and verdict-preserving internal stage launches. Terminal raw output, the complete pipeline refinement, the deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Nine scoped milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, collision-free pipeline namespaces, verdict-preserving internal stage launches, and a separate terminal raw-output packer. Connecting that packer, complete pipeline refinement, the deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -558,7 +571,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 4,912-declaration inventory, 100 pinned theorem candidates, whole-source closure, nine earned scoped milestones, three unearned global milestones, and concrete publication gate. The stage bridges end at internal represented output and require supplied target traces; the earned CNF-SAT theorem is NP membership only. Four project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 5,023-declaration inventory, 108 pinned theorem candidates, whole-source closure, nine earned scoped milestones, three unearned global milestones, and concrete publication gate. The terminal packer is proved only as a separate encoded-internal stage; the bridge still ends at represented output and requires supplied target traces. The earned CNF-SAT theorem is NP membership only. Four project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

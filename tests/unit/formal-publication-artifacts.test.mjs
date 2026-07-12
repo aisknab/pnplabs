@@ -40,14 +40,14 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e");
+  assert.equal(result.coreCommit, "36a65d294276659f964e0b75cf102be2089fe1de");
 });
 
-test("current release is pinned, nine-page, exposes CNF-SAT NP membership, and fails closed", () => {
+test("current release is pinned, nine-page, exposes only earned CNF-SAT and standalone packer results, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e");
-  assert.equal(release.source.proofCommit, "7374bb390ab89b9325d48ab41fba4cd645621a64");
-  assert.equal(release.source.tree, "392dff8bac81d2ec5c6c4f03695cd421a5f107e3");
+  assert.equal(release.source.commit, "36a65d294276659f964e0b75cf102be2089fe1de");
+  assert.equal(release.source.proofCommit, "a9b3b993f576b9f0384b469c35d3bff1a0d16e87");
+  assert.equal(release.source.tree, "06edc0585afea27df4f310f2e7143f4dea1ba79b");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 9);
@@ -66,7 +66,14 @@ test("current release is pinned, nine-page, exposes CNF-SAT NP membership, and f
   assert.equal(release.earnedBoundary.pipelineInternalOutputHandoffComposed, true);
   assert.equal(release.earnedBoundary.pipelineCompiledRawCostMultiplier, 6);
   assert.equal(release.earnedBoundary.pipelineTargetTerminationFormalized, false);
-  assert.equal(release.earnedBoundary.pipelineTerminalRawOutputPackingFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineTerminalRawOutputPackingFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineTerminalOutputPackerAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineTerminalOutputPackerAuditedDeclarationCount, 69);
+  assert.equal(release.earnedBoundary.pipelineTerminalOutputPackerTheorem, "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq");
+  assert.equal(release.earnedBoundary.pipelineTerminalOutputPackerKernelTypeSha256, "2e8a41501c1bfb17ac78b70a93c2996db1ab607465c4a61a91236a4787b07b66");
+  assert.deepEqual(release.earnedBoundary.pipelineTerminalOutputPackerAxiomClosure, []);
+  assert.equal(release.earnedBoundary.pipelineTerminalOutputPackerCompiledRawTimeBound, "18 * outputLength^2 + 36 * outputLength + 6");
+  assert.equal(release.earnedBoundary.pipelineTerminalOutputPackerConnectedToBridge, false);
   assert.equal(release.earnedBoundary.pipelineRawRefinementFormalized, false);
   assert.equal(release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
