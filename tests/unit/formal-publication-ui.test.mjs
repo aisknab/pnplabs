@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'a38aac54fc7a117f46d42d2d45414d9bf3bbd301dd74a34cbbd0b61539229b4d');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6a5073b885cdaed765186ddef2beba44bd29432d88fd4516822ecd94a1b0cb45');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -99,8 +99,39 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
   assert.equal(validation.validateInventory(assumedMembership), false);
 });
 
+test('pipeline bridge status cannot be widened to a complete compiler', () => {
+  for (const field of [
+    'leanConcretePipelineTerminalOutputPackingFormalized',
+    'leanConcretePipelineRawRefinementFormalized',
+  ]) {
+    const forged = structuredClone(status);
+    forged[field] = true;
+    assert.equal(validation.validateStatus(forged, inventory), false, field);
+  }
+
+  for (const field of [
+    'leanConcretePipelineStateNamespaceFormalized',
+    'leanConcretePipelineStateNamespaceAxiomAuditPassed',
+    'leanConcretePipelineStageBridgesFormalized',
+    'leanConcretePipelineStageBridgesAxiomAuditPassed',
+    'leanConcretePipelineStageLaunchFormalized',
+    'leanConcretePipelineVerdictPreservationFormalized',
+    'leanConcretePipelineInternalOutputHandoffComposed',
+  ]) {
+    const missing = structuredClone(status);
+    missing[field] = false;
+    assert.equal(validation.validateStatus(missing, inventory), false, field);
+  }
+
+  const assumedBridge = structuredClone(inventory);
+  assumedBridge.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumedBridge), false);
+});
+
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '77fa271af29b8029de278abded0fb5d7d5acd58c918a0b2c5659e16f0b7dc916'/);
+  assert.match(source, /const STATUS_SHA256 = 'e7ea701580df8e60c9493a11c3cf80de2d698e926319b52896c0a83d7baf2419'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -125,12 +156,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /4,419/);
+  assert.match(statusPage, /4,912/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /eight-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /nine-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
