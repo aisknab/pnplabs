@@ -56,17 +56,27 @@ function makeProject(t) {
     leanConcretePipelineStageLaunchFormalized: true,
     leanConcretePipelineVerdictPreservationFormalized: true,
     leanConcretePipelineInternalOutputHandoffComposed: true,
-    leanConcretePipelineTerminalOutputPackingFormalized: false,
+    leanConcretePipelineTerminalOutputPackingFormalized: true,
+    leanConcretePipelineTerminalOutputPackerAxiomAuditPassed: true,
+    leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount: 69,
     leanConcretePipelineRawRefinementFormalized: false,
+    leanConcretePipelineExternalInputSizePolynomialFormalized: false,
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 4912,
-    theoremCount: 2045,
-    assumptionFreeTheoremCount: 1944,
+    declarationCount: 5023,
+    theoremCount: 2081,
+    assumptionFreeTheoremCount: 1980,
+    sourceClosureModuleCount: 45,
     axiomCount: 4,
+    milestoneCandidates: [{
+      name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
+      module: "PNP.Concrete.TerminalOutputPacker",
+      kind: "theorem",
+      axioms: []
+    }],
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
       name: "PNP.Main.ConcretePEqualsNP",
@@ -145,7 +155,14 @@ function makeProject(t) {
       pipelineVerdictPreservationFormalized: true,
       pipelineInternalOutputHandoffComposed: true,
       pipelineTargetTerminationFormalized: false,
-      pipelineTerminalRawOutputPackingFormalized: false,
+      pipelineTerminalRawOutputPackingFormalized: true,
+      pipelineTerminalOutputPackerAxiomAuditPassed: true,
+      pipelineTerminalOutputPackerAuditedDeclarationCount: 69,
+      pipelineTerminalOutputPackerTheorem: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
+      pipelineTerminalOutputPackerKernelTypeSha256: "2e8a41501c1bfb17ac78b70a93c2996db1ab607465c4a61a91236a4787b07b66",
+      pipelineTerminalOutputPackerAxiomClosure: [],
+      pipelineTerminalOutputPackerCompiledRawTimeBound: "18 * outputLength^2 + 36 * outputLength + 6",
+      pipelineTerminalOutputPackerConnectedToBridge: false,
       pipelineRawRefinementFormalized: false,
       pipelineExternalInputSizePolynomialFormalized: false
     },
@@ -251,6 +268,13 @@ test("rejects pipeline bridge publication without the compiled axiom audits", (t
   project.release.earnedBoundary.pipelineStageBridgeAxiomAuditPassed = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   expectFailure(project, /formal-publication pipeline stage-bridge boundary mismatch/);
+});
+
+test("rejects a terminal packer widened into a composed bridge result", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelineTerminalOutputPackerConnectedToBridge = true;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication terminal-output packer evidence mismatch/);
 });
 
 test("skips only the cross-repository phase when a source checkout is optional", (t) => {

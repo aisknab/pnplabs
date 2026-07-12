@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 100 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 108 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 4,912 public declarations;
-- 2,045 theorem-kind declarations;
-- 1,944 assumption-free theorem-kind declarations;
-- 44 source-closure modules;
-- 749 excluded private compiler auxiliaries;
+- 5,023 public declarations;
+- 2,081 theorem-kind declarations;
+- 1,980 assumption-free theorem-kind declarations;
+- 45 source-closure modules;
+- 950 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -53,7 +53,7 @@ The nine earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
-| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, exact stage launches, and accept/reject/stuck trace transport through the internal represented-output handoff | Requires a supplied exact target run; no target termination, terminal raw-output packer, ordinary `machineOutput` equality, complete raw refinement, external input-size polynomial, CNF-SAT in P, NP-completeness, or `P = NP` |
+| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, exact stage launches, accept/reject/stuck trace transport through the internal represented-output handoff, and a separate terminal raw-output packer with ordinary `machineOutput` equality and compiled bound `18*m^2 + 36*m + 6` | Requires a supplied exact target run; the packer is not launched from the bridge endpoint or incorporated into its rule table, and there is no target termination, complete raw refinement, external input-size polynomial, CNF-SAT in P, NP-completeness, or `P = NP` |
 | Concrete P, NP, and reductions | Finite charged pipelines, bounded certificates, polynomial reductions, and the NP-complete-in-P implication | No complete compiler/refinement to one raw machine, concrete SAT completeness/decider, or root theorem |
 | Concrete universal CNF-SAT verifier | Exact formula/assignment decoding, universal accept/reject semantics, no timeout, and `CNFSAT ∈ NP` | No CNF-SAT in P, NP-completeness, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |

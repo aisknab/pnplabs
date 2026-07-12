@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e`. Its generated status payload is current
+core commit `36a65d294276659f964e0b75cf102be2089fe1de`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the nine-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,8 +23,8 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e` | Exact source tree reviewed and merged through concrete CNF-SAT verifier correctness, NP membership, collision-free pipeline namespaces, and bounded internal stage bridges |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 100 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `36a65d294276659f964e0b75cf102be2089fe1de` | Exact source tree reviewed and merged through concrete CNF-SAT verifier correctness, NP membership, collision-free pipeline namespaces, bounded internal stage bridges, and a separate terminal raw-output packer |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 108 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
 | Generated status | `public/pnp-status.json` | Nine earned scoped milestones, three unearned global milestones, four project axioms, and seven blockers |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current nine-page non-claiming report; mirrored by this site |

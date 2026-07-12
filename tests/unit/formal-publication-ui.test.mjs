@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6a5073b885cdaed765186ddef2beba44bd29432d88fd4516822ecd94a1b0cb45');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6f5d04356e86d2c775f7913d5e8e8a891a59559a9dbc533f34ebfa18b619d1fc');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -99,10 +99,10 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
   assert.equal(validation.validateInventory(assumedMembership), false);
 });
 
-test('pipeline bridge status cannot be widened to a complete compiler', () => {
+test('separate terminal packer status cannot be widened to a complete compiler', () => {
   for (const field of [
-    'leanConcretePipelineTerminalOutputPackingFormalized',
     'leanConcretePipelineRawRefinementFormalized',
+    'leanConcretePipelineExternalInputSizePolynomialFormalized',
   ]) {
     const forged = structuredClone(status);
     forged[field] = true;
@@ -117,6 +117,8 @@ test('pipeline bridge status cannot be widened to a complete compiler', () => {
     'leanConcretePipelineStageLaunchFormalized',
     'leanConcretePipelineVerdictPreservationFormalized',
     'leanConcretePipelineInternalOutputHandoffComposed',
+    'leanConcretePipelineTerminalOutputPackingFormalized',
+    'leanConcretePipelineTerminalOutputPackerAxiomAuditPassed',
   ]) {
     const missing = structuredClone(status);
     missing[field] = false;
@@ -128,10 +130,20 @@ test('pipeline bridge status cannot be widened to a complete compiler', () => {
     .find((candidate) => candidate.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact')
     .axioms = ['PNP.ForgedAxiom'];
   assert.equal(validation.validateInventory(assumedBridge), false);
+
+  const assumedPacker = structuredClone(inventory);
+  assumedPacker.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumedPacker), false);
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount = 68;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'e7ea701580df8e60c9493a11c3cf80de2d698e926319b52896c0a83d7baf2419'/);
+  assert.match(source, /const STATUS_SHA256 = '4f4f448aca30f9cb5861256433c1d9299c816a4193a1803ddc3ea2dd8f872e95'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -156,7 +168,7 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /4,912/);
+  assert.match(statusPage, /5,023/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
