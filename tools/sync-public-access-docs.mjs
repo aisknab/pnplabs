@@ -17,8 +17,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "52d2f64bc836dd5417d7324a77e94f5a8fb89e48";
-const CORE_TREE = "c2f06eaebee21e8109ab99b02e9133510cbd1410";
+const CORE_COMMIT = "3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e";
+const CORE_TREE = "392dff8bac81d2ec5c6c4f03695cd421a5f107e3";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -26,26 +26,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 244277,
-    sha256: "0bb59741841c2b975bacd8c3712f379ab217b0a77ade2a870b5653aa701e5792"
+    bytes: 247764,
+    sha256: "e4462bc555b2d0f1b4d7b4e909cff010120325c6b66e5f1529387fd1eed530ef"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 16507,
-    sha256: "3e48af486e51b68220084ac59eb8c3ec4b27a5c3f6695ec3a5a9f084deeea63f"
+    bytes: 18505,
+    sha256: "8d61f248a806843476b5fd5777a093841a271472cdabb83294aaef684ca02b02"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 55154,
-    sha256: "77fa271af29b8029de278abded0fb5d7d5acd58c918a0b2c5659e16f0b7dc916"
+    bytes: 92733,
+    sha256: "e7ea701580df8e60c9493a11c3cf80de2d698e926319b52896c0a83d7baf2419"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 676899,
-    sha256: "a38aac54fc7a117f46d42d2d45414d9bf3bbd301dd74a34cbbd0b61539229b4d"
+    bytes: 939161,
+    sha256: "6a5073b885cdaed765186ddef2beba44bd29432d88fd4516822ecd94a1b0cb45"
   }
 ];
 
@@ -137,7 +137,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "33b5e2f6464b8a2751806817bb155bd4592d6f126eeb42a81e461c3a04b5e491") {
+  if (sha256(map) !== "07bd39d1d912248285959b5cea3b0ed095c4c07d36b961b3858f50eac4d67706") {
     fail("pinned formal-publication map digest mismatch");
   }
 }
@@ -146,7 +146,7 @@ function checkPdfPageCount(pdfPath) {
   const result = spawnSync("pdfinfo", [pdfPath], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
   if (result.status !== 0) fail(`pdfinfo failed for ${pdfPath}: ${(result.stderr || result.stdout || "pdfinfo unavailable").trim()}`);
   const match = result.stdout.match(/^Pages:\s+(\d+)\s*$/m);
-  if (!match || Number(match[1]) !== 8) fail(`${pdfPath}: expected exactly eight pages`);
+  if (!match || Number(match[1]) !== 9) fail(`${pdfPath}: expected exactly nine pages`);
 }
 
 function assertCorePayloadBoundary(sourcePath, buffer) {
@@ -158,10 +158,14 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 7) fail("core status blocker boundary mismatch");
     if (payload.leanConcreteCNFSATMembershipFormalized !== true || payload.leanConcreteCNFSATMembershipTheorem !== "PNP.Concrete.FinalUniversalDesign.cnfSATInNP") fail("core status CNF-SAT NP-membership boundary mismatch");
     if (payload.leanConcreteCNFWorkAxiomAuditPassed !== true || payload.leanConcreteCNFWorkAuditedDeclarationCount !== 766) fail("core status CNF work audit boundary mismatch");
+    if (payload.leanConcretePipelineStateNamespaceFormalized !== true || payload.leanConcretePipelineStateNamespaceAxiomAuditPassed !== true || payload.leanConcretePipelineStateNamespaceAuditedDeclarationCount !== 39) fail("core status pipeline namespace boundary mismatch");
+    if (payload.leanConcretePipelineStageBridgesFormalized !== true || payload.leanConcretePipelineStageBridgesAxiomAuditPassed !== true || payload.leanConcretePipelineStageBridgesAuditedDeclarationCount !== 56) fail("core status pipeline stage-bridge boundary mismatch");
+    if (payload.leanConcretePipelineStageLaunchFormalized !== true || payload.leanConcretePipelineVerdictPreservationFormalized !== true || payload.leanConcretePipelineInternalOutputHandoffComposed !== true) fail("core status pipeline bridge composition boundary mismatch");
+    if (payload.leanConcretePipelineTerminalOutputPackingFormalized !== false || payload.leanConcretePipelineRawRefinementFormalized !== false) fail("core status overstates the pipeline compiler result");
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
     if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");
-    if (payload.declarationCount !== 4419 || payload.theoremCount !== 1826 || payload.assumptionFreeTheoremCount !== 1727 || payload.axiomCount !== 4) fail("core inventory counts mismatch");
+    if (payload.declarationCount !== 4912 || payload.theoremCount !== 2045 || payload.assumptionFreeTheoremCount !== 1944 || payload.axiomCount !== 4) fail("core inventory counts mismatch");
   }
 }
 

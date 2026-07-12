@@ -40,21 +40,35 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "52d2f64bc836dd5417d7324a77e94f5a8fb89e48");
+  assert.equal(result.coreCommit, "3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e");
 });
 
-test("current release is pinned, eight-page, exposes CNF-SAT NP membership, and fails closed", () => {
+test("current release is pinned, nine-page, exposes CNF-SAT NP membership, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "52d2f64bc836dd5417d7324a77e94f5a8fb89e48");
-  assert.equal(release.source.proofCommit, "af9dd84fa56b0d3dd679a33e77ec2cc192b6809c");
-  assert.equal(release.source.tree, "c2f06eaebee21e8109ab99b02e9133510cbd1410");
+  assert.equal(release.source.commit, "3d6af7f46b8dea7b58f5d25076b49842ae2bdb5e");
+  assert.equal(release.source.proofCommit, "7374bb390ab89b9325d48ab41fba4cd645621a64");
+  assert.equal(release.source.tree, "392dff8bac81d2ec5c6c4f03695cd421a5f107e3");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 8);
+  assert.equal(release.artifacts.report.pageCount, 9);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
   assert.equal(release.earnedBoundary.auditedDeclarationCount, 766);
+  assert.equal(release.earnedBoundary.pipelineStateNamespacesFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineStateNamespaceAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineStateNamespaceAuditedDeclarationCount, 39);
+  assert.equal(release.earnedBoundary.pipelineStageBridgesFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineStageBridgeAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineStageBridgeAuditedDeclarationCount, 56);
+  assert.equal(release.earnedBoundary.pipelineStageLaunchFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineVerdictPreservationFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineInternalOutputHandoffComposed, true);
+  assert.equal(release.earnedBoundary.pipelineCompiledRawCostMultiplier, 6);
+  assert.equal(release.earnedBoundary.pipelineTargetTerminationFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineTerminalRawOutputPackingFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineRawRefinementFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, false);
   assert.equal(release.earnedBoundary.pEqualsNPFormalized, false);

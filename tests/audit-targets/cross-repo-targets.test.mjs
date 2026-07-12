@@ -47,14 +47,25 @@ function makeProject(t) {
     leanConcreteCNFSATMembershipTheorem: "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     leanConcreteCNFWorkAxiomAuditPassed: true,
     leanConcreteCNFWorkAuditedDeclarationCount: 766,
+    leanConcretePipelineStateNamespaceFormalized: true,
+    leanConcretePipelineStateNamespaceAxiomAuditPassed: true,
+    leanConcretePipelineStateNamespaceAuditedDeclarationCount: 39,
+    leanConcretePipelineStageBridgesFormalized: true,
+    leanConcretePipelineStageBridgesAxiomAuditPassed: true,
+    leanConcretePipelineStageBridgesAuditedDeclarationCount: 56,
+    leanConcretePipelineStageLaunchFormalized: true,
+    leanConcretePipelineVerdictPreservationFormalized: true,
+    leanConcretePipelineInternalOutputHandoffComposed: true,
+    leanConcretePipelineTerminalOutputPackingFormalized: false,
+    leanConcretePipelineRawRefinementFormalized: false,
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 4419,
-    theoremCount: 1826,
-    assumptionFreeTheoremCount: 1727,
+    declarationCount: 4912,
+    theoremCount: 2045,
+    assumptionFreeTheoremCount: 1944,
     axiomCount: 4,
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
@@ -107,7 +118,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 8,
+        pageCount: 9,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -122,6 +133,21 @@ function makeProject(t) {
       concreteTargetPresent: true,
       projectSpecificAxiomsRemaining: true,
       remainingBlockerCount: 7
+    },
+    earnedBoundary: {
+      pipelineStateNamespacesFormalized: true,
+      pipelineStateNamespaceAxiomAuditPassed: true,
+      pipelineStateNamespaceAuditedDeclarationCount: 39,
+      pipelineStageBridgesFormalized: true,
+      pipelineStageBridgeAxiomAuditPassed: true,
+      pipelineStageBridgeAuditedDeclarationCount: 56,
+      pipelineStageLaunchFormalized: true,
+      pipelineVerdictPreservationFormalized: true,
+      pipelineInternalOutputHandoffComposed: true,
+      pipelineTargetTerminationFormalized: false,
+      pipelineTerminalRawOutputPackingFormalized: false,
+      pipelineRawRefinementFormalized: false,
+      pipelineExternalInputSizePolynomialFormalized: false
     },
     historicalArchive: {
       status: "historical-quarantined-not-current-authority",
@@ -218,6 +244,13 @@ test("rejects a self-consistent manifest that opens theorem publication", (t) =>
   project.release.publicationBoundary.publicTheoremEmissionAllowed = true;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   expectFailure(project, /formal-publication manifest does not fail closed/);
+});
+
+test("rejects pipeline bridge publication without the compiled axiom audits", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelineStageBridgeAxiomAuditPassed = false;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication pipeline stage-bridge boundary mismatch/);
 });
 
 test("skips only the cross-repository phase when a source checkout is optional", (t) => {
