@@ -58,7 +58,7 @@ Historical activation or checker-acceptance fields cannot override the gate.
 | Direct-wire model | Typed NAND semantics, finite enumeration/reference minimum, framed replacement/slack | Connection to a standard complexity reduction |
 | Locked-NAND | Typed local candidates, five local minima, conditional six-premise boundary | Global carrier layout, `BaselineDistinct`, trace/final laws, uniform builder, premise instantiation |
 | Residual routes | Sound strict gain from one explicit supplied list; proof-bearing exact/zero outcomes | Candidate-universe/global completeness, ZeroSlack contradiction, PCCMin, residual-band minimizer |
-| Complexity | Concrete charged-pipeline P/NP/reduction definitions, `CNFSAT ∈ NP`, collision-free pipeline namespaces, bounded internal stage bridges for supplied exact target traces, and a separate terminal packer with ordinary `machineOutput` equality | Packer-to-bridge composition, target termination, complete raw refinement, an external input-size polynomial, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider |
+| Complexity | Concrete charged-pipeline P/NP/reduction definitions, `CNFSAT ∈ NP`, collision-free pipeline namespaces, bounded internal stage bridges for supplied exact target traces, and a local handoff-to-terminal suffix with raw `outputBits` equality | Prior-trace transport into the extended terminal machine, target termination, complete raw refinement, an external input-size polynomial, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider |
 | Root theorem | No compatibility-root theorem | Exact concrete root, build, and acceptable axiom audit |
 
 Four project axioms and seven formal blockers remain disclosed in `public/pnp-status.json`.

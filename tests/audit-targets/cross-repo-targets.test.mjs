@@ -59,6 +59,10 @@ function makeProject(t) {
     leanConcretePipelineTerminalOutputPackingFormalized: true,
     leanConcretePipelineTerminalOutputPackerAxiomAuditPassed: true,
     leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount: 69,
+    leanConcretePipelineTerminalOutputPackerConnectedToBridgeEndpointFormalized: true,
+    leanConcretePipelineTerminalBridgeAxiomAuditPassed: true,
+    leanConcretePipelineTerminalBridgeAuditedDeclarationCount: 44,
+    leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized: false,
     leanConcretePipelineRawRefinementFormalized: false,
     leanConcretePipelineExternalInputSizePolynomialFormalized: false,
     leanConcreteCNFSATInPFormalized: false,
@@ -66,14 +70,19 @@ function makeProject(t) {
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5023,
-    theoremCount: 2081,
-    assumptionFreeTheoremCount: 1980,
-    sourceClosureModuleCount: 45,
+    declarationCount: 5076,
+    theoremCount: 2125,
+    assumptionFreeTheoremCount: 2024,
+    sourceClosureModuleCount: 46,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
       module: "PNP.Concrete.TerminalOutputPacker",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents",
+      module: "PNP.Concrete.PipelineTerminalBridge",
       kind: "theorem",
       axioms: []
     }],
@@ -128,7 +137,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 9,
+        pageCount: 10,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -162,7 +171,16 @@ function makeProject(t) {
       pipelineTerminalOutputPackerKernelTypeSha256: "2e8a41501c1bfb17ac78b70a93c2996db1ab607465c4a61a91236a4787b07b66",
       pipelineTerminalOutputPackerAxiomClosure: [],
       pipelineTerminalOutputPackerCompiledRawTimeBound: "18 * outputLength^2 + 36 * outputLength + 6",
-      pipelineTerminalOutputPackerConnectedToBridge: false,
+      pipelineTerminalOutputPackerConnectedToBridge: true,
+      pipelineTerminalBridgeAxiomAuditPassed: true,
+      pipelineTerminalBridgeAuditedDeclarationCount: 44,
+      pipelineTerminalBridgeAcceptingOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents",
+      pipelineTerminalBridgeAcceptingOutputKernelTypeSha256: "f6ff227ee77408d4b833da4b277cbe24950b52f12bb8aaec3b8d0f48a4000001",
+      pipelineTerminalBridgeRejectingOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_rejecting_of_represents",
+      pipelineTerminalBridgeRejectingOutputKernelTypeSha256: "ebdf594cf57d6ab317bc692ac491746099ba5c955853b6deaf41b17240c1a9db",
+      pipelineTerminalBridgeAxiomClosure: [],
+      pipelineTerminalBridgeCompiledRawTimeBound: "18 * outputLength^2 + 36 * outputLength + 12",
+      pipelinePriorTraceTransportToTerminalBridgeFormalized: false,
       pipelineRawRefinementFormalized: false,
       pipelineExternalInputSizePolynomialFormalized: false
     },
@@ -270,11 +288,18 @@ test("rejects pipeline bridge publication without the compiled axiom audits", (t
   expectFailure(project, /formal-publication pipeline stage-bridge boundary mismatch/);
 });
 
-test("rejects a terminal packer widened into a composed bridge result", (t) => {
+test("rejects a terminal bridge narrowed back to an unconnected packer", (t) => {
   const project = makeProject(t);
-  project.release.earnedBoundary.pipelineTerminalOutputPackerConnectedToBridge = true;
+  project.release.earnedBoundary.pipelineTerminalOutputPackerConnectedToBridge = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   expectFailure(project, /formal-publication terminal-output packer evidence mismatch/);
+});
+
+test("rejects a local terminal suffix widened into a transported prior trace", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelinePriorTraceTransportToTerminalBridgeFormalized = true;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication terminal-bridge prefix boundary mismatch/);
 });
 
 test("skips only the cross-repository phase when a source checkout is optional", (t) => {

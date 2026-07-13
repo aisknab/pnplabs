@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a nine-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 5,023 public declarations across 45 modules,
-including 2,081 theorem-kind declarations, 1,980 assumption-free theorem-kind declarations, and four
+The canonical report downloads are now a ten-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 5,076 public declarations across 46 modules,
+including 2,125 theorem-kind declarations, 2,024 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Nine hundred and fifty private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target and compatibility-root theorem are
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current nine-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current ten-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 56-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 108 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | One hundred eight reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Nine narrowly scoped formal milestones, including `CNFSAT ∈ NP`, collision-free pipeline namespaces, bounded internal stage bridges, and a separate terminal raw-output packer | Packer-to-bridge composition, target termination, complete raw refinement, an external input-size polynomial, CNF-SAT in P, NP-completeness, global locked-NAND construction, complete residual search, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 124 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | One hundred twenty-four reviewed theorem-type fingerprints, empty axiom closures, and the complete Lean-source digest | Nine narrowly scoped formal milestones, including `CNFSAT ∈ NP`, collision-free pipeline namespaces, bounded internal stage bridges, and a local handoff-to-terminal suffix | Prior-trace transport into the extended terminal machine, target termination, complete raw refinement, an external input-size polynomial, CNF-SAT in P, NP-completeness, global locked-NAND construction, complete residual search, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `36a65d294276659f964e0b75cf102be2089fe1de`.
+   `250f403ece79e6fb259a098fb784b79a10efc11e`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 108 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 124 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone has an empty axiom closure and matches the pinned complete
    Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -81,7 +81,7 @@ threshold boundary; and explicit-list residual-route soundness.
 
 Review the gaps between those scopes and the target theorem:
 
-1. The charged-pipeline model and concrete CNF-SAT language are formalized. The current bridge transports supplied exact accepting/rejecting traces to an internal two-track handoff and preserves a supplied stuck endpoint as timeout. A separate terminal packer proves ordinary `machineOutput` equality within `18*m^2 + 36*m + 6` compiled steps, but it is not launched from the bridge endpoint. Target termination, complete raw refinement, an external input-size polynomial, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider are absent.
+1. The charged-pipeline model and concrete CNF-SAT language are formalized. The earlier bridge transports supplied exact accepting/rejecting traces to an internal two-track handoff and preserves a supplied stuck endpoint as timeout. A local suffix launches distinct accepting and rejecting packer copies and preserves raw `outputBits` within `18*m^2 + 36*m + 12` compiled steps. The earlier ordinary-input trace is not transported into that extended machine. Target termination, complete raw refinement, an external input-size polynomial, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider are absent.
 2. The six locked-NAND threshold premises are not instantiated by a uniform polynomial builder.
 3. Local baseline minima do not establish global `BaselineDistinct`, carrier layout, trace
    equivalence, or the report threshold.
@@ -111,7 +111,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current nine-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current ten-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the
