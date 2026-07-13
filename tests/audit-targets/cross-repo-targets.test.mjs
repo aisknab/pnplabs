@@ -61,8 +61,8 @@ function makeProject(t) {
     leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount: 69,
     leanConcretePipelineTerminalOutputPackerConnectedToBridgeEndpointFormalized: true,
     leanConcretePipelineTerminalBridgeAxiomAuditPassed: true,
-    leanConcretePipelineTerminalBridgeAuditedDeclarationCount: 44,
-    leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized: false,
+    leanConcretePipelineTerminalBridgeAuditedDeclarationCount: 59,
+    leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized: true,
     leanConcretePipelineRawRefinementFormalized: false,
     leanConcretePipelineExternalInputSizePolynomialFormalized: false,
     leanConcreteCNFSATInPFormalized: false,
@@ -70,9 +70,9 @@ function makeProject(t) {
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5076,
-    theoremCount: 2125,
-    assumptionFreeTheoremCount: 2024,
+    declarationCount: 5096,
+    theoremCount: 2143,
+    assumptionFreeTheoremCount: 2042,
     sourceClosureModuleCount: 46,
     axiomCount: 4,
     milestoneCandidates: [{
@@ -85,6 +85,16 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineTerminalBridge",
       kind: "theorem",
       axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineTerminalBridge.acceptingSuppliedTrace_workRunExact_of_rawRunExact",
+      module: "PNP.Concrete.PipelineTerminalBridge",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_accept_of_rawRunExact",
+      module: "PNP.Concrete.PipelineTerminalBridge",
+      kind: "theorem",
+      axioms: []
     }],
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
@@ -93,7 +103,16 @@ function makeProject(t) {
       axioms: []
     }
   });
-  const publicationMap = json({ kind: "TestPublicationMap", gate: { passed: false } });
+  const publicationMap = json({
+    kind: "TestPublicationMap",
+    gate: { passed: false },
+    earnedMilestoneTheoremKernelTypeSha256: {
+      "PNP.Concrete.PipelineTerminalBridge.acceptingSuppliedTrace_workRunExact_of_rawRunExact": "e225169a3de16b86bbd99c9b230a214425ea53886b6ed4dddd8b8d47ea290f29",
+      "PNP.Concrete.PipelineTerminalBridge.rejectingSuppliedTrace_workRunExact_of_rawRunExact": "31afb03af96fcb1c3c5f3d0e5a0fd4276b8b9707ae8cde7972a812c52b22938c",
+      "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_accept_of_rawRunExact": "dacbb94707b8cab5e553ca3cbc01c02130827940ef487f4981c96799ab6d1a01",
+      "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact": "05a89482ad3ab866041fd93caf8a2a9727df0956794e3b5a1849df74dc4eb7bd"
+    }
+  });
 
   git(sourceDir, ["init"]);
   git(sourceDir, ["config", "user.email", "audit@example.invalid"]);
@@ -173,14 +192,30 @@ function makeProject(t) {
       pipelineTerminalOutputPackerCompiledRawTimeBound: "18 * outputLength^2 + 36 * outputLength + 6",
       pipelineTerminalOutputPackerConnectedToBridge: true,
       pipelineTerminalBridgeAxiomAuditPassed: true,
-      pipelineTerminalBridgeAuditedDeclarationCount: 44,
+      pipelineTerminalBridgeAuditedDeclarationCount: 59,
       pipelineTerminalBridgeAcceptingOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents",
       pipelineTerminalBridgeAcceptingOutputKernelTypeSha256: "f6ff227ee77408d4b833da4b277cbe24950b52f12bb8aaec3b8d0f48a4000001",
       pipelineTerminalBridgeRejectingOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_rejecting_of_represents",
       pipelineTerminalBridgeRejectingOutputKernelTypeSha256: "ebdf594cf57d6ab317bc692ac491746099ba5c955853b6deaf41b17240c1a9db",
       pipelineTerminalBridgeAxiomClosure: [],
       pipelineTerminalBridgeCompiledRawTimeBound: "18 * outputLength^2 + 36 * outputLength + 12",
-      pipelinePriorTraceTransportToTerminalBridgeFormalized: false,
+      pipelineSuppliedTraceWorkCostTheorem: "PNP.Concrete.PipelineTerminalBridge.suppliedTraceTerminalWorkSteps_eq",
+      pipelineSuppliedTraceWorkCostKernelTypeSha256: "7d9b5bf70b1675c1843f538e046030753b7e0be7c3bd50ec5d64ce9eb5b0869e",
+      pipelineSuppliedAcceptTraceTheorem: "PNP.Concrete.PipelineTerminalBridge.acceptingSuppliedTrace_workRunExact_of_rawRunExact",
+      pipelineSuppliedAcceptTraceKernelTypeSha256: "e225169a3de16b86bbd99c9b230a214425ea53886b6ed4dddd8b8d47ea290f29",
+      pipelineSuppliedRejectTraceTheorem: "PNP.Concrete.PipelineTerminalBridge.rejectingSuppliedTrace_workRunExact_of_rawRunExact",
+      pipelineSuppliedRejectTraceKernelTypeSha256: "31afb03af96fcb1c3c5f3d0e5a0fd4276b8b9707ae8cde7972a812c52b22938c",
+      pipelineSuppliedAcceptVerdictTheorem: "PNP.Concrete.PipelineTerminalBridge.workBoundedDecide_terminalBridge_accept_of_rawRunExact",
+      pipelineSuppliedAcceptVerdictKernelTypeSha256: "bbc633544f84f156eef71f1aa488a359c35ecb46b1ba1d0dfaa393d1e045fde4",
+      pipelineSuppliedRejectVerdictTheorem: "PNP.Concrete.PipelineTerminalBridge.workBoundedDecide_terminalBridge_reject_of_rawRunExact",
+      pipelineSuppliedRejectVerdictKernelTypeSha256: "a2cee1b6edc38318bd4b57c82bbc6f708b3c6e676f42128be00f787477a6fbfe",
+      pipelineStuckTimeoutTheorem: "PNP.Concrete.PipelineTerminalBridge.workBoundedDecide_terminalBridge_timeout_of_stuck_rawRunExact",
+      pipelineStuckTimeoutKernelTypeSha256: "0ce3f2337117d81a1a25b923c5604dcd9b8235e69598390825caae68c93d9488",
+      pipelineSuppliedAcceptMachineOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_accept_of_rawRunExact",
+      pipelineSuppliedAcceptMachineOutputKernelTypeSha256: "dacbb94707b8cab5e553ca3cbc01c02130827940ef487f4981c96799ab6d1a01",
+      pipelineSuppliedRejectMachineOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact",
+      pipelineSuppliedRejectMachineOutputKernelTypeSha256: "05a89482ad3ab866041fd93caf8a2a9727df0956794e3b5a1849df74dc4eb7bd",
+      pipelinePriorTraceTransportToTerminalBridgeFormalized: true,
       pipelineRawRefinementFormalized: false,
       pipelineExternalInputSizePolynomialFormalized: false
     },
@@ -295,11 +330,11 @@ test("rejects a terminal bridge narrowed back to an unconnected packer", (t) => 
   expectFailure(project, /formal-publication terminal-output packer evidence mismatch/);
 });
 
-test("rejects a local terminal suffix widened into a transported prior trace", (t) => {
+test("rejects removal of the supplied prior-trace transport", (t) => {
   const project = makeProject(t);
-  project.release.earnedBoundary.pipelinePriorTraceTransportToTerminalBridgeFormalized = true;
+  project.release.earnedBoundary.pipelinePriorTraceTransportToTerminalBridgeFormalized = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
-  expectFailure(project, /formal-publication terminal-bridge prefix boundary mismatch/);
+  expectFailure(project, /formal-publication terminal-bridge supplied-trace boundary mismatch/);
 });
 
 test("skips only the cross-repository phase when a source checkout is optional", (t) => {

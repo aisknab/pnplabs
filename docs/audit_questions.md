@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/250f403ece79e6fb259a098fb784b79a10efc11e/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/250f403ece79e6fb259a098fb784b79a10efc11e/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/6459cb433a2c788e16a8da05f6487e23728875ff/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/6459cb433a2c788e16a8da05f6487e23728875ff/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
 The current canonical download is the ten-page inventory-derived report. Every numbered section or
@@ -17,9 +17,9 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 124 reviewed theorem kinds, kernel-type fingerprints, empty axiom closures, and the full Lean-source digest. | Same-name type weakening, an added axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 137 reviewed theorem kinds, kernel-type fingerprints, empty axiom closures, and the full Lean-source digest. | Same-name type weakening, an added axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm nine earned scoped milestones, including `CNFSAT ∈ NP`, bounded internal pipeline-stage bridges, and the local handoff-to-terminal suffix, plus three unearned global milestones, four project axioms, and seven blockers. Confirm that prior-trace transport into the extended machine, target termination, complete raw refinement, an external input-size polynomial, CNF-SAT in P, and NP-completeness remain false. | A supplied-trace or local-suffix result is widened into a complete compiler, a local/conditional result is presented as global, or a blocker/axiom is hidden. |
+| Non-claim boundary | Confirm nine earned scoped milestones, including `CNFSAT ∈ NP` and the full four-stage terminal trace for a caller-supplied exact target execution, plus three unearned global milestones, four project axioms, and seven blockers. Confirm that target termination, uniform all-input raw refinement, an external input-size polynomial, CNF-SAT in P, and NP-completeness remain false. | A supplied-trace result is widened into a terminating all-input compiler, a local/conditional result is presented as global, or a blocker/axiom is hidden. |
 | Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require eight PDF pages. | An alias differs, the old 56-page hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet

@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 248,583 | `c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5` |
-| `downloads/canonical-proof-report.pdf` | 248,583 | `c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5` |
-| `downloads/canonical_proof_report.tex` | 18,879 | `f8245697aff109196c6529708476222b449c420ee741812d01d2fac5087ddb84` |
-| `downloads/canonical-proof-report.tex` | 18,879 | `f8245697aff109196c6529708476222b449c420ee741812d01d2fac5087ddb84` |
-| `public/pnp-status.json` | 98,627 | `372c0682e49be43fa1a05808b7bebbe8e609a0ec41365f4537958b5d3eb8b415` |
-| `public/pnp-theorem-inventory.json` | 973,743 | `305398f65fe313a765351da012c2d167433591f114856422a62866918f3abdf6` |
+| `downloads/canonical_proof_report.pdf` | 249,333 | `39cd8007df8f92a9a1ae31a2ff153bd249bc5cce8d06f202e796d5f1c67cd90b` |
+| `downloads/canonical-proof-report.pdf` | 249,333 | `39cd8007df8f92a9a1ae31a2ff153bd249bc5cce8d06f202e796d5f1c67cd90b` |
+| `downloads/canonical_proof_report.tex` | 19,013 | `d2c92cac2bbeab90e81ba6fd8c7c3abf4097fa9b32339a4f5a6cc90b3f764109` |
+| `downloads/canonical-proof-report.tex` | 19,013 | `d2c92cac2bbeab90e81ba6fd8c7c3abf4097fa9b32339a4f5a6cc90b3f764109` |
+| `public/pnp-status.json` | 115,857 | `8679a9c871804296ff7d783b610803e18c7d3c93a6d2427a4b2b2cee813bf774` |
+| `public/pnp-theorem-inventory.json` | 1,122,815 | `0a41a771cff082c64c4afd96025a59b66b82b8110b5a6781fe45ae47544a6a97` |
 
-The PDF must have nine A4 pages. Both filename styles must be byte-identical.
+The PDF must have ten A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 250f403ece79e6fb259a098fb784b79a10efc11e
+git -C ../pnp checkout 6459cb433a2c788e16a8da05f6487e23728875ff
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 5,076 public declarations, 2,125 theorem-kind declarations,
-2,024 assumption-free theorem-kind declarations, 956 excluded private auxiliaries, 46 modules, and
-four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the namespace, stage-bridge, terminal-packer, and local terminal-bridge audits must cover 39, 56, 69, and 44 declarations respectively with empty axiom closure. The local handoff-to-terminal suffix has compiled raw bound `18*m^2 + 36*m + 12`. Prior-trace transport into the extended machine, target termination, complete raw refinement, the external input-size polynomial, CNF-SAT in P, and NP-completeness must remain false.
+Expected compiled inventory counts are 5,096 public declarations, 2,143 theorem-kind declarations,
+2,042 assumption-free theorem-kind declarations, 957 excluded private auxiliaries, 46 modules, and
+four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the namespace, stage-bridge, terminal-packer, and terminal-bridge audits must cover 39, 56, 69, and 59 declarations respectively with empty axiom closure. For a caller-supplied exact target execution, the ordinary paired-input trace is transported through the terminal machine at exact compiled cost six times `inputFramerWorkSteps + 1 + 3 * sourceSteps + 1 + framedOutputHandoffWorkSteps + 1 + terminalOutputPackerWorkSteps`; a supplied stuck nonhalting endpoint remains timeout. Target termination, uniform all-input raw refinement, the external input-size polynomial, CNF-SAT in P, and NP-completeness must remain false.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
