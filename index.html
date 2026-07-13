@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-28</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-14-29</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121</code>
+        <code>59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 5,197 exported public declarations, including 2,197 theorem-kind declarations and 2,096 assumption-free theorem-kind declarations across 48 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, a finite framer for every raw bitstring, and a uniform four-stage compiler for proof-bearing target machines on canonical paired inputs; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 5,235 exported public declarations, including 2,224 theorem-kind declarations and 2,123 assumption-free theorem-kind declarations across 49 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and a uniform four-stage compiler for every raw bitstring to a proof-bearing target machine; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>all-input framer checked</span>
-          <span>canonical-pair compiler checked</span>
+          <span>all-input compiler checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. A literal finite framer accepts every raw bitstring, including empty and odd-length inputs, within <code>6*m*m + 39*m + 75</code> raw steps. The complete four-stage compiler remains proved only for canonical <code>BitString.pair</code> inputs; malformed-input behavior and an all-bitstring pipeline <code>RawRefinement</code> remain absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For every proof-bearing polynomial-time target, the literal four-stage compiler handles every raw bitstring—including empty, odd, and malformed inputs—with exact verdict, <code>machineOutput</code>, no timeout, and explicit external polynomials. Recursive function/decision <code>RawRefinement</code> remains absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current ten-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current nine-page report</a>
         </div>
       </div>
 

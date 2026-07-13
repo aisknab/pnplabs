@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -99,15 +99,10 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
   assert.equal(validation.validateInventory(assumedMembership), false);
 });
 
-test('all-input framer and canonical-pair compiler cannot be widened to an all-bitstring pipeline refinement', () => {
-  for (const field of [
-    'leanConcretePipelineRawRefinementFormalized',
-    'leanConcretePipelineMalformedInputBehaviorFormalized',
-  ]) {
-    const forged = structuredClone(status);
-    forged[field] = true;
-    assert.equal(validation.validateStatus(forged, inventory), false, field);
-  }
+test('all-input compiler cannot be widened to recursive raw refinement or stripped of compiled evidence', () => {
+  const forgedRefinement = structuredClone(status);
+  forgedRefinement.leanConcretePipelineRawRefinementFormalized = true;
+  assert.equal(validation.validateStatus(forgedRefinement, inventory), false, 'leanConcretePipelineRawRefinementFormalized');
 
   for (const field of [
     'leanConcretePipelineStateNamespaceFormalized',
@@ -125,6 +120,9 @@ test('all-input framer and canonical-pair compiler cannot be widened to an all-b
     'leanConcretePipelineAllInputFramingFormalized',
     'leanConcretePipelinePairedCompilerAxiomAuditPassed',
     'leanConcretePipelineCanonicalPairCompilationFormalized',
+    'leanConcretePipelineCompilerAxiomAuditPassed',
+    'leanConcretePipelineAllInputCompilationFormalized',
+    'leanConcretePipelineMalformedInputBehaviorFormalized',
     'leanConcretePipelineExternalInputSizePolynomialFormalized',
   ]) {
     const missing = structuredClone(status);
@@ -191,10 +189,29 @@ test('all-input framer and canonical-pair compiler cannot be widened to an all-b
       .axioms = ['PNP.ForgedAxiom'];
     assert.equal(validation.validateInventory(assumedPairedCompiler), false, theorem);
   }
+
+  const wrongCompilerAuditCount = structuredClone(status);
+  wrongCompilerAuditCount.leanConcretePipelineCompilerAuditedDeclarationCount = 28;
+  assert.equal(validation.validateStatus(wrongCompilerAuditCount, inventory), false);
+
+  for (const theorem of [
+    'PNP.Concrete.PipelineCompiler.pipeline_correct',
+    'PNP.Concrete.PipelineCompiler.pipeline_boundedDecide_eq',
+    'PNP.Concrete.PipelineCompiler.pipeline_machineOutput_eq',
+    'PNP.Concrete.PipelineCompiler.pipeline_ne_timeout',
+    'PNP.Concrete.PipelineCompiler.pipeline_accepts_iff',
+    'PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact',
+  ]) {
+    const assumedCompiler = structuredClone(inventory);
+    assumedCompiler.milestoneCandidates
+      .find((candidate) => candidate.name === theorem)
+      .axioms = ['PNP.ForgedAxiom'];
+    assert.equal(validation.validateInventory(assumedCompiler), false, theorem);
+  }
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '1df549b65431dc1740ec9f6452a853951a41cffc5b16ce77961e71fb7f14268a'/);
+  assert.match(source, /const STATUS_SHA256 = 'c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -219,12 +236,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /5,197/);
+  assert.match(statusPage, /5,235/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /ten-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /nine-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);

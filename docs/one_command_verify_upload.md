@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout fb9674949679a137b7ce790c1522efaecbe240ce
+git checkout 305443db5a3954be42d1d56912c7f64232efff2a
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, the literal finite framer for every raw bitstring, and the literal four-stage raw compiler that, for every proof-bearing polynomial-time target and canonical `BitString.pair`, preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials. They do not prove full-pipeline malformed-input behavior, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem and the literal four-stage raw compiler that, for every proof-bearing polynomial-time target and every raw `BitString`, preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials. They do not prove recursive function/decision `RawRefinement`, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
 
 ## Freeze controls
 

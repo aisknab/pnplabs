@@ -69,7 +69,10 @@ function makeProject(t) {
     leanConcretePipelinePairedCompilerAxiomAuditPassed: true,
     leanConcretePipelinePairedCompilerAuditedDeclarationCount: 28,
     leanConcretePipelineCanonicalPairCompilationFormalized: true,
-    leanConcretePipelineMalformedInputBehaviorFormalized: false,
+    leanConcretePipelineCompilerAxiomAuditPassed: true,
+    leanConcretePipelineCompilerAuditedDeclarationCount: 29,
+    leanConcretePipelineAllInputCompilationFormalized: true,
+    leanConcretePipelineMalformedInputBehaviorFormalized: true,
     leanConcretePipelineRawRefinementFormalized: false,
     leanConcretePipelineExternalInputSizePolynomialFormalized: true,
     leanConcreteCNFSATInPFormalized: false,
@@ -77,10 +80,10 @@ function makeProject(t) {
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5197,
-    theoremCount: 2197,
-    assumptionFreeTheoremCount: 2096,
-    sourceClosureModuleCount: 48,
+    declarationCount: 5235,
+    theoremCount: 2224,
+    assumptionFreeTheoremCount: 2123,
+    sourceClosureModuleCount: 49,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
@@ -162,7 +165,42 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineInputFramer",
       kind: "theorem",
       axioms: []
-    }],
+    }, {
+      name: "PNP.Concrete.PipelineCompiler.pipeline_correct",
+      module: "PNP.Concrete.PipelineCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineCompiler.pipeline_boundedDecide_eq",
+      module: "PNP.Concrete.PipelineCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineCompiler.pipeline_machineOutput_eq",
+      module: "PNP.Concrete.PipelineCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineCompiler.pipeline_ne_timeout",
+      module: "PNP.Concrete.PipelineCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineCompiler.pipeline_accepts_iff",
+      module: "PNP.Concrete.PipelineCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact",
+      module: "PNP.Concrete.PipelineCompiler",
+      kind: "theorem",
+      axioms: []
+    }, ...Array.from({ length: 150 }, (_, index) => ({
+      name: `PNP.Test.Filler${index}`,
+      module: "PNP.Test",
+      kind: "theorem",
+      axioms: []
+    }))],
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
       name: "PNP.Main.ConcretePEqualsNP",
@@ -239,7 +277,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 10,
+        pageCount: 9,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -336,8 +374,27 @@ function makeProject(t) {
       pipelinePairedAcceptsTheorem: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff",
       pipelinePairedAcceptsKernelTypeSha256: "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9",
       pipelinePairedCompilerAxiomClosure: [],
+      pipelinePairedOutputSizePolynomial: "B(m) = m + p(m) + 1",
+      pipelinePairedRawTimePolynomial: "Rpair(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
+      pipelineCompilerAxiomAuditPassed: true,
+      pipelineCompilerAuditedDeclarationCount: 29,
+      pipelineAllInputCompilationFormalized: true,
+      pipelineCompilerCorrectTheorem: "PNP.Concrete.PipelineCompiler.pipeline_correct",
+      pipelineCompilerCorrectKernelTypeSha256: "e1ccd198403d41933324af1c52048c865943947c5bbd40dd94e11827b08c2303",
+      pipelineVerdictTheorem: "PNP.Concrete.PipelineCompiler.pipeline_boundedDecide_eq",
+      pipelineVerdictKernelTypeSha256: "1bafe91bba94e65a7ad654f4624f305c0ae01b3e6d656af0dd2e752d373ce87e",
+      pipelineMachineOutputTheorem: "PNP.Concrete.PipelineCompiler.pipeline_machineOutput_eq",
+      pipelineMachineOutputKernelTypeSha256: "45e02fa1e6e6b0bcbc422c3b4fd797608b875727d22b79d6f7814e1f4f0d3da7",
+      pipelineNoTimeoutTheorem: "PNP.Concrete.PipelineCompiler.pipeline_ne_timeout",
+      pipelineNoTimeoutKernelTypeSha256: "ed95c33d4fa998d79057537cd2adf847548a79b7ee9a45020b01620868273b3a",
+      pipelineAcceptsTheorem: "PNP.Concrete.PipelineCompiler.pipeline_accepts_iff",
+      pipelineAcceptsKernelTypeSha256: "94e43c664b4d185e48553ab25541925830fec7086fcbbab5215dacdcde1af6a6",
+      pipelineAllInputStuckTimeoutTheorem: "PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact",
+      pipelineAllInputStuckTimeoutKernelTypeSha256: "a6edef0532eb89036d0e6813cffb94b321f9160a08035671eb411c813ef0a3de",
+      pipelineCompilerAxiomClosure: [],
       pipelineOutputSizePolynomial: "B(m) = m + p(m) + 1",
-      pipelineRawTimePolynomial: "R(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
+      pipelineRawTimePolynomial: "R(m) = totalInputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
+      pipelineMalformedInputBehaviorFormalized: true,
       pipelineRawRefinementFormalized: false,
       pipelineExternalInputSizePolynomialFormalized: true
     },
@@ -478,23 +535,47 @@ test("rejects drift in the all-input framer polynomial or theorem fingerprint", 
   expectFailure(fingerprint, /formal-publication all-input framer verdict evidence mismatch/);
 });
 
-test("rejects a canonical-pair compiler widened to arbitrary malformed inputs", (t) => {
+test("rejects removal of all-input malformed-input behavior", (t) => {
   const project = makeProject(t);
-  project.release.earnedBoundary.pipelineMalformedInputBehaviorFormalized = true;
+  project.release.earnedBoundary.pipelineMalformedInputBehaviorFormalized = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
-  expectFailure(project, /formal-publication manifest overstates the all-input pipeline compiler/);
+  expectFailure(project, /formal-publication all-input compiler boundary mismatch/);
 });
 
-test("rejects removal of the canonical-pair external polynomial", (t) => {
+test("rejects removal of the all-input external polynomial", (t) => {
   const project = makeProject(t);
   project.release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
-  expectFailure(project, /formal-publication manifest overstates the all-input pipeline compiler/);
+  expectFailure(project, /formal-publication all-input compiler boundary mismatch/);
 });
 
-test("rejects drift in the canonical-pair runtime polynomial", (t) => {
+test("rejects drift in the all-input runtime polynomial", (t) => {
   const project = makeProject(t);
   project.release.earnedBoundary.pipelineRawTimePolynomial = "R(m) = 0";
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication all-input compiler polynomial evidence mismatch/);
+});
+
+test("rejects all-input compiler audit, theorem fingerprint, or RawRefinement overclaim drift", (t) => {
+  const audit = makeProject(t);
+  audit.release.earnedBoundary.pipelineCompilerAxiomAuditPassed = false;
+  write(audit.root, "downloads/formal-publication-release.json", json(audit.release));
+  expectFailure(audit, /formal-publication all-input compiler audit boundary mismatch/);
+
+  const fingerprint = makeProject(t);
+  fingerprint.release.earnedBoundary.pipelineVerdictKernelTypeSha256 = "0".repeat(64);
+  write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
+  expectFailure(fingerprint, /all-input compiler verdict evidence mismatch/);
+
+  const overclaim = makeProject(t);
+  overclaim.release.earnedBoundary.pipelineRawRefinementFormalized = true;
+  write(overclaim.root, "downloads/formal-publication-release.json", json(overclaim.release));
+  expectFailure(overclaim, /formal-publication all-input compiler boundary mismatch/);
+});
+
+test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelinePairedRawTimePolynomial = "Rpair(m) = 0";
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   expectFailure(project, /formal-publication canonical-pair polynomial evidence mismatch/);
 });

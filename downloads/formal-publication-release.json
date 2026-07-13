@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-13-19",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-20",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "fb9674949679a137b7ce790c1522efaecbe240ce",
-    "proofCommit": "ec2cd21e3848c383c3e75ca9ba2caec27f6d616f",
-    "tree": "6134fcd3c007bbcb23d46f273e8cf7dca5172d1b",
-    "ref": "fb9674949679a137b7ce790c1522efaecbe240ce",
+    "commit": "305443db5a3954be42d1d56912c7f64232efff2a",
+    "proofCommit": "80192df1874c4a0dc82141944b5d289c7577a2e4",
+    "tree": "c4f9d18b843986a8d964f35c9e13461cf57337a0",
+    "ref": "305443db5a3954be42d1d56912c7f64232efff2a",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-13-28",
-    "formalPublicationMapSha256": "835f9677f165c6104b0f57f59017cb55254e6b048a5aceb1f7afc7eb664cbd38",
-    "leanSourceClosureSha256": "6b6558134e01809a69181416bf121cf3250dee4e468e6bb0efd7351cb5e5b1a6",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-14-29",
+    "formalPublicationMapSha256": "817239a00e22be3113620191d97aa64831fd6dcb97f402051b85c9e441f8d7c7",
+    "leanSourceClosureSha256": "cfd2b1263520068a0dc3e4b46a1ddbe76cd704a7368457c03bf40b9f4ec21fc2",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,32 +21,32 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 129216,
-      "sha256": "1df549b65431dc1740ec9f6452a853951a41cffc5b16ce77961e71fb7f14268a",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-13-28"
+      "bytes": 136080,
+      "sha256": "c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-29"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 1205195,
-      "sha256": "fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-13-28",
-      "declarationCount": 5197,
-      "theoremCount": 2197,
-      "assumptionFreeTheoremCount": 2096,
+      "bytes": 1284286,
+      "sha256": "59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-14-29",
+      "declarationCount": 5235,
+      "theoremCount": 2224,
+      "assumptionFreeTheoremCount": 2123,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-13-28",
-      "pageCount": 10,
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-14-29",
+      "pageCount": 9,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 251451,
-        "sha256": "5aa36153000ef8ef99fa0060088b2d5c9d7ea5549d683517beda8abf7d1d72ac"
+        "bytes": 250232,
+        "sha256": "ae19cd5535d7c57ef43e3a65d25f26c271005d20b21952e634bfed80e56a53b1"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,13 +54,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 19161,
-        "sha256": "4768beadfbb1fa922962d1879eb22ee1769a8e00da1db92db60501f78a4a1fe2"
+        "bytes": 18540,
+        "sha256": "a3d0d9ae551caf0409bba2d8553369dacafcbb35e5447c60d36c6a3d45b4e0ac"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-total-raw-input-framing-plus-uniform-four-stage-compilation-on-canonical-pairs-only",
+    "scope": "concrete-cnf-sat-np-membership-plus-uniform-four-stage-compilation-on-all-raw-inputs",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -140,7 +140,7 @@
     "pipelinePairedCompilerAxiomAuditPassed": true,
     "pipelinePairedCompilerAuditedDeclarationCount": 28,
     "pipelineCanonicalPairCompilationFormalized": true,
-    "pipelineMalformedInputBehaviorFormalized": false,
+    "pipelineMalformedInputBehaviorFormalized": true,
     "pipelinePairedVerdictTheorem": "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq",
     "pipelinePairedVerdictKernelTypeSha256": "99b8ecf29c6542e9646f70d9f973e99bd5a2ed8a18563b929213a9af38474731",
     "pipelinePairedMachineOutputTheorem": "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq",
@@ -150,13 +150,31 @@
     "pipelinePairedAcceptsTheorem": "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff",
     "pipelinePairedAcceptsKernelTypeSha256": "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9",
     "pipelinePairedCompilerAxiomClosure": [],
+    "pipelinePairedOutputSizePolynomial": "B(m) = m + p(m) + 1",
+    "pipelinePairedRawTimePolynomial": "Rpair(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
     "pipelineOutputSizePolynomial": "B(m) = m + p(m) + 1",
-    "pipelineRawTimePolynomial": "R(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
+    "pipelineRawTimePolynomial": "R(m) = totalInputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
     "pipelineRawRefinementFormalized": false,
     "pipelineExternalInputSizePolynomialFormalized": true,
     "cnfSATInPFormalized": false,
     "cnfSATNPCompletenessFormalized": false,
-    "pEqualsNPFormalized": false
+    "pEqualsNPFormalized": false,
+    "pipelineCompilerAxiomAuditPassed": true,
+    "pipelineCompilerAuditedDeclarationCount": 29,
+    "pipelineAllInputCompilationFormalized": true,
+    "pipelineCompilerCorrectTheorem": "PNP.Concrete.PipelineCompiler.pipeline_correct",
+    "pipelineCompilerCorrectKernelTypeSha256": "e1ccd198403d41933324af1c52048c865943947c5bbd40dd94e11827b08c2303",
+    "pipelineVerdictTheorem": "PNP.Concrete.PipelineCompiler.pipeline_boundedDecide_eq",
+    "pipelineVerdictKernelTypeSha256": "1bafe91bba94e65a7ad654f4624f305c0ae01b3e6d656af0dd2e752d373ce87e",
+    "pipelineMachineOutputTheorem": "PNP.Concrete.PipelineCompiler.pipeline_machineOutput_eq",
+    "pipelineMachineOutputKernelTypeSha256": "45e02fa1e6e6b0bcbc422c3b4fd797608b875727d22b79d6f7814e1f4f0d3da7",
+    "pipelineNoTimeoutTheorem": "PNP.Concrete.PipelineCompiler.pipeline_ne_timeout",
+    "pipelineNoTimeoutKernelTypeSha256": "ed95c33d4fa998d79057537cd2adf847548a79b7ee9a45020b01620868273b3a",
+    "pipelineAcceptsTheorem": "PNP.Concrete.PipelineCompiler.pipeline_accepts_iff",
+    "pipelineAcceptsKernelTypeSha256": "94e43c664b4d185e48553ab25541925830fec7086fcbbab5215dacdcde1af6a6",
+    "pipelineAllInputStuckTimeoutTheorem": "PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact",
+    "pipelineAllInputStuckTimeoutKernelTypeSha256": "a6edef0532eb89036d0e6813cffb94b321f9160a08035671eb411c813ef0a3de",
+    "pipelineCompilerAxiomClosure": []
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,
