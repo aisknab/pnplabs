@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 36a65d294276659f964e0b75cf102be2089fe1de
+git checkout 250f403ece79e6fb259a098fb784b79a10efc11e
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, the assumption-free collision-free namespace and bounded internal stage-bridge declarations, and a separate terminal raw-output packer with compiled bound `18*m^2 + 36*m + 6`. The bridges require a supplied exact target run and stop at an internal two-track handoff; the packer is not launched from that endpoint. They do not prove target termination, complete raw refinement, an external input-size polynomial, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, the assumption-free collision-free namespace and bounded internal stage-bridge declarations, and the local handoff-to-terminal suffix with compiled bound `18*m^2 + 36*m + 12`. The earlier bridges require a supplied exact target run, and their ordinary-input trace is not transported into the extended terminal machine. They do not prove target termination, complete raw refinement, an external input-size polynomial, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
 
 ## Freeze controls
 

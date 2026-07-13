@@ -53,14 +53,14 @@
 
 <section class="page-hero">
   <span class="eyebrow">Compiled inventory and report checks</span>
-  <h1>Verify the current nine-page report and its Lean inventory.</h1>
+  <h1>Verify the current ten-page report and its Lean inventory.</h1>
   <p class="lede">The repository does not currently establish P = NP. The report is generated from the compiled declaration inventory; hashes confirm file identity only and do not verify theorem correctness.</p>
   <div class="hero-actions"><a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a><a class="btn secondary" href="#seal-console">Check current report file</a></div>
 </section>
 <div class="shell">
   <section class="section">
     <div class="grid two">
-      <article class="card"><div class="kicker">Mode A</div><h2>Current file integrity</h2><p>Compare the nine-page PDF, TeX source, status, and inventory against the exact release ledger. This identifies current bytes; it is not external validation of a theorem.</p></article>
+      <article class="card"><div class="kicker">Mode A</div><h2>Current file integrity</h2><p>Compare the ten-page PDF, TeX source, status, and inventory against the exact release ledger. This identifies current bytes; it is not external validation of a theorem.</p></article>
       <article class="card"><div class="kicker">Mode B</div><h2>Compiled Lean reproduction</h2><p>Build <code>PNP</code>, export the declaration inventory, verify its reviewed SHA-256 and theorem pins, then regenerate the publication status and report.</p></article>
     </div>
   </section>
@@ -72,7 +72,7 @@
       </div>
       <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest. It checks file identity, not theorem correctness.</p>
     </div>
-    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="87599b382fe49e94b79cc2012b13ad09f53c6b17956d429e53ae737c20d38fa4">
+    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5">
       <div class="seal-console-head">
         <div>
           <span class="console-kicker">Mode A · file integrity</span>
@@ -88,14 +88,14 @@
         <div class="seal-terminal" role="log" aria-live="polite" aria-label="Release seal console output">
           <ol class="seal-output" data-seal-output>
             <li><span>target</span><code>canonical_proof_report.pdf</code></li>
-            <li><span>expect</span><code>87599b382fe49e94b79cc2012b13ad09f53c6b17956d429e53ae737c20d38fa4</code></li>
+            <li><span>expect</span><code>c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5</code></li>
             <li><span>ready</span><code>press Run check to fetch the file, hash locally, and compare</code></li>
           </ol>
         </div>
         <div class="seal-readout">
           <div class="digest-row">
             <span>Expected SHA-256</span>
-            <code id="expected-digest">87599b382fe49e94b79cc2012b13ad09f53c6b17956d429e53ae737c20d38fa4</code>
+            <code id="expected-digest">c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5</code>
             <button class="btn secondary small" type="button" data-copy="#expected-digest">Copy</button>
           </div>
           <div class="digest-row">
@@ -123,7 +123,7 @@
           <tr><td><strong>Checksum ledger</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS</code></td></tr>
           <tr><td><strong>Bundled site manifest</strong></td><td><a href="downloads/release-seal.json"><code>downloads/release-seal.json</code></a></td></tr>
           <tr><td><strong>Bundled site checksum ledger</strong></td><td><a href="downloads/SHA256SUMS"><code>downloads/SHA256SUMS</code></a></td></tr>
-          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/36a65d294276659f964e0b75cf102be2089fe1de"><code>36a65d294276659f964e0b75cf102be2089fe1de</code></a></td></tr>
+          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/250f403ece79e6fb259a098fb784b79a10efc11e"><code>250f403ece79e6fb259a098fb784b79a10efc11e</code></a></td></tr>
         </tbody>
       </table>
     </div>
@@ -141,7 +141,7 @@
       <button class="btn secondary small copy-btn" type="button" data-copy="#regen-code">Copy</button>
       <pre id="regen-code">git clone https://github.com/aisknab/pnp.git pnp-review
 cd pnp-review
-git checkout 36a65d294276659f964e0b75cf102be2089fe1de
+git checkout 250f403ece79e6fb259a098fb784b79a10efc11e
 npm ci
 lake build PNP
 npm run pnp:verify -- --no-write

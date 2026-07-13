@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6f5d04356e86d2c775f7913d5e8e8a891a59559a9dbc533f34ebfa18b619d1fc');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '305398f65fe313a765351da012c2d167433591f114856422a62866918f3abdf6');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -99,7 +99,7 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
   assert.equal(validation.validateInventory(assumedMembership), false);
 });
 
-test('separate terminal packer status cannot be widened to a complete compiler', () => {
+test('local terminal suffix status cannot be widened to a complete compiler', () => {
   for (const field of [
     'leanConcretePipelineRawRefinementFormalized',
     'leanConcretePipelineExternalInputSizePolynomialFormalized',
@@ -119,6 +119,8 @@ test('separate terminal packer status cannot be widened to a complete compiler',
     'leanConcretePipelineInternalOutputHandoffComposed',
     'leanConcretePipelineTerminalOutputPackingFormalized',
     'leanConcretePipelineTerminalOutputPackerAxiomAuditPassed',
+    'leanConcretePipelineTerminalOutputPackerConnectedToBridgeEndpointFormalized',
+    'leanConcretePipelineTerminalBridgeAxiomAuditPassed',
   ]) {
     const missing = structuredClone(status);
     missing[field] = false;
@@ -140,10 +142,20 @@ test('separate terminal packer status cannot be widened to a complete compiler',
   const wrongAuditCount = structuredClone(status);
   wrongAuditCount.leanConcretePipelineTerminalOutputPackerAuditedDeclarationCount = 68;
   assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+
+  const assumedTerminalBridge = structuredClone(inventory);
+  assumedTerminalBridge.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumedTerminalBridge), false);
+
+  const widenedTrace = structuredClone(status);
+  widenedTrace.leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized = true;
+  assert.equal(validation.validateStatus(widenedTrace, inventory), false);
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '4f4f448aca30f9cb5861256433c1d9299c816a4193a1803ddc3ea2dd8f872e95'/);
+  assert.match(source, /const STATUS_SHA256 = '372c0682e49be43fa1a05808b7bebbe8e609a0ec41365f4537958b5d3eb8b415'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -168,12 +180,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /5,023/);
+  assert.match(statusPage, /5,076/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /nine-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /ten-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);

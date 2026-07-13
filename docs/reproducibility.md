@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 248,583 | `87599b382fe49e94b79cc2012b13ad09f53c6b17956d429e53ae737c20d38fa4` |
-| `downloads/canonical-proof-report.pdf` | 248,583 | `87599b382fe49e94b79cc2012b13ad09f53c6b17956d429e53ae737c20d38fa4` |
-| `downloads/canonical_proof_report.tex` | 18,879 | `cd6b1901ea5340a7252cb2207aaaab7895c55d9ba79b4db578e8eea695d002c0` |
-| `downloads/canonical-proof-report.tex` | 18,879 | `cd6b1901ea5340a7252cb2207aaaab7895c55d9ba79b4db578e8eea695d002c0` |
-| `public/pnp-status.json` | 98,627 | `4f4f448aca30f9cb5861256433c1d9299c816a4193a1803ddc3ea2dd8f872e95` |
-| `public/pnp-theorem-inventory.json` | 973,743 | `6f5d04356e86d2c775f7913d5e8e8a891a59559a9dbc533f34ebfa18b619d1fc` |
+| `downloads/canonical_proof_report.pdf` | 248,583 | `c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5` |
+| `downloads/canonical-proof-report.pdf` | 248,583 | `c5bb928abaed35831bbc80919989e491002b520c2852dd87f37eee1e128398d5` |
+| `downloads/canonical_proof_report.tex` | 18,879 | `f8245697aff109196c6529708476222b449c420ee741812d01d2fac5087ddb84` |
+| `downloads/canonical-proof-report.tex` | 18,879 | `f8245697aff109196c6529708476222b449c420ee741812d01d2fac5087ddb84` |
+| `public/pnp-status.json` | 98,627 | `372c0682e49be43fa1a05808b7bebbe8e609a0ec41365f4537958b5d3eb8b415` |
+| `public/pnp-theorem-inventory.json` | 973,743 | `305398f65fe313a765351da012c2d167433591f114856422a62866918f3abdf6` |
 
 The PDF must have nine A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 36a65d294276659f964e0b75cf102be2089fe1de
+git -C ../pnp checkout 250f403ece79e6fb259a098fb784b79a10efc11e
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 5,023 public declarations, 2,081 theorem-kind declarations,
-1,980 assumption-free theorem-kind declarations, 950 excluded private auxiliaries, 45 modules, and
-four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the namespace, stage-bridge, and terminal-packer audits must cover 39, 56, and 69 declarations respectively with empty axiom closure. The separate packer has compiled raw bound `18*m^2 + 36*m + 6`. Its connection to the bridge, target termination, complete raw refinement, the external input-size polynomial, CNF-SAT in P, and NP-completeness must remain false.
+Expected compiled inventory counts are 5,076 public declarations, 2,125 theorem-kind declarations,
+2,024 assumption-free theorem-kind declarations, 956 excluded private auxiliaries, 46 modules, and
+four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the namespace, stage-bridge, terminal-packer, and local terminal-bridge audits must cover 39, 56, 69, and 44 declarations respectively with empty axiom closure. The local handoff-to-terminal suffix has compiled raw bound `18*m^2 + 36*m + 12`. Prior-trace transport into the extended machine, target termination, complete raw refinement, the external input-size polynomial, CNF-SAT in P, and NP-completeness must remain false.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
