@@ -40,17 +40,17 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "6459cb433a2c788e16a8da05f6487e23728875ff");
+  assert.equal(result.coreCommit, "cc3c004f3498a0f28b8afda688802d322b9e5c21");
 });
 
-test("current release is pinned, ten-page, exposes only earned CNF-SAT and local terminal-suffix results, and fails closed", () => {
+test("current release is pinned, nine-page, exposes only earned CNF-SAT and canonical-pair compiler results, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "6459cb433a2c788e16a8da05f6487e23728875ff");
-  assert.equal(release.source.proofCommit, "24d282d5145538af82b00cf75fffa15b08bcd4ea");
-  assert.equal(release.source.tree, "bc70a247957efa05d2692bcc4c5520a99fd51c76");
+  assert.equal(release.source.commit, "cc3c004f3498a0f28b8afda688802d322b9e5c21");
+  assert.equal(release.source.proofCommit, "66e458cb78422fb663bbaa0e61ff3777082f0b26");
+  assert.equal(release.source.tree, "01300e50f0654a0815b5833e9b3ee6ef06c6bfb5");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 10);
+  assert.equal(release.artifacts.report.pageCount, 9);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -89,8 +89,23 @@ test("current release is pinned, ten-page, exposes only earned CNF-SAT and local
   assert.equal(release.earnedBoundary.pipelineSuppliedAcceptMachineOutputTheorem, "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_accept_of_rawRunExact");
   assert.equal(release.earnedBoundary.pipelineSuppliedRejectMachineOutputTheorem, "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact");
   assert.equal(release.earnedBoundary.pipelinePriorTraceTransportToTerminalBridgeFormalized, true);
+  assert.equal(release.earnedBoundary.pipelinePairedCompilerAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelinePairedCompilerAuditedDeclarationCount, 28);
+  assert.equal(release.earnedBoundary.pipelineCanonicalPairCompilationFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineMalformedInputBehaviorFormalized, false);
+  assert.equal(release.earnedBoundary.pipelinePairedVerdictTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq");
+  assert.equal(release.earnedBoundary.pipelinePairedVerdictKernelTypeSha256, "99b8ecf29c6542e9646f70d9f973e99bd5a2ed8a18563b929213a9af38474731");
+  assert.equal(release.earnedBoundary.pipelinePairedMachineOutputTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq");
+  assert.equal(release.earnedBoundary.pipelinePairedMachineOutputKernelTypeSha256, "7640e6416b0b4ebf12fa4619cfcff4d242af337e82416c372875afbfb2986267");
+  assert.equal(release.earnedBoundary.pipelinePairedNoTimeoutTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_ne_timeout");
+  assert.equal(release.earnedBoundary.pipelinePairedNoTimeoutKernelTypeSha256, "a59b8e38ee0be8c579aab8989c32c53cdf20c59168c6d8a5310db9b6bbb225ab");
+  assert.equal(release.earnedBoundary.pipelinePairedAcceptsTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff");
+  assert.equal(release.earnedBoundary.pipelinePairedAcceptsKernelTypeSha256, "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9");
+  assert.deepEqual(release.earnedBoundary.pipelinePairedCompilerAxiomClosure, []);
+  assert.equal(release.earnedBoundary.pipelineOutputSizePolynomial, "B(m) = m + p(m) + 1");
+  assert.equal(release.earnedBoundary.pipelineRawTimePolynomial, "R(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))");
   assert.equal(release.earnedBoundary.pipelineRawRefinementFormalized, false);
-  assert.equal(release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized, true);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, false);
   assert.equal(release.earnedBoundary.pEqualsNPFormalized, false);
