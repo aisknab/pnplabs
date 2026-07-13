@@ -63,6 +63,9 @@ function makeProject(t) {
     leanConcretePipelineTerminalBridgeAxiomAuditPassed: true,
     leanConcretePipelineTerminalBridgeAuditedDeclarationCount: 59,
     leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized: true,
+    leanConcretePipelineInputFramerAxiomAuditPassed: true,
+    leanConcretePipelineInputFramerAuditedDeclarationCount: 70,
+    leanConcretePipelineAllInputFramingFormalized: true,
     leanConcretePipelinePairedCompilerAxiomAuditPassed: true,
     leanConcretePipelinePairedCompilerAuditedDeclarationCount: 28,
     leanConcretePipelineCanonicalPairCompilationFormalized: true,
@@ -74,10 +77,10 @@ function makeProject(t) {
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5125,
-    theoremCount: 2168,
-    assumptionFreeTheoremCount: 2067,
-    sourceClosureModuleCount: 47,
+    declarationCount: 5197,
+    theoremCount: 2197,
+    assumptionFreeTheoremCount: 2096,
+    sourceClosureModuleCount: 48,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
@@ -119,6 +122,46 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelinePairedCompiler",
       kind: "theorem",
       axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.totalInputFramer_workRunExact",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_represents",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_isHalted",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.totalInputFramerRawTimeBound_le",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_encoded_rawTimeBound",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_rawTimeBound_blankEquivalent",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_accept",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout",
+      module: "PNP.Concrete.PipelineInputFramer",
+      kind: "theorem",
+      axioms: []
     }],
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
@@ -129,6 +172,8 @@ function makeProject(t) {
   });
   const publicationMap = json({
     kind: "TestPublicationMap",
+    coordinate: "TEST-PUBLICATION-MAP",
+    milestoneSourceClosureSha256: "1".repeat(64),
     gate: { passed: false },
     earnedMilestoneTheoremKernelTypeSha256: {
       "PNP.Concrete.PipelineTerminalBridge.acceptingSuppliedTrace_workRunExact_of_rawRunExact": "e225169a3de16b86bbd99c9b230a214425ea53886b6ed4dddd8b8d47ea290f29",
@@ -138,7 +183,15 @@ function makeProject(t) {
       "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq": "99b8ecf29c6542e9646f70d9f973e99bd5a2ed8a18563b929213a9af38474731",
       "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq": "7640e6416b0b4ebf12fa4619cfcff4d242af337e82416c372875afbfb2986267",
       "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_ne_timeout": "a59b8e38ee0be8c579aab8989c32c53cdf20c59168c6d8a5310db9b6bbb225ab",
-      "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff": "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9"
+      "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff": "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9",
+      "PNP.Concrete.PipelineInputFramer.totalInputFramer_workRunExact": "ad6e7cfe1206448f72a57135408a3c2e057411b4f418cdca0fd6a376a2863a1a",
+      "PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_represents": "8f1fa6f45f267d60eadad754d9c88e4ea58631b881152af0a51244f5f7d207af",
+      "PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_isHalted": "beca62f878cccce7434d899512cf9aaea25b222d113ec60df90da0fde8801faa",
+      "PNP.Concrete.PipelineInputFramer.totalInputFramerRawTimeBound_le": "bac4d4c78cb57e3ab70f752e2895a2f7ddd3c5356a6d1c457dd5832413d89eab",
+      "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_encoded_rawTimeBound": "4efe0f62d185b7ac19d73aebb09008e97f00c96a8252e263c901f8a6add7c45b",
+      "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_rawTimeBound_blankEquivalent": "1eaa31ea98226c202722a0e67aa796b7b461ccf5367f35fff194973bb609ce8a",
+      "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_accept": "3ef9f8377ec7ad7ebb70aa41b978cdb22f2c1c029b26e1e4c241ce00c20781d4",
+      "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout": "48b9ee1743a6881a663fb7a1cc59984c371ff853524f9b18bad58014c229f9fe"
     }
   });
 
@@ -166,7 +219,9 @@ function makeProject(t) {
       proofCommit: commit,
       tree,
       ref: commit,
+      formalPublicationMapCoordinate: "TEST-PUBLICATION-MAP",
       formalPublicationMapSha256: sha256(Buffer.from(publicationMap)),
+      leanSourceClosureSha256: "1".repeat(64),
       coordinateAloneIsAuthority: false,
       identityRequiresCommitTreeAndArtifactHashes: true
     },
@@ -184,7 +239,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 9,
+        pageCount: 10,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -244,6 +299,30 @@ function makeProject(t) {
       pipelineSuppliedRejectMachineOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact",
       pipelineSuppliedRejectMachineOutputKernelTypeSha256: "05a89482ad3ab866041fd93caf8a2a9727df0956794e3b5a1849df74dc4eb7bd",
       pipelinePriorTraceTransportToTerminalBridgeFormalized: true,
+      pipelineInputFramerAxiomAuditPassed: true,
+      pipelineInputFramerAuditedDeclarationCount: 70,
+      pipelineAllInputFramingFormalized: true,
+      pipelineInputFramerWorkTraceTheorem: "PNP.Concrete.PipelineInputFramer.totalInputFramer_workRunExact",
+      pipelineInputFramerWorkTraceKernelTypeSha256: "ad6e7cfe1206448f72a57135408a3c2e057411b4f418cdca0fd6a376a2863a1a",
+      pipelineInputFramerRepresentedEndpointTheorem: "PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_represents",
+      pipelineInputFramerRepresentedEndpointKernelTypeSha256: "8f1fa6f45f267d60eadad754d9c88e4ea58631b881152af0a51244f5f7d207af",
+      pipelineInputFramerHaltedEndpointTheorem: "PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_isHalted",
+      pipelineInputFramerHaltedEndpointKernelTypeSha256: "beca62f878cccce7434d899512cf9aaea25b222d113ec60df90da0fde8801faa",
+      pipelineInputFramerRawBoundTheorem: "PNP.Concrete.PipelineInputFramer.totalInputFramerRawTimeBound_le",
+      pipelineInputFramerRawBoundKernelTypeSha256: "bac4d4c78cb57e3ab70f752e2895a2f7ddd3c5356a6d1c457dd5832413d89eab",
+      pipelineInputFramerOrdinaryStartTheorem: "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_encoded_rawTimeBound",
+      pipelineInputFramerOrdinaryStartKernelTypeSha256: "4efe0f62d185b7ac19d73aebb09008e97f00c96a8252e263c901f8a6add7c45b",
+      pipelineInputFramerBlankEquivalentTheorem: "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_rawTimeBound_blankEquivalent",
+      pipelineInputFramerBlankEquivalentKernelTypeSha256: "1eaa31ea98226c202722a0e67aa796b7b461ccf5367f35fff194973bb609ce8a",
+      pipelineInputFramerAcceptTheorem: "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_accept",
+      pipelineInputFramerAcceptKernelTypeSha256: "3ef9f8377ec7ad7ebb70aa41b978cdb22f2c1c029b26e1e4c241ce00c20781d4",
+      pipelineInputFramerNoTimeoutTheorem: "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout",
+      pipelineInputFramerNoTimeoutKernelTypeSha256: "48b9ee1743a6881a663fb7a1cc59984c371ff853524f9b18bad58014c229f9fe",
+      pipelineInputFramerAxiomClosure: [],
+      pipelineInputFramerEmptyWorkSteps: "4",
+      pipelineInputFramerCompleteCellsWorkSteps: "4 * k * k + 9 * k + 7",
+      pipelineInputFramerPartialCellWorkSteps: "4 * k * k + 9 * k + 5",
+      pipelineInputFramerRawTimePolynomial: "6 * m * m + 39 * m + 75",
       pipelinePairedCompilerAxiomAuditPassed: true,
       pipelinePairedCompilerAuditedDeclarationCount: 28,
       pipelineCanonicalPairCompilationFormalized: true,
@@ -378,6 +457,25 @@ test("rejects removal of the supplied prior-trace transport", (t) => {
   project.release.earnedBoundary.pipelinePriorTraceTransportToTerminalBridgeFormalized = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   expectFailure(project, /formal-publication terminal-bridge supplied-trace boundary mismatch/);
+});
+
+test("rejects publication of the all-input framer without its compiled axiom audit", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelineInputFramerAxiomAuditPassed = false;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication all-input framer audit boundary mismatch/);
+});
+
+test("rejects drift in the all-input framer polynomial or theorem fingerprint", (t) => {
+  const polynomial = makeProject(t);
+  polynomial.release.earnedBoundary.pipelineInputFramerRawTimePolynomial = "0";
+  write(polynomial.root, "downloads/formal-publication-release.json", json(polynomial.release));
+  expectFailure(polynomial, /formal-publication all-input framer polynomial evidence mismatch/);
+
+  const fingerprint = makeProject(t);
+  fingerprint.release.earnedBoundary.pipelineInputFramerNoTimeoutKernelTypeSha256 = "0".repeat(64);
+  write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
+  expectFailure(fingerprint, /formal-publication all-input framer verdict evidence mismatch/);
 });
 
 test("rejects a canonical-pair compiler widened to arbitrary malformed inputs", (t) => {

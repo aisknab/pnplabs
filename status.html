@@ -37,11 +37,11 @@
     <section class="page-hero">
       <span class="eyebrow">Compiled Lean inventory · 2026-07-13</span>
       <h1>The concrete publication gate is closed.</h1>
-      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Nine scoped milestones are earned, including universal concrete CNF-SAT verifier correctness, <code>CNFSAT ∈ NP</code>, and a complete four-stage compiler for every canonical paired input to a proof-bearing polynomial-time target. Malformed-input behavior, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, and P = NP remain unproved.</p>
+      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Nine scoped milestones are earned, including universal concrete CNF-SAT verifier correctness, <code>CNFSAT ∈ NP</code>, an accepting finite framer for every raw bitstring, and a complete four-stage compiler for every canonical paired input to a proof-bearing polynomial-time target. Full-pipeline malformed-input behavior, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, and P = NP remain unproved.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a>
         <a class="btn secondary" href="public/pnp-status.json">Open current status</a>
-        <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Open nine-page report</a>
+        <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Open ten-page report</a>
       </div>
     </section>
 
@@ -65,9 +65,9 @@ concretePublicationGate.passed = false</pre>
     <section class="section compact">
       <div class="section-head">
         <div><div class="section-label">Compiled environment</div><h2>Exact inventory counts</h2></div>
-        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-26</code>; SHA-256 <code>ed67c989a5e6955d30d2a9f8d121e102c08de43a429c5238bb5b4944119f49b6</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
+        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-28</code>; SHA-256 <code>fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
       </div>
-      <p data-formal-inventory-counts><strong>5,125</strong> public declarations; <strong>2,168</strong> theorem-kind declarations; <strong>2,067</strong> assumption-free theorem-kind declarations; <strong>961</strong> private compiler auxiliaries excluded; <strong>47</strong> modules; <strong>4</strong> project axioms.</p>
+      <p data-formal-inventory-counts><strong>5,197</strong> public declarations; <strong>2,197</strong> theorem-kind declarations; <strong>2,096</strong> assumption-free theorem-kind declarations; <strong>1,032</strong> private compiler auxiliaries excluded; <strong>48</strong> modules; <strong>4</strong> project axioms.</p>
       <p>The inventory is emitted from Lean environment constants and axiom collection. It is not inferred from source text, JSON claims, checker acceptance, or report prose.</p>
     </section>
 
@@ -77,7 +77,7 @@ concretePublicationGate.passed = false</pre>
         <p>The static rows below are conservative fallback copy. When validation succeeds, JavaScript replaces them from the exact status payload.</p>
       </div>
       <div class="grid three path" data-formal-milestones>
-        <article class="card" data-milestone-id="concrete-machine-cost-kernel" data-earned="true"><h3>Formalized foundation only: Canonical-pair four-stage compiler</h3><p>For every proof-bearing polynomial-time target machine and every canonical <code>BitString.pair</code>, one finite raw machine runs framing, simulation, represented handoff, terminal launch, and raw-output packing with exact verdict and <code>machineOutput</code>, no timeout, and explicit external output and runtime polynomials.</p><p><strong>Boundary:</strong> Empty, odd, trailing, malformed, and other arbitrary inputs outside the canonical-pair image have no specified theorem; uniform all-input <code>RawRefinement</code> remains absent.</p></article>
+        <article class="card" data-milestone-id="concrete-machine-cost-kernel" data-earned="true"><h3>Formalized foundation only: All-input framer and canonical-pair four-stage compiler</h3><p>One literal finite framer accepts every raw bitstring—including empty and odd-length inputs—within <code>6*m*m + 39*m + 75</code> raw steps and reaches the represented endpoint. For every proof-bearing polynomial-time target machine and canonical <code>BitString.pair</code>, one finite raw machine then has exact verdict and <code>machineOutput</code>, no timeout, and explicit external output and runtime polynomials.</p><p><strong>Boundary:</strong> No theorem carries arbitrary non-pair inputs from the framer through simulation, handoff, and terminal packing; full-pipeline malformed-input behavior and uniform all-input <code>RawRefinement</code> remain absent.</p></article>
         <article class="card" data-milestone-id="concrete-complexity-classes" data-earned="true"><h3>Formalized with machine link pending: Concrete P, NP, and polynomial reductions</h3><p>Finite charged decision, verifier, and function pipelines grounded in concrete machine leaves, with polynomial certificate, runtime, and output bounds.</p><p><strong>Boundary:</strong> The canonical-pair compiler does not provide the required all-bitstring refinement or discharge the concrete complexity machine link; concrete SAT and the root theorem remain absent.</p></article>
         <article class="card" data-milestone-id="concrete-cnf-universal-verifier" data-earned="true"><h3>Formalized: Concrete universal CNF-SAT verifier and NP membership</h3><p>An explicit paired finite-machine verifier with formula and assignment decoders, exact accept/reject semantics, no timeout at a polynomial fuel bound, and <code>CNFSAT ∈ NP</code> via <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code>.</p><p><strong>Boundary:</strong> This does not prove CNF-SAT in P, NP-completeness, or P = NP.</p></article>
         <article class="card" data-milestone-id="direct-wire-semantics" data-earned="true"><h3>Formalized: Typed direct-wire NAND semantics</h3><p>Typed topological Boolean NAND programs and ordered multi-output direct-wire semantics.</p><p><strong>Boundary:</strong> This does not establish circuit minimization, SAT, or P = NP.</p></article>
@@ -124,7 +124,7 @@ concretePublicationGate.passed = false</pre>
       <div class="section-label">Current and historical reports</div>
       <h2>Do not conflate the two documents</h2>
       <div class="grid two path">
-        <article class="card"><h3>Current nine-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership and canonical-pair four-stage compiler, together with the closed gate, exact counts, axioms, and blockers.</p></article>
+        <article class="card"><h3>Current ten-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership, all-input local framer, and canonical-pair four-stage compiler, together with the closed gate, exact counts, axioms, and blockers.</p></article>
         <article class="card accent"><h3>Historical 56-page manuscript</h3><p>The old direct-claim manuscript is preserved at tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, with provenance in <code>archive/legacy-v0/ARCHIVE.json</code>. It is not current authority.</p></article>
       </div>
     </section>
