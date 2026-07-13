@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-12-24</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-25</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>305398f65fe313a765351da012c2d167433591f114856422a62866918f3abdf6</code>
+        <code>0a41a771cff082c64c4afd96025a59b66b82b8110b5a6781fe45ae47544a6a97</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 5,076 exported public declarations, including 2,125 theorem-kind declarations and 2,024 assumption-free theorem-kind declarations across 46 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, bounded internal pipeline-stage bridges, and the local handoff-to-terminal suffix; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 5,096 exported public declarations, including 2,143 theorem-kind declarations and 2,042 assumption-free theorem-kind declarations across 46 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and the full four-stage terminal trace for a caller-supplied exact target execution; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>CNFSAT in NP checked</span>
-          <span>local terminal suffix checked</span>
+          <span>supplied terminal trace checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. The local handoff-to-terminal suffix launches distinct accepting and rejecting packer copies and preserves raw <code>outputBits</code> within <code>18*m^2 + 36*m + 12</code> compiled steps. The earlier ordinary-input trace has not been transported into that extended machine. Target termination, complete raw refinement, and an external input-size polynomial remain absent. The CNF-SAT theorem does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For a caller-supplied exact target execution, the ordinary paired-input trace is transported through framing, simulation, represented handoff, terminal launch, and raw-output packing with exact verdict and <code>machineOutput</code>; a supplied stuck nonhalting endpoint remains timeout. Target termination, uniform all-input refinement, and an external input-size polynomial remain absent. The CNF-SAT theorem does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -119,7 +119,7 @@ concretePublicationGate.passed = false</pre>
         </a>
         <div class="artifact-meta">
           <h2>Current formal status report</h2>
-          <p>Nine pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
+          <p>Ten pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
         </div>
       </aside>
     </div>

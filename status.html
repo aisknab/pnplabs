@@ -37,7 +37,7 @@
     <section class="page-hero">
       <span class="eyebrow">Compiled Lean inventory · 2026-07-12</span>
       <h1>The concrete publication gate is closed.</h1>
-      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Nine scoped milestones are earned, including universal concrete CNF-SAT verifier correctness, <code>CNFSAT ∈ NP</code>, collision-free pipeline state namespaces, bounded internal stage bridges, and a local handoff-to-terminal suffix. The earlier ordinary-input trace is not transported into the extended terminal machine; target termination, complete raw refinement, CNF-SAT in P, NP-completeness, and P = NP remain unproved.</p>
+      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Nine scoped milestones are earned, including universal concrete CNF-SAT verifier correctness, <code>CNFSAT ∈ NP</code>, and—for a caller-supplied exact target execution—the complete four-stage terminal trace. Target termination, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, and P = NP remain unproved.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a>
         <a class="btn secondary" href="public/pnp-status.json">Open current status</a>
@@ -65,9 +65,9 @@ concretePublicationGate.passed = false</pre>
     <section class="section compact">
       <div class="section-head">
         <div><div class="section-label">Compiled environment</div><h2>Exact inventory counts</h2></div>
-        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-12-24</code>; SHA-256 <code>305398f65fe313a765351da012c2d167433591f114856422a62866918f3abdf6</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
+        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-25</code>; SHA-256 <code>0a41a771cff082c64c4afd96025a59b66b82b8110b5a6781fe45ae47544a6a97</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
       </div>
-      <p data-formal-inventory-counts><strong>5,076</strong> public declarations; <strong>2,125</strong> theorem-kind declarations; <strong>2,024</strong> assumption-free theorem-kind declarations; <strong>956</strong> private compiler auxiliaries excluded; <strong>46</strong> modules; <strong>4</strong> project axioms.</p>
+      <p data-formal-inventory-counts><strong>5,096</strong> public declarations; <strong>2,143</strong> theorem-kind declarations; <strong>2,042</strong> assumption-free theorem-kind declarations; <strong>957</strong> private compiler auxiliaries excluded; <strong>46</strong> modules; <strong>4</strong> project axioms.</p>
       <p>The inventory is emitted from Lean environment constants and axiom collection. It is not inferred from source text, JSON claims, checker acceptance, or report prose.</p>
     </section>
 
@@ -77,7 +77,7 @@ concretePublicationGate.passed = false</pre>
         <p>The static rows below are conservative fallback copy. When validation succeeds, JavaScript replaces them from the exact status payload.</p>
       </div>
       <div class="grid three path" data-formal-milestones>
-        <article class="card" data-milestone-id="concrete-machine-cost-kernel" data-earned="true"><h3>Formalized foundation only: Concrete machine, bounded stage bridges, and local terminal suffix</h3><p>Executable bitstrings and codecs, finite rule-list semantics, collision-free stage namespaces, exact launch transitions, and accept/reject trace transport through the internal represented-output handoff. A local suffix launches distinct accepting and rejecting packer copies, preserves raw <code>outputBits</code>, and has compiled bound <code>18*m^2 + 36*m + 12</code>.</p><p><strong>Boundary:</strong> The earlier bridge still requires a supplied exact target run and its ordinary-input trace has not been transported into the extended terminal machine; there is no target-termination theorem, complete raw refinement, or external input-size polynomial.</p></article>
+        <article class="card" data-milestone-id="concrete-machine-cost-kernel" data-earned="true"><h3>Formalized foundation only: Supplied four-stage terminal traces</h3><p>For a caller-supplied exact accepting or rejecting target execution, the ordinary paired-input trace runs through framing, simulation, represented handoff, terminal launch, and raw-output packing in one finite machine with exact verdict and <code>machineOutput</code>. A supplied stuck nonhalting endpoint remains timeout.</p><p><strong>Boundary:</strong> The exact cost still depends on the supplied source-step count and final output length; there is no target-termination theorem, uniform all-input raw refinement, or external input-size polynomial.</p></article>
         <article class="card" data-milestone-id="concrete-complexity-classes" data-earned="true"><h3>Formalized with machine link pending: Concrete P, NP, and polynomial reductions</h3><p>Finite charged decision, verifier, and function pipelines grounded in concrete machine leaves, with polynomial certificate, runtime, and output bounds.</p><p><strong>Boundary:</strong> The pipeline is not yet compiled or refined to one raw machine; concrete SAT and the root theorem remain absent.</p></article>
         <article class="card" data-milestone-id="concrete-cnf-universal-verifier" data-earned="true"><h3>Formalized: Concrete universal CNF-SAT verifier and NP membership</h3><p>An explicit paired finite-machine verifier with formula and assignment decoders, exact accept/reject semantics, no timeout at a polynomial fuel bound, and <code>CNFSAT ∈ NP</code> via <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code>.</p><p><strong>Boundary:</strong> This does not prove CNF-SAT in P, NP-completeness, or P = NP.</p></article>
         <article class="card" data-milestone-id="direct-wire-semantics" data-earned="true"><h3>Formalized: Typed direct-wire NAND semantics</h3><p>Typed topological Boolean NAND programs and ordered multi-output direct-wire semantics.</p><p><strong>Boundary:</strong> This does not establish circuit minimization, SAT, or P = NP.</p></article>
@@ -124,7 +124,7 @@ concretePublicationGate.passed = false</pre>
       <div class="section-label">Current and historical reports</div>
       <h2>Do not conflate the two documents</h2>
       <div class="grid two path">
-        <article class="card"><h3>Current ten-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership, bounded internal pipeline bridges, and local handoff-to-terminal suffix, together with the closed gate, exact counts, axioms, and blockers.</p></article>
+        <article class="card"><h3>Current ten-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership and supplied four-stage terminal traces, together with the closed gate, exact counts, axioms, and blockers.</p></article>
         <article class="card accent"><h3>Historical 56-page manuscript</h3><p>The old direct-claim manuscript is preserved at tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, with provenance in <code>archive/legacy-v0/ARCHIVE.json</code>. It is not current authority.</p></article>
       </div>
     </section>

@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '305398f65fe313a765351da012c2d167433591f114856422a62866918f3abdf6');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '0a41a771cff082c64c4afd96025a59b66b82b8110b5a6781fe45ae47544a6a97');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -149,13 +149,13 @@ test('local terminal suffix status cannot be widened to a complete compiler', ()
     .axioms = ['PNP.ForgedAxiom'];
   assert.equal(validation.validateInventory(assumedTerminalBridge), false);
 
-  const widenedTrace = structuredClone(status);
-  widenedTrace.leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized = true;
-  assert.equal(validation.validateStatus(widenedTrace, inventory), false);
+  const removedTrace = structuredClone(status);
+  removedTrace.leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized = false;
+  assert.equal(validation.validateStatus(removedTrace, inventory), false);
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '372c0682e49be43fa1a05808b7bebbe8e609a0ec41365f4537958b5d3eb8b415'/);
+  assert.match(source, /const STATUS_SHA256 = '8679a9c871804296ff7d783b610803e18c7d3c93a6d2427a4b2b2cee813bf774'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -180,7 +180,7 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /5,076/);
+  assert.match(statusPage, /5,096/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
