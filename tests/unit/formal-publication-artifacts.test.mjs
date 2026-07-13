@@ -40,17 +40,17 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "fb9674949679a137b7ce790c1522efaecbe240ce");
+  assert.equal(result.coreCommit, "305443db5a3954be42d1d56912c7f64232efff2a");
 });
 
-test("current release is pinned, ten-page, exposes only earned CNF-SAT, all-input framer, and canonical-pair compiler results, and fails closed", () => {
+test("current release is pinned, nine-page, exposes only earned CNF-SAT and all-input compiler results, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "fb9674949679a137b7ce790c1522efaecbe240ce");
-  assert.equal(release.source.proofCommit, "ec2cd21e3848c383c3e75ca9ba2caec27f6d616f");
-  assert.equal(release.source.tree, "6134fcd3c007bbcb23d46f273e8cf7dca5172d1b");
+  assert.equal(release.source.commit, "305443db5a3954be42d1d56912c7f64232efff2a");
+  assert.equal(release.source.proofCommit, "80192df1874c4a0dc82141944b5d289c7577a2e4");
+  assert.equal(release.source.tree, "c4f9d18b843986a8d964f35c9e13461cf57337a0");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 10);
+  assert.equal(release.artifacts.report.pageCount, 9);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -109,7 +109,7 @@ test("current release is pinned, ten-page, exposes only earned CNF-SAT, all-inpu
   assert.equal(release.earnedBoundary.pipelinePairedCompilerAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.pipelinePairedCompilerAuditedDeclarationCount, 28);
   assert.equal(release.earnedBoundary.pipelineCanonicalPairCompilationFormalized, true);
-  assert.equal(release.earnedBoundary.pipelineMalformedInputBehaviorFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineMalformedInputBehaviorFormalized, true);
   assert.equal(release.earnedBoundary.pipelinePairedVerdictTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq");
   assert.equal(release.earnedBoundary.pipelinePairedVerdictKernelTypeSha256, "99b8ecf29c6542e9646f70d9f973e99bd5a2ed8a18563b929213a9af38474731");
   assert.equal(release.earnedBoundary.pipelinePairedMachineOutputTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq");
@@ -119,8 +119,26 @@ test("current release is pinned, ten-page, exposes only earned CNF-SAT, all-inpu
   assert.equal(release.earnedBoundary.pipelinePairedAcceptsTheorem, "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff");
   assert.equal(release.earnedBoundary.pipelinePairedAcceptsKernelTypeSha256, "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9");
   assert.deepEqual(release.earnedBoundary.pipelinePairedCompilerAxiomClosure, []);
+  assert.equal(release.earnedBoundary.pipelinePairedOutputSizePolynomial, "B(m) = m + p(m) + 1");
+  assert.equal(release.earnedBoundary.pipelinePairedRawTimePolynomial, "Rpair(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))");
+  assert.equal(release.earnedBoundary.pipelineCompilerAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineCompilerAuditedDeclarationCount, 29);
+  assert.equal(release.earnedBoundary.pipelineAllInputCompilationFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineCompilerCorrectTheorem, "PNP.Concrete.PipelineCompiler.pipeline_correct");
+  assert.equal(release.earnedBoundary.pipelineCompilerCorrectKernelTypeSha256, "e1ccd198403d41933324af1c52048c865943947c5bbd40dd94e11827b08c2303");
+  assert.equal(release.earnedBoundary.pipelineVerdictTheorem, "PNP.Concrete.PipelineCompiler.pipeline_boundedDecide_eq");
+  assert.equal(release.earnedBoundary.pipelineVerdictKernelTypeSha256, "1bafe91bba94e65a7ad654f4624f305c0ae01b3e6d656af0dd2e752d373ce87e");
+  assert.equal(release.earnedBoundary.pipelineMachineOutputTheorem, "PNP.Concrete.PipelineCompiler.pipeline_machineOutput_eq");
+  assert.equal(release.earnedBoundary.pipelineMachineOutputKernelTypeSha256, "45e02fa1e6e6b0bcbc422c3b4fd797608b875727d22b79d6f7814e1f4f0d3da7");
+  assert.equal(release.earnedBoundary.pipelineNoTimeoutTheorem, "PNP.Concrete.PipelineCompiler.pipeline_ne_timeout");
+  assert.equal(release.earnedBoundary.pipelineNoTimeoutKernelTypeSha256, "ed95c33d4fa998d79057537cd2adf847548a79b7ee9a45020b01620868273b3a");
+  assert.equal(release.earnedBoundary.pipelineAcceptsTheorem, "PNP.Concrete.PipelineCompiler.pipeline_accepts_iff");
+  assert.equal(release.earnedBoundary.pipelineAcceptsKernelTypeSha256, "94e43c664b4d185e48553ab25541925830fec7086fcbbab5215dacdcde1af6a6");
+  assert.equal(release.earnedBoundary.pipelineAllInputStuckTimeoutTheorem, "PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact");
+  assert.equal(release.earnedBoundary.pipelineAllInputStuckTimeoutKernelTypeSha256, "a6edef0532eb89036d0e6813cffb94b321f9160a08035671eb411c813ef0a3de");
+  assert.deepEqual(release.earnedBoundary.pipelineCompilerAxiomClosure, []);
   assert.equal(release.earnedBoundary.pipelineOutputSizePolynomial, "B(m) = m + p(m) + 1");
-  assert.equal(release.earnedBoundary.pipelineRawTimePolynomial, "R(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))");
+  assert.equal(release.earnedBoundary.pipelineRawTimePolynomial, "R(m) = totalInputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))");
   assert.equal(release.earnedBoundary.pipelineRawRefinementFormalized, false);
   assert.equal(release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized, true);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
