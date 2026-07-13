@@ -63,17 +63,21 @@ function makeProject(t) {
     leanConcretePipelineTerminalBridgeAxiomAuditPassed: true,
     leanConcretePipelineTerminalBridgeAuditedDeclarationCount: 59,
     leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized: true,
+    leanConcretePipelinePairedCompilerAxiomAuditPassed: true,
+    leanConcretePipelinePairedCompilerAuditedDeclarationCount: 28,
+    leanConcretePipelineCanonicalPairCompilationFormalized: true,
+    leanConcretePipelineMalformedInputBehaviorFormalized: false,
     leanConcretePipelineRawRefinementFormalized: false,
-    leanConcretePipelineExternalInputSizePolynomialFormalized: false,
+    leanConcretePipelineExternalInputSizePolynomialFormalized: true,
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5096,
-    theoremCount: 2143,
-    assumptionFreeTheoremCount: 2042,
-    sourceClosureModuleCount: 46,
+    declarationCount: 5125,
+    theoremCount: 2168,
+    assumptionFreeTheoremCount: 2067,
+    sourceClosureModuleCount: 47,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
@@ -95,6 +99,26 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineTerminalBridge",
       kind: "theorem",
       axioms: []
+    }, {
+      name: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq",
+      module: "PNP.Concrete.PipelinePairedCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq",
+      module: "PNP.Concrete.PipelinePairedCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_ne_timeout",
+      module: "PNP.Concrete.PipelinePairedCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff",
+      module: "PNP.Concrete.PipelinePairedCompiler",
+      kind: "theorem",
+      axioms: []
     }],
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
@@ -110,7 +134,11 @@ function makeProject(t) {
       "PNP.Concrete.PipelineTerminalBridge.acceptingSuppliedTrace_workRunExact_of_rawRunExact": "e225169a3de16b86bbd99c9b230a214425ea53886b6ed4dddd8b8d47ea290f29",
       "PNP.Concrete.PipelineTerminalBridge.rejectingSuppliedTrace_workRunExact_of_rawRunExact": "31afb03af96fcb1c3c5f3d0e5a0fd4276b8b9707ae8cde7972a812c52b22938c",
       "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_accept_of_rawRunExact": "dacbb94707b8cab5e553ca3cbc01c02130827940ef487f4981c96799ab6d1a01",
-      "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact": "05a89482ad3ab866041fd93caf8a2a9727df0956794e3b5a1849df74dc4eb7bd"
+      "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact": "05a89482ad3ab866041fd93caf8a2a9727df0956794e3b5a1849df74dc4eb7bd",
+      "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq": "99b8ecf29c6542e9646f70d9f973e99bd5a2ed8a18563b929213a9af38474731",
+      "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq": "7640e6416b0b4ebf12fa4619cfcff4d242af337e82416c372875afbfb2986267",
+      "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_ne_timeout": "a59b8e38ee0be8c579aab8989c32c53cdf20c59168c6d8a5310db9b6bbb225ab",
+      "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff": "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9"
     }
   });
 
@@ -156,7 +184,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 10,
+        pageCount: 9,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -216,8 +244,23 @@ function makeProject(t) {
       pipelineSuppliedRejectMachineOutputTheorem: "PNP.Concrete.PipelineTerminalBridge.machineOutput_compileTerminalBridge_reject_of_rawRunExact",
       pipelineSuppliedRejectMachineOutputKernelTypeSha256: "05a89482ad3ab866041fd93caf8a2a9727df0956794e3b5a1849df74dc4eb7bd",
       pipelinePriorTraceTransportToTerminalBridgeFormalized: true,
+      pipelinePairedCompilerAxiomAuditPassed: true,
+      pipelinePairedCompilerAuditedDeclarationCount: 28,
+      pipelineCanonicalPairCompilationFormalized: true,
+      pipelineMalformedInputBehaviorFormalized: false,
+      pipelinePairedVerdictTheorem: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_boundedDecide_eq",
+      pipelinePairedVerdictKernelTypeSha256: "99b8ecf29c6542e9646f70d9f973e99bd5a2ed8a18563b929213a9af38474731",
+      pipelinePairedMachineOutputTheorem: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq",
+      pipelinePairedMachineOutputKernelTypeSha256: "7640e6416b0b4ebf12fa4619cfcff4d242af337e82416c372875afbfb2986267",
+      pipelinePairedNoTimeoutTheorem: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_ne_timeout",
+      pipelinePairedNoTimeoutKernelTypeSha256: "a59b8e38ee0be8c579aab8989c32c53cdf20c59168c6d8a5310db9b6bbb225ab",
+      pipelinePairedAcceptsTheorem: "PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff",
+      pipelinePairedAcceptsKernelTypeSha256: "719c9d81b90ba7938ae9cd5485fc9d2cc0e0a14a6b98c118cfeba39d788a75d9",
+      pipelinePairedCompilerAxiomClosure: [],
+      pipelineOutputSizePolynomial: "B(m) = m + p(m) + 1",
+      pipelineRawTimePolynomial: "R(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
       pipelineRawRefinementFormalized: false,
-      pipelineExternalInputSizePolynomialFormalized: false
+      pipelineExternalInputSizePolynomialFormalized: true
     },
     historicalArchive: {
       status: "historical-quarantined-not-current-authority",
@@ -335,6 +378,34 @@ test("rejects removal of the supplied prior-trace transport", (t) => {
   project.release.earnedBoundary.pipelinePriorTraceTransportToTerminalBridgeFormalized = false;
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   expectFailure(project, /formal-publication terminal-bridge supplied-trace boundary mismatch/);
+});
+
+test("rejects a canonical-pair compiler widened to arbitrary malformed inputs", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelineMalformedInputBehaviorFormalized = true;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication manifest overstates the all-input pipeline compiler/);
+});
+
+test("rejects removal of the canonical-pair external polynomial", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized = false;
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication manifest overstates the all-input pipeline compiler/);
+});
+
+test("rejects drift in the canonical-pair runtime polynomial", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelineRawTimePolynomial = "R(m) = 0";
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /formal-publication canonical-pair polynomial evidence mismatch/);
+});
+
+test("rejects a drifted canonical-pair theorem fingerprint", (t) => {
+  const project = makeProject(t);
+  project.release.earnedBoundary.pipelinePairedVerdictKernelTypeSha256 = "0".repeat(64);
+  write(project.root, "downloads/formal-publication-release.json", json(project.release));
+  expectFailure(project, /canonical-pair verdict evidence mismatch/);
 });
 
 test("skips only the cross-repository phase when a source checkout is optional", (t) => {

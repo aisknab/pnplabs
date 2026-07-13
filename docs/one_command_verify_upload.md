@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 6459cb433a2c788e16a8da05f6487e23728875ff
+git checkout cc3c004f3498a0f28b8afda688802d322b9e5c21
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, the assumption-free collision-free namespace, and—for a caller-supplied exact target execution—the complete ordinary paired-input trace through framing, simulation, represented handoff, terminal launch, and raw-output packing. A supplied stuck nonhalting endpoint remains timeout. They do not prove target termination, uniform all-input raw refinement, an external input-size polynomial, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem and the literal four-stage raw compiler that, for every proof-bearing polynomial-time target and canonical `BitString.pair`, preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials. They do not prove malformed-input behavior, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
 
 ## Freeze controls
 

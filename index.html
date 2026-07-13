@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-25</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-13-26</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>0a41a771cff082c64c4afd96025a59b66b82b8110b5a6781fe45ae47544a6a97</code>
+        <code>ed67c989a5e6955d30d2a9f8d121e102c08de43a429c5238bb5b4944119f49b6</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 5,096 exported public declarations, including 2,143 theorem-kind declarations and 2,042 assumption-free theorem-kind declarations across 46 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and the full four-stage terminal trace for a caller-supplied exact target execution; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 5,125 exported public declarations, including 2,168 theorem-kind declarations and 2,067 assumption-free theorem-kind declarations across 47 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and a uniform four-stage compiler for proof-bearing target machines on canonical paired inputs; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>CNFSAT in NP checked</span>
-          <span>supplied terminal trace checked</span>
+          <span>canonical-pair compiler checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For a caller-supplied exact target execution, the ordinary paired-input trace is transported through framing, simulation, represented handoff, terminal launch, and raw-output packing with exact verdict and <code>machineOutput</code>; a supplied stuck nonhalting endpoint remains timeout. Target termination, uniform all-input refinement, and an external input-size polynomial remain absent. The CNF-SAT theorem does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For every proof-bearing polynomial-time target and every canonical <code>BitString.pair</code>, one literal four-stage raw machine preserves the exact verdict and <code>machineOutput</code>, cannot time out, and is bounded by explicit external output and runtime polynomials. Malformed-input behavior and an all-bitstring <code>RawRefinement</code> remain absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current ten-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current nine-page report</a>
         </div>
       </div>
 
@@ -119,7 +119,7 @@ concretePublicationGate.passed = false</pre>
         </a>
         <div class="artifact-meta">
           <h2>Current formal status report</h2>
-          <p>Ten pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
+          <p>Nine pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
         </div>
       </aside>
     </div>
