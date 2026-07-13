@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-13-26';
-const STATUS_SHA256 = '382e6d66a2ca0f6bb46e94a7e57f7bbd682763057045dc16d274f0a84822fe8b';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-13-PIPELINE-CANONICAL-PAIR-26';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-13-26';
-const INVENTORY_SHA256 = 'ed67c989a5e6955d30d2a9f8d121e102c08de43a429c5238bb5b4944119f49b6';
-const SOURCE_CLOSURE_SHA256 = '28fd37ce1d55d25fa1c9a354d6c698fa5be8207ab3606d6441efb988387d2730';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-13-28';
+const STATUS_SHA256 = '1df549b65431dc1740ec9f6452a853951a41cffc5b16ce77961e71fb7f14268a';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-13-PIPELINE-ALL-INPUT-FRAMER-27';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-13-28';
+const INVENTORY_SHA256 = 'fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121';
+const SOURCE_CLOSURE_SHA256 = '6b6558134e01809a69181416bf121cf3250dee4e468e6bb0efd7351cb5e5b1a6';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 5125,
-  theorems: 2168,
-  assumptionFreeTheorems: 2067,
-  excludedPrivateDeclarations: 961,
-  modules: 47,
+  declarations: 5197,
+  theorems: 2197,
+  assumptionFreeTheorems: 2096,
+  excludedPrivateDeclarations: 1032,
+  modules: 48,
   axioms: 4,
 });
 
@@ -110,6 +110,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcretePipelineTerminalBridgeAxiomAuditPassed: false,
   leanConcretePipelineTerminalBridgeAuditedDeclarationCount: 0,
   leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized: false,
+  leanConcretePipelineInputFramerAxiomAuditPassed: false,
+  leanConcretePipelineInputFramerAuditedDeclarationCount: 0,
+  leanConcretePipelineAllInputFramingFormalized: false,
   leanConcretePipelinePairedCompilerAxiomAuditPassed: false,
   leanConcretePipelinePairedCompilerAuditedDeclarationCount: 0,
   leanConcretePipelineCanonicalPairCompilationFormalized: false,
@@ -141,6 +144,9 @@ leanConcretePipelineTerminalOutputPackerConnectedToBridgeEndpointFormalized = ${
 leanConcretePipelineTerminalBridgeAxiomAuditPassed = ${payload.leanConcretePipelineTerminalBridgeAxiomAuditPassed ?? false}
 leanConcretePipelineTerminalBridgeAuditedDeclarationCount = ${payload.leanConcretePipelineTerminalBridgeAuditedDeclarationCount ?? 0}
 leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized = ${payload.leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized ?? false}
+leanConcretePipelineInputFramerAxiomAuditPassed = ${payload.leanConcretePipelineInputFramerAxiomAuditPassed ?? false}
+leanConcretePipelineInputFramerAuditedDeclarationCount = ${payload.leanConcretePipelineInputFramerAuditedDeclarationCount ?? 0}
+leanConcretePipelineAllInputFramingFormalized = ${payload.leanConcretePipelineAllInputFramingFormalized ?? false}
 leanConcretePipelinePairedCompilerAxiomAuditPassed = ${payload.leanConcretePipelinePairedCompilerAxiomAuditPassed ?? false}
 leanConcretePipelinePairedCompilerAuditedDeclarationCount = ${payload.leanConcretePipelinePairedCompilerAuditedDeclarationCount ?? 0}
 leanConcretePipelineCanonicalPairCompilationFormalized = ${payload.leanConcretePipelineCanonicalPairCompilationFormalized ?? false}
@@ -187,13 +193,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 276,
-    definition: 2439,
-    inductive: 119,
+    constructor: 284,
+    definition: 2470,
+    inductive: 121,
     opaque: 0,
     quotient: 0,
-    recursor: 119,
-    theorem: 2168,
+    recursor: 121,
+    theorem: 2197,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -207,6 +213,10 @@ function validateInventory(inventory) {
   const pairedOutput = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelinePairedCompiler.pairedPipeline_machineOutput_eq');
   const pairedTimeout = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelinePairedCompiler.pairedPipeline_ne_timeout');
   const pairedAccepts = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelinePairedCompiler.pairedPipeline_accepts_iff');
+  const totalFramerTrace = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineInputFramer.totalInputFramer_workRunExact');
+  const totalFramerEndpoint = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_represents');
+  const totalFramerBound = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_encoded_rawTimeBound');
+  const totalFramerNoTimeout = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout');
   return membership?.kind === 'theorem'
     && membership.module === 'PNP.Concrete.CNFWorkUniversalCorrectness'
     && membership.kernelType === 'Lean.Expr.app (Lean.Expr.const `PNP.Concrete.InNP []) (Lean.Expr.const `PNP.Concrete.CNFSAT [])'
@@ -234,7 +244,16 @@ function validateInventory(inventory) {
     && pairedAccepts?.kind === 'theorem'
     && pairedAccepts.module === 'PNP.Concrete.PipelinePairedCompiler'
     && sameJson(pairedAccepts.axioms, [])
-    && inventory.milestoneCandidates.length === 149
+    && totalFramerTrace?.kind === 'theorem'
+    && totalFramerTrace.module === 'PNP.Concrete.PipelineInputFramer'
+    && sameJson(totalFramerTrace.axioms, [])
+    && totalFramerEndpoint?.kind === 'theorem'
+    && sameJson(totalFramerEndpoint.axioms, [])
+    && totalFramerBound?.kind === 'theorem'
+    && sameJson(totalFramerBound.axioms, [])
+    && totalFramerNoTimeout?.kind === 'theorem'
+    && sameJson(totalFramerNoTimeout.axioms, [])
+    && inventory.milestoneCandidates.length === 157
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -382,6 +401,9 @@ function validateStatus(status, inventory) {
     && status.leanConcretePipelineTerminalBridgeAxiomAuditPassed === true
     && status.leanConcretePipelineTerminalBridgeAuditedDeclarationCount === 59
     && status.leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized === true
+    && status.leanConcretePipelineInputFramerAxiomAuditPassed === true
+    && status.leanConcretePipelineInputFramerAuditedDeclarationCount === 70
+    && status.leanConcretePipelineAllInputFramingFormalized === true
     && status.leanConcretePipelinePairedCompilerAxiomAuditPassed === true
     && status.leanConcretePipelinePairedCompilerAuditedDeclarationCount === 28
     && status.leanConcretePipelineCanonicalPairCompilationFormalized === true
@@ -489,17 +511,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 5,125 exported public declarations, including 2,168 theorem-kind declarations and 2,067 assumption-free theorem-kind declarations across 47 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and a uniform four-stage compiler for proof-bearing target machines on canonical paired inputs; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 5,197 exported public declarations, including 2,197 theorem-kind declarations and 2,096 assumption-free theorem-kind declarations across 48 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, a finite framer for every raw bitstring, and a uniform four-stage compiler for proof-bearing target machines on canonical paired inputs; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>CNFSAT in NP checked</span><span>canonical-pair compiler checked</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>all-input framer checked</span><span>canonical-pair compiler checked</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For every proof-bearing polynomial-time target and every canonical <code>BitString.pair</code>, one literal four-stage raw machine preserves the exact verdict and <code>machineOutput</code>, cannot time out, and is bounded by explicit external output and runtime polynomials. Malformed-input behavior and an all-bitstring <code>RawRefinement</code> remain absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. A literal finite framer accepts every raw bitstring, including empty and odd-length inputs, within <code>6*m*m + 39*m + 75</code> raw steps. The complete four-stage compiler remains proved only for canonical <code>BitString.pair</code> inputs; malformed-input behavior and an all-bitstring pipeline <code>RawRefinement</code> remain absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -561,7 +583,7 @@ function insertAfterPageHero(id, html) {
 function ensureFormalVerificationCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction verification',
-    title: 'Verify the compiled inventory and current nine-page report.',
+    title: 'Verify the compiled inventory and current ten-page report.',
     lede: 'The target theorem is not established. The current report is generated from the reviewed compiled inventory; digest checks establish file identity, not mathematical truth.',
     primaryHref: 'public/pnp-status.json',
     primaryText: 'Open current status JSON',
@@ -580,7 +602,7 @@ projectSpecificAxiomsRemaining = true</pre>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check status and inventory together</h3><p>The browser fetches both payloads concurrently, hashes the raw inventory bytes, validates exact counts and coordinates, and rejects inconsistent gate or milestone rows.</p></article>
         <article class="card"><h3>Build and inventory Lean</h3><p>Run <code>lake build PNP</code>, <code>npm run formal:inventory:check</code>, and <code>npm run formal:publication:check</code> in the source repository.</p></article>
-        <article class="card"><h3>Check current report identity</h3><p>The nine-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
+        <article class="card"><h3>Check current report identity</h3><p>The ten-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
@@ -590,7 +612,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP and a complete four-stage raw compiler for proof-bearing target machines on canonical paired inputs, with exact verdict, output, no-timeout, and external polynomial bounds. It does not establish malformed-input behavior, uniform all-input pipeline refinement, CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current nine-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, a finite accepting framer for every raw bitstring, and a complete four-stage raw compiler for proof-bearing target machines on canonical paired inputs. It does not carry arbitrary non-pair inputs through the full pipeline or establish malformed-input behavior, uniform all-input pipeline refinement, CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current ten-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -600,7 +622,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Nine scoped milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, and the full four-stage compiler on every canonical paired input for a proof-bearing polynomial-time target. Malformed-input behavior, uniform all-input refinement, the deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Nine scoped milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, a local framer for every raw bitstring, and the full four-stage compiler on every canonical paired input for a proof-bearing polynomial-time target. Full-pipeline malformed-input behavior, uniform all-input refinement, the deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -619,7 +641,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 5,125-declaration inventory, 149 pinned theorem candidates, whole-source closure, nine earned scoped milestones, three unearned global milestones, and concrete publication gate. The four-stage compiler is uniform only on canonical <code>BitString.pair</code> inputs for an already proof-bearing polynomial-time target; malformed-input behavior and all-input refinement remain absent. The earned CNF-SAT theorem is NP membership only. Four project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 5,197-declaration inventory, 157 pinned theorem candidates, whole-source closure, nine earned scoped milestones, three unearned global milestones, and concrete publication gate. The finite framer handles every raw bitstring locally, but the four-stage compiler is uniform only on canonical <code>BitString.pair</code> inputs for an already proof-bearing polynomial-time target; full-pipeline malformed-input behavior and all-input refinement remain absent. The earned CNF-SAT theorem is NP membership only. Four project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

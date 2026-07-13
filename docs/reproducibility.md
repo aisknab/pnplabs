@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 248,792 | `3e42f0cdca41740417d33f29afbd5035549d32ebd5bcab3d25aaa6aff7e3c84e` |
-| `downloads/canonical-proof-report.pdf` | 248,792 | `3e42f0cdca41740417d33f29afbd5035549d32ebd5bcab3d25aaa6aff7e3c84e` |
-| `downloads/canonical_proof_report.tex` | 18,664 | `abe7a4cfde0bfb194c520209273f3f5ad0c68e4ad7f15c02fd0c7315196b7b8d` |
-| `downloads/canonical-proof-report.tex` | 18,664 | `abe7a4cfde0bfb194c520209273f3f5ad0c68e4ad7f15c02fd0c7315196b7b8d` |
-| `public/pnp-status.json` | 123,435 | `382e6d66a2ca0f6bb46e94a7e57f7bbd682763057045dc16d274f0a84822fe8b` |
-| `public/pnp-theorem-inventory.json` | 1,184,322 | `ed67c989a5e6955d30d2a9f8d121e102c08de43a429c5238bb5b4944119f49b6` |
+| `downloads/canonical_proof_report.pdf` | 251,451 | `5aa36153000ef8ef99fa0060088b2d5c9d7ea5549d683517beda8abf7d1d72ac` |
+| `downloads/canonical-proof-report.pdf` | 251,451 | `5aa36153000ef8ef99fa0060088b2d5c9d7ea5549d683517beda8abf7d1d72ac` |
+| `downloads/canonical_proof_report.tex` | 19,161 | `4768beadfbb1fa922962d1879eb22ee1769a8e00da1db92db60501f78a4a1fe2` |
+| `downloads/canonical-proof-report.tex` | 19,161 | `4768beadfbb1fa922962d1879eb22ee1769a8e00da1db92db60501f78a4a1fe2` |
+| `public/pnp-status.json` | 129,216 | `1df549b65431dc1740ec9f6452a853951a41cffc5b16ce77961e71fb7f14268a` |
+| `public/pnp-theorem-inventory.json` | 1,205,195 | `fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121` |
 
-The PDF must have nine A4 pages. Both filename styles must be byte-identical.
+The PDF must have ten A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout cc3c004f3498a0f28b8afda688802d322b9e5c21
+git -C ../pnp checkout fb9674949679a137b7ce790c1522efaecbe240ce
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 5,125 public declarations, 2,168 theorem-kind declarations,
-2,067 assumption-free theorem-kind declarations, 961 excluded private auxiliaries, 47 modules, and
-four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the namespace, stage-bridge, terminal-packer, terminal-bridge, and paired-compiler audits must cover 39, 56, 69, 59, and 28 declarations respectively with empty axiom closure. For every proof-bearing polynomial-time target and canonical `BitString.pair`, the literal pipeline has exact verdict and `machineOutput`, cannot time out, and uses `B(m) = m + p(m) + 1` plus the explicit external runtime polynomial `R(m)`. Malformed-input behavior and uniform all-input raw refinement must remain false; CNF-SAT in P and NP-completeness must remain false.
+Expected compiled inventory counts are 5,197 public declarations, 2,197 theorem-kind declarations,
+2,096 assumption-free theorem-kind declarations, 1,032 excluded private auxiliaries, 48 modules, and
+four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the input-framer, namespace, stage-bridge, terminal-packer, terminal-bridge, and paired-compiler audits must cover 70, 39, 56, 69, 59, and 28 declarations respectively with empty axiom closure. The literal input framer accepts every raw bitstring and is bounded by `6 * m * m + 39 * m + 75`. For every proof-bearing polynomial-time target and canonical `BitString.pair`, the complete literal pipeline has exact verdict and `machineOutput`, cannot time out, and uses `B(m) = m + p(m) + 1` plus the explicit external runtime polynomial `R(m)`. Full-pipeline malformed-input behavior and uniform all-input raw refinement must remain false; CNF-SAT in P and NP-completeness must remain false.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

@@ -19,6 +19,7 @@ rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
 leanConcreteCNFSATMembershipFormalized = true
+leanConcretePipelineAllInputFramingFormalized = true
 leanConcretePipelineCanonicalPairCompilationFormalized = true
 leanConcretePipelineExternalInputSizePolynomialFormalized = true
 leanConcretePipelineMalformedInputBehaviorFormalized = false
@@ -28,9 +29,9 @@ leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **5,125** exported public declarations across **47** modules, including **2,168** theorem-kind declarations and **2,067** assumption-free theorem-kind declarations. It excludes **961** private compiler auxiliaries and records **four** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **5,197** exported public declarations across **48** modules, including **2,197** theorem-kind declarations and **2,096** assumption-free theorem-kind declarations. It excludes **1,032** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 149 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Nine scoped milestones are earned. They include a concrete universal CNF-SAT verifier with exact accept/reject behavior, no timeout at its polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. They also include collision-free pipeline state namespaces and one literal four-stage raw compiler that, for every proof-bearing polynomial-time target and canonical `BitString.pair`, preserves exact verdict and `machineOutput`, cannot time out, and is bounded by explicit external polynomials `B(m) = m + p(m) + 1` and `R(m)`. All 28 reviewed paired-compiler declarations have empty axiom closure. Malformed and other arbitrary inputs outside the canonical-pair image have no specified theorem, so uniform all-input raw-machine refinement remains absent. CNF-SAT in P, CNF-SAT NP-completeness, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 157 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Nine scoped milestones are earned. They include a concrete universal CNF-SAT verifier with exact accept/reject behavior, no timeout at its polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. They also include a literal finite input framer that accepts every raw bitstring—including empty and odd-length inputs—within `6 * m * m + 39 * m + 75` compiled steps and reaches the represented endpoint. All 70 reviewed input-framer declarations have empty axiom closure. Separately, one literal four-stage raw compiler preserves exact verdict and `machineOutput`, cannot time out, and has explicit external polynomials `B(m) = m + p(m) + 1` and `R(m)` for every proof-bearing polynomial-time target and canonical `BitString.pair`. That complete compiler remains canonical-pair-only: no theorem transports arbitrary non-pair inputs from the framer through simulation, handoff, and terminal packing, so malformed-input behavior and uniform all-input raw-machine refinement remain absent. CNF-SAT in P, CNF-SAT NP-completeness, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while the required all-bitstring raw-machine refinement, concrete complexity machine link, and `PNP.Main.p_eq_np` remain absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
@@ -47,7 +48,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout cc3c004f3498a0f28b8afda688802d322b9e5c21
+git checkout fb9674949679a137b7ce790c1522efaecbe240ce
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -75,10 +76,12 @@ lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFWorkInputAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFVerifierAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteCNFWorkAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineInputFramerAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineStateNamespaceAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineStageBridgesAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcreteTerminalOutputPackerAxiomAudit.lean
 node --test audits/lean-concrete-pipeline-state-namespace0.test.mjs
+node --test audits/lean-concrete-pipeline-input-framer0.test.mjs
 node --test audits/lean-concrete-pipeline-stage-bridges0.test.mjs
 node --test audits/lean-concrete-terminal-output-packer0.test.mjs
 node --test audits/lean-concrete-pipeline-terminal-bridge0.test.mjs
@@ -123,7 +126,7 @@ The public status page is [`status.html`](status.html).
 - A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
 - The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
 - The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
-- The bundled canonical PDF and TeX are the current nine-page inventory-derived formal status report. They report `CNFSAT ∈ NP` and the complete four-stage compiler for proof-bearing polynomial-time targets on canonical paired inputs, while explicitly withholding malformed-input behavior, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, and P = NP.
+- The bundled canonical PDF and TeX are the current ten-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, the all-raw-input local framer, and the complete four-stage compiler for proof-bearing polynomial-time targets on canonical paired inputs, while explicitly withholding full-pipeline malformed-input behavior, uniform all-input raw refinement, CNF-SAT in P, NP-completeness, and P = NP.
 - A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 - The historical 56-page claim manuscript remains at tag `final-pnp-proof-report-hardened-7072f8d`, commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with provenance in `archive/legacy-v0/ARCHIVE.json`; it is never current authority.
 

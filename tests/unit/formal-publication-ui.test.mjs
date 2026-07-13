@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ed67c989a5e6955d30d2a9f8d121e102c08de43a429c5238bb5b4944119f49b6');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'fcc6b1b8133562a155455f29d9834910b58ef3584a49fb5ca2d428a2e9515121');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -99,7 +99,7 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
   assert.equal(validation.validateInventory(assumedMembership), false);
 });
 
-test('canonical-pair compiler status cannot be widened to an all-bitstring refinement', () => {
+test('all-input framer and canonical-pair compiler cannot be widened to an all-bitstring pipeline refinement', () => {
   for (const field of [
     'leanConcretePipelineRawRefinementFormalized',
     'leanConcretePipelineMalformedInputBehaviorFormalized',
@@ -121,6 +121,8 @@ test('canonical-pair compiler status cannot be widened to an all-bitstring refin
     'leanConcretePipelineTerminalOutputPackerAxiomAuditPassed',
     'leanConcretePipelineTerminalOutputPackerConnectedToBridgeEndpointFormalized',
     'leanConcretePipelineTerminalBridgeAxiomAuditPassed',
+    'leanConcretePipelineInputFramerAxiomAuditPassed',
+    'leanConcretePipelineAllInputFramingFormalized',
     'leanConcretePipelinePairedCompilerAxiomAuditPassed',
     'leanConcretePipelineCanonicalPairCompilationFormalized',
     'leanConcretePipelineExternalInputSizePolynomialFormalized',
@@ -156,6 +158,23 @@ test('canonical-pair compiler status cannot be widened to an all-bitstring refin
   removedTrace.leanConcretePipelinePriorTraceTransportToTerminalBridgeFormalized = false;
   assert.equal(validation.validateStatus(removedTrace, inventory), false);
 
+  const wrongFramerAuditCount = structuredClone(status);
+  wrongFramerAuditCount.leanConcretePipelineInputFramerAuditedDeclarationCount = 69;
+  assert.equal(validation.validateStatus(wrongFramerAuditCount, inventory), false);
+
+  for (const theorem of [
+    'PNP.Concrete.PipelineInputFramer.totalInputFramer_workRunExact',
+    'PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_represents',
+    'PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_encoded_rawTimeBound',
+    'PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout',
+  ]) {
+    const assumedFramer = structuredClone(inventory);
+    assumedFramer.milestoneCandidates
+      .find((candidate) => candidate.name === theorem)
+      .axioms = ['PNP.ForgedAxiom'];
+    assert.equal(validation.validateInventory(assumedFramer), false, theorem);
+  }
+
   const wrongPairedAuditCount = structuredClone(status);
   wrongPairedAuditCount.leanConcretePipelinePairedCompilerAuditedDeclarationCount = 27;
   assert.equal(validation.validateStatus(wrongPairedAuditCount, inventory), false);
@@ -175,7 +194,7 @@ test('canonical-pair compiler status cannot be widened to an all-bitstring refin
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '382e6d66a2ca0f6bb46e94a7e57f7bbd682763057045dc16d274f0a84822fe8b'/);
+  assert.match(source, /const STATUS_SHA256 = '1df549b65431dc1740ec9f6452a853951a41cffc5b16ce77961e71fb7f14268a'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -200,12 +219,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /5,125/);
+  assert.match(statusPage, /5,197/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /nine-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /ten-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);

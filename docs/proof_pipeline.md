@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 149 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 157 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 5,125 public declarations;
-- 2,168 theorem-kind declarations;
-- 2,067 assumption-free theorem-kind declarations;
+- 5,197 public declarations;
+- 2,197 theorem-kind declarations;
+- 2,096 assumption-free theorem-kind declarations;
 - 47 source-closure modules;
-- 961 excluded private compiler auxiliaries;
+- 1,032 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -53,7 +53,7 @@ The nine earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
-| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, and one literal four-stage raw compiler that preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials for every proof-bearing polynomial-time target and canonical paired input | Malformed and other arbitrary inputs outside the canonical-pair image have no specified theorem; uniform all-input raw refinement, the concrete machine link, CNF-SAT in P, NP-completeness, and `P = NP` remain absent |
+| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, a literal accepting framer for every raw bitstring with bound `6 * m * m + 39 * m + 75`, collision-free pipeline namespaces, and one literal four-stage raw compiler that preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials for every proof-bearing polynomial-time target and canonical paired input | No theorem carries arbitrary non-pair inputs from the local framer endpoint through simulation, handoff, and terminal packing; full-pipeline malformed-input behavior, uniform all-input raw refinement, the concrete machine link, CNF-SAT in P, NP-completeness, and `P = NP` remain absent |
 | Concrete P, NP, and reductions | Finite charged pipelines, bounded certificates, polynomial reductions, and the NP-complete-in-P implication | No all-bitstring raw refinement or concrete complexity machine link, concrete SAT completeness/decider, or root theorem |
 | Concrete universal CNF-SAT verifier | Exact formula/assignment decoding, universal accept/reject semantics, no timeout, and `CNFSAT ∈ NP` | No CNF-SAT in P, NP-completeness, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
@@ -91,7 +91,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment nine-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment ten-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
