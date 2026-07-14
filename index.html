@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-14-29</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-14-32</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81</code>
+        <code>f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 5,235 exported public declarations, including 2,224 theorem-kind declarations and 2,123 assumption-free theorem-kind declarations across 49 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and a uniform four-stage compiler for every raw bitstring to a proof-bearing target machine; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 5,323 exported public declarations, including 2,282 theorem-kind declarations and 2,181 assumption-free theorem-kind declarations across 51 modules. Nine scoped publication milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, all-input pipeline compilation, sequential machine composition, and recursive program refinement; three global milestones remain unformalized.</p>
         <div class="checker-trace">
-          <span>all-input framer checked</span>
-          <span>all-input compiler checked</span>
+          <span>sequential compiler checked</span>
+          <span>raw refinement checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For every proof-bearing polynomial-time target, the literal four-stage compiler handles every raw bitstring—including empty, odd, and malformed inputs—with exact verdict, <code>machineOutput</code>, no timeout, and explicit external polynomials. Recursive function/decision <code>RawRefinement</code> remains absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Proof-bearing function and decision program trees now compile recursively into one literal raw finite machine, preserving output or verdict and no-timeout with explicit composition polynomials. This discharges the concrete machine-link blocker, but it does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -99,7 +99,7 @@ concretePublicationGate.passed = false</pre>
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
             <div><span>Root theorem</span><strong>not present</strong></div>
             <div><span>Axiom audit</span><strong>not passed</strong></div>
-            <div><span>Formal blockers</span><strong>7 active</strong></div>
+            <div><span>Formal blockers</span><strong>6 active</strong></div>
           </div>
         </div>
 
@@ -119,7 +119,7 @@ concretePublicationGate.passed = false</pre>
         </a>
         <div class="artifact-meta">
           <h2>Current formal status report</h2>
-          <p>Ten pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
+          <p>Nine pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
         </div>
       </aside>
     </div>

@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 305443db5a3954be42d1d56912c7f64232efff2a
+git checkout 0c52c984aa03f4ce40f6d64fd6fb5c1678db9045
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem and the literal four-stage raw compiler that, for every proof-bearing polynomial-time target and every raw `BitString`, preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials. They do not prove recursive function/decision `RawRefinement`, CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and seven blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, the literal four-stage all-input compiler, sequential raw-machine composition, and recursive function/decision refinement into one raw machine. They do not prove CNF-SAT in P, NP-completeness, global locked-NAND premises, ZeroSlack, PCCMin, or the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and six blockers remain.
 
 ## Freeze controls
 

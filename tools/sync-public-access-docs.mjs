@@ -17,8 +17,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "305443db5a3954be42d1d56912c7f64232efff2a";
-const CORE_TREE = "c4f9d18b843986a8d964f35c9e13461cf57337a0";
+const CORE_COMMIT = "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045";
+const CORE_TREE = "7e1dcf3e7545c71dbce86bcc840547f91bdb0567";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -26,26 +26,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 250232,
-    sha256: "ae19cd5535d7c57ef43e3a65d25f26c271005d20b21952e634bfed80e56a53b1"
+    bytes: 249982,
+    sha256: "e043a966e60e21c6d05f15a4eba24a915c27de4d73281acc2aaa50428c4e626e"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 18540,
-    sha256: "a3d0d9ae551caf0409bba2d8553369dacafcbb35e5447c60d36c6a3d45b4e0ac"
+    bytes: 18509,
+    sha256: "03570c7d153580293c3bd9acbbb1691d3747bca8363fa05e6b43ef601f66463a"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 136080,
-    sha256: "c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9"
+    bytes: 152196,
+    sha256: "0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 1284286,
-    sha256: "59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81"
+    bytes: 1456364,
+    sha256: "f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921"
   }
 ];
 
@@ -137,7 +137,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "817239a00e22be3113620191d97aa64831fd6dcb97f402051b85c9e441f8d7c7") {
+  if (sha256(map) !== "6dcbb3aa9fdb7b782b7362f01e3c0bbb5a683f2447015b7d7abc0875dfc53fb0") {
     fail("pinned formal-publication map digest mismatch");
   }
 }
@@ -155,7 +155,7 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
   if (sourcePath === "public/pnp-status.json") {
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
-    if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 7) fail("core status blocker boundary mismatch");
+    if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 6) fail("core status blocker boundary mismatch");
     if (payload.leanConcreteCNFSATMembershipFormalized !== true || payload.leanConcreteCNFSATMembershipTheorem !== "PNP.Concrete.FinalUniversalDesign.cnfSATInNP") fail("core status CNF-SAT NP-membership boundary mismatch");
     if (payload.leanConcreteCNFWorkAxiomAuditPassed !== true || payload.leanConcreteCNFWorkAuditedDeclarationCount !== 766) fail("core status CNF work audit boundary mismatch");
     if (payload.leanConcretePipelineStateNamespaceFormalized !== true || payload.leanConcretePipelineStateNamespaceAxiomAuditPassed !== true || payload.leanConcretePipelineStateNamespaceAuditedDeclarationCount !== 39) fail("core status pipeline namespace boundary mismatch");
@@ -168,11 +168,14 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
     if (payload.leanConcretePipelinePairedCompilerAxiomAuditPassed !== true || payload.leanConcretePipelinePairedCompilerAuditedDeclarationCount !== 28) fail("core status canonical-pair compiler audit boundary mismatch");
     if (payload.leanConcretePipelineCanonicalPairCompilationFormalized !== true || payload.leanConcretePipelineExternalInputSizePolynomialFormalized !== true) fail("core status canonical-pair compiler boundary mismatch");
     if (payload.leanConcretePipelineCompilerAxiomAuditPassed !== true || payload.leanConcretePipelineCompilerAuditedDeclarationCount !== 29 || payload.leanConcretePipelineAllInputCompilationFormalized !== true) fail("core status all-input compiler audit boundary mismatch");
-    if (payload.leanConcretePipelineMalformedInputBehaviorFormalized !== true || payload.leanConcretePipelineRawRefinementFormalized !== false) fail("core status all-input compiler boundary mismatch");
+    if (payload.leanConcretePipelineMalformedInputBehaviorFormalized !== true || payload.leanConcretePipelineRawRefinementFormalized !== true) fail("core status all-input compiler boundary mismatch");
+    if (payload.leanConcretePipelineSequentialNamespaceFormalized !== true || payload.leanConcretePipelineSequentialNamespaceAxiomAuditPassed !== true || payload.leanConcretePipelineSequentialNamespaceAuditedDeclarationCount !== 26) fail("core status sequential namespace boundary mismatch");
+    if (payload.leanConcretePipelineSequentialCompilationFormalized !== true || payload.leanConcretePipelineSequentialCompilerAxiomAuditPassed !== true || payload.leanConcretePipelineSequentialCompilerAuditedDeclarationCount !== 31 || payload.leanConcretePipelineSequentialVerdictAndOutputPreservationFormalized !== true || payload.leanConcretePipelineSequentialExternalInputSizePolynomialFormalized !== true || payload.leanConcretePipelineSequentialStuckFirstTimeoutFormalized !== true) fail("core status sequential compiler boundary mismatch");
+    if (payload.leanConcretePipelineRefinementAxiomAuditPassed !== true || payload.leanConcretePipelineRefinementAuditedDeclarationCount !== 16 || payload.leanConcreteFunctionProgramRecursiveCompilationFormalized !== true || payload.leanConcreteDecisionProgramRecursiveCompilationFormalized !== true || payload.leanConcretePolynomialTimeDeciderRawCompilationFormalized !== true || payload.standardComplexityModelFormalized !== true) fail("core status recursive refinement boundary mismatch");
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
     if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");
-    if (payload.declarationCount !== 5235 || payload.theoremCount !== 2224 || payload.assumptionFreeTheoremCount !== 2123 || payload.sourceClosureModuleCount !== 49 || payload.axiomCount !== 4) fail("core inventory counts mismatch");
+    if (payload.declarationCount !== 5323 || payload.theoremCount !== 2282 || payload.assumptionFreeTheoremCount !== 2181 || payload.sourceClosureModuleCount !== 51 || payload.axiomCount !== 4) fail("core inventory counts mismatch");
     const packer = payload.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq");
     if (!packer || packer.kind !== "theorem" || packer.module !== "PNP.Concrete.TerminalOutputPacker" || packer.axioms?.length !== 0) fail("core inventory terminal-output packer theorem boundary mismatch");
     const terminalBridge = payload.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents");
@@ -207,6 +210,27 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
     ]) {
       const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineInputFramer" || theorem.axioms?.length !== 0) fail(`core inventory all-input framer theorem mismatch: ${name}`);
+    }
+    for (const name of [
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_correct",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact"
+    ]) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineSequentialCompiler" || theorem.axioms?.length !== 0) fail(`core inventory sequential compiler theorem mismatch: ${name}`);
+    }
+    for (const name of [
+      "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin",
+      "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq",
+      "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin",
+      "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq",
+      "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff"
+    ]) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineRefinement" || theorem.axioms?.length !== 0) fail(`core inventory recursive refinement theorem mismatch: ${name}`);
     }
   }
 }

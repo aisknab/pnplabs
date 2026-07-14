@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 251,451 | `ae19cd5535d7c57ef43e3a65d25f26c271005d20b21952e634bfed80e56a53b1` |
-| `downloads/canonical-proof-report.pdf` | 251,451 | `ae19cd5535d7c57ef43e3a65d25f26c271005d20b21952e634bfed80e56a53b1` |
-| `downloads/canonical_proof_report.tex` | 19,161 | `a3d0d9ae551caf0409bba2d8553369dacafcbb35e5447c60d36c6a3d45b4e0ac` |
-| `downloads/canonical-proof-report.tex` | 19,161 | `a3d0d9ae551caf0409bba2d8553369dacafcbb35e5447c60d36c6a3d45b4e0ac` |
-| `public/pnp-status.json` | 129,216 | `c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9` |
-| `public/pnp-theorem-inventory.json` | 1,205,195 | `59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81` |
+| `downloads/canonical_proof_report.pdf` | 249,982 | `e043a966e60e21c6d05f15a4eba24a915c27de4d73281acc2aaa50428c4e626e` |
+| `downloads/canonical-proof-report.pdf` | 249,982 | `e043a966e60e21c6d05f15a4eba24a915c27de4d73281acc2aaa50428c4e626e` |
+| `downloads/canonical_proof_report.tex` | 18,509 | `03570c7d153580293c3bd9acbbb1691d3747bca8363fa05e6b43ef601f66463a` |
+| `downloads/canonical-proof-report.tex` | 18,509 | `03570c7d153580293c3bd9acbbb1691d3747bca8363fa05e6b43ef601f66463a` |
+| `public/pnp-status.json` | 152,196 | `0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6` |
+| `public/pnp-theorem-inventory.json` | 1,456,364 | `f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921` |
 
-The PDF must have ten A4 pages. Both filename styles must be byte-identical.
+The PDF must have nine A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 305443db5a3954be42d1d56912c7f64232efff2a
+git -C ../pnp checkout 0c52c984aa03f4ce40f6d64fd6fb5c1678db9045
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 5,235 public declarations, 2,224 theorem-kind declarations,
-2,123 assumption-free theorem-kind declarations, 1,036 excluded private auxiliaries, 49 modules, and
-four project axioms. The publication gate must remain false with seven blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the input-framer, namespace, stage-bridge, terminal-packer, terminal-bridge, paired-compiler, and all-input-compiler audits must cover 70, 39, 56, 69, 59, 28, and 29 declarations respectively with empty axiom closure. For every proof-bearing polynomial-time target and every raw `BitString`, the complete literal pipeline has exact verdict and `machineOutput`, cannot time out, and uses `B(m) = m + p(m) + 1` plus the explicit external runtime polynomial `R(m)`. Malformed-input behavior is formalized; recursive function/decision `RawRefinement`, CNF-SAT in P, and NP-completeness must remain false.
+Expected compiled inventory counts are 5,323 public declarations, 2,282 theorem-kind declarations,
+2,181 assumption-free theorem-kind declarations, 1,042 excluded private auxiliaries, 51 modules, and
+four project axioms. The publication gate must remain false with six blockers. The exact earned theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the input-framer, pipeline namespace, stage-bridge, terminal-packer, terminal-bridge, paired-compiler, all-input-compiler, sequential namespace, sequential-compiler, and recursive-refinement audits must cover 70, 39, 56, 69, 59, 28, 29, 26, 31, and 16 declarations respectively with empty axiom closure. Every proof-bearing function or decision program tree recursively compiles to one literal raw machine; sequential composition uses `Rseq(m) = PipelineRaw(p)(m) + 6 + PipelineRaw(q)(m + p(m) + 1)`. CNF-SAT in P and NP-completeness must remain false.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

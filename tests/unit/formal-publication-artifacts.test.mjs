@@ -40,14 +40,14 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "305443db5a3954be42d1d56912c7f64232efff2a");
+  assert.equal(result.coreCommit, "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045");
 });
 
-test("current release is pinned, nine-page, exposes only earned CNF-SAT and all-input compiler results, and fails closed", () => {
+test("current release is pinned, nine-page, exposes only earned CNF-SAT and recursive compiler results, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "305443db5a3954be42d1d56912c7f64232efff2a");
-  assert.equal(release.source.proofCommit, "80192df1874c4a0dc82141944b5d289c7577a2e4");
-  assert.equal(release.source.tree, "c4f9d18b843986a8d964f35c9e13461cf57337a0");
+  assert.equal(release.source.commit, "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045");
+  assert.equal(release.source.proofCommit, "ad8fe5f3dddb66417e1d1fbc28ce6bb7a1457795");
+  assert.equal(release.source.tree, "7e1dcf3e7545c71dbce86bcc840547f91bdb0567");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 9);
@@ -139,8 +139,37 @@ test("current release is pinned, nine-page, exposes only earned CNF-SAT and all-
   assert.deepEqual(release.earnedBoundary.pipelineCompilerAxiomClosure, []);
   assert.equal(release.earnedBoundary.pipelineOutputSizePolynomial, "B(m) = m + p(m) + 1");
   assert.equal(release.earnedBoundary.pipelineRawTimePolynomial, "R(m) = totalInputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))");
-  assert.equal(release.earnedBoundary.pipelineRawRefinementFormalized, false);
+  assert.equal(release.earnedBoundary.pipelineRawRefinementFormalized, true);
   assert.equal(release.earnedBoundary.pipelineExternalInputSizePolynomialFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineSequentialNamespaceFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineSequentialNamespaceAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineSequentialNamespaceAuditedDeclarationCount, 26);
+  assert.deepEqual(release.earnedBoundary.pipelineSequentialNamespaceAxiomClosure, []);
+  assert.equal(release.earnedBoundary.pipelineSequentialCompilationFormalized, true);
+  assert.equal(release.earnedBoundary.pipelineSequentialCompilerAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineSequentialCompilerAuditedDeclarationCount, 31);
+  assert.equal(release.earnedBoundary.pipelineSequentialCorrectTheorem, "PNP.Concrete.PipelineSequentialCompiler.sequential_correct");
+  assert.equal(release.earnedBoundary.pipelineSequentialCorrectKernelTypeSha256, "8943f2f2c396dfb2e6e8232244b9ecb386fe3a7259590ed96cedb82d1cc7b22a");
+  assert.equal(release.earnedBoundary.pipelineSequentialVerdictTheorem, "PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq");
+  assert.equal(release.earnedBoundary.pipelineSequentialMachineOutputTheorem, "PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq");
+  assert.equal(release.earnedBoundary.pipelineSequentialNoTimeoutTheorem, "PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout");
+  assert.equal(release.earnedBoundary.pipelineSequentialAcceptsTheorem, "PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff");
+  assert.equal(release.earnedBoundary.pipelineSequentialStuckFirstTimeoutTheorem, "PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact");
+  assert.equal(release.earnedBoundary.pipelineSequentialRawTimePolynomial, "Rseq(m) = PipelineRaw(p)(m) + 6 + PipelineRaw(q)(m + p(m) + 1)");
+  assert.deepEqual(release.earnedBoundary.pipelineSequentialCompilerAxiomClosure, []);
+  assert.equal(release.earnedBoundary.pipelineRefinementAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.pipelineRefinementAuditedDeclarationCount, 16);
+  assert.deepEqual(release.earnedBoundary.pipelineRefinementAxiomClosure, []);
+  assert.equal(release.earnedBoundary.functionProgramRecursiveCompilationFormalized, true);
+  assert.equal(release.earnedBoundary.decisionProgramRecursiveCompilationFormalized, true);
+  assert.equal(release.earnedBoundary.polynomialTimeDeciderRawCompilationFormalized, true);
+  assert.equal(release.earnedBoundary.functionProgramCompileHaltsTheorem, "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin");
+  assert.equal(release.earnedBoundary.functionProgramCompileOutputTheorem, "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq");
+  assert.equal(release.earnedBoundary.decisionProgramCompileHaltsTheorem, "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin");
+  assert.equal(release.earnedBoundary.decisionProgramCompileVerdictTheorem, "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq");
+  assert.equal(release.earnedBoundary.polynomialTimeDeciderCompileAcceptsTheorem, "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff");
+  assert.equal(release.earnedBoundary.standardComplexityModelFormalized, true);
+  assert.equal(release.earnedBoundary.concreteComplexityMachineLinkDischarged, true);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, false);
   assert.equal(release.earnedBoundary.pEqualsNPFormalized, false);
@@ -152,7 +181,7 @@ test("current release is pinned, nine-page, exposes only earned CNF-SAT and all-
   assert.equal(release.publicationBoundary.compatibilityRootPresent, false);
   assert.equal(release.publicationBoundary.concreteTargetPresent, true);
   assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, true);
-  assert.equal(release.publicationBoundary.remainingBlockerCount, 7);
+  assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
 test("7072f8d report metadata is historical-only and cannot reactivate publication", () => {

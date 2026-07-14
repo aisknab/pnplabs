@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-20",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-21",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "305443db5a3954be42d1d56912c7f64232efff2a",
-    "proofCommit": "80192df1874c4a0dc82141944b5d289c7577a2e4",
-    "tree": "c4f9d18b843986a8d964f35c9e13461cf57337a0",
-    "ref": "305443db5a3954be42d1d56912c7f64232efff2a",
+    "commit": "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045",
+    "proofCommit": "ad8fe5f3dddb66417e1d1fbc28ce6bb7a1457795",
+    "tree": "7e1dcf3e7545c71dbce86bcc840547f91bdb0567",
+    "ref": "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-14-29",
-    "formalPublicationMapSha256": "817239a00e22be3113620191d97aa64831fd6dcb97f402051b85c9e441f8d7c7",
-    "leanSourceClosureSha256": "cfd2b1263520068a0dc3e4b46a1ddbe76cd704a7368457c03bf40b9f4ec21fc2",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-14-32",
+    "formalPublicationMapSha256": "6dcbb3aa9fdb7b782b7362f01e3c0bbb5a683f2447015b7d7abc0875dfc53fb0",
+    "leanSourceClosureSha256": "4fa4576322602277c9f7caffca38e0f2132b2576da1b25fe2625885d55aafb67",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,23 +21,23 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 136080,
-      "sha256": "c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-29"
+      "bytes": 152196,
+      "sha256": "0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-32"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 1284286,
-      "sha256": "59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-14-29",
-      "declarationCount": 5235,
-      "theoremCount": 2224,
-      "assumptionFreeTheoremCount": 2123,
+      "bytes": 1456364,
+      "sha256": "f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-14-32",
+      "declarationCount": 5323,
+      "theoremCount": 2282,
+      "assumptionFreeTheoremCount": 2181,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-14-29",
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-14-32",
       "pageCount": 9,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
@@ -45,8 +45,8 @@
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 250232,
-        "sha256": "ae19cd5535d7c57ef43e3a65d25f26c271005d20b21952e634bfed80e56a53b1"
+        "bytes": 249982,
+        "sha256": "e043a966e60e21c6d05f15a4eba24a915c27de4d73281acc2aaa50428c4e626e"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,13 +54,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 18540,
-        "sha256": "a3d0d9ae551caf0409bba2d8553369dacafcbb35e5447c60d36c6a3d45b4e0ac"
+        "bytes": 18509,
+        "sha256": "03570c7d153580293c3bd9acbbb1691d3747bca8363fa05e6b43ef601f66463a"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-uniform-four-stage-compilation-on-all-raw-inputs",
+    "scope": "concrete-cnf-sat-np-membership-plus-recursive-charged-program-compilation-to-raw-machines",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -154,7 +154,7 @@
     "pipelinePairedRawTimePolynomial": "Rpair(m) = inputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
     "pipelineOutputSizePolynomial": "B(m) = m + p(m) + 1",
     "pipelineRawTimePolynomial": "R(m) = totalInputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
-    "pipelineRawRefinementFormalized": false,
+    "pipelineRawRefinementFormalized": true,
     "pipelineExternalInputSizePolynomialFormalized": true,
     "cnfSATInPFormalized": false,
     "cnfSATNPCompletenessFormalized": false,
@@ -174,7 +174,50 @@
     "pipelineAcceptsKernelTypeSha256": "94e43c664b4d185e48553ab25541925830fec7086fcbbab5215dacdcde1af6a6",
     "pipelineAllInputStuckTimeoutTheorem": "PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact",
     "pipelineAllInputStuckTimeoutKernelTypeSha256": "a6edef0532eb89036d0e6813cffb94b321f9160a08035671eb411c813ef0a3de",
-    "pipelineCompilerAxiomClosure": []
+    "pipelineCompilerAxiomClosure": [],
+    "pipelineSequentialNamespaceFormalized": true,
+    "pipelineSequentialNamespaceAxiomAuditPassed": true,
+    "pipelineSequentialNamespaceAuditedDeclarationCount": 26,
+    "pipelineSequentialNamespaceAxiomClosure": [],
+    "pipelineSequentialCompilationFormalized": true,
+    "pipelineSequentialCompilerAxiomAuditPassed": true,
+    "pipelineSequentialCompilerAuditedDeclarationCount": 31,
+    "pipelineSequentialVerdictAndOutputPreservationFormalized": true,
+    "pipelineSequentialExternalInputSizePolynomialFormalized": true,
+    "pipelineSequentialStuckFirstTimeoutFormalized": true,
+    "pipelineSequentialCorrectTheorem": "PNP.Concrete.PipelineSequentialCompiler.sequential_correct",
+    "pipelineSequentialCorrectKernelTypeSha256": "8943f2f2c396dfb2e6e8232244b9ecb386fe3a7259590ed96cedb82d1cc7b22a",
+    "pipelineSequentialVerdictTheorem": "PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq",
+    "pipelineSequentialVerdictKernelTypeSha256": "dd282c364787b165c9be9ca80b712c3ebf61ac95d097218300a65433a690e386",
+    "pipelineSequentialMachineOutputTheorem": "PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq",
+    "pipelineSequentialMachineOutputKernelTypeSha256": "8d954e0e65847ff071a3a79a7be1c7f7d5a2f1696e3f94be3a7288500598b9d7",
+    "pipelineSequentialNoTimeoutTheorem": "PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout",
+    "pipelineSequentialNoTimeoutKernelTypeSha256": "116c522c8a64988fd815b32bad08df882534b94b87cfa42a705fd1d8158d45af",
+    "pipelineSequentialAcceptsTheorem": "PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff",
+    "pipelineSequentialAcceptsKernelTypeSha256": "7a6d0d03c735c83a2fb0c764a174a79402ec196a98169614b15dbee442df099e",
+    "pipelineSequentialStuckFirstTimeoutTheorem": "PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact",
+    "pipelineSequentialStuckFirstTimeoutKernelTypeSha256": "5f5f0889b807ea0ccefdfb911ba8b583de9999f2a627745bc9317c0c6ff21a34",
+    "pipelineSequentialCompilerAxiomClosure": [],
+    "pipelineSequentialOutputSizePolynomial": "Bseq(m) = m + p(m) + 1",
+    "pipelineSequentialRawTimePolynomial": "Rseq(m) = PipelineRaw(p)(m) + 6 + PipelineRaw(q)(m + p(m) + 1)",
+    "pipelineRefinementAxiomAuditPassed": true,
+    "pipelineRefinementAuditedDeclarationCount": 16,
+    "pipelineRefinementAxiomClosure": [],
+    "functionProgramRecursiveCompilationFormalized": true,
+    "decisionProgramRecursiveCompilationFormalized": true,
+    "polynomialTimeDeciderRawCompilationFormalized": true,
+    "functionProgramCompileHaltsTheorem": "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin",
+    "functionProgramCompileHaltsKernelTypeSha256": "53bd33de652a55facc74179863672a789f40f9ba6dea293c2de29fcc866b5a3d",
+    "functionProgramCompileOutputTheorem": "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq",
+    "functionProgramCompileOutputKernelTypeSha256": "e3bb23c7f245cb516803a91468e3a3b220338c36a11790ffa5045b8c41332a24",
+    "decisionProgramCompileHaltsTheorem": "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin",
+    "decisionProgramCompileHaltsKernelTypeSha256": "4057fc9d48be85dd7f961ce7acf5bef68ddb4ed0c8b6798617b31deb9da8c7c5",
+    "decisionProgramCompileVerdictTheorem": "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq",
+    "decisionProgramCompileVerdictKernelTypeSha256": "8b390dd6677d6e789499b7b713855652a5e1db2c64809ddf43d079deb4099965",
+    "polynomialTimeDeciderCompileAcceptsTheorem": "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff",
+    "polynomialTimeDeciderCompileAcceptsKernelTypeSha256": "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba",
+    "standardComplexityModelFormalized": true,
+    "concreteComplexityMachineLinkDischarged": true
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,
@@ -185,7 +228,7 @@
     "compatibilityRootPresent": false,
     "concreteTargetPresent": true,
     "projectSpecificAxiomsRemaining": true,
-    "remainingBlockerCount": 7
+    "remainingBlockerCount": 6
   },
   "historicalArchive": {
     "status": "historical-quarantined-not-current-authority",

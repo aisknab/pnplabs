@@ -19,8 +19,13 @@ projectSpecificAxiomsRemaining = true
 leanConcreteCNFSATMembershipFormalized = true
 leanConcretePipelineCanonicalPairCompilationFormalized = true
 leanConcretePipelineExternalInputSizePolynomialFormalized = true
-leanConcretePipelineMalformedInputBehaviorFormalized = false
-leanConcretePipelineRawRefinementFormalized = false
+leanConcretePipelineMalformedInputBehaviorFormalized = true
+leanConcretePipelineSequentialCompilationFormalized = true
+leanConcretePipelineRawRefinementFormalized = true
+leanConcreteFunctionProgramRecursiveCompilationFormalized = true
+leanConcreteDecisionProgramRecursiveCompilationFormalized = true
+leanConcretePolynomialTimeDeciderRawCompilationFormalized = true
+standardComplexityModelFormalized = true
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 ```
@@ -29,7 +34,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Nine narrowly scoped milestones are earned from reviewed theorem types, empty axiom closures, and the complete Lean-source digest. They prove universal concrete CNF-SAT verifier correctness, exact accept/reject behavior, no timeout at a polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. They also prove one literal four-stage raw compiler that, for every proof-bearing polynomial-time target and every raw `BitString`—including empty, odd-length, malformed, and non-pair words—preserves exact verdict and `machineOutput`, cannot time out, and has explicit external output and runtime polynomials. All 29 reviewed compiler declarations have empty axiom closure. The compiler wraps an already-raw target; recursive function/decision `RawRefinement` remains absent. The results do not prove CNF-SAT in P, NP-completeness, or `P = NP`. Global locked-NAND construction, premise instantiation, candidate-universe completeness, ZeroSlack, PCCMin, the residual-band minimizer, polynomiality, and `PNP.Main.p_eq_np` remain unfinished. Four project-specific axioms and seven formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Nine narrowly scoped milestones are earned from reviewed theorem types, empty axiom closures, and the complete Lean-source digest. They prove universal concrete CNF-SAT verifier correctness, exact accept/reject behavior, no timeout at a polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. They also prove one literal four-stage all-input compiler, sequential composition of two raw machines, and recursive compilation of proof-bearing function and decision program trees into one raw finite machine. The sequential raw bound is `Rseq(m) = PipelineRaw(p)(m) + 6 + PipelineRaw(q)(m + p(m) + 1)`. This closes the concrete complexity machine-link blocker only. The results do not prove CNF-SAT in P, NP-completeness, or `P = NP`. Global locked-NAND construction, premise instantiation, candidate-universe completeness, ZeroSlack, PCCMin, the residual-band minimizer, polynomiality, and `PNP.Main.p_eq_np` remain unfinished. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 

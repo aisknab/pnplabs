@@ -22,20 +22,25 @@ leanConcreteCNFSATMembershipFormalized = true
 leanConcretePipelineAllInputFramingFormalized = true
 leanConcretePipelineCanonicalPairCompilationFormalized = true
 leanConcretePipelineExternalInputSizePolynomialFormalized = true
-leanConcretePipelineMalformedInputBehaviorFormalized = false
-leanConcretePipelineRawRefinementFormalized = false
+leanConcretePipelineMalformedInputBehaviorFormalized = true
+leanConcretePipelineSequentialCompilationFormalized = true
+leanConcretePipelineRawRefinementFormalized = true
+leanConcreteFunctionProgramRecursiveCompilationFormalized = true
+leanConcreteDecisionProgramRecursiveCompilationFormalized = true
+leanConcretePolynomialTimeDeciderRawCompilationFormalized = true
+standardComplexityModelFormalized = true
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **5,235** exported public declarations across **49** modules, including **2,224** theorem-kind declarations and **2,123** assumption-free theorem-kind declarations. It excludes **1,036** private compiler auxiliaries and records **four** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **5,323** exported public declarations across **51** modules, including **2,282** theorem-kind declarations and **2,181** assumption-free theorem-kind declarations. It excludes **1,042** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 172 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Nine scoped milestones are earned. They include a concrete universal CNF-SAT verifier with exact accept/reject behavior, no timeout at its polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. They also include one literal four-stage raw compiler which, for every proof-bearing polynomial-time target and every raw `BitString` input—including empty, odd-length, malformed, and non-pair words—preserves exact verdict and `machineOutput`, cannot time out, and has explicit external polynomials `B(m) = m + p(m) + 1` and `R(m)`. All 29 reviewed all-input compiler declarations have empty axiom closure. The compiler wraps an already-raw `PolynomialTimeMachine`; recursive `FunctionProgram.RawRefinement.compose` and `DecisionProgram.RawRefinement.precompose` remain absent, so the concrete complexity machine link is still open. CNF-SAT in P, CNF-SAT NP-completeness, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 198 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Nine scoped milestones are earned. They include a concrete universal CNF-SAT verifier with exact accept/reject behavior, no timeout at its polynomial fuel bound, and `PNP.Concrete.FinalUniversalDesign.cnfSATInNP : InNP CNFSAT`. They also include one literal four-stage raw compiler for every raw `BitString`, collision-free sequential composition of two such raw machines, and recursive compilation of proof-bearing `FunctionProgram` and `DecisionProgram` trees into one raw finite machine. The sequential raw bound is `Rseq(m) = PipelineRaw(p)(m) + 6 + PipelineRaw(q)(m + p(m) + 1)`. The 26 namespace, 31 sequential-compiler, and 16 recursive-refinement declarations have empty audited axiom closure. This discharges `Formal.ConcreteComplexityMachineLink`; it does not construct a polynomial-time CNF-SAT decider or NP-completeness reduction. CNF-SAT in P, CNF-SAT NP-completeness, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
-The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while the required all-bitstring raw-machine refinement, concrete complexity machine link, and `PNP.Main.p_eq_np` remain absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
+The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while `PNP.Main.p_eq_np` remains absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
-The active blockers are the seven entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete complexity and SAT definitions, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
+The active blockers are the six entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete SAT, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
 
 Legacy JavaScript checker acceptance verifies assertion-bearing records under implemented predicates. It is historical assertion-checker evidence only and is not a formal proof of the named mathematical propositions. Earlier activated coordinates, verifier-run records, digest matrices, and badge summaries are preserved only as historical audit records. Their intake is frozen and they are not current theorem-emission surfaces.
 
@@ -48,7 +53,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 305443db5a3954be42d1d56912c7f64232efff2a
+git checkout 0c52c984aa03f4ce40f6d64fd6fb5c1678db9045
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -86,9 +91,19 @@ node --test audits/lean-concrete-pipeline-stage-bridges0.test.mjs
 node --test audits/lean-concrete-terminal-output-packer0.test.mjs
 node --test audits/lean-concrete-pipeline-terminal-bridge0.test.mjs
 node --test audits/lean-concrete-pipeline-paired-compiler0.test.mjs
+node --test audits/lean-concrete-pipeline-compiler0.test.mjs
+node --test audits/lean-concrete-pipeline-sequential-state-namespace0.test.mjs
+node --test audits/lean-concrete-pipeline-sequential-compiler0.test.mjs
 lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineTerminalBridgeAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelinePairedCompilerAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-regression/PNPConcretePipelinePairedCompiler.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineCompilerAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-regression/PNPConcretePipelineCompiler.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineSequentialStateNamespaceAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineSequentialCompilerAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-regression/PNPConcretePipelineSequentialCompiler.lean
+lake env lean -DwarningAsError=true lean-audit/PNPConcretePipelineRefinementAxiomAudit.lean
+lake env lean -DwarningAsError=true lean-regression/PNPConcretePipelineRefinementRecursive.lean
 lake env lean -DwarningAsError=true lean-regression/PNPConcreteCNFWorkCanonical.lean
 lake env lean -DwarningAsError=true lean-regression/PNPConcreteWorkCompilerEdges.lean
 lake env lean -DwarningAsError=true --run lean-regression/PNPConcreteCNFWorkCanonicalExtended.lean
@@ -126,7 +141,7 @@ The public status page is [`status.html`](status.html).
 - A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
 - The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
 - The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
-- The bundled canonical PDF and TeX are the current nine-page inventory-derived formal status report. They report `CNFSAT ∈ NP` and the complete four-stage compiler for every raw input to a proof-bearing polynomial-time target, while explicitly withholding recursive function/decision `RawRefinement`, CNF-SAT in P, NP-completeness, and P = NP.
+- The bundled canonical PDF and TeX are the current nine-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, the all-input four-stage compiler, sequential raw-machine composition, and recursive function/decision `RawRefinement`, while explicitly withholding CNF-SAT in P, NP-completeness, and P = NP.
 - A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 - The historical 56-page claim manuscript remains at tag `final-pnp-proof-report-hardened-7072f8d`, commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with provenance in `archive/legacy-v0/ARCHIVE.json`; it is never current authority.
 

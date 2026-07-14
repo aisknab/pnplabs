@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-29';
-const STATUS_SHA256 = 'c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-14-PIPELINE-ALL-INPUT-COMPILER-28';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-14-29';
-const INVENTORY_SHA256 = '59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81';
-const SOURCE_CLOSURE_SHA256 = 'cfd2b1263520068a0dc3e4b46a1ddbe76cd704a7368457c03bf40b9f4ec21fc2';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-32';
+const STATUS_SHA256 = '0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-14-RAW-REFINEMENT-31';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-14-32';
+const INVENTORY_SHA256 = 'f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921';
+const SOURCE_CLOSURE_SHA256 = '4fa4576322602277c9f7caffca38e0f2132b2576da1b25fe2625885d55aafb67';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 5235,
-  theorems: 2224,
-  assumptionFreeTheorems: 2123,
-  excludedPrivateDeclarations: 1036,
-  modules: 49,
+  declarations: 5323,
+  theorems: 2282,
+  assumptionFreeTheorems: 2181,
+  excludedPrivateDeclarations: 1042,
+  modules: 51,
   axioms: 4,
 });
 
@@ -45,7 +45,6 @@ const PROJECT_AXIOMS = Object.freeze([
 ]);
 
 const REMAINING_BLOCKERS = Object.freeze([
-  'Formal.ConcreteComplexityMachineLink',
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
   'Formal.ResidualBandMinimizer',
@@ -119,6 +118,14 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcretePipelineCompilerAxiomAuditPassed: false,
   leanConcretePipelineCompilerAuditedDeclarationCount: 0,
   leanConcretePipelineAllInputCompilationFormalized: false,
+  leanConcretePipelineSequentialNamespaceAxiomAuditPassed: false,
+  leanConcretePipelineSequentialCompilerAxiomAuditPassed: false,
+  leanConcretePipelineSequentialCompilationFormalized: false,
+  leanConcretePipelineRefinementAxiomAuditPassed: false,
+  leanConcreteFunctionProgramRecursiveCompilationFormalized: false,
+  leanConcreteDecisionProgramRecursiveCompilationFormalized: false,
+  leanConcretePolynomialTimeDeciderRawCompilationFormalized: false,
+  standardComplexityModelFormalized: false,
   leanConcretePipelineMalformedInputBehaviorFormalized: false,
   leanConcretePipelineRawRefinementFormalized: false,
   leanConcretePipelineExternalInputSizePolynomialFormalized: false,
@@ -156,6 +163,12 @@ leanConcretePipelineCanonicalPairCompilationFormalized = ${payload.leanConcreteP
 leanConcretePipelineCompilerAxiomAuditPassed = ${payload.leanConcretePipelineCompilerAxiomAuditPassed ?? false}
 leanConcretePipelineCompilerAuditedDeclarationCount = ${payload.leanConcretePipelineCompilerAuditedDeclarationCount ?? 0}
 leanConcretePipelineAllInputCompilationFormalized = ${payload.leanConcretePipelineAllInputCompilationFormalized ?? false}
+leanConcretePipelineSequentialCompilationFormalized = ${payload.leanConcretePipelineSequentialCompilationFormalized ?? false}
+leanConcretePipelineRefinementAxiomAuditPassed = ${payload.leanConcretePipelineRefinementAxiomAuditPassed ?? false}
+leanConcreteFunctionProgramRecursiveCompilationFormalized = ${payload.leanConcreteFunctionProgramRecursiveCompilationFormalized ?? false}
+leanConcreteDecisionProgramRecursiveCompilationFormalized = ${payload.leanConcreteDecisionProgramRecursiveCompilationFormalized ?? false}
+leanConcretePolynomialTimeDeciderRawCompilationFormalized = ${payload.leanConcretePolynomialTimeDeciderRawCompilationFormalized ?? false}
+standardComplexityModelFormalized = ${payload.standardComplexityModelFormalized ?? false}
 leanConcretePipelineMalformedInputBehaviorFormalized = ${payload.leanConcretePipelineMalformedInputBehaviorFormalized ?? false}
 leanConcretePipelineRawRefinementFormalized = ${payload.leanConcretePipelineRawRefinementFormalized ?? false}
 leanConcretePipelineExternalInputSizePolynomialFormalized = ${payload.leanConcretePipelineExternalInputSizePolynomialFormalized ?? false}
@@ -200,12 +213,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 284,
-    definition: 2481,
+    definition: 2511,
     inductive: 121,
     opaque: 0,
     quotient: 0,
     recursor: 121,
-    theorem: 2224,
+    theorem: 2282,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -226,6 +239,21 @@ function validateInventory(inventory) {
     'PNP.Concrete.PipelineCompiler.pipeline_ne_timeout',
     'PNP.Concrete.PipelineCompiler.pipeline_accepts_iff',
     'PNP.Concrete.PipelineCompiler.pipeline_timeout_of_stuck_rawRunExact',
+  ].map((name) => inventory.milestoneCandidates?.find((row) => row?.name === name));
+  const sequentialCompilerTheorems = [
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_correct',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact',
+  ].map((name) => inventory.milestoneCandidates?.find((row) => row?.name === name));
+  const recursiveRefinementTheorems = [
+    'PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin',
+    'PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq',
+    'PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin',
+    'PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq',
+    'PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff',
   ].map((name) => inventory.milestoneCandidates?.find((row) => row?.name === name));
   const totalFramerTrace = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineInputFramer.totalInputFramer_workRunExact');
   const totalFramerEndpoint = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineInputFramer.totalInputFramerFinal_represents');
@@ -261,6 +289,12 @@ function validateInventory(inventory) {
     && allInputCompilerTheorems.every((row) => row?.kind === 'theorem'
       && row.module === 'PNP.Concrete.PipelineCompiler'
       && sameJson(row.axioms, []))
+    && sequentialCompilerTheorems.every((row) => row?.kind === 'theorem'
+      && row.module === 'PNP.Concrete.PipelineSequentialCompiler'
+      && sameJson(row.axioms, []))
+    && recursiveRefinementTheorems.every((row) => row?.kind === 'theorem'
+      && row.module === 'PNP.Concrete.PipelineRefinement'
+      && sameJson(row.axioms, []))
     && totalFramerTrace?.kind === 'theorem'
     && totalFramerTrace.module === 'PNP.Concrete.PipelineInputFramer'
     && sameJson(totalFramerTrace.axioms, [])
@@ -270,7 +304,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 172
+    && inventory.milestoneCandidates.length === 198
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -290,7 +324,7 @@ function deriveGateSubchecks(status, inventory) {
   const rootPresent = Boolean(root && root.name === gate.compatibilityRootName);
 
   return {
-    standardComplexityModelEligible: false,
+    standardComplexityModelEligible: status?.standardComplexityModelFormalized === true,
     concreteTargetPresent: targetPresent,
     concreteTargetIsDefinition: targetPresent && target.kind === 'definition',
     concreteTargetKernelTypeFingerprintConfigured: typeConfigured,
@@ -427,8 +461,23 @@ function validateStatus(status, inventory) {
     && status.leanConcretePipelineCompilerAxiomAuditPassed === true
     && status.leanConcretePipelineCompilerAuditedDeclarationCount === 29
     && status.leanConcretePipelineAllInputCompilationFormalized === true
+    && status.leanConcretePipelineSequentialNamespaceFormalized === true
+    && status.leanConcretePipelineSequentialNamespaceAxiomAuditPassed === true
+    && status.leanConcretePipelineSequentialNamespaceAuditedDeclarationCount === 26
+    && status.leanConcretePipelineSequentialCompilationFormalized === true
+    && status.leanConcretePipelineSequentialCompilerAxiomAuditPassed === true
+    && status.leanConcretePipelineSequentialCompilerAuditedDeclarationCount === 31
+    && status.leanConcretePipelineSequentialVerdictAndOutputPreservationFormalized === true
+    && status.leanConcretePipelineSequentialExternalInputSizePolynomialFormalized === true
+    && status.leanConcretePipelineSequentialStuckFirstTimeoutFormalized === true
+    && status.leanConcretePipelineRefinementAxiomAuditPassed === true
+    && status.leanConcretePipelineRefinementAuditedDeclarationCount === 16
+    && status.leanConcreteFunctionProgramRecursiveCompilationFormalized === true
+    && status.leanConcreteDecisionProgramRecursiveCompilationFormalized === true
+    && status.leanConcretePolynomialTimeDeciderRawCompilationFormalized === true
+    && status.standardComplexityModelFormalized === true
     && status.leanConcretePipelineMalformedInputBehaviorFormalized === true
-    && status.leanConcretePipelineRawRefinementFormalized === false
+    && status.leanConcretePipelineRawRefinementFormalized === true
     && status.leanConcretePipelineExternalInputSizePolynomialFormalized === true
     && status.leanConcreteCNFSATInPFormalized === false
     && status.leanConcreteCNFNPCompletenessFormalized === false
@@ -531,17 +580,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 5,235 exported public declarations, including 2,224 theorem-kind declarations and 2,123 assumption-free theorem-kind declarations across 49 modules. Nine scoped milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, and a uniform four-stage compiler for every raw bitstring to a proof-bearing target machine; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 5,323 exported public declarations, including 2,282 theorem-kind declarations and 2,181 assumption-free theorem-kind declarations across 51 modules. Nine scoped publication milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, all-input pipeline compilation, sequential machine composition, and recursive program refinement; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>all-input framer checked</span><span>all-input compiler checked</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>sequential compiler checked</span><span>raw refinement checked</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. For every proof-bearing polynomial-time target, the literal four-stage compiler handles every raw bitstring—including empty, odd, and malformed inputs—with exact verdict, <code>machineOutput</code>, no timeout, and explicit external polynomials. Recursive function/decision <code>RawRefinement</code> remains absent. This does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and seven blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Proof-bearing function and decision program trees now compile recursively into one literal raw finite machine, preserving output or verdict and no-timeout with explicit composition polynomials. This discharges the concrete machine-link blocker, but it does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and six blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -632,7 +681,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP and a complete four-stage raw compiler that preserves exact verdict and output on every raw bitstring for a proof-bearing target machine. It does not establish recursive function/decision RawRefinement, CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current nine-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, an all-input four-stage raw compiler, sequential raw-machine composition, and recursive function/decision refinement into one raw machine. It does not establish CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current nine-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -642,7 +691,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Nine scoped milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, and the full four-stage compiler on every raw bitstring for a proof-bearing polynomial-time target. Recursive function/decision <code>RawRefinement</code>, the deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Nine scoped publication milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, the full four-stage compiler, sequential compiler composition, and recursive function/decision <code>RawRefinement</code>. The deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -661,7 +710,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 5,235-declaration inventory, 172 pinned theorem candidates, whole-source closure, nine earned scoped milestones, three unearned global milestones, and concrete publication gate. The four-stage compiler handles every raw bitstring for an already proof-bearing polynomial-time target, but recursive function/decision <code>RawRefinement</code> remains absent. The earned CNF-SAT theorem is NP membership only. Four project axioms and seven blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 5,323-declaration inventory, 198 pinned theorem candidates, whole-source closure, nine earned scoped publication milestones, three unearned global milestones, and concrete publication gate. Recursive function/decision programs now compile into one literal raw machine; the earned CNF-SAT theorem is still NP membership only. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
