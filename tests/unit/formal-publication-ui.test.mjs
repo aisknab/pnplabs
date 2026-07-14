@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'e21338308fd667866efa3d003164b7fc1a454be160be384f24d23096c5c3350e');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 9);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 16);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -97,6 +97,21 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
     .find((candidate) => candidate.name === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP')
     .axioms = ['PNP.ForgedAxiom'];
   assert.equal(validation.validateInventory(assumedMembership), false);
+});
+
+test('Cook-Levin semantic bridge requires its exact standard-axiom closure and cannot become a complexity claim', () => {
+  const assumedBridge = structuredClone(inventory);
+  assumedBridge.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language')
+    .axioms = ['Classical.choice', 'PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumedBridge), false);
+
+  const forgedMilestone = structuredClone(status);
+  forgedMilestone.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-raw-tape-bridge')
+    .theoremRows[0].axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateMilestones(forgedMilestone), false);
+  assert.equal(validation.validateStatus(forgedMilestone, inventory), false);
 });
 
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
@@ -243,7 +258,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6'/);
+  assert.match(source, /const STATUS_SHA256 = 'b560372264f0a8e9510a3816609a7a95a43cf2cd8fbffba0e6d048870b1f7bb5'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -254,7 +269,7 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateInventory(changedInventory), false);
 
   const changedStatus = structuredClone(status);
-  changedStatus.formalPublicationMilestones[9].earned = true;
+  changedStatus.formalPublicationMilestones[16].earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
@@ -268,12 +283,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /5,323/);
-  assert.match(statusPage, /Nine scoped milestones/);
+  assert.match(statusPage, /6,306/);
+  assert.match(statusPage, /Sixteen scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /nine-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /twelve-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);

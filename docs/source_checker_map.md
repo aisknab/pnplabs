@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `0c52c984aa03f4ce40f6d64fd6fb5c1678db9045`. Its generated status payload is current
+core commit `d78ca574a89750fae594c61a5bdb7d6d9a076bc6`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the nine-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the twelve-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `0c52c984aa03f4ce40f6d64fd6fb5c1678db9045` | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, all-input and sequential raw compilation, and recursive function/decision refinement into one raw machine |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 198 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `d78ca574a89750fae594c61a5bdb7d6d9a076bc6` | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, and the Cook-Levin semantic CNF-to-verifier-language bridge |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 269 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Nine earned scoped milestones, three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current nine-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Sixteen earned scoped milestones, three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current twelve-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

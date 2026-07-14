@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/0c52c984aa03f4ce40f6d64fd6fb5c1678db9045/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/0c52c984aa03f4ce40f6d64fd6fb5c1678db9045/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d78ca574a89750fae594c61a5bdb7d6d9a076bc6/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d78ca574a89750fae594c61a5bdb7d6d9a076bc6/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the nine-page inventory-derived report. Every numbered section or
+The current canonical download is the twelve-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 56-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 198 reviewed theorem kinds, kernel-type fingerprints, empty axiom closures, and the full Lean-source digest. | Same-name type weakening, an added axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 269 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm nine earned scoped milestones, including `CNFSAT ∈ NP`, all-input and sequential raw compilation, and recursive function/decision refinement, plus three unearned global milestones, four project axioms, and six blockers. Confirm that CNF-SAT in P and NP-completeness remain false. | The recursive compiler is widened into a concrete SAT decider, a local/conditional result is presented as global, or a blocker/axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require nine PDF pages. | An alias differs, the old 56-page hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm sixteen earned scoped milestones, including `CNFSAT ∈ NP`, raw-machine compilation, and exact Cook-Levin generated-CNF semantics, plus three unearned global milestones, four project axioms, and six blockers. Confirm that the Cook-Levin external size/runtime polynomials, packaged polynomial reduction, CNF-SAT in P, and NP-completeness remain false. | Semantic correctness is widened into a complexity theorem, a local/conditional result is presented as global, or a blocker/axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require twelve PDF pages. | An alias differs, the old 56-page hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 

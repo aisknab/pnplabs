@@ -95,12 +95,18 @@ function makeProject(t) {
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5323,
-    theoremCount: 2282,
-    assumptionFreeTheoremCount: 2181,
-    sourceClosureModuleCount: 51,
+    declarationCount: 6306,
+    theoremCount: 2747,
+    assumptionFreeTheoremCount: 2456,
+    excludedPrivateDeclarationCount: 1068,
+    sourceClosureModuleCount: 58,
     axiomCount: 4,
     milestoneCandidates: [{
+      name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
+      module: "PNP.Concrete.CookLevinRawTapeBridge",
+      kind: "theorem",
+      axioms: ["Classical.choice", "Quot.sound", "propext"]
+    }, {
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
       module: "PNP.Concrete.TerminalOutputPacker",
       kind: "theorem",
@@ -265,7 +271,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...Array.from({ length: 165 }, (_, index) => ({
+    }, ...Array.from({ length: 235 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -310,7 +316,8 @@ function makeProject(t) {
       "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq": "e3bb23c7f245cb516803a91468e3a3b220338c36a11790ffa5045b8c41332a24",
       "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin": "4057fc9d48be85dd7f961ce7acf5bef68ddb4ed0c8b6798617b31deb9da8c7c5",
       "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq": "8b390dd6677d6e789499b7b713855652a5e1db2c64809ddf43d079deb4099965",
-      "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff": "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba"
+      "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff": "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language": "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d"
     }
   });
 
@@ -358,7 +365,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 9,
+        pageCount: 12,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -520,7 +527,18 @@ function makeProject(t) {
       polynomialTimeDeciderCompileAcceptsTheorem: "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff",
       polynomialTimeDeciderCompileAcceptsKernelTypeSha256: "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba",
       standardComplexityModelFormalized: true,
-      concreteComplexityMachineLinkDischarged: true
+      concreteComplexityMachineLinkDischarged: true,
+      cookLevinRawTapeBridgeFormalized: true,
+      cookLevinRawTapeBridgeAxiomAuditPassed: true,
+      cookLevinRawTapeBridgeAuditedDeclarationCount: 54,
+      cookLevinSemanticReductionCorrectnessFormalized: true,
+      cookLevinSemanticTheorem: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
+      cookLevinSemanticKernelTypeSha256: "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d",
+      cookLevinRawTapeBridgeAxiomClosure: ["Classical.choice", "Quot.sound", "propext"],
+      cookLevinProjectAxiomClosure: [],
+      cookLevinEncodedFormulaSizePolynomialFormalized: false,
+      cookLevinFormulaConstructionRuntimePolynomialFormalized: false,
+      cookLevinPolynomialReductionFormalized: false
     },
     historicalArchive: {
       status: "historical-quarantined-not-current-authority",
