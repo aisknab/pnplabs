@@ -40,17 +40,17 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045");
+  assert.equal(result.coreCommit, "d78ca574a89750fae594c61a5bdb7d6d9a076bc6");
 });
 
-test("current release is pinned, nine-page, exposes only earned CNF-SAT and recursive compiler results, and fails closed", () => {
+test("current release is pinned, twelve-page, exposes only earned CNF-SAT, raw-compiler, and Cook-Levin semantic results, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045");
-  assert.equal(release.source.proofCommit, "ad8fe5f3dddb66417e1d1fbc28ce6bb7a1457795");
-  assert.equal(release.source.tree, "7e1dcf3e7545c71dbce86bcc840547f91bdb0567");
+  assert.equal(release.source.commit, "d78ca574a89750fae594c61a5bdb7d6d9a076bc6");
+  assert.equal(release.source.proofCommit, "7d0470e9f2d80260988d5868ba9ed018e2047536");
+  assert.equal(release.source.tree, "788cc894814db5d37c9b98f07d8d5c8cac50243d");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 9);
+  assert.equal(release.artifacts.report.pageCount, 12);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -170,6 +170,17 @@ test("current release is pinned, nine-page, exposes only earned CNF-SAT and recu
   assert.equal(release.earnedBoundary.polynomialTimeDeciderCompileAcceptsTheorem, "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff");
   assert.equal(release.earnedBoundary.standardComplexityModelFormalized, true);
   assert.equal(release.earnedBoundary.concreteComplexityMachineLinkDischarged, true);
+  assert.equal(release.earnedBoundary.cookLevinRawTapeBridgeFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinRawTapeBridgeAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.cookLevinRawTapeBridgeAuditedDeclarationCount, 54);
+  assert.equal(release.earnedBoundary.cookLevinSemanticReductionCorrectnessFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinSemanticTheorem, "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
+  assert.equal(release.earnedBoundary.cookLevinSemanticKernelTypeSha256, "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d");
+  assert.deepEqual(release.earnedBoundary.cookLevinRawTapeBridgeAxiomClosure, ["Classical.choice", "Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cookLevinProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinEncodedFormulaSizePolynomialFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinFormulaConstructionRuntimePolynomialFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinPolynomialReductionFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
   assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, false);
   assert.equal(release.earnedBoundary.pEqualsNPFormalized, false);

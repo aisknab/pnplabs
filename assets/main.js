@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-32';
-const STATUS_SHA256 = '0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-14-RAW-REFINEMENT-31';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-14-32';
-const INVENTORY_SHA256 = 'f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921';
-const SOURCE_CLOSURE_SHA256 = '4fa4576322602277c9f7caffca38e0f2132b2576da1b25fe2625885d55aafb67';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-39';
+const STATUS_SHA256 = 'b560372264f0a8e9510a3816609a7a95a43cf2cd8fbffba0e6d048870b1f7bb5';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-14-COOK-LEVIN-RAW-TAPE-BRIDGE-38';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-14-39';
+const INVENTORY_SHA256 = 'e21338308fd667866efa3d003164b7fc1a454be160be384f24d23096c5c3350e';
+const SOURCE_CLOSURE_SHA256 = '0a7ac112bc72844c0c670bae50275a1c01d94171351720c2ad34220bbe46b1e0';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 5323,
-  theorems: 2282,
-  assumptionFreeTheorems: 2181,
-  excludedPrivateDeclarations: 1042,
-  modules: 51,
+  declarations: 6306,
+  theorems: 2747,
+  assumptionFreeTheorems: 2456,
+  excludedPrivateDeclarations: 1068,
+  modules: 58,
   axioms: 4,
 });
 
@@ -42,6 +42,12 @@ const PROJECT_AXIOMS = Object.freeze([
   'PNP.GeneratePCCPack',
   'PNP.LockedNANDThreshold',
   'PNP.ResidualBandExactMinimization',
+]);
+
+const LEAN_STANDARD_AXIOMS = Object.freeze([
+  'Classical.choice',
+  'Quot.sound',
+  'propext',
 ]);
 
 const REMAINING_BLOCKERS = Object.freeze([
@@ -57,6 +63,13 @@ const MILESTONE_IDS = Object.freeze([
   'concrete-machine-cost-kernel',
   'concrete-complexity-classes',
   'concrete-cnf-universal-verifier',
+  'concrete-cook-levin-layout',
+  'concrete-cook-levin-fixed-tableau',
+  'concrete-cook-levin-verifier-tableau',
+  'concrete-cook-levin-local-cnf',
+  'concrete-cook-levin-tableau-cnf',
+  'concrete-cook-levin-tableau-cnf-semantics',
+  'concrete-cook-levin-raw-tape-bridge',
   'direct-wire-semantics',
   'finite-enumeration-minimum',
   'framed-replacement-slack',
@@ -212,17 +225,18 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 284,
-    definition: 2511,
-    inductive: 121,
+    constructor: 300,
+    definition: 2991,
+    inductive: 132,
     opaque: 0,
     quotient: 0,
-    recursor: 121,
-    theorem: 2282,
+    recursor: 132,
+    theorem: 2747,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
   const membership = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
+  const cookLevinBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language');
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -263,6 +277,9 @@ function validateInventory(inventory) {
     && membership.module === 'PNP.Concrete.CNFWorkUniversalCorrectness'
     && membership.kernelType === 'Lean.Expr.app (Lean.Expr.const `PNP.Concrete.InNP []) (Lean.Expr.const `PNP.Concrete.CNFSAT [])'
     && sameJson(membership.axioms, [])
+    && cookLevinBridge?.kind === 'theorem'
+    && cookLevinBridge.module === 'PNP.Concrete.CookLevinRawTapeBridge'
+    && sameJson(cookLevinBridge.axioms, LEAN_STANDARD_AXIOMS)
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -304,7 +321,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 198
+    && inventory.milestoneCandidates.length === 269
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -368,18 +385,20 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 9;
+    const shouldBeEarned = index < 16;
+    const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
       || !Array.isArray(row.theoremRows)
-      || row.theoremRows.length !== row.requiredTheorems?.length) return false;
+      || row.theoremRows.length !== row.requiredTheorems?.length
+      || row.allAssumptionFree !== allAssumptionFree) return false;
     if (shouldBeEarned) {
       return row.allPresent === true
-        && row.allAssumptionFree === true
         && row.allKernelTypesMatch === true
         && row.theoremRows.every((theorem) => theorem.present === true
           && theorem.kind === 'theorem'
-          && sameJson(theorem.axioms, [])
+          && Array.isArray(theorem.axioms)
+          && theorem.axioms.every((axiom) => LEAN_STANDARD_AXIOMS.includes(axiom))
           && isSha256(theorem.expectedKernelTypeSha256)
           && theorem.kernelTypeFingerprintMatches === true
           && theorem.actualKernelTypeSha256 === theorem.expectedKernelTypeSha256);
@@ -580,17 +599,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 5,323 exported public declarations, including 2,282 theorem-kind declarations and 2,181 assumption-free theorem-kind declarations across 51 modules. Nine scoped publication milestones are earned, including concrete CNF-SAT verifier correctness, NP membership, all-input pipeline compilation, sequential machine composition, and recursive program refinement; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 6,306 exported public declarations, including 2,747 theorem-kind declarations and 2,456 assumption-free theorem-kind declarations across 58 modules. Sixteen scoped publication milestones are earned, now including exact Cook-Levin semantic equivalence between the generated CNF and the verifier language; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>sequential compiler checked</span><span>raw refinement checked</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>raw refinement checked</span><span>Cook-Levin semantics checked</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Proof-bearing function and decision program trees now compile recursively into one literal raw finite machine, preserving output or verdict and no-timeout with explicit composition polynomials. This discharges the concrete machine-link blocker, but it does not prove CNF-SAT in P, NP-completeness, or P = NP. Four project axioms and six blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language</code> proves exact generated-CNF-to-verifier-language semantics with no project axiom. External formula-size and construction-runtime polynomials, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -652,7 +671,7 @@ function insertAfterPageHero(id, html) {
 function ensureFormalVerificationCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction verification',
-    title: 'Verify the compiled inventory and current nine-page report.',
+    title: 'Verify the compiled inventory and current twelve-page report.',
     lede: 'The target theorem is not established. The current report is generated from the reviewed compiled inventory; digest checks establish file identity, not mathematical truth.',
     primaryHref: 'public/pnp-status.json',
     primaryText: 'Open current status JSON',
@@ -671,7 +690,7 @@ projectSpecificAxiomsRemaining = true</pre>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check status and inventory together</h3><p>The browser fetches both payloads concurrently, hashes the raw inventory bytes, validates exact counts and coordinates, and rejects inconsistent gate or milestone rows.</p></article>
         <article class="card"><h3>Build and inventory Lean</h3><p>Run <code>lake build PNP</code>, <code>npm run formal:inventory:check</code>, and <code>npm run formal:publication:check</code> in the source repository.</p></article>
-        <article class="card"><h3>Check current report identity</h3><p>The nine-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
+        <article class="card"><h3>Check current report identity</h3><p>The twelve-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
@@ -681,7 +700,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP, an all-input four-stage raw compiler, sequential raw-machine composition, and recursive function/decision refinement into one raw machine. It does not establish CNF-SAT in P, NP-completeness, or P = NP. These answers distinguish the current nine-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, and exact Cook-Levin semantic equivalence between the generated CNF and the verifier language. It does not yet prove the generated formula-size or construction-runtime polynomial, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current twelve-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -691,7 +710,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Nine scoped publication milestones are earned from pinned, assumption-free theorem rows, including universal CNF-SAT verifier correctness, no-timeout, <code>CNFSAT ∈ NP</code>, the full four-stage compiler, sequential compiler composition, and recursive function/decision <code>RawRefinement</code>. The deterministic P result, NP-completeness, and the concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Sixteen scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, and exact Cook-Levin CNF-to-verifier-language semantics. External reduction-size and construction-runtime polynomials, a packaged polynomial reduction, NP-completeness, the deterministic P result, and the concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -710,7 +729,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 5,323-declaration inventory, 198 pinned theorem candidates, whole-source closure, nine earned scoped publication milestones, three unearned global milestones, and concrete publication gate. Recursive function/decision programs now compile into one literal raw machine; the earned CNF-SAT theorem is still NP membership only. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 6,306-declaration inventory, 269 pinned theorem candidates, whole-source closure, sixteen earned scoped publication milestones, three unearned global milestones, and concrete publication gate. Cook-Levin semantic correctness is earned; its external complexity bounds and packaged reduction are not. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

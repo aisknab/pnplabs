@@ -4,53 +4,53 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "0c52c984aa03f4ce40f6d64fd6fb5c1678db9045";
-const CORE_TREE = "7e1dcf3e7545c71dbce86bcc840547f91bdb0567";
-const PROOF_COMMIT = "ad8fe5f3dddb66417e1d1fbc28ce6bb7a1457795";
+const CORE_COMMIT = "d78ca574a89750fae594c61a5bdb7d6d9a076bc6";
+const CORE_TREE = "788cc894814db5d37c9b98f07d8d5c8cac50243d";
+const PROOF_COMMIT = "7d0470e9f2d80260988d5868ba9ed018e2047536";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 249982,
-    sha256: "e043a966e60e21c6d05f15a4eba24a915c27de4d73281acc2aaa50428c4e626e",
-    role: "current inventory-derived nine-page formal-reconstruction report PDF"
+    bytes: 258194,
+    sha256: "d652bb81374078d1f5fd3d93a66435ac28179dd60b38c842358d2b7caf9089d0",
+    role: "current inventory-derived twelve-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 249982,
-    sha256: "e043a966e60e21c6d05f15a4eba24a915c27de4d73281acc2aaa50428c4e626e",
+    bytes: 258194,
+    sha256: "d652bb81374078d1f5fd3d93a66435ac28179dd60b38c842358d2b7caf9089d0",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 18509,
-    sha256: "03570c7d153580293c3bd9acbbb1691d3747bca8363fa05e6b43ef601f66463a",
+    bytes: 25360,
+    sha256: "d20f828ca0eb5101c9daf31828338b24c9218092d1b34f478a750cadabd2e96a",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 18509,
-    sha256: "03570c7d153580293c3bd9acbbb1691d3747bca8363fa05e6b43ef601f66463a",
+    bytes: 25360,
+    sha256: "d20f828ca0eb5101c9daf31828338b24c9218092d1b34f478a750cadabd2e96a",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 152196,
-    sha256: "0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6",
+    bytes: 201344,
+    sha256: "b560372264f0a8e9510a3816609a7a95a43cf2cd8fbffba0e6d048870b1f7bb5",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 1456364,
-    sha256: "f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921",
+    bytes: 1767830,
+    sha256: "e21338308fd667866efa3d003164b7fc1a454be160be384f24d23096c5c3350e",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 17619,
-    sha256: "7c11ac833e62fc89c27f98c349ede928cdc0cd4e628ea8fff6ed02130d9bb885",
+    bytes: 18631,
+    sha256: "7cab4f424d5e5718321e04ff971af591055cb288fce38f3a0aa62f94f7ffca8b",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -116,8 +116,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-32") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-14-RAW-REFINEMENT-31") fail("status public-surface coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-14-39") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-14-COOK-LEVIN-RAW-TAPE-BRIDGE-38") fail("status public-surface coordinate mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-14-39" || status.formalPublicationMapSha256 !== "8a3e34764b4488297d75d56cbf30b1025215379f5747b18a26be3ea8b4a03ce2" || status.leanSourceClosureSha256 !== "0a7ac112bc72844c0c670bae50275a1c01d94171351720c2ad34220bbe46b1e0") fail("status source identity mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -149,13 +150,16 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-14-32") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 5323 || inventory.theoremCount !== 2282) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 2181 || inventory.sourceClosureModuleCount !== 51 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-14-39") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 6306 || inventory.theoremCount !== 2747) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 2456 || inventory.excludedPrivateDeclarationCount !== 1068 || inventory.sourceClosureModuleCount !== 58 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   if (!membership || membership.kind !== "theorem" || membership.axioms?.length !== 0) fail("inventory CNF-SAT NP-membership theorem boundary mismatch");
+  const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
+  if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) fail("inventory Cook-Levin raw-tape theorem boundary mismatch");
+  if (inventory.milestoneCandidates?.some((candidate) => candidate.name === "PNP.Concrete.cnfSATNPComplete" || candidate.name === "PNP.Concrete.cnfSATInP" || candidate.name === "PNP.Main.p_eq_np")) fail("inventory overstates the Cook-Levin milestone");
   const packer = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq");
   if (!packer || packer.kind !== "theorem" || packer.module !== "PNP.Concrete.TerminalOutputPacker" || packer.axioms?.length !== 0) fail("inventory terminal-output packer theorem boundary mismatch");
   const terminalBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents");
@@ -213,17 +217,17 @@ function assertInventory(inventory) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineRefinement" || theorem.axioms?.length !== 0) fail(`inventory recursive refinement theorem mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 198) fail("inventory reviewed theorem-candidate count mismatch");
+  if (inventory.milestoneCandidates?.length !== 269) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-21") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-22") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-14-32" || manifest.source?.formalPublicationMapSha256 !== "6dcbb3aa9fdb7b782b7362f01e3c0bbb5a683f2447015b7d7abc0875dfc53fb0" || manifest.source?.leanSourceClosureSha256 !== "4fa4576322602277c9f7caffca38e0f2132b2576da1b25fe2625885d55aafb67") fail("current manifest publication-map identity mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 9) fail("current report must have nine pages");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-14-39" || manifest.source?.formalPublicationMapSha256 !== "8a3e34764b4488297d75d56cbf30b1025215379f5747b18a26be3ea8b4a03ce2" || manifest.source?.leanSourceClosureSha256 !== "0a7ac112bc72844c0c670bae50275a1c01d94171351720c2ad34220bbe46b1e0") fail("current manifest publication-map identity mismatch");
+  if (manifest.artifacts?.report?.pageCount !== 12) fail("current report must have twelve pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
   const boundary = manifest.publicationBoundary || {};
@@ -282,6 +286,10 @@ function assertCurrentManifest(manifest) {
   if (earned.functionProgramCompileHaltsTheorem !== "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin" || earned.functionProgramCompileHaltsKernelTypeSha256 !== "53bd33de652a55facc74179863672a789f40f9ba6dea293c2de29fcc866b5a3d" || earned.functionProgramCompileOutputTheorem !== "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq" || earned.functionProgramCompileOutputKernelTypeSha256 !== "e3bb23c7f245cb516803a91468e3a3b220338c36a11790ffa5045b8c41332a24") fail("current manifest recursive function evidence mismatch");
   if (earned.decisionProgramCompileHaltsTheorem !== "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin" || earned.decisionProgramCompileHaltsKernelTypeSha256 !== "4057fc9d48be85dd7f961ce7acf5bef68ddb4ed0c8b6798617b31deb9da8c7c5" || earned.decisionProgramCompileVerdictTheorem !== "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq" || earned.decisionProgramCompileVerdictKernelTypeSha256 !== "8b390dd6677d6e789499b7b713855652a5e1db2c64809ddf43d079deb4099965") fail("current manifest recursive decision evidence mismatch");
   if (earned.polynomialTimeDeciderCompileAcceptsTheorem !== "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff" || earned.polynomialTimeDeciderCompileAcceptsKernelTypeSha256 !== "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba") fail("current manifest compiled decider evidence mismatch");
+  if (earned.cookLevinRawTapeBridgeFormalized !== true || earned.cookLevinRawTapeBridgeAxiomAuditPassed !== true || earned.cookLevinRawTapeBridgeAuditedDeclarationCount !== 54 || earned.cookLevinSemanticReductionCorrectnessFormalized !== true) fail("current manifest Cook-Levin raw-tape boundary mismatch");
+  if (earned.cookLevinSemanticTheorem !== "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language" || earned.cookLevinSemanticTheoremType !== "{language : PNP.Concrete.Language} (problem : PNP.Concrete.CookLevin.VerifierTableauProblem language) : PNP.Concrete.CNFSAT problem.encodedFormula ↔ language problem.input" || earned.cookLevinSemanticKernelTypeSha256 !== "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d") fail("current manifest Cook-Levin semantic theorem mismatch");
+  if (JSON.stringify(earned.cookLevinRawTapeBridgeAxiomClosure) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"]) || !Array.isArray(earned.cookLevinProjectAxiomClosure) || earned.cookLevinProjectAxiomClosure.length !== 0) fail("current manifest Cook-Levin axiom closure mismatch");
+  if (earned.cookLevinEncodedFormulaSizePolynomialFormalized !== false || earned.cookLevinFormulaConstructionRuntimePolynomialFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates Cook-Levin complexity bounds");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
 }
 
@@ -309,7 +317,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-21") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-14-22") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");
