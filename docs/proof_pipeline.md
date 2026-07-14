@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 172 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 198 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 5,235 public declarations;
-- 2,224 theorem-kind declarations;
-- 2,123 assumption-free theorem-kind declarations;
-- 49 source-closure modules;
-- 1,036 excluded private compiler auxiliaries;
+- 5,323 public declarations;
+- 2,282 theorem-kind declarations;
+- 2,181 assumption-free theorem-kind declarations;
+- 51 source-closure modules;
+- 1,042 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -53,8 +53,8 @@ The nine earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
-| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, and one literal four-stage raw compiler that preserves exact verdict and output, cannot time out, and has explicit external output/runtime polynomials for every raw input to a proof-bearing polynomial-time target | The compiler wraps an already-raw target; recursive function/decision `RawRefinement`, the concrete machine link, CNF-SAT in P, NP-completeness, and `P = NP` remain absent |
-| Concrete P, NP, and reductions | Finite charged pipelines, bounded certificates, polynomial reductions, and the NP-complete-in-P implication | No recursive raw-refinement composition or concrete complexity machine link, concrete SAT completeness/decider, or root theorem |
+| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, one literal four-stage all-input compiler, sequential raw-machine composition, and recursive function/decision compilation into one raw finite machine with exact verdict/output/no-timeout and explicit external polynomials | This closes the concrete machine link only; CNF-SAT in P, NP-completeness, and `P = NP` remain absent |
+| Concrete P, NP, and reductions | Finite charged pipelines, bounded certificates, polynomial reductions, the NP-complete-in-P implication, and recursively compiled exact raw-machine refinements | No concrete SAT completeness/decider or root theorem |
 | Concrete universal CNF-SAT verifier | Exact formula/assignment decoding, universal accept/reject semantics, no timeout, and `CNFSAT ∈ NP` | No CNF-SAT in P, NP-completeness, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
@@ -79,7 +79,7 @@ This pass is intentionally non-activating:
 - the expected activation fingerprints are unset;
 - unset fingerprints are unconfigured and never match null actual values;
 - the abstract string-handle `PNP.PEqualsNP` bridge is categorically ineligible;
-- four project axioms and seven blockers remain.
+- four project axioms and six blockers remain.
 
 Every theorem-emission field is derived from `concretePublicationGate.passed`. Historical accepted
 records, JSON values, checker results, or report wording cannot override it.
@@ -100,15 +100,14 @@ it is not a claim of universal cross-toolchain reproducibility.
 
 ## Remaining Route To The Target
 
-The seven current blockers are:
+The six current blockers are:
 
-1. `Formal.ConcreteComplexityMachineLink`;
-2. `Formal.ConcreteSAT`;
-3. `Formal.LockedNANDThreshold`;
-4. `Formal.ResidualBandMinimizer`;
-5. `Formal.ZeroSlack`;
-6. `Formal.PolynomialRuntimeAndCertificateBounds`;
-7. `Formal.RootTheoremAndAxiomAudit`.
+1. `Formal.ConcreteSAT`;
+2. `Formal.LockedNANDThreshold`;
+3. `Formal.ResidualBandMinimizer`;
+4. `Formal.ZeroSlack`;
+5. `Formal.PolynomialRuntimeAndCertificateBounds`;
+6. `Formal.RootTheoremAndAxiomAudit`.
 
 Closing them requires concrete formal definitions, unconditional theorems at the required scopes,
 polynomial bounds, a concrete root theorem, and an acceptable axiom audit. Publication machinery is

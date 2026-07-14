@@ -18,7 +18,7 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '59972a230221cd438cb08585a44c48f7c52d20aa025cd607daed2343fca18c81');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'f9bbb4c9aa21a72221d20e9327b900dd37a6cc62ea2919b5fc1a20dee1776921');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
@@ -99,10 +99,10 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
   assert.equal(validation.validateInventory(assumedMembership), false);
 });
 
-test('all-input compiler cannot be widened to recursive raw refinement or stripped of compiled evidence', () => {
-  const forgedRefinement = structuredClone(status);
-  forgedRefinement.leanConcretePipelineRawRefinementFormalized = true;
-  assert.equal(validation.validateStatus(forgedRefinement, inventory), false, 'leanConcretePipelineRawRefinementFormalized');
+test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
+  const strippedRefinement = structuredClone(status);
+  strippedRefinement.leanConcretePipelineRawRefinementFormalized = false;
+  assert.equal(validation.validateStatus(strippedRefinement, inventory), false, 'leanConcretePipelineRawRefinementFormalized');
 
   for (const field of [
     'leanConcretePipelineStateNamespaceFormalized',
@@ -122,6 +122,18 @@ test('all-input compiler cannot be widened to recursive raw refinement or stripp
     'leanConcretePipelineCanonicalPairCompilationFormalized',
     'leanConcretePipelineCompilerAxiomAuditPassed',
     'leanConcretePipelineAllInputCompilationFormalized',
+    'leanConcretePipelineSequentialNamespaceFormalized',
+    'leanConcretePipelineSequentialNamespaceAxiomAuditPassed',
+    'leanConcretePipelineSequentialCompilationFormalized',
+    'leanConcretePipelineSequentialCompilerAxiomAuditPassed',
+    'leanConcretePipelineSequentialVerdictAndOutputPreservationFormalized',
+    'leanConcretePipelineSequentialExternalInputSizePolynomialFormalized',
+    'leanConcretePipelineSequentialStuckFirstTimeoutFormalized',
+    'leanConcretePipelineRefinementAxiomAuditPassed',
+    'leanConcreteFunctionProgramRecursiveCompilationFormalized',
+    'leanConcreteDecisionProgramRecursiveCompilationFormalized',
+    'leanConcretePolynomialTimeDeciderRawCompilationFormalized',
+    'standardComplexityModelFormalized',
     'leanConcretePipelineMalformedInputBehaviorFormalized',
     'leanConcretePipelineExternalInputSizePolynomialFormalized',
   ]) {
@@ -208,10 +220,30 @@ test('all-input compiler cannot be widened to recursive raw refinement or stripp
       .axioms = ['PNP.ForgedAxiom'];
     assert.equal(validation.validateInventory(assumedCompiler), false, theorem);
   }
+
+  for (const theorem of [
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_correct',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff',
+    'PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact',
+    'PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin',
+    'PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq',
+    'PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin',
+    'PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq',
+    'PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff',
+  ]) {
+    const assumedRecursiveCompiler = structuredClone(inventory);
+    assumedRecursiveCompiler.milestoneCandidates
+      .find((candidate) => candidate.name === theorem)
+      .axioms = ['PNP.ForgedAxiom'];
+    assert.equal(validation.validateInventory(assumedRecursiveCompiler), false, theorem);
+  }
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'c02776e09bdd0f9cba4156306a0644905a2012053dbe4b087a7c65e133d9fcf9'/);
+  assert.match(source, /const STATUS_SHA256 = '0c515fbbe0e18a96f306acb82a6d1852b4106a0a47e0e85724b1c8d049d48bf6'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -236,7 +268,7 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /5,235/);
+  assert.match(statusPage, /5,323/);
   assert.match(statusPage, /Nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);

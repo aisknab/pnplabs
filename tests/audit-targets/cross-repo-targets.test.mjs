@@ -73,17 +73,32 @@ function makeProject(t) {
     leanConcretePipelineCompilerAuditedDeclarationCount: 29,
     leanConcretePipelineAllInputCompilationFormalized: true,
     leanConcretePipelineMalformedInputBehaviorFormalized: true,
-    leanConcretePipelineRawRefinementFormalized: false,
+    leanConcretePipelineRawRefinementFormalized: true,
     leanConcretePipelineExternalInputSizePolynomialFormalized: true,
+    leanConcretePipelineSequentialNamespaceFormalized: true,
+    leanConcretePipelineSequentialNamespaceAxiomAuditPassed: true,
+    leanConcretePipelineSequentialNamespaceAuditedDeclarationCount: 26,
+    leanConcretePipelineSequentialCompilationFormalized: true,
+    leanConcretePipelineSequentialCompilerAxiomAuditPassed: true,
+    leanConcretePipelineSequentialCompilerAuditedDeclarationCount: 31,
+    leanConcretePipelineSequentialVerdictAndOutputPreservationFormalized: true,
+    leanConcretePipelineSequentialExternalInputSizePolynomialFormalized: true,
+    leanConcretePipelineSequentialStuckFirstTimeoutFormalized: true,
+    leanConcretePipelineRefinementAxiomAuditPassed: true,
+    leanConcretePipelineRefinementAuditedDeclarationCount: 16,
+    leanConcreteFunctionProgramRecursiveCompilationFormalized: true,
+    leanConcreteDecisionProgramRecursiveCompilationFormalized: true,
+    leanConcretePolynomialTimeDeciderRawCompilationFormalized: true,
+    standardComplexityModelFormalized: true,
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 5235,
-    theoremCount: 2224,
-    assumptionFreeTheoremCount: 2123,
-    sourceClosureModuleCount: 49,
+    declarationCount: 5323,
+    theoremCount: 2282,
+    assumptionFreeTheoremCount: 2181,
+    sourceClosureModuleCount: 51,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
@@ -195,7 +210,62 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineCompiler",
       kind: "theorem",
       axioms: []
-    }, ...Array.from({ length: 150 }, (_, index) => ({
+    }, {
+      name: "PNP.Concrete.PipelineSequentialCompiler.sequential_correct",
+      module: "PNP.Concrete.PipelineSequentialCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq",
+      module: "PNP.Concrete.PipelineSequentialCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq",
+      module: "PNP.Concrete.PipelineSequentialCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout",
+      module: "PNP.Concrete.PipelineSequentialCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff",
+      module: "PNP.Concrete.PipelineSequentialCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact",
+      module: "PNP.Concrete.PipelineSequentialCompiler",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin",
+      module: "PNP.Concrete.PipelineRefinement",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq",
+      module: "PNP.Concrete.PipelineRefinement",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin",
+      module: "PNP.Concrete.PipelineRefinement",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq",
+      module: "PNP.Concrete.PipelineRefinement",
+      kind: "theorem",
+      axioms: []
+    }, {
+      name: "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff",
+      module: "PNP.Concrete.PipelineRefinement",
+      kind: "theorem",
+      axioms: []
+    }, ...Array.from({ length: 165 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -229,7 +299,18 @@ function makeProject(t) {
       "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_encoded_rawTimeBound": "4efe0f62d185b7ac19d73aebb09008e97f00c96a8252e263c901f8a6add7c45b",
       "PNP.Concrete.PipelineInputFramer.run_compileTotalInputFramer_rawTimeBound_blankEquivalent": "1eaa31ea98226c202722a0e67aa796b7b461ccf5367f35fff194973bb609ce8a",
       "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_accept": "3ef9f8377ec7ad7ebb70aa41b978cdb22f2c1c029b26e1e4c241ce00c20781d4",
-      "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout": "48b9ee1743a6881a663fb7a1cc59984c371ff853524f9b18bad58014c229f9fe"
+      "PNP.Concrete.PipelineInputFramer.boundedDecide_compileTotalInputFramer_ne_timeout": "48b9ee1743a6881a663fb7a1cc59984c371ff853524f9b18bad58014c229f9fe",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_correct": "8943f2f2c396dfb2e6e8232244b9ecb386fe3a7259590ed96cedb82d1cc7b22a",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq": "dd282c364787b165c9be9ca80b712c3ebf61ac95d097218300a65433a690e386",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq": "8d954e0e65847ff071a3a79a7be1c7f7d5a2f1696e3f94be3a7288500598b9d7",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout": "116c522c8a64988fd815b32bad08df882534b94b87cfa42a705fd1d8158d45af",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff": "7a6d0d03c735c83a2fb0c764a174a79402ec196a98169614b15dbee442df099e",
+      "PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact": "5f5f0889b807ea0ccefdfb911ba8b583de9999f2a627745bc9317c0c6ff21a34",
+      "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin": "53bd33de652a55facc74179863672a789f40f9ba6dea293c2de29fcc866b5a3d",
+      "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq": "e3bb23c7f245cb516803a91468e3a3b220338c36a11790ffa5045b8c41332a24",
+      "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin": "4057fc9d48be85dd7f961ce7acf5bef68ddb4ed0c8b6798617b31deb9da8c7c5",
+      "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq": "8b390dd6677d6e789499b7b713855652a5e1db2c64809ddf43d079deb4099965",
+      "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff": "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba"
     }
   });
 
@@ -291,7 +372,7 @@ function makeProject(t) {
       compatibilityRootPresent: false,
       concreteTargetPresent: true,
       projectSpecificAxiomsRemaining: true,
-      remainingBlockerCount: 7
+      remainingBlockerCount: 6
     },
     earnedBoundary: {
       pipelineStateNamespacesFormalized: true,
@@ -395,8 +476,51 @@ function makeProject(t) {
       pipelineOutputSizePolynomial: "B(m) = m + p(m) + 1",
       pipelineRawTimePolynomial: "R(m) = totalInputFramerRawTimeBound(m) + 6 + 18 * p(m) + 6 + framedOutputHandoffRawTimeBound(B(m)) + terminalBridgeRawTimeBound(B(m))",
       pipelineMalformedInputBehaviorFormalized: true,
-      pipelineRawRefinementFormalized: false,
-      pipelineExternalInputSizePolynomialFormalized: true
+      pipelineRawRefinementFormalized: true,
+      pipelineExternalInputSizePolynomialFormalized: true,
+      pipelineSequentialNamespaceFormalized: true,
+      pipelineSequentialNamespaceAxiomAuditPassed: true,
+      pipelineSequentialNamespaceAuditedDeclarationCount: 26,
+      pipelineSequentialNamespaceAxiomClosure: [],
+      pipelineSequentialCompilationFormalized: true,
+      pipelineSequentialCompilerAxiomAuditPassed: true,
+      pipelineSequentialCompilerAuditedDeclarationCount: 31,
+      pipelineSequentialVerdictAndOutputPreservationFormalized: true,
+      pipelineSequentialExternalInputSizePolynomialFormalized: true,
+      pipelineSequentialStuckFirstTimeoutFormalized: true,
+      pipelineSequentialCorrectTheorem: "PNP.Concrete.PipelineSequentialCompiler.sequential_correct",
+      pipelineSequentialCorrectKernelTypeSha256: "8943f2f2c396dfb2e6e8232244b9ecb386fe3a7259590ed96cedb82d1cc7b22a",
+      pipelineSequentialVerdictTheorem: "PNP.Concrete.PipelineSequentialCompiler.sequential_boundedDecide_eq",
+      pipelineSequentialVerdictKernelTypeSha256: "dd282c364787b165c9be9ca80b712c3ebf61ac95d097218300a65433a690e386",
+      pipelineSequentialMachineOutputTheorem: "PNP.Concrete.PipelineSequentialCompiler.sequential_machineOutput_eq",
+      pipelineSequentialMachineOutputKernelTypeSha256: "8d954e0e65847ff071a3a79a7be1c7f7d5a2f1696e3f94be3a7288500598b9d7",
+      pipelineSequentialNoTimeoutTheorem: "PNP.Concrete.PipelineSequentialCompiler.sequential_ne_timeout",
+      pipelineSequentialNoTimeoutKernelTypeSha256: "116c522c8a64988fd815b32bad08df882534b94b87cfa42a705fd1d8158d45af",
+      pipelineSequentialAcceptsTheorem: "PNP.Concrete.PipelineSequentialCompiler.sequential_accepts_iff",
+      pipelineSequentialAcceptsKernelTypeSha256: "7a6d0d03c735c83a2fb0c764a174a79402ec196a98169614b15dbee442df099e",
+      pipelineSequentialStuckFirstTimeoutTheorem: "PNP.Concrete.PipelineSequentialCompiler.sequential_timeout_of_stuck_first_rawRunExact",
+      pipelineSequentialStuckFirstTimeoutKernelTypeSha256: "5f5f0889b807ea0ccefdfb911ba8b583de9999f2a627745bc9317c0c6ff21a34",
+      pipelineSequentialCompilerAxiomClosure: [],
+      pipelineSequentialOutputSizePolynomial: "Bseq(m) = m + p(m) + 1",
+      pipelineSequentialRawTimePolynomial: "Rseq(m) = PipelineRaw(p)(m) + 6 + PipelineRaw(q)(m + p(m) + 1)",
+      pipelineRefinementAxiomAuditPassed: true,
+      pipelineRefinementAuditedDeclarationCount: 16,
+      pipelineRefinementAxiomClosure: [],
+      functionProgramRecursiveCompilationFormalized: true,
+      decisionProgramRecursiveCompilationFormalized: true,
+      polynomialTimeDeciderRawCompilationFormalized: true,
+      functionProgramCompileHaltsTheorem: "PNP.Concrete.FunctionProgram.RawRefinement.compile_haltsWithin",
+      functionProgramCompileHaltsKernelTypeSha256: "53bd33de652a55facc74179863672a789f40f9ba6dea293c2de29fcc866b5a3d",
+      functionProgramCompileOutputTheorem: "PNP.Concrete.FunctionProgram.RawRefinement.compile_output_eq",
+      functionProgramCompileOutputKernelTypeSha256: "e3bb23c7f245cb516803a91468e3a3b220338c36a11790ffa5045b8c41332a24",
+      decisionProgramCompileHaltsTheorem: "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin",
+      decisionProgramCompileHaltsKernelTypeSha256: "4057fc9d48be85dd7f961ce7acf5bef68ddb4ed0c8b6798617b31deb9da8c7c5",
+      decisionProgramCompileVerdictTheorem: "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq",
+      decisionProgramCompileVerdictKernelTypeSha256: "8b390dd6677d6e789499b7b713855652a5e1db2c64809ddf43d079deb4099965",
+      polynomialTimeDeciderCompileAcceptsTheorem: "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff",
+      polynomialTimeDeciderCompileAcceptsKernelTypeSha256: "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba",
+      standardComplexityModelFormalized: true,
+      concreteComplexityMachineLinkDischarged: true
     },
     historicalArchive: {
       status: "historical-quarantined-not-current-authority",
@@ -556,7 +680,7 @@ test("rejects drift in the all-input runtime polynomial", (t) => {
   expectFailure(project, /formal-publication all-input compiler polynomial evidence mismatch/);
 });
 
-test("rejects all-input compiler audit, theorem fingerprint, or RawRefinement overclaim drift", (t) => {
+test("rejects all-input compiler audit, theorem fingerprint, or RawRefinement removal drift", (t) => {
   const audit = makeProject(t);
   audit.release.earnedBoundary.pipelineCompilerAxiomAuditPassed = false;
   write(audit.root, "downloads/formal-publication-release.json", json(audit.release));
@@ -567,10 +691,27 @@ test("rejects all-input compiler audit, theorem fingerprint, or RawRefinement ov
   write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
   expectFailure(fingerprint, /all-input compiler verdict evidence mismatch/);
 
-  const overclaim = makeProject(t);
-  overclaim.release.earnedBoundary.pipelineRawRefinementFormalized = true;
-  write(overclaim.root, "downloads/formal-publication-release.json", json(overclaim.release));
-  expectFailure(overclaim, /formal-publication all-input compiler boundary mismatch/);
+  const removed = makeProject(t);
+  removed.release.earnedBoundary.pipelineRawRefinementFormalized = false;
+  write(removed.root, "downloads/formal-publication-release.json", json(removed.release));
+  expectFailure(removed, /formal-publication all-input compiler boundary mismatch/);
+});
+
+test("rejects sequential compiler or recursive refinement evidence drift", (t) => {
+  const sequential = makeProject(t);
+  sequential.release.earnedBoundary.pipelineSequentialRawTimePolynomial = "Rseq(m) = 0";
+  write(sequential.root, "downloads/formal-publication-release.json", json(sequential.release));
+  expectFailure(sequential, /formal-publication sequential polynomial evidence mismatch/);
+
+  const refinement = makeProject(t);
+  refinement.release.earnedBoundary.pipelineRefinementAxiomAuditPassed = false;
+  write(refinement.root, "downloads/formal-publication-release.json", json(refinement.release));
+  expectFailure(refinement, /formal-publication recursive refinement boundary mismatch/);
+
+  const fingerprint = makeProject(t);
+  fingerprint.release.earnedBoundary.polynomialTimeDeciderCompileAcceptsKernelTypeSha256 = "0".repeat(64);
+  write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
+  expectFailure(fingerprint, /formal-publication polynomial-time decider compilation evidence mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
