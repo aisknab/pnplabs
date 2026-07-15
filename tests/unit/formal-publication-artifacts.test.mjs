@@ -40,14 +40,14 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "5617c95037b14dde93c5d21caaf09de873491210");
+  assert.equal(result.coreCommit, "359dcb1bf645ef15dddbfb42cd1ec789e4f5a5b7");
 });
 
-test("current release is pinned, sixteen-page, exposes only earned CNF-SAT, raw-compiler, Cook-Levin semantic, schedule, cursor, and executable builder-prefix results, and fails closed", () => {
+test("current release is pinned, sixteen-page, exposes only earned CNF-SAT, raw-compiler, Cook-Levin semantic, schedule, cursor, input-prefix, and standalone token-appender results, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.source.commit, "5617c95037b14dde93c5d21caaf09de873491210");
-  assert.equal(release.source.proofCommit, "877b82b405345bc31cdba5e695455d7f64d55cfe");
-  assert.equal(release.source.tree, "7485f76ad676da796ef378d5c2223a216d175c22");
+  assert.equal(release.source.commit, "359dcb1bf645ef15dddbfb42cd1ec789e4f5a5b7");
+  assert.equal(release.source.proofCommit, "7aef992d7665a0b901e285547454caae22333045");
+  assert.equal(release.source.tree, "5245ef24d72116a2225d8fe0b1c32cd6de9b6bfe");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 16);
@@ -253,7 +253,27 @@ test("current release is pinned, sixteen-page, exposes only earned CNF-SAT, raw-
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderInputPrefixProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderInputPrefixFormulaBitsEmittedFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderInputPrefixDirectCursorRawInterpretationFormalized, false);
-  assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderAuditedDeclarationCount, 68);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderCompiledRawMachineFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderExternalInputSizePolynomialFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderAllTokensExactFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderFirstFormulaBitsFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderMalformedPhaseTimeoutFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderInputPrefixComposed, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderWorkTime, "2 * (max 1 inputLength + inputLength + priorTokenCount + 3)");
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderFirstTokenRawTimePolynomial, "24 * inputLength + 48");
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderRuleCount, 59);
+  assert.equal(Object.keys(release.earnedBoundary.cookLevinBuilderTokenAppenderTheoremKernelTypeSha256).length, 17);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderExactWorkRunTheorem, "PNP.Concrete.CookLevin.BuilderTokenAppender.appendToken_workRunExact");
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderFormulaPrefixTheorem, "PNP.Concrete.CookLevin.BuilderTokenAppender.firstHeaderToken_bits_eq_encodedFormula_take_two");
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderTheoremKernelTypeSha256[release.earnedBoundary.cookLevinBuilderTokenAppenderExactWorkRunTheorem], "948f8fd82b0b7afb85ae562995bebfcf59e50896cb46765fd4fbb807dd6652ad");
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderTokenAppenderAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderTokenAppenderProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderCompleteHeaderFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderTokenAppenderDynamicCursorInterpretationFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinCompleteRawFormulaBuilderFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderFunctionProgramRawRefinementFormalized, false);
