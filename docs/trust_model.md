@@ -20,7 +20,7 @@ The practical rules are:
 | --- | --- | --- | --- |
 | Compiled inventory | Lean 4.31.0 kernel/environment and the small export probe | Name/module/kind/axiom closure for every public declaration; raw type for each reviewed milestone candidate | Toolchain/kernel trust; no widening beyond reviewed exact types |
 | Source closure | SHA-256 implementation and complete tracked path set | Every Lean source plus pinned build configuration | Hash identity is not semantics |
-| Milestone map | Reviewed theorem-name/type pins and fixed source digest | Presence, theorem kind, type match, exact approved axiom closure with no project axiom, source match | Seventeen scopes only; no global conclusion |
+| Milestone map | Reviewed theorem-name/type pins and fixed source digest | Presence, theorem kind, type match, exact approved axiom closure with no project axiom, source match | Eighteen scopes only; no global conclusion |
 | Concrete gate | Fixed gate logic, reviewed non-null fingerprints, immutable axiom allowlist | Exact concrete target/root/value/type/source/axiom conditions | Gate is false in this release |
 | Generated status/report | Deterministic generator and template | Publication output is a function of inventory/map/gate | Publication is downstream evidence presentation |
 | Companion mirror | Exact cross-repository byte comparison | Status, inventory, TeX, PDF, aliases, manifest, seal | Mirroring does not add theorem evidence |

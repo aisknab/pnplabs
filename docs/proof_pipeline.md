@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 278 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 286 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 6,459 public declarations;
-- 2,883 theorem-kind declarations;
-- 2,495 assumption-free theorem-kind declarations;
-- 59 source-closure modules;
-- 1,077 excluded private compiler auxiliaries;
+- 6,571 public declarations;
+- 2,964 theorem-kind declarations;
+- 2,524 assumption-free theorem-kind declarations;
+- 60 source-closure modules;
+- 1,101 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The seventeen earned scopes are:
+The eighteen earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -64,6 +64,7 @@ The seventeen earned scopes are:
 | Whole-tableau CNF semantics | Formula satisfaction exactly equivalent to an intrinsic accepting tableau, using only approved Lean-standard axioms | Still requires the concrete raw-tape execution bridge |
 | Cook-Levin raw-tape bridge | `encodedFormula_mem_CNFSAT_iff_language` proves exact equivalence between generated-CNF satisfiability and concrete verifier-language membership | Semantic correctness alone is not a size/runtime or packaged reduction theorem |
 | External Cook-Levin encoded-formula size | `encodedFormula_size_le` bounds the actual canonical unary-indexed encoding by an explicit fixed-verifier polynomial in external source-input length | No raw formula builder or construction-runtime polynomial, packaged polynomial reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Rectangular Cook-Levin formula schedule | Exact answer-independent constraint, clause, token, and raw-bit slot rectangles emit the existing program and encoding; `formulaBitSchedule_length` is exactly the external-input size polynomial and `formulaBitSchedule_emit_eq_encodedFormula` reproduces the encoded formula | Pure schedule only: no constant-time raw slot action, raw builder, construction-runtime polynomial, `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |

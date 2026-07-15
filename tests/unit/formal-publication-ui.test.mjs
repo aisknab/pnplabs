@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ba12bb915845d6c2e75605b205f0229e4e58f6c6ec751eebc4fd7c6bebbc868d');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 17);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 18);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -140,6 +140,32 @@ test('Cook-Levin formula-size evidence is exact and cannot be widened into a red
     widenedClaim[field] = true;
     assert.equal(validation.validateStatus(widenedClaim, inventory), false, field);
   }
+});
+
+test('Cook-Levin formula schedule requires exact emission, length, and approved axiom closure', () => {
+  for (const name of [
+    'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length',
+    'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula',
+  ]) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  const schedule = forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-formula-schedule');
+  schedule.theoremRows
+    .find((row) => row.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula')
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
 });
 
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
@@ -286,7 +312,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'cb49ed1b2d90742f5e8d9ef0e5f1b1e8e5a7d8fe97afdc555bb7e7aa2eb3bc99'/);
+  assert.match(source, /const STATUS_SHA256 = '21fb41a794e9cbda194d090aceaf5b00de88cfae43c0620e46bd44c3cfba63ac'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -297,7 +323,7 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateInventory(changedInventory), false);
 
   const changedStatus = structuredClone(status);
-  changedStatus.formalPublicationMilestones[17].earned = true;
+  changedStatus.formalPublicationMilestones[18].earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
@@ -311,8 +337,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /6,459/);
-  assert.match(statusPage, /Seventeen scoped milestones/);
+  assert.match(statusPage, /6,571/);
+  assert.match(statusPage, /Eighteen scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

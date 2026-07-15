@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d335c29ce499acddb16c5fc50afa622a6ea9075f/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d335c29ce499acddb16c5fc50afa622a6ea9075f/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d1b0ae18d8b03968a0a8af1fe44093f48b821664/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d1b0ae18d8b03968a0a8af1fe44093f48b821664/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
@@ -36,8 +36,8 @@ Checker paths have two different statuses:
 
 | Term | Meaning | Current status |
 | --- | --- | --- |
-| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 278 reviewed milestone candidates | 6,459 declarations, 2,883 theorem-kind, 2,495 assumption-free theorem-kind, 59 modules, four project axioms |
-| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | Two hundred seventy-eight theorem pins support seventeen earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, and the actual encoded-formula size polynomial; no earned closure contains a project axiom |
+| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 286 reviewed milestone candidates | 6,571 declarations, 2,964 theorem-kind, 2,524 assumption-free theorem-kind, 60 modules, four project axioms |
+| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | Two hundred eighty-six theorem pins support eighteen earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, the actual encoded-formula size polynomial, and the exact rectangular formula schedule; no earned closure contains a project axiom |
 | Concrete publication gate | Strict conjunction requiring an eligible concrete standard complexity target, exact compatibility-root theorem, reviewed non-null fingerprints, source closure, and fixed Lean-standard axiom closure | False; the charged-pipeline target is present but ineligible/inactive, while the root and activation fingerprints are absent |
 | Abstract `PNP.PEqualsNP` bridge | A type using string-handle decider/verifier/reduction witnesses | Categorically ineligible for publication as standard `P = NP` |
 | `unresolved` | Executable explicit-list scan found no strict equivalent gain in the supplied finite list | Does not exclude unlisted gains and does not imply global minimality or `ZeroSlack` |

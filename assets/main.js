@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-40';
-const STATUS_SHA256 = 'cb49ed1b2d90742f5e8d9ef0e5f1b1e8e5a7d8fe97afdc555bb7e7aa2eb3bc99';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-15-COOK-LEVIN-FORMULA-SIZE-39';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-15-40';
-const INVENTORY_SHA256 = 'ba12bb915845d6c2e75605b205f0229e4e58f6c6ec751eebc4fd7c6bebbc868d';
-const SOURCE_CLOSURE_SHA256 = '79da4cdee30162ef20a69b8a3592ea5ed2c59ed5ad692c2015f6a16add3adc02';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-41';
+const STATUS_SHA256 = '21fb41a794e9cbda194d090aceaf5b00de88cfae43c0620e46bd44c3cfba63ac';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-15-COOK-LEVIN-FORMULA-SCHEDULE-40';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-15-41';
+const INVENTORY_SHA256 = '1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4';
+const SOURCE_CLOSURE_SHA256 = 'a22b98c3a56c1bed1ae3f64da5f5b92737ffa13702a99507080d8cf6e00e7cf3';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 6459,
-  theorems: 2883,
-  assumptionFreeTheorems: 2495,
-  excludedPrivateDeclarations: 1077,
-  modules: 59,
+  declarations: 6571,
+  theorems: 2964,
+  assumptionFreeTheorems: 2524,
+  excludedPrivateDeclarations: 1101,
+  modules: 60,
   axioms: 4,
 });
 
@@ -71,6 +71,7 @@ const MILESTONE_IDS = Object.freeze([
   'concrete-cook-levin-tableau-cnf-semantics',
   'concrete-cook-levin-raw-tape-bridge',
   'concrete-cook-levin-formula-size',
+  'concrete-cook-levin-formula-schedule',
   'direct-wire-semantics',
   'finite-enumeration-minimum',
   'framed-replacement-slack',
@@ -227,18 +228,22 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 300,
-    definition: 3008,
+    definition: 3039,
     inductive: 132,
     opaque: 0,
     quotient: 0,
     recursor: 132,
-    theorem: 2883,
+    theorem: 2964,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
   const membership = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
   const cookLevinBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language');
   const cookLevinFormulaSize = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le');
+  const cookLevinFormulaSchedule = [
+    'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length',
+    'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula',
+  ].map((name) => inventory.milestoneCandidates?.find((row) => row?.name === name));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -285,6 +290,9 @@ function validateInventory(inventory) {
     && cookLevinFormulaSize?.kind === 'theorem'
     && cookLevinFormulaSize.module === 'PNP.Concrete.CookLevinFormulaSize'
     && sameJson(cookLevinFormulaSize.axioms, ['Quot.sound', 'propext'])
+    && cookLevinFormulaSchedule.every((row) => row?.kind === 'theorem'
+      && row.module === 'PNP.Concrete.CookLevinFormulaSchedule'
+      && sameJson(row.axioms, ['Quot.sound', 'propext']))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -326,7 +334,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 278
+    && inventory.milestoneCandidates.length === 286
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -390,7 +398,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 17;
+    const shouldBeEarned = index < 18;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -604,17 +612,17 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 6,459 exported public declarations, including 2,883 theorem-kind declarations and 2,495 assumption-free theorem-kind declarations across 59 modules. Seventeen scoped publication milestones are earned, now including exact Cook-Levin semantics and an external polynomial bound on the actual canonical encoded formula; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 6,571 exported public declarations, including 2,964 theorem-kind declarations and 2,524 assumption-free theorem-kind declarations across 60 modules. Eighteen scoped publication milestones are earned, now including exact Cook-Levin semantics, an external polynomial encoded-size bound, and an exact answer-independent rectangular formula schedule; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
   if (trace) {
-    trace.innerHTML = '<span>Cook-Levin semantics checked</span><span>encoded size checked</span><strong>gate closed</strong>';
+    trace.innerHTML = '<span>Cook-Levin semantics checked</span><span>formula schedule checked</span><strong>gate closed</strong>';
   }
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>encodedFormula_mem_CNFSAT_iff_language</code> proves exact generated-CNF-to-verifier-language semantics, and <code>encodedFormula_size_le</code> bounds the actual canonical encoding by an external input-size polynomial. A raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>encodedFormula_mem_CNFSAT_iff_language</code> proves exact generated-CNF-to-verifier-language semantics, <code>encodedFormula_size_le</code> bounds the canonical encoding, and <code>formulaBitSchedule_emit_eq_encodedFormula</code> proves exact emission from an answer-independent rectangular schedule whose length equals the external-input polynomial. The schedule has no constant-time raw interpretation; a raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -705,7 +713,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, exact Cook-Levin semantic equivalence, and an external polynomial bound on the actual canonical encoded formula. It does not implement or time a raw formula builder, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current thirteen-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, exact Cook-Levin semantic equivalence, an external polynomial encoded-size bound, and an exact answer-independent rectangular formula schedule. It does not interpret schedule slots as constant-time raw actions, implement or time a raw formula builder, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current thirteen-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -715,7 +723,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Seventeen scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin CNF-to-verifier-language semantics, and the actual encoded-formula size polynomial. A raw formula builder and its runtime bound, a packaged polynomial reduction, NP-completeness, the deterministic P result, and the concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Eighteen scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin CNF-to-verifier-language semantics, the actual encoded-formula size polynomial, and the exact answer-independent rectangular schedule. A constant-time raw slot interpretation, raw formula builder and runtime bound, packaged polynomial reduction, NP-completeness, deterministic P result, and concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -734,7 +742,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 6,459-declaration inventory, 278 pinned theorem candidates, whole-source closure, seventeen earned scoped publication milestones, three unearned global milestones, and concrete publication gate. Cook-Levin semantic correctness and encoded-output size are earned; raw construction runtime and a packaged reduction are not. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 6,571-declaration inventory, 286 pinned theorem candidates, whole-source closure, eighteen earned scoped publication milestones, three unearned global milestones, and concrete publication gate. Cook-Levin semantic correctness, encoded-output size, and the exact rectangular schedule are earned; a constant-time raw slot interpretation, raw construction runtime, and packaged reduction are not. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 

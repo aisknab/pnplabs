@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d335c29ce499acddb16c5fc50afa622a6ea9075f/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d335c29ce499acddb16c5fc50afa622a6ea9075f/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d1b0ae18d8b03968a0a8af1fe44093f48b821664/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d1b0ae18d8b03968a0a8af1fe44093f48b821664/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
 The current canonical download is the thirteen-page inventory-derived report. Every numbered section or
@@ -17,9 +17,9 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 278 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 286 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm seventeen earned scoped milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, and the actual encoded-formula size polynomial, plus three unearned global milestones, four project axioms, and six blockers. Confirm that a raw formula builder and construction-runtime polynomial, packaged polynomial reduction, CNF-SAT in P, and NP-completeness remain absent. | An output-size theorem is widened into a construction-runtime or reduction theorem, a local/conditional result is presented as global, or a blocker/axiom is hidden. |
+| Non-claim boundary | Confirm eighteen earned scoped milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, the actual encoded-formula size polynomial, and the exact answer-independent rectangular schedule, plus three unearned global milestones, four project axioms, and six blockers. Confirm that a constant-time raw slot interpretation, raw formula builder and construction-runtime polynomial, `FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness remain absent. | A pure schedule or output-size theorem is widened into a raw construction-runtime or reduction theorem, a local/conditional result is presented as global, or a blocker/axiom is hidden. |
 | Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require thirteen PDF pages. | An alias differs, the old 56-page hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet

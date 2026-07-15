@@ -96,17 +96,23 @@ function makeProject(t) {
       allPresent: true,
       allKernelTypesMatch: true,
       axiomClosureUsesOnlyLeanStandardAllowlist: true
+    }, {
+      id: "concrete-cook-levin-formula-schedule",
+      earned: true,
+      allPresent: true,
+      allKernelTypesMatch: true,
+      axiomClosureUsesOnlyLeanStandardAllowlist: true
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 6459,
-    theoremCount: 2883,
-    assumptionFreeTheoremCount: 2495,
-    excludedPrivateDeclarationCount: 1077,
-    sourceClosureModuleCount: 59,
+    declarationCount: 6571,
+    theoremCount: 2964,
+    assumptionFreeTheoremCount: 2524,
+    excludedPrivateDeclarationCount: 1101,
+    sourceClosureModuleCount: 60,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -116,6 +122,16 @@ function makeProject(t) {
     }, {
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le",
       module: "PNP.Concrete.CookLevinFormulaSize",
+      kind: "theorem",
+      axioms: ["Quot.sound", "propext"]
+    }, {
+      name: "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length",
+      module: "PNP.Concrete.CookLevinFormulaSchedule",
+      kind: "theorem",
+      axioms: ["Quot.sound", "propext"]
+    }, {
+      name: "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula",
+      module: "PNP.Concrete.CookLevinFormulaSchedule",
       kind: "theorem",
       axioms: ["Quot.sound", "propext"]
     }, {
@@ -283,7 +299,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...Array.from({ length: 243 }, (_, index) => ({
+    }, ...Array.from({ length: 249 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -329,7 +345,9 @@ function makeProject(t) {
       "PNP.Concrete.DecisionProgram.RawRefinement.compile_haltsWithin": "4057fc9d48be85dd7f961ce7acf5bef68ddb4ed0c8b6798617b31deb9da8c7c5",
       "PNP.Concrete.DecisionProgram.RawRefinement.compile_verdict_eq": "8b390dd6677d6e789499b7b713855652a5e1db2c64809ddf43d079deb4099965",
       "PNP.Concrete.PolynomialTimeDecider.compileToMachine_accepts_iff": "ebc638eb12e60d97a7d33b0cdce5a6322594342547f65128c0a3f11503fa35ba",
-      "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language": "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d"
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language": "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length": "7460e8b8c59a2356dc8ece81571e7bcb76faf71a5ae0492d034b1d8c5d2408c4",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula": "2376179dbf80f6e0bb76d8a6026518aa0d042e1eb79f3ec567474a730f742943"
     }
   });
 
@@ -555,6 +573,21 @@ function makeProject(t) {
       cookLevinEncodedFormulaSizeKernelTypeSha256: "c2b0a4afd8793022739cde9904d379a3c807fba07f0db0ab23e3b0b0563ed699",
       cookLevinFormulaSizeAxiomClosure: ["Quot.sound", "propext"],
       cookLevinFormulaSizeProjectAxiomClosure: [],
+      cookLevinFormulaScheduleFormalized: true,
+      cookLevinFormulaScheduleAxiomAuditPassed: true,
+      cookLevinFormulaScheduleAuditedDeclarationCount: 79,
+      cookLevinFormulaScheduleAnswerIndependent: true,
+      cookLevinFormulaScheduleExactEmissionFormalized: true,
+      cookLevinFormulaScheduleExactLengthPolynomialFormalized: true,
+      cookLevinFormulaScheduleLengthTheorem: "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length",
+      cookLevinFormulaScheduleLengthKernelTypeSha256: "7460e8b8c59a2356dc8ece81571e7bcb76faf71a5ae0492d034b1d8c5d2408c4",
+      cookLevinFormulaScheduleEmitTheorem: "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula",
+      cookLevinFormulaScheduleEmitKernelTypeSha256: "2376179dbf80f6e0bb76d8a6026518aa0d042e1eb79f3ec567474a730f742943",
+      cookLevinFormulaScheduleAxiomClosure: ["Quot.sound", "propext"],
+      cookLevinFormulaScheduleProjectAxiomClosure: [],
+      cookLevinFormulaScheduleConstantTimeRawInterpretationFormalized: false,
+      cookLevinRawFormulaBuilderFormalized: false,
+      cookLevinFormulaScheduleFunctionProgramRawRefinementFormalized: false,
       cookLevinFormulaConstructionRuntimePolynomialFormalized: false,
       cookLevinPolynomialReductionFormalized: false
     },
@@ -750,7 +783,7 @@ test("rejects sequential compiler or recursive refinement evidence drift", (t) =
   expectFailure(fingerprint, /formal-publication polynomial-time decider compilation evidence mismatch/);
 });
 
-test("rejects Cook-Levin formula-size identity, axiom, or construction-runtime overclaim drift", (t) => {
+test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction overclaim drift", (t) => {
   const fingerprint = makeProject(t);
   fingerprint.release.earnedBoundary.cookLevinEncodedFormulaSizeKernelTypeSha256 = "0".repeat(64);
   write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
@@ -760,6 +793,21 @@ test("rejects Cook-Levin formula-size identity, axiom, or construction-runtime o
   axiom.release.earnedBoundary.cookLevinFormulaSizeProjectAxiomClosure = ["PNP.ForgedAxiom"];
   write(axiom.root, "downloads/formal-publication-release.json", json(axiom.release));
   expectFailure(axiom, /formal-publication Cook-Levin formula-size axiom closure mismatch/);
+
+  const scheduleFingerprint = makeProject(t);
+  scheduleFingerprint.release.earnedBoundary.cookLevinFormulaScheduleLengthKernelTypeSha256 = "0".repeat(64);
+  write(scheduleFingerprint.root, "downloads/formal-publication-release.json", json(scheduleFingerprint.release));
+  expectFailure(scheduleFingerprint, /formal-publication Cook-Levin formula-schedule length identity mismatch/);
+
+  const scheduleAxiom = makeProject(t);
+  scheduleAxiom.release.earnedBoundary.cookLevinFormulaScheduleProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(scheduleAxiom.root, "downloads/formal-publication-release.json", json(scheduleAxiom.release));
+  expectFailure(scheduleAxiom, /formal-publication Cook-Levin formula-schedule axiom closure mismatch/);
+
+  const rawBuilder = makeProject(t);
+  rawBuilder.release.earnedBoundary.cookLevinRawFormulaBuilderFormalized = true;
+  write(rawBuilder.root, "downloads/formal-publication-release.json", json(rawBuilder.release));
+  expectFailure(rawBuilder, /formal-publication overstates Cook-Levin construction complexity/);
 
   const runtime = makeProject(t);
   runtime.release.earnedBoundary.cookLevinFormulaConstructionRuntimePolynomialFormalized = true;

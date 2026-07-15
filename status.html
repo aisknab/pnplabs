@@ -37,7 +37,7 @@
     <section class="page-hero">
       <span class="eyebrow">Compiled Lean inventory · 2026-07-15</span>
       <h1>The concrete publication gate is closed.</h1>
-      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Seventeen scoped milestones are earned, including <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin semantics, and an external polynomial bound on the actual encoded formula. A raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain unproved.</p>
+      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Eighteen scoped milestones are earned, including <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin semantics, an external polynomial encoded-size bound, and an exact answer-independent rectangular formula schedule. The schedule has no constant-time raw interpretation; a raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain unproved.</p>
       <div class="hero-actions">
         <a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a>
         <a class="btn secondary" href="public/pnp-status.json">Open current status</a>
@@ -65,15 +65,15 @@ concretePublicationGate.passed = false</pre>
     <section class="section compact">
       <div class="section-head">
         <div><div class="section-label">Compiled environment</div><h2>Exact inventory counts</h2></div>
-        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-15-40</code>; SHA-256 <code>ba12bb915845d6c2e75605b205f0229e4e58f6c6ec751eebc4fd7c6bebbc868d</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
+        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-15-41</code>; SHA-256 <code>1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
       </div>
-      <p data-formal-inventory-counts><strong>6,459</strong> public declarations; <strong>2,883</strong> theorem-kind declarations; <strong>2,495</strong> assumption-free theorem-kind declarations; <strong>1,077</strong> private compiler auxiliaries excluded; <strong>59</strong> modules; <strong>4</strong> project axioms.</p>
+      <p data-formal-inventory-counts><strong>6,571</strong> public declarations; <strong>2,964</strong> theorem-kind declarations; <strong>2,524</strong> assumption-free theorem-kind declarations; <strong>1,101</strong> private compiler auxiliaries excluded; <strong>60</strong> modules; <strong>4</strong> project axioms.</p>
       <p>The inventory is emitted from Lean environment constants and axiom collection. It is not inferred from source text, JSON claims, checker acceptance, or report prose.</p>
     </section>
 
     <section class="section compact">
       <div class="section-head">
-        <div><div class="section-label">Inventory-derived publication map</div><h2>Seventeen scoped milestones earned; three global milestones unearned</h2></div>
+        <div><div class="section-label">Inventory-derived publication map</div><h2>Eighteen scoped milestones earned; three global milestones unearned</h2></div>
         <p>The static rows below are conservative fallback copy. When validation succeeds, JavaScript replaces them from the exact status payload.</p>
       </div>
       <div class="grid three path" data-formal-milestones>
@@ -88,6 +88,7 @@ concretePublicationGate.passed = false</pre>
         <article class="card" data-milestone-id="concrete-cook-levin-tableau-cnf-semantics" data-earned="true"><h3>Formalized foundation: Whole-tableau CNF semantics</h3><p>Formula satisfiability is exactly equivalent to an intrinsic finite accepting tableau. The reviewed theorem closures use only permitted Lean standard axioms and no project axiom.</p><p><strong>Boundary:</strong> The following raw-tape bridge supplies the concrete execution connection.</p></article>
         <article class="card" data-milestone-id="concrete-cook-levin-raw-tape-bridge" data-earned="true"><h3>Formalized foundation: Raw-tape Cook-Levin bridge</h3><p><code>encodedFormula_mem_CNFSAT_iff_language</code> connects the generated CNF exactly to ordinary raw <code>Tape</code> execution and the verifier language.</p><p><strong>Boundary:</strong> This is semantic reduction correctness; the following milestone supplies encoded-output size only.</p></article>
         <article class="card" data-milestone-id="concrete-cook-levin-formula-size" data-earned="true"><h3>Formalized foundation: External Cook-Levin encoded-formula size</h3><p><code>encodedFormula_size_le</code> bounds the actual canonical unary-indexed CNF encoding by an explicit fixed-verifier polynomial evaluated at external input length. Its closure is <code>[Quot.sound, propext]</code>, with no project or choice axiom.</p><p><strong>Boundary:</strong> A raw formula builder and construction-runtime polynomial, packaged <code>PolynomialReduction</code>, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent.</p></article>
+        <article class="card" data-milestone-id="concrete-cook-levin-formula-schedule" data-earned="true"><h3>Formalized foundation: Rectangular Cook-Levin formula schedule</h3><p><code>formulaBitSchedule_length</code> proves an exact external-input polynomial slot count, and <code>formulaBitSchedule_emit_eq_encodedFormula</code> proves that removing empty slots reproduces the canonical encoded formula. The schedule is answer-independent and its closure is <code>[Quot.sound, propext]</code>, with no project or choice axiom.</p><p><strong>Boundary:</strong> This is a pure schedule specification. It supplies no constant-time raw interpretation, raw formula builder, construction-runtime polynomial, <code>FunctionProgram.RawRefinement</code>, packaged <code>PolynomialReduction</code>, NP-completeness, CNF-SAT in P, or P = NP.</p></article>
         <article class="card" data-milestone-id="direct-wire-semantics" data-earned="true"><h3>Formalized: Typed direct-wire NAND semantics</h3><p>Typed topological Boolean NAND programs and ordered multi-output direct-wire semantics.</p><p><strong>Boundary:</strong> This does not establish circuit minimization, SAT, or P = NP.</p></article>
         <article class="card" data-milestone-id="finite-enumeration-minimum" data-earned="true"><h3>Formalized: Finite enumeration, equivalence, and reference minimum</h3><p>Exhaustive finite Boolean direct-wire search under the empty-profile reference model.</p><p><strong>Boundary:</strong> No polynomial-runtime result is obtained from this exhaustive reference search.</p></article>
         <article class="card" data-milestone-id="framed-replacement-slack" data-earned="true"><h3>Formalized: Concrete framed replacement and slack</h3><p>The concrete serial framed context with support outputs and explicit bypass wires.</p><p><strong>Boundary:</strong> This is not an arbitrary-support replacement theorem for the global family.</p></article>
@@ -132,7 +133,7 @@ concretePublicationGate.passed = false</pre>
       <div class="section-label">Current and historical reports</div>
       <h2>Do not conflate the two documents</h2>
       <div class="grid two path">
-        <article class="card"><h3>Current thirteen-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership, raw-machine compiler, Cook-Levin semantic bridge, and encoded-formula size bound, together with the closed gate, exact counts, axiom closures, and blockers.</p></article>
+        <article class="card"><h3>Current thirteen-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership, raw-machine compiler, Cook-Levin semantic bridge, encoded-formula size bound, and exact rectangular formula schedule, together with the closed gate, exact counts, axiom closures, and blockers.</p></article>
         <article class="card accent"><h3>Historical 56-page manuscript</h3><p>The old direct-claim manuscript is preserved at tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, with provenance in <code>archive/legacy-v0/ARCHIVE.json</code>. It is not current authority.</p></article>
       </div>
     </section>
