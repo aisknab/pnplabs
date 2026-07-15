@@ -90,22 +90,34 @@ function makeProject(t) {
     leanConcreteDecisionProgramRecursiveCompilationFormalized: true,
     leanConcretePolynomialTimeDeciderRawCompilationFormalized: true,
     standardComplexityModelFormalized: true,
+    formalPublicationMilestones: [{
+      id: "concrete-cook-levin-formula-size",
+      earned: true,
+      allPresent: true,
+      allKernelTypesMatch: true,
+      axiomClosureUsesOnlyLeanStandardAllowlist: true
+    }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 6306,
-    theoremCount: 2747,
-    assumptionFreeTheoremCount: 2456,
-    excludedPrivateDeclarationCount: 1068,
-    sourceClosureModuleCount: 58,
+    declarationCount: 6459,
+    theoremCount: 2883,
+    assumptionFreeTheoremCount: 2495,
+    excludedPrivateDeclarationCount: 1077,
+    sourceClosureModuleCount: 59,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
       module: "PNP.Concrete.CookLevinRawTapeBridge",
       kind: "theorem",
       axioms: ["Classical.choice", "Quot.sound", "propext"]
+    }, {
+      name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le",
+      module: "PNP.Concrete.CookLevinFormulaSize",
+      kind: "theorem",
+      axioms: ["Quot.sound", "propext"]
     }, {
       name: "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq",
       module: "PNP.Concrete.TerminalOutputPacker",
@@ -271,7 +283,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...Array.from({ length: 235 }, (_, index) => ({
+    }, ...Array.from({ length: 243 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -365,7 +377,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 12,
+        pageCount: 13,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -536,7 +548,13 @@ function makeProject(t) {
       cookLevinSemanticKernelTypeSha256: "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d",
       cookLevinRawTapeBridgeAxiomClosure: ["Classical.choice", "Quot.sound", "propext"],
       cookLevinProjectAxiomClosure: [],
-      cookLevinEncodedFormulaSizePolynomialFormalized: false,
+      cookLevinFormulaSizeAxiomAuditPassed: true,
+      cookLevinFormulaSizeAuditedDeclarationCount: 108,
+      cookLevinEncodedFormulaSizePolynomialFormalized: true,
+      cookLevinEncodedFormulaSizeTheorem: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le",
+      cookLevinEncodedFormulaSizeKernelTypeSha256: "c2b0a4afd8793022739cde9904d379a3c807fba07f0db0ab23e3b0b0563ed699",
+      cookLevinFormulaSizeAxiomClosure: ["Quot.sound", "propext"],
+      cookLevinFormulaSizeProjectAxiomClosure: [],
       cookLevinFormulaConstructionRuntimePolynomialFormalized: false,
       cookLevinPolynomialReductionFormalized: false
     },
@@ -730,6 +748,23 @@ test("rejects sequential compiler or recursive refinement evidence drift", (t) =
   fingerprint.release.earnedBoundary.polynomialTimeDeciderCompileAcceptsKernelTypeSha256 = "0".repeat(64);
   write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
   expectFailure(fingerprint, /formal-publication polynomial-time decider compilation evidence mismatch/);
+});
+
+test("rejects Cook-Levin formula-size identity, axiom, or construction-runtime overclaim drift", (t) => {
+  const fingerprint = makeProject(t);
+  fingerprint.release.earnedBoundary.cookLevinEncodedFormulaSizeKernelTypeSha256 = "0".repeat(64);
+  write(fingerprint.root, "downloads/formal-publication-release.json", json(fingerprint.release));
+  expectFailure(fingerprint, /formal-publication Cook-Levin formula-size identity mismatch/);
+
+  const axiom = makeProject(t);
+  axiom.release.earnedBoundary.cookLevinFormulaSizeProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(axiom.root, "downloads/formal-publication-release.json", json(axiom.release));
+  expectFailure(axiom, /formal-publication Cook-Levin formula-size axiom closure mismatch/);
+
+  const runtime = makeProject(t);
+  runtime.release.earnedBoundary.cookLevinFormulaConstructionRuntimePolynomialFormalized = true;
+  write(runtime.root, "downloads/formal-publication-release.json", json(runtime.release));
+  expectFailure(runtime, /formal-publication overstates Cook-Levin construction complexity/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

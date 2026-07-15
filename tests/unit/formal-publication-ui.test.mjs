@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'e21338308fd667866efa3d003164b7fc1a454be160be384f24d23096c5c3350e');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ba12bb915845d6c2e75605b205f0229e4e58f6c6ec751eebc4fd7c6bebbc868d');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 16);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 17);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -112,6 +112,34 @@ test('Cook-Levin semantic bridge requires its exact standard-axiom closure and c
     .theoremRows[0].axioms = ['PNP.ForgedAxiom'];
   assert.equal(validation.validateMilestones(forgedMilestone), false);
   assert.equal(validation.validateStatus(forgedMilestone, inventory), false);
+});
+
+test('Cook-Levin formula-size evidence is exact and cannot be widened into a reduction claim', () => {
+  const missingFormulaSize = structuredClone(inventory);
+  missingFormulaSize.milestoneCandidates = missingFormulaSize.milestoneCandidates
+    .filter((candidate) => candidate.name !== 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le');
+  assert.equal(validation.validateInventory(missingFormulaSize), false);
+
+  const assumedFormulaSize = structuredClone(inventory);
+  assumedFormulaSize.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumedFormulaSize), false);
+
+  const forgedFingerprint = structuredClone(status);
+  const forgedFormulaSize = forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-formula-size');
+  forgedFormulaSize.theoremRows
+    .find((row) => row.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le')
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+
+  for (const field of ['leanConcreteCNFNPCompletenessFormalized', 'leanConcreteCNFSATInPFormalized']) {
+    const widenedClaim = structuredClone(status);
+    widenedClaim[field] = true;
+    assert.equal(validation.validateStatus(widenedClaim, inventory), false, field);
+  }
 });
 
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
@@ -258,7 +286,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'b560372264f0a8e9510a3816609a7a95a43cf2cd8fbffba0e6d048870b1f7bb5'/);
+  assert.match(source, /const STATUS_SHA256 = 'cb49ed1b2d90742f5e8d9ef0e5f1b1e8e5a7d8fe97afdc555bb7e7aa2eb3bc99'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -269,7 +297,7 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateInventory(changedInventory), false);
 
   const changedStatus = structuredClone(status);
-  changedStatus.formalPublicationMilestones[16].earned = true;
+  changedStatus.formalPublicationMilestones[17].earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
@@ -283,12 +311,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /6,306/);
-  assert.match(statusPage, /Sixteen scoped milestones/);
+  assert.match(statusPage, /6,459/);
+  assert.match(statusPage, /Seventeen scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /twelve-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /thirteen-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
