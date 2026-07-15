@@ -17,8 +17,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "d1b0ae18d8b03968a0a8af1fe44093f48b821664";
-const CORE_TREE = "ef69cac900b08c0bd0bba0ed67a13ef140ccb787";
+const CORE_COMMIT = "e4131888da7a1d204fb18b0b4988be022682ab95";
+const CORE_TREE = "001d34b8525639700d7c71d32a75d45c752429d5";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -26,26 +26,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 260862,
-    sha256: "4d8533dd8b58eb17e61bda2e0f14d9eba52a79378a48919cdcadb9029ad12c7b"
+    bytes: 262137,
+    sha256: "bc55a1f7f42dca7c075a7da6cf78bc78332a9ceaabe00f9b9e3db31fe795cb20"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 28392,
-    sha256: "78b6a4f5b2f0e8966e16a797360198c89bf5fec4b8c5088f3781f87f935eb030"
+    bytes: 29991,
+    sha256: "3e4b54b434739c2c244d2f19f63a3f5fc1e9fe94adf236efc574deb8ca05e186"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 215764,
-    sha256: "21fb41a794e9cbda194d090aceaf5b00de88cfae43c0620e46bd44c3cfba63ac"
+    bytes: 226051,
+    sha256: "75afc67bcf4064d7fe9c2f2e02bf10d0c72b5cec55cd4371814814b5856bbf2b"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 1913868,
-    sha256: "1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4"
+    bytes: 2058754,
+    sha256: "af5a7560f15f77e988300dd90dcd7e1d2bb77d465c78900d30dd1791fa50b708"
   }
 ];
 
@@ -137,7 +137,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "15c1bb78349aeb5f2c110a66ef156dae5589e8579867fb4983c26514d8bdb926") {
+  if (sha256(map) !== "18220f58cb0b26f0893ad4f62f9c905e6ea41bc3572d4ebf85842851c204252f") {
     fail("pinned formal-publication map digest mismatch");
   }
   const publicationMap = JSON.parse(map.toString("utf8"));
@@ -145,8 +145,23 @@ function assertPinnedCore(sourceDir) {
   const formulaSizeTheorem = "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le";
   const formulaScheduleLengthTheorem = "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length";
   const formulaScheduleEmitTheorem = "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula";
-  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-41"
-      || publicationMap.milestoneSourceClosureSha256 !== "a22b98c3a56c1bed1ae3f64da5f5b92737ffa13702a99507080d8cf6e00e7cf3"
+  const formulaCursorTheorems = {
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaClauseSlotDirect_eq": "0ed670f82237e1984c35dec8edbc2b3ad392759310b5ba0b12311fc799531a98",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaTokenSlotDirect_eq": "4675f18d3c1f1fa7fb16c2dec7b1e370589ef6977367eb8e4da97b2a03452d1a",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSlotDirect_eq": "6a3c74f3924ed7defe38713b118e0fecc8a1e71f50b20d2ac1dc0c6535bf6e2c",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSlotCountDirect_eq_polynomial": "d052a795eb5e0222326ef849c5e75ced764d2a5b74578da3e8ffdb290d731744",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_prefix": "5672cb875db23988aaf749a0890d3f08128b2e9276a969572dbf5b3e404b25a4",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_to_end": "2690d352f8f9072a49db1ba6e585ea5fd68b7952a96296938f44118747e06963",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_full": "d54831f37ccf2283f0ad8fe79a413232964587f85fdbc983983a17f64c9c6f7d",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.step_at_end": "624fcdaccb799650b10aa88c54da820c3de33c67600f1207d5a7d540717d7288",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_one_step_short": "699d81f19687395eaa6c82629cceb0c27fa58b1da009ffe2317e8b1840a309f1",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.step_after_one_step_short": "e6b99c99d82e9edce84ecafe5584d4dcb310221adf0ab171013479c90fe61807",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_excess": "9bdcf90c8a8628fcb4c49d6b358f5d19d7cf6e88a2bedf8e532b577d2fc5f063",
+    "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_full_emit_eq_encodedFormula": "2637f4e27b2a6e40a7e774b10fac91d379daebe9ff6930c72de43ee23bd054d0"
+  };
+  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-42"
+      || publicationMap.milestoneSourceClosureSha256 !== "d88b76196a15dba8be17ce2cde2612c36391efe1df03243687ce5005c8a71c5e"
       || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[rawTapeTheorem] !== "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d") {
     fail("pinned formal-publication map Cook-Levin identity mismatch");
   }
@@ -175,21 +190,30 @@ function assertPinnedCore(sourceDir) {
       || !formulaScheduleMilestone.nonClaim?.includes("does not interpret a slot as a constant-time raw-machine action")) {
     fail("pinned formal-publication map Cook-Levin formula-schedule identity mismatch");
   }
+  const formulaCursorMilestone = publicationMap.milestones?.find((milestone) => milestone.id === "concrete-cook-levin-formula-cursor");
+  if (!formulaCursorMilestone
+      || formulaCursorMilestone.classification !== "formalized-foundation-only"
+      || !Object.keys(formulaCursorTheorems).every((name) => formulaCursorMilestone.requiredTheorems?.includes(name))
+      || !Object.entries(formulaCursorTheorems).every(([name, hash]) =>
+        publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === hash)
+      || !formulaCursorMilestone.nonClaim?.includes("does not prove constant-time raw slot interpretation")) {
+    fail("pinned formal-publication map Cook-Levin formula-cursor identity mismatch");
+  }
 }
 
 function checkPdfPageCount(pdfPath) {
   const result = spawnSync("pdfinfo", [pdfPath], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
   if (result.status !== 0) fail(`pdfinfo failed for ${pdfPath}: ${(result.stderr || result.stdout || "pdfinfo unavailable").trim()}`);
   const match = result.stdout.match(/^Pages:\s+(\d+)\s*$/m);
-  if (!match || Number(match[1]) !== 13) fail(`${pdfPath}: expected exactly thirteen pages`);
+  if (!match || Number(match[1]) !== 14) fail(`${pdfPath}: expected exactly fourteen pages`);
 }
 
 function assertCorePayloadBoundary(sourcePath, buffer) {
   if (!sourcePath.endsWith(".json")) return;
   const payload = JSON.parse(buffer.toString("utf8"));
   if (sourcePath === "public/pnp-status.json") {
-    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-41" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-15-COOK-LEVIN-FORMULA-SCHEDULE-40") fail("core status coordinate mismatch");
-    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-41" || payload.formalPublicationMapSha256 !== "15c1bb78349aeb5f2c110a66ef156dae5589e8579867fb4983c26514d8bdb926" || payload.leanSourceClosureSha256 !== "a22b98c3a56c1bed1ae3f64da5f5b92737ffa13702a99507080d8cf6e00e7cf3") fail("core status source identity mismatch");
+    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-42" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-15-COOK-LEVIN-FORMULA-CURSOR-41") fail("core status coordinate mismatch");
+    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-42" || payload.formalPublicationMapSha256 !== "18220f58cb0b26f0893ad4f62f9c905e6ea41bc3572d4ebf85842851c204252f" || payload.leanSourceClosureSha256 !== "d88b76196a15dba8be17ce2cde2612c36391efe1df03243687ce5005c8a71c5e") fail("core status source identity mismatch");
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 6) fail("core status blocker boundary mismatch");
@@ -213,11 +237,13 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
     if (!formulaSizeMilestone || formulaSizeMilestone.earned !== true || formulaSizeMilestone.allPresent !== true || formulaSizeMilestone.allKernelTypesMatch !== true || formulaSizeMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true) fail("core status Cook-Levin formula-size boundary mismatch");
     const formulaScheduleMilestone = payload.formalPublicationMilestones?.find((milestone) => milestone.id === "concrete-cook-levin-formula-schedule");
     if (!formulaScheduleMilestone || formulaScheduleMilestone.earned !== true || formulaScheduleMilestone.allPresent !== true || formulaScheduleMilestone.allKernelTypesMatch !== true || formulaScheduleMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true) fail("core status Cook-Levin formula-schedule boundary mismatch");
+    const formulaCursorMilestone = payload.formalPublicationMilestones?.find((milestone) => milestone.id === "concrete-cook-levin-formula-cursor");
+    if (!formulaCursorMilestone || formulaCursorMilestone.earned !== true || formulaCursorMilestone.allPresent !== true || formulaCursorMilestone.allKernelTypesMatch !== true || formulaCursorMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || formulaCursorMilestone.requiredTheorems?.length !== 13) fail("core status Cook-Levin formula-cursor boundary mismatch");
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
-    if (payload.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-15-41") fail("core inventory coordinate mismatch");
+    if (payload.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-15-42") fail("core inventory coordinate mismatch");
     if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");
-    if (payload.declarationCount !== 6571 || payload.theoremCount !== 2964 || payload.assumptionFreeTheoremCount !== 2524 || payload.excludedPrivateDeclarationCount !== 1101 || payload.sourceClosureModuleCount !== 60 || payload.axiomCount !== 4) fail("core inventory counts mismatch");
+    if (payload.declarationCount !== 6800 || payload.theoremCount !== 3077 || payload.assumptionFreeTheoremCount !== 2543 || payload.excludedPrivateDeclarationCount !== 1128 || payload.sourceClosureModuleCount !== 61 || payload.axiomCount !== 4) fail("core inventory counts mismatch");
     const cookLevinBridge = payload.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge
         || cookLevinBridge.kind !== "theorem"
@@ -239,6 +265,26 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
       const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.CookLevinFormulaSchedule" || JSON.stringify(theorem.axioms) !== JSON.stringify(["Quot.sound", "propext"])) {
         fail(`core inventory Cook-Levin formula-schedule theorem mismatch: ${name}`);
+      }
+    }
+    for (const name of [
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaClauseSlotDirect_eq",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaTokenSlotDirect_eq",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSlotDirect_eq",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSlotCountDirect_eq_polynomial",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_prefix",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_to_end",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_full",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.step_at_end",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_one_step_short",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.step_after_one_step_short",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_excess",
+      "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaBitCursor.run_full_emit_eq_encodedFormula"
+    ]) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.CookLevinFormulaCursor" || JSON.stringify(theorem.axioms) !== JSON.stringify(["Quot.sound", "propext"])) {
+        fail(`core inventory Cook-Levin formula-cursor theorem mismatch: ${name}`);
       }
     }
     if (payload.milestoneCandidates?.some((candidate) => candidate.name === "PNP.Concrete.cnfSATNPComplete" || candidate.name === "PNP.Concrete.cnfSATInP" || candidate.name === "PNP.Main.p_eq_np")) fail("core inventory overstates the Cook-Levin milestone");
@@ -298,7 +344,7 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
       const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineRefinement" || theorem.axioms?.length !== 0) fail(`core inventory recursive refinement theorem mismatch: ${name}`);
     }
-    if (payload.milestoneCandidates?.length !== 286) fail("core inventory reviewed theorem-candidate count mismatch");
+    if (payload.milestoneCandidates?.length !== 299) fail("core inventory reviewed theorem-candidate count mismatch");
   }
 }
 

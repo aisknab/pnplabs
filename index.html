@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-15-41</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-15-42</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4</code>
+        <code>af5a7560f15f77e988300dd90dcd7e1d2bb77d465c78900d30dd1791fa50b708</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 6,571 exported public declarations, including 2,964 theorem-kind declarations and 2,524 assumption-free theorem-kind declarations across 60 modules. Eighteen scoped publication milestones are earned, now including exact Cook-Levin semantics, an external polynomial encoded-size bound, and an exact answer-independent rectangular formula schedule; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 6,800 exported public declarations, including 3,077 theorem-kind declarations and 2,543 assumption-free theorem-kind declarations across 61 modules. Nineteen scoped publication milestones are earned, now including exact Cook-Levin semantics, an external polynomial encoded-size bound, an answer-independent rectangular formula schedule, and direct coordinate decoders with exact fuelled traversal; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>encodedFormula_mem_CNFSAT_iff_language</code> proves exact generated-CNF semantics, <code>encodedFormula_size_le</code> bounds the canonical encoding, and <code>formulaBitSchedule_emit_eq_encodedFormula</code> proves exact emission from an answer-independent rectangular schedule whose length equals the external-input polynomial. The schedule has no constant-time raw interpretation; a raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>encodedFormula_mem_CNFSAT_iff_language</code> proves exact generated-CNF semantics, <code>encodedFormula_size_le</code> bounds the canonical encoding, and <code>formulaBitSchedule_length</code> plus <code>formulaBitSchedule_emit_eq_encodedFormula</code> prove the rectangular schedule's exact polynomial length and exact emission. <code>formulaBitSlotDirect_eq</code> and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code> add direct coordinate lookup plus exact traversal and emitted output. This remains a Lean specification cursor: constant-time raw slot interpretation, a raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current thirteen-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current fourteen-page report</a>
         </div>
       </div>
 

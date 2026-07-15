@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'af5a7560f15f77e988300dd90dcd7e1d2bb77d465c78900d30dd1791fa50b708');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 18);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 19);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -163,6 +163,33 @@ test('Cook-Levin formula schedule requires exact emission, length, and approved 
     .find((row) => row.id === 'concrete-cook-levin-formula-schedule');
   schedule.theoremRows
     .find((row) => row.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula')
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+});
+
+test('Cook-Levin formula cursor requires all direct lookups, exact traversal, and approved closure', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-formula-cursor');
+  assert.equal(milestone.requiredTheorems.length, 13);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSlotDirect_eq')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  const cursor = forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-formula-cursor');
+  cursor.theoremRows
+    .find((row) => row.name.endsWith('FormulaBitCursor.run_full'))
     .actualKernelTypeSha256 = '0'.repeat(64);
   assert.equal(validation.validateMilestones(forgedFingerprint), false);
   assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
@@ -312,7 +339,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '21fb41a794e9cbda194d090aceaf5b00de88cfae43c0620e46bd44c3cfba63ac'/);
+  assert.match(source, /const STATUS_SHA256 = '75afc67bcf4064d7fe9c2f2e02bf10d0c72b5cec55cd4371814814b5856bbf2b'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -323,7 +350,7 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateInventory(changedInventory), false);
 
   const changedStatus = structuredClone(status);
-  changedStatus.formalPublicationMilestones[18].earned = true;
+  changedStatus.formalPublicationMilestones[19].earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
@@ -337,12 +364,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /6,571/);
-  assert.match(statusPage, /Eighteen scoped milestones/);
+  assert.match(statusPage, /6,800/);
+  assert.match(statusPage, /Nineteen scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /thirteen-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /fourteen-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
