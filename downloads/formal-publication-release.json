@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-15-26",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-15-27",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "7c831a37844deaef9036ceb97205bd04d0556d21",
-    "proofCommit": "87b77853af8e74fe434f019202d974910c9976de",
-    "tree": "a45250a43de68f41455a74d0db974a77eb4324ed",
-    "ref": "7c831a37844deaef9036ceb97205bd04d0556d21",
+    "commit": "5617c95037b14dde93c5d21caaf09de873491210",
+    "proofCommit": "877b82b405345bc31cdba5e695455d7f64d55cfe",
+    "tree": "7485f76ad676da796ef378d5c2223a216d175c22",
+    "ref": "5617c95037b14dde93c5d21caaf09de873491210",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-43",
-    "formalPublicationMapSha256": "61225b42d5c3ecfd6ada2e08902fa7ecf9d1c8faf49deda543e477c484a689d7",
-    "leanSourceClosureSha256": "77534b5f3a99d890c1e8f53630531a430c1ab37edf0e2e1648f450fd71610ab6",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-44",
+    "formalPublicationMapSha256": "b86963591d9bed41c6c75892a3af9c19e62179c518f034d5a7f4a96156304f5c",
+    "leanSourceClosureSha256": "fb3ecdea2590b6a65ae8de5ebd9e1b86c1e36f2ae9659de7febb817f4306ce3d",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,32 +21,32 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 234758,
-      "sha256": "29578b4b54da4089bc12c54cc9337c2d28c10273f018998a0a72c93782bad23d",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-43"
+      "bytes": 245415,
+      "sha256": "54062cee2423cda8010511621d1bb7c4066b91104924555e1455a48d1d58c3fa",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-44"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 2082730,
-      "sha256": "26411d463de689718ce384def4af53b386bdcfb4e2c17334d23bf471a787f43f",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-15-43",
-      "declarationCount": 6849,
-      "theoremCount": 3104,
-      "assumptionFreeTheoremCount": 2560,
+      "bytes": 2125549,
+      "sha256": "32f224f98afff60f9ab8d8a789648431976242313562758a66036946bbfde6fd",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-15-44",
+      "declarationCount": 6901,
+      "theoremCount": 3143,
+      "assumptionFreeTheoremCount": 2585,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-15-43",
-      "pageCount": 14,
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-15-44",
+      "pageCount": 16,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 286604,
-        "sha256": "550e765052fe67eea6ba022a421d0388afc43b426209342a3c03d0446654e831"
+        "bytes": 288374,
+        "sha256": "bd3b519b292bdb69831e14d4a1e95db80199c58e0f0476031fc6c895db7abfcd"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,8 +54,8 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 31706,
-        "sha256": "464ad02975adc9d424c01d88d584dfa1fb86caf6ffee408bdf95a2afbc831c1c"
+        "bytes": 33406,
+        "sha256": "438f19f4b452193cae3e26d772815f035902710a27178ce2743cbfa3f121d7a9"
       }
     }
   },
@@ -343,7 +343,53 @@
     "cookLevinBuilderFormulaBitsEmittedFormalized": false,
     "cookLevinBuilderDirectCursorRawInterpretationFormalized": false,
     "cookLevinCompleteRawFormulaBuilderFormalized": false,
-    "cookLevinBuilderFunctionProgramRawRefinementFormalized": false
+    "cookLevinBuilderFunctionProgramRawRefinementFormalized": false,
+    "cookLevinBuilderInputPrefixFormalized": true,
+    "cookLevinBuilderInputPrefixAxiomAuditPassed": true,
+    "cookLevinBuilderInputPrefixAuditedDeclarationCount": 40,
+    "cookLevinBuilderInputPrefixCompiledRawMachineFormalized": true,
+    "cookLevinBuilderInputPrefixExternalInputSizePolynomialFormalized": true,
+    "cookLevinBuilderInputPrefixMalformedScanSymbolTimeoutFormalized": true,
+    "cookLevinBuilderInputPrefixLiteralFramerLaunchFormalized": true,
+    "cookLevinBuilderInputPrefixWorkTimePolynomial": "totalInputFramerWorkSteps(input) + 1 + 2 * inputLength^2 + 4 * inputLength + 2",
+    "cookLevinBuilderInputPrefixRawTimePolynomial": "18 * inputLength^2 + 63 * inputLength + 93",
+    "cookLevinBuilderInputPrefixTheoremKernelTypeSha256": {
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.boundedDecide_compile_accept": "6fbd596723b2a97d405d1d8129e20901d51008c773af5d80b4633a819fead57d",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.finalTape_represents": "14cba9d7647fcef8f062c2ab6e3d16e84eed233e1ec53491382991421795e2cc",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.finalTape_tally_length": "92f992615d4bde8569d585f54ec0d7963cb5ec043e81b410433c1d3f6e190dfe",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.findWorkRule_framer_of_some": "3e82d88005087443565389d5dda84a673b4eaecf637e60eff5cc4cb414679b18",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.findWorkRule_tally_of_some": "e88f5a2d04ae75d874e6be87f837e3eb73a70aaad095ef44c8bc40383ac90dab",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.framerState_ne_tallyState": "b37cc329b82a3489b6cbbf59f49d6f85494e1cba3b6d74afd111177f882691f0",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.launch_workStep": "7ddf442477605b69a2a48fa9de34c9d3e231fc125fb2ffbe2f862464c0646bd9",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.malformedTallyScanSymbol_timeout": "e6799395b2907abc1740c4fd7d96fc9ac8f1ee24670e4b7aceb39a0927fbdd66",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.rawTimeBound_eval": "d875640901af586ab3e6ab4507d62c25b94e34ef8c87082fb35fcf58c757dc1c",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.rawTimeBound_le": "0bb31c2ccec14489cb58eef73d58cd55053f684ece8105a311c516723178fd1d",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.run_compile_exact": "963473ed4426824bdbf27defba1524964c2a5b245c428a885c4207eb76f48ee6",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.run_compile_rawTimeBound": "7a9d88bb8b61f9d4629a16f11b0bb0e54c61845d2e9a2775aa8b5c7998ce58c9",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.workRunExact": "c4d91b64e983bc5a6713fa64ab86821edd442cc79cbf872b2fafe6f3194ab2b3",
+      "PNP.Concrete.CookLevin.BuilderInputPrefix.work_one_step_short_timeout": "a395f5f859d7689faa0236d2660746c52e438e6e174aa34b698725f7eae40538"
+    },
+    "cookLevinBuilderInputPrefixAcceptTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.boundedDecide_compile_accept",
+    "cookLevinBuilderInputPrefixFinalTapeTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.finalTape_represents",
+    "cookLevinBuilderInputPrefixTallyLengthTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.finalTape_tally_length",
+    "cookLevinBuilderInputPrefixFramerLookupTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.findWorkRule_framer_of_some",
+    "cookLevinBuilderInputPrefixTallyLookupTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.findWorkRule_tally_of_some",
+    "cookLevinBuilderInputPrefixStateDisjointnessTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.framerState_ne_tallyState",
+    "cookLevinBuilderInputPrefixLaunchTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.launch_workStep",
+    "cookLevinBuilderInputPrefixMalformedTimeoutTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.malformedTallyScanSymbol_timeout",
+    "cookLevinBuilderInputPrefixRawTimeEvalTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.rawTimeBound_eval",
+    "cookLevinBuilderInputPrefixRawTimeBoundTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.rawTimeBound_le",
+    "cookLevinBuilderInputPrefixCompiledExactTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.run_compile_exact",
+    "cookLevinBuilderInputPrefixCompiledBoundTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.run_compile_rawTimeBound",
+    "cookLevinBuilderInputPrefixExactWorkRunTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.workRunExact",
+    "cookLevinBuilderInputPrefixOneStepShortTheorem": "PNP.Concrete.CookLevin.BuilderInputPrefix.work_one_step_short_timeout",
+    "cookLevinBuilderInputPrefixAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "cookLevinBuilderInputPrefixProjectAxiomClosure": [],
+    "cookLevinBuilderInputPrefixFormulaBitsEmittedFormalized": false,
+    "cookLevinBuilderInputPrefixDirectCursorRawInterpretationFormalized": false
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,

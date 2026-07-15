@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 309 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 323 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 6,849 public declarations;
-- 3,104 theorem-kind declarations;
-- 2,560 assumption-free theorem-kind declarations;
-- 62 source-closure modules;
-- 1,220 excluded private compiler auxiliaries;
+- 6,901 public declarations;
+- 3,143 theorem-kind declarations;
+- 2,585 assumption-free theorem-kind declarations;
+- 63 source-closure modules;
+- 1,228 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The twenty earned scopes are:
+The twenty-one earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -67,6 +67,7 @@ The twenty earned scopes are:
 | Rectangular Cook-Levin formula schedule | Exact answer-independent constraint, clause, token, and raw-bit slot rectangles emit the existing program and encoding; `formulaBitSchedule_length` is exactly the external-input size polynomial and `formulaBitSchedule_emit_eq_encodedFormula` reproduces the encoded formula | Pure schedule only: no constant-time raw slot action, raw builder, construction-runtime polynomial, `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Direct Cook-Levin formula cursor | Direct constraint, clause, token, and bit coordinate decoders preserve out-of-range/padding/populated states; exact prefix, full, one-step-short, terminal, excess-fuel, polynomial-count, and emitted-output theorems bind the cursor to the canonical formula | Lean specification cursor only: no constant-time raw interpretation, raw builder, construction-runtime theorem, `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin input-length tally | A fixed 19-rule work machine is definitionally connected to the total input-framer endpoint, preserves source bits, appends exact unary length, runs in exactly `2*n*n + 4*n + 2` work and `12*n*n + 24*n + 12` compiled raw steps, and times out for malformed internal scan symbols or one-step-short fuel | No formula-bit emission, complete raw formula builder, `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Executable Cook-Levin builder input prefix | One literal finite work machine composes the all-input framer, an explicit launch transition, and the 19-rule tally in collision-free namespaces; it reaches the represented final tape after exactly `totalInputFramerWorkSteps(input) + 1 + 2*n*n + 4*n + 2` work steps and has compiled raw bound `18*n*n + 63*n + 93`; malformed tally-scan symbols and one-step-short fuel time out | No formula-bit emission, direct cursor interpretation by raw transitions, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -102,7 +103,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment fourteen-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixteen-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
