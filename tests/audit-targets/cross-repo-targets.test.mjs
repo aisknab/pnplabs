@@ -30,6 +30,14 @@ const FORMULA_CURSOR_CANDIDATES = publishedInventory.milestoneCandidates.filter(
 );
 assert.equal(FORMULA_CURSOR_THEOREM_NAMES.length, 13);
 assert.equal(FORMULA_CURSOR_CANDIDATES.length, 13);
+const BUILDER_INPUT_LENGTH_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.cookLevinBuilderInputLengthTheoremKernelTypeSha256;
+const BUILDER_INPUT_LENGTH_THEOREM_NAMES = Object.keys(BUILDER_INPUT_LENGTH_THEOREM_HASHES);
+const BUILDER_INPUT_LENGTH_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => BUILDER_INPUT_LENGTH_THEOREM_NAMES.includes(candidate.name)
+);
+assert.equal(BUILDER_INPUT_LENGTH_THEOREM_NAMES.length, 10);
+assert.equal(BUILDER_INPUT_LENGTH_CANDIDATES.length, 10);
 
 function git(cwd, args) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -107,6 +115,13 @@ function makeProject(t) {
     leanConcreteDecisionProgramRecursiveCompilationFormalized: true,
     leanConcretePolynomialTimeDeciderRawCompilationFormalized: true,
     standardComplexityModelFormalized: true,
+    leanConcreteCookLevinBuilderInputLengthFormalized: true,
+    leanConcreteCookLevinBuilderInputLengthAxiomAuditPassed: true,
+    leanConcreteCookLevinBuilderInputLengthAuditedDeclarationCount: 39,
+    leanConcreteCookLevinBuilderInputLengthCompiledRawMachineFormalized: true,
+    leanConcreteCookLevinBuilderInputLengthExternalInputSizePolynomialFormalized: true,
+    leanConcreteCookLevinBuilderInputLengthMalformedInternalInputTimeoutFormalized: true,
+    leanConcreteCookLevinBuilderInputLengthConnectedToTotalInputFramerEndpointFormalized: true,
     formalPublicationMilestones: [{
       id: "concrete-cook-levin-formula-size",
       earned: true,
@@ -126,17 +141,24 @@ function makeProject(t) {
       allKernelTypesMatch: true,
       axiomClosureUsesOnlyLeanStandardAllowlist: true,
       requiredTheorems: FORMULA_CURSOR_THEOREM_NAMES
+    }, {
+      id: "concrete-cook-levin-builder-input-length",
+      earned: true,
+      allPresent: true,
+      allKernelTypesMatch: true,
+      axiomClosureUsesOnlyLeanStandardAllowlist: true,
+      requiredTheorems: BUILDER_INPUT_LENGTH_THEOREM_NAMES
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 6800,
-    theoremCount: 3077,
-    assumptionFreeTheoremCount: 2543,
-    excludedPrivateDeclarationCount: 1128,
-    sourceClosureModuleCount: 61,
+    declarationCount: 6849,
+    theoremCount: 3104,
+    assumptionFreeTheoremCount: 2560,
+    excludedPrivateDeclarationCount: 1220,
+    sourceClosureModuleCount: 62,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -323,7 +345,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...Array.from({ length: 249 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...Array.from({ length: 249 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -372,7 +394,8 @@ function makeProject(t) {
       "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language": "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d",
       "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length": "7460e8b8c59a2356dc8ece81571e7bcb76faf71a5ae0492d034b1d8c5d2408c4",
       "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula": "2376179dbf80f6e0bb76d8a6026518aa0d042e1eb79f3ec567474a730f742943",
-      ...FORMULA_CURSOR_THEOREM_HASHES
+      ...FORMULA_CURSOR_THEOREM_HASHES,
+      ...BUILDER_INPUT_LENGTH_THEOREM_HASHES
     }
   });
 
@@ -614,6 +637,9 @@ function makeProject(t) {
       ...structuredClone(Object.fromEntries(Object.entries(publishedRelease.earnedBoundary).filter(
         ([name]) => name.startsWith("cookLevinFormulaCursor")
       ))),
+      ...structuredClone(Object.fromEntries(Object.entries(publishedRelease.earnedBoundary).filter(
+        ([name]) => name.startsWith("cookLevinBuilder") || name.startsWith("cookLevinCompleteRawFormulaBuilder")
+      ))),
       cookLevinRawFormulaBuilderFormalized: false,
       cookLevinFormulaScheduleFunctionProgramRawRefinementFormalized: false,
       cookLevinFormulaConstructionRuntimePolynomialFormalized: false,
@@ -848,6 +874,23 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   cursorRawInterpreter.release.earnedBoundary.cookLevinFormulaCursorConstantTimeRawInterpretationFormalized = true;
   write(cursorRawInterpreter.root, "downloads/formal-publication-release.json", json(cursorRawInterpreter.release));
   expectFailure(cursorRawInterpreter, /formal-publication overstates the Cook-Levin formula cursor/);
+
+  const builderFingerprint = makeProject(t);
+  builderFingerprint.release.earnedBoundary.cookLevinBuilderInputLengthTheoremKernelTypeSha256[
+    BUILDER_INPUT_LENGTH_THEOREM_NAMES[0]
+  ] = "0".repeat(64);
+  write(builderFingerprint.root, "downloads/formal-publication-release.json", json(builderFingerprint.release));
+  expectFailure(builderFingerprint, /formal-publication Cook-Levin builder input-length fingerprint mismatch/);
+
+  const builderAxiom = makeProject(t);
+  builderAxiom.release.earnedBoundary.cookLevinBuilderInputLengthProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(builderAxiom.root, "downloads/formal-publication-release.json", json(builderAxiom.release));
+  expectFailure(builderAxiom, /formal-publication Cook-Levin builder input-length axiom closure mismatch/);
+
+  const builderOverclaim = makeProject(t);
+  builderOverclaim.release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized = true;
+  write(builderOverclaim.root, "downloads/formal-publication-release.json", json(builderOverclaim.release));
+  expectFailure(builderOverclaim, /formal-publication overstates the Cook-Levin builder/);
 
   const rawBuilder = makeProject(t);
   rawBuilder.release.earnedBoundary.cookLevinRawFormulaBuilderFormalized = true;
