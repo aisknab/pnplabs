@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-15-44</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-16-45</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>32f224f98afff60f9ab8d8a789648431976242313562758a66036946bbfde6fd</code>
+        <code>2f8280035717c4223b465ca64ffe4c10c7fd4bc973c28d4a79a92ab2e78851a5</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 6,901 exported public declarations, including 3,143 theorem-kind declarations and 2,585 assumption-free theorem-kind declarations across 63 modules. Twenty-one scoped publication milestones are earned, now including a literal Cook-Levin prefix that runs the all-input framer, an explicit launch transition, and the 19-rule input-length tally machine; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 7,006 exported public declarations, including 3,213 theorem-kind declarations and 2,620 assumption-free theorem-kind declarations across 64 modules. Twenty-two scoped publication milestones are earned, now including a standalone finite-machine Cook-Levin token appender; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>formulaBitSchedule_emit_eq_encodedFormula</code> binds the answer-independent rectangular schedule to the canonical formula, while <code>formulaBitSlotDirect_eq</code> and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code> bind the direct cursor to exact lookup and traversal. <code>BuilderInputPrefix.workRunExact</code> proves that one literal finite machine runs the all-input framer, takes an explicit launch step, preserves the source bits, and appends the exact unary input-length tally after <code>totalInputFramerWorkSteps(input) + 1 + 2*n*n + 4*n + 2</code> work steps. Its compiled raw bound is <code>18*n*n + 63*n + 93</code>. This prefix does not emit formula bits, interpret direct cursor slots as raw transitions, or complete a raw formula builder. A packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>formulaBitSchedule_emit_eq_encodedFormula</code> binds the answer-independent rectangular schedule to the canonical formula, while <code>formulaBitSlotDirect_eq</code> and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code> bind the direct cursor to exact lookup and traversal. <code>BuilderTokenAppender.appendToken_workRunExact</code> proves exact appending for every fixed token request, input, prior output, and exterior tape. The specialized first token emits the first two direct formula bits within <code>24*n + 48</code> compiled raw steps. This standalone machine is not yet rule-table-composed with <code>BuilderInputPrefix</code> and does not complete a raw formula builder. A packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
