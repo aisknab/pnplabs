@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-15-23",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-15-24",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "d335c29ce499acddb16c5fc50afa622a6ea9075f",
-    "proofCommit": "e8c2d5608ccf8c752cf0eb8b12e0bef477478737",
-    "tree": "1ae0cb8569bdfb16c3d166c0445ba319ef591095",
-    "ref": "d335c29ce499acddb16c5fc50afa622a6ea9075f",
+    "commit": "d1b0ae18d8b03968a0a8af1fe44093f48b821664",
+    "proofCommit": "63071cd1a4c1689b11c5d4756cc9d23102fe0f7a",
+    "tree": "ef69cac900b08c0bd0bba0ed67a13ef140ccb787",
+    "ref": "d1b0ae18d8b03968a0a8af1fe44093f48b821664",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-40",
-    "formalPublicationMapSha256": "db60b698d0d2fa0db0a1cd309d8d8c84483ca13e892e9fd887b96b7cc27faffa",
-    "leanSourceClosureSha256": "79da4cdee30162ef20a69b8a3592ea5ed2c59ed5ad692c2015f6a16add3adc02",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-15-41",
+    "formalPublicationMapSha256": "15c1bb78349aeb5f2c110a66ef156dae5589e8579867fb4983c26514d8bdb926",
+    "leanSourceClosureSha256": "a22b98c3a56c1bed1ae3f64da5f5b92737ffa13702a99507080d8cf6e00e7cf3",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,23 +21,23 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 208534,
-      "sha256": "cb49ed1b2d90742f5e8d9ef0e5f1b1e8e5a7d8fe97afdc555bb7e7aa2eb3bc99",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-40"
+      "bytes": 215764,
+      "sha256": "21fb41a794e9cbda194d090aceaf5b00de88cfae43c0620e46bd44c3cfba63ac",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-15-41"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 1877392,
-      "sha256": "ba12bb915845d6c2e75605b205f0229e4e58f6c6ec751eebc4fd7c6bebbc868d",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-15-40",
-      "declarationCount": 6459,
-      "theoremCount": 2883,
-      "assumptionFreeTheoremCount": 2495,
+      "bytes": 1913868,
+      "sha256": "1f89671e91d09103865985679991f99c6195efb562f0e98c03f23b2d6cebbea4",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-15-41",
+      "declarationCount": 6571,
+      "theoremCount": 2964,
+      "assumptionFreeTheoremCount": 2524,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-15-40",
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-15-41",
       "pageCount": 13,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
@@ -45,8 +45,8 @@
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 259717,
-        "sha256": "fa21b3c8a12d488f34aa2d1342d6d924df801c94a357f208a719ea63da42a834"
+        "bytes": 260862,
+        "sha256": "4d8533dd8b58eb17e61bda2e0f14d9eba52a79378a48919cdcadb9029ad12c7b"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,13 +54,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 26828,
-        "sha256": "687fc093579d6d041434b3f54507cec3c3bec30ef0b485d4f172f5c7aea24933"
+        "bytes": 28392,
+        "sha256": "78b6a4f5b2f0e8966e16a797360198c89bf5fec4b8c5088f3781f87f935eb030"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-and-encoded-size-bounds",
+    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-and-rectangular-formula-schedule-bounds",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -244,7 +244,27 @@
       "propext"
     ],
     "cookLevinFormulaSizeProjectAxiomClosure": [],
-    "cookLevinEncodedFormulaSizePolynomial": "O(m) = 2 * ((V(m) + 1) + Q(m) * (2 + (V(m) + 4) * (V(m) + 1)) + 1) + 1"
+    "cookLevinEncodedFormulaSizePolynomial": "O(m) = 2 * ((V(m) + 1) + Q(m) * (2 + (V(m) + 4) * (V(m) + 1)) + 1) + 1",
+    "cookLevinFormulaScheduleFormalized": true,
+    "cookLevinFormulaScheduleAxiomAuditPassed": true,
+    "cookLevinFormulaScheduleAuditedDeclarationCount": 79,
+    "cookLevinFormulaScheduleAnswerIndependent": true,
+    "cookLevinFormulaScheduleExactEmissionFormalized": true,
+    "cookLevinFormulaScheduleExactLengthPolynomialFormalized": true,
+    "cookLevinFormulaScheduleLengthTheorem": "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_length",
+    "cookLevinFormulaScheduleLengthTheoremType": "{language : PNP.Concrete.Language} (problem : PNP.Concrete.CookLevin.VerifierTableauProblem language) : problem.formulaBitSchedule.length = (PNP.Concrete.CookLevin.encodedFormulaSizePolynomial problem.verifier).eval (PNP.Concrete.BitString.size problem.input)",
+    "cookLevinFormulaScheduleLengthKernelTypeSha256": "7460e8b8c59a2356dc8ece81571e7bcb76faf71a5ae0492d034b1d8c5d2408c4",
+    "cookLevinFormulaScheduleEmitTheorem": "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaBitSchedule_emit_eq_encodedFormula",
+    "cookLevinFormulaScheduleEmitTheoremType": "{language : PNP.Concrete.Language} (problem : PNP.Concrete.CookLevin.VerifierTableauProblem language) : PNP.Concrete.CookLevin.FormulaSchedule.emit problem.formulaBitSchedule = problem.encodedFormula",
+    "cookLevinFormulaScheduleEmitKernelTypeSha256": "2376179dbf80f6e0bb76d8a6026518aa0d042e1eb79f3ec567474a730f742943",
+    "cookLevinFormulaScheduleAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "cookLevinFormulaScheduleProjectAxiomClosure": [],
+    "cookLevinFormulaScheduleConstantTimeRawInterpretationFormalized": false,
+    "cookLevinRawFormulaBuilderFormalized": false,
+    "cookLevinFormulaScheduleFunctionProgramRawRefinementFormalized": false
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,
