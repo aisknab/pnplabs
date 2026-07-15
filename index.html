@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-14-39</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-15-40</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>e21338308fd667866efa3d003164b7fc1a454be160be384f24d23096c5c3350e</code>
+        <code>ba12bb915845d6c2e75605b205f0229e4e58f6c6ec751eebc4fd7c6bebbc868d</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 6,306 exported public declarations, including 2,747 theorem-kind declarations and 2,456 assumption-free theorem-kind declarations across 58 modules. Sixteen scoped publication milestones are earned, now including exact Cook-Levin semantic equivalence between the generated CNF and the verifier language; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 6,459 exported public declarations, including 2,883 theorem-kind declarations and 2,495 assumption-free theorem-kind declarations across 59 modules. Seventeen scoped publication milestones are earned, now including exact Cook-Levin semantics and an external polynomial bound on the actual canonical encoded formula; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language</code> proves the generated CNF is satisfiable exactly when the concrete verifier language accepts the source input. Its closure uses only <code>Classical.choice</code>, <code>Quot.sound</code>, and <code>propext</code>, with no project axiom. External encoded-formula-size and construction-runtime polynomials, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>encodedFormula_mem_CNFSAT_iff_language</code> proves exact generated-CNF semantics, and <code>encodedFormula_size_le</code> bounds the actual canonical encoding by an external input-size polynomial. A raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twelve-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current thirteen-page report</a>
         </div>
       </div>
 
@@ -119,7 +119,7 @@ concretePublicationGate.passed = false</pre>
         </a>
         <div class="artifact-meta">
           <h2>Current formal status report</h2>
-          <p>Twelve pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
+          <p>Thirteen pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
         </div>
       </aside>
     </div>

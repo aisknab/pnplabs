@@ -34,9 +34,9 @@ leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **6,306** exported public declarations across **58** modules, including **2,747** theorem-kind declarations and **2,456** assumption-free theorem-kind declarations. It excludes **1,068** private compiler auxiliaries and records **four** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **6,459** exported public declarations across **59** modules, including **2,883** theorem-kind declarations and **2,495** assumption-free theorem-kind declarations. It excludes **1,077** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 269 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Sixteen scoped milestones are earned. In addition to the concrete CNF-SAT verifier and raw-machine compilers, the Cook-Levin milestones now prove that `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language` connects the generated formula exactly to the concrete verifier language. Its closure is `[Classical.choice, Quot.sound, propext]`, with no project axiom. External encoded-formula-size and construction-runtime polynomials and a packaged `PolynomialReduction` are still absent, so CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 278 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Seventeen scoped milestones are earned. In addition to the concrete CNF-SAT verifier and raw-machine compilers, `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language` connects the generated formula exactly to the concrete verifier language, while `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le` bounds the actual canonical unary-indexed encoding by an explicit fixed-verifier polynomial in external input length. The size theorem's closure is `[Quot.sound, propext]`, with no project or choice axiom. A raw finite formula builder and its construction-runtime polynomial and a packaged `PolynomialReduction` are still absent, so CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while `PNP.Main.p_eq_np` remains absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
@@ -53,7 +53,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout d78ca574a89750fae594c61a5bdb7d6d9a076bc6
+git checkout d335c29ce499acddb16c5fc50afa622a6ea9075f
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -141,7 +141,7 @@ The public status page is [`status.html`](status.html).
 - A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
 - The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
 - The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
-- The bundled canonical PDF and TeX are the current twelve-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, raw-machine compilation, and exact Cook-Levin semantic equivalence between the generated CNF and the verifier language. They explicitly withhold the external formula-size and construction-runtime polynomials, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP.
+- The bundled canonical PDF and TeX are the current thirteen-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, and the actual encoded-formula size polynomial. They explicitly withhold a raw formula builder and construction-runtime polynomial, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP.
 - A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 - The historical 56-page claim manuscript remains at tag `final-pnp-proof-report-hardened-7072f8d`, commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with provenance in `archive/legacy-v0/ARCHIVE.json`; it is never current authority.
 
