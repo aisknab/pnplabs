@@ -54,6 +54,14 @@ const BUILDER_TOKEN_APPENDER_CANDIDATES = publishedInventory.milestoneCandidates
 );
 assert.equal(BUILDER_TOKEN_APPENDER_THEOREM_NAMES.length, 17);
 assert.equal(BUILDER_TOKEN_APPENDER_CANDIDATES.length, 17);
+const BUILDER_FIRST_TOKEN_PREFIX_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.cookLevinBuilderFirstTokenPrefixTheoremKernelTypeSha256;
+const BUILDER_FIRST_TOKEN_PREFIX_THEOREM_NAMES = Object.keys(BUILDER_FIRST_TOKEN_PREFIX_THEOREM_HASHES);
+const BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => BUILDER_FIRST_TOKEN_PREFIX_THEOREM_NAMES.includes(candidate.name)
+);
+assert.equal(BUILDER_FIRST_TOKEN_PREFIX_THEOREM_NAMES.length, 25);
+assert.equal(BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES.length, 25);
 
 function git(cwd, args) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -153,7 +161,18 @@ function makeProject(t) {
     leanConcreteCookLevinBuilderTokenAppenderAllTokensExactFormalized: true,
     leanConcreteCookLevinBuilderTokenAppenderFirstFormulaBitsFormalized: true,
     leanConcreteCookLevinBuilderTokenAppenderMalformedPhaseTimeoutFormalized: true,
-    leanConcreteCookLevinBuilderTokenAppenderInputPrefixComposed: false,
+    leanConcreteCookLevinBuilderTokenAppenderInputPrefixComposed: true,
+    leanConcreteCookLevinBuilderFirstTokenPrefixFormalized: true,
+    leanConcreteCookLevinBuilderFirstTokenPrefixAxiomAuditPassed: true,
+    leanConcreteCookLevinBuilderFirstTokenPrefixAuditedDeclarationCount: 37,
+    leanConcreteCookLevinBuilderFirstTokenPrefixCompiledRawMachineFormalized: true,
+    leanConcreteCookLevinBuilderFirstTokenPrefixExternalInputSizePolynomialFormalized: true,
+    leanConcreteCookLevinBuilderFirstTokenPrefixExactFormulaBitsFormalized: true,
+    leanConcreteCookLevinBuilderFirstTokenPrefixMalformedPhaseTimeoutFormalized: true,
+    leanConcreteCookLevinBuilderCompleteHeaderFormalized: false,
+    leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
+    leanConcreteCookLevinBuilderRawRefinementFormalized: false,
+    leanConcreteCookLevinBuilderPolynomialReductionFormalized: false,
     formalPublicationMilestones: [{
       id: "concrete-cook-levin-formula-size",
       earned: true,
@@ -194,17 +213,24 @@ function makeProject(t) {
       allKernelTypesMatch: true,
       axiomClosureUsesOnlyLeanStandardAllowlist: true,
       requiredTheorems: BUILDER_TOKEN_APPENDER_THEOREM_NAMES
+    }, {
+      id: "concrete-cook-levin-builder-first-token-prefix",
+      earned: true,
+      allPresent: true,
+      allKernelTypesMatch: true,
+      axiomClosureUsesOnlyLeanStandardAllowlist: true,
+      requiredTheorems: BUILDER_FIRST_TOKEN_PREFIX_THEOREM_NAMES
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 7006,
-    theoremCount: 3213,
-    assumptionFreeTheoremCount: 2620,
-    excludedPrivateDeclarationCount: 1333,
-    sourceClosureModuleCount: 64,
+    declarationCount: 7054,
+    theoremCount: 3249,
+    assumptionFreeTheoremCount: 2636,
+    excludedPrivateDeclarationCount: 1355,
+    sourceClosureModuleCount: 65,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -391,7 +417,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...Array.from({ length: 249 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...Array.from({ length: 249 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -443,7 +469,8 @@ function makeProject(t) {
       ...FORMULA_CURSOR_THEOREM_HASHES,
       ...BUILDER_INPUT_LENGTH_THEOREM_HASHES,
       ...BUILDER_INPUT_PREFIX_THEOREM_HASHES,
-      ...BUILDER_TOKEN_APPENDER_THEOREM_HASHES
+      ...BUILDER_TOKEN_APPENDER_THEOREM_HASHES,
+      ...BUILDER_FIRST_TOKEN_PREFIX_THEOREM_HASHES
     }
   });
 
@@ -491,7 +518,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 16,
+        pageCount: 18,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -750,7 +777,12 @@ function expectFailure(project, pattern, overrides = {}) {
 
 test("accepts exact current mirrors pinned to one core commit and tree", (t) => {
   const project = makeProject(t);
-  const result = validate(project, { requireSource: true });
+  let result;
+  try {
+    result = validate(project, { requireSource: true });
+  } catch (error) {
+    assert.fail(error.failures?.join("\n") || String(error));
+  }
   assert.equal(result.skipped, false);
   assert.equal(result.mirroredTargets, 2);
   assert.equal(result.refs.currentCoreRef.commit, project.commit);
@@ -968,6 +1000,23 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   builderTokenOverclaim.release.earnedBoundary.cookLevinBuilderTokenAppenderCompleteHeaderFormalized = true;
   write(builderTokenOverclaim.root, "downloads/formal-publication-release.json", json(builderTokenOverclaim.release));
   expectFailure(builderTokenOverclaim, /formal-publication overstates the Cook-Levin builder token appender/);
+
+  const firstTokenFingerprint = makeProject(t);
+  firstTokenFingerprint.release.earnedBoundary.cookLevinBuilderFirstTokenPrefixTheoremKernelTypeSha256[
+    BUILDER_FIRST_TOKEN_PREFIX_THEOREM_NAMES[0]
+  ] = "0".repeat(64);
+  write(firstTokenFingerprint.root, "downloads/formal-publication-release.json", json(firstTokenFingerprint.release));
+  expectFailure(firstTokenFingerprint, /formal-publication Cook-Levin builder first-token-prefix fingerprint mismatch/);
+
+  const firstTokenAxiom = makeProject(t);
+  firstTokenAxiom.release.earnedBoundary.cookLevinBuilderFirstTokenPrefixProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(firstTokenAxiom.root, "downloads/formal-publication-release.json", json(firstTokenAxiom.release));
+  expectFailure(firstTokenAxiom, /formal-publication Cook-Levin builder first-token-prefix axiom closure mismatch/);
+
+  const firstTokenOverclaim = makeProject(t);
+  firstTokenOverclaim.release.earnedBoundary.cookLevinBuilderCompleteHeaderFormalized = true;
+  write(firstTokenOverclaim.root, "downloads/formal-publication-release.json", json(firstTokenOverclaim.release));
+  expectFailure(firstTokenOverclaim, /formal-publication overstates the Cook-Levin builder first-token prefix/);
 
   const rawBuilder = makeProject(t);
   rawBuilder.release.earnedBoundary.cookLevinRawFormulaBuilderFormalized = true;

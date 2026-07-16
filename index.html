@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-16-45</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-16-46</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>2f8280035717c4223b465ca64ffe4c10c7fd4bc973c28d4a79a92ab2e78851a5</code>
+        <code>7ddd275e3094957ac3ed7a2c07deadb3d599883c6a2206f80e17b97eee848f30</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 7,006 exported public declarations, including 3,213 theorem-kind declarations and 2,620 assumption-free theorem-kind declarations across 64 modules. Twenty-two scoped publication milestones are earned, now including a standalone finite-machine Cook-Levin token appender; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 7,054 exported public declarations, including 3,249 theorem-kind declarations and 2,636 assumption-free theorem-kind declarations across 65 modules. Twenty-three scoped publication milestones are earned, now including a literal Cook-Levin machine that composes raw-input framing, unary tallying, and first-token emission; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>formulaBitSchedule_emit_eq_encodedFormula</code> binds the answer-independent rectangular schedule to the canonical formula, while <code>formulaBitSlotDirect_eq</code> and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code> bind the direct cursor to exact lookup and traversal. <code>BuilderTokenAppender.appendToken_workRunExact</code> proves exact appending for every fixed token request, input, prior output, and exterior tape. The specialized first token emits the first two direct formula bits within <code>24*n + 48</code> compiled raw steps. This standalone machine is not yet rule-table-composed with <code>BuilderInputPrefix</code> and does not complete a raw formula builder. A packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier Cook-Levin stages include <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>formulaBitSlotDirect_eq</code>, and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>. <code>BuilderFirstTokenPrefix.workRunExact</code> proves one literal 184-rule machine runs total raw-input framing, exact unary tallying, one bridge, and token appending. Its output is exactly the first <code>T</code> token—the first two canonical formula bits—within <code>18*n*n + 87*n + 147</code> compiled raw steps. The remaining width header is absent, so this does not complete a raw formula builder. A packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current sixteen-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current eighteen-page report</a>
         </div>
       </div>
 
