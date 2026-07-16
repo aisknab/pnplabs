@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 290,464 | `7ff8083704dc20cddb9ebea8fa7621cf767f1199a3103125c1aadbe8d27fd51f` |
-| `downloads/canonical-proof-report.pdf` | 290,464 | `7ff8083704dc20cddb9ebea8fa7621cf767f1199a3103125c1aadbe8d27fd51f` |
-| `downloads/canonical_proof_report.tex` | 35,646 | `4ab45177a48954353f061865be78a36949d3ef2c48d6ead9a97e34e6dd9418b3` |
-| `downloads/canonical-proof-report.tex` | 35,646 | `4ab45177a48954353f061865be78a36949d3ef2c48d6ead9a97e34e6dd9418b3` |
-| `public/pnp-status.json` | 258,968 | `8edd04e0afd83a1931df1a06b522630ab9ca052f53b890a61a61a90f5982c2cf` |
-| `public/pnp-theorem-inventory.json` | 2,190,097 | `7ddd275e3094957ac3ed7a2c07deadb3d599883c6a2206f80e17b97eee848f30` |
+| `downloads/canonical_proof_report.pdf` | 295,278 | `afc2edd421ad3e4c04d1ade5a019dd63ba0c6fd75ecfc813dcb1effab528d063` |
+| `downloads/canonical-proof-report.pdf` | 295,278 | `afc2edd421ad3e4c04d1ade5a019dd63ba0c6fd75ecfc813dcb1effab528d063` |
+| `downloads/canonical_proof_report.tex` | 39,265 | `f33296d44b1c0bbb5d24525f101eac3307211714bb73de309eb42e727e33cd71` |
+| `downloads/canonical-proof-report.tex` | 39,265 | `f33296d44b1c0bbb5d24525f101eac3307211714bb73de309eb42e727e33cd71` |
+| `public/pnp-status.json` | 309,501 | `763756907512ae8321635720fd0f72487dfd7cd05a013d4a134f7276ca551643` |
+| `public/pnp-theorem-inventory.json` | 2,459,012 | `a27adf2ab77140e0e8b9c41429f0178ba97a2a76738669f6d6175e416bce2b28` |
 
-The PDF must have eighteen A4 pages. Both filename styles must be byte-identical.
+The PDF must have nineteen A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout a09062d02e0c06704f57efe1bdb99024fbcfc618
+git -C ../pnp checkout 62c35edef4bb64f2c665051e61d07c7b17f70ad3
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 7,054 public declarations, 3,249 theorem-kind declarations,
-2,636 assumption-free theorem-kind declarations, 1,355 excluded private auxiliaries, 65 modules, and
-four project axioms. The publication gate must remain false with six blockers. The concrete NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the current Cook-Levin semantic theorem is `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language`, audited across 54 declarations with closure `[Classical.choice, Quot.sound, propext]` and no project axiom. `encodedFormula_size_le` bounds the actual canonical encoding in external input length. The rectangular schedule binds exact polynomial length to exact canonical emission. The direct cursor proves pointwise constraint/clause/token/bit lookup plus exact fuelled traversal. `PNP.Concrete.CookLevin.BuilderFirstTokenPrefix.workRunExact` proves one literal 184-rule finite machine runs the total framer, exact unary tally, one bridge, and the fixed token appender. Its output is exactly `[CNFToken.t]`; `finalTokenBits_eq_encodedFormula_take_two` identifies the two emitted bits with the canonical formula prefix, and `run_compile_rawTimeBound` gives the external bound `18*n*n + 87*n + 147`. All 37 public declarations are audited, and the 25 reviewed theorem types have empty closure, `[propext]`, or `[Quot.sound, propext]`. The remaining width header, complete raw formula builder, builder `FunctionProgram.RawRefinement`, and packaged polynomial reduction must remain absent, as must CNF-SAT in P and NP-completeness.
+Expected compiled inventory counts are 7,418 public declarations, 3,473 theorem-kind declarations,
+2,764 assumption-free theorem-kind declarations, 2,032 excluded private auxiliaries, 67 modules, and
+four project axioms. The publication gate must remain false with six blockers. The concrete NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the current Cook-Levin semantic theorem is `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language`, audited across 54 declarations with closure `[Classical.choice, Quot.sound, propext]` and no project axiom. `encodedFormula_size_le` bounds the actual canonical encoding in external input length. The rectangular schedule binds exact polynomial length to exact canonical emission. The direct cursor proves pointwise constraint/clause/token/bit lookup plus exact fuelled traversal. `PNP.Concrete.CookLevin.BuilderCompleteHeader.workRunExact` proves one literal finite machine composes the 184-rule input/first-token prefix, unary polynomial evaluator, finite controller, two appender copies, and total bridges. Its output is exactly `FormulaWidth` copies of `T` followed by `F`; `finalTokenBits_eq_encodedFormula_header` identifies those bits with `encodedFormula.take (2 * (FormulaWidth + 1))`, and `run_compile_rawTimeBound` supplies an external `NatPolynomial` bound. The evaluator's 74 and composition's 83 public declarations are completely audited, and the 48 reviewed theorem types have empty closure, `[propext]`, or `[Quot.sound, propext]`. The dynamic cursor controller, formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, and packaged polynomial reduction must remain absent, as must CNF-SAT in P and NP-completeness.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
