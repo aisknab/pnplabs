@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'b8ea4ad0e08985129ef460b626e6822346907b0f90b789b51102757d80aa4a7e');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '55bdc78e21d82d345abbf26abce55450192867bda294a7a6c6ca0548e1e41fc3');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 27);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 28);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -171,7 +171,7 @@ test('Cook-Levin formula schedule requires exact emission, length, and approved 
 test('Cook-Levin formula cursor requires all direct lookups, exact traversal, and approved closure', () => {
   const milestone = status.formalPublicationMilestones
     .find((row) => row.id === 'concrete-cook-levin-formula-cursor');
-  assert.equal(milestone.requiredTheorems.length, 13);
+  assert.equal(milestone.requiredTheorems.length, 16);
 
   for (const name of milestone.requiredTheorems) {
     const missing = structuredClone(inventory);
@@ -329,7 +329,7 @@ test('Cook-Levin token appender retains all seventeen independently audited theo
   assert.equal(validation.validateStatus(disconnected, inventory), false);
 });
 
-test('Cook-Levin first-token prefix requires all twenty-seven exact theorem rows and remains an incomplete builder', () => {
+test('Cook-Levin first-token prefix requires all twenty-eight exact theorem rows and remains an incomplete builder', () => {
   const milestone = status.formalPublicationMilestones
     .find((row) => row.id === 'concrete-cook-levin-builder-first-token-prefix');
   assert.equal(milestone.requiredTheorems.length, 25);
@@ -554,10 +554,10 @@ test('Cook-Levin first-literal prefix requires all fifty-two exact theorem rows 
   }
 });
 
-test('Cook-Levin first-clause prefix requires all forty-one exact theorem rows and remains dynamically incomplete', () => {
+test('Cook-Levin first-clause prefix requires all forty-three exact theorem rows and remains dynamically incomplete', () => {
   const milestone = status.formalPublicationMilestones
     .find((row) => row.id === 'concrete-cook-levin-builder-first-clause-prefix');
-  assert.equal(milestone.requiredTheorems.length, 41);
+  assert.equal(milestone.requiredTheorems.length, 43);
 
   for (const name of milestone.requiredTheorems) {
     const missing = structuredClone(inventory);
@@ -601,6 +601,64 @@ test('Cook-Levin first-clause prefix requires all forty-one exact theorem rows a
 
   const wrongAuditCount = structuredClone(status);
   wrongAuditCount.leanConcreteCookLevinBuilderFirstClausePrefixAuditedDeclarationCount = 76;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderDynamicCursorFormalized',
+    'leanConcreteCookLevinFormulaBuilderFormalized',
+    'leanConcreteCookLevinBuilderRawRefinementFormalized',
+    'leanConcreteCookLevinBuilderPolynomialReductionFormalized',
+    'leanConcreteCNFSATInPFormalized',
+    'leanConcreteCNFNPCompletenessFormalized',
+  ]) {
+    const widened = structuredClone(status);
+    widened[field] = true;
+    assert.equal(validation.validateStatus(widened, inventory), false, field);
+  }
+});
+
+test('Cook-Levin dynamic-token cursor step requires all thirty-one exact rows and cannot become a general cursor', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-dynamic-token-cursor-step');
+  assert.equal(milestone.requiredTheorems.length, 31);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.BuilderDynamicTokenCursorStep.specification_step')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-dynamic-token-cursor-step')
+    .theoremRows.find((row) => row.name.endsWith('.directOutcome_is_padding'))
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepFormalized',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepAxiomAuditPassed',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepCompiledRawMachineFormalized',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepExternalInputSizePolynomialFormalized',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepDirectPaddingOutcomeFormalized',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepRetainedAdvancedTokenCoordinateFormalized',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepInputPrefixAppenderComposed',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepFailClosedBoundaryTimeoutFormalized',
+    'leanConcreteCookLevinBuilderDynamicTokenCursorStepSinglePaddingStepFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCookLevinBuilderDynamicTokenCursorStepAuditedDeclarationCount = 44;
   assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
 
   for (const field of [
@@ -761,7 +819,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'a5b97099c90d4696bef48d856571d53a836ba246d9545ebf210a19864fe2978d'/);
+  assert.match(source, /const STATUS_SHA256 = 'ae8d8280658bf8fe31865e5d9093634f0060a3e668009b8c6984c37c00a4ae54'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -786,12 +844,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /7,746/);
-  assert.match(statusPage, /Twenty-seven scoped milestones/);
+  assert.match(statusPage, /7,845/);
+  assert.match(statusPage, /Twenty-eight scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /twenty-two-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /twenty-five-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
