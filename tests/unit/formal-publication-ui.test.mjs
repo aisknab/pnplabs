@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '93ce5e6083da07be48b9af2ae24d067cf464ba41fab8eebfd120207bada8953f');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'b8ea4ad0e08985129ef460b626e6822346907b0f90b789b51102757d80aa4a7e');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 26);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 27);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -329,7 +329,7 @@ test('Cook-Levin token appender retains all seventeen independently audited theo
   assert.equal(validation.validateStatus(disconnected, inventory), false);
 });
 
-test('Cook-Levin first-token prefix requires all twenty-six exact theorem rows and remains an incomplete builder', () => {
+test('Cook-Levin first-token prefix requires all twenty-seven exact theorem rows and remains an incomplete builder', () => {
   const milestone = status.formalPublicationMilestones
     .find((row) => row.id === 'concrete-cook-levin-builder-first-token-prefix');
   assert.equal(milestone.requiredTheorems.length, 25);
@@ -554,6 +554,69 @@ test('Cook-Levin first-literal prefix requires all fifty-two exact theorem rows 
   }
 });
 
+test('Cook-Levin first-clause prefix requires all forty-one exact theorem rows and remains dynamically incomplete', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-first-clause-prefix');
+  assert.equal(milestone.requiredTheorems.length, 41);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  for (const name of [
+    'PNP.Concrete.CookLevin.BuilderFirstClausePrefix.workRunExact',
+    'PNP.Concrete.CookLevin.BuilderFirstClausePrefix.firstClauseTokens_eq_canonical_formula_prefix',
+    'PNP.Concrete.CookLevin.BuilderFirstClausePrefix.finalTokenBits_eq_encodedFormula_firstClause',
+  ]) {
+    const assumed = structuredClone(inventory);
+    assumed.milestoneCandidates.find((candidate) => candidate.name === name).axioms = ['PNP.ForgedAxiom'];
+    assert.equal(validation.validateInventory(assumed), false, name);
+  }
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-first-clause-prefix')
+    .theoremRows.find((row) => row.name.endsWith('.finalTokenBits_eq_encodedFormula_firstClause'))
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderFirstClausePrefixFormalized',
+    'leanConcreteCookLevinBuilderFirstClausePrefixAxiomAuditPassed',
+    'leanConcreteCookLevinBuilderFirstClausePrefixCompiledRawMachineFormalized',
+    'leanConcreteCookLevinBuilderFirstClausePrefixExternalInputSizePolynomialFormalized',
+    'leanConcreteCookLevinBuilderFirstClausePrefixExactFormulaBitsFormalized',
+    'leanConcreteCookLevinBuilderFirstClausePrefixRetainedNextTokenCoordinateFormalized',
+    'leanConcreteCookLevinBuilderFirstClausePrefixInputPrefixAppenderComposed',
+    'leanConcreteCookLevinBuilderFirstClausePrefixFailClosedBoundaryTimeoutFormalized',
+    'leanConcreteCookLevinBuilderFirstClausePrefixCompleteFirstClauseFormalized',
+    'leanConcreteCookLevinBuilderInputPrefixAppenderComposed',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCookLevinBuilderFirstClausePrefixAuditedDeclarationCount = 76;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderDynamicCursorFormalized',
+    'leanConcreteCookLevinFormulaBuilderFormalized',
+    'leanConcreteCookLevinBuilderRawRefinementFormalized',
+    'leanConcreteCookLevinBuilderPolynomialReductionFormalized',
+    'leanConcreteCNFSATInPFormalized',
+    'leanConcreteCNFNPCompletenessFormalized',
+  ]) {
+    const widened = structuredClone(status);
+    widened[field] = true;
+    assert.equal(validation.validateStatus(widened, inventory), false, field);
+  }
+});
+
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
   const strippedRefinement = structuredClone(status);
   strippedRefinement.leanConcretePipelineRawRefinementFormalized = false;
@@ -698,7 +761,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '714e8967bd67c0d093d9c2788ac7199d3cef01a9b010f3ae5548806a51de9a1d'/);
+  assert.match(source, /const STATUS_SHA256 = 'a5b97099c90d4696bef48d856571d53a836ba246d9545ebf210a19864fe2978d'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -709,7 +772,7 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateInventory(changedInventory), false);
 
   const changedStatus = structuredClone(status);
-  changedStatus.formalPublicationMilestones[26].earned = true;
+  changedStatus.formalPublicationMilestones.find((row) => !row.earned).earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
@@ -723,12 +786,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /7,626/);
-  assert.match(statusPage, /Twenty-six scoped milestones/);
+  assert.match(statusPage, /7,746/);
+  assert.match(statusPage, /Twenty-seven scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /twenty-one-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /twenty-two-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
