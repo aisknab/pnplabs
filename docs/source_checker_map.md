@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `a23dd28052c4bbeee281ed0ce691ef7350ef2215`. Its generated status payload is current
+core commit `977748fa95202c86cf1235e7336e76d908a11eb1`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the twenty-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the twenty-one-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `a23dd28052c4bbeee281ed0ce691ef7350ef2215` | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results, the direct formula cursor, and the literal `T^FormulaWidth F Sep` body-start builder prefix |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 454 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `977748fa95202c86cf1235e7336e76d908a11eb1` | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results, the direct formula cursor, and the literal `T^FormulaWidth F Sep T F` first-literal builder prefix |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 508 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Twenty-five earned scoped milestones, three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current twenty-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Twenty-six earned scoped milestones, three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current twenty-one-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.
