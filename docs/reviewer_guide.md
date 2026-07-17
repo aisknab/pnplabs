@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a nineteen-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 7,418 public declarations across 67 modules,
-including 3,473 theorem-kind declarations, 2,764 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Two thousand thirty-two private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a twenty-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 7,500 public declarations across 68 modules,
+including 3,536 theorem-kind declarations, 2,795 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Two thousand one hundred twenty-four private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all six formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current nineteen-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current twenty-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 56-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 414 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | Four hundred fourteen reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Twenty-four narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, encoded-formula bounds and schedules, a direct coordinate cursor, and the complete width-header composition under an external polynomial bound | The dynamic cursor controller, formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, CNF-SAT in P, NP-completeness, global locked-NAND construction, complete residual search, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 454 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | Four hundred fifty-four reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Twenty-five narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, encoded-formula bounds and schedules, a direct coordinate cursor, the complete width header, and the `T^FormulaWidth F Sep` body-start prefix under an external polynomial bound | The dynamic cursor controller, subsequent formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, CNF-SAT in P, NP-completeness, global locked-NAND construction, complete residual search, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `62c35edef4bb64f2c665051e61d07c7b17f70ad3`.
+   `a23dd28052c4bbeee281ed0ce691ef7350ef2215`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 414 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 454 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,16 +72,16 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns twenty-four scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns twenty-five scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
-no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, the first-token composition, a structurally generated unary polynomial evaluator, and a literal complete width-header composition under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
+no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, the complete width header, and a literal `T^FormulaWidth F Sep` body-start composition with a retained next coordinate under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
 concrete framed replacement/slack; five local locked-NAND baselines; a six-premise conditional
 threshold boundary; and explicit-list residual-route soundness.
 
 Review the gaps between those scopes and the target theorem:
 
-1. The charged-pipeline model and concrete CNF-SAT language are formalized. Every proof-bearing function or decision program tree recursively compiles into one literal finite machine. The Cook-Levin construction proves exact semantic equivalence between its generated formula and the verifier language, bounds the actual encoded formula by an external input-size polynomial, supplies an exact answer-independent rectangular schedule, and supplies direct coordinate decoders with exact fuelled traversal. Fixed finite machines prove input preparation and reusable token appending. One literal finite machine composes the 184-rule first-token prefix, a structurally generated unary polynomial evaluator, a finite controller, two appender copies, and total bridges; it emits exactly `FormulaWidth` copies of `T` followed by `F`, matching the canonical width header under an external polynomial bound. It does not implement the dynamic cursor or formula body and is not a complete raw builder, builder `FunctionProgram.RawRefinement`, or packaged polynomial reduction. CNF-SAT NP-completeness and a deterministic polynomial-time CNF-SAT decider are absent.
+1. The charged-pipeline model and concrete CNF-SAT language are formalized. Every proof-bearing function or decision program tree recursively compiles into one literal finite machine. The Cook-Levin construction proves exact semantic equivalence between its generated formula and the verifier language, bounds the actual encoded formula by an external input-size polynomial, supplies an exact answer-independent rectangular schedule, and supplies direct coordinate decoders with exact fuelled traversal. Fixed finite machines prove input preparation and reusable token appending. One literal finite machine emits `T^FormulaWidth F Sep`, matching the canonical token prefix and retaining `formulaVariableSlotBound + 2` as the next coordinate under an external polynomial bound. It does not implement the dynamic cursor or subsequent formula body and is not a complete raw builder, builder `FunctionProgram.RawRefinement`, or packaged polynomial reduction. CNF-SAT NP-completeness and a deterministic polynomial-time CNF-SAT decider are absent.
 2. The six locked-NAND threshold premises are not instantiated by a uniform polynomial builder.
 3. Local baseline minima do not establish global `BaselineDistinct`, carrier layout, trace
    equivalence, or the report threshold.
@@ -111,7 +111,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current nineteen-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current twenty-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the
