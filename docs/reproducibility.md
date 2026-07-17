@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 295,278 | `8e61812c7f4e74a31190c3ffd765a4615f66ddcf05166b9efd1f1d3fa7c13e93` |
-| `downloads/canonical-proof-report.pdf` | 295,278 | `8e61812c7f4e74a31190c3ffd765a4615f66ddcf05166b9efd1f1d3fa7c13e93` |
-| `downloads/canonical_proof_report.tex` | 39,265 | `32d8782bb3e533a59028285cf494236e05673686fd9d5bac20e08a1a1f0afdb0` |
-| `downloads/canonical-proof-report.tex` | 39,265 | `32d8782bb3e533a59028285cf494236e05673686fd9d5bac20e08a1a1f0afdb0` |
-| `public/pnp-status.json` | 309,501 | `5245733ecba4f5b18a8bf782281b8076c55e5807b77d56f1db6d1848bf737d64` |
-| `public/pnp-theorem-inventory.json` | 2,459,012 | `c8b62ac6d6119dba556db6cf31aacb6a5ab3b55f7a4d7c4f9fe83a305c72bb41` |
+| `downloads/canonical_proof_report.pdf` | 299,464 | `8e61812c7f4e74a31190c3ffd765a4615f66ddcf05166b9efd1f1d3fa7c13e93` |
+| `downloads/canonical-proof-report.pdf` | 299,464 | `8e61812c7f4e74a31190c3ffd765a4615f66ddcf05166b9efd1f1d3fa7c13e93` |
+| `downloads/canonical_proof_report.tex` | 42,402 | `32d8782bb3e533a59028285cf494236e05673686fd9d5bac20e08a1a1f0afdb0` |
+| `downloads/canonical-proof-report.tex` | 42,402 | `32d8782bb3e533a59028285cf494236e05673686fd9d5bac20e08a1a1f0afdb0` |
+| `public/pnp-status.json` | 336,490 | `5245733ecba4f5b18a8bf782281b8076c55e5807b77d56f1db6d1848bf737d64` |
+| `public/pnp-theorem-inventory.json` | 2,621,754 | `c8b62ac6d6119dba556db6cf31aacb6a5ab3b55f7a4d7c4f9fe83a305c72bb41` |
 
-The PDF must have nineteen A4 pages. Both filename styles must be byte-identical.
+The PDF must have twenty A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 

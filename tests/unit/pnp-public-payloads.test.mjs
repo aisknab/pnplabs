@@ -720,8 +720,13 @@ test('status page has a conservative complete static fallback', async () => {
 test('static inventory prose matches the compiled declaration boundary', async () => {
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
+  const reproducibility = await readText('docs/reproducibility.md');
   assert.equal(paper.includes('Two thousand one hundred twenty-four private compiler auxiliaries are excluded.'), true);
   assert.equal(guide.includes('Two thousand one hundred twenty-four private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['299,464', '42,402', '336,490', '2,621,754', 'twenty A4 pages']) {
+    assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
+  }
+  assert.equal(reproducibility.includes('nineteen A4 pages'), false);
   assert.equal(paper.includes('One thousand and thirty-two'), false);
   assert.equal(guide.includes('One thousand and thirty-two'), false);
 });
