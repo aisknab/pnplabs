@@ -3,54 +3,54 @@
   "version": 0,
   "scope": "bundled current formal-publication artifacts plus quarantined historical metadata",
   "status": "file identity only; not theorem validation",
-  "generated_utc": "2026-07-17T04:16:05Z",
-  "current_publication_coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-17-32",
-  "current_core_commit": "977748fa95202c86cf1235e7336e76d908a11eb1",
-  "current_core_tree": "8d207f7c12f36dc22fae6c010ea2dad62643ec31",
+  "generated_utc": "2026-07-17T11:05:05Z",
+  "current_publication_coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-17-33",
+  "current_core_commit": "f5b7b31b549260c6366302e616c71565e8857112",
+  "current_core_tree": "763d06f43fab168650f9d7e94d1ee3906af8c3dd",
   "theorem_gate_passed": false,
   "public_theorem_emission_allowed": false,
   "historical_metadata_status": "historical-quarantined-not-current-authority",
   "files": [
     {
       "path": "downloads/canonical_proof_report.pdf",
-      "bytes": 302347,
-      "sha256": "e2f96c90c84df901343ce1fadac384fb83c180c5c3a590c7c53c93a8221a6c38",
-      "role": "current inventory-derived twenty-one-page formal-reconstruction report PDF"
+      "bytes": 303010,
+      "sha256": "a5067e99b08b6111b04a4eecddd9a0de21401200ebc000b45676426dabb3ba75",
+      "role": "current inventory-derived twenty-two-page formal-reconstruction report PDF"
     },
     {
       "path": "downloads/canonical-proof-report.pdf",
-      "bytes": 302347,
-      "sha256": "e2f96c90c84df901343ce1fadac384fb83c180c5c3a590c7c53c93a8221a6c38",
+      "bytes": 303010,
+      "sha256": "a5067e99b08b6111b04a4eecddd9a0de21401200ebc000b45676426dabb3ba75",
       "role": "exact hyphenated alias of current formal-reconstruction report PDF"
     },
     {
       "path": "downloads/canonical_proof_report.tex",
-      "bytes": 45055,
-      "sha256": "de607b77cafbde49288204a90897a4588f23ccb7b277001b60117b6f713a9162",
+      "bytes": 48059,
+      "sha256": "65b8cd95aad18dccc07c08de907131130c13a753b6330f97438ece244a2767a0",
       "role": "current inventory-derived formal-reconstruction report TeX"
     },
     {
       "path": "downloads/canonical-proof-report.tex",
-      "bytes": 45055,
-      "sha256": "de607b77cafbde49288204a90897a4588f23ccb7b277001b60117b6f713a9162",
+      "bytes": 48059,
+      "sha256": "65b8cd95aad18dccc07c08de907131130c13a753b6330f97438ece244a2767a0",
       "role": "exact hyphenated alias of current formal-reconstruction report TeX"
     },
     {
       "path": "public/pnp-status.json",
-      "bytes": 373240,
-      "sha256": "714e8967bd67c0d093d9c2788ac7199d3cef01a9b010f3ae5548806a51de9a1d",
+      "bytes": 402289,
+      "sha256": "a5b97099c90d4696bef48d856571d53a836ba246d9545ebf210a19864fe2978d",
       "role": "exact current core formal-reconstruction status mirror"
     },
     {
       "path": "public/pnp-theorem-inventory.json",
-      "bytes": 2854596,
-      "sha256": "93ce5e6083da07be48b9af2ae24d067cf464ba41fab8eebfd120207bada8953f",
+      "bytes": 3016006,
+      "sha256": "b8ea4ad0e08985129ef460b626e6822346907b0f90b789b51102757d80aa4a7e",
       "role": "exact current compiled Lean theorem inventory mirror"
     },
     {
       "path": "downloads/formal-publication-release.json",
-      "bytes": 77534,
-      "sha256": "ed1612234b8d2fe6a3628a18c66c28088d3d78353b713282330e1fa95fe19dd8",
+      "bytes": 87711,
+      "sha256": "8d3270489273fca88b6a6216c3f16e98f5c02f660dca24e5933c18a45f6eda8b",
       "role": "current formal-publication release identity and fail-closed boundary"
     },
     {

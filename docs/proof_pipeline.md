@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 508 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 549 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 7,626 public declarations;
-- 3,640 theorem-kind declarations;
-- 2,827 assumption-free theorem-kind declarations;
+- 7,746 public declarations;
+- 3,725 theorem-kind declarations;
+- 2,865 assumption-free theorem-kind declarations;
 - 69 source-closure modules;
-- 2,214 excluded private compiler auxiliaries;
+- 2,286 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The twenty-six earned scopes are:
+The twenty-seven earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -73,6 +73,7 @@ The twenty-six earned scopes are:
 | Composed Cook-Levin complete width header | One literal finite table composes the 184-rule prefix, structurally generated unary polynomial evaluator, 16-rule controller, two 59-rule appender copies, and five total bridges in pairwise-disjoint state images; every raw input emits exactly `FormulaWidth` copies of `T` followed by `F`, equal to `encodedFormula.take (2 * (FormulaWidth + 1))`, under an external `NatPolynomial` compiled-time bound | Complete answer-independent width header only: no dynamic cursor controller, formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Composed Cook-Levin body-start prefix | One literal finite table composes the complete width header, a unary next-token-slot evaluator, and the reusable appender; every raw input emits `T^FormulaWidth F Sep`, and the final exterior retains `formulaVariableSlotBound + 2` under an external `NatPolynomial` compiled-time bound | Fixed separator and coordinate only: no dynamic cursor controller, subsequent body tokens, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Composed Cook-Levin first-literal prefix | One literal finite table composes the body-start prefix, a unary next-token-slot evaluator, and two appender copies; every raw input emits `T^FormulaWidth F Sep T F`, the canonical first positive literal for variable zero, and the final exterior retains `formulaVariableSlotBound + 4` under an external `NatPolynomial` compiled-time bound | Fixed first literal and coordinate only: no dynamic cursor controller, remaining body tokens, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Composed Cook-Levin first-clause prefix | One literal finite table composes the first-literal prefix, a unary next-token-slot evaluator, and a fixed eight-token tail; every raw input emits `T^FormulaWidth F Sep T F T T F T T T F Finish`, the complete positive first clause on variables zero, one, and two, and the final exterior retains `formulaVariableSlotBound + 12` under an external `NatPolynomial` compiled-time bound | Complete first clause and retained coordinate only: no dynamic cursor controller, remaining body tokens, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -108,7 +109,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment twenty-one-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment twenty-two-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

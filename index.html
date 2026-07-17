@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-17-49</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-17-50</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>93ce5e6083da07be48b9af2ae24d067cf464ba41fab8eebfd120207bada8953f</code>
+        <code>b8ea4ad0e08985129ef460b626e6822346907b0f90b789b51102757d80aa4a7e</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 7,626 exported public declarations, including 3,640 theorem-kind declarations and 2,827 assumption-free theorem-kind declarations across 69 modules. Twenty-six scoped publication milestones are earned, now including a literal Cook-Levin machine that emits <code>T^FormulaWidth F Sep T F</code>, the canonical first positive literal for variable zero, and retains the following token coordinate; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 7,746 exported public declarations, including 3,725 theorem-kind declarations and 2,865 assumption-free theorem-kind declarations across 70 modules. Twenty-seven scoped publication milestones are earned, now including a literal Cook-Levin machine that emits <code>T^FormulaWidth F Sep T F T T F T T T F Finish</code>, the canonical prefix through the complete positive first clause on variables zero, one, and two, and retains the following token coordinate; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier Cook-Levin stages include <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>formulaBitSlotDirect_eq</code>, and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>. <code>BuilderFirstLiteralPrefix.workRunExact</code> proves one literal finite machine composes raw-input framing, exact unary tallying, the complete width header, the body-start separator, a unary next-slot evaluator, and two reusable appender copies. It emits <code>T^FormulaWidth F Sep T F</code>; <code>firstLiteralTokens_eq_canonical_formula_prefix</code> identifies the result with the canonical first-literal prefix, and <code>nextTokenSlot_eq_formulaVariableSlotBound_add_four</code> retains <code>formulaVariableSlotBound + 4</code> as the following token coordinate under an external <code>NatPolynomial</code> compiled bound. The dynamic cursor controller, remaining formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier Cook-Levin stages include <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>formulaBitSlotDirect_eq</code>, and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>. <code>BuilderFirstClausePrefix.workRunExact</code> proves one literal finite machine composes raw-input framing, exact unary tallying, the complete width header, the body-start separator, the first literal, a unary next-slot evaluator, and a fixed eight-token tail. It emits <code>T^FormulaWidth F Sep T F T T F T T T F Finish</code>; <code>firstClauseTokens_eq_canonical_formula_prefix</code> identifies the result with the canonical prefix through the complete first clause, and <code>nextTokenSlot_eq_formulaVariableSlotBound_add_twelve</code> retains <code>formulaVariableSlotBound + 12</code> as the following token coordinate under an external <code>NatPolynomial</code> compiled bound. The retained coordinate is not a dynamic cursor. The remaining formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-one-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-two-page report</a>
         </div>
       </div>
 
