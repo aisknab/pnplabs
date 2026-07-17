@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-16-47</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-17-48</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>a27adf2ab77140e0e8b9c41429f0178ba97a2a76738669f6d6175e416bce2b28</code>
+        <code>c8b62ac6d6119dba556db6cf31aacb6a5ab3b55f7a4d7c4f9fe83a305c72bb41</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 7,418 exported public declarations, including 3,473 theorem-kind declarations and 2,764 assumption-free theorem-kind declarations across 67 modules. Twenty-four scoped publication milestones are earned, now including a literal Cook-Levin machine that evaluates the verifier-fixed formula width and emits the complete answer-independent width header; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 7,500 exported public declarations, including 3,536 theorem-kind declarations and 2,795 assumption-free theorem-kind declarations across 68 modules. Twenty-five scoped publication milestones are earned, now including a literal Cook-Levin machine that emits <code>T^FormulaWidth F Sep</code> and retains the next token coordinate; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier Cook-Levin stages include <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>formulaBitSlotDirect_eq</code>, and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>. <code>BuilderCompleteHeader.workRunExact</code> proves one literal finite machine composes raw-input framing, exact unary tallying, the first-token prefix, a structurally generated unary polynomial evaluator, a finite controller, and two appender copies. It emits exactly <code>FormulaWidth</code> copies of <code>T</code> followed by <code>F</code>; <code>finalTokenBits_eq_encodedFormula_header</code> identifies the result with the complete canonical width header, and an external <code>NatPolynomial</code> bounds compiled execution. The dynamic cursor controller, formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier Cook-Levin stages include <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>formulaBitSlotDirect_eq</code>, and <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>. <code>BuilderBodyStartPrefix.workRunExact</code> proves one literal finite machine composes raw-input framing, exact unary tallying, the complete width header, a unary next-slot evaluator, and the reusable appender. It emits <code>T^FormulaWidth F Sep</code>; <code>bodyStartTokens_eq_canonical_prefix</code> identifies the result with the canonical token prefix, and <code>nextTokenSlot_eq_formulaVariableSlotBound_add_two</code> retains <code>formulaVariableSlotBound + 2</code> as the next token coordinate under an external <code>NatPolynomial</code> compiled bound. The dynamic cursor controller, subsequent formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current nineteen-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-page report</a>
         </div>
       </div>
 

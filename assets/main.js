@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-16-47';
-const STATUS_SHA256 = '763756907512ae8321635720fd0f72487dfd7cd05a013d4a134f7276ca551643';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-16-COOK-LEVIN-BUILDER-COMPLETE-HEADER-46';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-16-47';
-const INVENTORY_SHA256 = 'a27adf2ab77140e0e8b9c41429f0178ba97a2a76738669f6d6175e416bce2b28';
-const SOURCE_CLOSURE_SHA256 = '75ed4e71af40ea8b2efc0c271e1c53ed5c5e62a1113c887e3669c58848f8978b';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-17-48';
+const STATUS_SHA256 = '5245733ecba4f5b18a8bf782281b8076c55e5807b77d56f1db6d1848bf737d64';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-17-COOK-LEVIN-BUILDER-BODY-START-PREFIX-47';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-17-48';
+const INVENTORY_SHA256 = 'c8b62ac6d6119dba556db6cf31aacb6a5ab3b55f7a4d7c4f9fe83a305c72bb41';
+const SOURCE_CLOSURE_SHA256 = '17d3594b778d9e9c6f82d9111673378913a279229fb1b8fc21079e8f3052098c';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 7418,
-  theorems: 3473,
-  assumptionFreeTheorems: 2764,
-  excludedPrivateDeclarations: 2032,
-  modules: 67,
+  declarations: 7500,
+  theorems: 3536,
+  assumptionFreeTheorems: 2795,
+  excludedPrivateDeclarations: 2124,
+  modules: 68,
   axioms: 4,
 });
 
@@ -381,6 +381,244 @@ const BUILDER_COMPLETE_HEADER_DECLARATIONS = Object.freeze([
   ]
 ]);
 
+const BUILDER_BODY_START_PREFIX_DECLARATIONS = Object.freeze([
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.appenderState_injective",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.appender_workRunExact",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.bodyStartTokens_eq_canonical_prefix",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.boundedDecide_compile_accept",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.boundedDecide_compile_ne_timeout",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.cursorAppender_launch_workStep",
+    [
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.cursorDeadState_timeout",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.cursorEndpoint_before_launch_timeout",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.cursorState_injective",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.cursorState_ne_appenderState",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.cursor_workRunExact",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.finalOutside_contains_nextTokenSlot",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.finalTape_represents",
+    [
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.finalTokenBits_eq_encodedFormula_bodyStart",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.findWorkRule_appender_of_some",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.findWorkRule_cursor_of_some",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.findWorkRule_header_of_some",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.firstBodyTokenSlotDirect_eq_separator",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.headerCursor_launch_workStep",
+    [
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.headerEndpoint_before_launch_timeout",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.headerRejectEndpoint_timeout",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.headerState_injective",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.headerState_ne_appenderState",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.headerState_ne_cursorState",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.header_workRunExact",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.machine_acceptState_ne_rejectState",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.malformedAppenderOutput_timeout",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.malformedAppenderTally_timeout",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.nextBitCursor_nextSlot",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.nextTokenSlot_eq_formulaVariableSlotBound_add_two",
+    []
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.rawTimeBound_eval",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.rawTimeBound_le",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.rules_length",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.rules_pairwise_query_distinct",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.run_compile_exact",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.run_compile_rawTimeBound",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.run_compile_rawTimeBound_blankEquivalent",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.workBoundedDecide_accept",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.workRunExact",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ],
+  [
+    "PNP.Concrete.CookLevin.BuilderBodyStartPrefix.work_one_step_short_timeout",
+    [
+      "Quot.sound",
+      "propext"
+    ]
+  ]
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -409,6 +647,7 @@ const MILESTONE_IDS = Object.freeze([
   'concrete-cook-levin-builder-token-appender',
   'concrete-cook-levin-builder-first-token-prefix',
   'concrete-cook-levin-builder-complete-header',
+  'concrete-cook-levin-builder-body-start-prefix',
   'direct-wire-semantics',
   'finite-enumeration-minimum',
   'framed-replacement-slack',
@@ -499,6 +738,10 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderCompleteHeaderFormalized: false,
   leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed: false,
   leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized: false,
+  leanConcreteCookLevinBuilderBodyStartPrefixFormalized: false,
+  leanConcreteCookLevinBuilderBodyStartPrefixAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized: false,
+  leanConcreteCookLevinBuilderInputPrefixAppenderComposed: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
 });
@@ -567,6 +810,12 @@ leanConcreteCookLevinBuilderCompleteHeaderFormalized = ${payload.leanConcreteCoo
 leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed ?? false}
 leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized ?? false}
 leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized = ${payload.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized ?? false}
+leanConcreteCookLevinBuilderBodyStartPrefixFormalized = ${payload.leanConcreteCookLevinBuilderBodyStartPrefixFormalized ?? false}
+leanConcreteCookLevinBuilderBodyStartPrefixAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderBodyStartPrefixAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized ?? false}
+leanConcreteCookLevinBuilderBodyStartPrefixExactFormulaBitsFormalized = ${payload.leanConcreteCookLevinBuilderBodyStartPrefixExactFormulaBitsFormalized ?? false}
+leanConcreteCookLevinBuilderBodyStartPrefixRetainedNextTokenCoordinateFormalized = ${payload.leanConcreteCookLevinBuilderBodyStartPrefixRetainedNextTokenCoordinateFormalized ?? false}
+leanConcreteCookLevinBuilderInputPrefixAppenderComposed = ${payload.leanConcreteCookLevinBuilderInputPrefixAppenderComposed ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
 leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
 concretePublicationGate.passed = ${payload.concretePublicationGate?.passed ?? false}`;
@@ -608,12 +857,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 302,
-    definition: 3371,
+    definition: 3390,
     inductive: 134,
     opaque: 0,
     quotient: 0,
     recursor: 134,
-    theorem: 3473,
+    theorem: 3536,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -733,6 +982,10 @@ function validateInventory(inventory) {
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
   }));
+  const cookLevinBuilderBodyStartPrefix = BUILDER_BODY_START_PREFIX_DECLARATIONS.map(([name, axioms]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -803,6 +1056,9 @@ function validateInventory(inventory) {
     && cookLevinBuilderCompleteHeader.every(({ row, axioms }) => row?.kind === 'theorem'
       && row.module === 'PNP.Concrete.CookLevinBuilderCompleteHeader'
       && sameJson(row.axioms, axioms))
+    && cookLevinBuilderBodyStartPrefix.every(({ row, axioms }) => row?.kind === 'theorem'
+      && row.module === 'PNP.Concrete.CookLevinBuilderBodyStartPrefix'
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -844,7 +1100,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 414
+    && inventory.milestoneCandidates.length === 454
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -908,7 +1164,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 24;
+    const shouldBeEarned = index < 25;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -1064,6 +1320,16 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized === true
     && status.leanConcreteCookLevinBuilderCompleteHeaderInputPrefixAppenderComposed === true
     && status.leanConcreteCookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixFormalized === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixAuditedDeclarationCount === 58
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixExternalInputSizePolynomialFormalized === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixExactFormulaBitsFormalized === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixRetainedNextTokenCoordinateFormalized === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixInputPrefixAppenderComposed === true
+    && status.leanConcreteCookLevinBuilderBodyStartPrefixFailClosedBoundaryTimeoutFormalized === true
+    && status.leanConcreteCookLevinBuilderInputPrefixAppenderComposed === true
     && status.leanConcreteCookLevinBuilderDynamicCursorFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
@@ -1169,7 +1435,7 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 7,418 exported public declarations, including 3,473 theorem-kind declarations and 2,764 assumption-free theorem-kind declarations across 67 modules. Twenty-four scoped publication milestones are earned, now including one literal Cook-Levin machine that emits the complete unary formula-width header; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 7,500 exported public declarations, including 3,536 theorem-kind declarations and 2,795 assumption-free theorem-kind declarations across 68 modules. Twenty-five scoped publication milestones are earned, now including one literal Cook-Levin machine that emits T^FormulaWidth F Sep and retains the next token coordinate; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
@@ -1179,7 +1445,7 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>BuilderCompleteHeader.workRunExact</code> proves that one literal verifier-fixed machine frames every raw input, computes its unary tally and formula width, and emits exactly <code>FormulaWidth</code> copies of <code>T</code> followed by <code>F</code>. The dynamic formula cursor, body emitter, complete builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>BuilderBodyStartPrefix.workRunExact</code> proves that one literal verifier-fixed machine frames every raw input, emits <code>T^FormulaWidth F Sep</code>, and retains the next token coordinate <code>formulaVariableSlotBound + 2</code>. The dynamic cursor, subsequent formula body, complete builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -1241,7 +1507,7 @@ function insertAfterPageHero(id, html) {
 function ensureFormalVerificationCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction verification',
-    title: 'Verify the compiled inventory and current nineteen-page report.',
+    title: 'Verify the compiled inventory and current twenty-page report.',
     lede: 'The target theorem is not established. The current report is generated from the reviewed compiled inventory; digest checks establish file identity, not mathematical truth.',
     primaryHref: 'public/pnp-status.json',
     primaryText: 'Open current status JSON',
@@ -1260,7 +1526,7 @@ projectSpecificAxiomsRemaining = true</pre>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check status and inventory together</h3><p>The browser fetches both payloads concurrently, hashes the raw inventory bytes, validates exact counts and coordinates, and rejects inconsistent gate or milestone rows.</p></article>
         <article class="card"><h3>Build and inventory Lean</h3><p>Run <code>lake build PNP</code>, <code>npm run formal:inventory:check</code>, and <code>npm run formal:publication:check</code> in the source repository.</p></article>
-        <article class="card"><h3>Check current report identity</h3><p>The nineteen-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
+        <article class="card"><h3>Check current report identity</h3><p>The twenty-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
@@ -1270,7 +1536,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, exact Cook-Levin semantic equivalence and size/schedule results, executable input preparation, reusable token appending, and a literal finite machine that evaluates the verifier-fixed formula width in unary and emits the complete answer-independent width header under an external polynomial bound. It does not emit the formula body, complete a raw formula builder, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current nineteen-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, exact Cook-Levin semantic equivalence and size/schedule results, executable input preparation, reusable token appending, and a literal finite machine that emits T^FormulaWidth F Sep while retaining the next token coordinate under an external polynomial bound. It does not implement the dynamic cursor or subsequent formula body, complete a raw formula builder, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current twenty-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -1280,7 +1546,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Twenty-four scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin CNF-to-verifier-language semantics, the size/schedule bounds, and one literal finite machine that emits exactly <code>FormulaWidth</code> copies of <code>T</code> followed by <code>F</code>, matching the complete canonical width header. The dynamic cursor controller, formula body, complete raw builder, packaged polynomial reduction, NP-completeness, deterministic P result, and concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Twenty-five scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin CNF-to-verifier-language semantics, the size/schedule bounds, and one literal finite machine that emits <code>T^FormulaWidth F Sep</code> while retaining the next token coordinate. The dynamic cursor controller, subsequent formula body, complete raw builder, packaged polynomial reduction, NP-completeness, deterministic P result, and concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -1299,7 +1565,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 7,418-declaration inventory, 414 pinned theorem candidates, whole-source closure, twenty-four earned scoped publication milestones, three unearned global milestones, and concrete publication gate. The verifier-fixed Cook-Levin machine emits the complete unary formula-width header within an explicit external <code>NatPolynomial</code> raw bound; the dynamic cursor, body emitter, complete raw builder, and packaged reduction remain absent. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 7,500-declaration inventory, 454 pinned theorem candidates, whole-source closure, twenty-five earned scoped publication milestones, three unearned global milestones, and concrete publication gate. The verifier-fixed Cook-Levin machine emits <code>T^FormulaWidth F Sep</code>, retains the next token coordinate, and stays within an explicit external <code>NatPolynomial</code> raw bound; the dynamic cursor, subsequent body emitter, complete raw builder, and packaged reduction remain absent. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
