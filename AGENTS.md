@@ -2,6 +2,23 @@
 
 This repository concerns an extraordinary theoretical computer science claim. All changes must prioritize precision, auditability, reproducibility, and conservative wording.
 
+## Remote builder policy
+
+The local workstation is memory-constrained. Treat it as an edit-and-inspection
+host, not as a build host.
+
+- Run full or clean builds, test suites, broad audits, report/PDF generation,
+  deployment verification, and clean-clone reproduction on the configured SSH
+  host alias `pnpbuilder`.
+- Run heavy remote jobs under the `pnp-builder` account's user-level
+  `systemd-run` resource limits.
+- Never silently fall back to a heavyweight local command when the remote builder
+  is unavailable. Stop and report the connection problem instead.
+- Limit local commands to source edits and lightweight inspection, such as `rg`,
+  `sed`, `git diff`, `git status`, and targeted syntax checks.
+- Keep host, proxy, key, and network details in the user's SSH configuration; do
+  not copy private connection data into this repository.
+
 Rules:
 
 1. Do not strengthen the mathematical claim.

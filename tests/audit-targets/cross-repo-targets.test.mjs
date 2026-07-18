@@ -110,6 +110,14 @@ const BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES = publishedInventory.mileston
 );
 assert.equal(BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_THEOREM_NAMES.length, 31);
 assert.equal(BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES.length, 31);
+const BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.cookLevinBuilderFirstClausePaddingRunTheoremKernelTypeSha256;
+const BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_NAMES = Object.keys(BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_HASHES);
+const BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_NAMES.includes(candidate.name)
+);
+assert.equal(BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_NAMES.length, 48);
+assert.equal(BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES.length, 48);
 
 function git(cwd, args) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -224,7 +232,7 @@ function makeProject(t) {
     leanConcreteCookLevinBuilderUnaryPolynomialExactRuntimePolynomialFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed: true,
-    leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount: 83,
+    leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount: 84,
     leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized: true,
@@ -269,6 +277,17 @@ function makeProject(t) {
     leanConcreteCookLevinBuilderDynamicTokenCursorStepInputPrefixAppenderComposed: true,
     leanConcreteCookLevinBuilderDynamicTokenCursorStepFailClosedBoundaryTimeoutFormalized: true,
     leanConcreteCookLevinBuilderDynamicTokenCursorStepSinglePaddingStepFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunAxiomAuditPassed: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunAuditedDeclarationCount: 84,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunCompiledRawMachineFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunExternalInputSizePolynomialFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunRemainingPaddingCountFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunDirectPaddingBlockFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunSecondClauseStartFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunNoEmissionSpecificationFormalized: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunInputPrefixAppenderComposed: true,
+    leanConcreteCookLevinBuilderFirstClausePaddingRunFailClosedBoundaryTimeoutFormalized: true,
     leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
     leanConcreteCookLevinFormulaBuilderFormalized: false,
     leanConcreteCookLevinBuilderRawRefinementFormalized: false,
@@ -358,17 +377,24 @@ function makeProject(t) {
       allKernelTypesMatch: true,
       axiomClosureUsesOnlyLeanStandardAllowlist: true,
       requiredTheorems: BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_THEOREM_NAMES
+    }, {
+      id: "concrete-cook-levin-builder-first-clause-padding-run",
+      earned: true,
+      allPresent: true,
+      allKernelTypesMatch: true,
+      axiomClosureUsesOnlyLeanStandardAllowlist: true,
+      requiredTheorems: BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_NAMES
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 7845,
-    theoremCount: 3788,
-    assumptionFreeTheoremCount: 2886,
-    excludedPrivateDeclarationCount: 2380,
-    sourceClosureModuleCount: 71,
+    declarationCount: 8006,
+    theoremCount: 3903,
+    assumptionFreeTheoremCount: 2921,
+    excludedPrivateDeclarationCount: 2444,
+    sourceClosureModuleCount: 72,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -555,7 +581,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...Array.from({ length: 250 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...Array.from({ length: 250 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -614,7 +640,8 @@ function makeProject(t) {
       ...BUILDER_BODY_START_PREFIX_THEOREM_HASHES,
       ...BUILDER_FIRST_LITERAL_PREFIX_THEOREM_HASHES,
       ...BUILDER_FIRST_CLAUSE_PREFIX_THEOREM_HASHES,
-      ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_THEOREM_HASHES
+      ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_THEOREM_HASHES,
+      ...BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -626,6 +653,11 @@ function makeProject(t) {
       classification: "formalized-foundation-only",
       requiredTheorems: BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_THEOREM_NAMES,
       nonClaim: "This milestone proves one fixed padding-coordinate transition after the complete first clause. It is not a general dynamic cursor loop or raw decoder; it emits no token and supplies no remaining formula body, complete builder, FunctionProgram.RawRefinement, PolynomialReduction, CNFSAT NP-completeness or in-P result, or P = NP theorem."
+    }, {
+      id: "concrete-cook-levin-builder-first-clause-padding-run",
+      classification: "formalized-foundation-only",
+      requiredTheorems: BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_NAMES,
+      nonClaim: "This is the exact remaining first-clause padding block and second-clause boundary only, not a general dynamic formula cursor, remaining formula-body emitter, complete builder, RawRefinement, PolynomialReduction, CNFSAT NP-completeness or in-P result, or P = NP theorem."
     }]
   });
 
@@ -673,7 +705,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 25,
+        pageCount: 26,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -1315,6 +1347,34 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   dynamicCursorOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = true;
   write(dynamicCursorOverclaim.root, "downloads/formal-publication-release.json", json(dynamicCursorOverclaim.release));
   expectFailure(dynamicCursorOverclaim, /formal-publication overstates the Cook-Levin builder dynamic-token-cursor step/);
+
+  const paddingRunFingerprint = makeProject(t);
+  paddingRunFingerprint.release.earnedBoundary.cookLevinBuilderFirstClausePaddingRunTheoremKernelTypeSha256[
+    BUILDER_FIRST_CLAUSE_PADDING_RUN_THEOREM_NAMES[0]
+  ] = "0".repeat(64);
+  write(paddingRunFingerprint.root, "downloads/formal-publication-release.json", json(paddingRunFingerprint.release));
+  expectFailure(paddingRunFingerprint, /formal-publication Cook-Levin builder first-clause-padding-run fingerprint mismatch/);
+
+  const paddingRunAxiom = makeProject(t);
+  paddingRunAxiom.release.earnedBoundary.cookLevinBuilderFirstClausePaddingRunProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(paddingRunAxiom.root, "downloads/formal-publication-release.json", json(paddingRunAxiom.release));
+  expectFailure(paddingRunAxiom, /formal-publication Cook-Levin builder first-clause-padding-run axiom closure mismatch/);
+
+  const paddingRunRemoved = makeProject(t);
+  paddingRunRemoved.release.earnedBoundary.cookLevinBuilderFirstClausePaddingRunFormalized = false;
+  write(paddingRunRemoved.root, "downloads/formal-publication-release.json", json(paddingRunRemoved.release));
+  expectFailure(paddingRunRemoved, /formal-publication Cook-Levin builder first-clause-padding-run boundary mismatch/);
+
+  const paddingRunCost = makeProject(t);
+  paddingRunCost.release.earnedBoundary.cookLevinBuilderFirstClausePaddingRunRuleCount = "0";
+  write(paddingRunCost.root, "downloads/formal-publication-release.json", json(paddingRunCost.release));
+  expectFailure(paddingRunCost, /formal-publication Cook-Levin builder first-clause-padding-run cost mismatch/);
+
+  const paddingRunIdentity = makeProject(t);
+  paddingRunIdentity.release.earnedBoundary.cookLevinBuilderFirstClausePaddingRunSecondClauseSeparatorTheorem =
+    "PNP.Concrete.CookLevin.BuilderFirstClausePaddingRun.forged";
+  write(paddingRunIdentity.root, "downloads/formal-publication-release.json", json(paddingRunIdentity.release));
+  expectFailure(paddingRunIdentity, /formal-publication Cook-Levin builder first-clause-padding-run theorem identity mismatch/);
 
   const rawBuilder = makeProject(t);
   rawBuilder.release.earnedBoundary.cookLevinRawFormulaBuilderFormalized = true;
