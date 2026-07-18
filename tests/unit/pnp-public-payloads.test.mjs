@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = 'bb51e4a9a502f41c360c995946025ef09e9afa97';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-18-52';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-18-52';
-const INVENTORY_SHA256 = '87d085a8712794527850a495741cf3cce9cb6b38151457c0873899043b9e4c8f';
+const CORE_COMMIT = 'a524162f6db2a18961ea33b9470c45ae9bc98d99';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-18-53';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-18-53';
+const INVENTORY_SHA256 = '23d0d6f56d811dd59a52d9e89a937672954a01629eb99e1f762a4efe89c6efd2';
 
 async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
@@ -50,10 +50,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
 
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-18-COOK-LEVIN-BUILDER-FIRST-CLAUSE-PADDING-RUN-51');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-07-18-52');
-  assert.equal(status.formalPublicationMapSha256, 'a9d7c7c47c9727b876e036e42f65f2cf08deb55f9b900d6c138daf2fffc969f8');
-  assert.equal(status.leanSourceClosureSha256, 'd7acbdace52e522810a2afb22915c9226f16363ebaec721646fda7ab4d3a3c06');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-18-COOK-LEVIN-BUILDER-SECOND-CLAUSE-SEPARATOR-STEP-52');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-07-18-53');
+  assert.equal(status.formalPublicationMapSha256, '57f9fa53f4cdaf9e9dd13f6e135c35f17cc4d9e3d44645692553a01f7f883116');
+  assert.equal(status.leanSourceClosureSha256, 'e2c175e1ff0f499530a84338ef1f93404d4d0749b79df1e10719f053691ca91a');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -63,11 +63,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
   assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(inventory.declarationCount, 8006);
-  assert.equal(inventory.theoremCount, 3903);
-  assert.equal(inventory.assumptionFreeTheoremCount, 2921);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 2444);
-  assert.equal(inventory.sourceClosureModuleCount, 72);
+  assert.equal(inventory.declarationCount, 8094);
+  assert.equal(inventory.theoremCount, 3974);
+  assert.equal(inventory.assumptionFreeTheoremCount, 2939);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 2502);
+  assert.equal(inventory.sourceClosureModuleCount, 73);
   assert.equal(inventory.axiomCount, 4);
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
@@ -349,6 +349,23 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.leanConcreteCookLevinBuilderFirstClausePaddingRunDirectPaddingBlockFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderFirstClausePaddingRunSecondClauseStartFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderFirstClausePaddingRunNoEmissionSpecificationFormalized, true);
+  const secondClauseSeparatorStepMilestone = status.formalPublicationMilestones.find((row) => row.id === 'concrete-cook-levin-builder-second-clause-separator-step');
+  assert.equal(secondClauseSeparatorStepMilestone.requiredTheorems.length, 40);
+  for (const theoremRow of secondClauseSeparatorStepMilestone.theoremRows) {
+    const builder = inventory.milestoneCandidates.find((candidate) => candidate.name === theoremRow.name);
+    assert.equal(builder.kind, 'theorem', theoremRow.name);
+    assert.equal(builder.module, theoremRow.name.startsWith('PNP.Concrete.CookLevin.BuilderDynamicTokenCursorStep.')
+      ? 'PNP.Concrete.CookLevinBuilderDynamicTokenCursorStep'
+      : 'PNP.Concrete.CookLevinBuilderSecondClauseSeparatorStep', theoremRow.name);
+    assert.deepEqual(builder.axioms, theoremRow.axioms, theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, theoremRow.expectedKernelTypeSha256, theoremRow.name);
+  }
+  assert.equal(status.leanConcreteCookLevinBuilderSecondClauseSeparatorStepFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderSecondClauseSeparatorStepAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteCookLevinBuilderSecondClauseSeparatorStepAuditedDeclarationCount, 56);
+  assert.equal(status.leanConcreteCookLevinBuilderSecondClauseSeparatorStepExactFormulaBitsFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderSecondClauseSeparatorStepSecondClauseSeparatorFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderSecondClauseSeparatorStepRetainedAdvancedTokenCoordinateFormalized, true);
 
   const packer = inventory.milestoneCandidates.find((candidate) => candidate.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   assert.equal(packer.kind, 'theorem');
@@ -415,11 +432,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     assert.equal(compiler.module, module, name);
     assert.deepEqual(compiler.axioms, [], name);
   }
-  assert.equal(inventory.milestoneCandidates.length, 633);
+  assert.equal(inventory.milestoneCandidates.length, 673);
 
-  assert.equal(status.formalPublicationMilestones.length, 32);
-  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(29).fill(true), false, false, false]);
-  for (const row of status.formalPublicationMilestones.slice(0, 29)) {
+  assert.equal(status.formalPublicationMilestones.length, 33);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(30).fill(true), false, false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 30)) {
     assert.equal(row.allPresent, true, row.id);
     assert.equal(row.allKernelTypesMatch, true, row.id);
     assert.equal(row.sourceClosureFingerprintMatches, true, row.id);
@@ -462,16 +479,16 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 37);
+  assert.equal(index.version, 38);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '251e3c5ac04b93545b0dd8510c1eec51d854858d');
-  assert.equal(index.sourceTree, 'cfc53f876c30d7a79ed3ffaf67673ce3c8cf8327');
+  assert.equal(index.sourceProofCommitRef, '06a8c2dd448a3df97a90f6ece5a0fd4abf4dd359');
+  assert.equal(index.sourceTree, '65da52d3f1ddc9470612e89db99308f99b436089');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-18-COOK-LEVIN-BUILDER-FIRST-CLAUSE-PADDING-RUN-51');
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-18-COOK-LEVIN-BUILDER-SECOND-CLAUSE-SEPARATOR-STEP-52');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-18-52');
-  assert.equal(index.canonicalReportPages, 26);
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-18-53');
+  assert.equal(index.canonicalReportPages, 27);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
   assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
@@ -480,11 +497,11 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
   assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
   assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
-  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 8006);
-  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 3903);
-  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 2921);
-  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 2444);
-  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 72);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 8094);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 3974);
+  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 2939);
+  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 2502);
+  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 73);
   assert.equal(index.claimBoundary.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceAxiomAuditPassed, true);
@@ -679,7 +696,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderFirstClausePrefixProjectAxiomClosure, []);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepAuditedDeclarationCount, 45);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepAuditedDeclarationCount, 47);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepCompiledRawMachineFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepExternalInputSizePolynomialFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderDynamicTokenCursorStepDirectPaddingOutcomeFormalized, true);
@@ -709,6 +726,22 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderFirstClausePaddingRunPredecessorTransportTheorem, 'PNP.Concrete.CookLevin.BuilderCompleteHeader.HeaderController.workRunExact_of_unit_or_separator');
   assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderFirstClausePaddingRunAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderFirstClausePaddingRunProjectAxiomClosure, []);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepAuditedDeclarationCount, 56);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepCompiledRawMachineFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepExternalInputSizePolynomialFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepExactFormulaBitsFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepSecondClauseSeparatorFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepRetainedAdvancedTokenCoordinateFormalized, true);
+  assert.equal(Object.keys(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepTheoremKernelTypeSha256).length, 40);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepExactWorkRunTheorem, 'PNP.Concrete.CookLevin.BuilderSecondClauseSeparatorStep.workRunExact');
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepSeparatorSpecificationTheorem, 'PNP.Concrete.CookLevin.BuilderSecondClauseSeparatorStep.specification_separator_step');
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepCanonicalPrefixTheorem, 'PNP.Concrete.CookLevin.BuilderSecondClauseSeparatorStep.secondClauseStartTokens_eq_canonical_formula_prefix');
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepNextTokenTheorem, 'PNP.Concrete.CookLevin.BuilderSecondClauseSeparatorStep.nextTokenSlot_direct_eq_f');
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepPredecessorDeadStepTheorem, 'PNP.Concrete.CookLevin.BuilderDynamicTokenCursorStep.CursorAdvance.deadState_workStep');
+  assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderSecondClauseSeparatorStepProjectAxiomClosure, []);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderTokenAppenderWorkTime, '2 * (max 1 inputLength + inputLength + priorTokenCount + 3)');
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderTokenAppenderFirstTokenRawTimePolynomial, '24 * inputLength + 48');
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderTokenAppenderRuleCount, 59);
@@ -725,8 +758,8 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanConcreteCNFSATInPFormalized, false);
   assert.equal(index.claimBoundary.leanConcreteCNFNPCompletenessFormalized, false);
   assert.equal(index.claimBoundary.remainingBlockers.length, 6);
-  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 29, notFormalized: 3, total: 32 });
-  assert.equal(index.earnedMilestones.length, 29);
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 30, notFormalized: 3, total: 33 });
+  assert.equal(index.earnedMilestones.length, 30);
   assert.ok(index.earnedMilestones.includes('concrete-cnf-universal-verifier'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-raw-tape-bridge'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-formula-size'));
@@ -742,6 +775,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-first-clause-prefix'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-dynamic-token-cursor-step'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-first-clause-padding-run'));
+  assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-separator-step'));
   assert.deepEqual(index.unearnedMilestones, ['global-locked-nand-threshold', 'global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
@@ -794,6 +828,9 @@ test('payload index describes current inventory/report and quarantines legacy su
     'node --test audits/lean-concrete-cook-levin-builder-first-clause-padding-run0.test.mjs',
     'lake env lean -DwarningAsError=true lean-audit/PNPConcreteCookLevinBuilderFirstClausePaddingRunAxiomAudit.lean',
     'lake env lean -DwarningAsError=true lean-regression/PNPConcreteCookLevinBuilderFirstClausePaddingRun.lean',
+    'node --test audits/lean-concrete-cook-levin-builder-second-clause-separator-step0.test.mjs',
+    'lake env lean -DwarningAsError=true lean-audit/PNPConcreteCookLevinBuilderSecondClauseSeparatorStepAxiomAudit.lean',
+    'lake env lean -DwarningAsError=true lean-regression/PNPConcreteCookLevinBuilderSecondClauseSeparatorStep.lean',
     'lake env lean -DwarningAsError=true lean-regression/PNPConcretePipelinePairedCompiler.lean',
     'node --test audits/lean-concrete-pipeline-compiler0.test.mjs',
     'node --test audits/lean-concrete-pipeline-sequential-state-namespace0.test.mjs',
@@ -818,12 +855,12 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '8,006',
-    '3,903',
-    '2,921',
-    '<strong>2,444</strong> private compiler auxiliaries excluded',
-    '<strong>72</strong> modules',
-    'Twenty-nine scoped milestones',
+    '8,094',
+    '3,974',
+    '2,939',
+    '<strong>2,502</strong> private compiler auxiliaries excluded',
+    '<strong>73</strong> modules',
+    'Thirty scoped milestones',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -836,6 +873,10 @@ test('status page has a conservative complete static fallback', async () => {
     'BuilderFirstClausePrefix.workRunExact',
     'BuilderDynamicTokenCursorStep.workRunExact',
     'BuilderFirstClausePaddingRun.workRunExact',
+    'BuilderSecondClauseSeparatorStep.workRunExact',
+    'encodedFormula.take (2 * (FormulaWidth + 13))',
+    'nextTokenSlot_direct_eq_f',
+    '1366',
     'FormulaTokensPerClause - 12',
     'T^FormulaWidth F Sep T F T T F T T T F Finish',
     'formulaVariableSlotBound + 12',
@@ -850,7 +891,7 @@ test('status page has a conservative complete static fallback', async () => {
     'Historical 56-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
-  assert.equal((html.match(/data-earned="true"/g) || []).length, 29);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 30);
   assert.equal((html.match(/data-earned="false"/g) || []).length, 3);
 });
 
@@ -858,9 +899,9 @@ test('static inventory prose matches the compiled declaration boundary', async (
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(paper.includes('Two thousand four hundred forty-four private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Two thousand four hundred forty-four private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['311,223', '53,798', '462,218', '3,363,988', 'twenty-six A4 pages']) {
+  assert.equal(paper.includes('Two thousand five hundred two private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Two thousand five hundred two private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['314,641', '56,783', '491,575', '3,527,553', 'twenty-seven A4 pages']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('twenty A4 pages'), false);
