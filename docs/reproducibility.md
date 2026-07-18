@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 317,210 | `961a0bb61fc5e69bb28250f8fd265023aa2a949093ff6c6abd46707ba822c74b` |
-| `downloads/canonical-proof-report.pdf` | 317,210 | `961a0bb61fc5e69bb28250f8fd265023aa2a949093ff6c6abd46707ba822c74b` |
-| `downloads/canonical_proof_report.tex` | 58,797 | `21fbcfd4746d5bbdd64c3a33227f5e0748690c4285e681d25cc9448b3a1b612e` |
-| `downloads/canonical-proof-report.tex` | 58,797 | `21fbcfd4746d5bbdd64c3a33227f5e0748690c4285e681d25cc9448b3a1b612e` |
-| `public/pnp-status.json` | 533,222 | `3e0ff0851a3140c20f8ca8ec2eaa51e1dc99c8f45af82f54bb67115201f1fe6b` |
-| `public/pnp-theorem-inventory.json` | 3,786,875 | `6c63d3f093aa136560154ce1340abc75884da199dee1867c14550e95f6a3c268` |
+| `downloads/canonical_proof_report.pdf` | 319,057 | `40b6e6a220e55fea83c13f631a1ec4a97531f782184290d97dced0a81f170c7b` |
+| `downloads/canonical-proof-report.pdf` | 319,057 | `40b6e6a220e55fea83c13f631a1ec4a97531f782184290d97dced0a81f170c7b` |
+| `downloads/canonical_proof_report.tex` | 62,550 | `ddec0003b2b15374b9f4150ad13f346170738fbc1daf2991a8a82690b1536fbb` |
+| `downloads/canonical-proof-report.tex` | 62,550 | `ddec0003b2b15374b9f4150ad13f346170738fbc1daf2991a8a82690b1536fbb` |
+| `public/pnp-status.json` | 585,987 | `54a514028f7f25bf3ab47a0f881d8c9299d50d749039d7727ceae79b7894dd03` |
+| `public/pnp-theorem-inventory.json` | 4,156,154 | `4f851b46d3b725fb042dc2bb5b85a790a098201aeb67b465e3956f533ee8e7fa` |
 
-The PDF must have twenty-eight A4 pages. Both filename styles must be byte-identical.
+The PDF must have twenty-nine A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout bcabe7b58b7d72e738471f036f1c44b905b949eb
+git -C ../pnp checkout 8e2f729b46d5c387899b0e673927a605cd009188
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 8,229 public declarations, 4,080 theorem-kind declarations,
-2,964 assumption-free theorem-kind declarations, 2,585 excluded private auxiliaries, 74 modules, and
-four project axioms. The publication gate must remain false with six blockers. The concrete NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the current Cook-Levin semantic theorem is `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language`, audited across 54 declarations with closure `[Classical.choice, Quot.sound, propext]` and no project axiom. `encodedFormula_size_le` bounds the actual canonical encoding in external input length. The rectangular schedule binds exact polynomial length to exact canonical emission. The direct cursor proves pointwise constraint/clause/token/bit lookup plus exact fuelled traversal. `PNP.Concrete.CookLevin.BuilderSecondClauseFirstLiteralPrefix.workRunExact` proves one literal finite machine emits the complete negative literal on variable zero in clause two and advances to `secondClauseStart + 3`. The emitted bits equal `encodedFormula.take (2 * (FormulaWidth + 15))`. The table has `1610` plus six inherited/generated unary-evaluator rule counts and compiled bound `BuilderSecondClauseSeparatorStep.rawTimeBound + 564 + 48*n + 24*FormulaWidth + 24*cursorWord.length`. The combined audit covers 85 new public declarations and two reviewed cursor dead-loop facts; 25 declarations have empty closure, 18 use `[propext]`, and 44 use `[Quot.sound, propext]`. This is one fixed literal prefix, not a general dynamic formula cursor, and it does not complete clause two. The remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, and packaged polynomial reduction must remain absent, as must CNF-SAT in P and NP-completeness.
+Expected compiled inventory counts are 8,387 public declarations, 4,198 theorem-kind declarations,
+2,998 assumption-free theorem-kind declarations, 2,716 excluded private auxiliaries, 75 modules, and
+four project axioms. The publication gate must remain false with six blockers. The concrete NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the current Cook-Levin semantic theorem is `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language`, audited across 54 declarations with closure `[Classical.choice, Quot.sound, propext]` and no project axiom. `encodedFormula_size_le` bounds the actual canonical encoding in external input length. The rectangular schedule binds exact polynomial length to exact canonical emission. The direct cursor proves pointwise constraint/clause/token/bit lookup plus exact fuelled traversal. `PNP.Concrete.CookLevin.BuilderSecondClauseSecondLiteralPrefix.workRunExact` proves one literal finite machine emits the complete negative literal on variable one in clause two and retains `secondClauseStart + 6` at the following `Finish` coordinate. The emitted bits equal `encodedFormula.take (2 * (FormulaWidth + 18))`. The table has `1976` plus six inherited/generated unary-evaluator rule counts and compiled bound `BuilderSecondClauseFirstLiteralPrefix.rawTimeBound + 1026 + 72*n + 36*FormulaWidth + 36*cursorWord.length`. The combined audit covers 113 new public declarations and two reviewed cursor dead-loop facts; 34 declarations have empty closure, 25 use `[propext]`, and 56 use `[Quot.sound, propext]`. This is one fixed literal prefix, not a general dynamic formula cursor. It does not emit the retained `Finish` or clause terminator and does not complete clause two. The remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, and packaged polynomial reduction must remain absent, as must CNF-SAT in P and NP-completeness.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

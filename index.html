@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-18-54</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-18-55</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>6c63d3f093aa136560154ce1340abc75884da199dee1867c14550e95f6a3c268</code>
+        <code>4f851b46d3b725fb042dc2bb5b85a790a098201aeb67b465e3956f533ee8e7fa</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 8,229 exported public declarations, including 4,080 theorem-kind declarations and 2,964 assumption-free theorem-kind declarations across 74 modules. Thirty-one scoped publication milestones are earned, now including the complete first negative literal of Cook-Levin clause two; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 8,387 exported public declarations, including 4,198 theorem-kind declarations and 2,998 assumption-free theorem-kind declarations across 75 modules. Thirty-two scoped publication milestones are earned, now including the complete second negative literal of Cook-Levin clause two; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier stages retain the exact Cook-Levin schedule and builder trace through the separator beginning clause two. <code>BuilderSecondClauseFirstLiteralPrefix.workRunExact</code> then emits the complete negative literal on variable zero using two selected <code>F</code> appenders and two cursor advances. Its bits equal <code>encodedFormula.take (2 * (FormulaWidth + 15))</code>, and the retained coordinate is <code>secondClauseStart + 3</code>. This is one fixed literal prefix, not a general dynamic formula cursor; it does not complete clause two. The remaining formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier stages retain the exact Cook-Levin schedule and builder trace through the first clause-two literal. <code>BuilderSecondClauseSecondLiteralPrefix.workRunExact</code> then emits the complete negative literal on variable one using selected <code>F</code>, <code>T</code>, and <code>F</code> appenders plus three cursor advances. Its bits equal <code>encodedFormula.take (2 * (FormulaWidth + 18))</code>, and the retained coordinate is <code>secondClauseStart + 6</code> at the following <code>Finish</code>. This is one fixed literal prefix, not a general dynamic formula cursor; it does not emit that <code>Finish</code>, the clause terminator, or the rest of clause two. The remaining formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-eight-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-nine-page report</a>
         </div>
       </div>
 
