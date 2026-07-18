@@ -1,7 +1,7 @@
 // Purpose: add public source links while keeping the current formal inventory
 // separate from the historical 56-page claim manuscript.
 const repository = 'https://github.com/aisknab/pnp';
-const currentCommit = 'bcabe7b58b7d72e738471f036f1c44b905b949eb';
+const currentCommit = '8e2f729b46d5c387899b0e673927a605cd009188';
 const currentSource = `${repository}/tree/${currentCommit}`;
 const historicalTag = 'final-pnp-proof-report-hardened-7072f8d';
 const historicalCommit = '7072f8d0bda6d44d240f9bb3fad624fd357e1278';
@@ -36,7 +36,7 @@ if (page === 'review.html' && !document.querySelector('#public-source')) {
     const section = document.createElement('section');
     section.id = 'public-source';
     section.className = 'section compact';
-    section.innerHTML = `<div class="section-head"><div><div class="section-label">Public source</div><h2>Inspect current and historical surfaces separately.</h2></div><p>The generated status payload is current publication-status authority. The compiled inventory is its exact evidence mirror and the twenty-eight-page report is derived presentation; the old claim manuscript is historical audit material only.</p></div><div class="grid three"><article class="card"><h3>Current source</h3><p>Lean source, compiled inventory generator, publication map, and gate at merged commit <code>${currentCommit}</code>.</p><p><a class="btn ghost" href="${currentSource}">Open current source</a></p></article><article class="card"><h3>Current inventory</h3><p>Exact public mirror of the compiled Lean declaration inventory.</p><p><a class="btn ghost" href="public/pnp-theorem-inventory.json">Open inventory</a></p></article><article class="card"><h3>Historical manuscript</h3><p>56 pages at tag <code>${historicalTag}</code>, commit <code>${historicalCommit}</code>. It is not current authority.</p><p><a class="btn ghost" href="${historicalSource}">Open historical tag</a> <a class="btn ghost" href="${historicalArchive}">Open archive record</a></p></article></div>`;
+    section.innerHTML = `<div class="section-head"><div><div class="section-label">Public source</div><h2>Inspect current and historical surfaces separately.</h2></div><p>The generated status payload is current publication-status authority. The compiled inventory is its exact evidence mirror and the twenty-nine-page report is derived presentation; the old claim manuscript is historical audit material only.</p></div><div class="grid three"><article class="card"><h3>Current source</h3><p>Lean source, compiled inventory generator, publication map, and gate at merged commit <code>${currentCommit}</code>.</p><p><a class="btn ghost" href="${currentSource}">Open current source</a></p></article><article class="card"><h3>Current inventory</h3><p>Exact public mirror of the compiled Lean declaration inventory.</p><p><a class="btn ghost" href="public/pnp-theorem-inventory.json">Open inventory</a></p></article><article class="card"><h3>Historical manuscript</h3><p>56 pages at tag <code>${historicalTag}</code>, commit <code>${historicalCommit}</code>. It is not current authority.</p><p><a class="btn ghost" href="${historicalSource}">Open historical tag</a> <a class="btn ghost" href="${historicalArchive}">Open archive record</a></p></article></div>`;
     contact.before(section);
   }
 }
