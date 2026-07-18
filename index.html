@@ -56,7 +56,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-18-52</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-18-53</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -64,7 +64,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>87d085a8712794527850a495741cf3cce9cb6b38151457c0873899043b9e4c8f</code>
+        <code>23d0d6f56d811dd59a52d9e89a937672954a01629eb99e1f762a4efe89c6efd2</code>
       </div>
     </div>
 
@@ -72,14 +72,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 8,006 exported public declarations, including 3,903 theorem-kind declarations and 2,921 assumption-free theorem-kind declarations across 72 modules. Twenty-nine scoped publication milestones are earned, now including the exact remaining Cook-Levin first-clause padding block and second-clause boundary; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 8,094 exported public declarations, including 3,974 theorem-kind declarations and 2,939 assumption-free theorem-kind declarations across 73 modules. Thirty scoped publication milestones are earned, now including the fixed Cook-Levin <code>Sep</code> transition beginning clause two; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier stages retain <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>formulaBitSlotDirect_eq</code>, <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>, and <code>BuilderFirstClausePrefix.workRunExact</code>. <code>BuilderFirstClausePaddingRun.workRunExact</code> composes that earlier complete first-clause and single-step work with two unary evaluators and a fixed 25-rule countdown. It executes all <code>D = (FormulaVariableSlotBound - 1) * (FormulaVariableSlotBound + 6)</code> remaining first-clause padding opportunities without emitting a token and reaches the second-clause <code>Sep</code> boundary under an external <code>NatPolynomial</code> bound. This is not a general dynamic formula cursor. The remaining formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. Earlier stages retain <code>formulaBitSchedule_emit_eq_encodedFormula</code>, <code>FormulaBitCursor.run_full_emit_eq_encodedFormula</code>, and the fixed builder trace through the first-clause padding run. <code>BuilderSecondClauseSeparatorStep.workRunExact</code> then appends the canonical <code>Sep</code> beginning clause two and advances the retained unary coordinate by one. Its emitted bits equal <code>encodedFormula.take (2 * (FormulaWidth + 13))</code>, and <code>nextTokenSlot_direct_eq_f</code> proves the following direct token is <code>F</code>. This is one fixed populated transition, not a general dynamic formula cursor; it does not emit that following <code>F</code>. The remaining formula body, complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -108,7 +108,7 @@ concretePublicationGate.passed = false</pre>
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-six-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current twenty-seven-page report</a>
         </div>
       </div>
 
