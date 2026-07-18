@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 env:
-  PNP_CORE_COMMIT: 8e2f729b46d5c387899b0e673927a605cd009188
+  PNP_CORE_COMMIT: 151e25f791def55a7855b20bd805cfb088c4d853
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
@@ -22,13 +22,13 @@ jobs:
         working-directory: pnplabs
     steps:
       - name: Check out companion repository
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
           path: pnplabs
 
       - name: Check out exact reviewed core merge
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
           repository: aisknab/pnp
@@ -37,7 +37,7 @@ jobs:
           fetch-tags: true
           path: pnp
 
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: "20"
 
