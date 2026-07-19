@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/5fe3ffec94ad37b0f62321bde9764518d3a4e548/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/5fe3ffec94ad37b0f62321bde9764518d3a4e548/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/71f0e479cfd23126abfe19bda4763f514cf4d3e5/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/71f0e479cfd23126abfe19bda4763f514cf4d3e5/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the thirty-two-page inventory-derived report. Every numbered section or
+The current canonical download is the thirty-three-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 56-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 878 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 912 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm thirty-four earned scoped milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, the actual encoded-formula size polynomial, the answer-independent rectangular schedule, the direct coordinate cursor, both complete fixed clauses, and the exact remaining clause-two padding run. Confirm that it traverses `D = FormulaTokensPerClause - 7` padding coordinates without emission, reaches `FormulaVariableSlotBound + 1 + 2 * FormulaTokensPerClause`, retains direct `Sep`, and preserves `encodedFormula.take (2 * (FormulaWidth + 19))`. Confirm three unearned global milestones, four project axioms, and six blockers, and that separator emission, a general dynamic formula cursor, the remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness remain absent. | The fixed padding run is widened into separator emission, a general cursor, complete formula builder, construction-runtime refinement, or reduction theorem; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require thirty-two PDF pages. | An alias differs, the old 56-page hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm thirty-five earned scoped milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, the actual encoded-formula size polynomial, the answer-independent rectangular schedule, the direct coordinate cursor, both complete fixed clauses, the exact remaining clause-two padding run, and the fixed third-clause separator step. Confirm that the latest machine emits `Sep`, advances the retained coordinate by one, proves the following direct token is `F`, and emits `encodedFormula.take (2 * (FormulaWidth + 20))`. Confirm three unearned global milestones, four project axioms, and six blockers, and that emission of the following `F`, a general dynamic formula cursor, the remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness remain absent. | The fixed separator step is widened into emission of the following `F`, a general cursor, complete formula builder, construction-runtime refinement, or reduction theorem; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require thirty-three PDF pages. | An alias differs, the old 56-page hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 

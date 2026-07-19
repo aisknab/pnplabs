@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6c167d3b1e92f52ff8736fc349b3f1cdff105dee4636f48fc57b41b731259b30');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '9db4fc68c45e470777c5607c0ea1440e86c59b1222d7e2d62f2898b3d424c8e7');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 34);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 35);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -1002,6 +1002,64 @@ test('Cook-Levin clause-two padding run requires all thirty-nine exact rows and 
   }
 });
 
+test('Cook-Levin third-clause separator step requires all forty exact rows and remains a one-token boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-third-clause-separator-step');
+  assert.equal(milestone.requiredTheorems.length, 40);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.specification_separator_step')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-third-clause-separator-step')
+    .theoremRows.find((row) => row.name.endsWith('.finalTokenBits_eq_encodedFormula_thirdClauseStart'))
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepFormalized',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepAxiomAuditPassed',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepCompiledRawMachineFormalized',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepExternalInputSizePolynomialFormalized',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepExactFormulaBitsFormalized',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepThirdClauseSeparatorFormalized',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepRetainedAdvancedTokenCoordinateFormalized',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepInputPrefixAppenderComposed',
+    'leanConcreteCookLevinBuilderThirdClauseSeparatorStepFailClosedBoundaryTimeoutFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCookLevinBuilderThirdClauseSeparatorStepAuditedDeclarationCount = 55;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderDynamicCursorFormalized',
+    'leanConcreteCookLevinFormulaBuilderFormalized',
+    'leanConcreteCookLevinBuilderRawRefinementFormalized',
+    'leanConcreteCookLevinBuilderPolynomialReductionFormalized',
+    'leanConcreteCNFSATInPFormalized',
+    'leanConcreteCNFNPCompletenessFormalized',
+  ]) {
+    const widened = structuredClone(status);
+    widened[field] = true;
+    assert.equal(validation.validateStatus(widened, inventory), false, field);
+  }
+});
+
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
   const strippedRefinement = structuredClone(status);
   strippedRefinement.leanConcretePipelineRawRefinementFormalized = false;
@@ -1146,7 +1204,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '56fa058bbb6250a422db16860e77a5cf6fc8555fdd3d1a10631297c435259084'/);
+  assert.match(source, /const STATUS_SHA256 = '146bbf914afe66256f6573dcc59a8cdfe825420f7cb021829f55708ab64a48ad'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -1171,12 +1229,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /8,599/);
-  assert.match(statusPage, /Thirty-four scoped milestones/);
+  assert.match(statusPage, /8,680/);
+  assert.match(statusPage, /Thirty-five scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /thirty-two-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /thirty-three-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
