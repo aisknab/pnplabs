@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 841 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 878 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 8,473 public declarations;
-- 4,267 theorem-kind declarations;
-- 3,013 assumption-free theorem-kind declarations;
+- 8,599 public declarations;
+- 4,359 theorem-kind declarations;
+- 3,031 assumption-free theorem-kind declarations;
 - 76 source-closure modules;
-- 2,779 excluded private compiler auxiliaries;
+- 2,833 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The thirty-three earned scopes are:
+The thirty-four earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -80,6 +80,7 @@ The thirty-three earned scopes are:
 | Literal Cook-Levin clause-two first negative literal | One literal table with `1610` plus six inherited/generated unary-evaluator rule counts composes the separator prefix, two selected 59-rule `F` appenders, four total symbol-preserving bridges, and two fixed 45-rule cursor advances; every raw input emits `T^FormulaWidth F Sep T F T T F T T T F Finish Sep F F`, advances to `secondClauseStart + 3`, and emits `encodedFormula.take (2 * (FormulaWidth + 15))`, within `BuilderSecondClauseSeparatorStep.rawTimeBound + 564 + 48*n + 24*FormulaWidth + 24*cursorWord.length` compiled steps | One fixed negative literal only: no completed clause two, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin clause-two second negative literal | One literal table with `1976` plus six inherited/generated unary-evaluator rule counts composes the first-literal prefix, selected 59-rule `F`, `T`, and `F` appenders, six total symbol-preserving bridges, and three fixed 45-rule cursor advances; every raw input emits `T^FormulaWidth F Sep T F T T F T T T F Finish Sep F F F T F`, retains `secondClauseStart + 6` at the following `Finish`, and emits `encodedFormula.take (2 * (FormulaWidth + 18))`, within `BuilderSecondClauseFirstLiteralPrefix.rawTimeBound + 1026 + 72*n + 36*FormulaWidth + 36*cursorWord.length` compiled steps | One fixed negative literal only: the retained `Finish` and clause terminator are not emitted; no completed clause two, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin complete clause-two prefix | One literal table with `2098` plus six inherited/generated unary-evaluator rule counts composes the second-literal prefix, one selected 59-rule `Finish` appender, two total symbol-preserving bridges, and one fixed 45-rule cursor advance; every raw input emits `T^FormulaWidth F Sep T F T T F T T T F Finish Sep F F F T F Finish`, retains `secondClauseStart + 7` at the first padding coordinate, and emits `encodedFormula.take (2 * (FormulaWidth + 19))`, within `BuilderSecondClauseSecondLiteralPrefix.rawTimeBound + 390 + 24*n + 12*FormulaWidth + 12*cursorWord.length` compiled steps | One fixed clause prefix only: no clause-two padding traversal, clause three, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Literal Cook-Levin clause-two padding run | One literal table with `2150` plus eight inherited/generated unary-evaluator rule counts composes the complete second-clause prefix, two unary evaluators, the fixed 25-rule padding countdown, and three total bridges; every raw input traverses `D = FormulaTokensPerClause - 7` remaining padding coordinates without emission, reaches `FormulaVariableSlotBound + 1 + 2 * FormulaTokensPerClause`, retains direct `Sep`, and preserves `encodedFormula.take (2 * (FormulaWidth + 19))` within an external input-size polynomial | Exact remaining clause-two padding only: no separator emission, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -115,7 +116,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment thirty-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment thirty-two-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
