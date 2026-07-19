@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a thirty-three-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 8,680 public declarations across 78 modules,
-including 4,425 theorem-kind declarations, 3,043 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Two thousand eight hundred ninety-two private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a thirty-four-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 8,811 public declarations across 79 modules,
+including 4,530 theorem-kind declarations, 3,062 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Two thousand nine hundred seventy-four private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all six formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current thirty-three-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current thirty-four-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 56-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 912 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | Nine hundred twelve reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Thirty-five narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, encoded-formula bounds and schedules, a direct coordinate cursor, both complete fixed clauses, clause-two padding traversal, and emission of the fixed separator beginning clause three under external polynomial bounds | Emission of the following `F`, a general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, CNF-SAT in P, NP-completeness, global locked-NAND construction, complete residual search, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 960 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | Nine hundred sixty reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Thirty-six narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, encoded-formula bounds and schedules, a direct coordinate cursor, both complete fixed clauses, clause-two padding traversal, and the complete negative literal on variable zero in clause three under external polynomial bounds | Emission of the following `F`, completion of clause three, a general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, CNF-SAT in P, NP-completeness, global locked-NAND construction, complete residual search, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `71f0e479cfd23126abfe19bda4763f514cf4d3e5`.
+   `9db71188ff4dafbefc09f5f0120fdf37c229bb4d`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 912 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 960 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,10 +72,10 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns thirty-five scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns thirty-six scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
-no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, both complete fixed clauses, the remaining clause-two padding run, and the fixed separator transition beginning clause three under external polynomial bounds; typed direct-wire semantics; finite reference enumeration/minimum;
+no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, both complete fixed clauses, the remaining clause-two padding run, and the complete negative literal on variable zero in clause three under external polynomial bounds; typed direct-wire semantics; finite reference enumeration/minimum;
 concrete framed replacement/slack; five local locked-NAND baselines; a six-premise conditional
 threshold boundary; and explicit-list residual-route soundness.
 
@@ -111,7 +111,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current thirty-three-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current thirty-four-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the
