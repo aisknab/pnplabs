@@ -38,7 +38,7 @@ test('status and inventory are byte-identical to the pinned merged core publicat
     const site = await readText(path);
     const { stdout: source } = await execFileAsync('git', [
       '-C', fileURLToPath(siblingRepo), 'show', `${CORE_COMMIT}:${path}`,
-    ], { encoding: 'utf8', maxBuffer: 2 * 1024 * 1024 });
+    ], { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
     assert.equal(site, source, `${path} must match pinned merged core commit`);
   }
 });
