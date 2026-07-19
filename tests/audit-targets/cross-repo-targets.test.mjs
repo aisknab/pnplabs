@@ -166,6 +166,18 @@ const BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES = BUILDER_SECOND_CLAUSE_P
 assert.equal(BUILDER_SECOND_CLAUSE_PADDING_RUN_THEOREM_NAMES.length, 39);
 assert.equal(BUILDER_SECOND_CLAUSE_PADDING_RUN_CANDIDATES.length, 39);
 assert.equal(BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES.length, 37);
+const BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepTheoremKernelTypeSha256;
+const BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES = Object.keys(BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_HASHES);
+const BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES.includes(candidate.name)
+);
+const BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES = BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_CANDIDATES.filter(
+  (candidate) => candidate.name.startsWith('PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.')
+);
+assert.equal(BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES.length, 40);
+assert.equal(BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_CANDIDATES.length, 40);
+assert.equal(BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES.length, 34);
 
 function git(cwd, args) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -390,6 +402,16 @@ function makeProject(t) {
     leanConcreteCookLevinBuilderSecondClausePaddingRunNoEmissionSpecificationFormalized: true,
     leanConcreteCookLevinBuilderSecondClausePaddingRunInputPrefixAppenderComposed: true,
     leanConcreteCookLevinBuilderSecondClausePaddingRunFailClosedBoundaryTimeoutFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepAxiomAuditPassed: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepAuditedDeclarationCount: 56,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepCompiledRawMachineFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepExternalInputSizePolynomialFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepExactFormulaBitsFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepThirdClauseSeparatorFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepRetainedAdvancedTokenCoordinateFormalized: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepInputPrefixAppenderComposed: true,
+    leanConcreteCookLevinBuilderThirdClauseSeparatorStepFailClosedBoundaryTimeoutFormalized: true,
     leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
     leanConcreteCookLevinFormulaBuilderFormalized: false,
     leanConcreteCookLevinBuilderRawRefinementFormalized: false,
@@ -521,17 +543,24 @@ function makeProject(t) {
       allKernelTypesMatch: true,
       axiomClosureUsesOnlyLeanStandardAllowlist: true,
       requiredTheorems: BUILDER_SECOND_CLAUSE_PADDING_RUN_THEOREM_NAMES
+    }, {
+      id: "concrete-cook-levin-builder-third-clause-separator-step",
+      earned: true,
+      allPresent: true,
+      allKernelTypesMatch: true,
+      axiomClosureUsesOnlyLeanStandardAllowlist: true,
+      requiredTheorems: BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 8599,
-    theoremCount: 4359,
-    assumptionFreeTheoremCount: 3031,
-    excludedPrivateDeclarationCount: 2833,
-    sourceClosureModuleCount: 77,
+    declarationCount: 8680,
+    theoremCount: 4425,
+    assumptionFreeTheoremCount: 3043,
+    excludedPrivateDeclarationCount: 2892,
+    sourceClosureModuleCount: 78,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -718,7 +747,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...Array.from({ length: 246 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...Array.from({ length: 246 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -783,7 +812,8 @@ function makeProject(t) {
       ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_THEOREM_HASHES,
       ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_THEOREM_HASHES,
       ...BUILDER_SECOND_CLAUSE_PREFIX_THEOREM_HASHES,
-      ...BUILDER_SECOND_CLAUSE_PADDING_RUN_THEOREM_HASHES
+      ...BUILDER_SECOND_CLAUSE_PADDING_RUN_THEOREM_HASHES,
+      ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -825,6 +855,11 @@ function makeProject(t) {
       classification: "formalized-foundation-only",
       requiredTheorems: BUILDER_SECOND_CLAUSE_PADDING_RUN_THEOREM_NAMES,
       nonClaim: "This milestone executes exactly the remaining second-clause padding block and identifies the third-clause separator boundary without emitting a token. It reaches clause three only as a retained coordinate. It is not a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, does not emit the third-clause separator or remaining formula body, and does not construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP."
+    }, {
+      id: "concrete-cook-levin-builder-third-clause-separator-step",
+      classification: "formalized-foundation-only",
+      requiredTheorems: BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES,
+      nonClaim: "This milestone emits only the fixed populated Sep transition beginning clause three and advances to the following F coordinate. It is not a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, does not emit that F or the remaining formula body, and does not construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP."
     }]
   });
 
@@ -872,7 +907,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 32,
+        pageCount: 33,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
@@ -1735,6 +1770,39 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   write(secondClausePaddingIdentity.root, "downloads/formal-publication-release.json", json(secondClausePaddingIdentity.release));
   expectFailure(secondClausePaddingIdentity, /formal-publication Cook-Levin builder second-clause-padding-run theorem identity mismatch/);
 
+  const thirdClauseSeparatorFingerprint = makeProject(t);
+  thirdClauseSeparatorFingerprint.release.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepTheoremKernelTypeSha256[
+    BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES[0]
+  ] = "0".repeat(64);
+  write(thirdClauseSeparatorFingerprint.root, "downloads/formal-publication-release.json", json(thirdClauseSeparatorFingerprint.release));
+  expectFailure(thirdClauseSeparatorFingerprint, /formal-publication Cook-Levin builder third-clause-separator-step fingerprint mismatch/);
+
+  const thirdClauseSeparatorAxiom = makeProject(t);
+  thirdClauseSeparatorAxiom.release.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(thirdClauseSeparatorAxiom.root, "downloads/formal-publication-release.json", json(thirdClauseSeparatorAxiom.release));
+  expectFailure(thirdClauseSeparatorAxiom, /formal-publication Cook-Levin builder third-clause-separator-step axiom closure mismatch/);
+
+  const thirdClauseSeparatorRemoved = makeProject(t);
+  thirdClauseSeparatorRemoved.release.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepFormalized = false;
+  write(thirdClauseSeparatorRemoved.root, "downloads/formal-publication-release.json", json(thirdClauseSeparatorRemoved.release));
+  expectFailure(thirdClauseSeparatorRemoved, /formal-publication Cook-Levin builder third-clause-separator-step boundary mismatch/);
+
+  const thirdClauseSeparatorAudit = makeProject(t);
+  thirdClauseSeparatorAudit.release.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepAuditedDeclarationCount = 55;
+  write(thirdClauseSeparatorAudit.root, "downloads/formal-publication-release.json", json(thirdClauseSeparatorAudit.release));
+  expectFailure(thirdClauseSeparatorAudit, /formal-publication Cook-Levin builder third-clause-separator-step boundary mismatch/);
+
+  const thirdClauseSeparatorCost = makeProject(t);
+  thirdClauseSeparatorCost.release.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepRuleCount = "0";
+  write(thirdClauseSeparatorCost.root, "downloads/formal-publication-release.json", json(thirdClauseSeparatorCost.release));
+  expectFailure(thirdClauseSeparatorCost, /formal-publication Cook-Levin builder third-clause-separator-step cost mismatch/);
+
+  const thirdClauseSeparatorIdentity = makeProject(t);
+  thirdClauseSeparatorIdentity.release.earnedBoundary.cookLevinBuilderThirdClauseSeparatorStepNextTokenTheorem =
+    "PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.forged";
+  write(thirdClauseSeparatorIdentity.root, "downloads/formal-publication-release.json", json(thirdClauseSeparatorIdentity.release));
+  expectFailure(thirdClauseSeparatorIdentity, /formal-publication Cook-Levin builder third-clause-separator-step theorem identity mismatch/);
+
   const rawBuilder = makeProject(t);
   rawBuilder.release.earnedBoundary.cookLevinRawFormulaBuilderFormalized = true;
   write(rawBuilder.root, "downloads/formal-publication-release.json", json(rawBuilder.release));
@@ -1808,6 +1876,70 @@ test("rejects second-clause padding-run status, inventory, and publication-map m
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map builder second-clause-padding-run fingerprint mismatch/);
+});
+
+test("rejects third-clause separator-step status, inventory, and publication-map mutation", (t) => {
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanConcreteCookLevinBuilderThirdClauseSeparatorStepThirdClauseSeparatorFormalized = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /public status Cook-Levin builder third-clause-separator-step evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
+    (row) => row.id !== "concrete-cook-levin-builder-third-clause-separator-step"
+  );
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /public status Cook-Levin builder third-clause-separator-step mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.workRunExact"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /public inventory Cook-Levin builder third-clause-separator-step theorem mismatch/);
+
+  const inventoryModule = makeProject(t);
+  const inventoryModulePayload = JSON.parse(readFileSync(path.join(inventoryModule.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryModulePayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.nextTokenSlot_direct_eq_f"
+  ).module = "PNP.ForgedModule";
+  rewriteCorePayload(inventoryModule, "public/pnp-theorem-inventory.json", inventoryModulePayload);
+  expectFailure(inventoryModule, /public inventory Cook-Levin builder third-clause-separator-step theorem mismatch/);
+
+  const inventoryFingerprint = makeProject(t);
+  const inventoryFingerprintPayload = JSON.parse(readFileSync(path.join(inventoryFingerprint.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryFingerprintPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.finalTokenBits_eq_encodedFormula_thirdClauseStart"
+  ).kernelType += " ";
+  rewriteCorePayload(inventoryFingerprint, "public/pnp-theorem-inventory.json", inventoryFingerprintPayload);
+  expectFailure(inventoryFingerprint, /public inventory Cook-Levin builder third-clause-separator-step fingerprint mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones = mapMilestonePayload.milestones.filter(
+    (row) => row.id !== "concrete-cook-levin-builder-third-clause-separator-step"
+  );
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map builder third-clause-separator-step milestone mismatch/);
+
+  const mapNonClaim = makeProject(t);
+  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapNonClaimPayload.milestones.find(
+    (row) => row.id === "concrete-cook-levin-builder-third-clause-separator-step"
+  ).nonClaim = "forged";
+  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
+  expectFailure(mapNonClaim, /core publication map builder third-clause-separator-step milestone mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.Concrete.CookLevin.BuilderThirdClauseSeparatorStep.workRunExact"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map builder third-clause-separator-step fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
