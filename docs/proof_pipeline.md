@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1160 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 1221 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 9,336 public declarations;
-- 4,934 theorem-kind declarations;
-- 3,152 assumption-free theorem-kind declarations;
+- 9,474 public declarations;
+- 5,036 theorem-kind declarations;
+- 3,178 assumption-free theorem-kind declarations;
 - 83 source-closure modules;
-- 3,264 excluded private compiler auxiliaries;
+- 3,398 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The forty earned scopes are:
+The forty-one earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -87,6 +87,7 @@ The forty earned scopes are:
 | Literal Cook-Levin complete clause-three prefix | One literal table with `3126` plus eight inherited/generated unary-evaluator rule counts composes the complete second-literal prefix, a selected 59-rule `Finish` appender, two total symbol-preserving bridges, and the existing 45-rule cursor advance; the fixed suffix has 113 rules, every raw input emits the complete third clause, retains `thirdClauseStart + 8` at the first padding coordinate, emits `encodedFormula.take (2 * (FormulaWidth + 27))`, and proves the executed opportunity is `Finish` and the retained next opportunity is padding, within `BuilderThirdClauseSecondLiteralPrefix.rawTimeBound + 498 + 24*n + 12*FormulaWidth + 12*BuilderThirdClauseSeparatorStep.cursorWord.length` compiled steps | Complete fixed third clause only: no clause-three padding traversal, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin third-clause remaining-padding run | One literal table with `3178` plus ten inherited/generated unary-evaluator rule counts composes the complete third-clause prefix, two unary-polynomial evaluators, the reused 25-rule padding countdown, and three total symbol-preserving bridges; every raw input traverses `FormulaTokensPerClause - 8` padding coordinates without emission, preserves `encodedFormula.take (2 * (FormulaWidth + 27))`, reaches `FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause`, and proves direct lookup is `Sep`, within `BuilderThirdClausePrefix.rawTimeBound + 18 + 6*countEvaluator.workSteps + 6*(D*(2*countRootPrefixLength + 8) + D*D) + 6*targetEvaluator.workSteps` compiled steps | Complete remaining third-clause padding run only: no fourth-clause separator emission, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin fourth-clause separator step | One literal table with `3300` plus ten inherited/generated unary-evaluator rule counts composes the complete third-clause padding run with the reused 113-rule selected `Sep` appender/cursor machine through one total nine-symbol bridge; every raw input emits exactly the fixed separator beginning clause four, preserves `encodedFormula.take (2 * (FormulaWidth + 28))`, advances to `FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 1`, and proves the following direct token is `F`, within `BuilderThirdClausePaddingRun.rawTimeBound + 426 + 24*n + 12*FormulaWidth + 12*cursorWord.length` compiled steps | One fixed populated transition only: no emitted following `F`, completed clause four, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Literal Cook-Levin fourth-clause first negative literal | One literal table with `3666` plus ten inherited/generated unary-evaluator rule counts composes the complete fourth-clause separator prefix with the reused 357-rule `F T F` appender/cursor suffix through one outer total nine-symbol bridge; every raw input emits the complete first negative literal on variable one in clause four, preserves `encodedFormula.take (2 * (FormulaWidth + 31))`, advances to `FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 4`, and proves the following direct token is `F`, within `BuilderFourthClauseSeparatorStep.rawTimeBound + 1422 + 72*n + 36*FormulaWidth + 36*cursorWord.length` compiled steps | One fixed negative literal only: no emitted following `F`, completed clause four, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -122,7 +123,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment thirty-nine-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment forty-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

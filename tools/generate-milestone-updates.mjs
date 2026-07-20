@@ -92,7 +92,7 @@ function milestoneIsEarned(milestone) {
 
 function validateUpdatesModel(data, status, index) {
   assertExactKeys(data, ["kind", "version", "trackingBaseline", "entries"], "updates data");
-  if (data.kind !== "PNPLabsMilestoneUpdates0" || data.version !== 0) {
+  if (data.kind !== "PNPLabsMilestoneUpdates1" || data.version !== 1) {
     fail("updates data: unsupported kind or version");
   }
   assertExactKeys(data.trackingBaseline, ["earnedCount", "milestoneIds"], "tracking baseline");
@@ -138,15 +138,13 @@ function validateUpdatesModel(data, status, index) {
     });
     assertExactKeys(
       entry.source,
-      ["commit", "tree", "statusCoordinate", "publicationCoordinate", "sitePublicationCommit", "deploymentId"],
+      ["commit", "tree", "statusCoordinate", "publicationCoordinate"],
       `${label} source`
     );
     assertSha(entry.source.commit, `${label} source commit`);
     assertSha(entry.source.tree, `${label} source tree`);
     assertSafeToken(entry.source.statusCoordinate, `${label} source statusCoordinate`);
     assertSafeToken(entry.source.publicationCoordinate, `${label} source publicationCoordinate`);
-    assertSha(entry.source.sitePublicationCommit, `${label} source sitePublicationCommit`);
-    assertSafeToken(entry.source.deploymentId, `${label} source deploymentId`);
 
     if (entryIds.has(entry.id)) fail(`${label}: duplicate entry ID ${entry.id}`);
     if (entryMilestoneIds.has(entry.milestoneId)) fail(`${label}: duplicate milestone update ${entry.milestoneId}`);
@@ -205,7 +203,8 @@ function renderTechnicalDetails(entry) {
     + `          <p><strong>Boundary:</strong> ${escaped(milestone.nonClaim)}</p>\n`
     + `          <p><strong>Reviewed theorem pins:</strong> ${milestone.requiredTheorems.length}</p>\n`
     + `          <p><strong>Core source:</strong> commit <code>${escaped(entry.source.commit)}</code>, tree <code>${escaped(entry.source.tree)}</code>, status <code>${escaped(entry.source.statusCoordinate)}</code>.</p>\n`
-    + `          <p><strong>Publication:</strong> <code>${escaped(entry.source.publicationCoordinate)}</code>; site publication <code>${escaped(entry.source.sitePublicationCommit)}</code>; deployment <code>${escaped(entry.source.deploymentId)}</code>.</p>\n`
+    + `          <p><strong>Publication:</strong> <code>${escaped(entry.source.publicationCoordinate)}</code>.</p>\n`
+    + `          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>\n`
     + `          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>\n`
     + `        </details>`;
 }

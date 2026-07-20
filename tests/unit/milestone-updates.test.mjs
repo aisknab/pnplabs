@@ -28,14 +28,16 @@ async function fixtures() {
   ]);
 }
 
-test("current update covers every milestone earned after the exact 39-milestone baseline", async () => {
+test("current updates cover every milestone earned after the exact 39-milestone baseline", async () => {
   const [data, status, index] = await fixtures();
   const model = validateUpdatesModel(data, status, index);
   assert.equal(data.trackingBaseline.earnedCount, 39);
-  assert.equal(model.earnedCount, 40);
-  assert.equal(model.entries.length, 1);
-  assert.equal(model.entries[0].earnedOrdinal, 40);
-  assert.equal(model.entries[0].milestone.requiredTheorems.length, 40);
+  assert.equal(model.earnedCount, 41);
+  assert.equal(model.entries.length, 2);
+  assert.equal(model.entries[0].earnedOrdinal, 41);
+  assert.equal(model.entries[0].milestone.requiredTheorems.length, 75);
+  assert.equal(model.entries[1].earnedOrdinal, 40);
+  assert.equal(model.entries[1].milestone.requiredTheorems.length, 40);
   assert.equal(model.entries[0].source.commit, index.sourceCommitRef);
   assert.equal(model.entries[0].source.tree, index.sourceTree);
 });
@@ -52,7 +54,8 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
   assert.doesNotMatch(html, /<details\s+open/u);
   assert.ok(html.includes(model.entries[0].milestone.scope));
   assert.ok(html.includes(model.entries[0].milestone.nonClaim));
-  assert.match(html, /Reviewed theorem pins:<\/strong> 40/u);
+  assert.match(html, /Reviewed theorem pins:<\/strong> 75/u);
+  assert.match(html, /release seal and deployment provenance record/u);
   assert.doesNotMatch(html, /<form\b|<script[^>]+https?:\/\//iu);
 });
 
@@ -104,6 +107,14 @@ test("validation rejects duplicates, source drift, unsafe prose, and schema exte
   const extended = structuredClone(data);
   extended.entries[0].technicalSummary = "independently maintained drift";
   assert.throws(() => validateUpdatesModel(extended, status, index), /expected exact keys/u);
+
+  const circularSiteIdentity = structuredClone(data);
+  circularSiteIdentity.entries[0].source.sitePublicationCommit = "a".repeat(40);
+  assert.throws(() => validateUpdatesModel(circularSiteIdentity, status, index), /expected exact keys/u);
+
+  const circularDeploymentIdentity = structuredClone(data);
+  circularDeploymentIdentity.entries[0].source.deploymentId = "future-release";
+  assert.throws(() => validateUpdatesModel(circularDeploymentIdentity, status, index), /expected exact keys/u);
 });
 
 test("technical text follows the canonical status record instead of an editorial copy", async () => {
@@ -137,7 +148,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 1);
+  assert.equal(result.entries.length, 2);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {
