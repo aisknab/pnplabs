@@ -21,19 +21,19 @@ function ensureStatusLink() {
   else nav.prepend(statusLink);
 }
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-20-61';
-const STATUS_SHA256 = '8cce5744e3f8a1f5a0f9119bea2034c5afad1685c9b6f8bcbdb9939baeb9a09b';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-20-COOK-LEVIN-BUILDER-THIRD-CLAUSE-PREFIX-60';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-20-61';
-const INVENTORY_SHA256 = '155a862474126aa8fb8c5c75c6e2e7126f1b69febac1e4100d505e405d974db5';
-const SOURCE_CLOSURE_SHA256 = '0d09467c09dbdd99b07c0fea2f21e24d75b9efc4701c6d5c6e3102a913cba0c8';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-20-62';
+const STATUS_SHA256 = '30d1c9c9dca12e13da089f312b9df023001ecdf3687850da64a6ef797c4a1057';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-20-COOK-LEVIN-BUILDER-THIRD-CLAUSE-PADDING-RUN-61';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-20-62';
+const INVENTORY_SHA256 = 'be49e777c8d5fe6ca74fe4bcb808e67157091fc9c2f15502da7649e64e7287c4';
+const SOURCE_CLOSURE_SHA256 = '522c47713a55db0605db09c3340b39de686139ff45f5259d087a068a8bfe7db6';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 9117,
-  theorems: 4764,
-  assumptionFreeTheorems: 3122,
-  excludedPrivateDeclarations: 3151,
-  modules: 81,
+  declarations: 9251,
+  theorems: 4864,
+  assumptionFreeTheorems: 3140,
+  excludedPrivateDeclarations: 3205,
+  modules: 82,
   axioms: 4,
 });
 
@@ -2240,6 +2240,48 @@ const BUILDER_THIRD_CLAUSE_PREFIX_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderThirdClausePrefix.work_one_step_short_timeout", ["Quot.sound","propext"]],
 ]);
 
+const BUILDER_THIRD_CLAUSE_PADDING_RUN_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderFirstClausePaddingRun.PaddingCountdown.loopSteps_le", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderFirstClausePaddingRun.PaddingCountdown.loop_workRunExact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.boundedDecide_compile_accept", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.boundedDecide_compile_ne_timeout", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.countEvaluator_workRunExact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.countdownBoundPolynomial_eval", ["propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.countdown_workRunExact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.finalConfiguration_state", ["propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.finalOutside_contains_finalTokenSlot", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.finalTape_represents", ["propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.finalTokenBits_eq_encodedFormula_thirdClause", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.finalTokenSlot_eq_fourthClauseStart", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.fourthClauseStart_direct_eq_sep", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.fourthClauseStart_eq", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.launch_workStep", ["propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.machine_acceptState_ne_rejectState", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.malformedCountdownRoot_timeout", []],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.malformedCountdownScratch_timeout", []],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.paddingSlot_direct_eq_padding", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.predecessorSlot_add_remainingPaddingCount", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.prefixEndpoint_before_launch_timeout", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.prefix_workRunExact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.rawTimeBound_eval", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.rawTimeBound_le", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.remainingPaddingCount_eq", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.remainingPaddingCount_eq_formulaTokensPerClause_sub_eight", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.remainingPaddingCount_positive", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.rule_source_ne_acceptState", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.rules_length", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.rules_pairwise_query_distinct", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.run_compile_exact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.run_compile_rawTimeBound", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.run_compile_rawTimeBound_blankEquivalent", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.specification_padding_run", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.specification_target_step", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.targetEvaluator_workRunExact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.workBoundedDecide_accept", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.workRunExact", ["Quot.sound","propext"]],
+  ["PNP.Concrete.CookLevin.BuilderThirdClausePaddingRun.work_one_step_short_timeout", ["Quot.sound","propext"]],
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -2282,6 +2324,7 @@ const MILESTONE_IDS = Object.freeze([
   'concrete-cook-levin-builder-third-clause-first-literal-prefix',
   'concrete-cook-levin-builder-third-clause-second-literal-prefix',
   'concrete-cook-levin-builder-third-clause-prefix',
+  'concrete-cook-levin-builder-third-clause-padding-run',
   'direct-wire-semantics',
   'finite-enumeration-minimum',
   'framed-replacement-slack',
@@ -2489,6 +2532,10 @@ leanConcreteCookLevinBuilderThirdClausePrefixFormalized = ${payload.leanConcrete
 leanConcreteCookLevinBuilderThirdClausePrefixCompleteThirdClauseFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePrefixCompleteThirdClauseFormalized ?? false}
 leanConcreteCookLevinBuilderThirdClausePrefixRetainedFirstPaddingCoordinateFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePrefixRetainedFirstPaddingCoordinateFormalized ?? false}
 leanConcreteCookLevinBuilderThirdClausePrefixFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePrefixFailClosedBoundaryTimeoutFormalized ?? false}
+leanConcreteCookLevinBuilderThirdClausePaddingRunFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePaddingRunFormalized ?? false}
+leanConcreteCookLevinBuilderThirdClausePaddingRunRemainingPaddingCountFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePaddingRunRemainingPaddingCountFormalized ?? false}
+leanConcreteCookLevinBuilderThirdClausePaddingRunFourthClauseStartFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePaddingRunFourthClauseStartFormalized ?? false}
+leanConcreteCookLevinBuilderThirdClausePaddingRunFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderThirdClausePaddingRunFailClosedBoundaryTimeoutFormalized ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
 leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
 concretePublicationGate.passed = ${payload.concretePublicationGate?.passed ?? false}`;
@@ -2530,12 +2577,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 303,
-    definition: 3776,
+    definition: 3810,
     inductive: 135,
     opaque: 0,
     quotient: 0,
     recursor: 135,
-    theorem: 4764,
+    theorem: 4864,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -2714,6 +2761,10 @@ function validateInventory(inventory) {
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
   }));
+  const cookLevinBuilderThirdClausePaddingRun = BUILDER_THIRD_CLAUSE_PADDING_RUN_DECLARATIONS.map(([name, axioms]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -2852,6 +2903,11 @@ function validateInventory(inventory) {
         ? 'PNP.Concrete.CookLevinBuilderDynamicTokenCursorStep'
         : 'PNP.Concrete.CookLevinBuilderThirdClausePrefix')
       && sameJson(row.axioms, axioms))
+    && cookLevinBuilderThirdClausePaddingRun.every(({ row, axioms }) => row?.kind === 'theorem'
+      && row.module === (row.name.startsWith('PNP.Concrete.CookLevin.BuilderFirstClausePaddingRun.')
+        ? 'PNP.Concrete.CookLevinBuilderFirstClausePaddingRun'
+        : 'PNP.Concrete.CookLevinBuilderThirdClausePaddingRun')
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -2893,7 +2949,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 1089
+    && inventory.milestoneCandidates.length === 1126
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -2957,7 +3013,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 38;
+    const shouldBeEarned = index < 39;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -3259,6 +3315,18 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderThirdClausePrefixRetainedAdvancedTokenCoordinateFormalized === true
     && status.leanConcreteCookLevinBuilderThirdClausePrefixInputPrefixAppenderComposed === true
     && status.leanConcreteCookLevinBuilderThirdClausePrefixFailClosedBoundaryTimeoutFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunAuditedDeclarationCount === 68
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunCompiledRawMachineFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunExternalInputSizePolynomialFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunExactFormulaBitsFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunRemainingPaddingCountFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunDirectPaddingBlockFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunFourthClauseStartFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunNoEmissionSpecificationFormalized === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunInputPrefixAppenderComposed === true
+    && status.leanConcreteCookLevinBuilderThirdClausePaddingRunFailClosedBoundaryTimeoutFormalized === true
     && status.leanConcreteCookLevinBuilderDynamicCursorFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
@@ -3364,7 +3432,7 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const lede = hero.querySelector('.lede');
   if (lede) {
-    lede.textContent = 'The compiled Lean environment contains 9,117 exported public declarations, including 4,764 theorem-kind declarations and 3,122 assumption-free theorem-kind declarations across 81 modules. Thirty-eight scoped publication milestones are earned, now including the complete fixed third Cook-Levin clause and retention of its first padding coordinate; three global milestones remain unformalized.';
+    lede.textContent = 'The compiled Lean environment contains 9,251 exported public declarations, including 4,864 theorem-kind declarations and 3,140 assumption-free theorem-kind declarations across 82 modules. Thirty-nine scoped publication milestones are earned, now including exact traversal of the remaining third-clause padding block and retention of the fourth-clause separator coordinate; three global milestones remain unformalized.';
   }
 
   const trace = hero.querySelector('.checker-trace');
@@ -3374,7 +3442,7 @@ function ensureHomepageFormalReconstructionBoundary() {
 
   const firstNote = hero.querySelector('.review-note');
   if (firstNote) {
-    firstNote.innerHTML = '<strong>Current status:</strong> <code>BuilderThirdClausePrefix.workRunExact</code> composes the complete second-literal prefix with a selected 59-rule <code>Finish</code> appender and a 45-rule cursor advance behind two total bridges. Every raw input emits the complete fixed third clause; the bits equal <code>encodedFormula.take (2 * (FormulaWidth + 27))</code>, and the retained coordinate advances to the first directly proved padding slot. It does not traverse that padding, implement a general dynamic formula cursor, or emit the remaining body. The complete builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
+    firstNote.innerHTML = '<strong>Current status:</strong> <code>BuilderThirdClausePaddingRun.workRunExact</code> traverses all remaining clause-three padding coordinates without emission, preserves <code>encodedFormula.take (2 * (FormulaWidth + 27))</code>, and retains the fourth-clause coordinate where direct lookup is <code>Sep</code>. It does not emit that separator, implement a general dynamic formula cursor, or emit the remaining body. The complete builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.';
   }
 
   hero.querySelectorAll('[data-homepage-matrix-summary], [data-homepage-one-command-upload]').forEach((element) => element.remove());
@@ -3436,7 +3504,7 @@ function insertAfterPageHero(id, html) {
 function ensureFormalVerificationCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction verification',
-    title: 'Verify the compiled inventory and current thirty-six-page report.',
+    title: 'Verify the compiled inventory and current thirty-seven-page report.',
     lede: 'The target theorem is not established. The current report is generated from the reviewed compiled inventory; digest checks establish file identity, not mathematical truth.',
     primaryHref: 'public/pnp-status.json',
     primaryText: 'Open current status JSON',
@@ -3455,7 +3523,7 @@ projectSpecificAxiomsRemaining = true</pre>
       <div class="grid two path" style="margin-top:1.2rem">
         <article class="card"><h3>Check status and inventory together</h3><p>The browser fetches both payloads concurrently, hashes the raw inventory bytes, validates exact counts and coordinates, and rejects inconsistent gate or milestone rows.</p></article>
         <article class="card"><h3>Build and inventory Lean</h3><p>Run <code>lake build PNP</code>, <code>npm run formal:inventory:check</code>, and <code>npm run formal:publication:check</code> in the source repository.</p></article>
-        <article class="card"><h3>Check current report identity</h3><p>The thirty-six-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
+        <article class="card"><h3>Check current report identity</h3><p>The thirty-seven-page PDF and TeX are generated from the inventory-derived publication model. Their hashes identify bytes; they do not independently prove theorem correctness.</p></article>
         <article class="card"><h3>Historical run intake</h3><p>The former activated verifier-run registry and automated submission workflow are frozen.</p></article>
       </div>
     </section>`);
@@ -3465,7 +3533,7 @@ function ensureFormalFAQCopy() {
   rewritePageHero({
     eyebrow: 'Formal reconstruction FAQ',
     title: 'Current theorem-status FAQ.',
-    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, exact Cook-Levin semantic equivalence and size/schedule results, both earlier complete fixed clauses, clause-two padding traversal, and the complete fixed third clause. This is not a general dynamic formula cursor: the machine retains but does not traverse the first clause-three padding coordinate or emit the remaining body, complete a raw formula builder, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current thirty-six-page status report from the historical 56-page claim manuscript.',
+    lede: 'The repository proves concrete CNF-SAT membership in NP, raw-machine compilation, exact Cook-Levin semantic equivalence and size/schedule results, all three complete fixed clauses, and exact clause-two and clause-three padding traversal. The latest machine retains but does not emit the fourth-clause separator, implement a general dynamic formula cursor, emit the remaining body, complete a raw formula builder, package a polynomial reduction, or establish CNF-SAT NP-completeness, CNF-SAT in P, or P = NP. These answers distinguish the current thirty-seven-page status report from the historical 56-page claim manuscript.',
     primaryHref: 'status.html',
     primaryText: 'View current status',
     secondaryHref: 'public/pnp-status.json',
@@ -3475,7 +3543,7 @@ function ensureFormalFAQCopy() {
       <div class="section-label">Current theorem-status FAQ</div>
       <div class="grid two path">
         <article class="card"><h3>Does the repository establish P = NP?</h3><p>No. <code>mathematicalTheoremEstablished = false</code> and <code>publicTheoremEmissionAllowed = false</code>.</p></article>
-        <article class="card"><h3>What is formalized?</h3><p>Thirty-eight scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin CNF-to-verifier-language semantics, the size/schedule bounds, all three complete fixed clauses, and exact clause-two padding traversal. Clause-three padding traversal, a general dynamic formula cursor, the remaining formula body, complete raw builder, packaged polynomial reduction, NP-completeness, deterministic P result, and concrete publication root remain unearned.</p></article>
+        <article class="card"><h3>What is formalized?</h3><p>Thirty-nine scoped publication milestones are earned from pinned theorem rows whose axiom closures contain no project axiom. They include <code>CNFSAT ∈ NP</code>, raw-machine compilation, exact Cook-Levin CNF-to-verifier-language semantics, the size/schedule bounds, all three complete fixed clauses, and exact clause-two and clause-three padding traversal. Emission of the fourth-clause separator, a general dynamic formula cursor, the remaining formula body, complete raw builder, packaged polynomial reduction, NP-completeness, deterministic P result, and concrete publication root remain unearned.</p></article>
         <article class="card"><h3>What does legacy checker acceptance mean?</h3><p>It is historical evidence that assertion-bearing records passed implemented predicates. It is not a proof of the asserted propositions.</p></article>
         <article class="card"><h3>Is external review a theorem premise?</h3><p>No. External review is optional audit evidence and is not a mathematical premise or release blocker.</p></article>
       </div>
@@ -3494,7 +3562,7 @@ function ensureFormalReviewCopy() {
   });
   insertAfterPageHero('formal-review-copy', `<section class="section compact" id="formal-review-copy">
       <div class="section-label">Current review role</div>
-      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 9,117-declaration inventory, 1089 pinned theorem candidates, whole-source closure, thirty-eight earned scoped publication milestones, three unearned global milestones, and concrete publication gate. The verifier-fixed Cook-Levin machine emits the complete fixed third clause, advances to its first directly proved padding coordinate, and stays within an explicit external <code>NatPolynomial</code> raw bound; clause-three padding traversal, the general dynamic formula cursor, remaining body emitter, complete raw builder, and packaged reduction remain absent. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
+      <div class="callout"><div><h2>Challenge the compiled boundary.</h2><p>Review the 9,251-declaration inventory, 1126 pinned theorem candidates, whole-source closure, thirty-nine earned scoped publication milestones, three unearned global milestones, and concrete publication gate. The verifier-fixed Cook-Levin machine traverses every remaining third-clause padding coordinate without emission, reaches the fourth-clause separator coordinate, and stays within an explicit external <code>NatPolynomial</code> raw bound; emission of that separator, the general dynamic formula cursor, remaining body emitter, complete raw builder, and packaged reduction remain absent. Four project axioms and six blockers remain.</p></div><a class="btn primary" href="status.html">Inspect blockers</a></div>
     </section>`);
 }
 
