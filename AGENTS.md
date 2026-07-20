@@ -19,6 +19,54 @@ host, not as a build host.
 - Keep host, proxy, key, and network details in the user's SSH configuration; do
   not copy private connection data into this repository.
 
+### SSH, package, and remote-job preflight
+
+- Before a long remote run, probe the configured identity non-interactively with
+  `ssh -o BatchMode=yes -o ConnectTimeout=10 pnpbuilder true`. If the identity is
+  missing or locked, ask the user to unlock or add the already-configured key in
+  their own terminal. Do not create a KDE Wallet, generate a replacement key,
+  rewrite SSH configuration, or repeatedly trigger GUI askpass dialogs.
+- Inspect `package.json` and available lockfiles before installing anything. Run
+  `npm ci` only when the required lockfile exists and repository documentation
+  calls for it. Do not generate a lockfile or install dependencies merely as a
+  ritual before the repository's dependency-free verification scripts.
+- Use one named remote temporary checkout per verification run. Print the path,
+  commit, tree, exit status, and final `systemd-run` resource summary. For verbose
+  jobs, retain a full log in that directory and return concise phase markers or a
+  useful failure tail so truncated terminal output does not force a rerun.
+
+## Formal-publication sync and deployment sequence
+
+1. Merge the corresponding core `pnp` PR first. Fetch its `origin/main`, then
+   synchronize from a clean checkout of the exact core merge commit and tree—not
+   from the feature-branch tip.
+2. Treat theorem pins, non-claim text, counts, coordinates, page and byte counts,
+   and digests as exact generated data. Do not paraphrase or independently retype
+   them in fixtures. Stabilize the source, run the generators, and record the
+   values they actually emit rather than preselecting expected values.
+3. Run source-bound tests with `PNP_SOURCE_DIR` set to that exact core checkout.
+   A cross-repository test skipped because `PNP_SOURCE_DIR` is absent is not
+   evidence that the source binding passed.
+4. Verify in increasing cost order: syntax and targeted tests, source-bound tests,
+   the complete remote suite and hostile audits, then a fresh clean-clone
+   reproduction. Regenerate the release seal and cover only after the synchronized
+   public bytes have stabilized.
+5. Open or update the PR only with the intended durable files. Merge only after
+   the normal read-only checks are green. Fetch PNPLabs `origin/main` afterward
+   and record its merge commit and tree; the feature tip is not the deployment
+   coordinate even when both commits have the same tree.
+6. Keep the privileged one-line production deployment user-owned unless the user
+   explicitly authorizes otherwise. After deployment, independently run the
+   read-only production verifier from a clean checkout of the exact PNPLabs merge
+   commit. Confirm provenance, complete public bytes, routes, redirects, headers,
+   MIME types, cache policy, denial probes, and release identity.
+
+Before switching branches, staging, or committing, inspect `git status`. Treat
+pre-existing untracked files as user-owned and exclude them unless the user
+explicitly places them in scope. After a PR has merged, fetch `origin/main` and
+start follow-up work on a new branch from that merge; do not stack unrelated work
+on the already-merged feature branch.
+
 Rules:
 
 1. Do not strengthen the mathematical claim.
