@@ -17,6 +17,7 @@ import {
 } from "../../tools/check-production-deployment.mjs";
 import { generateDeploymentProvenance } from "../../tools/deployment-provenance.mjs";
 import {
+  EXTENSIONLESS_REDIRECTS,
   PUBLIC_DIRECTORY_PATHS,
   PUBLIC_EXACT_PATHS,
   PUBLIC_ROOT_PATHS
@@ -73,7 +74,7 @@ test("production checker accepts exact bytes, provenance, headers, and routes fr
 
   assert.equal(result.status, "production-deployment-current");
   assert.equal(result.publicFileCount > 40, true);
-  assert.equal(result.checked, result.publicFileCount + 18);
+  assert.equal(result.checked, result.publicFileCount + 14 + Object.keys(EXTENSIONLESS_REDIRECTS).length);
   assert.equal(result.expectedSiteCommit, SITE_COMMIT);
   assert.equal(result.expectedSiteTree, SITE_TREE);
 });

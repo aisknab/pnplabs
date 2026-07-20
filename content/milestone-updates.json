@@ -1,0 +1,68 @@
+{
+  "kind": "PNPLabsMilestoneUpdates0",
+  "version": 0,
+  "trackingBaseline": {
+    "earnedCount": 39,
+    "milestoneIds": [
+      "concrete-machine-cost-kernel",
+      "concrete-complexity-classes",
+      "concrete-cnf-universal-verifier",
+      "concrete-cook-levin-layout",
+      "concrete-cook-levin-fixed-tableau",
+      "concrete-cook-levin-verifier-tableau",
+      "concrete-cook-levin-local-cnf",
+      "concrete-cook-levin-tableau-cnf",
+      "concrete-cook-levin-tableau-cnf-semantics",
+      "concrete-cook-levin-raw-tape-bridge",
+      "concrete-cook-levin-formula-size",
+      "concrete-cook-levin-formula-schedule",
+      "concrete-cook-levin-formula-cursor",
+      "concrete-cook-levin-builder-input-length",
+      "concrete-cook-levin-builder-input-prefix",
+      "concrete-cook-levin-builder-token-appender",
+      "concrete-cook-levin-builder-first-token-prefix",
+      "concrete-cook-levin-builder-complete-header",
+      "concrete-cook-levin-builder-body-start-prefix",
+      "concrete-cook-levin-builder-first-literal-prefix",
+      "concrete-cook-levin-builder-first-clause-prefix",
+      "concrete-cook-levin-builder-dynamic-token-cursor-step",
+      "concrete-cook-levin-builder-first-clause-padding-run",
+      "concrete-cook-levin-builder-second-clause-separator-step",
+      "concrete-cook-levin-builder-second-clause-first-literal-prefix",
+      "concrete-cook-levin-builder-second-clause-second-literal-prefix",
+      "concrete-cook-levin-builder-second-clause-prefix",
+      "concrete-cook-levin-builder-second-clause-padding-run",
+      "concrete-cook-levin-builder-third-clause-separator-step",
+      "concrete-cook-levin-builder-third-clause-first-literal-prefix",
+      "concrete-cook-levin-builder-third-clause-second-literal-prefix",
+      "concrete-cook-levin-builder-third-clause-prefix",
+      "concrete-cook-levin-builder-third-clause-padding-run",
+      "direct-wire-semantics",
+      "finite-enumeration-minimum",
+      "framed-replacement-slack",
+      "locked-nand-local-baseline",
+      "locked-nand-conditional-threshold",
+      "explicit-residual-routes"
+    ]
+  },
+  "entries": [
+    {
+      "id": "2026-07-20-fourth-clause-separator",
+      "milestoneId": "concrete-cook-levin-builder-fourth-clause-separator-step",
+      "publishedAt": "2026-07-20T13:11:02Z",
+      "title": "The generated checklist now reaches its fourth section",
+      "plainLanguage": [
+        "This project turns a computer program and its input into a long checklist of logical conditions. The work is being verified one small construction step at a time. This milestone confirms that the builder can add the marker that starts the fourth section of that checklist and then move to the correct place for the next symbol.",
+        "In everyday terms, it is like checking that a document generator placed the next section break in exactly the right spot. It is useful progress, but it does not complete the fourth section, finish the full generator, or establish the project’s overall mathematical claim."
+      ],
+      "source": {
+        "commit": "522c8da0f4add7b310659dd28c3dd3bd492d5337",
+        "tree": "43ab837054ffd8dfb3d2bf34fa8458779c4ee4b0",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-20-63",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-20-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-SEPARATOR-STEP-62",
+        "sitePublicationCommit": "f63807682443f733eeab5cf349d7e38ad8c6ba42",
+        "deploymentId": "20260720T131102Z-f6380768"
+      }
+    }
+  ]
+}
