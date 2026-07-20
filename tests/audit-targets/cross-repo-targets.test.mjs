@@ -1038,7 +1038,7 @@ function makeProject(t) {
       id: "concrete-cook-levin-builder-fourth-clause-separator-step",
       classification: "formalized-foundation-only",
       requiredTheorems: BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_THEOREM_NAMES,
-      nonClaim: "This milestone emits only the fixed populated Sep transition beginning clause four and advances to the following F coordinate. It is not a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, does not emit that F or complete clause four or emit the remaining formula body, and does not construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP."
+      nonClaim: "This milestone emits exactly one token: the fixed Sep that starts clause four. It observes but does not emit the following F, does not complete clause four, does not implement a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, does not emit the remaining formula body, and does not construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP."
     }]
   });
 
