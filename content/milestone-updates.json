@@ -1,6 +1,6 @@
 {
-  "kind": "PNPLabsMilestoneUpdates0",
-  "version": 0,
+  "kind": "PNPLabsMilestoneUpdates1",
+  "version": 1,
   "trackingBaseline": {
     "earnedCount": 39,
     "milestoneIds": [
@@ -47,6 +47,22 @@
   },
   "entries": [
     {
+      "id": "2026-07-21-fourth-clause-first-literal",
+      "milestoneId": "concrete-cook-levin-builder-fourth-clause-first-literal-prefix",
+      "publishedAt": "2026-07-20T15:50:45Z",
+      "title": "The fourth section now contains its first complete item",
+      "plainLanguage": [
+        "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. This milestone verifies that the checklist builder can place the first complete item in the fourth section, stop exactly where the next item should begin, and fail safely if its workspace is damaged.",
+        "Think of a document generator: the fourth section heading was already in place, and this update checks the first full line beneath it. This is one small verified construction step. The fourth section and the full checklist are still unfinished, and the project’s much larger claim about P versus NP is not established."
+      ],
+      "source": {
+        "commit": "3112ca90d74d58116dc53ea5300082d0caa63c0e",
+        "tree": "00affbe8d76a9c28b3d6aa98384d43e23aacd71f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-21-64",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-21-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-FIRST-LITERAL-PREFIX-63"
+      }
+    },
+    {
       "id": "2026-07-20-fourth-clause-separator",
       "milestoneId": "concrete-cook-levin-builder-fourth-clause-separator-step",
       "publishedAt": "2026-07-20T13:11:02Z",
@@ -59,9 +75,7 @@
         "commit": "522c8da0f4add7b310659dd28c3dd3bd492d5337",
         "tree": "43ab837054ffd8dfb3d2bf34fa8458779c4ee4b0",
         "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-20-63",
-        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-20-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-SEPARATOR-STEP-62",
-        "sitePublicationCommit": "f63807682443f733eeab5cf349d7e38ad8c6ba42",
-        "deploymentId": "20260720T131102Z-f6380768"
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-20-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-SEPARATOR-STEP-62"
       }
     }
   ]
