@@ -16,6 +16,8 @@ const PUBLIC_ROOT_PATHS = Object.freeze([
   "security.txt",
   "sitemap.xml",
   "status.html",
+  "updates.html",
+  "updates.xml",
   "verification-runs.html",
   "verifier-run-digests.html",
   "verify.html"
@@ -35,6 +37,7 @@ const EXTENSIONLESS_REDIRECTS = Object.freeze({
   "/paper": "/paper.html",
   "/report": "/paper.html",
   "/status": "/status.html",
+  "/updates": "/updates.html",
   "/verify": "/verify.html"
 });
 
