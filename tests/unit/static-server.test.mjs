@@ -18,13 +18,14 @@ test('local server exposes current status and compiled inventory without caching
   t.after(() => server.close());
 
   const { port } = server.address();
-  for (const pathname of ['/status.html', '/updates.html', '/updates.xml', '/public/pnp-status.json', '/public/pnp-theorem-inventory.json']) {
+  for (const pathname of ['/status.html', '/updates.html', '/updates.xml', '/assets/proof-progress.svg', '/public/pnp-status.json', '/public/pnp-theorem-inventory.json']) {
     const response = await fetch(`http://127.0.0.1:${port}${pathname}`);
     assert.equal(response.status, 200, pathname);
     assert.equal(response.headers.get('cache-control'), 'no-cache', pathname);
     assert.match(response.headers.get('content-security-policy'), /default-src 'self'/);
     assert.ok((await response.arrayBuffer()).byteLength > 0, pathname);
     if (pathname === '/updates.xml') assert.match(response.headers.get('content-type'), /^application\/xml/);
+    if (pathname === '/assets/proof-progress.svg') assert.match(response.headers.get('content-type'), /^image\/svg\+xml/);
   }
 });
 

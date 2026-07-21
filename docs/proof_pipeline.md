@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1371 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 1408 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 9,906 public declarations;
-- 5,367 theorem-kind declarations;
-- 3,252 assumption-free theorem-kind declarations;
-- 87 source-closure modules;
-- 3,630 excluded private compiler auxiliaries;
+- 10,049 public declarations;
+- 5,476 theorem-kind declarations;
+- 3,272 assumption-free theorem-kind declarations;
+- 88 source-closure modules;
+- 3,686 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The forty-four earned scopes are:
+The forty-five earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -91,6 +91,7 @@ The forty-four earned scopes are:
 | Literal Cook-Levin fourth-clause second negative literal | One literal table with `4154` plus ten inherited/generated unary-evaluator rule counts composes the complete first-literal prefix with the reused 479-rule `F T T F` appender/cursor suffix through one outer total nine-symbol bridge; every raw input emits the complete second negative literal on variable two in clause four, preserves `encodedFormula.take (2 * (FormulaWidth + 35))`, advances to `FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 8`, and proves the following direct token is `Finish`, within `BuilderFourthClauseFirstLiteralPrefix.rawTimeBound + 2232 + 96*n + 48*FormulaWidth + 48*cursorWord.length` compiled steps. The 147-declaration audit covers 124 new declarations, 21 reused suffix interfaces, and two cursor dead-state facts | One fixed negative literal only: no emitted following `Finish`, completed clause four, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin complete fourth clause | One literal table with `4276` plus ten inherited/generated unary-evaluator rule counts composes the complete fourth-clause second-literal prefix with a selected 59-rule `Finish` appender, the existing 45-rule cursor advance, and two total nine-symbol bridges; every raw input emits the `Finish` that completes clause four, preserves `encodedFormula.take (2 * (FormulaWidth + 36))`, advances to `FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 9`, and proves the next direct token is padding, within `BuilderFourthClauseSecondLiteralPrefix.rawTimeBound + 618 + 24*n + 12*FormulaWidth + 12*BuilderFourthClauseSeparatorStep.cursorWord.length` compiled steps. The 57-declaration audit covers 55 new declarations and two cursor dead-state facts | One complete fixed clause only: no clause-four padding traversal, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin fourth-clause remaining-padding run | One literal table with `4328` plus twelve inherited/generated unary-evaluator rule counts composes the complete fourth-clause prefix with two unary-polynomial evaluators, the reused 25-rule padding countdown, and three total nine-symbol bridges; every raw input traverses `FormulaTokensPerClause - 9` padding opportunities without emission, preserves `encodedFormula.take (2 * (FormulaWidth + 36))`, reaches `FormulaVariableSlotBound + 1 + 4 * FormulaTokensPerClause`, and proves direct and specification-cursor lookup are padding in the intentionally empty fifth clause rectangle, within `BuilderFourthClausePrefix.rawTimeBound + 18` plus six times the count-evaluator work, countdown bound, and target-evaluator work. The 68-declaration audit covers 65 new declarations and three reused countdown interfaces | Complete remaining fourth-clause padding run only: no traversal of the empty fifth rectangle, next-constraint access, further token emission, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Literal Cook-Levin empty fifth-clause padding run | One literal table with `4380` plus fourteen inherited/generated unary-evaluator rule counts composes the complete fourth-clause padding run with two unary-polynomial evaluators, the reused 25-rule padding countdown, and three total nine-symbol bridges; every raw input traverses all `FormulaTokensPerClause` opportunities in the intentionally empty fifth clause rectangle without emission, preserves `encodedFormula.take (2 * (FormulaWidth + 36))`, reaches `FormulaVariableSlotBound + 1 + 5 * FormulaTokensPerClause`, and proves every traversed opportunity and the retained target in the intentionally empty sixth clause rectangle are padding, within `BuilderFourthClausePaddingRun.rawTimeBound + 18` plus six times the count-evaluator work, countdown bound, and target-evaluator work. The 68-declaration audit covers 65 new declarations and three reused countdown interfaces | Complete fifth-clause rectangle traversal only: no traversal of the empty sixth rectangle, next-constraint access, further token emission, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -126,7 +127,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment forty-three-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment forty-four-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

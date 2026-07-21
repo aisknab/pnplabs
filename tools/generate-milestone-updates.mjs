@@ -1,7 +1,7 @@
 // Purpose: validate one update for every formal milestone earned after feed tracking began.
 // Inputs: content/milestone-updates.json and the current formal publication payloads.
-// Outputs: deterministic updates.html and Atom 1.0 updates.xml bytes.
-// Invariants enforced: exact schemas, complete milestone coverage, source binding, and escaped text.
+// Outputs: deterministic updates.html, Atom 1.0 updates.xml, and proof-progress.svg bytes.
+// Invariants enforced: exact schemas, complete milestone coverage, source binding, progress safety, and escaped text.
 // Assumptions not checked: the executive clarity of the reviewed plain-language prose.
 
 import { readFile, writeFile } from "node:fs/promises";
@@ -15,6 +15,7 @@ const STATUS_PATH = "public/pnp-status.json";
 const INDEX_PATH = "public/pnp-index.json";
 const HTML_PATH = "updates.html";
 const FEED_PATH = "updates.xml";
+const PROGRESS_SVG_PATH = "assets/proof-progress.svg";
 const BASE_URL = "https://pnplabs.com.au";
 
 class MilestoneUpdatesError extends Error {
@@ -92,7 +93,7 @@ function milestoneIsEarned(milestone) {
 
 function validateUpdatesModel(data, status, index) {
   assertExactKeys(data, ["kind", "version", "trackingBaseline", "entries"], "updates data");
-  if (data.kind !== "PNPLabsMilestoneUpdates1" || data.version !== 1) {
+  if (data.kind !== "PNPLabsMilestoneUpdates2" || data.version !== 2) {
     fail("updates data: unsupported kind or version");
   }
   assertExactKeys(data.trackingBaseline, ["earnedCount", "milestoneIds"], "tracking baseline");
@@ -123,9 +124,10 @@ function validateUpdatesModel(data, status, index) {
   const entryMilestoneIds = new Set();
   const timestamps = new Set();
   let previousTimestamp = null;
+  let historicalProgressReached = false;
   const validatedEntries = data.entries.map((entry, position) => {
     const label = `entry ${position}`;
-    assertExactKeys(entry, ["id", "milestoneId", "publishedAt", "title", "plainLanguage", "source"], label);
+    assertExactKeys(entry, ["id", "milestoneId", "publishedAt", "title", "plainLanguage", "progressEstimatePercent", "source"], label);
     assertIdentifier(entry.id, `${label} id`);
     assertIdentifier(entry.milestoneId, `${label} milestoneId`);
     assertTimestamp(entry.publishedAt, `${label} publishedAt`);
@@ -136,6 +138,24 @@ function validateUpdatesModel(data, status, index) {
     entry.plainLanguage.forEach((paragraph, paragraphIndex) => {
       assertPlainLanguage(paragraph, `${label} plainLanguage ${paragraphIndex}`);
     });
+    if (entry.progressEstimatePercent === null) {
+      historicalProgressReached = true;
+    } else {
+      if (!Number.isSafeInteger(entry.progressEstimatePercent)
+          || entry.progressEstimatePercent < 0
+          || entry.progressEstimatePercent > 100) {
+        fail(`${label}: progressEstimatePercent must be null or an integer from 0 to 100`);
+      }
+      if (historicalProgressReached) {
+        fail(`${label}: a tracked progress estimate cannot appear after a historical null entry`);
+      }
+      if (entry.progressEstimatePercent === 100
+          && (status.concretePublicationGate?.passed !== true
+            || status.rootLeanTheoremPresent !== true
+            || status.mathematicalTheoremEstablished !== true)) {
+        fail(`${label}: 100 percent is forbidden while the theorem root and publication gate are not established`);
+      }
+    }
     assertExactKeys(
       entry.source,
       ["commit", "tree", "statusCoordinate", "publicationCoordinate"],
@@ -181,6 +201,9 @@ function validateUpdatesModel(data, status, index) {
     earnedOrdinal: data.trackingBaseline.earnedCount + data.entries.length - position
   }));
   const latest = orderedEntries[0];
+  if (latest.progressEstimatePercent === null) {
+    fail("latest entry: progressEstimatePercent is required after progress tracking begins");
+  }
   if (latest.source.commit !== index.sourceCommitRef) fail("latest entry: source commit does not match pnp-index.json");
   if (latest.source.tree !== index.sourceTree) fail("latest entry: source tree does not match pnp-index.json");
   if (latest.source.statusCoordinate !== index.statusCoordinate
@@ -190,7 +213,36 @@ function validateUpdatesModel(data, status, index) {
   if (latest.source.publicationCoordinate !== index.publicSurfaceBaselineCoordinate) {
     fail("latest entry: publication coordinate does not match pnp-index.json");
   }
-  return { entries: orderedEntries, earnedCount: earnedIds.size };
+  return {
+    entries: orderedEntries,
+    earnedCount: earnedIds.size,
+    progressEstimatePercent: latest.progressEstimatePercent
+  };
+}
+
+function renderProgressSvg(model) {
+  const percent = model.progressEstimatePercent;
+  const trackX = 72;
+  const trackWidth = 816;
+  const fillWidth = trackWidth * percent / 100;
+  const headX = trackX + fillWidth;
+  const gridLines = Array.from({ length: 21 }, (_, index) => {
+    const x = trackX + trackWidth * index / 20;
+    return `  <path d="M${x} 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>`;
+  }).join("\n");
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="960" height="240" role="img" aria-labelledby="proof-progress-title proof-progress-desc">\n`
+    + `  <title id="proof-progress-title">Proof reconstruction progress estimate: ${percent} percent</title>\n`
+    + `  <desc id="proof-progress-desc">An editorial estimate of the known formalisation work completed. It is not a probability, confidence score, or statement of theorem correctness, and it may decrease as the remaining work becomes clearer.</desc>\n`
+    + `  <rect width="960" height="240" rx="28" fill="#f8f1e8"/>\n`
+    + `  <path d="M36 52h888" stroke="#6f193c" stroke-width="2" opacity="0.22"/>\n`
+    + `  <text x="72" y="84" fill="#371124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="23" font-weight="700">PROOF RECONSTRUCTION TAPE</text>\n`
+    + `  <rect x="${trackX}" y="112" width="${trackWidth}" height="52" rx="8" fill="#6f193c"/>\n`
+    + `  <rect x="${trackX}" y="112" width="${fillWidth}" height="52" rx="8" fill="#168b87"/>\n`
+    + `${gridLines}\n`
+    + `  <path d="M${headX} 101l11 11-11 11-11-11z" fill="#e3a72f" stroke="#371124" stroke-width="3"/>\n`
+    + `  <text x="72" y="207" fill="#6f193c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800">${percent}% ESTIMATED</text>\n`
+    + `  <text x="888" y="205" text-anchor="end" fill="#5d4b54" font-family="system-ui, sans-serif" font-size="16">editorial · revisable</text>\n`
+    + `</svg>\n`;
 }
 
 function renderTechnicalDetails(entry) {
@@ -212,10 +264,13 @@ function renderTechnicalDetails(entry) {
 function renderUpdatesHtml(model) {
   const articles = model.entries.map((entry) => {
     const paragraphs = entry.plainLanguage.map((paragraph) => `        <p>${escaped(paragraph)}</p>`).join("\n");
+    const progress = entry.progressEstimatePercent === null
+      ? ""
+      : `\n        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> ${entry.progressEstimatePercent}%.</p>`;
     return `      <article class="card" id="${escaped(entry.id)}" data-milestone-id="${escaped(entry.milestoneId)}">\n`
       + `        <div class="section-label"><time datetime="${escaped(entry.publishedAt)}">${escaped(entry.publishedAt.slice(0, 10))}</time> · earned milestone ${entry.earnedOrdinal}</div>\n`
       + `        <h2>${escaped(entry.title)}</h2>\n`
-      + `${paragraphs}\n`
+      + `${paragraphs}${progress}\n`
       + `${renderTechnicalDetails(entry)}\n`
       + `      </article>`;
   }).join("\n\n");
@@ -243,6 +298,12 @@ function renderUpdatesHtml(model) {
     + `      <p>A feed is a list your news-reader app checks for you. Copy this link into any app that supports RSS or Atom. No email address or PNP Labs account is needed.</p>\n`
     + `      <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the Atom/RSS feed</a><a class="btn secondary" href="status.html">View current status</a></div>\n`
     + `    </section>\n`
+    + `    <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">\n`
+    + `      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About ${model.progressEstimatePercent}% of the known formalisation work</h2>\n`
+    + `        <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>\n`
+    + `        <progress class="proof-progress-meter" max="100" value="${model.progressEstimatePercent}" aria-label="Estimated proof reconstruction progress: ${model.progressEstimatePercent} percent">${model.progressEstimatePercent}%</progress>\n`
+    + `      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: ${model.progressEstimatePercent} percent">\n`
+    + `    </div></section>\n`
     + `    <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">\n${articles}\n    </div></section>\n`
     + `  </main>\n`
     + `  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>compiled formal inventory</span></span></a><p>The repository does not currently establish P = NP.</p></div><nav class="footer-links" aria-label="Footer"><a href="status.html">Status</a><a href="updates.html">Updates</a><a href="paper.html">Report</a><a href="verify.html">Verify</a><a href="review.html">Review</a></nav></div></footer>\n`
@@ -253,8 +314,14 @@ function renderAtomFeed(model) {
   const updated = model.entries[0].publishedAt;
   const entries = model.entries.map((entry) => {
     const url = `${BASE_URL}/updates.html#${entry.id}`;
-    const summary = entry.plainLanguage.join(" ");
-    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
+    const progressText = entry.progressEstimatePercent === null
+      ? ""
+      : ` Editorial progress estimate at publication: ${entry.progressEstimatePercent} percent; this is not a probability, confidence score, or theorem-correctness claim.`;
+    const summary = `${entry.plainLanguage.join(" ")}${progressText}`;
+    const progressContent = entry.progressEstimatePercent === null
+      ? ""
+      : `<p data-progress-estimate-percent="${entry.progressEstimatePercent}">Editorial progress estimate at publication: ${entry.progressEstimatePercent}%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.</p>`;
+    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
     return `  <entry>\n`
       + `    <id>${escaped(url)}</id>\n`
       + `    <title>${escaped(entry.title)}</title>\n`
@@ -294,7 +361,8 @@ async function generateMilestoneUpdates({ root = repositoryRoot, write = false }
   const model = validateUpdatesModel(data, status, index);
   const outputs = new Map([
     [HTML_PATH, renderUpdatesHtml(model)],
-    [FEED_PATH, renderAtomFeed(model)]
+    [FEED_PATH, renderAtomFeed(model)],
+    [PROGRESS_SVG_PATH, renderProgressSvg(model)]
   ]);
   for (const [relativePath, expected] of outputs) {
     const target = path.join(root, relativePath);
@@ -334,6 +402,7 @@ export {
   generateMilestoneUpdates,
   parseArguments,
   renderAtomFeed,
+  renderProgressSvg,
   renderUpdatesHtml,
   validateUpdatesModel
 };

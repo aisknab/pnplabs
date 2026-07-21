@@ -9,6 +9,7 @@ import {
   generateMilestoneUpdates,
   parseArguments,
   renderAtomFeed,
+  renderProgressSvg,
   renderUpdatesHtml,
   validateUpdatesModel
 } from "../../tools/generate-milestone-updates.mjs";
@@ -32,18 +33,24 @@ test("current updates cover every milestone earned after the exact 39-milestone 
   const [data, status, index] = await fixtures();
   const model = validateUpdatesModel(data, status, index);
   assert.equal(data.trackingBaseline.earnedCount, 39);
-  assert.equal(model.earnedCount, 44);
-  assert.equal(model.entries.length, 5);
-  assert.equal(model.entries[0].earnedOrdinal, 44);
+  assert.equal(data.kind, "PNPLabsMilestoneUpdates2");
+  assert.equal(data.version, 2);
+  assert.equal(model.earnedCount, 45);
+  assert.equal(model.entries.length, 6);
+  assert.equal(model.entries[0].earnedOrdinal, 45);
   assert.equal(model.entries[0].milestone.requiredTheorems.length, 39);
-  assert.equal(model.entries[1].earnedOrdinal, 43);
-  assert.equal(model.entries[1].milestone.requiredTheorems.length, 41);
-  assert.equal(model.entries[2].earnedOrdinal, 42);
-  assert.equal(model.entries[2].milestone.requiredTheorems.length, 92);
-  assert.equal(model.entries[3].earnedOrdinal, 41);
-  assert.equal(model.entries[3].milestone.requiredTheorems.length, 75);
-  assert.equal(model.entries[4].earnedOrdinal, 40);
-  assert.equal(model.entries[4].milestone.requiredTheorems.length, 40);
+  assert.equal(model.entries[1].earnedOrdinal, 44);
+  assert.equal(model.entries[1].milestone.requiredTheorems.length, 39);
+  assert.equal(model.entries[2].earnedOrdinal, 43);
+  assert.equal(model.entries[2].milestone.requiredTheorems.length, 41);
+  assert.equal(model.entries[3].earnedOrdinal, 42);
+  assert.equal(model.entries[3].milestone.requiredTheorems.length, 92);
+  assert.equal(model.entries[4].earnedOrdinal, 41);
+  assert.equal(model.entries[4].milestone.requiredTheorems.length, 75);
+  assert.equal(model.entries[5].earnedOrdinal, 40);
+  assert.equal(model.entries[5].milestone.requiredTheorems.length, 40);
+  assert.equal(model.progressEstimatePercent, 30);
+  assert.deepEqual(data.entries.map((entry) => entry.progressEstimatePercent), [30, null, null, null, null, null]);
   assert.equal(model.entries[0].source.commit, index.sourceCommitRef);
   assert.equal(model.entries[0].source.tree, index.sourceTree);
 });
@@ -61,6 +68,10 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
   assert.ok(html.includes(model.entries[0].milestone.scope));
   assert.ok(html.includes(model.entries[0].milestone.nonClaim));
   assert.match(html, /Reviewed theorem pins:<\/strong> 39/u);
+  assert.match(html, /About 30% of the known formalisation work/u);
+  assert.match(html, /<progress[^>]+max="100"[^>]+value="30"/u);
+  assert.match(html, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
+  assert.match(html, /assets\/proof-progress\.svg/u);
   assert.match(html, /release seal and deployment provenance record/u);
   assert.doesNotMatch(html, /<form\b|<script[^>]+https?:\/\//iu);
 });
@@ -74,11 +85,64 @@ test("Atom output has stable IDs, canonical timestamps, escaped text, and no dup
   assert.ok(feed.includes(`<published>${data.entries[0].publishedAt}</published>`));
   assert.ok(feed.includes(`updates.html#${data.entries[0].id}`));
   assert.ok(feed.includes("Read the technical details on PNPLabs."));
+  assert.match(feed, /Editorial progress estimate at publication: 30 percent/u);
+  assert.match(feed, /data-progress-estimate-percent=&quot;30&quot;/u);
   assert.ok(!feed.includes(model.entries[0].milestone.scope));
 
   const escapedModel = structuredClone(model);
   escapedModel.entries[0].title = "Research & development";
   assert.match(renderAtomFeed(escapedModel), /Research &amp; development/u);
+});
+
+test("progress SVG is deterministic, accessible, themed, and free of active content", async () => {
+  const [data, status, index] = await fixtures();
+  const svg = renderProgressSvg(validateUpdatesModel(data, status, index));
+  assert.match(svg, /role="img" aria-labelledby="proof-progress-title proof-progress-desc"/u);
+  assert.match(svg, /Proof reconstruction progress estimate: 30 percent/u);
+  assert.match(svg, /#6f193c/u);
+  assert.match(svg, /#168b87/u);
+  assert.match(svg, /30% ESTIMATED/u);
+  assert.match(svg, /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/u);
+  assert.doesNotMatch(
+    svg.replace('xmlns="http://www.w3.org/2000/svg"', ''),
+    /<script\b|https?:\/\/|xlink:href|foreignObject/iu
+  );
+});
+
+test("progress validation rejects missing, hostile, out-of-range, and premature 100 percent values", async () => {
+  const [data, status, index] = await fixtures();
+
+  const missing = structuredClone(data);
+  delete missing.entries[0].progressEstimatePercent;
+  assert.throws(() => validateUpdatesModel(missing, status, index), /expected exact keys/u);
+
+  for (const value of [-1, 101, 30.5, "30", "<script>alert(1)<\/script>"]) {
+    const invalid = structuredClone(data);
+    invalid.entries[0].progressEstimatePercent = value;
+    assert.throws(() => validateUpdatesModel(invalid, status, index), /integer from 0 to 100/u);
+  }
+
+  const premature = structuredClone(data);
+  premature.entries[0].progressEstimatePercent = 100;
+  assert.throws(() => validateUpdatesModel(premature, status, index), /100 percent is forbidden/u);
+
+  const latestNull = structuredClone(data);
+  latestNull.entries[0].progressEstimatePercent = null;
+  assert.throws(() => validateUpdatesModel(latestNull, status, index), /latest entry.*required/u);
+
+  const historicalGap = structuredClone(data);
+  historicalGap.entries[1].progressEstimatePercent = null;
+  historicalGap.entries[2].progressEstimatePercent = 29;
+  assert.throws(() => validateUpdatesModel(historicalGap, status, index), /cannot appear after a historical null/u);
+});
+
+test("progress estimates are editorial and may decrease between tracked milestones", async () => {
+  const [data, status, index] = await fixtures();
+  const olderTracked = structuredClone(data);
+  olderTracked.entries[1].progressEstimatePercent = 35;
+  const model = validateUpdatesModel(olderTracked, status, index);
+  assert.equal(model.entries[0].progressEstimatePercent, 30);
+  assert.equal(model.entries[1].progressEstimatePercent, 35);
 });
 
 test("validation fails closed when an earned milestone has no update", async () => {
@@ -99,7 +163,9 @@ test("validation rejects duplicates, source drift, unsafe prose, and schema exte
   const [data, status, index] = await fixtures();
 
   const duplicate = structuredClone(data);
-  duplicate.entries.push(structuredClone(duplicate.entries[0]));
+  const duplicateEntry = structuredClone(duplicate.entries[0]);
+  duplicateEntry.progressEstimatePercent = null;
+  duplicate.entries.push(duplicateEntry);
   assert.throws(() => validateUpdatesModel(duplicate, status, index), /duplicate entry ID/u);
 
   const sourceDrift = structuredClone(data);
@@ -139,6 +205,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
   t.after(() => rm(root, { recursive: true, force: true }));
   await mkdir(path.join(root, "content"));
   await mkdir(path.join(root, "public"));
+  await mkdir(path.join(root, "assets"));
   for (const relativePath of [
     "content/milestone-updates.json",
     "public/pnp-status.json",
@@ -150,11 +217,15 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
   await generateMilestoneUpdates({ root, write: false });
   await writeFile(path.join(root, "updates.html"), "stale\n");
   await assert.rejects(generateMilestoneUpdates({ root, write: false }), /generated bytes are stale/u);
+
+  await generateMilestoneUpdates({ root, write: true });
+  await writeFile(path.join(root, "assets/proof-progress.svg"), "<svg>stale<\/svg>\n");
+  await assert.rejects(generateMilestoneUpdates({ root, write: false }), /proof-progress\.svg.*stale/u);
 });
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 5);
+  assert.equal(result.entries.length, 6);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {
@@ -173,6 +244,8 @@ test("updates are discoverable from every public HTML page and the locked-down s
   assert.doesNotMatch(SECURITY_HEADERS["Content-Security-Policy"], /https?:\/\//u);
   assert.match(await readFile(path.join(repositoryRoot, "sitemap.xml"), "utf8"), /https:\/\/pnplabs\.com\.au\/updates\.html/u);
   assert.match(await readFile(path.join(repositoryRoot, "index.html"), "utf8"), /Follow milestone updates/u);
+  assert.match(await readFile(path.join(repositoryRoot, "index.html"), "utf8"), /assets\/proof-progress\.svg/u);
+  assert.match(await readFile(path.join(repositoryRoot, "assets\/proof-progress.svg"), "utf8"), /30% ESTIMATED/u);
 });
 
 test("CLI accepts only generate mode or read-only check mode", () => {

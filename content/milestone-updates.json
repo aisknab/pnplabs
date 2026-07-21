@@ -1,6 +1,6 @@
 {
-  "kind": "PNPLabsMilestoneUpdates1",
-  "version": 1,
+  "kind": "PNPLabsMilestoneUpdates2",
+  "version": 2,
   "trackingBaseline": {
     "earnedCount": 39,
     "milestoneIds": [
@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-22-fifth-clause-padding",
+      "milestoneId": "concrete-cook-levin-builder-fifth-clause-padding-run",
+      "publishedAt": "2026-07-21T15:49:29Z",
+      "title": "The builder now crosses a whole intentionally empty section",
+      "plainLanguage": [
+        "This project is building, and checking, a step-by-step method that turns a computer task into a long list of simple yes-or-no checks. Some places in that list are deliberately left empty so every section has a predictable size. This update confirms that the builder can cross one whole empty section without changing the list and stop at the next exact boundary.",
+        "Think of a form with fixed-size boxes: the machine can now move across one unused box and arrive at the next unused box without writing anything. This is a small construction milestone. It does not reach the next meaningful check, finish the builder, or prove that P equals NP."
+      ],
+      "progressEstimatePercent": 30,
+      "source": {
+        "commit": "ad98889b806c4726e3d61c1ab58adf589782a971",
+        "tree": "87dc990e9d04ec050c93260d5d78aea5a5853ef8",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-22-68",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-22-COOK-LEVIN-BUILDER-FIFTH-CLAUSE-PADDING-RUN-67"
+      }
+    },
+    {
       "id": "2026-07-21-fourth-clause-padding",
       "milestoneId": "concrete-cook-levin-builder-fourth-clause-padding-run",
       "publishedAt": "2026-07-21T12:42:16Z",
@@ -55,6 +72,7 @@
         "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. The fourth checklist section was already complete. This milestone verifies that the builder can move across every blank position reserved after it without writing anything, stop at the exact boundary of the next reserved block, and fail safely if its workspace is damaged.",
         "Think of a document template with fixed-size boxes: the builder has crossed the unused part of the fourth box and landed at the next box, which is also intentionally blank. It has not started the next meaningful checklist section, finished the full builder, or established the project’s P-versus-NP claim."
       ],
+      "progressEstimatePercent": null,
       "source": {
         "commit": "5377b99658a756f60a8b36d19896be579761d8cd",
         "tree": "8218321ed58d3e617a472db560c9c0bfc6dd111c",
@@ -71,6 +89,7 @@
         "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. This milestone verifies that the checklist builder can add the closing marker to the fourth section, move to the first unused space after it, and stop safely if its workspace is damaged.",
         "Think of a document generator: the fourth section now has its heading, both required lines, and its closing mark. The larger document is still far from finished. This update does not complete the full checklist builder or establish the project’s P-versus-NP claim."
       ],
+      "progressEstimatePercent": null,
       "source": {
         "commit": "c9f4b9b684b18b5fed4a4256133bcfdb83f3ad75",
         "tree": "e69c76ac4a05c7895cde0ba70d6e1af22e5b7512",
@@ -87,6 +106,7 @@
         "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. This milestone verifies that the checklist builder can add the second complete item in the fourth section, move to the exact place where the section-ending marker belongs, and fail safely if its workspace is damaged.",
         "Think of a document generator: the fourth section now has two checked lines, but its closing marker has not yet been written. This is one small verified construction step. The fourth section and the full checklist are still unfinished, and the project’s much larger claim about P versus NP is not established."
       ],
+      "progressEstimatePercent": null,
       "source": {
         "commit": "3a56b27add47f7991b670e6e0fb9bb302d78cd04",
         "tree": "b17cdd6861c91234de106474b7e5fa03277cb37f",
@@ -103,6 +123,7 @@
         "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. This milestone verifies that the checklist builder can place the first complete item in the fourth section, stop exactly where the next item should begin, and fail safely if its workspace is damaged.",
         "Think of a document generator: the fourth section heading was already in place, and this update checks the first full line beneath it. This is one small verified construction step. The fourth section and the full checklist are still unfinished, and the project’s much larger claim about P versus NP is not established."
       ],
+      "progressEstimatePercent": null,
       "source": {
         "commit": "3112ca90d74d58116dc53ea5300082d0caa63c0e",
         "tree": "00affbe8d76a9c28b3d6aa98384d43e23aacd71f",
@@ -119,6 +140,7 @@
         "This project turns a computer program and its input into a long checklist of logical conditions. The work is being verified one small construction step at a time. This milestone confirms that the builder can add the marker that starts the fourth section of that checklist and then move to the correct place for the next symbol.",
         "In everyday terms, it is like checking that a document generator placed the next section break in exactly the right spot. It is useful progress, but it does not complete the fourth section, finish the full generator, or establish the project’s overall mathematical claim."
       ],
+      "progressEstimatePercent": null,
       "source": {
         "commit": "522c8da0f4add7b310659dd28c3dd3bd492d5337",
         "tree": "43ab837054ffd8dfb3d2bf34fa8458779c4ee4b0",

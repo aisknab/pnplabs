@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6431a458dbb72513518ecb2b64fb9cd5813323130f49c281df18cd3933da4c16');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'db681f0f80c03980c03daec19163be30662789e0c665cc283994d1ea3dc10ccd');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 44);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 45);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -1498,6 +1498,54 @@ test('Cook-Levin fourth-clause padding run requires all thirty-nine exact rows a
   assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
 });
 
+test('Cook-Levin fifth-clause padding run requires all thirty-nine exact rows and remains a sixth-rectangle boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-fifth-clause-padding-run');
+  assert.equal(milestone.requiredTheorems.length, 39);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.BuilderFifthClausePaddingRun.specification_padding_run')
+    .axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-fifth-clause-padding-run')
+    .theoremRows.find((row) => row.name.endsWith('.finalTokenBits_eq_encodedFormula_fourthClause'))
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunAxiomAuditPassed',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunCompiledRawMachineFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunExternalInputSizePolynomialFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunExactFormulaBitsFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunPaddingCountFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunDirectPaddingBlockFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunSixthClauseSlotStartFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunRetainedAdvancedTokenCoordinateFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunNoEmissionSpecificationFormalized',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunInputPrefixAppenderComposed',
+    'leanConcreteCookLevinBuilderFifthClausePaddingRunFailClosedBoundaryTimeoutFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCookLevinBuilderFifthClausePaddingRunAuditedDeclarationCount = 67;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+});
+
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
   const strippedRefinement = structuredClone(status);
   strippedRefinement.leanConcretePipelineRawRefinementFormalized = false;
@@ -1642,7 +1690,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'f59c5a127e0e8d635d5a7283cbc1c5cd70fd9ed2401008cf2164e96b3dda01d6'/);
+  assert.match(source, /const STATUS_SHA256 = '70522e3c68aa8decbe22f117fd947557b97441d5b171267dff6aa0d0f0f0872a'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -1667,12 +1715,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /9,906/);
-  assert.match(statusPage, /Forty-four scoped milestones/);
+  assert.match(statusPage, /10,049/);
+  assert.match(statusPage, /Forty-five scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /forty-three-page report generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /forty-four-page report generated from the compiled Lean inventory/i);
   assert.match(reportPage, /generated status payload is current publication-status authority/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
