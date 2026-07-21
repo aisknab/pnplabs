@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-21T12:42:16Z</updated>
+  <updated>2026-07-21T15:49:29Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-22-fifth-clause-padding</id>
+    <title>The builder now crosses a whole intentionally empty section</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-22-fifth-clause-padding"/>
+    <published>2026-07-21T15:49:29Z</published>
+    <updated>2026-07-21T15:49:29Z</updated>
+    <summary type="text">This project is building, and checking, a step-by-step method that turns a computer task into a long list of simple yes-or-no checks. Some places in that list are deliberately left empty so every section has a predictable size. This update confirms that the builder can cross one whole empty section without changing the list and stop at the next exact boundary. Think of a form with fixed-size boxes: the machine can now move across one unused box and arrive at the next unused box without writing anything. This is a small construction milestone. It does not reach the next meaningful check, finish the builder, or prove that P equals NP. Editorial progress estimate at publication: 30 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;This project is building, and checking, a step-by-step method that turns a computer task into a long list of simple yes-or-no checks. Some places in that list are deliberately left empty so every section has a predictable size. This update confirms that the builder can cross one whole empty section without changing the list and stop at the next exact boundary.&lt;/p&gt;&lt;p&gt;Think of a form with fixed-size boxes: the machine can now move across one unused box and arrive at the next unused box without writing anything. This is a small construction milestone. It does not reach the next meaningful check, finish the builder, or prove that P equals NP.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;30&quot;&gt;Editorial progress estimate at publication: 30%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-22-fifth-clause-padding&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-21-fourth-clause-padding</id>
     <title>The builder now clears the unused space after section four</title>

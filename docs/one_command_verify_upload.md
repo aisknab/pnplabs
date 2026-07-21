@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 5377b99658a756f60a8b36d19896be579761d8cd
+git checkout ad98889b806c4726e3d61c1ab58adf589782a971
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write

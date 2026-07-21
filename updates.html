@@ -26,7 +26,33 @@
       <p>A feed is a list your news-reader app checks for you. Copy this link into any app that supports RSS or Atom. No email address or PNP Labs account is needed.</p>
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the Atom/RSS feed</a><a class="btn secondary" href="status.html">View current status</a></div>
     </section>
+    <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 30% of the known formalisation work</h2>
+        <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
+        <progress class="proof-progress-meter" max="100" value="30" aria-label="Estimated proof reconstruction progress: 30 percent">30%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 30 percent">
+    </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-22-fifth-clause-padding" data-milestone-id="concrete-cook-levin-builder-fifth-clause-padding-run">
+        <div class="section-label"><time datetime="2026-07-21T15:49:29Z">2026-07-21</time> · earned milestone 45</div>
+        <h2>The builder now crosses a whole intentionally empty section</h2>
+        <p>This project is building, and checking, a step-by-step method that turns a computer task into a long list of simple yes-or-no checks. Some places in that list are deliberately left empty so every section has a predictable size. This update confirms that the builder can cross one whole empty section without changing the list and stop at the next exact boundary.</p>
+        <p>Think of a form with fixed-size boxes: the machine can now move across one unused box and arrive at the next unused box without writing anything. This is a small construction milestone. It does not reach the next meaningful check, finish the builder, or prove that P equals NP.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 30%.</p>
+        <details>
+          <summary>Technical details</summary>
+          <p><strong>Milestone:</strong> <code>concrete-cook-levin-builder-fifth-clause-padding-run</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every fixed concrete polynomial-time verifier, one literal finite work machine composes the fourth-clause padding predecessor with two structurally generated unary evaluators, the reused 25-rule PaddingCountdown machine, and three total nine-symbol WorkChain bridges. Its table has exactly 4380 plus fourteen inherited/generated unary-evaluator rule counts. For every raw bitstring it traverses exactly FormulaTokensPerClause padding opportunities in the intentionally empty fifth fixed-width clause rectangle without emitting a token, preserves encodedFormula.take (2 * (FormulaWidth + 36)), and retains coordinate FormulaVariableSlotBound + 1 + 5 * FormulaTokensPerClause. Direct schedule lookup and the specification cursor prove that every traversed fifth-slot opportunity and the first opportunity in the intentionally empty sixth slot are padding. The external compiled bound is BuilderFourthClausePaddingRun.rawTimeBound + 18 + six times the count-evaluator work, countdown bound, and target-evaluator work. Compiled exact, bounded, blank-equivalent, accepting, non-timeout, malformed-countdown, unlaunched-predecessor, and one-step-short results are proved. All 65 new public declarations and three reused countdown interfaces are axiom-audited: 28 have empty closure, 9 use only propext, and 31 use only propext and Quot.sound, with no project axiom or Classical.choice.</p>
+          <p><strong>Boundary:</strong> This milestone traverses only the intentionally empty fifth clause rectangle and retains the first opportunity in the intentionally empty sixth clause rectangle. It does not traverse that sixth rectangle, reach the next constraint, emit another token, implement a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, emit the remaining formula body, construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 39</p>
+          <p><strong>Core source:</strong> commit <code>ad98889b806c4726e3d61c1ab58adf589782a971</code>, tree <code>87dc990e9d04ec050c93260d5d78aea5a5853ef8</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-22-68</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-22-COOK-LEVIN-BUILDER-FIFTH-CLAUSE-PADDING-RUN-67</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-21-fourth-clause-padding" data-milestone-id="concrete-cook-levin-builder-fourth-clause-padding-run">
         <div class="section-label"><time datetime="2026-07-21T12:42:16Z">2026-07-21</time> · earned milestone 44</div>
         <h2>The builder now clears the unused space after section four</h2>
