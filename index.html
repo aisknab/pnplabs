@@ -59,7 +59,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-21-64</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-21-65</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -67,7 +67,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>db345c0483274feeb05ed3fd30c973ea8c3dfa06688b2a4b1f3dc5b991ef6406</code>
+        <code>84ba24b2779664619022bc89cacedbd030f3a1cbfebe944ad2ed81351c7191c5</code>
       </div>
     </div>
 
@@ -75,14 +75,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 9,474 exported public declarations, including 5,036 theorem-kind declarations and 3,178 assumption-free theorem-kind declarations across 84 modules. Forty-one scoped publication milestones are earned, now including the complete first negative literal <code>F T F</code> in clause four and retention of the following <code>F</code> coordinate; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 9,661 exported public declarations, including 5,173 theorem-kind declarations and 3,215 assumption-free theorem-kind declarations across 85 modules. Forty-two scoped publication milestones are earned, now including the complete first and second negative literals <code>F T F</code> and <code>F T T F</code> in clause four and retention of the following <code>Finish</code> coordinate; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>BuilderFourthClauseFirstLiteralPrefix.workRunExact</code> emits the complete first negative literal <code>F T F</code> in clause four, preserves <code>encodedFormula.take (2 * (FormulaWidth + 31))</code>, and retains <code>FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 4</code>, where direct lookup is the next <code>F</code>. It does not emit that following <code>F</code>, complete clause four, implement a general dynamic formula cursor, or emit the remaining formula body. The complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>BuilderFourthClauseSecondLiteralPrefix.workRunExact</code> emits the complete second negative literal <code>F T T F</code> in clause four, preserves <code>encodedFormula.take (2 * (FormulaWidth + 35))</code>, and retains <code>FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 8</code>, where direct lookup is the next <code>Finish</code>. It does not emit that following <code>Finish</code>, complete clause four, implement a general dynamic formula cursor, or emit the remaining formula body. The complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -112,7 +112,7 @@ concretePublicationGate.passed = false</pre>
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="updates.html">Follow milestone updates</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current forty-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current forty-one-page report</a>
         </div>
       </div>
 
