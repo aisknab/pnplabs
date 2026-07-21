@@ -47,6 +47,22 @@
   },
   "entries": [
     {
+      "id": "2026-07-21-fourth-clause-complete",
+      "milestoneId": "concrete-cook-levin-builder-fourth-clause-prefix",
+      "publishedAt": "2026-07-21T09:45:32Z",
+      "title": "The fourth checklist section is now complete",
+      "plainLanguage": [
+        "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. This milestone verifies that the checklist builder can add the closing marker to the fourth section, move to the first unused space after it, and stop safely if its workspace is damaged.",
+        "Think of a document generator: the fourth section now has its heading, both required lines, and its closing mark. The larger document is still far from finished. This update does not complete the full checklist builder or establish the project’s P-versus-NP claim."
+      ],
+      "source": {
+        "commit": "c9f4b9b684b18b5fed4a4256133bcfdb83f3ad75",
+        "tree": "e69c76ac4a05c7895cde0ba70d6e1af22e5b7512",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-21-66",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-21-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-PREFIX-65"
+      }
+    },
+    {
       "id": "2026-07-21-fourth-clause-second-literal",
       "milestoneId": "concrete-cook-levin-builder-fourth-clause-second-literal-prefix",
       "publishedAt": "2026-07-21T02:28:32Z",
