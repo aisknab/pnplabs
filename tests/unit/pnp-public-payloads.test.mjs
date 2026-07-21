@@ -758,7 +758,7 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 47);
+  assert.equal(index.version, 48);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, 'e46ac7407301ed71483f34a5300e894557315863');
   assert.equal(index.sourceTree, 'b17cdd6861c91234de106474b7e5fa03277cb37f');

@@ -31,9 +31,9 @@ const SOURCE_CLOSURE_SHA256 = '78a490d5d59cea47182bafb1875a24f1c2cd9d51ac1902cf1
 const INVENTORY_COUNTS = Object.freeze({
   declarations: 9661,
   theorems: 5173,
-  assumptionFreeTheorems: 3178,
+  assumptionFreeTheorems: 3215,
   excludedPrivateDeclarations: 3509,
-  modules: 84,
+  modules: 85,
   axioms: 4,
 });
 
