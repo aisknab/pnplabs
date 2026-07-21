@@ -2424,7 +2424,7 @@ function assertCurrentManifest(manifest) {
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
   if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-21-67" || manifest.source?.formalPublicationMapSha256 !== "330d204ca47ddd6dbd44e6b83dbd0796559afea5c3592775c67899e3028cc0f9" || manifest.source?.leanSourceClosureSha256 !== "2a69acbcb5db358a7b85d0994847dd23a0fddc749cf9e3c73febc55e240ba581") fail("current manifest publication-map identity mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 42) fail("current report must have forty-three pages");
+  if (manifest.artifacts?.report?.pageCount !== 43) fail("current report must have forty-three pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
   const boundary = manifest.publicationBoundary || {};

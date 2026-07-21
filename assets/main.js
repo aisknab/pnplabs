@@ -2942,7 +2942,7 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 303,
-    definition: 3928,
+    definition: 3962,
     inductive: 135,
     opaque: 0,
     quotient: 0,

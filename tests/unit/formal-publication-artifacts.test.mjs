@@ -43,7 +43,7 @@ test("exact current artifact seal verifies eight reviewed files", () => {
   assert.equal(result.coreCommit, "5377b99658a756f60a8b36d19896be579761d8cd");
 });
 
-test("current release is pinned, forty-three-page, exposes the fourth-clause second literal, and fails closed", () => {
+test("current release is pinned, forty-three-page, exposes the fourth-clause padding run, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
   assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-21-50");
   assert.equal(release.source.commit, "5377b99658a756f60a8b36d19896be579761d8cd");
@@ -51,7 +51,7 @@ test("current release is pinned, forty-three-page, exposes the fourth-clause sec
   assert.equal(release.source.tree, "8218321ed58d3e617a472db560c9c0bfc6dd111c");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 42);
+  assert.equal(release.artifacts.report.pageCount, 43);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
