@@ -1229,7 +1229,7 @@ function makeProject(t) {
         sha256: sha256(Buffer.from(inventory))
       },
       report: {
-        pageCount: 42,
+        pageCount: 43,
         pdf: { publicPaths: [] },
         tex: { publicPaths: [] }
       }
