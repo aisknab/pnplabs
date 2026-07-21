@@ -47,6 +47,22 @@
   },
   "entries": [
     {
+      "id": "2026-07-21-fourth-clause-padding",
+      "milestoneId": "concrete-cook-levin-builder-fourth-clause-padding-run",
+      "publishedAt": "2026-07-21T12:42:16Z",
+      "title": "The builder now clears the unused space after section four",
+      "plainLanguage": [
+        "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. The fourth checklist section was already complete. This milestone verifies that the builder can move across every blank position reserved after it without writing anything, stop at the exact boundary of the next reserved block, and fail safely if its workspace is damaged.",
+        "Think of a document template with fixed-size boxes: the builder has crossed the unused part of the fourth box and landed at the next box, which is also intentionally blank. It has not started the next meaningful checklist section, finished the full builder, or established the project’s P-versus-NP claim."
+      ],
+      "source": {
+        "commit": "5377b99658a756f60a8b36d19896be579761d8cd",
+        "tree": "8218321ed58d3e617a472db560c9c0bfc6dd111c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-21-67",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-21-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-PADDING-RUN-66"
+      }
+    },
+    {
       "id": "2026-07-21-fourth-clause-complete",
       "milestoneId": "concrete-cook-levin-builder-fourth-clause-prefix",
       "publishedAt": "2026-07-21T09:45:32Z",

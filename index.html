@@ -59,7 +59,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-21-66</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-21-67</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -67,7 +67,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>a273572123347ada7b362371a3f30fe17c8c0ac359e3d440d6fd4583eaffeedf</code>
+        <code>6431a458dbb72513518ecb2b64fb9cd5813323130f49c281df18cd3933da4c16</code>
       </div>
     </div>
 
@@ -75,14 +75,14 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 9,758 exported public declarations, including 5,253 theorem-kind declarations and 3,229 assumption-free theorem-kind declarations across 86 modules. Forty-three scoped publication milestones are earned, now including the complete fourth clause and retention of its first padding coordinate; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 9,906 exported public declarations, including 5,367 theorem-kind declarations and 3,252 assumption-free theorem-kind declarations across 87 modules. Forty-four scoped publication milestones are earned, now including exact traversal of every unused slot after the complete fourth clause and arrival at the intentionally blank fifth clause rectangle; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>BuilderFourthClausePrefix.workRunExact</code> emits the <code>Finish</code> that completes clause four, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, and retains <code>FormulaVariableSlotBound + 1 + 3 * FormulaTokensPerClause + 9</code>, where direct lookup is the first padding token. It does not traverse clause-four padding, implement a general dynamic formula cursor, or emit the remaining formula body. The complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
+        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>BuilderFourthClausePaddingRun.workRunExact</code> traverses all remaining clause-four padding opportunities without emitting a token, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, and retains <code>FormulaVariableSlotBound + 1 + 4 * FormulaTokensPerClause</code>, where direct lookup is padding in the intentionally empty fifth clause rectangle. It does not traverse that empty rectangle, implement a general dynamic formula cursor, or emit the remaining formula body. The complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
 
         <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <div class="boundary-head">
@@ -112,7 +112,7 @@ concretePublicationGate.passed = false</pre>
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="updates.html">Follow milestone updates</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current forty-two-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current forty-three-page report</a>
         </div>
       </div>
 
