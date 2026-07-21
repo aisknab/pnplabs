@@ -828,7 +828,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 5367);
   assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 3252);
   assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 3630);
-  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 86);
+  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 87);
   assert.equal(index.claimBoundary.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceAxiomAuditPassed, true);

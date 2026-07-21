@@ -22,7 +22,7 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'theorems: 5367',
     'assumptionFreeTheorems: 3252',
     'excludedPrivateDeclarations: 3630',
-    'modules: 86',
+    'modules: 87',
     'axioms: 4',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language',
