@@ -47,6 +47,22 @@
   },
   "entries": [
     {
+      "id": "2026-07-21-fourth-clause-second-literal",
+      "milestoneId": "concrete-cook-levin-builder-fourth-clause-second-literal-prefix",
+      "publishedAt": "2026-07-21T02:28:32Z",
+      "title": "The fourth section now contains its second complete item",
+      "plainLanguage": [
+        "To check a computer program with mathematics, this project turns the program and its input into a long checklist of yes-or-no conditions. This milestone verifies that the checklist builder can add the second complete item in the fourth section, move to the exact place where the section-ending marker belongs, and fail safely if its workspace is damaged.",
+        "Think of a document generator: the fourth section now has two checked lines, but its closing marker has not yet been written. This is one small verified construction step. The fourth section and the full checklist are still unfinished, and the project’s much larger claim about P versus NP is not established."
+      ],
+      "source": {
+        "commit": "3a56b27add47f7991b670e6e0fb9bb302d78cd04",
+        "tree": "b17cdd6861c91234de106474b7e5fa03277cb37f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-21-65",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-21-COOK-LEVIN-BUILDER-FOURTH-CLAUSE-SECOND-LITERAL-PREFIX-64"
+      }
+    },
+    {
       "id": "2026-07-21-fourth-clause-first-literal",
       "milestoneId": "concrete-cook-levin-builder-fourth-clause-first-literal-prefix",
       "publishedAt": "2026-07-20T15:50:45Z",
