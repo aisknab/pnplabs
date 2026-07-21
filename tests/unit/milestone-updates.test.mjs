@@ -32,14 +32,16 @@ test("current updates cover every milestone earned after the exact 39-milestone 
   const [data, status, index] = await fixtures();
   const model = validateUpdatesModel(data, status, index);
   assert.equal(data.trackingBaseline.earnedCount, 39);
-  assert.equal(model.earnedCount, 42);
-  assert.equal(model.entries.length, 3);
-  assert.equal(model.entries[0].earnedOrdinal, 42);
-  assert.equal(model.entries[0].milestone.requiredTheorems.length, 92);
-  assert.equal(model.entries[1].earnedOrdinal, 41);
-  assert.equal(model.entries[1].milestone.requiredTheorems.length, 75);
-  assert.equal(model.entries[2].earnedOrdinal, 40);
-  assert.equal(model.entries[2].milestone.requiredTheorems.length, 40);
+  assert.equal(model.earnedCount, 43);
+  assert.equal(model.entries.length, 4);
+  assert.equal(model.entries[0].earnedOrdinal, 43);
+  assert.equal(model.entries[0].milestone.requiredTheorems.length, 41);
+  assert.equal(model.entries[1].earnedOrdinal, 42);
+  assert.equal(model.entries[1].milestone.requiredTheorems.length, 92);
+  assert.equal(model.entries[2].earnedOrdinal, 41);
+  assert.equal(model.entries[2].milestone.requiredTheorems.length, 75);
+  assert.equal(model.entries[3].earnedOrdinal, 40);
+  assert.equal(model.entries[3].milestone.requiredTheorems.length, 40);
   assert.equal(model.entries[0].source.commit, index.sourceCommitRef);
   assert.equal(model.entries[0].source.tree, index.sourceTree);
 });
@@ -56,7 +58,7 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
   assert.doesNotMatch(html, /<details\s+open/u);
   assert.ok(html.includes(model.entries[0].milestone.scope));
   assert.ok(html.includes(model.entries[0].milestone.nonClaim));
-  assert.match(html, /Reviewed theorem pins:<\/strong> 92/u);
+  assert.match(html, /Reviewed theorem pins:<\/strong> 41/u);
   assert.match(html, /release seal and deployment provenance record/u);
   assert.doesNotMatch(html, /<form\b|<script[^>]+https?:\/\//iu);
 });
@@ -150,7 +152,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 3);
+  assert.equal(result.entries.length, 4);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {
