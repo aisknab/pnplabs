@@ -44,17 +44,17 @@ test("current updates cover every milestone earned after the exact 39-milestone 
   assert.equal(model.entries[2].earnedOrdinal, 48);
   assert.equal(model.entries[2].milestone.requiredTheorems.length, 40);
   assert.equal(model.entries[3].earnedOrdinal, 47);
-  assert.equal(model.entries[3].milestone.requiredTheorems.length, 39);
+  assert.equal(model.entries[3].milestone.requiredTheorems.length, 40);
   assert.equal(model.entries[4].earnedOrdinal, 46);
   assert.equal(model.entries[4].milestone.requiredTheorems.length, 39);
   assert.equal(model.entries[5].earnedOrdinal, 45);
   assert.equal(model.entries[5].milestone.requiredTheorems.length, 39);
   assert.equal(model.entries[6].earnedOrdinal, 44);
-  assert.equal(model.entries[6].milestone.requiredTheorems.length, 41);
+  assert.equal(model.entries[6].milestone.requiredTheorems.length, 39);
   assert.equal(model.entries[7].earnedOrdinal, 43);
-  assert.equal(model.entries[7].milestone.requiredTheorems.length, 92);
+  assert.equal(model.entries[7].milestone.requiredTheorems.length, 41);
   assert.equal(model.entries[8].earnedOrdinal, 42);
-  assert.equal(model.entries[8].milestone.requiredTheorems.length, 75);
+  assert.equal(model.entries[8].milestone.requiredTheorems.length, 92);
   assert.equal(model.entries[9].earnedOrdinal, 41);
   assert.equal(model.entries[9].milestone.requiredTheorems.length, 75);
   assert.equal(model.entries[10].earnedOrdinal, 40);
@@ -241,7 +241,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 10);
+  assert.equal(result.entries.length, 11);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {

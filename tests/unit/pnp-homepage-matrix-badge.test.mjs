@@ -13,7 +13,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'Current result: P = NP is not established.',
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
-    "The machine writes the next mark of the first item's number",
+    'The machine writes the next mark of the first item&#39;s number',
     'Only that one additional number mark is added.',
     'BuilderSecondConstraintFirstLiteralSecondUnaryUnitStep.workRunExact',
     'encodedFormula.take (2 * (FormulaWidth + 40))',

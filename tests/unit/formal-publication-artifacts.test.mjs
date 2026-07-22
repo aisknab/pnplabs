@@ -43,7 +43,7 @@ test("exact current artifact seal verifies eight reviewed files", () => {
   assert.equal(result.coreCommit, "2079ea0df337d413c2402a3820087aea4aca9efa");
 });
 
-test("current release is pinned, fifty-page, exposes the second-constraint first-literal first unary unit, and fails closed", () => {
+test("current release is pinned, fifty-page, exposes the second-constraint first-literal second unary unit, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
   assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-23-56");
   assert.equal(release.source.commit, "2079ea0df337d413c2402a3820087aea4aca9efa");
