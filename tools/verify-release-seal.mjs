@@ -2286,8 +2286,8 @@ const EXPECTED_FILES = [
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 400920,
-    sha256: "0f9d3995f2208eb697193252ba5130d4d9f7cd0c42a4913f7cbd668a094e0842",
+    bytes: 416391,
+    sha256: "36c7f56b16e4c5511d6aedfaad17a4c8e681e601a4fb90c6f51cbb0353fb522b",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {

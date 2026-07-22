@@ -239,7 +239,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 9);
+  assert.equal(result.entries.length, 10);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {
