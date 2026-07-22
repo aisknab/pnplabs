@@ -54,14 +54,14 @@ test('plain-language orientation is static and available before technical depth'
     'Does this project prove that P equals NP?',
     'What is P versus NP?',
     'What does “machine-checked” mean?',
-    'What does the 35% tracker mean?',
+    'What does the 36% tracker mean?',
     'How can I follow new milestones?',
   ]) assert.ok(faq.includes(question), question);
 
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
-  assert.match(paper, /The current 49-page report is generated from the compiled Lean inventory/u);
+  assert.match(paper, /The current 50-page report is generated from the compiled Lean inventory/u);
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
   assert.match(verify, /id="reproduce"/u);
@@ -76,7 +76,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 52 formal milestone records/u);
+  assert.match(status, /Show all 53 formal milestone records/u);
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
@@ -91,10 +91,12 @@ test('updates expose a provider-free feed and a clearly qualified progress estim
   assert.match(updates, /https:\/\/pnplabs\.com\.au\/updates\.xml/u);
   assert.match(updates, /data-copy="#feed-url"/u);
   assert.match(updates, /No email address or PNP Labs account is needed/u);
-  assert.match(updates, /About 35% of the known formalisation work/u);
+  assert.match(updates, /About 36% of the known formalisation work/u);
   assert.match(updates, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
   assert.match(feed, /<link rel="self" type="application\/atom\+xml" href="https:\/\/pnplabs\.com\.au\/updates\.xml"\/>/u);
-  assert.match(svg, /35% ESTIMATED/u);
+  assert.match(svg, /36% ESTIMATED/u);
+  assert.match(updates, /<progress[^>]+value="36"[^>]+aria-label="Estimated proof reconstruction progress: 36 percent"/u);
+  assert.match(await read('index.html'), /alt="Estimated proof reconstruction progress: 36 percent"/u);
   assert.match(svg, /editorial · revisable/u);
 });
 
