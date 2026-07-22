@@ -59,7 +59,7 @@
     <div class="release-strip">
       <div>
         <span>Current inventory</span>
-        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-22-68</strong>
+        <strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-22-69</strong>
       </div>
       <div>
         <span>Current status</span>
@@ -67,7 +67,7 @@
       </div>
       <div>
         <span>Inventory SHA256</span>
-        <code>db681f0f80c03980c03daec19163be30662789e0c665cc283994d1ea3dc10ccd</code>
+        <code>aa3ab0b201bee24ed42d4d8bd79cb9dde9ee9c1703c27710c25d64140037cf48</code>
       </div>
     </div>
 
@@ -75,20 +75,19 @@
       <div class="artifact-copy">
         <span class="eyebrow">Formal reconstruction in progress</span>
         <h1 id="hero-title">The repository does not currently establish P = NP.</h1>
-        <p class="lede">The compiled Lean environment contains 10,049 exported public declarations, including 5,476 theorem-kind declarations and 3,272 assumption-free theorem-kind declarations across 88 modules. Forty-five scoped publication milestones are earned, now including exact traversal of the entire intentionally empty fifth clause rectangle and arrival at the intentionally empty sixth clause rectangle; three global milestones remain unformalized.</p>
+        <p class="lede">The compiled Lean environment contains 10,207 exported public declarations, including 5,600 theorem-kind declarations and 3,294 assumption-free theorem-kind declarations across 89 modules. Forty-six scoped publication milestones are earned, now including exact traversal of every remaining empty clause rectangle in the first scheduled constraint and arrival at the separator beginning the second scheduled constraint; three global milestones remain unformalized.</p>
         <div class="checker-trace">
           <span>raw refinement checked</span>
           <span>Cook-Levin semantics checked</span>
           <strong>gate closed</strong>
         </div>
 
-        <p class="review-note"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>BuilderFifthClausePaddingRun.workRunExact</code> traverses the entire intentionally empty fifth clause rectangle without emitting a token, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, and retains <code>FormulaVariableSlotBound + 1 + 5 * FormulaTokensPerClause</code>, where direct lookup is padding in the intentionally empty sixth clause rectangle. It does not traverse that sixth rectangle, implement a general dynamic formula cursor, or emit the remaining formula body. The complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
-
-        <div class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
-          <div class="boundary-head">
-            <span>Current theorem boundary</span>
+        <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
+          <summary class="boundary-head">
+            <span>Current theorem boundary · gate closed · 6 blockers</span>
             <strong data-formal-status-label>not established</strong>
-          </div>
+          </summary>
+          <p class="boundary-copy"><strong>Current status:</strong> <code>PNP.Concrete.FinalUniversalDesign.cnfSATInNP</code> proves concrete CNF-SAT membership in NP. <code>BuilderFirstConstraintPaddingRun.workRunExact</code> traverses exactly <code>(FormulaVariableSlotBound - 2) * (FormulaVariableSlotBound + 2) * FormulaTokensPerClause</code> remaining empty token opportunities in the first scheduled constraint without emitting a token, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, and retains <code>FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause</code>, where direct lookup is the <code>Sep</code> beginning the second scheduled constraint. It observes but does not emit that separator, implement a general dynamic formula cursor, or emit the remaining formula body. The complete raw builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent. Four project axioms and six blockers remain.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -104,15 +103,14 @@ concretePublicationGate.passed = false</pre>
             <div><span>Axiom audit</span><strong>not passed</strong></div>
             <div><span>Formal blockers</span><strong>6 active</strong></div>
           </div>
-        </div>
-
-        <p class="review-note" data-formal-status-note><strong>Trust boundary:</strong> Legacy JavaScript checker acceptance is historical assertion-record evidence only. It is not a formal proof of the named mathematical propositions. Status loading fails closed.</p>
+          <p class="boundary-copy" data-formal-status-note><strong>Trust boundary:</strong> Legacy JavaScript checker acceptance is historical assertion-record evidence only. It is not a formal proof of the named mathematical propositions. Status loading fails closed.</p>
+        </details>
 
         <div class="hero-actions">
           <a class="btn primary" href="status.html">View current status</a>
           <a class="btn secondary" href="updates.html">Follow milestone updates</a>
           <a class="btn secondary" href="paper.html">Read the review guide</a>
-          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current forty-four-page report</a>
+          <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Current forty-five-page report</a>
         </div>
       </div>
 
@@ -123,7 +121,7 @@ concretePublicationGate.passed = false</pre>
         </a>
         <div class="artifact-meta">
           <h2>Current formal status report</h2>
-          <p>Forty-four pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
+          <p>Forty-five pages · generated from compiled Lean inventory · gate closed · no P = NP theorem emitted.</p>
         </div>
       </aside>
     </div>
@@ -134,11 +132,11 @@ concretePublicationGate.passed = false</pre>
     <div class="proof-progress-card">
       <div>
         <span class="eyebrow">Best current estimate</span>
-        <h2 id="home-progress-title">About 30% of the known formalisation work</h2>
+        <h2 id="home-progress-title">About 32% of the known formalisation work</h2>
         <p>This is a revisable editorial planning estimate, not a probability, confidence score, or mathematical claim. See each milestone update for the plain-language explanation and exact technical boundary.</p>
         <div class="hero-actions"><a class="btn primary" href="updates.html">Follow milestone updates</a><a class="btn secondary" href="updates.xml" type="application/atom+xml">Subscribe to the feed</a></div>
       </div>
-      <a href="updates.html" aria-label="Open milestone updates and the proof progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 30 percent"></a>
+      <a href="updates.html" aria-label="Open milestone updates and the proof progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 32 percent"></a>
     </div>
   </section>
   <section id="significance" class="section impact-section" aria-labelledby="impact-title">

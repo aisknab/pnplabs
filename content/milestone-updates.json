@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-22-first-constraint-padding",
+      "milestoneId": "concrete-cook-levin-builder-first-constraint-padding-run",
+      "publishedAt": "2026-07-22T02:20:57Z",
+      "title": "The builder now reaches the second major checklist block",
+      "plainLanguage": [
+        "This project is checking a step-by-step method that turns a computer task into a long checklist of simple yes-or-no conditions. Each major block has a fixed amount of reserved space. This update confirms that the builder can cross all the unused space left in the first major block without changing the checklist, then stop at the exact marker where the second block begins.",
+        "Think of completing the first section of a very large fixed-size form and moving across every unused box until you reach the next section divider. The divider is seen but not printed by this step, and the next item is not started. The full builder is still incomplete, and this update does not prove that P equals NP."
+      ],
+      "progressEstimatePercent": 32,
+      "source": {
+        "commit": "5a2cf2b0bea9568d7361336fa5f8f197246a2f9c",
+        "tree": "2871fea51d6f6fc0d150a71d67e5eb99458ba26e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-22-69",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-22-COOK-LEVIN-BUILDER-FIRST-CONSTRAINT-PADDING-RUN-68"
+      }
+    },
+    {
       "id": "2026-07-22-fifth-clause-padding",
       "milestoneId": "concrete-cook-levin-builder-fifth-clause-padding-run",
       "publishedAt": "2026-07-21T15:49:29Z",
