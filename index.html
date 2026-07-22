@@ -65,10 +65,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The machine starts writing the first item's number</h2>
-          <p>Imagine a machine writing a long checklist, one mark at a time. It had already placed the divider for the second major block and marked that its first item should be used as written. This milestone verifies that it now writes the first mark of that item's number and moves to the next mark.</p>
-          <p>Only that one number mark is added. The machine has not written the next mark, completed the item, finished the second block, or finished the full checklist. This update does not prove that P equals NP.</p>
-          <a href="updates.html#2026-07-23-second-constraint-first-literal-first-unary-unit">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The machine writes the next mark of the first item&#39;s number</h2>
+          <p>Imagine a machine writing a long checklist, one mark at a time. It had already written the first mark of the first item&#39;s number in the second major block. This milestone verifies that it now writes the second mark and moves to the exact place for the third mark.</p>
+          <p>Only that one additional number mark is added. The machine has not written the third mark, completed the item, finished the second block, or finished the full checklist. This update does not prove that P equals NP.</p>
+          <a href="updates.html#2026-07-23-second-constraint-first-literal-second-unary-unit">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -76,7 +76,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>BuilderSecondConstraintFirstLiteralFirstUnaryUnitStep.workRunExact</code> composes the completed sign step with the selected <code>T</code> appender and cursor advance. It emits exactly the first unary <code>T</code> of the second constraint's first variable index, preserves <code>encodedFormula.take (2 * (FormulaWidth + 39))</code>, and retains the following coordinate, whose direct token is the second unary <code>T</code>. It observes but does not emit that next token, complete the literal, traverse the second constraint, implement a general dynamic formula cursor, complete the formula builder, or package the polynomial reduction.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>BuilderSecondConstraintFirstLiteralSecondUnaryUnitStep.workRunExact</code> composes the completed first-unary-unit step with the selected <code>T</code> appender and cursor advance. It emits exactly the second unary <code>T</code> of the second constraint's first variable index, preserves <code>encodedFormula.take (2 * (FormulaWidth + 40))</code>, and retains the following coordinate, whose direct token is the third unary <code>T</code>. It observes but does not emit that next token, complete the literal, traverse the second constraint, implement a general dynamic formula cursor, complete the formula builder, or package the polynomial reduction.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -85,7 +85,7 @@ rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
-leanConcreteCookLevinBuilderSecondConstraintFirstLiteralFirstUnaryUnitStepFormalized = true
+leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSecondUnaryUnitStepFormalized = true
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -99,9 +99,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-23-72</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-23-73</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>02229cdf19b7d630a68733a80a4bad00f7d9c7ae3bfd64f42095e5b2c5e4f474</code></div>
+            <div><span>Inventory SHA-256</span><code>232f95a1046a175eab3cecaaec3a0a9ed67515d123d407ddb08a813654d0f5a0</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -114,11 +114,11 @@ concretePublicationGate.passed = false</pre>
     <div class="proof-progress-card">
       <div>
         <span class="eyebrow">Best current estimate</span>
-        <h2 id="home-progress-title">About 35% of the known formalisation work</h2>
+        <h2 id="home-progress-title">About 36% of the known formalisation work</h2>
         <p>This is a revisable estimate of reconstruction work completed—not the chance that the claim is correct, a confidence score, or a mathematical result. It can go down if new work is discovered.</p>
         <div class="hero-actions"><a class="btn primary" href="updates.html">See how progress is counted</a><a class="btn secondary" href="updates.xml" type="application/atom+xml">Subscribe to updates</a></div>
       </div>
-      <a href="updates.html" aria-label="Open milestone updates and the progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 34 percent"></a>
+      <a href="updates.html" aria-label="Open milestone updates and the progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 36 percent"></a>
     </div>
   </section>
 
