@@ -27,12 +27,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the Atom/RSS feed</a><a class="btn secondary" href="status.html">View current status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 30% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 32% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="30" aria-label="Estimated proof reconstruction progress: 30 percent">30%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 30 percent">
+        <progress class="proof-progress-meter" max="100" value="32" aria-label="Estimated proof reconstruction progress: 32 percent">32%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 32 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-22-first-constraint-padding" data-milestone-id="concrete-cook-levin-builder-first-constraint-padding-run">
+        <div class="section-label"><time datetime="2026-07-22T02:20:57Z">2026-07-22</time> · earned milestone 46</div>
+        <h2>The builder now reaches the second major checklist block</h2>
+        <p>This project is checking a step-by-step method that turns a computer task into a long checklist of simple yes-or-no conditions. Each major block has a fixed amount of reserved space. This update confirms that the builder can cross all the unused space left in the first major block without changing the checklist, then stop at the exact marker where the second block begins.</p>
+        <p>Think of completing the first section of a very large fixed-size form and moving across every unused box until you reach the next section divider. The divider is seen but not printed by this step, and the next item is not started. The full builder is still incomplete, and this update does not prove that P equals NP.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 32%.</p>
+        <details>
+          <summary>Technical details</summary>
+          <p><strong>Milestone:</strong> <code>concrete-cook-levin-builder-first-constraint-padding-run</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every fixed concrete polynomial-time verifier, one literal finite work machine composes the fifth-clause padding predecessor with two structurally generated unary evaluators, the reused 25-rule PaddingCountdown machine, and three total nine-symbol WorkChain bridges. Its table has exactly 4432 plus sixteen inherited/generated unary-evaluator rule counts. For every raw bitstring it traverses exactly (FormulaVariableSlotBound - 2) * (FormulaVariableSlotBound + 2) * FormulaTokensPerClause = (FormulaClauseSlotsPerConstraint - 5) * FormulaTokensPerClause remaining empty token opportunities of the first scheduled constraint without emitting a token, preserves encodedFormula.take (2 * (FormulaWidth + 36)), and retains coordinate FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause. Direct schedule lookup and the specification cursor prove that every traversed opportunity is padding and the endpoint is the Sep beginning the second scheduled constraint. The external compiled bound is BuilderFifthClausePaddingRun.rawTimeBound + 18 + six times the count-evaluator work, countdown bound, and target-evaluator work. Compiled exact, bounded, blank-equivalent, accepting, non-timeout, malformed-countdown, unlaunched-predecessor, and one-step-short results are proved. All 65 new public declarations and three reused countdown interfaces are axiom-audited: 26 have empty closure, 9 use only propext, and 33 use only propext and Quot.sound, with no project axiom or Classical.choice.</p>
+          <p><strong>Boundary:</strong> This milestone traverses only the remaining empty clause rectangles of the first scheduled constraint and retains the Sep beginning the second scheduled constraint. It observes but does not emit that separator, does not emit the next constraint&#39;s first literal, implement a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, emit the remaining formula body, construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 39</p>
+          <p><strong>Core source:</strong> commit <code>5a2cf2b0bea9568d7361336fa5f8f197246a2f9c</code>, tree <code>2871fea51d6f6fc0d150a71d67e5eb99458ba26e</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-22-69</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-22-COOK-LEVIN-BUILDER-FIRST-CONSTRAINT-PADDING-RUN-68</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-22-fifth-clause-padding" data-milestone-id="concrete-cook-levin-builder-fifth-clause-padding-run">
         <div class="section-label"><time datetime="2026-07-21T15:49:29Z">2026-07-21</time> · earned milestone 45</div>
         <h2>The builder now crosses a whole intentionally empty section</h2>

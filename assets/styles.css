@@ -438,6 +438,16 @@ p { line-height: 1.72; }
   border-bottom: 1px solid #303844;
   background: #111720;
 }
+details.boundary-panel > summary {
+  cursor: pointer;
+  list-style-position: inside;
+}
+details.boundary-panel > summary::marker {
+  color: #d8f1df;
+}
+details.boundary-panel:not([open]) > .boundary-head {
+  border-bottom: 0;
+}
 .boundary-head span {
   color: #b9c2ce;
   font-size: .77rem;
@@ -463,6 +473,16 @@ p { line-height: 1.72; }
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+.boundary-copy {
+  margin: 0;
+  padding: .88rem 1.05rem;
+  border-top: 1px solid #303844;
+  color: #d6dee8;
+  font-size: .9rem;
+  line-height: 1.62;
+}
+.boundary-copy strong { color: #f4f7fa; }
+.boundary-copy code { color: #d8f1df; }
 .boundary-ledger {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
