@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-22T08:06:00Z</updated>
+  <updated>2026-07-22T13:14:00Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-22-second-constraint-first-literal-sign</id>
+    <title>The machine now starts the first item in its second checklist block</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-22-second-constraint-first-literal-sign"/>
+    <published>2026-07-22T13:14:00Z</published>
+    <updated>2026-07-22T13:14:00Z</updated>
+    <summary type="text">Imagine a machine writing a long checklist, one mark at a time. It had already placed the divider that opens the second major block. This milestone verifies that it now writes the single mark saying the first item in that block should be used as written, rather than as its opposite, then moves to the exact place where the item&#39;s number begins. Only that one mark is added. The machine has not written the item&#39;s number, completed the item, finished the second block, or finished the full checklist. This update does not prove that P equals NP. Editorial progress estimate at publication: 34 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;Imagine a machine writing a long checklist, one mark at a time. It had already placed the divider that opens the second major block. This milestone verifies that it now writes the single mark saying the first item in that block should be used as written, rather than as its opposite, then moves to the exact place where the item&amp;#39;s number begins.&lt;/p&gt;&lt;p&gt;Only that one mark is added. The machine has not written the item&amp;#39;s number, completed the item, finished the second block, or finished the full checklist. This update does not prove that P equals NP.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;34&quot;&gt;Editorial progress estimate at publication: 34%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-22-second-constraint-first-literal-sign&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-22-second-constraint-separator</id>
     <title>The builder now opens the second major checklist block</title>

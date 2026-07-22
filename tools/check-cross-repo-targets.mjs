@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "8ac394c0fb19fbaabec883a498a1ad35d730b77f";
-const REVIEWED_CORE_TREE = "9dacf36b058e09470f4790536d37b0480916df8c";
+const REVIEWED_CORE_COMMIT = "3b4bd1a42175a4a07606f5d5690b2ca8af83940e";
+const REVIEWED_CORE_TREE = "a5ae0d32a6f55805841ac8d3c3747e571bd16866";
 const REVIEWED_PROOF_COMMIT = "e46ac7407301ed71483f34a5300e894557315863";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -2084,6 +2084,49 @@ const BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_THEOREMS = {
   "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.work_one_step_short_timeout": { hash: "381732429388f6b4fbed79b0ea327645859d3fdcb84651ccfcbd30adf91b0a30", axioms: ["Quot.sound","propext"] },
 };
 
+const BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderDynamicTokenCursorStep.CursorAdvance.deadState_workStep": { hash: "681cac71bc2a0b9c3c42250a3b3e4ef28bb743f8b409b0b440a64230655eabaf", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderDynamicTokenCursorStep.CursorAdvance.malformedScratch_enters_dead": { hash: "bfde87bc9e3bc501eb3ca0f3edb197ab2b120fef845b632574bdf14209c72292", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondClauseSecondLiteralPrefix.TrueTokenCursor.machine_acceptState_ne_rejectState": { hash: "8751719f745f8345308450a6fa63c4555415c822188cbbcac76ae752890895e8", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondClauseSecondLiteralPrefix.TrueTokenCursor.rule_source_ne_acceptState": { hash: "11ea0df62f1691605a85227e5f0b315f3232a811aac074053c18d465743d560b", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondClauseSecondLiteralPrefix.TrueTokenCursor.rules_length": { hash: "54722218e5109a54d5d89bcf6b9011921f507daba1452870f0f22142f426de1d", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondClauseSecondLiteralPrefix.TrueTokenCursor.rules_pairwise_query_distinct": { hash: "f01f1614a6efad7479051b52b3f910046c73ad4c6b60f7275a62b0cdec42731e", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.appenderEndpoint_before_cursor_launch_timeout": { hash: "6fbaca3e1d2cf206d8c6f3e1ac2a502c96c07c2a9691f9e2e14915b7916c3563", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.appender_workRunExact": { hash: "9405319fdb10500746d0335c9b8ba1f17e6189f010474c6a108f7516dc8324b3", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.boundedDecide_compile_accept": { hash: "211f78b4f4df914c81351ce03ec7f15beacb14387c0ec7733bd89917986ae873", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.boundedDecide_compile_ne_timeout": { hash: "d10e89eeda73c1fdef882461f0756a1e15e08f5613268a3d1632b1dd70379d47", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.cursor_workRunExact": { hash: "f9507e52347bf4e64eb59d55fe5499a8f2e3393b229a825a53e9a3f17b748d3b", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalConfiguration_state": { hash: "30560599a4e93085d918483d2f735bdae083a51483138eed3aa84450732e1e1c", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalOutside_contains_finalTokenSlot": { hash: "fcdb2f024e96745a8ef438ea0f8e632b535d871cf2cf2e20b0bc75002f910bae", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalTape_represents": { hash: "5080d5087dad2f15adff7028da001f1a72cb8723c6fc932a2e8ec7ee76b056ff", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalTokenBits_eq_encodedFormula_secondConstraintFirstLiteralSign": { hash: "31803cc4136babbe756aa9e8b05ce0f8eeb82d4cf0b6e859a832541c38c5c5a6", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalTokenSlot_eq_secondConstraintStart_add_two": { hash: "9e12ff647421e89b1342a93b37303f9447c1e941729e3e0f399709ab6b1ebcbe", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.machine_acceptState_ne_rejectState": { hash: "86ec64893892fd9f47df33ad37d14d2f95c1516222ad66efd42d9ba1e04e4d6e", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.malformedAppenderOutput_timeout": { hash: "b5ef06bc1a51bd99df58c87049798fdeba804a3515cafbbad92713f39048aba7", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.malformedAppenderTally_timeout": { hash: "6d1e6258d424ef1dac8e4d0a174dd51b9af61ab63ba66c304ef6d029cb612f7a", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.malformedCursorScratch_timeout": { hash: "119be3566e9bd0aca34b768bbc1c027366c435b391be5b5331e13814ad402331", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.nextTokenSlot_direct_eq_t": { hash: "69cacf7771ad233ddbb0efe53d58c5559b1f03458da0c3d322ce68d9df99cd0f", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.prefixEndpoint_before_launch_timeout": { hash: "2fc534c2299ec8125cf37a98999011f0c39fde6f030dadf6f80fd2d8c9fcad94", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.prefixSign_launch_workStep": { hash: "775c8e9d305c053a954a3daf12724d23bc3171b7783d9a031bdc6ddfc16a66ce", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.prefix_workRunExact": { hash: "a5fe74a6d0b9d32cf0b1e813dabdf82b9e5440139f126ce9e697957aad0e95f2", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rawTimeBound_eval": { hash: "7a20de2dd6cb163a3bb71a0ed727a371d4332a96c0db15fa7a56cd2b8caff93e", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rawTimeBound_le": { hash: "e08747bf26b7f9dd044766df4de78774caf278646b1afa216e6e28d0d61849f2", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rule_source_ne_acceptState": { hash: "0db76d877297d4bf1e4d0babf385ead3d15d9e7d096ae26250b25f326d4fd32f", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rules_length": { hash: "907c682a758a4a6972cd13eafb74e8ce6cbcbe9b1d2c80b85cc738b46129049f", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rules_pairwise_query_distinct": { hash: "04180d0b62373446042a935b35b37beed0e7731fc5811c3e807a6a827bb23050", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.run_compile_exact": { hash: "7a4614abe536a9dc7525904cf338dd6eb5cdbeff29cd564931aa29676aa7e3d4", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.run_compile_rawTimeBound": { hash: "9556f35a72f5ea52c7817e6a746a937df52b61b2480385d3004dccd69c3dc989", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.run_compile_rawTimeBound_blankEquivalent": { hash: "7d74301d25bde976647a6f96e2ec009d7ca7d38739f33077b13add9c5478cdf5", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.secondConstraintFirstLiteralSignTokens_eq_canonical_formula_prefix": { hash: "e2568ec28e32c518641b4bf6eb08662ee342c688d69b731645973504c4ee6a44", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.specification_next_step": { hash: "bd11d588a52d3c18ff3312f9f95644f2a36a0c5ed957380fdde72838037284b5", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.specification_sign_step": { hash: "b23e109d626394572ca8f7b4d53a5ce2a6b49c11dc96f9d4e5b14300f07b1da2", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.suffix_workRunExact": { hash: "07beecf536541e8aa55075fff55c456c91108ec6d2b0d5d99c5710c33b8f7794", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.trueTokenCursor_launch_workStep": { hash: "884b421a4819a446a7ef374a0e3f2200c714feeacd2f8cafdb71a2b388ede903", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.workBoundedDecide_accept": { hash: "80fc7a505b6be74ad42102121d3b8e3783b60e9a4c33ef7de48b4a088e932752", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.workRunExact": { hash: "014629e4eda6ce0023acf35a14258b5b15d1b05060eb526f64acbbcd3a7c16e2", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.work_one_step_short_timeout": { hash: "8ccc8f114cc27a53afc423f5cae8088a0c8283666e04bc21fa788613830da960", axioms: ["Quot.sound","propext"] },
+};
+
 const BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_RELEASE_IDENTITIES = {
   ExactWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.workRunExact",
   PrefixWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.prefix_workRunExact",
@@ -2108,6 +2151,32 @@ const BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_RELEASE_IDENTITIES = {
   MalformedAppenderTallyTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.malformedAppenderTally_timeout",
   MalformedCursorScratchTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.malformedCursorScratch_timeout",
   OneStepShortTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.work_one_step_short_timeout",
+};
+
+const BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_RELEASE_IDENTITIES = {
+  ExactWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.workRunExact",
+  PrefixWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.prefix_workRunExact",
+  AppenderWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.appender_workRunExact",
+  CursorWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.cursor_workRunExact",
+  SuffixWorkRunTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.suffix_workRunExact",
+  SignSpecificationTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.specification_sign_step",
+  NextSpecificationTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.specification_next_step",
+  FormulaBitsTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalTokenBits_eq_encodedFormula_secondConstraintFirstLiteralSign",
+  CanonicalPrefixTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.secondConstraintFirstLiteralSignTokens_eq_canonical_formula_prefix",
+  FinalCoordinateTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.finalTokenSlot_eq_secondConstraintStart_add_two",
+  NextTokenTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.nextTokenSlot_direct_eq_t",
+  RulesLengthTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rules_length",
+  RulesDistinctTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.rules_pairwise_query_distinct",
+  CompiledExactTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.run_compile_exact",
+  CompiledBoundTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.run_compile_rawTimeBound",
+  AcceptTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.boundedDecide_compile_accept",
+  NoTimeoutTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.boundedDecide_compile_ne_timeout",
+  PrefixEndpointTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.prefixEndpoint_before_launch_timeout",
+  AppenderEndpointTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.appenderEndpoint_before_cursor_launch_timeout",
+  MalformedAppenderOutputTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.malformedAppenderOutput_timeout",
+  MalformedAppenderTallyTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.malformedAppenderTally_timeout",
+  MalformedCursorScratchTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.malformedCursorScratch_timeout",
+  OneStepShortTheorem: "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralSignStep.work_one_step_short_timeout",
 };
 
 const KIND_TO_REF = new Map([
@@ -2220,7 +2289,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 6) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 46) failures.push("formal-publication report must have exactly forty-six pages");
+  if (manifest.artifacts?.report?.pageCount !== 48) failures.push("formal-publication report must have exactly forty-eight pages");
   const earned = manifest.earnedBoundary || {};
   if (earned.pipelineStateNamespacesFormalized !== true || earned.pipelineStateNamespaceAxiomAuditPassed !== true || earned.pipelineStateNamespaceAuditedDeclarationCount !== 39) failures.push("formal-publication pipeline namespace boundary mismatch");
   if (earned.pipelineStageBridgesFormalized !== true || earned.pipelineStageBridgeAxiomAuditPassed !== true || earned.pipelineStageBridgeAuditedDeclarationCount !== 56 || earned.pipelineStageLaunchFormalized !== true || earned.pipelineVerdictPreservationFormalized !== true || earned.pipelineInternalOutputHandoffComposed !== true) failures.push("formal-publication pipeline stage-bridge boundary mismatch");
@@ -2455,6 +2524,12 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const secondConstraintSeparatorHashes = earned.cookLevinBuilderSecondConstraintSeparatorStepTheoremKernelTypeSha256;
   if (!secondConstraintSeparatorHashes || Object.keys(secondConstraintSeparatorHashes).length !== 40 || !Object.entries(BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_THEOREMS).every(([name, row]) => secondConstraintSeparatorHashes[name] === row.hash)) failures.push("formal-publication Cook-Levin builder second-constraint-separator-step fingerprint mismatch");
   if (!Object.entries(BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`cookLevinBuilderSecondConstraintSeparatorStep${suffix}`] === theorem)) failures.push("formal-publication Cook-Levin builder second-constraint-separator-step theorem identity mismatch");
+  if (!(earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepFormalized === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepAxiomAuditPassed === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepAuditedDeclarationCount === 56 && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepCompiledRawMachineFormalized === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepExternalInputSizePolynomialFormalized === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepExactFormulaBitsFormalized === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepSecondConstraintFirstLiteralSignFormalized === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepRetainedAdvancedTokenCoordinateFormalized === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepInputPrefixAppenderComposed === true && earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("formal-publication Cook-Levin builder second-constraint-first-literal-sign-step boundary mismatch");
+  if (earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepWorkTime !== "BuilderSecondConstraintSeparatorStep.workSteps(problem) + 1 + BuilderTokenAppender.workSteps(input, secondConstraintStartTokens) + 1 + CursorAdvance.advanceWorkSteps(cursorWord)" || earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepRawTimePolynomial !== "BuilderSecondConstraintSeparatorStep.rawTimeBound + 546 + 24 * inputLength + 12 * FormulaWidth + 12 * cursorWord.length" || !/^4676 \+ /u.test(earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepRuleCount)) failures.push("formal-publication Cook-Levin builder second-constraint-first-literal-sign-step cost mismatch");
+  if (JSON.stringify(earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepProjectAxiomClosure) || earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepProjectAxiomClosure.length !== 0) failures.push("formal-publication Cook-Levin builder second-constraint-first-literal-sign-step axiom closure mismatch");
+  const secondConstraintFirstLiteralSignHashes = earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepTheoremKernelTypeSha256;
+  if (!secondConstraintFirstLiteralSignHashes || Object.keys(secondConstraintFirstLiteralSignHashes).length !== 40 || !Object.entries(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_THEOREMS).every(([name, row]) => secondConstraintFirstLiteralSignHashes[name] === row.hash)) failures.push("formal-publication Cook-Levin builder second-constraint-first-literal-sign-step fingerprint mismatch");
+  if (!Object.entries(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`cookLevinBuilderSecondConstraintFirstLiteralSignStep${suffix}`] === theorem)) failures.push("formal-publication Cook-Levin builder second-constraint-first-literal-sign-step theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -2597,12 +2672,15 @@ function validateCurrentPayloads(contents, failures) {
     const secondConstraintSeparatorMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-cook-levin-builder-second-constraint-separator-step");
     if (!secondConstraintSeparatorMilestone || secondConstraintSeparatorMilestone.earned !== true || secondConstraintSeparatorMilestone.allPresent !== true || secondConstraintSeparatorMilestone.allKernelTypesMatch !== true || secondConstraintSeparatorMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || secondConstraintSeparatorMilestone.requiredTheorems?.length !== 40) failures.push("public status Cook-Levin builder second-constraint-separator-step mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepAuditedDeclarationCount === 56 && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepSecondConstraintSeparatorFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepInputPrefixAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeparatorStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-separator-step evidence mismatch");
+    const secondConstraintFirstLiteralSignMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-cook-levin-builder-second-constraint-first-literal-sign-step");
+    if (!secondConstraintFirstLiteralSignMilestone || secondConstraintFirstLiteralSignMilestone.earned !== true || secondConstraintFirstLiteralSignMilestone.allPresent !== true || secondConstraintFirstLiteralSignMilestone.allKernelTypesMatch !== true || secondConstraintFirstLiteralSignMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || secondConstraintFirstLiteralSignMilestone.requiredTheorems?.length !== 40) failures.push("public status Cook-Levin builder second-constraint-first-literal-sign-step mismatch");
+    if (!(status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepAuditedDeclarationCount === 56 && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepSecondConstraintFirstLiteralSignFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepInputPrefixAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-first-literal-sign-step evidence mismatch");
     if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) failures.push("public status overstates the CNF-SAT result");
   }
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 10300 || inventory.theoremCount !== 5678 || inventory.assumptionFreeTheoremCount !== 3306 || inventory.excludedPrivateDeclarationCount !== 3828 || inventory.sourceClosureModuleCount !== 90 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 10399 || inventory.theoremCount !== 5762 || inventory.assumptionFreeTheoremCount !== 3322 || inventory.excludedPrivateDeclarationCount !== 3899 || inventory.sourceClosureModuleCount !== 91 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -2874,6 +2952,16 @@ function validateCurrentPayloads(contents, failures) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== expectedModule || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)) failures.push(`public inventory Cook-Levin builder second-constraint-separator-step theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) failures.push(`public inventory Cook-Levin builder second-constraint-separator-step fingerprint mismatch: ${name}`);
     }
+    for (const [name, row] of Object.entries(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      const expectedModule = name.startsWith("PNP.Concrete.CookLevin.BuilderDynamicTokenCursorStep.")
+        ? "PNP.Concrete.CookLevinBuilderDynamicTokenCursorStep"
+        : name.startsWith("PNP.Concrete.CookLevin.BuilderSecondClauseSecondLiteralPrefix.")
+          ? "PNP.Concrete.CookLevinBuilderSecondClauseSecondLiteralPrefix"
+          : "PNP.Concrete.CookLevinBuilderSecondConstraintFirstLiteralSignStep";
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== expectedModule || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)) failures.push(`public inventory Cook-Levin builder second-constraint-first-literal-sign-step theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) failures.push(`public inventory Cook-Levin builder second-constraint-first-literal-sign-step fingerprint mismatch: ${name}`);
+    }
     if (inventory.milestoneCandidates?.some((candidate) => candidate.name === "PNP.Concrete.cnfSATNPComplete" || candidate.name === "PNP.Concrete.cnfSATInP" || candidate.name === "PNP.Main.p_eq_np")) failures.push("public inventory overstates the Cook-Levin milestone");
     const packer = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq");
     if (!packer || packer.kind !== "theorem" || packer.module !== "PNP.Concrete.TerminalOutputPacker" || packer.axioms?.length !== 0) failures.push("public inventory terminal-output packer theorem mismatch");
@@ -2932,7 +3020,7 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 1479) failures.push("public inventory reviewed theorem-candidate count mismatch");
+    if (inventory.milestoneCandidates?.length !== 1513) failures.push("public inventory reviewed theorem-candidate count mismatch");
   }
 }
 
@@ -3420,6 +3508,12 @@ export function validateAuditTargets(options = {}) {
     const secondConstraintSeparatorPins = earned.cookLevinBuilderSecondConstraintSeparatorStepTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_THEOREMS)) {
       if (!secondConstraintSeparatorMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || secondConstraintSeparatorPins[name] !== row.hash) failures.push(`core publication map builder second-constraint-separator-step fingerprint mismatch: ${name}`);
+    }
+    const secondConstraintFirstLiteralSignMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cook-levin-builder-second-constraint-first-literal-sign-step");
+    if (!secondConstraintFirstLiteralSignMilestone || secondConstraintFirstLiteralSignMilestone.classification !== "formalized-foundation-only" || secondConstraintFirstLiteralSignMilestone.requiredTheorems?.length !== 40 || !secondConstraintFirstLiteralSignMilestone.nonClaim?.includes("emits exactly one token")) failures.push("core publication map builder second-constraint-first-literal-sign-step milestone mismatch");
+    const secondConstraintFirstLiteralSignPins = earned.cookLevinBuilderSecondConstraintFirstLiteralSignStepTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_THEOREMS)) {
+      if (!secondConstraintFirstLiteralSignMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || secondConstraintFirstLiteralSignPins[name] !== row.hash) failures.push(`core publication map builder second-constraint-first-literal-sign-step fingerprint mismatch: ${name}`);
     }
   }
 
