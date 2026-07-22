@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1513 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 1547 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 10,399 public declarations;
-- 5,762 theorem-kind declarations;
-- 3,322 assumption-free theorem-kind declarations;
+- 10,493 public declarations;
+- 5,841 theorem-kind declarations;
+- 3,333 assumption-free theorem-kind declarations;
 - 90 source-closure modules;
-- 3,899 excluded private compiler auxiliaries;
+- 3,971 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The forty-eight earned scopes are:
+The forty-nine earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -95,6 +95,7 @@ The forty-eight earned scopes are:
 | Literal Cook-Levin remaining first-constraint padding run | One literal table with `4432` plus sixteen inherited/generated unary-evaluator rule counts composes the fifth-clause padding predecessor with two unary-polynomial evaluators, the reused 25-rule padding countdown, and three total nine-symbol bridges; every raw input traverses `(FormulaVariableSlotBound - 2) * (FormulaVariableSlotBound + 2) * FormulaTokensPerClause` remaining padding opportunities in the first scheduled constraint without emission, preserves `encodedFormula.take (2 * (FormulaWidth + 36))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause`, and proves every traversed opportunity is padding and the retained direct token is the `Sep` beginning the second scheduled constraint, within `BuilderFifthClausePaddingRun.rawTimeBound + 18` plus six times the count-evaluator work, countdown bound, and target-evaluator work. The 68-declaration audit covers 65 new declarations and three reused countdown interfaces | Complete remaining first-constraint padding traversal only: no emitted second-constraint separator or following literal, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin second-constraint separator step | One literal table with `4554` plus sixteen inherited/generated unary-evaluator rule counts composes the complete first-constraint padding run with the selected 59-rule `Sep` appender, 45-rule cursor advance, and one outer nine-symbol bridge; every raw input follows exact component and combined traces, emits exactly the `Sep` beginning the second scheduled constraint, preserves `encodedFormula.take (2 * (FormulaWidth + 37))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 1`, and proves the direct next token is `T`, within `BuilderFirstConstraintPaddingRun.rawTimeBound + 534 + 24*n + 12*FormulaWidth + 12*cursorWord.length`. The 56-declaration audit covers 48 new public declarations and eight reused separator/cursor interfaces | Exactly one emitted separator only: no following `T` or first literal, second-constraint traversal, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin second-constraint first-literal sign step | One literal table with `4676` plus sixteen inherited/generated unary-evaluator rule counts composes the complete second-constraint separator with the reused 113-rule selected `T` appender/cursor suffix through one outer nine-symbol bridge; every raw input follows exact prefix, appender, cursor, bridge, suffix, and combined traces, emits exactly the positive `T` sign beginning the first literal in the second scheduled constraint, preserves `encodedFormula.take (2 * (FormulaWidth + 38))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 2`, and proves the direct next token is the unary `T` beginning variable zero, within `BuilderSecondConstraintSeparatorStep.rawTimeBound + 546 + 24*n + 12*FormulaWidth + 12*cursorWord.length`. The 56-declaration audit covers 48 new public declarations and eight reused appender/cursor and dead-state interfaces | Exactly one emitted positive sign only: no following unary `T`, completed first literal, second-constraint traversal, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Literal Cook-Levin second-constraint first-literal first unary-unit step | One literal table with `4798` plus sixteen inherited/generated unary-evaluator rule counts composes the completed sign step with the reused selected 59-rule `T` appender and 45-rule cursor advance through one outer nine-symbol bridge; every raw input follows exact prefix, appender, cursor, bridge, suffix, and combined traces, emits exactly the first unary `T` of the second scheduled constraint's first variable index, preserves `encodedFormula.take (2 * (FormulaWidth + 39))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 3`, and proves the direct next token is the second unary `T`, within `BuilderSecondConstraintFirstLiteralSignStep.rawTimeBound + 558 + 24*n + 12*FormulaWidth + 12*cursorWord.length`. The 56-declaration audit covers 48 new public declarations and eight reused true-token/cursor interfaces | Exactly one emitted unary unit only: no following second unary `T`, completed first literal, second-constraint traversal, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -130,7 +131,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment forty-eight-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment forty-nine-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

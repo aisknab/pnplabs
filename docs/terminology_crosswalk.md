@@ -3,12 +3,12 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/3b4bd1a42175a4a07606f5d5690b2ca8af83940e/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/3b4bd1a42175a4a07606f5d5690b2ca8af83940e/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/6b0b51ad3fda5bed69ca765b485b166746da8cfd/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/6b0b51ad3fda5bed69ca765b485b166746da8cfd/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
-canonical download is the forty-eight-page inventory-derived report. Every bare `Report` citation in the
+canonical download is the forty-nine-page inventory-derived report. Every bare `Report` citation in the
 historical tables below refers only to the 56-page manuscript at source tag
 `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current canonical aliases.
@@ -36,12 +36,12 @@ Checker paths have two different statuses:
 
 | Term | Meaning | Current status |
 | --- | --- | --- |
-| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 1,513 reviewed milestone candidates | 10,399 declarations, 5,762 theorem-kind, 3,322 assumption-free theorem-kind, 91 modules, four project axioms |
-| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | One thousand five hundred thirteen theorem pins support forty-eight earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, encoded-formula bounds and schedules, direct cursor traversal, four complete fixed clauses, traversal through the remaining first-constraint padding, the second-constraint separator, and the positive sign beginning its first literal; no earned closure contains a project axiom |
+| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 1,547 reviewed milestone candidates | 10,493 declarations, 5,841 theorem-kind, 3,333 assumption-free theorem-kind, 92 modules, four project axioms |
+| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | One thousand five hundred forty-seven theorem pins support forty-nine earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics, encoded-formula bounds and schedules, direct cursor traversal, four complete fixed clauses, traversal through the remaining first-constraint padding, the second-constraint separator and sign, and the first unary unit of its first variable index; no earned closure contains a project axiom |
 | Concrete publication gate | Strict conjunction requiring an eligible concrete standard complexity target, exact compatibility-root theorem, reviewed non-null fingerprints, source closure, and fixed Lean-standard axiom closure | False; the charged-pipeline target is present but ineligible/inactive, while the root and activation fingerprints are absent |
 | Abstract `PNP.PEqualsNP` bridge | A type using string-handle decider/verifier/reduction witnesses | Categorically ineligible for publication as standard `P = NP` |
 | `unresolved` | Executable explicit-list scan found no strict equivalent gain in the supplied finite list | Does not exclude unlisted gains and does not imply global minimality or `ZeroSlack` |
-| Current canonical report | Forty-eight-page status report generated from the inventory and publication map | Non-claiming; current aliases point here |
+| Current canonical report | Forty-nine-page status report generated from the inventory and publication map | Non-claiming; current aliases point here |
 | Historical manuscript | Former 56-page direct-claim report at the pinned 7072f8d source tag | Audit material only; not current authority or a canonical download |
 
 ## Core Claim Terms
