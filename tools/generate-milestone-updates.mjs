@@ -248,7 +248,7 @@ function renderProgressSvg(model) {
 function renderTechnicalDetails(entry) {
   const milestone = entry.milestone;
   return `        <details>\n`
-    + `          <summary>Technical details</summary>\n`
+    + `          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>\n`
     + `          <p><strong>Milestone:</strong> <code>${escaped(entry.milestoneId)}</code></p>\n`
     + `          <p><strong>Classification:</strong> ${escaped(milestone.classification)}</p>\n`
     + `          <p><strong>Verified scope:</strong> ${escaped(milestone.scope)}</p>\n`
@@ -289,14 +289,15 @@ function renderUpdatesHtml(model) {
     + `  <a class="skip-link" href="#main">Skip to content</a>\n`
     + `  <header class="site-header"><div class="nav-wrap">\n`
     + `    <a class="brand" href="index.html" aria-label="PNP Labs home"><span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span></a>\n`
-    + `    <nav id="nav" class="nav-links" data-nav aria-label="Primary navigation"><a href="status.html">Status</a><a class="active" aria-current="page" href="updates.html">Updates</a><a href="paper.html">Report</a><a href="architecture.html">Architecture</a><a href="verify.html">Verify</a><a href="review.html">Review</a><a href="faq.html">FAQ</a></nav>\n`
+    + `    <nav id="nav" class="nav-links" data-nav aria-label="Main navigation"><a href="index.html">Overview</a><a class="active" aria-current="page" href="updates.html">Updates</a><a href="faq.html">FAQ</a><a href="status.html">Formal status</a><a href="review.html">Technical review</a></nav>\n`
+    + `    <div class="header-cta"><a class="btn secondary small" href="review.html#contact">Contact</a></div>\n`
     + `    <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>\n`
     + `  </div></header>\n`
     + `  <main id="main">\n`
-    + `    <section class="page-hero"><span class="eyebrow">Follow verified progress</span><h1>Milestone updates</h1>\n`
-    + `      <p class="lede">Each update starts with an explanation for readers without a mathematics or computing background. Open Technical details when you want the exact formal scope and limits.</p>\n`
-    + `      <p>A feed is a list your news-reader app checks for you. Copy this link into any app that supports RSS or Atom. No email address or PNP Labs account is needed.</p>\n`
-    + `      <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the Atom/RSS feed</a><a class="btn secondary" href="status.html">View current status</a></div>\n`
+    + `    <section class="page-hero updates-hero"><span class="eyebrow">Follow verified progress</span><h1>Follow each machine-checked milestone.</h1>\n`
+    + `      <p class="lede">Every update begins in everyday language and assumes no mathematics background. Open its technical details only when you want the exact Lean scope, theorem pins, and limits.</p>\n`
+    + `      <div class="feed-box" aria-labelledby="feed-heading"><div><strong id="feed-heading">Use an RSS or Atom reader</strong><p>Your reader checks this address for new milestones. No email address or PNP Labs account is needed.</p><code id="feed-url">https://pnplabs.com.au/updates.xml</code></div><button class="btn secondary" type="button" data-copy="#feed-url">Copy feed address</button></div>\n`
+    + `      <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>\n`
     + `    </section>\n`
     + `    <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">\n`
     + `      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About ${model.progressEstimatePercent}% of the known formalisation work</h2>\n`
@@ -306,7 +307,7 @@ function renderUpdatesHtml(model) {
     + `    </div></section>\n`
     + `    <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">\n${articles}\n    </div></section>\n`
     + `  </main>\n`
-    + `  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>compiled formal inventory</span></span></a><p>The repository does not currently establish P = NP.</p></div><nav class="footer-links" aria-label="Footer"><a href="status.html">Status</a><a href="updates.html">Updates</a><a href="paper.html">Report</a><a href="verify.html">Verify</a><a href="review.html">Review</a></nav></div></footer>\n`
+    + `  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction in progress</span></span></a><p>The repository does not currently establish P = NP.</p></div><nav class="footer-links" aria-label="Footer"><a href="index.html">Overview</a><a href="updates.html">Updates</a><a href="faq.html">FAQ</a><a href="status.html">Formal status</a><a href="review.html">Technical review</a><a href="updates.xml" type="application/atom+xml">RSS/Atom feed</a><a href="review.html#contact">Contact</a></nav></div></footer>\n`
     + `  <script src="assets/main.js" defer></script>\n</body>\n</html>\n`;
 }
 

@@ -12,10 +12,23 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header"><div class="nav-wrap">
-    <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span></a>
-    <nav class="nav-links" aria-label="Primary navigation"><a href="index.html">Home</a><a href="status.html">Status</a><a href="updates.html">Updates</a><a href="verify.html">Verify</a><a href="review.html">Review</a></nav>
-  </div></header>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="PNP Labs home">
+        <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
+        <span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span>
+      </a>
+      <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
+<a href="index.html">Overview</a>
+<a href="updates.html">Updates</a>
+<a href="faq.html">FAQ</a>
+<a href="status.html">Formal status</a>
+<a href="review.html">Technical review</a>
+      </nav>
+      <div class="header-cta"><a class="btn secondary small" href="review.html#contact">Contact</a></div>
+      <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    </div>
+  </header>
   <main id="main">
     <section class="page-hero">
       <span class="eyebrow">Historical snapshot</span>
@@ -64,5 +77,15 @@ lake build PNP</code></pre>
       <p>These commands expose the unfinished state. They do not establish P = NP unless the concrete root theorem exists, builds, and passes its axiom audit.</p>
     </section>
   </main>
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction in progress</span></span></a>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · The repository does not currently establish P = NP.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer"><a href="index.html">Overview</a><a href="updates.html">Updates</a><a href="faq.html">FAQ</a><a href="status.html">Formal status</a><a href="review.html">Technical review</a><a href="updates.xml" type="application/atom+xml">RSS/Atom feed</a><a href="review.html#contact">Contact</a><a href="mailto:security@pnplabs.com.au">Security</a></nav>
+    </div>
+  </footer>
+  <script src="assets/main.js" defer></script>
 </body>
 </html>
