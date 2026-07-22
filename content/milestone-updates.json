@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-22-second-constraint-first-literal-sign",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-sign-step",
+      "publishedAt": "2026-07-22T13:14:00Z",
+      "title": "The machine now starts the first item in its second checklist block",
+      "plainLanguage": [
+        "Imagine a machine writing a long checklist, one mark at a time. It had already placed the divider that opens the second major block. This milestone verifies that it now writes the single mark saying the first item in that block should be used as written, rather than as its opposite, then moves to the exact place where the item's number begins.",
+        "Only that one mark is added. The machine has not written the item's number, completed the item, finished the second block, or finished the full checklist. This update does not prove that P equals NP."
+      ],
+      "progressEstimatePercent": 34,
+      "source": {
+        "commit": "3b4bd1a42175a4a07606f5d5690b2ca8af83940e",
+        "tree": "a5ae0d32a6f55805841ac8d3c3747e571bd16866",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-22-71",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-22-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIRST-LITERAL-SIGN-STEP-70"
+      }
+    },
+    {
       "id": "2026-07-22-second-constraint-separator",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-separator-step",
       "publishedAt": "2026-07-22T08:06:00Z",

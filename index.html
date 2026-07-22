@@ -65,10 +65,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The builder now opens the second major checklist block</h2>
-          <p>Imagine a machine writing a very long checklist of simple logical conditions. This step checks that it prints one divider marking the start of the second major block, then moves to the exact place where the next item belongs.</p>
-          <p>It adds only that divider. It does not write the next item, finish the second block, complete the checklist builder, or prove that P equals NP.</p>
-          <a href="updates.html#2026-07-22-second-constraint-separator">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The machine now starts the first item in its second checklist block</h2>
+          <p>Imagine a machine writing a long checklist, one mark at a time. It had already placed the divider opening the second major block. This step checks that it now writes the mark saying the first item is used as written, then moves to where that item's number begins.</p>
+          <p>Only that one mark is added. The machine has not written the item's number, completed the item, finished the second block, or finished the checklist builder. This does not prove that P equals NP.</p>
+          <a href="updates.html#2026-07-22-second-constraint-first-literal-sign">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -76,7 +76,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>BuilderSecondConstraintSeparatorStep.workRunExact</code> composes the complete first-constraint padding run with the selected separator appender and cursor. It emits exactly the fixed <code>Sep</code> beginning the second scheduled constraint, preserves <code>encodedFormula.take (2 * (FormulaWidth + 37))</code>, and retains the following coordinate, whose direct token is <code>T</code>. It observes but does not emit that <code>T</code>, emit the first literal, traverse the second constraint, implement a general dynamic formula cursor, complete the formula builder, or package the polynomial reduction.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>BuilderSecondConstraintFirstLiteralSignStep.workRunExact</code> composes the complete second-constraint separator with the selected <code>T</code> appender/cursor suffix. It emits exactly the positive <code>T</code> sign beginning the first literal, preserves <code>encodedFormula.take (2 * (FormulaWidth + 38))</code>, and retains the following coordinate, whose direct token is the unary <code>T</code> beginning variable zero. It observes but does not emit that unary token, complete the literal, traverse the second constraint, implement a general dynamic formula cursor, complete the formula builder, or package the polynomial reduction.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -85,7 +85,7 @@ rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
-leanConcreteCookLevinBuilderSecondConstraintSeparatorStepFormalized = true
+leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSignStepFormalized = true
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -99,9 +99,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-22-70</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-22-71</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>f3e8f9024eeaf12bc26854355b378fc14d0d9e777cab545539573f48b476ff0b</code></div>
+            <div><span>Inventory SHA-256</span><code>b61b6522ea989d3935524d9e22e22b9602a7ac5653b75fe80130e24e9977e644</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -114,11 +114,11 @@ concretePublicationGate.passed = false</pre>
     <div class="proof-progress-card">
       <div>
         <span class="eyebrow">Best current estimate</span>
-        <h2 id="home-progress-title">About 33% of the known formalisation work</h2>
+        <h2 id="home-progress-title">About 34% of the known formalisation work</h2>
         <p>This is a revisable estimate of reconstruction work completed—not the chance that the claim is correct, a confidence score, or a mathematical result. It can go down if new work is discovered.</p>
         <div class="hero-actions"><a class="btn primary" href="updates.html">See how progress is counted</a><a class="btn secondary" href="updates.xml" type="application/atom+xml">Subscribe to updates</a></div>
       </div>
-      <a href="updates.html" aria-label="Open milestone updates and the progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 33 percent"></a>
+      <a href="updates.html" aria-label="Open milestone updates and the progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 34 percent"></a>
     </div>
   </section>
 
