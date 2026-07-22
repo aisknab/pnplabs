@@ -1700,7 +1700,7 @@ test('Cook-Levin second-constraint first-literal first unary unit requires all f
     .find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-first-literal-first-unary-unit-step');
   assert.equal(milestone.requiredTheorems.length, 40);
   assert.match(milestone.scope, /emits exactly the first unary T of the second scheduled constraint's first variable index/u);
-  assert.match(milestone.scope, /encodedFormula\.take \(2 \* \(FormulaWidth \+ 40\)\)/u);
+  assert.match(milestone.scope, /encodedFormula\.take \(2 \* \(FormulaWidth \+ 39\)\)/u);
   assert.match(milestone.scope, /direct next schedule token is the second unary T/u);
   assert.match(milestone.nonClaim, /emits exactly one token/u);
   assert.match(milestone.nonClaim, /does not emit the following second unary T/u);
@@ -1750,7 +1750,7 @@ test('Cook-Levin second-constraint first-literal second unary unit requires all 
     .find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-first-literal-second-unary-unit-step');
   assert.equal(milestone.requiredTheorems.length, 40);
   assert.match(milestone.scope, /emits exactly the second unary T of the second scheduled constraint's first variable index/u);
-  assert.match(milestone.scope, /encodedFormula\.take \(2 \* \(FormulaWidth \+ 39\)\)/u);
+  assert.match(milestone.scope, /encodedFormula\.take \(2 \* \(FormulaWidth \+ 40\)\)/u);
   assert.match(milestone.scope, /direct next schedule token is the third unary T/u);
   assert.match(milestone.nonClaim, /emits exactly one token/u);
   assert.match(milestone.nonClaim, /does not emit the following third unary T/u);
