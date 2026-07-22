@@ -40,18 +40,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "5a2cf2b0bea9568d7361336fa5f8f197246a2f9c");
+  assert.equal(result.coreCommit, "8ac394c0fb19fbaabec883a498a1ad35d730b77f");
 });
 
-test("current release is pinned, forty-five-page, exposes the first-constraint padding run, and fails closed", () => {
+test("current release is pinned, forty-six-page, exposes the second-constraint separator, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-22-52");
-  assert.equal(release.source.commit, "5a2cf2b0bea9568d7361336fa5f8f197246a2f9c");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-22-53");
+  assert.equal(release.source.commit, "8ac394c0fb19fbaabec883a498a1ad35d730b77f");
   assert.equal(release.source.proofCommit, "e46ac7407301ed71483f34a5300e894557315863");
-  assert.equal(release.source.tree, "2871fea51d6f6fc0d150a71d67e5eb99458ba26e");
+  assert.equal(release.source.tree, "9dacf36b058e09470f4790536d37b0480916df8c");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 45);
+  assert.equal(release.artifacts.report.pageCount, 46);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -881,6 +881,39 @@ test("current release is pinned, forty-five-page, exposes the first-constraint p
   assert.equal(release.earnedBoundary.cookLevinBuilderFirstConstraintPaddingRunOneStepShortTheorem, "PNP.Concrete.CookLevin.BuilderFirstConstraintPaddingRun.work_one_step_short_timeout");
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderFirstConstraintPaddingRunAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderFirstConstraintPaddingRunProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepAuditedDeclarationCount, 56);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepCompiledRawMachineFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepExternalInputSizePolynomialFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepExactFormulaBitsFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepSecondConstraintSeparatorFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepRetainedAdvancedTokenCoordinateFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepInputPrefixAppenderComposed, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepFailClosedBoundaryTimeoutFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepWorkTime, "BuilderFirstConstraintPaddingRun.workSteps(problem) + 1 + BuilderTokenAppender.workSteps(input, fourthClauseTokens) + 1 + CursorAdvance.advanceWorkSteps(cursorWord)");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepRawTimePolynomial, "BuilderFirstConstraintPaddingRun.rawTimeBound + 534 + 24 * inputLength + 12 * FormulaWidth + 12 * cursorWord.length");
+  assert.match(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepRuleCount, /^4554 \+ /u);
+  assert.equal(Object.keys(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepTheoremKernelTypeSha256).length, 40);
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepExactWorkRunTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.workRunExact");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepPrefixWorkRunTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.prefix_workRunExact");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepAppenderWorkRunTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.appender_workRunExact");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepCursorWorkRunTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.cursor_workRunExact");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepSuffixWorkRunTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.suffix_workRunExact");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepSeparatorSpecificationTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.specification_separator_step");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepNextSpecificationTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.specification_next_step");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepFormulaBitsTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.finalTokenBits_eq_encodedFormula_secondConstraintStart");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepCanonicalPrefixTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.secondConstraintStartTokens_eq_canonical_formula_prefix");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepFinalCoordinateTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.finalTokenSlot_eq_secondConstraintStart_add_one");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepNextTokenTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.nextTokenSlot_direct_eq_t");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepPrefixEndpointTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.prefixEndpoint_before_launch_timeout");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepAppenderEndpointTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.appenderEndpoint_before_cursor_launch_timeout");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepMalformedAppenderOutputTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.malformedAppenderOutput_timeout");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepMalformedAppenderTallyTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.malformedAppenderTally_timeout");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepMalformedCursorScratchTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.malformedCursorScratch_timeout");
+  assert.equal(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepOneStepShortTheorem, "PNP.Concrete.CookLevin.BuilderSecondConstraintSeparatorStep.work_one_step_short_timeout");
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderSecondConstraintSeparatorStepProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);

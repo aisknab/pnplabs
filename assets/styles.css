@@ -1840,3 +1840,162 @@ details code,
     grid-template-columns: 1fr;
   }
 }
+
+/* Audience-first navigation and disclosures. Native details/summary keeps
+   these controls usable without JavaScript. */
+.disclosure-summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  list-style: none;
+}
+.disclosure-summary::-webkit-details-marker,
+.boundary-head::-webkit-details-marker { display: none; }
+.disclosure-control {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  flex: 0 0 auto;
+  font-size: .82rem;
+  font-weight: 800;
+}
+.disclosure-open { display: none; }
+details[open] > summary .disclosure-closed { display: none; }
+details[open] > summary .disclosure-open { display: inline; }
+.disclosure-chevron {
+  display: inline-grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform .18s ease;
+}
+details[open] > summary .disclosure-chevron { transform: rotate(180deg); }
+summary:focus-visible,
+.btn:focus-visible,
+.nav-links a:focus-visible {
+  outline: 3px solid #e3a72f;
+  outline-offset: 3px;
+}
+.boundary-head {
+  min-height: 56px;
+  cursor: pointer;
+  list-style: none;
+}
+.boundary-summary-main {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-width: 0;
+}
+.boundary-panel .disclosure-control { color: #d8f1df; }
+.current-result {
+  max-width: 820px;
+  margin: 1.15rem 0 0;
+  padding: .8rem 1rem;
+  border-left: 5px solid var(--accent);
+  background: rgba(122, 31, 43, .07);
+  color: var(--ink-strong);
+  font-size: 1.08rem;
+}
+.latest-milestone {
+  max-width: 880px;
+  margin-top: 1.5rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent-2);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, .82);
+}
+.latest-milestone h2 { font-size: 1.55rem; }
+.latest-milestone p { margin: .65rem 0 0; color: var(--ink-muted); }
+.latest-milestone a {
+  display: inline-flex;
+  margin-top: .75rem;
+  color: var(--accent);
+  font-weight: 800;
+}
+.release-details {
+  max-width: 880px;
+  margin-top: .9rem;
+  padding: .25rem .95rem;
+  background: rgba(255, 255, 255, .76);
+}
+.release-details > summary { color: var(--ink-muted); }
+.release-details .release-strip { margin: .8rem 0; }
+.release-details > p { font-size: .9rem; }
+.home-hero .artifact-grid { grid-template-columns: minmax(0, 920px); }
+.home-hero .artifact-copy h1 { max-width: 920px; }
+.home-hero .artifact-copy .lede { max-width: 840px; }
+.home-hero .boundary-panel { max-width: 880px; }
+.feed-box {
+  max-width: 820px;
+  margin-top: 1.35rem;
+  padding: 1rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+.feed-box p { margin: .25rem 0 .5rem; color: var(--ink-muted); }
+.feed-box code { overflow-wrap: anywhere; }
+.status-snapshot,
+.audience-routes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.snapshot-card,
+.audience-route {
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent-2);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+.snapshot-card.next { border-top-color: var(--accent-3); }
+.snapshot-card.missing { border-top-color: var(--accent); }
+.snapshot-card p,
+.audience-route p { color: var(--ink-muted); margin-bottom: 0; }
+.audience-route a {
+  display: inline-flex;
+  margin-top: .75rem;
+  color: var(--accent);
+  font-weight: 800;
+}
+.milestone-ledger {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+.milestone-ledger > summary {
+  min-height: 52px;
+  padding: .75rem 1rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+.milestone-ledger[open] > summary { margin-bottom: 1.2rem; }
+.plain-intro {
+  max-width: var(--max);
+  margin: -2.5rem auto 0;
+  padding: 0 1.25rem 2.5rem;
+}
+.plain-intro .callout { margin: 0; }
+@media (max-width: 820px) {
+  .status-snapshot,
+  .audience-routes { grid-template-columns: 1fr; }
+  .feed-box { align-items: stretch; flex-direction: column; }
+  .feed-box .btn { width: 100%; }
+  .boundary-summary-main { align-items: flex-start; flex-direction: column; gap: .35rem; }
+  .boundary-head { align-items: flex-start; }
+  .boundary-panel .disclosure-control { margin-top: .05rem; }
+}

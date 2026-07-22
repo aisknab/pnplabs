@@ -18,116 +18,47 @@
   <header class="site-header">
     <div class="nav-wrap">
       <a class="brand" href="index.html" aria-label="PNP Labs home">
-        <span class="brand-mark"><img src="assets/icon-192.png" alt="" width="52" height="52"></span>
+        <span class="brand-mark" aria-hidden="true"><img src="assets/pnp-labs-mark.svg" width="52" height="52" alt=""></span>
         <span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction</span></span>
       </a>
-      <nav class="nav-links" data-nav aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a class="active" aria-current="page" href="status.html">Status</a>
-        <a href="updates.html">Updates</a>
-        <a href="paper.html">Report</a>
-        <a href="architecture.html">Architecture</a>
-        <a href="verify.html">Verify</a>
-        <a href="review.html">Review</a>
-        <a href="faq.html">FAQ</a>
+      <nav id="nav" class="nav-links" data-nav aria-label="Main navigation">
+<a href="index.html">Overview</a>
+<a href="updates.html">Updates</a>
+<a href="faq.html">FAQ</a>
+<a class="active" aria-current="page" href="status.html">Formal status</a>
+<a href="review.html">Technical review</a>
       </nav>
-      <button class="menu-btn" data-menu type="button" aria-expanded="false">Menu</button>
+      <div class="header-cta"><a class="btn secondary small" href="review.html#contact">Contact</a></div>
+      <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>
     </div>
   </header>
 
   <main id="main">
-    <section class="page-hero">
-      <span class="eyebrow">Compiled Lean inventory · 2026-07-22</span>
-      <h1>The concrete publication gate is closed.</h1>
-      <p class="lede">The current status is generated from the compiled <code>PNP</code> environment. Forty-six scoped milestones are earned, now including traversal of every remaining empty clause rectangle in the first scheduled constraint without emission. The machine preserves bits equal to <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, reaches <code>FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause</code>, and proves the retained direct token is the <code>Sep</code> beginning the second scheduled constraint. It observes but does not emit that separator, implement a general dynamic formula cursor, or emit the remaining body. The complete raw builder, builder refinement, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP remain absent.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="public/pnp-theorem-inventory.json">Open compiled inventory</a>
-        <a class="btn secondary" href="public/pnp-status.json">Open current status</a>
-        <a class="btn secondary" href="downloads/canonical_proof_report.pdf">Open forty-five-page report</a>
-      </div>
-    </section>
+    <section class="page-hero"><span class="eyebrow">Formal status · 2026-07-22</span><h1>The project has verified parts of the construction, not P = NP.</h1><p class="lede">Forty-seven scoped milestones are earned. The newest step checks one separator at the start of the second major formula block. Three global publication milestones, six formal blockers, four project axioms, the complete builder, and the final theorem remain unresolved.</p><div class="hero-actions"><a class="btn primary" href="updates.html">Read the latest update</a><a class="btn secondary" href="#technical-status">Open technical status</a><a class="btn secondary" href="downloads/canonical_proof_report.pdf">Open 46-page report</a></div></section>
+    <section class="section compact" aria-labelledby="snapshot-heading"><div class="section-head"><div><div class="section-label">Plain-language snapshot</div><h2 id="snapshot-heading">Verified, next, and still missing</h2></div><p>These cards are orientation. The compiled inventory and exact theorem records remain the technical authority below.</p></div><div class="status-snapshot"><article class="snapshot-card"><h3>Verified now</h3><p>Scoped Lean results cover a concrete verifier, Cook–Levin semantics and scheduling, and a formula-building prefix through one separator opening the second scheduled constraint.</p></article><article class="snapshot-card next"><h3>Next construction work</h3><p>The builder still needs to emit the first literal in that second constraint, continue through the remaining formula, and be packaged as a complete polynomial-time reduction.</p></article><article class="snapshot-card missing"><h3>Still missing globally</h3><p>CNF-SAT NP-completeness and in-P results, global locked-NAND and ZeroSlack theorems, a discharged axiom boundary, and an eligible P = NP root theorem.</p></article></div></section>
 
-    <section class="section compact" data-formal-status-root data-status-state="fail-closed">
-      <div class="boundary-panel">
-        <div class="boundary-head"><span>Current theorem boundary</span><strong data-formal-status-label>not established</strong></div>
-        <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
+    <section id="technical-status" class="section compact" data-formal-status-root data-status-state="fail-closed"><details class="boundary-panel"><summary class="boundary-head"><span class="boundary-summary-main"><span>Exact theorem and gate fields</span><strong data-formal-status-label>not established</strong></span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical status</span><span class="disclosure-open">Hide technical status</span><span class="disclosure-chevron">⌄</span></span></summary><pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
 publicTheoremStatement = null
-finalTheoremReady = false
 rootLeanTheoremPresent = false
-rootLeanTheoremBuilt = false
-rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
-leanConcreteCookLevinBuilderInputLengthFormalized = true
-leanConcreteCookLevinBuilderInputLengthCompiledRawMachineFormalized = true
-leanConcreteCookLevinBuilderInputPrefixFormalized = true
-leanConcreteCookLevinBuilderInputPrefixCompiledRawMachineFormalized = true
-leanConcreteCookLevinBuilderTokenAppenderFormalized = true
-leanConcreteCookLevinBuilderTokenAppenderCompiledRawMachineFormalized = true
-leanConcreteCookLevinBuilderTokenAppenderInputPrefixComposed = true
-leanConcreteCookLevinBuilderFirstTokenPrefixFormalized = true
-leanConcreteCookLevinBuilderFirstTokenPrefixCompiledRawMachineFormalized = true
-leanConcreteCookLevinBuilderFirstTokenPrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderUnaryPolynomialFormalized = true
-leanConcreteCookLevinBuilderCompleteHeaderFormalized = true
-leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderBodyStartPrefixFormalized = true
-leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized = true
-leanConcreteCookLevinBuilderBodyStartPrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderBodyStartPrefixRetainedNextTokenCoordinateFormalized = true
-leanConcreteCookLevinBuilderFirstLiteralPrefixFormalized = true
-leanConcreteCookLevinBuilderFirstLiteralPrefixCompiledRawMachineFormalized = true
-leanConcreteCookLevinBuilderFirstLiteralPrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderFirstLiteralPrefixRetainedNextTokenCoordinateFormalized = true
-leanConcreteCookLevinBuilderInputPrefixAppenderComposed = true
-leanConcreteCookLevinBuilderSecondClauseSecondLiteralPrefixFormalized = true
-leanConcreteCookLevinBuilderSecondClauseSecondLiteralPrefixCompleteSecondNegativeLiteralFormalized = true
-leanConcreteCookLevinBuilderSecondClauseSecondLiteralPrefixRetainedAdvancedTokenCoordinateFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSeparatorStepFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSeparatorStepThirdClauseSeparatorFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSeparatorStepExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSeparatorStepRetainedAdvancedTokenCoordinateFormalized = true
-leanConcreteCookLevinBuilderThirdClauseFirstLiteralPrefixFormalized = true
-leanConcreteCookLevinBuilderThirdClauseFirstLiteralPrefixCompleteFirstNegativeLiteralFormalized = true
-leanConcreteCookLevinBuilderThirdClauseFirstLiteralPrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderThirdClauseFirstLiteralPrefixRetainedAdvancedTokenCoordinateFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSecondLiteralPrefixFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSecondLiteralPrefixCompleteSecondNegativeLiteralFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSecondLiteralPrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderThirdClauseSecondLiteralPrefixRetainedClauseTerminatorCoordinateFormalized = true
-leanConcreteCookLevinBuilderThirdClausePrefixFormalized = true
-leanConcreteCookLevinBuilderThirdClausePrefixCompleteThirdClauseFormalized = true
-leanConcreteCookLevinBuilderThirdClausePrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderThirdClausePrefixRetainedFirstPaddingCoordinateFormalized = true
-leanConcreteCookLevinBuilderThirdClausePaddingRunFormalized = true
-leanConcreteCookLevinBuilderThirdClausePaddingRunRemainingPaddingCountFormalized = true
-leanConcreteCookLevinBuilderThirdClausePaddingRunFourthClauseStartFormalized = true
-leanConcreteCookLevinBuilderThirdClausePaddingRunNoEmissionSpecificationFormalized = true
-leanConcreteCookLevinBuilderFourthClauseSecondLiteralPrefixFormalized = true
-leanConcreteCookLevinBuilderFourthClauseSecondLiteralPrefixCompleteSecondNegativeLiteralFormalized = true
-leanConcreteCookLevinBuilderFourthClauseSecondLiteralPrefixExactFormulaBitsFormalized = true
-leanConcreteCookLevinBuilderFourthClauseSecondLiteralPrefixRetainedAdvancedTokenCoordinateFormalized = true
-leanConcreteCookLevinBuilderFourthClauseSecondLiteralPrefixFailClosedBoundaryTimeoutFormalized = true
-leanConcreteCookLevinBuilderDynamicCursorFormalized = false
+leanConcreteCookLevinBuilderSecondConstraintSeparatorStepFormalized = true
 leanConcreteCookLevinFormulaBuilderFormalized = false
-concretePublicationGate.passed = false</pre>
-      </div>
-      <p class="review-note" data-formal-status-note><strong>Static fail-closed boundary:</strong> until both current payloads load, hash-bind, and pass their exact consistency checks, this page never infers theorem establishment or theorem-emission permission.</p>
-    </section>
+concretePublicationGate.passed = false</pre><p class="boundary-copy" data-formal-status-note><strong>Static fail-closed boundary:</strong> missing, malformed, stale, or digest-mismatched data never enables theorem publication.</p></details></section>
 
     <section class="section compact">
       <div class="section-head">
         <div><div class="section-label">Compiled environment</div><h2>Exact inventory counts</h2></div>
-        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-22-69</code>; SHA-256 <code>aa3ab0b201bee24ed42d4d8bd79cb9dde9ee9c1703c27710c25d64140037cf48</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
+        <p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-2026-07-22-70</code>; SHA-256 <code>f3e8f9024eeaf12bc26854355b378fc14d0d9e777cab545539573f48b476ff0b</code>. Coordinate alone is not authority; the release also pins commit, tree, and artifact hashes.</p>
       </div>
-      <p data-formal-inventory-counts><strong>10,207</strong> public declarations; <strong>5,600</strong> theorem-kind declarations; <strong>3,294</strong> assumption-free theorem-kind declarations; <strong>3,760</strong> private compiler auxiliaries excluded; <strong>88</strong> modules; <strong>4</strong> project axioms.</p>
+      <p data-formal-inventory-counts><strong>10,300</strong> public declarations; <strong>5,678</strong> theorem-kind declarations; <strong>3,306</strong> assumption-free theorem-kind declarations; <strong>3,828</strong> private compiler auxiliaries excluded; <strong>90</strong> modules; <strong>4</strong> project axioms.</p>
       <p>The inventory is emitted from Lean environment constants and axiom collection. It is not inferred from source text, JSON claims, checker acceptance, or report prose.</p>
     </section>
 
-    <section class="section compact">
+    <section class="section compact"><details class="milestone-ledger"><summary class="disclosure-summary"><span>Show all 50 formal milestone records</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
       <div class="section-head">
-        <div><div class="section-label">Inventory-derived publication map</div><h2>Forty-six scoped milestones earned; three global milestones unearned</h2></div>
+        <div><div class="section-label">Inventory-derived publication map</div><h2>Forty-seven scoped milestones earned; three global milestones unearned</h2></div>
         <p>The static rows below are conservative fallback copy. When validation succeeds, JavaScript replaces them from the exact status payload.</p>
       </div>
       <div class="grid three path" data-formal-milestones>
@@ -171,6 +102,7 @@ concretePublicationGate.passed = false</pre>
         <article class="card" data-milestone-id="concrete-cook-levin-builder-fourth-clause-padding-run" data-earned="true"><h3>Formalized foundation: Cook-Levin fourth-clause remaining-padding run</h3><p><code>BuilderFourthClausePaddingRun.workRunExact</code> composes the complete fourth-clause prefix with two structurally generated unary evaluators, the reused 25-rule <code>PaddingCountdown</code> machine, and three total nine-symbol bridges. Its literal table has <code>4328</code> plus twelve inherited/generated unary-evaluator rule counts. Every raw input traverses exactly <code>FormulaTokensPerClause - 9</code> remaining padding opportunities without emitting a token, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, advances to <code>FormulaVariableSlotBound + 1 + 4 * FormulaTokensPerClause</code>, and proves the target is padding in the intentionally empty fifth clause rectangle. The compiled run is bounded by <code>BuilderFourthClausePrefix.rawTimeBound + 18</code> plus six times the count-evaluator work, countdown bound, and target-evaluator work. The 68-declaration audit covers all 65 new public declarations and three reused countdown interfaces: 26 have empty closure, 9 use only <code>[propext]</code>, and 33 use only <code>[Quot.sound, propext]</code>. No audited declaration uses a project axiom or <code>Classical.choice</code>. Both malformed countdown phases, the unlaunched predecessor endpoint, and one-step-short fuel time out.</p><p><strong>Boundary:</strong> This traverses only the remaining padding in clause four. It does not traverse the empty fifth rectangle, reach the next constraint, emit another token, implement a general dynamic formula cursor or arbitrary raw decoder, emit the remaining formula body, supply a complete builder or builder <code>RawRefinement</code>, package a <code>PolynomialReduction</code>, establish CNF-SAT NP-completeness or in-P, or prove P = NP.</p></article>
         <article class="card" data-milestone-id="concrete-cook-levin-builder-fifth-clause-padding-run" data-earned="true"><h3>Formalized foundation: Cook-Levin empty fifth-clause padding run</h3><p><code>BuilderFifthClausePaddingRun.workRunExact</code> composes the complete fourth-clause padding run with two structurally generated unary evaluators, the reused 25-rule <code>PaddingCountdown</code> machine, and three total nine-symbol bridges. Its literal table has <code>4380</code> plus fourteen inherited/generated unary-evaluator rule counts. Every raw input traverses exactly <code>FormulaTokensPerClause</code> padding opportunities across the entire intentionally empty fifth clause rectangle without emitting a token, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, advances to <code>FormulaVariableSlotBound + 1 + 5 * FormulaTokensPerClause</code>, and proves every traversed opportunity and the target in the intentionally empty sixth clause rectangle are padding. The compiled run is bounded by <code>BuilderFourthClausePaddingRun.rawTimeBound + 18</code> plus six times the count-evaluator work, countdown bound, and target-evaluator work. The 68-declaration audit covers all 65 new public declarations and three reused countdown interfaces: 28 have empty closure, 9 use only <code>[propext]</code>, and 31 use only <code>[Quot.sound, propext]</code>. No audited declaration uses a project axiom or <code>Classical.choice</code>. Both malformed countdown phases, the unlaunched predecessor endpoint, and one-step-short fuel time out.</p><p><strong>Boundary:</strong> This traverses only the intentionally empty fifth clause rectangle. It does not traverse the empty sixth rectangle, reach the next constraint, emit another token, implement a general dynamic formula cursor or arbitrary raw decoder, emit the remaining formula body, supply a complete builder or builder <code>RawRefinement</code>, package a <code>PolynomialReduction</code>, establish CNF-SAT NP-completeness or in-P, or prove P = NP.</p></article>
         <article class="card" data-milestone-id="concrete-cook-levin-builder-first-constraint-padding-run" data-earned="true"><h3>Formalized foundation: Cook-Levin remaining first-constraint padding run</h3><p><code>BuilderFirstConstraintPaddingRun.workRunExact</code> composes the fifth-clause padding predecessor with two structurally generated unary evaluators, the reused 25-rule <code>PaddingCountdown</code> machine, and three total nine-symbol bridges. Its literal table has <code>4432</code> plus sixteen inherited/generated unary-evaluator rule counts. Every raw input traverses exactly <code>(FormulaVariableSlotBound - 2) * (FormulaVariableSlotBound + 2) * FormulaTokensPerClause</code> remaining empty token opportunities in the first scheduled constraint without emitting a token, preserves <code>encodedFormula.take (2 * (FormulaWidth + 36))</code>, and advances to <code>FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause</code>. Direct schedule lookup proves every traversed opportunity is padding and the retained token is the <code>Sep</code> beginning the second scheduled constraint. The compiled run is bounded by <code>BuilderFifthClausePaddingRun.rawTimeBound + 18</code> plus six times the count-evaluator work, countdown bound, and target-evaluator work. The 68-declaration audit covers all 65 new public declarations and three reused countdown interfaces, with only the approved Lean-standard closure and no project axiom or <code>Classical.choice</code>. Both malformed countdown phases, the unlaunched predecessor endpoint, and one-step-short fuel time out.</p><p><strong>Boundary:</strong> This traverses only the remaining empty clause rectangles of the first scheduled constraint. It observes but does not emit the separator beginning the second scheduled constraint, does not emit the next constraint's first literal, implement a general dynamic formula cursor or arbitrary raw decoder, emit the remaining formula body, supply a complete builder or builder <code>RawRefinement</code>, package a <code>PolynomialReduction</code>, establish CNF-SAT NP-completeness or in-P, or prove P = NP.</p></article>
+        <article class="card" data-milestone-id="concrete-cook-levin-builder-second-constraint-separator-step" data-earned="true"><h3>Formalized foundation: Cook-Levin second-constraint separator step</h3><p><code>BuilderSecondConstraintSeparatorStep.workRunExact</code> proves that, for every fixed concrete polynomial-time verifier, one literal finite work machine composes the complete first-constraint padding run with the reused selected 59-rule <code>Sep</code> appender and 45-rule cursor advance through one outer total nine-symbol <code>WorkChain</code> bridge. The global table has exactly <code>4554</code> plus the sixteen inherited/generated unary-evaluator rule counts. Every raw input follows exact prefix, appender, cursor, bridge, suffix, and combined traces; emits exactly the <code>Sep</code> beginning the second scheduled constraint; preserves <code>encodedFormula.take (2 * (FormulaWidth + 37))</code>; and retains coordinate <code>FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 1</code>, whose direct next schedule token is <code>T</code>. The external compiled bound evaluates to <code>BuilderFirstConstraintPaddingRun.rawTimeBound + 534 + 24 * n + 12 * FormulaWidth + 12 * cursorWord.length</code>. Compiled exact, bounded, blank-equivalent, accepting, non-timeout, malformed-workspace, both unlaunched-endpoint, and one-step-short results are proved. All 48 new public declarations plus eight reviewed reused separator/cursor interfaces are axiom-audited: 14 have empty closure, 11 use only <code>propext</code>, and 31 use only <code>propext</code> and <code>Quot.sound</code>, with no project axiom or <code>Classical.choice</code>.</p><p><strong>Boundary:</strong> This milestone emits exactly one token: the fixed <code>Sep</code> that starts the second scheduled constraint. It observes but does not emit the following <code>T</code>, does not emit the first literal or traverse the second constraint, does not implement a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, does not emit the remaining formula body, and does not construct a complete formula builder or <code>FunctionProgram.RawRefinement</code>, package a concrete <code>PolynomialReduction</code>, establish <code>CNFSAT</code> NP-hardness or NP-completeness, establish <code>CNFSAT</code> in P, or prove P = NP.</p></article>
         <article class="card" data-milestone-id="direct-wire-semantics" data-earned="true"><h3>Formalized: Typed direct-wire NAND semantics</h3><p>Typed topological Boolean NAND programs and ordered multi-output direct-wire semantics.</p><p><strong>Boundary:</strong> This does not establish circuit minimization, SAT, or P = NP.</p></article>
         <article class="card" data-milestone-id="finite-enumeration-minimum" data-earned="true"><h3>Formalized: Finite enumeration, equivalence, and reference minimum</h3><p>Exhaustive finite Boolean direct-wire search under the empty-profile reference model.</p><p><strong>Boundary:</strong> No polynomial-runtime result is obtained from this exhaustive reference search.</p></article>
         <article class="card" data-milestone-id="framed-replacement-slack" data-earned="true"><h3>Formalized: Concrete framed replacement and slack</h3><p>The concrete serial framed context with support outputs and explicit bypass wires.</p><p><strong>Boundary:</strong> This is not an arbitrary-support replacement theorem for the global family.</p></article>
@@ -181,7 +113,7 @@ concretePublicationGate.passed = false</pre>
         <article class="card accent" data-milestone-id="global-zeroslack-pccmin" data-earned="false"><h3>Not formalized: Global ZeroSlack, PCCMin, and polynomial runtime</h3><p>Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.</p><p><strong>Boundary:</strong> Proof-bearing result structures and explicit-list failure do not supply global completeness.</p></article>
         <article class="card accent" data-milestone-id="concrete-publication-root" data-earned="false"><h3>Not formalized: Concrete standard P-versus-NP target and root theorem</h3><p>Raw-machine-linked complexity classes, concrete SAT completeness and a SAT decider, plus the publication root theorem.</p><p><strong>Boundary:</strong> The concrete target definition is inactive; raw-machine linkage, concrete SAT completeness/deciding, and <code>PNP.Main.p_eq_np</code> remain absent. The legacy string-handle bridge is ineligible.</p></article>
       </div>
-    </section>
+    </details></section>
 
     <section class="section compact">
       <div class="section-label">Concrete publication gate</div>
@@ -215,13 +147,21 @@ concretePublicationGate.passed = false</pre>
       <div class="section-label">Current and historical reports</div>
       <h2>Do not conflate the two documents</h2>
       <div class="grid two path">
-        <article class="card"><h3>Current forty-five-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership, raw-machine compiler, Cook-Levin semantic bridge, encoded-formula size and schedule bounds, direct formula cursor, all four complete fixed clauses, and exact no-emission traversal through the remaining padding of the first scheduled constraint, together with the closed gate, exact counts, axiom closures, and blockers.</p></article>
+        <article class="card"><h3>Current forty-six-page report</h3><p><a href="downloads/canonical_proof_report.pdf">The canonical download</a> is generated from the compiled theorem inventory. It reports the earned CNF-SAT NP-membership, raw-machine compiler, Cook-Levin semantic bridge, encoded-formula size and schedule bounds, direct formula cursor, all four complete fixed clauses, traversal through the remaining first-constraint padding, and emission of the single separator beginning the second scheduled constraint, together with the closed gate, exact counts, axiom closures, and blockers.</p></article>
         <article class="card accent"><h3>Historical 56-page manuscript</h3><p>The old direct-claim manuscript is preserved at tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, with provenance in <code>archive/legacy-v0/ARCHIVE.json</code>. It is not current authority.</p></article>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>compiled formal inventory</span></span></a><p>The repository does not currently establish P = NP.</p></div><nav class="footer-links" aria-label="Footer"><a href="status.html">Status</a><a href="updates.html">Updates</a><a href="paper.html">Report</a><a href="verify.html">Verify</a><a href="review.html">Review</a></nav></div></footer>
+  <footer class="site-footer">
+    <div class="footer-wrap">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction in progress</span></span></a>
+        <p>PNP Labs Pty Ltd · ABN 70 699 026 063 · The repository does not currently establish P = NP.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer"><a href="index.html">Overview</a><a href="updates.html">Updates</a><a href="faq.html">FAQ</a><a href="status.html">Formal status</a><a href="review.html">Technical review</a><a href="updates.xml" type="application/atom+xml">RSS/Atom feed</a><a href="review.html#contact">Contact</a><a href="mailto:security@pnplabs.com.au">Security</a></nav>
+    </div>
+  </footer>
   <script src="assets/main.js" defer></script>
 </body>
 </html>

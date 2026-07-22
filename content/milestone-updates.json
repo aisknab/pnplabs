@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-22-second-constraint-separator",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-separator-step",
+      "publishedAt": "2026-07-22T08:06:00Z",
+      "title": "The builder now opens the second major checklist block",
+      "plainLanguage": [
+        "Imagine this project as a machine that writes a very long checklist of simple logical conditions. The first major checklist block was already complete. This milestone verifies that the machine writes one divider marking the start of the second block, then moves to the exact position where the next item belongs.",
+        "This step adds only that divider. It does not write the next checklist item, finish the second block, complete the full checklist-building machine, or prove that P equals NP."
+      ],
+      "progressEstimatePercent": 33,
+      "source": {
+        "commit": "8ac394c0fb19fbaabec883a498a1ad35d730b77f",
+        "tree": "9dacf36b058e09470f4790536d37b0480916df8c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-22-70",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-22-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-SEPARATOR-STEP-69"
+      }
+    },
+    {
       "id": "2026-07-22-first-constraint-padding",
       "milestoneId": "concrete-cook-levin-builder-first-constraint-padding-run",
       "publishedAt": "2026-07-22T02:20:57Z",
