@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="960" height="240" role="img" aria-labelledby="proof-progress-title proof-progress-desc">
-  <title id="proof-progress-title">Proof reconstruction progress estimate: 38 percent</title>
+  <title id="proof-progress-title">Proof reconstruction progress estimate: 39 percent</title>
   <desc id="proof-progress-desc">An editorial estimate of the known formalisation work completed. It is not a probability, confidence score, or statement of theorem correctness, and it may decrease as the remaining work becomes clearer.</desc>
   <rect width="960" height="240" rx="28" fill="#f8f1e8"/>
   <path d="M36 52h888" stroke="#6f193c" stroke-width="2" opacity="0.22"/>
   <text x="72" y="84" fill="#371124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="23" font-weight="700">PROOF RECONSTRUCTION TAPE</text>
   <rect x="72" y="112" width="816" height="52" rx="8" fill="#6f193c"/>
-  <rect x="72" y="112" width="310.08" height="52" rx="8" fill="#168b87"/>
+  <rect x="72" y="112" width="318.24" height="52" rx="8" fill="#168b87"/>
   <path d="M72 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>
   <path d="M112.8 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>
   <path d="M153.6 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>
@@ -27,7 +27,7 @@
   <path d="M806.4 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>
   <path d="M847.2 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>
   <path d="M888 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>
-  <path d="M382.08 101l11 11-11 11-11-11z" fill="#e3a72f" stroke="#371124" stroke-width="3"/>
-  <text x="72" y="207" fill="#6f193c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800">38% ESTIMATED</text>
+  <path d="M390.24 101l11 11-11 11-11-11z" fill="#e3a72f" stroke="#371124" stroke-width="3"/>
+  <text x="72" y="207" fill="#6f193c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800">39% ESTIMATED</text>
   <text x="888" y="205" text-anchor="end" fill="#5d4b54" font-family="system-ui, sans-serif" font-size="16">editorial · revisable</text>
 </svg>

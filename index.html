@@ -58,17 +58,16 @@
         <p class="current-result"><strong>Current result: P = NP is not established.</strong></p>
         <p class="lede"><strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently. <strong>Lean</strong> is software that checks each stated mathematical step. This project is rebuilding a proposed route in Lean so that completed steps, assumptions, and gaps are explicit.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="updates.html">Follow milestone updates</a>
-          <a class="btn secondary" href="#p-vs-np">Understand P versus NP</a>
+          <a class="btn primary" href="#p-vs-np">Understand P versus NP</a>
           <a class="btn secondary" href="status.html">View formal status</a>
         </div>
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The machine closes the first item in its second checklist block</h2>
-          <p>Imagine a machine writing a numbered item in a long checklist, one mark at a time. The marks saying how to use the item and which item it is were already in place. This milestone verifies that the machine adds the single closing mark that completes the first item in the second major block, then moves to the next required position.</p>
-          <p>Only that closing mark is added. In the smallest supported layout, the next position closes the line; in wider layouts, it begins another item. The machine identifies which case applies but writes neither next mark. It has not finished the second block or the full checklist, and this update does not prove that P equals NP.</p>
-          <a href="updates.html#2026-07-23-second-constraint-first-literal-terminator">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The machine chooses what comes after the completed item</h2>
+          <p>Imagine the machine has just finished one numbered item in its long checklist. The next mark depends on how wide the checklist is. In the smallest supported layout, it writes an end-of-line mark. In wider layouts, it writes the opening mark for the next item. This milestone verifies that it makes that choice, writes exactly one mark, and moves to the following position.</p>
+          <p>It does not write the next item&#39;s number, finish the second block, or finish the full checklist. The 39% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved.</p>
+          <a href="updates.html#2026-07-23-second-constraint-first-literal-successor-token">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -76,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>BuilderSecondConstraintFirstLiteralTerminatorStep.workRunExact</code> composes the completed third-unary-unit step with the selected <code>F</code> appender and cursor advance. It emits exactly the terminating <code>F</code> of the second constraint's first literal, preserves <code>encodedFormula.take (2 * (FormulaWidth + 42))</code>, and retains the following coordinate. The direct next token is <code>Finish</code> when the tape width is one and the positive <code>T</code> beginning the next literal at wider widths. It observes but does not emit either next token, traverse the second constraint, implement a general dynamic formula cursor, complete the formula builder, or package the polynomial reduction.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>BuilderSecondConstraintFirstLiteralSuccessorTokenStep.workRunExact</code> composes the completed literal terminator with represented-width evaluation, a width-selected token appender, and retained-coordinate evaluation. It emits exactly <code>Finish</code> at width one or <code>T</code> at wider widths, preserves <code>encodedFormula.take (2 * (FormulaWidth + 43))</code>, and retains the advanced coordinate at the second-constraint start plus seven. The following opportunity is padding at width one and unary <code>T</code> at wider widths; it is observed but not emitted. This does not finish the second constraint, implement a general formula cursor, complete the builder, or package the polynomial reduction.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -85,7 +84,7 @@ rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
 projectSpecificAxiomsRemaining = true
-leanConcreteCookLevinBuilderSecondConstraintFirstLiteralTerminatorStepFormalized = true
+leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepFormalized = true
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -99,29 +98,40 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-23-75</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-23-76</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>62bbec37bb0277289e6c5affe7eb1496595b9ea18f2b184877e803a94aeff92b</code></div>
+            <div><span>Inventory SHA-256</span><code>037b1bf13da821c60db27d887f32d0f1347072d9288bb21851d7fde525bffbd3</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
       </div>
+      <aside class="home-progress-rail" aria-labelledby="home-progress-title">
+        <div class="home-progress-heading">
+          <span class="home-progress-kicker">Proof reconstruction tracker</span>
+          <p class="home-progress-number"><strong>39</strong><span>%</span></p>
+          <span class="home-progress-estimate">best current estimate</span>
+        </div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 39 percent" data-proof-progress="39">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>39</span><span>0</span></div>
+          <div class="proof-tape-track" aria-hidden="true">
+            <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
+          </div>
+          <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
+        </div>
+        <div class="home-progress-copy">
+          <h2 id="home-progress-title">About 39% of the known formalisation work</h2>
+          <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
+          <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
+        </div>
+        <div class="home-progress-actions">
+          <a class="btn primary" href="updates.html">Follow updates</a>
+          <a class="btn secondary" href="updates.xml" type="application/atom+xml">Subscribe</a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
 <div class="shell">
-  <section class="section compact proof-progress-section" aria-labelledby="home-progress-title">
-    <div class="proof-progress-card">
-      <div>
-        <span class="eyebrow">Best current estimate</span>
-        <h2 id="home-progress-title">About 38% of the known formalisation work</h2>
-        <p>This is a revisable estimate of reconstruction work completed—not the chance that the claim is correct, a confidence score, or a mathematical result. It can go down if new work is discovered.</p>
-        <div class="hero-actions"><a class="btn primary" href="updates.html">See how progress is counted</a><a class="btn secondary" href="updates.xml" type="application/atom+xml">Subscribe to updates</a></div>
-      </div>
-      <a href="updates.html" aria-label="Open milestone updates and the progress explanation"><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 38 percent"></a>
-    </div>
-  </section>
-
   <section id="p-vs-np" class="section compact" aria-labelledby="plain-question-title">
     <div class="section-head"><div><div class="section-label">The question in one minute</div><h2 id="plain-question-title">What does P versus NP ask?</h2></div><p>Here, “efficiently” means the work grows at a manageable polynomial rate as the input gets larger. The question is foundational because it separates finding answers from checking them.</p></div>
     <div class="status-snapshot">

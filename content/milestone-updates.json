@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-23-second-constraint-first-literal-successor-token",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-successor-token-step",
+      "publishedAt": "2026-07-23T07:39:29Z",
+      "title": "The machine chooses what comes after the completed item",
+      "plainLanguage": [
+        "Imagine the machine has just finished one numbered item in its long checklist. The next mark depends on how wide the checklist is. In the smallest supported layout, it writes an end-of-line mark. In wider layouts, it writes the opening mark for the next item. This milestone verifies that it makes that choice, writes exactly one mark, and moves to the following position.",
+        "It does not write the next item's number, finish the second block, or finish the full checklist. The 39% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved."
+      ],
+      "progressEstimatePercent": 39,
+      "source": {
+        "commit": "a632bd845a69a7c442e1e6fcecb00981854b2f1c",
+        "tree": "9e62eda65361d0714060f8eae9f917768d98d2c9",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-76",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIRST-LITERAL-SUCCESSOR-TOKEN-STEP-75"
+      }
+    },
+    {
       "id": "2026-07-23-second-constraint-first-literal-terminator",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-terminator-step",
       "publishedAt": "2026-07-23T03:34:55Z",
