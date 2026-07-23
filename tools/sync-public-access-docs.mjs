@@ -17,10 +17,10 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "a632bd845a69a7c442e1e6fcecb00981854b2f1c";
-const CORE_TREE = "9e62eda65361d0714060f8eae9f917768d98d2c9";
-const OLD_PDF_SHA256 = "2ea1b5b4f789fbdc8fa8c3fadf0c1370d10b1aa415340a711829e9aed271972c";
-const OLD_TEX_SHA256 = "0d6d5d3270c20f985bd137016a572fc89c7fb95621c2a3008adc9f0b2e3b029d";
+const CORE_COMMIT = "5aba133715790bae354e584c0d8606c19bb3ab8b";
+const CORE_TREE = "8f7140c0401973197017b988592256fb3ddeb704";
+const OLD_PDF_SHA256 = "3c1edb9f99678ddeeee74da814029cf0ac17a0cdb6cd4b0fbcce1ac5040d7ae3";
+const OLD_TEX_SHA256 = "29d22fc03cdfec5b4d73b828aa2c36c718f3b0c71c7dc950fe6b3f22c405c315";
 
 const BUILDER_INPUT_LENGTH_THEOREMS = {
   "PNP.Concrete.CookLevin.BuilderInputLength.finalTape_represents": { hash: "824e9a4f2785da71c1b5810e4995984e220b131bf643bd4f0271ed53628970dd", axioms: [] },
@@ -2020,30 +2020,73 @@ const BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_THEOREMS = {
   "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.encodeCNFTokens_eq_terminator_then_successor": { hash: "f8c64b3fc103e6fbff2cba888ecb8cebf0fd99eb0e23cada70cbabd9da8b26de", axioms: ["Quot.sound","propext"] },
   "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.followingTokenSlot_direct_eq_padding_or_t": { hash: "71d49f89174b2c0264812e788a2b5c72ec3f3107244c6e653aa017515046ed34", axioms: ["Quot.sound","propext"] },
 };
+const BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.encodeCNFTokens_eq_terminator_then_successor_and_optional_unary": { hash: "e2430440ee1e6c9a103e78f021f0c91e7b6903385ee8cc9ca053c3303a743b2e", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.secondFollowingTokenSlot_direct_eq_padding_or_t": { hash: "d97c0e58efba2b1a8b8da8d85f6c1fec57624d4957588a9625dac1fc8d40b134", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.WidthOptionalAppender.machine_acceptState_ne_rejectState": { hash: "00646e05af7bfd520e71f745bb259cb69485558c6549bf815ef6fcd133d94a6d", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.WidthOptionalAppender.rule_source_ne_acceptState": { hash: "8f8b05a91e211208c224875a9178377c3e52b724cca70c9a59ef9c65e610d6cb", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.WidthOptionalAppender.rules_length": { hash: "e4e38f2778e12014f5fccec5f35db63144b3892d78798da71c1bf240a6e30f06", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.WidthOptionalAppender.rules_pairwise_query_distinct": { hash: "34c9b99b71b666b3b9755adbb941b34e0cb6192e81693ffa80fd59ef162c64dd", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.WidthOptionalAppender.workRunExact": { hash: "484d423ea288bf93972998a36b7dab40469fe765882ac47cdcb2a178fa2c396a", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.boundedDecide_compile_accept": { hash: "41b5a1202c0385bb4954c18b75f697b562b3656135a6e53355a198613f3668c6", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.boundedDecide_compile_ne_timeout": { hash: "b601dbc9b69ccaad8d0ae3786508c60231d3709364b02471b2746190bc9e860e", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.finalConfiguration_state": { hash: "ec52592f772498df41ad0733a17d4be28a070c3dfc91ae44e0479bd8825e0a47", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.finalOutside_contains_finalTokenSlot": { hash: "a9ad4c47f4f368163d47cc5f9ec447ee98ae5ccad835e1dfe7605e5c423bea05", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.finalTape_represents": { hash: "b19792c201f3f606d8b800d41aa5c9dc5f4f21486de4c2632bca90eb1110a57c", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.finalTokenBits_eq_encodedFormula_secondConstraintPaddingOrUnary": { hash: "26cfa28521cdb75fe83ee395b130de9d9ffe63937fa9f943a0c13efbe38fff9a", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.finalTokenSlot_eq_secondConstraintStart_add_eight": { hash: "6a2e5db9ec7a03785b17ba2d9a446d6b40998f401dfcc1147360d15389ca523d", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.followingTokenSlot_direct_eq_padding_or_t": { hash: "fa250caebc76ecdb4e16b06a06355b47bbd98203916943dcf7566bde1f30475f", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.machine_acceptState_ne_rejectState": { hash: "d93406da8104a86c436a7efa8317cdec586490f29871cd707d0e682c1ad9074e", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.opportunitySlot_eq_secondConstraintStart_add_eight": { hash: "d6b1e83aa4944cb92ee25841af6742eee7d36936dd8af47ababa54e15f7db14c", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.optionalAppender_workRunExact": { hash: "d98f6e156d26f869ee016d74d0ecfbd3734706855284ebddf2f55a0ed9b711c0", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.prefixEndpoint_before_launch_timeout": { hash: "28347444c101dc944719899aaa9629d89805f2b03123349c03e66334b745d777", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.prefixSuffix_launch_workStep": { hash: "fa41b71a43ad4009b7bd8f499e3e56199a5551e2e7c0f052388d40f7e4299917", axioms: ["propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.prefix_workRunExact": { hash: "25a041b9e70986752a9679f90e0cbe6dfabb9a39a3f3169892c4ea152e58b17b", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.rawTimeBound_eval": { hash: "b1a0e6c51043cc73752ddf9a69e297e1feb22c212f46709777773adfd0668930", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.rawTimeBound_le": { hash: "2b54c5570c6a55bdf5d66ee28e5b907e0ba4a379870724ad4b34f164210f5429", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.rule_source_ne_acceptState": { hash: "07278ab4271876bb2c6546c62a67c712aa13783bd787ff75cc57950a5386411d", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.rules_length": { hash: "3975cfabe4510be44874161b3acc36f4fed157a816b911293afa991c8143d171", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.rules_pairwise_query_distinct": { hash: "d4e81b62ed7bea0551a213f2fd52b293219319f30125c198689dddef7e5c4830", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.run_compile_exact": { hash: "0f08d15849a9412f1fb4b86c39415c34d7d3223e360c6bbc7ed7b22f2b823bcf", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.run_compile_rawTimeBound": { hash: "0143ee1e27892dc359eeb13c929f4ed4e2c8dcbc945dedce3a0a6b2674551e66", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.run_compile_rawTimeBound_blankEquivalent": { hash: "c3ff20173a28ac59bc94edbd9ca68bef83bdfbf63fc833cafe8227f827668b50", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.secondConstraintPaddingOrUnaryTokens_eq_canonical_formula_prefix": { hash: "a2ebcf00dda1f4f59e67930bccc7a4e1b2d6a203e5ce034c8ece552ba0103ef3", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.specification_following_step": { hash: "fa06b38de2912a7ecdf981e72c9a4cc25036096596ed3dad50da22e15f2c96c4", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.specification_opportunity_step": { hash: "934fc27fc909283fb192464bf3eb48323cac024bc506a8e1d2364c1865e6cf7e", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.suffix_workRunExact": { hash: "b37dd06c5e70cdd20a1b5d986f1cf18889fe10bebb708386e2d036ce751585f6", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.targetEvaluator_workRunExact": { hash: "d2b353e0ace30a2fccaea6e2e6e440af88799d946e7e0a6b5bebcf3800d91e89", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.widthEvaluator_workRunExact": { hash: "8ba6e41e2cf4451e5f261dc3a4cdd7ca7a6ff58949a2cde75844ba01acf2e260", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.width_eq_tapeWidth": { hash: "a5ef9a38fa42aeab05ce56e89bb15e78c61e0627d553d79eab984ce136e457d4", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.width_positive": { hash: "9cb09c79a036bd5bc51b6abda63d89e3f675c563f74a1e4b807c66ef51f024f0", axioms: [] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.workBoundedDecide_accept": { hash: "b2c80fa4b1d06dcb88f62f78a7a8dce1c8e2a0db4a3114341754f64942fb9405", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.workRunExact": { hash: "80cf76e97482b034013d02c81b0c51da8d94c13cb77bb9937de4c9200f252e3c", axioms: ["Quot.sound","propext"] },
+  "PNP.Concrete.CookLevin.BuilderSecondConstraintPaddingOrUnaryOpportunityStep.work_one_step_short_timeout": { hash: "4d77bc2943296fc1d25c99ce06bca0692d0d2f99e3513bb2ce373f10c0485f9d", axioms: ["Quot.sound","propext"] },
+};
+
 const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 376670,
-    sha256: "3c1edb9f99678ddeeee74da814029cf0ac17a0cdb6cd4b0fbcce1ac5040d7ae3"
+    bytes: 379261,
+    sha256: "4087f0069f2097d9119feb082d8988e70e7a70ed4797da405012afa68d84f5f3"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 124295,
-    sha256: "29d22fc03cdfec5b4d73b828aa2c36c718f3b0c71c7dc950fe6b3f22c405c315"
+    bytes: 127168,
+    sha256: "f6cde89712bcdfd6a1b9d0763e3b29db15d3b11883cc12da722b13f16edc9304"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 1323675,
-    sha256: "19a31a7f64aa1d84478a94d242d302f1a40bdde3507fe56ffaf610ca00094614"
+    bytes: 1356442,
+    sha256: "90475e52efd015aec577f1a378d95d520b89d3b20fe4c7bdfc4db7585c289af3"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 8774042,
-    sha256: "037b1bf13da821c60db27d887f32d0f1347072d9288bb21851d7fde525bffbd3"
+    bytes: 9048234,
+    sha256: "b2c61b8afcac8df4e71b2f9dd53b779631347dbaac678db77c65113acbdd93b5"
   }
 ];
 
@@ -2143,7 +2186,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "2c58adffea3a4d33ff205433eda9590f4ce5c3f2e6db4764140094aa0534a7dc") {
+  if (sha256(map) !== "270af07378eca03dff852d1b9f70b034e058b63a8a0e24dd0257e5358ecf3a7b") {
     fail("pinned formal-publication map digest mismatch");
   }
   const publicationMap = JSON.parse(map.toString("utf8"));
@@ -2169,8 +2212,8 @@ function assertPinnedCore(sourceDir) {
     "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaTokenCursor.step_of_done": "72a7018658fadc646c07637bc07792502fdcab845760af862081e618f879732e",
     "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaTokenCursor.step_of_lt": "8d0bc1d099f14e3764d3d01a3f7e54b21c962538012dfd8dcd04eb282434a90b"
   };
-  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-23-76"
-      || publicationMap.milestoneSourceClosureSha256 !== "0822bde5c28639ac3c099e83da02165286ef2dcea6ebab940d7eeb5026b74cee"
+  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-23-77"
+      || publicationMap.milestoneSourceClosureSha256 !== "c6213632859bace723f284a2c7d3722fd8e763f918ea310f0e4026a1e3917b48"
       || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[rawTapeTheorem] !== "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d") {
     fail("pinned formal-publication map Cook-Levin identity mismatch");
   }
@@ -2505,8 +2548,8 @@ function assertPinnedCore(sourceDir) {
   const fifthClausePaddingRunMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-fifth-clause-padding-run");
   if (!fifthClausePaddingRunMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || fifthClausePaddingRunMilestone.classification !== "formalized-foundation-only"
       || fifthClausePaddingRunMilestone.requiredTheorems?.length !== 39
       || !Object.keys(BUILDER_FIFTH_CLAUSE_PADDING_RUN_THEOREMS).every((name) =>
@@ -2519,8 +2562,8 @@ function assertPinnedCore(sourceDir) {
   const firstConstraintPaddingRunMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-first-constraint-padding-run");
   if (!firstConstraintPaddingRunMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || firstConstraintPaddingRunMilestone.classification !== "formalized-foundation-only"
       || firstConstraintPaddingRunMilestone.requiredTheorems?.length !== 39
       || !Object.keys(BUILDER_FIRST_CONSTRAINT_PADDING_RUN_THEOREMS).every((name) =>
@@ -2534,8 +2577,8 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintSeparatorMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-separator-step");
   if (!secondConstraintSeparatorMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintSeparatorMilestone.classification !== "formalized-foundation-only"
       || secondConstraintSeparatorMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_THEOREMS).every((name) => secondConstraintSeparatorMilestone.requiredTheorems?.includes(name))
@@ -2547,8 +2590,8 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralSignMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-sign-step");
   if (!secondConstraintFirstLiteralSignMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintFirstLiteralSignMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralSignMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_THEOREMS).every((name) =>
@@ -2562,8 +2605,8 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralFirstUnaryUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-first-unary-unit-step");
   if (!secondConstraintFirstLiteralFirstUnaryUnitMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintFirstLiteralFirstUnaryUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralFirstUnaryUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralFirstUnaryUnitMilestone.requiredTheorems?.includes(name))
@@ -2577,8 +2620,8 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralSecondUnaryUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-second-unary-unit-step");
   if (!secondConstraintFirstLiteralSecondUnaryUnitMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintFirstLiteralSecondUnaryUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralSecondUnaryUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralSecondUnaryUnitMilestone.requiredTheorems?.includes(name))
@@ -2591,8 +2634,8 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralThirdUnaryUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step");
   if (!secondConstraintFirstLiteralThirdUnaryUnitMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintFirstLiteralThirdUnaryUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralThirdUnaryUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralThirdUnaryUnitMilestone.requiredTheorems?.includes(name))
@@ -2605,8 +2648,8 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralTerminatorUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-terminator-step");
   if (!secondConstraintFirstLiteralTerminatorUnitMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintFirstLiteralTerminatorUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralTerminatorUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralTerminatorUnitMilestone.requiredTheorems?.includes(name))
@@ -2619,14 +2662,27 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralSuccessorTokenUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-successor-token-step");
   if (!secondConstraintFirstLiteralSuccessorTokenUnitMilestone
-      || publicationMap.milestones?.length !== 56
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 53
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
       || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralSuccessorTokenUnitMilestone.requiredTheorems?.includes(name))
       || !Object.entries(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_THEOREMS).every(([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash)
       || !secondConstraintFirstLiteralSuccessorTokenUnitMilestone.nonClaim?.includes("emits exactly one width-selected token")) {
     fail("pinned formal-publication map Cook-Levin builder second-constraint-first-literal-successor-token-step identity mismatch");
+  }
+
+  const secondConstraintPaddingOrUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
+    row.id === "concrete-cook-levin-builder-second-constraint-padding-or-unary-opportunity-step");
+  if (!secondConstraintPaddingOrUnaryOpportunityMilestone
+      || publicationMap.milestones?.length !== 57
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 54
+      || secondConstraintPaddingOrUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
+      || secondConstraintPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40
+      || !Object.keys(BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintPaddingOrUnaryOpportunityMilestone.requiredTheorems?.includes(name))
+      || !Object.entries(BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every(([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash)
+      || !secondConstraintPaddingOrUnaryOpportunityMilestone.nonClaim?.includes("consumes exactly one width-selected schedule opportunity")) {
+    fail("pinned formal-publication map Cook-Levin builder second-constraint-padding-or-unary-opportunity-step identity mismatch");
   }
 
 
@@ -2636,15 +2692,15 @@ function checkPdfPageCount(pdfPath) {
   const result = spawnSync("pdfinfo", [pdfPath], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
   if (result.status !== 0) fail(`pdfinfo failed for ${pdfPath}: ${(result.stderr || result.stdout || "pdfinfo unavailable").trim()}`);
   const match = result.stdout.match(/^Pages:\s+(\d+)\s*$/m);
-  if (!match || Number(match[1]) !== 54) fail(`${pdfPath}: expected exactly fifty-four pages`);
+  if (!match || Number(match[1]) !== 55) fail(`${pdfPath}: expected exactly fifty-five pages`);
 }
 
 function assertCorePayloadBoundary(sourcePath, buffer) {
   if (!sourcePath.endsWith(".json")) return;
   const payload = JSON.parse(buffer.toString("utf8"));
   if (sourcePath === "public/pnp-status.json") {
-    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-76" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIRST-LITERAL-SUCCESSOR-TOKEN-STEP-75") fail("core status coordinate mismatch");
-    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-23-76" || payload.formalPublicationMapSha256 !== "2c58adffea3a4d33ff205433eda9590f4ce5c3f2e6db4764140094aa0534a7dc" || payload.leanSourceClosureSha256 !== "0822bde5c28639ac3c099e83da02165286ef2dcea6ebab940d7eeb5026b74cee") fail("core status source identity mismatch");
+    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-77" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-PADDING-OR-UNARY-OPPORTUNITY-STEP-76") fail("core status coordinate mismatch");
+    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-07-23-77" || payload.formalPublicationMapSha256 !== "270af07378eca03dff852d1b9f70b034e058b63a8a0e24dd0257e5358ecf3a7b" || payload.leanSourceClosureSha256 !== "c6213632859bace723f284a2c7d3722fd8e763f918ea310f0e4026a1e3917b48") fail("core status source identity mismatch");
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 6) fail("core status blocker boundary mismatch");
@@ -2788,11 +2844,15 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
     if (!secondConstraintFirstLiteralSuccessorTokenUnitMilestone || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.earned !== true || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.allPresent !== true || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.allKernelTypesMatch !== true || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.requiredTheorems?.length !== 40) fail("core status Cook-Levin builder second-constraint-first-literal-successor-token-step boundary mismatch");
     if (!(payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepAxiomAuditPassed === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepAuditedDeclarationCount === 82 && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepCompiledRawMachineFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepExternalInputSizePolynomialFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepExactFormulaBitsFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepSecondConstraintFirstLiteralSuccessorTokenFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepRetainedAdvancedTokenCoordinateFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepInputPrefixAppenderComposed === true && payload.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralSuccessorTokenStepFailClosedBoundaryTimeoutFormalized === true)) fail("core status Cook-Levin builder second-constraint-first-literal-successor-token-step evidence mismatch");
 
+    const secondConstraintPaddingOrUnaryOpportunityMilestone = payload.formalPublicationMilestones?.find((row) => row.id === "concrete-cook-levin-builder-second-constraint-padding-or-unary-opportunity-step");
+    if (!secondConstraintPaddingOrUnaryOpportunityMilestone || secondConstraintPaddingOrUnaryOpportunityMilestone.earned !== true || secondConstraintPaddingOrUnaryOpportunityMilestone.allPresent !== true || secondConstraintPaddingOrUnaryOpportunityMilestone.allKernelTypesMatch !== true || secondConstraintPaddingOrUnaryOpportunityMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || secondConstraintPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40) fail("core status Cook-Levin builder second-constraint-padding-or-unary-opportunity-step boundary mismatch");
+    if (!(payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepPaddingOrUnaryOpportunityFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && payload.leanConcreteCookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) fail("core status Cook-Levin builder second-constraint-padding-or-unary-opportunity-step evidence mismatch");
+
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
-    if (payload.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-23-76") fail("core inventory coordinate mismatch");
+    if (payload.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-07-23-77") fail("core inventory coordinate mismatch");
     if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");
-    if (payload.declarationCount !== 10914 || payload.theoremCount !== 6185 || payload.assumptionFreeTheoremCount !== 3397 || payload.excludedPrivateDeclarationCount !== 4240 || payload.sourceClosureModuleCount !== 96 || payload.axiomCount !== 4 || payload.milestoneCandidates?.length !== 1689) fail("core inventory counts mismatch");
+    if (payload.declarationCount !== 11055 || payload.theoremCount !== 6294 || payload.assumptionFreeTheoremCount !== 3428 || payload.excludedPrivateDeclarationCount !== 4278 || payload.sourceClosureModuleCount !== 97 || payload.axiomCount !== 4 || payload.milestoneCandidates?.length !== 1729) fail("core inventory counts mismatch");
     const cookLevinBridge = payload.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge
         || cookLevinBridge.kind !== "theorem"
@@ -3098,6 +3158,14 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== expectedModule || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)) fail(`core inventory Cook-Levin builder second-constraint-first-literal-successor-token-step theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) fail(`core inventory Cook-Levin builder second-constraint-first-literal-successor-token-step fingerprint mismatch: ${name}`);
     }
+    for (const [name, row] of Object.entries(BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      const expectedModule = name.startsWith("PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.")
+        ? "PNP.Concrete.CookLevinBuilderSecondConstraintFirstLiteralTerminatorStep"
+        : "PNP.Concrete.CookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStep";
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== expectedModule || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)) fail(`core inventory Cook-Levin builder second-constraint-padding-or-unary-opportunity-step theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) fail(`core inventory Cook-Levin builder second-constraint-padding-or-unary-opportunity-step fingerprint mismatch: ${name}`);
+    }
     if (payload.milestoneCandidates?.some((candidate) => candidate.name === "PNP.Concrete.cnfSATNPComplete" || candidate.name === "PNP.Concrete.cnfSATInP" || candidate.name === "PNP.Main.p_eq_np")) fail("core inventory overstates the Cook-Levin milestone");
     const packer = payload.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq");
     if (!packer || packer.kind !== "theorem" || packer.module !== "PNP.Concrete.TerminalOutputPacker" || packer.axioms?.length !== 0) fail("core inventory terminal-output packer theorem boundary mismatch");
@@ -3197,7 +3265,7 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) fail(`core inventory Cook-Levin builder fourth-clause-second-literal-prefix fingerprint mismatch: ${name}`);
     }
 
-    if (payload.milestoneCandidates?.length !== 1689) fail("core inventory reviewed theorem-candidate count mismatch");
+    if (payload.milestoneCandidates?.length !== 1729) fail("core inventory reviewed theorem-candidate count mismatch");
   }
 }
 
