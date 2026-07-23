@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-23T07:39:29Z</updated>
+  <updated>2026-07-23T11:20:59Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-23-second-constraint-padding-or-unary-opportunity</id>
+    <title>The machine handles the next position after its choice</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-23-second-constraint-padding-or-unary-opportunity"/>
+    <published>2026-07-23T11:20:59Z</published>
+    <updated>2026-07-23T11:20:59Z</updated>
+    <summary type="text">The machine has finished one numbered item in a long checklist and has already chosen the mark that follows it. This milestone verifies what happens at the very next reserved position. In the smallest supported layout, that position is intentional empty spacing, so the machine moves past it without writing. In wider layouts, it writes the first mark of the next numbered item. In both cases, it finishes at the exact following position. Only this one position is handled. The machine does not write the next mark, complete the next item, finish the second block, or finish the full checklist. The 40% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved. Editorial progress estimate at publication: 40 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;The machine has finished one numbered item in a long checklist and has already chosen the mark that follows it. This milestone verifies what happens at the very next reserved position. In the smallest supported layout, that position is intentional empty spacing, so the machine moves past it without writing. In wider layouts, it writes the first mark of the next numbered item. In both cases, it finishes at the exact following position.&lt;/p&gt;&lt;p&gt;Only this one position is handled. The machine does not write the next mark, complete the next item, finish the second block, or finish the full checklist. The 40% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;40&quot;&gt;Editorial progress estimate at publication: 40%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-23-second-constraint-padding-or-unary-opportunity&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-23-second-constraint-first-literal-successor-token</id>
     <title>The machine chooses what comes after the completed item</title>

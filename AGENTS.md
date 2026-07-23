@@ -44,6 +44,12 @@ host, not as a build host.
    and digests as exact generated data. Do not paraphrase or independently retype
    them in fixtures. Stabilize the source, run the generators, and record the
    values they actually emit rather than preselecting expected values.
+   Never use an unscoped global replacement for short counts, ordinals, or digest
+   fragments: update named structured fields or anchored phrases, then compare
+   every changed SHA-256 token with the clean baseline or generated authority.
+   When a test reads a complete generated artifact through a child process, size
+   its output buffer from the current sealed byte count (or compare files
+   directly); inventories grow and stale fixed buffers create false failures.
 3. Run source-bound tests with `PNP_SOURCE_DIR` set to that exact core checkout.
    A cross-repository test skipped because `PNP_SOURCE_DIR` is absent is not
    evidence that the source binding passed.

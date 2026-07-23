@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-23-second-constraint-padding-or-unary-opportunity",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-padding-or-unary-opportunity-step",
+      "publishedAt": "2026-07-23T11:20:59Z",
+      "title": "The machine handles the next position after its choice",
+      "plainLanguage": [
+        "The machine has finished one numbered item in a long checklist and has already chosen the mark that follows it. This milestone verifies what happens at the very next reserved position. In the smallest supported layout, that position is intentional empty spacing, so the machine moves past it without writing. In wider layouts, it writes the first mark of the next numbered item. In both cases, it finishes at the exact following position.",
+        "Only this one position is handled. The machine does not write the next mark, complete the next item, finish the second block, or finish the full checklist. The 40% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved."
+      ],
+      "progressEstimatePercent": 40,
+      "source": {
+        "commit": "5aba133715790bae354e584c0d8606c19bb3ab8b",
+        "tree": "8f7140c0401973197017b988592256fb3ddeb704",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-77",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-PADDING-OR-UNARY-OPPORTUNITY-STEP-76"
+      }
+    },
+    {
       "id": "2026-07-23-second-constraint-first-literal-successor-token",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-successor-token-step",
       "publishedAt": "2026-07-23T07:39:29Z",
