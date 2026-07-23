@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 37% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 38% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="37" aria-label="Estimated proof reconstruction progress: 37 percent">37%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 37 percent">
+        <progress class="proof-progress-meter" max="100" value="38" aria-label="Estimated proof reconstruction progress: 38 percent">38%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 38 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-23-second-constraint-first-literal-terminator" data-milestone-id="concrete-cook-levin-builder-second-constraint-first-literal-terminator-step">
+        <div class="section-label"><time datetime="2026-07-23T03:34:55Z">2026-07-23</time> · earned milestone 52</div>
+        <h2>The machine closes the first item in its second checklist block</h2>
+        <p>Imagine a machine writing a numbered item in a long checklist, one mark at a time. The marks saying how to use the item and which item it is were already in place. This milestone verifies that the machine adds the single closing mark that completes the first item in the second major block, then moves to the next required position.</p>
+        <p>Only that closing mark is added. In the smallest supported layout, the next position closes the line; in wider layouts, it begins another item. The machine identifies which case applies but writes neither next mark. It has not finished the second block or the full checklist, and this update does not prove that P equals NP.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 38%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-cook-levin-builder-second-constraint-first-literal-terminator-step</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every fixed concrete polynomial-time verifier, one literal finite work machine composes the complete second-constraint first-literal third-unary-unit step with the reused selected 59-rule F appender and 45-rule cursor advance through one outer total nine-symbol WorkChain bridge. The global table has exactly 5164 plus the sixteen inherited/generated unary-evaluator rule counts. Every raw input follows exact prefix, appender, cursor, bridge, suffix, and combined traces; emits exactly the terminating F of the second scheduled constraint&#39;s first literal; preserves encodedFormula.take (2 * (FormulaWidth + 42)); and retains coordinate FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 6. A constructive schedule case split proves the direct next schedule token is Finish when tapeWidth is one and the positive T beginning the next literal at wider widths. The external compiled bound evaluates to BuilderSecondConstraintFirstLiteralThirdUnaryUnitStep.rawTimeBound + 594 + 24 * n + 12 * FormulaWidth + 12 * cursorWord.length. Compiled exact, bounded, blank-equivalent, accepting, non-timeout, malformed-workspace, both unlaunched-endpoint, and one-step-short results are proved. All 48 new public declarations plus eight reviewed reused false-token/cursor and dead-state interfaces are axiom-audited: 14 have empty closure, 11 use only propext, and 31 use only propext and Quot.sound, with no project axiom or Classical.choice.</p>
+          <p><strong>Boundary:</strong> This milestone emits exactly one token: the terminating F of the second scheduled constraint&#39;s first literal. It observes but does not emit the following Finish in the width-one case or the following positive T in wider cases, does not emit the remainder of the second constraint or traverse that constraint, does not implement a general dynamic formula cursor or raw decoder for arbitrary schedule coordinates, does not emit the remaining formula body, and does not construct a complete formula builder or FunctionProgram.RawRefinement, package a concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness, establish CNFSAT in P, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 40</p>
+          <p><strong>Core source:</strong> commit <code>2869924b3f5b7f4cea1b27d40ccebb91ee36a5ec</code>, tree <code>91f28c0732fb700be15512313da961b2bcfecaf0</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-75</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIRST-LITERAL-TERMINATOR-STEP-74</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-23-second-constraint-first-literal-third-unary-unit" data-milestone-id="concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step">
         <div class="section-label"><time datetime="2026-07-23T01:06:25Z">2026-07-23</time> · earned milestone 51</div>
         <h2>The machine finishes writing the first item&#39;s number</h2>

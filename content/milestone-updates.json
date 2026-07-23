@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-23-second-constraint-first-literal-terminator",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-terminator-step",
+      "publishedAt": "2026-07-23T03:34:55Z",
+      "title": "The machine closes the first item in its second checklist block",
+      "plainLanguage": [
+        "Imagine a machine writing a numbered item in a long checklist, one mark at a time. The marks saying how to use the item and which item it is were already in place. This milestone verifies that the machine adds the single closing mark that completes the first item in the second major block, then moves to the next required position.",
+        "Only that closing mark is added. In the smallest supported layout, the next position closes the line; in wider layouts, it begins another item. The machine identifies which case applies but writes neither next mark. It has not finished the second block or the full checklist, and this update does not prove that P equals NP."
+      ],
+      "progressEstimatePercent": 38,
+      "source": {
+        "commit": "2869924b3f5b7f4cea1b27d40ccebb91ee36a5ec",
+        "tree": "91f28c0732fb700be15512313da961b2bcfecaf0",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-75",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIRST-LITERAL-TERMINATOR-STEP-74"
+      }
+    },
+    {
       "id": "2026-07-23-second-constraint-first-literal-third-unary-unit",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step",
       "publishedAt": "2026-07-23T01:06:25Z",
