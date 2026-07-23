@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-23-second-constraint-first-literal-third-unary-unit",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step",
+      "publishedAt": "2026-07-23T01:06:25Z",
+      "title": "The machine finishes writing the first item's number",
+      "plainLanguage": [
+        "Imagine a machine writing a numbered item in a long checklist, one mark at a time. Two of the three marks needed for the first item's number in the second major block were already in place. This milestone verifies that it writes the third and final number mark, then moves to the closing mark for that item.",
+        "Only that final number mark is added. The machine has not written the closing mark, completed the item, finished the second block, or finished the full checklist. This update does not prove that P equals NP."
+      ],
+      "progressEstimatePercent": 37,
+      "source": {
+        "commit": "170775d279865370c239919326f1f336cf254b70",
+        "tree": "4e6b53721a57038737be8681146ec7f07d51d888",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-23-74",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-23-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIRST-LITERAL-THIRD-UNARY-UNIT-STEP-73"
+      }
+    },
+    {
       "id": "2026-07-23-second-constraint-first-literal-second-unary-unit",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-first-literal-second-unary-unit-step",
       "publishedAt": "2026-07-22T22:24:57Z",

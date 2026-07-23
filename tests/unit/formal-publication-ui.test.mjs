@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '232f95a1046a175eab3cecaaec3a0a9ed67515d123d407ddb08a813654d0f5a0');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'd563b23ed13c17b531c108e1123fa3f9335b0ae4cccced90a8615bbe8c3a0325');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 50);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 51);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -1795,6 +1795,56 @@ test('Cook-Levin second-constraint first-literal second unary unit requires all 
   assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
 });
 
+test('Cook-Levin second-constraint first-literal third unary unit requires all forty exact pins and remains a one-token boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step');
+  assert.equal(milestone.requiredTheorems.length, 40);
+  assert.match(milestone.scope, /emits exactly the third and final unary T of the second scheduled constraint's first variable index/u);
+  assert.match(milestone.scope, /encodedFormula\.take \(2 \* \(FormulaWidth \+ 41\)\)/u);
+  assert.match(milestone.scope, /direct next schedule token is the terminating F/u);
+  assert.match(milestone.nonClaim, /emits exactly one token/u);
+  assert.match(milestone.nonClaim, /does not emit the following terminating F/u);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralThirdUnaryUnitStep.specification_thirdUnaryUnit_step')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step')
+    .theoremRows.find((row) => row.name.endsWith('.nextTokenSlot_direct_eq_f'))
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepAxiomAuditPassed',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepCompiledRawMachineFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepExternalInputSizePolynomialFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepExactFormulaBitsFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepSecondConstraintFirstLiteralThirdUnaryUnitFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepRetainedAdvancedTokenCoordinateFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepInputPrefixAppenderComposed',
+    'leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepFailClosedBoundaryTimeoutFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCookLevinBuilderSecondConstraintFirstLiteralThirdUnaryUnitStepAuditedDeclarationCount = 55;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+});
+
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
   const strippedRefinement = structuredClone(status);
   strippedRefinement.leanConcretePipelineRawRefinementFormalized = false;
@@ -1939,7 +1989,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '62645e7d64131ca2f2e1cfd5e67f5c6eb011022b9982c6df7beb1157c477ee2b'/);
+  assert.match(source, /const STATUS_SHA256 = 'c42cb2c616c7b59f2791a3745b95cc35ae218ccd44c358e70068b33775600348'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -1964,12 +2014,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /10,587/);
-  assert.match(statusPage, /Fifty scoped milestones/);
+  assert.match(statusPage, /10,681/);
+  assert.match(statusPage, /Fifty-one scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 50-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 51-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /56-page claim manuscript remains historical only/i);
