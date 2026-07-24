@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '3c9fd0f32bd9678eb7de0c5c41544582f16931b2c9c3a3e05da91ae6ff514fd9');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '92ef59b6942817af4007241dd9716264c7f2c876f1b9abd8ad983977de725764');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 55);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 56);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -2047,6 +2047,57 @@ test('Cook-Levin second-constraint second padding-or-unary opportunity requires 
   assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
 });
 
+test('Cook-Levin second-constraint third padding-or-unary opportunity requires all forty exact pins and remains a one-opportunity boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-third-padding-or-unary-opportunity-step');
+  assert.equal(milestone.requiredTheorems.length, 40);
+  assert.match(milestone.scope, /At tapeWidth one it consumes padding and emits no token/u);
+  assert.match(milestone.scope, /at every wider width it appends exactly the third unary T of the second literal/u);
+  assert.match(milestone.scope, /encodedFormula\.take \(2 \* \(FormulaWidth \+ 43 \+ if tapeWidth = 1 then 0 else 3\)\)/u);
+  assert.match(milestone.scope, /following slot is again padding at width one and the fourth unary T at wider widths/u);
+  assert.match(milestone.nonClaim, /consumes exactly one additional width-selected schedule opportunity/u);
+  assert.match(milestone.nonClaim, /does not consume the following padding opportunity at width one or fourth unary T at wider widths/u);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates.filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CookLevin.BuilderSecondConstraintThirdPaddingOrUnaryOpportunityStep.specification_opportunity_step')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-third-padding-or-unary-opportunity-step')
+    .theoremRows.find((row) => row.name.endsWith('.followingTokenSlot_direct_eq_padding_or_t'))
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+
+  for (const field of [
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepThirdPaddingOrUnaryOpportunityFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed',
+    'leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAuditedDeclarationCount = 81;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+});
+
 test('recursive raw refinement cannot be stripped or separated from compiled evidence', () => {
   const strippedRefinement = structuredClone(status);
   strippedRefinement.leanConcretePipelineRawRefinementFormalized = false;
@@ -2191,7 +2242,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '651ae30751179c9a5361d5be0e45dc3a6c21e51c4d5e9d72d42a43e16b69fd6f'/);
+  assert.match(source, /const STATUS_SHA256 = '7e32b25942a24a17e0c7ff9ecf2600cc2d7f2bb8dca1e79f9564e78411666a23'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -2216,15 +2267,15 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /11,178/);
-  assert.match(statusPage, /Fifty-five scoped milestones/);
+  assert.match(statusPage, /11,301/);
+  assert.match(statusPage, /Fifty-six scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 56-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 57-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
-  assert.match(reportPage, /56-page claim manuscript remains historical only/i);
+  assert.match(reportPage, /57-page claim manuscript remains historical only/i);
   assert.match(verifyPage, /current inventory-derived PDF/i);
   assert.doesNotMatch(homepage, />Historical report</);
 });

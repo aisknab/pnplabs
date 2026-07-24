@@ -58,7 +58,7 @@ Historical activation or checker-acceptance fields cannot override the gate.
 | Direct-wire model | Typed NAND semantics, finite enumeration/reference minimum, framed replacement/slack | Connection to a standard complexity reduction |
 | Locked-NAND | Typed local candidates, five local minima, conditional six-premise boundary | Global carrier layout, `BaselineDistinct`, trace/final laws, uniform builder, premise instantiation |
 | Residual routes | Sound strict gain from one explicit supplied list; proof-bearing exact/zero outcomes | Candidate-universe/global completeness, ZeroSlack contradiction, PCCMin, residual-band minimizer |
-| Complexity | Concrete charged-pipeline P/NP/reduction definitions, `CNFSAT ∈ NP`, all-input and sequential raw compilers, recursive function/decision refinement into one literal raw machine, exact Cook-Levin semantics/size/schedule/cursor results, four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of the second scheduled constraint, its width-selected successor token, and the first two padding-or-unary opportunities under an external polynomial bound | The following padding or third unary opportunity, completion or traversal of the second constraint, a general dynamic formula cursor, remaining formula body, complete raw Cook-Levin builder, builder `FunctionProgram.RawRefinement`, a packaged polynomial reduction, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider |
+| Complexity | Concrete charged-pipeline P/NP/reduction definitions, `CNFSAT ∈ NP`, all-input and sequential raw compilers, recursive function/decision refinement into one literal raw machine, exact Cook-Levin semantics/size/schedule/cursor results, four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of the second scheduled constraint, its width-selected successor token, and the first three padding-or-unary opportunities under an external polynomial bound | The following padding or fourth unary opportunity, completion or traversal of the second constraint, a general dynamic formula cursor, remaining formula body, complete raw Cook-Levin builder, builder `FunctionProgram.RawRefinement`, a packaged polynomial reduction, CNF-SAT NP-completeness, and a deterministic polynomial-time CNF-SAT decider |
 | Root theorem | No compatibility-root theorem | Exact concrete root, build, and acceptable axiom audit |
 
 Four project axioms and six formal blockers remain disclosed in `public/pnp-status.json`.
@@ -75,7 +75,7 @@ operating systems, fonts, or tool versions.
 
 ## Historical Boundary
 
-The former 56-page manuscript and checker release are historical audit material only:
+The former 57-page manuscript and checker release are historical audit material only:
 
 - source tag `final-pnp-proof-report-hardened-7072f8d`;
 - source commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`;

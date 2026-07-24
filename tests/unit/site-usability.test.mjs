@@ -54,14 +54,14 @@ test('plain-language orientation is static and available before technical depth'
     'Does this project prove that P equals NP?',
     'What is P versus NP?',
     'What does “machine-checked” mean?',
-    'What does the 41% tracker mean?',
+    'What does the 42% tracker mean?',
     'How can I follow new milestones?',
   ]) assert.ok(faq.includes(question), question);
 
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
-  assert.match(paper, /The current 56-page report is generated from the compiled Lean inventory/u);
+  assert.match(paper, /The current 57-page report is generated from the compiled Lean inventory/u);
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
   assert.match(verify, /id="reproduce"/u);
@@ -76,7 +76,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 58 formal milestone records/u);
+  assert.match(status, /Show all 59 formal milestone records/u);
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
@@ -91,21 +91,21 @@ test('updates expose a provider-free feed and a clearly qualified progress estim
   assert.match(updates, /https:\/\/pnplabs\.com\.au\/updates\.xml/u);
   assert.match(updates, /data-copy="#feed-url"/u);
   assert.match(updates, /No email address or PNP Labs account is needed/u);
-  assert.match(updates, /About 41% of the known formalisation work/u);
+  assert.match(updates, /About 42% of the known formalisation work/u);
   assert.match(updates, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
   assert.match(feed, /<link rel="self" type="application\/atom\+xml" href="https:\/\/pnplabs\.com\.au\/updates\.xml"\/>/u);
-  assert.match(svg, /41% ESTIMATED/u);
-  assert.match(updates, /<progress[^>]+value="41"[^>]+aria-label="Estimated proof reconstruction progress: 41 percent"/u);
+  assert.match(svg, /42% ESTIMATED/u);
+  assert.match(updates, /<progress[^>]+value="42"[^>]+aria-label="Estimated proof reconstruction progress: 42 percent"/u);
   assert.match(svg, /editorial · revisable/u);
   assert.match(home, /<aside class="home-progress-rail" aria-labelledby="home-progress-title">/u);
-  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 41 percent"/u);
-  assert.match(home, /data-proof-progress="41"/u);
+  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 42 percent"/u);
+  assert.match(home, /data-proof-progress="42"/u);
   assert.doesNotMatch(home, /style="--proof-progress:/u);
   assert.match(home, /Editorial · revisable\./u);
   assert.equal((home.match(/>Follow updates<\/a>/gu) || []).length, 1);
   assert.doesNotMatch(home, /proof-progress-section/u);
   assert.match(css, /\.home-hero \.artifact-grid \{\s*grid-template-columns: minmax\(0, 880px\) minmax\(250px, 292px\)/u);
-  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 41%;/u);
+  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 42%;/u);
   assert.match(css, /\.proof-tape-scale span:nth-child\(2\) \{\s*bottom: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-fill \{[\s\S]*width: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-scale span:nth-child\(2\) \{[\s\S]*left: var\(--proof-progress\)/u);
