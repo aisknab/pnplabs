@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1,909 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 1,944 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 11,688 public declarations;
-- 6,779 theorem-kind declarations;
-- 3,551 assumption-free theorem-kind declarations;
-- 102 source-closure modules;
-- 4,464 excluded private compiler auxiliaries;
+- 11,811 public declarations;
+- 6,873 theorem-kind declarations;
+- 3,574 assumption-free theorem-kind declarations;
+- 103 source-closure modules;
+- 4,511 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The fifty-nine earned scopes are:
+The sixty earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -106,6 +106,7 @@ The fifty-nine earned scopes are:
 | Literal Cook-Levin second-constraint fourth padding-or-unary opportunity step | One literal table with `5764` plus twenty-six inherited/generated unary-evaluator rule counts composes the completed third padding-or-unary opportunity with represented-width evaluation, the same reviewed 93-rule optional appender, and retained-coordinate evaluation through three nine-symbol bridges; every raw input follows exact predecessor, evaluator, width-one skip or wider-width appender, bridge, suffix, and combined traces, consumes a fourth padding slot without emission at width one or emits the fourth unary `T` of the second literal at wider widths, preserves `encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 4))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 11`, and proves the following opportunity is padding at width one or the terminating `F` at wider widths, within `BuilderSecondConstraintThirdPaddingOrUnaryOpportunityStep.rawTimeBound + 648 + 24*n + 12*FormulaWidth + 12*width + 12*widthRootPrefixLength + 6*widthWorkSteps + 6*targetWorkSteps`. The 82-declaration audit covers 66 new public declarations, fourteen reused optional-appender interfaces, and two strengthened schedule lemmas | Exactly one additional handled width-dependent opportunity only: no following padding or terminating token, completion or traversal of the second constraint, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin second-constraint fifth padding-or-terminator opportunity step | One literal table with `5884` plus twenty-eight inherited/generated unary-evaluator rule counts composes the completed fourth padding-or-unary opportunity with represented-width evaluation, a new reviewed 93-rule optional-terminator appender, and retained-coordinate evaluation through three nine-symbol bridges; every raw input follows exact predecessor, evaluator, width-one skip or wider-width `F` appender, bridge, suffix, and combined traces, consumes a fifth padding slot without emission at width one or emits the terminating `F` of the second literal at wider widths, preserves `encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 5))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 12`, and proves the following opportunity is padding at width one or the opening unary `T` of the following literal at wider widths, within `BuilderSecondConstraintFourthPaddingOrUnaryOpportunityStep.rawTimeBound + 660 + 24*n + 12*FormulaWidth + 12*width + 12*widthRootPrefixLength + 6*widthWorkSteps + 6*targetWorkSteps`. The 82-declaration audit covers 66 new public outer declarations, fourteen new optional-terminator interfaces, and two strengthened schedule lemmas | Exactly one additional handled width-dependent opportunity only: no following padding or opening unary token, completion of the following literal or traversal of the second constraint, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Literal Cook-Levin second-constraint sixth padding-or-opening-unary opportunity step | One literal table with `6004` plus thirty inherited/generated unary-evaluator rule counts composes the completed fifth padding-or-terminator opportunity with represented-width evaluation, the reviewed 93-rule optional appender, and retained-coordinate evaluation through three nine-symbol bridges; every raw input follows exact predecessor, evaluator, width-one skip or wider-width opening-`T` appender, bridge, suffix, and combined traces, consumes a sixth padding slot without emission at width one or emits the opening positive `T` of the following literal at wider widths, preserves `encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 6))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 13`, and proves the following opportunity is padding at width one or the first unary-index `T` of that literal at wider widths, within `BuilderSecondConstraintFifthPaddingOrTerminatorOpportunityStep.rawTimeBound + 672 + 24*n + 12*FormulaWidth + 12*width + 12*widthRootPrefixLength + 6*widthWorkSteps + 6*targetWorkSteps`. The 82-declaration audit covers 66 new public outer declarations, fourteen reused optional-appender interfaces, and two strengthened schedule lemmas | Exactly one additional handled width-dependent opportunity only: no following padding or first unary-index token, completion of the following literal or traversal of the second constraint, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
+| Literal Cook-Levin second-constraint seventh padding-or-unary opportunity step | One literal table with `6124` plus thirty-two inherited/generated unary-evaluator rule counts composes the completed sixth padding-or-opening-unary opportunity with represented-width evaluation, the reviewed 93-rule optional appender, and retained-coordinate evaluation through three nine-symbol bridges; every raw input follows exact predecessor, evaluator, width-one skip or wider-width first-unary-index-`T` appender, bridge, suffix, and combined traces, consumes a seventh padding slot without emission at width one or emits the first unary-index `T` of the following literal at wider widths, preserves `encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 7))`, reaches `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 14`, and proves the following opportunity is padding at width one or the second unary-index `T` of that literal at wider widths, within `BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.rawTimeBound + 684 + 24*n + 12*FormulaWidth + 12*width + 12*widthRootPrefixLength + 6*widthWorkSteps + 6*targetWorkSteps`. The 82-declaration audit covers 66 new public outer declarations, fourteen reused optional-appender interfaces, and two strengthened schedule lemmas | Exactly one additional handled width-dependent opportunity only: no following padding or second unary-index token, completion of the following literal or traversal of the second constraint, general dynamic formula cursor, remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, or `P = NP` |
 | Typed direct-wire NAND semantics | Topological Boolean NAND programs and ordered multi-output semantics | No minimization, SAT, or `P = NP` |
 | Finite enumeration and reference minimum | Exhaustive finite Boolean direct-wire search in the empty-profile model | No polynomial-runtime result |
 | Concrete framed replacement and slack | Serial framed contexts with explicit support and bypass wires | No arbitrary-support/global replacement theorem |
@@ -141,7 +142,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-two-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

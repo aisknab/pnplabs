@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PNP_CORE_COMMIT: 59d89b6b07ae16e649cda19dfeb3c78b335397ea
+  PNP_CORE_COMMIT: 655d767f486a8ef64ee841b24ba853c4e0414658
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
@@ -54,7 +54,7 @@ jobs:
       - name: Verify exact core artifacts without writing
         run: node tools/sync-public-access-docs.mjs --check
 
-      - name: Verify sixty-page current report and reject historical bytes
+      - name: Verify sixty-two-page current report and reject historical bytes
         shell: bash
         run: |
           set -euo pipefail
