@@ -67,6 +67,10 @@ host, not as a build host.
    the normal read-only checks are green. Fetch PNPLabs `origin/main` afterward
    and record its merge commit and tree; the feature tip is not the deployment
    coordinate even when both commits have the same tree.
+   Do not use GitHub auto-merge as a waiting mechanism unless branch protection
+   has first been confirmed to require every durable check: with advisory checks,
+   auto-merge can merge immediately. Manually wait for every normal check to
+   succeed, confirm the head SHA is unchanged, and then merge.
 6. Keep the privileged one-line production deployment user-owned unless the user
    explicitly authorizes otherwise. After deployment, independently run the
    read-only production verifier from a clean checkout of the exact PNPLabs merge
@@ -85,6 +89,10 @@ host, not as a build host.
 - Run syntax checks and the directly affected unit tests immediately after
   updating their fixtures. A mismatch such as 43 expected records versus 44
   generated records belongs in this phase, not at the end of a full audit.
+- For synthetic audit inventories padded to an exact generated candidate count,
+  measure the fully assembled fixture before choosing the filler length. Do not
+  subtract a milestone's raw pin count: reused theorem names can already occur in
+  earlier fixture arrays, so raw pins and globally new candidates can differ.
 - Treat formatting-only differences in generated prose semantically where the
   contract permits it: normalize line endings and insignificant trailing
   whitespace before comparison. Keep byte-exact checks for sealed artefacts,
