@@ -2421,12 +2421,12 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '11,688',
-    '6,779',
-    '3,551',
-    '<strong>4,464</strong> private compiler auxiliaries excluded',
+    '11,811',
+    '6,873',
+    '3,574',
+    '<strong>4,511</strong> private compiler auxiliaries excluded',
     '<strong>103</strong> modules',
-    'Fifty-nine scoped milestones',
+    'Sixty scoped milestones',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -2588,8 +2588,8 @@ test('static inventory prose matches the compiled declaration boundary', async (
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(paper.includes('Exactly 4,464 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 4,464 private compiler auxiliaries are excluded explicitly.'), true);
+  assert.equal(paper.includes('Exactly 4,511 private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Exactly 4,511 private compiler auxiliaries are excluded explicitly.'), true);
   for (const fragment of ['11,811', '6,873', '3,574', '4,511', '103 modules', 'sixty-two A4 pages', 'BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.workRunExact']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }

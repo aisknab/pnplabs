@@ -14,7 +14,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
     'The machine starts writing the following item’s number',
-    'In wider layouts it writes the first mark of that item’s number',
+    'In wider layouts, it writes the first mark of that item’s number',
     'BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.workRunExact',
     'encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 7))',
     'At width one it consumes padding and emits nothing',

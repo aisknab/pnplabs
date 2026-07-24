@@ -2483,8 +2483,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /11,688/);
-  assert.match(statusPage, /Fifty-nine scoped milestones/);
+  assert.match(statusPage, /11,811/);
+  assert.match(statusPage, /Sixty scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
