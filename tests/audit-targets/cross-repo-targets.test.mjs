@@ -4845,137 +4845,45 @@ test("rejects second-constraint-fifth-padding-or-terminator-opportunity release,
   expectFailure(mapFingerprint, /core publication map builder second-constraint-fifth-padding-or-terminator-opportunity-step fingerprint mismatch/);
 });
 
-test("rejects second-constraint-seventh-padding-or-unary-opportunity release, status, inventory, and publication-map mutation", (t) => {
+test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity release, status, inventory, and publication-map mutation", (t) => {
   const releaseFlag = makeProject(t);
   releaseFlag.release.earnedBoundary.cookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepSixthPaddingOrOpeningUnaryOpportunityFormalized = false;
   write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
-  expectFailure(releaseFlag, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step boundary mismatch/);
+  expectFailure(releaseFlag, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step boundary mismatch/);
 
   const releaseFingerprint = makeProject(t);
   releaseFingerprint.release.earnedBoundary.cookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepTheoremKernelTypeSha256[
     "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.followingTokenSlot_direct_eq_padding_or_t"
   ] = "0".repeat(64);
   write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
-  expectFailure(releaseFingerprint, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step fingerprint mismatch/);
+  expectFailure(releaseFingerprint, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step fingerprint mismatch/);
 
   const releaseAxiom = makeProject(t);
   releaseAxiom.release.earnedBoundary.cookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepProjectAxiomClosure = ["PNP.ForgedAxiom"];
   write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
-  expectFailure(releaseAxiom, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step axiom closure mismatch/);
+  expectFailure(releaseAxiom, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step axiom closure mismatch/);
 
   const releaseCost = makeProject(t);
   releaseCost.release.earnedBoundary.cookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepRuleCount = "0";
   write(releaseCost.root, "downloads/formal-publication-release.json", json(releaseCost.release));
-  expectFailure(releaseCost, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step cost mismatch/);
+  expectFailure(releaseCost, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step cost mismatch/);
 
   const releaseIdentity = makeProject(t);
   releaseIdentity.release.earnedBoundary.cookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepFollowingTokenTheorem =
     "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.forged";
   write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
-  expectFailure(releaseIdentity, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step theorem identity mismatch/);
-
-  const statusFlag = makeProject(t);
-  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
-  statusFlagPayload.leanConcreteCookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepExactFormulaBitsFormalized = false;
-  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
-  expectFailure(statusFlag, /public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch/);
-
-  const statusMilestone = makeProject(t);
-  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
-  statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
-    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step"
-  );
-  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
-  expectFailure(statusMilestone, /public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step mismatch/);
-
-  const inventoryAxiom = makeProject(t);
-  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
-  inventoryAxiomPayload.milestoneCandidates.find(
-    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.specification_opportunity_step"
-  ).axioms = ["PNP.ForgedAxiom"];
-  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
-  expectFailure(inventoryAxiom, /public inventory Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step mismatch/);
-
-  const reusedModule = makeProject(t);
-  const reusedModulePayload = JSON.parse(readFileSync(path.join(reusedModule.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
-  reusedModulePayload.milestoneCandidates.find(
-    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.encodeCNFTokens_eq_terminator_then_successor_and_four_optional_unary_and_optional_terminator_and_optional_opening_unary"
-  ).module = "PNP.ForgedModule";
-  rewriteCorePayload(reusedModule, "public/pnp-theorem-inventory.json", reusedModulePayload);
-  expectFailure(reusedModule, /public inventory Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step mismatch/);
-
-  const inventoryFingerprint = makeProject(t);
-  const inventoryFingerprintPayload = JSON.parse(readFileSync(path.join(inventoryFingerprint.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
-  inventoryFingerprintPayload.milestoneCandidates.find(
-    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.finalTokenBits_eq_encodedFormula_secondConstraintSixthPaddingOrOpeningUnary"
-  ).kernelType += " ";
-  rewriteCorePayload(inventoryFingerprint, "public/pnp-theorem-inventory.json", inventoryFingerprintPayload);
-  expectFailure(inventoryFingerprint, /public inventory Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step fingerprint mismatch/);
-
-  const mapMilestone = makeProject(t);
-  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
-  mapMilestonePayload.milestones = mapMilestonePayload.milestones.filter(
-    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step"
-  );
-  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
-  expectFailure(mapMilestone, /core publication map builder second-constraint-seventh-padding-or-unary-opportunity-step milestone mismatch/);
-
-  const mapNonClaim = makeProject(t);
-  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
-  mapNonClaimPayload.milestones.find(
-    (row) => row.id === "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step"
-  ).nonClaim = "forged";
-  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
-  expectFailure(mapNonClaim, /core publication map builder second-constraint-seventh-padding-or-unary-opportunity-step milestone mismatch/);
-
-  const mapFingerprint = makeProject(t);
-  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
-  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
-    "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.workRunExact"
-  ] = "0".repeat(64);
-  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
-  expectFailure(mapFingerprint, /core publication map builder second-constraint-seventh-padding-or-unary-opportunity-step fingerprint mismatch/);
-});
-
-test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity release, status, inventory, and publication-map mutation", (t) => {
-  const releaseFlag = makeProject(t);
-  releaseFlag.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized = false;
-  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
-  expectFailure(releaseFlag, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step boundary mismatch/);
-
-  const releaseFingerprint = makeProject(t);
-  releaseFingerprint.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepTheoremKernelTypeSha256[
-    "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.followingTokenSlot_direct_eq_padding_or_t"
-  ] = "0".repeat(64);
-  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
-  expectFailure(releaseFingerprint, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step fingerprint mismatch/);
-
-  const releaseAxiom = makeProject(t);
-  releaseAxiom.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepProjectAxiomClosure = ["PNP.ForgedAxiom"];
-  write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
-  expectFailure(releaseAxiom, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step axiom closure mismatch/);
-
-  const releaseCost = makeProject(t);
-  releaseCost.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRuleCount = "0";
-  write(releaseCost.root, "downloads/formal-publication-release.json", json(releaseCost.release));
-  expectFailure(releaseCost, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step cost mismatch/);
-
-  const releaseIdentity = makeProject(t);
-  releaseIdentity.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFollowingTokenTheorem =
-    "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.forged";
-  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
   expectFailure(releaseIdentity, /formal-publication Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step theorem identity mismatch/);
 
   const statusFlag = makeProject(t);
   const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
-  statusFlagPayload.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized = false;
+  statusFlagPayload.leanConcreteCookLevinBuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStepExactFormulaBitsFormalized = false;
   rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
   expectFailure(statusFlag, /public status Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step evidence mismatch/);
 
   const statusMilestone = makeProject(t);
   const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
   statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
-    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step"
+    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step"
   );
   rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
   expectFailure(statusMilestone, /public status Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step mismatch/);
@@ -4983,7 +4891,7 @@ test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity relea
   const inventoryAxiom = makeProject(t);
   const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
   inventoryAxiomPayload.milestoneCandidates.find(
-    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.specification_opportunity_step"
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.specification_opportunity_step"
   ).axioms = ["PNP.ForgedAxiom"];
   rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
   expectFailure(inventoryAxiom, /public inventory Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step mismatch/);
@@ -4991,7 +4899,7 @@ test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity relea
   const reusedModule = makeProject(t);
   const reusedModulePayload = JSON.parse(readFileSync(path.join(reusedModule.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
   reusedModulePayload.milestoneCandidates.find(
-    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.encodeCNFTokens_eq_terminator_then_successor_and_four_optional_unary_and_optional_terminator_and_optional_opening_unary_and_optional_first_unary"
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.encodeCNFTokens_eq_terminator_then_successor_and_four_optional_unary_and_optional_terminator_and_optional_opening_unary"
   ).module = "PNP.ForgedModule";
   rewriteCorePayload(reusedModule, "public/pnp-theorem-inventory.json", reusedModulePayload);
   expectFailure(reusedModule, /public inventory Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step mismatch/);
@@ -4999,7 +4907,7 @@ test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity relea
   const inventoryFingerprint = makeProject(t);
   const inventoryFingerprintPayload = JSON.parse(readFileSync(path.join(inventoryFingerprint.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
   inventoryFingerprintPayload.milestoneCandidates.find(
-    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.finalTokenBits_eq_encodedFormula_secondConstraintSeventhPaddingOrUnary"
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.finalTokenBits_eq_encodedFormula_secondConstraintSixthPaddingOrOpeningUnary"
   ).kernelType += " ";
   rewriteCorePayload(inventoryFingerprint, "public/pnp-theorem-inventory.json", inventoryFingerprintPayload);
   expectFailure(inventoryFingerprint, /public inventory Cook-Levin builder second-constraint-sixth-padding-or-opening-unary-opportunity-step fingerprint mismatch/);
@@ -5007,7 +4915,7 @@ test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity relea
   const mapMilestone = makeProject(t);
   const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
   mapMilestonePayload.milestones = mapMilestonePayload.milestones.filter(
-    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step"
+    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step"
   );
   rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
   expectFailure(mapMilestone, /core publication map builder second-constraint-sixth-padding-or-opening-unary-opportunity-step milestone mismatch/);
@@ -5015,7 +4923,7 @@ test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity relea
   const mapNonClaim = makeProject(t);
   const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
   mapNonClaimPayload.milestones.find(
-    (row) => row.id === "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step"
+    (row) => row.id === "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step"
   ).nonClaim = "forged";
   rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
   expectFailure(mapNonClaim, /core publication map builder second-constraint-sixth-padding-or-opening-unary-opportunity-step milestone mismatch/);
@@ -5023,10 +4931,102 @@ test("rejects second-constraint-sixth-padding-or-opening-unary-opportunity relea
   const mapFingerprint = makeProject(t);
   const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
   mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
-    "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.workRunExact"
+    "PNP.Concrete.CookLevin.BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.workRunExact"
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map builder second-constraint-sixth-padding-or-opening-unary-opportunity-step fingerprint mismatch/);
+});
+
+test("rejects second-constraint-seventh-padding-or-unary-opportunity release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepTheoremKernelTypeSha256[
+    "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.followingTokenSlot_direct_eq_padding_or_t"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step fingerprint mismatch/);
+
+  const releaseAxiom = makeProject(t);
+  releaseAxiom.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
+  expectFailure(releaseAxiom, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step axiom closure mismatch/);
+
+  const releaseCost = makeProject(t);
+  releaseCost.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRuleCount = "0";
+  write(releaseCost.root, "downloads/formal-publication-release.json", json(releaseCost.release));
+  expectFailure(releaseCost, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step cost mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFollowingTokenTheorem =
+    "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.forged";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /formal-publication Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
+    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step"
+  );
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.specification_opportunity_step"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /public inventory Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step mismatch/);
+
+  const reusedModule = makeProject(t);
+  const reusedModulePayload = JSON.parse(readFileSync(path.join(reusedModule.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  reusedModulePayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintFirstLiteralTerminatorStep.encodeCNFTokens_eq_terminator_then_successor_and_four_optional_unary_and_optional_terminator_and_optional_opening_unary_and_optional_first_unary"
+  ).module = "PNP.ForgedModule";
+  rewriteCorePayload(reusedModule, "public/pnp-theorem-inventory.json", reusedModulePayload);
+  expectFailure(reusedModule, /public inventory Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step mismatch/);
+
+  const inventoryFingerprint = makeProject(t);
+  const inventoryFingerprintPayload = JSON.parse(readFileSync(path.join(inventoryFingerprint.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryFingerprintPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.finalTokenBits_eq_encodedFormula_secondConstraintSeventhPaddingOrUnary"
+  ).kernelType += " ";
+  rewriteCorePayload(inventoryFingerprint, "public/pnp-theorem-inventory.json", inventoryFingerprintPayload);
+  expectFailure(inventoryFingerprint, /public inventory Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step fingerprint mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones = mapMilestonePayload.milestones.filter(
+    (row) => row.id !== "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step"
+  );
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map builder second-constraint-seventh-padding-or-unary-opportunity-step milestone mismatch/);
+
+  const mapNonClaim = makeProject(t);
+  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapNonClaimPayload.milestones.find(
+    (row) => row.id === "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step"
+  ).nonClaim = "forged";
+  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
+  expectFailure(mapNonClaim, /core publication map builder second-constraint-seventh-padding-or-unary-opportunity-step milestone mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.workRunExact"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map builder second-constraint-seventh-padding-or-unary-opportunity-step fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
