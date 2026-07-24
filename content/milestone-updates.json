@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-24-second-constraint-fifth-padding-or-terminator-opportunity",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-fifth-padding-or-terminator-opportunity-step",
+      "publishedAt": "2026-07-24T08:51:40Z",
+      "title": "The machine checks whether the next item ends here",
+      "plainLanguage": [
+        "The machine is building a long checklist one position at a time. It has now reached the next reserved position. In the smallest supported layout, there is no extra item here, so the position stays blank. In wider layouts, the machine writes the closing mark that finishes the next item. In both cases, it stops at the exact following position.",
+        "Only this one position is handled. The machine does not write the first mark of whatever comes next, finish the second block, or finish the full checklist. The 44% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved."
+      ],
+      "progressEstimatePercent": 44,
+      "source": {
+        "commit": "650dbecaa067ff71b996d26d13315da9dd2cdcc9",
+        "tree": "94cb12d3bddb453b9e78d9ea8bfa2583c39643a0",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-24-81",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-24-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-FIFTH-PADDING-OR-TERMINATOR-OPPORTUNITY-STEP-80"
+      }
+    },
+    {
       "id": "2026-07-24-second-constraint-fourth-padding-or-unary-opportunity",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-fourth-padding-or-unary-opportunity-step",
       "publishedAt": "2026-07-24T04:47:50Z",
