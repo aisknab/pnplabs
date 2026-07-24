@@ -1997,7 +1997,7 @@ summary:focus-visible,
   text-transform: uppercase;
 }
 .proof-tape-graphic {
-  --proof-progress: 43%;
+  --proof-progress: 44%;
   display: grid;
   grid-template-columns: min-content 68px minmax(0, 1fr);
   gap: .7rem;

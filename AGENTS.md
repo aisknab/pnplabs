@@ -57,6 +57,12 @@ host, not as a build host.
    the complete remote suite and hostile audits, then a fresh clean-clone
    reproduction. Regenerate the release seal and cover only after the synchronized
    public bytes have stabilized.
+   Before the first targeted test, reconcile every generated boundary change
+   against the tests and durable workflow assertions that consume it. Compare
+   structured fields rather than waiting for a broad test to reveal stale literal
+   counts, coordinates, hashes, page totals, or schema keys. Update those expected
+   values first, then run the cheapest affected test before escalating to a larger
+   suite.
 5. Open or update the PR only with the intended durable files. Merge only after
    the normal read-only checks are green. Fetch PNPLabs `origin/main` afterward
    and record its merge commit and tree; the feature tip is not the deployment
@@ -66,6 +72,34 @@ host, not as a build host.
    read-only production verifier from a clean checkout of the exact PNPLabs merge
    commit. Confirm provenance, complete public bytes, routes, redirects, headers,
    MIME types, cache policy, denial probes, and release identity.
+
+### Cheap-failure-first publication preflight
+
+- Start from the authoritative generated payload and enumerate every changed
+  structured field. Reuse those emitted values in source, documentation, tests,
+  and workflow shell assertions; do not independently guess what a consumer
+  expects.
+- Search both checked-in tests and `.github/workflows/` for every superseded exact
+  value before running a broad suite. A renamed workflow step does not update an
+  embedded numeric assertion.
+- Run syntax checks and the directly affected unit tests immediately after
+  updating their fixtures. A mismatch such as 43 expected records versus 44
+  generated records belongs in this phase, not at the end of a full audit.
+- Treat formatting-only differences in generated prose semantically where the
+  contract permits it: normalize line endings and insignificant trailing
+  whitespace before comparison. Keep byte-exact checks for sealed artefacts,
+  hashes, and generated files whose identity is the contract.
+- Before a source-bound audit, enumerate every current and historical ref named
+  by `docs/audit_targets.json` and verify it resolves in `PNP_SOURCE_DIR`. Prefer
+  a fresh checkout of the exact core merge; stale branch-specific fetch refspecs
+  and missing historical tags are preflight failures.
+- If any follow-up changes the PR head—even a test or workflow-only correction—
+  repeat the exact-head clean-clone reproduction. Earlier clean-clone evidence
+  applies only to the commit it checked.
+- With a proxy or jump host, probe the complete configured route in batch mode.
+  Loading the destination key alone does not prove that the proxy-hop identity is
+  available. Never diagnose this by repeatedly opening interactive askpass or
+  wallet prompts.
 
 Before switching branches, staging, or committing, inspect `git status`. Treat
 pre-existing untracked files as user-owned and exclude them unless the user
