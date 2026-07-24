@@ -3991,7 +3991,9 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 1909) failures.push("public inventory reviewed theorem-candidate count mismatch");
+    if (inventory.milestoneCandidates?.length !== 1909) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 1909`);
+    }
   }
 }
 

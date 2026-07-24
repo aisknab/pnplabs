@@ -89,6 +89,10 @@ host, not as a build host.
 - Run syntax checks and the directly affected unit tests immediately after
   updating their fixtures. A mismatch such as 43 expected records versus 44
   generated records belongs in this phase, not at the end of a full audit.
+- For synthetic audit inventories padded to an exact generated candidate count,
+  measure the fully assembled fixture before choosing the filler length. Do not
+  subtract a milestone's raw pin count: reused theorem names can already occur in
+  earlier fixture arrays, so raw pins and globally new candidates can differ.
 - Treat formatting-only differences in generated prose semantically where the
   contract permits it: normalize line endings and insignificant trailing
   whitespace before comparison. Keep byte-exact checks for sealed artefacts,
