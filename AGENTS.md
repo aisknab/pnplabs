@@ -67,6 +67,10 @@ host, not as a build host.
    the normal read-only checks are green. Fetch PNPLabs `origin/main` afterward
    and record its merge commit and tree; the feature tip is not the deployment
    coordinate even when both commits have the same tree.
+   Do not use GitHub auto-merge as a waiting mechanism unless branch protection
+   has first been confirmed to require every durable check: with advisory checks,
+   auto-merge can merge immediately. Manually wait for every normal check to
+   succeed, confirm the head SHA is unchanged, and then merge.
 6. Keep the privileged one-line production deployment user-owned unless the user
    explicitly authorizes otherwise. After deployment, independently run the
    read-only production verifier from a clean checkout of the exact PNPLabs merge
