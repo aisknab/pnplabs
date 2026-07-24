@@ -104,6 +104,11 @@ host, not as a build host.
 - If any follow-up changes the PR head—even a test or workflow-only correction—
   repeat the exact-head clean-clone reproduction. Earlier clean-clone evidence
   applies only to the commit it checked.
+- Never expand, pad, or transcribe an abbreviated Git SHA by hand. Immediately
+  after every commit and push, read the full value with `git rev-parse HEAD` and
+  pass that exact captured value to remote checkout and verification commands.
+  Make remote setup print and compare the checked commit before any test phase;
+  a checkout mismatch is a setup failure, not verification evidence.
 - With a proxy or jump host, probe the complete configured route in batch mode.
   Loading the destination key alone does not prove that the proxy-hop identity is
   available. Never diagnose this by repeatedly opening interactive askpass or
