@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-24-second-constraint-third-padding-or-unary-opportunity",
+      "milestoneId": "concrete-cook-levin-builder-second-constraint-third-padding-or-unary-opportunity-step",
+      "publishedAt": "2026-07-24T00:38:35Z",
+      "title": "The machine checks a third reserved position",
+      "plainLanguage": [
+        "The machine is building a long checklist one position at a time. It has now reached a third reserved position after a completed item. In the smallest supported layout, that position is still intentional empty spacing, so the machine moves past it without writing. In wider layouts, it writes the third mark of the next numbered item. In both cases, it stops at the exact following position.",
+        "Only this one additional position is handled. The machine does not write the following mark, complete the next item, finish the second block, or finish the full checklist. The 42% figure is a revisable planning estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved."
+      ],
+      "progressEstimatePercent": 42,
+      "source": {
+        "commit": "cf0220e7e73b13b5b2639c3b6b0ec1b170090ecf",
+        "tree": "371c1e78025328a752e1f146bddd7ad52e370f7a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-24-79",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-24-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-THIRD-PADDING-OR-UNARY-OPPORTUNITY-STEP-78"
+      }
+    },
+    {
       "id": "2026-07-23-second-constraint-second-padding-or-unary-opportunity",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-second-padding-or-unary-opportunity-step",
       "publishedAt": "2026-07-23T13:55:51Z",
