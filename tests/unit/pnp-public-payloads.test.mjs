@@ -2512,7 +2512,7 @@ test('status page has a conservative complete static fallback', async () => {
     '(FormulaVariableSlotBound - 2) * (FormulaVariableSlotBound + 2) * FormulaTokensPerClause',
     'FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause',
     'BuilderFifthClausePaddingRun.rawTimeBound + 18',
-    '4511',
+    '4464',
     'BuilderSecondConstraintSeparatorStep.workRunExact',
     'encodedFormula.take (2 * (FormulaWidth + 37))',
     'FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 1',
