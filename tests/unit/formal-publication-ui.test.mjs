@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'b5a96357624ad63fd3815db8be685ebb5a3d52cf8859d3621d392e966df18940');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'da77e1663fdbb70c0796ef006e66e68636dd45e3c33c350262bd9d0b2a0a0524');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 60);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 61);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -2458,7 +2458,7 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '0127bc63e11364312db37bcdbd50e672911d62edc5555ecccbefce6534aa65e5'/);
+  assert.match(source, /const STATUS_SHA256 = '8d345785cb4bfeb200779eace1c787aa9885123123b5572b3f61dd9e7c6c1bce'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -2483,8 +2483,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /11,811/);
-  assert.match(statusPage, /Sixty scoped milestones/);
+  assert.match(statusPage, /12,138/);
+  assert.match(statusPage, /Sixty-one scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-25-83';
-const STATUS_SHA256 = '0127bc63e11364312db37bcdbd50e672911d62edc5555ecccbefce6534aa65e5';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-25-COOK-LEVIN-BUILDER-SECOND-CONSTRAINT-SEVENTH-PADDING-OR-UNARY-OPPORTUNITY-STEP-82';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-25-83';
-const INVENTORY_SHA256 = 'b5a96357624ad63fd3815db8be685ebb5a3d52cf8859d3621d392e966df18940';
-const SOURCE_CLOSURE_SHA256 = '203119b036adfbb429800396a175ae7e8e01ebd5e142e17a48d8724b7a5b9f9f';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-25-84';
+const STATUS_SHA256 = '8d345785cb4bfeb200779eace1c787aa9885123123b5572b3f61dd9e7c6c1bce';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-25-LOCKED-NAND-CARRIER-TRACE-83';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-25-84';
+const INVENTORY_SHA256 = 'da77e1663fdbb70c0796ef006e66e68636dd45e3c33c350262bd9d0b2a0a0524';
+const SOURCE_CLOSURE_SHA256 = '3830caf4570da74521ede477a38aa7c6ba815c9b9ecea0d2cefcf5be28155e40';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 11811,
-  theorems: 6873,
-  assumptionFreeTheorems: 3574,
-  excludedPrivateDeclarations: 4511,
-  modules: 103,
+  declarations: 12138,
+  theorems: 7074,
+  assumptionFreeTheorems: 3654,
+  excludedPrivateDeclarations: 4532,
+  modules: 104,
   axioms: 4,
 });
 
@@ -3266,6 +3266,17 @@ const BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_DECLAR
   ["PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.work_one_step_short_timeout", ["Quot.sound","propext"]],
 ]);
 
+const LOCKED_NAND_CARRIER_TRACE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.LockedNANDTrace.carrierSeparation", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.finalLock_fresh", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.distinguishedChecks_length", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.tracePredicate_coherentExtension", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.trace_sound_of_predicate_true", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.traceEquivalence", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.satisfiable_iff_trace_extension", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDTrace.exists_coherent_trace", ["Quot.sound", "propext"]],
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -3334,6 +3345,7 @@ const MILESTONE_IDS = Object.freeze([
   'finite-enumeration-minimum',
   'framed-replacement-slack',
   'locked-nand-local-baseline',
+  'locked-nand-global-carrier-trace-equivalence',
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
   'global-locked-nand-threshold',
@@ -3588,6 +3600,10 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized: false,
   leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed: false,
   leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized: false,
+  leanLockedNANDCarrierLayoutFormalized: false,
+  leanLockedNANDCarrierTraceAxiomAuditPassed: false,
+  leanLockedNANDCarrierTraceAuditedDeclarationCount: 0,
+  leanLockedNANDCarrierTraceScope: null,
   leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized: false,
   leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed: false,
   leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized: false,
@@ -3881,6 +3897,10 @@ leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep
 leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized = ${payload.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized ?? false}
 leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed = ${payload.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed ?? false}
 leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized ?? false}
+leanLockedNANDCarrierLayoutFormalized = ${payload.leanLockedNANDCarrierLayoutFormalized ?? false}
+leanLockedNANDCarrierTraceAxiomAuditPassed = ${payload.leanLockedNANDCarrierTraceAxiomAuditPassed ?? false}
+leanLockedNANDCarrierTraceAuditedDeclarationCount = ${payload.leanLockedNANDCarrierTraceAuditedDeclarationCount ?? 0}
+leanLockedNANDCarrierTraceScope = ${payload.leanLockedNANDCarrierTraceScope ?? 'null'}
 leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized = ${payload.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized ?? false}
 leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed ?? false}
 leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized ?? false}
@@ -3939,13 +3959,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 303,
-    definition: 4361,
-    inductive: 135,
+    constructor: 314,
+    definition: 4466,
+    inductive: 140,
     opaque: 0,
     quotient: 0,
-    recursor: 135,
-    theorem: 6873,
+    recursor: 140,
+    theorem: 7074,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4209,6 +4229,10 @@ function validateInventory(inventory) {
     axioms,
   }));
   const cookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep = BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_DECLARATIONS.map(([name, axioms]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+  }));
+  const lockedNANDCarrierTrace = LOCKED_NAND_CARRIER_TRACE_DECLARATIONS.map(([name, axioms]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
   }));
@@ -4488,6 +4512,9 @@ function validateInventory(inventory) {
           ? 'PNP.Concrete.CookLevinBuilderSecondConstraintPaddingOrUnaryOpportunityStep'
           : 'PNP.Concrete.CookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep')
       && sameJson(row.axioms, axioms))
+    && lockedNANDCarrierTrace.every(({ row, axioms }) => row?.kind === 'theorem'
+      && row.module === 'PNP.LockedNANDCarrierTrace'
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -4529,7 +4556,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 1944
+    && inventory.milestoneCandidates.length === 1952
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -4593,7 +4620,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 60;
+    const shouldBeEarned = index < 61;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5106,6 +5133,10 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true
+    && status.leanLockedNANDCarrierLayoutFormalized === true
+    && status.leanLockedNANDCarrierTraceAxiomAuditPassed === true
+    && status.leanLockedNANDCarrierTraceAuditedDeclarationCount === 71
+    && status.leanLockedNANDCarrierTraceScope === 'arbitrary-finite-topological-nand-circuits-carrier-separation-and-trace-equivalence'
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82
