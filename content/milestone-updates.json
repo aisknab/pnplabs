@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-25-locked-nand-carrier-trace",
+      "milestoneId": "locked-nand-global-carrier-trace-equivalence",
+      "publishedAt": "2026-07-25T00:00:50Z",
+      "title": "The proof now gives every finite NAND circuit one checkable trace",
+      "plainLanguage": [
+        "A computer circuit can be pictured as a row of small logic gates. Each gate reads two earlier values and produces a new value. This milestone gives every finite circuit arranged in that order a fixed set of labelled spaces for its inputs, connections, intermediate results, and final check. It proves that filling those spaces consistently is exactly the same as evaluating the circuit gate by gate.",
+        "This is a rule for circuits of any finite size, not just another fixed-size example. It still does not build the complete locked circuit family, prove the required size threshold, supply the full polynomial-time construction, or prove P = NP. The 47% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 47,
+      "source": {
+        "commit": "f1ebb93c5683592eaa70e0b77ed1969a1def6180",
+        "tree": "6fc22902a94f4a720ccb771ef5df30c22cae8bd2",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-25-84",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-25-LOCKED-NAND-CARRIER-TRACE-83"
+      }
+    },
+    {
       "id": "2026-07-25-second-constraint-seventh-padding-or-unary-opportunity",
       "milestoneId": "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step",
       "publishedAt": "2026-07-24T16:11:18Z",

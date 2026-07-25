@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 401,311 | `829716176063a0ab6b9ccb07bfe59aa9906aaceee20ff10c3edad31114a1367e` |
-| `downloads/canonical-proof-report.pdf` | 401,311 | `829716176063a0ab6b9ccb07bfe59aa9906aaceee20ff10c3edad31114a1367e` |
-| `downloads/canonical_proof_report.tex` | 149,920 | `59825734e578bd02212f30faf6ea64ef0bf31a131dff128cf1e722ec374ff622` |
-| `downloads/canonical-proof-report.tex` | 149,920 | `59825734e578bd02212f30faf6ea64ef0bf31a131dff128cf1e722ec374ff622` |
-| `public/pnp-status.json` | 1,559,103 | `0127bc63e11364312db37bcdbd50e672911d62edc5555ecccbefce6534aa65e5` |
-| `public/pnp-theorem-inventory.json` | 11,002,266 | `b5a96357624ad63fd3815db8be685ebb5a3d52cf8859d3621d392e966df18940` |
+| `downloads/canonical_proof_report.pdf` | 402,257 | `c1a1d5367c8c0760a09cd5ad2a124d920e8739bc33c8f146eed626bc1a4fbdaa` |
+| `downloads/canonical-proof-report.pdf` | 402,257 | `c1a1d5367c8c0760a09cd5ad2a124d920e8739bc33c8f146eed626bc1a4fbdaa` |
+| `downloads/canonical_proof_report.tex` | 150,465 | `e5678e9f60ff781dfaf2b8b5d6c192e0132c012e9cebc98d9e5ff0eb4188c332` |
+| `downloads/canonical-proof-report.tex` | 150,465 | `e5678e9f60ff781dfaf2b8b5d6c192e0132c012e9cebc98d9e5ff0eb4188c332` |
+| `public/pnp-status.json` | 1,565,360 | `8d345785cb4bfeb200779eace1c787aa9885123123b5572b3f61dd9e7c6c1bce` |
+| `public/pnp-theorem-inventory.json` | 11,074,060 | `da77e1663fdbb70c0796ef006e66e68636dd45e3c33c350262bd9d0b2a0a0524` |
 
 The PDF must have sixty-two A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 655d767f486a8ef64ee841b24ba853c4e0414658
+git -C ../pnp checkout f1ebb93c5683592eaa70e0b77ed1969a1def6180
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,22 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 11,811 public declarations, 6,873 theorem-kind declarations,
-3,574 assumption-free theorem-kind declarations, 4,511 excluded private auxiliaries, 103 modules, and
-four project axioms. The publication gate must remain false with six blockers. The concrete NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`; the current Cook-Levin semantic theorem is `PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language`, audited across 54 declarations with closure `[Classical.choice, Quot.sound, propext]` and no project axiom. `encodedFormula_size_le` bounds the actual canonical encoding in external input length. The rectangular schedule binds exact polynomial length to exact canonical emission. The direct cursor proves pointwise constraint/clause/token/bit lookup plus exact fuelled traversal. `PNP.Concrete.CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep.workRunExact` proves one literal finite machine consumes a seventh padding slot without emission at width one or emits the first unary-index `T` of the following literal at wider widths, preserves bits equal to `encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 7))`, advances the retained coordinate to `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 14`, and proves the following opportunity is padding at width one or the second unary-index `T` of that literal at wider widths. The table has `6124` plus thirty-two inherited/generated unary-evaluator rule counts, and the compiled run is bounded by `BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.rawTimeBound + 684 + 24 * n + 12 * FormulaWidth + 12 * width + 12 * widthRootPrefixLength + 6 * widthWorkSteps + 6 * targetWorkSteps`. The 82-declaration audit covers 66 new public outer declarations, fourteen reused optional-appender interfaces, and two strengthened schedule lemmas using only the approved Lean-standard closure, with no project axiom or `Classical.choice`. This handles only one additional width-dependent opportunity and does not consume the following padding or second unary-index `T` opportunity, complete the following literal, or traverse the remaining second constraint; it does not implement a general dynamic formula cursor. The remaining formula body, complete raw builder, builder `FunctionProgram.RawRefinement`, and packaged polynomial reduction must remain absent, as must CNF-SAT in P and NP-completeness.
+Expected compiled inventory counts are 12,138 public declarations, 7,074 theorem-kind declarations,
+3,654 assumption-free theorem-kind declarations, 4,532 excluded private auxiliaries, 104 modules, and
+four project axioms. The publication gate must remain false with six blockers. The concrete
+NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
+Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
+constraint. The newest milestone is `PNP.DirectWire.LockedNANDTrace.traceEquivalence`: for every
+finite topologically ordered NAND circuit, the exact `X/T/O/R/L/z` carrier has
+`inputs + 6 * gates + 1` coordinates and exactly three distinguished checks per gate. Completeness
+constructs a coherent trace from ordinary evaluation; soundness recovers that evaluation from any
+accepted trace; and satisfiability is equivalent to the existence of a coherent trace. Its
+71-declaration audit has no project axiom or `Classical.choice` and closes only over `propext` and
+`Quot.sound`. It does not assemble complete exposed candidates, prove cross-instance
+`BaselineDistinct` or final-output laws, construct the uniform polynomial locked-NAND builder, or
+establish the threshold. The remaining Cook-Levin formula body, complete raw builder, builder
+`FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness
+must also remain absent.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
