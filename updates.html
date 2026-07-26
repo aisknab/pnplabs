@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 47% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 48% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="47" aria-label="Estimated proof reconstruction progress: 47 percent">47%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 47 percent">
+        <progress class="proof-progress-meter" max="100" value="48" aria-label="Estimated proof reconstruction progress: 48 percent">48%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 48 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-26-locked-nand-global-candidates" data-milestone-id="locked-nand-global-candidate-assembly">
+        <div class="section-label"><time datetime="2026-07-26T00:51:21Z">2026-07-26</time> · earned milestone 62</div>
+        <h2>The proof now assembles the two circuit families used in the next comparison</h2>
+        <p>The previous milestone established a reliable way to represent and check the step-by-step behaviour of any finite circuit built from simple logic gates. This milestone uses that representation to assemble the two complete circuit families required by the next stage: a baseline whose number of inputs matches its number of gates, and a slightly larger version with four additional gates. It proves the exact size of each construction and that every original output is preserved.</p>
+        <p>The construction also avoids hidden fixed values inside the circuits and shows that changing the new final control input cannot alter any original output. This turns an abstract outline into a concrete family that works for circuits of any finite size. Important comparison and threshold arguments are still missing, as is the uniform polynomial-time procedure that would generate the construction from encoded input. The 48% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 48%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>locked-nand-global-candidate-assembly</code></p>
+          <p><strong>Classification:</strong> formalized</p>
+          <p><strong>Verified scope:</strong> Exact source-derived B/B baseline and B+4/B+1 extension for arbitrary finite topological NAND circuits.</p>
+          <p><strong>Boundary:</strong> Candidate assembly does not prove global BaselineDistinct, either conditional final-output branch law, the locked-NAND threshold, residual slack at most four, or a uniform polynomial bitstring builder.</p>
+          <p><strong>Reviewed theorem pins:</strong> 11</p>
+          <p><strong>Core source:</strong> commit <code>a8916280a02c3d2357f5b81917baa17926e51047</code>, tree <code>73c43c480fe556651edd2fa3ccbd491fa810ec2f</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-26-85</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-26-LOCKED-NAND-GLOBAL-CANDIDATES-84</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-25-locked-nand-carrier-trace" data-milestone-id="locked-nand-global-carrier-trace-equivalence">
         <div class="section-label"><time datetime="2026-07-25T00:00:50Z">2026-07-25</time> · earned milestone 61</div>
         <h2>The proof now gives every finite NAND circuit one checkable trace</h2>

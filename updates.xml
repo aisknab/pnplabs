@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-25T00:00:50Z</updated>
+  <updated>2026-07-26T00:51:21Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-26-locked-nand-global-candidates</id>
+    <title>The proof now assembles the two circuit families used in the next comparison</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-26-locked-nand-global-candidates"/>
+    <published>2026-07-26T00:51:21Z</published>
+    <updated>2026-07-26T00:51:21Z</updated>
+    <summary type="text">The previous milestone established a reliable way to represent and check the step-by-step behaviour of any finite circuit built from simple logic gates. This milestone uses that representation to assemble the two complete circuit families required by the next stage: a baseline whose number of inputs matches its number of gates, and a slightly larger version with four additional gates. It proves the exact size of each construction and that every original output is preserved. The construction also avoids hidden fixed values inside the circuits and shows that changing the new final control input cannot alter any original output. This turns an abstract outline into a concrete family that works for circuits of any finite size. Important comparison and threshold arguments are still missing, as is the uniform polynomial-time procedure that would generate the construction from encoded input. The 48% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved. Editorial progress estimate at publication: 48 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;The previous milestone established a reliable way to represent and check the step-by-step behaviour of any finite circuit built from simple logic gates. This milestone uses that representation to assemble the two complete circuit families required by the next stage: a baseline whose number of inputs matches its number of gates, and a slightly larger version with four additional gates. It proves the exact size of each construction and that every original output is preserved.&lt;/p&gt;&lt;p&gt;The construction also avoids hidden fixed values inside the circuits and shows that changing the new final control input cannot alter any original output. This turns an abstract outline into a concrete family that works for circuits of any finite size. Important comparison and threshold arguments are still missing, as is the uniform polynomial-time procedure that would generate the construction from encoded input. The 48% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;48&quot;&gt;Editorial progress estimate at publication: 48%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-26-locked-nand-global-candidates&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-25-locked-nand-carrier-trace</id>
     <title>The proof now gives every finite NAND circuit one checkable trace</title>

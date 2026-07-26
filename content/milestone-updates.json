@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-26-locked-nand-global-candidates",
+      "milestoneId": "locked-nand-global-candidate-assembly",
+      "publishedAt": "2026-07-26T00:51:21Z",
+      "title": "The proof now assembles the two circuit families used in the next comparison",
+      "plainLanguage": [
+        "The previous milestone established a reliable way to represent and check the step-by-step behaviour of any finite circuit built from simple logic gates. This milestone uses that representation to assemble the two complete circuit families required by the next stage: a baseline whose number of inputs matches its number of gates, and a slightly larger version with four additional gates. It proves the exact size of each construction and that every original output is preserved.",
+        "The construction also avoids hidden fixed values inside the circuits and shows that changing the new final control input cannot alter any original output. This turns an abstract outline into a concrete family that works for circuits of any finite size. Important comparison and threshold arguments are still missing, as is the uniform polynomial-time procedure that would generate the construction from encoded input. The 48% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved."
+      ],
+      "progressEstimatePercent": 48,
+      "source": {
+        "commit": "a8916280a02c3d2357f5b81917baa17926e51047",
+        "tree": "73c43c480fe556651edd2fa3ccbd491fa810ec2f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-26-85",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-26-LOCKED-NAND-GLOBAL-CANDIDATES-84"
+      }
+    },
+    {
       "id": "2026-07-25-locked-nand-carrier-trace",
       "milestoneId": "locked-nand-global-carrier-trace-equivalence",
       "publishedAt": "2026-07-25T00:00:50Z",
