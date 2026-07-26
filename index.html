@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Every finite NAND circuit now has one checkable trace layout</h2>
-          <p>A computer circuit can be pictured as a row of small logic gates. Each gate reads two earlier values and produces a new value. This milestone gives every finite circuit arranged in that order a fixed set of labelled spaces for its inputs, connections, intermediate results, and final check. It proves that filling those spaces consistently is exactly the same as evaluating the circuit gate by gate.</p>
-          <p>This is a rule for circuits of any finite size, not just another fixed-size example. It still does not build the complete locked circuit family, prove the required size threshold, supply the full polynomial-time construction, or prove P = NP. The 47% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-25-locked-nand-carrier-trace">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof now assembles the two circuit families used in the next comparison</h2>
+          <p>The previous milestone established a reliable way to represent and check the step-by-step behaviour of any finite circuit built from simple logic gates. This milestone uses that representation to assemble the two complete circuit families required by the next stage: a baseline whose number of inputs matches its number of gates, and a slightly larger version with four additional gates. It proves the exact size of each construction and that every original output is preserved.</p>
+          <p>The construction also avoids hidden fixed values inside the circuits and shows that changing the new final control input cannot alter any original output. This turns an abstract outline into a concrete family that works for circuits of any finite size. Important comparison and threshold arguments are still missing, as is the uniform polynomial-time procedure that would generate the construction from encoded input. The 48% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. P = NP remains unproved.</p>
+          <a href="updates.html#2026-07-26-locked-nand-global-candidates">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.DirectWire.LockedNANDTrace.traceEquivalence</code> connects two views of an arbitrary finite, topologically ordered NAND circuit: direct gate-by-gate evaluation and a coherent assignment to the fixed <code>X/T/O/R/L/z</code> carrier. The carrier has <code>inputs + 6 × gates + 1</code> slots, the trace has exactly three distinguished checks per gate, and the final lock coordinate is proved fresh. Completeness constructs a coherent trace from an evaluation; soundness recovers the same evaluation from any accepted trace. This does not assemble the complete exposed candidates, prove cross-instance <code>BaselineDistinct</code> or final-output laws, construct the uniform polynomial builder, or establish the locked-NAND threshold.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_semantics</code> is part of an exact source-derived assembly for every finite, topologically ordered NAND circuit. If <code>B</code> is the locked baseline count, the baseline candidate has carrier <code>B/B</code> and the extended candidate has carrier <code>(B + 4)/(B + 1)</code>. The proofs preserve all <code>B</code> baseline outputs, give the final conjunction semantics, exclude internal constants, and show that the fresh final lock cannot change a baseline output. This does not prove global <code>BaselineDistinct</code>, either conditional final-output branch law, the locked-NAND threshold, residual slack at most four, or a uniform polynomial bitstring builder.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -87,6 +87,9 @@ projectSpecificAxiomsRemaining = true
 leanLockedNANDCarrierLayoutFormalized = true
 leanLockedNANDCarrierTraceAxiomAuditPassed = true
 leanLockedNANDCarrierTraceAuditedDeclarationCount = 71
+leanLockedNANDGlobalCandidateAssemblyFormalized = true
+leanLockedNANDGlobalCandidateAxiomAuditPassed = true
+leanLockedNANDGlobalCandidateAuditedDeclarationCount = 59
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -100,9 +103,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-25-84</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-26-85</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>da77e1663fdbb70c0796ef006e66e68636dd45e3c33c350262bd9d0b2a0a0524</code></div>
+            <div><span>Inventory SHA-256</span><code>72261ed03643251129b75a87b8248c861d96a0d9badfd9d8783f90de7221fca9</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -110,18 +113,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>47</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>48</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 47 percent" data-proof-progress="47">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>47</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 48 percent" data-proof-progress="48">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>48</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 47% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 48% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
@@ -152,7 +155,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers a global carrier-and-trace rule, not the final claim.</h2><p>The complete exposed locked-NAND candidates, cross-instance separation and output laws, locked-NAND threshold, complete formula builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, global ZeroSlack result, and an eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers the global candidate assembly, not the final claim.</h2><p>Cross-instance separation, the conditional final-output branch laws, the locked-NAND threshold, the uniform polynomial bitstring builder, the complete formula builder, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, the global ZeroSlack result, and an eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

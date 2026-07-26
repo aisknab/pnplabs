@@ -40,15 +40,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "f1ebb93c5683592eaa70e0b77ed1969a1def6180");
+  assert.equal(result.coreCommit, "a8916280a02c3d2357f5b81917baa17926e51047");
 });
 
-test("current release is pinned, sixty-two-page, exposes the locked-NAND carrier trace, and fails closed", () => {
+test("current release is pinned, sixty-two-page, exposes the locked-NAND global candidates, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-25-67");
-  assert.equal(release.source.commit, "f1ebb93c5683592eaa70e0b77ed1969a1def6180");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-26-68");
+  assert.equal(release.source.commit, "a8916280a02c3d2357f5b81917baa17926e51047");
   assert.equal(release.source.proofCommit, "e46ac7407301ed71483f34a5300e894557315863");
-  assert.equal(release.source.tree, "6fc22902a94f4a720ccb771ef5df30c22cae8bd2");
+  assert.equal(release.source.tree, "73c43c480fe556651edd2fa3ccbd491fa810ec2f");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 62);
@@ -1370,6 +1370,18 @@ test("current release is pinned, sixty-two-page, exposes the locked-NAND carrier
   assert.equal(release.earnedBoundary.lockedNANDSatisfiableTraceTheorem, "PNP.DirectWire.LockedNANDTrace.satisfiable_iff_trace_extension");
   assert.deepEqual(release.earnedBoundary.lockedNANDCarrierTraceAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDCarrierTraceProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalCandidateAssemblyFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalBaselineCandidateFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalCandidateAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalCandidateAuditedDeclarationCount, 59);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalCandidateScope, "arbitrary-finite-topological-nand-circuits-exact-baseline-and-four-gate-extension");
+  assert.equal(Object.keys(release.earnedBoundary.lockedNANDGlobalCandidateTheoremKernelTypeSha256).length, 11);
+  assert.equal(release.earnedBoundary.lockedNANDBaselineCandidateSizeTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_size");
+  assert.equal(release.earnedBoundary.lockedNANDFullCandidateSizeTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_size");
+  assert.equal(release.earnedBoundary.lockedNANDFullCandidateFinalSemanticsTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_semantics");
+  assert.equal(release.earnedBoundary.lockedNANDBaselineCandidateFinalLockIrrelevantTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_finalLock_irrelevant");
+  assert.deepEqual(release.earnedBoundary.lockedNANDGlobalCandidateAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDGlobalCandidateProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);

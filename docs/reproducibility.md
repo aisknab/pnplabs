@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 402,257 | `c1a1d5367c8c0760a09cd5ad2a124d920e8739bc33c8f146eed626bc1a4fbdaa` |
-| `downloads/canonical-proof-report.pdf` | 402,257 | `c1a1d5367c8c0760a09cd5ad2a124d920e8739bc33c8f146eed626bc1a4fbdaa` |
-| `downloads/canonical_proof_report.tex` | 150,465 | `e5678e9f60ff781dfaf2b8b5d6c192e0132c012e9cebc98d9e5ff0eb4188c332` |
-| `downloads/canonical-proof-report.tex` | 150,465 | `e5678e9f60ff781dfaf2b8b5d6c192e0132c012e9cebc98d9e5ff0eb4188c332` |
-| `public/pnp-status.json` | 1,565,360 | `8d345785cb4bfeb200779eace1c787aa9885123123b5572b3f61dd9e7c6c1bce` |
-| `public/pnp-theorem-inventory.json` | 11,074,060 | `da77e1663fdbb70c0796ef006e66e68636dd45e3c33c350262bd9d0b2a0a0524` |
+| `downloads/canonical_proof_report.pdf` | 402,257 | `3e1e2a6ed161f4d886abb3957bf69b6bcf8ec2aba96731903e0950f1fcb7afd2` |
+| `downloads/canonical-proof-report.pdf` | 402,257 | `3e1e2a6ed161f4d886abb3957bf69b6bcf8ec2aba96731903e0950f1fcb7afd2` |
+| `downloads/canonical_proof_report.tex` | 150,465 | `aab2c1f23f08dbc2a5cd2073e45c9755abdc27f49d9578394bbedd1a1569b6ea` |
+| `downloads/canonical-proof-report.tex` | 150,465 | `aab2c1f23f08dbc2a5cd2073e45c9755abdc27f49d9578394bbedd1a1569b6ea` |
+| `public/pnp-status.json` | 1,565,360 | `a1bb49bb850ec6032b1e6ccff8aee14e040acb69ccb911f7f4db24407b4300aa` |
+| `public/pnp-theorem-inventory.json` | 11,074,060 | `72261ed03643251129b75a87b8248c861d96a0d9badfd9d8783f90de7221fca9` |
 
 The PDF must have sixty-two A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout f1ebb93c5683592eaa70e0b77ed1969a1def6180
+git -C ../pnp checkout a8916280a02c3d2357f5b81917baa17926e51047
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,20 +65,21 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 12,138 public declarations, 7,074 theorem-kind declarations,
-3,654 assumption-free theorem-kind declarations, 4,532 excluded private auxiliaries, 104 modules, and
+Expected compiled inventory counts are 12,233 public declarations, 7,146 theorem-kind declarations,
+3,669 assumption-free theorem-kind declarations, 4,738 excluded private auxiliaries, 105 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
-constraint. The newest milestone is `PNP.DirectWire.LockedNANDTrace.traceEquivalence`: for every
-finite topologically ordered NAND circuit, the exact `X/T/O/R/L/z` carrier has
-`inputs + 6 * gates + 1` coordinates and exactly three distinguished checks per gate. Completeness
-constructs a coherent trace from ordinary evaluation; soundness recovers that evaluation from any
-accepted trace; and satisfiability is equivalent to the existence of a coherent trace. Its
-71-declaration audit has no project axiom or `Classical.choice` and closes only over `propext` and
-`Quot.sound`. It does not assemble complete exposed candidates, prove cross-instance
-`BaselineDistinct` or final-output laws, construct the uniform polynomial locked-NAND builder, or
-establish the threshold. The remaining Cook-Levin formula body, complete raw builder, builder
+constraint. The newest milestone includes
+`PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_semantics`: for every finite
+topologically ordered NAND circuit, the source-derived baseline candidate has `B` gates and `B`
+outputs, while the extension has `B + 4` gates and `B + 1` outputs. The eleven pinned theorems prove
+the size equations, source and conjunction semantics, absence of internal constants, and
+independence of baseline outputs from the fresh final lock. The 59-declaration audit has no project
+axiom or `Classical.choice` and closes only over `propext` and `Quot.sound`. It does not prove
+cross-instance `BaselineDistinct`, either conditional final-output branch law, residual slack at
+most four, the uniform polynomial locked-NAND builder, or the threshold. The
+remaining Cook-Levin formula body, complete raw builder, builder
 `FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness
 must also remain absent.
 
