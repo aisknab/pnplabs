@@ -2637,9 +2637,12 @@ test('status page has a conservative complete static fallback', async () => {
 });
 
 test('static inventory prose matches the compiled declaration boundary', async () => {
+  const readme = await readText('README.md');
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
+  assert.equal(readme.includes('12,233** exported public declarations across **105** modules'), true);
+  assert.equal(readme.includes('12,233** exported public declarations across **104** modules'), false);
   assert.equal(paper.includes('Exactly 4,738 private compiler auxiliaries are excluded.'), true);
   assert.equal(guide.includes('Exactly 4,738 private compiler auxiliaries are excluded explicitly.'), true);
   for (const fragment of ['12,233', '7,146', '3,669', '4,738', '105 modules', 'sixty-two A4 pages', 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_semantics']) {
