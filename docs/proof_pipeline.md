@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1,963 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 1,968 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 12,233 public declarations;
-- 7,146 theorem-kind declarations;
-- 3,669 assumption-free theorem-kind declarations;
-- 103 source-closure modules;
-- 4,738 excluded private compiler auxiliaries;
+- 12,245 public declarations;
+- 7,158 theorem-kind declarations;
+- 3,676 assumption-free theorem-kind declarations;
+- 105 source-closure modules;
+- 4,997 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The sixty-two earned scopes are:
+The sixty-three earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -113,6 +113,7 @@ The sixty-two earned scopes are:
 | Locked-NAND local baselines | Typed local candidates, source-derived counts, and five finite local square minima | No global `BaselineDistinct` or threshold |
 | Locked-NAND global carrier and trace equivalence | For every finite topological NAND circuit, an exact `X/T/O/R/L/z` carrier separates inputs, six tagged coordinates per gate, and one fresh final lock; exactly three checks per gate characterize coherent traces, and circuit satisfiability is equivalent to the existence of such a trace | No complete exposed candidates, cross-instance `BaselineDistinct` or final-output laws, uniform polynomial builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
 | Locked-NAND global candidate assembly | For every finite topological NAND circuit, exact source-derived candidates have `B` gates and `B` outputs at baseline and `B + 4` gates and `B + 1` outputs after extension; source, initial-conjunction, and final-conjunction semantics, constant-freedom, and baseline-output independence from the fresh final lock are proved | No cross-instance `BaselineDistinct`, conditional final-output branch law, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
+| Locked-NAND global baseline distinctness | For every finite topological NAND circuit, every exposed baseline output is nonconstant, is not a positive input projection, and is pairwise semantically distinct; these conditions establish global `BaselineDistinct` and the exact exhaustive reference minimum `B` | No whole-carrier final-output branch law, complete threshold-premise package, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | No uniform construction or premise instantiation |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -144,7 +145,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-two-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-three-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 402,257 | `3e1e2a6ed161f4d886abb3957bf69b6bcf8ec2aba96731903e0950f1fcb7afd2` |
-| `downloads/canonical-proof-report.pdf` | 402,257 | `3e1e2a6ed161f4d886abb3957bf69b6bcf8ec2aba96731903e0950f1fcb7afd2` |
-| `downloads/canonical_proof_report.tex` | 150,465 | `aab2c1f23f08dbc2a5cd2073e45c9755abdc27f49d9578394bbedd1a1569b6ea` |
-| `downloads/canonical-proof-report.tex` | 150,465 | `aab2c1f23f08dbc2a5cd2073e45c9755abdc27f49d9578394bbedd1a1569b6ea` |
-| `public/pnp-status.json` | 1,565,360 | `a1bb49bb850ec6032b1e6ccff8aee14e040acb69ccb911f7f4db24407b4300aa` |
-| `public/pnp-theorem-inventory.json` | 11,074,060 | `72261ed03643251129b75a87b8248c861d96a0d9badfd9d8783f90de7221fca9` |
+| `downloads/canonical_proof_report.pdf` | 402,808 | `9991dd5fcc9fc8da5ba1161434af216b23735b6f379fee9fa6cdd28c2227d4f3` |
+| `downloads/canonical-proof-report.pdf` | 402,808 | `9991dd5fcc9fc8da5ba1161434af216b23735b6f379fee9fa6cdd28c2227d4f3` |
+| `downloads/canonical_proof_report.tex` | 151,526 | `a8b59bfbcd67a2c50127ba77e7d659564623c8e9844f8bf3f1f741c2b03299c7` |
+| `downloads/canonical-proof-report.tex` | 151,526 | `a8b59bfbcd67a2c50127ba77e7d659564623c8e9844f8bf3f1f741c2b03299c7` |
+| `public/pnp-status.json` | 1,578,871 | `06d77025ac41dda41d748f43080ffcf9ebd56b606e0d1a1d0a0c4d7c32df9569` |
+| `public/pnp-theorem-inventory.json` | 11,181,437 | `33ceee3aa55116581d0c6b9790a35c046832076b168e77116e71bb8573ec3ea1` |
 
-The PDF must have sixty-two A4 pages. Both filename styles must be byte-identical.
+The PDF must have sixty-three A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout a8916280a02c3d2357f5b81917baa17926e51047
+git -C ../pnp checkout aed2c360982d1e356b462b9e27d976b23a2305a4
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,20 +65,20 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 12,233 public declarations, 7,146 theorem-kind declarations,
-3,669 assumption-free theorem-kind declarations, 4,738 excluded private auxiliaries, 105 modules, and
+Expected compiled inventory counts are 12,245 public declarations, 7,158 theorem-kind declarations,
+3,676 assumption-free theorem-kind declarations, 4,997 excluded private auxiliaries, 105 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint. The newest milestone includes
-`PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_semantics`: for every finite
-topologically ordered NAND circuit, the source-derived baseline candidate has `B` gates and `B`
-outputs, while the extension has `B + 4` gates and `B + 1` outputs. The eleven pinned theorems prove
-the size equations, source and conjunction semantics, absence of internal constants, and
-independence of baseline outputs from the fresh final lock. The 59-declaration audit has no project
-axiom or `Classical.choice` and closes only over `propext` and `Quot.sound`. It does not prove
-cross-instance `BaselineDistinct`, either conditional final-output branch law, residual slack at
-most four, the uniform polynomial locked-NAND builder, or the threshold. The
+`PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum`: for every finite
+topologically ordered NAND circuit, the exact source-derived baseline candidate has exhaustive
+reference minimum `B`. Its five pinned theorems prove that every exposed baseline output is
+nonconstant, is not a positive input projection, and is pairwise semantically distinct, thereby
+establishing the global `BaselineDistinct` package. The complete 64-declaration module audit has
+three empty closures, two using only `propext`, and 59 using only `propext` and `Quot.sound`, with no
+project axiom or `Classical.choice`. It does not prove either whole-carrier final-output branch law,
+residual slack at most four, the uniform polynomial locked-NAND builder, or the threshold. The
 remaining Cook-Levin formula body, complete raw builder, builder
 `FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness
 must also remain absent.

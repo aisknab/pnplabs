@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-27-locked-nand-global-baseline-distinct",
+      "milestoneId": "locked-nand-global-baseline-distinct",
+      "publishedAt": "2026-07-27T04:27:24Z",
+      "title": "The proof now shows every baseline output does a different job",
+      "plainLanguage": [
+        "The previous milestone assembled a baseline circuit with one exposed output for every gate. That head count alone did not show every gate was necessary: an output might have been fixed, might merely copy an input, or might duplicate another output. This milestone proves none of those shortcuts occurs, for every finite circuit in the family.",
+        "That makes the baseline's exact minimum size match its stated size and completes another required part of the later threshold argument. Two final-output laws and the uniform polynomial-time construction are still missing, so the locked-circuit threshold, CNF-SAT in P, and P = NP remain unproved. The 49% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 49,
+      "source": {
+        "commit": "aed2c360982d1e356b462b9e27d976b23a2305a4",
+        "tree": "eee584b56ab70409e756362a58adf1ccf562265b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-86",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-GLOBAL-BASELINE-DISTINCT-85"
+      }
+    },
+    {
       "id": "2026-07-26-locked-nand-global-candidates",
       "milestoneId": "locked-nand-global-candidate-assembly",
       "publishedAt": "2026-07-26T00:51:21Z",

@@ -3,12 +3,12 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/a8916280a02c3d2357f5b81917baa17926e51047/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/a8916280a02c3d2357f5b81917baa17926e51047/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/aed2c360982d1e356b462b9e27d976b23a2305a4/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/aed2c360982d1e356b462b9e27d976b23a2305a4/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
-canonical download is the sixty-two-page inventory-derived report. Every bare `Report` citation in the
+canonical download is the sixty-three-page inventory-derived report. Every bare `Report` citation in the
 historical tables below refers only to the 57-page manuscript at source tag
 `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current canonical aliases.
@@ -36,12 +36,12 @@ Checker paths have two different statuses:
 
 | Term | Meaning | Current status |
 | --- | --- | --- |
-| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 1,963 reviewed milestone candidates | 12,233 declarations, 7,146 theorem-kind, 3,669 assumption-free theorem-kind, 105 modules, four project axioms |
-| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | 1,963 theorem pins support sixty-two earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics and its bounded builder prefix, carrier/trace equivalence, and exact `B/B` plus `B+4/B+1` candidate assembly for arbitrary finite topological NAND circuits; no earned closure contains a project axiom |
+| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 1,968 reviewed milestone candidates | 12,245 declarations, 7,158 theorem-kind, 3,676 assumption-free theorem-kind, 105 modules, four project axioms |
+| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | 1,968 theorem pins support sixty-three earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics and its bounded builder prefix, carrier/trace equivalence, exact `B/B` plus `B+4/B+1` candidate assembly, global baseline distinctness, and exact reference minimum `B` for arbitrary finite topological NAND circuits; no earned closure contains a project axiom |
 | Concrete publication gate | Strict conjunction requiring an eligible concrete standard complexity target, exact compatibility-root theorem, reviewed non-null fingerprints, source closure, and fixed Lean-standard axiom closure | False; the charged-pipeline target is present but ineligible/inactive, while the root and activation fingerprints are absent |
 | Abstract `PNP.PEqualsNP` bridge | A type using string-handle decider/verifier/reduction witnesses | Categorically ineligible for publication as standard `P = NP` |
 | `unresolved` | Executable explicit-list scan found no strict equivalent gain in the supplied finite list | Does not exclude unlisted gains and does not imply global minimality or `ZeroSlack` |
-| Current canonical report | Sixty-two-page status report generated from the inventory and publication map | Non-claiming; current aliases point here |
+| Current canonical report | Sixty-three-page status report generated from the inventory and publication map | Non-claiming; current aliases point here |
 | Historical manuscript | Former 57-page direct-claim report at the pinned 7072f8d source tag | Audit material only; not current authority or a canonical download |
 
 ## Core Claim Terms
