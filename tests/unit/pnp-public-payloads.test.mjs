@@ -2671,7 +2671,7 @@ test('status page has a conservative complete static fallback', async () => {
     'Formal.ResidualBandMinimizer',
     'Formal.RootTheoremAndAxiomAudit',
     'PNP.CheckPCCPackexp',
-    'Formalized: Locked-NAND unsatisfiable final-zero branch',
+    'Formalized: Locked-NAND global unsatisfiable final-zero branch',
     'fullCandidate_final_eq_false_of_unsatisfiable',
     'fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable',
     'Historical 57-page manuscript',
