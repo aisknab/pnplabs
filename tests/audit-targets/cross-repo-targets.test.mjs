@@ -5263,7 +5263,7 @@ test("rejects locked-NAND global-candidate release, status, inventory, and publi
 
   const statusPremises = makeProject(t);
   const statusPremisesPayload = JSON.parse(readFileSync(path.join(statusPremises.sourceDir, "public/pnp-status.json"), "utf8"));
-  statusPremisesPayload.leanLockedNANDThresholdMissingInstantiationInventory = [];
+  statusPremisesPayload.leanLockedNANDThresholdMissingInstantiationInventory = ["satisfiableFinalConditions"];
   rewriteCorePayload(statusPremises, "public/pnp-status.json", statusPremisesPayload);
   expectFailure(statusPremises, /public status locked-NAND remaining-premise inventory mismatch/);
 
