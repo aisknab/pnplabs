@@ -40,15 +40,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "764c4ccc3795a32b183c6ee4fa1e347720562483");
+  assert.equal(result.coreCommit, "4cdfd0e3d263f473177bbef9e9b26d7756810bdf");
 });
 
-test("current release is pinned, sixty-three-page, exposes the locked-NAND unsatisfiable final-zero law, and fails closed", () => {
+test("current release is pinned, sixty-three-page, exposes the locked-NAND semantic threshold, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-27-70");
-  assert.equal(release.source.commit, "764c4ccc3795a32b183c6ee4fa1e347720562483");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-28-71");
+  assert.equal(release.source.commit, "4cdfd0e3d263f473177bbef9e9b26d7756810bdf");
   assert.equal(release.source.proofCommit, "e46ac7407301ed71483f34a5300e894557315863");
-  assert.equal(release.source.tree, "71b50f3bc11bad65e04372505aa747ba03356e92");
+  assert.equal(release.source.tree, "f33a5857d25a510d1fc1f6db4e8221dd387bdade");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 63);
@@ -1403,6 +1403,20 @@ test("current release is pinned, sixty-three-page, exposes the locked-NAND unsat
   assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableReferenceMinimumTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable");
   assert.deepEqual(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalSemanticThresholdFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalSemanticThresholdAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalSemanticThresholdAuditedDeclarationCount, 8);
+  assert.equal(release.earnedBoundary.lockedNANDGlobalSemanticThresholdScope, "arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold");
+  assert.equal(Object.keys(release.earnedBoundary.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256).length, 8);
+  assert.equal(release.earnedBoundary.lockedNANDFinalNonconstantOfSatisfiableTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_nonconstant_of_satisfiable");
+  assert.equal(release.earnedBoundary.lockedNANDFinalNotPositiveProjectionOfSatisfiableTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_notPositiveProjection_of_satisfiable");
+  assert.equal(release.earnedBoundary.lockedNANDFinalDistinctFromBaselineOfSatisfiableTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_distinctFromBaseline_of_satisfiable");
+  assert.equal(release.earnedBoundary.lockedNANDSatisfiableFinalConditionsTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiableFinalConditions");
+  assert.equal(release.earnedBoundary.lockedNANDReferenceMinimumBoundsOfSatisfiableTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_bounds_of_satisfiable");
+  assert.equal(release.earnedBoundary.lockedNANDResidualSlackLeFourTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four");
+  assert.equal(release.earnedBoundary.lockedNANDSatisfiableIffReferenceMinimumGeSuccTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ");
+  assert.deepEqual(release.earnedBoundary.lockedNANDGlobalSemanticThresholdAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDGlobalSemanticThresholdProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);

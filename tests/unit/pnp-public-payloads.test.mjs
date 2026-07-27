@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = '764c4ccc3795a32b183c6ee4fa1e347720562483';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-87';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-27-87';
-const INVENTORY_SHA256 = '6c77607a6c03fd4136c31d62517d7773ec3989dbfd95188f28995c10f32f44fd';
+const CORE_COMMIT = '4cdfd0e3d263f473177bbef9e9b26d7756810bdf';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-88';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-28-88';
+const INVENTORY_SHA256 = 'f5f269dfe182807e7eb1603c1df1de28ac77e958718a47884e98f0a710045eec';
 
 async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
@@ -50,10 +50,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
 
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-UNSATISFIABLE-FINAL-ZERO-86');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-07-27-87');
-  assert.equal(status.formalPublicationMapSha256, '9d588fb56eb496806bbacf9021fd2fa84a74e91dbe462756bf5eee1d3dc63abe');
-  assert.equal(status.leanSourceClosureSha256, 'd6be2beffdfaa94f5a53139fa1a4272bbb7b1cd1b0f7dfe764d1934ba86aed9c');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-GLOBAL-SEMANTIC-THRESHOLD-87');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-07-28-88');
+  assert.equal(status.formalPublicationMapSha256, '3610e0a281cfe3c5bfee868f291d6c1b84dd7e9391ea933d807120b50c8f5277');
+  assert.equal(status.leanSourceClosureSha256, '11cd24e11180f22c5ca853d94fc0c201dc39a1dd6fa546de003d08279d2f9f4d');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -63,11 +63,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
   assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(inventory.declarationCount, 12247);
-  assert.equal(inventory.theoremCount, 7160);
+  assert.equal(inventory.declarationCount, 12255);
+  assert.equal(inventory.theoremCount, 7167);
   assert.equal(inventory.assumptionFreeTheoremCount, 3676);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 5000);
-  assert.equal(inventory.sourceClosureModuleCount, 106);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 5027);
+  assert.equal(inventory.sourceClosureModuleCount, 107);
   assert.equal(inventory.axiomCount, 4);
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
@@ -1142,7 +1142,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
     assert.equal(compiler.module, module, name);
     assert.deepEqual(compiler.axioms, [], name);
   }
-  assert.equal(inventory.milestoneCandidates.length, 1970);
+  assert.equal(inventory.milestoneCandidates.length, 1977);
 
   const secondConstraintSeventhPaddingOrUnaryMilestone = status.formalPublicationMilestones.find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step');
   assert.equal(secondConstraintSeventhPaddingOrUnaryMilestone.requiredTheorems.length, 40);
@@ -1242,11 +1242,37 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(status.leanLockedNANDUnsatisfiableFinalZeroAxiomAuditPassed, true);
   assert.equal(status.leanLockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount, 2);
   assert.equal(status.leanLockedNANDUnsatisfiableFinalZeroScope, 'arbitrary-finite-topological-nand-circuits-whole-carrier-unsatisfiable-final-zero-and-exact-reference-minimum');
-  assert.deepEqual(status.leanLockedNANDThresholdMissingInstantiationInventory, ['satisfiableFinalConditions']);
+  const lockedNANDGlobalSemanticThresholdMilestone = status.formalPublicationMilestones.find((row) => row.id === 'locked-nand-global-semantic-threshold');
+  assert.equal(lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems.length, 8);
+  assert.equal(lockedNANDGlobalSemanticThresholdMilestone.classification, 'formalized');
+  assert.equal(lockedNANDGlobalSemanticThresholdMilestone.earned, true);
+  assert.match(lockedNANDGlobalSemanticThresholdMilestone.scope, /crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable/u);
+  assert.match(lockedNANDGlobalSemanticThresholdMilestone.nonClaim, /does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder/u);
+  for (const theoremRow of lockedNANDGlobalSemanticThresholdMilestone.theoremRows) {
+    const theorem = inventory.milestoneCandidates.find((candidate) => candidate.name === theoremRow.name);
+    assert.equal(theorem.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theorem.module,
+      theoremRow.name === 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable'
+        ? 'PNP.LockedNANDGlobalUnsatisfiableFinalZero'
+        : 'PNP.LockedNANDGlobalSemanticThreshold',
+      theoremRow.name
+    );
+    assert.deepEqual(theorem.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, theoremRow.expectedKernelTypeSha256, theoremRow.name);
+  }
+  assert.equal(status.leanLockedNANDDerivedFinalOutputLawsFormalized, true);
+  assert.equal(status.leanLockedNANDResidualSlackAtMostFourFormalized, true);
+  assert.equal(status.leanLockedNANDSatisfiableFinalConditionsFormalized, true);
+  assert.equal(status.leanLockedNANDGlobalSemanticThresholdFormalized, true);
+  assert.equal(status.leanLockedNANDGlobalSemanticThresholdAxiomAuditPassed, true);
+  assert.equal(status.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount, 8);
+  assert.equal(status.leanLockedNANDGlobalSemanticThresholdScope, 'arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold');
+  assert.deepEqual(status.leanLockedNANDThresholdMissingInstantiationInventory, []);
 
-  assert.equal(status.formalPublicationMilestones.length, 67);
-  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(64).fill(true), false, false, false]);
-  for (const row of status.formalPublicationMilestones.slice(0, 64)) {
+  assert.equal(status.formalPublicationMilestones.length, 68);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(65).fill(true), false, false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 65)) {
     assert.equal(row.allPresent, true, row.id);
     assert.equal(row.allKernelTypesMatch, true, row.id);
     assert.equal(row.sourceClosureFingerprintMatches, true, row.id);
@@ -1296,15 +1322,15 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 70);
+  assert.equal(index.version, 71);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, 'e46ac7407301ed71483f34a5300e894557315863');
-  assert.equal(index.sourceTree, '71b50f3bc11bad65e04372505aa747ba03356e92');
+  assert.equal(index.sourceTree, 'f33a5857d25a510d1fc1f6db4e8221dd387bdade');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-UNSATISFIABLE-FINAL-ZERO-86');
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-GLOBAL-SEMANTIC-THRESHOLD-87');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-27-87');
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-28-88');
   assert.equal(index.canonicalReportPages, 63);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
@@ -1314,11 +1340,11 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
   assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
   assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
-  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 12247);
-  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 7160);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 12255);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 7167);
   assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 3676);
-  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 5000);
-  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 106);
+  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 5027);
+  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 107);
   assert.equal(index.claimBoundary.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceAxiomAuditPassed, true);
@@ -2347,13 +2373,22 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanLockedNANDUnsatisfiableReferenceMinimumTheorem, 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable');
   assert.deepEqual(index.claimBoundary.leanLockedNANDUnsatisfiableFinalZeroAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(index.claimBoundary.leanLockedNANDUnsatisfiableFinalZeroProjectAxiomClosure, []);
-  assert.deepEqual(index.claimBoundary.leanLockedNANDThresholdMissingInstantiationInventory, ['satisfiableFinalConditions']);
-  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 64, unearned: 3, total: 67 });
-  assert.equal(index.earnedMilestones.length, 64);
+  assert.equal(index.claimBoundary.leanLockedNANDGlobalSemanticThresholdFormalized, true);
+  assert.equal(index.claimBoundary.leanLockedNANDGlobalSemanticThresholdAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount, 8);
+  assert.equal(Object.keys(index.claimBoundary.leanLockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256).length, 8);
+  assert.equal(index.claimBoundary.leanLockedNANDSatisfiableIffReferenceMinimumGeSuccTheorem, 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ');
+  assert.equal(index.claimBoundary.leanLockedNANDResidualSlackLeFourTheorem, 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four');
+  assert.deepEqual(index.claimBoundary.leanLockedNANDGlobalSemanticThresholdAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(index.claimBoundary.leanLockedNANDGlobalSemanticThresholdProjectAxiomClosure, []);
+  assert.deepEqual(index.claimBoundary.leanLockedNANDThresholdMissingInstantiationInventory, []);
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 65, unearned: 3, total: 68 });
+  assert.equal(index.earnedMilestones.length, 65);
   assert.ok(index.earnedMilestones.includes('locked-nand-global-carrier-trace-equivalence'));
   assert.ok(index.earnedMilestones.includes('locked-nand-global-candidate-assembly'));
   assert.ok(index.earnedMilestones.includes('locked-nand-global-baseline-distinct'));
   assert.ok(index.earnedMilestones.includes('locked-nand-global-unsatisfiable-final-zero'));
+  assert.ok(index.earnedMilestones.includes('locked-nand-global-semantic-threshold'));
   assert.ok(index.earnedMilestones.includes('concrete-cnf-universal-verifier'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-raw-tape-bridge'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-formula-size'));
@@ -2510,17 +2545,17 @@ test('payload index describes current inventory/report and quarantines legacy su
 test('status page has a conservative complete static fallback', async () => {
   const html = await readText('status.html');
   for (const fragment of [
-    'Formal status · 2026-07-27',
+    'Formal status · 2026-07-28',
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '12,247',
-    '7,160',
+    '12,255',
+    '7,167',
     '3,676',
-    '<strong>5,000</strong> private compiler auxiliaries excluded',
-    '<strong>106</strong> modules',
-    'Sixty-four scoped milestones',
+    '<strong>5,027</strong> private compiler auxiliaries excluded',
+    '<strong>107</strong> modules',
+    'Sixty-five scoped milestones',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -2674,10 +2709,14 @@ test('status page has a conservative complete static fallback', async () => {
     'Formalized: Locked-NAND global unsatisfiable final-zero branch',
     "full candidate's final coordinate false on the entire carrier",
     'fixes the exhaustive reference minimum at <code>B</code>',
+    'Formalized: Locked-NAND global semantic threshold',
+    'one answer-independent full candidate supplies all six typed semantic premises',
+    'residual slack is at most <code>4</code>',
+    'encoded polynomial-time SAT-to-locked-NAND builder',
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
-  assert.equal((html.match(/data-earned="true"/g) || []).length, 64);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 65);
   assert.equal((html.match(/data-earned="false"/g) || []).length, 3);
 });
 
@@ -2686,11 +2725,11 @@ test('static inventory prose matches the compiled declaration boundary', async (
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(readme.includes('12,247** exported public declarations across **106** modules'), true);
-  assert.equal(readme.includes('12,247** exported public declarations across **105** modules'), false);
-  assert.equal(paper.includes('Exactly 5,000 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 5,000 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['12,247', '7,160', '3,676', '5,000', '106 modules', 'sixty-three A4 pages', 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable']) {
+  assert.equal(readme.includes('12,255** exported public declarations across **107** modules'), true);
+  assert.equal(readme.includes('12,255** exported public declarations across **106** modules'), false);
+  assert.equal(paper.includes('Exactly 5,027 private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Exactly 5,027 private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['12,255', '7,167', '3,676', '5,027', '107 modules', 'sixty-three A4 pages', 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

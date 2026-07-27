@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-27-70",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-28-71",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "764c4ccc3795a32b183c6ee4fa1e347720562483",
+    "commit": "4cdfd0e3d263f473177bbef9e9b26d7756810bdf",
     "proofCommit": "e46ac7407301ed71483f34a5300e894557315863",
-    "tree": "71b50f3bc11bad65e04372505aa747ba03356e92",
-    "ref": "764c4ccc3795a32b183c6ee4fa1e347720562483",
+    "tree": "f33a5857d25a510d1fc1f6db4e8221dd387bdade",
+    "ref": "4cdfd0e3d263f473177bbef9e9b26d7756810bdf",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-27-87",
-    "formalPublicationMapSha256": "9d588fb56eb496806bbacf9021fd2fa84a74e91dbe462756bf5eee1d3dc63abe",
-    "leanSourceClosureSha256": "d6be2beffdfaa94f5a53139fa1a4272bbb7b1cd1b0f7dfe764d1934ba86aed9c",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-28-88",
+    "formalPublicationMapSha256": "3610e0a281cfe3c5bfee868f291d6c1b84dd7e9391ea933d807120b50c8f5277",
+    "leanSourceClosureSha256": "11cd24e11180f22c5ca853d94fc0c201dc39a1dd6fa546de003d08279d2f9f4d",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,23 +21,23 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 1582057,
-      "sha256": "c0bb68c8c353d034294e7377cc43d5146a1c84723c11029b909ba6cbb22192bd",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-87"
+      "bytes": 1589230,
+      "sha256": "21b5d5b4ecd727f1bcc4fbcaa2c7b04df62e15c25a9b0190e932c9e3acabdf67",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-88"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 11197669,
-      "sha256": "6c77607a6c03fd4136c31d62517d7773ec3989dbfd95188f28995c10f32f44fd",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-27-87",
-      "declarationCount": 12247,
-      "theoremCount": 7160,
+      "bytes": 11265859,
+      "sha256": "f5f269dfe182807e7eb1603c1df1de28ac77e958718a47884e98f0a710045eec",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-28-88",
+      "declarationCount": 12255,
+      "theoremCount": 7167,
       "assumptionFreeTheoremCount": 3676,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-27-87",
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-28-88",
       "pageCount": 63,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
@@ -45,8 +45,8 @@
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 402956,
-        "sha256": "9d0743f86dd9da269d6244a543a1c4a21a2ede2b7cfdc5508875b17c7ae8f4ad"
+        "bytes": 403431,
+        "sha256": "bf8a7cdfdf2479b131f0c983d8d664d9982a0fffac130c0cb5451b7d14c4a0c4"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,8 +54,8 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 152171,
-        "sha256": "f0dd87b5b3799b7651eb0a3a321d9054c7acce1f815e86f473bac25467006a71"
+        "bytes": 152833,
+        "sha256": "7f1185fb06f5be94e765a5e4201b3b1225bbd0a13f050ef40fdce93f83446373"
       }
     }
   },
@@ -3875,7 +3875,33 @@
     ],
     "lockedNANDUnsatisfiableFinalZeroProjectAxiomClosure": [],
     "lockedNANDUnsatisfiableFinalZeroTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable",
-    "lockedNANDUnsatisfiableReferenceMinimumTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable"
+    "lockedNANDUnsatisfiableReferenceMinimumTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable",
+    "lockedNANDGlobalSemanticThresholdFormalized": true,
+    "lockedNANDGlobalSemanticThresholdAxiomAuditPassed": true,
+    "lockedNANDGlobalSemanticThresholdAuditedDeclarationCount": 8,
+    "lockedNANDGlobalSemanticThresholdScope": "arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold",
+    "lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256": {
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_nonconstant_of_satisfiable": "d6ad3c12cf8b3d36a3491340149b78d60aa3b983765a409b56e990012c87cfc1",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_notPositiveProjection_of_satisfiable": "5c113104b40c20b4d06d64b4e16a9a110cc1cd83a2b51b59e51c186db227b5cf",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_distinctFromBaseline_of_satisfiable": "6d76f5db4da829fe3ad1b83bc2e4969a2266786fafc2eceed2fcf7fdb5bbdc96",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiableFinalConditions": "da58fd2dcfdbc4fefc2d9c805d38e115760ab45872c9a5d60c0acc12eb981acb",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_bounds_of_satisfiable": "5486d22416c93cf76b2bb4de69729f7e3421321fc553a60df4807e141decc559",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four": "2e2c9cab0c3977704f66cb272e972e949cd7bbd899487c1cc9ba3527ef2d9e0a",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ": "a3d7a636124fb00a6b3dd10d9a4c548afdb5f7f171ba82c1ce5aa8ffb540a6e3",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable": "da9bb9d292f6cb2952d58120a4579503d87bd1ac94cd5d9248f40ba5007edf94"
+    },
+    "lockedNANDGlobalSemanticThresholdAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "lockedNANDGlobalSemanticThresholdProjectAxiomClosure": [],
+    "lockedNANDFinalNonconstantOfSatisfiableTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_nonconstant_of_satisfiable",
+    "lockedNANDFinalNotPositiveProjectionOfSatisfiableTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_notPositiveProjection_of_satisfiable",
+    "lockedNANDFinalDistinctFromBaselineOfSatisfiableTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_distinctFromBaseline_of_satisfiable",
+    "lockedNANDSatisfiableFinalConditionsTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiableFinalConditions",
+    "lockedNANDReferenceMinimumBoundsOfSatisfiableTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_bounds_of_satisfiable",
+    "lockedNANDResidualSlackLeFourTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four",
+    "lockedNANDSatisfiableIffReferenceMinimumGeSuccTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ"
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,

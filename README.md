@@ -30,14 +30,16 @@ leanConcreteDecisionProgramRecursiveCompilationFormalized = true
 leanConcretePolynomialTimeDeciderRawCompilationFormalized = true
 standardComplexityModelFormalized = true
 leanLockedNANDUnsatisfiableFinalZeroFormalized = true
+leanLockedNANDGlobalSemanticThresholdFormalized = true
+leanLockedNANDResidualSlackAtMostFourFormalized = true
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **12,247** exported public declarations across **106** modules, including **7,160** theorem-kind declarations and **3,676** assumption-free theorem-kind declarations. It excludes **5,000** private compiler auxiliaries and records **four** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **12,255** exported public declarations across **107** modules, including **7,167** theorem-kind declarations and **3,676** assumption-free theorem-kind declarations. It excludes **5,027** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 1,970 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Sixty-four scoped milestones are earned. Building on the global baseline-output proof, `PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable` now proves that when the source circuit is unsatisfiable, the full candidate's final coordinate is false for every carrier valuation—not only for coherent traces. `fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable` then proves the full exhaustive reference minimum is exactly `B`. Both reviewed theorem closures contain only `propext` and `Quot.sound`, with no project axiom or `Classical.choice`. Exactly the satisfiable whole-carrier final-output conditions remain missing from the six-field conditional threshold package. The global threshold, residual slack at most four, uniform polynomial bitstring builder, complete Cook-Levin formula builder, and packaged reduction remain incomplete. Therefore CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 1,977 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Sixty-five scoped milestones are earned. Building on the exact unsatisfiable reference minimum, `PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiableFinalConditions` supplies the satisfiable whole-carrier final-output conditions, and `fullCandidateThresholdPremises` packages all six typed semantic premises for one answer-independent candidate. `fullCandidate_satisfiable_iff_referenceMinimum_ge_succ` proves that the exhaustive reference minimum crosses from `B` to at least `B + 1` exactly when the source circuit is satisfiable; `fullCandidate_residualSlack_le_four` bounds the residual gap by four. The eight-declaration audit closes only over `propext` and `Quot.sound`, with no project axiom or `Classical.choice`. The uniform encoded polynomial-time SAT-to-locked-NAND builder, its compilation, the abstract locked-NAND threshold discharge, complete Cook-Levin formula builder, and packaged reduction remain incomplete. Therefore CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while `PNP.Main.p_eq_np` remains absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
@@ -54,7 +56,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 764c4ccc3795a32b183c6ee4fa1e347720562483
+git checkout 4cdfd0e3d263f473177bbef9e9b26d7756810bdf
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -159,7 +161,7 @@ independently.
 - A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
 - The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
 - The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
-- The bundled canonical PDF and TeX are the current sixty-three-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, the bounded formula-building prefix, global locked-NAND baseline output conditions, and the whole-carrier unsatisfiable final-zero law with exact reference minimum `B`. They explicitly withhold the satisfiable final-output conditions, the rest of the Cook-Levin formula body, a complete raw formula builder, `FunctionProgram.RawRefinement`, a packaged polynomial reduction, the uniform locked-NAND builder and threshold, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP.
+- The bundled canonical PDF and TeX are the current sixty-three-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, the bounded formula-building prefix, global locked-NAND baseline output conditions, both whole-carrier final-output branches, the typed semantic threshold, and residual slack at most four. They explicitly withhold the rest of the Cook-Levin formula body, a complete raw formula builder, builder-level `FunctionProgram.RawRefinement`, a packaged polynomial reduction, the uniform encoded locked-NAND builder and abstract threshold discharge, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP.
 - A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 - The historical 57-page claim manuscript remains at tag `final-pnp-proof-report-hardened-7072f8d`, commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with provenance in `archive/legacy-v0/ARCHIVE.json`; it is never current authority.
 

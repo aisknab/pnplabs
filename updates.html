@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 50% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 51% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="50" aria-label="Estimated proof reconstruction progress: 50 percent">50%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 50 percent">
+        <progress class="proof-progress-meter" max="100" value="51" aria-label="Estimated proof reconstruction progress: 51 percent">51%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 51 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-28-locked-nand-global-semantic-threshold" data-milestone-id="locked-nand-global-semantic-threshold">
+        <div class="section-label"><time datetime="2026-07-27T20:42:01Z">2026-07-27</time> · earned milestone 65</div>
+        <h2>The proof now separates circuits with and without a solution</h2>
+        <p>A circuit is a sequence of simple yes-or-no steps. Earlier work proved what happens when no successful input exists. Lean now also proves the other direction: when a successful input does exist, the enlarged circuit cannot shrink back to the established baseline size. Its smallest equivalent form must use at least one extra step, while the construction adds no more than four.</p>
+        <p>Together, these results give an exact yes-or-no comparison at the mathematical circuit level: the minimum size rises above the baseline exactly when the original circuit has a solution. The efficient encoded procedure needed to turn arbitrary inputs into these circuits is still missing, as are the remaining reduction, CNF-SAT in P, and P = NP. The 51% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 51%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>locked-nand-global-semantic-threshold</code></p>
+          <p><strong>Classification:</strong> formalized</p>
+          <p><strong>Verified scope:</strong> For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable.</p>
+          <p><strong>Boundary:</strong> This typed semantic theorem does not construct or compile the report&#39;s encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 8</p>
+          <p><strong>Core source:</strong> commit <code>4cdfd0e3d263f473177bbef9e9b26d7756810bdf</code>, tree <code>f33a5857d25a510d1fc1f6db4e8221dd387bdade</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-88</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-GLOBAL-SEMANTIC-THRESHOLD-87</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-27-locked-nand-global-unsatisfiable-final-zero" data-milestone-id="locked-nand-global-unsatisfiable-final-zero">
         <div class="section-label"><time datetime="2026-07-27T16:01:13Z">2026-07-27</time> · earned milestone 64</div>
         <h2>The final check now stays off whenever no solution exists</h2>

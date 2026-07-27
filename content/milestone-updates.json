@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-28-locked-nand-global-semantic-threshold",
+      "milestoneId": "locked-nand-global-semantic-threshold",
+      "publishedAt": "2026-07-27T20:42:01Z",
+      "title": "The proof now separates circuits with and without a solution",
+      "plainLanguage": [
+        "A circuit is a sequence of simple yes-or-no steps. Earlier work proved what happens when no successful input exists. Lean now also proves the other direction: when a successful input does exist, the enlarged circuit cannot shrink back to the established baseline size. Its smallest equivalent form must use at least one extra step, while the construction adds no more than four.",
+        "Together, these results give an exact yes-or-no comparison at the mathematical circuit level: the minimum size rises above the baseline exactly when the original circuit has a solution. The efficient encoded procedure needed to turn arbitrary inputs into these circuits is still missing, as are the remaining reduction, CNF-SAT in P, and P = NP. The 51% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 51,
+      "source": {
+        "commit": "4cdfd0e3d263f473177bbef9e9b26d7756810bdf",
+        "tree": "f33a5857d25a510d1fc1f6db4e8221dd387bdade",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-88",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-GLOBAL-SEMANTIC-THRESHOLD-87"
+      }
+    },
+    {
       "id": "2026-07-27-locked-nand-global-unsatisfiable-final-zero",
       "milestoneId": "locked-nand-global-unsatisfiable-final-zero",
       "publishedAt": "2026-07-27T16:01:13Z",
