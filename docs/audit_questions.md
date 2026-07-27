@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/a8916280a02c3d2357f5b81917baa17926e51047/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/a8916280a02c3d2357f5b81917baa17926e51047/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/aed2c360982d1e356b462b9e27d976b23a2305a4/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/aed2c360982d1e356b462b9e27d976b23a2305a4/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the sixty-two-page inventory-derived report. Every numbered section or
+The current canonical download is the sixty-three-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 57-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 1,963 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 1,968 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm sixty-two earned scoped milestones. The newest scope assembles exact source-derived `B/B` baseline and `B+4/B+1` extended candidates for arbitrary finite topological NAND circuits, with proved size, semantics, constant-freedom, and final-lock independence. Confirm three unearned global milestones, four project axioms, and six blockers. Cross-instance `BaselineDistinct`, the two conditional final-output laws, the uniform polynomial locked-NAND builder and threshold, the remaining Cook-Levin formula body, complete raw builder, packaged polynomial reduction, CNF-SAT in P, and NP-completeness must remain absent. | Candidate assembly is widened into cross-instance separation, the conditional output laws, residual slack, or the locked-NAND threshold; a bounded formula prefix is presented as a complete reduction; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require sixty-two PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm sixty-three earned scoped milestones. The newest scope proves that every exposed baseline output of the exact source-derived candidate is nonconstant, is not a positive input projection, and is pairwise semantically distinct for every finite topological NAND circuit; it establishes global `BaselineDistinct` and exact exhaustive reference minimum `B`. Confirm three unearned global milestones, four project axioms, and six blockers. The two whole-carrier final-output laws, the uniform polynomial locked-NAND builder and threshold, the remaining Cook-Levin formula body, complete raw builder, packaged polynomial reduction, CNF-SAT in P, and NP-completeness must remain absent. | Baseline distinctness is widened into either final-output law, residual slack, or the locked-NAND threshold; a bounded formula prefix is presented as a complete reduction; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require sixty-three PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 

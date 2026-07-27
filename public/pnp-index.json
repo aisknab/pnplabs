@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 68,
+  "version": 69,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "a8916280a02c3d2357f5b81917baa17926e51047",
+  "sourceCommitRef": "aed2c360982d1e356b462b9e27d976b23a2305a4",
   "sourceProofCommitRef": "e46ac7407301ed71483f34a5300e894557315863",
-  "sourceTree": "73c43c480fe556651edd2fa3ccbd491fa810ec2f",
-  "syncedOn": "2026-07-26",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-26-85",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-26-LOCKED-NAND-GLOBAL-CANDIDATES-84",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-26-85",
-  "leanTheoremInventorySha256": "72261ed03643251129b75a87b8248c861d96a0d9badfd9d8783f90de7221fca9",
-  "leanSourceClosureSha256": "d2cf588681499eef5328b85fba8965097fae5dbacdd0d4efe766c7b5d48277e9",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-26-85",
-  "canonicalReportPages": 62,
+  "sourceTree": "eee584b56ab70409e756362a58adf1ccf562265b",
+  "syncedOn": "2026-07-27",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-86",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-GLOBAL-BASELINE-DISTINCT-85",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-27-86",
+  "leanTheoremInventorySha256": "33ceee3aa55116581d0c6b9790a35c046832076b168e77116e71bb8573ec3ea1",
+  "leanSourceClosureSha256": "01b522a560680c69c52c988a0c08c25483d12f5e53de72ff1d8106ae4313a738",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-27-86",
+  "canonicalReportPages": 63,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,10 +21,10 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 12233,
-    "leanTheoremInventoryTheoremCount": 7146,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 3669,
-    "leanTheoremInventoryExcludedPrivateDeclarationCount": 4738,
+    "leanTheoremInventoryDeclarationCount": 12245,
+    "leanTheoremInventoryTheoremCount": 7158,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 3676,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 4997,
     "leanTheoremInventorySourceClosureModuleCount": 105,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
@@ -149,7 +149,7 @@
     "leanLockedNANDThresholdBoundaryAxiomAuditPassed": true,
     "leanLockedNANDThresholdBoundaryScope": "proof-bearing-typed-candidate-and-semantic-premises-only",
     "leanLockedNANDThresholdBoundaryPremisesInstantiated": false,
-    "leanLockedNANDGlobalBaselineDistinctFormalized": false,
+    "leanLockedNANDGlobalBaselineDistinctFormalized": true,
     "leanLockedNANDCarrierLayoutFormalized": true,
     "leanLockedNANDTraceEquivalenceFormalized": true,
     "leanLockedNANDDerivedFinalOutputLawsFormalized": false,
@@ -198,7 +198,6 @@
       "satisfiableFinalConditions"
     ],
     "leanLockedNANDThresholdMissingInstantiationInventory": [
-      "baselineConditions",
       "unsatisfiableFinalZero",
       "satisfiableFinalConditions"
     ],
@@ -3717,7 +3716,7 @@
     "leanLockedNANDGlobalBaselineCandidateFormalized": true,
     "leanLockedNANDFullCandidateFormalized": true,
     "leanLockedNANDGlobalCandidateAxiomAuditPassed": true,
-    "leanLockedNANDGlobalCandidateAuditedDeclarationCount": 59,
+    "leanLockedNANDGlobalCandidateAuditedDeclarationCount": 64,
     "leanLockedNANDGlobalCandidateScope": "arbitrary-finite-topological-nand-circuits-exact-baseline-and-four-gate-extension",
     "leanLockedNANDGlobalCandidateTheoremKernelTypeSha256": {
       "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula": "47f9e6796152f2a642f7bce44b99528bc01ccdddccdacbae86ab56e0f5b3d073",
@@ -3731,11 +3730,31 @@
       "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_no_internal_constants": "b2b072ad2c4d3090ff9269819603623e68fc3d2ad98ee72571b616219a06da42",
       "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_no_internal_constants": "55931f820f8438dc22676feaed1404c19e4a0b6542ae72f57eddc8aa2bcf977d",
       "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_finalLock_irrelevant": "3724c566fdb5621934142d6b3d3e5e90b94ea972940191f41243db7590b40d06"
-    }
+    },
+    "leanLockedNANDGlobalBaselineDistinctAxiomAuditPassed": true,
+    "leanLockedNANDGlobalBaselineDistinctAuditedDeclarationCount": 5,
+    "leanLockedNANDGlobalBaselineDistinctScope": "arbitrary-finite-topological-nand-circuits-global-baseline-output-conditions-and-exact-reference-minimum",
+    "leanLockedNANDGlobalBaselineDistinctTheoremKernelTypeSha256": {
+      "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputNonconstant": "b1b7ca4af24b41d4acbdb2c125198929ca16fd0b7bf8bcee6c47fcf932e267f2",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputNotPositiveProjection": "562537f60e050f3729a3a1f7e71ef3d5cf27d38c458300448f2ab10415262c14",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputPairwiseDistinct": "3c9af60442b8119ed59ee8e2bc9f52b22e30a447bfe4f605a07a3561a9936bb6",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputConditions": "59f4e795f643d109eeb500af984e5fd680957ca3b150aa1eaaca7a9a4400e08d",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum": "ec4744b7e417ac76eeb36b354508418311bbcafdedadcb7ce9ef7f1ea336fcb5"
+    },
+    "leanLockedNANDGlobalBaselineDistinctAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "leanLockedNANDGlobalBaselineDistinctProjectAxiomClosure": [],
+    "leanLockedNANDBaselineOutputNonconstantTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputNonconstant",
+    "leanLockedNANDBaselineOutputNotPositiveProjectionTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputNotPositiveProjection",
+    "leanLockedNANDBaselineOutputPairwiseDistinctTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputPairwiseDistinct",
+    "leanLockedNANDBaselineOutputConditionsTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputConditions",
+    "leanLockedNANDBaselineReferenceMinimumTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum"
   },
   "formalPublicationMilestoneCounts": {
-    "total": 65,
-    "earned": 62,
+    "total": 66,
+    "earned": 63,
     "unearned": 3
   },
   "earnedMilestones": [
@@ -3799,6 +3818,7 @@
     "locked-nand-local-baseline",
     "locked-nand-global-carrier-trace-equivalence",
     "locked-nand-global-candidate-assembly",
+    "locked-nand-global-baseline-distinct",
     "locked-nand-conditional-threshold",
     "explicit-residual-routes"
   ],
@@ -4182,6 +4202,6 @@
     "All five reviewed activation fingerprints remain intentionally unset, so target presence alone cannot open the concrete publication gate.",
     "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only.",
     "CookLevin.BuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStep composes the complete sixth padding-or-opening-unary-opportunity predecessor with a represented-width evaluator, the reviewed 93-rule optional-appender table, and a retained-coordinate evaluator through three nine-symbol WorkChain bridges. Its literal table has 6124 plus thirty-two inherited/generated unary-evaluator rule counts. At tapeWidth one the controller takes a direct skip bridge and emits no token; at every wider width it appends exactly the first unary-index T of the following literal. The emitted bits equal encodedFormula.take (2 * (FormulaWidth + 43 + if tapeWidth = 1 then 0 else 7)), and the retained coordinate is V + 1 + Q*C + 14, where Q = formulaClauseSlotsPerConstraint. Direct lookup and the specification cursor prove that the following slot is padding at width one and the second unary-index T of the following literal at wider widths. The exact work trace is bounded by BuilderSecondConstraintSixthPaddingOrOpeningUnaryOpportunityStep.rawTimeBound + 684 + 24*n + 12*FormulaWidth + 12*width + 12*widthRootPrefixLength + 6*widthWorkSteps + 6*targetWorkSteps. The measured 82-declaration audit covers all 66 new public declarations, fourteen reused optional-appender interfaces, and two strengthened schedule lemmas: 37 closures are empty, 12 use only propext, and 33 use only propext and Quot.sound, with no project axiom or Classical.choice. The predecessor endpoint before launch and one-step-short fuel remain timeout, while component malformed-workspace results are retained. This consumes only one additional fixed schedule opportunity; it does not consume the following padding or second unary-index T, complete the following literal, traverse the remainder of the second constraint, implement a general dynamic formula cursor, emit the remaining formula body, construct a complete builder, provide RawRefinement or PolynomialReduction, prove CNFSAT NP-complete or in P, or prove P = NP.",
-    "LockedNANDGlobalCandidates assembles, for every arbitrary finite topological NAND circuit, the exact source-derived B/B baseline and B+4/B+1 extension. It proves the source and macro counts, prefix semantics, initial and final conjunction semantics, constant-freedom, and structural independence of every baseline output from the fresh final lock. The eleven reviewed theorem types use only Quot.sound and propext. It does not prove cross-instance BaselineDistinct, either conditional final-output branch law, the locked-NAND threshold, residual slack at most four, a uniform polynomial bitstring builder, removal of the four project axioms or six blockers, or P = NP."
+    "LockedNANDGlobalCandidates assembles, for every arbitrary finite topological NAND circuit, the exact source-derived B/B baseline and B+4/B+1 extension, and now proves every exposed baseline output is nonconstant, is not a positive input projection, and is pairwise semantically distinct. Those facts establish global BaselineDistinct and exact exhaustive reference minimum B. The complete 64-declaration audit and five new theorem pins use only Quot.sound and propext. It does not prove either whole-carrier final-output branch law, the locked-NAND threshold, residual slack at most four, a uniform polynomial bitstring builder, removal of the four project axioms or six blockers, or P = NP."
   ]
 }
