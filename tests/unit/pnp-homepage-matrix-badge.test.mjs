@@ -16,7 +16,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'The final check now stays off whenever no solution exists',
     'that final check stays off for every possible filling of the workspace',
     'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable',
-    'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable',
+    'fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable',
     'exact reference minimum is <code>B</code>',
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',

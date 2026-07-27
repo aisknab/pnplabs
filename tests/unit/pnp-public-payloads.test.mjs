@@ -2672,8 +2672,8 @@ test('status page has a conservative complete static fallback', async () => {
     'Formal.RootTheoremAndAxiomAudit',
     'PNP.CheckPCCPackexp',
     'Formalized: Locked-NAND global unsatisfiable final-zero branch',
-    'fullCandidate_final_eq_false_of_unsatisfiable',
-    'fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable',
+    "full candidate's final coordinate false on the entire carrier",
+    'fixes the exhaustive reference minimum at <code>B</code>',
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
