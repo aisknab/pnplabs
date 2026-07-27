@@ -1,17 +1,17 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 69,
+  "version": 70,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "aed2c360982d1e356b462b9e27d976b23a2305a4",
+  "sourceCommitRef": "764c4ccc3795a32b183c6ee4fa1e347720562483",
   "sourceProofCommitRef": "e46ac7407301ed71483f34a5300e894557315863",
-  "sourceTree": "eee584b56ab70409e756362a58adf1ccf562265b",
+  "sourceTree": "71b50f3bc11bad65e04372505aa747ba03356e92",
   "syncedOn": "2026-07-27",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-86",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-GLOBAL-BASELINE-DISTINCT-85",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-27-86",
-  "leanTheoremInventorySha256": "33ceee3aa55116581d0c6b9790a35c046832076b168e77116e71bb8573ec3ea1",
-  "leanSourceClosureSha256": "01b522a560680c69c52c988a0c08c25483d12f5e53de72ff1d8106ae4313a738",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-27-86",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-87",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-UNSATISFIABLE-FINAL-ZERO-86",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-27-87",
+  "leanTheoremInventorySha256": "6c77607a6c03fd4136c31d62517d7773ec3989dbfd95188f28995c10f32f44fd",
+  "leanSourceClosureSha256": "d6be2beffdfaa94f5a53139fa1a4272bbb7b1cd1b0f7dfe764d1934ba86aed9c",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-27-87",
   "canonicalReportPages": 63,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 12245,
-    "leanTheoremInventoryTheoremCount": 7158,
+    "leanTheoremInventoryDeclarationCount": 12247,
+    "leanTheoremInventoryTheoremCount": 7160,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 3676,
-    "leanTheoremInventoryExcludedPrivateDeclarationCount": 4997,
-    "leanTheoremInventorySourceClosureModuleCount": 105,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 5000,
+    "leanTheoremInventorySourceClosureModuleCount": 106,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -198,7 +198,6 @@
       "satisfiableFinalConditions"
     ],
     "leanLockedNANDThresholdMissingInstantiationInventory": [
-      "unsatisfiableFinalZero",
       "satisfiableFinalConditions"
     ],
     "rootLeanTheorem": "PNP.Main.p_eq_np",
@@ -3750,11 +3749,26 @@
     "leanLockedNANDBaselineOutputNotPositiveProjectionTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputNotPositiveProjection",
     "leanLockedNANDBaselineOutputPairwiseDistinctTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputPairwiseDistinct",
     "leanLockedNANDBaselineOutputConditionsTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputConditions",
-    "leanLockedNANDBaselineReferenceMinimumTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum"
+    "leanLockedNANDBaselineReferenceMinimumTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum",
+    "leanLockedNANDUnsatisfiableFinalZeroFormalized": true,
+    "leanLockedNANDUnsatisfiableFinalZeroAxiomAuditPassed": true,
+    "leanLockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount": 2,
+    "leanLockedNANDUnsatisfiableFinalZeroScope": "arbitrary-finite-topological-nand-circuits-whole-carrier-unsatisfiable-final-zero-and-exact-reference-minimum",
+    "leanLockedNANDUnsatisfiableFinalZeroTheoremKernelTypeSha256": {
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable": "3841bbc176784b6dfd3c889e576fe74d117ca420f5f79f31063d85797f0bd3de",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable": "da9bb9d292f6cb2952d58120a4579503d87bd1ac94cd5d9248f40ba5007edf94"
+    },
+    "leanLockedNANDUnsatisfiableFinalZeroAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "leanLockedNANDUnsatisfiableFinalZeroProjectAxiomClosure": [],
+    "leanLockedNANDUnsatisfiableFinalZeroTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable",
+    "leanLockedNANDUnsatisfiableReferenceMinimumTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable"
   },
   "formalPublicationMilestoneCounts": {
-    "total": 66,
-    "earned": 63,
+    "total": 67,
+    "earned": 64,
     "unearned": 3
   },
   "earnedMilestones": [
@@ -3819,6 +3833,7 @@
     "locked-nand-global-carrier-trace-equivalence",
     "locked-nand-global-candidate-assembly",
     "locked-nand-global-baseline-distinct",
+    "locked-nand-global-unsatisfiable-final-zero",
     "locked-nand-conditional-threshold",
     "explicit-residual-routes"
   ],

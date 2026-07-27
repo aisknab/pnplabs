@@ -40,15 +40,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "aed2c360982d1e356b462b9e27d976b23a2305a4");
+  assert.equal(result.coreCommit, "764c4ccc3795a32b183c6ee4fa1e347720562483");
 });
 
-test("current release is pinned, sixty-three-page, exposes locked-NAND global baseline distinctness, and fails closed", () => {
+test("current release is pinned, sixty-three-page, exposes the locked-NAND unsatisfiable final-zero law, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-27-69");
-  assert.equal(release.source.commit, "aed2c360982d1e356b462b9e27d976b23a2305a4");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-27-70");
+  assert.equal(release.source.commit, "764c4ccc3795a32b183c6ee4fa1e347720562483");
   assert.equal(release.source.proofCommit, "e46ac7407301ed71483f34a5300e894557315863");
-  assert.equal(release.source.tree, "eee584b56ab70409e756362a58adf1ccf562265b");
+  assert.equal(release.source.tree, "71b50f3bc11bad65e04372505aa747ba03356e92");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 63);
@@ -1394,6 +1394,15 @@ test("current release is pinned, sixty-three-page, exposes locked-NAND global ba
   assert.equal(release.earnedBoundary.lockedNANDBaselineReferenceMinimumTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum");
   assert.deepEqual(release.earnedBoundary.lockedNANDGlobalBaselineDistinctAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDGlobalBaselineDistinctProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroScope, "arbitrary-finite-topological-nand-circuits-whole-carrier-unsatisfiable-final-zero-and-exact-reference-minimum");
+  assert.equal(Object.keys(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroTheoremKernelTypeSha256).length, 2);
+  assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable");
+  assert.equal(release.earnedBoundary.lockedNANDUnsatisfiableReferenceMinimumTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable");
+  assert.deepEqual(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);

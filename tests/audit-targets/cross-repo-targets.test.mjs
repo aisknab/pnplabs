@@ -574,6 +574,18 @@ const PUBLISHED_LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_MILESTONE = publishedStatus
   (row) => row.id === 'locked-nand-global-baseline-distinct'
 );
 assert.ok(PUBLISHED_LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_MILESTONE);
+const LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.lockedNANDUnsatisfiableFinalZeroTheoremKernelTypeSha256;
+const LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_NAMES = Object.keys(LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_HASHES);
+const LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_NAMES.includes(candidate.name)
+);
+assert.equal(LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_NAMES.length, 2);
+assert.equal(LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES.length, 2);
+const PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE = publishedStatus.formalPublicationMilestones.find(
+  (row) => row.id === 'locked-nand-global-unsatisfiable-final-zero'
+);
+assert.ok(PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE);
 
 function git(cwd, args) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -1210,17 +1222,19 @@ function makeProject(t) {
       ...structuredClone(PUBLISHED_LOCKED_NAND_GLOBAL_CANDIDATE_MILESTONE)
     }, {
       ...structuredClone(PUBLISHED_LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_MILESTONE)
+    }, {
+      ...structuredClone(PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE)
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 12245,
-    theoremCount: 7158,
+    declarationCount: 12247,
+    theoremCount: 7160,
     assumptionFreeTheoremCount: 3676,
-    excludedPrivateDeclarationCount: 4997,
-    sourceClosureModuleCount: 105,
+    excludedPrivateDeclarationCount: 5000,
+    sourceClosureModuleCount: 106,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -1407,7 +1421,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...Array.from({ length: 241 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...Array.from({ length: 241 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -1501,7 +1515,8 @@ function makeProject(t) {
       ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREM_HASHES,
       ...LOCKED_NAND_CARRIER_TRACE_THEOREM_HASHES,
       ...LOCKED_NAND_GLOBAL_CANDIDATE_THEOREM_HASHES,
-      ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREM_HASHES
+      ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREM_HASHES,
+      ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -1691,6 +1706,12 @@ function makeProject(t) {
       scope: PUBLISHED_LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_MILESTONE.scope,
       requiredTheorems: LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREM_NAMES,
       nonClaim: PUBLISHED_LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_MILESTONE.nonClaim
+    }, {
+      id: PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE.id,
+      classification: PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE.classification,
+      scope: PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE.scope,
+      requiredTheorems: LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_NAMES,
+      nonClaim: PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE.nonClaim
     }]
   });
 
@@ -5315,6 +5336,77 @@ test("rejects locked-NAND global BaselineDistinct release, status, inventory, an
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map locked-NAND global BaselineDistinct fingerprint mismatch/);
+});
+
+test("rejects locked-NAND unsatisfiable final-zero release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /formal-publication locked-NAND unsatisfiable final-zero boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroTheoremKernelTypeSha256[
+    "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /formal-publication locked-NAND unsatisfiable final-zero fingerprint mismatch/);
+
+  const releaseAxiom = makeProject(t);
+  releaseAxiom.release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
+  expectFailure(releaseAxiom, /formal-publication locked-NAND unsatisfiable final-zero axiom closure mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.lockedNANDUnsatisfiableFinalZeroTheorem =
+    "PNP.DirectWire.LockedNANDGlobalCandidates.forged";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /formal-publication locked-NAND unsatisfiable final-zero theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanLockedNANDUnsatisfiableFinalZeroAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /public status locked-NAND unsatisfiable final-zero evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
+    (row) => row.id !== "locked-nand-global-unsatisfiable-final-zero"
+  );
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /public status locked-NAND unsatisfiable final-zero milestone mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /public inventory locked-NAND unsatisfiable final-zero theorem mismatch/);
+
+  const inventoryFingerprint = makeProject(t);
+  const inventoryFingerprintPayload = JSON.parse(readFileSync(path.join(inventoryFingerprint.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryFingerprintPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable"
+  ).kernelType += " ";
+  rewriteCorePayload(inventoryFingerprint, "public/pnp-theorem-inventory.json", inventoryFingerprintPayload);
+  expectFailure(inventoryFingerprint, /public inventory locked-NAND unsatisfiable final-zero fingerprint mismatch/);
+
+  const mapNonClaim = makeProject(t);
+  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapNonClaimPayload.milestones.find(
+    (row) => row.id === "locked-nand-global-unsatisfiable-final-zero"
+  ).nonClaim = "forged";
+  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
+  expectFailure(mapNonClaim, /core publication map locked-NAND unsatisfiable final-zero milestone mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
