@@ -6,9 +6,9 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a sixty-three-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 12,247 public declarations across 106 modules,
-including 7,160 theorem-kind declarations, 3,676 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Exactly 5,000 private compiler auxiliaries are excluded explicitly.
+Lean theorem inventory. The inventory contains 12,255 public declarations across 107 modules,
+including 7,167 theorem-kind declarations, 3,676 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Exactly 5,027 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all six formal blockers
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 1,970 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 1,970 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Sixty-four narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, carrier/trace equivalence, exact `B/B` plus `B+4/B+1` locked-NAND candidate assembly, global baseline distinctness, and the unsatisfiable whole-carrier final-zero law with exact reference minimum `B` | A complete formula builder, packaged reduction, the satisfiable whole-carrier final-output conditions, the uniform locked-NAND builder and threshold, complete residual search, CNF-SAT in P, NP-completeness, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 1,977 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 1,977 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Sixty-five narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, carrier/trace equivalence, exact `B/B` plus `B+4/B+1` locked-NAND candidate assembly, all six typed semantic premises, an exact satisfiability/reference-minimum threshold, and residual slack at most four | A complete formula builder, packaged reduction, an encoded polynomial-time SAT-to-locked-NAND builder and its compilation, discharge of the abstract threshold axiom, complete residual search, CNF-SAT in P, NP-completeness, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `764c4ccc3795a32b183c6ee4fa1e347720562483`.
+   `4cdfd0e3d263f473177bbef9e9b26d7756810bdf`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 1,970 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 1,977 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,29 +72,29 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns sixty-four scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns sixty-five scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
 concrete framed replacement/slack; five local locked-NAND baselines; a six-premise conditional
 threshold boundary; exact carrier separation and trace equivalence; exact source-derived `B/B`
 baseline and `B+4/B+1` extended candidate assembly for arbitrary finite topological NAND circuits;
-global baseline-output distinctness, the unsatisfiable whole-carrier final-zero law and exact
-exhaustive reference minimum `B`; and explicit-list
+global baseline-output distinctness, both whole-carrier final-output branches, all six typed
+semantic premises, the exact satisfiable/reference-minimum threshold, residual slack at most four;
+and explicit-list
 residual-route soundness.
 
 Review the gaps between those scopes and the target theorem:
 
 1. The charged-pipeline model and concrete CNF-SAT language are formalized. Every proof-bearing function or decision program tree recursively compiles into one literal finite machine. The Cook-Levin construction proves exact semantic equivalence between its generated formula and the verifier language, bounds the actual encoded formula by an external input-size polynomial, supplies an exact answer-independent rectangular schedule, and supplies direct coordinate decoders with exact fuelled traversal. Fixed finite machines reach `T^FormulaWidth F Sep T F T T F T T T F Finish`, the canonical prefix through the complete first clause, execute all remaining first-clause padding opportunities without emission, and emit `Sep F F F T F Finish`, completing the fixed second clause. The composed machines traverse all `FormulaTokensPerClause - 7` remaining clause-two padding coordinates, emit `Sep F F F T T F Finish`, complete the fixed third clause, traverse all `FormulaTokensPerClause - 8` remaining clause-three padding coordinates without emission, emit the fixed `Sep` beginning clause four, both negative literals `F T F` and `F T T F`, and the `Finish` that completes clause four. They then traverse all `FormulaTokensPerClause - 9` remaining clause-four padding opportunities without emission, cross the intentionally empty fifth clause rectangle, continue through every remaining padding opportunity in the first scheduled constraint, emit the `Sep` starting the second scheduled constraint, and emit the positive `T` sign, all three unary `T` tokens, and the terminating `F` completing its first literal. A width-selected step then emits `Finish` at width one or positive `T` at wider widths. Four following machines consume the first four padding opportunities without emission at width one or emit the first four unary `T` tokens of the second literal at wider widths. The next machine consumes padding without emission at width one or emits the second literal's terminating `F` at wider widths. The latest machine then consumes another padding position without emission at width one or emits the first unary-index `T` of the following literal at wider widths, retains `FormulaVariableSlotBound + 1 + FormulaClauseSlotsPerConstraint * FormulaTokensPerClause + 14`, and stays within an external polynomial bound. It observes but does not consume the following padding opportunity at width one or second unary-index `T` at wider widths, complete the following literal or traverse the second constraint, implement a general dynamic formula cursor, emit the remaining body, or supply a complete raw builder, builder `FunctionProgram.RawRefinement`, or packaged polynomial reduction. CNF-SAT NP-completeness and a deterministic polynomial-time CNF-SAT decider are absent.
 2. The exact `X/T/O/R/L/z` carrier, both trace-equivalence directions, complete baseline plus
-   four-gate candidate assembly, global `BaselineDistinct`, the unsatisfiable whole-carrier
-   final-zero law, and exact exhaustive reference minimum `B` are now formalized for arbitrary
-   finite topological NAND circuits. This does not prove the satisfiable final-output conditions,
-   residual slack at most four, or the uniform polynomial builder.
-3. The local baseline minima, carrier/trace theorem, global candidate assembly, and baseline
-   distinctness do not establish the locked-NAND threshold. The construction now supplies
-   `baselineConditions` and `unsatisfiableFinalZero`; exactly `satisfiableFinalConditions` remains
-   uninstantiated.
+   four-gate candidate assembly, global `BaselineDistinct`, both whole-carrier final-output
+   branches, all six typed semantic premises, and the exhaustive reference-minimum equivalence are
+   now formalized for arbitrary finite topological NAND circuits. The full candidate also has
+   residual slack at most four.
+3. This typed semantic threshold is not yet the report's global encoded construction theorem. The
+   uniform polynomial-time bitstring builder, its compiler/refinement proof, and the discharge of
+   the separate abstract locked-NAND threshold axiom remain absent.
 4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
    unlisted gain and cannot imply `ZeroSlack`.
 5. PCCMin exactness, the residual-band minimizer, and polynomial runtime/certificate bounds remain

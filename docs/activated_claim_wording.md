@@ -27,6 +27,8 @@ leanConcreteDecisionProgramRecursiveCompilationFormalized = true
 leanConcretePolynomialTimeDeciderRawCompilationFormalized = true
 standardComplexityModelFormalized = true
 leanLockedNANDUnsatisfiableFinalZeroFormalized = true
+leanLockedNANDGlobalSemanticThresholdFormalized = true
+leanLockedNANDResidualSlackAtMostFourFormalized = true
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 ```
@@ -35,7 +37,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Sixty-four narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. They include universal concrete CNF-SAT verifier correctness and NP membership, literal raw-machine compilation, exact Cook-Levin semantics and a bounded formula-building prefix, arbitrary-circuit locked-NAND carrier/trace equivalence, exact baseline and four-gate candidate assembly, global baseline distinctness, and the whole-carrier unsatisfiable final-zero law. `PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable` proves that no satisfying source input forces the full final coordinate false for every carrier valuation; `fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable` fixes the exhaustive reference minimum at `B`. Both theorem closures contain only `Quot.sound` and `propext`. Exactly the satisfiable final-output conditions remain missing from the six-field threshold package. The complete Cook-Levin builder, packaged reduction, uniform locked-NAND builder and threshold, residual-band result, CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Sixty-five narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. They include universal concrete CNF-SAT verifier correctness and NP membership, literal raw-machine compilation, exact Cook-Levin semantics and a bounded formula-building prefix, arbitrary-circuit locked-NAND carrier/trace equivalence, exact baseline and four-gate candidate assembly, both whole-carrier final-output branches, and the typed semantic threshold. `PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ` proves that the exhaustive reference minimum is at least `B + 1` exactly when the source circuit is satisfiable; `fullCandidate_residualSlack_le_four` bounds the residual gap by four. The eight-declaration audit contains only `Quot.sound` and `propext`. The encoded polynomial-time SAT-to-locked-NAND builder, its compilation, the abstract threshold discharge, complete Cook-Levin builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 

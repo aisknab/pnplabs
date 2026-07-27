@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-87';
-const STATUS_SHA256 = 'c0bb68c8c353d034294e7377cc43d5146a1c84723c11029b909ba6cbb22192bd';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-UNSATISFIABLE-FINAL-ZERO-86';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-27-87';
-const INVENTORY_SHA256 = '6c77607a6c03fd4136c31d62517d7773ec3989dbfd95188f28995c10f32f44fd';
-const SOURCE_CLOSURE_SHA256 = 'd6be2beffdfaa94f5a53139fa1a4272bbb7b1cd1b0f7dfe764d1934ba86aed9c';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-88';
+const STATUS_SHA256 = '21b5d5b4ecd727f1bcc4fbcaa2c7b04df62e15c25a9b0190e932c9e3acabdf67';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-GLOBAL-SEMANTIC-THRESHOLD-87';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-28-88';
+const INVENTORY_SHA256 = 'f5f269dfe182807e7eb1603c1df1de28ac77e958718a47884e98f0a710045eec';
+const SOURCE_CLOSURE_SHA256 = '11cd24e11180f22c5ca853d94fc0c201dc39a1dd6fa546de003d08279d2f9f4d';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 12247,
-  theorems: 7160,
+  declarations: 12255,
+  theorems: 7167,
   assumptionFreeTheorems: 3676,
-  excludedPrivateDeclarations: 5000,
-  modules: 106,
+  excludedPrivateDeclarations: 5027,
+  modules: 107,
   axioms: 4,
 });
 
@@ -3304,6 +3304,17 @@ const LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable", ["Quot.sound", "propext"]],
 ]);
 
+const LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_nonconstant_of_satisfiable", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_notPositiveProjection_of_satisfiable", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_distinctFromBaseline_of_satisfiable", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiableFinalConditions", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_bounds_of_satisfiable", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ", ["Quot.sound", "propext"]],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable", ["Quot.sound", "propext"]],
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -3376,6 +3387,7 @@ const MILESTONE_IDS = Object.freeze([
   'locked-nand-global-candidate-assembly',
   'locked-nand-global-baseline-distinct',
   'locked-nand-global-unsatisfiable-final-zero',
+  'locked-nand-global-semantic-threshold',
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
   'global-locked-nand-threshold',
@@ -4016,12 +4028,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 314,
-    definition: 4489,
+    definition: 4490,
     inductive: 140,
     opaque: 0,
     quotient: 0,
     recursor: 140,
-    theorem: 7160,
+    theorem: 7167,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4301,6 +4313,10 @@ function validateInventory(inventory) {
     axioms,
   }));
   const lockedNANDGlobalUnsatisfiableFinalZero = LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_DECLARATIONS.map(([name, axioms]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+  }));
+  const lockedNANDGlobalSemanticThreshold = LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_DECLARATIONS.map(([name, axioms]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
   }));
@@ -4592,6 +4608,11 @@ function validateInventory(inventory) {
     && lockedNANDGlobalUnsatisfiableFinalZero.every(({ row, axioms }) => row?.kind === 'theorem'
       && row.module === 'PNP.LockedNANDGlobalUnsatisfiableFinalZero'
       && sameJson(row.axioms, axioms))
+    && lockedNANDGlobalSemanticThreshold.every(({ row, axioms }) => row?.kind === 'theorem'
+      && row.module === (row.name === 'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable'
+        ? 'PNP.LockedNANDGlobalUnsatisfiableFinalZero'
+        : 'PNP.LockedNANDGlobalSemanticThreshold')
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -4633,7 +4654,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 1970
+    && inventory.milestoneCandidates.length === 1977
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -4697,7 +4718,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 64;
+    const shouldBeEarned = index < 65;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5227,7 +5248,14 @@ function validateStatus(status, inventory) {
     && status.leanLockedNANDUnsatisfiableFinalZeroAxiomAuditPassed === true
     && status.leanLockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount === 2
     && status.leanLockedNANDUnsatisfiableFinalZeroScope === 'arbitrary-finite-topological-nand-circuits-whole-carrier-unsatisfiable-final-zero-and-exact-reference-minimum'
-    && sameJson(status.leanLockedNANDThresholdMissingInstantiationInventory, ['satisfiableFinalConditions'])
+    && status.leanLockedNANDDerivedFinalOutputLawsFormalized === true
+    && status.leanLockedNANDResidualSlackAtMostFourFormalized === true
+    && status.leanLockedNANDSatisfiableFinalConditionsFormalized === true
+    && status.leanLockedNANDGlobalSemanticThresholdFormalized === true
+    && status.leanLockedNANDGlobalSemanticThresholdAxiomAuditPassed === true
+    && status.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount === 8
+    && status.leanLockedNANDGlobalSemanticThresholdScope === 'arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold'
+    && sameJson(status.leanLockedNANDThresholdMissingInstantiationInventory, [])
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82

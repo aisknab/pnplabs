@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1,970 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 1,977 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 12,247 public declarations;
-- 7,160 theorem-kind declarations;
+- 12,255 public declarations;
+- 7,167 theorem-kind declarations;
 - 3,676 assumption-free theorem-kind declarations;
-- 106 source-closure modules;
-- 5,000 excluded private compiler auxiliaries;
+- 107 source-closure modules;
+- 5,027 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The sixty-four earned scopes are:
+The sixty-five earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -115,7 +115,8 @@ The sixty-four earned scopes are:
 | Locked-NAND global candidate assembly | For every finite topological NAND circuit, exact source-derived candidates have `B` gates and `B` outputs at baseline and `B + 4` gates and `B + 1` outputs after extension; source, initial-conjunction, and final-conjunction semantics, constant-freedom, and baseline-output independence from the fresh final lock are proved | No cross-instance `BaselineDistinct`, conditional final-output branch law, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
 | Locked-NAND global baseline distinctness | For every finite topological NAND circuit, every exposed baseline output is nonconstant, is not a positive input projection, and is pairwise semantically distinct; these conditions establish global `BaselineDistinct` and the exact exhaustive reference minimum `B` | No whole-carrier final-output branch law, complete threshold-premise package, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
 | Locked-NAND unsatisfiable final-zero branch | For every finite topological NAND circuit, unsatisfiability makes the full final coordinate false on the whole carrier and fixes the exhaustive full-candidate reference minimum at `B` | No satisfiable final-output conditions, complete threshold-premise package, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
-| Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | No uniform construction or premise instantiation |
+| Locked-NAND global semantic threshold | For every finite topological NAND circuit, one answer-independent full candidate supplies all six typed semantic premises, the exhaustive reference minimum is at least `B + 1` exactly when the source circuit is satisfiable, and residual slack is at most four | No encoded polynomial-time SAT-to-locked-NAND builder or compilation, abstract threshold discharge, NP-hardness transport, CNF-SAT in P, or `P = NP` |
+| Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
 Three global milestones remain unearned: the unconditional locked-NAND construction/threshold, the
