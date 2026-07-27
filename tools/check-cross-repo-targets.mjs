@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "aed2c360982d1e356b462b9e27d976b23a2305a4";
-const REVIEWED_CORE_TREE = "eee584b56ab70409e756362a58adf1ccf562265b";
+const REVIEWED_CORE_COMMIT = "764c4ccc3795a32b183c6ee4fa1e347720562483";
+const REVIEWED_CORE_TREE = "71b50f3bc11bad65e04372505aa747ba03356e92";
 const REVIEWED_PROOF_COMMIT = "e46ac7407301ed71483f34a5300e894557315863";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -3063,6 +3063,11 @@ const LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREMS = {
   "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum": { hash: "ec4744b7e417ac76eeb36b354508418311bbcafdedadcb7ce9ef7f1ea336fcb5", axioms: ["Quot.sound", "propext"] },
 };
 
+const LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_THEOREMS = {
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable": { hash: "3841bbc176784b6dfd3c889e576fe74d117ca420f5f79f31063d85797f0bd3de", axioms: ["Quot.sound", "propext"] },
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable": { hash: "da9bb9d292f6cb2952d58120a4579503d87bd1ac94cd5d9248f40ba5007edf94", axioms: ["Quot.sound", "propext"] }
+};
+
 const LOCKED_NAND_GLOBAL_CANDIDATE_RELEASE_IDENTITIES = {
   MacroGateCountTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula",
   NonemptyPrefixSemanticsTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.nonemptyPrefixCandidate_semantics",
@@ -3083,6 +3088,11 @@ const LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_RELEASE_IDENTITIES = {
   BaselineOutputPairwiseDistinctTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputPairwiseDistinct",
   BaselineOutputConditionsTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_outputConditions",
   BaselineReferenceMinimumTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum",
+};
+
+const LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_RELEASE_IDENTITIES = {
+  UnsatisfiableFinalZeroTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable",
+  UnsatisfiableReferenceMinimumTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable"
 };
 
 const KIND_TO_REF = new Map([
@@ -3524,6 +3534,11 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDGlobalBaselineDistinctHashes = earned.lockedNANDGlobalBaselineDistinctTheoremKernelTypeSha256;
   if (!lockedNANDGlobalBaselineDistinctHashes || Object.keys(lockedNANDGlobalBaselineDistinctHashes).length !== 5 || !Object.entries(LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREMS).every(([name, row]) => lockedNANDGlobalBaselineDistinctHashes[name] === row.hash)) failures.push("formal-publication locked-NAND global BaselineDistinct fingerprint mismatch");
   if (!Object.entries(LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`lockedNAND${suffix}`] === theorem)) failures.push("formal-publication locked-NAND global BaselineDistinct theorem identity mismatch");
+  if (!(earned.lockedNANDUnsatisfiableFinalZeroFormalized === true && earned.lockedNANDUnsatisfiableFinalZeroAxiomAuditPassed === true && earned.lockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount === 2 && earned.lockedNANDUnsatisfiableFinalZeroScope === "arbitrary-finite-topological-nand-circuits-whole-carrier-unsatisfiable-final-zero-and-exact-reference-minimum")) failures.push("formal-publication locked-NAND unsatisfiable final-zero boundary mismatch");
+  if (JSON.stringify(earned.lockedNANDUnsatisfiableFinalZeroAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.lockedNANDUnsatisfiableFinalZeroProjectAxiomClosure) || earned.lockedNANDUnsatisfiableFinalZeroProjectAxiomClosure.length !== 0) failures.push("formal-publication locked-NAND unsatisfiable final-zero axiom closure mismatch");
+  const lockedNANDGlobalUnsatisfiableFinalZeroHashes = earned.lockedNANDUnsatisfiableFinalZeroTheoremKernelTypeSha256;
+  if (!lockedNANDGlobalUnsatisfiableFinalZeroHashes || Object.keys(lockedNANDGlobalUnsatisfiableFinalZeroHashes).length !== 2 || !Object.entries(LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_THEOREMS).every(([name, row]) => lockedNANDGlobalUnsatisfiableFinalZeroHashes[name] === row.hash)) failures.push("formal-publication locked-NAND unsatisfiable final-zero fingerprint mismatch");
+  if (!Object.entries(LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`lockedNAND${suffix}`] === theorem)) failures.push("formal-publication locked-NAND unsatisfiable final-zero theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -3712,7 +3727,10 @@ function validateCurrentPayloads(contents, failures) {
     const lockedNANDGlobalBaselineDistinctMilestone = status.formalPublicationMilestones?.find((row) => row.id === "locked-nand-global-baseline-distinct");
     if (!lockedNANDGlobalBaselineDistinctMilestone || lockedNANDGlobalBaselineDistinctMilestone.earned !== true || lockedNANDGlobalBaselineDistinctMilestone.allPresent !== true || lockedNANDGlobalBaselineDistinctMilestone.allKernelTypesMatch !== true || lockedNANDGlobalBaselineDistinctMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || lockedNANDGlobalBaselineDistinctMilestone.requiredTheorems?.length !== 5) failures.push("public status locked-NAND global BaselineDistinct milestone mismatch");
     if (!(status.leanLockedNANDGlobalBaselineDistinctFormalized === true && status.leanLockedNANDGlobalBaselineDistinctAxiomAuditPassed === true && status.leanLockedNANDGlobalBaselineDistinctAuditedDeclarationCount === 5 && status.leanLockedNANDGlobalBaselineDistinctScope === "arbitrary-finite-topological-nand-circuits-global-baseline-output-conditions-and-exact-reference-minimum")) failures.push("public status locked-NAND global BaselineDistinct evidence mismatch");
-    if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify(["unsatisfiableFinalZero", "satisfiableFinalConditions"])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
+    const lockedNANDGlobalUnsatisfiableFinalZeroMilestone = status.formalPublicationMilestones?.find((row) => row.id === "locked-nand-global-unsatisfiable-final-zero");
+    if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.earned !== true || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.allPresent !== true || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.allKernelTypesMatch !== true || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.requiredTheorems?.length !== 2) failures.push("public status locked-NAND unsatisfiable final-zero milestone mismatch");
+    if (!(status.leanLockedNANDUnsatisfiableFinalZeroFormalized === true && status.leanLockedNANDUnsatisfiableFinalZeroAxiomAuditPassed === true && status.leanLockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount === 2 && status.leanLockedNANDUnsatisfiableFinalZeroScope === "arbitrary-finite-topological-nand-circuits-whole-carrier-unsatisfiable-final-zero-and-exact-reference-minimum")) failures.push("public status locked-NAND unsatisfiable final-zero evidence mismatch");
+    if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify(["satisfiableFinalConditions"])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
     if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) failures.push("public status overstates the CNF-SAT result");
@@ -3720,7 +3738,7 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 12245 || inventory.theoremCount !== 7158 || inventory.assumptionFreeTheoremCount !== 3676 || inventory.excludedPrivateDeclarationCount !== 4997 || inventory.sourceClosureModuleCount !== 105 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 12247 || inventory.theoremCount !== 7160 || inventory.assumptionFreeTheoremCount !== 3676 || inventory.excludedPrivateDeclarationCount !== 5000 || inventory.sourceClosureModuleCount !== 106 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -3755,6 +3773,11 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.LockedNANDGlobalCandidates" || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory locked-NAND global BaselineDistinct theorem mismatch: ${name}`);
       else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory locked-NAND global BaselineDistinct fingerprint mismatch: ${name}`);
+    }
+    for (const [name, evidence] of Object.entries(LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.LockedNANDGlobalUnsatisfiableFinalZero" || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory locked-NAND unsatisfiable final-zero theorem mismatch: ${name}`);
+      else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4189,8 +4212,8 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 1968) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 1968`);
+    if (inventory.milestoneCandidates?.length !== 1970) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 1970`);
     }
   }
 }
@@ -4775,6 +4798,12 @@ export function validateAuditTargets(options = {}) {
     const lockedNANDGlobalBaselineDistinctPins = earned.lockedNANDGlobalBaselineDistinctTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREMS)) {
       if (!lockedNANDGlobalBaselineDistinctMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalBaselineDistinctPins[name] !== row.hash) failures.push(`core publication map locked-NAND global BaselineDistinct fingerprint mismatch: ${name}`);
+    }
+    const lockedNANDGlobalUnsatisfiableFinalZeroMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-unsatisfiable-final-zero");
+    if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.classification !== "formalized" || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.requiredTheorems?.length !== 2 || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.scope !== "For every finite topologically ordered NAND circuit, unsatisfiability makes the full final coordinate identically false on the whole carrier and fixes the exhaustive reference minimum at B." || lockedNANDGlobalUnsatisfiableFinalZeroMilestone.nonClaim !== "This does not prove satisfiable FinalLockSeparation, instantiate the complete threshold package, establish the global locked-NAND threshold or residual-slack bound, or construct the uniform polynomial builder.") failures.push("core publication map locked-NAND unsatisfiable final-zero milestone mismatch");
+    const lockedNANDGlobalUnsatisfiableFinalZeroPins = earned.lockedNANDUnsatisfiableFinalZeroTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_UNSATISFIABLE_FINAL_ZERO_THEOREMS)) {
+      if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
   }
 

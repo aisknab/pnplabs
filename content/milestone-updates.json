@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-27-locked-nand-global-unsatisfiable-final-zero",
+      "milestoneId": "locked-nand-global-unsatisfiable-final-zero",
+      "publishedAt": "2026-07-27T16:01:13Z",
+      "title": "The final check now stays off whenever no solution exists",
+      "plainLanguage": [
+        "A circuit is a sequence of simple yes-or-no steps. This project adds a final check that can turn on only when the original circuit has a successful input and all of the recorded intermediate work agrees. Lean now proves that if no successful input exists, that final check stays off for every possible filling of the workspace, including deliberately inconsistent ones.",
+        "Lean also proves that, in this no-solution case, the smallest equivalent implementation has exactly the established baseline size. This closes only the no-solution half of the comparison. The successful-solution separation argument, complete size threshold, uniform polynomial-time builder, CNF-SAT in P, and P = NP remain unproved. The 50% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 50,
+      "source": {
+        "commit": "764c4ccc3795a32b183c6ee4fa1e347720562483",
+        "tree": "71b50f3bc11bad65e04372505aa747ba03356e92",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-27-87",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-27-LOCKED-NAND-UNSATISFIABLE-FINAL-ZERO-86"
+      }
+    },
+    {
       "id": "2026-07-27-locked-nand-global-baseline-distinct",
       "milestoneId": "locked-nand-global-baseline-distinct",
       "publishedAt": "2026-07-27T04:27:24Z",

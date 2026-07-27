@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof now shows every baseline output does a different job</h2>
-          <p>The previous milestone assembled a baseline circuit with one exposed output for every gate. That head count alone did not show every gate was necessary: an output might have been fixed, might merely copy an input, or might duplicate another output. This milestone proves none of those shortcuts occurs, for every finite circuit in the family.</p>
-          <p>That makes the baseline's exact minimum size match its stated size and completes another required part of the later threshold argument. Two final-output laws and the uniform polynomial-time construction are still missing, so the locked-circuit threshold, CNF-SAT in P, and P = NP remain unproved. The 49% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-27-locked-nand-global-baseline-distinct">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The final check now stays off whenever no solution exists</h2>
+          <p>A circuit is a sequence of simple yes-or-no steps. This project adds a final check that can turn on only when the original circuit has a successful input and all of the recorded intermediate work agrees. Lean now proves that if no successful input exists, that final check stays off for every possible filling of the workspace, including deliberately inconsistent ones.</p>
+          <p>Lean also proves that, in this no-solution case, the smallest equivalent implementation has exactly the established baseline size. This closes only the no-solution half of the comparison. The successful-solution separation argument, complete size threshold, uniform polynomial-time builder, CNF-SAT in P, and P = NP remain unproved. The 50% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-07-27-locked-nand-global-unsatisfiable-final-zero">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum</code> proves the exact exhaustive reference minimum <code>B</code> for every finite, topologically ordered NAND circuit. Its supporting theorems show that every exposed baseline output is nonconstant, is not a positive input projection, and is semantically distinct from every other exposed baseline output. This establishes global <code>BaselineDistinct</code> for the source-derived baseline. It does not prove either whole-carrier final-output branch law, instantiate the complete threshold premise package, establish the locked-NAND threshold or global residual-slack bound, or construct the uniform polynomial bitstring builder.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable</code> proves that an unsatisfiable finite, topologically ordered NAND circuit makes the full candidate's final coordinate false on the entire carrier, not merely on coherent traces. The companion theorem <code>fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable</code> fixes its exact exhaustive reference minimum at <code>B</code>. This does not prove the satisfiable <code>FinalLockSeparation</code> branch, instantiate the complete threshold package, establish the locked-NAND threshold or global residual-slack bound, or construct the uniform polynomial bitstring builder.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -93,6 +93,9 @@ leanLockedNANDGlobalCandidateAuditedDeclarationCount = 64
 leanLockedNANDGlobalBaselineDistinctFormalized = true
 leanLockedNANDGlobalBaselineDistinctAxiomAuditPassed = true
 leanLockedNANDGlobalBaselineDistinctAuditedDeclarationCount = 5
+leanLockedNANDUnsatisfiableFinalZeroFormalized = true
+leanLockedNANDUnsatisfiableFinalZeroAxiomAuditPassed = true
+leanLockedNANDUnsatisfiableFinalZeroAuditedDeclarationCount = 2
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -106,9 +109,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-27-86</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-27-87</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>33ceee3aa55116581d0c6b9790a35c046832076b168e77116e71bb8573ec3ea1</code></div>
+            <div><span>Inventory SHA-256</span><code>6c77607a6c03fd4136c31d62517d7773ec3989dbfd95188f28995c10f32f44fd</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -116,18 +119,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>49</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>50</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 49 percent" data-proof-progress="49">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>49</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 50 percent" data-proof-progress="50">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>50</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 49% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 50% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
@@ -158,7 +161,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers global baseline distinctness, not the final claim.</h2><p>The two whole-carrier final-output laws, the locked-NAND threshold, the uniform polynomial bitstring builder, the complete formula builder, a packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, the global ZeroSlack result, and an eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers the no-solution final-output law, not the final claim.</h2><p>The successful-solution final-output law, locked-NAND threshold, uniform polynomial bitstring builder, complete formula builder, packaged polynomial reduction, CNF-SAT NP-completeness, CNF-SAT in P, global ZeroSlack result, and an eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

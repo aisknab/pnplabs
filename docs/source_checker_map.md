@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `aed2c360982d1e356b462b9e27d976b23a2305a4`. Its generated status payload is current
+core commit `764c4ccc3795a32b183c6ee4fa1e347720562483`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the sixty-three-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `aed2c360982d1e356b462b9e27d976b23a2305a4` | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, plus carrier/trace equivalence, exact baseline/four-gate candidate assembly, global baseline distinctness, and exact exhaustive reference minimum `B` for arbitrary finite topological NAND circuits |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 1,968 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `764c4ccc3795a32b183c6ee4fa1e347720562483` | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, plus carrier/trace equivalence, exact baseline/four-gate candidate assembly, global baseline distinctness, and the unsatisfiable whole-carrier final-zero law with exact reference minimum `B` |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 1,970 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Sixty-three earned scoped milestones—including arbitrary-circuit locked-NAND baseline distinctness and exact reference minimum—three unearned global milestones, four project axioms, and six blockers |
+| Generated status | `public/pnp-status.json` | Sixty-four earned scoped milestones—including the arbitrary-circuit locked-NAND unsatisfiable final-zero law and exact reference minimum—three unearned global milestones, four project axioms, and six blockers |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current sixty-three-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does

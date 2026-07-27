@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 402,808 | `9991dd5fcc9fc8da5ba1161434af216b23735b6f379fee9fa6cdd28c2227d4f3` |
-| `downloads/canonical-proof-report.pdf` | 402,808 | `9991dd5fcc9fc8da5ba1161434af216b23735b6f379fee9fa6cdd28c2227d4f3` |
-| `downloads/canonical_proof_report.tex` | 151,526 | `a8b59bfbcd67a2c50127ba77e7d659564623c8e9844f8bf3f1f741c2b03299c7` |
-| `downloads/canonical-proof-report.tex` | 151,526 | `a8b59bfbcd67a2c50127ba77e7d659564623c8e9844f8bf3f1f741c2b03299c7` |
-| `public/pnp-status.json` | 1,578,871 | `06d77025ac41dda41d748f43080ffcf9ebd56b606e0d1a1d0a0c4d7c32df9569` |
-| `public/pnp-theorem-inventory.json` | 11,181,437 | `33ceee3aa55116581d0c6b9790a35c046832076b168e77116e71bb8573ec3ea1` |
+| `downloads/canonical_proof_report.pdf` | 402,956 | `9d0743f86dd9da269d6244a543a1c4a21a2ede2b7cfdc5508875b17c7ae8f4ad` |
+| `downloads/canonical-proof-report.pdf` | 402,956 | `9d0743f86dd9da269d6244a543a1c4a21a2ede2b7cfdc5508875b17c7ae8f4ad` |
+| `downloads/canonical_proof_report.tex` | 152,171 | `f0dd87b5b3799b7651eb0a3a321d9054c7acce1f815e86f473bac25467006a71` |
+| `downloads/canonical-proof-report.tex` | 152,171 | `f0dd87b5b3799b7651eb0a3a321d9054c7acce1f815e86f473bac25467006a71` |
+| `public/pnp-status.json` | 1,582,057 | `c0bb68c8c353d034294e7377cc43d5146a1c84723c11029b909ba6cbb22192bd` |
+| `public/pnp-theorem-inventory.json` | 11,197,669 | `6c77607a6c03fd4136c31d62517d7773ec3989dbfd95188f28995c10f32f44fd` |
 
 The PDF must have sixty-three A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout aed2c360982d1e356b462b9e27d976b23a2305a4
+git -C ../pnp checkout 764c4ccc3795a32b183c6ee4fa1e347720562483
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,19 +65,18 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 12,245 public declarations, 7,158 theorem-kind declarations,
-3,676 assumption-free theorem-kind declarations, 4,997 excluded private auxiliaries, 105 modules, and
+Expected compiled inventory counts are 12,247 public declarations, 7,160 theorem-kind declarations,
+3,676 assumption-free theorem-kind declarations, 5,000 excluded private auxiliaries, 106 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint. The newest milestone includes
-`PNP.DirectWire.LockedNANDGlobalCandidates.baselineCandidate_referenceMinimum`: for every finite
-topologically ordered NAND circuit, the exact source-derived baseline candidate has exhaustive
-reference minimum `B`. Its five pinned theorems prove that every exposed baseline output is
-nonconstant, is not a positive input projection, and is pairwise semantically distinct, thereby
-establishing the global `BaselineDistinct` package. The complete 64-declaration module audit has
-three empty closures, two using only `propext`, and 59 using only `propext` and `Quot.sound`, with no
-project axiom or `Classical.choice`. It does not prove either whole-carrier final-output branch law,
+`PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_final_eq_false_of_unsatisfiable`: for every
+finite topologically ordered NAND circuit, unsatisfiability forces the full final coordinate false
+on the whole carrier. Its companion theorem
+`fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable` fixes the exhaustive reference
+minimum at `B`. Both pinned theorems use only `propext` and `Quot.sound`, with no project axiom or
+`Classical.choice`. It does not prove the satisfiable whole-carrier final-output conditions,
 residual slack at most four, the uniform polynomial locked-NAND builder, or the threshold. The
 remaining Cook-Levin formula body, complete raw builder, builder
 `FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness
