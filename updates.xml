@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-27T20:42:01Z</updated>
+  <updated>2026-07-28T05:12:17Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-28-concrete-locked-nand-encoded-semantic-boundary</id>
+    <title>The circuit comparison now has an exact data format</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-28-concrete-locked-nand-encoded-semantic-boundary"/>
+    <published>2026-07-28T05:12:17Z</published>
+    <updated>2026-07-28T05:12:17Z</updated>
+    <summary type="text">A circuit is a list of very simple yes-or-no operations. To turn a mathematical construction into a real algorithm, its input and output need one exact bit format. Lean now fixes a strict version-zero format for the source circuit and the complete comparison object, proves that valid data can be encoded and decoded without changing its meaning, and normalizes outputs that were only an input or a constant. The resulting pure transformation preserves the yes-or-no comparison: for valid encoded circuits, the constructed bytes cross the target size threshold exactly when the original circuit has a solution, while malformed inputs are rejected. This is a strategic bridge from the mathematical circuit theorem toward an algorithm, but it is not yet a bounded parser or emitter machine, a polynomial-time reduction, CNF-SAT in P, or P = NP. The 52% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 52 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit is a list of very simple yes-or-no operations. To turn a mathematical construction into a real algorithm, its input and output need one exact bit format. Lean now fixes a strict version-zero format for the source circuit and the complete comparison object, proves that valid data can be encoded and decoded without changing its meaning, and normalizes outputs that were only an input or a constant.&lt;/p&gt;&lt;p&gt;The resulting pure transformation preserves the yes-or-no comparison: for valid encoded circuits, the constructed bytes cross the target size threshold exactly when the original circuit has a solution, while malformed inputs are rejected. This is a strategic bridge from the mathematical circuit theorem toward an algorithm, but it is not yet a bounded parser or emitter machine, a polynomial-time reduction, CNF-SAT in P, or P = NP. The 52% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;52&quot;&gt;Editorial progress estimate at publication: 52%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-28-concrete-locked-nand-encoded-semantic-boundary&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-28-locked-nand-global-semantic-threshold</id>
     <title>The proof now separates circuits with and without a solution</title>

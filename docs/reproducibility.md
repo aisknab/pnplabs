@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 403,431 | `bf8a7cdfdf2479b131f0c983d8d664d9982a0fffac130c0cb5451b7d14c4a0c4` |
-| `downloads/canonical-proof-report.pdf` | 403,431 | `bf8a7cdfdf2479b131f0c983d8d664d9982a0fffac130c0cb5451b7d14c4a0c4` |
-| `downloads/canonical_proof_report.tex` | 152,833 | `7f1185fb06f5be94e765a5e4201b3b1225bbd0a13f050ef40fdce93f83446373` |
-| `downloads/canonical-proof-report.tex` | 152,833 | `7f1185fb06f5be94e765a5e4201b3b1225bbd0a13f050ef40fdce93f83446373` |
-| `public/pnp-status.json` | 1,589,230 | `21b5d5b4ecd727f1bcc4fbcaa2c7b04df62e15c25a9b0190e932c9e3acabdf67` |
-| `public/pnp-theorem-inventory.json` | 11,265,859 | `f5f269dfe182807e7eb1603c1df1de28ac77e958718a47884e98f0a710045eec` |
+| `downloads/canonical_proof_report.pdf` | 404,422 | `8da15655f703e19ceb065b7a70977d31ded9a7870cb0e1567f88d9fbd69b8916` |
+| `downloads/canonical-proof-report.pdf` | 404,422 | `8da15655f703e19ceb065b7a70977d31ded9a7870cb0e1567f88d9fbd69b8916` |
+| `downloads/canonical_proof_report.tex` | 154,275 | `8c7ca5e5be7ff90a4f09152484c5bfbbba4714f61a23944acb67bc8ab00558ec` |
+| `downloads/canonical-proof-report.tex` | 154,275 | `8c7ca5e5be7ff90a4f09152484c5bfbbba4714f61a23944acb67bc8ab00558ec` |
+| `public/pnp-status.json` | 1,597,898 | `c92553341db2cf128000f3561b290f37a5b8981951754c2a175db62603d79d31` |
+| `public/pnp-theorem-inventory.json` | 11,367,243 | `5032a2dd8d3ccf74ebe07a7b3e10bbc8ea6425a34a0c887c4733c0993d168f3c` |
 
 The PDF must have sixty-three A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 4cdfd0e3d263f473177bbef9e9b26d7756810bdf
+git -C ../pnp checkout fdd4e10c36155f079edc72f44fd59f0e8767dad6
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,23 +65,24 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 12,255 public declarations, 7,167 theorem-kind declarations,
-3,676 assumption-free theorem-kind declarations, 5,027 excluded private auxiliaries, 107 modules, and
+Expected compiled inventory counts are 12,887 public declarations, 7,395 theorem-kind declarations,
+3,794 assumption-free theorem-kind declarations, 5,129 excluded private auxiliaries, 109 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
-constraint. The newest milestone includes
-`PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ`:
-for every finite topologically ordered NAND circuit, the exhaustive reference minimum is at least
-`B + 1` exactly when the source circuit is satisfiable. Its companion theorem
-`fullCandidate_residualSlack_le_four` bounds the residual gap by four. The same answer-independent
-full candidate now supplies all six typed semantic premises, including both final-output branches.
-All eight audited pins use only `propext` and `Quot.sound`, with no project axiom or
-`Classical.choice`. This does not construct or compile the encoded polynomial-time
-SAT-to-locked-NAND builder, discharge the abstract locked-NAND threshold axiom, or transport the
-result to NP-hardness. The remaining Cook-Levin formula body, complete raw builder, builder
-`FunctionProgram.RawRefinement`, packaged polynomial reduction, CNF-SAT in P, and NP-completeness
-must also remain absent.
+constraint. The newest milestone gives normalized source circuits and complete locked-NAND
+candidates a strict version-zero bit grammar. The exact round-trip theorem
+`PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance` preserves every valid encoded
+instance. The pure all-bitstring transformation is fail-closed on malformed input, and
+`PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct` proves that valid source bytes cross the
+locked-circuit threshold exactly when the decoded source circuit is satisfiable. The eleven audited
+pins use only `propext` and `Quot.sound`, with no project axiom or `Classical.choice`.
+
+This boundary does not provide a bounded parser machine, bounded emitter machine,
+`FunctionProgram.RawRefinement`, `PolynomialReduction`, construction-runtime or output-size bound,
+discharge the abstract locked-NAND threshold axiom, or transport the result to NP-hardness. The
+remaining Cook-Levin formula body, complete raw builder, packaged polynomial reduction, CNF-SAT in P,
+and NP-completeness must also remain absent.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
