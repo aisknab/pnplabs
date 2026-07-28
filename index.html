@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The circuit comparison now has an exact data format</h2>
-          <p>A circuit is a list of simple yes-or-no operations. To turn the mathematical comparison into an algorithm, its input and output need an exact bit format. Lean now fixes a strict version-zero format for the source circuit and complete comparison object, proves that valid data can be encoded and decoded without changing its meaning, and handles outputs that are only an input or a constant.</p>
-          <p>The resulting pure transformation preserves the yes-or-no comparison: for valid encoded circuits, the constructed bytes cross the target size threshold exactly when the original circuit has a solution, while malformed inputs are rejected. This is a strategic bridge toward an algorithm, but it is not yet a bounded parser or emitter machine, a polynomial-time reduction, CNF-SAT in P, or P = NP. The 52% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-28-concrete-locked-nand-encoded-semantic-boundary">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Every circuit description now gets checked before use</h2>
+          <p>A circuit description is a string of zeros and ones that tells a computer which simple yes-or-no steps to perform. Lean now proves that a fixed, inspectable machine checks every possible description from beginning to end, including its format version, counts, operations, references, closing markers, and exact endpoint.</p>
+          <p>Valid descriptions are accepted and returned unchanged. Anything malformed is rejected and produces no output, and the check always finishes within a proved size-based limit. This completes the input-checking half of the planned conversion; it does not yet build the comparison object, complete the full conversion, or prove P = NP. The 53% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-07-29-concrete-locked-nand-source-parser">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.Concrete.LockedNAND.decodeTokens_encodeTokens</code>, <code>PNP.Concrete.LockedNAND.decodeCircuit_encodeCircuit</code>, and <code>PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance</code> prove exact round trips for the strict version-zero tokens, normalized source circuits, and complete candidates. <code>PNP.Concrete.LockedNAND.encoded_fullCandidate_threshold_iff_satisfiable</code> carries the earlier typed threshold through those bytes, and <code>PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct</code> proves the pure construction correct for every successfully decoded circuit. This does not provide a bounded parser or emitter machine, a concrete <code>PolynomialReduction</code>, CNF-SAT in P, the abstract locked-NAND threshold discharge, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.Concrete.LockedNAND.SourceParser.allInput_exact</code> gives exact accepting or rejecting finite traces for every bitstring. The literal nine-symbol machine has 228 states and 2,052 pairwise query-distinct rules. <code>compiledBoundedDecide_accept_iff</code> proves that it accepts exactly <code>ValidEncodedCircuit</code>; <code>compiledMachineOutput_eq_validatedSourceBytes</code> proves byte-preserving valid output and empty invalid output; and <code>compiledBoundedDecide_ne_timeout</code> proves termination within <code>6 × 4096 × (n+1)^3</code> raw transitions. This does not emit the locked-NAND target, compose a source-to-target <code>PolynomialReduction</code>, discharge the abstract threshold assumption, put CNF-SAT in P, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -104,7 +104,15 @@ leanConcreteLockedNANDCompleteCandidateCodecFormalized = true
 leanConcreteLockedNANDEncodedSemanticReductionFormalized = true
 leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed = true
 leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount = 48
-leanConcreteLockedNANDParserMachineFormalized = false
+leanConcreteLockedNANDParserMachineFormalized = true
+leanConcreteLockedNANDParserAxiomAuditPassed = true
+leanConcreteLockedNANDParserAuditedDeclarationCount = 380
+leanConcreteLockedNANDParserAllInputExactFormalized = true
+leanConcreteLockedNANDParserExactOutputFormalized = true
+leanConcreteLockedNANDParserCompiledNonTimeoutFormalized = true
+leanConcreteLockedNANDParserPolynomialTimeMachineFormalized = true
+leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized = true
+leanConcreteLockedNANDParserRawRefinementFormalized = true
 leanConcreteLockedNANDEmitterMachineFormalized = false
 leanConcreteLockedNANDPolynomialReductionFormalized = false
 concretePublicationGate.passed = false</pre>
@@ -120,9 +128,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-28-89</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-29-90</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>5032a2dd8d3ccf74ebe07a7b3e10bbc8ea6425a34a0c887c4733c0993d168f3c</code></div>
+            <div><span>Inventory SHA-256</span><code>bc9f93749d14dd5d646ee37540f365d9c712f599a4aadd45262bb1ab063146c5</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -130,18 +138,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>52</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>53</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 52 percent" data-proof-progress="52">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>52</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 53 percent" data-proof-progress="53">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>53</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 52% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 53% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
@@ -172,7 +180,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers an exact encoded semantic bridge, not the final claim.</h2><p>The pure locked-NAND transformation has a strict bit format and preserves the typed threshold. Bounded parser and emitter machines, a concrete polynomial-time reduction, the complete Cook–Levin formula builder, CNF-SAT NP-completeness, CNF-SAT in P, global ZeroSlack, the abstract threshold discharge, and an eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers the complete input parser, not the final conversion.</h2><p>The strict source format now has a literal, total, polynomial-time parser that preserves valid bytes and rejects invalid ones without output. The target emitter, composed polynomial-time reduction, complete Cook–Levin formula builder, CNF-SAT NP-completeness, CNF-SAT in P, global ZeroSlack, abstract threshold discharge, and eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

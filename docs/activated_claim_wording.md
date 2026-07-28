@@ -32,7 +32,12 @@ leanLockedNANDResidualSlackAtMostFourFormalized = true
 leanConcreteLockedNANDCanonicalEncodingFormalized = true
 leanConcreteLockedNANDCompleteCandidateCodecFormalized = true
 leanConcreteLockedNANDEncodedSemanticReductionFormalized = true
-leanConcreteLockedNANDParserMachineFormalized = false
+leanConcreteLockedNANDParserMachineFormalized = true
+leanConcreteLockedNANDParserAxiomAuditPassed = true
+leanConcreteLockedNANDParserAuditedDeclarationCount = 380
+leanConcreteLockedNANDParserAllInputExactFormalized = true
+leanConcreteLockedNANDParserCompiledNonTimeoutFormalized = true
+leanConcreteLockedNANDParserRawRefinementFormalized = true
 leanConcreteLockedNANDEmitterMachineFormalized = false
 leanConcreteLockedNANDPolynomialReductionFormalized = false
 leanConcreteCNFSATInPFormalized = false
@@ -43,7 +48,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Sixty-six narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. They include universal concrete CNF-SAT verifier correctness and NP membership, literal raw-machine compilation, exact Cook-Levin semantics and a bounded formula-building prefix, arbitrary-circuit locked-NAND carrier/trace equivalence, exact candidate assembly, both whole-carrier final-output branches, the typed semantic threshold, strict version-zero encoding round trips, and a pure encoded semantic reduction. `PNP.Concrete.LockedNAND.decodeTokens_encodeTokens`, `decodeCircuit_encodeCircuit`, and `decodeLockedInstance_encodeLockedInstance` prove exact round trips; `encoded_fullCandidate_threshold_iff_satisfiable` preserves the satisfiability threshold in the encoded candidate; and `buildLockedNANDInstance_correct` proves the fail-closed pure transformation correct. Bounded parser and emitter machines, a concrete `PolynomialReduction`, the abstract threshold discharge, complete Cook-Levin builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Sixty-seven narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. They include universal concrete CNF-SAT verifier correctness and NP membership, literal raw-machine compilation, exact Cook-Levin semantics and a bounded formula-building prefix, arbitrary-circuit locked-NAND carrier/trace equivalence, exact candidate assembly, both whole-carrier final-output branches, the typed semantic threshold, strict version-zero encoding round trips, a pure encoded semantic reduction, and one literal 228-state, 2,052-rule source parser. For every bitstring the parser accepts exactly valid strict-v0 circuits, preserves valid bytes, rejects invalid bytes with empty output, and cannot time out within its proved compiled cubic bound. Its polynomial-time machine/function witnesses and validator-leaf `RawRefinement` are formalized. The target emitter, parser/emitter composition, concrete `PolynomialReduction`, abstract threshold discharge, complete Cook-Levin builder, packaged reduction, CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -62,7 +67,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the sixty-three-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the sixty-four-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

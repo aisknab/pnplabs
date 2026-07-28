@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-28T05:12:17Z</updated>
+  <updated>2026-07-28T20:38:41Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-29-concrete-locked-nand-source-parser</id>
+    <title>Every circuit description now gets checked before use</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-29-concrete-locked-nand-source-parser"/>
+    <published>2026-07-28T20:38:41Z</published>
+    <updated>2026-07-28T20:38:41Z</updated>
+    <summary type="text">A circuit description is a string of zeros and ones that tells a computer which simple yes-or-no steps to perform. Lean now proves that a fixed, inspectable machine checks every possible description from beginning to end. It verifies the format version, the stated counts, each operation, every reference to earlier data, all closing markers, and the exact end of the input. Valid descriptions are accepted and returned unchanged. Anything malformed, including a reference to something that has not been defined yet, is rejected and produces no output. Lean also proves that this check always finishes within a stated size-based limit. This completes the input-checking half of the planned conversion; it does not yet build the comparison object, complete the full conversion, or prove P = NP. The 53% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 53 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit description is a string of zeros and ones that tells a computer which simple yes-or-no steps to perform. Lean now proves that a fixed, inspectable machine checks every possible description from beginning to end. It verifies the format version, the stated counts, each operation, every reference to earlier data, all closing markers, and the exact end of the input.&lt;/p&gt;&lt;p&gt;Valid descriptions are accepted and returned unchanged. Anything malformed, including a reference to something that has not been defined yet, is rejected and produces no output. Lean also proves that this check always finishes within a stated size-based limit. This completes the input-checking half of the planned conversion; it does not yet build the comparison object, complete the full conversion, or prove P = NP. The 53% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;53&quot;&gt;Editorial progress estimate at publication: 53%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-29-concrete-locked-nand-source-parser&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-28-concrete-locked-nand-encoded-semantic-boundary</id>
     <title>The circuit comparison now has an exact data format</title>

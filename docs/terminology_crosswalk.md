@@ -3,12 +3,12 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/fdd4e10c36155f079edc72f44fd59f0e8767dad6/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/fdd4e10c36155f079edc72f44fd59f0e8767dad6/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/a20c99f035eeb6bc3cafc7184bec6c40f9cbda22/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/a20c99f035eeb6bc3cafc7184bec6c40f9cbda22/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
-canonical download is the sixty-three-page inventory-derived report. Every bare `Report` citation in the
+canonical download is the sixty-four-page inventory-derived report. Every bare `Report` citation in the
 historical tables below refers only to the 57-page manuscript at source tag
 `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current canonical aliases.
@@ -36,9 +36,10 @@ Checker paths have two different statuses:
 
 | Term | Meaning | Current status |
 | --- | --- | --- |
-| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 1,988 reviewed milestone candidates | 12,887 declarations, 7,395 theorem-kind, 3,794 assumption-free theorem-kind, 109 modules, four project axioms; 5,129 private compiler auxiliaries are excluded |
-| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | 1,988 theorem pins support sixty-six earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics and its bounded builder prefix, carrier/trace equivalence, exact `B/B` plus `B+4/B+1` candidate assembly, all six locked-NAND semantic premises, the exact satisfiable/reference-minimum threshold, residual slack at most four, strict-v0 encoding round trips, and a pure fail-closed encoded semantic transformation; no earned closure contains a project axiom |
-| Strict-v0 locked-NAND encoded semantic boundary | Canonical token, normalized-circuit, and complete-instance codecs plus a pure all-bitstring construction | Valid normalized circuits and complete instances round-trip exactly; malformed source bytes fail closed and valid source bytes preserve the locked-NAND semantic threshold. This is not a bounded parser or emitter, a concrete `PolynomialReduction`, a threshold-axiom discharge, CNF-SAT in P or NP-completeness, or `P = NP` |
+| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 2,008 reviewed milestone candidates | 13,731 declarations, 7,827 theorem-kind, 4,012 assumption-free theorem-kind, 117 modules, four project axioms; 6,908 private compiler auxiliaries are excluded |
+| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | 2,008 theorem pins support sixty-seven earned milestones, including concrete `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin generated-CNF semantics and its bounded builder prefix, the locked-NAND circuit threshold and strict-v0 semantic encoding, and the literal polynomial-time source parser; no earned closure contains a project axiom |
+| Strict-v0 locked-NAND encoded semantic boundary | Canonical token, normalized-circuit, and complete-instance codecs plus a pure all-bitstring construction | Valid normalized circuits and complete instances round-trip exactly; malformed source bytes fail closed and valid source bytes preserve the locked-NAND semantic threshold. This is not itself a machine; the following source-parser milestone validates source bytes only. |
+| Strict-v0 locked-NAND source parser | One literal 228-state, 2,052-rule, nine-symbol finite machine with a compiled cubic bound | Accepts exactly valid source circuits, preserves valid bytes, rejects invalid bytes with empty output, cannot time out within the bound, and supplies polynomial-time witnesses plus leaf `RawRefinement`. It does not emit the target, compose a `PolynomialReduction`, discharge the threshold axiom, or prove P = NP. |
 | Concrete publication gate | Strict conjunction requiring an eligible concrete standard complexity target, exact compatibility-root theorem, reviewed non-null fingerprints, source closure, and fixed Lean-standard axiom closure | False; the charged-pipeline target is present but ineligible/inactive, while the root and activation fingerprints are absent |
 | Abstract `PNP.PEqualsNP` bridge | A type using string-handle decider/verifier/reduction witnesses | Categorically ineligible for publication as standard `P = NP` |
 | `unresolved` | Executable explicit-list scan found no strict equivalent gain in the supplied finite list | Does not exclude unlisted gains and does not imply global minimality or `ZeroSlack` |

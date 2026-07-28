@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 404,422 | `8da15655f703e19ceb065b7a70977d31ded9a7870cb0e1567f88d9fbd69b8916` |
-| `downloads/canonical-proof-report.pdf` | 404,422 | `8da15655f703e19ceb065b7a70977d31ded9a7870cb0e1567f88d9fbd69b8916` |
-| `downloads/canonical_proof_report.tex` | 154,275 | `8c7ca5e5be7ff90a4f09152484c5bfbbba4714f61a23944acb67bc8ab00558ec` |
-| `downloads/canonical-proof-report.tex` | 154,275 | `8c7ca5e5be7ff90a4f09152484c5bfbbba4714f61a23944acb67bc8ab00558ec` |
-| `public/pnp-status.json` | 1,597,898 | `c92553341db2cf128000f3561b290f37a5b8981951754c2a175db62603d79d31` |
-| `public/pnp-theorem-inventory.json` | 11,367,243 | `5032a2dd8d3ccf74ebe07a7b3e10bbc8ea6425a34a0c887c4733c0993d168f3c` |
+| `downloads/canonical_proof_report.pdf` | 404,422 | `40e93415f0ce334d53ac8ee0c691df828b8ea5ddaeb45d3c22d2faec6d88d9eb` |
+| `downloads/canonical-proof-report.pdf` | 404,422 | `40e93415f0ce334d53ac8ee0c691df828b8ea5ddaeb45d3c22d2faec6d88d9eb` |
+| `downloads/canonical_proof_report.tex` | 154,275 | `4fef9bd1525e1f700b8eb98f5a9c54396b39013e1619fe803df8c1a047588fad` |
+| `downloads/canonical-proof-report.tex` | 154,275 | `4fef9bd1525e1f700b8eb98f5a9c54396b39013e1619fe803df8c1a047588fad` |
+| `public/pnp-status.json` | 1,597,898 | `c5f375d6a2fe9cae42901997357ab626ae69481f6a81f7217a889937c8d26ed5` |
+| `public/pnp-theorem-inventory.json` | 11,367,243 | `bc9f93749d14dd5d646ee37540f365d9c712f599a4aadd45262bb1ab063146c5` |
 
-The PDF must have sixty-three A4 pages. Both filename styles must be byte-identical.
+The PDF must have sixty-four A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout fdd4e10c36155f079edc72f44fd59f0e8767dad6
+git -C ../pnp checkout a20c99f035eeb6bc3cafc7184bec6c40f9cbda22
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 12,887 public declarations, 7,395 theorem-kind declarations,
-3,794 assumption-free theorem-kind declarations, 5,129 excluded private auxiliaries, 109 modules, and
+Expected compiled inventory counts are 13,731 public declarations, 7,827 theorem-kind declarations,
+4,012 assumption-free theorem-kind declarations, 6,908 excluded private auxiliaries, 117 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -78,9 +78,13 @@ instance. The pure all-bitstring transformation is fail-closed on malformed inpu
 locked-circuit threshold exactly when the decoded source circuit is satisfiable. The eleven audited
 pins use only `propext` and `Quot.sound`, with no project axiom or `Classical.choice`.
 
-This boundary does not provide a bounded parser machine, bounded emitter machine,
-`FunctionProgram.RawRefinement`, `PolynomialReduction`, construction-runtime or output-size bound,
-discharge the abstract locked-NAND threshold axiom, or transport the result to NP-hardness. The
+The newest milestone adds a literal 228-state, 2,052-rule source parser. Its all-input theorem accepts
+exactly valid strict-v0 circuits, preserves valid bytes, clears invalid bytes, and its compiled machine
+cannot time out within `6 * 4096 * (n + 1)^3`. Its polynomial-time machine/function witnesses and
+validator-leaf `FunctionProgram.RawRefinement` are formalized. This boundary does not provide a
+bounded target emitter, parser/emitter composition, source-to-target `PolynomialReduction`, emitter
+construction-runtime or output-size bounds, discharge the abstract locked-NAND threshold axiom, or
+transport the result to NP-hardness. The
 remaining Cook-Levin formula body, complete raw builder, packaged polynomial reduction, CNF-SAT in P,
 and NP-completeness must also remain absent.
 

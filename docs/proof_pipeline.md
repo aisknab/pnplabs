@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 1,988 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,008 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 12,887 public declarations;
-- 7,395 theorem-kind declarations;
-- 3,794 assumption-free theorem-kind declarations;
-- 109 source-closure modules;
-- 5,129 excluded private compiler auxiliaries;
+- 13,731 public declarations;
+- 7,827 theorem-kind declarations;
+- 4,012 assumption-free theorem-kind declarations;
+- 117 source-closure modules;
+- 6,908 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The sixty-six earned scopes are:
+The sixty-seven earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -116,7 +116,8 @@ The sixty-six earned scopes are:
 | Locked-NAND global baseline distinctness | For every finite topological NAND circuit, every exposed baseline output is nonconstant, is not a positive input projection, and is pairwise semantically distinct; these conditions establish global `BaselineDistinct` and the exact exhaustive reference minimum `B` | No whole-carrier final-output branch law, complete threshold-premise package, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
 | Locked-NAND unsatisfiable final-zero branch | For every finite topological NAND circuit, unsatisfiability makes the full final coordinate false on the whole carrier and fixes the exhaustive full-candidate reference minimum at `B` | No satisfiable final-output conditions, complete threshold-premise package, residual-slack bound, uniform polynomial bitstring builder, locked-NAND threshold, ZeroSlack result, or `P = NP` |
 | Locked-NAND global semantic threshold | For every finite topological NAND circuit, one answer-independent full candidate supplies all six typed semantic premises, the exhaustive reference minimum is at least `B + 1` exactly when the source circuit is satisfiable, and residual slack is at most four | No encoded polynomial-time SAT-to-locked-NAND builder or compilation, abstract threshold discharge, NP-hardness transport, CNF-SAT in P, or `P = NP` |
-| Encoded locked-NAND semantic boundary | Strict version-zero token, normalized-circuit, and complete-instance codecs have exact round trips; malformed source bytes are rejected; `encoded_fullCandidate_threshold_iff_satisfiable` and `buildLockedNANDInstance_correct` prove the pure encoded construction preserves the typed satisfiability threshold | No bounded parser or emitter machine, construction-runtime theorem, concrete `PolynomialReduction`, abstract threshold discharge, CNF-SAT NP-completeness or in P, or `P = NP` |
+| Encoded locked-NAND semantic boundary | Strict version-zero token, normalized-circuit, and complete-instance codecs have exact round trips; malformed source bytes are rejected; `encoded_fullCandidate_threshold_iff_satisfiable` and `buildLockedNANDInstance_correct` prove the pure encoded construction preserves the typed satisfiability threshold | The following milestone supplies source validation only; there is still no bounded target emitter, composed `PolynomialReduction`, abstract threshold discharge, CNF-SAT NP-completeness or in P, or `P = NP` |
+| Concrete strict-v0 locked-NAND source parser | One literal nine-symbol finite work machine with 228 states and 2,052 pairwise-query-distinct rules accepts exactly `ValidEncodedCircuit`, preserves valid bytes, clears invalid bytes, cannot time out within `6 * 4096 * (n + 1)^3`, and supplies polynomial-time machine/function witnesses plus the validator leaf's exact `RawRefinement` | No target emitter, emitter runtime/output-size bound, parser/emitter composition, source-to-target `PolynomialReduction`, abstract threshold discharge, CNF-SAT NP-completeness or in P, or `P = NP` |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -148,7 +149,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-three-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-four-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
