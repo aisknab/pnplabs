@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/4cdfd0e3d263f473177bbef9e9b26d7756810bdf/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/4cdfd0e3d263f473177bbef9e9b26d7756810bdf/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/fdd4e10c36155f079edc72f44fd59f0e8767dad6/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/fdd4e10c36155f079edc72f44fd59f0e8767dad6/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
 The current canonical download is the sixty-three-page inventory-derived report. Every numbered section or
@@ -17,9 +17,9 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 1,977 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 1,988 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm sixty-five earned scoped milestones. The newest scope supplies all six typed semantic premises, proves that the exact reference minimum crosses `B` exactly for satisfiable source circuits, and bounds residual slack by four. Confirm three unearned global milestones, four project axioms, and six blockers. The encoded polynomial-time locked-NAND builder and its compilation, abstract threshold discharge, remaining Cook-Levin formula body, complete raw builder, packaged polynomial reduction, CNF-SAT in P, and NP-completeness must remain absent. | The typed semantic threshold is presented as the missing encoded builder or global construction theorem; a bounded formula prefix is presented as a complete reduction; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
+| Non-claim boundary | Confirm sixty-six earned scoped milestones. The newest scope proves strict token/circuit/instance round trips and that a pure fail-closed encoded construction preserves the typed satisfiability threshold. Confirm three unearned global milestones, four project axioms, and six blockers. Bounded locked-NAND parser and emitter machines, a concrete `PolynomialReduction`, abstract threshold discharge, the remaining Cook-Levin formula body, complete raw builder, CNF-SAT in P, and NP-completeness must remain absent. | Encoding semantics are presented as construction-runtime evidence; a pure function is presented as a bounded machine or polynomial reduction; a bounded formula prefix is presented as a complete reduction; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
 | Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require sixty-three PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-28-concrete-locked-nand-encoded-semantic-boundary",
+      "milestoneId": "concrete-locked-nand-encoded-semantic-boundary",
+      "publishedAt": "2026-07-28T05:12:17Z",
+      "title": "The circuit comparison now has an exact data format",
+      "plainLanguage": [
+        "A circuit is a list of very simple yes-or-no operations. To turn a mathematical construction into a real algorithm, its input and output need one exact bit format. Lean now fixes a strict version-zero format for the source circuit and the complete comparison object, proves that valid data can be encoded and decoded without changing its meaning, and normalizes outputs that were only an input or a constant.",
+        "The resulting pure transformation preserves the yes-or-no comparison: for valid encoded circuits, the constructed bytes cross the target size threshold exactly when the original circuit has a solution, while malformed inputs are rejected. This is a strategic bridge from the mathematical circuit theorem toward an algorithm, but it is not yet a bounded parser or emitter machine, a polynomial-time reduction, CNF-SAT in P, or P = NP. The 52% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 52,
+      "source": {
+        "commit": "fdd4e10c36155f079edc72f44fd59f0e8767dad6",
+        "tree": "34313d90e30ff0940ce4624d6d590b0b65df7b7d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-89",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-ENCODED-SEMANTIC-BOUNDARY-88"
+      }
+    },
+    {
       "id": "2026-07-28-locked-nand-global-semantic-threshold",
       "milestoneId": "locked-nand-global-semantic-threshold",
       "publishedAt": "2026-07-27T20:42:01Z",

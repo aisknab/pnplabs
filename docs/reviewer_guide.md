@@ -6,9 +6,9 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a sixty-three-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 12,255 public declarations across 107 modules,
-including 7,167 theorem-kind declarations, 3,676 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Exactly 5,027 private compiler auxiliaries are excluded explicitly.
+Lean theorem inventory. The inventory contains 12,887 public declarations across 109 modules,
+including 7,395 theorem-kind declarations, 3,794 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Exactly 5,129 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all six formal blockers
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 1,977 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 1,977 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Sixty-five narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, carrier/trace equivalence, exact `B/B` plus `B+4/B+1` locked-NAND candidate assembly, all six typed semantic premises, an exact satisfiability/reference-minimum threshold, and residual slack at most four | A complete formula builder, packaged reduction, an encoded polynomial-time SAT-to-locked-NAND builder and its compilation, discharge of the abstract threshold axiom, complete residual search, CNF-SAT in P, NP-completeness, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 1,988 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 1,988 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Sixty-six narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, carrier/trace equivalence, exact `B/B` plus `B+4/B+1` locked-NAND candidate assembly, all six typed semantic premises, an exact satisfiability/reference-minimum threshold, residual slack at most four, strict-v0 encoding round trips, and a pure fail-closed encoded semantic transformation | A bounded parser or emitter, a complete formula builder, a concrete `PolynomialReduction`, encoded builder compilation and polynomial bounds, discharge of the abstract threshold axiom, complete residual search, CNF-SAT in P, NP-completeness, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `4cdfd0e3d263f473177bbef9e9b26d7756810bdf`.
+   `fdd4e10c36155f079edc72f44fd59f0e8767dad6`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 1,977 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 1,988 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,7 +72,7 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns sixty-five scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns sixty-six scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
@@ -80,7 +80,9 @@ concrete framed replacement/slack; five local locked-NAND baselines; a six-premi
 threshold boundary; exact carrier separation and trace equivalence; exact source-derived `B/B`
 baseline and `B+4/B+1` extended candidate assembly for arbitrary finite topological NAND circuits;
 global baseline-output distinctness, both whole-carrier final-output branches, all six typed
-semantic premises, the exact satisfiable/reference-minimum threshold, residual slack at most four;
+semantic premises, the exact satisfiable/reference-minimum threshold, residual slack at most four,
+strict-v0 encoding round trips for normalized circuits and complete locked-NAND instances, and a
+pure fail-closed encoded transformation that preserves the semantic threshold on valid inputs;
 and explicit-list
 residual-route soundness.
 
@@ -91,10 +93,13 @@ Review the gaps between those scopes and the target theorem:
    four-gate candidate assembly, global `BaselineDistinct`, both whole-carrier final-output
    branches, all six typed semantic premises, and the exhaustive reference-minimum equivalence are
    now formalized for arbitrary finite topological NAND circuits. The full candidate also has
-   residual slack at most four.
-3. This typed semantic threshold is not yet the report's global encoded construction theorem. The
-   uniform polynomial-time bitstring builder, its compiler/refinement proof, and the discharge of
-   the separate abstract locked-NAND threshold axiom remain absent.
+   residual slack at most four. Strict-v0 codecs now prove normalized-circuit and complete-instance
+   round trips, and a pure all-bitstring transformation rejects malformed source bytes while
+   preserving the semantic threshold for valid encoded circuits.
+3. This pure encoded semantic boundary is not a bounded parser or emitter machine, a concrete
+   `PolynomialReduction`, or a polynomial-time builder/refinement proof. The separate abstract
+   locked-NAND threshold axiom remains undischarged; CNF-SAT in P, NP-completeness, and `P = NP`
+   remain absent.
 4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
    unlisted gain and cannot imply `ZeroSlack`.
 5. PCCMin exactness, the residual-band minimizer, and polynomial runtime/certificate bounds remain

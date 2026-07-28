@@ -40,15 +40,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "4cdfd0e3d263f473177bbef9e9b26d7756810bdf");
+  assert.equal(result.coreCommit, "fdd4e10c36155f079edc72f44fd59f0e8767dad6");
 });
 
 test("current release is pinned, sixty-three-page, exposes the locked-NAND semantic threshold, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-28-71");
-  assert.equal(release.source.commit, "4cdfd0e3d263f473177bbef9e9b26d7756810bdf");
-  assert.equal(release.source.proofCommit, "e46ac7407301ed71483f34a5300e894557315863");
-  assert.equal(release.source.tree, "f33a5857d25a510d1fc1f6db4e8221dd387bdade");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-28-72");
+  assert.equal(release.source.commit, "fdd4e10c36155f079edc72f44fd59f0e8767dad6");
+  assert.equal(release.source.proofCommit, "dfc954fc578206a2b0394fc1014a03c0338ed9c7");
+  assert.equal(release.source.tree, "34313d90e30ff0940ce4624d6d590b0b65df7b7d");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 63);
@@ -1417,6 +1417,24 @@ test("current release is pinned, sixty-three-page, exposes the locked-NAND seman
   assert.equal(release.earnedBoundary.lockedNANDSatisfiableIffReferenceMinimumGeSuccTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_satisfiable_iff_referenceMinimum_ge_succ");
   assert.deepEqual(release.earnedBoundary.lockedNANDGlobalSemanticThresholdAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDGlobalSemanticThresholdProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionAuditedDeclarationCount, 48);
+  assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionScope, "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction");
+  assert.equal(Object.keys(release.earnedBoundary.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256).length, 11);
+  assert.deepEqual(release.earnedBoundary.lockedNANDEncodedSemanticReductionAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDEncodedSemanticReductionProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDCanonicalEncodingFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDCompleteCandidateCodecFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDNormalizationSemanticsFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDParserMachineFormalized, false);
+  assert.equal(release.earnedBoundary.lockedNANDEmitterMachineFormalized, false);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionFormalized, false);
+  assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
+  assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
+  assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
+  assert.equal(release.earnedBoundary.lockedNANDEncodedThresholdTheorem, "PNP.Concrete.LockedNAND.encoded_fullCandidate_threshold_iff_satisfiable");
+  assert.equal(release.earnedBoundary.lockedNANDBuildCorrectTheorem, "PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct");
   assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);

@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 51% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 52% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="51" aria-label="Estimated proof reconstruction progress: 51 percent">51%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 51 percent">
+        <progress class="proof-progress-meter" max="100" value="52" aria-label="Estimated proof reconstruction progress: 52 percent">52%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 52 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-28-concrete-locked-nand-encoded-semantic-boundary" data-milestone-id="concrete-locked-nand-encoded-semantic-boundary">
+        <div class="section-label"><time datetime="2026-07-28T05:12:17Z">2026-07-28</time> · earned milestone 66</div>
+        <h2>The circuit comparison now has an exact data format</h2>
+        <p>A circuit is a list of very simple yes-or-no operations. To turn a mathematical construction into a real algorithm, its input and output need one exact bit format. Lean now fixes a strict version-zero format for the source circuit and the complete comparison object, proves that valid data can be encoded and decoded without changing its meaning, and normalizes outputs that were only an input or a constant.</p>
+        <p>The resulting pure transformation preserves the yes-or-no comparison: for valid encoded circuits, the constructed bytes cross the target size threshold exactly when the original circuit has a solution, while malformed inputs are rejected. This is a strategic bridge from the mathematical circuit theorem toward an algorithm, but it is not yet a bounded parser or emitter machine, a polynomial-time reduction, CNF-SAT in P, or P = NP. The 52% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 52%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-locked-nand-encoded-semantic-boundary</code></p>
+          <p><strong>Classification:</strong> formalized-semantic-boundary</p>
+          <p><strong>Verified scope:</strong> A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold.</p>
+          <p><strong>Boundary:</strong> This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 11</p>
+          <p><strong>Core source:</strong> commit <code>fdd4e10c36155f079edc72f44fd59f0e8767dad6</code>, tree <code>34313d90e30ff0940ce4624d6d590b0b65df7b7d</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-89</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-ENCODED-SEMANTIC-BOUNDARY-88</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-28-locked-nand-global-semantic-threshold" data-milestone-id="locked-nand-global-semantic-threshold">
         <div class="section-label"><time datetime="2026-07-27T20:42:01Z">2026-07-27</time> · earned milestone 65</div>
         <h2>The proof now separates circuits with and without a solution</h2>

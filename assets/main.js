@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-88';
-const STATUS_SHA256 = '21b5d5b4ecd727f1bcc4fbcaa2c7b04df62e15c25a9b0190e932c9e3acabdf67';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-GLOBAL-SEMANTIC-THRESHOLD-87';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-28-88';
-const INVENTORY_SHA256 = 'f5f269dfe182807e7eb1603c1df1de28ac77e958718a47884e98f0a710045eec';
-const SOURCE_CLOSURE_SHA256 = '11cd24e11180f22c5ca853d94fc0c201dc39a1dd6fa546de003d08279d2f9f4d';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-28-89';
+const STATUS_SHA256 = 'c92553341db2cf128000f3561b290f37a5b8981951754c2a175db62603d79d31';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-28-LOCKED-NAND-ENCODED-SEMANTIC-BOUNDARY-88';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-28-89';
+const INVENTORY_SHA256 = '5032a2dd8d3ccf74ebe07a7b3e10bbc8ea6425a34a0c887c4733c0993d168f3c';
+const SOURCE_CLOSURE_SHA256 = '26a4545856b5eb7542e9bf2ba332f68ae6e56ee5a9d140c7dbb8a5e4fe5d1d61';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 12255,
-  theorems: 7167,
-  assumptionFreeTheorems: 3676,
-  excludedPrivateDeclarations: 5027,
-  modules: 107,
+  declarations: 12887,
+  theorems: 7395,
+  assumptionFreeTheorems: 3794,
+  excludedPrivateDeclarations: 5129,
+  modules: 109,
   axioms: 4,
 });
 
@@ -3315,6 +3315,20 @@ const LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable", ["Quot.sound", "propext"]],
 ]);
 
+const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
+  ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
+  ["PNP.Concrete.LockedNAND.RawCircuit.elaborate_ofCircuit", ["propext"]],
+  ["PNP.Concrete.LockedNAND.RawCandidate.elaborate_ofCandidate", ["propext"]],
+  ["PNP.Concrete.LockedNAND.RawLockedInstance.elaborate_ofCandidate", ["propext"]],
+  ["PNP.Concrete.LockedNAND.decodeTokens_encodeTokens", ["propext"]],
+  ["PNP.Concrete.LockedNAND.decodeCircuit_encodeCircuit", ["propext"]],
+  ["PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance", ["propext"]],
+  ["PNP.Concrete.LockedNAND.decodeElaboratedCircuit_encodeCircuit_ofCircuit", ["propext"]],
+  ["PNP.Concrete.LockedNAND.encoded_fullCandidate_threshold_iff_satisfiable", ["Quot.sound", "propext"]],
+  ["PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct", ["Quot.sound", "propext"]],
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -3388,6 +3402,7 @@ const MILESTONE_IDS = Object.freeze([
   'locked-nand-global-baseline-distinct',
   'locked-nand-global-unsatisfiable-final-zero',
   'locked-nand-global-semantic-threshold',
+  'concrete-locked-nand-encoded-semantic-boundary',
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
   'global-locked-nand-threshold',
@@ -4027,13 +4042,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 314,
-    definition: 4490,
-    inductive: 140,
+    constructor: 338,
+    definition: 4848,
+    inductive: 151,
     opaque: 0,
     quotient: 0,
-    recursor: 140,
-    theorem: 7167,
+    recursor: 151,
+    theorem: 7395,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4317,6 +4332,10 @@ function validateInventory(inventory) {
     axioms,
   }));
   const lockedNANDGlobalSemanticThreshold = LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_DECLARATIONS.map(([name, axioms]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+  }));
+  const lockedNANDEncodedSemanticReduction = LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS.map(([name, axioms]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
   }));
@@ -4613,6 +4632,15 @@ function validateInventory(inventory) {
         ? 'PNP.LockedNANDGlobalUnsatisfiableFinalZero'
         : 'PNP.LockedNANDGlobalSemanticThreshold')
       && sameJson(row.axioms, axioms))
+    && lockedNANDEncodedSemanticReduction.every(({ row, axioms }) => row?.kind === 'theorem'
+      && row.module === ([
+        'PNP.Concrete.LockedNAND.decodeElaboratedCircuit_encodeCircuit_ofCircuit',
+        'PNP.Concrete.LockedNAND.encoded_fullCandidate_threshold_iff_satisfiable',
+        'PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct',
+      ].includes(row.name)
+        ? 'PNP.Concrete.LockedNANDReduction'
+        : 'PNP.Concrete.LockedNANDEncoding')
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -4654,7 +4682,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 1977
+    && inventory.milestoneCandidates.length === 1988
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -4718,7 +4746,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 65;
+    const shouldBeEarned = index < 66;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5256,6 +5284,16 @@ function validateStatus(status, inventory) {
     && status.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount === 8
     && status.leanLockedNANDGlobalSemanticThresholdScope === 'arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold'
     && sameJson(status.leanLockedNANDThresholdMissingInstantiationInventory, [])
+    && status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true
+    && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true
+    && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48
+    && status.leanConcreteLockedNANDEncodedSemanticReductionScope === 'strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction'
+    && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true
+    && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true
+    && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true
+    && status.leanConcreteLockedNANDParserMachineFormalized === false
+    && status.leanConcreteLockedNANDEmitterMachineFormalized === false
+    && status.leanConcreteLockedNANDPolynomialReductionFormalized === false
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82
