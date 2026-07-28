@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-29-concrete-locked-nand-source-parser",
+      "milestoneId": "concrete-locked-nand-source-parser",
+      "publishedAt": "2026-07-28T20:38:41Z",
+      "title": "Every circuit description now gets checked before use",
+      "plainLanguage": [
+        "A circuit description is a string of zeros and ones that tells a computer which simple yes-or-no steps to perform. Lean now proves that a fixed, inspectable machine checks every possible description from beginning to end. It verifies the format version, the stated counts, each operation, every reference to earlier data, all closing markers, and the exact end of the input.",
+        "Valid descriptions are accepted and returned unchanged. Anything malformed, including a reference to something that has not been defined yet, is rejected and produces no output. Lean also proves that this check always finishes within a stated size-based limit. This completes the input-checking half of the planned conversion; it does not yet build the comparison object, complete the full conversion, or prove P = NP. The 53% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 53,
+      "source": {
+        "commit": "a20c99f035eeb6bc3cafc7184bec6c40f9cbda22",
+        "tree": "6114efcd6cf47f1e960eaf22bedc66e73ebb2f72",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-90",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-SOURCE-PARSER-89"
+      }
+    },
+    {
       "id": "2026-07-28-concrete-locked-nand-encoded-semantic-boundary",
       "milestoneId": "concrete-locked-nand-encoded-semantic-boundary",
       "publishedAt": "2026-07-28T05:12:17Z",

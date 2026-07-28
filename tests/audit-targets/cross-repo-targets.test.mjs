@@ -622,6 +622,21 @@ const PUBLISHED_LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_MILESTONE =
     (row) => row.id === 'concrete-locked-nand-encoded-semantic-boundary'
   );
 assert.ok(PUBLISHED_LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_MILESTONE);
+const LOCKED_NAND_SOURCE_PARSER_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.lockedNANDSourceParserTheoremKernelTypeSha256;
+const LOCKED_NAND_SOURCE_PARSER_THEOREM_NAMES = Object.keys(
+  LOCKED_NAND_SOURCE_PARSER_THEOREM_HASHES
+);
+const LOCKED_NAND_SOURCE_PARSER_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => LOCKED_NAND_SOURCE_PARSER_THEOREM_NAMES.includes(candidate.name)
+);
+assert.equal(LOCKED_NAND_SOURCE_PARSER_THEOREM_NAMES.length, 20);
+assert.equal(LOCKED_NAND_SOURCE_PARSER_CANDIDATES.length, 20);
+const PUBLISHED_LOCKED_NAND_SOURCE_PARSER_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === 'concrete-locked-nand-source-parser'
+  );
+assert.ok(PUBLISHED_LOCKED_NAND_SOURCE_PARSER_MILESTONE);
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_STATUS_KEYS = [
   'leanConcreteLockedNANDEncodedSemanticReductionFormalized',
   'leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed',
@@ -636,6 +651,24 @@ const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_STATUS_KEYS = [
 ];
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_STATUS_FIELDS = Object.fromEntries(
   LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, `missing published status field: ${key}`);
+    return [key, publishedStatus[key]];
+  })
+);
+const LOCKED_NAND_SOURCE_PARSER_STATUS_KEYS = [
+  'leanConcreteLockedNANDParserMachineFormalized',
+  'leanConcreteLockedNANDParserAxiomAuditPassed',
+  'leanConcreteLockedNANDParserAuditedDeclarationCount',
+  'leanConcreteLockedNANDParserAllInputExactFormalized',
+  'leanConcreteLockedNANDParserExactOutputFormalized',
+  'leanConcreteLockedNANDParserCompiledNonTimeoutFormalized',
+  'leanConcreteLockedNANDParserPolynomialTimeMachineFormalized',
+  'leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized',
+  'leanConcreteLockedNANDParserRawRefinementFormalized',
+  'leanConcreteLockedNANDParserScope'
+];
+const LOCKED_NAND_SOURCE_PARSER_STATUS_FIELDS = Object.fromEntries(
+  LOCKED_NAND_SOURCE_PARSER_STATUS_KEYS.map((key) => {
     assert.notEqual(publishedStatus[key], undefined, `missing published status field: ${key}`);
     return [key, publishedStatus[key]];
   })
@@ -675,6 +708,7 @@ function makeProject(t) {
   const status = json({
     kind: "PNPFormalReconstructionStatus0",
     ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_STATUS_FIELDS,
+    ...LOCKED_NAND_SOURCE_PARSER_STATUS_FIELDS,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -1292,17 +1326,19 @@ function makeProject(t) {
       ...structuredClone(PUBLISHED_LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_MILESTONE)
     }, {
       ...structuredClone(PUBLISHED_LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_MILESTONE)
+    }, {
+      ...structuredClone(PUBLISHED_LOCKED_NAND_SOURCE_PARSER_MILESTONE)
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 12887,
-    theoremCount: 7395,
-    assumptionFreeTheoremCount: 3794,
-    excludedPrivateDeclarationCount: 5129,
-    sourceClosureModuleCount: 109,
+    declarationCount: 13731,
+    theoremCount: 7827,
+    assumptionFreeTheoremCount: 4012,
+    excludedPrivateDeclarationCount: 6908,
+    sourceClosureModuleCount: 117,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -1489,7 +1525,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...Array.from({ length: 241 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...Array.from({ length: 241 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -1586,7 +1622,8 @@ function makeProject(t) {
       ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_THEOREM_HASHES,
       ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_THEOREM_HASHES,
       ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREM_HASHES,
-      ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREM_HASHES
+      ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREM_HASHES,
+      ...LOCKED_NAND_SOURCE_PARSER_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -5577,7 +5614,7 @@ test("rejects encoded locked-NAND semantic-reduction release, status, inventory,
 
   const statusFlag = makeProject(t);
   const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
-  statusFlagPayload.leanConcreteLockedNANDParserMachineFormalized = true;
+  statusFlagPayload.leanConcreteLockedNANDEmitterMachineFormalized = true;
   rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
   expectFailure(statusFlag, /public status locked-NAND encoded semantic-reduction evidence mismatch/);
 
@@ -5620,6 +5657,143 @@ test("rejects encoded locked-NAND semantic-reduction release, status, inventory,
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map locked-NAND encoded semantic-reduction fingerprint mismatch/);
+});
+
+test("rejects locked-NAND source-parser release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.lockedNANDSourceParserFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseCount = makeProject(t);
+  releaseCount.release.earnedBoundary.lockedNANDSourceParserAuditedDeclarationCount = 379;
+  write(releaseCount.root, "downloads/formal-publication-release.json", json(releaseCount.release));
+  expectFailure(releaseCount, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseSplit = makeProject(t);
+  releaseSplit.release.earnedBoundary.lockedNANDSourceParserEmptyAxiomDeclarationCount = 246;
+  write(releaseSplit.root, "downloads/formal-publication-release.json", json(releaseSplit.release));
+  expectFailure(releaseSplit, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseStateCount = makeProject(t);
+  releaseStateCount.release.earnedBoundary.lockedNANDSourceParserStateCount = 227;
+  write(releaseStateCount.root, "downloads/formal-publication-release.json", json(releaseStateCount.release));
+  expectFailure(releaseStateCount, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseRuleCount = makeProject(t);
+  releaseRuleCount.release.earnedBoundary.lockedNANDSourceParserRuleCount = 2051;
+  write(releaseRuleCount.root, "downloads/formal-publication-release.json", json(releaseRuleCount.release));
+  expectFailure(releaseRuleCount, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseSymbolCount = makeProject(t);
+  releaseSymbolCount.release.earnedBoundary.lockedNANDSourceParserSymbolCount = 8;
+  write(releaseSymbolCount.root, "downloads/formal-publication-release.json", json(releaseSymbolCount.release));
+  expectFailure(releaseSymbolCount, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseWorkBound = makeProject(t);
+  releaseWorkBound.release.earnedBoundary.lockedNANDSourceParserWorkBound = "4095 * (n + 1)^3";
+  write(releaseWorkBound.root, "downloads/formal-publication-release.json", json(releaseWorkBound.release));
+  expectFailure(releaseWorkBound, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseRawBound = makeProject(t);
+  releaseRawBound.release.earnedBoundary.lockedNANDSourceParserCompiledRawTimeBound =
+    "5 * 4096 * (n + 1)^3";
+  write(releaseRawBound.root, "downloads/formal-publication-release.json", json(releaseRawBound.release));
+  expectFailure(releaseRawBound, /formal-publication locked-NAND source-parser boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.lockedNANDSourceParserTheoremKernelTypeSha256[
+    "PNP.Concrete.LockedNAND.SourceParser.allInput_exact"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /formal-publication locked-NAND source-parser fingerprint mismatch/);
+
+  const releaseAxiom = makeProject(t);
+  releaseAxiom.release.earnedBoundary.lockedNANDSourceParserProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
+  expectFailure(releaseAxiom, /formal-publication locked-NAND source-parser axiom closure mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.lockedNANDSourceParserAcceptIffTheorem =
+    "PNP.Concrete.LockedNAND.SourceParser.forged";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /formal-publication locked-NAND source-parser theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanConcreteLockedNANDParserCompiledNonTimeoutFormalized = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /public status locked-NAND source-parser evidence mismatch/);
+
+  const statusCount = makeProject(t);
+  const statusCountPayload = JSON.parse(readFileSync(path.join(statusCount.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusCountPayload.leanConcreteLockedNANDParserAuditedDeclarationCount = 379;
+  rewriteCorePayload(statusCount, "public/pnp-status.json", statusCountPayload);
+  expectFailure(statusCount, /public status locked-NAND source-parser evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
+    (row) => row.id !== "concrete-locked-nand-source-parser"
+  );
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /public status locked-NAND source-parser milestone mismatch/);
+
+  const inventoryModule = makeProject(t);
+  const inventoryModulePayload = JSON.parse(readFileSync(path.join(inventoryModule.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryModulePayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.LockedNAND.SourceParser.allInput_exact"
+  ).module = "PNP.Concrete.LockedNANDSourceParserForged";
+  rewriteCorePayload(inventoryModule, "public/pnp-theorem-inventory.json", inventoryModulePayload);
+  expectFailure(inventoryModule, /public inventory locked-NAND source-parser theorem mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.LockedNAND.SourceParser.rules_length"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /public inventory locked-NAND source-parser theorem mismatch/);
+
+  const inventoryFingerprint = makeProject(t);
+  const inventoryFingerprintPayload = JSON.parse(readFileSync(path.join(inventoryFingerprint.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryFingerprintPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes"
+  ).kernelType += " ";
+  rewriteCorePayload(inventoryFingerprint, "public/pnp-theorem-inventory.json", inventoryFingerprintPayload);
+  expectFailure(inventoryFingerprint, /public inventory locked-NAND source-parser fingerprint mismatch/);
+
+  const mapScope = makeProject(t);
+  const mapScopePayload = JSON.parse(readFileSync(path.join(mapScope.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapScopePayload.milestones.find(
+    (row) => row.id === "concrete-locked-nand-source-parser"
+  ).scope = "forged";
+  rewriteCorePayload(mapScope, "publication/FORMAL_PUBLICATION_MAP.json", mapScopePayload);
+  expectFailure(mapScope, /core publication map locked-NAND source-parser milestone mismatch/);
+
+  const mapNonClaim = makeProject(t);
+  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapNonClaimPayload.milestones.find(
+    (row) => row.id === "concrete-locked-nand-source-parser"
+  ).nonClaim = "forged";
+  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
+  expectFailure(mapNonClaim, /core publication map locked-NAND source-parser milestone mismatch/);
+
+  const mapPinSet = makeProject(t);
+  const mapPinSetPayload = JSON.parse(readFileSync(path.join(mapPinSet.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapPinSetPayload.milestones.find(
+    (row) => row.id === "concrete-locked-nand-source-parser"
+  ).requiredTheorems.pop();
+  rewriteCorePayload(mapPinSet, "publication/FORMAL_PUBLICATION_MAP.json", mapPinSetPayload);
+  expectFailure(mapPinSet, /core publication map locked-NAND source-parser milestone mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map locked-NAND source-parser fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

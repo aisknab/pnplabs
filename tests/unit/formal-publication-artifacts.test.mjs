@@ -22,6 +22,29 @@ const SEALED_PATHS = [
   "public/pnp-theorem-inventory.json"
 ];
 
+const LOCKED_NAND_SOURCE_PARSER_HASHES = {
+  "PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits": "d701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634",
+  "PNP.Concrete.LockedNAND.SourceParser.allInput_exact": "78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03",
+  "PNP.Concrete.LockedNAND.SourceParser.canonicalSteps_le_validWorkBound": "28467e05ff2e43332360757992c3cd5850a45f3ef7d3fb48bebac47ad090a2ff",
+  "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff": "55182cfbf83ffaf4a839519e7fceccc72378c5a5b0993dda4a48fb16888cb82c",
+  "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_ne_timeout": "f8a1ccfa5a54373f004c1973a2115fe51bd6f53403cc6f72de4dfc3e01cc6ad9",
+  "PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes": "adc61884c960f3eb7c1a6a32e3383b23f33f581685509f7f40c4d4c14e05bcf0",
+  "PNP.Concrete.LockedNAND.SourceParser.compiledStart_blankEquivalent": "453d8927f184e5f25c348ce8a7d80b1668044759e265c0f9306b2ce03e9642da",
+  "PNP.Concrete.LockedNAND.SourceParser.decodeCircuitTokens_eq_none_iff_failure": "12ba3b565d2c3c1d7d7e49e902ea626da22e434b85fe2305dc8b203c46d98485",
+  "PNP.Concrete.LockedNAND.SourceParser.illFormed_exact": "9a5f16bda1ce85f865517b78762bdf5c665748edb297920d211ac2aca6016625",
+  "PNP.Concrete.LockedNAND.SourceParser.machine_acceptState_ne_rejectState": "9cd9ae748e010284b27d3cde34af163c0250dfc15dd20dde8bb8d7971849cc74",
+  "PNP.Concrete.LockedNAND.SourceParser.malformed_exact": "62e8161b3a17d5aab547da24f4eb7e53db5f645a42f5fd79a748d20d7ad73c89",
+  "PNP.Concrete.LockedNAND.SourceParser.rules_length": "eee4e770ed3bd75cd5a13135decf7feac2c03dc8c76bc3f09e24520a831d72a8",
+  "PNP.Concrete.LockedNAND.SourceParser.rules_pairwise_query_distinct": "3b03582def97acf6905f685fff8c51a7aa89a339fa30842cb33f6cb3053fa879",
+  "PNP.Concrete.LockedNAND.SourceParser.statePrograms_length": "e9c49bf192094aadf7c4fe4047ffa0eb700e81962aa17d16ea2ad26594e40c7e",
+  "PNP.Concrete.LockedNAND.SourceParser.validFinalConfiguration_isHalted": "29e6b966bbdbec361b56a604a2a4f9bf9a7e67029089eaa25546bf7eb34a49e4",
+  "PNP.Concrete.LockedNAND.SourceParser.validFinalConfiguration_state": "df16e89b9b9047047bcf3ef4edae078a0aabc845e1d82a4a0c990b2b3464868d",
+  "PNP.Concrete.LockedNAND.SourceParser.validRawBound_eq": "6a31cd6fb0d34dab788f6be4ad428f9bbcac5c4fd35ef29bf90d33cf39743bc4",
+  "PNP.Concrete.LockedNAND.SourceParser.validRawTimePolynomial_eval": "2eece133162707f053182b7b838877dd2f63eea10dfc2005e4a1fc001302dc43",
+  "PNP.Concrete.LockedNAND.SourceParser.validatedSourceBytesPolynomialTimeFunction_output": "c80a0e9b2352eb5029cc5538d2962a0bbd9fb3cbea93641eba66d6386255d899",
+  "PNP.Concrete.LockedNAND.SourceParser.wellFormed_exact": "df3b9bffacae9dd23069ac927ea471b6e72d1a548cd9e0c2a53885386348905f"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -40,18 +63,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "fdd4e10c36155f079edc72f44fd59f0e8767dad6");
+  assert.equal(result.coreCommit, "a20c99f035eeb6bc3cafc7184bec6c40f9cbda22");
 });
 
-test("current release is pinned, sixty-three-page, exposes the locked-NAND semantic threshold, and fails closed", () => {
+test("current release is pinned, sixty-four-page, exposes the strict-v0 source parser, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-28-72");
-  assert.equal(release.source.commit, "fdd4e10c36155f079edc72f44fd59f0e8767dad6");
-  assert.equal(release.source.proofCommit, "dfc954fc578206a2b0394fc1014a03c0338ed9c7");
-  assert.equal(release.source.tree, "34313d90e30ff0940ce4624d6d590b0b65df7b7d");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-29-73");
+  assert.equal(release.source.commit, "a20c99f035eeb6bc3cafc7184bec6c40f9cbda22");
+  assert.equal(release.source.proofCommit, "502050ddc3bf6c6e633695ab913a1d4f16853dd4");
+  assert.equal(release.source.tree, "6114efcd6cf47f1e960eaf22bedc66e73ebb2f72");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 63);
+  assert.equal(release.artifacts.report.pageCount, 64);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1427,7 +1450,33 @@ test("current release is pinned, sixty-three-page, exposes the locked-NAND seman
   assert.equal(release.earnedBoundary.lockedNANDCanonicalEncodingFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDCompleteCandidateCodecFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDNormalizationSemanticsFormalized, true);
-  assert.equal(release.earnedBoundary.lockedNANDParserMachineFormalized, false);
+  assert.equal(release.earnedBoundary.lockedNANDParserMachineFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserAuditedDeclarationCount, 380);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserEmptyAxiomDeclarationCount, 247);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserPropextOnlyDeclarationCount, 58);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserPropextQuotSoundDeclarationCount, 75);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserScope, "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound");
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserStateCount, 228);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserRuleCount, 2052);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserSymbolCount, 9);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserAllInputExactFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserExactOutputFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserCompiledNonTimeoutFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserPolynomialTimeMachineFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserPolynomialTimeFunctionFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserRawRefinementFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserWorkBound, "4096 * (n + 1)^3");
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserCompiledRawTimeBound, "6 * 4096 * (n + 1)^3");
+  assert.deepEqual(release.earnedBoundary.lockedNANDSourceParserTheoremKernelTypeSha256, LOCKED_NAND_SOURCE_PARSER_HASHES);
+  assert.deepEqual(release.earnedBoundary.lockedNANDSourceParserAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDSourceParserProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserAllInputTheorem, "PNP.Concrete.LockedNAND.SourceParser.allInput_exact");
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserAcceptIffTheorem, "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff");
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserNoTimeoutTheorem, "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_ne_timeout");
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserOutputTheorem, "PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes");
+  assert.equal(release.earnedBoundary.lockedNANDSourceParserPolynomialFunctionTheorem, "PNP.Concrete.LockedNAND.SourceParser.validatedSourceBytesPolynomialTimeFunction_output");
   assert.equal(release.earnedBoundary.lockedNANDEmitterMachineFormalized, false);
   assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionFormalized, false);
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
@@ -1454,6 +1503,68 @@ test("current release is pinned, sixty-three-page, exposes the locked-NAND seman
   assert.equal(release.publicationBoundary.concreteTargetPresent, true);
   assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, true);
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
+});
+
+test("status and inventory publish exactly 70 milestones with the 20 strict-v0 parser pins", () => {
+  const status = json("public/pnp-status.json");
+  const inventory = json("public/pnp-theorem-inventory.json");
+  const milestones = status.formalPublicationMilestones;
+  assert.equal(milestones.length, 70);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 67);
+  assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
+
+  const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
+  assert.equal(parser.classification, "formalized-foundation-only");
+  assert.equal(parser.status, "formalized-foundation-only");
+  assert.equal(parser.earned, true);
+  assert.equal(parser.allPresent, true);
+  assert.equal(parser.allAssumptionFree, false);
+  assert.equal(parser.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(parser.allKernelTypesMatch, true);
+  assert.equal(parser.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(parser.requiredTheorems, Object.keys(LOCKED_NAND_SOURCE_PARSER_HASHES));
+  assert.deepEqual(
+    Object.fromEntries(parser.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    LOCKED_NAND_SOURCE_PARSER_HASHES
+  );
+  for (const row of parser.theoremRows) {
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, LOCKED_NAND_SOURCE_PARSER_HASHES[row.name], row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.kind, "theorem", row.name);
+    assert.match(candidate.module, /^PNP\.Concrete\.LockedNANDSourceParser/u, row.name);
+    assert.deepEqual(candidate.axioms, row.axioms, row.name);
+  }
+  assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteLockedNANDParserAuditedDeclarationCount, 380);
+  assert.equal(status.leanConcreteLockedNANDParserAllInputExactFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDParserExactOutputFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDParserCompiledNonTimeoutFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDParserPolynomialTimeMachineFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDParserRawRefinementFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDEmitterMachineFormalized, false);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionFormalized, false);
+
+  assert.equal(inventory.declarationCount, 13731);
+  assert.equal(inventory.theoremCount, 7827);
+  assert.equal(inventory.assumptionFreeTheoremCount, 4012);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 6908);
+  assert.equal(inventory.sourceClosureModuleCount, 117);
+  assert.equal(inventory.milestoneCandidates.length, 2008);
+  assert.deepEqual(inventory.declarationKindCounts, {
+    axiom: 4,
+    constructor: 382,
+    definition: 5194,
+    inductive: 162,
+    opaque: 0,
+    quotient: 0,
+    recursor: 162,
+    theorem: 7827
+  });
 });
 
 test("7072f8d report metadata is historical-only and cannot reactivate publication", () => {

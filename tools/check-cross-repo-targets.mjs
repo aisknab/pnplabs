@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "fdd4e10c36155f079edc72f44fd59f0e8767dad6";
-const REVIEWED_CORE_TREE = "34313d90e30ff0940ce4624d6d590b0b65df7b7d";
-const REVIEWED_PROOF_COMMIT = "dfc954fc578206a2b0394fc1014a03c0338ed9c7";
+const REVIEWED_CORE_COMMIT = "a20c99f035eeb6bc3cafc7184bec6c40f9cbda22";
+const REVIEWED_CORE_TREE = "6114efcd6cf47f1e960eaf22bedc66e73ebb2f72";
+const REVIEWED_PROOF_COMMIT = "502050ddc3bf6c6e633695ab913a1d4f16853dd4";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -3093,6 +3093,29 @@ const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS = {
   "PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct": { hash: "0d97147c27f39b417f82efd1e45e0defb1bf26bdc2e5fbd27312dd36b5ce23a8", axioms: ["Quot.sound", "propext"] }
 };
 
+const LOCKED_NAND_SOURCE_PARSER_THEOREMS = {
+  "PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits": { hash: "d701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634", axioms: ["propext"], module: "PNP.Concrete.LockedNANDSourceParserValidTrace" },
+  "PNP.Concrete.LockedNAND.SourceParser.allInput_exact": { hash: "78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCorrectness" },
+  "PNP.Concrete.LockedNAND.SourceParser.canonicalSteps_le_validWorkBound": { hash: "28467e05ff2e43332360757992c3cd5850a45f3ef7d3fb48bebac47ad090a2ff", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserValidTrace" },
+  "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff": { hash: "55182cfbf83ffaf4a839519e7fceccc72378c5a5b0993dda4a48fb16888cb82c", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCompiled" },
+  "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_ne_timeout": { hash: "f8a1ccfa5a54373f004c1973a2115fe51bd6f53403cc6f72de4dfc3e01cc6ad9", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCompiled" },
+  "PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes": { hash: "adc61884c960f3eb7c1a6a32e3383b23f33f581685509f7f40c4d4c14e05bcf0", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCompiled" },
+  "PNP.Concrete.LockedNAND.SourceParser.compiledStart_blankEquivalent": { hash: "453d8927f184e5f25c348ce8a7d80b1668044759e265c0f9306b2ce03e9642da", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserCompiled" },
+  "PNP.Concrete.LockedNAND.SourceParser.decodeCircuitTokens_eq_none_iff_failure": { hash: "12ba3b565d2c3c1d7d7e49e902ea626da22e434b85fe2305dc8b203c46d98485", axioms: ["propext"], module: "PNP.Concrete.LockedNANDSourceParserFailureShapes" },
+  "PNP.Concrete.LockedNAND.SourceParser.illFormed_exact": { hash: "9a5f16bda1ce85f865517b78762bdf5c665748edb297920d211ac2aca6016625", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCorrectness" },
+  "PNP.Concrete.LockedNAND.SourceParser.machine_acceptState_ne_rejectState": { hash: "9cd9ae748e010284b27d3cde34af163c0250dfc15dd20dde8bb8d7971849cc74", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserMachine" },
+  "PNP.Concrete.LockedNAND.SourceParser.malformed_exact": { hash: "62e8161b3a17d5aab547da24f4eb7e53db5f645a42f5fd79a748d20d7ad73c89", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCorrectness" },
+  "PNP.Concrete.LockedNAND.SourceParser.rules_length": { hash: "eee4e770ed3bd75cd5a13135decf7feac2c03dc8c76bc3f09e24520a831d72a8", axioms: ["propext"], module: "PNP.Concrete.LockedNANDSourceParserMachine" },
+  "PNP.Concrete.LockedNAND.SourceParser.rules_pairwise_query_distinct": { hash: "3b03582def97acf6905f685fff8c51a7aa89a339fa30842cb33f6cb3053fa879", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserMachine" },
+  "PNP.Concrete.LockedNAND.SourceParser.statePrograms_length": { hash: "e9c49bf192094aadf7c4fe4047ffa0eb700e81962aa17d16ea2ad26594e40c7e", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserMachine" },
+  "PNP.Concrete.LockedNAND.SourceParser.validFinalConfiguration_isHalted": { hash: "29e6b966bbdbec361b56a604a2a4f9bf9a7e67029089eaa25546bf7eb34a49e4", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserValidTrace" },
+  "PNP.Concrete.LockedNAND.SourceParser.validFinalConfiguration_state": { hash: "df16e89b9b9047047bcf3ef4edae078a0aabc845e1d82a4a0c990b2b3464868d", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserValidTrace" },
+  "PNP.Concrete.LockedNAND.SourceParser.validRawBound_eq": { hash: "6a31cd6fb0d34dab788f6be4ad428f9bbcac5c4fd35ef29bf90d33cf39743bc4", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserValidTrace" },
+  "PNP.Concrete.LockedNAND.SourceParser.validRawTimePolynomial_eval": { hash: "2eece133162707f053182b7b838877dd2f63eea10dfc2005e4a1fc001302dc43", axioms: [], module: "PNP.Concrete.LockedNANDSourceParserCompiled" },
+  "PNP.Concrete.LockedNAND.SourceParser.validatedSourceBytesPolynomialTimeFunction_output": { hash: "c80a0e9b2352eb5029cc5538d2962a0bbd9fb3cbea93641eba66d6386255d899", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserCompiled" },
+  "PNP.Concrete.LockedNAND.SourceParser.wellFormed_exact": { hash: "df3b9bffacae9dd23069ac927ea471b6e72d1a548cd9e0c2a53885386348905f", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDSourceParserValidTrace" }
+};
+
 const LOCKED_NAND_GLOBAL_CANDIDATE_RELEASE_IDENTITIES = {
   MacroGateCountTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula",
   NonemptyPrefixSemanticsTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.nonemptyPrefixCandidate_semantics",
@@ -3144,6 +3167,19 @@ const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_RELEASE_IDENTITIES = {
   EncodedThresholdTheorem: "PNP.Concrete.LockedNAND.encoded_fullCandidate_threshold_iff_satisfiable",
   BuildCorrectTheorem: "PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct"
 };
+
+const LOCKED_NAND_SOURCE_PARSER_RELEASE_IDENTITIES = {
+  AllInputTheorem: "PNP.Concrete.LockedNAND.SourceParser.allInput_exact",
+  AcceptIffTheorem: "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff",
+  NoTimeoutTheorem: "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_ne_timeout",
+  OutputTheorem: "PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes",
+  PolynomialFunctionTheorem: "PNP.Concrete.LockedNAND.SourceParser.validatedSourceBytesPolynomialTimeFunction_output"
+};
+
+const LOCKED_NAND_SOURCE_PARSER_SCOPE =
+  "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
+const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
+  "This source parser does not emit the locked-NAND target, bound the future emitter's runtime or output size, compose parser and emitter, establish the source-to-target PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, prove NP-hardness or NP-completeness transport, or prove P = NP.";
 
 const KIND_TO_REF = new Map([
   ["current core publication file", "currentCoreRef"],
@@ -3255,7 +3291,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 6) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 63) failures.push("formal-publication report must have exactly sixty-three pages");
+  if (manifest.artifacts?.report?.pageCount !== 64) failures.push("formal-publication report must have exactly sixty-four pages");
   const earned = manifest.earnedBoundary || {};
   if (earned.pipelineStateNamespacesFormalized !== true || earned.pipelineStateNamespaceAxiomAuditPassed !== true || earned.pipelineStateNamespaceAuditedDeclarationCount !== 39) failures.push("formal-publication pipeline namespace boundary mismatch");
   if (earned.pipelineStageBridgesFormalized !== true || earned.pipelineStageBridgeAxiomAuditPassed !== true || earned.pipelineStageBridgeAuditedDeclarationCount !== 56 || earned.pipelineStageLaunchFormalized !== true || earned.pipelineVerdictPreservationFormalized !== true || earned.pipelineInternalOutputHandoffComposed !== true) failures.push("formal-publication pipeline stage-bridge boundary mismatch");
@@ -3594,11 +3630,39 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDGlobalSemanticThresholdHashes = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256;
   if (!lockedNANDGlobalSemanticThresholdHashes || Object.keys(lockedNANDGlobalSemanticThresholdHashes).length !== 8 || !Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS).every(([name, row]) => lockedNANDGlobalSemanticThresholdHashes[name] === row.hash)) failures.push("formal-publication locked-NAND global semantic-threshold fingerprint mismatch");
   if (!Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`lockedNAND${suffix}`] === theorem)) failures.push("formal-publication locked-NAND global semantic-threshold theorem identity mismatch");
-  if (!(earned.lockedNANDEncodedSemanticReductionFormalized === true && earned.lockedNANDEncodedSemanticReductionAxiomAuditPassed === true && earned.lockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && earned.lockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && earned.lockedNANDCanonicalEncodingFormalized === true && earned.lockedNANDCompleteCandidateCodecFormalized === true && earned.lockedNANDNormalizationSemanticsFormalized === true && earned.lockedNANDParserMachineFormalized === false && earned.lockedNANDEmitterMachineFormalized === false && earned.lockedNANDPolynomialReductionFormalized === false)) failures.push("formal-publication locked-NAND encoded semantic-reduction boundary mismatch");
+  if (!(earned.lockedNANDEncodedSemanticReductionFormalized === true && earned.lockedNANDEncodedSemanticReductionAxiomAuditPassed === true && earned.lockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && earned.lockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && earned.lockedNANDCanonicalEncodingFormalized === true && earned.lockedNANDCompleteCandidateCodecFormalized === true && earned.lockedNANDNormalizationSemanticsFormalized === true && earned.lockedNANDParserMachineFormalized === true && earned.lockedNANDEmitterMachineFormalized === false && earned.lockedNANDPolynomialReductionFormalized === false)) failures.push("formal-publication locked-NAND encoded semantic-reduction boundary mismatch");
   if (JSON.stringify(earned.lockedNANDEncodedSemanticReductionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.lockedNANDEncodedSemanticReductionProjectAxiomClosure) || earned.lockedNANDEncodedSemanticReductionProjectAxiomClosure.length !== 0) failures.push("formal-publication locked-NAND encoded semantic-reduction axiom closure mismatch");
   const lockedNANDEncodedSemanticReductionHashes = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256;
   if (!lockedNANDEncodedSemanticReductionHashes || Object.keys(lockedNANDEncodedSemanticReductionHashes).length !== 11 || !Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS).every(([name, row]) => lockedNANDEncodedSemanticReductionHashes[name] === row.hash)) failures.push("formal-publication locked-NAND encoded semantic-reduction fingerprint mismatch");
   if (!Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`lockedNAND${suffix}`] === theorem)) failures.push("formal-publication locked-NAND encoded semantic-reduction theorem identity mismatch");
+  if (!(earned.lockedNANDSourceParserFormalized === true
+      && earned.lockedNANDSourceParserAxiomAuditPassed === true
+      && earned.lockedNANDSourceParserAuditedDeclarationCount === 380
+      && earned.lockedNANDSourceParserEmptyAxiomDeclarationCount === 247
+      && earned.lockedNANDSourceParserPropextOnlyDeclarationCount === 58
+      && earned.lockedNANDSourceParserPropextQuotSoundDeclarationCount === 75
+      && earned.lockedNANDSourceParserScope === "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound"
+      && earned.lockedNANDSourceParserStateCount === 228
+      && earned.lockedNANDSourceParserRuleCount === 2052
+      && earned.lockedNANDSourceParserSymbolCount === 9
+      && earned.lockedNANDSourceParserAllInputExactFormalized === true
+      && earned.lockedNANDSourceParserExactOutputFormalized === true
+      && earned.lockedNANDSourceParserCompiledNonTimeoutFormalized === true
+      && earned.lockedNANDSourceParserPolynomialTimeMachineFormalized === true
+      && earned.lockedNANDSourceParserPolynomialTimeFunctionFormalized === true
+      && earned.lockedNANDSourceParserRawRefinementFormalized === true
+      && earned.lockedNANDSourceParserWorkBound === "4096 * (n + 1)^3"
+      && earned.lockedNANDSourceParserCompiledRawTimeBound === "6 * 4096 * (n + 1)^3")) failures.push("formal-publication locked-NAND source-parser boundary mismatch");
+  if (JSON.stringify(earned.lockedNANDSourceParserAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.lockedNANDSourceParserProjectAxiomClosure)
+      || earned.lockedNANDSourceParserProjectAxiomClosure.length !== 0) failures.push("formal-publication locked-NAND source-parser axiom closure mismatch");
+  const lockedNANDSourceParserHashes = earned.lockedNANDSourceParserTheoremKernelTypeSha256;
+  if (!lockedNANDSourceParserHashes
+      || Object.keys(lockedNANDSourceParserHashes).length !== 20
+      || !Object.entries(LOCKED_NAND_SOURCE_PARSER_THEOREMS).every(([name, row]) => lockedNANDSourceParserHashes[name] === row.hash)) failures.push("formal-publication locked-NAND source-parser fingerprint mismatch");
+  if (!Object.entries(LOCKED_NAND_SOURCE_PARSER_RELEASE_IDENTITIES).every(
+    ([suffix, theorem]) => earned[`lockedNANDSourceParser${suffix}`] === theorem
+  )) failures.push("formal-publication locked-NAND source-parser theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -3795,7 +3859,39 @@ function validateCurrentPayloads(contents, failures) {
     if (!(status.leanLockedNANDDerivedFinalOutputLawsFormalized === true && status.leanLockedNANDResidualSlackAtMostFourFormalized === true && status.leanLockedNANDSatisfiableFinalConditionsFormalized === true && status.leanLockedNANDGlobalSemanticThresholdFormalized === true && status.leanLockedNANDGlobalSemanticThresholdAxiomAuditPassed === true && status.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount === 8 && status.leanLockedNANDGlobalSemanticThresholdScope === "arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold")) failures.push("public status locked-NAND global semantic-threshold evidence mismatch");
     const lockedNANDEncodedSemanticReductionMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
     if (!lockedNANDEncodedSemanticReductionMilestone || lockedNANDEncodedSemanticReductionMilestone.earned !== true || lockedNANDEncodedSemanticReductionMilestone.allPresent !== true || lockedNANDEncodedSemanticReductionMilestone.allKernelTypesMatch !== true || lockedNANDEncodedSemanticReductionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11) failures.push("public status locked-NAND encoded semantic-reduction milestone mismatch");
-    if (!(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && status.leanConcreteLockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true && status.leanConcreteLockedNANDParserMachineFormalized === false && status.leanConcreteLockedNANDEmitterMachineFormalized === false && status.leanConcreteLockedNANDPolynomialReductionFormalized === false)) failures.push("public status locked-NAND encoded semantic-reduction evidence mismatch");
+    if (!(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && status.leanConcreteLockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true && status.leanConcreteLockedNANDParserMachineFormalized === true && status.leanConcreteLockedNANDEmitterMachineFormalized === false && status.leanConcreteLockedNANDPolynomialReductionFormalized === false)) failures.push("public status locked-NAND encoded semantic-reduction evidence mismatch");
+    const lockedNANDSourceParserMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
+    if (!lockedNANDSourceParserMilestone
+        || lockedNANDSourceParserMilestone.earned !== true
+        || lockedNANDSourceParserMilestone.status !== "formalized-foundation-only"
+        || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
+        || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
+        || lockedNANDSourceParserMilestone.nonClaim !== LOCKED_NAND_SOURCE_PARSER_NON_CLAIM
+        || lockedNANDSourceParserMilestone.allPresent !== true
+        || lockedNANDSourceParserMilestone.allKernelTypesMatch !== true
+        || lockedNANDSourceParserMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20) failures.push("public status locked-NAND source-parser milestone mismatch");
+    for (const [name, evidence] of Object.entries(LOCKED_NAND_SOURCE_PARSER_THEOREMS)) {
+      const theoremRow = lockedNANDSourceParserMilestone?.theoremRows?.find((row) => row.name === name);
+      if (!lockedNANDSourceParserMilestone?.requiredTheorems?.includes(name)
+          || !theoremRow
+          || theoremRow.present !== true
+          || theoremRow.kind !== "theorem"
+          || JSON.stringify(theoremRow.axioms) !== JSON.stringify(evidence.axioms)
+          || theoremRow.actualKernelTypeSha256 !== evidence.hash
+          || theoremRow.expectedKernelTypeSha256 !== evidence.hash
+          || theoremRow.kernelTypeFingerprintMatches !== true) failures.push(`public status locked-NAND source-parser theorem mismatch: ${name}`);
+    }
+    if (!(status.leanConcreteLockedNANDParserMachineFormalized === true
+        && status.leanConcreteLockedNANDParserAxiomAuditPassed === true
+        && status.leanConcreteLockedNANDParserAuditedDeclarationCount === 380
+        && status.leanConcreteLockedNANDParserAllInputExactFormalized === true
+        && status.leanConcreteLockedNANDParserExactOutputFormalized === true
+        && status.leanConcreteLockedNANDParserCompiledNonTimeoutFormalized === true
+        && status.leanConcreteLockedNANDParserPolynomialTimeMachineFormalized === true
+        && status.leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized === true
+        && status.leanConcreteLockedNANDParserRawRefinementFormalized === true
+        && status.leanConcreteLockedNANDParserScope === "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound")) failures.push("public status locked-NAND source-parser evidence mismatch");
     if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
@@ -3804,7 +3900,7 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 12887 || inventory.theoremCount !== 7395 || inventory.assumptionFreeTheoremCount !== 3794 || inventory.excludedPrivateDeclarationCount !== 5129 || inventory.sourceClosureModuleCount !== 109 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 13731 || inventory.theoremCount !== 7827 || inventory.assumptionFreeTheoremCount !== 4012 || inventory.excludedPrivateDeclarationCount !== 6908 || inventory.sourceClosureModuleCount !== 117 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -3862,6 +3958,14 @@ function validateCurrentPayloads(contents, failures) {
         : "PNP.Concrete.LockedNANDEncoding";
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== expectedModule || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory locked-NAND encoded semantic-reduction theorem mismatch: ${name}`);
       else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
+    }
+    for (const [name, evidence] of Object.entries(LOCKED_NAND_SOURCE_PARSER_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory locked-NAND source-parser theorem mismatch: ${name}`);
+      else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory locked-NAND source-parser fingerprint mismatch: ${name}`);
     }
     for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4296,8 +4400,8 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 1988) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 1988`);
+    if (inventory.milestoneCandidates?.length !== 2008) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2008`);
     }
   }
 }
@@ -4890,16 +4994,30 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     const lockedNANDGlobalSemanticThresholdMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-semantic-threshold");
-    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 69 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 66 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
+    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 70 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 67 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
     const lockedNANDGlobalSemanticThresholdPins = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS)) {
       if (!lockedNANDGlobalSemanticThresholdMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalSemanticThresholdPins[name] !== row.hash) failures.push(`core publication map locked-NAND global semantic-threshold fingerprint mismatch: ${name}`);
     }
     const lockedNANDEncodedSemanticReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
-    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 69 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 66 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
+    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 70 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 67 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
     const lockedNANDEncodedSemanticReductionPins = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS)) {
       if (!lockedNANDEncodedSemanticReductionMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDEncodedSemanticReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
+    }
+    const lockedNANDSourceParserMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
+    if (!lockedNANDSourceParserMilestone
+        || publicationMap.milestones?.length !== 70
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 67
+        || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
+        || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20
+        || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
+        || lockedNANDSourceParserMilestone.nonClaim !== LOCKED_NAND_SOURCE_PARSER_NON_CLAIM) failures.push("core publication map locked-NAND source-parser milestone mismatch");
+    const lockedNANDSourceParserPins = earned.lockedNANDSourceParserTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(LOCKED_NAND_SOURCE_PARSER_THEOREMS)) {
+      if (!lockedNANDSourceParserMilestone?.requiredTheorems?.includes(name)
+          || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+          || lockedNANDSourceParserPins[name] !== row.hash) failures.push(`core publication map locked-NAND source-parser fingerprint mismatch: ${name}`);
     }
   }
 

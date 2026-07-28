@@ -10,7 +10,7 @@ const validationSource = source.slice(
   source.indexOf('function renderFormalStatus'),
 );
 const context = vm.createContext({ structuredClone });
-new vm.Script(`${validationSource}\nglobalThis.validation = { validateConcreteGate, validateInventory, validateMilestones, validateStatus, deriveGateSubchecks };`).runInContext(context);
+new vm.Script(`${validationSource}\nglobalThis.validation = { FAIL_CLOSED_FORMAL_STATUS, formalStatusFields, validateConcreteGate, validateInventory, validateMilestones, validateStatus, deriveGateSubchecks };`).runInContext(context);
 const validation = context.validation;
 
 const status = JSON.parse(readFileSync('public/pnp-status.json', 'utf8'));
@@ -18,13 +18,41 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '5032a2dd8d3ccf74ebe07a7b3e10bbc8ea6425a34a0c887c4733c0993d168f3c');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'bc9f93749d14dd5d646ee37540f365d9c712f599a4aadd45262bb1ab063146c5');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 66);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 67);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
+});
+
+test('pre-fetch UI state reports every source-parser claim as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanConcreteLockedNANDParserMachineFormalized',
+    'leanConcreteLockedNANDParserAxiomAuditPassed',
+    'leanConcreteLockedNANDParserAllInputExactFormalized',
+    'leanConcreteLockedNANDParserExactOutputFormalized',
+    'leanConcreteLockedNANDParserCompiledNonTimeoutFormalized',
+    'leanConcreteLockedNANDParserPolynomialTimeMachineFormalized',
+    'leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized',
+    'leanConcreteLockedNANDParserRawRefinementFormalized',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanConcreteLockedNANDParserAuditedDeclarationCount, 0);
+  assert.equal(failClosed.leanConcreteLockedNANDParserScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanConcreteLockedNANDParserMachineFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserAxiomAuditPassed = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserAuditedDeclarationCount = 0/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserAllInputExactFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserExactOutputFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserCompiledNonTimeoutFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserPolynomialTimeMachineFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserRawRefinementFormalized = false/u);
+  assert.match(rendered, /leanConcreteLockedNANDParserScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -2457,8 +2485,79 @@ test('recursive raw refinement cannot be stripped or separated from compiled evi
   }
 });
 
+test('strict-v0 locked-NAND source parser requires every exact theorem and stays fail-closed beyond parsing', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-locked-nand-source-parser');
+  assert.equal(milestone.requiredTheorems.length, 20);
+  assert.equal(milestone.earned, true);
+  assert.equal(milestone.classification, 'formalized-foundation-only');
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates
+      .filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.LockedNAND.SourceParser.allInput_exact')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const movedModule = structuredClone(inventory);
+  movedModule.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff')
+    .module = 'PNP.ForgedModule';
+  assert.equal(validation.validateInventory(movedModule), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-locked-nand-source-parser')
+    .theoremRows.find((row) => row.name === 'PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes')
+    .actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateMilestones(forgedFingerprint), false);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+
+  for (const field of [
+    'leanConcreteLockedNANDParserMachineFormalized',
+    'leanConcreteLockedNANDParserAxiomAuditPassed',
+    'leanConcreteLockedNANDParserAllInputExactFormalized',
+    'leanConcreteLockedNANDParserExactOutputFormalized',
+    'leanConcreteLockedNANDParserCompiledNonTimeoutFormalized',
+    'leanConcreteLockedNANDParserPolynomialTimeMachineFormalized',
+    'leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized',
+    'leanConcreteLockedNANDParserRawRefinementFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteLockedNANDParserAuditedDeclarationCount = 379;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+
+  const wrongScope = structuredClone(status);
+  wrongScope.leanConcreteLockedNANDParserScope = 'widened-parser-claim';
+  assert.equal(validation.validateStatus(wrongScope, inventory), false);
+
+  for (const field of [
+    'leanConcreteLockedNANDEmitterMachineFormalized',
+    'leanConcreteLockedNANDPolynomialReductionFormalized',
+    'leanConcreteCNFSATInPFormalized',
+    'leanConcreteCNFNPCompletenessFormalized',
+    'mathematicalTheoremEstablished',
+    'publicTheoremEmissionAllowed',
+  ]) {
+    const widened = structuredClone(status);
+    widened[field] = true;
+    assert.equal(validation.validateStatus(widened, inventory), false, field);
+  }
+});
+
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'c92553341db2cf128000f3561b290f37a5b8981951754c2a175db62603d79d31'/);
+  assert.match(source, /const STATUS_SHA256 = 'c5f375d6a2fe9cae42901997357ab626ae69481f6a81f7217a889937c8d26ed5'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -2483,12 +2582,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /12,887/);
-  assert.match(statusPage, /Sixty-six scoped milestones/);
+  assert.match(statusPage, /13,731/);
+  assert.match(statusPage, /Sixty-seven scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 63-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 64-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);
