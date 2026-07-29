@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 53% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 54% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="53" aria-label="Estimated proof reconstruction progress: 53 percent">53%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 53 percent">
+        <progress class="proof-progress-meter" max="100" value="54" aria-label="Estimated proof reconstruction progress: 54 percent">54%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 54 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-30-concrete-locked-nand-target-emitter" data-milestone-id="concrete-locked-nand-target-emitter">
+        <div class="section-label"><time datetime="2026-07-29T18:18:47Z">2026-07-29</time> · earned milestone 68</div>
+        <h2>A checked machine can now build the comparison circuit</h2>
+        <p>A circuit description is a list of simple yes-or-no operations. The previous milestone added a machine that checks this description before it is used. This milestone adds a second fixed, inspectable machine that turns an accepted description into the larger comparison circuit required by the mathematical argument. Lean proves that every output bit matches the construction already defined in the formal development.</p>
+        <p>Malformed or invalid descriptions are rejected without leaving a result. Lean also proves that the running time and output size are bounded by explicit formulas based only on the input length, and that the checker and builder can be joined into one verified path. The remaining work includes packaging that path as the formal reduction needed by complexity theory and closing the still-open threshold, hardness, and final P = NP steps. The 54% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 54%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-locked-nand-target-emitter</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> One literal 1,387,921-rule grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf RawRefinement, and strict parser/emitter composition computing buildLockedNANDInstance.</p>
+          <p><strong>Boundary:</strong> The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. This milestone does not yet package the language equivalence as PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, transport NP-hardness, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 22</p>
+          <p><strong>Core source:</strong> commit <code>23f53b6efccee3ff50987cf55338b8b01ddad343</code>, tree <code>1549519b1c971a062b5315c8146272786a407648</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-TARGET-EMITTER-90</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-29-concrete-locked-nand-source-parser" data-milestone-id="concrete-locked-nand-source-parser">
         <div class="section-label"><time datetime="2026-07-28T20:38:41Z">2026-07-28</time> · earned milestone 67</div>
         <h2>Every circuit description now gets checked before use</h2>
@@ -45,7 +65,7 @@
           <p><strong>Milestone:</strong> <code>concrete-locked-nand-source-parser</code></p>
           <p><strong>Classification:</strong> formalized-foundation-only</p>
           <p><strong>Verified scope:</strong> One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator&#39;s exact leaf RawRefinement.</p>
-          <p><strong>Boundary:</strong> This source parser does not emit the locked-NAND target, bound the future emitter&#39;s runtime or output size, compose parser and emitter, establish the source-to-target PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, prove NP-hardness or NP-completeness transport, or prove P = NP.</p>
+          <p><strong>Boundary:</strong> This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.</p>
           <p><strong>Reviewed theorem pins:</strong> 20</p>
           <p><strong>Core source:</strong> commit <code>a20c99f035eeb6bc3cafc7184bec6c40f9cbda22</code>, tree <code>6114efcd6cf47f1e960eaf22bedc66e73ebb2f72</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-90</code>.</p>
           <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-SOURCE-PARSER-89</code>.</p>

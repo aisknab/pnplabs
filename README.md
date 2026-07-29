@@ -41,16 +41,26 @@ leanConcreteLockedNANDParserAuditedDeclarationCount = 380
 leanConcreteLockedNANDParserAllInputExactFormalized = true
 leanConcreteLockedNANDParserCompiledNonTimeoutFormalized = true
 leanConcreteLockedNANDParserRawRefinementFormalized = true
-leanConcreteLockedNANDEmitterMachineFormalized = false
+leanConcreteLockedNANDEmitterMachineFormalized = true
+leanConcreteLockedNANDEmitterAxiomAuditPassed = true
+leanConcreteLockedNANDEmitterAuditedDeclarationCount = 3295
+leanConcreteLockedNANDEmitterAllInputExactFormalized = true
+leanConcreteLockedNANDEmitterExactTargetBytesFormalized = true
+leanConcreteLockedNANDEmitterCompiledNonTimeoutFormalized = true
+leanConcreteLockedNANDEmitterPolynomialTimeMachineFormalized = true
+leanConcreteLockedNANDEmitterPolynomialTimeFunctionFormalized = true
+leanConcreteLockedNANDEmitterRawRefinementFormalized = true
+leanConcreteLockedNANDEmitterStrictParserCompositionFormalized = true
+leanConcreteLockedNANDEmitterOutputSizeBoundFormalized = true
 leanConcreteLockedNANDPolynomialReductionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **13,731** exported public declarations across **117** modules, including **7,827** theorem-kind declarations and **4,012** assumption-free theorem-kind declarations. It excludes **6,908** private compiler auxiliaries and records **four** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **20,957** exported public declarations across **184** modules, including **11,424** theorem-kind declarations and **5,968** assumption-free theorem-kind declarations. It excludes **11,692** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 2,008 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Sixty-seven scoped milestones are earned. The earlier typed locked-NAND theorem proves that the exhaustive reference minimum crosses from `B` to at least `B + 1` exactly when the source circuit is satisfiable and leaves residual slack at most four. Its strict version-zero codec and pure fail-closed transformation have exact semantic theorems. The newest milestone adds one literal 228-state, 2,052-rule source parser. On every bitstring it accepts exactly a valid strict-v0 circuit, preserves valid bytes, rejects malformed bytes with empty output, and cannot time out within the proved compiled cubic bound; polynomial-time machine/function witnesses and the validator leaf's exact `RawRefinement` are formalized. The target emitter, parser/emitter composition, a concrete `PolynomialReduction`, the abstract locked-NAND threshold discharge, complete Cook-Levin formula builder, and packaged reduction remain incomplete. Therefore CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+The inventory-derived publication map binds 2,030 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Sixty-eight scoped milestones are earned. The earlier typed locked-NAND theorem proves that the exhaustive reference minimum crosses from `B` to at least `B + 1` exactly when the source circuit is satisfiable and leaves residual slack at most four. Its strict version-zero codec and pure fail-closed transformation have exact semantic theorems. A literal 228-state, 2,052-rule source parser accepts exactly valid strict-v0 circuits and clears malformed input. The newest milestone adds one fixed 1,387,921-rule grammar-only target emitter with exact all-input output, explicit polynomial runtime and quadratic output bounds, polynomial-time machine/function witnesses, leaf `RawRefinement`, and strict composition with the parser computing `buildLockedNANDInstance`. The standalone emitter deliberately accepts grammar-valid raw circuits with invalid references; parser composition supplies strict failure. Packaging the language equivalence as a concrete `PolynomialReduction`, the abstract locked-NAND threshold discharge, complete Cook–Levin formula builder, and the remaining hardness steps are incomplete. Therefore CNF-SAT NP-completeness, CNF-SAT in P, and `P = NP` remain unproved. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while `PNP.Main.p_eq_np` remains absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
@@ -67,7 +77,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout a20c99f035eeb6bc3cafc7184bec6c40f9cbda22
+git checkout 23f53b6efccee3ff50987cf55338b8b01ddad343
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -172,7 +182,7 @@ independently.
 - A SHA-256 match verifies artefact identity only. It does not verify theorem correctness.
 - The local minimal fixtures demonstrate named educational invariants only. They are not proof evidence.
 - The historical JavaScript checker stack evaluates assertion-bearing records under its implemented predicates. It does not formalise or prove those asserted mathematical propositions.
-- The bundled canonical PDF and TeX are the current sixty-four-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence, the bounded formula-building prefix, global locked-NAND baseline output conditions, both whole-carrier final-output branches, the typed semantic threshold, strict encoding round trips, the pure encoded semantic reduction, and the exact polynomial-time strict-v0 source parser. They explicitly withhold the rest of the Cook-Levin formula body, a complete raw formula builder, the locked-NAND target emitter and its composition with the parser, a concrete source-to-target `PolynomialReduction`, the abstract threshold discharge, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP.
+- The bundled canonical PDF and TeX are the current sixty-five-page inventory-derived formal status report. They report `CNFSAT ∈ NP`, raw-machine compilation, exact Cook–Levin semantic equivalence, the bounded formula-building prefix, global locked-NAND baseline output conditions, both whole-carrier final-output branches, the typed semantic threshold, strict encoding round trips, the pure encoded semantic reduction, the exact polynomial-time strict-v0 source parser, and the exact polynomial-time target emitter with parser composition. They explicitly withhold the rest of the Cook–Levin formula body, a complete raw formula builder, the packaged source-to-target `PolynomialReduction`, the abstract threshold discharge, CNF-SAT NP-completeness, CNF-SAT in P, and P = NP.
 - A partial Lean bridge or a successful build of supporting modules is not the target theorem. The root theorem must exist, build, and pass an axiom audit without project-specific assumptions.
 - The historical 57-page claim manuscript remains at tag `final-pnp-proof-report-hardened-7072f8d`, commit `7072f8d0bda6d44d240f9bb3fad624fd357e1278`, with provenance in `archive/legacy-v0/ARCHIVE.json`; it is never current authority.
 

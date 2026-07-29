@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-28T20:38:41Z</updated>
+  <updated>2026-07-29T18:18:47Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-target-emitter</id>
+    <title>A checked machine can now build the comparison circuit</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-target-emitter"/>
+    <published>2026-07-29T18:18:47Z</published>
+    <updated>2026-07-29T18:18:47Z</updated>
+    <summary type="text">A circuit description is a list of simple yes-or-no operations. The previous milestone added a machine that checks this description before it is used. This milestone adds a second fixed, inspectable machine that turns an accepted description into the larger comparison circuit required by the mathematical argument. Lean proves that every output bit matches the construction already defined in the formal development. Malformed or invalid descriptions are rejected without leaving a result. Lean also proves that the running time and output size are bounded by explicit formulas based only on the input length, and that the checker and builder can be joined into one verified path. The remaining work includes packaging that path as the formal reduction needed by complexity theory and closing the still-open threshold, hardness, and final P = NP steps. The 54% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 54 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit description is a list of simple yes-or-no operations. The previous milestone added a machine that checks this description before it is used. This milestone adds a second fixed, inspectable machine that turns an accepted description into the larger comparison circuit required by the mathematical argument. Lean proves that every output bit matches the construction already defined in the formal development.&lt;/p&gt;&lt;p&gt;Malformed or invalid descriptions are rejected without leaving a result. Lean also proves that the running time and output size are bounded by explicit formulas based only on the input length, and that the checker and builder can be joined into one verified path. The remaining work includes packaging that path as the formal reduction needed by complexity theory and closing the still-open threshold, hardness, and final P = NP steps. The 54% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;54&quot;&gt;Editorial progress estimate at publication: 54%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-target-emitter&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-29-concrete-locked-nand-source-parser</id>
     <title>Every circuit description now gets checked before use</title>

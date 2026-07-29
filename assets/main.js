@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-90';
-const STATUS_SHA256 = 'c5f375d6a2fe9cae42901997357ab626ae69481f6a81f7217a889937c8d26ed5';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-SOURCE-PARSER-89';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-29-90';
-const INVENTORY_SHA256 = 'bc9f93749d14dd5d646ee37540f365d9c712f599a4aadd45262bb1ab063146c5';
-const SOURCE_CLOSURE_SHA256 = '22510170cf53b25ddd89df7cf9d01fefc0aff38ba52ae030c55c46c1b16cf50e';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91';
+const STATUS_SHA256 = 'e246e54524b5ef8d6a94a33ebe0888020e607be90e49362df33222d792a9e929';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-TARGET-EMITTER-90';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-29-91';
+const INVENTORY_SHA256 = '7d9f871badb77f300b36425e99ecb906d94fb73120e95a62a774c618fe48d100';
+const SOURCE_CLOSURE_SHA256 = 'b54846d2e1bf730445fce72e21ec9a82465a32b3be6a473d037e882da87ec394';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 13731,
-  theorems: 7827,
-  assumptionFreeTheorems: 4012,
-  excludedPrivateDeclarations: 6908,
-  modules: 117,
+  declarations: 20957,
+  theorems: 11424,
+  assumptionFreeTheorems: 5968,
+  excludedPrivateDeclarations: 11692,
+  modules: 184,
   axioms: 4,
 });
 
@@ -3352,6 +3352,31 @@ const LOCKED_NAND_SOURCE_PARSER_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.SourceParser.wellFormed_exact", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDSourceParserValidTrace"],
 ]);
 
+const LOCKED_NAND_TARGET_EMITTER_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.LockedNAND.RawBuilder.rawLockedInstance_of_elaborate", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDRawBuilder"],
+  ["PNP.Concrete.LockedNAND.RawBuilder.targetBytes_of_elaborated", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDRawBuilder"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterSpec.targetBytes_validatedSourceBytes_eq_buildLockedNANDInstance", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterSpec"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterSpec.targetBytes_size_le", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterSpec"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterController.rules_length_literal", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterController"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterController.rules_pairwise", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterController"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterController.machine_accept_ne_reject", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterController"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterController.graph_wellFormed", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterController"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.malformed_bounded_exact", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerTotalTrace"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.decoded_bounded_exact", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerTotalTrace"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.allInput_bounded_exact", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerTotalTrace"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.controllerWorkTimePolynomial_eval", ["propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerPolynomialBound"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.allInputWorkTimePolynomial_eval", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerPolynomialBound"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.compiledRawTimePolynomial_eval", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerPolynomialBound"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.controller_complete_path_polynomial", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerPolynomialBound"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.controllerUniformEnvelope_le_workBound", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerPolynomialBound"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledStart_blankEquivalent", ["propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledMachineOutput_eq_targetBytes", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledBoundedDecide_accept_iff", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledBoundedDecide_ne_timeout", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.rawTargetBytesPolynomialTimeFunction_output", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
+  ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.strictLockedNANDPolynomialTimeFunction_output", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -3427,6 +3452,7 @@ const MILESTONE_IDS = Object.freeze([
   'locked-nand-global-semantic-threshold',
   'concrete-locked-nand-encoded-semantic-boundary',
   'concrete-locked-nand-source-parser',
+  'concrete-locked-nand-target-emitter',
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
   'global-locked-nand-threshold',
@@ -3708,6 +3734,18 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized: false,
   leanConcreteLockedNANDParserRawRefinementFormalized: false,
   leanConcreteLockedNANDParserScope: null,
+  leanConcreteLockedNANDEmitterMachineFormalized: false,
+  leanConcreteLockedNANDEmitterAxiomAuditPassed: false,
+  leanConcreteLockedNANDEmitterAuditedDeclarationCount: 0,
+  leanConcreteLockedNANDEmitterAllInputExactFormalized: false,
+  leanConcreteLockedNANDEmitterExactTargetBytesFormalized: false,
+  leanConcreteLockedNANDEmitterCompiledNonTimeoutFormalized: false,
+  leanConcreteLockedNANDEmitterPolynomialTimeMachineFormalized: false,
+  leanConcreteLockedNANDEmitterPolynomialTimeFunctionFormalized: false,
+  leanConcreteLockedNANDEmitterRawRefinementFormalized: false,
+  leanConcreteLockedNANDEmitterStrictParserCompositionFormalized: false,
+  leanConcreteLockedNANDEmitterOutputSizeBoundFormalized: false,
+  leanConcreteLockedNANDEmitterScope: null,
   leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized: false,
   leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed: false,
   leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized: false,
@@ -4028,6 +4066,18 @@ leanConcreteLockedNANDParserPolynomialTimeMachineFormalized = ${payload.leanConc
 leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized = ${payload.leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized ?? false}
 leanConcreteLockedNANDParserRawRefinementFormalized = ${payload.leanConcreteLockedNANDParserRawRefinementFormalized ?? false}
 leanConcreteLockedNANDParserScope = ${payload.leanConcreteLockedNANDParserScope ?? 'null'}
+leanConcreteLockedNANDEmitterMachineFormalized = ${payload.leanConcreteLockedNANDEmitterMachineFormalized ?? false}
+leanConcreteLockedNANDEmitterAxiomAuditPassed = ${payload.leanConcreteLockedNANDEmitterAxiomAuditPassed ?? false}
+leanConcreteLockedNANDEmitterAuditedDeclarationCount = ${payload.leanConcreteLockedNANDEmitterAuditedDeclarationCount ?? 0}
+leanConcreteLockedNANDEmitterAllInputExactFormalized = ${payload.leanConcreteLockedNANDEmitterAllInputExactFormalized ?? false}
+leanConcreteLockedNANDEmitterExactTargetBytesFormalized = ${payload.leanConcreteLockedNANDEmitterExactTargetBytesFormalized ?? false}
+leanConcreteLockedNANDEmitterCompiledNonTimeoutFormalized = ${payload.leanConcreteLockedNANDEmitterCompiledNonTimeoutFormalized ?? false}
+leanConcreteLockedNANDEmitterPolynomialTimeMachineFormalized = ${payload.leanConcreteLockedNANDEmitterPolynomialTimeMachineFormalized ?? false}
+leanConcreteLockedNANDEmitterPolynomialTimeFunctionFormalized = ${payload.leanConcreteLockedNANDEmitterPolynomialTimeFunctionFormalized ?? false}
+leanConcreteLockedNANDEmitterRawRefinementFormalized = ${payload.leanConcreteLockedNANDEmitterRawRefinementFormalized ?? false}
+leanConcreteLockedNANDEmitterStrictParserCompositionFormalized = ${payload.leanConcreteLockedNANDEmitterStrictParserCompositionFormalized ?? false}
+leanConcreteLockedNANDEmitterOutputSizeBoundFormalized = ${payload.leanConcreteLockedNANDEmitterOutputSizeBoundFormalized ?? false}
+leanConcreteLockedNANDEmitterScope = ${payload.leanConcreteLockedNANDEmitterScope ?? 'null'}
 leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized = ${payload.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized ?? false}
 leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed ?? false}
 leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized ?? false}
@@ -4086,13 +4136,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 382,
-    definition: 5194,
-    inductive: 162,
+    constructor: 589,
+    definition: 8434,
+    inductive: 253,
     opaque: 0,
     quotient: 0,
-    recursor: 162,
-    theorem: 7827,
+    recursor: 253,
+    theorem: 11424,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4384,6 +4434,11 @@ function validateInventory(inventory) {
     axioms,
   }));
   const lockedNANDSourceParser = LOCKED_NAND_SOURCE_PARSER_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
+  const lockedNANDTargetEmitter = LOCKED_NAND_TARGET_EMITTER_DECLARATIONS.map(([name, axioms, module]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
     module,
@@ -4693,6 +4748,9 @@ function validateInventory(inventory) {
     && lockedNANDSourceParser.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && lockedNANDTargetEmitter.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -4734,7 +4792,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2008
+    && inventory.milestoneCandidates.length === 2030
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -4798,7 +4856,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 67;
+    const shouldBeEarned = index < 68;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -4831,6 +4889,9 @@ function validateStatus(status, inventory) {
   const sourceParserMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'concrete-locked-nand-source-parser'
   );
+  const targetEmitterMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'concrete-locked-nand-target-emitter'
+  );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
     && status.publicSurfaceBaselineCoordinate === PUBLIC_SURFACE_COORDINATE
@@ -4853,10 +4914,17 @@ function validateStatus(status, inventory) {
     && validateMilestones(status)
     && sourceParserMilestone?.classification === 'formalized-foundation-only'
     && sourceParserMilestone.scope === "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement."
-    && sourceParserMilestone.nonClaim === "This source parser does not emit the locked-NAND target, bound the future emitter's runtime or output size, compose parser and emitter, establish the source-to-target PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, prove NP-hardness or NP-completeness transport, or prove P = NP."
+    && sourceParserMilestone.nonClaim === "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent."
     && sameJson(
       sourceParserMilestone.requiredTheorems,
       LOCKED_NAND_SOURCE_PARSER_DECLARATIONS.map(([name]) => name)
+    )
+    && targetEmitterMilestone?.classification === 'formalized-foundation-only'
+    && targetEmitterMilestone.scope === "One literal 1,387,921-rule grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf RawRefinement, and strict parser/emitter composition computing buildLockedNANDInstance."
+    && targetEmitterMilestone.nonClaim === "The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. This milestone does not yet package the language equivalence as PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, transport NP-hardness, or prove P = NP."
+    && sameJson(
+      targetEmitterMilestone.requiredTheorems,
+      LOCKED_NAND_TARGET_EMITTER_DECLARATIONS.map(([name]) => name)
     )
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
@@ -5328,7 +5396,7 @@ function validateStatus(status, inventory) {
     && status.leanLockedNANDGlobalCandidateAssemblyFormalized === true
     && status.leanLockedNANDGlobalBaselineCandidateFormalized === true
     && status.leanLockedNANDGlobalCandidateAxiomAuditPassed === true
-    && status.leanLockedNANDGlobalCandidateAuditedDeclarationCount === 64
+    && status.leanLockedNANDGlobalCandidateAuditedDeclarationCount === 71
     && status.leanLockedNANDGlobalCandidateScope === 'arbitrary-finite-topological-nand-circuits-exact-baseline-and-four-gate-extension'
     && status.leanLockedNANDGlobalBaselineDistinctFormalized === true
     && status.leanLockedNANDGlobalBaselineDistinctAxiomAuditPassed === true
@@ -5363,7 +5431,18 @@ function validateStatus(status, inventory) {
     && status.leanConcreteLockedNANDParserPolynomialTimeFunctionFormalized === true
     && status.leanConcreteLockedNANDParserRawRefinementFormalized === true
     && status.leanConcreteLockedNANDParserScope === 'literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound'
-    && status.leanConcreteLockedNANDEmitterMachineFormalized === false
+    && status.leanConcreteLockedNANDEmitterMachineFormalized === true
+    && status.leanConcreteLockedNANDEmitterAxiomAuditPassed === true
+    && status.leanConcreteLockedNANDEmitterAuditedDeclarationCount === 3295
+    && status.leanConcreteLockedNANDEmitterAllInputExactFormalized === true
+    && status.leanConcreteLockedNANDEmitterExactTargetBytesFormalized === true
+    && status.leanConcreteLockedNANDEmitterCompiledNonTimeoutFormalized === true
+    && status.leanConcreteLockedNANDEmitterPolynomialTimeMachineFormalized === true
+    && status.leanConcreteLockedNANDEmitterPolynomialTimeFunctionFormalized === true
+    && status.leanConcreteLockedNANDEmitterRawRefinementFormalized === true
+    && status.leanConcreteLockedNANDEmitterStrictParserCompositionFormalized === true
+    && status.leanConcreteLockedNANDEmitterOutputSizeBoundFormalized === true
+    && status.leanConcreteLockedNANDEmitterScope === 'literal-1387921-rule-grammar-only-all-input-target-emitter-with-strict-parser-composition-polynomial-bounds-and-recursive-raw-refinement'
     && status.leanConcreteLockedNANDPolynomialReductionFormalized === false
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed === true

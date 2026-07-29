@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-30-concrete-locked-nand-target-emitter",
+      "milestoneId": "concrete-locked-nand-target-emitter",
+      "publishedAt": "2026-07-29T18:18:47Z",
+      "title": "A checked machine can now build the comparison circuit",
+      "plainLanguage": [
+        "A circuit description is a list of simple yes-or-no operations. The previous milestone added a machine that checks this description before it is used. This milestone adds a second fixed, inspectable machine that turns an accepted description into the larger comparison circuit required by the mathematical argument. Lean proves that every output bit matches the construction already defined in the formal development.",
+        "Malformed or invalid descriptions are rejected without leaving a result. Lean also proves that the running time and output size are bounded by explicit formulas based only on the input length, and that the checker and builder can be joined into one verified path. The remaining work includes packaging that path as the formal reduction needed by complexity theory and closing the still-open threshold, hardness, and final P = NP steps. The 54% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 54,
+      "source": {
+        "commit": "23f53b6efccee3ff50987cf55338b8b01ddad343",
+        "tree": "1549519b1c971a062b5315c8146272786a407648",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-TARGET-EMITTER-90"
+      }
+    },
+    {
       "id": "2026-07-29-concrete-locked-nand-source-parser",
       "milestoneId": "concrete-locked-nand-source-parser",
       "publishedAt": "2026-07-28T20:38:41Z",

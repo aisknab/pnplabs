@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-29-73",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-30-74",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "a20c99f035eeb6bc3cafc7184bec6c40f9cbda22",
-    "proofCommit": "502050ddc3bf6c6e633695ab913a1d4f16853dd4",
-    "tree": "6114efcd6cf47f1e960eaf22bedc66e73ebb2f72",
-    "ref": "a20c99f035eeb6bc3cafc7184bec6c40f9cbda22",
+    "commit": "23f53b6efccee3ff50987cf55338b8b01ddad343",
+    "proofCommit": "25ffe07ac77167c347dece712776b0b75b69a912",
+    "tree": "1549519b1c971a062b5315c8146272786a407648",
+    "ref": "23f53b6efccee3ff50987cf55338b8b01ddad343",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-29-90",
-    "formalPublicationMapSha256": "abc16d916b77f37dffceed60440fcf966056e1da1785834867a8c49ddc58f383",
-    "leanSourceClosureSha256": "22510170cf53b25ddd89df7cf9d01fefc0aff38ba52ae030c55c46c1b16cf50e",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-29-91",
+    "formalPublicationMapSha256": "e77c95963004c3e170eebb3984df15ac73530243c76fe23cb424fb3b0c722726",
+    "leanSourceClosureSha256": "b54846d2e1bf730445fce72e21ec9a82465a32b3be6a473d037e882da87ec394",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,32 +21,32 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 1611774,
-      "sha256": "c5f375d6a2fe9cae42901997357ab626ae69481f6a81f7217a889937c8d26ed5",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-90"
+      "bytes": 1628650,
+      "sha256": "e246e54524b5ef8d6a94a33ebe0888020e607be90e49362df33222d792a9e929",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 11544049,
-      "sha256": "bc9f93749d14dd5d646ee37540f365d9c712f599a4aadd45262bb1ab063146c5",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-29-90",
-      "declarationCount": 13731,
-      "theoremCount": 7827,
-      "assumptionFreeTheoremCount": 4012,
+      "bytes": 12883572,
+      "sha256": "7d9f871badb77f300b36425e99ecb906d94fb73120e95a62a774c618fe48d100",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-29-91",
+      "declarationCount": 20957,
+      "theoremCount": 11424,
+      "assumptionFreeTheoremCount": 5968,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-29-90",
-      "pageCount": 64,
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-29-91",
+      "pageCount": 65,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 408994,
-        "sha256": "40e93415f0ce334d53ac8ee0c691df828b8ea5ddaeb45d3c22d2faec6d88d9eb"
+        "bytes": 411556,
+        "sha256": "52e455c3cae86c2ae9b797fde18535035460bac4dc90c72c9c508a817a4c4beb"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,13 +54,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 156947,
-        "sha256": "4fef9bd1525e1f700b8eb98f5a9c54396b39013e1619fe803df8c1a047588fad"
+        "bytes": 167716,
+        "sha256": "49c9df4b981fa87b378fac3ac5b70b257c3fac1166732f9221478fcdf30fbe58"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser",
+    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -3809,7 +3809,7 @@
     "lockedNANDGlobalBaselineCandidateFormalized": true,
     "lockedNANDFullCandidateFormalized": true,
     "lockedNANDGlobalCandidateAxiomAuditPassed": true,
-    "lockedNANDGlobalCandidateAuditedDeclarationCount": 64,
+    "lockedNANDGlobalCandidateAuditedDeclarationCount": 71,
     "lockedNANDGlobalCandidateScope": "arbitrary-finite-topological-nand-circuits-exact-baseline-and-four-gate-extension",
     "lockedNANDGlobalCandidateTheoremKernelTypeSha256": {
       "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula": "47f9e6796152f2a642f7bce44b99528bc01ccdddccdacbae86ab56e0f5b3d073",
@@ -3928,7 +3928,7 @@
     "lockedNANDCompleteCandidateCodecFormalized": true,
     "lockedNANDNormalizationSemanticsFormalized": true,
     "lockedNANDParserMachineFormalized": true,
-    "lockedNANDEmitterMachineFormalized": false,
+    "lockedNANDEmitterMachineFormalized": true,
     "lockedNANDPolynomialReductionFormalized": false,
     "lockedNANDNormalizeIdempotentTheorem": "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent",
     "lockedNANDNormalizeEvalTheorem": "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval",
@@ -3990,7 +3990,61 @@
     "lockedNANDSourceParserAcceptIffTheorem": "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff",
     "lockedNANDSourceParserNoTimeoutTheorem": "PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_ne_timeout",
     "lockedNANDSourceParserOutputTheorem": "PNP.Concrete.LockedNAND.SourceParser.compiledMachineOutput_eq_validatedSourceBytes",
-    "lockedNANDSourceParserPolynomialFunctionTheorem": "PNP.Concrete.LockedNAND.SourceParser.validatedSourceBytesPolynomialTimeFunction_output"
+    "lockedNANDSourceParserPolynomialFunctionTheorem": "PNP.Concrete.LockedNAND.SourceParser.validatedSourceBytesPolynomialTimeFunction_output",
+    "lockedNANDTargetEmitterFormalized": true,
+    "lockedNANDTargetEmitterAxiomAuditPassed": true,
+    "lockedNANDTargetEmitterAuditedDeclarationCount": 3295,
+    "lockedNANDTargetEmitterEmptyAxiomDeclarationCount": 2224,
+    "lockedNANDTargetEmitterPropextOnlyDeclarationCount": 429,
+    "lockedNANDTargetEmitterPropextQuotSoundDeclarationCount": 642,
+    "lockedNANDTargetEmitterScope": "literal-1387921-rule-grammar-only-all-input-target-emitter-with-strict-parser-composition-polynomial-bounds-and-recursive-raw-refinement",
+    "lockedNANDTargetEmitterRuleCount": 1387921,
+    "lockedNANDTargetEmitterSymbolCount": 9,
+    "lockedNANDTargetEmitterAllInputExactFormalized": true,
+    "lockedNANDTargetEmitterExactTargetBytesFormalized": true,
+    "lockedNANDTargetEmitterCompiledNonTimeoutFormalized": true,
+    "lockedNANDTargetEmitterPolynomialTimeMachineFormalized": true,
+    "lockedNANDTargetEmitterPolynomialTimeFunctionFormalized": true,
+    "lockedNANDTargetEmitterRawRefinementFormalized": true,
+    "lockedNANDTargetEmitterStrictParserCompositionFormalized": true,
+    "lockedNANDTargetEmitterOutputSizeBoundFormalized": true,
+    "lockedNANDTargetEmitterWorkBound": "allInputWorkBound(n)",
+    "lockedNANDTargetEmitterCompiledRawTimeBound": "6 * allInputWorkBound(n)",
+    "lockedNANDTargetEmitterOutputSizeBound": "4 * (409 * (n + 1) + (100 * (n + 1)) * (403 * (n + 1)) + (100 * (n + 1)) * (201 * (n + 1)))",
+    "lockedNANDTargetEmitterTheoremKernelTypeSha256": {
+      "PNP.Concrete.LockedNAND.RawBuilder.rawLockedInstance_of_elaborate": "410e04af4a9b137bd47635b19e695c71147c4405583b0736a39ba58ad388506b",
+      "PNP.Concrete.LockedNAND.RawBuilder.targetBytes_of_elaborated": "f9a282f4879b6d5596f53e5a3b99ee98db4f5e1f2722fecac4a6e10f4c762deb",
+      "PNP.Concrete.LockedNAND.TargetEmitterSpec.targetBytes_validatedSourceBytes_eq_buildLockedNANDInstance": "67c5835f004ab60ad25c0eda51d4ca58c31d5fa55aa572a04e7c519363198566",
+      "PNP.Concrete.LockedNAND.TargetEmitterSpec.targetBytes_size_le": "8763f76ef018efee23d75d56ced5fcb95931c1988c21cb968320e4e7e33000d1",
+      "PNP.Concrete.LockedNAND.TargetEmitterController.rules_length_literal": "be15b34e4ded6214d8b15c45725d47d41325610196625956d9ae05ce6f77cdde",
+      "PNP.Concrete.LockedNAND.TargetEmitterController.rules_pairwise": "e47261dd3ffee0b8214691a1ee4800727b2f8d0ab200855c55c954da3b9461d1",
+      "PNP.Concrete.LockedNAND.TargetEmitterController.machine_accept_ne_reject": "973fef5626508cec7d4669f64acbf335e59db1d9018ed03ceaa8739b341dfe3e",
+      "PNP.Concrete.LockedNAND.TargetEmitterController.graph_wellFormed": "35f63a3f9e96ad6d23de3451840976260c470d151b10d07ed08e6697d6391062",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.malformed_bounded_exact": "0c157c96053eed2509d59b5005f954827252bd8f2ec7c1f19f48e0fd2d462f52",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.decoded_bounded_exact": "218c43a2a0d38a10db5f7398e274e0fb17b44d29d96c6a4bb3ef6f0dd36b68be",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.allInput_bounded_exact": "425554a8a20634d54973646a441992513bd246a2a711b96f303713fa7e081f30",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.controllerWorkTimePolynomial_eval": "4ec2fa481ee9f6724dec27746336a71e98d6842620b6d2b45273072c7731706e",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.allInputWorkTimePolynomial_eval": "5adb93ae0b5b9996c74070ccfa46b0198346a7002d229fd3bd36e1c99c54773e",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.compiledRawTimePolynomial_eval": "527d372415697449e6c2e5eb64ee377d796e8c51a76160f367d9bcafe2ccbdcd",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.controller_complete_path_polynomial": "ad1d4ddbef30a832fb196b55e1fcf5ce8abc50c21bd49db72e918ccfe70b47e6",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerPolynomialBound.controllerUniformEnvelope_le_workBound": "95c0eb505393381addefd66169dbac9c06371fe60e65a3f86c30715c220a8fb3",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledStart_blankEquivalent": "b3b81f2ee30d2e4aa571de167efaa0a2f16536c1e50a60abeaa56bd97b907334",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledMachineOutput_eq_targetBytes": "ae3a4411ddd6004296482add2919f8df4cce41198af5adf1c547f23dcfed94db",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledBoundedDecide_accept_iff": "d4f25aa62fce0ca4a0a0f29c9f96556f2ac5f86db468086d73f59b9fa8088d07",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledBoundedDecide_ne_timeout": "cc085d777394cfe297cc82a90518b701a3378e8d7e541cd20ef862fab423fad9",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.rawTargetBytesPolynomialTimeFunction_output": "b0305c68a488f79ea0628f6e269e19acf6a86513c963e4b457bfc1e689e053f8",
+      "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.strictLockedNANDPolynomialTimeFunction_output": "fa0bf3e4613cf4bd3d15ff0e6423798455fc4690673e81e5cf84a0cc7932716e"
+    },
+    "lockedNANDTargetEmitterAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "lockedNANDTargetEmitterProjectAxiomClosure": [],
+    "lockedNANDTargetEmitterAllInputTheorem": "PNP.Concrete.LockedNAND.TargetEmitterControllerTotalTrace.allInput_bounded_exact",
+    "lockedNANDTargetEmitterAcceptIffTheorem": "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledBoundedDecide_accept_iff",
+    "lockedNANDTargetEmitterNoTimeoutTheorem": "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledBoundedDecide_ne_timeout",
+    "lockedNANDTargetEmitterOutputTheorem": "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.compiledMachineOutput_eq_targetBytes",
+    "lockedNANDTargetEmitterPolynomialFunctionTheorem": "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.strictLockedNANDPolynomialTimeFunction_output"
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,
