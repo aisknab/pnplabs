@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 404,422 | `40e93415f0ce334d53ac8ee0c691df828b8ea5ddaeb45d3c22d2faec6d88d9eb` |
-| `downloads/canonical-proof-report.pdf` | 404,422 | `40e93415f0ce334d53ac8ee0c691df828b8ea5ddaeb45d3c22d2faec6d88d9eb` |
-| `downloads/canonical_proof_report.tex` | 154,275 | `4fef9bd1525e1f700b8eb98f5a9c54396b39013e1619fe803df8c1a047588fad` |
-| `downloads/canonical-proof-report.tex` | 154,275 | `4fef9bd1525e1f700b8eb98f5a9c54396b39013e1619fe803df8c1a047588fad` |
-| `public/pnp-status.json` | 1,597,898 | `c5f375d6a2fe9cae42901997357ab626ae69481f6a81f7217a889937c8d26ed5` |
-| `public/pnp-theorem-inventory.json` | 11,367,243 | `bc9f93749d14dd5d646ee37540f365d9c712f599a4aadd45262bb1ab063146c5` |
+| `downloads/canonical_proof_report.pdf` | 411,556 | `52e455c3cae86c2ae9b797fde18535035460bac4dc90c72c9c508a817a4c4beb` |
+| `downloads/canonical-proof-report.pdf` | 411,556 | `52e455c3cae86c2ae9b797fde18535035460bac4dc90c72c9c508a817a4c4beb` |
+| `downloads/canonical_proof_report.tex` | 167,716 | `49c9df4b981fa87b378fac3ac5b70b257c3fac1166732f9221478fcdf30fbe58` |
+| `downloads/canonical-proof-report.tex` | 167,716 | `49c9df4b981fa87b378fac3ac5b70b257c3fac1166732f9221478fcdf30fbe58` |
+| `public/pnp-status.json` | 1,628,650 | `e246e54524b5ef8d6a94a33ebe0888020e607be90e49362df33222d792a9e929` |
+| `public/pnp-theorem-inventory.json` | 12,883,572 | `7d9f871badb77f300b36425e99ecb906d94fb73120e95a62a774c618fe48d100` |
 
-The PDF must have sixty-four A4 pages. Both filename styles must be byte-identical.
+The PDF must have sixty-five A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout a20c99f035eeb6bc3cafc7184bec6c40f9cbda22
+git -C ../pnp checkout 23f53b6efccee3ff50987cf55338b8b01ddad343
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 13,731 public declarations, 7,827 theorem-kind declarations,
-4,012 assumption-free theorem-kind declarations, 6,908 excluded private auxiliaries, 117 modules, and
+Expected compiled inventory counts are 20,957 public declarations, 11,424 theorem-kind declarations,
+5,968 assumption-free theorem-kind declarations, 11,692 excluded private auxiliaries, 184 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -78,13 +78,14 @@ instance. The pure all-bitstring transformation is fail-closed on malformed inpu
 locked-circuit threshold exactly when the decoded source circuit is satisfiable. The eleven audited
 pins use only `propext` and `Quot.sound`, with no project axiom or `Classical.choice`.
 
-The newest milestone adds a literal 228-state, 2,052-rule source parser. Its all-input theorem accepts
-exactly valid strict-v0 circuits, preserves valid bytes, clears invalid bytes, and its compiled machine
-cannot time out within `6 * 4096 * (n + 1)^3`. Its polynomial-time machine/function witnesses and
-validator-leaf `FunctionProgram.RawRefinement` are formalized. This boundary does not provide a
-bounded target emitter, parser/emitter composition, source-to-target `PolynomialReduction`, emitter
-construction-runtime or output-size bounds, discharge the abstract locked-NAND threshold axiom, or
-transport the result to NP-hardness. The
+The newest milestone adds a literal 1,387,921-rule, nine-symbol target emitter. It emits the exact
+direct locked-NAND target for every grammar-decoded circuit, rejects malformed grammar with empty
+output, cannot time out within `6 * allInputWorkBound(n)` compiled steps, and has the explicit quadratic
+output-size bound recorded in the release manifest. Compiled polynomial-time machine/function
+witnesses, exact leaf `RawRefinement`, and strict parser/emitter composition computing
+`buildLockedNANDInstance` are formalized. This boundary does not package the source-to-target
+language equivalence as `PolynomialReduction`, discharge the abstract locked-NAND threshold axiom,
+or transport the result to NP-hardness. The
 remaining Cook-Levin formula body, complete raw builder, packaged polynomial reduction, CNF-SAT in P,
 and NP-completeness must also remain absent.
 

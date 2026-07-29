@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `a20c99f035eeb6bc3cafc7184bec6c40f9cbda22`. Its generated status payload is current
+core commit `23f53b6efccee3ff50987cf55338b8b01ddad343`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the sixty-four-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the sixty-five-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `a20c99f035eeb6bc3cafc7184bec6c40f9cbda22` (tree `6114efcd6cf47f1e960eaf22bedc66e73ebb2f72`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, plus the locked-NAND typed threshold, strict version-zero encoding and pure semantic construction, and the literal polynomial-time source parser |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,008 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `23f53b6efccee3ff50987cf55338b8b01ddad343` (tree `1549519b1c971a062b5315c8146272786a407648`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, plus the locked-NAND typed threshold, strict version-zero encoding and pure semantic construction, literal polynomial-time source parser, and literal polynomial-time target emitter with strict composition |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,030 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Sixty-seven earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, and the strict-v0 source parser—three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current sixty-four-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Sixty-eight earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 source parser, and exact target emitter—three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current sixty-five-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.
@@ -105,4 +105,4 @@ current formal-publication manifest.
 - `pnp` source/checker validation is still not mathematical acceptance.
 - Hashes and seals verify artefact identity only, not theorem correctness.
 - Source disclosure and independent inspection are required for source/checker claims.
-- The key mathematical review targets remain locked-NAND threshold correctness, exact codec and source-parser behavior, the still-missing target emitter and parser/emitter composition, the missing concrete polynomial reduction, residual-band exact minimization, no-hidden-minimization discipline, proof-ref soundness, and public theorem boundary discipline.
+- The key mathematical review targets remain locked-NAND threshold correctness, exact codec/parser/emitter behavior and composition, the missing concrete polynomial reduction and abstract threshold discharge, residual-band exact minimization, no-hidden-minimization discipline, proof-ref soundness, and public theorem boundary discipline.
