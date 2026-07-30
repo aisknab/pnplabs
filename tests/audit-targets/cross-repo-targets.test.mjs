@@ -2002,7 +2002,7 @@ function makeProject(t) {
     },
     earnedBoundary: {
       ...structuredClone(Object.fromEntries(Object.entries(publishedRelease.earnedBoundary).filter(
-        ([name]) => name.startsWith("lockedNAND")
+        ([name]) => name.startsWith("lockedNAND") || name.startsWith("cnfToNAND")
       ))),
       pipelineStateNamespacesFormalized: true,
       pipelineStateNamespaceAxiomAuditPassed: true,
