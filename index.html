@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">A checked machine can now build the comparison circuit</h2>
-          <p>A circuit description is a list of simple yes-or-no operations. The previous milestone added a machine that checks this description before it is used. This milestone adds a second fixed, inspectable machine that turns an accepted description into the larger comparison circuit required by the mathematical argument. Lean proves that every output bit matches the construction already defined in the formal development.</p>
-          <p>Malformed or invalid descriptions are rejected without leaving a result. Lean also proves that the running time and output size are bounded by explicit formulas based only on the input length, and that the checker and builder can be joined into one verified path. The remaining work includes packaging that path as the formal reduction needed by complexity theory and closing the still-open threshold, hardness, and final P = NP steps. The 54% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-30-concrete-locked-nand-target-emitter">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The checked conversion is now a formal efficient reduction</h2>
+          <p>A reduction is a reliable translation from one yes-or-no problem into another. The project already had checked machines that validate a circuit description and build the corresponding comparison object. Lean now packages those machines as one formal translation and proves, for every possible input, that the original circuit has a successful input exactly when the translated comparison passes its threshold.</p>
+          <p>Lean also records that this translation runs within an explicit polynomial limit, so the construction does not hide an impractical exhaustive search. This is an important complexity-theory bridge, but it does not yet connect ordinary CNF-SAT to this exact source format, prove that the target comparison can be solved efficiently, discharge the remaining assumptions, or prove P = NP. The 55% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-07-30-concrete-locked-nand-polynomial-reduction">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>TargetEmitterControllerTotalTrace.allInput_bounded_exact</code> gives one exact finite trace for every source bitstring. The fixed nine-symbol emitter has 1,387,921 pairwise query-distinct rules. <code>compiledMachineOutput_eq_targetBytes</code> proves exact output bytes, the polynomial machine and function witnesses prove all-input termination, and <code>strictLockedNANDPolynomialTimeFunction_output</code> composes the emitter with the strict parser so invalid inputs leave no result. This does not yet package the source-to-target language equivalence as <code>PolynomialReduction</code>, discharge the abstract threshold assumption, put CNF-SAT in P, or prove P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>strictLockedNANDPolynomialReduction_correct</code> proves all-bitstring language equivalence for the strict parser/emitter function, and <code>encodedNANDSAT_reducesTo_encodedLockedNANDThreshold</code> packages it as a concrete <code>ReducesTo</code> witness. Exact function/output theorems and <code>strictLockedNANDPolynomialReduction_hasRawRefinement</code> retain the polynomial machine implementation. The source here is <code>EncodedNANDSAT</code>, not yet ordinary CNF-SAT; NP-hardness, the abstract threshold discharge, CNF-SAT in P, and P = NP remain absent.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -124,7 +124,7 @@ leanConcreteLockedNANDEmitterPolynomialTimeFunctionFormalized = true
 leanConcreteLockedNANDEmitterRawRefinementFormalized = true
 leanConcreteLockedNANDEmitterStrictParserCompositionFormalized = true
 leanConcreteLockedNANDEmitterOutputSizeBoundFormalized = true
-leanConcreteLockedNANDPolynomialReductionFormalized = false
+leanConcreteLockedNANDPolynomialReductionFormalized = true
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -138,9 +138,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-29-91</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-30-92</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>7d9f871badb77f300b36425e99ecb906d94fb73120e95a62a774c618fe48d100</code></div>
+            <div><span>Inventory SHA-256</span><code>3413510e8712416cdb1b5d846053e5c886bbc1cd550fe7533411573e5f88bf64</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -148,18 +148,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>54</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>55</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 54 percent" data-proof-progress="54">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>54</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 55 percent" data-proof-progress="55">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>55</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 54% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 55% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
@@ -190,7 +190,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers source validation and exact target construction, not the final reduction.</h2><p>The strict source format has a total polynomial-time parser, and a fixed polynomial-time emitter now constructs the exact locked-NAND target with explicit runtime and output-size bounds. Packaging their semantic equivalence as a concrete reduction, the complete Cook–Levin formula builder, CNF-SAT NP-completeness, CNF-SAT in P, global ZeroSlack, abstract threshold discharge, and an eligible P = NP root theorem remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers one exact polynomial reduction, not P = NP.</h2><p>The strict parser/emitter path is packaged as a concrete reduction from <code>EncodedNANDSAT</code> to <code>EncodedLockedNANDThreshold</code>. Connecting ordinary CNF-SAT to that source language, proving the target problem is efficiently solvable, completing the Cook–Levin formula builder, discharging the abstract threshold assumption and global ZeroSlack obligations, and producing an eligible P = NP root theorem all remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

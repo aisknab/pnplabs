@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "23f53b6efccee3ff50987cf55338b8b01ddad343";
-const REVIEWED_CORE_TREE = "1549519b1c971a062b5315c8146272786a407648";
+const REVIEWED_CORE_COMMIT = "03f62a5465c1eacd399671121123a3891d8b3e67";
+const REVIEWED_CORE_TREE = "9ac174c23560579e75091fefda81f81e986b6cc1";
 const REVIEWED_PROOF_COMMIT = "25ffe07ac77167c347dece712776b0b75b69a912";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -3141,6 +3141,14 @@ const LOCKED_NAND_TARGET_EMITTER_THEOREMS = {
   "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.strictLockedNANDPolynomialTimeFunction_output": { hash: "fa0bf3e4613cf4bd3d15ff0e6423798455fc4690673e81e5cf84a0cc7932716e", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled" }
 };
 
+const LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREMS = {
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_function": { hash: "3e8000fd18d8836c1ae1ded6b3d0bb46d0ea618c31ba32c7f1425773e62d09c3", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDPolynomialReduction" },
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_output": { hash: "06df8e094590a5b0bf522a9daf5921a28667c7d44e73d447d9366ae201ca3ef4", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDPolynomialReduction" },
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_correct": { hash: "94955e4d9826f8364e0ecae478eb33cc92620403673db079c7f4a961c15b3739", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDPolynomialReduction" },
+  "PNP.Concrete.LockedNAND.encodedNANDSAT_reducesTo_encodedLockedNANDThreshold": { hash: "6c133d95b3eb1d8d04f89be467dfbe6405883cb352654eacc5b8a23b99857f4d", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDPolynomialReduction" },
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_hasRawRefinement": { hash: "9f0b15fadf98e634edafe5d6a2025d1d92424a6876a018802153a96b934b1061", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDPolynomialReduction" }
+};
+
 const LOCKED_NAND_GLOBAL_CANDIDATE_RELEASE_IDENTITIES = {
   MacroGateCountTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula",
   NonemptyPrefixSemanticsTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.nonemptyPrefixCandidate_semantics",
@@ -3217,7 +3225,19 @@ const LOCKED_NAND_TARGET_EMITTER_RELEASE_IDENTITIES = {
 const LOCKED_NAND_TARGET_EMITTER_SCOPE =
   "One literal 1,387,921-rule grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf RawRefinement, and strict parser/emitter composition computing buildLockedNANDInstance.";
 const LOCKED_NAND_TARGET_EMITTER_NON_CLAIM =
-  "The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. This milestone does not yet package the language equivalence as PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, transport NP-hardness, or prove P = NP.";
+  "The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. The standalone emitter does not itself package the language equivalence as PolynomialReduction; the downstream concrete reduction milestone now does. The abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness transport, and P = NP remain absent.";
+const LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE =
+  "The existing strict parser/emitter composition is packaged as a concrete polynomial many-one reduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact function identity, exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive raw-machine refinement.";
+const LOCKED_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM =
+  "This does not identify the concrete source language with CNFSAT or establish NP-hardness, discharge the abstract target-language assumption, prove the report-level locked-NAND threshold theorem, put CNFSAT in P, complete residual minimization or ZeroSlack, or prove P = NP.";
+
+const LOCKED_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
+  FunctionTheorem: "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_function",
+  OutputTheorem: "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_output",
+  CorrectTheorem: "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_correct",
+  WitnessTheorem: "PNP.Concrete.LockedNAND.encodedNANDSAT_reducesTo_encodedLockedNANDThreshold",
+  RawRefinementTheorem: "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_hasRawRefinement"
+};
 
 const KIND_TO_REF = new Map([
   ["current core publication file", "currentCoreRef"],
@@ -3329,7 +3349,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 6) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 65) failures.push("formal-publication report must have exactly sixty-five pages");
+  if (manifest.artifacts?.report?.pageCount !== 66) failures.push("formal-publication report must have exactly sixty-six pages");
   const earned = manifest.earnedBoundary || {};
   if (earned.pipelineStateNamespacesFormalized !== true || earned.pipelineStateNamespaceAxiomAuditPassed !== true || earned.pipelineStateNamespaceAuditedDeclarationCount !== 39) failures.push("formal-publication pipeline namespace boundary mismatch");
   if (earned.pipelineStageBridgesFormalized !== true || earned.pipelineStageBridgeAxiomAuditPassed !== true || earned.pipelineStageBridgeAuditedDeclarationCount !== 56 || earned.pipelineStageLaunchFormalized !== true || earned.pipelineVerdictPreservationFormalized !== true || earned.pipelineInternalOutputHandoffComposed !== true) failures.push("formal-publication pipeline stage-bridge boundary mismatch");
@@ -3668,7 +3688,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDGlobalSemanticThresholdHashes = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256;
   if (!lockedNANDGlobalSemanticThresholdHashes || Object.keys(lockedNANDGlobalSemanticThresholdHashes).length !== 8 || !Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS).every(([name, row]) => lockedNANDGlobalSemanticThresholdHashes[name] === row.hash)) failures.push("formal-publication locked-NAND global semantic-threshold fingerprint mismatch");
   if (!Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`lockedNAND${suffix}`] === theorem)) failures.push("formal-publication locked-NAND global semantic-threshold theorem identity mismatch");
-  if (!(earned.lockedNANDEncodedSemanticReductionFormalized === true && earned.lockedNANDEncodedSemanticReductionAxiomAuditPassed === true && earned.lockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && earned.lockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && earned.lockedNANDCanonicalEncodingFormalized === true && earned.lockedNANDCompleteCandidateCodecFormalized === true && earned.lockedNANDNormalizationSemanticsFormalized === true && earned.lockedNANDParserMachineFormalized === true && earned.lockedNANDEmitterMachineFormalized === true && earned.lockedNANDPolynomialReductionFormalized === false)) failures.push("formal-publication locked-NAND encoded semantic-reduction boundary mismatch");
+  if (!(earned.lockedNANDEncodedSemanticReductionFormalized === true && earned.lockedNANDEncodedSemanticReductionAxiomAuditPassed === true && earned.lockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && earned.lockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && earned.lockedNANDCanonicalEncodingFormalized === true && earned.lockedNANDCompleteCandidateCodecFormalized === true && earned.lockedNANDNormalizationSemanticsFormalized === true && earned.lockedNANDParserMachineFormalized === true && earned.lockedNANDEmitterMachineFormalized === true && earned.lockedNANDPolynomialReductionFormalized === true)) failures.push("formal-publication locked-NAND encoded semantic-reduction boundary mismatch");
   if (JSON.stringify(earned.lockedNANDEncodedSemanticReductionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.lockedNANDEncodedSemanticReductionProjectAxiomClosure) || earned.lockedNANDEncodedSemanticReductionProjectAxiomClosure.length !== 0) failures.push("formal-publication locked-NAND encoded semantic-reduction axiom closure mismatch");
   const lockedNANDEncodedSemanticReductionHashes = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256;
   if (!lockedNANDEncodedSemanticReductionHashes || Object.keys(lockedNANDEncodedSemanticReductionHashes).length !== 11 || !Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS).every(([name, row]) => lockedNANDEncodedSemanticReductionHashes[name] === row.hash)) failures.push("formal-publication locked-NAND encoded semantic-reduction fingerprint mismatch");
@@ -3731,6 +3751,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   if (!Object.entries(LOCKED_NAND_TARGET_EMITTER_RELEASE_IDENTITIES).every(
     ([suffix, theorem]) => earned[`lockedNANDTargetEmitter${suffix}`] === theorem
   )) failures.push("formal-publication locked-NAND target-emitter theorem identity mismatch");
+  if (!(earned.lockedNANDPolynomialReductionFormalized === true
+      && earned.lockedNANDPolynomialReductionAxiomAuditPassed === true
+      && earned.lockedNANDPolynomialReductionAuditedDeclarationCount === 16
+      && earned.lockedNANDPolynomialReductionEmptyAxiomDeclarationCount === 2
+      && earned.lockedNANDPolynomialReductionPropextOnlyDeclarationCount === 2
+      && earned.lockedNANDPolynomialReductionPropextQuotSoundDeclarationCount === 12
+      && earned.lockedNANDPolynomialReductionScope === "strict-version-zero-parser-emitter-polynomial-reduction-with-exact-language-equivalence-and-recursive-raw-refinement"
+      && earned.lockedNANDPolynomialReductionExactFunctionFormalized === true
+      && earned.lockedNANDPolynomialReductionExactOutputFormalized === true
+      && earned.lockedNANDPolynomialReductionLanguageEquivalenceFormalized === true
+      && earned.lockedNANDPolynomialReductionWitnessFormalized === true
+      && earned.lockedNANDPolynomialReductionRawRefinementFormalized === true)) failures.push("formal-publication locked-NAND polynomial-reduction boundary mismatch");
+  if (JSON.stringify(earned.lockedNANDPolynomialReductionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.lockedNANDPolynomialReductionProjectAxiomClosure)
+      || earned.lockedNANDPolynomialReductionProjectAxiomClosure.length !== 0) failures.push("formal-publication locked-NAND polynomial-reduction axiom closure mismatch");
+  const lockedNANDPolynomialReductionHashes = earned.lockedNANDPolynomialReductionTheoremKernelTypeSha256;
+  if (!lockedNANDPolynomialReductionHashes
+      || Object.keys(lockedNANDPolynomialReductionHashes).length !== 5
+      || !Object.entries(LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREMS).every(([name, row]) => lockedNANDPolynomialReductionHashes[name] === row.hash)) failures.push("formal-publication locked-NAND polynomial-reduction fingerprint mismatch");
+  if (!Object.entries(LOCKED_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES).every(
+    ([suffix, theorem]) => earned[`lockedNANDPolynomialReduction${suffix}`] === theorem
+  )) failures.push("formal-publication locked-NAND polynomial-reduction theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -3927,7 +3969,7 @@ function validateCurrentPayloads(contents, failures) {
     if (!(status.leanLockedNANDDerivedFinalOutputLawsFormalized === true && status.leanLockedNANDResidualSlackAtMostFourFormalized === true && status.leanLockedNANDSatisfiableFinalConditionsFormalized === true && status.leanLockedNANDGlobalSemanticThresholdFormalized === true && status.leanLockedNANDGlobalSemanticThresholdAxiomAuditPassed === true && status.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount === 8 && status.leanLockedNANDGlobalSemanticThresholdScope === "arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold")) failures.push("public status locked-NAND global semantic-threshold evidence mismatch");
     const lockedNANDEncodedSemanticReductionMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
     if (!lockedNANDEncodedSemanticReductionMilestone || lockedNANDEncodedSemanticReductionMilestone.earned !== true || lockedNANDEncodedSemanticReductionMilestone.allPresent !== true || lockedNANDEncodedSemanticReductionMilestone.allKernelTypesMatch !== true || lockedNANDEncodedSemanticReductionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11) failures.push("public status locked-NAND encoded semantic-reduction milestone mismatch");
-    if (!(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && status.leanConcreteLockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true && status.leanConcreteLockedNANDParserMachineFormalized === true && status.leanConcreteLockedNANDEmitterMachineFormalized === true && status.leanConcreteLockedNANDPolynomialReductionFormalized === false)) failures.push("public status locked-NAND encoded semantic-reduction evidence mismatch");
+    if (!(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && status.leanConcreteLockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true && status.leanConcreteLockedNANDParserMachineFormalized === true && status.leanConcreteLockedNANDEmitterMachineFormalized === true && status.leanConcreteLockedNANDPolynomialReductionFormalized === true)) failures.push("public status locked-NAND encoded semantic-reduction evidence mismatch");
     const lockedNANDSourceParserMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
         || lockedNANDSourceParserMilestone.earned !== true
@@ -3994,6 +4036,37 @@ function validateCurrentPayloads(contents, failures) {
         && status.leanConcreteLockedNANDEmitterStrictParserCompositionFormalized === true
         && status.leanConcreteLockedNANDEmitterOutputSizeBoundFormalized === true
         && status.leanConcreteLockedNANDEmitterScope === "literal-1387921-rule-grammar-only-all-input-target-emitter-with-strict-parser-composition-polynomial-bounds-and-recursive-raw-refinement")) failures.push("public status locked-NAND target-emitter evidence mismatch");
+    const lockedNANDPolynomialReductionMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
+    if (!lockedNANDPolynomialReductionMilestone
+        || lockedNANDPolynomialReductionMilestone.earned !== true
+        || lockedNANDPolynomialReductionMilestone.status !== "formalized-polynomial-reduction"
+        || lockedNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
+        || lockedNANDPolynomialReductionMilestone.scope !== LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE
+        || lockedNANDPolynomialReductionMilestone.nonClaim !== LOCKED_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM
+        || lockedNANDPolynomialReductionMilestone.allPresent !== true
+        || lockedNANDPolynomialReductionMilestone.allKernelTypesMatch !== true
+        || lockedNANDPolynomialReductionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || lockedNANDPolynomialReductionMilestone.requiredTheorems?.length !== 5) failures.push("public status locked-NAND polynomial-reduction milestone mismatch");
+    for (const [name, evidence] of Object.entries(LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREMS)) {
+      const theoremRow = lockedNANDPolynomialReductionMilestone?.theoremRows?.find((row) => row.name === name);
+      if (!lockedNANDPolynomialReductionMilestone?.requiredTheorems?.includes(name)
+          || !theoremRow
+          || theoremRow.present !== true
+          || theoremRow.kind !== "theorem"
+          || JSON.stringify(theoremRow.axioms) !== JSON.stringify(evidence.axioms)
+          || theoremRow.actualKernelTypeSha256 !== evidence.hash
+          || theoremRow.expectedKernelTypeSha256 !== evidence.hash
+          || theoremRow.kernelTypeFingerprintMatches !== true) failures.push(`public status locked-NAND polynomial-reduction theorem mismatch: ${name}`);
+    }
+    if (!(status.leanConcreteLockedNANDPolynomialReductionFormalized === true
+        && status.leanConcreteLockedNANDPolynomialReductionAxiomAuditPassed === true
+        && status.leanConcreteLockedNANDPolynomialReductionAuditedDeclarationCount === 16
+        && status.leanConcreteLockedNANDPolynomialReductionExactFunctionFormalized === true
+        && status.leanConcreteLockedNANDPolynomialReductionExactOutputFormalized === true
+        && status.leanConcreteLockedNANDPolynomialReductionLanguageEquivalenceFormalized === true
+        && status.leanConcreteLockedNANDPolynomialReductionWitnessFormalized === true
+        && status.leanConcreteLockedNANDPolynomialReductionRawRefinementFormalized === true
+        && status.leanConcreteLockedNANDPolynomialReductionScope === "strict-version-zero-parser-emitter-polynomial-reduction-with-exact-language-equivalence-and-recursive-raw-refinement")) failures.push("public status locked-NAND polynomial-reduction evidence mismatch");
     if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
@@ -4002,7 +4075,7 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 20957 || inventory.theoremCount !== 11424 || inventory.assumptionFreeTheoremCount !== 5968 || inventory.excludedPrivateDeclarationCount !== 11692 || inventory.sourceClosureModuleCount !== 184 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 20965 || inventory.theoremCount !== 11430 || inventory.assumptionFreeTheoremCount !== 5968 || inventory.excludedPrivateDeclarationCount !== 11692 || inventory.sourceClosureModuleCount !== 185 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -4076,6 +4149,14 @@ function validateCurrentPayloads(contents, failures) {
           || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory locked-NAND target-emitter theorem mismatch: ${name}`);
       else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory locked-NAND target-emitter fingerprint mismatch: ${name}`);
+    }
+    for (const [name, evidence] of Object.entries(LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory locked-NAND polynomial-reduction theorem mismatch: ${name}`);
+      else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory locked-NAND polynomial-reduction fingerprint mismatch: ${name}`);
     }
     for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4510,8 +4591,8 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 2030) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2030`);
+    if (inventory.milestoneCandidates?.length !== 2035) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2035`);
     }
   }
 }
@@ -5104,21 +5185,21 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     const lockedNANDGlobalSemanticThresholdMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-semantic-threshold");
-    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 71 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 68 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
+    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 72 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 69 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
     const lockedNANDGlobalSemanticThresholdPins = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS)) {
       if (!lockedNANDGlobalSemanticThresholdMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalSemanticThresholdPins[name] !== row.hash) failures.push(`core publication map locked-NAND global semantic-threshold fingerprint mismatch: ${name}`);
     }
     const lockedNANDEncodedSemanticReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
-    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 71 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 68 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
+    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 72 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 69 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
     const lockedNANDEncodedSemanticReductionPins = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS)) {
       if (!lockedNANDEncodedSemanticReductionMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDEncodedSemanticReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
     }
     const lockedNANDSourceParserMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
-        || publicationMap.milestones?.length !== 71
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 68
+        || publicationMap.milestones?.length !== 72
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 69
         || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
         || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20
         || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
@@ -5131,8 +5212,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDTargetEmitterMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-target-emitter");
     if (!lockedNANDTargetEmitterMilestone
-        || publicationMap.milestones?.length !== 71
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 68
+        || publicationMap.milestones?.length !== 72
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 69
         || lockedNANDTargetEmitterMilestone.classification !== "formalized-foundation-only"
         || lockedNANDTargetEmitterMilestone.requiredTheorems?.length !== 22
         || lockedNANDTargetEmitterMilestone.scope !== LOCKED_NAND_TARGET_EMITTER_SCOPE
@@ -5142,6 +5223,20 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDTargetEmitterMilestone?.requiredTheorems?.includes(name)
           || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
           || lockedNANDTargetEmitterPins[name] !== row.hash) failures.push(`core publication map locked-NAND target-emitter fingerprint mismatch: ${name}`);
+    }
+    const lockedNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
+    if (!lockedNANDPolynomialReductionMilestone
+        || publicationMap.milestones?.length !== 72
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 69
+        || lockedNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
+        || lockedNANDPolynomialReductionMilestone.requiredTheorems?.length !== 5
+        || lockedNANDPolynomialReductionMilestone.scope !== LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE
+        || lockedNANDPolynomialReductionMilestone.nonClaim !== LOCKED_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM) failures.push("core publication map locked-NAND polynomial-reduction milestone mismatch");
+    const lockedNANDPolynomialReductionPins = earned.lockedNANDPolynomialReductionTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREMS)) {
+      if (!lockedNANDPolynomialReductionMilestone?.requiredTheorems?.includes(name)
+          || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+          || lockedNANDPolynomialReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND polynomial-reduction fingerprint mismatch: ${name}`);
     }
   }
 

@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-29T18:18:47Z</updated>
+  <updated>2026-07-30T04:25:46Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-polynomial-reduction</id>
+    <title>The checked conversion is now a formal efficient reduction</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-polynomial-reduction"/>
+    <published>2026-07-30T04:25:46Z</published>
+    <updated>2026-07-30T04:25:46Z</updated>
+    <summary type="text">A reduction is a reliable translation from one yes-or-no problem into another. The project already had checked machines that validate a circuit description and build the corresponding comparison object. Lean now packages those machines as one formal translation and proves, for every possible input, that the original circuit has a successful input exactly when the translated comparison passes its threshold. Lean also records that this translation runs within an explicit polynomial limit, so the construction does not hide an impractical exhaustive search. This is an important complexity-theory bridge, but it does not yet connect ordinary CNF-SAT to this exact source format, prove that the target comparison can be solved efficiently, discharge the remaining assumptions, or prove P = NP. The 55% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 55 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A reduction is a reliable translation from one yes-or-no problem into another. The project already had checked machines that validate a circuit description and build the corresponding comparison object. Lean now packages those machines as one formal translation and proves, for every possible input, that the original circuit has a successful input exactly when the translated comparison passes its threshold.&lt;/p&gt;&lt;p&gt;Lean also records that this translation runs within an explicit polynomial limit, so the construction does not hide an impractical exhaustive search. This is an important complexity-theory bridge, but it does not yet connect ordinary CNF-SAT to this exact source format, prove that the target comparison can be solved efficiently, discharge the remaining assumptions, or prove P = NP. The 55% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;55&quot;&gt;Editorial progress estimate at publication: 55%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-polynomial-reduction&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-target-emitter</id>
     <title>A checked machine can now build the comparison circuit</title>

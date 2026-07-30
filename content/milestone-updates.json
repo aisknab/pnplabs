@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-30-concrete-locked-nand-polynomial-reduction",
+      "milestoneId": "concrete-locked-nand-polynomial-reduction",
+      "publishedAt": "2026-07-30T04:25:46Z",
+      "title": "The checked conversion is now a formal efficient reduction",
+      "plainLanguage": [
+        "A reduction is a reliable translation from one yes-or-no problem into another. The project already had checked machines that validate a circuit description and build the corresponding comparison object. Lean now packages those machines as one formal translation and proves, for every possible input, that the original circuit has a successful input exactly when the translated comparison passes its threshold.",
+        "Lean also records that this translation runs within an explicit polynomial limit, so the construction does not hide an impractical exhaustive search. This is an important complexity-theory bridge, but it does not yet connect ordinary CNF-SAT to this exact source format, prove that the target comparison can be solved efficiently, discharge the remaining assumptions, or prove P = NP. The 55% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 55,
+      "source": {
+        "commit": "03f62a5465c1eacd399671121123a3891d8b3e67",
+        "tree": "9ac174c23560579e75091fefda81f81e986b6cc1",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-30-92",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-30-LOCKED-NAND-POLYNOMIAL-REDUCTION-91"
+      }
+    },
+    {
       "id": "2026-07-30-concrete-locked-nand-target-emitter",
       "milestoneId": "concrete-locked-nand-target-emitter",
       "publishedAt": "2026-07-29T18:18:47Z",

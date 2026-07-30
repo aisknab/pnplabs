@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91';
-const STATUS_SHA256 = 'e246e54524b5ef8d6a94a33ebe0888020e607be90e49362df33222d792a9e929';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-TARGET-EMITTER-90';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-29-91';
-const INVENTORY_SHA256 = '7d9f871badb77f300b36425e99ecb906d94fb73120e95a62a774c618fe48d100';
-const SOURCE_CLOSURE_SHA256 = 'b54846d2e1bf730445fce72e21ec9a82465a32b3be6a473d037e882da87ec394';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-30-92';
+const STATUS_SHA256 = '8bd1642ce803a8482921db9ae42ae623cc5cf760e4830050f9622624bce6ad51';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-30-LOCKED-NAND-POLYNOMIAL-REDUCTION-91';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-30-92';
+const INVENTORY_SHA256 = '3413510e8712416cdb1b5d846053e5c886bbc1cd550fe7533411573e5f88bf64';
+const SOURCE_CLOSURE_SHA256 = '8f98bd81a6993bf025b232863107c1e71f932f509d6653cd92189acb6922958c';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 20957,
-  theorems: 11424,
+  declarations: 20965,
+  theorems: 11430,
   assumptionFreeTheorems: 5968,
   excludedPrivateDeclarations: 11692,
-  modules: 184,
+  modules: 185,
   axioms: 4,
 });
 
@@ -3377,6 +3377,14 @@ const LOCKED_NAND_TARGET_EMITTER_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.strictLockedNANDPolynomialTimeFunction_output", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDTargetEmitterControllerCompiled"],
 ]);
 
+const LOCKED_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_function", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDPolynomialReduction"],
+  ["PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_output", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDPolynomialReduction"],
+  ["PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_correct", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDPolynomialReduction"],
+  ["PNP.Concrete.LockedNAND.encodedNANDSAT_reducesTo_encodedLockedNANDThreshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDPolynomialReduction"],
+  ["PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_hasRawRefinement", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDPolynomialReduction"],
+]);
+
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
   'Formal.LockedNANDThreshold',
@@ -3453,6 +3461,7 @@ const MILESTONE_IDS = Object.freeze([
   'concrete-locked-nand-encoded-semantic-boundary',
   'concrete-locked-nand-source-parser',
   'concrete-locked-nand-target-emitter',
+  'concrete-locked-nand-polynomial-reduction',
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
   'global-locked-nand-threshold',
@@ -4137,12 +4146,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 589,
-    definition: 8434,
+    definition: 8436,
     inductive: 253,
     opaque: 0,
     quotient: 0,
     recursor: 253,
-    theorem: 11424,
+    theorem: 11430,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4439,6 +4448,11 @@ function validateInventory(inventory) {
     module,
   }));
   const lockedNANDTargetEmitter = LOCKED_NAND_TARGET_EMITTER_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
+  const lockedNANDPolynomialReduction = LOCKED_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS.map(([name, axioms, module]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
     module,
@@ -4751,6 +4765,9 @@ function validateInventory(inventory) {
     && lockedNANDTargetEmitter.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && lockedNANDPolynomialReduction.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -4792,7 +4809,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2030
+    && inventory.milestoneCandidates.length === 2035
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -4856,7 +4873,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 68;
+    const shouldBeEarned = index < 69;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -4892,6 +4909,9 @@ function validateStatus(status, inventory) {
   const targetEmitterMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'concrete-locked-nand-target-emitter'
   );
+  const polynomialReductionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'concrete-locked-nand-polynomial-reduction'
+  );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
     && status.publicSurfaceBaselineCoordinate === PUBLIC_SURFACE_COORDINATE
@@ -4921,10 +4941,17 @@ function validateStatus(status, inventory) {
     )
     && targetEmitterMilestone?.classification === 'formalized-foundation-only'
     && targetEmitterMilestone.scope === "One literal 1,387,921-rule grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf RawRefinement, and strict parser/emitter composition computing buildLockedNANDInstance."
-    && targetEmitterMilestone.nonClaim === "The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. This milestone does not yet package the language equivalence as PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, transport NP-hardness, or prove P = NP."
+    && targetEmitterMilestone.nonClaim === "The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. The standalone emitter does not itself package the language equivalence as PolynomialReduction; the downstream concrete reduction milestone now does. The abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness transport, and P = NP remain absent."
     && sameJson(
       targetEmitterMilestone.requiredTheorems,
       LOCKED_NAND_TARGET_EMITTER_DECLARATIONS.map(([name]) => name)
+    )
+    && polynomialReductionMilestone?.classification === 'formalized-polynomial-reduction'
+    && polynomialReductionMilestone.scope === "The existing strict parser/emitter composition is packaged as a concrete polynomial many-one reduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact function identity, exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive raw-machine refinement."
+    && polynomialReductionMilestone.nonClaim === "This does not identify the concrete source language with CNFSAT or establish NP-hardness, discharge the abstract target-language assumption, prove the report-level locked-NAND threshold theorem, put CNFSAT in P, complete residual minimization or ZeroSlack, or prove P = NP."
+    && sameJson(
+      polynomialReductionMilestone.requiredTheorems,
+      LOCKED_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS.map(([name]) => name)
     )
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
@@ -5443,7 +5470,15 @@ function validateStatus(status, inventory) {
     && status.leanConcreteLockedNANDEmitterStrictParserCompositionFormalized === true
     && status.leanConcreteLockedNANDEmitterOutputSizeBoundFormalized === true
     && status.leanConcreteLockedNANDEmitterScope === 'literal-1387921-rule-grammar-only-all-input-target-emitter-with-strict-parser-composition-polynomial-bounds-and-recursive-raw-refinement'
-    && status.leanConcreteLockedNANDPolynomialReductionFormalized === false
+    && status.leanConcreteLockedNANDPolynomialReductionFormalized === true
+    && status.leanConcreteLockedNANDPolynomialReductionAxiomAuditPassed === true
+    && status.leanConcreteLockedNANDPolynomialReductionAuditedDeclarationCount === 16
+    && status.leanConcreteLockedNANDPolynomialReductionExactFunctionFormalized === true
+    && status.leanConcreteLockedNANDPolynomialReductionExactOutputFormalized === true
+    && status.leanConcreteLockedNANDPolynomialReductionLanguageEquivalenceFormalized === true
+    && status.leanConcreteLockedNANDPolynomialReductionWitnessFormalized === true
+    && status.leanConcreteLockedNANDPolynomialReductionRawRefinementFormalized === true
+    && status.leanConcreteLockedNANDPolynomialReductionScope === 'strict-version-zero-parser-emitter-polynomial-reduction-with-exact-language-equivalence-and-recursive-raw-refinement'
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82
