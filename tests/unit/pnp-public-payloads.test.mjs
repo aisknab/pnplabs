@@ -1591,7 +1591,7 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 75);
+  assert.equal(index.version, 76);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, '25ffe07ac77167c347dece712776b0b75b69a912');
   assert.equal(index.sourceTree, '9890af1d8b919dd432ec00707eb5555d720000d1');
@@ -3069,7 +3069,7 @@ test('static inventory prose matches the compiled declaration boundary', async (
   assert.equal(readme.includes('21,020** exported public declarations across **109** modules'), false);
   assert.equal(paper.includes('Exactly 11,970 private compiler auxiliaries are excluded.'), true);
   assert.equal(guide.includes('Exactly 11,970 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['21,020', '11,477', '5,987', '11,970', '186 modules', 'sixty-seven A4 pages', '1,387,921-rule, nine-symbol target emitter', 'allInputWorkBound(n)']) {
+  for (const fragment of ['21,020', '11,477', '5,987', '11,970', '186 modules', 'sixty-seven A4 pages', 'a total semantic compiler', '18 reviewed theorem pins', 'quadratic serialized-output', 'buildLockedNANDInstance']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);
