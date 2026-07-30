@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 413,228 | `11473c09eaff4e1cb6f2f4d7a8c36441564376dab59904ceb10d76f011a2b7fa` |
-| `downloads/canonical-proof-report.pdf` | 413,228 | `11473c09eaff4e1cb6f2f4d7a8c36441564376dab59904ceb10d76f011a2b7fa` |
-| `downloads/canonical_proof_report.tex` | 169,293 | `19c7dccef85be8c534821d7a8839fe27f6790bb3770dfa8e4749ff29ab52dcc7` |
-| `downloads/canonical-proof-report.tex` | 169,293 | `19c7dccef85be8c534821d7a8839fe27f6790bb3770dfa8e4749ff29ab52dcc7` |
-| `public/pnp-status.json` | 1,634,055 | `8bd1642ce803a8482921db9ae42ae623cc5cf760e4830050f9622624bce6ad51` |
-| `public/pnp-theorem-inventory.json` | 12,889,740 | `3413510e8712416cdb1b5d846053e5c886bbc1cd550fe7533411573e5f88bf64` |
+| `downloads/canonical_proof_report.pdf` | 415,380 | `e042bd2d3263b541adb57295c925aaef4ef38fef7b4cfe7d192d45f772593e49` |
+| `downloads/canonical-proof-report.pdf` | 415,380 | `e042bd2d3263b541adb57295c925aaef4ef38fef7b4cfe7d192d45f772593e49` |
+| `downloads/canonical_proof_report.tex` | 171,476 | `505442a00b5b3ebf40a173ee22faf86bc0eb6a12a921899a670a23fc54c6e67d` |
+| `downloads/canonical-proof-report.tex` | 171,476 | `505442a00b5b3ebf40a173ee22faf86bc0eb6a12a921899a670a23fc54c6e67d` |
+| `public/pnp-status.json` | 1,646,904 | `1fa05f578f1291018c07f3fea452ff970c5bb00950f9382f13956358c94e17ae` |
+| `public/pnp-theorem-inventory.json` | 12,933,372 | `576816bd782378cd1d19ad1de76485b82896e6f141853946b6e0ad7df1fefa82` |
 
-The PDF must have sixty-six A4 pages. Both filename styles must be byte-identical.
+The PDF must have sixty-seven A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 03f62a5465c1eacd399671121123a3891d8b3e67
+git -C ../pnp checkout 95773a6583ca3d41f7b0c82090f000d9c6eb72da
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,32 +65,25 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 20,965 public declarations, 11,430 theorem-kind declarations,
-5,968 assumption-free theorem-kind declarations, 11,692 excluded private auxiliaries, 185 modules, and
+Expected compiled inventory counts are 21,020 public declarations, 11,477 theorem-kind declarations,
+5,987 assumption-free theorem-kind declarations, 11,970 excluded private auxiliaries, 186 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
-constraint. The newest milestone gives normalized source circuits and complete locked-NAND
-candidates a strict version-zero bit grammar. The exact round-trip theorem
-`PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance` preserves every valid encoded
-instance. The pure all-bitstring transformation is fail-closed on malformed input, and
-`PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct` proves that valid source bytes cross the
-locked-circuit threshold exactly when the decoded source circuit is satisfiable. The eleven audited
-pins use only `propext` and `Quot.sound`, with no project axiom or `Classical.choice`.
+constraint. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
+polynomial reduction remain exact and fail closed on malformed source bytes. The newest milestone adds
+a total semantic compiler from strict canonical CNF formulas to intrinsically topological NAND circuits.
+The 18 reviewed theorem pins prove codec canonicality, well-formed topological output, exact assignment
+and satisfiability semantics including empty edge cases, exact gate count, a quadratic serialized-output
+bound, malformed-input failure, all-bitstring language equivalence, and semantic composition with
+`buildLockedNANDInstance`. The complete 41-declaration audit has 16 empty, 11 `propext`-only, and
+14 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The literal 1,387,921-rule, nine-symbol target emitter emits the exact
-direct locked-NAND target for every grammar-decoded circuit, rejects malformed grammar with empty
-output, cannot time out within `6 * allInputWorkBound(n)` compiled steps, and has the explicit quadratic
-output-size bound recorded in the release manifest. Compiled polynomial-time machine/function
-witnesses, exact leaf `RawRefinement`, and strict parser/emitter composition computing
-`buildLockedNANDInstance` are formalized. The newest milestone packages that composition as a
-concrete polynomial many-one reduction from `EncodedNANDSAT` to
-`EncodedLockedNANDThreshold`. Exact function identity, exact output, all-bitstring language
-equivalence, the `ReducesTo` witness, and recursive raw-machine refinement are all checked. This
-boundary does not identify the source language with ordinary CNF-SAT, establish NP-hardness,
-discharge the abstract locked-NAND threshold axiom, or solve the target language in polynomial
-time. The remaining Cook-Levin formula body, complete raw builder, CNF-SAT in P, and
-NP-completeness must also remain absent.
+The CNF-to-NAND compiler is deliberately recorded as a semantic and size boundary only. It has no
+compiled finite work machine, `PolynomialTimeFunction`, or `PolynomialReduction` witness yet, so
+the required CNF-SAT NP-hardness transport is absent. The abstract locked-NAND threshold axiom,
+remaining Cook-Levin formula body, complete raw builder, CNF-SAT in P, and NP-completeness must also
+remain absent.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

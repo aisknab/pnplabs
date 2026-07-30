@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-31-concrete-cnf-to-nand-semantic-compiler",
+      "milestoneId": "concrete-cnf-to-nand-semantic-compiler",
+      "publishedAt": "2026-07-30T23:06:02Z",
+      "title": "A general CNF formula can now be translated into NAND",
+      "plainLanguage": [
+        "A CNF formula is a list of yes-or-no requirements, while a NAND circuit is a network built from one simple universal logic operation. Lean now checks a general translation between these two forms and proves that a solution exists before the translation exactly when one exists afterward.",
+        "The proof covers empty formulas, empty clauses, invalid encodings, out-of-range variables, the exact number of added gates, and a polynomial limit on the output size. This is a semantic and size result, not yet the finite-machine polynomial-time reduction needed for the full complexity-theory bridge, and it does not prove P = NP. The 56% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 56,
+      "source": {
+        "commit": "95773a6583ca3d41f7b0c82090f000d9c6eb72da",
+        "tree": "9890af1d8b919dd432ec00707eb5555d720000d1",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-93",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-SEMANTIC-COMPILER-92"
+      }
+    },
+    {
       "id": "2026-07-30-concrete-locked-nand-polynomial-reduction",
       "milestoneId": "concrete-locked-nand-polynomial-reduction",
       "publishedAt": "2026-07-30T04:25:46Z",

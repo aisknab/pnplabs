@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,035 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,053 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 20,965 public declarations;
-- 11,430 theorem-kind declarations;
-- 5,968 assumption-free theorem-kind declarations;
-- 184 source-closure modules;
-- 11,692 excluded private compiler auxiliaries;
+- 21,020 public declarations;
+- 11,477 theorem-kind declarations;
+- 5,987 assumption-free theorem-kind declarations;
+- 186 source-closure modules;
+- 11,970 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The sixty-nine earned scopes are:
+The seventy earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -119,7 +119,8 @@ The sixty-nine earned scopes are:
 | Encoded locked-NAND semantic boundary | Strict version-zero token, normalized-circuit, and complete-instance codecs have exact round trips; malformed source bytes are rejected; `encoded_fullCandidate_threshold_iff_satisfiable` and `buildLockedNANDInstance_correct` prove the pure encoded construction preserves the typed satisfiability threshold | The downstream parser, emitter, and concrete reduction make this construction executable; this milestone alone does not discharge the abstract threshold, establish CNF-SAT NP-completeness or in P, or prove `P = NP` |
 | Concrete strict-v0 locked-NAND source parser | One literal nine-symbol finite work machine with 228 states and 2,052 pairwise-query-distinct rules accepts exactly `ValidEncodedCircuit`, preserves valid bytes, clears invalid bytes, cannot time out within `6 * 4096 * (n + 1)^3`, and supplies polynomial-time machine/function witnesses plus the validator leaf's exact `RawRefinement` | The downstream emitter and reduction compose with this parser, but the source remains `EncodedNANDSAT`, not ordinary CNF-SAT; the abstract threshold, hardness transport, CNF-SAT results, and `P = NP` remain absent |
 | Concrete strict-v0 locked-NAND target emitter | One literal 1,387,921-rule, nine-symbol grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf `RawRefinement`, and strict parser/emitter composition computing `buildLockedNANDInstance` | The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. The standalone emitter does not itself package the language equivalence as `PolynomialReduction`; the downstream concrete reduction milestone now does. The abstract threshold assumption, CNF-SAT in P, NP-hardness transport, and `P = NP` remain absent |
-| Concrete strict-v0 locked-NAND polynomial reduction | The parser/emitter composition is packaged as a concrete polynomial many-one reduction from `EncodedNANDSAT` to `EncodedLockedNANDThreshold`; exact function identity, exact output, all-bitstring language equivalence, a `ReducesTo` witness, recursive raw-machine refinement, and the complete 16-declaration approved axiom audit are formalized | This does not identify the source with ordinary CNF-SAT or establish NP-hardness, discharge the abstract target-language assumption or report-level threshold theorem, put CNF-SAT in P, complete residual minimization or ZeroSlack, or prove `P = NP` |
+| Concrete strict-v0 locked-NAND polynomial reduction | The parser/emitter composition is packaged as a concrete polynomial many-one reduction from `EncodedNANDSAT` to `EncodedLockedNANDThreshold`; exact function identity, exact output, all-bitstring language equivalence, a `ReducesTo` witness, recursive raw-machine refinement, and the complete 16-declaration approved axiom audit are formalized | This reduction itself does not start from ordinary CNF-SAT or establish NP-hardness; the following semantic compiler bridges canonical CNF semantically but is not yet a finite-machine polynomial reduction. The abstract target-language assumption, CNF-SAT in P, ZeroSlack, and `P = NP` remain unresolved. |
+| General CNF-to-NAND semantic compiler | A total answer-independent compiler transforms every strict canonical CNF formula into an intrinsically topological well-formed NAND circuit, preserves satisfiability exactly, proves the exact gate count and a quadratic serialized-output bound, fails closed on every malformed bitstring, and composes semantically with the concrete locked-NAND threshold builder. The 41-declaration audit has 16 empty, 11 `propext`-only, and 14 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`. | This is a pure semantic and size-bound compiler, not yet a compiled finite work machine, a PolynomialTimeFunction, or a PolynomialReduction witness. It does not establish CNFSAT NP-hardness transport, a deterministic polynomial-time CNFSAT decider, the abstract report-level locked-NAND premise, ZeroSlack/PCCMin, or P = NP. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -151,7 +152,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-six-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-seven-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
