@@ -70,6 +70,14 @@ const LOCKED_NAND_TARGET_EMITTER_HASHES = {
   "PNP.Concrete.LockedNAND.TargetEmitterControllerCompiled.strictLockedNANDPolynomialTimeFunction_output": "fa0bf3e4613cf4bd3d15ff0e6423798455fc4690673e81e5cf84a0cc7932716e"
 };
 
+const LOCKED_NAND_POLYNOMIAL_REDUCTION_HASHES = {
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_function": "3e8000fd18d8836c1ae1ded6b3d0bb46d0ea618c31ba32c7f1425773e62d09c3",
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_output": "06df8e094590a5b0bf522a9daf5921a28667c7d44e73d447d9366ae201ca3ef4",
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_correct": "94955e4d9826f8364e0ecae478eb33cc92620403673db079c7f4a961c15b3739",
+  "PNP.Concrete.LockedNAND.encodedNANDSAT_reducesTo_encodedLockedNANDThreshold": "6c133d95b3eb1d8d04f89be467dfbe6405883cb352654eacc5b8a23b99857f4d",
+  "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_hasRawRefinement": "9f0b15fadf98e634edafe5d6a2025d1d92424a6876a018802153a96b934b1061"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -88,18 +96,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "23f53b6efccee3ff50987cf55338b8b01ddad343");
+  assert.equal(result.coreCommit, "03f62a5465c1eacd399671121123a3891d8b3e67");
 });
 
-test("current release is pinned, sixty-five-page, exposes the strict-v0 parser and target emitter, and fails closed", () => {
+test("current release is pinned, sixty-six-page, exposes the strict-v0 polynomial reduction, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-30-74");
-  assert.equal(release.source.commit, "23f53b6efccee3ff50987cf55338b8b01ddad343");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-30-75");
+  assert.equal(release.source.commit, "03f62a5465c1eacd399671121123a3891d8b3e67");
   assert.equal(release.source.proofCommit, "25ffe07ac77167c347dece712776b0b75b69a912");
-  assert.equal(release.source.tree, "1549519b1c971a062b5315c8146272786a407648");
+  assert.equal(release.source.tree, "9ac174c23560579e75091fefda81f81e986b6cc1");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 65);
+  assert.equal(release.artifacts.report.pageCount, 66);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1525,7 +1533,47 @@ test("current release is pinned, sixty-five-page, exposes the strict-v0 parser a
   assert.deepEqual(release.earnedBoundary.lockedNANDTargetEmitterTheoremKernelTypeSha256, LOCKED_NAND_TARGET_EMITTER_HASHES);
   assert.deepEqual(release.earnedBoundary.lockedNANDTargetEmitterAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDTargetEmitterProjectAxiomClosure, []);
-  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionFormalized, false);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionAuditedDeclarationCount, 16);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionEmptyAxiomDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionPropextQuotSoundDeclarationCount, 12);
+  assert.equal(
+    release.earnedBoundary.lockedNANDPolynomialReductionScope,
+    "strict-version-zero-parser-emitter-polynomial-reduction-with-exact-language-equivalence-and-recursive-raw-refinement"
+  );
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionExactFunctionFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionExactOutputFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionLanguageEquivalenceFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionWitnessFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDPolynomialReductionRawRefinementFormalized, true);
+  assert.deepEqual(
+    release.earnedBoundary.lockedNANDPolynomialReductionTheoremKernelTypeSha256,
+    LOCKED_NAND_POLYNOMIAL_REDUCTION_HASHES
+  );
+  assert.deepEqual(release.earnedBoundary.lockedNANDPolynomialReductionAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDPolynomialReductionProjectAxiomClosure, []);
+  assert.equal(
+    release.earnedBoundary.lockedNANDPolynomialReductionFunctionTheorem,
+    "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_function"
+  );
+  assert.equal(
+    release.earnedBoundary.lockedNANDPolynomialReductionOutputTheorem,
+    "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_output"
+  );
+  assert.equal(
+    release.earnedBoundary.lockedNANDPolynomialReductionCorrectTheorem,
+    "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_correct"
+  );
+  assert.equal(
+    release.earnedBoundary.lockedNANDPolynomialReductionWitnessTheorem,
+    "PNP.Concrete.LockedNAND.encodedNANDSAT_reducesTo_encodedLockedNANDThreshold"
+  );
+  assert.equal(
+    release.earnedBoundary.lockedNANDPolynomialReductionRawRefinementTheorem,
+    "PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_hasRawRefinement"
+  );
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
   assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
@@ -1552,12 +1600,12 @@ test("current release is pinned, sixty-five-page, exposes the strict-v0 parser a
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 71 milestones with the parser and target-emitter pins", () => {
+test("status and inventory publish exactly 72 milestones with the parser, emitter, and reduction pins", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 71);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 68);
+  assert.equal(milestones.length, 72);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 69);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -1619,23 +1667,58 @@ test("status and inventory publish exactly 71 milestones with the parser and tar
   assert.equal(status.leanConcreteLockedNANDEmitterRawRefinementFormalized, true);
   assert.equal(status.leanConcreteLockedNANDEmitterStrictParserCompositionFormalized, true);
   assert.equal(status.leanConcreteLockedNANDEmitterOutputSizeBoundFormalized, true);
-  assert.equal(status.leanConcreteLockedNANDPolynomialReductionFormalized, false);
+  const reduction = milestones.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
+  assert.equal(reduction.classification, "formalized-polynomial-reduction");
+  assert.equal(reduction.status, "formalized-polynomial-reduction");
+  assert.equal(reduction.earned, true);
+  assert.equal(reduction.allPresent, true);
+  assert.equal(reduction.allAssumptionFree, false);
+  assert.equal(reduction.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(reduction.allKernelTypesMatch, true);
+  assert.equal(reduction.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(reduction.requiredTheorems, Object.keys(LOCKED_NAND_POLYNOMIAL_REDUCTION_HASHES));
+  assert.deepEqual(
+    Object.fromEntries(reduction.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    LOCKED_NAND_POLYNOMIAL_REDUCTION_HASHES
+  );
+  for (const row of reduction.theoremRows) {
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, LOCKED_NAND_POLYNOMIAL_REDUCTION_HASHES[row.name], row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.kind, "theorem", row.name);
+    assert.equal(candidate.module, "PNP.Concrete.LockedNANDPolynomialReduction", row.name);
+    assert.deepEqual(candidate.axioms, ["Quot.sound", "propext"], row.name);
+  }
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionAuditedDeclarationCount, 16);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionExactFunctionFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionExactOutputFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionLanguageEquivalenceFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionWitnessFormalized, true);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionRawRefinementFormalized, true);
+  assert.equal(
+    status.leanConcreteLockedNANDPolynomialReductionScope,
+    "strict-version-zero-parser-emitter-polynomial-reduction-with-exact-language-equivalence-and-recursive-raw-refinement"
+  );
 
-  assert.equal(inventory.declarationCount, 20957);
-  assert.equal(inventory.theoremCount, 11424);
+  assert.equal(inventory.declarationCount, 20965);
+  assert.equal(inventory.theoremCount, 11430);
   assert.equal(inventory.assumptionFreeTheoremCount, 5968);
   assert.equal(inventory.excludedPrivateDeclarationCount, 11692);
-  assert.equal(inventory.sourceClosureModuleCount, 184);
-  assert.equal(inventory.milestoneCandidates.length, 2030);
+  assert.equal(inventory.sourceClosureModuleCount, 185);
+  assert.equal(inventory.milestoneCandidates.length, 2035);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
     constructor: 589,
-    definition: 8434,
+    definition: 8436,
     inductive: 253,
     opaque: 0,
     quotient: 0,
     recursor: 253,
-    theorem: 11424
+    theorem: 11430
   });
 });
 

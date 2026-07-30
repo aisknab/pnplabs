@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-30-92');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 20957);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 11424);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 20965);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 11430);
   assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 5968);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 11692);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 184);
-  assert.equal(status.formalPublicationMilestones.length, 71);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 68);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 185);
+  assert.equal(status.formalPublicationMilestones.length, 72);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 69);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
@@ -50,7 +50,7 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanConcreteLockedNANDEmitterRawRefinementFormalized, true);
   assert.equal(status.leanConcreteLockedNANDEmitterStrictParserCompositionFormalized, true);
   assert.equal(status.leanConcreteLockedNANDEmitterOutputSizeBoundFormalized, true);
-  assert.equal(status.leanConcreteLockedNANDPolynomialReductionFormalized, false);
+  assert.equal(status.leanConcreteLockedNANDPolynomialReductionFormalized, true);
   assert.equal(status.remainingBlockers.length, 6);
   assert.equal(status.projectSpecificAxiomInventory.length, 4);
   assert.equal(status.projectSpecificAxiomsRemaining, true);

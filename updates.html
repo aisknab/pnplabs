@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 54% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 55% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="54" aria-label="Estimated proof reconstruction progress: 54 percent">54%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 54 percent">
+        <progress class="proof-progress-meter" max="100" value="55" aria-label="Estimated proof reconstruction progress: 55 percent">55%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 55 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-30-concrete-locked-nand-polynomial-reduction" data-milestone-id="concrete-locked-nand-polynomial-reduction">
+        <div class="section-label"><time datetime="2026-07-30T04:25:46Z">2026-07-30</time> · earned milestone 69</div>
+        <h2>The checked conversion is now a formal efficient reduction</h2>
+        <p>A reduction is a reliable translation from one yes-or-no problem into another. The project already had checked machines that validate a circuit description and build the corresponding comparison object. Lean now packages those machines as one formal translation and proves, for every possible input, that the original circuit has a successful input exactly when the translated comparison passes its threshold.</p>
+        <p>Lean also records that this translation runs within an explicit polynomial limit, so the construction does not hide an impractical exhaustive search. This is an important complexity-theory bridge, but it does not yet connect ordinary CNF-SAT to this exact source format, prove that the target comparison can be solved efficiently, discharge the remaining assumptions, or prove P = NP. The 55% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 55%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-locked-nand-polynomial-reduction</code></p>
+          <p><strong>Classification:</strong> formalized-polynomial-reduction</p>
+          <p><strong>Verified scope:</strong> The existing strict parser/emitter composition is packaged as a concrete polynomial many-one reduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact function identity, exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive raw-machine refinement.</p>
+          <p><strong>Boundary:</strong> This does not identify the concrete source language with CNFSAT or establish NP-hardness, discharge the abstract target-language assumption, prove the report-level locked-NAND threshold theorem, put CNFSAT in P, complete residual minimization or ZeroSlack, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 5</p>
+          <p><strong>Core source:</strong> commit <code>03f62a5465c1eacd399671121123a3891d8b3e67</code>, tree <code>9ac174c23560579e75091fefda81f81e986b6cc1</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-30-92</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-30-LOCKED-NAND-POLYNOMIAL-REDUCTION-91</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-30-concrete-locked-nand-target-emitter" data-milestone-id="concrete-locked-nand-target-emitter">
         <div class="section-label"><time datetime="2026-07-29T18:18:47Z">2026-07-29</time> · earned milestone 68</div>
         <h2>A checked machine can now build the comparison circuit</h2>
@@ -45,7 +65,7 @@
           <p><strong>Milestone:</strong> <code>concrete-locked-nand-target-emitter</code></p>
           <p><strong>Classification:</strong> formalized-foundation-only</p>
           <p><strong>Verified scope:</strong> One literal 1,387,921-rule grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf RawRefinement, and strict parser/emitter composition computing buildLockedNANDInstance.</p>
-          <p><strong>Boundary:</strong> The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. This milestone does not yet package the language equivalence as PolynomialReduction, discharge the abstract locked-NAND threshold assumption, put CNFSAT in P, transport NP-hardness, or prove P = NP.</p>
+          <p><strong>Boundary:</strong> The standalone emitter intentionally accepts every grammar-decoded raw circuit, including intrinsically invalid references; strict fail-closed semantics come from parser composition. The standalone emitter does not itself package the language equivalence as PolynomialReduction; the downstream concrete reduction milestone now does. The abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness transport, and P = NP remain absent.</p>
           <p><strong>Reviewed theorem pins:</strong> 22</p>
           <p><strong>Core source:</strong> commit <code>23f53b6efccee3ff50987cf55338b8b01ddad343</code>, tree <code>1549519b1c971a062b5315c8146272786a407648</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-29-91</code>.</p>
           <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-29-LOCKED-NAND-TARGET-EMITTER-90</code>.</p>
