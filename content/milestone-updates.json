@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-07-31-concrete-cnf-to-nand-polynomial-reduction",
+      "milestoneId": "concrete-cnf-to-nand-polynomial-reduction",
+      "publishedAt": "2026-07-31T17:22:27Z",
+      "title": "The CNF-to-NAND translation now runs as a checked efficient process",
+      "plainLanguage": [
+        "The previous update proved that a CNF formula and its NAND translation have the same yes-or-no answer. This update adds one fixed, inspectable machine that performs that translation for every possible input. Lean checks that valid formulas produce exactly the intended circuit, while malformed inputs stop safely and produce no result.",
+        "Lean also proves that the work grows at a polynomial rate with the input size—the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 57,
+      "source": {
+        "commit": "3e60a7b270d4695da137a60d6a4a9ca59d3886f8",
+        "tree": "04dbf61379eb4d24f1adc8419bf6e9d2dd636346",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-94",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-POLYNOMIAL-REDUCTION-93"
+      }
+    },
+    {
       "id": "2026-07-31-concrete-cnf-to-nand-semantic-compiler",
       "milestoneId": "concrete-cnf-to-nand-semantic-compiler",
       "publishedAt": "2026-07-30T23:06:02Z",

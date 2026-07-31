@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '576816bd782378cd1d19ad1de76485b82896e6f141853946b6e0ad7df1fefa82');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 70);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 71);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -2658,7 +2658,7 @@ test('strict-v0 locked-NAND polynomial reduction requires every exact theorem an
   assert.equal(milestone.earned, true);
   assert.equal(milestone.classification, 'formalized-polynomial-reduction');
   assert.match(milestone.scope, /EncodedNANDSAT to EncodedLockedNANDThreshold/u);
-  assert.match(milestone.nonClaim, /downstream semantic compiler now identifies CNFSAT/u);
+  assert.match(milestone.nonClaim, /downstream all-input CNF compiler now identifies CNFSAT/u);
 
   for (const name of milestone.requiredTheorems) {
     const missing = structuredClone(inventory);
@@ -2741,7 +2741,7 @@ test('CNF-to-NAND semantic compiler requires every exact theorem and rejects com
   assert.equal(compiler.earned, true);
   assert.equal(compiler.classification, 'formalized-semantic-boundary');
   assert.match(compiler.scope, /total answer-independent compiler/u);
-  assert.match(compiler.nonClaim, /not yet a compiled finite work machine/u);
+  assert.match(compiler.nonClaim, /subsequent all-input milestone supplies the finite-machine/u);
 
   for (const name of compiler.requiredTheorems) {
     const missing = structuredClone(inventory);
@@ -2793,8 +2793,6 @@ test('CNF-to-NAND semantic compiler requires every exact theorem and rejects com
   }
 
   for (const field of [
-    'leanConcreteCNFToNANDFiniteMachineFormalized',
-    'leanConcreteCNFToNANDPolynomialTimeFunctionFormalized',
     'leanConcreteCNFSATInPFormalized',
     'leanConcreteCNFNPCompletenessFormalized',
     'mathematicalTheoremEstablished',
@@ -2814,8 +2812,73 @@ test('CNF-to-NAND semantic compiler requires every exact theorem and rejects com
   assert.equal(validation.validateStatus(wrongScope, inventory), false);
 });
 
+test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver overclaims', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cnf-to-nand-polynomial-reduction');
+  assert.equal(milestone.requiredTheorems.length, 28);
+  assert.equal(milestone.earned, true);
+  assert.equal(milestone.classification, 'formalized-polynomial-reduction');
+  assert.match(milestone.scope, /fixed 135,070-rule three-node/u);
+  assert.match(milestone.scope, /direct PolynomialReduction from CNFSAT to EncodedNANDSAT/u);
+  assert.match(milestone.nonClaim, /does not itself decide CNF-SAT/u);
+
+  for (const name of milestone.requiredTheorems) {
+    const missing = structuredClone(inventory);
+    missing.milestoneCandidates = missing.milestoneCandidates
+      .filter((candidate) => candidate.name !== name);
+    assert.equal(validation.validateInventory(missing), false, name);
+  }
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedNANDSAT')
+    .axioms = ['PNP.ForgedAxiom', 'Quot.sound', 'propext'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const movedModule = structuredClone(inventory);
+  movedModule.milestoneCandidates
+    .find((candidate) => candidate.name === 'PNP.Concrete.CNFToNANDCompilerCompiled.compiledMachineOutput_eq_compileEncodedCNFToNAND')
+    .module = 'PNP.ForgedModule';
+  assert.equal(validation.validateInventory(movedModule), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cnf-to-nand-polynomial-reduction')
+    .scope = 'A deterministic polynomial-time CNF-SAT solver proving P = NP';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const erasedBoundary = structuredClone(status);
+  erasedBoundary.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cnf-to-nand-polynomial-reduction')
+    .nonClaim = 'P = NP';
+  assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+
+  for (const field of [
+    'leanConcreteCNFToNANDPolynomialReductionFormalized',
+    'leanConcreteCNFToNANDPolynomialReductionAxiomAuditPassed',
+    'leanConcreteCNFToNANDAllInputExactFormalized',
+    'leanConcreteCNFToNANDExactMachineOutputFormalized',
+    'leanConcreteCNFToNANDCompiledNonTimeoutFormalized',
+    'leanConcreteCNFToNANDRawRefinementFormalized',
+    'leanConcreteCNFToNANDDirectReductionFormalized',
+    'leanConcreteCNFToNANDLockedReductionCompositionFormalized',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const wrongAuditCount = structuredClone(status);
+  wrongAuditCount.leanConcreteCNFToNANDPolynomialReductionAuditedDeclarationCount = 1315;
+  assert.equal(validation.validateStatus(wrongAuditCount, inventory), false);
+
+  const wrongScope = structuredClone(status);
+  wrongScope.leanConcreteCNFToNANDPolynomialReductionScope = 'cnfsat-in-p';
+  assert.equal(validation.validateStatus(wrongScope, inventory), false);
+});
+
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '1fa05f578f1291018c07f3fea452ff970c5bb00950f9382f13956358c94e17ae'/);
+  assert.match(source, /const STATUS_SHA256 = 'f960c968ee7cf879316a9968d5f0b9559511b16bd87e430986203dfa74e8d44f'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -2840,12 +2903,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /21,020/);
-  assert.match(statusPage, /Seventy scoped milestones/);
+  assert.match(statusPage, /23,575/);
+  assert.match(statusPage, /Seventy-one scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 67-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 68-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

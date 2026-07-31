@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 56% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 57% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="56" aria-label="Estimated proof reconstruction progress: 56 percent">56%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 56 percent">
+        <progress class="proof-progress-meter" max="100" value="57" aria-label="Estimated proof reconstruction progress: 57 percent">57%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 57 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-07-31-concrete-cnf-to-nand-polynomial-reduction" data-milestone-id="concrete-cnf-to-nand-polynomial-reduction">
+        <div class="section-label"><time datetime="2026-07-31T17:22:27Z">2026-07-31</time> · earned milestone 71</div>
+        <h2>The CNF-to-NAND translation now runs as a checked efficient process</h2>
+        <p>The previous update proved that a CNF formula and its NAND translation have the same yes-or-no answer. This update adds one fixed, inspectable machine that performs that translation for every possible input. Lean checks that valid formulas produce exactly the intended circuit, while malformed inputs stop safely and produce no result.</p>
+        <p>Lean also proves that the work grows at a polynomial rate with the input size—the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 57%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-cnf-to-nand-polynomial-reduction</code></p>
+          <p><strong>Classification:</strong> formalized-polynomial-reduction</p>
+          <p><strong>Verified scope:</strong> One fixed 135,070-rule three-node parser/carrier/controller work graph halts on every bitstring, rejects malformed CNF words with empty output, emits exactly compileEncodedCNFToNAND on every valid source, has one external encoded-input polynomial, compiles to a non-timeout PolynomialTimeFunction, retains literal RawRefinement, packages a direct PolynomialReduction from CNFSAT to EncodedNANDSAT, and composes it with the strict locked-NAND reduction to EncodedLockedNANDThreshold.</p>
+          <p><strong>Boundary:</strong> This syntax-directed compiler does not itself decide CNF-SAT, put CNFSAT in deterministic polynomial time, establish SAT NP-hardness or CNFSAT NP-completeness, connect the concrete locked-NAND target to the abstract report-level threshold theorem, complete residual minimization or ZeroSlack/PCCMin, discharge any project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 28</p>
+          <p><strong>Core source:</strong> commit <code>3e60a7b270d4695da137a60d6a4a9ca59d3886f8</code>, tree <code>04dbf61379eb4d24f1adc8419bf6e9d2dd636346</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-94</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-POLYNOMIAL-REDUCTION-93</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-31-concrete-cnf-to-nand-semantic-compiler" data-milestone-id="concrete-cnf-to-nand-semantic-compiler">
         <div class="section-label"><time datetime="2026-07-30T23:06:02Z">2026-07-30</time> · earned milestone 70</div>
         <h2>A general CNF formula can now be translated into NAND</h2>
@@ -45,7 +65,7 @@
           <p><strong>Milestone:</strong> <code>concrete-cnf-to-nand-semantic-compiler</code></p>
           <p><strong>Classification:</strong> formalized-semantic-boundary</p>
           <p><strong>Verified scope:</strong> A total answer-independent compiler transforms every strict canonical CNF formula into an intrinsically topological well-formed NAND circuit, preserves satisfiability exactly, proves the exact gate count and a quadratic serialized-output bound, fails closed on every malformed bitstring, and composes semantically with the concrete locked-NAND threshold builder.</p>
-          <p><strong>Boundary:</strong> This is a pure semantic and size-bound compiler, not yet a compiled finite work machine, a PolynomialTimeFunction, or a PolynomialReduction witness. It does not establish CNFSAT NP-hardness transport, a deterministic polynomial-time CNFSAT decider, the abstract report-level locked-NAND premise, ZeroSlack/PCCMin, or P = NP.</p>
+          <p><strong>Boundary:</strong> This milestone is the pure semantic and size-bound layer; the subsequent all-input milestone supplies the finite-machine, PolynomialTimeFunction, RawRefinement, and PolynomialReduction interfaces. Neither layer decides CNF-SAT, proves CNFSAT is in deterministic polynomial time, discharges the abstract report-level locked-NAND premise, completes ZeroSlack/PCCMin, or proves P = NP.</p>
           <p><strong>Reviewed theorem pins:</strong> 18</p>
           <p><strong>Core source:</strong> commit <code>95773a6583ca3d41f7b0c82090f000d9c6eb72da</code>, tree <code>9890af1d8b919dd432ec00707eb5555d720000d1</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-93</code>.</p>
           <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-SEMANTIC-COMPILER-92</code>.</p>
@@ -65,7 +85,7 @@
           <p><strong>Milestone:</strong> <code>concrete-locked-nand-polynomial-reduction</code></p>
           <p><strong>Classification:</strong> formalized-polynomial-reduction</p>
           <p><strong>Verified scope:</strong> The existing strict parser/emitter composition is packaged as a concrete polynomial many-one reduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact function identity, exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive raw-machine refinement.</p>
-          <p><strong>Boundary:</strong> The downstream semantic compiler now identifies CNFSAT with this concrete source language, but no finite-machine implementation or PolynomialTimeFunction for that compiler has been formalized. This milestone does not establish NP-hardness, discharge the abstract target-language assumption, prove the report-level locked-NAND threshold theorem, put CNFSAT in P, complete residual minimization or ZeroSlack, or prove P = NP.</p>
+          <p><strong>Boundary:</strong> The downstream all-input CNF compiler now identifies CNFSAT with this concrete source language through a fixed finite machine and a direct polynomial reduction, then composes with this reduction. This milestone does not discharge the abstract target-language assumption, prove the report-level locked-NAND threshold theorem, put CNFSAT in P, complete residual minimization or ZeroSlack, or prove P = NP.</p>
           <p><strong>Reviewed theorem pins:</strong> 5</p>
           <p><strong>Core source:</strong> commit <code>03f62a5465c1eacd399671121123a3891d8b3e67</code>, tree <code>9ac174c23560579e75091fefda81f81e986b6cc1</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-30-92</code>.</p>
           <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-07-30-LOCKED-NAND-POLYNOMIAL-REDUCTION-91</code>.</p>

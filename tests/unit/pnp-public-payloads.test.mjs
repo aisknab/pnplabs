@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = '95773a6583ca3d41f7b0c82090f000d9c6eb72da';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-93';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-31-93';
-const INVENTORY_SHA256 = '576816bd782378cd1d19ad1de76485b82896e6f141853946b6e0ad7df1fefa82';
+const CORE_COMMIT = '3e60a7b270d4695da137a60d6a4a9ca59d3886f8';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-94';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-31-94';
+const INVENTORY_SHA256 = 'f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca';
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -67,6 +67,37 @@ const LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.strictLockedNANDPolynomialReduction_hasRawRefinement': '9f0b15fadf98e634edafe5d6a2025d1d92424a6876a018802153a96b934b1061',
 };
 
+const CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256 = {
+  "PNP.Concrete.CNFSourceParser.allInput_exact": "fabf09b239a30206fd954638cb4b6bcab14a01d8de061fd14256a533dba6c434",
+  "PNP.Concrete.CNFSourceParser.compiledMachineOutput_eq_validatedCNFBytes": "eac4855420429c6ccc98e381534f870f8a14fbb9e04d200940934892e674f997",
+  "PNP.Concrete.CNFSourceParser.compiledBoundedDecide_ne_timeout": "b53d4b484be3ed5e2d1f7374561a0e2e9774c54cbf8a4358e2aa2d20aa0dba28",
+  "PNP.Concrete.CNFToNANDCarrierEncoder.canonical_exact": "1011b1659187ad69f11c8ec1041beb3960095d7770a5060a86d4fcc02c6ae767",
+  "PNP.Concrete.CNFToNANDCarrierEncoder.canonicalWorkSteps_polynomial_bound": "35abeeed863b558d7609db62e3fcbdfcf4d4519195d8a8c9d95e5c5a214a8418",
+  "PNP.Concrete.CNFToNANDWorkspace.exact_execution_output": "c18b2463f9ba766aa9919b784868275d63ec6d121704e07f162099aa2c5671ea",
+  "PNP.Concrete.CNFToNANDController.rules_length_literal": "b7a6f2c3f91c9f54be6d9e9e1026b33b8c0111d74be783e40fcca363b3dace40",
+  "PNP.Concrete.CNFToNANDControllerTotalTrace.canonical_path": "13d4e3c6ae39fae86825806e6d8e98c2b5f9729930d4bab787bb4aa445856f65",
+  "PNP.Concrete.CNFToNANDControllerTotalTrace.canonical_bounded_exact": "31bc22ce4c93dbbc0fa17e89354e6c64088b8df5d9ec6fe2354ae28cb3df483f",
+  "PNP.Concrete.CNFToNANDCompilerMachine.rules_length_literal": "d0b8f3d3224541b58d7a779edb0fb108e5cd286191a297a297e572141409780b",
+  "PNP.Concrete.CNFToNANDCompilerTotalTrace.malformed_bounded_exact": "86a5b7354a461736a5ec98db75864d8fc923fac4e0efaa08740dee8d82db9d8d",
+  "PNP.Concrete.CNFToNANDCompilerTotalTrace.decoded_bounded_exact": "be2c9ff9aca1e3be1615dd8c7b2a56294794d42f2b46e8838a6b3cc56070f852",
+  "PNP.Concrete.CNFToNANDCompilerTotalTrace.allInput_bounded_exact": "341e4379db02ad188111d7d0f4998f8353f1456d43cbaf88a4c16d0e69414161",
+  "PNP.Concrete.CNFToNANDCompilerPolynomialBound.allInputWorkTimePolynomial_eval": "45b7598b215b193e767ccb5acd47eb7ee54499c56f31c64476e08a494e4251f1",
+  "PNP.Concrete.CNFToNANDCompilerPolynomialBound.compiledRawTimePolynomial_eval": "4a97fa944421808923a6e288992ea71c047875ba291142a4a594b3fb25eeaf34",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.compiledMachineOutput_eq_compileEncodedCNFToNAND": "6878d3576e74856d76fead6619d8eb6df64b25935b0eea6921f08221de19094f",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.compiledBoundedDecide_accept_iff": "53e14a9b3fe9b9f3e1c7d917405e8ea049909de164dc1ac44a1b82c3353a7461",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.compiledBoundedDecide_ne_timeout": "a733db3c994ab97ceb089f9e8d3c92d74ad835caf7417e6becd25c52b533803d",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.cnfToNANDPolynomialTimeFunction_output": "a5f03860069e91fd93687f187af204dc6d5cb836217f57a97c7f6c65b92de90f",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_function": "b386bdd8592653d91dfd1807ec89c37a16742b7802157198a423c8935b944762",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_output": "9b669178316dc83edb173c6d413caaa362b896de656e95f50799cfa78a991cbf",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_correct": "b8d9bdee2a2b5b00f542cee4ccee1f22353c8333e1f3cb58492b3c9c6a441e6d",
+  "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedNANDSAT": "c02c6c4348f7da3bc683db412dc9bde7ebf34e2350f2742cda2e07272117214c",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_hasRawRefinement": "d7a790335337e9ba0a3eaba84b27b8dec690a0abe9fea69d5a6017f7ac445935",
+  "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_output": "f2f51f52a39307bd2d5508960084e0ddf23ad9502a87ec169509d75734d5d5fe",
+  "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_correct": "ed49b9d58aa5d515626030b14b58bd94a9fa17dc3f0fb10258e84a1ecfa9ef9b",
+  "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedLockedNANDThreshold": "835669097f31eea9bfae1571e7dbfea5e310489c4fd18cb41edbfa561fb924e6",
+  "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement": "73ef05c12f8b87d3867e46b3a2c555adad77f1a9c49c0f1c7827cea11e7965cf"
+};
+
 async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
@@ -105,10 +136,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
 
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
-  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-SEMANTIC-COMPILER-92');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-07-31-93');
-  assert.equal(status.formalPublicationMapSha256, 'c821adfcb65b9bce9c894b5debf99b9ba661457d865e9fed4ecedfd5ff3db88b');
-  assert.equal(status.leanSourceClosureSha256, 'daed8c40eb6416b42d6b78d87b118b8033bbb5f3e857874c3d1ee45cf89e8876');
+  assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-POLYNOMIAL-REDUCTION-93');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-07-31-94');
+  assert.equal(status.formalPublicationMapSha256, '84af7674ba9cdbf844068e9d0a0d4213ea90ef5c63f2f607c61381a60f886704');
+  assert.equal(status.leanSourceClosureSha256, 'f4cec303e24b1e7b58bcab141d3fcbe7e1306b5e5913028bf8696a6af6160b42');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -118,11 +149,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
   assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(inventory.declarationCount, 21020);
-  assert.equal(inventory.theoremCount, 11477);
-  assert.equal(inventory.assumptionFreeTheoremCount, 5987);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 11970);
-  assert.equal(inventory.sourceClosureModuleCount, 186);
+  assert.equal(inventory.declarationCount, 23575);
+  assert.equal(inventory.theoremCount, 12806);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6767);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14273);
+  assert.equal(inventory.sourceClosureModuleCount, 208);
   assert.equal(inventory.axiomCount, 4);
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
@@ -1197,7 +1228,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
     assert.equal(compiler.module, module, name);
     assert.deepEqual(compiler.axioms, [], name);
   }
-  assert.equal(inventory.milestoneCandidates.length, 2053);
+  assert.equal(inventory.milestoneCandidates.length, 2081);
 
   const secondConstraintSeventhPaddingOrUnaryMilestone = status.formalPublicationMilestones.find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step');
   assert.equal(secondConstraintSeventhPaddingOrUnaryMilestone.requiredTheorems.length, 40);
@@ -1444,9 +1475,44 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
     'strict-version-zero-parser-emitter-polynomial-reduction-with-exact-language-equivalence-and-recursive-raw-refinement'
   );
 
-  assert.equal(status.formalPublicationMilestones.length, 73);
-  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(70).fill(true), false, false, false]);
-  for (const row of status.formalPublicationMilestones.slice(0, 70)) {
+
+  const cnfToNANDReductionMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'concrete-cnf-to-nand-polynomial-reduction');
+  assert.equal(cnfToNANDReductionMilestone.requiredTheorems.length, 28);
+  assert.equal(cnfToNANDReductionMilestone.classification, 'formalized-polynomial-reduction');
+  assert.equal(cnfToNANDReductionMilestone.status, 'formalized-polynomial-reduction');
+  assert.equal(cnfToNANDReductionMilestone.earned, true);
+  assert.deepEqual(
+    cnfToNANDReductionMilestone.requiredTheorems,
+    Object.keys(CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256)
+  );
+  for (const theoremRow of cnfToNANDReductionMilestone.theoremRows) {
+    const theorem = inventory.milestoneCandidates.find((candidate) => candidate.name === theoremRow.name);
+    assert.equal(theorem.kind, 'theorem', theoremRow.name);
+    assert.deepEqual(theorem.axioms, theoremRow.axioms, theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name
+    );
+    assert.equal(theoremRow.actualKernelTypeSha256, theoremRow.expectedKernelTypeSha256, theoremRow.name);
+  }
+  assert.equal(status.leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount, 68);
+  assert.equal(status.leanConcreteCNFToNANDFiniteMachineFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialTimeFunctionFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialReductionFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialReductionAuditedDeclarationCount, 1316);
+  assert.equal(status.leanConcreteCNFToNANDAllInputExactFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDExactMachineOutputFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDCompiledNonTimeoutFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDRawRefinementFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDDirectReductionFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDLockedReductionCompositionFormalized, true);
+
+  assert.equal(status.formalPublicationMilestones.length, 74);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(71).fill(true), false, false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 71)) {
     assert.equal(row.allPresent, true, row.id);
     assert.equal(row.allKernelTypesMatch, true, row.id);
     assert.equal(row.sourceClosureFingerprintMatches, true, row.id);
@@ -1486,12 +1552,35 @@ test('formal publication release pins the complete strict-v0 polynomial-reductio
   const release = await readJson('downloads/formal-publication-release.json');
   const parser = release.earnedBoundary;
 
-  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-07-31-76');
-  assert.equal(release.artifacts.report.pageCount, 67);
-  assert.equal(release.artifacts.theoremInventory.declarationCount, 21020);
-  assert.equal(release.artifacts.theoremInventory.theoremCount, 11477);
-  assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 5987);
+  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-07-31-77');
+  assert.equal(release.artifacts.report.pageCount, 68);
+  assert.equal(release.artifacts.theoremInventory.declarationCount, 23575);
+  assert.equal(release.artifacts.theoremInventory.theoremCount, 12806);
+  assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 6767);
   assert.equal(release.artifacts.theoremInventory.projectAxiomCount, 4);
+
+  assert.equal(parser.cnfToNANDSemanticCompilerAuditedDeclarationCount, 68);
+  assert.equal(parser.cnfToNANDFiniteMachineFormalized, true);
+  assert.equal(parser.cnfToNANDPolynomialTimeFunctionFormalized, true);
+  assert.equal(parser.cnfToNANDPolynomialReductionFormalized, true);
+  assert.equal(parser.cnfToNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(parser.cnfToNANDPolynomialReductionAuditedDeclarationCount, 1316);
+  assert.equal(parser.cnfToNANDPolynomialReductionEmptyAxiomDeclarationCount, 864);
+  assert.equal(parser.cnfToNANDPolynomialReductionPropextOnlyDeclarationCount, 151);
+  assert.equal(parser.cnfToNANDPolynomialReductionPropextQuotSoundDeclarationCount, 301);
+  assert.equal(parser.cnfToNANDAllInputExactFormalized, true);
+  assert.equal(parser.cnfToNANDExactMachineOutputFormalized, true);
+  assert.equal(parser.cnfToNANDCompiledNonTimeoutFormalized, true);
+  assert.equal(parser.cnfToNANDRawRefinementFormalized, true);
+  assert.equal(parser.cnfToNANDDirectReductionFormalized, true);
+  assert.equal(parser.cnfToNANDLockedReductionCompositionFormalized, true);
+  assert.deepEqual(
+    parser.cnfToNANDPolynomialReductionTheoremKernelTypeSha256,
+    CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256
+  );
+  assert.deepEqual(parser.cnfToNANDPolynomialReductionAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(parser.cnfToNANDPolynomialReductionProjectAxiomClosure, []);
+
   assert.equal(release.publicationBoundary.concreteGatePassed, false);
   assert.equal(release.publicationBoundary.mathematicalTheoremEstablished, false);
   assert.equal(release.publicationBoundary.publicTheoremEmissionAllowed, false);
@@ -1591,16 +1680,16 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 76);
+  assert.equal(index.version, 77);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, '25ffe07ac77167c347dece712776b0b75b69a912');
-  assert.equal(index.sourceTree, '9890af1d8b919dd432ec00707eb5555d720000d1');
+  assert.equal(index.sourceTree, '04dbf61379eb4d24f1adc8419bf6e9d2dd636346');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
-  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-SEMANTIC-COMPILER-92');
+  assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-POLYNOMIAL-REDUCTION-93');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-31-93');
-  assert.equal(index.canonicalReportPages, 67);
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-31-94');
+  assert.equal(index.canonicalReportPages, 68);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
   assert.equal(index.claimBoundary.mathematicalTheoremEstablished, false);
@@ -1609,11 +1698,11 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
   assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
   assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
-  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 21020);
-  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 11477);
-  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 5987);
-  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 11970);
-  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 186);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 23575);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 12806);
+  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 6767);
+  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 14273);
+  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 208);
   assert.equal(index.claimBoundary.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceAxiomAuditPassed, true);
@@ -2694,8 +2783,26 @@ test('payload index describes current inventory/report and quarantines legacy su
     index.claimBoundary.leanConcreteLockedNANDPolynomialReductionTheoremKernelTypeSha256,
     LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256
   );
-  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 70, unearned: 3, total: 73 });
-  assert.equal(index.earnedMilestones.length, 70);
+
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount, 68);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDFiniteMachineFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDPolynomialTimeFunctionFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDPolynomialReductionFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDPolynomialReductionAuditedDeclarationCount, 1316);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDAllInputExactFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDExactMachineOutputFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDCompiledNonTimeoutFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDRawRefinementFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDDirectReductionFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCNFToNANDLockedReductionCompositionFormalized, true);
+  assert.deepEqual(
+    index.claimBoundary.leanConcreteCNFToNANDPolynomialReductionTheoremKernelTypeSha256,
+    CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREM_SHA256
+  );
+
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 71, unearned: 3, total: 74 });
+  assert.equal(index.earnedMilestones.length, 71);
   assert.ok(index.earnedMilestones.includes('locked-nand-global-carrier-trace-equivalence'));
   assert.ok(index.earnedMilestones.includes('locked-nand-global-candidate-assembly'));
   assert.ok(index.earnedMilestones.includes('locked-nand-global-baseline-distinct'));
@@ -2705,6 +2812,8 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('concrete-locked-nand-source-parser'));
   assert.ok(index.earnedMilestones.includes('concrete-locked-nand-target-emitter'));
   assert.ok(index.earnedMilestones.includes('concrete-locked-nand-polynomial-reduction'));
+  assert.ok(index.earnedMilestones.includes('concrete-cnf-to-nand-semantic-compiler'));
+  assert.ok(index.earnedMilestones.includes('concrete-cnf-to-nand-polynomial-reduction'));
   assert.ok(index.earnedMilestones.includes('concrete-cnf-universal-verifier'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-raw-tape-bridge'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-formula-size'));
@@ -2866,12 +2975,12 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '21,020',
-    '11,477',
-    '5,987',
-    '<strong>11,970</strong> private compiler auxiliaries excluded',
-    '<strong>186</strong> modules',
-    'Seventy scoped milestones',
+    '23,575',
+    '12,806',
+    '6,767',
+    '<strong>14,273</strong> private compiler auxiliaries excluded',
+    '<strong>208</strong> modules',
+    'Seventy-one scoped milestones',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -3044,19 +3153,29 @@ test('status page has a conservative complete static fallback', async () => {
     'leanConcreteLockedNANDPolynomialReductionFormalized = true',
     'leanConcreteCNFToNANDSemanticCompilerFormalized = true',
     'leanConcreteCNFToNANDSemanticCompilerAxiomAuditPassed = true',
-    'leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount = 41',
+    'leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount = 68',
     'leanConcreteCNFToNANDExactSemanticsFormalized = true',
     'leanConcreteCNFToNANDPolynomialOutputSizeBoundFormalized = true',
-    'leanConcreteCNFToNANDFiniteMachineFormalized = false',
-    'leanConcreteCNFToNANDPolynomialTimeFunctionFormalized = false',
+    'leanConcreteCNFToNANDFiniteMachineFormalized = true',
+    'leanConcreteCNFToNANDPolynomialTimeFunctionFormalized = true',
+    'leanConcreteCNFToNANDPolynomialReductionFormalized = true',
+    'leanConcreteCNFToNANDPolynomialReductionAxiomAuditPassed = true',
+    'leanConcreteCNFToNANDPolynomialReductionAuditedDeclarationCount = 1316',
+    'leanConcreteCNFToNANDAllInputExactFormalized = true',
+    'leanConcreteCNFToNANDExactMachineOutputFormalized = true',
+    'leanConcreteCNFToNANDCompiledNonTimeoutFormalized = true',
+    'leanConcreteCNFToNANDRawRefinementFormalized = true',
+    'leanConcreteCNFToNANDDirectReductionFormalized = true',
+    'leanConcreteCNFToNANDLockedReductionCompositionFormalized = true',
     'Formalized polynomial reduction: Strict-v0 locked-NAND translation',
     'Formalized semantic boundary: General CNF-to-NAND compiler',
+    'Formalized polynomial reduction: Fixed all-input CNF-to-NAND compiler',
     'EncodedNANDSAT',
     'EncodedLockedNANDThreshold',
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
-  assert.equal((html.match(/data-earned="true"/g) || []).length, 70);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 71);
   assert.equal((html.match(/data-earned="false"/g) || []).length, 3);
 });
 
@@ -3065,11 +3184,11 @@ test('static inventory prose matches the compiled declaration boundary', async (
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(readme.includes('21,020** exported public declarations across **186** modules'), true);
-  assert.equal(readme.includes('21,020** exported public declarations across **109** modules'), false);
-  assert.equal(paper.includes('Exactly 11,970 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 11,970 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['21,020', '11,477', '5,987', '11,970', '186 modules', 'sixty-seven A4 pages', 'a total semantic compiler', '18 reviewed theorem pins', 'quadratic serialized-output', 'buildLockedNANDInstance']) {
+  assert.equal(readme.includes('23,575** exported public declarations across **208** modules'), true);
+  assert.equal(readme.includes('23,575** exported public declarations across **109** modules'), false);
+  assert.equal(paper.includes('Exactly 14,273 private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Exactly 14,273 private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['23,575', '12,806', '6,767', '14,273', '208 modules', 'sixty-eight A4 pages', 'fixed 135,070-rule', '28 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

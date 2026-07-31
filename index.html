@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">A general CNF formula can now be translated into NAND</h2>
-          <p>A CNF formula is a list of yes-or-no requirements, while a NAND circuit is a network built from one simple universal logic operation. Lean now checks a general translation between these two forms and proves that a solution exists before the translation exactly when one exists afterward.</p>
-          <p>The proof covers empty formulas, empty clauses, invalid encodings, out-of-range variables, the exact number of added gates, and a polynomial limit on the output size. This is a semantic and size result, not yet the finite-machine polynomial-time reduction needed for the full complexity-theory bridge, and it does not prove P = NP. The 56% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-31-concrete-cnf-to-nand-semantic-compiler">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The CNF-to-NAND translation now runs as a checked efficient process</h2>
+          <p>The previous update proved that a CNF formula and its NAND translation have the same yes-or-no answer. This update adds one fixed, inspectable machine that performs that translation for every possible input. Lean checks that valid formulas produce exactly the intended circuit, while malformed inputs stop safely and produce no result.</p>
+          <p>Lean also proves that the work grows at a polynomial rate with the input size—the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-07-31-concrete-cnf-to-nand-polynomial-reduction">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>compileEncodedCNFToNAND_correct</code> proves all-bitstring fail-closed language equivalence from strict canonical CNF encodings to <code>EncodedNANDSAT</code>. <code>compileFormula_gateCount_exact</code> and <code>compileEncodedCNFToNAND_size_le</code> prove exact gate accounting and a quadratic encoded-output bound, while <code>buildLockedNANDFromCNF_correct</code> composes the semantics with the locked-NAND threshold builder. This is not yet a compiled finite work machine, <code>PolynomialTimeFunction</code>, or <code>PolynomialReduction</code>; NP-hardness transport, the abstract threshold discharge, CNF-SAT in P, and P = NP remain absent.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> one fixed 135,070-rule machine handles every input, and <code>compiledMachineOutput_eq_compileEncodedCNFToNAND</code> proves its exact output. <code>cnfToNANDPolynomialTimeFunction_output</code> supplies the polynomial runtime/output function, while <code>cnfSAT_reducesTo_encodedNANDSAT</code> packages the direct reduction to <code>EncodedNANDSAT</code> and <code>cnfSAT_reducesTo_encodedLockedNANDThreshold</code> composes it with the existing reduction to <code>EncodedLockedNANDThreshold</code>. This still supplies no deterministic polynomial-time CNF-SAT decider, no discharge of the abstract locked-threshold assumption, no final NP-completeness transport, and no P = NP theorem.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -126,11 +126,21 @@ leanConcreteLockedNANDEmitterStrictParserCompositionFormalized = true
 leanConcreteLockedNANDEmitterOutputSizeBoundFormalized = true
 leanConcreteLockedNANDPolynomialReductionFormalized = true
 leanConcreteCNFToNANDSemanticCompilerFormalized = true
+leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount = 68
 leanConcreteCNFToNANDExactSemanticsFormalized = true
 leanConcreteCNFToNANDPolynomialOutputSizeBoundFormalized = true
 leanConcreteCNFToNANDAllBitstringFailClosedFormalized = true
-leanConcreteCNFToNANDFiniteMachineFormalized = false
-leanConcreteCNFToNANDPolynomialTimeFunctionFormalized = false
+leanConcreteCNFToNANDFiniteMachineFormalized = true
+leanConcreteCNFToNANDPolynomialTimeFunctionFormalized = true
+leanConcreteCNFToNANDPolynomialReductionFormalized = true
+leanConcreteCNFToNANDPolynomialReductionAxiomAuditPassed = true
+leanConcreteCNFToNANDPolynomialReductionAuditedDeclarationCount = 1316
+leanConcreteCNFToNANDAllInputExactFormalized = true
+leanConcreteCNFToNANDExactMachineOutputFormalized = true
+leanConcreteCNFToNANDCompiledNonTimeoutFormalized = true
+leanConcreteCNFToNANDRawRefinementFormalized = true
+leanConcreteCNFToNANDDirectReductionFormalized = true
+leanConcreteCNFToNANDLockedReductionCompositionFormalized = true
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -144,9 +154,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-31-93</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-31-94</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>576816bd782378cd1d19ad1de76485b82896e6f141853946b6e0ad7df1fefa82</code></div>
+            <div><span>Inventory SHA-256</span><code>f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -154,18 +164,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>56</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>57</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 56 percent" data-proof-progress="56">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>55</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 57 percent" data-proof-progress="57">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>56</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 56% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 57% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
@@ -196,7 +206,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now covers one exact polynomial reduction, not P = NP.</h2><p>The strict parser/emitter path is packaged as a concrete reduction from <code>EncodedNANDSAT</code> to <code>EncodedLockedNANDThreshold</code>. Connecting ordinary CNF-SAT to that source language, proving the target problem is efficiently solvable, completing the Cook–Levin formula builder, discharging the abstract threshold assumption and global ZeroSlack obligations, and producing an eligible P = NP root theorem all remain missing.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now connects CNF-SAT through exact polynomial reductions, not to an efficient solver.</h2><p>One checked machine reduces canonical CNF satisfiability to encoded NAND-circuit satisfiability, and the existing strict parser/emitter reduction carries that result into <code>EncodedLockedNANDThreshold</code>. The target threshold problem is not yet proved efficiently solvable, the abstract threshold assumption and global ZeroSlack obligations remain open, and there is no eligible P = NP root theorem.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

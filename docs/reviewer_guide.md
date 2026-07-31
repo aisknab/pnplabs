@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a sixty-seven-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 21,020 public declarations across 186 modules,
-including 11,477 theorem-kind declarations, 5,987 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Exactly 11,970 private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a sixty-eight-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 23,575 public declarations across 208 modules,
+including 12,806 theorem-kind declarations, 6,767 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Exactly 14,273 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all six formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current sixty-seven-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current sixty-eight-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,053 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,053 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Seventy narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, the locked-NAND typed threshold and strict-v0 semantic encoding, one literal polynomial-time source parser, one literal exact target emitter, their concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold` polynomial reduction, and the general CNF-to-NAND semantic compiler | A complete formula builder, a finite-machine polynomial reduction and NP-hardness transport for the CNF compiler, discharge of the abstract threshold axiom, complete residual search, CNF-SAT in P, NP-completeness, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,081 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,081 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Seventy-one narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, the locked-NAND typed threshold and strict-v0 semantic encoding, one literal polynomial-time source parser, one literal exact target emitter, their concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold` polynomial reduction, the CNF-to-NAND semantic compiler, and its fixed all-input finite-machine direct and composed polynomial reductions | A complete Cook-Levin formula builder, SAT NP-hardness or CNF-SAT NP-completeness, discharge of the abstract threshold axiom, complete residual search, CNF-SAT in P, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `95773a6583ca3d41f7b0c82090f000d9c6eb72da`.
+   `3e60a7b270d4695da137a60d6a4a9ca59d3886f8`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,053 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,081 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,7 +72,7 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns seventy scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns seventy-one scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
@@ -93,8 +93,10 @@ strict parser to compute `buildLockedNANDInstance`; a concrete polynomial many-o
 `EncodedNANDSAT` to `EncodedLockedNANDThreshold`, with exact function identity, exact output,
 all-bitstring language equivalence, a `ReducesTo` witness, and recursive raw-machine refinement;
 a general semantic CNF-to-NAND compiler with exact satisfiability preservation, gate count, quadratic
-serialized-output bound, malformed-input failure, and locked-threshold composition—but no finite
-work machine, `PolynomialTimeFunction`, `PolynomialReduction`, or NP-hardness transport; and explicit-list
+serialized-output bound, malformed-input failure, and locked-threshold composition; one fixed
+135,070-rule three-node finite work graph with exact all-bitstring output, an external polynomial
+runtime bound, `PolynomialTimeFunction`, literal `RawRefinement`, a direct `CNFSAT`-to-`EncodedNANDSAT`
+`PolynomialReduction`, and composition to `EncodedLockedNANDThreshold`; and explicit-list
 residual-route soundness.
 
 Review the gaps between those scopes and the target theorem:
@@ -111,9 +113,10 @@ Review the gaps between those scopes and the target theorem:
    emitter deliberately accepts grammar-valid circuits with intrinsically invalid references; the
    parser supplies strict fail-closed semantics. Their exact all-bitstring language equivalence is
    now packaged as a concrete `PolynomialReduction` from `EncodedNANDSAT` to
-   `EncodedLockedNANDThreshold`, with recursive raw-machine refinement. This does not identify the
-   source with ordinary CNF-SAT, prove NP-hardness, or discharge the separate abstract locked-NAND
-   threshold axiom; CNF-SAT in P, NP-completeness, and `P = NP` remain absent.
+   `EncodedLockedNANDThreshold`, with recursive raw-machine refinement. The fixed all-input CNF compiler
+   now packages a direct `PolynomialReduction` from `CNFSAT` to `EncodedNANDSAT` and composes the two
+   reductions. This does not decide CNF-SAT, prove SAT NP-hardness or CNF-SAT NP-completeness, discharge
+   the separate abstract locked-NAND threshold axiom, put CNF-SAT in P, or prove `P = NP`.
 4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
    unlisted gain and cannot imply `ZeroSlack`.
 5. PCCMin exactness, the residual-band minimizer, and polynomial runtime/certificate bounds remain
@@ -140,7 +143,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current sixty-seven-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current sixty-eight-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/95773a6583ca3d41f7b0c82090f000d9c6eb72da/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/95773a6583ca3d41f7b0c82090f000d9c6eb72da/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/3e60a7b270d4695da137a60d6a4a9ca59d3886f8/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/3e60a7b270d4695da137a60d6a4a9ca59d3886f8/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the sixty-seven-page inventory-derived report. Every numbered section or
+The current canonical download is the sixty-eight-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 57-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 2,053 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 2,081 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm seventy earned scoped milestones. The newest scope is a general semantic CNF-to-NAND compiler with exact satisfiability preservation, exact gate count, quadratic serialized-output bound, malformed-input failure, and semantic locked-threshold composition. Confirm that it is not a finite work machine, `PolynomialTimeFunction`, or `PolynomialReduction`. Three global milestones, four project axioms, and six blockers remain; NP-hardness transport, abstract threshold discharge, the remaining Cook-Levin formula body, complete raw builder, CNF-SAT in P, and NP-completeness must remain absent. | The semantic CNF-to-NAND compiler is presented as a finite-machine polynomial reduction or full NP-hardness result; a bounded formula prefix is presented as a complete reduction; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require sixty-seven PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm seventy-one earned scoped milestones. The newest scope is one fixed 135,070-rule all-bitstring CNF-to-NAND work graph with exact output, a non-timeout external polynomial bound, `PolynomialTimeFunction`, literal `RawRefinement`, a direct `CNFSAT`-to-`EncodedNANDSAT` `PolynomialReduction`, and composition to `EncodedLockedNANDThreshold`. Three global milestones, four project axioms, and six blockers remain; SAT NP-hardness or CNF-SAT NP-completeness, abstract threshold discharge, the remaining Cook-Levin formula body, complete raw builder, CNF-SAT in P, and `P = NP` must remain absent. | The finite compiler is presented as a CNF-SAT decider, NP-hardness proof, abstract threshold discharge, or final theorem; a bounded formula prefix is presented as a complete reduction; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require sixty-eight PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 
