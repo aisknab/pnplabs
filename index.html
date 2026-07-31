@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The checked conversion is now a formal efficient reduction</h2>
-          <p>A reduction is a reliable translation from one yes-or-no problem into another. The project already had checked machines that validate a circuit description and build the corresponding comparison object. Lean now packages those machines as one formal translation and proves, for every possible input, that the original circuit has a successful input exactly when the translated comparison passes its threshold.</p>
-          <p>Lean also records that this translation runs within an explicit polynomial limit, so the construction does not hide an impractical exhaustive search. This is an important complexity-theory bridge, but it does not yet connect ordinary CNF-SAT to this exact source format, prove that the target comparison can be solved efficiently, discharge the remaining assumptions, or prove P = NP. The 55% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-30-concrete-locked-nand-polynomial-reduction">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">A general CNF formula can now be translated into NAND</h2>
+          <p>A CNF formula is a list of yes-or-no requirements, while a NAND circuit is a network built from one simple universal logic operation. Lean now checks a general translation between these two forms and proves that a solution exists before the translation exactly when one exists afterward.</p>
+          <p>The proof covers empty formulas, empty clauses, invalid encodings, out-of-range variables, the exact number of added gates, and a polynomial limit on the output size. This is a semantic and size result, not yet the finite-machine polynomial-time reduction needed for the full complexity-theory bridge, and it does not prove P = NP. The 56% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-07-31-concrete-cnf-to-nand-semantic-compiler">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>strictLockedNANDPolynomialReduction_correct</code> proves all-bitstring language equivalence for the strict parser/emitter function, and <code>encodedNANDSAT_reducesTo_encodedLockedNANDThreshold</code> packages it as a concrete <code>ReducesTo</code> witness. Exact function/output theorems and <code>strictLockedNANDPolynomialReduction_hasRawRefinement</code> retain the polynomial machine implementation. The source here is <code>EncodedNANDSAT</code>, not yet ordinary CNF-SAT; NP-hardness, the abstract threshold discharge, CNF-SAT in P, and P = NP remain absent.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>compileEncodedCNFToNAND_correct</code> proves all-bitstring fail-closed language equivalence from strict canonical CNF encodings to <code>EncodedNANDSAT</code>. <code>compileFormula_gateCount_exact</code> and <code>compileEncodedCNFToNAND_size_le</code> prove exact gate accounting and a quadratic encoded-output bound, while <code>buildLockedNANDFromCNF_correct</code> composes the semantics with the locked-NAND threshold builder. This is not yet a compiled finite work machine, <code>PolynomialTimeFunction</code>, or <code>PolynomialReduction</code>; NP-hardness transport, the abstract threshold discharge, CNF-SAT in P, and P = NP remain absent.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -125,6 +125,12 @@ leanConcreteLockedNANDEmitterRawRefinementFormalized = true
 leanConcreteLockedNANDEmitterStrictParserCompositionFormalized = true
 leanConcreteLockedNANDEmitterOutputSizeBoundFormalized = true
 leanConcreteLockedNANDPolynomialReductionFormalized = true
+leanConcreteCNFToNANDSemanticCompilerFormalized = true
+leanConcreteCNFToNANDExactSemanticsFormalized = true
+leanConcreteCNFToNANDPolynomialOutputSizeBoundFormalized = true
+leanConcreteCNFToNANDAllBitstringFailClosedFormalized = true
+leanConcreteCNFToNANDFiniteMachineFormalized = false
+leanConcreteCNFToNANDPolynomialTimeFunctionFormalized = false
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -138,9 +144,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-30-92</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-31-93</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>3413510e8712416cdb1b5d846053e5c886bbc1cd550fe7533411573e5f88bf64</code></div>
+            <div><span>Inventory SHA-256</span><code>576816bd782378cd1d19ad1de76485b82896e6f141853946b6e0ad7df1fefa82</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -148,10 +154,10 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>55</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>56</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 55 percent" data-proof-progress="55">
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 56 percent" data-proof-progress="56">
           <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>55</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
@@ -159,7 +165,7 @@ concretePublicationGate.passed = false</pre>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 55% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 56% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

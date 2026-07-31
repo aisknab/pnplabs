@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-30T04:25:46Z</updated>
+  <updated>2026-07-30T23:06:02Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-07-31-concrete-cnf-to-nand-semantic-compiler</id>
+    <title>A general CNF formula can now be translated into NAND</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-07-31-concrete-cnf-to-nand-semantic-compiler"/>
+    <published>2026-07-30T23:06:02Z</published>
+    <updated>2026-07-30T23:06:02Z</updated>
+    <summary type="text">A CNF formula is a list of yes-or-no requirements, while a NAND circuit is a network built from one simple universal logic operation. Lean now checks a general translation between these two forms and proves that a solution exists before the translation exactly when one exists afterward. The proof covers empty formulas, empty clauses, invalid encodings, out-of-range variables, the exact number of added gates, and a polynomial limit on the output size. This is a semantic and size result, not yet the finite-machine polynomial-time reduction needed for the full complexity-theory bridge, and it does not prove P = NP. The 56% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 56 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A CNF formula is a list of yes-or-no requirements, while a NAND circuit is a network built from one simple universal logic operation. Lean now checks a general translation between these two forms and proves that a solution exists before the translation exactly when one exists afterward.&lt;/p&gt;&lt;p&gt;The proof covers empty formulas, empty clauses, invalid encodings, out-of-range variables, the exact number of added gates, and a polynomial limit on the output size. This is a semantic and size result, not yet the finite-machine polynomial-time reduction needed for the full complexity-theory bridge, and it does not prove P = NP. The 56% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;56&quot;&gt;Editorial progress estimate at publication: 56%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-07-31-concrete-cnf-to-nand-semantic-compiler&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-30-concrete-locked-nand-polynomial-reduction</id>
     <title>The checked conversion is now a formal efficient reduction</title>
