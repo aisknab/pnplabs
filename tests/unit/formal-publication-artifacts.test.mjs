@@ -99,6 +99,37 @@ const CNF_TO_NAND_SEMANTIC_COMPILER_HASHES = {
   "PNP.Concrete.CNFToNAND.buildLockedNANDFromCNF_correct": "bec1b560f9aca586a63372b66d117b7e41bb2830244651a046c8c5604cb83bb7"
 };
 
+const CNF_TO_NAND_POLYNOMIAL_REDUCTION_HASHES = {
+  "PNP.Concrete.CNFSourceParser.allInput_exact": "fabf09b239a30206fd954638cb4b6bcab14a01d8de061fd14256a533dba6c434",
+  "PNP.Concrete.CNFSourceParser.compiledMachineOutput_eq_validatedCNFBytes": "eac4855420429c6ccc98e381534f870f8a14fbb9e04d200940934892e674f997",
+  "PNP.Concrete.CNFSourceParser.compiledBoundedDecide_ne_timeout": "b53d4b484be3ed5e2d1f7374561a0e2e9774c54cbf8a4358e2aa2d20aa0dba28",
+  "PNP.Concrete.CNFToNANDCarrierEncoder.canonical_exact": "1011b1659187ad69f11c8ec1041beb3960095d7770a5060a86d4fcc02c6ae767",
+  "PNP.Concrete.CNFToNANDCarrierEncoder.canonicalWorkSteps_polynomial_bound": "35abeeed863b558d7609db62e3fcbdfcf4d4519195d8a8c9d95e5c5a214a8418",
+  "PNP.Concrete.CNFToNANDWorkspace.exact_execution_output": "c18b2463f9ba766aa9919b784868275d63ec6d121704e07f162099aa2c5671ea",
+  "PNP.Concrete.CNFToNANDController.rules_length_literal": "b7a6f2c3f91c9f54be6d9e9e1026b33b8c0111d74be783e40fcca363b3dace40",
+  "PNP.Concrete.CNFToNANDControllerTotalTrace.canonical_path": "13d4e3c6ae39fae86825806e6d8e98c2b5f9729930d4bab787bb4aa445856f65",
+  "PNP.Concrete.CNFToNANDControllerTotalTrace.canonical_bounded_exact": "31bc22ce4c93dbbc0fa17e89354e6c64088b8df5d9ec6fe2354ae28cb3df483f",
+  "PNP.Concrete.CNFToNANDCompilerMachine.rules_length_literal": "d0b8f3d3224541b58d7a779edb0fb108e5cd286191a297a297e572141409780b",
+  "PNP.Concrete.CNFToNANDCompilerTotalTrace.malformed_bounded_exact": "86a5b7354a461736a5ec98db75864d8fc923fac4e0efaa08740dee8d82db9d8d",
+  "PNP.Concrete.CNFToNANDCompilerTotalTrace.decoded_bounded_exact": "be2c9ff9aca1e3be1615dd8c7b2a56294794d42f2b46e8838a6b3cc56070f852",
+  "PNP.Concrete.CNFToNANDCompilerTotalTrace.allInput_bounded_exact": "341e4379db02ad188111d7d0f4998f8353f1456d43cbaf88a4c16d0e69414161",
+  "PNP.Concrete.CNFToNANDCompilerPolynomialBound.allInputWorkTimePolynomial_eval": "45b7598b215b193e767ccb5acd47eb7ee54499c56f31c64476e08a494e4251f1",
+  "PNP.Concrete.CNFToNANDCompilerPolynomialBound.compiledRawTimePolynomial_eval": "4a97fa944421808923a6e288992ea71c047875ba291142a4a594b3fb25eeaf34",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.compiledMachineOutput_eq_compileEncodedCNFToNAND": "6878d3576e74856d76fead6619d8eb6df64b25935b0eea6921f08221de19094f",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.compiledBoundedDecide_accept_iff": "53e14a9b3fe9b9f3e1c7d917405e8ea049909de164dc1ac44a1b82c3353a7461",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.compiledBoundedDecide_ne_timeout": "a733db3c994ab97ceb089f9e8d3c92d74ad835caf7417e6becd25c52b533803d",
+  "PNP.Concrete.CNFToNANDCompilerCompiled.cnfToNANDPolynomialTimeFunction_output": "a5f03860069e91fd93687f187af204dc6d5cb836217f57a97c7f6c65b92de90f",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_function": "b386bdd8592653d91dfd1807ec89c37a16742b7802157198a423c8935b944762",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_output": "9b669178316dc83edb173c6d413caaa362b896de656e95f50799cfa78a991cbf",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_correct": "b8d9bdee2a2b5b00f542cee4ccee1f22353c8333e1f3cb58492b3c9c6a441e6d",
+  "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedNANDSAT": "c02c6c4348f7da3bc683db412dc9bde7ebf34e2350f2742cda2e07272117214c",
+  "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_hasRawRefinement": "d7a790335337e9ba0a3eaba84b27b8dec690a0abe9fea69d5a6017f7ac445935",
+  "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_output": "f2f51f52a39307bd2d5508960084e0ddf23ad9502a87ec169509d75734d5d5fe",
+  "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_correct": "ed49b9d58aa5d515626030b14b58bd94a9fa17dc3f0fb10258e84a1ecfa9ef9b",
+  "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedLockedNANDThreshold": "835669097f31eea9bfae1571e7dbfea5e310489c4fd18cb41edbfa561fb924e6",
+  "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement": "73ef05c12f8b87d3867e46b3a2c555adad77f1a9c49c0f1c7827cea11e7965cf"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -117,18 +148,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "95773a6583ca3d41f7b0c82090f000d9c6eb72da");
+  assert.equal(result.coreCommit, "3e60a7b270d4695da137a60d6a4a9ca59d3886f8");
 });
 
-test("current release is pinned, sixty-seven-page, exposes the CNF-to-NAND semantic compiler, and fails closed", () => {
+test("current release is pinned, sixty-eight-page, exposes the CNF-to-NAND polynomial reduction, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-31-76");
-  assert.equal(release.source.commit, "95773a6583ca3d41f7b0c82090f000d9c6eb72da");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-31-77");
+  assert.equal(release.source.commit, "3e60a7b270d4695da137a60d6a4a9ca59d3886f8");
   assert.equal(release.source.proofCommit, "25ffe07ac77167c347dece712776b0b75b69a912");
-  assert.equal(release.source.tree, "9890af1d8b919dd432ec00707eb5555d720000d1");
+  assert.equal(release.source.tree, "04dbf61379eb4d24f1adc8419bf6e9d2dd636346");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 67);
+  assert.equal(release.artifacts.report.pageCount, 68);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1597,10 +1628,10 @@ test("current release is pinned, sixty-seven-page, exposes the CNF-to-NAND seman
   );
   assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerFormalized, true);
   assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerAxiomAuditPassed, true);
-  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerAuditedDeclarationCount, 41);
-  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerEmptyAxiomDeclarationCount, 16);
-  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerPropextOnlyDeclarationCount, 11);
-  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerPropextQuotSoundDeclarationCount, 14);
+  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerAuditedDeclarationCount, 68);
+  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerEmptyAxiomDeclarationCount, 28);
+  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerPropextOnlyDeclarationCount, 19);
+  assert.equal(release.earnedBoundary.cnfToNANDSemanticCompilerPropextQuotSoundDeclarationCount, 21);
   assert.equal(release.earnedBoundary.cnfToNANDExactCodecCanonicalityFormalized, true);
   assert.equal(release.earnedBoundary.cnfToNANDTypedTopologicalCompilationFormalized, true);
   assert.equal(release.earnedBoundary.cnfToNANDWellFormedOutputFormalized, true);
@@ -1610,12 +1641,36 @@ test("current release is pinned, sixty-seven-page, exposes the CNF-to-NAND seman
   assert.equal(release.earnedBoundary.cnfToNANDPolynomialOutputSizeBoundFormalized, true);
   assert.equal(release.earnedBoundary.cnfToNANDAllBitstringFailClosedFormalized, true);
   assert.equal(release.earnedBoundary.cnfToNANDLockedThresholdCompositionFormalized, true);
-  assert.equal(release.earnedBoundary.cnfToNANDFiniteMachineFormalized, false);
-  assert.equal(release.earnedBoundary.cnfToNANDPolynomialTimeFunctionFormalized, false);
-  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionFormalized, false);
+  assert.equal(release.earnedBoundary.cnfToNANDFiniteMachineFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialTimeFunctionFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionFormalized, true);
   assert.deepEqual(release.earnedBoundary.cnfToNANDSemanticCompilerTheoremKernelTypeSha256, CNF_TO_NAND_SEMANTIC_COMPILER_HASHES);
   assert.deepEqual(release.earnedBoundary.cnfToNANDSemanticCompilerAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.cnfToNANDSemanticCompilerProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionAuditedDeclarationCount, 1316);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionEmptyAxiomDeclarationCount, 864);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionPropextOnlyDeclarationCount, 151);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionPropextQuotSoundDeclarationCount, 301);
+  assert.equal(release.earnedBoundary.cnfToNANDAllInputExactFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDExactMachineOutputFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDCompiledNonTimeoutFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDRawRefinementFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDDirectReductionFormalized, true);
+  assert.equal(release.earnedBoundary.cnfToNANDLockedReductionCompositionFormalized, true);
+  assert.deepEqual(release.earnedBoundary.cnfToNANDPolynomialReductionTheoremKernelTypeSha256, CNF_TO_NAND_POLYNOMIAL_REDUCTION_HASHES);
+  assert.deepEqual(release.earnedBoundary.cnfToNANDPolynomialReductionAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cnfToNANDPolynomialReductionProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionParserAllInputExactTheorem, "PNP.Concrete.CNFSourceParser.allInput_exact");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionExactMachineOutputTheorem, "PNP.Concrete.CNFToNANDCompilerCompiled.compiledMachineOutput_eq_compileEncodedCNFToNAND");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionCompiledNonTimeoutTheorem, "PNP.Concrete.CNFToNANDCompilerCompiled.compiledBoundedDecide_ne_timeout");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionPolynomialTimeFunctionOutputTheorem, "PNP.Concrete.CNFToNANDCompilerCompiled.cnfToNANDPolynomialTimeFunction_output");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionDirectReductionTheorem, "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_correct");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionDirectReductionWitnessTheorem, "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedNANDSAT");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionDirectRawRefinementTheorem, "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_hasRawRefinement");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionLockedReductionTheorem, "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_correct");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionLockedReductionWitnessTheorem, "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedLockedNANDThreshold");
+  assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionLockedRawRefinementTheorem, "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
   assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
@@ -1642,12 +1697,12 @@ test("current release is pinned, sixty-seven-page, exposes the CNF-to-NAND seman
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 73 milestones with the parser, emitter, reduction, and CNF-to-NAND pins", () => {
+test("status and inventory publish exactly 74 milestones with both CNF-to-NAND boundaries pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 73);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 70);
+  assert.equal(milestones.length, 74);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 71);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -1771,7 +1826,7 @@ test("status and inventory publish exactly 73 milestones with the parser, emitte
   }
   assert.equal(status.leanConcreteCNFToNANDSemanticCompilerFormalized, true);
   assert.equal(status.leanConcreteCNFToNANDSemanticCompilerAxiomAuditPassed, true);
-  assert.equal(status.leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount, 41);
+  assert.equal(status.leanConcreteCNFToNANDSemanticCompilerAuditedDeclarationCount, 68);
   assert.equal(status.leanConcreteCNFToNANDExactCodecCanonicalityFormalized, true);
   assert.equal(status.leanConcreteCNFToNANDTypedTopologicalCompilationFormalized, true);
   assert.equal(status.leanConcreteCNFToNANDWellFormedOutputFormalized, true);
@@ -1781,24 +1836,56 @@ test("status and inventory publish exactly 73 milestones with the parser, emitte
   assert.equal(status.leanConcreteCNFToNANDPolynomialOutputSizeBoundFormalized, true);
   assert.equal(status.leanConcreteCNFToNANDAllBitstringFailClosedFormalized, true);
   assert.equal(status.leanConcreteCNFToNANDLockedThresholdCompositionFormalized, true);
-  assert.equal(status.leanConcreteCNFToNANDFiniteMachineFormalized, false);
-  assert.equal(status.leanConcreteCNFToNANDPolynomialTimeFunctionFormalized, false);
+  assert.equal(status.leanConcreteCNFToNANDFiniteMachineFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialTimeFunctionFormalized, true);
+  const polynomialCompiler = milestones.find((row) => row.id === "concrete-cnf-to-nand-polynomial-reduction");
+  assert.equal(polynomialCompiler.classification, "formalized-polynomial-reduction");
+  assert.equal(polynomialCompiler.status, "formalized-polynomial-reduction");
+  assert.equal(polynomialCompiler.earned, true);
+  assert.equal(polynomialCompiler.allPresent, true);
+  assert.equal(polynomialCompiler.allAssumptionFree, false);
+  assert.equal(polynomialCompiler.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(polynomialCompiler.allKernelTypesMatch, true);
+  assert.equal(polynomialCompiler.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(polynomialCompiler.requiredTheorems, Object.keys(CNF_TO_NAND_POLYNOMIAL_REDUCTION_HASHES));
+  assert.deepEqual(
+    Object.fromEntries(polynomialCompiler.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    CNF_TO_NAND_POLYNOMIAL_REDUCTION_HASHES
+  );
+  for (const row of polynomialCompiler.theoremRows) {
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, CNF_TO_NAND_POLYNOMIAL_REDUCTION_HASHES[row.name], row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.kind, "theorem", row.name);
+    assert.deepEqual(candidate.axioms, row.axioms, row.name);
+  }
+  assert.equal(status.leanConcreteCNFToNANDPolynomialReductionFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialReductionAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteCNFToNANDPolynomialReductionAuditedDeclarationCount, 1316);
+  assert.equal(status.leanConcreteCNFToNANDAllInputExactFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDExactMachineOutputFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDCompiledNonTimeoutFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDRawRefinementFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDDirectReductionFormalized, true);
+  assert.equal(status.leanConcreteCNFToNANDLockedReductionCompositionFormalized, true);
 
-  assert.equal(inventory.declarationCount, 21020);
-  assert.equal(inventory.theoremCount, 11477);
-  assert.equal(inventory.assumptionFreeTheoremCount, 5987);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 11970);
-  assert.equal(inventory.sourceClosureModuleCount, 186);
-  assert.equal(inventory.milestoneCandidates.length, 2053);
+  assert.equal(inventory.declarationCount, 23575);
+  assert.equal(inventory.theoremCount, 12806);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6767);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14273);
+  assert.equal(inventory.sourceClosureModuleCount, 208);
+  assert.equal(inventory.milestoneCandidates.length, 2081);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 589,
-    definition: 8444,
-    inductive: 253,
+    constructor: 635,
+    definition: 9582,
+    inductive: 274,
     opaque: 0,
     quotient: 0,
-    recursor: 253,
-    theorem: 11477
+    recursor: 274,
+    theorem: 12806
   });
 });
 
