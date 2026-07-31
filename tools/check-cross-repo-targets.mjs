@@ -4143,7 +4143,7 @@ function validateCurrentPayloads(contents, failures) {
         || cnfToNANDSemanticCompilerMilestone.allKernelTypesMatch !== true
         || cnfToNANDSemanticCompilerMilestone.sourceClosureFingerprintMatches !== true) failures.push("public status CNF-to-NAND semantic-compiler publication boundary mismatch");
     for (const [name, evidence] of Object.entries(CNF_TO_NAND_SEMANTIC_COMPILER_THEOREMS)) {
-      const row = cnfToNANDSemanticCompilerMilestone.theoremRows?.find((candidate) => candidate.name === name);
+      const row = cnfToNANDSemanticCompilerMilestone?.theoremRows?.find((candidate) => candidate.name === name);
       if (!row
           || row.present !== true
           || row.kind !== "theorem"
