@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "1b5c1bc1f563d39c58b735c7163be661042c1356";
-const REVIEWED_CORE_TREE = "2daff0f133177f30a79e4d1ce01d44f721954124";
-const REVIEWED_PROOF_COMMIT = "50db8562b7afa210e83bd68b9cdd11cec9640a14";
+const REVIEWED_CORE_COMMIT = "1361ec17b033acc591d0bd91a7a6e7ec552a449b";
+const REVIEWED_CORE_TREE = "3fd4f4bf9d41fbc7f1a56daf28b1060766df006a";
+const REVIEWED_PROOF_COMMIT = "99aaf5af8b05121592a02090d83aebc999ad4a90";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -3228,6 +3228,22 @@ const RESIDUAL_GAIN_STOPPING_RELEASE_IDENTITIES = {
   residualGainStoppingExecutableChainEndpointZeroTheorem: "PNP.DirectWire.strictGainChainBool_end_residualSlack_eq_zero_of_no_strictEquivalentGain"
 };
 
+const RESIDUAL_TERMINAL_FULL_BRIDGE_RELEASE_IDENTITIES = {
+  residualTerminalFullTerminalizeImplementationTheorem: "PNP.DirectWire.terminalize_implementation",
+  residualTerminalFullTerminalizeGateCountTheorem: "PNP.DirectWire.terminalize_gateCount",
+  residualTerminalFullRealizeEquivalentTheorem: "PNP.DirectWire.TerminalFullRealization.realize_equivalent",
+  residualTerminalFullRealizeSemanticsTheorem: "PNP.DirectWire.TerminalFullRealization.realize_semantics",
+  residualTerminalFullReferenceMinimumRealizationGateCountTheorem: "PNP.DirectWire.referenceMinimumTerminalFullRealization_gateCount",
+  residualTerminalFullMinimumEqualityTheorem: "PNP.DirectWire.terminalFullMinimum_eq_referenceMinimum",
+  residualTerminalFullMinimumSpecTheorem: "PNP.DirectWire.terminalFullMinimum_spec",
+  residualTerminalFullMinimumUniquenessTheorem: "PNP.DirectWire.isTerminalFullMinimum_iff_eq_terminalFullMinimum",
+  residualTerminalFullMinimumReferenceUniquenessTheorem: "PNP.DirectWire.isTerminalFullMinimum_iff_eq_referenceMinimum",
+  residualTerminalFullWholeSpanDescentTheorem: "PNP.DirectWire.WholeSpanResidualWitness.strictResidualDescent",
+  residualTerminalFullPositiveWitnessIffTheorem: "PNP.DirectWire.residualSlack_pos_iff_exists_wholeSpanResidualWitness",
+  residualTerminalFullZeroAbsenceIffTheorem: "PNP.DirectWire.residualSlack_eq_zero_iff_no_wholeSpanResidualWitness",
+  residualTerminalFullReusedStrictDescentTheorem: "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent"
+};
+
 const LOCKED_NAND_GLOBAL_CANDIDATE_RELEASE_IDENTITIES = {
   MacroGateCountTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula",
   NonemptyPrefixSemanticsTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.nonemptyPrefixCandidate_semantics",
@@ -3355,6 +3371,26 @@ const RESIDUAL_GAIN_STOPPING_THEOREMS = {
 const RESIDUAL_GAIN_STOPPING_SCOPE = "all-finite-direct-wire-implementations-with-global-strict-equivalent-gain-quantification-and-proof-supplied-chain-endpoint-stopping";
 const RESIDUAL_GAIN_STOPPING_MILESTONE_SCOPE = "For every finite direct-wire implementation, positive exhaustive-reference residual slack is equivalent to the existence of some strictly smaller semantically equivalent implementation; zero slack and semantic minimality are each equivalent to global absence of such an implementation. A verified chain endpoint with separately proved global no-gain evidence therefore has zero slack and packages an exact minimum result.";
 const RESIDUAL_GAIN_STOPPING_NON_CLAIM = "This is a semantic stopping criterion, not a stopping algorithm. It uses the exhaustive reference minimum as a mathematical witness and requires a proof quantifying over every finite implementation at the endpoint. It does not derive global absence from a finite scan, generate a route, prove candidate-list or route completeness, construct the manuscript's ZeroSlack certificate, establish polynomial checking or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS = {
+  "PNP.DirectWire.terminalize_implementation": { hash: "f8b947cab5adb66f9a7314b3522f9e96a083ff752df2bb7f26e09bf8159a40c5", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.terminalize_gateCount": { hash: "05ffc10d0fcfd63531119a3a7ff69baf871d270412c93d345e45dc1167dc1aee", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.TerminalFullRealization.realize_equivalent": { hash: "28387dc9783f19113dfc9ec147d7d0d8b6906753e823698e024c3fd14edc0ac7", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.TerminalFullRealization.realize_semantics": { hash: "16d7dd8e293e851e41d5d0552dfadbd8f9eb8df41f5f1731d062960e1d8ff3c1", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.referenceMinimumTerminalFullRealization_gateCount": { hash: "611b799ecb526556008906dfaa5964738cbbfdcc7aea67d8b7ead15e27e4b034", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.terminalFullMinimum_eq_referenceMinimum": { hash: "1953784d386ebbde2afe37cdcf4967bd4864109a7e6a54ceac1e6b3a1eb1cc5d", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.terminalFullMinimum_spec": { hash: "d4c836a72896091bb8a0215b7f9c274803f9ca36b28ee2ada0f0d37177280520", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.isTerminalFullMinimum_iff_eq_terminalFullMinimum": { hash: "670efe7841d43136a86f95b26c7657f988977bb44ed3b7ad4bf6927bc827cf50", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.isTerminalFullMinimum_iff_eq_referenceMinimum": { hash: "a2314e7b4616021b9be832aabb457aacb4cb9d8118c4450ab9968b897071623a", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.WholeSpanResidualWitness.strictResidualDescent": { hash: "bbeb896c3ba81d61e882ef600de8617bae37133f66c8cb7f905ebaa65d5460ce", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.residualSlack_pos_iff_exists_wholeSpanResidualWitness": { hash: "5985189a869a695293db92b5eb83f0df69950e46cfc724717aecf640e46ef55b", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.residualSlack_eq_zero_iff_no_wholeSpanResidualWitness": { hash: "10aff27f1c17c1ccac09b400590400a56f9c6db6ab744db6f311c0e1f5083513", axioms: [], module: "PNP.ResidualTerminalFullBridge" },
+  "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent": { hash: "f936c792a4f8f45d27da4512b16ba28222dc64b81f50016c9d30433fbfadae6e", axioms: [], module: "PNP.ResidualRoutes" }
+};
+
+const RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE = "all-finite-direct-wire-implementations-with-complete-multi-output-semantics-and-exhaustive-reference-minimum-witnesses";
+const RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE = "For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and semantics at every input/output coordinate. An independently stated terminal minimum is attained, universally lower-bounds every complete terminal realization, and equals the exhaustive semantic reference minimum. Positive residual slack is equivalent to a cheaper whole-span full realization, every such realization gives strict residual descent, and zero slack is equivalent to absence of one.";
+const RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM = "This is the direct-wire terminal full-mode specialization of the manuscript bridge. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, SaturatePositive, BCEL/BN2-BN6, packet or selector completeness, route generation, the ZeroSlack certificate, PCCMin, polynomial minimum search or checking, SAT in P, discharge a project assumption, or prove P = NP.";
 
 const CNF_TO_NAND_SEMANTIC_COMPILER_RELEASE_IDENTITIES = {
   CodecCanonicalityTheorem: "PNP.Concrete.CNFToNAND.encodeCNF_of_decodeEncodedCNF",
@@ -3498,7 +3534,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 6) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 70) failures.push("formal-publication report must have exactly seventy pages");
+  if (manifest.artifacts?.report?.pageCount !== 71) failures.push("formal-publication report must have exactly seventy-one pages");
   const earned = manifest.earnedBoundary || {};
   if (earned.pipelineStateNamespacesFormalized !== true || earned.pipelineStateNamespaceAxiomAuditPassed !== true || earned.pipelineStateNamespaceAuditedDeclarationCount !== 39) failures.push("formal-publication pipeline namespace boundary mismatch");
   if (earned.pipelineStageBridgesFormalized !== true || earned.pipelineStageBridgeAxiomAuditPassed !== true || earned.pipelineStageBridgeAuditedDeclarationCount !== 56 || earned.pipelineStageLaunchFormalized !== true || earned.pipelineVerdictPreservationFormalized !== true || earned.pipelineInternalOutputHandoffComposed !== true) failures.push("formal-publication pipeline stage-bridge boundary mismatch");
@@ -3998,6 +4034,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   if (!residualGainStoppingHashes || Object.keys(residualGainStoppingHashes).length !== 10
       || !Object.entries(RESIDUAL_GAIN_STOPPING_THEOREMS).every(([name, row]) => residualGainStoppingHashes[name] === row.hash)) failures.push("current manifest residual-gain stopping fingerprint mismatch");
   if (!Object.entries(RESIDUAL_GAIN_STOPPING_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual-gain stopping theorem identity mismatch");
+  if (!(earned.residualTerminalFullBridgeFormalized === true
+      && earned.residualTerminalFullBridgeAxiomAuditPassed === true
+      && earned.residualTerminalFullBridgeAuditedDeclarationCount === 22
+      && earned.residualTerminalFullBridgeEmptyAxiomDeclarationCount === 22
+      && earned.residualTerminalizationExactFormalized === true
+      && earned.residualTerminalFullMinimumSpecificationFormalized === true
+      && earned.residualTerminalMuBridgeFormalized === true
+      && earned.residualWholeSpanPositiveWitnessIffFormalized === true
+      && earned.residualWholeSpanStrictDescentFormalized === true
+      && earned.residualWholeSpanZeroAbsenceIffFormalized === true
+      && earned.residualTerminalFullBridgeScope === RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE
+      && earned.residualTerminalQuotientCarrierFormalized === false
+      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalSaturationFormalized === false)) failures.push("current manifest residual terminal full-carrier bridge boundary mismatch");
+  if (!Array.isArray(earned.residualTerminalFullBridgeAxiomClosure)
+      || earned.residualTerminalFullBridgeAxiomClosure.length !== 0
+      || !Array.isArray(earned.residualTerminalFullBridgeProjectAxiomClosure)
+      || earned.residualTerminalFullBridgeProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal full-carrier bridge axiom closure mismatch");
+  const residualTerminalFullBridgeHashes = earned.residualTerminalFullBridgeTheoremKernelTypeSha256;
+  if (!residualTerminalFullBridgeHashes || Object.keys(residualTerminalFullBridgeHashes).length !== 13
+      || !Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS).every(([name, row]) => residualTerminalFullBridgeHashes[name] === row.hash)) failures.push("current manifest residual terminal full-carrier bridge fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal full-carrier bridge theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -4433,6 +4491,42 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualGainChainGlobalStoppingConsequenceFormalized === true
       && status.leanResidualGainChainExactMinimumPackagingFormalized === true
       && status.leanResidualGainStoppingScope === RESIDUAL_GAIN_STOPPING_SCOPE)) failures.push("status residual-gain stopping evidence mismatch");
+  const residualTerminalFullBridgeMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-full-carrier-bridge"
+  );
+  const residualTerminalFullBridgeNames = Object.keys(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS);
+  if (!residualTerminalFullBridgeMilestone
+      || residualTerminalFullBridgeMilestone.classification !== "formalized-terminal-full-mode-semantic-bridge"
+      || residualTerminalFullBridgeMilestone.status !== "formalized-terminal-full-mode-semantic-bridge"
+      || residualTerminalFullBridgeMilestone.scope !== RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE
+      || residualTerminalFullBridgeMilestone.nonClaim !== RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM
+      || JSON.stringify(residualTerminalFullBridgeMilestone.requiredTheorems) !== JSON.stringify(residualTerminalFullBridgeNames)
+      || residualTerminalFullBridgeMilestone.earned !== true
+      || residualTerminalFullBridgeMilestone.allPresent !== true
+      || residualTerminalFullBridgeMilestone.allAssumptionFree !== true
+      || residualTerminalFullBridgeMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalFullBridgeMilestone.allKernelTypesMatch !== true
+      || residualTerminalFullBridgeMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal full-carrier bridge publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS)) {
+    const row = residualTerminalFullBridgeMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal full-carrier bridge theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalFullBridgeFormalized === true
+      && status.leanResidualTerminalFullBridgeAxiomAuditPassed === true
+      && status.leanResidualTerminalizationExactFormalized === true
+      && status.leanResidualTerminalFullMinimumSpecificationFormalized === true
+      && status.leanResidualTerminalMuBridgeFormalized === true
+      && status.leanResidualWholeSpanPositiveWitnessIffFormalized === true
+      && status.leanResidualWholeSpanStrictDescentFormalized === true
+      && status.leanResidualWholeSpanZeroAbsenceIffFormalized === true
+      && status.leanResidualTerminalFullBridgeScope === RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE
+      && status.leanResidualTerminalQuotientCarrierFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalSaturationFormalized === false)) failures.push("status residual terminal full-carrier bridge evidence mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
@@ -4441,7 +4535,7 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 23615 || inventory.theoremCount !== 12830 || inventory.assumptionFreeTheoremCount !== 6788 || inventory.excludedPrivateDeclarationCount !== 14273 || inventory.sourceClosureModuleCount !== 211 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 23671 || inventory.theoremCount !== 12853 || inventory.assumptionFreeTheoremCount !== 6809 || inventory.excludedPrivateDeclarationCount !== 14273 || inventory.sourceClosureModuleCount !== 212 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -4551,6 +4645,12 @@ function validateCurrentPayloads(contents, failures) {
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual-gain stopping theorem mismatch: ${name}`);
     if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual-gain stopping fingerprint mismatch: ${name}`);
+  }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal full-carrier bridge theorem mismatch: ${name}`);
+    if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal full-carrier bridge fingerprint mismatch: ${name}`);
   }
   for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4997,8 +5097,14 @@ function validateCurrentPayloads(contents, failures) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual-gain stopping theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual-gain stopping fingerprint mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 2103) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2103`);
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal full-carrier bridge theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal full-carrier bridge fingerprint mismatch: ${name}`);
+    }
+    if (inventory.milestoneCandidates?.length !== 2115) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2115`);
     }
   }
 }
@@ -5591,21 +5697,21 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     const lockedNANDGlobalSemanticThresholdMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-semantic-threshold");
-    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 76 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
+    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 77 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
     const lockedNANDGlobalSemanticThresholdPins = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS)) {
       if (!lockedNANDGlobalSemanticThresholdMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalSemanticThresholdPins[name] !== row.hash) failures.push(`core publication map locked-NAND global semantic-threshold fingerprint mismatch: ${name}`);
     }
     const lockedNANDEncodedSemanticReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
-    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 76 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
+    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 77 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
     const lockedNANDEncodedSemanticReductionPins = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS)) {
       if (!lockedNANDEncodedSemanticReductionMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDEncodedSemanticReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
     }
     const lockedNANDSourceParserMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
         || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20
         || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
@@ -5618,8 +5724,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDTargetEmitterMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-target-emitter");
     if (!lockedNANDTargetEmitterMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || lockedNANDTargetEmitterMilestone.classification !== "formalized-foundation-only"
         || lockedNANDTargetEmitterMilestone.requiredTheorems?.length !== 22
         || lockedNANDTargetEmitterMilestone.scope !== LOCKED_NAND_TARGET_EMITTER_SCOPE
@@ -5632,8 +5738,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
     if (!lockedNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || lockedNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || lockedNANDPolynomialReductionMilestone.requiredTheorems?.length !== 5
         || lockedNANDPolynomialReductionMilestone.scope !== LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE
@@ -5646,8 +5752,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDSemanticCompilerMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-semantic-compiler");
     if (!cnfToNANDSemanticCompilerMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || cnfToNANDSemanticCompilerMilestone.classification !== "formalized-semantic-boundary"
         || cnfToNANDSemanticCompilerMilestone.scope !== CNF_TO_NAND_SEMANTIC_COMPILER_MILESTONE_SCOPE
         || cnfToNANDSemanticCompilerMilestone.nonClaim !== CNF_TO_NAND_SEMANTIC_COMPILER_NON_CLAIM
@@ -5660,8 +5766,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-polynomial-reduction");
     if (!cnfToNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || cnfToNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || cnfToNANDPolynomialReductionMilestone.scope !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE_SCOPE
         || cnfToNANDPolynomialReductionMilestone.nonClaim !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM
@@ -5674,8 +5780,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualGainChainMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-chain-bound");
     if (!residualGainChainMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || residualGainChainMilestone.classification !== "formalized-iteration-bound-only"
         || residualGainChainMilestone.scope !== RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE
         || residualGainChainMilestone.nonClaim !== RESIDUAL_GAIN_CHAIN_NON_CLAIM
@@ -5688,8 +5794,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualGainStoppingMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-stopping-specification");
     if (!residualGainStoppingMilestone
-        || publicationMap.milestones?.length !== 76
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 73
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
         || residualGainStoppingMilestone.classification !== "formalized-semantic-stopping-only"
         || residualGainStoppingMilestone.scope !== RESIDUAL_GAIN_STOPPING_MILESTONE_SCOPE
         || residualGainStoppingMilestone.nonClaim !== RESIDUAL_GAIN_STOPPING_NON_CLAIM
@@ -5699,6 +5805,20 @@ export function validateAuditTargets(options = {}) {
       if (!residualGainStoppingMilestone?.requiredTheorems?.includes(name)
           || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
           || residualGainStoppingPins[name] !== row.hash) failures.push(`core publication map residual-gain stopping fingerprint mismatch: ${name}`);
+    }
+    const residualTerminalFullBridgeMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-full-carrier-bridge");
+    if (!residualTerminalFullBridgeMilestone
+        || publicationMap.milestones?.length !== 77
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 74
+        || residualTerminalFullBridgeMilestone.classification !== "formalized-terminal-full-mode-semantic-bridge"
+        || residualTerminalFullBridgeMilestone.scope !== RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE
+        || residualTerminalFullBridgeMilestone.nonClaim !== RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM
+        || JSON.stringify(residualTerminalFullBridgeMilestone.requiredTheorems) !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS))) failures.push("core publication map residual terminal full-carrier bridge milestone mismatch");
+    const residualTerminalFullBridgePins = earned.residualTerminalFullBridgeTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS)) {
+      if (!residualTerminalFullBridgeMilestone?.requiredTheorems?.includes(name)
+          || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+          || residualTerminalFullBridgePins[name] !== row.hash) failures.push(`core publication map residual terminal full-carrier bridge fingerprint mismatch: ${name}`);
     }
   }
 

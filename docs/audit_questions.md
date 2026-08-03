@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/1b5c1bc1f563d39c58b735c7163be661042c1356/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/1b5c1bc1f563d39c58b735c7163be661042c1356/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/1361ec17b033acc591d0bd91a7a6e7ec552a449b/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/1361ec17b033acc591d0bd91a7a6e7ec552a449b/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the seventy-page inventory-derived report. Every numbered section or
+The current canonical download is the seventy-one-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 57-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 2,103 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 2,115 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm seventy-three earned scoped milestones. The newest scope covers every finite proof-bearing or executably verified chain of adjacent strict equivalent gains: semantics and the exhaustive reference minimum are invariant, and endpoint slack plus chain length is bounded by starting slack, with a four-step specialization for the complete locked-NAND candidate. Three global milestones, four project axioms, and six blockers remain; gain generation and completeness, justified stopping, `ZeroSlack`, exact minimization, polynomial checker/PCCMin runtime, SAT NP-hardness or CNF-SAT NP-completeness, abstract threshold discharge, CNF-SAT in P, and `P = NP` must remain absent. | A verified-chain bound is presented as a gain generator, completeness theorem, stopping theorem, minimizer, polynomial runtime theorem, CNF-SAT decider, assumption discharge, or final theorem; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require seventy PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm seventy-four earned scoped milestones. The newest scope is the direct-wire terminal full-mode bridge for every finite circuit: terminalization preserves exact implementation, gate count, and complete input/output semantics; whole-span cheaper realizations correspond to positive residual slack; and zero slack corresponds to their absence. Three global milestones, four project axioms, and six blockers remain. The quotient carrier/firewall, proper or governed supports, saturation, BCEL/BN2–BN6, route completeness, `ZeroSlack`, exact minimization, polynomial checker/PCCMin runtime, SAT NP-hardness or CNF-SAT NP-completeness, abstract threshold discharge, CNF-SAT in P, and `P = NP` must remain absent. | A direct-wire full-mode specialization is presented as the manuscript’s quotient/support construction, gain generator, completeness theorem, minimizer, polynomial runtime theorem, CNF-SAT decider, assumption discharge, or final theorem; a local/conditional result is presented as global; or a blocker/axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require seventy-one PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 

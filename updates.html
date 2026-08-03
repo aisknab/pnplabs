@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 59% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 60% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="59" aria-label="Estimated proof reconstruction progress: 59 percent">59%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 59 percent">
+        <progress class="proof-progress-meter" max="100" value="60" aria-label="Estimated proof reconstruction progress: 60 percent">60%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 60 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-03-residual-terminal-full-carrier-bridge" data-milestone-id="residual-terminal-full-carrier-bridge">
+        <div class="section-label"><time datetime="2026-08-03T12:39:26Z">2026-08-03</time> · earned milestone 74</div>
+        <h2>The proof now compares a complete circuit at once</h2>
+        <p>A circuit is a collection of simple yes-or-no operations. Lean now checks the full comparison for any finite circuit: another circuit counts as equivalent only when it gives the same answer for every possible input and every output. The wrapper used for that comparison also preserves the circuit and its exact number of operations.</p>
+        <p>Lean also checks that any cheaper complete equivalent circuit is genuine progress toward the smallest one, and that no such circuit exists exactly when the remaining size gap is zero. It does not provide an efficient way to find that circuit or finish the manuscript’s remaining minimisation and complexity-theory steps, and it does not prove P = NP. The 60% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 60%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-full-carrier-bridge</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-full-mode-semantic-bridge</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and semantics at every input/output coordinate. An independently stated terminal minimum is attained, universally lower-bounds every complete terminal realization, and equals the exhaustive semantic reference minimum. Positive residual slack is equivalent to a cheaper whole-span full realization, every such realization gives strict residual descent, and zero slack is equivalent to absence of one.</p>
+          <p><strong>Boundary:</strong> This is the direct-wire terminal full-mode specialization of the manuscript bridge. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, SaturatePositive, BCEL/BN2-BN6, packet or selector completeness, route generation, the ZeroSlack certificate, PCCMin, polynomial minimum search or checking, SAT in P, discharge a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 13</p>
+          <p><strong>Core source:</strong> commit <code>1361ec17b033acc591d0bd91a7a6e7ec552a449b</code>, tree <code>3fd4f4bf9d41fbc7f1a56daf28b1060766df006a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-97</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-TERMINAL-FULL-CARRIER-BRIDGE-96</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-03-residual-gain-stopping-specification" data-milestone-id="residual-gain-stopping-specification">
         <div class="section-label"><time datetime="2026-08-03T06:33:39Z">2026-08-03</time> · earned milestone 73</div>
         <h2>A globally complete stop now certifies a smallest circuit</h2>

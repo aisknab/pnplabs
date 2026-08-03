@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-03-residual-terminal-full-carrier-bridge",
+      "milestoneId": "residual-terminal-full-carrier-bridge",
+      "publishedAt": "2026-08-03T12:39:26Z",
+      "title": "The proof now compares a complete circuit at once",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations. Lean now checks the full comparison for any finite circuit: another circuit counts as equivalent only when it gives the same answer for every possible input and every output. The wrapper used for that comparison also preserves the circuit and its exact number of operations.",
+        "Lean also checks that any cheaper complete equivalent circuit is genuine progress toward the smallest one, and that no such circuit exists exactly when the remaining size gap is zero. It does not provide an efficient way to find that circuit or finish the manuscript’s remaining minimisation and complexity-theory steps, and it does not prove P = NP. The 60% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 60,
+      "source": {
+        "commit": "1361ec17b033acc591d0bd91a7a6e7ec552a449b",
+        "tree": "3fd4f4bf9d41fbc7f1a56daf28b1060766df006a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-97",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-TERMINAL-FULL-CARRIER-BRIDGE-96"
+      }
+    },
+    {
       "id": "2026-08-03-residual-gain-stopping-specification",
       "milestoneId": "residual-gain-stopping-specification",
       "publishedAt": "2026-08-03T06:33:39Z",
