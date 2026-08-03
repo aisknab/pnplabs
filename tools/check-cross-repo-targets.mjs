@@ -4897,6 +4897,12 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
+    for (const [name, evidence] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual-gain chain theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual-gain chain fingerprint mismatch: ${name}`);
+    }
     if (inventory.milestoneCandidates?.length !== 2093) {
       failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2093`);
     }
@@ -5023,13 +5029,7 @@ export function validateAuditTargets(options = {}) {
       if (pins[earned[theoremField]] !== earned[field]) failures.push(`core publication map fingerprint mismatch: ${field}`);
     }
     const builderPins = earned.cookLevinBuilderInputLengthTheoremKernelTypeSha256 || {};
-    for (const [name, evidence] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
-    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
-    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
-        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual-gain chain theorem mismatch: ${name}`);
-    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual-gain chain fingerprint mismatch: ${name}`);
-  }
-  for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
+    for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       if (builderPins[name] !== evidence.hash || pins[name] !== evidence.hash) {
         failures.push(`core publication map builder input-length fingerprint mismatch: ${name}`);
       }
