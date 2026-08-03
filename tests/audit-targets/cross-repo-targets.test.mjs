@@ -847,6 +847,46 @@ const RESIDUAL_GAIN_CHAIN_RELEASE_FIELDS = Object.fromEntries(
     || key === "lockedNANDStrictGainChainBoolLengthLeFourTheorem"
   )
 );
+const RESIDUAL_GAIN_STOPPING_THEOREM_HASHES =
+  publishedRelease.earnedBoundary.residualGainStoppingTheoremKernelTypeSha256;
+const RESIDUAL_GAIN_STOPPING_THEOREM_NAMES = Object.keys(RESIDUAL_GAIN_STOPPING_THEOREM_HASHES);
+const RESIDUAL_GAIN_STOPPING_CANDIDATES = publishedInventory.milestoneCandidates.filter(
+  (candidate) => RESIDUAL_GAIN_STOPPING_THEOREM_NAMES.includes(candidate.name)
+);
+assert.equal(RESIDUAL_GAIN_STOPPING_THEOREM_NAMES.length, 10);
+assert.equal(RESIDUAL_GAIN_STOPPING_CANDIDATES.length, 10);
+const PUBLISHED_RESIDUAL_GAIN_STOPPING_MILESTONE = publishedStatus.formalPublicationMilestones.find(
+  (row) => row.id === "residual-gain-stopping-specification"
+);
+assert.ok(PUBLISHED_RESIDUAL_GAIN_STOPPING_MILESTONE);
+const RESIDUAL_GAIN_STOPPING_STATUS_KEYS = [
+  "leanResidualGainStoppingSpecificationFormalized",
+  "leanResidualGainStoppingAxiomAuditPassed",
+  "leanResidualGainReferenceMinimumWitnessFormalized",
+  "leanResidualGainPositiveIffGlobalStrictGainFormalized",
+  "leanResidualGainZeroIffGlobalNoStrictGainFormalized",
+  "leanResidualGainSemanticMinimumIffGlobalNoStrictGainFormalized",
+  "leanResidualGainChainGlobalStoppingConsequenceFormalized",
+  "leanResidualGainChainExactMinimumPackagingFormalized",
+  "leanResidualGainStoppingScope"
+];
+const RESIDUAL_GAIN_STOPPING_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_GAIN_STOPPING_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, `missing published status field: ${key}`);
+    return [key, publishedStatus[key]];
+  })
+);
+const RESIDUAL_GAIN_STOPPING_RELEASE_FIELDS = Object.fromEntries(
+  Object.entries(publishedRelease.earnedBoundary).filter(([key]) =>
+    key.startsWith("residualGainStopping")
+    || key.startsWith("residualGainReferenceMinimum")
+    || key.startsWith("residualGainPositiveIff")
+    || key.startsWith("residualGainZeroIff")
+    || key.startsWith("residualGainSemanticMinimumIff")
+    || key.startsWith("residualGainChainGlobalStopping")
+    || key.startsWith("residualGainChainExactMinimum")
+  )
+);
 
 const PUBLISHED_FORMAL_PUBLICATION_MAP_MILESTONES = publishedStatus.formalPublicationMilestones.map(
   ({ id, classification, scope, requiredTheorems, nonClaim }) => ({
@@ -889,6 +929,7 @@ function makeProject(t) {
     ...CNF_TO_NAND_SEMANTIC_COMPILER_STATUS_FIELDS,
     ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_STATUS_FIELDS,
     ...RESIDUAL_GAIN_CHAIN_STATUS_FIELDS,
+    ...RESIDUAL_GAIN_STOPPING_STATUS_FIELDS,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -1518,17 +1559,19 @@ function makeProject(t) {
       ...structuredClone(PUBLISHED_CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE)
     }, {
       ...structuredClone(PUBLISHED_RESIDUAL_GAIN_CHAIN_MILESTONE)
+    }, {
+      ...structuredClone(PUBLISHED_RESIDUAL_GAIN_STOPPING_MILESTONE)
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
   });
   const inventory = json({
     kind: "PNPLeanTheoremInventory0",
-    declarationCount: 23601,
-    theoremCount: 12818,
-    assumptionFreeTheoremCount: 6776,
+    declarationCount: 23615,
+    theoremCount: 12830,
+    assumptionFreeTheoremCount: 6788,
     excludedPrivateDeclarationCount: 14273,
-    sourceClosureModuleCount: 210,
+    sourceClosureModuleCount: 211,
     axiomCount: 4,
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -1715,7 +1758,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...LOCKED_NAND_TARGET_EMITTER_CANDIDATES, ...LOCKED_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...CNF_TO_NAND_SEMANTIC_COMPILER_CANDIDATES, ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...RESIDUAL_GAIN_CHAIN_CANDIDATES, ...Array.from({ length: 239 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...LOCKED_NAND_TARGET_EMITTER_CANDIDATES, ...LOCKED_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...CNF_TO_NAND_SEMANTIC_COMPILER_CANDIDATES, ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...RESIDUAL_GAIN_CHAIN_CANDIDATES, ...RESIDUAL_GAIN_STOPPING_CANDIDATES, ...Array.from({ length: 239 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -1818,7 +1861,8 @@ function makeProject(t) {
       ...LOCKED_NAND_POLYNOMIAL_REDUCTION_THEOREM_HASHES,
       ...CNF_TO_NAND_SEMANTIC_COMPILER_THEOREM_HASHES,
       ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREM_HASHES,
-      ...RESIDUAL_GAIN_CHAIN_THEOREM_HASHES
+      ...RESIDUAL_GAIN_CHAIN_THEOREM_HASHES,
+      ...RESIDUAL_GAIN_STOPPING_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -2263,6 +2307,7 @@ function makeProject(t) {
         ([name]) => name.startsWith("cookLevinBuilder") || name.startsWith("cookLevinCompleteRawFormulaBuilder")
       ))),
       ...structuredClone(RESIDUAL_GAIN_CHAIN_RELEASE_FIELDS),
+      ...structuredClone(RESIDUAL_GAIN_STOPPING_RELEASE_FIELDS),
       cookLevinRawFormulaBuilderFormalized: false,
       cookLevinFormulaScheduleFunctionProgramRawRefinementFormalized: false,
       cookLevinFormulaConstructionRuntimePolynomialFormalized: false,
@@ -6388,6 +6433,63 @@ test("rejects residual-gain chain release, status, inventory, and publication-ma
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual-gain chain fingerprint mismatch/);
+});
+
+test("rejects residual-gain stopping release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualGainZeroIffGlobalNoStrictGainFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual-gain stopping boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualGainStoppingTheoremKernelTypeSha256[
+    "PNP.DirectWire.residualSlack_eq_zero_iff_forall_not_strictEquivalentGain"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual-gain stopping fingerprint mismatch/);
+
+  const releaseAxiom = makeProject(t);
+  releaseAxiom.release.earnedBoundary.residualGainStoppingProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
+  expectFailure(releaseAxiom, /current manifest residual-gain stopping axiom closure mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualGainZeroIffGlobalNoStrictGainFormalized = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual-gain stopping evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones = statusMilestonePayload.formalPublicationMilestones.filter(
+    (row) => row.id !== "residual-gain-stopping-specification"
+  );
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual-gain stopping publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.residualSlack_eq_zero_iff_forall_not_strictEquivalentGain"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual-gain stopping theorem mismatch/);
+
+  const mapNonClaim = makeProject(t);
+  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapNonClaimPayload.milestones.find(
+    (row) => row.id === "residual-gain-stopping-specification"
+  ).nonClaim = "P = NP";
+  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
+  expectFailure(mapNonClaim, /core publication map residual-gain stopping milestone mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.isSemanticallyMinimum_iff_forall_not_strictEquivalentGain"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual-gain stopping fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

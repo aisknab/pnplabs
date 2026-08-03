@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-95';
-const STATUS_SHA256 = '94aef5e267925651eed37adaacf3a767b103f9e0943eed50e3e0a677c5751076';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-CHAIN-BOUND-94';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-03-95';
-const INVENTORY_SHA256 = '26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b';
-const SOURCE_CLOSURE_SHA256 = '3430306ac20401ae6967122be54eab38adeb843595f83049e97c09397eeb468b';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-96';
+const STATUS_SHA256 = '251b3b184c7195f8a951d474701610a3650a2d42d98193ebb515cbcb16c4597f';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-STOPPING-SPECIFICATION-95';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-03-96';
+const INVENTORY_SHA256 = '71165b553da0c375a19769cb9a7da02b20927d79cf47204d07e86ae14533c5fe';
+const SOURCE_CLOSURE_SHA256 = '23ebbd4f1251d92adb3c0a1d60cf63b52683a41f39a84375c87b0781d2f522ac';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 23601,
-  theorems: 12818,
-  assumptionFreeTheorems: 6776,
+  declarations: 23615,
+  theorems: 12830,
+  assumptionFreeTheorems: 6788,
   excludedPrivateDeclarations: 14273,
-  modules: 210,
+  modules: 211,
   axioms: 4,
 });
 
@@ -3332,6 +3332,19 @@ const RESIDUAL_GAIN_CHAIN_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four", ["Quot.sound", "propext"], "PNP.LockedNANDResidualGainBound"],
 ]);
 
+const RESIDUAL_GAIN_STOPPING_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.referenceMinimumImplementation_gateCount_eq_referenceMinimum", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.referenceMinimumImplementation_equivalent", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.referenceMinimumImplementation_isSemanticallyMinimum", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.referenceMinimumImplementation_residualSlack_eq_zero", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.referenceMinimumImplementation_strictEquivalentGain_of_residualSlack_pos", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.residualSlack_pos_iff_exists_strictEquivalentGain", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.residualSlack_eq_zero_iff_forall_not_strictEquivalentGain", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.isSemanticallyMinimum_iff_forall_not_strictEquivalentGain", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.StrictGainChain.end_residualSlack_eq_zero_of_no_strictEquivalentGain", [], "PNP.ResidualGainStopping"],
+  ["PNP.DirectWire.strictGainChainBool_end_residualSlack_eq_zero_of_no_strictEquivalentGain", [], "PNP.ResidualGainStopping"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -3847,6 +3860,7 @@ const MILESTONE_IDS = Object.freeze([
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
   'residual-gain-chain-bound',
+  'residual-gain-stopping-specification',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4577,12 +4591,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 635,
-    definition: 9596,
+    definition: 9598,
     inductive: 274,
     opaque: 0,
     quotient: 0,
     recursor: 274,
-    theorem: 12818,
+    theorem: 12830,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4899,6 +4913,11 @@ function validateInventory(inventory) {
     module,
   }));
   const residualGainChain = RESIDUAL_GAIN_CHAIN_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
+  const residualGainStopping = RESIDUAL_GAIN_STOPPING_DECLARATIONS.map(([name, axioms, module]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
     module,
@@ -5223,6 +5242,9 @@ function validateInventory(inventory) {
     && residualGainChain.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualGainStopping.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5264,7 +5286,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2093
+    && inventory.milestoneCandidates.length === 2103
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5328,7 +5350,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 72;
+    const shouldBeEarned = index < 73;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5375,6 +5397,9 @@ function validateStatus(status, inventory) {
   );
   const residualGainChainMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-gain-chain-bound'
+  );
+  const residualGainStoppingMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-gain-stopping-specification'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -5438,6 +5463,22 @@ function validateStatus(status, inventory) {
       residualGainChainMilestone.requiredTheorems,
       RESIDUAL_GAIN_CHAIN_DECLARATIONS.map(([name]) => name)
     )
+    && residualGainStoppingMilestone?.classification === "formalized-semantic-stopping-only"
+    && residualGainStoppingMilestone.scope === "For every finite direct-wire implementation, positive exhaustive-reference residual slack is equivalent to the existence of some strictly smaller semantically equivalent implementation; zero slack and semantic minimality are each equivalent to global absence of such an implementation. A verified chain endpoint with separately proved global no-gain evidence therefore has zero slack and packages an exact minimum result."
+    && residualGainStoppingMilestone.nonClaim === "This is a semantic stopping criterion, not a stopping algorithm. It uses the exhaustive reference minimum as a mathematical witness and requires a proof quantifying over every finite implementation at the endpoint. It does not derive global absence from a finite scan, generate a route, prove candidate-list or route completeness, construct the manuscript's ZeroSlack certificate, establish polynomial checking or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP."
+    && sameJson(
+      residualGainStoppingMilestone.requiredTheorems,
+      RESIDUAL_GAIN_STOPPING_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualGainStoppingSpecificationFormalized === true
+    && status.leanResidualGainStoppingAxiomAuditPassed === true
+    && status.leanResidualGainReferenceMinimumWitnessFormalized === true
+    && status.leanResidualGainPositiveIffGlobalStrictGainFormalized === true
+    && status.leanResidualGainZeroIffGlobalNoStrictGainFormalized === true
+    && status.leanResidualGainSemanticMinimumIffGlobalNoStrictGainFormalized === true
+    && status.leanResidualGainChainGlobalStoppingConsequenceFormalized === true
+    && status.leanResidualGainChainExactMinimumPackagingFormalized === true
+    && status.leanResidualGainStoppingScope === "all-finite-direct-wire-implementations-with-global-strict-equivalent-gain-quantification-and-proof-supplied-chain-endpoint-stopping"
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
     && status.finalTheoremReady === gatePassed

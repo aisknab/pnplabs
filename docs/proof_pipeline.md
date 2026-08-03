@@ -25,13 +25,13 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,093 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,103 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 23,601 public declarations;
-- 12,818 theorem-kind declarations;
-- 6,776 assumption-free theorem-kind declarations;
+- 23,615 public declarations;
+- 12,830 theorem-kind declarations;
+- 6,788 assumption-free theorem-kind declarations;
 - 210 source-closure modules;
 - 14,273 excluded private compiler auxiliaries;
 - four project axioms.
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The seventy-two earned scopes are:
+The seventy-three earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -154,7 +154,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment sixty-nine-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seventy-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

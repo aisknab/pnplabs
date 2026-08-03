@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Verified circuit-shrinking cannot continue forever</h2>
-          <p>A circuit is a collection of simple yes-or-no operations. Sometimes one circuit can be replaced by a smaller circuit that gives exactly the same answers. Lean now checks a general rule for any finite sequence of these replacements: when every step is independently checked to keep all answers the same and to use fewer operations, the sequence cannot continue for longer than the starting gap between the current circuit and the smallest equivalent circuit.</p>
-          <p>For the locked comparison circuits already constructed in this project, that starting gap is at most four, so any such verified shrinking sequence has at most four steps. This rules out endless repetition, but it does not find the next smaller circuit, prove that every possible improvement will be found, or show that stopping early means the smallest circuit has been reached. Those search, completeness, runtime, and final P = NP steps remain open. The 58% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-03-residual-gain-chain-bound">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">A globally complete stop now certifies a smallest circuit</h2>
+          <p>A circuit is a finite list of simple yes-or-no operations. Two circuits are equivalent when they give exactly the same outputs for every possible input. Lean now proves an exact rule for when an equivalent circuit cannot be made smaller: there is no smaller equivalent circuit anywhere exactly when the current circuit is already as small as possible.</p>
+          <p>This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit—not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-03-residual-gain-stopping-specification">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>StrictGainChain.end_residualSlack_add_length_le</code> proves that the endpoint slack plus the number of verified strict equivalent gains is at most the starting slack. The existing locked-family bound specializes this to at most four accepted gain steps. The checker validates a supplied finite chain; it does not generate gains, prove search completeness, justify early stopping, construct ZeroSlack, or prove a polynomial-time minimizer or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>residualSlack_eq_zero_iff_forall_not_strictEquivalentGain</code> proves that residual slack is zero exactly when no smaller equivalent implementation exists anywhere. A verified chain endpoint therefore packages an exact minimum only after a separate proof supplies that global no-gain fact. This is a semantic stopping criterion, not a stopping algorithm or finite-search completeness theorem.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -147,6 +147,11 @@ leanResidualGainChainSemanticInvariantFormalized = true
 leanResidualGainChainSlackIterationBoundFormalized = true
 leanLockedNANDGainIterationsAtMostFourFormalized = true
 leanResidualGainChainPolynomialRuntimeFormalized = false
+leanResidualGainStoppingSpecificationFormalized = true
+leanResidualGainStoppingAxiomAuditPassed = true
+leanResidualGainZeroIffGlobalNoStrictGainFormalized = true
+leanResidualGainSemanticMinimumIffGlobalNoStrictGainFormalized = true
+leanResidualGainChainGlobalStoppingConsequenceFormalized = true
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -160,9 +165,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-03-95</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-03-96</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b</code></div>
+            <div><span>Inventory SHA-256</span><code>71165b553da0c375a19769cb9a7da02b20927d79cf47204d07e86ae14533c5fe</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -170,18 +175,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>58</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>59</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 58 percent" data-proof-progress="58">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>58</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 59 percent" data-proof-progress="59">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>59</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 58% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 59% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
