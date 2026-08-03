@@ -76,8 +76,8 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'not a probability that the claim is correct, a confidence score, or a mathematical result',
     'P: problems we can solve efficiently',
     'NP: answers we can check efficiently',
-    'The CNF-to-NAND translation now runs as a checked efficient process',
-    'EncodedNANDSAT',
+    'Read the plain-language and technical update',
+    'Machine checking now connects CNF-SAT through exact polynomial reductions, not to an efficient solver.',
     'EncodedLockedNANDThreshold',
   ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
   assert.doesNotMatch(html, />Historical report</u);
