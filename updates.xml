@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-03T12:39:26Z</updated>
+  <updated>2026-08-03T17:25:02Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-mode-firewall</id>
+    <title>The proof now separates partial and complete circuit comparisons</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-mode-firewall"/>
+    <published>2026-08-03T17:25:02Z</published>
+    <updated>2026-08-03T17:25:02Z</updated>
+    <summary type="text">A circuit is a finite collection of simple yes-or-no operations. Some proof steps compare only a selected checklist of facts about two circuits, while later steps need every relevant fact to match. Lean now records exactly which facts were kept, preserves the circuit, its number of operations, and all input-and-output behaviour, and prevents a partial comparison from being treated as a complete one without the missing checks. A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees; keeping the full checklist makes that lift immediate. This is a safety boundary for future minimisation work, not a method for finding smaller circuits, completing the remaining support and saturation arguments, running the final algorithm efficiently, or proving P = NP. The 61% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 61 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit is a finite collection of simple yes-or-no operations. Some proof steps compare only a selected checklist of facts about two circuits, while later steps need every relevant fact to match. Lean now records exactly which facts were kept, preserves the circuit, its number of operations, and all input-and-output behaviour, and prevents a partial comparison from being treated as a complete one without the missing checks.&lt;/p&gt;&lt;p&gt;A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees; keeping the full checklist makes that lift immediate. This is a safety boundary for future minimisation work, not a method for finding smaller circuits, completing the remaining support and saturation arguments, running the final algorithm efficiently, or proving P = NP. The 61% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;61&quot;&gt;Editorial progress estimate at publication: 61%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-mode-firewall&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-03-residual-terminal-full-carrier-bridge</id>
     <title>The proof now compares a complete circuit at once</title>

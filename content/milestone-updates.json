@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-04-residual-terminal-mode-firewall",
+      "milestoneId": "residual-terminal-mode-firewall",
+      "publishedAt": "2026-08-03T17:25:02Z",
+      "title": "The proof now separates partial and complete circuit comparisons",
+      "plainLanguage": [
+        "A circuit is a finite collection of simple yes-or-no operations. Some proof steps compare only a selected checklist of facts about two circuits, while later steps need every relevant fact to match. Lean now records exactly which facts were kept, preserves the circuit, its number of operations, and all input-and-output behaviour, and prevents a partial comparison from being treated as a complete one without the missing checks.",
+        "A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees; keeping the full checklist makes that lift immediate. This is a safety boundary for future minimisation work, not a method for finding smaller circuits, completing the remaining support and saturation arguments, running the final algorithm efficiently, or proving P = NP. The 61% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 61,
+      "source": {
+        "commit": "1c9732052c9fbb05b7bea33887cfefea535a1c01",
+        "tree": "88b8b18e0adc1e62d78d2b6b37bdfcb9d2a95332",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-98",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-MODE-FIREWALL-97"
+      }
+    },
+    {
       "id": "2026-08-03-residual-terminal-full-carrier-bridge",
       "milestoneId": "residual-terminal-full-carrier-bridge",
       "publishedAt": "2026-08-03T12:39:26Z",

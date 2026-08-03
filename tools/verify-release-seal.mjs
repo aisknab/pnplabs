@@ -4,8 +4,8 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "1361ec17b033acc591d0bd91a7a6e7ec552a449b";
-const CORE_TREE = "3fd4f4bf9d41fbc7f1a56daf28b1060766df006a";
+const CORE_COMMIT = "1c9732052c9fbb05b7bea33887cfefea535a1c01";
+const CORE_TREE = "88b8b18e0adc1e62d78d2b6b37bdfcb9d2a95332";
 const PROOF_COMMIT = "99aaf5af8b05121592a02090d83aebc999ad4a90";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -3265,6 +3265,25 @@ const RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE = "all-finite-direct-wire-implementati
 const RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE = "For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and semantics at every input/output coordinate. An independently stated terminal minimum is attained, universally lower-bounds every complete terminal realization, and equals the exhaustive semantic reference minimum. Positive residual slack is equivalent to a cheaper whole-span full realization, every such realization gives strict residual descent, and zero slack is equivalent to absence of one.";
 const RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM = "This is the direct-wire terminal full-mode specialization of the manuscript bridge. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, SaturatePositive, BCEL/BN2-BN6, packet or selector completeness, route generation, the ZeroSlack certificate, PCCMin, polynomial minimum search or checking, SAT in P, discharge a project assumption, or prove P = NP.";
 
+const RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREMS = {
+  "PNP.DirectWire.TerminalFullCarrierRealization.project_realization": { hash: "e18ceb7862c428c17a83e7709f12149179b9618aecdb92de9885dec5a7a6cf8a", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalFullCarrierRealization.project_implementation": { hash: "4adb38449d826339de7be4ef2f076ee3a96bf5da4b0fff319ef956391012acf5", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalFullCarrierRealization.project_gateCount": { hash: "cf7fb7ec364e8a65984ac9001ea5f4653959f2d0599ad0706aed74bd970a3551", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalFullCarrierRealization.project_equivalent": { hash: "79c2680c1645a5bb087ae3786eba52204e2297ebcc8049a8f4103603c9343a08", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalFullCarrierRealization.project_semantics": { hash: "bcc4254513f072db91e3757f0c3962d757480d72d4270b91139a6bf57a325ee6", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalCheckedFullLift.fullRealization_realization": { hash: "1f98a1fbc39672b171e5d1a5f6f1716c785dbcf128c24c3071802e7fbf5d0caf", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalCheckedFullLift.fullRealization_profileEqual": { hash: "ee608d7e17b2846b5a87c15b8e6874ac7de023798ebdd827994e9503dc43d7c1", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.terminalCheckedFullLift_iff_fullProfileEqual": { hash: "a038fc4300e2f93af3cdac76907511237e0dd6d6b9e0d3015a7301b82ce8d899", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalQuotientComparison.checkedFullLift_of_keepsAll": { hash: "22011cdf57634577ca660f526487e3a2a309c716c5ab419a201bc323c0c566ca", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalFullCarrierRealization.obligationsDischarged": { hash: "44dd06dc5c2d17056eaf5271522830951da6a77bd69fdd28a098880780361d38", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.TerminalCheckedFullLift.obligationsDischarged": { hash: "619562c57b2ccbe271d44d8902d27c8788a9ee262dfab89059b6bf8164fda69b", axioms: [], module: "PNP.ResidualTerminalModeFirewall" },
+  "PNP.DirectWire.terminalQuotientEqualityNotConstructive": { hash: "d9f2582756a57c87b345e1b462ae765c654e719dc56171939ecbf3de8a2c0e1c", axioms: [], module: "PNP.ResidualTerminalModeFirewall" }
+};
+
+const RESIDUAL_TERMINAL_MODE_FIREWALL_SCOPE = "all-finite-direct-wire-implementations-with-computed-finite-profile-observers-and-explicit-forgetful-projections";
+const RESIDUAL_TERMINAL_MODE_FIREWALL_MILESTONE_SCOPE = "For every finite direct-wire implementation, a computed finite profile observer records the ten terminal carrier roles and an explicit forgetful projection selects the quotient coordinates. Projection retains the exact implementation, gate count, and complete multi-output Boolean semantics. A quotient comparison has a checked full lift exactly when every forgotten profile coordinate agrees, lossless projections lift directly, and obligation discharge transports across a checked lift.";
+const RESIDUAL_TERMINAL_MODE_FIREWALL_NON_CLAIM = "This is a terminal comparison/lifting firewall only. It supplies no proper or governed supports, arbitrary quotient construction, support or projection-defect minimum, saturation, Package E, BCEL/BN2-BN6, packet or selector completeness, global residual route, ZeroSlack certificate, PCCMin exactness or polynomial runtime, SAT-in-P result, discharged project assumption, or proof that P = NP.";
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -3316,6 +3335,21 @@ const RESIDUAL_TERMINAL_FULL_BRIDGE_RELEASE_IDENTITIES = {
   residualTerminalFullPositiveWitnessIffTheorem: "PNP.DirectWire.residualSlack_pos_iff_exists_wholeSpanResidualWitness",
   residualTerminalFullZeroAbsenceIffTheorem: "PNP.DirectWire.residualSlack_eq_zero_iff_no_wholeSpanResidualWitness",
   residualTerminalFullReusedStrictDescentTheorem: "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent"
+};
+
+const RESIDUAL_TERMINAL_MODE_FIREWALL_RELEASE_IDENTITIES = {
+  residualTerminalProjectRealizationTheorem: "PNP.DirectWire.TerminalFullCarrierRealization.project_realization",
+  residualTerminalProjectImplementationTheorem: "PNP.DirectWire.TerminalFullCarrierRealization.project_implementation",
+  residualTerminalProjectGateCountTheorem: "PNP.DirectWire.TerminalFullCarrierRealization.project_gateCount",
+  residualTerminalProjectEquivalentTheorem: "PNP.DirectWire.TerminalFullCarrierRealization.project_equivalent",
+  residualTerminalProjectSemanticsTheorem: "PNP.DirectWire.TerminalFullCarrierRealization.project_semantics",
+  residualTerminalLiftRealizationTheorem: "PNP.DirectWire.TerminalCheckedFullLift.fullRealization_realization",
+  residualTerminalLiftProfileEqualTheorem: "PNP.DirectWire.TerminalCheckedFullLift.fullRealization_profileEqual",
+  residualTerminalLiftIffFullProfileEqualTheorem: "PNP.DirectWire.terminalCheckedFullLift_iff_fullProfileEqual",
+  residualTerminalKeepsAllLiftTheorem: "PNP.DirectWire.TerminalQuotientComparison.checkedFullLift_of_keepsAll",
+  residualTerminalFullObligationsDischargedTheorem: "PNP.DirectWire.TerminalFullCarrierRealization.obligationsDischarged",
+  residualTerminalLiftObligationsDischargedTheorem: "PNP.DirectWire.TerminalCheckedFullLift.obligationsDischarged",
+  residualTerminalQuotientEqualityNotConstructiveTheorem: "PNP.DirectWire.terminalQuotientEqualityNotConstructive"
 };
 
 const LOCKED_NAND_GLOBAL_CANDIDATE_RELEASE_IDENTITIES = {
@@ -3421,44 +3455,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 424881,
-    sha256: "ab83808e3c98d306f3ac15b0cfa5dc7ffda1c91ed16e8843e2dbd8b41b00b17d",
+    bytes: 425924,
+    sha256: "42ef88a63781e6e56fe43c99574926f85b67a30a524439c65b023f39e79570ef",
     role: "current inventory-derived seventy-one-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 424881,
-    sha256: "ab83808e3c98d306f3ac15b0cfa5dc7ffda1c91ed16e8843e2dbd8b41b00b17d",
+    bytes: 425924,
+    sha256: "42ef88a63781e6e56fe43c99574926f85b67a30a524439c65b023f39e79570ef",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 181201,
-    sha256: "e31bb0758834ecf077dc5b861066b1767e9619b1ff545746b4e08259028af981",
+    bytes: 182263,
+    sha256: "1bb780ed9d8c80c906ca9631dd7d2f72a14ca2d1a73f1a773fafdaafea6b1e4f",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 181201,
-    sha256: "e31bb0758834ecf077dc5b861066b1767e9619b1ff545746b4e08259028af981",
+    bytes: 182263,
+    sha256: "1bb780ed9d8c80c906ca9631dd7d2f72a14ca2d1a73f1a773fafdaafea6b1e4f",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 1693893,
-    sha256: "9d57f950c033ff5a8e80118695112681bbd491a3cf1f3e9780408cf35487b6f6",
+    bytes: 1703079,
+    sha256: "adf99790bd0ae11074b379b54757af65fd2eb014cacaadc2d6cef43af53b8870",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 13495531,
-    sha256: "206084d180ff61b20d89dff70ef0d161e0c9e2a15b070601ea0000a29ed4184c",
+    bytes: 13589431,
+    sha256: "82d2b3ec7446b39e9387f8cd24c50e6e6123e4de78aa20c375dd7e34ca16643c",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 649098,
-    sha256: "3df64c98f9498fffeac4eb093fc22d538b2dc90f5731817d3a32058106747cb9",
+    bytes: 653128,
+    sha256: "d3895704782f8a786c08340b8ad3c7a3fdc14870d1b9e4e47ec3e76ae8bb77f8",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -3531,10 +3565,10 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-97") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-TERMINAL-FULL-CARRIER-BRIDGE-96") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-03-97" || status.formalPublicationMapSha256 !== "1a7682523289d123a5673e42442ced6f11d8d2d001496447590719101de15338" || status.leanSourceClosureSha256 !== "637927ee2f3fe48f8f8c7495ea0c2ecc6da66d85190c80b961b9079aa5e6128c") fail("status source identity mismatch");
-  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 77 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 74 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-98") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-MODE-FIREWALL-97") fail("status public-surface coordinate mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-04-98" || status.formalPublicationMapSha256 !== "35f75fd42c70a29aedd19847abe43062cde26226884d8f25be0f2ccb91e50241" || status.leanSourceClosureSha256 !== "d7b361d14706fa7194432f6e8510a20221ce1f2795064aea153171f19e31efa1") fail("status source identity mismatch");
+  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 78 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 75 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -3991,9 +4025,43 @@ function assertFailClosedStatus(status) {
       && status.leanResidualWholeSpanStrictDescentFormalized === true
       && status.leanResidualWholeSpanZeroAbsenceIffFormalized === true
       && status.leanResidualTerminalFullBridgeScope === RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE
-      && status.leanResidualTerminalQuotientCarrierFormalized === false
+      && status.leanResidualTerminalQuotientCarrierFormalized === true
       && status.leanResidualTerminalProperSupportFormalized === false
       && status.leanResidualTerminalSaturationFormalized === false)) fail("status residual terminal full-carrier bridge evidence mismatch");
+  const residualTerminalModeFirewallMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-mode-firewall"
+  );
+  const residualTerminalModeFirewallNames = Object.keys(RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREMS);
+  if (!residualTerminalModeFirewallMilestone
+      || residualTerminalModeFirewallMilestone.classification !== "formalized-terminal-mode-firewall"
+      || residualTerminalModeFirewallMilestone.status !== "formalized-terminal-mode-firewall"
+      || residualTerminalModeFirewallMilestone.scope !== RESIDUAL_TERMINAL_MODE_FIREWALL_MILESTONE_SCOPE
+      || residualTerminalModeFirewallMilestone.nonClaim !== RESIDUAL_TERMINAL_MODE_FIREWALL_NON_CLAIM
+      || JSON.stringify(residualTerminalModeFirewallMilestone.requiredTheorems) !== JSON.stringify(residualTerminalModeFirewallNames)
+      || residualTerminalModeFirewallMilestone.earned !== true
+      || residualTerminalModeFirewallMilestone.allPresent !== true
+      || residualTerminalModeFirewallMilestone.allAssumptionFree !== true
+      || residualTerminalModeFirewallMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalModeFirewallMilestone.allKernelTypesMatch !== true
+      || residualTerminalModeFirewallMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal mode-firewall publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREMS)) {
+    const row = residualTerminalModeFirewallMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal mode-firewall theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalQuotientCarrierFormalized === true
+      && status.leanResidualTerminalModeFirewallFormalized === true
+      && status.leanResidualTerminalModeFirewallAxiomAuditPassed === true
+      && status.leanResidualTerminalProfileProjectionExactFormalized === true
+      && status.leanResidualTerminalCheckedFullLiftFormalized === true
+      && status.leanResidualTerminalQuotientEqualityNotConstructiveFormalized === true
+      && status.leanResidualTerminalObligationDischargePreservedFormalized === true
+      && status.leanResidualTerminalModeFirewallScope === RESIDUAL_TERMINAL_MODE_FIREWALL_SCOPE
+      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalSaturationFormalized === false)) fail("status residual terminal mode-firewall evidence mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) fail("status locked-NAND remaining-premise inventory mismatch");
   if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) fail("status overstates the CNF-SAT result");
   if (status.leanTheoremInventorySha256 !== EXPECTED_FILES[5].sha256) fail("status inventory digest mismatch");
@@ -4001,10 +4069,10 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-03-97") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 23671 || inventory.theoremCount !== 12853) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 6809 || inventory.excludedPrivateDeclarationCount !== 14273 || inventory.sourceClosureModuleCount !== 212 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
-  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 637, definition: 9625, inductive: 276, opaque: 0, quotient: 0, recursor: 276, theorem: 12853 })) fail("inventory declaration-kind counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-04-98") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 23819 || inventory.theoremCount !== 12894) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 6846 || inventory.excludedPrivateDeclarationCount !== 14273 || inventory.sourceClosureModuleCount !== 213 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 652, definition: 9705, inductive: 282, opaque: 0, quotient: 0, recursor: 282, theorem: 12894 })) fail("inventory declaration-kind counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
@@ -4105,6 +4173,12 @@ function assertInventory(inventory) {
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal full-carrier bridge theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal full-carrier bridge fingerprint mismatch: ${name}`);
+  }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal mode-firewall theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal mode-firewall fingerprint mismatch: ${name}`);
   }
   for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4501,16 +4575,16 @@ function assertInventory(inventory) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineRefinement" || theorem.axioms?.length !== 0) fail(`inventory recursive refinement theorem mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 2115) fail("inventory reviewed theorem-candidate count mismatch");
+  if (inventory.milestoneCandidates?.length !== 2127) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-03-80") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-81") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-03-97" || manifest.source?.formalPublicationMapSha256 !== "1a7682523289d123a5673e42442ced6f11d8d2d001496447590719101de15338" || manifest.source?.leanSourceClosureSha256 !== "637927ee2f3fe48f8f8c7495ea0c2ecc6da66d85190c80b961b9079aa5e6128c") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-04-98" || manifest.source?.formalPublicationMapSha256 !== "35f75fd42c70a29aedd19847abe43062cde26226884d8f25be0f2ccb91e50241" || manifest.source?.leanSourceClosureSha256 !== "d7b361d14706fa7194432f6e8510a20221ce1f2795064aea153171f19e31efa1") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 71) fail("current report must have seventy-one pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -5020,7 +5094,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualWholeSpanStrictDescentFormalized === true
       && earned.residualWholeSpanZeroAbsenceIffFormalized === true
       && earned.residualTerminalFullBridgeScope === RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE
-      && earned.residualTerminalQuotientCarrierFormalized === false
+      && earned.residualTerminalQuotientCarrierFormalized === true
       && earned.residualTerminalProperSupportFormalized === false
       && earned.residualTerminalSaturationFormalized === false)) fail("current manifest residual terminal full-carrier bridge boundary mismatch");
   if (!Array.isArray(earned.residualTerminalFullBridgeAxiomClosure)
@@ -5031,6 +5105,26 @@ function assertCurrentManifest(manifest) {
   if (!residualTerminalFullBridgeHashes || Object.keys(residualTerminalFullBridgeHashes).length !== 13
       || !Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS).every(([name, row]) => residualTerminalFullBridgeHashes[name] === row.hash)) fail("current manifest residual terminal full-carrier bridge fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_FULL_BRIDGE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal full-carrier bridge theorem identity mismatch");
+  if (!(earned.residualTerminalModeFirewallFormalized === true
+      && earned.residualTerminalModeFirewallAxiomAuditPassed === true
+      && earned.residualTerminalModeFirewallAuditedDeclarationCount === 29
+      && earned.residualTerminalModeFirewallEmptyAxiomDeclarationCount === 29
+      && earned.residualTerminalQuotientCarrierFormalized === true
+      && earned.residualTerminalProfileProjectionExactFormalized === true
+      && earned.residualTerminalCheckedFullLiftFormalized === true
+      && earned.residualTerminalQuotientEqualityNotConstructiveFormalized === true
+      && earned.residualTerminalObligationDischargePreservedFormalized === true
+      && earned.residualTerminalModeFirewallScope === RESIDUAL_TERMINAL_MODE_FIREWALL_SCOPE
+      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalSaturationFormalized === false)) fail("current manifest residual terminal mode-firewall boundary mismatch");
+  if (!Array.isArray(earned.residualTerminalModeFirewallAxiomClosure)
+      || earned.residualTerminalModeFirewallAxiomClosure.length !== 0
+      || !Array.isArray(earned.residualTerminalModeFirewallProjectAxiomClosure)
+      || earned.residualTerminalModeFirewallProjectAxiomClosure.length !== 0) fail("current manifest residual terminal mode-firewall axiom closure mismatch");
+  const residualTerminalModeFirewallHashes = earned.residualTerminalModeFirewallTheoremKernelTypeSha256;
+  if (!residualTerminalModeFirewallHashes || Object.keys(residualTerminalModeFirewallHashes).length !== 12
+      || !Object.entries(RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREMS).every(([name, row]) => residualTerminalModeFirewallHashes[name] === row.hash)) fail("current manifest residual terminal mode-firewall fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_MODE_FIREWALL_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal mode-firewall theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -5060,7 +5154,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-03-80") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-81") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");

@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 60% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 61% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="60" aria-label="Estimated proof reconstruction progress: 60 percent">60%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 60 percent">
+        <progress class="proof-progress-meter" max="100" value="61" aria-label="Estimated proof reconstruction progress: 61 percent">61%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 61 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-04-residual-terminal-mode-firewall" data-milestone-id="residual-terminal-mode-firewall">
+        <div class="section-label"><time datetime="2026-08-03T17:25:02Z">2026-08-03</time> · earned milestone 75</div>
+        <h2>The proof now separates partial and complete circuit comparisons</h2>
+        <p>A circuit is a finite collection of simple yes-or-no operations. Some proof steps compare only a selected checklist of facts about two circuits, while later steps need every relevant fact to match. Lean now records exactly which facts were kept, preserves the circuit, its number of operations, and all input-and-output behaviour, and prevents a partial comparison from being treated as a complete one without the missing checks.</p>
+        <p>A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees; keeping the full checklist makes that lift immediate. This is a safety boundary for future minimisation work, not a method for finding smaller circuits, completing the remaining support and saturation arguments, running the final algorithm efficiently, or proving P = NP. The 61% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 61%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-mode-firewall</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-mode-firewall</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire implementation, a computed finite profile observer records the ten terminal carrier roles and an explicit forgetful projection selects the quotient coordinates. Projection retains the exact implementation, gate count, and complete multi-output Boolean semantics. A quotient comparison has a checked full lift exactly when every forgotten profile coordinate agrees, lossless projections lift directly, and obligation discharge transports across a checked lift.</p>
+          <p><strong>Boundary:</strong> This is a terminal comparison/lifting firewall only. It supplies no proper or governed supports, arbitrary quotient construction, support or projection-defect minimum, saturation, Package E, BCEL/BN2-BN6, packet or selector completeness, global residual route, ZeroSlack certificate, PCCMin exactness or polynomial runtime, SAT-in-P result, discharged project assumption, or proof that P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 12</p>
+          <p><strong>Core source:</strong> commit <code>1c9732052c9fbb05b7bea33887cfefea535a1c01</code>, tree <code>88b8b18e0adc1e62d78d2b6b37bdfcb9d2a95332</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-98</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-MODE-FIREWALL-97</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-03-residual-terminal-full-carrier-bridge" data-milestone-id="residual-terminal-full-carrier-bridge">
         <div class="section-label"><time datetime="2026-08-03T12:39:26Z">2026-08-03</time> · earned milestone 74</div>
         <h2>The proof now compares a complete circuit at once</h2>
