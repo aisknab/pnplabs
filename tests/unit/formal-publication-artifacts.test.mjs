@@ -147,6 +147,19 @@ const RESIDUAL_GAIN_CHAIN_THEOREM_SHA256 = {
   "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four": "6424411112c8f2316541d234cf90b37cb807b7ec38cca84e52edfe6af98fe750"
 };
 
+const RESIDUAL_GAIN_STOPPING_THEOREM_SHA256 = {
+  "PNP.DirectWire.referenceMinimumImplementation_gateCount_eq_referenceMinimum": "d94a3b2887fb9c25feef33c7474419851d6516b8647e2638ac67e526c4512480",
+  "PNP.DirectWire.referenceMinimumImplementation_equivalent": "dbbb97229e4cc25be761758a73728b6801d96cacc8c1b2f8c1dd2950c29bdf64",
+  "PNP.DirectWire.referenceMinimumImplementation_isSemanticallyMinimum": "f3c4b31840dc29d0636cb49760894393c06801381abf74353dc57d3a0755affa",
+  "PNP.DirectWire.referenceMinimumImplementation_residualSlack_eq_zero": "20d2abe2e74494d70b5e7516f3727e8cf19893cb4449a0c78b2d6280489feca9",
+  "PNP.DirectWire.referenceMinimumImplementation_strictEquivalentGain_of_residualSlack_pos": "2eab777e2469136148219b5883ecc42b8cc630d9d71c2ede182b46bddf642198",
+  "PNP.DirectWire.residualSlack_pos_iff_exists_strictEquivalentGain": "fcdc9fe1d4bd4c75f9b08a2a2ced36009344d52c11cb14506eb325f516e40612",
+  "PNP.DirectWire.residualSlack_eq_zero_iff_forall_not_strictEquivalentGain": "9b656ab2415d453f6db8fcf47f45d82e22d51383e6f7885cdb7fb78139409094",
+  "PNP.DirectWire.isSemanticallyMinimum_iff_forall_not_strictEquivalentGain": "c292c91ea97e54e8fa2d1ca5989b2ffd67d386e81ecfc138d66bcbe9635c7991",
+  "PNP.DirectWire.StrictGainChain.end_residualSlack_eq_zero_of_no_strictEquivalentGain": "7e70d84ebd96fc91004f391498a0ba3869902abc56060ab5517dc38d0f0b06cd",
+  "PNP.DirectWire.strictGainChainBool_end_residualSlack_eq_zero_of_no_strictEquivalentGain": "0f14074de58498b3edef73c065b3520fa9827229b32643a865338c16ae05f592"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -165,18 +178,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403");
+  assert.equal(result.coreCommit, "1b5c1bc1f563d39c58b735c7163be661042c1356");
 });
 
-test("current release is pinned, sixty-nine-page, exposes the residual-gain chain bound, and fails closed", () => {
+test("current release is pinned, seventy-page, exposes global residual-gain stopping semantics, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-03-78");
-  assert.equal(release.source.commit, "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403");
-  assert.equal(release.source.proofCommit, "25ffe07ac77167c347dece712776b0b75b69a912");
-  assert.equal(release.source.tree, "83f4874213a6c2be7c182d9e33d61a0e1b250acb");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-03-79");
+  assert.equal(release.source.commit, "1b5c1bc1f563d39c58b735c7163be661042c1356");
+  assert.equal(release.source.proofCommit, "50db8562b7afa210e83bd68b9cdd11cec9640a14");
+  assert.equal(release.source.tree, "2daff0f133177f30a79e4d1ce01d44f721954124");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 69);
+  assert.equal(release.artifacts.report.pageCount, 70);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1702,6 +1715,20 @@ test("current release is pinned, sixty-nine-page, exposes the residual-gain chai
   assert.deepEqual(release.earnedBoundary.residualGainChainProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.residualGainChainAggregateSlackBoundTheorem, "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le");
   assert.equal(release.earnedBoundary.lockedNANDStrictGainChainLengthLeFourTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four");
+  assert.equal(release.earnedBoundary.residualGainStoppingSpecificationFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainStoppingAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualGainStoppingAuditedDeclarationCount, 12);
+  assert.equal(release.earnedBoundary.residualGainStoppingEmptyAxiomDeclarationCount, 12);
+  assert.equal(release.earnedBoundary.residualGainStoppingScope, "all-finite-direct-wire-implementations-with-global-strict-equivalent-gain-quantification-and-proof-supplied-chain-endpoint-stopping");
+  assert.equal(release.earnedBoundary.residualGainReferenceMinimumWitnessFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainPositiveIffGlobalStrictGainFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainZeroIffGlobalNoStrictGainFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainSemanticMinimumIffGlobalNoStrictGainFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainChainGlobalStoppingConsequenceFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainChainExactMinimumPackagingFormalized, true);
+  assert.deepEqual(release.earnedBoundary.residualGainStoppingTheoremKernelTypeSha256, RESIDUAL_GAIN_STOPPING_THEOREM_SHA256);
+  assert.deepEqual(release.earnedBoundary.residualGainStoppingAxiomClosure, []);
+  assert.deepEqual(release.earnedBoundary.residualGainStoppingProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
   assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
@@ -1728,12 +1755,12 @@ test("current release is pinned, sixty-nine-page, exposes the residual-gain chai
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 75 milestones with the residual-gain boundary pinned", () => {
+test("status and inventory publish exactly 76 milestones with global residual-gain stopping pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 75);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 72);
+  assert.equal(milestones.length, 76);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 73);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -1924,21 +1951,46 @@ test("status and inventory publish exactly 75 milestones with the residual-gain 
   assert.equal(status.leanResidualGainChainSlackIterationBoundFormalized, true);
   assert.equal(status.leanResidualGainChainPolynomialRuntimeFormalized, false);
 
-  assert.equal(inventory.declarationCount, 23601);
-  assert.equal(inventory.theoremCount, 12818);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6776);
+  const residualGainStopping = milestones.find((row) => row.id === "residual-gain-stopping-specification");
+  assert.equal(residualGainStopping.classification, "formalized-semantic-stopping-only");
+  assert.equal(residualGainStopping.status, "formalized-semantic-stopping-only");
+  assert.equal(residualGainStopping.earned, true);
+  assert.equal(residualGainStopping.allPresent, true);
+  assert.equal(residualGainStopping.allAssumptionFree, true);
+  assert.equal(residualGainStopping.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualGainStopping.allKernelTypesMatch, true);
+  assert.equal(residualGainStopping.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualGainStopping.requiredTheorems, Object.keys(RESIDUAL_GAIN_STOPPING_THEOREM_SHA256));
+  assert.deepEqual(
+    Object.fromEntries(residualGainStopping.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_GAIN_STOPPING_THEOREM_SHA256
+  );
+  assert.match(residualGainStopping.scope, /global absence/u);
+  assert.match(residualGainStopping.nonClaim, /not a stopping algorithm/u);
+  assert.equal(status.leanResidualGainStoppingSpecificationFormalized, true);
+  assert.equal(status.leanResidualGainStoppingAxiomAuditPassed, true);
+  assert.equal(status.leanResidualGainReferenceMinimumWitnessFormalized, true);
+  assert.equal(status.leanResidualGainPositiveIffGlobalStrictGainFormalized, true);
+  assert.equal(status.leanResidualGainZeroIffGlobalNoStrictGainFormalized, true);
+  assert.equal(status.leanResidualGainSemanticMinimumIffGlobalNoStrictGainFormalized, true);
+  assert.equal(status.leanResidualGainChainGlobalStoppingConsequenceFormalized, true);
+  assert.equal(status.leanResidualGainChainExactMinimumPackagingFormalized, true);
+
+  assert.equal(inventory.declarationCount, 23615);
+  assert.equal(inventory.theoremCount, 12830);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6788);
   assert.equal(inventory.excludedPrivateDeclarationCount, 14273);
-  assert.equal(inventory.sourceClosureModuleCount, 210);
-  assert.equal(inventory.milestoneCandidates.length, 2093);
+  assert.equal(inventory.sourceClosureModuleCount, 211);
+  assert.equal(inventory.milestoneCandidates.length, 2103);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
     constructor: 635,
-    definition: 9596,
+    definition: 9598,
     inductive: 274,
     opaque: 0,
     quotient: 0,
     recursor: 274,
-    theorem: 12818
+    theorem: 12830
   });
 });
 

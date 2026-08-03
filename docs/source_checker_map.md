@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403`. Its generated status payload is current
+core commit `1b5c1bc1f563d39c58b735c7163be661042c1356`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the sixty-nine-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the seventy-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403` (tree `83f4874213a6c2be7c182d9e33d61a0e1b250acb`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, plus the locked-NAND typed threshold, strict version-zero encoding and pure semantic construction, literal polynomial-time source parser and target emitter, their concrete encoded-language polynomial reduction, the general CNF-to-NAND semantic compiler, and its fixed all-input finite-machine direct and composed polynomial reductions |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,093 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `1b5c1bc1f563d39c58b735c7163be661042c1356` (tree `2daff0f133177f30a79e4d1ce01d44f721954124`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, plus the locked-NAND typed threshold, strict version-zero encoding and pure semantic construction, literal polynomial-time source parser and target emitter, their concrete encoded-language polynomial reduction, the general CNF-to-NAND semantic compiler, and its fixed all-input finite-machine direct and composed polynomial reductions |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,103 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Seventy-two earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 parser/emitter, concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold` polynomial reduction, general CNF-to-NAND semantic compiler, and fixed all-input direct/composed reduction—three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current sixty-nine-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Seventy-three earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 parser/emitter, concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold` polynomial reduction, general CNF-to-NAND semantic compiler, and fixed all-input direct/composed reduction—three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current seventy-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

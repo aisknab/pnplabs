@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 420,680 | `a0dfe6b1fcbe0769f612bb494b610ee4727ef7e37cd6f0156f72d2e990a019ac` |
-| `downloads/canonical-proof-report.pdf` | 420,680 | `a0dfe6b1fcbe0769f612bb494b610ee4727ef7e37cd6f0156f72d2e990a019ac` |
-| `downloads/canonical_proof_report.tex` | 177,190 | `b13f970372569e2559a0c2f60188420210ffccdc9653e5ee04f36cf57d6ce835` |
-| `downloads/canonical-proof-report.tex` | 177,190 | `b13f970372569e2559a0c2f60188420210ffccdc9653e5ee04f36cf57d6ce835` |
-| `public/pnp-status.json` | 1,675,872 | `94aef5e267925651eed37adaacf3a767b103f9e0943eed50e3e0a677c5751076` |
-| `public/pnp-theorem-inventory.json` | 13,432,952 | `26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b` |
+| `downloads/canonical_proof_report.pdf` | 420,680 | `c177248af36860a452cc4b5683fea11c9e3ba1de0e2d1830e9cb7b51a7bc36d7` |
+| `downloads/canonical-proof-report.pdf` | 420,680 | `c177248af36860a452cc4b5683fea11c9e3ba1de0e2d1830e9cb7b51a7bc36d7` |
+| `downloads/canonical_proof_report.tex` | 177,190 | `824cc9ee94e1b4598fba805eaea52b246cc471a3a2644a5faf295a392dfb25d9` |
+| `downloads/canonical-proof-report.tex` | 177,190 | `824cc9ee94e1b4598fba805eaea52b246cc471a3a2644a5faf295a392dfb25d9` |
+| `public/pnp-status.json` | 1,675,872 | `251b3b184c7195f8a951d474701610a3650a2d42d98193ebb515cbcb16c4597f` |
+| `public/pnp-theorem-inventory.json` | 13,432,952 | `71165b553da0c375a19769cb9a7da02b20927d79cf47204d07e86ae14533c5fe` |
 
-The PDF must have sixty-nine A4 pages. Both filename styles must be byte-identical.
+The PDF must have seventy A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403
+git -C ../pnp checkout 1b5c1bc1f563d39c58b735c7163be661042c1356
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 23,601 public declarations, 12,818 theorem-kind declarations,
-6,776 assumption-free theorem-kind declarations, 14,273 excluded private auxiliaries, 210 modules, and
+Expected compiled inventory counts are 23,615 public declarations, 12,830 theorem-kind declarations,
+6,788 assumption-free theorem-kind declarations, 14,273 excluded private auxiliaries, 211 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -91,13 +91,14 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 14 reviewed theorem pins for any finite proof-bearing or executably verified
-strict equivalent-gain chain. It preserves semantics and the exhaustive reference minimum and proves
-that endpoint residual slack plus chain length is at most starting residual slack, specializing to at
-most four verified steps for the complete locked-NAND candidate. Twelve declarations are axiom-free;
-four locked specializations close only over `propext` and `Quot.sound`. This result verifies a supplied
-chain but does not find a gain, prove completeness or a stopping rule, construct `ZeroSlack`, compute
-an exact minimizer, establish polynomial runtime, discharge an assumption, or prove `P = NP`.
+The newest milestone adds ten axiom-free reviewed theorem pins for every finite direct-wire
+implementation. Positive exhaustive-reference residual slack is equivalent to the existence of a
+smaller semantically equivalent implementation; zero slack and semantic minimality are each
+equivalent to global absence of such an implementation. A verified chain endpoint therefore has
+zero slack and packages an exact minimum when separate global no-gain evidence is supplied. This is
+a semantic stopping criterion, not an algorithm: it does not derive global absence from a finite
+scan, generate gains, construct the manuscript's `ZeroSlack` certificate, establish polynomial
+runtime, discharge an assumption, or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

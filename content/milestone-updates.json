@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-03-residual-gain-stopping-specification",
+      "milestoneId": "residual-gain-stopping-specification",
+      "publishedAt": "2026-08-03T06:33:39Z",
+      "title": "A globally complete stop now certifies a smallest circuit",
+      "plainLanguage": [
+        "A circuit is a finite list of simple yes-or-no operations. Two circuits are equivalent when they give exactly the same outputs for every possible input. Lean now proves an exact rule for when an equivalent circuit cannot be made smaller: there is no smaller equivalent circuit anywhere exactly when the current circuit is already as small as possible.",
+        "This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit—not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 59,
+      "source": {
+        "commit": "1b5c1bc1f563d39c58b735c7163be661042c1356",
+        "tree": "2daff0f133177f30a79e4d1ce01d44f721954124",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-96",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-STOPPING-SPECIFICATION-95"
+      }
+    },
+    {
       "id": "2026-08-03-residual-gain-chain-bound",
       "milestoneId": "residual-gain-chain-bound",
       "publishedAt": "2026-08-03T01:28:40Z",

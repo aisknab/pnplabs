@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 58% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 59% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="58" aria-label="Estimated proof reconstruction progress: 58 percent">58%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 58 percent">
+        <progress class="proof-progress-meter" max="100" value="59" aria-label="Estimated proof reconstruction progress: 59 percent">59%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 59 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-03-residual-gain-stopping-specification" data-milestone-id="residual-gain-stopping-specification">
+        <div class="section-label"><time datetime="2026-08-03T06:33:39Z">2026-08-03</time> · earned milestone 73</div>
+        <h2>A globally complete stop now certifies a smallest circuit</h2>
+        <p>A circuit is a finite list of simple yes-or-no operations. Two circuits are equivalent when they give exactly the same outputs for every possible input. Lean now proves an exact rule for when an equivalent circuit cannot be made smaller: there is no smaller equivalent circuit anywhere exactly when the current circuit is already as small as possible.</p>
+        <p>This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit—not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 59%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-gain-stopping-specification</code></p>
+          <p><strong>Classification:</strong> formalized-semantic-stopping-only</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire implementation, positive exhaustive-reference residual slack is equivalent to the existence of some strictly smaller semantically equivalent implementation; zero slack and semantic minimality are each equivalent to global absence of such an implementation. A verified chain endpoint with separately proved global no-gain evidence therefore has zero slack and packages an exact minimum result.</p>
+          <p><strong>Boundary:</strong> This is a semantic stopping criterion, not a stopping algorithm. It uses the exhaustive reference minimum as a mathematical witness and requires a proof quantifying over every finite implementation at the endpoint. It does not derive global absence from a finite scan, generate a route, prove candidate-list or route completeness, construct the manuscript&#39;s ZeroSlack certificate, establish polynomial checking or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 10</p>
+          <p><strong>Core source:</strong> commit <code>1b5c1bc1f563d39c58b735c7163be661042c1356</code>, tree <code>2daff0f133177f30a79e4d1ce01d44f721954124</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-96</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-STOPPING-SPECIFICATION-95</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-03-residual-gain-chain-bound" data-milestone-id="residual-gain-chain-bound">
         <div class="section-label"><time datetime="2026-08-03T01:28:40Z">2026-08-03</time> · earned milestone 72</div>
         <h2>Verified circuit-shrinking cannot continue forever</h2>
