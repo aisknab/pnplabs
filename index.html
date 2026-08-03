@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof now compares a complete circuit at once</h2>
-          <p>A circuit is a collection of simple yes-or-no operations. Lean now checks the full comparison for any finite circuit: another circuit counts as equivalent only when it gives the same answer for every possible input and every output. The wrapper used for that comparison also preserves the circuit and its exact number of operations.</p>
-          <p>Lean also checks that any cheaper complete equivalent circuit is genuine progress toward the smallest one, and that no such circuit exists exactly when the remaining size gap is zero. It does not provide an efficient way to find that circuit or finish the manuscript’s remaining minimisation and complexity-theory steps, and it does not prove P = NP. The 60% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-03-residual-terminal-full-carrier-bridge">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof now separates partial and complete circuit comparisons</h2>
+          <p>A circuit is a finite collection of simple yes-or-no operations. Some proof steps compare only a selected checklist of facts about two circuits, while later steps need every relevant fact to match. Lean now records exactly which facts were kept, preserves the circuit, its number of operations, and all input-and-output behaviour, and prevents a partial comparison from being treated as a complete one without the missing checks.</p>
+          <p>A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees; keeping the full checklist makes that lift immediate. This is a safety boundary for future minimisation work, not a method for finding smaller circuits, completing the remaining support and saturation arguments, running the final algorithm efficiently, or proving P = NP. The 61% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-04-residual-terminal-mode-firewall">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>residualSlack_eq_zero_iff_no_wholeSpanResidualWitness</code> proves that residual slack is zero exactly when no cheaper full realization preserves every input/output result. Terminalization preserves the whole direct-wire implementation, its gate count, and its complete semantics. This is the direct-wire full-mode bridge; it is not the manuscript’s quotient carrier, support saturation, ZeroSlack certificate, minimization algorithm, or polynomial runtime theorem.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>terminalCheckedFullLift_iff_fullProfileEqual</code> proves that a selected-coordinate terminal comparison lifts to the complete ten-role profile exactly when every forgotten coordinate also agrees. The explicit projection retains the circuit, gate count, and complete input/output semantics. This is a quotient-to-full comparison firewall; it does not supply proper supports, saturation, ZeroSlack, PCCMin, a polynomial minimisation algorithm, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -160,7 +160,13 @@ leanResidualTerminalMuBridgeFormalized = true
 leanResidualWholeSpanPositiveWitnessIffFormalized = true
 leanResidualWholeSpanStrictDescentFormalized = true
 leanResidualWholeSpanZeroAbsenceIffFormalized = true
-leanResidualTerminalQuotientCarrierFormalized = false
+leanResidualTerminalQuotientCarrierFormalized = true
+leanResidualTerminalModeFirewallFormalized = true
+leanResidualTerminalModeFirewallAxiomAuditPassed = true
+leanResidualTerminalProfileProjectionExactFormalized = true
+leanResidualTerminalCheckedFullLiftFormalized = true
+leanResidualTerminalQuotientEqualityNotConstructiveFormalized = true
+leanResidualTerminalObligationDischargePreservedFormalized = true
 leanResidualTerminalProperSupportFormalized = false
 leanResidualTerminalSaturationFormalized = false
 concretePublicationGate.passed = false</pre>
@@ -176,9 +182,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-03-97</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-04-98</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>206084d180ff61b20d89dff70ef0d161e0c9e2a15b070601ea0000a29ed4184c</code></div>
+            <div><span>Inventory SHA-256</span><code>82d2b3ec7446b39e9387f8cd24c50e6e6123e4de78aa20c375dd7e34ca16643c</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -186,18 +192,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>60</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>61</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 60 percent" data-proof-progress="60">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>60</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 61 percent" data-proof-progress="61">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>61</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 60% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 61% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
