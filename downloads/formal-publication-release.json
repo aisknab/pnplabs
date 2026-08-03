@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-31-77",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-03-78",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "3e60a7b270d4695da137a60d6a4a9ca59d3886f8",
+    "commit": "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403",
     "proofCommit": "25ffe07ac77167c347dece712776b0b75b69a912",
-    "tree": "04dbf61379eb4d24f1adc8419bf6e9d2dd636346",
-    "ref": "3e60a7b270d4695da137a60d6a4a9ca59d3886f8",
+    "tree": "83f4874213a6c2be7c182d9e33d61a0e1b250acb",
+    "ref": "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-07-31-94",
-    "formalPublicationMapSha256": "84af7674ba9cdbf844068e9d0a0d4213ea90ef5c63f2f607c61381a60f886704",
-    "leanSourceClosureSha256": "f4cec303e24b1e7b58bcab141d3fcbe7e1306b5e5913028bf8696a6af6160b42",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-08-03-95",
+    "formalPublicationMapSha256": "66f06c9891f0f60236ba2742f5965ac94813bb08b4cf722ff021ac8a37ea9fb1",
+    "leanSourceClosureSha256": "3430306ac20401ae6967122be54eab38adeb843595f83049e97c09397eeb468b",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,32 +21,32 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 1665641,
-      "sha256": "f960c968ee7cf879316a9968d5f0b9559511b16bd87e430986203dfa74e8d44f",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-94"
+      "bytes": 1675872,
+      "sha256": "94aef5e267925651eed37adaacf3a767b103f9e0943eed50e3e0a677c5751076",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-95"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 13380071,
-      "sha256": "f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-31-94",
-      "declarationCount": 23575,
-      "theoremCount": 12806,
-      "assumptionFreeTheoremCount": 6767,
+      "bytes": 13432952,
+      "sha256": "26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-03-95",
+      "declarationCount": 23601,
+      "theoremCount": 12818,
+      "assumptionFreeTheoremCount": 6776,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-31-94",
-      "pageCount": 68,
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-03-95",
+      "pageCount": 69,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 419182,
-        "sha256": "673aa9d6b5bb916459b426978d1a63bb5dbf88e39f7a48488069ed176fb29e0c"
+        "bytes": 420680,
+        "sha256": "a0dfe6b1fcbe0769f612bb494b610ee4727ef7e37cd6f0156f72d2e990a019ac"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,13 +54,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 175276,
-        "sha256": "1017838eb64fdbb4b31522f725ec0d20ece8d8dd25d50fc3ba4b33d94c642102"
+        "bytes": 177190,
+        "sha256": "b13f970372569e2559a0c2f60188420210ffccdc9653e5ee04f36cf57d6ce835"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter-plus-locked-nand-polynomial-reduction-plus-cnf-to-nand-semantic-compiler-plus-cnf-to-nand-polynomial-reduction",
+    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter-plus-locked-nand-polynomial-reduction-plus-cnf-to-nand-semantic-compiler-plus-cnf-to-nand-polynomial-reduction-plus-residual-gain-chain-bound",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -4181,7 +4181,49 @@
     "cnfToNANDPolynomialReductionDirectRawRefinementTheorem": "PNP.Concrete.CNFToNAND.cnfToNANDPolynomialReduction_hasRawRefinement",
     "cnfToNANDPolynomialReductionLockedReductionTheorem": "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_correct",
     "cnfToNANDPolynomialReductionLockedReductionWitnessTheorem": "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedLockedNANDThreshold",
-    "cnfToNANDPolynomialReductionLockedRawRefinementTheorem": "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement"
+    "cnfToNANDPolynomialReductionLockedRawRefinementTheorem": "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement",
+    "residualGainChainVerifierFormalized": true,
+    "residualGainChainAxiomAuditPassed": true,
+    "residualGainChainAuditedDeclarationCount": 16,
+    "residualGainChainEmptyAxiomDeclarationCount": 12,
+    "residualGainChainPropextQuotSoundDeclarationCount": 4,
+    "residualGainChainScope": "all-finite-proof-bearing-or-executably-verified-strict-equivalent-gain-chains-with-locked-family-four-step-specialization",
+    "residualGainChainSemanticInvariantFormalized": true,
+    "residualGainChainSlackIterationBoundFormalized": true,
+    "lockedNANDGainIterationsAtMostFourFormalized": true,
+    "residualGainChainPolynomialRuntimeFormalized": false,
+    "residualGainChainTheoremKernelTypeSha256": {
+      "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent": "f936c792a4f8f45d27da4512b16ba28222dc64b81f50016c9d30433fbfadae6e",
+      "PNP.DirectWire.strictGainChainBool_eq_true_iff": "816e54e4531107de91901686549b1c2e040df4feef9b16b066592bd999a04898",
+      "PNP.DirectWire.StrictGainChain.end_equivalent": "16d9be66d41e255a85e99776eae299ede9b96fbb4a52b092975ba2668e955782",
+      "PNP.DirectWire.StrictGainChain.end_referenceMinimum_eq": "f5d2b9c7314081efa5545b0244c69f7cb1913724d67882b0973241106edd37c0",
+      "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le": "3d9578eb0b87eaae79f3d0fefb693d4e45a44bfda7c9237e38fdc4429db8a968",
+      "PNP.DirectWire.StrictGainChain.length_le_residualSlack": "a9ae79ffa40af537d1e2b54bcec4f2733bddbf7c20b0799dc031e61d410cf20e",
+      "PNP.DirectWire.strictGainChainBool_length_le_residualSlack": "20c5ad2948288e7607ef952b5f155133fb4b9ed18e4e8690bddbf993c8c8b535",
+      "PNP.DirectWire.strictGainChainBool_length_le_of_residualSlack_le": "a3963469939a052165f47d2aca5171bf5fa934483d25ab91451df2674a9b0f87",
+      "PNP.DirectWire.StrictGainChain.eq_nil_of_residualSlack_eq_zero": "f0ad692f62354727bdb5e3f44617f8ad5decf5ad1b25d0c03912dbec38d38d07",
+      "PNP.DirectWire.strictGainChainBool_eq_nil_of_residualSlack_eq_zero": "66812e7f8c2f41711af1788bbf9871959030891d88554aa9a5b6beb56ef1a65b",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four": "2e2c9cab0c3977704f66cb272e972e949cd7bbd899487c1cc9ba3527ef2d9e0a",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidateImplementation_residualSlack_le_four": "0a138524071766b4eb12d0de6550bcf776d948bb4df133619387a4f9781e98ff",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four": "dc3962312e29cc2ea9b36aeb4b6fc2fa4626d7e72053838d317636a61b68fe9c",
+      "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four": "6424411112c8f2316541d234cf90b37cb807b7ec38cca84e52edfe6af98fe750"
+    },
+    "residualGainChainAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "residualGainChainProjectAxiomClosure": [],
+    "residualGainChainStrictResidualDescentTheorem": "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent",
+    "residualGainChainExecutableCorrectnessTheorem": "PNP.DirectWire.strictGainChainBool_eq_true_iff",
+    "residualGainChainSemanticInvariantTheorem": "PNP.DirectWire.StrictGainChain.end_equivalent",
+    "residualGainChainReferenceMinimumInvariantTheorem": "PNP.DirectWire.StrictGainChain.end_referenceMinimum_eq",
+    "residualGainChainAggregateSlackBoundTheorem": "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le",
+    "residualGainChainLengthBoundTheorem": "PNP.DirectWire.StrictGainChain.length_le_residualSlack",
+    "residualGainChainExecutableLengthBoundTheorem": "PNP.DirectWire.strictGainChainBool_length_le_residualSlack",
+    "residualGainChainZeroSlackEmptyTheorem": "PNP.DirectWire.StrictGainChain.eq_nil_of_residualSlack_eq_zero",
+    "lockedNANDFullCandidateImplementationResidualSlackLeFourTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidateImplementation_residualSlack_le_four",
+    "lockedNANDStrictGainChainLengthLeFourTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four",
+    "lockedNANDStrictGainChainBoolLengthLeFourTheorem": "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four"
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,

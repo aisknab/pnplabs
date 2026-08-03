@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PNP_CORE_COMMIT: 3e60a7b270d4695da137a60d6a4a9ca59d3886f8
+  PNP_CORE_COMMIT: 3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
@@ -54,11 +54,11 @@ jobs:
       - name: Verify exact core artifacts without writing
         run: node tools/sync-public-access-docs.mjs --check
 
-      - name: Verify sixty-eight-page current report and reject historical bytes
+      - name: Verify sixty-nine-page current report and reject historical bytes
         shell: bash
         run: |
           set -euo pipefail
-          test "$(pdfinfo downloads/canonical_proof_report.pdf | awk '/^Pages:/ {print $2}')" = "68"
+          test "$(pdfinfo downloads/canonical_proof_report.pdf | awk '/^Pages:/ {print $2}')" = "69"
           cmp downloads/canonical_proof_report.pdf downloads/canonical-proof-report.pdf
           cmp downloads/canonical_proof_report.tex downloads/canonical-proof-report.tex
           test "$(sha256sum downloads/canonical_proof_report.pdf | cut -d' ' -f1)" != "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d"

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-03-residual-gain-chain-bound",
+      "milestoneId": "residual-gain-chain-bound",
+      "publishedAt": "2026-08-03T01:28:40Z",
+      "title": "Verified circuit-shrinking cannot continue forever",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations. Sometimes one circuit can be replaced by a smaller circuit that gives exactly the same answers. Lean now checks a general rule for any finite sequence of these replacements: when every step is independently checked to keep all answers the same and to use fewer operations, the sequence cannot continue for longer than the starting gap between the current circuit and the smallest equivalent circuit.",
+        "For the locked comparison circuits already constructed in this project, that starting gap is at most four, so any such verified shrinking sequence has at most four steps. This rules out endless repetition, but it does not find the next smaller circuit, prove that every possible improvement will be found, or show that stopping early means the smallest circuit has been reached. Those search, completeness, runtime, and final P = NP steps remain open. The 58% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 58,
+      "source": {
+        "commit": "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403",
+        "tree": "83f4874213a6c2be7c182d9e33d61a0e1b250acb",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-95",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-CHAIN-BOUND-94"
+      }
+    },
+    {
       "id": "2026-07-31-concrete-cnf-to-nand-polynomial-reduction",
       "milestoneId": "concrete-cnf-to-nand-polynomial-reduction",
       "publishedAt": "2026-07-31T17:22:27Z",

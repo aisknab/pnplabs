@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 57% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 58% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="57" aria-label="Estimated proof reconstruction progress: 57 percent">57%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 57 percent">
+        <progress class="proof-progress-meter" max="100" value="58" aria-label="Estimated proof reconstruction progress: 58 percent">58%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 58 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-03-residual-gain-chain-bound" data-milestone-id="residual-gain-chain-bound">
+        <div class="section-label"><time datetime="2026-08-03T01:28:40Z">2026-08-03</time> · earned milestone 72</div>
+        <h2>Verified circuit-shrinking cannot continue forever</h2>
+        <p>A circuit is a collection of simple yes-or-no operations. Sometimes one circuit can be replaced by a smaller circuit that gives exactly the same answers. Lean now checks a general rule for any finite sequence of these replacements: when every step is independently checked to keep all answers the same and to use fewer operations, the sequence cannot continue for longer than the starting gap between the current circuit and the smallest equivalent circuit.</p>
+        <p>For the locked comparison circuits already constructed in this project, that starting gap is at most four, so any such verified shrinking sequence has at most four steps. This rules out endless repetition, but it does not find the next smaller circuit, prove that every possible improvement will be found, or show that stopping early means the smallest circuit has been reached. Those search, completeness, runtime, and final P = NP steps remain open. The 58% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 58%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-gain-chain-bound</code></p>
+          <p><strong>Classification:</strong> formalized-iteration-bound-only</p>
+          <p><strong>Verified scope:</strong> Every finite proof-bearing or executably verified chain of adjacent strict equivalent gains preserves semantics and the exhaustive reference minimum, while its endpoint residual slack plus its length is at most its starting residual slack. For the complete locked-NAND candidate, the existing residual-slack-at-most-four theorem specializes this to at most four verified gain steps.</p>
+          <p><strong>Boundary:</strong> This milestone bounds only a disclosed, independently verified sequence. It does not find the next gain, prove route or candidate-list completeness, justify stopping after fewer than the bound, construct ZeroSlack, compute an exact minimizer, establish polynomial checker or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 14</p>
+          <p><strong>Core source:</strong> commit <code>3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403</code>, tree <code>83f4874213a6c2be7c182d9e33d61a0e1b250acb</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-95</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-CHAIN-BOUND-94</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-07-31-concrete-cnf-to-nand-polynomial-reduction" data-milestone-id="concrete-cnf-to-nand-polynomial-reduction">
         <div class="section-label"><time datetime="2026-07-31T17:22:27Z">2026-07-31</time> · earned milestone 71</div>
         <h2>The CNF-to-NAND translation now runs as a checked efficient process</h2>
