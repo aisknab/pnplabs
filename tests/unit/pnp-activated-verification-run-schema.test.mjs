@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-96');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-97');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 23615);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 12830);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6788);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 23671);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 12853);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6809);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14273);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 211);
-  assert.equal(status.formalPublicationMilestones.length, 76);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 73);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 212);
+  assert.equal(status.formalPublicationMilestones.length, 77);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 74);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
@@ -67,6 +67,10 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanResidualGainChainAxiomAuditPassed, true);
   assert.equal(status.leanResidualGainChainSlackIterationBoundFormalized, true);
   assert.equal(status.leanResidualGainChainPolynomialRuntimeFormalized, false);
+  assert.equal(status.leanResidualTerminalFullBridgeFormalized, true);
+  assert.equal(status.leanResidualTerminalFullBridgeAxiomAuditPassed, true);
+  assert.equal(status.leanResidualWholeSpanZeroAbsenceIffFormalized, true);
+  assert.equal(status.leanResidualTerminalQuotientCarrierFormalized, false);
   assert.equal(status.remainingBlockers.length, 6);
   assert.equal(status.projectSpecificAxiomInventory.length, 4);
   assert.equal(status.projectSpecificAxiomsRemaining, true);

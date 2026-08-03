@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-03T06:33:39Z</updated>
+  <updated>2026-08-03T12:39:26Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-03-residual-terminal-full-carrier-bridge</id>
+    <title>The proof now compares a complete circuit at once</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-03-residual-terminal-full-carrier-bridge"/>
+    <published>2026-08-03T12:39:26Z</published>
+    <updated>2026-08-03T12:39:26Z</updated>
+    <summary type="text">A circuit is a collection of simple yes-or-no operations. Lean now checks the full comparison for any finite circuit: another circuit counts as equivalent only when it gives the same answer for every possible input and every output. The wrapper used for that comparison also preserves the circuit and its exact number of operations. Lean also checks that any cheaper complete equivalent circuit is genuine progress toward the smallest one, and that no such circuit exists exactly when the remaining size gap is zero. It does not provide an efficient way to find that circuit or finish the manuscript’s remaining minimisation and complexity-theory steps, and it does not prove P = NP. The 60% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 60 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit is a collection of simple yes-or-no operations. Lean now checks the full comparison for any finite circuit: another circuit counts as equivalent only when it gives the same answer for every possible input and every output. The wrapper used for that comparison also preserves the circuit and its exact number of operations.&lt;/p&gt;&lt;p&gt;Lean also checks that any cheaper complete equivalent circuit is genuine progress toward the smallest one, and that no such circuit exists exactly when the remaining size gap is zero. It does not provide an efficient way to find that circuit or finish the manuscript’s remaining minimisation and complexity-theory steps, and it does not prove P = NP. The 60% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;60&quot;&gt;Editorial progress estimate at publication: 60%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-03-residual-terminal-full-carrier-bridge&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-03-residual-gain-stopping-specification</id>
     <title>A globally complete stop now certifies a smallest circuit</title>

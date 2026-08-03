@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-96';
-const STATUS_SHA256 = '251b3b184c7195f8a951d474701610a3650a2d42d98193ebb515cbcb16c4597f';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-STOPPING-SPECIFICATION-95';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-03-96';
-const INVENTORY_SHA256 = '71165b553da0c375a19769cb9a7da02b20927d79cf47204d07e86ae14533c5fe';
-const SOURCE_CLOSURE_SHA256 = '23ebbd4f1251d92adb3c0a1d60cf63b52683a41f39a84375c87b0781d2f522ac';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-97';
+const STATUS_SHA256 = '9d57f950c033ff5a8e80118695112681bbd491a3cf1f3e9780408cf35487b6f6';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-TERMINAL-FULL-CARRIER-BRIDGE-96';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-03-97';
+const INVENTORY_SHA256 = '206084d180ff61b20d89dff70ef0d161e0c9e2a15b070601ea0000a29ed4184c';
+const SOURCE_CLOSURE_SHA256 = '637927ee2f3fe48f8f8c7495ea0c2ecc6da66d85190c80b961b9079aa5e6128c';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 23615,
-  theorems: 12830,
-  assumptionFreeTheorems: 6788,
+  declarations: 23671,
+  theorems: 12853,
+  assumptionFreeTheorems: 6809,
   excludedPrivateDeclarations: 14273,
-  modules: 211,
+  modules: 212,
   axioms: 4,
 });
 
@@ -3345,6 +3345,22 @@ const RESIDUAL_GAIN_STOPPING_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.strictGainChainBool_end_residualSlack_eq_zero_of_no_strictEquivalentGain", [], "PNP.ResidualGainStopping"],
 ]);
 
+const RESIDUAL_TERMINAL_FULL_BRIDGE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalize_implementation", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.terminalize_gateCount", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.TerminalFullRealization.realize_equivalent", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.TerminalFullRealization.realize_semantics", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.referenceMinimumTerminalFullRealization_gateCount", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.terminalFullMinimum_eq_referenceMinimum", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.terminalFullMinimum_spec", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.isTerminalFullMinimum_iff_eq_terminalFullMinimum", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.isTerminalFullMinimum_iff_eq_referenceMinimum", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.WholeSpanResidualWitness.strictResidualDescent", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.residualSlack_pos_iff_exists_wholeSpanResidualWitness", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.residualSlack_eq_zero_iff_no_wholeSpanResidualWitness", [], "PNP.ResidualTerminalFullBridge"],
+  ["PNP.DirectWire.StrictEquivalentGain.strictResidualDescent", [], "PNP.ResidualRoutes"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -3861,6 +3877,7 @@ const MILESTONE_IDS = Object.freeze([
   'explicit-residual-routes',
   'residual-gain-chain-bound',
   'residual-gain-stopping-specification',
+  'residual-terminal-full-carrier-bridge',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4590,13 +4607,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 635,
-    definition: 9598,
-    inductive: 274,
+    constructor: 637,
+    definition: 9625,
+    inductive: 276,
     opaque: 0,
     quotient: 0,
-    recursor: 274,
-    theorem: 12830,
+    recursor: 276,
+    theorem: 12853,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4918,6 +4935,11 @@ function validateInventory(inventory) {
     module,
   }));
   const residualGainStopping = RESIDUAL_GAIN_STOPPING_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
+  const residualTerminalFullBridge = RESIDUAL_TERMINAL_FULL_BRIDGE_DECLARATIONS.map(([name, axioms, module]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
     module,
@@ -5245,6 +5267,9 @@ function validateInventory(inventory) {
     && residualGainStopping.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalFullBridge.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5286,7 +5311,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2103
+    && inventory.milestoneCandidates.length === 2115
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5350,7 +5375,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 73;
+    const shouldBeEarned = index < 74;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5400,6 +5425,9 @@ function validateStatus(status, inventory) {
   );
   const residualGainStoppingMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-gain-stopping-specification'
+  );
+  const residualTerminalFullBridgeMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-full-carrier-bridge'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -5479,6 +5507,25 @@ function validateStatus(status, inventory) {
     && status.leanResidualGainChainGlobalStoppingConsequenceFormalized === true
     && status.leanResidualGainChainExactMinimumPackagingFormalized === true
     && status.leanResidualGainStoppingScope === "all-finite-direct-wire-implementations-with-global-strict-equivalent-gain-quantification-and-proof-supplied-chain-endpoint-stopping"
+    && residualTerminalFullBridgeMilestone?.classification === "formalized-terminal-full-mode-semantic-bridge"
+    && residualTerminalFullBridgeMilestone.scope === "For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and semantics at every input/output coordinate. An independently stated terminal minimum is attained, universally lower-bounds every complete terminal realization, and equals the exhaustive semantic reference minimum. Positive residual slack is equivalent to a cheaper whole-span full realization, every such realization gives strict residual descent, and zero slack is equivalent to absence of one."
+    && residualTerminalFullBridgeMilestone.nonClaim === "This is the direct-wire terminal full-mode specialization of the manuscript bridge. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, SaturatePositive, BCEL/BN2-BN6, packet or selector completeness, route generation, the ZeroSlack certificate, PCCMin, polynomial minimum search or checking, SAT in P, discharge a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalFullBridgeMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_FULL_BRIDGE_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalFullBridgeFormalized === true
+    && status.leanResidualTerminalFullBridgeAxiomAuditPassed === true
+    && status.leanResidualTerminalizationExactFormalized === true
+    && status.leanResidualTerminalFullMinimumSpecificationFormalized === true
+    && status.leanResidualTerminalMuBridgeFormalized === true
+    && status.leanResidualWholeSpanPositiveWitnessIffFormalized === true
+    && status.leanResidualWholeSpanStrictDescentFormalized === true
+    && status.leanResidualWholeSpanZeroAbsenceIffFormalized === true
+    && status.leanResidualTerminalFullBridgeScope === "all-finite-direct-wire-implementations-with-complete-multi-output-semantics-and-exhaustive-reference-minimum-witnesses"
+    && status.leanResidualTerminalQuotientCarrierFormalized === false
+    && status.leanResidualTerminalProperSupportFormalized === false
+    && status.leanResidualTerminalSaturationFormalized === false
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
     && status.finalTheoremReady === gatePassed
