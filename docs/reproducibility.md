@@ -79,7 +79,7 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The fixed all-input compiler milestone realizes that semantic function with one 135,070-rule three-node finite
+The fixed all-input compiler milestone realizes that semantic function with one fixed 135,070-rule three-node finite
 work graph. Its 28 reviewed theorem pins cover exact all-bitstring execution, exact compiled output, non-timeout
 execution under one external polynomial, `PolynomialTimeFunction`, literal `RawRefinement`, the direct
 `CNFSAT`-to-`EncodedNANDSAT` `PolynomialReduction` (`cnfSAT_reducesTo_encodedNANDSAT`), and composition to
