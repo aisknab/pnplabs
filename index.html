@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The CNF-to-NAND translation now runs as a checked efficient process</h2>
-          <p>The previous update proved that a CNF formula and its NAND translation have the same yes-or-no answer. This update adds one fixed, inspectable machine that performs that translation for every possible input. Lean checks that valid formulas produce exactly the intended circuit, while malformed inputs stop safely and produce no result.</p>
-          <p>Lean also proves that the work grows at a polynomial rate with the input size—the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-07-31-concrete-cnf-to-nand-polynomial-reduction">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Verified circuit-shrinking cannot continue forever</h2>
+          <p>A circuit is a collection of simple yes-or-no operations. Sometimes one circuit can be replaced by a smaller circuit that gives exactly the same answers. Lean now checks a general rule for any finite sequence of these replacements: when every step is independently checked to keep all answers the same and to use fewer operations, the sequence cannot continue for longer than the starting gap between the current circuit and the smallest equivalent circuit.</p>
+          <p>For the locked comparison circuits already constructed in this project, that starting gap is at most four, so any such verified shrinking sequence has at most four steps. This rules out endless repetition, but it does not find the next smaller circuit, prove that every possible improvement will be found, or show that stopping early means the smallest circuit has been reached. Those search, completeness, runtime, and final P = NP steps remain open. The 58% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-03-residual-gain-chain-bound">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> one fixed 135,070-rule machine handles every input, and <code>compiledMachineOutput_eq_compileEncodedCNFToNAND</code> proves its exact output. <code>cnfToNANDPolynomialTimeFunction_output</code> supplies the polynomial runtime/output function, while <code>cnfSAT_reducesTo_encodedNANDSAT</code> packages the direct reduction to <code>EncodedNANDSAT</code> and <code>cnfSAT_reducesTo_encodedLockedNANDThreshold</code> composes it with the existing reduction to <code>EncodedLockedNANDThreshold</code>. This still supplies no deterministic polynomial-time CNF-SAT decider, no discharge of the abstract locked-threshold assumption, no final NP-completeness transport, and no P = NP theorem.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>StrictGainChain.end_residualSlack_add_length_le</code> proves that the endpoint slack plus the number of verified strict equivalent gains is at most the starting slack. The existing locked-family bound specializes this to at most four accepted gain steps. The checker validates a supplied finite chain; it does not generate gains, prove search completeness, justify early stopping, construct ZeroSlack, or prove a polynomial-time minimizer or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -141,6 +141,12 @@ leanConcreteCNFToNANDCompiledNonTimeoutFormalized = true
 leanConcreteCNFToNANDRawRefinementFormalized = true
 leanConcreteCNFToNANDDirectReductionFormalized = true
 leanConcreteCNFToNANDLockedReductionCompositionFormalized = true
+leanResidualGainChainVerifierFormalized = true
+leanResidualGainChainAxiomAuditPassed = true
+leanResidualGainChainSemanticInvariantFormalized = true
+leanResidualGainChainSlackIterationBoundFormalized = true
+leanLockedNANDGainIterationsAtMostFourFormalized = true
+leanResidualGainChainPolynomialRuntimeFormalized = false
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -154,9 +160,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-07-31-94</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-03-95</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca</code></div>
+            <div><span>Inventory SHA-256</span><code>26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -164,18 +170,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>57</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>58</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 57 percent" data-proof-progress="57">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>56</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 58 percent" data-proof-progress="58">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>58</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 57% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 58% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

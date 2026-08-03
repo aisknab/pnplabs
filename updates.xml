@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-07-31T17:22:27Z</updated>
+  <updated>2026-08-03T01:28:40Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-03-residual-gain-chain-bound</id>
+    <title>Verified circuit-shrinking cannot continue forever</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-03-residual-gain-chain-bound"/>
+    <published>2026-08-03T01:28:40Z</published>
+    <updated>2026-08-03T01:28:40Z</updated>
+    <summary type="text">A circuit is a collection of simple yes-or-no operations. Sometimes one circuit can be replaced by a smaller circuit that gives exactly the same answers. Lean now checks a general rule for any finite sequence of these replacements: when every step is independently checked to keep all answers the same and to use fewer operations, the sequence cannot continue for longer than the starting gap between the current circuit and the smallest equivalent circuit. For the locked comparison circuits already constructed in this project, that starting gap is at most four, so any such verified shrinking sequence has at most four steps. This rules out endless repetition, but it does not find the next smaller circuit, prove that every possible improvement will be found, or show that stopping early means the smallest circuit has been reached. Those search, completeness, runtime, and final P = NP steps remain open. The 58% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 58 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit is a collection of simple yes-or-no operations. Sometimes one circuit can be replaced by a smaller circuit that gives exactly the same answers. Lean now checks a general rule for any finite sequence of these replacements: when every step is independently checked to keep all answers the same and to use fewer operations, the sequence cannot continue for longer than the starting gap between the current circuit and the smallest equivalent circuit.&lt;/p&gt;&lt;p&gt;For the locked comparison circuits already constructed in this project, that starting gap is at most four, so any such verified shrinking sequence has at most four steps. This rules out endless repetition, but it does not find the next smaller circuit, prove that every possible improvement will be found, or show that stopping early means the smallest circuit has been reached. Those search, completeness, runtime, and final P = NP steps remain open. The 58% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;58&quot;&gt;Editorial progress estimate at publication: 58%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-03-residual-gain-chain-bound&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-07-31-concrete-cnf-to-nand-polynomial-reduction</id>
     <title>The CNF-to-NAND translation now runs as a checked efficient process</title>

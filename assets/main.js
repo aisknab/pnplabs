@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-94';
-const STATUS_SHA256 = 'f960c968ee7cf879316a9968d5f0b9559511b16bd87e430986203dfa74e8d44f';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-POLYNOMIAL-REDUCTION-93';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-07-31-94';
-const INVENTORY_SHA256 = 'f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca';
-const SOURCE_CLOSURE_SHA256 = 'f4cec303e24b1e7b58bcab141d3fcbe7e1306b5e5913028bf8696a6af6160b42';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-95';
+const STATUS_SHA256 = '94aef5e267925651eed37adaacf3a767b103f9e0943eed50e3e0a677c5751076';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-CHAIN-BOUND-94';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-03-95';
+const INVENTORY_SHA256 = '26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b';
+const SOURCE_CLOSURE_SHA256 = '3430306ac20401ae6967122be54eab38adeb843595f83049e97c09397eeb468b';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 23575,
-  theorems: 12806,
-  assumptionFreeTheorems: 6767,
+  declarations: 23601,
+  theorems: 12818,
+  assumptionFreeTheorems: 6776,
   excludedPrivateDeclarations: 14273,
-  modules: 208,
+  modules: 210,
   axioms: 4,
 });
 
@@ -3315,6 +3315,23 @@ const LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_referenceMinimum_eq_baseline_of_unsatisfiable", ["Quot.sound", "propext"]],
 ]);
 
+const RESIDUAL_GAIN_CHAIN_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.StrictEquivalentGain.strictResidualDescent", [], "PNP.ResidualRoutes"],
+  ["PNP.DirectWire.strictGainChainBool_eq_true_iff", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.StrictGainChain.end_equivalent", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.StrictGainChain.end_referenceMinimum_eq", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.StrictGainChain.length_le_residualSlack", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.strictGainChainBool_length_le_residualSlack", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.strictGainChainBool_length_le_of_residualSlack_le", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.StrictGainChain.eq_nil_of_residualSlack_eq_zero", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.strictGainChainBool_eq_nil_of_residualSlack_eq_zero", [], "PNP.ResidualGainChain"],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four", ["Quot.sound", "propext"], "PNP.LockedNANDGlobalSemanticThreshold"],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidateImplementation_residualSlack_le_four", ["Quot.sound", "propext"], "PNP.LockedNANDResidualGainBound"],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four", ["Quot.sound", "propext"], "PNP.LockedNANDResidualGainBound"],
+  ["PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four", ["Quot.sound", "propext"], "PNP.LockedNANDResidualGainBound"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -3829,6 +3846,7 @@ const MILESTONE_IDS = Object.freeze([
   'concrete-cnf-to-nand-polynomial-reduction',
   'locked-nand-conditional-threshold',
   'explicit-residual-routes',
+  'residual-gain-chain-bound',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4559,12 +4577,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 635,
-    definition: 9582,
+    definition: 9596,
     inductive: 274,
     opaque: 0,
     quotient: 0,
     recursor: 274,
-    theorem: 12806,
+    theorem: 12818,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4876,6 +4894,11 @@ function validateInventory(inventory) {
     module,
   }));
   const cnfToNANDPolynomialReduction = CNF_TO_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
+  const residualGainChain = RESIDUAL_GAIN_CHAIN_DECLARATIONS.map(([name, axioms, module]) => ({
     row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
     axioms,
     module,
@@ -5197,6 +5220,9 @@ function validateInventory(inventory) {
     && cnfToNANDPolynomialReduction.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualGainChain.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5238,7 +5264,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2081
+    && inventory.milestoneCandidates.length === 2093
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5302,7 +5328,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 71;
+    const shouldBeEarned = index < 72;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5346,6 +5372,9 @@ function validateStatus(status, inventory) {
   );
   const cnfToNANDPolynomialReductionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'concrete-cnf-to-nand-polynomial-reduction'
+  );
+  const residualGainChainMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-gain-chain-bound'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -5401,6 +5430,13 @@ function validateStatus(status, inventory) {
     && sameJson(
       cnfToNANDPolynomialReductionMilestone.requiredTheorems,
       CNF_TO_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS.map(([name]) => name)
+    )
+    && residualGainChainMilestone?.classification === "formalized-iteration-bound-only"
+    && residualGainChainMilestone.scope === "Every finite proof-bearing or executably verified chain of adjacent strict equivalent gains preserves semantics and the exhaustive reference minimum, while its endpoint residual slack plus its length is at most its starting residual slack. For the complete locked-NAND candidate, the existing residual-slack-at-most-four theorem specializes this to at most four verified gain steps."
+    && residualGainChainMilestone.nonClaim === "This milestone bounds only a disclosed, independently verified sequence. It does not find the next gain, prove route or candidate-list completeness, justify stopping after fewer than the bound, construct ZeroSlack, compute an exact minimizer, establish polynomial checker or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP."
+    && sameJson(
+      residualGainChainMilestone.requiredTheorems,
+      RESIDUAL_GAIN_CHAIN_DECLARATIONS.map(([name]) => name)
     )
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
@@ -5953,6 +5989,13 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCNFToNANDLockedReductionCompositionFormalized === true
     && status.leanConcreteCNFToNANDPolynomialReductionScope === "fixed-135070-rule-three-node-all-bitstring-cnf-to-nand-compiler-with-exact-output-polynomial-time-function-direct-reduction-locked-threshold-composition-and-recursive-raw-refinement"
     && status.leanConcreteCNFToNANDSemanticCompilerScope === 'strict-canonical-cnf-to-intrinsically-topological-nand-semantic-compiler-with-exact-gate-count-quadratic-output-bound-and-all-bitstring-fail-closed-equivalence'
+    && status.leanResidualGainChainVerifierFormalized === true
+    && status.leanResidualGainChainAxiomAuditPassed === true
+    && status.leanResidualGainChainSemanticInvariantFormalized === true
+    && status.leanResidualGainChainSlackIterationBoundFormalized === true
+    && status.leanLockedNANDGainIterationsAtMostFourFormalized === true
+    && status.leanResidualGainChainScope === 'all-finite-proof-bearing-or-executably-verified-strict-equivalent-gain-chains-with-locked-family-four-step-specialization'
+    && status.leanResidualGainChainPolynomialRuntimeFormalized === false
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAxiomAuditPassed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintThirdPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82

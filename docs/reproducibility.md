@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 419,182 | `673aa9d6b5bb916459b426978d1a63bb5dbf88e39f7a48488069ed176fb29e0c` |
-| `downloads/canonical-proof-report.pdf` | 419,182 | `673aa9d6b5bb916459b426978d1a63bb5dbf88e39f7a48488069ed176fb29e0c` |
-| `downloads/canonical_proof_report.tex` | 175,276 | `1017838eb64fdbb4b31522f725ec0d20ece8d8dd25d50fc3ba4b33d94c642102` |
-| `downloads/canonical-proof-report.tex` | 175,276 | `1017838eb64fdbb4b31522f725ec0d20ece8d8dd25d50fc3ba4b33d94c642102` |
-| `public/pnp-status.json` | 1,665,641 | `f960c968ee7cf879316a9968d5f0b9559511b16bd87e430986203dfa74e8d44f` |
-| `public/pnp-theorem-inventory.json` | 13,380,071 | `f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca` |
+| `downloads/canonical_proof_report.pdf` | 420,680 | `a0dfe6b1fcbe0769f612bb494b610ee4727ef7e37cd6f0156f72d2e990a019ac` |
+| `downloads/canonical-proof-report.pdf` | 420,680 | `a0dfe6b1fcbe0769f612bb494b610ee4727ef7e37cd6f0156f72d2e990a019ac` |
+| `downloads/canonical_proof_report.tex` | 177,190 | `b13f970372569e2559a0c2f60188420210ffccdc9653e5ee04f36cf57d6ce835` |
+| `downloads/canonical-proof-report.tex` | 177,190 | `b13f970372569e2559a0c2f60188420210ffccdc9653e5ee04f36cf57d6ce835` |
+| `public/pnp-status.json` | 1,675,872 | `94aef5e267925651eed37adaacf3a767b103f9e0943eed50e3e0a677c5751076` |
+| `public/pnp-theorem-inventory.json` | 13,432,952 | `26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b` |
 
-The PDF must have sixty-eight A4 pages. Both filename styles must be byte-identical.
+The PDF must have sixty-nine A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 3e60a7b270d4695da137a60d6a4a9ca59d3886f8
+git -C ../pnp checkout 3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 23,575 public declarations, 12,806 theorem-kind declarations,
-6,767 assumption-free theorem-kind declarations, 14,273 excluded private auxiliaries, 208 modules, and
+Expected compiled inventory counts are 23,601 public declarations, 12,818 theorem-kind declarations,
+6,776 assumption-free theorem-kind declarations, 14,273 excluded private auxiliaries, 210 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -79,7 +79,7 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The newest milestone realizes that semantic function with one fixed 135,070-rule three-node finite
+The fixed all-input compiler milestone realizes that semantic function with one 135,070-rule three-node finite
 work graph. Its 28 reviewed theorem pins cover exact all-bitstring execution, exact compiled output, non-timeout
 execution under one external polynomial, `PolynomialTimeFunction`, literal `RawRefinement`, the direct
 `CNFSAT`-to-`EncodedNANDSAT` `PolynomialReduction` (`cnfSAT_reducesTo_encodedNANDSAT`), and composition to
@@ -90,6 +90,14 @@ execution under one external polynomial, `PolynomialTimeFunction`, literal `RawR
 This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hardness or CNF-SAT
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
+
+The newest milestone adds 14 reviewed theorem pins for any finite proof-bearing or executably verified
+strict equivalent-gain chain. It preserves semantics and the exhaustive reference minimum and proves
+that endpoint residual slack plus chain length is at most starting residual slack, specializing to at
+most four verified steps for the complete locked-NAND candidate. Twelve declarations are axiom-free;
+four locked specializations close only over `propext` and `Quot.sound`. This result verifies a supplied
+chain but does not find a gain, prove completeness or a stopping rule, construct `ZeroSlack`, compute
+an exact minimizer, establish polynomial runtime, discharge an assumption, or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

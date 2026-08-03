@@ -130,6 +130,23 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_HASHES = {
   "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement": "73ef05c12f8b87d3867e46b3a2c555adad77f1a9c49c0f1c7827cea11e7965cf"
 };
 
+const RESIDUAL_GAIN_CHAIN_THEOREM_SHA256 = {
+  "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent": "f936c792a4f8f45d27da4512b16ba28222dc64b81f50016c9d30433fbfadae6e",
+  "PNP.DirectWire.strictGainChainBool_eq_true_iff": "816e54e4531107de91901686549b1c2e040df4feef9b16b066592bd999a04898",
+  "PNP.DirectWire.StrictGainChain.end_equivalent": "16d9be66d41e255a85e99776eae299ede9b96fbb4a52b092975ba2668e955782",
+  "PNP.DirectWire.StrictGainChain.end_referenceMinimum_eq": "f5d2b9c7314081efa5545b0244c69f7cb1913724d67882b0973241106edd37c0",
+  "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le": "3d9578eb0b87eaae79f3d0fefb693d4e45a44bfda7c9237e38fdc4429db8a968",
+  "PNP.DirectWire.StrictGainChain.length_le_residualSlack": "a9ae79ffa40af537d1e2b54bcec4f2733bddbf7c20b0799dc031e61d410cf20e",
+  "PNP.DirectWire.strictGainChainBool_length_le_residualSlack": "20c5ad2948288e7607ef952b5f155133fb4b9ed18e4e8690bddbf993c8c8b535",
+  "PNP.DirectWire.strictGainChainBool_length_le_of_residualSlack_le": "a3963469939a052165f47d2aca5171bf5fa934483d25ab91451df2674a9b0f87",
+  "PNP.DirectWire.StrictGainChain.eq_nil_of_residualSlack_eq_zero": "f0ad692f62354727bdb5e3f44617f8ad5decf5ad1b25d0c03912dbec38d38d07",
+  "PNP.DirectWire.strictGainChainBool_eq_nil_of_residualSlack_eq_zero": "66812e7f8c2f41711af1788bbf9871959030891d88554aa9a5b6beb56ef1a65b",
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four": "2e2c9cab0c3977704f66cb272e972e949cd7bbd899487c1cc9ba3527ef2d9e0a",
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidateImplementation_residualSlack_le_four": "0a138524071766b4eb12d0de6550bcf776d948bb4df133619387a4f9781e98ff",
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four": "dc3962312e29cc2ea9b36aeb4b6fc2fa4626d7e72053838d317636a61b68fe9c",
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four": "6424411112c8f2316541d234cf90b37cb807b7ec38cca84e52edfe6af98fe750"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -148,18 +165,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "3e60a7b270d4695da137a60d6a4a9ca59d3886f8");
+  assert.equal(result.coreCommit, "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403");
 });
 
-test("current release is pinned, sixty-eight-page, exposes the CNF-to-NAND polynomial reduction, and fails closed", () => {
+test("current release is pinned, sixty-nine-page, exposes the residual-gain chain bound, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-07-31-77");
-  assert.equal(release.source.commit, "3e60a7b270d4695da137a60d6a4a9ca59d3886f8");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-03-78");
+  assert.equal(release.source.commit, "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403");
   assert.equal(release.source.proofCommit, "25ffe07ac77167c347dece712776b0b75b69a912");
-  assert.equal(release.source.tree, "04dbf61379eb4d24f1adc8419bf6e9d2dd636346");
+  assert.equal(release.source.tree, "83f4874213a6c2be7c182d9e33d61a0e1b250acb");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 68);
+  assert.equal(release.artifacts.report.pageCount, 69);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1671,6 +1688,20 @@ test("current release is pinned, sixty-eight-page, exposes the CNF-to-NAND polyn
   assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionLockedReductionTheorem, "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_correct");
   assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionLockedReductionWitnessTheorem, "PNP.Concrete.CNFToNAND.cnfSAT_reducesTo_encodedLockedNANDThreshold");
   assert.equal(release.earnedBoundary.cnfToNANDPolynomialReductionLockedRawRefinementTheorem, "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement");
+  assert.equal(release.earnedBoundary.residualGainChainVerifierFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainChainAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualGainChainAuditedDeclarationCount, 16);
+  assert.equal(release.earnedBoundary.residualGainChainEmptyAxiomDeclarationCount, 12);
+  assert.equal(release.earnedBoundary.residualGainChainPropextQuotSoundDeclarationCount, 4);
+  assert.equal(release.earnedBoundary.residualGainChainSemanticInvariantFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainChainSlackIterationBoundFormalized, true);
+  assert.equal(release.earnedBoundary.residualGainChainPolynomialRuntimeFormalized, false);
+  assert.equal(release.earnedBoundary.residualGainChainScope, "all-finite-proof-bearing-or-executably-verified-strict-equivalent-gain-chains-with-locked-family-four-step-specialization");
+  assert.deepEqual(release.earnedBoundary.residualGainChainTheoremKernelTypeSha256, RESIDUAL_GAIN_CHAIN_THEOREM_SHA256);
+  assert.deepEqual(release.earnedBoundary.residualGainChainAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualGainChainProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualGainChainAggregateSlackBoundTheorem, "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le");
+  assert.equal(release.earnedBoundary.lockedNANDStrictGainChainLengthLeFourTheorem, "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
   assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
@@ -1697,12 +1728,12 @@ test("current release is pinned, sixty-eight-page, exposes the CNF-to-NAND polyn
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 74 milestones with both CNF-to-NAND boundaries pinned", () => {
+test("status and inventory publish exactly 75 milestones with the residual-gain boundary pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 74);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 71);
+  assert.equal(milestones.length, 75);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 72);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -1871,21 +1902,43 @@ test("status and inventory publish exactly 74 milestones with both CNF-to-NAND b
   assert.equal(status.leanConcreteCNFToNANDDirectReductionFormalized, true);
   assert.equal(status.leanConcreteCNFToNANDLockedReductionCompositionFormalized, true);
 
-  assert.equal(inventory.declarationCount, 23575);
-  assert.equal(inventory.theoremCount, 12806);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6767);
+  const residualGainChain = milestones.find((row) => row.id === "residual-gain-chain-bound");
+  assert.equal(residualGainChain.classification, "formalized-iteration-bound-only");
+  assert.equal(residualGainChain.status, "formalized-iteration-bound-only");
+  assert.equal(residualGainChain.earned, true);
+  assert.equal(residualGainChain.allPresent, true);
+  assert.equal(residualGainChain.allAssumptionFree, false);
+  assert.equal(residualGainChain.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualGainChain.allKernelTypesMatch, true);
+  assert.equal(residualGainChain.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualGainChain.requiredTheorems, Object.keys(RESIDUAL_GAIN_CHAIN_THEOREM_SHA256));
+  assert.deepEqual(
+    Object.fromEntries(residualGainChain.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_GAIN_CHAIN_THEOREM_SHA256
+  );
+  assert.match(residualGainChain.scope, /endpoint residual slack plus its length/u);
+  assert.match(residualGainChain.nonClaim, /does not find the next gain/u);
+  assert.equal(status.leanResidualGainChainVerifierFormalized, true);
+  assert.equal(status.leanResidualGainChainAxiomAuditPassed, true);
+  assert.equal(status.leanResidualGainChainSemanticInvariantFormalized, true);
+  assert.equal(status.leanResidualGainChainSlackIterationBoundFormalized, true);
+  assert.equal(status.leanResidualGainChainPolynomialRuntimeFormalized, false);
+
+  assert.equal(inventory.declarationCount, 23601);
+  assert.equal(inventory.theoremCount, 12818);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6776);
   assert.equal(inventory.excludedPrivateDeclarationCount, 14273);
-  assert.equal(inventory.sourceClosureModuleCount, 208);
-  assert.equal(inventory.milestoneCandidates.length, 2081);
+  assert.equal(inventory.sourceClosureModuleCount, 210);
+  assert.equal(inventory.milestoneCandidates.length, 2093);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
     constructor: 635,
-    definition: 9582,
+    definition: 9596,
     inductive: 274,
     opaque: 0,
     quotient: 0,
     recursor: 274,
-    theorem: 12806
+    theorem: 12818
   });
 });
 

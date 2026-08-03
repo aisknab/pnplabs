@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "3e60a7b270d4695da137a60d6a4a9ca59d3886f8";
-const REVIEWED_CORE_TREE = "04dbf61379eb4d24f1adc8419bf6e9d2dd636346";
+const REVIEWED_CORE_COMMIT = "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403";
+const REVIEWED_CORE_TREE = "83f4874213a6c2be7c182d9e33d61a0e1b250acb";
 const REVIEWED_PROOF_COMMIT = "25ffe07ac77167c347dece712776b0b75b69a912";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -3201,6 +3201,20 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREMS = {
   "PNP.Concrete.CNFToNAND.cnfToLockedNANDPolynomialReduction_hasRawRefinement": { hash: "73ef05c12f8b87d3867e46b3a2c555adad77f1a9c49c0f1c7827cea11e7965cf", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.CNFToNANDPolynomialReduction" }
 };
 
+const RESIDUAL_GAIN_CHAIN_RELEASE_IDENTITIES = {
+  residualGainChainStrictResidualDescentTheorem: "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent",
+  residualGainChainExecutableCorrectnessTheorem: "PNP.DirectWire.strictGainChainBool_eq_true_iff",
+  residualGainChainSemanticInvariantTheorem: "PNP.DirectWire.StrictGainChain.end_equivalent",
+  residualGainChainReferenceMinimumInvariantTheorem: "PNP.DirectWire.StrictGainChain.end_referenceMinimum_eq",
+  residualGainChainAggregateSlackBoundTheorem: "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le",
+  residualGainChainLengthBoundTheorem: "PNP.DirectWire.StrictGainChain.length_le_residualSlack",
+  residualGainChainExecutableLengthBoundTheorem: "PNP.DirectWire.strictGainChainBool_length_le_residualSlack",
+  residualGainChainZeroSlackEmptyTheorem: "PNP.DirectWire.StrictGainChain.eq_nil_of_residualSlack_eq_zero",
+  lockedNANDFullCandidateImplementationResidualSlackLeFourTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidateImplementation_residualSlack_le_four",
+  lockedNANDStrictGainChainLengthLeFourTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four",
+  lockedNANDStrictGainChainBoolLengthLeFourTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four"
+};
+
 const LOCKED_NAND_GLOBAL_CANDIDATE_RELEASE_IDENTITIES = {
   MacroGateCountTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.macroGateCount_report_formula",
   NonemptyPrefixSemanticsTheorem: "PNP.DirectWire.LockedNANDGlobalCandidates.nonemptyPrefixCandidate_semantics",
@@ -3290,6 +3304,27 @@ const CNF_TO_NAND_SEMANTIC_COMPILER_NON_CLAIM = "This milestone is the pure sema
 const CNF_TO_NAND_POLYNOMIAL_REDUCTION_SCOPE = "fixed-135070-rule-three-node-all-bitstring-cnf-to-nand-compiler-with-exact-output-polynomial-time-function-direct-reduction-locked-threshold-composition-and-recursive-raw-refinement";
 const CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE_SCOPE = "One fixed 135,070-rule three-node parser/carrier/controller work graph halts on every bitstring, rejects malformed CNF words with empty output, emits exactly compileEncodedCNFToNAND on every valid source, has one external encoded-input polynomial, compiles to a non-timeout PolynomialTimeFunction, retains literal RawRefinement, packages a direct PolynomialReduction from CNFSAT to EncodedNANDSAT, and composes it with the strict locked-NAND reduction to EncodedLockedNANDThreshold.";
 const CNF_TO_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM = "This syntax-directed compiler does not itself decide CNF-SAT, put CNFSAT in deterministic polynomial time, establish SAT NP-hardness or CNFSAT NP-completeness, connect the concrete locked-NAND target to the abstract report-level threshold theorem, complete residual minimization or ZeroSlack/PCCMin, discharge any project assumption, or prove P = NP.";
+
+const RESIDUAL_GAIN_CHAIN_THEOREMS = {
+  "PNP.DirectWire.StrictEquivalentGain.strictResidualDescent": { hash: "f936c792a4f8f45d27da4512b16ba28222dc64b81f50016c9d30433fbfadae6e", axioms: [], module: "PNP.ResidualRoutes" },
+  "PNP.DirectWire.strictGainChainBool_eq_true_iff": { hash: "816e54e4531107de91901686549b1c2e040df4feef9b16b066592bd999a04898", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.StrictGainChain.end_equivalent": { hash: "16d9be66d41e255a85e99776eae299ede9b96fbb4a52b092975ba2668e955782", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.StrictGainChain.end_referenceMinimum_eq": { hash: "f5d2b9c7314081efa5545b0244c69f7cb1913724d67882b0973241106edd37c0", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le": { hash: "3d9578eb0b87eaae79f3d0fefb693d4e45a44bfda7c9237e38fdc4429db8a968", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.StrictGainChain.length_le_residualSlack": { hash: "a9ae79ffa40af537d1e2b54bcec4f2733bddbf7c20b0799dc031e61d410cf20e", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.strictGainChainBool_length_le_residualSlack": { hash: "20c5ad2948288e7607ef952b5f155133fb4b9ed18e4e8690bddbf993c8c8b535", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.strictGainChainBool_length_le_of_residualSlack_le": { hash: "a3963469939a052165f47d2aca5171bf5fa934483d25ab91451df2674a9b0f87", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.StrictGainChain.eq_nil_of_residualSlack_eq_zero": { hash: "f0ad692f62354727bdb5e3f44617f8ad5decf5ad1b25d0c03912dbec38d38d07", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.strictGainChainBool_eq_nil_of_residualSlack_eq_zero": { hash: "66812e7f8c2f41711af1788bbf9871959030891d88554aa9a5b6beb56ef1a65b", axioms: [], module: "PNP.ResidualGainChain" },
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_residualSlack_le_four": { hash: "2e2c9cab0c3977704f66cb272e972e949cd7bbd899487c1cc9ba3527ef2d9e0a", axioms: ["Quot.sound", "propext"], module: "PNP.LockedNANDGlobalSemanticThreshold" },
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidateImplementation_residualSlack_le_four": { hash: "0a138524071766b4eb12d0de6550bcf776d948bb4df133619387a4f9781e98ff", axioms: ["Quot.sound", "propext"], module: "PNP.LockedNANDResidualGainBound" },
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four": { hash: "dc3962312e29cc2ea9b36aeb4b6fc2fa4626d7e72053838d317636a61b68fe9c", axioms: ["Quot.sound", "propext"], module: "PNP.LockedNANDResidualGainBound" },
+  "PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChainBool_length_le_four": { hash: "6424411112c8f2316541d234cf90b37cb807b7ec38cca84e52edfe6af98fe750", axioms: ["Quot.sound", "propext"], module: "PNP.LockedNANDResidualGainBound" }
+};
+
+const RESIDUAL_GAIN_CHAIN_SCOPE = "all-finite-proof-bearing-or-executably-verified-strict-equivalent-gain-chains-with-locked-family-four-step-specialization";
+const RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE = "Every finite proof-bearing or executably verified chain of adjacent strict equivalent gains preserves semantics and the exhaustive reference minimum, while its endpoint residual slack plus its length is at most its starting residual slack. For the complete locked-NAND candidate, the existing residual-slack-at-most-four theorem specializes this to at most four verified gain steps.";
+const RESIDUAL_GAIN_CHAIN_NON_CLAIM = "This milestone bounds only a disclosed, independently verified sequence. It does not find the next gain, prove route or candidate-list completeness, justify stopping after fewer than the bound, construct ZeroSlack, compute an exact minimizer, establish polynomial checker or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP.";
 
 const CNF_TO_NAND_SEMANTIC_COMPILER_RELEASE_IDENTITIES = {
   CodecCanonicalityTheorem: "PNP.Concrete.CNFToNAND.encodeCNF_of_decodeEncodedCNF",
@@ -3433,7 +3468,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 6) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 68) failures.push("formal-publication report must have exactly sixty-eight pages");
+  if (manifest.artifacts?.report?.pageCount !== 69) failures.push("formal-publication report must have exactly sixty-nine pages");
   const earned = manifest.earnedBoundary || {};
   if (earned.pipelineStateNamespacesFormalized !== true || earned.pipelineStateNamespaceAxiomAuditPassed !== true || earned.pipelineStateNamespaceAuditedDeclarationCount !== 39) failures.push("formal-publication pipeline namespace boundary mismatch");
   if (earned.pipelineStageBridgesFormalized !== true || earned.pipelineStageBridgeAxiomAuditPassed !== true || earned.pipelineStageBridgeAuditedDeclarationCount !== 56 || earned.pipelineStageLaunchFormalized !== true || earned.pipelineVerdictPreservationFormalized !== true || earned.pipelineInternalOutputHandoffComposed !== true) failures.push("formal-publication pipeline stage-bridge boundary mismatch");
@@ -3897,6 +3932,23 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const cnfToNANDPolynomialReductionHashes = earned.cnfToNANDPolynomialReductionTheoremKernelTypeSha256;
   if (!cnfToNANDPolynomialReductionHashes || Object.keys(cnfToNANDPolynomialReductionHashes).length !== 28 || !Object.entries(CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREMS).every(([name, row]) => cnfToNANDPolynomialReductionHashes[name] === row.hash)) failures.push("formal-publication CNF-to-NAND polynomial-reduction fingerprint mismatch");
   if (!Object.entries(CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`cnfToNANDPolynomialReduction${suffix}`] === theorem)) failures.push("formal-publication CNF-to-NAND polynomial-reduction theorem identity mismatch");
+  if (!(earned.residualGainChainVerifierFormalized === true
+      && earned.residualGainChainAxiomAuditPassed === true
+      && earned.residualGainChainAuditedDeclarationCount === 16
+      && earned.residualGainChainEmptyAxiomDeclarationCount === 12
+      && earned.residualGainChainPropextQuotSoundDeclarationCount === 4
+      && earned.residualGainChainScope === RESIDUAL_GAIN_CHAIN_SCOPE
+      && earned.residualGainChainSemanticInvariantFormalized === true
+      && earned.residualGainChainSlackIterationBoundFormalized === true
+      && earned.lockedNANDGainIterationsAtMostFourFormalized === true
+      && earned.residualGainChainPolynomialRuntimeFormalized === false)) failures.push("current manifest residual-gain chain boundary mismatch");
+  if (JSON.stringify(earned.residualGainChainAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualGainChainProjectAxiomClosure)
+      || earned.residualGainChainProjectAxiomClosure.length !== 0) failures.push("current manifest residual-gain chain axiom closure mismatch");
+  const residualGainChainHashes = earned.residualGainChainTheoremKernelTypeSha256;
+  if (!residualGainChainHashes || Object.keys(residualGainChainHashes).length !== 14
+      || !Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS).every(([name, row]) => residualGainChainHashes[name] === row.hash)) failures.push("current manifest residual-gain chain fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_GAIN_CHAIN_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual-gain chain theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -4268,7 +4320,38 @@ function validateCurrentPayloads(contents, failures) {
         && status.leanConcreteCNFToNANDDirectReductionFormalized === true
         && status.leanConcreteCNFToNANDLockedReductionCompositionFormalized === true
         && status.leanConcreteCNFToNANDPolynomialReductionScope === CNF_TO_NAND_POLYNOMIAL_REDUCTION_SCOPE)) failures.push("public status CNF-to-NAND polynomial-reduction evidence mismatch");
-      if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
+      const residualGainChainMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-gain-chain-bound"
+  );
+  const residualGainChainNames = Object.keys(RESIDUAL_GAIN_CHAIN_THEOREMS);
+  if (!residualGainChainMilestone
+      || residualGainChainMilestone.classification !== "formalized-iteration-bound-only"
+      || residualGainChainMilestone.status !== "formalized-iteration-bound-only"
+      || residualGainChainMilestone.scope !== RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE
+      || residualGainChainMilestone.nonClaim !== RESIDUAL_GAIN_CHAIN_NON_CLAIM
+      || JSON.stringify(residualGainChainMilestone.requiredTheorems) !== JSON.stringify(residualGainChainNames)
+      || residualGainChainMilestone.earned !== true
+      || residualGainChainMilestone.allPresent !== true
+      || residualGainChainMilestone.allAssumptionFree !== false
+      || residualGainChainMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualGainChainMilestone.allKernelTypesMatch !== true
+      || residualGainChainMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual-gain chain publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
+    const row = residualGainChainMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual-gain chain theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualGainChainVerifierFormalized === true
+      && status.leanResidualGainChainAxiomAuditPassed === true
+      && status.leanResidualGainChainSemanticInvariantFormalized === true
+      && status.leanResidualGainChainSlackIterationBoundFormalized === true
+      && status.leanLockedNANDGainIterationsAtMostFourFormalized === true
+      && status.leanResidualGainChainScope === RESIDUAL_GAIN_CHAIN_SCOPE
+      && status.leanResidualGainChainPolynomialRuntimeFormalized === false)) failures.push("status residual-gain chain evidence mismatch");
+  if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
     if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) failures.push("public status overstates the CNF-SAT result");
@@ -4276,7 +4359,7 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 23575 || inventory.theoremCount !== 12806 || inventory.assumptionFreeTheoremCount !== 6767 || inventory.excludedPrivateDeclarationCount !== 14273 || inventory.sourceClosureModuleCount !== 208 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 23601 || inventory.theoremCount !== 12818 || inventory.assumptionFreeTheoremCount !== 6776 || inventory.excludedPrivateDeclarationCount !== 14273 || inventory.sourceClosureModuleCount !== 210 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -4375,7 +4458,13 @@ function validateCurrentPayloads(contents, failures) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory CNF-to-NAND polynomial-reduction theorem mismatch: ${name}`);
       else if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`public inventory CNF-to-NAND polynomial-reduction fingerprint mismatch: ${name}`);
     }
-    for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
+    for (const [name, evidence] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual-gain chain theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual-gain chain fingerprint mismatch: ${name}`);
+  }
+  for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.CookLevinBuilderInputLength" || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`public inventory Cook-Levin builder input-length theorem mismatch: ${name}`);
       const rawTypeHash = theorem?.kernelType ? sha256(Buffer.from(
@@ -4808,8 +4897,8 @@ function validateCurrentPayloads(contents, failures) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== module || theorem.axioms?.length !== 0) failures.push(`public inventory recursive refinement mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 2081) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2081`);
+    if (inventory.milestoneCandidates?.length !== 2093) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2093`);
     }
   }
 }
@@ -4934,7 +5023,13 @@ export function validateAuditTargets(options = {}) {
       if (pins[earned[theoremField]] !== earned[field]) failures.push(`core publication map fingerprint mismatch: ${field}`);
     }
     const builderPins = earned.cookLevinBuilderInputLengthTheoremKernelTypeSha256 || {};
-    for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
+    for (const [name, evidence] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual-gain chain theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual-gain chain fingerprint mismatch: ${name}`);
+  }
+  for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
       if (builderPins[name] !== evidence.hash || pins[name] !== evidence.hash) {
         failures.push(`core publication map builder input-length fingerprint mismatch: ${name}`);
       }
@@ -5402,21 +5497,21 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     const lockedNANDGlobalSemanticThresholdMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-semantic-threshold");
-    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 74 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
+    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 75 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
     const lockedNANDGlobalSemanticThresholdPins = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS)) {
       if (!lockedNANDGlobalSemanticThresholdMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalSemanticThresholdPins[name] !== row.hash) failures.push(`core publication map locked-NAND global semantic-threshold fingerprint mismatch: ${name}`);
     }
     const lockedNANDEncodedSemanticReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
-    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 74 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
+    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 75 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
     const lockedNANDEncodedSemanticReductionPins = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS)) {
       if (!lockedNANDEncodedSemanticReductionMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDEncodedSemanticReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
     }
     const lockedNANDSourceParserMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
-        || publicationMap.milestones?.length !== 74
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71
+        || publicationMap.milestones?.length !== 75
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72
         || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
         || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20
         || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
@@ -5429,8 +5524,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDTargetEmitterMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-target-emitter");
     if (!lockedNANDTargetEmitterMilestone
-        || publicationMap.milestones?.length !== 74
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71
+        || publicationMap.milestones?.length !== 75
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72
         || lockedNANDTargetEmitterMilestone.classification !== "formalized-foundation-only"
         || lockedNANDTargetEmitterMilestone.requiredTheorems?.length !== 22
         || lockedNANDTargetEmitterMilestone.scope !== LOCKED_NAND_TARGET_EMITTER_SCOPE
@@ -5443,8 +5538,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
     if (!lockedNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 74
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71
+        || publicationMap.milestones?.length !== 75
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72
         || lockedNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || lockedNANDPolynomialReductionMilestone.requiredTheorems?.length !== 5
         || lockedNANDPolynomialReductionMilestone.scope !== LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE
@@ -5457,8 +5552,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDSemanticCompilerMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-semantic-compiler");
     if (!cnfToNANDSemanticCompilerMilestone
-        || publicationMap.milestones?.length !== 74
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71
+        || publicationMap.milestones?.length !== 75
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72
         || cnfToNANDSemanticCompilerMilestone.classification !== "formalized-semantic-boundary"
         || cnfToNANDSemanticCompilerMilestone.scope !== CNF_TO_NAND_SEMANTIC_COMPILER_MILESTONE_SCOPE
         || cnfToNANDSemanticCompilerMilestone.nonClaim !== CNF_TO_NAND_SEMANTIC_COMPILER_NON_CLAIM
@@ -5471,8 +5566,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-polynomial-reduction");
     if (!cnfToNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 74
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 71
+        || publicationMap.milestones?.length !== 75
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72
         || cnfToNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || cnfToNANDPolynomialReductionMilestone.scope !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE_SCOPE
         || cnfToNANDPolynomialReductionMilestone.nonClaim !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM
@@ -5482,6 +5577,20 @@ export function validateAuditTargets(options = {}) {
       if (!cnfToNANDPolynomialReductionMilestone?.requiredTheorems?.includes(name)
           || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
           || cnfToNANDPolynomialReductionPins[name] !== row.hash) failures.push(`core publication map CNF-to-NAND polynomial-reduction fingerprint mismatch: ${name}`);
+    }
+    const residualGainChainMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-chain-bound");
+    if (!residualGainChainMilestone
+        || publicationMap.milestones?.length !== 75
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 72
+        || residualGainChainMilestone.classification !== "formalized-iteration-bound-only"
+        || residualGainChainMilestone.scope !== RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE
+        || residualGainChainMilestone.nonClaim !== RESIDUAL_GAIN_CHAIN_NON_CLAIM
+        || JSON.stringify(residualGainChainMilestone.requiredTheorems) !== JSON.stringify(Object.keys(RESIDUAL_GAIN_CHAIN_THEOREMS))) failures.push("core publication map residual-gain chain milestone mismatch");
+    const residualGainChainPins = earned.residualGainChainTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
+      if (!residualGainChainMilestone?.requiredTheorems?.includes(name)
+          || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+          || residualGainChainPins[name] !== row.hash) failures.push(`core publication map residual-gain chain fingerprint mismatch: ${name}`);
     }
   }
 

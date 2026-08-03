@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 77,
+  "version": 78,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "3e60a7b270d4695da137a60d6a4a9ca59d3886f8",
+  "sourceCommitRef": "3894e5e2dd3f34c2fe19f6eb0b9e39119ad05403",
   "sourceProofCommitRef": "25ffe07ac77167c347dece712776b0b75b69a912",
-  "sourceTree": "04dbf61379eb4d24f1adc8419bf6e9d2dd636346",
-  "syncedOn": "2026-07-31",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-07-31-94",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-07-31-CNF-TO-NAND-POLYNOMIAL-REDUCTION-93",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-07-31-94",
-  "leanTheoremInventorySha256": "f6dc633360d0aad4df37e2273c7304723d5187a66c67a88e1416e4adbf7e62ca",
-  "leanSourceClosureSha256": "f4cec303e24b1e7b58bcab141d3fcbe7e1306b5e5913028bf8696a6af6160b42",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-07-31-94",
-  "canonicalReportPages": 68,
+  "sourceTree": "83f4874213a6c2be7c182d9e33d61a0e1b250acb",
+  "syncedOn": "2026-08-03",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-03-95",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-03-RESIDUAL-GAIN-CHAIN-BOUND-94",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-03-95",
+  "leanTheoremInventorySha256": "26fdb6098e7169b2ba8fbbfd6554370e820ee9598709d484138eecea53f4450b",
+  "leanSourceClosureSha256": "3430306ac20401ae6967122be54eab38adeb843595f83049e97c09397eeb468b",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-03-95",
+  "canonicalReportPages": 69,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 23575,
-    "leanTheoremInventoryTheoremCount": 12806,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 6767,
+    "leanTheoremInventoryDeclarationCount": 23601,
+    "leanTheoremInventoryTheoremCount": 12818,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 6776,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 14273,
-    "leanTheoremInventorySourceClosureModuleCount": 208,
+    "leanTheoremInventorySourceClosureModuleCount": 210,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4008,11 +4008,18 @@
       "Quot.sound",
       "propext"
     ],
-    "leanConcreteCNFToNANDPolynomialReductionProjectAxiomClosure": []
+    "leanConcreteCNFToNANDPolynomialReductionProjectAxiomClosure": [],
+    "leanResidualGainChainVerifierFormalized": true,
+    "leanResidualGainChainAxiomAuditPassed": true,
+    "leanResidualGainChainSemanticInvariantFormalized": true,
+    "leanResidualGainChainSlackIterationBoundFormalized": true,
+    "leanLockedNANDGainIterationsAtMostFourFormalized": true,
+    "leanResidualGainChainScope": "all-finite-proof-bearing-or-executably-verified-strict-equivalent-gain-chains-with-locked-family-four-step-specialization",
+    "leanResidualGainChainPolynomialRuntimeFormalized": false
   },
   "formalPublicationMilestoneCounts": {
-    "total": 74,
-    "earned": 71,
+    "total": 75,
+    "earned": 72,
     "unearned": 3
   },
   "earnedMilestones": [
@@ -4086,7 +4093,8 @@
     "concrete-cnf-to-nand-semantic-compiler",
     "concrete-cnf-to-nand-polynomial-reduction",
     "locked-nand-conditional-threshold",
-    "explicit-residual-routes"
+    "explicit-residual-routes",
+    "residual-gain-chain-bound"
   ],
   "unearnedMilestones": [
     "global-locked-nand-threshold",
