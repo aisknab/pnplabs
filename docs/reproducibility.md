@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 427,318 | `cd354d1406f9cfa3374ebf716cfc401261bb9905bc573fc3c0d6368e7ca1f0ad` |
-| `downloads/canonical-proof-report.pdf` | 427,318 | `cd354d1406f9cfa3374ebf716cfc401261bb9905bc573fc3c0d6368e7ca1f0ad` |
-| `downloads/canonical_proof_report.tex` | 183,404 | `8af67370cfd1b95708f30da4009dfdb04f5ab8793db81ae1987c411982f1b869` |
-| `downloads/canonical-proof-report.tex` | 183,404 | `8af67370cfd1b95708f30da4009dfdb04f5ab8793db81ae1987c411982f1b869` |
-| `public/pnp-status.json` | 1,713,784 | `81a55d765359ea8131eba15a94ad1cddd4edc90b8bfafb358dc45e5260fdafc2` |
-| `public/pnp-theorem-inventory.json` | 13,657,794 | `7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121` |
+| `downloads/canonical_proof_report.pdf` | 427,894 | `da6c2ef9919aef7901253e477a3889808bc6496a79966566e7831bafda5d1b2f` |
+| `downloads/canonical-proof-report.pdf` | 427,894 | `da6c2ef9919aef7901253e477a3889808bc6496a79966566e7831bafda5d1b2f` |
+| `downloads/canonical_proof_report.tex` | 184,334 | `4b1f709d9bc591832962253a3bc52bec0d8548ea0b0da4a745f4602d04c27aae` |
+| `downloads/canonical-proof-report.tex` | 184,334 | `4b1f709d9bc591832962253a3bc52bec0d8548ea0b0da4a745f4602d04c27aae` |
+| `public/pnp-status.json` | 1,718,803 | `fa627d391af8be33015576f7b091c32d184cfebe25c708df38f0c6207a313b50` |
+| `public/pnp-theorem-inventory.json` | 13,702,270 | `6807fe409ff302b55bffe69f3f7a13c4f0692c297504c9a9ab50692dc57e601e` |
 
 The PDF must have seventy-two A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout accf07e45123837661307a37a02d2119ecd7aacc
+git -C ../pnp checkout aa888e54beeff5be0162415fa962f80b4b18d113
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 23,855 public declarations, 12,917 theorem-kind declarations,
-6,849 assumption-free theorem-kind declarations, 14,316 excluded private auxiliaries, 214 modules, and
+Expected compiled inventory counts are 23,884 public declarations, 12,925 theorem-kind declarations,
+6,851 assumption-free theorem-kind declarations, 14,317 excluded private auxiliaries, 215 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -91,13 +91,13 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds ten axiom-free reviewed theorem pins for every finite direct-wire
-implementation. Positive exhaustive-reference residual slack is equivalent to the existence of a
-smaller semantically equivalent implementation; zero slack and semantic minimality are each
-equivalent to global absence of such an implementation. A verified chain endpoint therefore has
-zero slack and packages an exact minimum when separate global no-gain evidence is supplied. This is
-a semantic stopping criterion, not an algorithm: it does not derive global absence from a finite
-scan, generate gains, construct the manuscript's `ZeroSlack` certificate, establish polynomial
+The newest milestone adds four reviewed theorem pins for every supplied four-corner terminal-profile
+family sharing one computed observer and one projection. Signed full and quotient minimum deltas obey
+the exact Section 5.2 transfer identity. Under the separately supplied constant-cut defect hypotheses,
+the projection excess equals the join defect and is positive when that defect is positive. The first
+pin uses only `propext`; the remaining three use only `Quot.sound` and `propext`. This is arithmetic
+over supplied corners, not construction or certification of the manuscript's proper governed support
+square. It does not prove saturation, construct `ZeroSlack`, establish PCCMin exactness or polynomial
 runtime, discharge an assumption, or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF

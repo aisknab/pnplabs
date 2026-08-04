@@ -4,9 +4,9 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "accf07e45123837661307a37a02d2119ecd7aacc";
-const CORE_TREE = "79f2ab904d9c90db6aa2d10ba2931c11a036b747";
-const PROOF_COMMIT = "748a8e3359ee09e8e115cdbebe870786c7bb3f86";
+const CORE_COMMIT = "aa888e54beeff5be0162415fa962f80b4b18d113";
+const CORE_TREE = "d3978744cfd0f86905a6bc934b012a7468e1e49f";
+const PROOF_COMMIT = "c6205f91bde4e8976d7502bfdb9ba16bca5f5b20";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -3305,6 +3305,17 @@ const RESIDUAL_TERMINAL_PROJECTION_MINIMUM_SCOPE = "all-finite-direct-wire-imple
 const RESIDUAL_TERMINAL_PROJECTION_MINIMUM_MILESTONE_SCOPE = "For every finite direct-wire implementation, computed finite terminal-profile observer, and explicit forgetful projection, complete enumeration through the current gate count computes an attained full-profile minimum and an attained quotient-profile minimum. Both minima universally lower-bound every matching realization, forgetting coordinates cannot increase the minimum, the full minimum decomposes as the quotient minimum plus a nonnegative projection defect, and that defect is zero exactly when an attained quotient minimum has a checked full lift.";
 const RESIDUAL_TERMINAL_PROJECTION_MINIMUM_NON_CLAIM = "These are exhaustive finite reference minima through the supplied implementation size. This milestone proves no polynomial runtime, proper or governed support construction, arbitrary manuscript quotient carrier, SaturatePositive, Package E, BCEL/BN2-BN6, complete residual routing, ZeroSlack certificate, PCCMin exactness, SAT-in-P result, discharged project assumption, or proof that P = NP.";
 
+const RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREMS = {
+  "PNP.DirectWire.terminalProjectionDefect_int": { hash: "4d4ea43bca6e64d8e7b2867003d8cc32e5b00dc0686a7f99dfb1f1bd369f82bf", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionTransfer" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity": { hash: "8a834cd3525cc543e7ec42d58e23836853ad71d0bc2ff97655f7dab1562880ac", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalProjectionTransfer" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.constantCutEquation_of_defects": { hash: "3924c2b0c70aa6dd413da7141d59aae08668cfdec5ba70273d495e58ff838623", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalProjectionTransfer" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.projectionExcess_pos_of_constantCut": { hash: "7f7c6eacac8e119e2ee7b56ca03e323fdf7f191d56c0ff5476883dba1a61e7d0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalProjectionTransfer" }
+};
+
+const RESIDUAL_TERMINAL_PROJECTION_TRANSFER_SCOPE = "all-finite-direct-wire-four-corner-terminal-profile-families-sharing-one-computed-observer-and-one-explicit-projection";
+const RESIDUAL_TERMINAL_PROJECTION_TRANSFER_MILESTONE_SCOPE = "For every finite direct-wire four-corner terminal-profile family sharing one computed observer and one explicit projection, signed full and quotient minimum deltas obey the exact Section 5.2 transfer identity. The projection excess is the quotient delta minus the full delta; if meet and both side defects are zero while the join defect is D, the excess equals D and is positive whenever D is positive.";
+const RESIDUAL_TERMINAL_PROJECTION_TRANSFER_NON_CLAIM = "This is signed arithmetic over four supplied corners. It does not construct or certify a proper governed support square, prove SaturatePositive, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -3493,44 +3504,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 427318,
-    sha256: "cd354d1406f9cfa3374ebf716cfc401261bb9905bc573fc3c0d6368e7ca1f0ad",
+    bytes: 427894,
+    sha256: "da6c2ef9919aef7901253e477a3889808bc6496a79966566e7831bafda5d1b2f",
     role: "current inventory-derived seventy-two-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 427318,
-    sha256: "cd354d1406f9cfa3374ebf716cfc401261bb9905bc573fc3c0d6368e7ca1f0ad",
+    bytes: 427894,
+    sha256: "da6c2ef9919aef7901253e477a3889808bc6496a79966566e7831bafda5d1b2f",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 183404,
-    sha256: "8af67370cfd1b95708f30da4009dfdb04f5ab8793db81ae1987c411982f1b869",
+    bytes: 184334,
+    sha256: "4b1f709d9bc591832962253a3bc52bec0d8548ea0b0da4a745f4602d04c27aae",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 183404,
-    sha256: "8af67370cfd1b95708f30da4009dfdb04f5ab8793db81ae1987c411982f1b869",
+    bytes: 184334,
+    sha256: "4b1f709d9bc591832962253a3bc52bec0d8548ea0b0da4a745f4602d04c27aae",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 1713784,
-    sha256: "81a55d765359ea8131eba15a94ad1cddd4edc90b8bfafb358dc45e5260fdafc2",
+    bytes: 1718803,
+    sha256: "fa627d391af8be33015576f7b091c32d184cfebe25c708df38f0c6207a313b50",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 13657794,
-    sha256: "7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121",
+    bytes: 13702270,
+    sha256: "6807fe409ff302b55bffe69f3f7a13c4f0692c297504c9a9ab50692dc57e601e",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 657818,
-    sha256: "1ec763d1060f1f571bc9eae0f7d5830da368289234c7ea60d9ac39e2d2095438",
+    bytes: 659570,
+    sha256: "184c3d2bc7f6e9e3e8fd277310d8e7bc40b2d74152fdbd9118df9b08ca8f9c24",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -3603,10 +3614,10 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-99") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-MINIMUM-98") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-04-99" || status.formalPublicationMapSha256 !== "9851bbb8e0cecbf94bd88e79c18b1713fb9803db838cbe1ffdb0564f35f40103" || status.leanSourceClosureSha256 !== "7a2758acc431c096d32534b9b0860fdf996b27a5f3def918e131dd10c1b99006") fail("status source identity mismatch");
-  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 79 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 76 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-100") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-TRANSFER-99") fail("status public-surface coordinate mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-04-100" || status.formalPublicationMapSha256 !== "258f841262220fb0d78db65d35a99809ac2898aed961ba7593dfeadccb6fda54" || status.leanSourceClosureSha256 !== "6a6617e881fca16a46ac1fcb3c5f0968e35cee759596bdbb537d098c6ba24e10") fail("status source identity mismatch");
+  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 80 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 77 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -4137,6 +4148,39 @@ function assertFailClosedStatus(status) {
       && status.leanResidualTerminalProperSupportFormalized === false
       && status.leanResidualTerminalSaturationFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal projection-minimum evidence mismatch");
+  const residualTerminalProjectionTransferMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-projection-transfer"
+  );
+  const residualTerminalProjectionTransferNames = Object.keys(RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREMS);
+  if (!residualTerminalProjectionTransferMilestone
+      || residualTerminalProjectionTransferMilestone.classification !== "formalized-terminal-projection-transfer"
+      || residualTerminalProjectionTransferMilestone.status !== "formalized-terminal-projection-transfer"
+      || residualTerminalProjectionTransferMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_MILESTONE_SCOPE
+      || residualTerminalProjectionTransferMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_NON_CLAIM
+      || JSON.stringify(residualTerminalProjectionTransferMilestone.requiredTheorems) !== JSON.stringify(residualTerminalProjectionTransferNames)
+      || residualTerminalProjectionTransferMilestone.earned !== true
+      || residualTerminalProjectionTransferMilestone.allPresent !== true
+      || residualTerminalProjectionTransferMilestone.allAssumptionFree !== false
+      || residualTerminalProjectionTransferMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalProjectionTransferMilestone.allKernelTypesMatch !== true
+      || residualTerminalProjectionTransferMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal projection-transfer publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREMS)) {
+    const row = residualTerminalProjectionTransferMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal projection-transfer theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualProjectionTransferFormalized === true
+      && status.leanResidualProjectionTransferAxiomAuditPassed === true
+      && status.leanResidualProjectionTransferSignedDeltasFormalized === true
+      && status.leanResidualProjectionTransferIdentityFormalized === true
+      && status.leanResidualProjectionTransferConstantCutFormalized === true
+      && status.leanResidualProjectionTransferScope === RESIDUAL_TERMINAL_PROJECTION_TRANSFER_SCOPE
+      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalSaturationFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal projection-transfer evidence mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) fail("status locked-NAND remaining-premise inventory mismatch");
   if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) fail("status overstates the CNF-SAT result");
   if (status.leanTheoremInventorySha256 !== EXPECTED_FILES[5].sha256) fail("status inventory digest mismatch");
@@ -4144,10 +4188,10 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-04-99") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 23855 || inventory.theoremCount !== 12917) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 6849 || inventory.excludedPrivateDeclarationCount !== 14316 || inventory.sourceClosureModuleCount !== 214 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
-  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 652, definition: 9718, inductive: 282, opaque: 0, quotient: 0, recursor: 282, theorem: 12917 })) fail("inventory declaration-kind counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-04-100") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 23884 || inventory.theoremCount !== 12925) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 6851 || inventory.excludedPrivateDeclarationCount !== 14317 || inventory.sourceClosureModuleCount !== 215 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 653, definition: 9736, inductive: 283, opaque: 0, quotient: 0, recursor: 283, theorem: 12925 })) fail("inventory declaration-kind counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
@@ -4260,6 +4304,12 @@ function assertInventory(inventory) {
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal projection-minimum theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal projection-minimum fingerprint mismatch: ${name}`);
+  }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal projection-transfer theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal projection-transfer fingerprint mismatch: ${name}`);
   }
   for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4656,16 +4706,16 @@ function assertInventory(inventory) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineRefinement" || theorem.axioms?.length !== 0) fail(`inventory recursive refinement theorem mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 2141) fail("inventory reviewed theorem-candidate count mismatch");
+  if (inventory.milestoneCandidates?.length !== 2145) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-82") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-83") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-04-99" || manifest.source?.formalPublicationMapSha256 !== "9851bbb8e0cecbf94bd88e79c18b1713fb9803db838cbe1ffdb0564f35f40103" || manifest.source?.leanSourceClosureSha256 !== "7a2758acc431c096d32534b9b0860fdf996b27a5f3def918e131dd10c1b99006") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-04-100" || manifest.source?.formalPublicationMapSha256 !== "258f841262220fb0d78db65d35a99809ac2898aed961ba7593dfeadccb6fda54" || manifest.source?.leanSourceClosureSha256 !== "6a6617e881fca16a46ac1fcb3c5f0968e35cee759596bdbb537d098c6ba24e10") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 72) fail("current report must have seventy-two pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -5229,6 +5279,21 @@ function assertCurrentManifest(manifest) {
   if (!residualTerminalProjectionMinimumHashes || Object.keys(residualTerminalProjectionMinimumHashes).length !== 14
       || !Object.entries(RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREMS).every(([name, row]) => residualTerminalProjectionMinimumHashes[name] === row.hash)) fail("current manifest residual terminal projection-minimum fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_PROJECTION_MINIMUM_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal projection-minimum theorem identity mismatch");
+  if (!(earned.residualProjectionTransferFormalized === true
+      && earned.residualProjectionTransferAxiomAuditPassed === true
+      && earned.residualProjectionTransferSignedDeltasFormalized === true
+      && earned.residualProjectionTransferIdentityFormalized === true
+      && earned.residualProjectionTransferConstantCutFormalized === true
+      && earned.residualProjectionTransferScope === RESIDUAL_TERMINAL_PROJECTION_TRANSFER_SCOPE
+      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalSaturationFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal projection-transfer boundary mismatch");
+  if (JSON.stringify(earned.residualProjectionTransferAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualProjectionTransferProjectAxiomClosure)
+      || earned.residualProjectionTransferProjectAxiomClosure.length !== 0) fail("current manifest residual terminal projection-transfer axiom closure mismatch");
+  const residualTerminalProjectionTransferHashes = earned.residualProjectionTransferTheoremKernelTypeSha256;
+  if (!residualTerminalProjectionTransferHashes || Object.keys(residualTerminalProjectionTransferHashes).length !== 4
+      || !Object.entries(RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREMS).every(([name, row]) => residualTerminalProjectionTransferHashes[name] === row.hash)) fail("current manifest residual terminal projection-transfer fingerprint mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -5258,7 +5323,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-82") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-83") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");

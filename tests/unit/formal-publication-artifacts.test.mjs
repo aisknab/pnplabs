@@ -208,6 +208,13 @@ const RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREM_SHA256 = {
   "PNP.DirectWire.terminalProjectionDefect_pos_no_checkedFullLiftAtMinimum": "6cb0a806515c14a4b43fdbe133833861a3cb21fdf0d48cd350f93ad8507eace2"
 };
 
+const RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREM_SHA256 = {
+  "PNP.DirectWire.terminalProjectionDefect_int": "4d4ea43bca6e64d8e7b2867003d8cc32e5b00dc0686a7f99dfb1f1bd369f82bf",
+  "PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity": "8a834cd3525cc543e7ec42d58e23836853ad71d0bc2ff97655f7dab1562880ac",
+  "PNP.DirectWire.TerminalProjectionFourCorners.constantCutEquation_of_defects": "3924c2b0c70aa6dd413da7141d59aae08668cfdec5ba70273d495e58ff838623",
+  "PNP.DirectWire.TerminalProjectionFourCorners.projectionExcess_pos_of_constantCut": "7f7c6eacac8e119e2ee7b56ca03e323fdf7f191d56c0ff5476883dba1a61e7d0"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -226,15 +233,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "accf07e45123837661307a37a02d2119ecd7aacc");
+  assert.equal(result.coreCommit, "aa888e54beeff5be0162415fa962f80b4b18d113");
 });
 
-test("current release is pinned, seventy-two-page, exposes terminal projection minima, and fails closed", () => {
+test("current release is pinned, seventy-two-page, exposes terminal projection transfer, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-82");
-  assert.equal(release.source.commit, "accf07e45123837661307a37a02d2119ecd7aacc");
-  assert.equal(release.source.proofCommit, "748a8e3359ee09e8e115cdbebe870786c7bb3f86");
-  assert.equal(release.source.tree, "79f2ab904d9c90db6aa2d10ba2931c11a036b747");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-83");
+  assert.equal(release.source.commit, "aa888e54beeff5be0162415fa962f80b4b18d113");
+  assert.equal(release.source.proofCommit, "c6205f91bde4e8976d7502bfdb9ba16bca5f5b20");
+  assert.equal(release.source.tree, "d3978744cfd0f86905a6bc934b012a7468e1e49f");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 72);
@@ -1819,6 +1826,22 @@ test("current release is pinned, seventy-two-page, exposes terminal projection m
   assert.deepEqual(release.earnedBoundary.residualProjectionMinimumTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREM_SHA256);
   assert.deepEqual(release.earnedBoundary.residualProjectionMinimumAxiomClosure, ["propext"]);
   assert.deepEqual(release.earnedBoundary.residualProjectionMinimumProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualProjectionTransferFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionTransferAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualProjectionTransferSignedDeltasFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionTransferIdentityFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionTransferConstantCutFormalized, true);
+  assert.deepEqual(release.earnedBoundary.residualProjectionTransferTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREM_SHA256);
+  assert.deepEqual(release.earnedBoundary.residualProjectionTransferAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualProjectionTransferProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualProjectionDefectIntTheorem, "PNP.DirectWire.terminalProjectionDefect_int");
+  assert.equal(release.earnedBoundary.residualProjectionTransferIdentityTheorem, "PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity");
+  assert.equal(release.earnedBoundary.residualProjectionTransferConstantCutTheorem, "PNP.DirectWire.TerminalProjectionFourCorners.constantCutEquation_of_defects");
+  assert.equal(release.earnedBoundary.residualProjectionTransferPositiveExcessTheorem, "PNP.DirectWire.TerminalProjectionFourCorners.projectionExcess_pos_of_constantCut");
+  assert.equal(
+    release.earnedBoundary.residualProjectionTransferScope,
+    "all-finite-direct-wire-four-corner-terminal-profile-families-sharing-one-computed-observer-and-one-explicit-projection"
+  );
   assert.equal(release.earnedBoundary.pccMinPolynomialRuntimeFormalized, false);
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
@@ -1846,12 +1869,12 @@ test("current release is pinned, seventy-two-page, exposes terminal projection m
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 79 milestones with terminal projection minima pinned", () => {
+test("status and inventory publish exactly 80 milestones with terminal projection transfer pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 79);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 76);
+  assert.equal(milestones.length, 80);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 77);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -2138,21 +2161,41 @@ test("status and inventory publish exactly 79 milestones with terminal projectio
   assert.equal(status.leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized, true);
   assert.equal(status.leanPCCMinPolynomialRuntimeFormalized, false);
 
-  assert.equal(inventory.declarationCount, 23855);
-  assert.equal(inventory.theoremCount, 12917);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6849);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14316);
-  assert.equal(inventory.sourceClosureModuleCount, 214);
-  assert.equal(inventory.milestoneCandidates.length, 2141);
+  const residualTerminalProjectionTransfer = milestones.find((row) => row.id === "residual-terminal-projection-transfer");
+  assert.equal(residualTerminalProjectionTransfer.classification, "formalized-terminal-projection-transfer");
+  assert.equal(residualTerminalProjectionTransfer.earned, true);
+  assert.equal(residualTerminalProjectionTransfer.allAssumptionFree, false);
+  assert.equal(residualTerminalProjectionTransfer.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualTerminalProjectionTransfer.allKernelTypesMatch, true);
+  assert.equal(residualTerminalProjectionTransfer.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualTerminalProjectionTransfer.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREM_SHA256));
+  assert.deepEqual(
+    Object.fromEntries(residualTerminalProjectionTransfer.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREM_SHA256
+  );
+  assert.match(residualTerminalProjectionTransfer.scope, /exact Section 5\.2 transfer identity/u);
+  assert.match(residualTerminalProjectionTransfer.nonClaim, /does not construct or certify a proper governed support square/u);
+  assert.equal(status.leanResidualProjectionTransferFormalized, true);
+  assert.equal(status.leanResidualProjectionTransferAxiomAuditPassed, true);
+  assert.equal(status.leanResidualProjectionTransferSignedDeltasFormalized, true);
+  assert.equal(status.leanResidualProjectionTransferIdentityFormalized, true);
+  assert.equal(status.leanResidualProjectionTransferConstantCutFormalized, true);
+
+  assert.equal(inventory.declarationCount, 23884);
+  assert.equal(inventory.theoremCount, 12925);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6851);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14317);
+  assert.equal(inventory.sourceClosureModuleCount, 215);
+  assert.equal(inventory.milestoneCandidates.length, 2145);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 652,
-    definition: 9718,
-    inductive: 282,
+    constructor: 653,
+    definition: 9736,
+    inductive: 283,
     opaque: 0,
     quotient: 0,
-    recursor: 282,
-    theorem: 12917
+    recursor: 283,
+    theorem: 12925
   });
 });
 

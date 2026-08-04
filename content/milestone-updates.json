@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-04-residual-terminal-projection-transfer",
+      "milestoneId": "residual-terminal-projection-transfer",
+      "publishedAt": "2026-08-04T09:07:29Z",
+      "title": "The proof now balances four related circuit comparisons",
+      "plainLanguage": [
+        "Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases—the common part, two alternatives, and their combined case—and proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.",
+        "Under the stated conditions, if no information is lost in the common part or either alternative, but the combined case loses D circuit operations, then the accounting difference is exactly D; if D is greater than zero, the difference is too. Lean checks increases and decreases correctly. It does not construct the four cases, prove that the manuscript’s required support and saturation objects exist, complete ZeroSlack or PCCMin, provide a fast algorithm, or prove P = NP. The 63% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 63,
+      "source": {
+        "commit": "aa888e54beeff5be0162415fa962f80b4b18d113",
+        "tree": "d3978744cfd0f86905a6bc934b012a7468e1e49f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-100",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-TRANSFER-99"
+      }
+    },
+    {
       "id": "2026-08-04-residual-terminal-projection-minimum",
       "milestoneId": "residual-terminal-projection-minimum",
       "publishedAt": "2026-08-04T01:52:25Z",

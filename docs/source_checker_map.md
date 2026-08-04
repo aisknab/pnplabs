@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `accf07e45123837661307a37a02d2119ecd7aacc`. Its generated status payload is current
+core commit `aa888e54beeff5be0162415fa962f80b4b18d113`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the seventy-two-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `accf07e45123837661307a37a02d2119ecd7aacc` (tree `79f2ab904d9c90db6aa2d10ba2931c11a036b747`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, the locked-NAND typed threshold and concrete compiler/reduction chain, the universal residual-gain bound and global stopping specification, the terminal full-carrier and quotient/full firewall bridges, and the exhaustive attained full/quotient projection minima with exact defect laws |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,141 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `aa888e54beeff5be0162415fa962f80b4b18d113` (tree `d3978744cfd0f86905a6bc934b012a7468e1e49f`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, the locked-NAND typed threshold and concrete compiler/reduction chain, the universal residual-gain bound and global stopping specification, the terminal full-carrier and quotient/full firewall bridges, exhaustive attained full/quotient projection minima, and the exact signed four-corner projection-transfer identity |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,145 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Seventy-six earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 parser/emitter, concrete polynomial reductions, the universal gain-chain bound, global semantic stopping criterion, direct-wire terminal full-carrier bridge, computed terminal quotient/full mode firewall, and exhaustive attained projection minima with exact defect laws—three unearned global milestones, four project axioms, and six blockers |
+| Generated status | `public/pnp-status.json` | Seventy-seven earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 parser/emitter, concrete polynomial reductions, the universal gain-chain bound, global semantic stopping criterion, direct-wire terminal full-carrier bridge, computed terminal quotient/full mode firewall, exhaustive attained projection minima, and exact signed four-corner transfer identity—three unearned global milestones, four project axioms, and six blockers |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current seventy-two-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
