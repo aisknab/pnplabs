@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 63% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 64% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="63" aria-label="Estimated proof reconstruction progress: 63 percent">63%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 63 percent">
+        <progress class="proof-progress-meter" max="100" value="64" aria-label="Estimated proof reconstruction progress: 64 percent">64%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 64 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-04-residual-terminal-saturation-closure" data-milestone-id="residual-terminal-saturation-closure">
+        <div class="section-label"><time datetime="2026-08-04T15:42:54Z">2026-08-04</time> · earned milestone 78</div>
+        <h2>The proof can now complete a finite checklist under every recorded dependency</h2>
+        <p>A later part of the proposed proof needs to start with a set of facts about a circuit and repeatedly add every other fact those facts depend on. Lean now defines that process for any finite checklist and any explicitly supplied dependency links. It proves the process includes everything initially selected and continues until no recorded dependency is missing.</p>
+        <p>Lean also proves this completed checklist is the smallest one with those properties: starting with more facts cannot produce fewer, running the process again changes nothing, and a checklist is unchanged exactly when it was already complete. This does not yet create the correct dependency links from an arbitrary circuit or build the manuscript’s required support square. It does not complete ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 64% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 64%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-saturation-closure</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-saturation-closure</p>
+          <p><strong>Verified scope:</strong> For every finite terminal primitive-record universe and every explicit Boolean dependency system tagged by the manuscript&#39;s ten closure mechanisms, the generated reflexive transitive closure contains the seed, is dependency-closed, is least among closed supersets, is monotone and idempotent, and has exactly the closed supports as fixed points.</p>
+          <p><strong>Boundary:</strong> This closure theorem does not derive the dependency relation from an arbitrary circuit, construct proper support, prove support completion or square legitimacy, instantiate a projection-compatible square, prove SaturatePositive or BCELReady, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 7</p>
+          <p><strong>Core source:</strong> commit <code>e355c176bd0e961b5db41dd11fc5b2ccfe6642fb</code>, tree <code>2ab1d800d697d4f6f0fa360615f4315ff277c022</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-101</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-SATURATION-100</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-04-residual-terminal-projection-transfer" data-milestone-id="residual-terminal-projection-transfer">
         <div class="section-label"><time datetime="2026-08-04T09:07:29Z">2026-08-04</time> · earned milestone 77</div>
         <h2>The proof now balances four related circuit comparisons</h2>

@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-04T09:07:29Z</updated>
+  <updated>2026-08-04T15:42:54Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-saturation-closure</id>
+    <title>The proof can now complete a finite checklist under every recorded dependency</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-saturation-closure"/>
+    <published>2026-08-04T15:42:54Z</published>
+    <updated>2026-08-04T15:42:54Z</updated>
+    <summary type="text">A later part of the proposed proof needs to start with a set of facts about a circuit and repeatedly add every other fact those facts depend on. Lean now defines that process for any finite checklist and any explicitly supplied dependency links. It proves the process includes everything initially selected and continues until no recorded dependency is missing. Lean also proves this completed checklist is the smallest one with those properties: starting with more facts cannot produce fewer, running the process again changes nothing, and a checklist is unchanged exactly when it was already complete. This does not yet create the correct dependency links from an arbitrary circuit or build the manuscript’s required support square. It does not complete ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 64% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 64 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A later part of the proposed proof needs to start with a set of facts about a circuit and repeatedly add every other fact those facts depend on. Lean now defines that process for any finite checklist and any explicitly supplied dependency links. It proves the process includes everything initially selected and continues until no recorded dependency is missing.&lt;/p&gt;&lt;p&gt;Lean also proves this completed checklist is the smallest one with those properties: starting with more facts cannot produce fewer, running the process again changes nothing, and a checklist is unchanged exactly when it was already complete. This does not yet create the correct dependency links from an arbitrary circuit or build the manuscript’s required support square. It does not complete ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 64% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;64&quot;&gt;Editorial progress estimate at publication: 64%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-saturation-closure&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-04-residual-terminal-projection-transfer</id>
     <title>The proof now balances four related circuit comparisons</title>

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-04-residual-terminal-saturation-closure",
+      "milestoneId": "residual-terminal-saturation-closure",
+      "publishedAt": "2026-08-04T15:42:54Z",
+      "title": "The proof can now complete a finite checklist under every recorded dependency",
+      "plainLanguage": [
+        "A later part of the proposed proof needs to start with a set of facts about a circuit and repeatedly add every other fact those facts depend on. Lean now defines that process for any finite checklist and any explicitly supplied dependency links. It proves the process includes everything initially selected and continues until no recorded dependency is missing.",
+        "Lean also proves this completed checklist is the smallest one with those properties: starting with more facts cannot produce fewer, running the process again changes nothing, and a checklist is unchanged exactly when it was already complete. This does not yet create the correct dependency links from an arbitrary circuit or build the manuscript’s required support square. It does not complete ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 64% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 64,
+      "source": {
+        "commit": "e355c176bd0e961b5db41dd11fc5b2ccfe6642fb",
+        "tree": "2ab1d800d697d4f6f0fa360615f4315ff277c022",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-101",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-SATURATION-100"
+      }
+    },
+    {
       "id": "2026-08-04-residual-terminal-projection-transfer",
       "milestoneId": "residual-terminal-projection-transfer",
       "publishedAt": "2026-08-04T09:07:29Z",
