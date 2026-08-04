@@ -3274,7 +3274,7 @@ test('status page has a conservative complete static fallback', async () => {
     '12,917',
     '6,849',
     '<strong>14,316</strong> private compiler auxiliaries excluded',
-    '<strong>213</strong> modules',
+    '<strong>214</strong> modules',
     'Seventy-six scoped milestones',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',

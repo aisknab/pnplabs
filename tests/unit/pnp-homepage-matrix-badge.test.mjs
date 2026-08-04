@@ -13,7 +13,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'Current result: P = NP is not established.',
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
-    'The proof now separates partial and complete circuit comparisons',
+    'The proof now measures exactly what is lost when a circuit comparison ignores details',
     'prevents a partial comparison from being treated as a complete one without the missing checks',
     'A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees',
     'terminalCheckedFullLift_iff_fullProfileEqual',

@@ -32,7 +32,7 @@ canonical output records:
 - 23,855 public declarations;
 - 12,917 theorem-kind declarations;
 - 6,849 assumption-free theorem-kind declarations;
-- 213 source-closure modules;
+- 214 source-closure modules;
 - 14,316 excluded private compiler auxiliaries;
 - four project axioms.
 
