@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof now separates partial and complete circuit comparisons</h2>
-          <p>A circuit is a finite collection of simple yes-or-no operations. Some proof steps compare only a selected checklist of facts about two circuits, while later steps need every relevant fact to match. Lean now records exactly which facts were kept, preserves the circuit, its number of operations, and all input-and-output behaviour, and prevents a partial comparison from being treated as a complete one without the missing checks.</p>
-          <p>A partial comparison can now be lifted to a complete comparison exactly when every omitted fact also agrees; keeping the full checklist makes that lift immediate. This is a safety boundary for future minimisation work, not a method for finding smaller circuits, completing the remaining support and saturation arguments, running the final algorithm efficiently, or proving P = NP. The 61% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-04-residual-terminal-mode-firewall">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof now measures exactly what is lost when a circuit comparison ignores details</h2>
+          <p>A circuit is a finite collection of simple yes-or-no operations. Two circuits can be compared using either a full checklist of their behaviour or a shorter checklist that deliberately ignores some details. Lean now exhaustively finds the smallest matching circuit under each checklist, proves that a circuit of each reported size really exists, and proves that no matching circuit can be smaller.</p>
+          <p>Ignoring details can never make the smallest matching circuit larger. Lean now measures the exact size gap between the two comparisons and proves that the gap is zero exactly when a smallest partial match also passes every omitted check. This exhaustive reference search is not an efficient algorithm and does not complete the remaining support, saturation, ZeroSlack, PCCMin, or complexity-theory work, so it does not prove P = NP. The 62% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-04-residual-terminal-projection-minimum">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>terminalCheckedFullLift_iff_fullProfileEqual</code> proves that a selected-coordinate terminal comparison lifts to the complete ten-role profile exactly when every forgotten coordinate also agrees. The explicit projection retains the circuit, gate count, and complete input/output semantics. This is a quotient-to-full comparison firewall; it does not supply proper supports, saturation, ZeroSlack, PCCMin, a polynomial minimisation algorithm, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>terminalProjectionDefect_eq_zero_iff_exists_checkedFullLiftAtMinimum</code> proves that the size defect introduced by forgetting terminal-profile coordinates is zero exactly when an attained quotient minimum has a checked full lift. The full and quotient minima are computed by exhaustive finite scans through the supplied implementation's gate count and each is proved attained and universally minimal among matching realizations. This does not supply proper supports, saturation, ZeroSlack, PCCMin, polynomial minimisation runtime, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -162,13 +162,14 @@ leanResidualWholeSpanStrictDescentFormalized = true
 leanResidualWholeSpanZeroAbsenceIffFormalized = true
 leanResidualTerminalQuotientCarrierFormalized = true
 leanResidualTerminalModeFirewallFormalized = true
-leanResidualTerminalModeFirewallAxiomAuditPassed = true
-leanResidualTerminalProfileProjectionExactFormalized = true
-leanResidualTerminalCheckedFullLiftFormalized = true
-leanResidualTerminalQuotientEqualityNotConstructiveFormalized = true
-leanResidualTerminalObligationDischargePreservedFormalized = true
+leanResidualProjectionMinimumAxiomAuditPassed = true
+leanResidualProjectionMinimumExecutableFullScanFormalized = true
+leanResidualProjectionMinimumExecutableQuotientScanFormalized = true
+leanResidualProjectionMinimumMonotonicityFormalized = true
+leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized = true
 leanResidualTerminalProperSupportFormalized = false
 leanResidualTerminalSaturationFormalized = false
+leanPCCMinPolynomialRuntimeFormalized = false
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
             <div><span>Theorem emission</span><strong>not allowed</strong></div>
@@ -182,9 +183,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-04-98</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-04-99</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>82d2b3ec7446b39e9387f8cd24c50e6e6123e4de78aa20c375dd7e34ca16643c</code></div>
+            <div><span>Inventory SHA-256</span><code>7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -192,18 +193,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>61</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>62</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 61 percent" data-proof-progress="61">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>61</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 62 percent" data-proof-progress="62">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>62</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 61% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 62% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

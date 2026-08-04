@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-98';
-const STATUS_SHA256 = 'adf99790bd0ae11074b379b54757af65fd2eb014cacaadc2d6cef43af53b8870';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-MODE-FIREWALL-97';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-04-98';
-const INVENTORY_SHA256 = '82d2b3ec7446b39e9387f8cd24c50e6e6123e4de78aa20c375dd7e34ca16643c';
-const SOURCE_CLOSURE_SHA256 = 'd7b361d14706fa7194432f6e8510a20221ce1f2795064aea153171f19e31efa1';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-99';
+const STATUS_SHA256 = '81a55d765359ea8131eba15a94ad1cddd4edc90b8bfafb358dc45e5260fdafc2';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-MINIMUM-98';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-04-99';
+const INVENTORY_SHA256 = '7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121';
+const SOURCE_CLOSURE_SHA256 = '7a2758acc431c096d32534b9b0860fdf996b27a5f3def918e131dd10c1b99006';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 23819,
-  theorems: 12894,
-  assumptionFreeTheorems: 6846,
-  excludedPrivateDeclarations: 14273,
-  modules: 213,
+  declarations: 23855,
+  theorems: 12917,
+  assumptionFreeTheorems: 6849,
+  excludedPrivateDeclarations: 14316,
+  modules: 214,
   axioms: 4,
 });
 
@@ -3376,6 +3376,23 @@ const RESIDUAL_TERMINAL_MODE_FIREWALL_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.terminalQuotientEqualityNotConstructive", [], "PNP.ResidualTerminalModeFirewall"],
 ]);
 
+const RESIDUAL_TERMINAL_PROJECTION_MINIMUM_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalFullProfileMatchBool_complete", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientProfileMatchBool_complete", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalFullProfileMinimumRealization_gateCount", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientProfileMinimumComparison_gateCount", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalFullProfileMinimum_le", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientProfileMinimum_le", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalFullProfileMinimum_spec", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientProfileMinimum_spec", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalProjectionMinimum_mono", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientMinimum_add_projectionDefect", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalProjectionDefect_eq_zero_iff_minima_eq", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalProjectionDefect_eq_zero_iff_exists_checkedFullLiftAtMinimum", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalProfileMinima_eq_of_keepsAll", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalProjectionDefect_pos_no_checkedFullLiftAtMinimum", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -3894,6 +3911,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-gain-stopping-specification',
   'residual-terminal-full-carrier-bridge',
   'residual-terminal-mode-firewall',
+  'residual-terminal-projection-minimum',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4229,6 +4247,17 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCNFToNANDLockedReductionCompositionFormalized: false,
   leanConcreteCNFToNANDPolynomialReductionScope: null,
   leanConcreteCNFToNANDSemanticCompilerScope: null,
+  leanResidualProjectionMinimumFormalized: false,
+  leanResidualProjectionMinimumAxiomAuditPassed: false,
+  leanResidualProjectionMinimumExecutableFullScanFormalized: false,
+  leanResidualProjectionMinimumExecutableQuotientScanFormalized: false,
+  leanResidualProjectionMinimumAttainmentFormalized: false,
+  leanResidualProjectionMinimumUniversalLowerBoundsFormalized: false,
+  leanResidualProjectionMinimumMonotonicityFormalized: false,
+  leanResidualProjectionDefectDecompositionFormalized: false,
+  leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized: false,
+  leanResidualProjectionMinimumScope: null,
+  leanPCCMinPolynomialRuntimeFormalized: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
 });
@@ -4592,6 +4621,16 @@ leanResidualTerminalProfileProjectionExactFormalized = ${payload.leanResidualTer
 leanResidualTerminalCheckedFullLiftFormalized = ${payload.leanResidualTerminalCheckedFullLiftFormalized ?? false}
 leanResidualTerminalQuotientEqualityNotConstructiveFormalized = ${payload.leanResidualTerminalQuotientEqualityNotConstructiveFormalized ?? false}
 leanResidualTerminalObligationDischargePreservedFormalized = ${payload.leanResidualTerminalObligationDischargePreservedFormalized ?? false}
+leanResidualProjectionMinimumFormalized = ${payload.leanResidualProjectionMinimumFormalized ?? false}
+leanResidualProjectionMinimumAxiomAuditPassed = ${payload.leanResidualProjectionMinimumAxiomAuditPassed ?? false}
+leanResidualProjectionMinimumExecutableFullScanFormalized = ${payload.leanResidualProjectionMinimumExecutableFullScanFormalized ?? false}
+leanResidualProjectionMinimumExecutableQuotientScanFormalized = ${payload.leanResidualProjectionMinimumExecutableQuotientScanFormalized ?? false}
+leanResidualProjectionMinimumAttainmentFormalized = ${payload.leanResidualProjectionMinimumAttainmentFormalized ?? false}
+leanResidualProjectionMinimumUniversalLowerBoundsFormalized = ${payload.leanResidualProjectionMinimumUniversalLowerBoundsFormalized ?? false}
+leanResidualProjectionMinimumMonotonicityFormalized = ${payload.leanResidualProjectionMinimumMonotonicityFormalized ?? false}
+leanResidualProjectionDefectDecompositionFormalized = ${payload.leanResidualProjectionDefectDecompositionFormalized ?? false}
+leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized = ${payload.leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized ?? false}
+leanPCCMinPolynomialRuntimeFormalized = ${payload.leanPCCMinPolynomialRuntimeFormalized ?? false}
 leanResidualTerminalProperSupportFormalized = ${payload.leanResidualTerminalProperSupportFormalized ?? false}
 leanResidualTerminalSaturationFormalized = ${payload.leanResidualTerminalSaturationFormalized ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
@@ -4635,12 +4674,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 652,
-    definition: 9705,
+    definition: 9718,
     inductive: 282,
     opaque: 0,
     quotient: 0,
     recursor: 282,
-    theorem: 12894,
+    theorem: 12917,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -4976,6 +5015,11 @@ function validateInventory(inventory) {
     axioms,
     module,
   }));
+  const residualTerminalProjectionMinimum = RESIDUAL_TERMINAL_PROJECTION_MINIMUM_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -5305,6 +5349,9 @@ function validateInventory(inventory) {
     && residualTerminalModeFirewall.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalProjectionMinimum.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5346,7 +5393,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2127
+    && inventory.milestoneCandidates.length === 2141
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5410,7 +5457,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 75;
+    const shouldBeEarned = index < 76;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5466,6 +5513,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalModeFirewallMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-mode-firewall'
+  );
+  const residualTerminalProjectionMinimumMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-projection-minimum'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -5578,6 +5628,24 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalQuotientEqualityNotConstructiveFormalized === true
     && status.leanResidualTerminalObligationDischargePreservedFormalized === true
     && status.leanResidualTerminalModeFirewallScope === "all-finite-direct-wire-implementations-with-computed-finite-profile-observers-and-explicit-forgetful-projections"
+    && residualTerminalProjectionMinimumMilestone?.classification === "formalized-terminal-projection-minimum"
+    && residualTerminalProjectionMinimumMilestone.scope === "For every finite direct-wire implementation, computed finite terminal-profile observer, and explicit forgetful projection, complete enumeration through the current gate count computes an attained full-profile minimum and an attained quotient-profile minimum. Both minima universally lower-bound every matching realization, forgetting coordinates cannot increase the minimum, the full minimum decomposes as the quotient minimum plus a nonnegative projection defect, and that defect is zero exactly when an attained quotient minimum has a checked full lift."
+    && residualTerminalProjectionMinimumMilestone.nonClaim === "These are exhaustive finite reference minima through the supplied implementation size. This milestone proves no polynomial runtime, proper or governed support construction, arbitrary manuscript quotient carrier, SaturatePositive, Package E, BCEL/BN2-BN6, complete residual routing, ZeroSlack certificate, PCCMin exactness, SAT-in-P result, discharged project assumption, or proof that P = NP."
+    && sameJson(
+      residualTerminalProjectionMinimumMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PROJECTION_MINIMUM_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualProjectionMinimumFormalized === true
+    && status.leanResidualProjectionMinimumAxiomAuditPassed === true
+    && status.leanResidualProjectionMinimumExecutableFullScanFormalized === true
+    && status.leanResidualProjectionMinimumExecutableQuotientScanFormalized === true
+    && status.leanResidualProjectionMinimumAttainmentFormalized === true
+    && status.leanResidualProjectionMinimumUniversalLowerBoundsFormalized === true
+    && status.leanResidualProjectionMinimumMonotonicityFormalized === true
+    && status.leanResidualProjectionDefectDecompositionFormalized === true
+    && status.leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized === true
+    && status.leanResidualProjectionMinimumScope === "all-finite-direct-wire-implementations-with-computed-finite-profile-observers-explicit-projections-and-exhaustive-search-through-the-current-gate-count"
+    && status.leanPCCMinPolynomialRuntimeFormalized === false
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
     && status.finalTheoremReady === gatePassed

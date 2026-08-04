@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 61% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 62% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="61" aria-label="Estimated proof reconstruction progress: 61 percent">61%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 61 percent">
+        <progress class="proof-progress-meter" max="100" value="62" aria-label="Estimated proof reconstruction progress: 62 percent">62%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 62 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-04-residual-terminal-projection-minimum" data-milestone-id="residual-terminal-projection-minimum">
+        <div class="section-label"><time datetime="2026-08-04T01:52:25Z">2026-08-04</time> · earned milestone 76</div>
+        <h2>The proof now measures exactly what is lost when a circuit comparison ignores details</h2>
+        <p>A circuit is a finite collection of simple yes-or-no operations. Two circuits can be compared using either a full checklist of their behaviour or a shorter checklist that deliberately ignores some details. Lean now exhaustively finds the smallest matching circuit under each checklist, proves that a circuit of each reported size really exists, and proves that no matching circuit can be smaller.</p>
+        <p>Ignoring details can never make the smallest matching circuit larger. Lean now measures the exact size gap between the two comparisons and proves that the gap is zero exactly when a smallest partial match also passes every omitted check. This exhaustive reference search is not an efficient algorithm and does not complete the remaining support, saturation, ZeroSlack, PCCMin, or complexity-theory work, so it does not prove P = NP. The 62% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 62%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-projection-minimum</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-projection-minimum</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire implementation, computed finite terminal-profile observer, and explicit forgetful projection, complete enumeration through the current gate count computes an attained full-profile minimum and an attained quotient-profile minimum. Both minima universally lower-bound every matching realization, forgetting coordinates cannot increase the minimum, the full minimum decomposes as the quotient minimum plus a nonnegative projection defect, and that defect is zero exactly when an attained quotient minimum has a checked full lift.</p>
+          <p><strong>Boundary:</strong> These are exhaustive finite reference minima through the supplied implementation size. This milestone proves no polynomial runtime, proper or governed support construction, arbitrary manuscript quotient carrier, SaturatePositive, Package E, BCEL/BN2-BN6, complete residual routing, ZeroSlack certificate, PCCMin exactness, SAT-in-P result, discharged project assumption, or proof that P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 14</p>
+          <p><strong>Core source:</strong> commit <code>accf07e45123837661307a37a02d2119ecd7aacc</code>, tree <code>79f2ab904d9c90db6aa2d10ba2931c11a036b747</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-99</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-MINIMUM-98</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-04-residual-terminal-mode-firewall" data-milestone-id="residual-terminal-mode-firewall">
         <div class="section-label"><time datetime="2026-08-03T17:25:02Z">2026-08-03</time> · earned milestone 75</div>
         <h2>The proof now separates partial and complete circuit comparisons</h2>
