@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '6807fe409ff302b55bffe69f3f7a13c4f0692c297504c9a9ab50692dc57e601e');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 76);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 77);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -2878,7 +2878,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '81a55d765359ea8131eba15a94ad1cddd4edc90b8bfafb358dc45e5260fdafc2'/);
+  assert.match(source, /const STATUS_SHA256 = 'fa627d391af8be33015576f7b091c32d184cfebe25c708df38f0c6207a313b50'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -2926,6 +2926,34 @@ test('terminal projection minima require their exact theorem and status boundary
   assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
 });
 
+test('terminal projection transfer requires the exact four-corner theorem boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-projection-transfer');
+  assert.equal(milestone.requiredTheorems.length, 4);
+
+  const missingTheorem = structuredClone(inventory);
+  missingTheorem.milestoneCandidates = missingTheorem.milestoneCandidates.filter(
+    (row) => row.name !== 'PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity'
+  );
+  assert.equal(validation.validateInventory(missingTheorem), false);
+
+  const forgedAxiom = structuredClone(inventory);
+  forgedAxiom.milestoneCandidates.find(
+    (row) => row.name === 'PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity'
+  ).axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(forgedAxiom), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualProjectionTransferScope = 'all-support-squares';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const erasedBoundary = structuredClone(status);
+  erasedBoundary.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-projection-transfer'
+  ).nonClaim = 'This proves P = NP.';
+  assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+});
+
 test('static pages remain conservative and distinguish current from historical reports', () => {
   const homepage = readFileSync('index.html', 'utf8');
   const statusPage = readFileSync('status.html', 'utf8');
@@ -2935,8 +2963,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /23,855/);
-  assert.match(statusPage, /Seventy-six scoped milestones/);
+  assert.match(statusPage, /23,884/);
+  assert.match(statusPage, /Seventy-seven scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

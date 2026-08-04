@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 62% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 63% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="62" aria-label="Estimated proof reconstruction progress: 62 percent">62%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 62 percent">
+        <progress class="proof-progress-meter" max="100" value="63" aria-label="Estimated proof reconstruction progress: 63 percent">63%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 63 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-04-residual-terminal-projection-transfer" data-milestone-id="residual-terminal-projection-transfer">
+        <div class="section-label"><time datetime="2026-08-04T09:07:29Z">2026-08-04</time> · earned milestone 77</div>
+        <h2>The proof now balances four related circuit comparisons</h2>
+        <p>Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases—the common part, two alternatives, and their combined case—and proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.</p>
+        <p>Under the stated conditions, if no information is lost in the common part or either alternative, but the combined case loses D circuit operations, then the accounting difference is exactly D; if D is greater than zero, the difference is too. Lean checks increases and decreases correctly. It does not construct the four cases, prove that the manuscript’s required support and saturation objects exist, complete ZeroSlack or PCCMin, provide a fast algorithm, or prove P = NP. The 63% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 63%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-projection-transfer</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-projection-transfer</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire four-corner terminal-profile family sharing one computed observer and one explicit projection, signed full and quotient minimum deltas obey the exact Section 5.2 transfer identity. The projection excess is the quotient delta minus the full delta; if meet and both side defects are zero while the join defect is D, the excess equals D and is positive whenever D is positive.</p>
+          <p><strong>Boundary:</strong> This is signed arithmetic over four supplied corners. It does not construct or certify a proper governed support square, prove SaturatePositive, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 4</p>
+          <p><strong>Core source:</strong> commit <code>aa888e54beeff5be0162415fa962f80b4b18d113</code>, tree <code>d3978744cfd0f86905a6bc934b012a7468e1e49f</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-100</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-TRANSFER-99</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-04-residual-terminal-projection-minimum" data-milestone-id="residual-terminal-projection-minimum">
         <div class="section-label"><time datetime="2026-08-04T01:52:25Z">2026-08-04</time> · earned milestone 76</div>
         <h2>The proof now measures exactly what is lost when a circuit comparison ignores details</h2>

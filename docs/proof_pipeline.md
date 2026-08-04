@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,141 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,145 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 23,855 public declarations;
-- 12,917 theorem-kind declarations;
-- 6,849 assumption-free theorem-kind declarations;
-- 214 source-closure modules;
-- 14,316 excluded private compiler auxiliaries;
+- 23,884 public declarations;
+- 12,925 theorem-kind declarations;
+- 6,851 assumption-free theorem-kind declarations;
+- 215 source-closure modules;
+- 14,317 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The seventy-six earned scopes are:
+The seventy-seven earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -126,6 +126,7 @@ The seventy-six earned scopes are:
 | Terminal full-carrier residual bridge | For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and complete multi-output semantics. The terminal full minimum equals the exhaustive reference minimum; positive slack is equivalent to a cheaper whole-span full realization, each such realization strictly descends, and zero slack is equivalent to absence of one. All 22 audited public declarations are axiom-free. | This is the direct-wire full-mode specialization. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, saturation, BCEL/BN2–BN6, packet or selector completeness, route generation, `ZeroSlack`, PCCMin, polynomial minimum search or checking, SAT in P, assumption discharge, or `P = NP`. |
 | Terminal quotient/full mode firewall | For every finite direct-wire implementation, a computed observer records the ten terminal carrier roles and an explicit forgetful projection selects quotient coordinates while retaining the exact implementation, gate count, and complete semantics. A quotient comparison has a checked full lift exactly when every forgotten profile coordinate agrees; lossless projections lift directly, and obligation discharge transports through a checked lift. All 29 audited public declarations are axiom-free. | This supplies only the terminal comparison/lifting firewall. It supplies no proper or governed supports, arbitrary quotient construction, support or projection-defect minimum, saturation, Package E, BCEL/BN2–BN6, packet or selector completeness, global residual route, `ZeroSlack`, PCCMin exactness or polynomial runtime, SAT-in-P result, assumption discharge, or `P = NP`. |
 | Terminal full/quotient projection minima | For every finite direct-wire implementation, computed terminal-profile observer, and explicit forgetful projection, exhaustive scans through the current gate count compute attained full-profile and quotient-profile minima. Both universally lower-bound matching realizations, projection cannot increase the minimum, the full minimum is the quotient minimum plus a nonnegative defect, and zero defect is equivalent to a checked full lift at an attained quotient minimum. The 27 audited declarations use only empty closure or `propext`; all 14 reviewed theorem pins use `propext`. | These are exhaustive finite reference minima, not a polynomial-time minimizer. This supplies no proper or governed supports, arbitrary manuscript quotient carrier, saturation, Package E, BCEL/BN2–BN6, complete residual route, `ZeroSlack`, PCCMin exactness or polynomial runtime, SAT-in-P result, assumption discharge, or `P = NP`. |
+| Residual terminal projection transfer | For every finite direct-wire four-corner terminal-profile family sharing one computed observer and one explicit projection, signed full and quotient minimum deltas obey the exact Section 5.2 transfer identity. The projection excess is the quotient delta minus the full delta; if meet and both side defects are zero while the join defect is `D`, the excess equals `D` and is positive whenever `D` is positive. | This is signed arithmetic over four supplied corners. It does not construct or certify a proper governed support square, prove `SaturatePositive`, discharge Package E or BCEL/BN2–BN6, generate a complete residual route, prove `ZeroSlack` or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

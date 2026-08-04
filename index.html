@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof now measures exactly what is lost when a circuit comparison ignores details</h2>
-          <p>A circuit is a finite collection of simple yes-or-no operations. Two circuits can be compared using either a full checklist of their behaviour or a shorter checklist that deliberately ignores some details. Lean now exhaustively finds the smallest matching circuit under each checklist, proves that a circuit of each reported size really exists, and proves that no matching circuit can be smaller.</p>
-          <p>Ignoring details can never make the smallest matching circuit larger. Lean now measures the exact size gap between the two comparisons and proves that the gap is zero exactly when a smallest partial match also passes every omitted check. This exhaustive reference search is not an efficient algorithm and does not complete the remaining support, saturation, ZeroSlack, PCCMin, or complexity-theory work, so it does not prove P = NP. The 62% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-04-residual-terminal-projection-minimum">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof now balances four related circuit comparisons</h2>
+          <p>Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases—the common part, two alternatives, and their combined case—and proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.</p>
+          <p>Under the stated conditions, if no information is lost in the common part or either alternative, but the combined case loses D circuit operations, then the accounting difference is exactly D; if D is greater than zero, the difference is too. Lean checks increases and decreases correctly. It does not construct the four cases, prove that the manuscript’s required support and saturation objects exist, complete ZeroSlack or PCCMin, provide a fast algorithm, or prove P = NP. The 63% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-04-residual-terminal-projection-transfer">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>terminalProjectionDefect_eq_zero_iff_exists_checkedFullLiftAtMinimum</code> proves that the size defect introduced by forgetting terminal-profile coordinates is zero exactly when an attained quotient minimum has a checked full lift. The full and quotient minima are computed by exhaustive finite scans through the supplied implementation's gate count and each is proved attained and universally minimal among matching realizations. This does not supply proper supports, saturation, ZeroSlack, PCCMin, polynomial minimisation runtime, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>TerminalProjectionFourCorners.transferIdentity</code> proves the exact signed Section 5.2 transfer identity for four supplied terminal-profile corners that share one observer and one projection. Under the separately supplied constant-cut defect hypotheses, <code>constantCutEquation_of_defects</code> identifies the projection excess with the join defect, and <code>projectionExcess_pos_of_constantCut</code> proves positivity when that defect is positive. This does not construct a proper governed support square, prove saturation, complete ZeroSlack or PCCMin, establish polynomial runtime, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -167,6 +167,11 @@ leanResidualProjectionMinimumExecutableFullScanFormalized = true
 leanResidualProjectionMinimumExecutableQuotientScanFormalized = true
 leanResidualProjectionMinimumMonotonicityFormalized = true
 leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized = true
+leanResidualProjectionTransferFormalized = true
+leanResidualProjectionTransferAxiomAuditPassed = true
+leanResidualProjectionTransferSignedDeltasFormalized = true
+leanResidualProjectionTransferIdentityFormalized = true
+leanResidualProjectionTransferConstantCutFormalized = true
 leanResidualTerminalProperSupportFormalized = false
 leanResidualTerminalSaturationFormalized = false
 leanPCCMinPolynomialRuntimeFormalized = false
@@ -183,9 +188,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-04-99</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-04-100</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121</code></div>
+            <div><span>Inventory SHA-256</span><code>6807fe409ff302b55bffe69f3f7a13c4f0692c297504c9a9ab50692dc57e601e</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -193,18 +198,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>62</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>63</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 62 percent" data-proof-progress="62">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>62</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 63 percent" data-proof-progress="63">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>63</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 62% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 63% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
