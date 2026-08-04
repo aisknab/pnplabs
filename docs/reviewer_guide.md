@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a seventy-two-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 23,884 public declarations across 215 modules,
-including 12,925 theorem-kind declarations, 6,851 assumption-free theorem-kind declarations, and four
+The canonical report downloads are now a seventy-three-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 24,054 public declarations across 215 modules,
+including 12,985 theorem-kind declarations, 6,903 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 14,317 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current seventy-two-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current seventy-three-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,145 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,145 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Seventy-seven narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, the locked-NAND typed threshold and strict-v0 semantic encoding, concrete polynomial reductions, the universal verified residual-gain-chain bound, the global semantic stopping criterion, the direct-wire terminal full-carrier bridge, the computed terminal quotient/full mode firewall, exhaustive attained full/quotient projection minima, and the exact signed four-corner projection-transfer identity | A complete Cook-Levin formula builder, construction of a proper governed support square, arbitrary manuscript quotient construction, support-saturation machinery, a gain generator or route-completeness proof, the manuscript's ZeroSlack/PCCMin construction and polynomial runtime, SAT NP-hardness or CNF-SAT NP-completeness, discharge of the abstract threshold axiom, CNF-SAT in P, or `P = NP` |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,152 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,152 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | Seventy-eight narrowly scoped formal milestones, including `CNFSAT ∈ NP`, raw-machine compilation, exact Cook-Levin semantic equivalence and its bounded builder prefix, the locked-NAND typed threshold and strict-v0 semantic encoding, concrete polynomial reductions, the universal verified residual-gain-chain bound, the global semantic stopping criterion, the direct-wire terminal full-carrier bridge, the computed terminal quotient/full mode firewall, exhaustive attained full/quotient projection minima, the exact signed four-corner projection-transfer identity, and finite saturation closure under explicit dependencies | A complete Cook-Levin formula builder, derivation of the intended dependency relation from arbitrary circuits, construction of proper governed support squares, support completion and square legitimacy, a gain generator or route-completeness proof, the manuscript's ZeroSlack/PCCMin construction and polynomial runtime, SAT NP-hardness or CNF-SAT NP-completeness, discharge of the abstract threshold axiom, CNF-SAT in P, or `P = NP` |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `aa888e54beeff5be0162415fa962f80b4b18d113`.
+   `e355c176bd0e961b5db41dd11fc5b2ccfe6642fb`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,145 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,152 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,7 +72,7 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns seventy-seven scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns seventy-eight scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
@@ -128,9 +128,11 @@ Review the gaps between those scopes and the target theorem:
    an exact nonnegative defect, and characterize zero defect by a checked full lift at an attained quotient
    minimum. Across four supplied corners sharing one observer and projection, signed full and quotient
    deltas now obey the exact Section 5.2 transfer identity; the constant-cut hypotheses make projection
-   excess equal the join defect and positive when that defect is positive. This arithmetic does not
-   construct or certify the required proper governed support square. Proper or governed supports,
-   arbitrary manuscript quotient construction, saturation,
+   excess equal the join defect and positive when that defect is positive. For every finite terminal
+   primitive-record universe and explicitly supplied rule-tagged dependency relation, generated saturation
+   is extensive, closed, least, monotone and idempotent, with exactly the closed supports as fixed points.
+   This does not derive the intended dependencies or construct and certify the required proper governed
+   support square. Proper or governed support construction, support completion, square legitimacy,
    BCEL/BN2–BN6, packet/selector completeness, route generation, the manuscript's `ZeroSlack` certificate,
    and polynomial checker/PCCMin runtime remain unformalized. Strict-v0 codecs now prove normalized-circuit and complete-instance
    round trips, and a pure all-bitstring transformation rejects malformed source bytes while
@@ -169,7 +171,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current seventy-two-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current seventy-three-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

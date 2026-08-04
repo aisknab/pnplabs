@@ -215,6 +215,16 @@ const RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREM_SHA256 = {
   "PNP.DirectWire.TerminalProjectionFourCorners.projectionExcess_pos_of_constantCut": "7f7c6eacac8e119e2ee7b56ca03e323fdf7f191d56c0ff5476883dba1a61e7d0"
 };
 
+const RESIDUAL_TERMINAL_SATURATION_THEOREM_SHA256 = {
+  "PNP.DirectWire.mem_allTerminalPrimitiveRecords": "06dc32945403e76a76eed4fdbe31b1962c878af2cd8c136103fa1243d304a9a6",
+  "PNP.DirectWire.terminalSaturate_extensive": "80a5d112df19cb4fd03210ffdd06be067829549a28e2da0746230f79994761fc",
+  "PNP.DirectWire.terminalSaturate_closed": "3f4566c23897191ee812427490e9ce9a4df87e90983775289f60a9472895bdf5",
+  "PNP.DirectWire.terminalSaturate_least": "0cc287c76c18cfe0b0ce632d92b85e6a8173b9cd0841b8fdfafeffc9cb025790",
+  "PNP.DirectWire.terminalSaturate_monotone": "d1bc557a4eb268ad67b96377c3cb668d1d141234cc1548155252f2429f9123ba",
+  "PNP.DirectWire.terminalSaturate_idempotent": "60fbcc602264e47fa5fea3bd772bfa344a1a0d6d2086baf3c7ac7b453b7efda0",
+  "PNP.DirectWire.terminalSaturate_fixed_iff_closed": "ac4339ee65e025371c429d3de428d39118f9d8d5eba92749fa7b08f8013bd22a"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -233,18 +243,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "aa888e54beeff5be0162415fa962f80b4b18d113");
+  assert.equal(result.coreCommit, "e355c176bd0e961b5db41dd11fc5b2ccfe6642fb");
 });
 
-test("current release is pinned, seventy-two-page, exposes terminal projection transfer, and fails closed", () => {
+test("current release is pinned, seventy-three-page, exposes terminal saturation closure, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-83");
-  assert.equal(release.source.commit, "aa888e54beeff5be0162415fa962f80b4b18d113");
-  assert.equal(release.source.proofCommit, "c6205f91bde4e8976d7502bfdb9ba16bca5f5b20");
-  assert.equal(release.source.tree, "d3978744cfd0f86905a6bc934b012a7468e1e49f");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-84");
+  assert.equal(release.source.commit, "e355c176bd0e961b5db41dd11fc5b2ccfe6642fb");
+  assert.equal(release.source.proofCommit, "341fdff1b887ef56f7f51560dd8f213185a1a581");
+  assert.equal(release.source.tree, "2ab1d800d697d4f6f0fa360615f4315ff277c022");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 72);
+  assert.equal(release.artifacts.report.pageCount, 73);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1796,7 +1806,6 @@ test("current release is pinned, seventy-two-page, exposes terminal projection t
   assert.equal(release.earnedBoundary.residualWholeSpanZeroAbsenceIffFormalized, true);
   assert.equal(release.earnedBoundary.residualTerminalQuotientCarrierFormalized, true);
   assert.equal(release.earnedBoundary.residualTerminalProperSupportFormalized, false);
-  assert.equal(release.earnedBoundary.residualTerminalSaturationFormalized, false);
   assert.deepEqual(release.earnedBoundary.residualTerminalFullBridgeTheoremKernelTypeSha256, RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREM_SHA256);
   assert.deepEqual(release.earnedBoundary.residualTerminalFullBridgeAxiomClosure, []);
   assert.deepEqual(release.earnedBoundary.residualTerminalFullBridgeProjectAxiomClosure, []);
@@ -1842,6 +1851,30 @@ test("current release is pinned, seventy-two-page, exposes terminal projection t
     release.earnedBoundary.residualProjectionTransferScope,
     "all-finite-direct-wire-four-corner-terminal-profile-families-sharing-one-computed-observer-and-one-explicit-projection"
   );
+  assert.equal(release.earnedBoundary.residualTerminalSaturationFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationAuditedDeclarationCount, 18);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationEmptyAxiomDeclarationCount, 15);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationPropextQuotSoundDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalPrimitiveUniverseFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationExtensiveFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationLeastFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationMonotoneFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationIdempotentFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationScope, "all-finite-terminal-primitive-record-universes-with-explicit-boolean-rule-tagged-dependencies");
+  assert.deepEqual(release.earnedBoundary.residualTerminalSaturationTheoremKernelTypeSha256, RESIDUAL_TERMINAL_SATURATION_THEOREM_SHA256);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSaturationAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSaturationProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalPrimitiveUniverseTheorem, "PNP.DirectWire.mem_allTerminalPrimitiveRecords");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationExtensiveTheorem, "PNP.DirectWire.terminalSaturate_extensive");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationClosedTheorem, "PNP.DirectWire.terminalSaturate_closed");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationLeastTheorem, "PNP.DirectWire.terminalSaturate_least");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationMonotoneTheorem, "PNP.DirectWire.terminalSaturate_monotone");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationIdempotentTheorem, "PNP.DirectWire.terminalSaturate_idempotent");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationFixedPointTheorem, "PNP.DirectWire.terminalSaturate_fixed_iff_closed");
+  assert.equal(release.earnedBoundary.residualTerminalSupportCompletionFormalized, false);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyFormalized, false);
+  assert.equal(release.earnedBoundary.residualTerminalProjectionSquareFormalized, false);
   assert.equal(release.earnedBoundary.pccMinPolynomialRuntimeFormalized, false);
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
@@ -1869,12 +1902,12 @@ test("current release is pinned, seventy-two-page, exposes terminal projection t
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 80 milestones with terminal projection transfer pinned", () => {
+test("status and inventory publish exactly 81 milestones with terminal saturation closure pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 80);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 77);
+  assert.equal(milestones.length, 81);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 78);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -2116,7 +2149,6 @@ test("status and inventory publish exactly 80 milestones with terminal projectio
   assert.equal(status.leanResidualWholeSpanZeroAbsenceIffFormalized, true);
   assert.equal(status.leanResidualTerminalQuotientCarrierFormalized, true);
   assert.equal(status.leanResidualTerminalProperSupportFormalized, false);
-  assert.equal(status.leanResidualTerminalSaturationFormalized, false);
 
   const residualTerminalModeFirewall = milestones.find((row) => row.id === "residual-terminal-mode-firewall");
   assert.equal(residualTerminalModeFirewall.classification, "formalized-terminal-mode-firewall");
@@ -2175,27 +2207,63 @@ test("status and inventory publish exactly 80 milestones with terminal projectio
   );
   assert.match(residualTerminalProjectionTransfer.scope, /exact Section 5\.2 transfer identity/u);
   assert.match(residualTerminalProjectionTransfer.nonClaim, /does not construct or certify a proper governed support square/u);
+  const residualTerminalSaturation = milestones.find((row) => row.id === "residual-terminal-saturation-closure");
+  assert.equal(residualTerminalSaturation.classification, "formalized-terminal-saturation-closure");
+  assert.equal(residualTerminalSaturation.status, "formalized-terminal-saturation-closure");
+  assert.equal(residualTerminalSaturation.earned, true);
+  assert.equal(residualTerminalSaturation.allPresent, true);
+  assert.equal(residualTerminalSaturation.allAssumptionFree, false);
+  assert.equal(residualTerminalSaturation.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualTerminalSaturation.allKernelTypesMatch, true);
+  assert.equal(residualTerminalSaturation.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualTerminalSaturation.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_SATURATION_THEOREM_SHA256));
+  assert.deepEqual(
+    Object.fromEntries(residualTerminalSaturation.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_SATURATION_THEOREM_SHA256
+  );
+  for (const row of residualTerminalSaturation.theoremRows) {
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, RESIDUAL_TERMINAL_SATURATION_THEOREM_SHA256[row.name], row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, "PNP.ResidualTerminalSaturation", row.name);
+    assert.deepEqual(candidate.axioms, row.axioms, row.name);
+  }
+  assert.match(residualTerminalSaturation.scope, /least among closed supersets/u);
+  assert.match(residualTerminalSaturation.nonClaim, /does not derive the dependency relation from an arbitrary circuit/u);
+  assert.equal(status.leanResidualTerminalSaturationFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPrimitiveUniverseFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationExtensiveFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationLeastFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationMonotoneFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationIdempotentFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationScope, "all-finite-terminal-primitive-record-universes-with-explicit-boolean-rule-tagged-dependencies");
+  assert.equal(status.leanResidualTerminalSupportCompletionFormalized, false);
+  assert.equal(status.leanResidualTerminalSquareLegitimacyFormalized, false);
+  assert.equal(status.leanResidualTerminalProjectionSquareFormalized, false);
   assert.equal(status.leanResidualProjectionTransferFormalized, true);
   assert.equal(status.leanResidualProjectionTransferAxiomAuditPassed, true);
   assert.equal(status.leanResidualProjectionTransferSignedDeltasFormalized, true);
   assert.equal(status.leanResidualProjectionTransferIdentityFormalized, true);
   assert.equal(status.leanResidualProjectionTransferConstantCutFormalized, true);
 
-  assert.equal(inventory.declarationCount, 23884);
-  assert.equal(inventory.theoremCount, 12925);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6851);
+  assert.equal(inventory.declarationCount, 24054);
+  assert.equal(inventory.theoremCount, 12985);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6903);
   assert.equal(inventory.excludedPrivateDeclarationCount, 14317);
-  assert.equal(inventory.sourceClosureModuleCount, 215);
-  assert.equal(inventory.milestoneCandidates.length, 2145);
+  assert.equal(inventory.sourceClosureModuleCount, 216);
+  assert.equal(inventory.milestoneCandidates.length, 2152);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 653,
-    definition: 9736,
-    inductive: 283,
+    constructor: 673,
+    definition: 9814,
+    inductive: 289,
     opaque: 0,
     quotient: 0,
-    recursor: 283,
-    theorem: 12925
+    recursor: 289,
+    theorem: 12985
   });
 });
 
