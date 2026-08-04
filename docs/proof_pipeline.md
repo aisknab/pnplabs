@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,127 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,141 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 23,819 public declarations;
-- 12,894 theorem-kind declarations;
-- 6,846 assumption-free theorem-kind declarations;
+- 23,855 public declarations;
+- 12,917 theorem-kind declarations;
+- 6,849 assumption-free theorem-kind declarations;
 - 213 source-closure modules;
-- 14,273 excluded private compiler auxiliaries;
+- 14,316 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The seventy-five earned scopes are:
+The seventy-six earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -125,6 +125,7 @@ The seventy-five earned scopes are:
 | Universal verified residual-gain chain bound | Every finite proof-bearing or executably verified chain of adjacent strict equivalent gains preserves semantics and the exhaustive reference minimum; endpoint residual slack plus chain length is at most starting residual slack. The locked-NAND slack-at-most-four theorem specializes the bound to at most four verified steps. Twelve generic audited declarations are axiom-free and four locked specializations use only `propext` and `Quot.sound`. | This verifies and bounds a supplied chain. It does not generate a gain, prove route or candidate-list completeness, justify stopping early, construct `ZeroSlack`, compute an exact minimizer, establish polynomial checker or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP. |
 | Terminal full-carrier residual bridge | For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and complete multi-output semantics. The terminal full minimum equals the exhaustive reference minimum; positive slack is equivalent to a cheaper whole-span full realization, each such realization strictly descends, and zero slack is equivalent to absence of one. All 22 audited public declarations are axiom-free. | This is the direct-wire full-mode specialization. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, saturation, BCEL/BN2–BN6, packet or selector completeness, route generation, `ZeroSlack`, PCCMin, polynomial minimum search or checking, SAT in P, assumption discharge, or `P = NP`. |
 | Terminal quotient/full mode firewall | For every finite direct-wire implementation, a computed observer records the ten terminal carrier roles and an explicit forgetful projection selects quotient coordinates while retaining the exact implementation, gate count, and complete semantics. A quotient comparison has a checked full lift exactly when every forgotten profile coordinate agrees; lossless projections lift directly, and obligation discharge transports through a checked lift. All 29 audited public declarations are axiom-free. | This supplies only the terminal comparison/lifting firewall. It supplies no proper or governed supports, arbitrary quotient construction, support or projection-defect minimum, saturation, Package E, BCEL/BN2–BN6, packet or selector completeness, global residual route, `ZeroSlack`, PCCMin exactness or polynomial runtime, SAT-in-P result, assumption discharge, or `P = NP`. |
+| Terminal full/quotient projection minima | For every finite direct-wire implementation, computed terminal-profile observer, and explicit forgetful projection, exhaustive scans through the current gate count compute attained full-profile and quotient-profile minima. Both universally lower-bound matching realizations, projection cannot increase the minimum, the full minimum is the quotient minimum plus a nonnegative defect, and zero defect is equivalent to a checked full lift at an attained quotient minimum. The 27 audited declarations use only empty closure or `propext`; all 14 reviewed theorem pins use `propext`. | These are exhaustive finite reference minima, not a polynomial-time minimizer. This supplies no proper or governed supports, arbitrary manuscript quotient carrier, saturation, Package E, BCEL/BN2–BN6, complete residual route, `ZeroSlack`, PCCMin exactness or polynomial runtime, SAT-in-P result, assumption discharge, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -156,7 +157,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seventy-one-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seventy-two-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

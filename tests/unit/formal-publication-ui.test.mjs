@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '82d2b3ec7446b39e9387f8cd24c50e6e6123e4de78aa20c375dd7e34ca16643c');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '7c3daaa3cbf191508d48054ecf1d1b48cfbd7601d5e3756fa9d057db383c6121');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 75);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 76);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -878,7 +878,7 @@ test('Cook-Levin clause-two first literal requires all fifty-eight exact rows an
   }
 });
 
-test('Cook-Levin clause-two second literal requires all seventy-five exact rows and remains one fixed literal prefix', () => {
+test('Cook-Levin clause-two second literal requires all seventy-six exact rows and remains one fixed literal prefix', () => {
   const milestone = status.formalPublicationMilestones
     .find((row) => row.id === 'concrete-cook-levin-builder-second-clause-second-literal-prefix');
   assert.equal(milestone.requiredTheorems.length, 75);
@@ -1356,7 +1356,7 @@ test('Cook-Levin fourth-clause separator step requires all forty exact rows and 
   }
 });
 
-test('Cook-Levin fourth-clause first-literal prefix requires all seventy-five exact rows and remains a one-literal boundary', () => {
+test('Cook-Levin fourth-clause first-literal prefix requires all seventy-six exact rows and remains a one-literal boundary', () => {
   const milestone = status.formalPublicationMilestones
     .find((row) => row.id === 'concrete-cook-levin-builder-fourth-clause-first-literal-prefix');
   assert.equal(milestone.requiredTheorems.length, 75);
@@ -2878,7 +2878,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'adf99790bd0ae11074b379b54757af65fd2eb014cacaadc2d6cef43af53b8870'/);
+  assert.match(source, /const STATUS_SHA256 = '81a55d765359ea8131eba15a94ad1cddd4edc90b8bfafb358dc45e5260fdafc2'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -2894,6 +2894,38 @@ test('inventory drift and milestone overclaim fail closed', () => {
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
 });
 
+test('terminal projection minima require their exact theorem and status boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-projection-minimum');
+  assert.equal(milestone.requiredTheorems.length, 14);
+
+  const missingTheorem = structuredClone(inventory);
+  missingTheorem.milestoneCandidates = missingTheorem.milestoneCandidates.filter(
+    (row) => row.name !== 'PNP.DirectWire.terminalProjectionMinimum_mono'
+  );
+  assert.equal(validation.validateInventory(missingTheorem), false);
+
+  const forgedAxiom = structuredClone(inventory);
+  forgedAxiom.milestoneCandidates.find(
+    (row) => row.name === 'PNP.DirectWire.terminalProjectionMinimum_mono'
+  ).axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(forgedAxiom), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualProjectionMinimumScope = 'polynomial-global-minimizer';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const forgedRuntime = structuredClone(status);
+  forgedRuntime.leanPCCMinPolynomialRuntimeFormalized = true;
+  assert.equal(validation.validateStatus(forgedRuntime, inventory), false);
+
+  const erasedBoundary = structuredClone(status);
+  erasedBoundary.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-projection-minimum'
+  ).nonClaim = 'This proves P = NP.';
+  assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+});
+
 test('static pages remain conservative and distinguish current from historical reports', () => {
   const homepage = readFileSync('index.html', 'utf8');
   const statusPage = readFileSync('status.html', 'utf8');
@@ -2903,12 +2935,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /23,819/);
-  assert.match(statusPage, /Seventy-five scoped milestones/);
+  assert.match(statusPage, /23,855/);
+  assert.match(statusPage, /Seventy-six scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 71-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 72-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

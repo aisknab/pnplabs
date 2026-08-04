@@ -191,6 +191,23 @@ const RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREM_SHA256 = {
   "PNP.DirectWire.terminalQuotientEqualityNotConstructive": "d9f2582756a57c87b345e1b462ae765c654e719dc56171939ecbf3de8a2c0e1c"
 };
 
+const RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREM_SHA256 = {
+  "PNP.DirectWire.terminalFullProfileMatchBool_complete": "ce2551dced7c7b0f50749844f9113fcc9d9de4daf288a07f3932874ac5a9467f",
+  "PNP.DirectWire.terminalQuotientProfileMatchBool_complete": "bbbe9447463d113efe13ac57c0fbadc387eda47aeb1eef6c08c06e70f885e4c2",
+  "PNP.DirectWire.terminalFullProfileMinimumRealization_gateCount": "798da3be48963130ca415d60dbaea20fc06087f64068798e5c62634178d98259",
+  "PNP.DirectWire.terminalQuotientProfileMinimumComparison_gateCount": "32349bacfe9e5efd16f42006fe912234b0c7459b66db9905e5c5867a696dba80",
+  "PNP.DirectWire.terminalFullProfileMinimum_le": "56059f1da9c8fe821569dc651bb112eef6ad0f056a6496c668ff45250ada6f0e",
+  "PNP.DirectWire.terminalQuotientProfileMinimum_le": "ce8486f3b736f1bac59f6a388c73a32d5bfdb4ec64f0994b1ba94fb1c57ab753",
+  "PNP.DirectWire.terminalFullProfileMinimum_spec": "aa0ecb861cb6454b659931d96a1bb107edc42902fb0be66ca287b369f2659bfc",
+  "PNP.DirectWire.terminalQuotientProfileMinimum_spec": "494e3230379f9fb0bbe634f68987117605fffe8dbcfe130311b2724e9b65c73a",
+  "PNP.DirectWire.terminalProjectionMinimum_mono": "c3e9aa3c01a5a9702c311df28dcbadd2a8e8005776418307147b424cc988f034",
+  "PNP.DirectWire.terminalQuotientMinimum_add_projectionDefect": "2487f2fa58c556c6166f02e57ed79ed5c1d0e6c2a9ac86fa96630ef10a66d4a0",
+  "PNP.DirectWire.terminalProjectionDefect_eq_zero_iff_minima_eq": "0abc70a2376500b301bb104cc45264d70640a8212175fb9c1dba9817bb91059c",
+  "PNP.DirectWire.terminalProjectionDefect_eq_zero_iff_exists_checkedFullLiftAtMinimum": "8c1b490e05aca8450c836267b85afeb88f838b5d5b26301599b8392bd0178a17",
+  "PNP.DirectWire.terminalProfileMinima_eq_of_keepsAll": "973db9a1c04cce7aa637d65512904844dc9a26e645ed2720d89d3818cdc79c3a",
+  "PNP.DirectWire.terminalProjectionDefect_pos_no_checkedFullLiftAtMinimum": "6cb0a806515c14a4b43fdbe133833861a3cb21fdf0d48cd350f93ad8507eace2"
+};
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -209,18 +226,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "1c9732052c9fbb05b7bea33887cfefea535a1c01");
+  assert.equal(result.coreCommit, "accf07e45123837661307a37a02d2119ecd7aacc");
 });
 
-test("current release is pinned, seventy-one-page, exposes the terminal mode firewall, and fails closed", () => {
+test("current release is pinned, seventy-two-page, exposes terminal projection minima, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-81");
-  assert.equal(release.source.commit, "1c9732052c9fbb05b7bea33887cfefea535a1c01");
-  assert.equal(release.source.proofCommit, "99aaf5af8b05121592a02090d83aebc999ad4a90");
-  assert.equal(release.source.tree, "88b8b18e0adc1e62d78d2b6b37bdfcb9d2a95332");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-04-82");
+  assert.equal(release.source.commit, "accf07e45123837661307a37a02d2119ecd7aacc");
+  assert.equal(release.source.proofCommit, "748a8e3359ee09e8e115cdbebe870786c7bb3f86");
+  assert.equal(release.source.tree, "79f2ab904d9c90db6aa2d10ba2931c11a036b747");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 71);
+  assert.equal(release.artifacts.report.pageCount, 72);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -1787,6 +1804,22 @@ test("current release is pinned, seventy-one-page, exposes the terminal mode fir
   assert.deepEqual(release.earnedBoundary.residualTerminalModeFirewallTheoremKernelTypeSha256, RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREM_SHA256);
   assert.deepEqual(release.earnedBoundary.residualTerminalModeFirewallAxiomClosure, []);
   assert.deepEqual(release.earnedBoundary.residualTerminalModeFirewallProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumAuditedDeclarationCount, 27);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumEmptyAxiomDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumPropextOnlyDeclarationCount, 18);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumExecutableFullScanFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumExecutableQuotientScanFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumAttainmentFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumUniversalLowerBoundsFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionMinimumMonotonicityFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionDefectDecompositionFormalized, true);
+  assert.equal(release.earnedBoundary.residualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized, true);
+  assert.deepEqual(release.earnedBoundary.residualProjectionMinimumTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREM_SHA256);
+  assert.deepEqual(release.earnedBoundary.residualProjectionMinimumAxiomClosure, ["propext"]);
+  assert.deepEqual(release.earnedBoundary.residualProjectionMinimumProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.pccMinPolynomialRuntimeFormalized, false);
   assert.equal(release.earnedBoundary.lockedNANDNormalizeIdempotentTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent");
   assert.equal(release.earnedBoundary.lockedNANDNormalizeEvalTheorem, "PNP.Concrete.LockedNAND.RawCircuit.normalize_eval");
   assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
@@ -1813,12 +1846,12 @@ test("current release is pinned, seventy-one-page, exposes the terminal mode fir
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 78 milestones with the terminal mode firewall pinned", () => {
+test("status and inventory publish exactly 79 milestones with terminal projection minima pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 78);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 75);
+  assert.equal(milestones.length, 79);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 76);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -2085,21 +2118,41 @@ test("status and inventory publish exactly 78 milestones with the terminal mode 
   assert.equal(status.leanResidualTerminalQuotientEqualityNotConstructiveFormalized, true);
   assert.equal(status.leanResidualTerminalObligationDischargePreservedFormalized, true);
 
-  assert.equal(inventory.declarationCount, 23819);
-  assert.equal(inventory.theoremCount, 12894);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6846);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14273);
-  assert.equal(inventory.sourceClosureModuleCount, 213);
-  assert.equal(inventory.milestoneCandidates.length, 2127);
+  const residualTerminalProjectionMinimum = milestones.find((row) => row.id === "residual-terminal-projection-minimum");
+  assert.equal(residualTerminalProjectionMinimum.classification, "formalized-terminal-projection-minimum");
+  assert.equal(residualTerminalProjectionMinimum.earned, true);
+  assert.equal(residualTerminalProjectionMinimum.allAssumptionFree, false);
+  assert.equal(residualTerminalProjectionMinimum.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualTerminalProjectionMinimum.allKernelTypesMatch, true);
+  assert.equal(residualTerminalProjectionMinimum.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualTerminalProjectionMinimum.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREM_SHA256));
+  assert.deepEqual(
+    Object.fromEntries(residualTerminalProjectionMinimum.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREM_SHA256
+  );
+  assert.match(residualTerminalProjectionMinimum.scope, /attained quotient-profile minimum/u);
+  assert.match(residualTerminalProjectionMinimum.nonClaim, /no polynomial runtime/u);
+  assert.equal(status.leanResidualProjectionMinimumFormalized, true);
+  assert.equal(status.leanResidualProjectionMinimumAxiomAuditPassed, true);
+  assert.equal(status.leanResidualProjectionMinimumMonotonicityFormalized, true);
+  assert.equal(status.leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized, true);
+  assert.equal(status.leanPCCMinPolynomialRuntimeFormalized, false);
+
+  assert.equal(inventory.declarationCount, 23855);
+  assert.equal(inventory.theoremCount, 12917);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6849);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14316);
+  assert.equal(inventory.sourceClosureModuleCount, 214);
+  assert.equal(inventory.milestoneCandidates.length, 2141);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
     constructor: 652,
-    definition: 9705,
+    definition: 9718,
     inductive: 282,
     opaque: 0,
     quotient: 0,
     recursor: 282,
-    theorem: 12894
+    theorem: 12917
   });
 });
 

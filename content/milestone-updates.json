@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-04-residual-terminal-projection-minimum",
+      "milestoneId": "residual-terminal-projection-minimum",
+      "publishedAt": "2026-08-04T01:52:25Z",
+      "title": "The proof now measures exactly what is lost when a circuit comparison ignores details",
+      "plainLanguage": [
+        "A circuit is a finite collection of simple yes-or-no operations. Two circuits can be compared using either a full checklist of their behaviour or a shorter checklist that deliberately ignores some details. Lean now exhaustively finds the smallest matching circuit under each checklist, proves that a circuit of each reported size really exists, and proves that no matching circuit can be smaller.",
+        "Ignoring details can never make the smallest matching circuit larger. Lean now measures the exact size gap between the two comparisons and proves that the gap is zero exactly when a smallest partial match also passes every omitted check. This exhaustive reference search is not an efficient algorithm and does not complete the remaining support, saturation, ZeroSlack, PCCMin, or complexity-theory work, so it does not prove P = NP. The 62% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 62,
+      "source": {
+        "commit": "accf07e45123837661307a37a02d2119ecd7aacc",
+        "tree": "79f2ab904d9c90db6aa2d10ba2931c11a036b747",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-99",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-04-RESIDUAL-TERMINAL-PROJECTION-MINIMUM-98"
+      }
+    },
+    {
       "id": "2026-08-04-residual-terminal-mode-firewall",
       "milestoneId": "residual-terminal-mode-firewall",
       "publishedAt": "2026-08-03T17:25:02Z",
