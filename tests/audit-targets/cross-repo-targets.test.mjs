@@ -7248,6 +7248,61 @@ test("rejects terminal support-extraction release, status, inventory, and public
   expectFailure(mapFingerprint, /core publication map residual terminal support-extraction fingerprint mismatch/);
 });
 
+test("rejects governed proper-positive support release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalProperSupportSearchCompleteFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal proper-positive support boundary mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalProperSupportExactLocalGainFormalized = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal proper-positive support evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-proper-positive-support-search"
+  ).nonClaim = "This is a polynomial global gain-completeness theorem and proves P = NP.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal proper-positive support publication boundary mismatch/);
+
+  const statusTheorem = makeProject(t);
+  const statusTheoremPayload = JSON.parse(readFileSync(path.join(statusTheorem.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusTheoremPayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-proper-positive-support-search"
+  ).theoremRows.find(
+    (row) => row.name === "PNP.DirectWire.findTerminalProperPositiveSupport_sound"
+  ).actualKernelTypeSha256 = "0".repeat(64);
+  rewriteCorePayload(statusTheorem, "public/pnp-status.json", statusTheoremPayload);
+  expectFailure(statusTheorem, /status residual terminal proper-positive support theorem evidence mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.findTerminalProperPositiveSupport_sound"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal proper-positive support theorem mismatch/);
+
+  const mapNonClaim = makeProject(t);
+  const mapNonClaimPayload = JSON.parse(readFileSync(path.join(mapNonClaim.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapNonClaimPayload.milestones.find(
+    (row) => row.id === "residual-terminal-proper-positive-support-search"
+  ).nonClaim = "P = NP";
+  rewriteCorePayload(mapNonClaim, "publication/FORMAL_PUBLICATION_MAP.json", mapNonClaimPayload);
+  expectFailure(mapNonClaim, /core publication map residual terminal proper-positive support milestone mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.findTerminalProperPositiveSupport_sound"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal proper-positive support fingerprint mismatch/);
+});
+
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
   const project = makeProject(t);
   project.release.earnedBoundary.pipelinePairedRawTimePolynomial = "Rpair(m) = 0";
