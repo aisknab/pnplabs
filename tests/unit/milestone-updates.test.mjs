@@ -141,7 +141,7 @@ test("progress estimates are editorial and may decrease between tracked mileston
   const olderTracked = structuredClone(data);
   olderTracked.entries[1].progressEstimatePercent = 35;
   const model = validateUpdatesModel(olderTracked, status, index);
-  assert.equal(model.entries[0].progressEstimatePercent, 65);
+  assert.equal(model.entries[0].progressEstimatePercent, 66);
   assert.equal(model.entries[1].progressEstimatePercent, 35);
 });
 
@@ -225,7 +225,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 40);
+  assert.equal(result.entries.length, 41);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {
