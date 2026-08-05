@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PNP Labs — milestone updates</title>
+  <title>PNP Labs | milestone updates</title>
   <meta name="description" content="Plain-language and technical updates for each newly earned PNP Labs formal milestone.">
   <link rel="canonical" href="https://pnplabs.com.au/updates.html">
   <link rel="alternate" type="application/atom+xml" title="PNP Labs milestone updates" href="https://pnplabs.com.au/updates.xml">
@@ -28,16 +28,36 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 66% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 67% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="66" aria-label="Estimated proof reconstruction progress: 66 percent">66%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 66 percent">
+        <progress class="proof-progress-meter" max="100" value="67" aria-label="Estimated proof reconstruction progress: 67 percent">67%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 67 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-05-residual-terminal-proper-positive-support-search" data-milestone-id="residual-terminal-proper-positive-support-search">
+        <div class="section-label"><time datetime="2026-08-05T14:30:00Z">2026-08-05</time> · earned milestone 81</div>
+        <h2>The proof can now search for a genuinely smaller useful part of a circuit</h2>
+        <p>A circuit is a list of simple yes-or-no operations connected by wires. Lean can now examine every possible starting selection from a supplied finite dependency system, complete all recorded dependencies, and test whether the resulting part is nonempty, genuinely smaller than the whole circuit, and improves the exact size comparison.</p>
+        <p>Lean proves that this finite search finds a qualifying part whenever one exists in that governed search space, and that the extracted smaller circuit preserves the intended boundary behaviour. The dependency system is still supplied rather than derived from the circuit, and the search is exhaustive rather than efficient. It does not complete the manuscript&#39;s full support or square arguments, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 67% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 67%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-proper-positive-support-search</code></p>
+          <p><strong>Classification:</strong> formalized-governed-proper-positive-support-search</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire candidate and explicit terminal dependency system, Lean enumerates the complete canonical finite universe of primitive-record seeds, saturates and physically completes each seed, extracts its exact open support, and computes exact local gain from the exhaustive semantic reference minimum. The search returns a proof-bearing nonempty proper support with positive gain whenever one exists in that canonical seed universe, and its none result is equivalent to the absence of such a seed.</p>
+          <p><strong>Boundary:</strong> The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit, and the search is exhaustive reference computation rather than a polynomial algorithm. This milestone does not prove global gain completeness, full manuscript support completion or square legitimacy, instantiate a projection-compatible square, prove SaturatePositive or BCELReady, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 22</p>
+          <p><strong>Core source:</strong> commit <code>bdbbabc67f20b5d4f673e11098ba86a9d10a1cf1</code>, tree <code>c26d7b20ab7d5241ad4fc7f214ac06b9477e78c6</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-104</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PROPER-POSITIVE-SUPPORT-SEARCH-103</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-05-residual-terminal-support-extraction" data-milestone-id="residual-terminal-support-extraction">
         <div class="section-label"><time datetime="2026-08-05T06:43:58Z">2026-08-05</time> · earned milestone 80</div>
         <h2>The proof can now rebuild any chosen part of a circuit</h2>
-        <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations—even a scattered collection—and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.</p>
+        <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations, including a scattered collection, and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.</p>
         <p>Lean proves the rebuilt circuit has exactly the selected number of operations and gives the intended outgoing values for every possible set of incoming values. When those incoming values come from the original whole circuit, the extracted circuit reproduces the original results, including after the dependency checklist is completed. The record list and dependency links are still supplied rather than derived automatically, and this does not construct the manuscript’s proper positive support or required square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 66% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
         <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 66%.</p>
         <details>
@@ -97,7 +117,7 @@
       <article class="card" id="2026-08-04-residual-terminal-projection-transfer" data-milestone-id="residual-terminal-projection-transfer">
         <div class="section-label"><time datetime="2026-08-04T09:07:29Z">2026-08-04</time> · earned milestone 77</div>
         <h2>The proof now balances four related circuit comparisons</h2>
-        <p>Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases—the common part, two alternatives, and their combined case—and proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.</p>
+        <p>Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases: the common part, two alternatives, and their combined case. It proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.</p>
         <p>Under the stated conditions, if no information is lost in the common part or either alternative, but the combined case loses D circuit operations, then the accounting difference is exactly D; if D is greater than zero, the difference is too. Lean checks increases and decreases correctly. It does not construct the four cases, prove that the manuscript’s required support and saturation objects exist, complete ZeroSlack or PCCMin, provide a fast algorithm, or prove P = NP. The 63% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
         <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 63%.</p>
         <details>
@@ -178,7 +198,7 @@
         <div class="section-label"><time datetime="2026-08-03T06:33:39Z">2026-08-03</time> · earned milestone 73</div>
         <h2>A globally complete stop now certifies a smallest circuit</h2>
         <p>A circuit is a finite list of simple yes-or-no operations. Two circuits are equivalent when they give exactly the same outputs for every possible input. Lean now proves an exact rule for when an equivalent circuit cannot be made smaller: there is no smaller equivalent circuit anywhere exactly when the current circuit is already as small as possible.</p>
-        <p>This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit—not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p>This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit, not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
         <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 59%.</p>
         <details>
           <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
@@ -218,7 +238,7 @@
         <div class="section-label"><time datetime="2026-07-31T17:22:27Z">2026-07-31</time> · earned milestone 71</div>
         <h2>The CNF-to-NAND translation now runs as a checked efficient process</h2>
         <p>The previous update proved that a CNF formula and its NAND translation have the same yes-or-no answer. This update adds one fixed, inspectable machine that performs that translation for every possible input. Lean checks that valid formulas produce exactly the intended circuit, while malformed inputs stop safely and produce no result.</p>
-        <p>Lean also proves that the work grows at a polynomial rate with the input size—the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p>Lean also proves that the work grows at a polynomial rate with the input size, which is the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
         <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 57%.</p>
         <details>
           <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>

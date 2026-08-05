@@ -10,6 +10,7 @@
     "verify:seal": "node tools/verify-release-seal.mjs",
     "deployment:generate": "node tools/deployment-provenance.mjs",
     "deployment:check": "node tools/deployment-provenance.mjs --check",
+    "notify:deployment-ready": "node tools/notify-deployment-ready.mjs",
     "verify:production": "node tools/check-production-deployment.mjs",
     "examples:minimal": "node tools/run-minimal-examples.mjs",
     "pnp:import-run": "node tools/import-pnp-verifier-run.mjs",

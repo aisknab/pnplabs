@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-103');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-104');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 24211);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13049);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 24260);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13074);
   assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6927);
-  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14524);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 219);
-  assert.equal(status.formalPublicationMilestones.length, 83);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 80);
+  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14574);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 220);
+  assert.equal(status.formalPublicationMilestones.length, 84);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 81);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
@@ -37,6 +37,14 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanResidualTerminalSupportExtractionAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalOpenSemanticsFormalized, true);
   assert.equal(status.leanResidualTerminalInducedRecoveryFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportSearchCompleteFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportExactLocalGainFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalProperSupportScope,
+    'all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain'
+  );
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserAuditedDeclarationCount, 380);

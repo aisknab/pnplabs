@@ -2,6 +2,15 @@
 
 This repository concerns an extraordinary theoretical computer science claim. All changes must prioritize precision, auditability, reproducibility, and conservative wording.
 
+## Public prose style
+
+- Do not publish em dashes on the PNPLabs web surface. Use commas, colons,
+  parentheses, or separate sentences instead. The unit test covers raw Unicode
+  em dashes and common HTML entities across every public text file.
+- The canonical PDF and TeX report aliases are exact synchronized evidence and
+  are excluded from this style rewrite. Never alter their bytes merely to satisfy
+  a site-copy preference.
+
 ## Remote builder policy
 
 The local workstation is memory-constrained. Treat it as an edit-and-inspection
@@ -38,7 +47,7 @@ host, not as a build host.
 ## Formal-publication sync and deployment sequence
 
 1. Merge the corresponding core `pnp` PR first. Fetch its `origin/main`, then
-   synchronize from a clean checkout of the exact core merge commit and tree—not
+   synchronize from a clean checkout of the exact core merge commit and tree, not
    from the feature-branch tip.
 2. Treat theorem pins, non-claim text, counts, coordinates, page and byte counts,
    and digests as exact generated data. Do not paraphrase or independently retype
@@ -77,6 +86,19 @@ host, not as a build host.
    commit. Confirm provenance, complete public bytes, routes, redirects, headers,
    MIME types, cache policy, denial probes, and release identity.
 
+### Deployment-ready phone notification
+
+- Send the ntfy alert only after the PNPLabs PR is merged, every durable check is
+  green, the exact merge commit has passed source-bound and clean-clone
+  verification, and `origin/main` resolves to that same commit.
+- Run `npm run notify:deployment-ready -- --commit <exact-merge-commit>` from a
+  clean checkout with `PNPLABS_NTFY_TOPIC` supplied in the environment. Never
+  hardcode the topic or include credentials, private paths, or other secrets in
+  the notification.
+- The message must include the exact PNPLabs merge commit, tree, and pinned
+  user-owned deployment command. A dry run is evidence only for message shape;
+  it does not count as a delivered alert.
+
 ### Cheap-failure-first publication preflight
 
 - Start from the authoritative generated payload and enumerate every changed
@@ -101,7 +123,7 @@ host, not as a build host.
   by `docs/audit_targets.json` and verify it resolves in `PNP_SOURCE_DIR`. Prefer
   a fresh checkout of the exact core merge; stale branch-specific fetch refspecs
   and missing historical tags are preflight failures.
-- If any follow-up changes the PR head—even a test or workflow-only correction—
+- If any follow-up changes the PR head, including a test or workflow-only correction,
   repeat the exact-head clean-clone reproduction. Earlier clean-clone evidence
   applies only to the commit it checked.
 - Never expand, pad, or transcribe an abbreviated Git SHA by hand. Immediately

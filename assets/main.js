@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-103';
-const STATUS_SHA256 = '0281e267926f6623d4cbb8f4e000a5c2ce4547602fa46bfcc40750903bfa9388';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-SUPPORT-EXTRACTION-102';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-05-103';
-const INVENTORY_SHA256 = '253dff68782561bf47e6a059233a3207aa73f5fab1e9dd05fc961af50f1912fb';
-const SOURCE_CLOSURE_SHA256 = '1dd96e3dacf0ce978270cdb494a25253a6d7f465eaa153937e8aaac06586983c';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-104';
+const STATUS_SHA256 = '5e261783dc48acfdf7f9b1a78291faa8be3e26ad8e85c188de77978b58184f17';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PROPER-POSITIVE-SUPPORT-SEARCH-103';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-05-104';
+const INVENTORY_SHA256 = 'fc56f19a06459903b4d234edb72133a398f6e1138230420e2de94f5adeaefcf6';
+const SOURCE_CLOSURE_SHA256 = '18d12d424a1f62f08dbd8ccd9fd96ea4ebd111276d28907c89e7f89a89e40efb';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 24211,
-  theorems: 13049,
+  declarations: 24260,
+  theorems: 13074,
   assumptionFreeTheorems: 6927,
-  excludedPrivateDeclarations: 14524,
-  modules: 219,
+  excludedPrivateDeclarations: 14574,
+  modules: 220,
   axioms: 4,
 });
 
@@ -3451,6 +3451,31 @@ const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible", ["propext"], "PNP.ResidualTerminalPhysicalSupportCompletion"],
 ]);
 
+const RESIDUAL_TERMINAL_PROPER_SUPPORT_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.canonicalTerminalSupportSeed_mem", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.mem_canonicalTerminalSupportSeed_iff", ["propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.terminalProperPositiveSupportBool_eq_true_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.findTerminalProperPositiveSupport_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.findTerminalProperPositiveSupport_exists_of_seed", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.findTerminalProperPositiveSupport_eq_none_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.findTerminalProperPositiveSupport_unique", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.saturatedRecords_closed", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.physically_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.gateCount_bounds", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.extracted_semantics", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.extracted_induced", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_equivalent", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.referenceMinimum_lt_gateCount", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_size_lt", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.mem_terminalSaturateRecords_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalExecutableSaturation"],
+  ["PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible", ["propext"], "PNP.ResidualTerminalPhysicalSupportCompletion"],
+  ["PNP.DirectWire.extractSaturatedTerminalSupport_gateCount", ["Quot.sound", "propext"], "PNP.ResidualTerminalSupportExtraction"],
+  ["PNP.DirectWire.extractSaturatedTerminalSupport_semantics", ["Quot.sound", "propext"], "PNP.ResidualTerminalSupportExtraction"],
+  ["PNP.DirectWire.extractSaturatedTerminalSupport_induced", ["Quot.sound", "propext"], "PNP.ResidualTerminalSupportExtraction"],
+  ["PNP.DirectWire.Candidate.referenceMinimumReplacement_equivalent", [], "PNP.NANDSlack"],
+  ["PNP.DirectWire.Candidate.referenceMinimumReplacement_size", [], "PNP.NANDSlack"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -3974,6 +3999,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-saturation-closure',
   'residual-terminal-physical-support-completion',
   'residual-terminal-support-extraction',
+  'residual-terminal-proper-positive-support-search',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4326,6 +4352,10 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualProjectionTransferConstantCutFormalized: false,
   leanResidualProjectionTransferScope: null,
   leanResidualTerminalProperSupportFormalized: false,
+  leanResidualTerminalProperSupportSearchCompleteFormalized: false,
+  leanResidualTerminalProperSupportExactLocalGainFormalized: false,
+  leanResidualTerminalProperSupportAxiomAuditPassed: false,
+  leanResidualTerminalProperSupportScope: null,
   leanResidualTerminalSaturationFormalized: false,
   leanResidualTerminalSaturationAxiomAuditPassed: false,
   leanResidualTerminalPrimitiveUniverseFormalized: false,
@@ -4728,6 +4758,10 @@ leanResidualProjectionTransferSignedDeltasFormalized = ${payload.leanResidualPro
 leanResidualProjectionTransferIdentityFormalized = ${payload.leanResidualProjectionTransferIdentityFormalized ?? false}
 leanResidualProjectionTransferConstantCutFormalized = ${payload.leanResidualProjectionTransferConstantCutFormalized ?? false}
 leanResidualTerminalProperSupportFormalized = ${payload.leanResidualTerminalProperSupportFormalized ?? false}
+leanResidualTerminalProperSupportSearchCompleteFormalized = ${payload.leanResidualTerminalProperSupportSearchCompleteFormalized ?? false}
+leanResidualTerminalProperSupportExactLocalGainFormalized = ${payload.leanResidualTerminalProperSupportExactLocalGainFormalized ?? false}
+leanResidualTerminalProperSupportAxiomAuditPassed = ${payload.leanResidualTerminalProperSupportAxiomAuditPassed ?? false}
+leanResidualTerminalProperSupportScope = ${payload.leanResidualTerminalProperSupportScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalProperSupportScope)}
 leanResidualTerminalSaturationFormalized = ${payload.leanResidualTerminalSaturationFormalized ?? false}
 leanResidualTerminalSaturationAxiomAuditPassed = ${payload.leanResidualTerminalSaturationAxiomAuditPassed ?? false}
 leanResidualTerminalPrimitiveUniverseFormalized = ${payload.leanResidualTerminalPrimitiveUniverseFormalized ?? false}
@@ -4791,13 +4825,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 677,
-    definition: 9897,
-    inductive: 292,
+    constructor: 678,
+    definition: 9918,
+    inductive: 293,
     opaque: 0,
     quotient: 0,
-    recursor: 292,
-    theorem: 13049,
+    recursor: 293,
+    theorem: 13074,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5158,6 +5192,11 @@ function validateInventory(inventory) {
     axioms,
     module,
   }));
+  const residualTerminalProperSupport = RESIDUAL_TERMINAL_PROPER_SUPPORT_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -5502,6 +5541,9 @@ function validateInventory(inventory) {
     && residualTerminalSupportExtraction.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalProperSupport.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5543,7 +5585,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2183
+    && inventory.milestoneCandidates.length === 2200
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5607,7 +5649,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 80;
+    const shouldBeEarned = index < 81;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5678,6 +5720,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalSupportExtractionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-support-extraction'
+  );
+  const residualTerminalProperSupportMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-proper-positive-support-search'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -5774,7 +5819,7 @@ function validateStatus(status, inventory) {
     && status.leanResidualWholeSpanZeroAbsenceIffFormalized === true
     && status.leanResidualTerminalFullBridgeScope === "all-finite-direct-wire-implementations-with-complete-multi-output-semantics-and-exhaustive-reference-minimum-witnesses"
     && status.leanResidualTerminalQuotientCarrierFormalized === true
-    && status.leanResidualTerminalProperSupportFormalized === false
+    && status.leanResidualTerminalProperSupportFormalized === true
     && residualTerminalModeFirewallMilestone?.classification === "formalized-terminal-mode-firewall"
     && residualTerminalModeFirewallMilestone.scope === "For every finite direct-wire implementation, a computed finite profile observer records the ten terminal carrier roles and an explicit forgetful projection selects the quotient coordinates. Projection retains the exact implementation, gate count, and complete multi-output Boolean semantics. A quotient comparison has a checked full lift exactly when every forgotten profile coordinate agrees, lossless projections lift directly, and obligation discharge transports across a checked lift."
     && residualTerminalModeFirewallMilestone.nonClaim === "This is a terminal comparison/lifting firewall only. It supplies no proper or governed supports, arbitrary quotient construction, support or projection-defect minimum, saturation, Package E, BCEL/BN2-BN6, packet or selector completeness, global residual route, ZeroSlack certificate, PCCMin exactness or polynomial runtime, SAT-in-P result, discharged project assumption, or proof that P = NP."
@@ -5863,6 +5908,18 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSupportExtractionScope === "all-finite-direct-wire-candidates-terminal-record-lists-boundary-valuations-and-interface-coordinates"
     && status.leanResidualTerminalOpenSemanticsFormalized === true
     && status.leanResidualTerminalInducedRecoveryFormalized === true
+    && residualTerminalProperSupportMilestone?.classification === "formalized-governed-proper-positive-support-search"
+    && residualTerminalProperSupportMilestone.scope === "For every finite direct-wire candidate and explicit terminal dependency system, Lean enumerates the complete canonical finite universe of primitive-record seeds, saturates and physically completes each seed, extracts its exact open support, and computes exact local gain from the exhaustive semantic reference minimum. The search returns a proof-bearing nonempty proper support with positive gain whenever one exists in that canonical seed universe, and its none result is equivalent to the absence of such a seed."
+    && residualTerminalProperSupportMilestone.nonClaim === "The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit, and the search is exhaustive reference computation rather than a polynomial algorithm. This milestone does not prove global gain completeness, full manuscript support completion or square legitimacy, instantiate a projection-compatible square, prove SaturatePositive or BCELReady, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalProperSupportMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PROPER_SUPPORT_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalProperSupportFormalized === true
+    && status.leanResidualTerminalProperSupportSearchCompleteFormalized === true
+    && status.leanResidualTerminalProperSupportExactLocalGainFormalized === true
+    && status.leanResidualTerminalProperSupportAxiomAuditPassed === true
+    && status.leanResidualTerminalProperSupportScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain"
     && status.leanResidualTerminalSupportCompletionFormalized === false
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
     && status.leanResidualTerminalProjectionSquareFormalized === false

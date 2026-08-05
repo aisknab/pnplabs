@@ -4,8 +4,8 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "5bc35c370e0d8987c69bd51f7f31e29070f7c162";
-const CORE_TREE = "9f28a98946ada047b8a3beb50158239d66ecf5d9";
+const CORE_COMMIT = "bdbbabc67f20b5d4f673e11098ba86a9d10a1cf1";
+const CORE_TREE = "c26d7b20ab7d5241ad4fc7f214ac06b9477e78c6";
 const PROOF_COMMIT = "5ec1db96c1fc5eabb19eb665c0abc4a0cd4ad806";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -3379,6 +3379,35 @@ const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_SCOPE = "all-finite-direct-wire-candi
 const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_MILESTONE_SCOPE = "For every finite direct-wire candidate and finite terminal record list, including noncontiguous selections, the actual program is structurally extracted over its exact canonical incoming boundary and ordered outgoing interface. The extracted candidate equals an independently defined open-support function for every boundary valuation and recovers the original interface values on whole-circuit-induced boundaries; the construction also composes with executable terminal saturation.";
 const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NON_CLAIM = "The record list and terminal dependency system remain explicit inputs rather than the manuscript's derived profile frontier. This milestone does not construct a proper positive support, prove full governed support completion or square legitimacy, instantiate the required projection square, prove SaturatePositive, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
+const RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS = {
+  "PNP.DirectWire.canonicalTerminalSupportSeed_mem": { hash: "c0d249acf0ac350b3173daa5b316e6c5a50ef9111348c17a7d1ff15391f28eeb", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.mem_canonicalTerminalSupportSeed_iff": { hash: "e537f808ddf8f8bce5d0acde5b27fffcd52909e02fad5790fec09b62049d7f7c", axioms: ["propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.terminalProperPositiveSupportBool_eq_true_iff": { hash: "5bd6aa86a355145db2233320bf06c2f430e597dc571c2e0ebee05dadc98e5cf1", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.findTerminalProperPositiveSupport_sound": { hash: "f9f82d916f1cf7f161bfb2299bcc257c59cd9cdee26dc02592e180afd24ec163", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.findTerminalProperPositiveSupport_exists_of_seed": { hash: "719584be55ea7342fedd114cb9f425309232e24c3364f89e2a76f8d3fe015399", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.findTerminalProperPositiveSupport_eq_none_iff": { hash: "05def77103a3282116ffcf39df9cf74aa6ac1ab79148d80c3a0ef3326cb456b5", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.findTerminalProperPositiveSupport_unique": { hash: "3751b0d5526329014e7cdfb7abf7fef92e2b453263c731fc35cab79bd541f6a7", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.saturatedRecords_closed": { hash: "adef8bf222cacc7e570bc02c5852d644eeec183dcb278c2105bfd655d6bda5e7", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.physically_compatible": { hash: "eb5bd2849c564caa6047404b4426b65d081a1153214db68e0023023a291f15e0", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.gateCount_bounds": { hash: "0ca36fed9df04a741d077954694c84cb6f272661927d4eb1da533f0017238adc", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.extracted_semantics": { hash: "56da805f2e24576e8611631f0d698fe7978557b40a05c0851f058e728303c897", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.extracted_induced": { hash: "f441745ae9aa20dde6d5e64b85193524563bba872224c1250601bba1e583ab65", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_equivalent": { hash: "89e2c756c4efeaa1f9a8dc6213ec81d907ee091b97ad3ec1c13dd57720c5949c", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.referenceMinimum_lt_gateCount": { hash: "3c2723813d8698079c9b31f8120b34ec63d9f8d0ad9d5c19726be9ae656c52d7", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_size_lt": { hash: "2fc0253f766510bc57b7f490782fac0ea4fc6a1f1d05845a3299c71e8793be23", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
+  "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
+  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.extractSaturatedTerminalSupport_gateCount": { hash: "18f51c1d2f3a9ddcbf0b625bd5fdb4e48755c43a1d194ab591bd81574cadfa0c", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
+  "PNP.DirectWire.extractSaturatedTerminalSupport_semantics": { hash: "fddf804df49f57bab852950d3e8f3987b9cb8e273eb6cf93ee36c0633d51c529", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
+  "PNP.DirectWire.extractSaturatedTerminalSupport_induced": { hash: "38e1f0d81a820f97d9af5f6453c1f4e52db7893f837b07e0e72e2819975ba7e1", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
+  "PNP.DirectWire.Candidate.referenceMinimumReplacement_equivalent": { hash: "b6bf39e59f49dd4ba9f43c3e11de934664e2fedb1567862c01e728b90c945704", axioms: [], module: "PNP.NANDSlack" },
+  "PNP.DirectWire.Candidate.referenceMinimumReplacement_size": { hash: "557ed42fa22eb5375b09ff387166d33a42b42e36cea1a8eeffdd757d2e7886e2", axioms: [], module: "PNP.NANDSlack" },
+};
+
+const RESIDUAL_TERMINAL_PROPER_SUPPORT_SCOPE = "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain";
+const RESIDUAL_TERMINAL_PROPER_SUPPORT_MILESTONE_SCOPE = "For every finite direct-wire candidate and explicit terminal dependency system, Lean enumerates the complete canonical finite universe of primitive-record seeds, saturates and physically completes each seed, extracts its exact open support, and computes exact local gain from the exhaustive semantic reference minimum. The search returns a proof-bearing nonempty proper support with positive gain whenever one exists in that canonical seed universe, and its none result is equivalent to the absence of such a seed.";
+const RESIDUAL_TERMINAL_PROPER_SUPPORT_NON_CLAIM = "The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit, and the search is exhaustive reference computation rather than a polynomial algorithm. This milestone does not prove global gain completeness, full manuscript support completion or square legitimacy, instantiate a projection-compatible square, prove SaturatePositive or BCELReady, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
   residualTerminalPrimitiveUniverseTheorem: "PNP.DirectWire.mem_allTerminalPrimitiveRecords",
   residualTerminalSaturationExtensiveTheorem: "PNP.DirectWire.terminalSaturate_extensive",
@@ -3428,6 +3457,31 @@ const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_RELEASE_IDENTITIES = {
   residualTerminalPhysicalIncomingReuseTheorem: "PNP.DirectWire.completeTerminalPhysicalSupport_incoming_complete",
   residualTerminalPhysicalCompatibilityReuseTheorem: "PNP.DirectWire.completeTerminalPhysicalSupport_compatible",
   residualTerminalSaturatedPhysicalCompatibilityReuseTheorem: "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible"
+};
+
+const RESIDUAL_TERMINAL_PROPER_SUPPORT_RELEASE_IDENTITIES = {
+  residualTerminalCanonicalSupportSeedMembershipTheorem: "PNP.DirectWire.canonicalTerminalSupportSeed_mem",
+  residualTerminalCanonicalSupportSeedCharacterizationTheorem: "PNP.DirectWire.mem_canonicalTerminalSupportSeed_iff",
+  residualTerminalProperPositivePredicateTheorem: "PNP.DirectWire.terminalProperPositiveSupportBool_eq_true_iff",
+  residualTerminalProperPositiveSearchSoundTheorem: "PNP.DirectWire.findTerminalProperPositiveSupport_sound",
+  residualTerminalProperPositiveSearchCompleteTheorem: "PNP.DirectWire.findTerminalProperPositiveSupport_exists_of_seed",
+  residualTerminalProperPositiveSearchNoneIffTheorem: "PNP.DirectWire.findTerminalProperPositiveSupport_eq_none_iff",
+  residualTerminalProperPositiveSearchUniqueTheorem: "PNP.DirectWire.findTerminalProperPositiveSupport_unique",
+  residualTerminalProperPositiveSaturatedClosureTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.saturatedRecords_closed",
+  residualTerminalProperPositivePhysicalCompatibilityTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.physically_compatible",
+  residualTerminalProperPositiveGateBoundsTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.gateCount_bounds",
+  residualTerminalProperPositiveExtractedSemanticsTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.extracted_semantics",
+  residualTerminalProperPositiveExtractedInducedTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.extracted_induced",
+  residualTerminalProperPositiveReplacementEquivalentTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_equivalent",
+  residualTerminalProperPositiveReferenceMinimumDescentTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.referenceMinimum_lt_gateCount",
+  residualTerminalProperPositiveReplacementSizeDescentTheorem: "PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_size_lt",
+  residualTerminalProperSupportSaturateMembershipReuseTheorem: "PNP.DirectWire.mem_terminalSaturateRecords_iff",
+  residualTerminalProperSupportPhysicalCompatibilityReuseTheorem: "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible",
+  residualTerminalProperSupportExtractGateCountReuseTheorem: "PNP.DirectWire.extractSaturatedTerminalSupport_gateCount",
+  residualTerminalProperSupportExtractSemanticsReuseTheorem: "PNP.DirectWire.extractSaturatedTerminalSupport_semantics",
+  residualTerminalProperSupportExtractInducedReuseTheorem: "PNP.DirectWire.extractSaturatedTerminalSupport_induced",
+  residualTerminalProperSupportReferenceMinimumEquivalentReuseTheorem: "PNP.DirectWire.Candidate.referenceMinimumReplacement_equivalent",
+  residualTerminalProperSupportReferenceMinimumSizeReuseTheorem: "PNP.DirectWire.Candidate.referenceMinimumReplacement_size"
 };
 
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
@@ -3618,44 +3672,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 430495,
-    sha256: "a3db2479dbe5fe0620802bfdfcded79cbc1359ed62f65107b68e57e25fd897fa",
+    bytes: 431630,
+    sha256: "2e8d545dc874f8e2bdadb696c629f9d8a5a13516778eb315d61802bc34b68056",
     role: "current inventory-derived seventy-four-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 430495,
-    sha256: "a3db2479dbe5fe0620802bfdfcded79cbc1359ed62f65107b68e57e25fd897fa",
+    bytes: 431630,
+    sha256: "2e8d545dc874f8e2bdadb696c629f9d8a5a13516778eb315d61802bc34b68056",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 187652,
-    sha256: "50d1f6ea41f371510e0be86bd84dd33f535154228692dbe1ebcafb3ff5e47ca2",
+    bytes: 188927,
+    sha256: "719c9c79e2014b33843a86a665220dbea89146c15195c396be3d1cd918ff101c",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 187652,
-    sha256: "50d1f6ea41f371510e0be86bd84dd33f535154228692dbe1ebcafb3ff5e47ca2",
+    bytes: 188927,
+    sha256: "719c9c79e2014b33843a86a665220dbea89146c15195c396be3d1cd918ff101c",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 1749669,
-    sha256: "0281e267926f6623d4cbb8f4e000a5c2ce4547602fa46bfcc40750903bfa9388",
+    bytes: 1764999,
+    sha256: "5e261783dc48acfdf7f9b1a78291faa8be3e26ad8e85c188de77978b58184f17",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 13945316,
-    sha256: "253dff68782561bf47e6a059233a3207aa73f5fab1e9dd05fc961af50f1912fb",
+    bytes: 14200832,
+    sha256: "fc56f19a06459903b4d234edb72133a398f6e1138230420e2de94f5adeaefcf6",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 672466,
-    sha256: "0e7a447025f2d96f06cb64e791941c211dc4cc9ce3bcbcaa09afb93b8fbcded5",
+    bytes: 679255,
+    sha256: "8c116d0d3fbef299ffd462aee7cef3420f19c5f08845d6f6af85f4342312ac31",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -3728,10 +3782,10 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-103") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-SUPPORT-EXTRACTION-102") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-05-103" || status.formalPublicationMapSha256 !== "da4a437c935e7c5072b09534669305d6876ac7d9b375cef34a08d9dbb4390480" || status.leanSourceClosureSha256 !== "1dd96e3dacf0ce978270cdb494a25253a6d7f465eaa153937e8aaac06586983c") fail("status source identity mismatch");
-  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 83 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 80 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-104") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PROPER-POSITIVE-SUPPORT-SEARCH-103") fail("status public-surface coordinate mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-05-104" || status.formalPublicationMapSha256 !== "11be1da6f2509275c140e6a86815b626f39661c57ec4d44428dd62ec08c69a75" || status.leanSourceClosureSha256 !== "18d12d424a1f62f08dbd8ccd9fd96ea4ebd111276d28907c89e7f89a89e40efb") fail("status source identity mismatch");
+  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 84 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 81 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -4189,7 +4243,7 @@ function assertFailClosedStatus(status) {
       && status.leanResidualWholeSpanZeroAbsenceIffFormalized === true
       && status.leanResidualTerminalFullBridgeScope === RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE
       && status.leanResidualTerminalQuotientCarrierFormalized === true
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       )) fail("status residual terminal full-carrier bridge evidence mismatch");
   const residualTerminalModeFirewallMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "residual-terminal-mode-firewall"
@@ -4223,7 +4277,7 @@ function assertFailClosedStatus(status) {
       && status.leanResidualTerminalQuotientEqualityNotConstructiveFormalized === true
       && status.leanResidualTerminalObligationDischargePreservedFormalized === true
       && status.leanResidualTerminalModeFirewallScope === RESIDUAL_TERMINAL_MODE_FIREWALL_SCOPE
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       )) fail("status residual terminal mode-firewall evidence mismatch");
   const residualTerminalProjectionMinimumMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "residual-terminal-projection-minimum"
@@ -4259,7 +4313,7 @@ function assertFailClosedStatus(status) {
       && status.leanResidualProjectionDefectDecompositionFormalized === true
       && status.leanResidualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized === true
       && status.leanResidualProjectionMinimumScope === RESIDUAL_TERMINAL_PROJECTION_MINIMUM_SCOPE
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal projection-minimum evidence mismatch");
   const residualTerminalProjectionTransferMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "residual-terminal-projection-transfer"
@@ -4291,7 +4345,7 @@ function assertFailClosedStatus(status) {
       && status.leanResidualProjectionTransferIdentityFormalized === true
       && status.leanResidualProjectionTransferConstantCutFormalized === true
       && status.leanResidualProjectionTransferScope === RESIDUAL_TERMINAL_PROJECTION_TRANSFER_SCOPE
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal projection-transfer evidence mismatch");
   const residualTerminalSaturationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "residual-terminal-saturation-closure"
@@ -4325,7 +4379,7 @@ function assertFailClosedStatus(status) {
       && status.leanResidualTerminalSaturationMonotoneFormalized === true
       && status.leanResidualTerminalSaturationIdempotentFormalized === true
       && status.leanResidualTerminalSaturationScope === RESIDUAL_TERMINAL_SATURATION_SCOPE
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanResidualTerminalSupportCompletionFormalized === false
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
       && status.leanResidualTerminalProjectionSquareFormalized === false
@@ -4363,7 +4417,7 @@ function assertFailClosedStatus(status) {
       && status.leanResidualTerminalPhysicalCompatibilityFormalized === true
       && status.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed === true
       && status.leanResidualTerminalPhysicalSupportCompletionScope === RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_SCOPE
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanResidualTerminalSupportCompletionFormalized === false
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
       && status.leanResidualTerminalProjectionSquareFormalized === false
@@ -4399,13 +4453,50 @@ function assertFailClosedStatus(status) {
       && status.leanResidualTerminalSupportExtractionScope === RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_SCOPE
       && status.leanResidualTerminalOpenSemanticsFormalized === true
       && status.leanResidualTerminalInducedRecoveryFormalized === true
-      && status.leanResidualTerminalProperSupportFormalized === false
+      && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanResidualTerminalSupportCompletionFormalized === false
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
       && status.leanResidualTerminalProjectionSquareFormalized === false
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal support-extraction evidence mismatch");
+  const residualTerminalProperSupportMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-proper-positive-support-search"
+  );
+  const residualTerminalProperSupportNames = Object.keys(RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS);
+  if (!residualTerminalProperSupportMilestone
+      || residualTerminalProperSupportMilestone.classification !== "formalized-governed-proper-positive-support-search"
+      || residualTerminalProperSupportMilestone.status !== "formalized-governed-proper-positive-support-search"
+      || residualTerminalProperSupportMilestone.scope !== RESIDUAL_TERMINAL_PROPER_SUPPORT_MILESTONE_SCOPE
+      || residualTerminalProperSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PROPER_SUPPORT_NON_CLAIM
+      || JSON.stringify(residualTerminalProperSupportMilestone.requiredTheorems) !== JSON.stringify(residualTerminalProperSupportNames)
+      || residualTerminalProperSupportMilestone.earned !== true
+      || residualTerminalProperSupportMilestone.allPresent !== true
+      || residualTerminalProperSupportMilestone.allAssumptionFree !== false
+      || residualTerminalProperSupportMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalProperSupportMilestone.allKernelTypesMatch !== true
+      || residualTerminalProperSupportMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal proper-positive support publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS)) {
+    const row = residualTerminalProperSupportMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal proper-positive support theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalProperSupportFormalized === true
+      && status.leanResidualTerminalProperSupportSearchCompleteFormalized === true
+      && status.leanResidualTerminalProperSupportExactLocalGainFormalized === true
+      && status.leanResidualTerminalProperSupportAxiomAuditPassed === true
+      && status.leanResidualTerminalProperSupportScope === RESIDUAL_TERMINAL_PROPER_SUPPORT_SCOPE
+      && status.leanResidualTerminalSupportCompletionFormalized === false
+      && status.leanResidualTerminalSquareLegitimacyFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal proper-positive support evidence mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) fail("status locked-NAND remaining-premise inventory mismatch");
   if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) fail("status overstates the CNF-SAT result");
   if (status.leanTheoremInventorySha256 !== EXPECTED_FILES[5].sha256) fail("status inventory digest mismatch");
@@ -4413,10 +4504,10 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-05-103") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 24211 || inventory.theoremCount !== 13049) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 6927 || inventory.excludedPrivateDeclarationCount !== 14524 || inventory.sourceClosureModuleCount !== 219 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
-  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 677, definition: 9897, inductive: 292, opaque: 0, quotient: 0, recursor: 292, theorem: 13049 })) fail("inventory declaration-kind counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-05-104") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 24260 || inventory.theoremCount !== 13074) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 6927 || inventory.excludedPrivateDeclarationCount !== 14574 || inventory.sourceClosureModuleCount !== 220 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 678, definition: 9918, inductive: 293, opaque: 0, quotient: 0, recursor: 293, theorem: 13074 })) fail("inventory declaration-kind counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
@@ -4553,6 +4644,12 @@ function assertInventory(inventory) {
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal support-extraction theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal support-extraction fingerprint mismatch: ${name}`);
+  }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal proper-positive support theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal proper-positive support fingerprint mismatch: ${name}`);
   }
   for (const [name, evidence] of Object.entries(BUILDER_INPUT_LENGTH_THEOREMS)) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -4949,16 +5046,16 @@ function assertInventory(inventory) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== "PNP.Concrete.PipelineRefinement" || theorem.axioms?.length !== 0) fail(`inventory recursive refinement theorem mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 2183) fail("inventory reviewed theorem-candidate count mismatch");
+  if (inventory.milestoneCandidates?.length !== 2200) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-05-86") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-05-87") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-05-103" || manifest.source?.formalPublicationMapSha256 !== "da4a437c935e7c5072b09534669305d6876ac7d9b375cef34a08d9dbb4390480" || manifest.source?.leanSourceClosureSha256 !== "1dd96e3dacf0ce978270cdb494a25253a6d7f465eaa153937e8aaac06586983c") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-05-104" || manifest.source?.formalPublicationMapSha256 !== "11be1da6f2509275c140e6a86815b626f39661c57ec4d44428dd62ec08c69a75" || manifest.source?.leanSourceClosureSha256 !== "18d12d424a1f62f08dbd8ccd9fd96ea4ebd111276d28907c89e7f89a89e40efb") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 74) fail("current report must have seventy-four pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -5469,7 +5566,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualWholeSpanZeroAbsenceIffFormalized === true
       && earned.residualTerminalFullBridgeScope === RESIDUAL_TERMINAL_FULL_BRIDGE_SCOPE
       && earned.residualTerminalQuotientCarrierFormalized === true
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       )) fail("current manifest residual terminal full-carrier bridge boundary mismatch");
   if (!Array.isArray(earned.residualTerminalFullBridgeAxiomClosure)
       || earned.residualTerminalFullBridgeAxiomClosure.length !== 0
@@ -5489,7 +5586,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualTerminalQuotientEqualityNotConstructiveFormalized === true
       && earned.residualTerminalObligationDischargePreservedFormalized === true
       && earned.residualTerminalModeFirewallScope === RESIDUAL_TERMINAL_MODE_FIREWALL_SCOPE
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       )) fail("current manifest residual terminal mode-firewall boundary mismatch");
   if (!Array.isArray(earned.residualTerminalModeFirewallAxiomClosure)
       || earned.residualTerminalModeFirewallAxiomClosure.length !== 0
@@ -5512,7 +5609,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualProjectionDefectDecompositionFormalized === true
       && earned.residualProjectionDefectZeroIffCheckedLiftAtMinimumFormalized === true
       && earned.residualProjectionMinimumScope === RESIDUAL_TERMINAL_PROJECTION_MINIMUM_SCOPE
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal projection-minimum boundary mismatch");
   if (JSON.stringify(earned.residualProjectionMinimumAxiomClosure) !== JSON.stringify(["propext"])
       || !Array.isArray(earned.residualProjectionMinimumProjectAxiomClosure)
@@ -5527,7 +5624,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualProjectionTransferIdentityFormalized === true
       && earned.residualProjectionTransferConstantCutFormalized === true
       && earned.residualProjectionTransferScope === RESIDUAL_TERMINAL_PROJECTION_TRANSFER_SCOPE
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal projection-transfer boundary mismatch");
   if (JSON.stringify(earned.residualProjectionTransferAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualProjectionTransferProjectAxiomClosure)
@@ -5546,7 +5643,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualTerminalSaturationMonotoneFormalized === true
       && earned.residualTerminalSaturationIdempotentFormalized === true
       && earned.residualTerminalSaturationScope === RESIDUAL_TERMINAL_SATURATION_SCOPE
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       && earned.residualTerminalSupportCompletionFormalized === false
       && earned.residualTerminalSquareLegitimacyFormalized === false
       && earned.residualTerminalProjectionSquareFormalized === false
@@ -5569,7 +5666,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualTerminalPhysicalSupportCompletionPropextOnlyDeclarationCount === 24
       && earned.residualTerminalPhysicalSupportCompletionPropextQuotSoundDeclarationCount === 3
       && earned.residualTerminalPhysicalSupportCompletionScope === RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_SCOPE
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       && earned.residualTerminalSupportCompletionFormalized === false
       && earned.residualTerminalSquareLegitimacyFormalized === false
       && earned.residualTerminalProjectionSquareFormalized === false
@@ -5590,7 +5687,7 @@ function assertCurrentManifest(manifest) {
       && earned.residualTerminalOpenSemanticsFormalized === true
       && earned.residualTerminalInducedRecoveryFormalized === true
       && earned.residualTerminalSupportExtractionScope === RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_SCOPE
-      && earned.residualTerminalProperSupportFormalized === false
+      && earned.residualTerminalProperSupportFormalized === true
       && earned.residualTerminalSupportCompletionFormalized === false
       && earned.residualTerminalSquareLegitimacyFormalized === false
       && earned.residualTerminalProjectionSquareFormalized === false
@@ -5602,6 +5699,26 @@ function assertCurrentManifest(manifest) {
   if (!residualTerminalSupportExtractionHashes || Object.keys(residualTerminalSupportExtractionHashes).length !== 21
       || !Object.entries(RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_THEOREMS).every(([name, row]) => residualTerminalSupportExtractionHashes[name] === row.hash)) fail("current manifest residual terminal support-extraction fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal support-extraction theorem identity mismatch");
+  if (!(earned.residualTerminalProperSupportFormalized === true
+      && earned.residualTerminalProperSupportSearchCompleteFormalized === true
+      && earned.residualTerminalProperSupportExactLocalGainFormalized === true
+      && earned.residualTerminalProperSupportAxiomAuditPassed === true
+      && earned.residualTerminalProperSupportAuditedDeclarationCount === 37
+      && earned.residualTerminalProperSupportEmptyAxiomDeclarationCount === 6
+      && earned.residualTerminalProperSupportPropextOnlyDeclarationCount === 3
+      && earned.residualTerminalProperSupportPropextQuotSoundDeclarationCount === 28
+      && earned.residualTerminalProperSupportScope === RESIDUAL_TERMINAL_PROPER_SUPPORT_SCOPE
+      && earned.residualTerminalSupportCompletionFormalized === false
+      && earned.residualTerminalSquareLegitimacyFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal proper-positive support boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalProperSupportAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalProperSupportProjectAxiomClosure)
+      || earned.residualTerminalProperSupportProjectAxiomClosure.length !== 0) fail("current manifest residual terminal proper-positive support axiom closure mismatch");
+  const residualTerminalProperSupportHashes = earned.residualTerminalProperSupportTheoremKernelTypeSha256;
+  if (!residualTerminalProperSupportHashes || Object.keys(residualTerminalProperSupportHashes).length !== 22
+      || !Object.entries(RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS).every(([name, row]) => residualTerminalProperSupportHashes[name] === row.hash)) fail("current manifest residual terminal proper-positive support fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PROPER_SUPPORT_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal proper-positive support theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -5631,7 +5748,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-05-86") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-05-87") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");
