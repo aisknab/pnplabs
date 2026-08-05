@@ -2138,7 +2138,7 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 85);
+  assert.equal(index.version, 86);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, '5ec1db96c1fc5eabb19eb665c0abc4a0cd4ad806');
   assert.equal(index.sourceTree, '9f28a98946ada047b8a3beb50158239d66ecf5d9');
@@ -2146,7 +2146,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-SUPPORT-EXTRACTION-102');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-05-102');
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-05-103');
   assert.equal(index.canonicalReportPages, 74);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
@@ -3719,6 +3719,7 @@ test('status page has a conservative complete static fallback', async () => {
     'leanResidualTerminalOpenSemanticsFormalized = true',
     'leanResidualTerminalInducedRecoveryFormalized = true',
     'leanResidualTerminalSupportExtractionAxiomAuditPassed = true',
+    'leanResidualTerminalSupportExtractionScope = "all-finite-direct-wire-candidates-terminal-record-lists-boundary-valuations-and-interface-coordinates"',
     'EncodedNANDSAT',
     'EncodedLockedNANDThreshold',
     'Historical 57-page manuscript',
