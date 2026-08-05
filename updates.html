@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 64% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 65% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="64" aria-label="Estimated proof reconstruction progress: 64 percent">64%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 64 percent">
+        <progress class="proof-progress-meter" max="100" value="65" aria-label="Estimated proof reconstruction progress: 65 percent">65%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 65 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-05-residual-terminal-physical-support-completion" data-milestone-id="residual-terminal-physical-support-completion">
+        <div class="section-label"><time datetime="2026-08-05T01:37:59Z">2026-08-05</time> · earned milestone 79</div>
+        <h2>The proof can now account for every wire crossing a chosen part of a circuit</h2>
+        <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now take any chosen group of operations in any finite circuit, finish its recorded dependency checklist, and identify every wire that brings a value into the group or carries a result out. The result is put in one consistent order, even if the starting checklist was duplicated or scrambled.</p>
+        <p>Lean proves that no crossing wire is missed and no unrelated wire is added: constants stay inside, wires between chosen operations stay internal, and wires connecting to the rest of the circuit appear on the correct side. This still does not complete the extra bookkeeping records required by the manuscript, construct the positive witness, prove the required four-part square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 65% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 65%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-physical-support-completion</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-physical-support-completion</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire candidate, explicit terminal dependency system, and finite seed list, a deterministic finite work list computes exactly the inductive saturation, then the actual program computes canonically ordered incoming boundary and outgoing interface wires. Lean proves no crossing wire is omitted or added and the composed physical support is compatible.</p>
+          <p><strong>Boundary:</strong> The terminal dependency system remains explicit data rather than an extracted profile frontier. This milestone does not construct proper positive support, prove support completion in the manuscript&#39;s full sense or square legitimacy, instantiate the required projection square, prove SaturatePositive, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 14</p>
+          <p><strong>Core source:</strong> commit <code>9a01a9aee903b0d76132e80d40eed9004dc4eae1</code>, tree <code>10972cee78cd0c70926b2ea13fbe073e6202a43d</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-102</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PHYSICAL-SUPPORT-COMPLETION-101</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-04-residual-terminal-saturation-closure" data-milestone-id="residual-terminal-saturation-closure">
         <div class="section-label"><time datetime="2026-08-04T15:42:54Z">2026-08-04</time> · earned milestone 78</div>
         <h2>The proof can now complete a finite checklist under every recorded dependency</h2>
