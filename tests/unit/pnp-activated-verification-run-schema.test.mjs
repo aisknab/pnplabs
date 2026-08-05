@@ -20,16 +20,19 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-04-101');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-102');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 24054);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 12985);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6903);
-  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14317);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 216);
-  assert.equal(status.formalPublicationMilestones.length, 81);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 78);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 24150);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13019);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6918);
+  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14409);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 218);
+  assert.equal(status.formalPublicationMilestones.length, 82);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 79);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
+  assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
+  assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
+  assert.equal(status.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserAuditedDeclarationCount, 380);

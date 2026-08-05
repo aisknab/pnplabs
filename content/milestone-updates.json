@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-05-residual-terminal-physical-support-completion",
+      "milestoneId": "residual-terminal-physical-support-completion",
+      "publishedAt": "2026-08-05T01:37:59Z",
+      "title": "The proof can now account for every wire crossing a chosen part of a circuit",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now take any chosen group of operations in any finite circuit, finish its recorded dependency checklist, and identify every wire that brings a value into the group or carries a result out. The result is put in one consistent order, even if the starting checklist was duplicated or scrambled.",
+        "Lean proves that no crossing wire is missed and no unrelated wire is added: constants stay inside, wires between chosen operations stay internal, and wires connecting to the rest of the circuit appear on the correct side. This still does not complete the extra bookkeeping records required by the manuscript, construct the positive witness, prove the required four-part square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 65% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 65,
+      "source": {
+        "commit": "9a01a9aee903b0d76132e80d40eed9004dc4eae1",
+        "tree": "10972cee78cd0c70926b2ea13fbe073e6202a43d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-102",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PHYSICAL-SUPPORT-COMPLETION-101"
+      }
+    },
+    {
       "id": "2026-08-04-residual-terminal-saturation-closure",
       "milestoneId": "residual-terminal-saturation-closure",
       "publishedAt": "2026-08-04T15:42:54Z",
