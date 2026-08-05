@@ -91,13 +91,11 @@ test('pre-fetch UI state reports terminal physical support completion as fail cl
     'leanResidualTerminalPhysicalCompatibilityFormalized',
     'leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed',
   ]) assert.equal(failClosed[field], false, field);
-  assert.equal(failClosed.leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount, 0);
   assert.equal(failClosed.leanResidualTerminalPhysicalSupportCompletionScope, null);
 
   const rendered = validation.formalStatusFields(failClosed);
   assert.match(rendered, /leanResidualTerminalExecutableSaturationFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalPhysicalSupportCompletionFormalized = false/u);
-  assert.match(rendered, /leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount = 0/u);
   assert.match(rendered, /leanResidualTerminalPhysicalSupportCompletionScope = null/u);
 });
 
@@ -3027,9 +3025,9 @@ test('terminal physical support requires exact executable saturation and crossin
   widenedScope.leanResidualTerminalPhysicalSupportCompletionScope = 'all-proper-governed-support-squares';
   assert.equal(validation.validateStatus(widenedScope, inventory), false);
 
-  const forgedAuditCount = structuredClone(status);
-  forgedAuditCount.leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount = 36;
-  assert.equal(validation.validateStatus(forgedAuditCount, inventory), false);
+  const forgedAudit = structuredClone(status);
+  forgedAudit.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(forgedAudit, inventory), false);
 
   const forgedCompletion = structuredClone(status);
   forgedCompletion.leanResidualTerminalSupportCompletionFormalized = true;

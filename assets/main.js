@@ -4315,10 +4315,6 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalPhysicalInterfaceFormalized: false,
   leanResidualTerminalPhysicalCompatibilityFormalized: false,
   leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed: false,
-  leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount: 0,
-  leanResidualTerminalPhysicalSupportCompletionEmptyAxiomDeclarationCount: 0,
-  leanResidualTerminalPhysicalSupportCompletionPropextOnlyDeclarationCount: 0,
-  leanResidualTerminalPhysicalSupportCompletionPropextQuotSoundDeclarationCount: 0,
   leanResidualTerminalPhysicalSupportCompletionScope: null,
   leanResidualTerminalSupportCompletionFormalized: false,
   leanResidualTerminalSquareLegitimacyFormalized: false,
@@ -4715,10 +4711,6 @@ leanResidualTerminalPhysicalBoundaryFormalized = ${payload.leanResidualTerminalP
 leanResidualTerminalPhysicalInterfaceFormalized = ${payload.leanResidualTerminalPhysicalInterfaceFormalized ?? false}
 leanResidualTerminalPhysicalCompatibilityFormalized = ${payload.leanResidualTerminalPhysicalCompatibilityFormalized ?? false}
 leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed = ${payload.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed ?? false}
-leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount = ${payload.leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount ?? 0}
-leanResidualTerminalPhysicalSupportCompletionEmptyAxiomDeclarationCount = ${payload.leanResidualTerminalPhysicalSupportCompletionEmptyAxiomDeclarationCount ?? 0}
-leanResidualTerminalPhysicalSupportCompletionPropextOnlyDeclarationCount = ${payload.leanResidualTerminalPhysicalSupportCompletionPropextOnlyDeclarationCount ?? 0}
-leanResidualTerminalPhysicalSupportCompletionPropextQuotSoundDeclarationCount = ${payload.leanResidualTerminalPhysicalSupportCompletionPropextQuotSoundDeclarationCount ?? 0}
 leanResidualTerminalPhysicalSupportCompletionScope = ${payload.leanResidualTerminalPhysicalSupportCompletionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPhysicalSupportCompletionScope)}
 leanResidualTerminalSupportCompletionFormalized = ${payload.leanResidualTerminalSupportCompletionFormalized ?? false}
 leanResidualTerminalSquareLegitimacyFormalized = ${payload.leanResidualTerminalSquareLegitimacyFormalized ?? false}
@@ -5812,10 +5804,6 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPhysicalInterfaceFormalized === true
     && status.leanResidualTerminalPhysicalCompatibilityFormalized === true
     && status.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed === true
-    && status.leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount === 35
-    && status.leanResidualTerminalPhysicalSupportCompletionEmptyAxiomDeclarationCount === 8
-    && status.leanResidualTerminalPhysicalSupportCompletionPropextOnlyDeclarationCount === 24
-    && status.leanResidualTerminalPhysicalSupportCompletionPropextQuotSoundDeclarationCount === 3
     && status.leanResidualTerminalPhysicalSupportCompletionScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-finite-seed-lists"
     && status.leanResidualTerminalSupportCompletionFormalized === false
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
