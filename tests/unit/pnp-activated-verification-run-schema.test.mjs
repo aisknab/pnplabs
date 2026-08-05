@@ -26,7 +26,7 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanTheoremInventoryTheoremCount, 13074);
   assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6927);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14574);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 219);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 220);
   assert.equal(status.formalPublicationMilestones.length, 84);
   assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 81);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
@@ -37,6 +37,14 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanResidualTerminalSupportExtractionAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalOpenSemanticsFormalized, true);
   assert.equal(status.leanResidualTerminalInducedRecoveryFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportSearchCompleteFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportExactLocalGainFormalized, true);
+  assert.equal(status.leanResidualTerminalProperSupportAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalProperSupportScope,
+    'all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain'
+  );
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserAuditedDeclarationCount, 380);
