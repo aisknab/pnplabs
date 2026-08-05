@@ -277,7 +277,7 @@ function renderUpdatesHtml(model) {
 
   return `<!DOCTYPE html>\n<html lang="en-AU">\n<head>\n`
     + `  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n`
-    + `  <title>PNP Labs — milestone updates</title>\n`
+    + `  <title>PNP Labs | milestone updates</title>\n`
     + `  <meta name="description" content="Plain-language and technical updates for each newly earned PNP Labs formal milestone.">\n`
     + `  <link rel="canonical" href="${BASE_URL}/updates.html">\n`
     + `  <link rel="alternate" type="application/atom+xml" title="PNP Labs milestone updates" href="${BASE_URL}/updates.xml">\n`

@@ -47,12 +47,29 @@
   },
   "entries": [
     {
+      "id": "2026-08-05-residual-terminal-proper-positive-support-search",
+      "milestoneId": "residual-terminal-proper-positive-support-search",
+      "publishedAt": "2026-08-05T14:30:00Z",
+      "title": "The proof can now search for a genuinely smaller useful part of a circuit",
+      "plainLanguage": [
+        "A circuit is a list of simple yes-or-no operations connected by wires. Lean can now examine every possible starting selection from a supplied finite dependency system, complete all recorded dependencies, and test whether the resulting part is nonempty, genuinely smaller than the whole circuit, and improves the exact size comparison.",
+        "Lean proves that this finite search finds a qualifying part whenever one exists in that governed search space, and that the extracted smaller circuit preserves the intended boundary behaviour. The dependency system is still supplied rather than derived from the circuit, and the search is exhaustive rather than efficient. It does not complete the manuscript's full support or square arguments, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 67% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 67,
+      "source": {
+        "commit": "bdbbabc67f20b5d4f673e11098ba86a9d10a1cf1",
+        "tree": "c26d7b20ab7d5241ad4fc7f214ac06b9477e78c6",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-104",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PROPER-POSITIVE-SUPPORT-SEARCH-103"
+      }
+    },
+    {
       "id": "2026-08-05-residual-terminal-support-extraction",
       "milestoneId": "residual-terminal-support-extraction",
       "publishedAt": "2026-08-05T06:43:58Z",
       "title": "The proof can now rebuild any chosen part of a circuit",
       "plainLanguage": [
-        "A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations—even a scattered collection—and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.",
+        "A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations, including a scattered collection, and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.",
         "Lean proves the rebuilt circuit has exactly the selected number of operations and gives the intended outgoing values for every possible set of incoming values. When those incoming values come from the original whole circuit, the extracted circuit reproduces the original results, including after the dependency checklist is completed. The record list and dependency links are still supplied rather than derived automatically, and this does not construct the manuscript’s proper positive support or required square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 66% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
       ],
       "progressEstimatePercent": 66,
@@ -103,7 +120,7 @@
       "publishedAt": "2026-08-04T09:07:29Z",
       "title": "The proof now balances four related circuit comparisons",
       "plainLanguage": [
-        "Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases—the common part, two alternatives, and their combined case—and proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.",
+        "Sometimes this proof compares circuits using a complete checklist of their behaviour, and sometimes it uses a shorter checklist that deliberately ignores selected details. This update considers four related cases: the common part, two alternatives, and their combined case. It proves an exact accounting rule for how the shorter checklist changes the measured size differences. The rule applies only when all four cases use the same checklist and the same way of omitting details.",
         "Under the stated conditions, if no information is lost in the common part or either alternative, but the combined case loses D circuit operations, then the accounting difference is exactly D; if D is greater than zero, the difference is too. Lean checks increases and decreases correctly. It does not construct the four cases, prove that the manuscript’s required support and saturation objects exist, complete ZeroSlack or PCCMin, provide a fast algorithm, or prove P = NP. The 63% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
       ],
       "progressEstimatePercent": 63,
@@ -172,7 +189,7 @@
       "title": "A globally complete stop now certifies a smallest circuit",
       "plainLanguage": [
         "A circuit is a finite list of simple yes-or-no operations. Two circuits are equivalent when they give exactly the same outputs for every possible input. Lean now proves an exact rule for when an equivalent circuit cannot be made smaller: there is no smaller equivalent circuit anywhere exactly when the current circuit is already as small as possible.",
-        "This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit—not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+        "This lets a previously checked shrinking sequence end with an exact minimum result, but only when a separate proof rules out every smaller equivalent circuit, not merely the circuits in a searched list. The milestone does not supply that global proof, an efficient search, the manuscript’s remaining ZeroSlack/PCCMin construction, or P = NP. The 59% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
       ],
       "progressEstimatePercent": 59,
       "source": {
@@ -206,7 +223,7 @@
       "title": "The CNF-to-NAND translation now runs as a checked efficient process",
       "plainLanguage": [
         "The previous update proved that a CNF formula and its NAND translation have the same yes-or-no answer. This update adds one fixed, inspectable machine that performs that translation for every possible input. Lean checks that valid formulas produce exactly the intended circuit, while malformed inputs stop safely and produce no result.",
-        "Lean also proves that the work grows at a polynomial rate with the input size—the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+        "Lean also proves that the work grows at a polynomial rate with the input size, which is the standard efficiency requirement for this kind of translation. The checked machine is now packaged as a formal reduction from CNF satisfiability to NAND-circuit satisfiability and then connected to the existing locked-circuit conversion. It still does not decide CNF satisfiability efficiently, remove the remaining locked-circuit assumption, or prove P = NP. The 57% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
       ],
       "progressEstimatePercent": 57,
       "source": {

@@ -1,7 +1,7 @@
 // Purpose: add public source links while keeping the current formal inventory
 // separate from the historical 57-page claim manuscript.
 const repository = 'https://github.com/aisknab/pnp';
-const currentCommit = '5bc35c370e0d8987c69bd51f7f31e29070f7c162';
+const currentCommit = 'bdbbabc67f20b5d4f673e11098ba86a9d10a1cf1';
 const currentSource = `${repository}/tree/${currentCommit}`;
 const historicalTag = 'final-pnp-proof-report-hardened-7072f8d';
 const historicalCommit = '7072f8d0bda6d44d240f9bb3fad624fd357e1278';
