@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 65% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 66% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="65" aria-label="Estimated proof reconstruction progress: 65 percent">65%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 65 percent">
+        <progress class="proof-progress-meter" max="100" value="66" aria-label="Estimated proof reconstruction progress: 66 percent">66%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 66 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-05-residual-terminal-support-extraction" data-milestone-id="residual-terminal-support-extraction">
+        <div class="section-label"><time datetime="2026-08-05T06:43:58Z">2026-08-05</time> · earned milestone 80</div>
+        <h2>The proof can now rebuild any chosen part of a circuit</h2>
+        <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations—even a scattered collection—and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.</p>
+        <p>Lean proves the rebuilt circuit has exactly the selected number of operations and gives the intended outgoing values for every possible set of incoming values. When those incoming values come from the original whole circuit, the extracted circuit reproduces the original results, including after the dependency checklist is completed. The record list and dependency links are still supplied rather than derived automatically, and this does not construct the manuscript’s proper positive support or required square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 66% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 66%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-support-extraction</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-support-extraction</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire candidate and finite terminal record list, including noncontiguous selections, the actual program is structurally extracted over its exact canonical incoming boundary and ordered outgoing interface. The extracted candidate equals an independently defined open-support function for every boundary valuation and recovers the original interface values on whole-circuit-induced boundaries; the construction also composes with executable terminal saturation.</p>
+          <p><strong>Boundary:</strong> The record list and terminal dependency system remain explicit inputs rather than the manuscript&#39;s derived profile frontier. This milestone does not construct a proper positive support, prove full governed support completion or square legitimacy, instantiate the required projection square, prove SaturatePositive, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 21</p>
+          <p><strong>Core source:</strong> commit <code>5bc35c370e0d8987c69bd51f7f31e29070f7c162</code>, tree <code>9f28a98946ada047b8a3beb50158239d66ecf5d9</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-103</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-SUPPORT-EXTRACTION-102</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-05-residual-terminal-physical-support-completion" data-milestone-id="residual-terminal-physical-support-completion">
         <div class="section-label"><time datetime="2026-08-05T01:37:59Z">2026-08-05</time> · earned milestone 79</div>
         <h2>The proof can now account for every wire crossing a chosen part of a circuit</h2>

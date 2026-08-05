@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-05-residual-terminal-support-extraction",
+      "milestoneId": "residual-terminal-support-extraction",
+      "publishedAt": "2026-08-05T06:43:58Z",
+      "title": "The proof can now rebuild any chosen part of a circuit",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations—even a scattered collection—and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.",
+        "Lean proves the rebuilt circuit has exactly the selected number of operations and gives the intended outgoing values for every possible set of incoming values. When those incoming values come from the original whole circuit, the extracted circuit reproduces the original results, including after the dependency checklist is completed. The record list and dependency links are still supplied rather than derived automatically, and this does not construct the manuscript’s proper positive support or required square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 66% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 66,
+      "source": {
+        "commit": "5bc35c370e0d8987c69bd51f7f31e29070f7c162",
+        "tree": "9f28a98946ada047b8a3beb50158239d66ecf5d9",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-103",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-SUPPORT-EXTRACTION-102"
+      }
+    },
+    {
       "id": "2026-08-05-residual-terminal-physical-support-completion",
       "milestoneId": "residual-terminal-physical-support-completion",
       "publishedAt": "2026-08-05T01:37:59Z",

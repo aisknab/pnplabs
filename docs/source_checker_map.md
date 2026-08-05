@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `9a01a9aee903b0d76132e80d40eed9004dc4eae1`. Its generated status payload is current
+core commit `5bc35c370e0d8987c69bd51f7f31e29070f7c162`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the seventy-three-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the seventy-four-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `9a01a9aee903b0d76132e80d40eed9004dc4eae1` (tree `10972cee78cd0c70926b2ea13fbe073e6202a43d`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, the locked-NAND typed threshold and concrete compiler/reduction chain, the universal residual-gain bound and global stopping specification, the terminal full-carrier and quotient/full firewall bridges, exhaustive attained full/quotient projection minima, the exact signed four-corner projection-transfer identity, finite terminal saturation under explicitly supplied rule-tagged dependencies, and executable exact boundary/interface wire completion |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,166 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `5bc35c370e0d8987c69bd51f7f31e29070f7c162` (tree `9f28a98946ada047b8a3beb50158239d66ecf5d9`) | Exact source tree reviewed and merged through concrete CNF-SAT NP membership, raw-machine compilation, Cook-Levin semantic/size/schedule results and its bounded builder prefix, the locked-NAND typed threshold and concrete compiler/reduction chain, the universal residual-gain bound and global stopping specification, the terminal full-carrier and quotient/full firewall bridges, exhaustive attained full/quotient projection minima, the exact signed four-corner projection-transfer identity, finite terminal saturation under explicitly supplied rule-tagged dependencies, executable exact boundary/interface wire completion, and arbitrary finite terminal-support extraction with exact open semantics and whole-circuit recovery |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,183 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Seventy-nine earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 parser/emitter, concrete polynomial reductions, the universal gain-chain bound, global semantic stopping criterion, direct-wire terminal full-carrier bridge, computed terminal quotient/full mode firewall, exhaustive attained projection minima, exact signed four-corner transfer identity, finite terminal saturation closure, and executable exact boundary/interface wire completion—three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current seventy-three-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Eighty earned scoped milestones—including the arbitrary-circuit locked-NAND threshold, its encoded semantic boundary, strict-v0 parser/emitter, concrete polynomial reductions, the universal gain-chain bound, global semantic stopping criterion, direct-wire terminal full-carrier bridge, computed terminal quotient/full mode firewall, exhaustive attained projection minima, exact signed four-corner transfer identity, finite terminal saturation closure, executable exact boundary/interface wire completion, and arbitrary finite terminal-support extraction with exact open semantics—three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current seventy-four-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

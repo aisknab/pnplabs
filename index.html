@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof can now account for every wire crossing a chosen part of a circuit</h2>
-          <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now take any chosen group of operations in any finite circuit, finish its recorded dependency checklist, and identify every wire that brings a value into the group or carries a result out. The result is put in one consistent order, even if the starting checklist was duplicated or scrambled.</p>
-          <p>Lean proves that no crossing wire is missed and no unrelated wire is added: constants stay inside, wires between chosen operations stay internal, and wires connecting to the rest of the circuit appear on the correct side. This still does not complete the extra bookkeeping records required by the manuscript, construct the positive witness, prove the required four-part square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 65% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-05-residual-terminal-physical-support-completion">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof can now rebuild any chosen part of a circuit</h2>
+          <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now select any collection of operations—even a scattered collection—and turn that selection into a smaller circuit of its own. It identifies every value entering the selection, rebuilds the selected operations in their original order, and exposes every selected result that the rest of the circuit uses.</p>
+          <p>Lean proves the rebuilt circuit has exactly the selected number of operations and gives the intended outgoing values for every possible set of incoming values. When those incoming values come from the original whole circuit, the extracted circuit reproduces the original results, including after the dependency checklist is completed. The record list and dependency links are still supplied rather than derived automatically, and this does not construct the manuscript’s proper positive support or required square, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 66% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-05-residual-terminal-support-extraction">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>completeTerminalPhysicalSupport_incoming_complete</code> and <code>completeTerminalPhysicalSupport_outgoing_complete</code> prove exact membership characterisations for the incoming boundary and outgoing interface wires of any selected node set in a finite direct-wire candidate. <code>mem_terminalSaturateRecords_iff</code> connects a deterministic finite work-list computation to the preceding inductive saturation, and the composed support is proved compatible. The dependency system is still supplied explicitly: this does not construct proper positive support, prove the manuscript’s full support-completion or square-legitimacy obligations, complete ZeroSlack or PCCMin, establish polynomial runtime, or prove P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>extractTerminalSupport_semantics</code> proves that an extracted circuit computes an independently defined open-support function for every boundary valuation, while <code>extractTerminalSupport_induced</code> proves that whole-circuit values recover the original selected results. The construction works for every finite, including noncontiguous, selected gate list and composes with executable saturation. The record list and dependency system are still supplied explicitly: this does not construct proper positive support, prove the manuscript’s full support-completion or square-legitimacy obligations, complete ZeroSlack or PCCMin, establish polynomial runtime, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -190,6 +190,14 @@ leanResidualTerminalPhysicalSupportCompletionAuditedDeclarationCount = 35
 leanResidualTerminalPhysicalSupportCompletionEmptyAxiomDeclarationCount = 8
 leanResidualTerminalPhysicalSupportCompletionPropextOnlyDeclarationCount = 24
 leanResidualTerminalPhysicalSupportCompletionPropextQuotSoundDeclarationCount = 3
+leanResidualTerminalSupportExtractionFormalized = true
+leanResidualTerminalOpenSemanticsFormalized = true
+leanResidualTerminalInducedRecoveryFormalized = true
+leanResidualTerminalSupportExtractionAxiomAuditPassed = true
+leanResidualTerminalSupportExtractionAuditedDeclarationCount = 34
+leanResidualTerminalSupportExtractionEmptyAxiomDeclarationCount = 3
+leanResidualTerminalSupportExtractionPropextOnlyDeclarationCount = 11
+leanResidualTerminalSupportExtractionPropextQuotSoundDeclarationCount = 20
 leanResidualTerminalSupportCompletionFormalized = false
 leanResidualTerminalSquareLegitimacyFormalized = false
 leanResidualTerminalProjectionSquareFormalized = false
@@ -207,9 +215,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-05-102</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-05-103</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>869875ff563e3aedad0f2b24d241ff91c7c6eb3f35b4ac655346b6f237041188</code></div>
+            <div><span>Inventory SHA-256</span><code>253dff68782561bf47e6a059233a3207aa73f5fab1e9dd05fc961af50f1912fb</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -217,18 +225,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>65</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>66</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 65 percent" data-proof-progress="65">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>65</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 66 percent" data-proof-progress="66">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>66</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 65% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 66% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed—not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
