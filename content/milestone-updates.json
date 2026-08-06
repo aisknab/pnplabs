@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-06-residual-terminal-saturated-support-square-closure",
+      "milestoneId": "residual-terminal-saturated-support-square-closure",
+      "publishedAt": "2026-08-05T23:29:23Z",
+      "title": "The proof can now combine two completed circuit parts without losing their shared structure",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations connected by wires. Some later proof steps need to compare two chosen parts at once. Lean can now start from any two finite lists under a supplied dependency rulebook, complete both lists, and calculate four related parts: what they share, the completed left and right parts, and everything covered by either side.",
+        "Lean proves all four parts obey every supplied dependency, the shared part is the largest one contained in both sides, and the combined part is the smallest one containing both. It also rebuilds each part as an induced circuit with the expected inputs and outputs. The rulebook is still supplied rather than derived automatically, and the harder manuscript requirements for a projection-compatible square, routing obstructions, efficient runtime, ZeroSlack, PCCMin, and the final P versus NP theorem remain open. The 68% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 68,
+      "source": {
+        "commit": "7e4f3a683f87f0009c2c6010678ff022638bc8b8",
+        "tree": "ee1727221b3600193b9f622dc1cc060c3b2c8833",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-105",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-SATURATED-SUPPORT-SQUARE-CLOSURE-104"
+      }
+    },
+    {
       "id": "2026-08-05-residual-terminal-proper-positive-support-search",
       "milestoneId": "residual-terminal-proper-positive-support-search",
       "publishedAt": "2026-08-05T14:30:00Z",

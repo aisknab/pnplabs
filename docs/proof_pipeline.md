@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,200 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,219 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 24,260 public declarations;
-- 13,074 theorem-kind declarations;
-- 6,927 assumption-free theorem-kind declarations;
-- 220 source-closure modules;
-- 14,574 excluded private compiler auxiliaries;
+- 24,337 public declarations;
+- 13,104 theorem-kind declarations;
+- 6,937 assumption-free theorem-kind declarations;
+- 221 source-closure modules;
+- 14,575 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The eighty-one earned scopes are:
+The eighty-two earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -131,6 +131,7 @@ The eighty-one earned scopes are:
 | Terminal executable and physical support completion | For every finite direct-wire candidate, explicit terminal dependency system, and finite seed list, a deterministic finite work list computes exactly the inductive saturation. The program then computes canonically ordered incoming boundary and outgoing interface wires; no crossing wire is omitted or added, and the composed physical support is compatible. The 35-declaration audit has 8 empty closures, 24 using only `propext`, and 3 using `Quot.sound` with `propext`; all 14 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit data rather than an extracted profile frontier. This does not construct proper positive support, prove support completion in the manuscript's full sense or square legitimacy, instantiate the required projection square, prove `SaturatePositive`, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove `ZeroSlack` or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Arbitrary terminal support extraction | For every finite direct-wire candidate and finite terminal record list, including noncontiguous selections, the actual program extracts an open candidate over its exact canonical incoming boundary and ordered outgoing interface. The extracted candidate equals an independently defined open-support function for every boundary valuation and recovers original interface values on whole-circuit-induced boundaries; the construction composes with executable terminal saturation. The 34-interface audit has 3 empty closures, 11 using only `propext`, and 20 using `Quot.sound` with `propext`; all 21 reviewed pins have permitted Lean-standard closure. | The record list and terminal dependency system remain explicit inputs rather than the manuscript's derived profile frontier. This does not construct proper positive support, prove governed support completion or square legitimacy, instantiate the required projection square, prove `SaturatePositive`, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove `ZeroSlack` or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Governed proper-positive terminal support search | For every finite direct-wire candidate and explicit terminal dependency system, Lean enumerates the complete canonical finite primitive-record seed universe, saturates and physically completes each seed, extracts its exact open support, and computes exact local gain from the exhaustive semantic reference minimum. It returns a proof-bearing nonempty proper positive-gain support whenever one exists in that universe, and returns none exactly when no such seed exists. The 37-declaration audit has 6 empty closures, 3 using only `propext`, and 28 using `Quot.sound` with `propext`; all 22 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit rather than a frontier derived from the circuit, and the search is exhaustive rather than polynomial. This does not prove global gain completeness, full manuscript support completion or square legitimacy, instantiate the required projection square, prove `SaturatePositive` or `BCELReady`, discharge Package E or BCEL/BN2-BN6, complete `ZeroSlack` or PCCMin, put SAT in P, remove a project assumption, or prove `P = NP`. |
+| Saturated terminal support-square closure | For every finite direct-wire candidate, explicit terminal dependency system, and pair of finite terminal seeds, Lean computes saturated left and right supports, their canonical closed meet, and their closed saturated-union join. Exact greatest-lower-bound and least-upper-bound laws, seed extensionality, computed physical compatibility, exact gate count, open-support semantics, and induced whole-circuit recovery hold for all four corners. The 40-declaration audit has 6 empty closures, 13 using only `propext`, and 21 using `Quot.sound` with `propext`; all 23 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit input rather than a profile frontier derived from the circuit. This proves finite closed-corner algebra and extraction, not obstruction routing, frontier pushout, the manuscript's projection-compatible square, side-tight four-corner minima, BN2 square legitimacy, `SaturatePositive`, Package E, BCEL/BN2-BN6, complete residual routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -162,7 +163,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seventy-four-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seventy-five-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

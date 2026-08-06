@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 86,
+  "version": 87,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "bdbbabc67f20b5d4f673e11098ba86a9d10a1cf1",
+  "sourceCommitRef": "7e4f3a683f87f0009c2c6010678ff022638bc8b8",
   "sourceProofCommitRef": "5ec1db96c1fc5eabb19eb665c0abc4a0cd4ad806",
-  "sourceTree": "c26d7b20ab7d5241ad4fc7f214ac06b9477e78c6",
-  "syncedOn": "2026-08-05",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-05-104",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-05-RESIDUAL-TERMINAL-PROPER-POSITIVE-SUPPORT-SEARCH-103",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-05-104",
-  "leanTheoremInventorySha256": "fc56f19a06459903b4d234edb72133a398f6e1138230420e2de94f5adeaefcf6",
-  "leanSourceClosureSha256": "18d12d424a1f62f08dbd8ccd9fd96ea4ebd111276d28907c89e7f89a89e40efb",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-05-104",
-  "canonicalReportPages": 74,
+  "sourceTree": "ee1727221b3600193b9f622dc1cc060c3b2c8833",
+  "syncedOn": "2026-08-06",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-105",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-SATURATED-SUPPORT-SQUARE-CLOSURE-104",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-06-105",
+  "leanTheoremInventorySha256": "7712cae2dd53ef95a9ec7e10ea89ff29681101268a92c06d21a94be5efc02b32",
+  "leanSourceClosureSha256": "0e4bb045091e6b4c53181698b4c43f97f7cfe1c0081a8895e572d9035ff454dd",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-06-105",
+  "canonicalReportPages": 75,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 24260,
-    "leanTheoremInventoryTheoremCount": 13074,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 6927,
-    "leanTheoremInventoryExcludedPrivateDeclarationCount": 14574,
-    "leanTheoremInventorySourceClosureModuleCount": 220,
+    "leanTheoremInventoryDeclarationCount": 24337,
+    "leanTheoremInventoryTheoremCount": 13104,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 6937,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 14575,
+    "leanTheoremInventorySourceClosureModuleCount": 221,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4085,12 +4085,18 @@
     "leanResidualTerminalProperSupportSearchCompleteFormalized": true,
     "leanResidualTerminalProperSupportExactLocalGainFormalized": true,
     "leanResidualTerminalProperSupportAxiomAuditPassed": true,
-    "leanResidualTerminalProperSupportScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain"
+    "leanResidualTerminalProperSupportScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain",
+    "leanResidualTerminalSupportSquareClosureFormalized": true,
+    "leanResidualTerminalSupportSquareMeetJoinExactFormalized": true,
+    "leanResidualTerminalSupportSquarePhysicalCompatibilityFormalized": true,
+    "leanResidualTerminalSupportSquareSemanticExtractionFormalized": true,
+    "leanResidualTerminalSupportSquareClosureAxiomAuditPassed": true,
+    "leanResidualTerminalSupportSquareClosureScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-pairs-of-finite-terminal-seeds"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 81,
+    "earned": 82,
     "unearned": 3,
-    "total": 84
+    "total": 85
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4173,7 +4179,8 @@
     "residual-terminal-saturation-closure",
     "residual-terminal-physical-support-completion",
     "residual-terminal-support-extraction",
-    "residual-terminal-proper-positive-support-search"
+    "residual-terminal-proper-positive-support-search",
+    "residual-terminal-saturated-support-square-closure"
   ],
   "unearnedMilestones": [
     "global-locked-nand-threshold",

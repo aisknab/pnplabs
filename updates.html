@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 67% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 68% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="67" aria-label="Estimated proof reconstruction progress: 67 percent">67%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 67 percent">
+        <progress class="proof-progress-meter" max="100" value="68" aria-label="Estimated proof reconstruction progress: 68 percent">68%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 68 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-06-residual-terminal-saturated-support-square-closure" data-milestone-id="residual-terminal-saturated-support-square-closure">
+        <div class="section-label"><time datetime="2026-08-05T23:29:23Z">2026-08-05</time> · earned milestone 82</div>
+        <h2>The proof can now combine two completed circuit parts without losing their shared structure</h2>
+        <p>A circuit is a collection of simple yes-or-no operations connected by wires. Some later proof steps need to compare two chosen parts at once. Lean can now start from any two finite lists under a supplied dependency rulebook, complete both lists, and calculate four related parts: what they share, the completed left and right parts, and everything covered by either side.</p>
+        <p>Lean proves all four parts obey every supplied dependency, the shared part is the largest one contained in both sides, and the combined part is the smallest one containing both. It also rebuilds each part as an induced circuit with the expected inputs and outputs. The rulebook is still supplied rather than derived automatically, and the harder manuscript requirements for a projection-compatible square, routing obstructions, efficient runtime, ZeroSlack, PCCMin, and the final P versus NP theorem remain open. The 68% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 68%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-saturated-support-square-closure</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-saturated-support-square-closure</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire candidate, every explicit terminal dependency system, and every pair of finite terminal seeds, Lean computes saturated left and right corners, their canonical closed meet, and their closed saturated-union join. It proves the exact greatest-lower-bound and least-upper-bound laws, seed extensionality, computed physical compatibility, exact gate count, open-support semantics, and induced whole-circuit recovery for all four corners.</p>
+          <p><strong>Boundary:</strong> The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone proves finite closed-corner algebra and computed physical extraction, not the manuscript&#39;s obstruction routing, frontier pushout, projection-compatible square, side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete residual routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 23</p>
+          <p><strong>Core source:</strong> commit <code>7e4f3a683f87f0009c2c6010678ff022638bc8b8</code>, tree <code>ee1727221b3600193b9f622dc1cc060c3b2c8833</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-105</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-SATURATED-SUPPORT-SQUARE-CLOSURE-104</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-05-residual-terminal-proper-positive-support-search" data-milestone-id="residual-terminal-proper-positive-support-search">
         <div class="section-label"><time datetime="2026-08-05T14:30:00Z">2026-08-05</time> · earned milestone 81</div>
         <h2>The proof can now search for a genuinely smaller useful part of a circuit</h2>

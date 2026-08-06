@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof can now search for a genuinely smaller useful part of a circuit</h2>
-          <p>A circuit is a list of simple yes-or-no operations connected by wires. Lean can now examine every possible starting selection from a supplied finite dependency system, complete all recorded dependencies, and test whether the resulting part is nonempty, genuinely smaller than the whole circuit, and improves the exact size comparison.</p>
-          <p>Lean proves that this finite search finds a qualifying part whenever one exists in that governed search space, and that the extracted smaller circuit preserves the intended boundary behaviour. The dependency system is still supplied rather than derived from the circuit, and the search is exhaustive rather than efficient. It does not complete the manuscript's full support or square arguments, finish ZeroSlack or PCCMin, provide a polynomial-time algorithm, or prove P = NP. The 67% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-05-residual-terminal-proper-positive-support-search">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof can now combine two completed circuit parts without losing their shared structure</h2>
+          <p>A circuit is a network of simple yes-or-no operations connected by wires. Starting from any two finite selections and a supplied dependency rulebook, Lean can complete each selection, identify their shared part, and form the smallest completed part containing both.</p>
+          <p>Lean proves that all four parts are closed under the supplied rules and can be extracted as induced circuits with the expected behaviour. The rulebook is still supplied rather than derived from the circuit. This is finite support-square algebra, not yet the manuscript's projection-compatible square, obstruction routing, square legitimacy, ZeroSlack, PCCMin, a polynomial-time algorithm, or P = NP. The 68% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-06-residual-terminal-saturated-support-square-closure">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>findTerminalProperPositiveSupport_sound</code>, <code>findTerminalProperPositiveSupport_exists_of_seed</code>, and <code>findTerminalProperPositiveSupport_eq_none_iff</code> prove soundness, completeness, and exact failure for an exhaustive search over the canonical finite universe of primitive-record seeds. Each seed is saturated, physically completed, extracted as an open support, and tested for nonempty proper size and exact positive local gain. The dependency system remains explicit input and the search is not polynomial. This does not establish global gain completeness, complete the manuscript's support-square obligations, finish ZeroSlack or PCCMin, or prove P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>TerminalSaturatedSupportSquare.meetRecords_greatest</code> and <code>TerminalSaturatedSupportSquare.joinRecords_least</code> prove the exact greatest-lower-bound and least-upper-bound laws for two saturated terminal supports. <code>TerminalSaturatedSupportSquare.physically_compatible</code>, <code>extracted_semantics</code>, and <code>extracted_induced</code> prove computed physical compatibility, open-support semantics, and whole-circuit recovery for all four corners. The dependency system remains explicit input. This does not derive the manuscript's frontier, construct its projection-compatible square, prove square legitimacy, finish ZeroSlack or PCCMin, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -203,6 +203,11 @@ leanResidualTerminalSupportExtractionEmptyAxiomDeclarationCount = 3
 leanResidualTerminalSupportExtractionPropextOnlyDeclarationCount = 11
 leanResidualTerminalSupportExtractionPropextQuotSoundDeclarationCount = 20
 leanResidualTerminalSupportCompletionFormalized = false
+leanResidualTerminalSupportSquareClosureFormalized = true
+leanResidualTerminalSupportSquareMeetJoinExactFormalized = true
+leanResidualTerminalSupportSquarePhysicalCompatibilityFormalized = true
+leanResidualTerminalSupportSquareSemanticExtractionFormalized = true
+leanResidualTerminalSupportSquareClosureAxiomAuditPassed = true
 leanResidualTerminalSquareLegitimacyFormalized = false
 leanResidualTerminalProjectionSquareFormalized = false
 leanPCCMinPolynomialRuntimeFormalized = false
@@ -219,9 +224,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-05-104</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-06-105</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>fc56f19a06459903b4d234edb72133a398f6e1138230420e2de94f5adeaefcf6</code></div>
+            <div><span>Inventory SHA-256</span><code>7712cae2dd53ef95a9ec7e10ea89ff29681101268a92c06d21a94be5efc02b32</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -229,18 +234,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>67</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>68</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 67 percent" data-proof-progress="67">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>67</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 68 percent" data-proof-progress="68">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>68</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 67% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 68% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
