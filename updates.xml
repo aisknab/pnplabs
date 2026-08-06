@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-06T04:20:09Z</updated>
+  <updated>2026-08-06T10:59:14Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-frontier-pushout</id>
+    <title>The proof can now combine the boundaries of two completed circuit parts</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-frontier-pushout"/>
+    <published>2026-08-06T10:59:14Z</published>
+    <updated>2026-08-06T10:59:14Z</updated>
+    <summary type="text">A circuit is a collection of simple yes-or-no operations connected by wires. Lean could already complete two chosen parts and describe each one&#39;s boundary. It can now combine those two descriptions to build the boundary of everything covered by either part, while keeping exactly the information the parts share. Lean proves that this combined description matches a separate calculation made from the completed whole. Each item at either side&#39;s boundary is accounted for: it remains exposed or becomes internal to the combined part. The dependency rulebook is still supplied rather than derived from the circuit. The required projection-compatible square, obstruction routing, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 70% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 70 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A circuit is a collection of simple yes-or-no operations connected by wires. Lean could already complete two chosen parts and describe each one&amp;#39;s boundary. It can now combine those two descriptions to build the boundary of everything covered by either part, while keeping exactly the information the parts share.&lt;/p&gt;&lt;p&gt;Lean proves that this combined description matches a separate calculation made from the completed whole. Each item at either side&amp;#39;s boundary is accounted for: it remains exposed or becomes internal to the combined part. The dependency rulebook is still supplied rather than derived from the circuit. The required projection-compatible square, obstruction routing, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 70% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;70&quot;&gt;Editorial progress estimate at publication: 70%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-frontier-pushout&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-support-completion</id>
     <title>The proof can now organise each completed circuit part into one consistent boundary</title>

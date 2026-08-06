@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 88,
+  "version": 89,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "c225e91eeb469cd87f0c52c9731074e8b66fc573",
+  "sourceCommitRef": "31937a36ecc21413e334e5e7f7f27058f0dfecc7",
   "sourceProofCommitRef": "bf6aeac30aae0b04745715e8ec6a1d4be862a724",
-  "sourceTree": "9616b6c150124561a7f88672aa20a34bba1a4aae",
+  "sourceTree": "795ca7177f7a99e301b19e4dca7c3abac914d1ef",
   "syncedOn": "2026-08-06",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-106",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-GOVERNED-SUPPORT-COMPLETION-105",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-06-106",
-  "leanTheoremInventorySha256": "38c53b1e3e80059332ff62f135ffebcf04d6b5e39e158f0f48965295894c6e8d",
-  "leanSourceClosureSha256": "b4be2de72b2909cd9e47f0748e061f03041fbecbac1360e5797e89fef18404f6",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-06-106",
-  "canonicalReportPages": 75,
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-107",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-FRONTIER-PUSHOUT-106",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-06-107",
+  "leanTheoremInventorySha256": "7e0e7feb895f6ea1c677314b1c2bd8b2ec5f33e826219b0421301e198984720e",
+  "leanSourceClosureSha256": "4f08c63941db8fd92e7a33e8f16f698929247d968ae6fce45f4406f8e0aa02fb",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-06-107",
+  "canonicalReportPages": 76,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 24405,
-    "leanTheoremInventoryTheoremCount": 13134,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 6945,
-    "leanTheoremInventoryExcludedPrivateDeclarationCount": 14576,
-    "leanTheoremInventorySourceClosureModuleCount": 222,
+    "leanTheoremInventoryDeclarationCount": 24464,
+    "leanTheoremInventoryTheoremCount": 13166,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 6953,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 14594,
+    "leanTheoremInventorySourceClosureModuleCount": 223,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -1628,7 +1628,7 @@
       "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondAppender_workRunExact": "595f1f5e9afbb39d6d2c523a34db12deb33aca58f8054599c9418910f214e45d",
       "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondCursor_workRunExact": "88477ee975ff9af7dfde2803d054c249c66858db8c84ce7e2b3b0c1dc2b071ed",
       "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondLiteralFirstUnaryUnitSlot_direct_eq_t": "aa33d80705bcc438db138ab74ac13d95daa85eb1690c05642670be1849265952",
-      "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondLiteralSecondUnaryUnitSlot_direct_eq_t": "17224affe49ff7066d877f52a6945d2215cd1831b6088671026380f13a0bc3c2",
+      "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondLiteralSecondUnaryUnitSlot_direct_eq_t": "17224affe49ff7066d877f52a6953d2215cd1831b6088671026380f13a0bc3c2",
       "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondLiteralSignSlot_direct_eq_f": "cccea21dbea3e84940f57eef6cc9a54c3a7cf330a908db483b9a3eedba31096f",
       "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondLiteralSuffix_launch_workStep": "f36f5554de117969875f511c0aef636345b3073b8e1308081db887a1675742fe",
       "PNP.Concrete.CookLevin.BuilderThirdClauseSecondLiteralPrefix.secondLiteralTerminatorSlot_direct_eq_f": "30bc72d2c5ca33e10781379212ab3b68978296cffd87d63db9dfd862c00d0719",
@@ -4095,12 +4095,19 @@
     "leanResidualTerminalGovernedSupportCompletionFormalized": true,
     "leanResidualTerminalGovernedProfilePartitionFormalized": true,
     "leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed": true,
-    "leanResidualTerminalGovernedSupportCompletionScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-finite-seed-lists-and-saturated-support-square-corners"
+    "leanResidualTerminalGovernedSupportCompletionScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-finite-seed-lists-and-saturated-support-square-corners",
+    "leanResidualTerminalFrontierPushoutFormalized": true,
+    "leanResidualTerminalFrontierBoundaryGlueExactFormalized": true,
+    "leanResidualTerminalFrontierInterfaceGlueExactFormalized": true,
+    "leanResidualTerminalFrontierProfileGlueExactFormalized": true,
+    "leanResidualTerminalFrontierInternalizationFormalized": true,
+    "leanResidualTerminalFrontierPushoutAxiomAuditPassed": true,
+    "leanResidualTerminalFrontierPushoutScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-computed-saturated-support-squares"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 83,
+    "earned": 84,
     "unearned": 3,
-    "total": 86
+    "total": 87
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4185,7 +4192,8 @@
     "residual-terminal-support-extraction",
     "residual-terminal-proper-positive-support-search",
     "residual-terminal-saturated-support-square-closure",
-    "residual-terminal-governed-support-completion"
+    "residual-terminal-governed-support-completion",
+    "residual-terminal-governed-frontier-pushout"
   ],
   "unearnedMilestones": [
     "global-locked-nand-threshold",
@@ -4625,6 +4633,6 @@
     "PNP.PEqualsNP uses abstract string-handle witnesses rather than a concrete standard complexity model and is categorically ineligible for public theorem activation.",
     "PNP.Main.ConcretePEqualsNP now names the inactive finite charged-pipeline target, while PNP.Main.p_eq_np remains absent.",
     "All five reviewed activation fingerprints remain intentionally unset, so target presence alone cannot open the concrete publication gate.",
-    "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only."
+    "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 57-page direct-claim report remains historical audit material only."
   ]
 }

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-06-residual-terminal-governed-frontier-pushout",
+      "milestoneId": "residual-terminal-governed-frontier-pushout",
+      "publishedAt": "2026-08-06T10:59:14Z",
+      "title": "The proof can now combine the boundaries of two completed circuit parts",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations connected by wires. Lean could already complete two chosen parts and describe each one's boundary. It can now combine those two descriptions to build the boundary of everything covered by either part, while keeping exactly the information the parts share.",
+        "Lean proves that this combined description matches a separate calculation made from the completed whole. Each item at either side's boundary is accounted for: it remains exposed or becomes internal to the combined part. The dependency rulebook is still supplied rather than derived from the circuit. The required projection-compatible square, obstruction routing, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 70% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 70,
+      "source": {
+        "commit": "31937a36ecc21413e334e5e7f7f27058f0dfecc7",
+        "tree": "795ca7177f7a99e301b19e4dca7c3abac914d1ef",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-107",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-FRONTIER-PUSHOUT-106"
+      }
+    },
+    {
       "id": "2026-08-06-residual-terminal-governed-support-completion",
       "milestoneId": "residual-terminal-governed-support-completion",
       "publishedAt": "2026-08-06T04:20:09Z",
