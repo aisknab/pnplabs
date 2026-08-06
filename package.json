@@ -8,6 +8,7 @@
     "updates:generate": "node tools/generate-milestone-updates.mjs",
     "updates:check": "node tools/generate-milestone-updates.mjs --check",
     "verify:seal": "node tools/verify-release-seal.mjs",
+    "verify:browser-report": "node tools/check-browser-report-integrity.mjs",
     "deployment:generate": "node tools/deployment-provenance.mjs",
     "deployment:check": "node tools/deployment-provenance.mjs --check",
     "notify:deployment-ready": "node tools/notify-deployment-ready.mjs",
@@ -23,7 +24,7 @@
     "test:audit-targets": "node --test tests/audit-targets/*.test.mjs && node tools/check-cross-repo-targets.mjs",
     "test:docs": "node tools/check-doc-links.mjs",
     "repro:smoke": "npm run verify:seal && npm run examples:minimal",
-    "test": "npm run updates:check && npm run test:unit && npm run verify:seal && npm run examples:minimal && npm run test:negative && npm run repro:smoke && npm run test:docs"
+    "test": "npm run updates:check && npm run verify:browser-report && npm run test:unit && npm run verify:seal && npm run examples:minimal && npm run test:negative && npm run repro:smoke && npm run test:docs"
   },
   "engines": {
     "node": ">=20"

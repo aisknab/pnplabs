@@ -3,6 +3,7 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
+import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
 const SHA_PATTERN = /^[0-9a-f]{40}$/u;
@@ -90,6 +91,7 @@ async function main() {
     status: git(root, ["status", "--porcelain"])
   });
   verifyReleaseSeal({ root });
+  checkBrowserReportIntegrity({ root });
   const notification = buildNotification(identity);
   if (dryRun) {
     console.log(notification.body);

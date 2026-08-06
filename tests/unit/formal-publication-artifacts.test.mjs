@@ -317,6 +317,39 @@ const RESIDUAL_TERMINAL_SUPPORT_SQUARE_THEOREM_SHA256 = {
   "PNP.DirectWire.extractTerminalSupport_induced": "019211d25600c1bb6cdbb87609891df9b1bbf7076767ea8ed434a7b9cbede608"
 };
 
+const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS = {
+  "PNP.DirectWire.mem_allTerminalProfileRoles": { hash: "95b57d90a6a83f87c9c36e1ec306cb05fc10870bbab4a206ac751e6f5c12ee0e", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.mem_terminalProfileCoordinatesForRole_iff": { hash: "a6e7958f1f9227d3f0a83ea18c49f88fc81b1f06b16a30436b5f0c73c008dc4c", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.terminalProfileCoordinatesForRole_nodup": { hash: "a5c0d1eac8e390d94a274c75fe0b03b11379680654fea2948246c73ba52852ee", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.completeTerminalGovernedSupport_records": { hash: "fc56858cdef8cb222781fd1998b550ce993c72dc40f1994527dd22f1e61addf4", axioms: [], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.frontier_boundary": { hash: "e340ac8efd05f6760b8c8f18e88a5e80c53c81599e3876913898c167f2308b13", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.frontier_interface": { hash: "d4415e5f4b90980b4170664d526e3c51eec5c6c9013e814e9f4529451fc23792", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.mem_profileCoordinates_iff": { hash: "aff01078ce9ceea7e18afb1ca3c079fec1400eed49b73bb891d347e5883a0178", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.profileCoordinates_nodup": { hash: "f289e58b7c7eeda0ae808b7de5927e2b43f2e426642c45eac7077e2727589d7a", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.mem_own_profile_role_iff": { hash: "ca2efaf1a8993528a20716d0d5b0440e45ed65cd53a39b023002d2c0e862e529", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.profile_role_unique": { hash: "5b437c2f9018649967a5750b40149e52bf06b09ce9d681744cefbd3f722ad055", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.profileCoordinates_disjoint": { hash: "55d53c267bcf9232db61b1b3b519cd2faf9b9d834e30996ab0cfa039c48535c9", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.profile_record_covered_iff": { hash: "ca1b74c7b2a1845ece0b2bad47f9d7773c18fc67539bb477e576b4d155ef92bd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.required_mem": { hash: "6e9f933d9c34be75ad59d4d7cf8409352d0223c6693361d9d3c3c5b922b6213c", axioms: [], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalGovernedCompletedSupport.required_profile_mem": { hash: "042278fe2f7807016f398ab5e580071f05241e4ecd431b2c23ca133e3852cb69", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.completeSaturatedTerminalGovernedSupport_records": { hash: "9c9d5dd949b1d8b43d815cadac92c5861dd9cd429a75f372a65ebe6c6c07d889", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.completeSaturatedTerminalGovernedSupport_compatible": { hash: "e535f50fdb9045d5e1e45ee4a0fb3490d10e2fe831b53095cb18edbcba3348e8", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_records": { hash: "4e804d18a19d04ab70775d69514903fb5e32f712a54eedf77d4fafe429f07236", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_compatible": { hash: "3d8b72bef8f77704e577cd3377720c41c0e035818fa7d598406e385d8fd05e5d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff": { hash: "9736ce34b616c8b00ac7ca4ba123c3c093dc464c1f07a7a0635b5b5bbe28a9dd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_mem": { hash: "89af8357b78aece85e9130d05174823c0b21ac461e57e3decd86c3cc10f29b79", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_profile_mem": { hash: "aba462df754b833c8351179b8f7ceb65c9493ef7e982e279451065239301043b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.terminalSaturateRecords_closed": { hash: "f1b4202a9fa0e8d76c6289201eac729860a7f4735c9700c4299f71e1f1792e6d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
+  "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.records_closed": { hash: "0fb6aed85d2c9d9f5ef89004077552853e3ffaec207f7c2884e033c73067df4f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" }
+};
+
+const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -335,15 +368,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "7e4f3a683f87f0009c2c6010678ff022638bc8b8");
+  assert.equal(result.coreCommit, "c225e91eeb469cd87f0c52c9731074e8b66fc573");
 });
 
-test("current release is pinned, seventy-five-page, exposes saturated support-square closure, and fails closed", () => {
+test("current release is pinned, seventy-five-page, exposes governed support completion, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-06-88");
-  assert.equal(release.source.commit, "7e4f3a683f87f0009c2c6010678ff022638bc8b8");
-  assert.equal(release.source.proofCommit, "5ec1db96c1fc5eabb19eb665c0abc4a0cd4ad806");
-  assert.equal(release.source.tree, "ee1727221b3600193b9f622dc1cc060c3b2c8833");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-06-89");
+  assert.equal(release.source.commit, "c225e91eeb469cd87f0c52c9731074e8b66fc573");
+  assert.equal(release.source.proofCommit, "bf6aeac30aae0b04745715e8ec6a1d4be862a724");
+  assert.equal(release.source.tree, "9616b6c150124561a7f88672aa20a34bba1a4aae");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 75);
@@ -2022,7 +2055,18 @@ test("current release is pinned, seventy-five-page, exposes saturated support-sq
   assert.deepEqual(release.earnedBoundary.residualTerminalSupportSquareClosureTheoremKernelTypeSha256, RESIDUAL_TERMINAL_SUPPORT_SQUARE_THEOREM_SHA256);
   assert.deepEqual(release.earnedBoundary.residualTerminalSupportSquareClosureAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.residualTerminalSupportSquareClosureProjectAxiomClosure, []);
-  assert.equal(release.earnedBoundary.residualTerminalSupportCompletionFormalized, false);
+  assert.equal(release.earnedBoundary.residualTerminalSupportCompletionFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedProfilePartitionFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionAuditedDeclarationCount, 42);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionEmptyAxiomDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionPropextOnlyDeclarationCount, 26);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionPropextQuotSoundDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalGovernedSupportCompletionScope, "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-finite-seed-lists-and-saturated-support-square-corners");
+  assert.deepEqual(release.earnedBoundary.residualTerminalGovernedSupportCompletionTheoremKernelTypeSha256, RESIDUAL_TERMINAL_GOVERNED_SUPPORT_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalGovernedSupportCompletionAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalGovernedSupportCompletionProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyFormalized, false);
   assert.equal(release.earnedBoundary.residualTerminalProjectionSquareFormalized, false);
   assert.equal(release.earnedBoundary.pccMinPolynomialRuntimeFormalized, false);
@@ -2052,12 +2096,12 @@ test("current release is pinned, seventy-five-page, exposes saturated support-sq
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 85 milestones with saturated support-square closure pinned", () => {
+test("status and inventory publish exactly 86 milestones with governed support completion pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 85);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 82);
+  assert.equal(milestones.length, 86);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 83);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -2390,7 +2434,7 @@ test("status and inventory publish exactly 85 milestones with saturated support-
   assert.equal(status.leanResidualTerminalSaturationMonotoneFormalized, true);
   assert.equal(status.leanResidualTerminalSaturationIdempotentFormalized, true);
   assert.equal(status.leanResidualTerminalSaturationScope, "all-finite-terminal-primitive-record-universes-with-explicit-boolean-rule-tagged-dependencies");
-  assert.equal(status.leanResidualTerminalSupportCompletionFormalized, false);
+  assert.equal(status.leanResidualTerminalSupportCompletionFormalized, true);
   assert.equal(status.leanResidualTerminalSquareLegitimacyFormalized, false);
   assert.equal(status.leanResidualTerminalProjectionSquareFormalized, false);
   assert.equal(status.leanResidualProjectionTransferFormalized, true);
@@ -2521,21 +2565,52 @@ test("status and inventory publish exactly 85 milestones with saturated support-
   assert.equal(status.leanResidualTerminalSupportSquareClosureAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalSupportSquareClosureScope, "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-pairs-of-finite-terminal-seeds");
 
-  assert.equal(inventory.declarationCount, 24337);
-  assert.equal(inventory.theoremCount, 13104);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6937);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14575);
-  assert.equal(inventory.sourceClosureModuleCount, 221);
-  assert.equal(inventory.milestoneCandidates.length, 2219);
+  const governedSupport = milestones.find((row) => row.id === "residual-terminal-governed-support-completion");
+  assert.equal(governedSupport.classification, "formalized-terminal-governed-support-completion");
+  assert.equal(governedSupport.status, "formalized-terminal-governed-support-completion");
+  assert.equal(governedSupport.earned, true);
+  assert.equal(governedSupport.allPresent, true);
+  assert.equal(governedSupport.allAssumptionFree, false);
+  assert.equal(governedSupport.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(governedSupport.allKernelTypesMatch, true);
+  assert.equal(governedSupport.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(governedSupport.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(governedSupport.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_GOVERNED_SUPPORT_HASHES
+  );
+  for (const row of governedSupport.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.match(governedSupport.scope, /partition of selected profile coordinates among all ten terminal profile roles/u);
+  assert.match(governedSupport.nonClaim, /governed finite completion of each saturated support-square corner/u);
+  assert.equal(status.leanResidualTerminalGovernedSupportCompletionFormalized, true);
+  assert.equal(status.leanResidualTerminalGovernedProfilePartitionFormalized, true);
+  assert.equal(status.leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalGovernedSupportCompletionScope, "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-finite-seed-lists-and-saturated-support-square-corners");
+
+  assert.equal(inventory.declarationCount, 24405);
+  assert.equal(inventory.theoremCount, 13134);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6945);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14576);
+  assert.equal(inventory.sourceClosureModuleCount, 222);
+  assert.equal(inventory.milestoneCandidates.length, 2240);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 683,
-    definition: 9956,
-    inductive: 295,
+    constructor: 685,
+    definition: 9988,
+    inductive: 297,
     opaque: 0,
     quotient: 0,
-    recursor: 295,
-    theorem: 13104
+    recursor: 297,
+    theorem: 13134
   });
 });
 
@@ -2587,6 +2662,7 @@ test("sync mode rejects combining explicit read-only and write modes", () => {
 test("exported verification helpers import without a script argv path", () => {
   const modules = [
     "./tools/verify-release-seal.mjs",
+    "./tools/check-browser-report-integrity.mjs",
     "./tools/check-cross-repo-targets.mjs",
     "./tools/sync-public-access-docs.mjs",
     "./tools/reviewer-fixture-checker.mjs"
@@ -2620,6 +2696,17 @@ test("production audit is manual and deployment remains fail-closed outside GitH
   assert.doesNotMatch(workflow, /^\s+(?:push|pull_request|schedule):/m);
   assert.match(workflow, /npm run verify:production/);
   assert.doesNotMatch(workflow, /contents: write|git (?:commit|push)|systemctl|deploy-pnp/);
+
+  const productionCheck = readFileSync(path.join(root, "tools/check-production-deployment.mjs"), "utf8");
+  const deploymentProvenance = readFileSync(path.join(root, "tools/deployment-provenance.mjs"), "utf8");
+  const publicationSync = readFileSync(path.join(root, "tools/sync-public-access-docs.mjs"), "utf8");
+  for (const [label, source] of [
+    ["production verifier", productionCheck],
+    ["deployment provenance", deploymentProvenance],
+    ["publication sync", publicationSync]
+  ]) {
+    assert.match(source, /checkBrowserReportIntegrity\(\{\s*root(?:\s*:|\s*\})/u, label);
+  }
 
   const deploy = readFileSync(path.join(root, "deploy/deploy-pnp"), "utf8");
   assert.match(deploy, /merge-base --is-ancestor/);

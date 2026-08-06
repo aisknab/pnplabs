@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-105';
-const STATUS_SHA256 = 'ba386511f193e7f0b18714773e84a91e591c32a91adda70810fa24d6d634a2ec';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-SATURATED-SUPPORT-SQUARE-CLOSURE-104';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-06-105';
-const INVENTORY_SHA256 = '7712cae2dd53ef95a9ec7e10ea89ff29681101268a92c06d21a94be5efc02b32';
-const SOURCE_CLOSURE_SHA256 = '0e4bb045091e6b4c53181698b4c43f97f7cfe1c0081a8895e572d9035ff454dd';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-106';
+const STATUS_SHA256 = '5e6356f2b13da0161b4b0fb0ea299b504bfef54f7670f3a4371d1b19df26d10f';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-GOVERNED-SUPPORT-COMPLETION-105';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-06-106';
+const INVENTORY_SHA256 = '38c53b1e3e80059332ff62f135ffebcf04d6b5e39e158f0f48965295894c6e8d';
+const SOURCE_CLOSURE_SHA256 = 'b4be2de72b2909cd9e47f0748e061f03041fbecbac1360e5797e89fef18404f6';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 24337,
-  theorems: 13104,
-  assumptionFreeTheorems: 6937,
-  excludedPrivateDeclarations: 14575,
-  modules: 221,
+  declarations: 24405,
+  theorems: 13134,
+  assumptionFreeTheorems: 6945,
+  excludedPrivateDeclarations: 14576,
+  modules: 222,
   axioms: 4,
 });
 
@@ -3502,6 +3502,35 @@ const RESIDUAL_TERMINAL_SUPPORT_SQUARE_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.extractTerminalSupport_induced",["Quot.sound","propext"],"PNP.ResidualTerminalSupportExtraction"],
 ]);
 
+const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.mem_allTerminalProfileRoles", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.mem_terminalProfileCoordinatesForRole_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.terminalProfileCoordinatesForRole_nodup", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.completeTerminalGovernedSupport_records", [], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.frontier_boundary", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.frontier_interface", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.mem_profileCoordinates_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.profileCoordinates_nodup", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.mem_own_profile_role_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.profile_role_unique", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.profileCoordinates_disjoint", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.profile_record_covered_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.required_mem", [], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalGovernedCompletedSupport.required_profile_mem", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.completeSaturatedTerminalGovernedSupport_records", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.completeSaturatedTerminalGovernedSupport_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_records", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_mem", ["Quot.sound", "propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_profile_mem", ["Quot.sound", "propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.completeTerminalPhysicalSupport_compatible", ["propext"], "PNP.ResidualTerminalPhysicalSupportCompletion"],
+  ["PNP.DirectWire.terminalSaturateRecords_closed", ["Quot.sound", "propext"], "PNP.ResidualTerminalExecutableSaturation"],
+  ["PNP.DirectWire.mem_terminalSaturateRecords_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalExecutableSaturation"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.records_closed", ["Quot.sound", "propext"], "PNP.ResidualTerminalSupportSquareClosure"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible", ["propext"], "PNP.ResidualTerminalSupportSquareClosure"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4027,6 +4056,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-support-extraction',
   'residual-terminal-proper-positive-support-search',
   'residual-terminal-saturated-support-square-closure',
+  'residual-terminal-governed-support-completion',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4389,6 +4419,10 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalSupportSquareSemanticExtractionFormalized: false,
   leanResidualTerminalSupportSquareClosureAxiomAuditPassed: false,
   leanResidualTerminalSupportSquareClosureScope: null,
+  leanResidualTerminalGovernedSupportCompletionFormalized: false,
+  leanResidualTerminalGovernedProfilePartitionFormalized: false,
+  leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed: false,
+  leanResidualTerminalGovernedSupportCompletionScope: null,
   leanResidualTerminalSaturationFormalized: false,
   leanResidualTerminalSaturationAxiomAuditPassed: false,
   leanResidualTerminalPrimitiveUniverseFormalized: false,
@@ -4801,6 +4835,10 @@ leanResidualTerminalSupportSquarePhysicalCompatibilityFormalized = ${payload.lea
 leanResidualTerminalSupportSquareSemanticExtractionFormalized = ${payload.leanResidualTerminalSupportSquareSemanticExtractionFormalized ?? false}
 leanResidualTerminalSupportSquareClosureAxiomAuditPassed = ${payload.leanResidualTerminalSupportSquareClosureAxiomAuditPassed ?? false}
 leanResidualTerminalSupportSquareClosureScope = ${payload.leanResidualTerminalSupportSquareClosureScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSupportSquareClosureScope)}
+leanResidualTerminalGovernedSupportCompletionFormalized = ${payload.leanResidualTerminalGovernedSupportCompletionFormalized ?? false}
+leanResidualTerminalGovernedProfilePartitionFormalized = ${payload.leanResidualTerminalGovernedProfilePartitionFormalized ?? false}
+leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed = ${payload.leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed ?? false}
+leanResidualTerminalGovernedSupportCompletionScope = ${payload.leanResidualTerminalGovernedSupportCompletionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalGovernedSupportCompletionScope)}
 leanResidualTerminalSaturationFormalized = ${payload.leanResidualTerminalSaturationFormalized ?? false}
 leanResidualTerminalSaturationAxiomAuditPassed = ${payload.leanResidualTerminalSaturationAxiomAuditPassed ?? false}
 leanResidualTerminalPrimitiveUniverseFormalized = ${payload.leanResidualTerminalPrimitiveUniverseFormalized ?? false}
@@ -4864,13 +4902,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 683,
-    definition: 9956,
-    inductive: 295,
+    constructor: 685,
+    definition: 9988,
+    inductive: 297,
     opaque: 0,
     quotient: 0,
-    recursor: 295,
-    theorem: 13104,
+    recursor: 297,
+    theorem: 13134,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5241,6 +5279,11 @@ function validateInventory(inventory) {
     axioms,
     module,
   }));
+  const residualTerminalGovernedSupport = RESIDUAL_TERMINAL_GOVERNED_SUPPORT_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -5591,6 +5634,9 @@ function validateInventory(inventory) {
     && residualTerminalSupportSquare.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalGovernedSupport.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5632,7 +5678,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2219
+    && inventory.milestoneCandidates.length === 2240
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5696,7 +5742,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 82;
+    const shouldBeEarned = index < 83;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5773,6 +5819,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalSupportSquareMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-saturated-support-square-closure'
+  );
+  const residualTerminalGovernedSupportMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-governed-support-completion'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -5929,7 +5978,7 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSaturationMonotoneFormalized === true
     && status.leanResidualTerminalSaturationIdempotentFormalized === true
     && status.leanResidualTerminalSaturationScope === "all-finite-terminal-primitive-record-universes-with-explicit-boolean-rule-tagged-dependencies"
-    && status.leanResidualTerminalSupportCompletionFormalized === false
+    && status.leanResidualTerminalSupportCompletionFormalized === true
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
     && status.leanResidualTerminalProjectionSquareFormalized === false
     && residualTerminalPhysicalSupportMilestone?.classification === "formalized-terminal-physical-support-completion"
@@ -5970,7 +6019,7 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalProperSupportExactLocalGainFormalized === true
     && status.leanResidualTerminalProperSupportAxiomAuditPassed === true
     && status.leanResidualTerminalProperSupportScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain"
-    && status.leanResidualTerminalSupportCompletionFormalized === false
+    && status.leanResidualTerminalSupportCompletionFormalized === true
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
     && status.leanResidualTerminalProjectionSquareFormalized === false
     && status.leanPCCMinPolynomialRuntimeFormalized === false
@@ -5987,10 +6036,21 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSupportSquareSemanticExtractionFormalized === true
     && status.leanResidualTerminalSupportSquareClosureAxiomAuditPassed === true
     && status.leanResidualTerminalSupportSquareClosureScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-pairs-of-finite-terminal-seeds"
-    && status.leanResidualTerminalSupportCompletionFormalized === false
+    && status.leanResidualTerminalSupportCompletionFormalized === true
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
     && status.leanResidualTerminalProjectionSquareFormalized === false
     && status.leanPCCMinPolynomialRuntimeFormalized === false
+    && residualTerminalGovernedSupportMilestone?.classification === "formalized-terminal-governed-support-completion"
+    && residualTerminalGovernedSupportMilestone.scope === "For every finite direct-wire candidate, explicit terminal dependency system, finite seed list, and computed saturated support-square corner, Lean computes the exact physical boundary, ordered interface, and partition of selected profile coordinates among all ten terminal profile roles. It proves exact membership, no duplicates, pairwise disjointness, record coverage, dependency closure, physical compatibility, and retention of each exact corner."
+    && residualTerminalGovernedSupportMilestone.nonClaim === "The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone computes a governed finite completion of each saturated support-square corner, not the manuscript's obstruction routing, frontier pushout, projection-compatible square, side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete residual routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP."
+    && sameJson(
+      residualTerminalGovernedSupportMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_GOVERNED_SUPPORT_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalGovernedSupportCompletionFormalized === true
+    && status.leanResidualTerminalGovernedProfilePartitionFormalized === true
+    && status.leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed === true
+    && status.leanResidualTerminalGovernedSupportCompletionScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-finite-seed-lists-and-saturated-support-square-corners"
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
     && status.finalTheoremReady === gatePassed
@@ -6704,108 +6764,6 @@ document.querySelectorAll('[data-copy]').forEach((button) => {
   });
 });
 
-function toHex(buffer) {
-  return Array.from(new Uint8Array(buffer))
-    .map((byte) => byte.toString(16).padStart(2, '0'))
-    .join('');
-}
-
-function formatBytes(bytes) {
-  if (!Number.isFinite(bytes)) return 'unknown size';
-  if (bytes < 1024) return `${bytes} bytes`;
-  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
-}
-
-document.querySelectorAll('[data-seal-console]').forEach((consoleRoot) => {
-  const runButton = consoleRoot.querySelector('[data-seal-run]');
-  const resetButton = consoleRoot.querySelector('[data-seal-reset]');
-  const status = consoleRoot.querySelector('[data-seal-status]');
-  const output = consoleRoot.querySelector('[data-seal-output]');
-  const computed = consoleRoot.querySelector('[data-seal-computed]');
-  const result = consoleRoot.querySelector('[data-seal-result]');
-  const artifact = consoleRoot.getAttribute('data-artifact');
-  const artifactLabel = consoleRoot.getAttribute('data-label') || artifact;
-  const expected = (consoleRoot.getAttribute('data-expected') || '').toLowerCase();
-
-  const setState = (state, text) => {
-    consoleRoot.dataset.state = state;
-    if (status) status.textContent = text;
-  };
-
-  const addLine = (kind, text) => {
-    if (!output) return;
-    const item = document.createElement('li');
-    if (kind) item.classList.add(kind);
-    const label = document.createElement('span');
-    label.textContent = kind || 'info';
-    const code = document.createElement('code');
-    code.textContent = text;
-    item.append(label, code);
-    output.append(item);
-  };
-
-  const resetConsole = () => {
-    setState('idle', 'idle');
-    if (computed) computed.textContent = 'not run';
-    if (result) result.textContent = 'Awaiting browser check.';
-    if (output) {
-      output.replaceChildren();
-      addLine('target', artifactLabel);
-      addLine('expect', expected);
-      addLine('ready', 'press Run check to fetch the file, hash locally, and compare');
-    }
-  };
-
-  const runSealCheck = async () => {
-    if (!artifact || !expected) return;
-    if (!globalThis.crypto?.subtle) {
-      setState('failed', 'unsupported');
-      if (result) result.textContent = 'Web Crypto is unavailable in this browser context.';
-      addLine('fail', 'crypto.subtle is unavailable; use HTTPS, localhost, or the command-line workflow');
-      return;
-    }
-
-    setState('running', 'running');
-    if (runButton) runButton.disabled = true;
-    if (computed) computed.textContent = 'computing...';
-    if (result) result.textContent = 'Checking bundled report file...';
-    if (output) output.replaceChildren();
-
-    try {
-      addLine('pending', `GET ${artifact}`);
-      const response = await fetch(artifact, { cache: 'no-cache' });
-      if (!response.ok) throw new Error(`HTTP ${response.status} while fetching ${artifactLabel}`);
-      const buffer = await response.arrayBuffer();
-      addLine('ok', `received ${artifactLabel} · ${formatBytes(buffer.byteLength)}`);
-      addLine('pending', 'compute SHA-256 with browser Web Crypto');
-      const digest = await globalThis.crypto.subtle.digest('SHA-256', buffer);
-      const actual = toHex(digest);
-      if (computed) computed.textContent = actual;
-      if (actual === expected) {
-        addLine('ok', 'computed digest matches the published release digest');
-        setState('verified', 'matched');
-        if (result) result.textContent = 'Digest match: bundled canonical report matches the published SHA-256. This confirms file identity only.';
-      } else {
-        addLine('fail', 'computed digest does not match the published release seal');
-        setState('failed', 'mismatch');
-        if (result) result.textContent = 'Digest mismatch: do not rely on this bundled artefact without further investigation.';
-      }
-    } catch (error) {
-      addLine('fail', error instanceof Error ? error.message : 'release seal check failed');
-      setState('failed', 'failed');
-      if (computed) computed.textContent = 'not available';
-      if (result) result.textContent = 'The browser check could not complete. Use the command-line verification workflow or retry from a served page.';
-    } finally {
-      if (runButton) runButton.disabled = false;
-    }
-  };
-
-  resetButton?.addEventListener('click', resetConsole);
-  runButton?.addEventListener('click', runSealCheck);
-  resetConsole();
-});
-
 const progress = document.querySelector('.progress');
 function updateProgress() {
   if (!progress) return;
@@ -6816,6 +6774,10 @@ function updateProgress() {
 }
 window.addEventListener('scroll', updateProgress, { passive: true });
 updateProgress();
+
+import('./report-integrity.js').catch((error) => {
+  console.error('Report integrity enhancement failed', error);
+});
 
 import('./public-source-links.js').catch((error) => {
   console.error('Public source link enhancement failed', error);

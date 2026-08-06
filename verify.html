@@ -63,9 +63,9 @@
         <div class="section-label">Browser check</div>
         <h2 id="seal-console-title">Check the bundled report digest in your browser.</h2>
       </div>
-      <p>The console fetches the bundled canonical PDF, computes SHA-256 with the browser Web Crypto API, and compares the result with the published release digest. It checks file identity, not theorem correctness.</p>
+      <p>The console first loads the current release seal, then fetches the bundled canonical PDF, checks its byte count, and computes SHA-256 with the browser Web Crypto API. It checks file identity, not theorem correctness.</p>
     </div>
-    <div class="seal-console" data-seal-console data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf" data-expected="00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4">
+    <div class="seal-console" data-seal-console data-seal="downloads/release-seal.json" data-artifact="downloads/canonical_proof_report.pdf" data-label="canonical_proof_report.pdf">
       <div class="seal-console-head">
         <div>
           <span class="console-kicker">Mode A · file integrity</span>
@@ -80,15 +80,15 @@
       <div class="seal-console-grid">
         <div class="seal-terminal" role="log" aria-live="polite" aria-label="Release seal console output">
           <ol class="seal-output" data-seal-output>
+            <li><span>seal</span><code>downloads/release-seal.json</code></li>
             <li><span>target</span><code>canonical_proof_report.pdf</code></li>
-            <li><span>expect</span><code>00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4</code></li>
-            <li><span>ready</span><code>press Run check to fetch the file, hash locally, and compare</code></li>
+            <li><span>ready</span><code>press Run check to load the seal, fetch the file, and compare</code></li>
           </ol>
         </div>
         <div class="seal-readout">
           <div class="digest-row">
             <span>Expected SHA-256</span>
-            <code id="expected-digest">00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4</code>
+            <code id="expected-digest" data-seal-expected>loaded from release seal</code>
             <button class="btn secondary small" type="button" data-copy="#expected-digest">Copy</button>
           </div>
           <div class="digest-row">
