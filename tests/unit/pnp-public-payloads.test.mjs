@@ -358,7 +358,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.coordinate, STATUS_COORDINATE);
   assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-FRONTIER-PUSHOUT-106');
   assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-06-107');
-  assert.equal(status.formalPublicationMapSha256, '3b27c4f934c3897bb71584846005e93a4816b63f4f8750a6884d18f1aedfe7ce');
+  assert.equal(status.formalPublicationMapSha256, '84fe388d393239530a12a76cf14a262c1fdf35e2e1089ced0e90e981aa1c8f09');
   assert.equal(status.leanSourceClosureSha256, '4f08c63941db8fd92e7a33e8f16f698929247d968ae6fce45f4406f8e0aa02fb');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
@@ -2056,12 +2056,12 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   ]) assert.ok(status.verificationCommands.includes(command), command);
 });
 
-test('formal publication release pins the saturated terminal support-square boundary', async () => {
+test('formal publication release pins the governed terminal frontier-pushout boundary', async () => {
   const release = await readJson('downloads/formal-publication-release.json');
   const parser = release.earnedBoundary;
 
   assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-06-90');
-  assert.equal(release.artifacts.report.pageCount, 75);
+  assert.equal(release.artifacts.report.pageCount, 76);
   assert.equal(release.artifacts.theoremInventory.declarationCount, 24464);
   assert.equal(release.artifacts.theoremInventory.theoremCount, 13166);
   assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 6953);
@@ -3755,7 +3755,7 @@ test('status page has a conservative complete static fallback', async () => {
     '13,166',
     '6,953',
     '<strong>14,594</strong> private compiler auxiliaries excluded',
-    '<strong>222</strong> modules',
+    '<strong>223</strong> modules',
     'Eighty-four scoped milestones',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
