@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-06-residual-terminal-governed-support-completion",
+      "milestoneId": "residual-terminal-governed-support-completion",
+      "publishedAt": "2026-08-06T04:20:09Z",
+      "title": "The proof can now organise each completed circuit part into one consistent boundary",
+      "plainLanguage": [
+        "A circuit is a collection of simple yes-or-no operations connected by wires. Lean can now take any finite chosen part that has been completed under a supplied dependency rulebook, identify exactly which wires enter and leave it, and sort its selected bookkeeping positions into ten distinct roles. The result is calculated by the formal construction rather than supplied as a separate certificate.",
+        "Lean proves that every selected record is covered, no profile position is duplicated or assigned to two roles, every required dependency remains present, and the completed part is physically compatible. The same guarantees now apply to all four related parts from the previous milestone. The dependency rulebook is still supplied rather than derived from the circuit, and obstruction routing, the required projection square, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 69% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 69,
+      "source": {
+        "commit": "c225e91eeb469cd87f0c52c9731074e8b66fc573",
+        "tree": "9616b6c150124561a7f88672aa20a34bba1a4aae",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-106",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-GOVERNED-SUPPORT-COMPLETION-105"
+      }
+    },
+    {
       "id": "2026-08-06-residual-terminal-saturated-support-square-closure",
       "milestoneId": "residual-terminal-saturated-support-square-closure",
       "publishedAt": "2026-08-05T23:29:23Z",

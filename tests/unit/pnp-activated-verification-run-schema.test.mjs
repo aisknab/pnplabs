@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-105');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-106');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 24337);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13104);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6937);
-  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14575);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 221);
-  assert.equal(status.formalPublicationMilestones.length, 85);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 82);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 24405);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13134);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6945);
+  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14576);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 222);
+  assert.equal(status.formalPublicationMilestones.length, 86);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 83);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);

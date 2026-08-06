@@ -54,7 +54,7 @@ test('plain-language orientation is static and available before technical depth'
     'Does this project prove that P equals NP?',
     'What is P versus NP?',
     'What does “machine-checked” mean?',
-    'What does the 68% tracker mean?',
+    'What does the 69% tracker mean?',
     'How can I follow new milestones?',
   ]) assert.ok(faq.includes(question), question);
 
@@ -76,7 +76,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 85 formal milestone records/u);
+  assert.match(status, /Show all 86 formal milestone records/u);
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
@@ -91,21 +91,21 @@ test('updates expose a provider-free feed and a clearly qualified progress estim
   assert.match(updates, /https:\/\/pnplabs\.com\.au\/updates\.xml/u);
   assert.match(updates, /data-copy="#feed-url"/u);
   assert.match(updates, /No email address or PNP Labs account is needed/u);
-  assert.match(updates, /About 68% of the known formalisation work/u);
+  assert.match(updates, /About 69% of the known formalisation work/u);
   assert.match(updates, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
   assert.match(feed, /<link rel="self" type="application\/atom\+xml" href="https:\/\/pnplabs\.com\.au\/updates\.xml"\/>/u);
-  assert.match(svg, /68% ESTIMATED/u);
-  assert.match(updates, /<progress[^>]+value="68"[^>]+aria-label="Estimated proof reconstruction progress: 68 percent"/u);
+  assert.match(svg, /69% ESTIMATED/u);
+  assert.match(updates, /<progress[^>]+value="69"[^>]+aria-label="Estimated proof reconstruction progress: 69 percent"/u);
   assert.match(svg, /editorial · revisable/u);
   assert.match(home, /<aside class="home-progress-rail" aria-labelledby="home-progress-title">/u);
-  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 68 percent"/u);
-  assert.match(home, /data-proof-progress="68"/u);
+  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 69 percent"/u);
+  assert.match(home, /data-proof-progress="69"/u);
   assert.doesNotMatch(home, /style="--proof-progress:/u);
   assert.match(home, /Editorial · revisable\./u);
   assert.equal((home.match(/>Follow updates<\/a>/gu) || []).length, 1);
   assert.doesNotMatch(home, /proof-progress-section/u);
   assert.match(css, /\.home-hero \.artifact-grid \{\s*grid-template-columns: minmax\(0, 880px\) minmax\(250px, 292px\)/u);
-  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 68%;/u);
+  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 69%;/u);
   assert.match(css, /\.proof-tape-scale span:nth-child\(2\) \{\s*bottom: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-fill \{[\s\S]*width: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-scale span:nth-child\(2\) \{[\s\S]*left: var\(--proof-progress\)/u);
@@ -121,4 +121,21 @@ test('shared JavaScript validates evidence but does not rewrite page meaning', a
     'insertAfterPageHero',
     'ensureStatusLink',
   ]) assert.doesNotMatch(script, new RegExp(forbidden, 'u'), forbidden);
+});
+
+test('browser report check derives the expected digest from the current release seal', async () => {
+  const [verify, main, integrity] = await Promise.all([
+    read('verify.html'),
+    read('assets/main.js'),
+    read('assets/report-integrity.js'),
+  ]);
+  assert.match(verify, /data-seal="downloads\/release-seal\.json"/u);
+  assert.match(verify, /data-artifact="downloads\/canonical_proof_report\.pdf"/u);
+  assert.match(verify, /data-seal-expected/u);
+  assert.doesNotMatch(verify, /\bdata-expected=/u);
+  assert.match(main, /import\('\.\/report-integrity\.js'\)/u);
+  assert.match(integrity, /fetchPublishedArtifactIdentity/u);
+  assert.match(integrity, /findReleaseArtifact/u);
+  assert.match(integrity, /entry\.bytes/u);
+  assert.match(integrity, /entry\.sha256/u);
 });

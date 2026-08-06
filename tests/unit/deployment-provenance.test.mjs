@@ -94,6 +94,17 @@ test("deployment provenance rejects public-byte drift and mismatched expected id
   );
 });
 
+test("deployment provenance rejects a browser checker with a copied digest", async (t) => {
+  const root = await copyPublicFixture(t);
+  const verifyPath = path.join(root, "verify.html");
+  const verify = await readFile(verifyPath, "utf8");
+  await writeFile(
+    verifyPath,
+    verify.replace("data-seal-console", `data-seal-console data-expected="${"0".repeat(64)}"`)
+  );
+  await assert.rejects(generate(root), /embedded data-expected digest is forbidden/u);
+});
+
 test("deployment manifest rejects symlinks anywhere on the public surface", async (t) => {
   const root = await copyPublicFixture(t);
   await symlink("../status.html", path.join(root, "public", "status-link.html"));

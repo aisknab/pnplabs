@@ -103,7 +103,9 @@ npm run deployment:check -- --site-commit <commit> --site-tree <tree>
 npm run verify:production -- --base-url https://pnplabs.com.au
 ```
 
-The production checker performs no writes. It verifies the local release seal; deployment schema;
+The production checker performs no writes. It verifies that the browser report console derives its
+expected byte count and SHA-256 from the current release seal, with no copied digest in the HTML.
+It also verifies the local release seal; deployment schema;
 site and proof coordinates; exact bytes for the complete allowlisted surface and `/`; bounded
 response sizes; content types; cache policy; security headers; exact extensionless redirects;
 GET/HEAD/POST behavior; and representative forbidden, dotfile, source-file, encoded-traversal and

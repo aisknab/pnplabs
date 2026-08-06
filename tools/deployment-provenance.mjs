@@ -20,6 +20,7 @@ import {
   PUBLIC_EXACT_PATHS,
   PUBLIC_ROOT_PATHS
 } from "../public-surface.mjs";
+import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
 const SITE_REPOSITORY = "https://github.com/aisknab/pnplabs";
@@ -445,6 +446,7 @@ async function generateDeploymentProvenance({
 }) {
   const rootPath = path.resolve(root);
   verifyReleaseSeal({ root: rootPath });
+  checkBrowserReportIntegrity({ root: rootPath });
   const releaseBuffer = await readSafeRegularFile(rootPath, RELEASE_MANIFEST_PATH);
   const release = validateReleaseManifest(parseJson(releaseBuffer, RELEASE_MANIFEST_PATH));
   const contentManifest = validateContentManifest(await createContentManifest(rootPath));
@@ -483,6 +485,8 @@ async function verifyDeploymentProvenance({
   requireGitTracked = false
 } = {}) {
   const rootPath = path.resolve(root);
+  verifyReleaseSeal({ root: rootPath });
+  checkBrowserReportIntegrity({ root: rootPath });
   const [contentBuffer, provenanceBuffer, releaseBuffer] = await Promise.all([
     readSafeRegularFile(rootPath, CONTENT_MANIFEST_PATH),
     readSafeRegularFile(rootPath, PROVENANCE_PATH),

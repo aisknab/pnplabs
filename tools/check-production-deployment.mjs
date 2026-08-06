@@ -20,6 +20,7 @@ import {
   validateContentManifest,
   validateProvenanceRecord
 } from "./deployment-provenance.mjs";
+import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
 const DEFAULT_BASE_URL = "https://pnplabs.com.au";
@@ -227,6 +228,7 @@ async function checkProductionDeployment({
   const rootPath = path.resolve(root);
   const origin = normalizeBaseUrl(baseUrl);
   verifyReleaseSeal({ root: rootPath });
+  checkBrowserReportIntegrity({ root: rootPath });
   const identity = testOnlySkipGitIdentity
     ? { commit: expectedSiteCommit, tree: expectedSiteTree }
     : gitIdentity(rootPath);
