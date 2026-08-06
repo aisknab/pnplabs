@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof can now combine the boundaries of two completed circuit parts</h2>
-          <p>A circuit is a network of simple yes-or-no operations connected by wires. Lean could already complete two chosen parts and describe each one's boundary. It can now combine those descriptions to build the boundary of everything covered by either part, while keeping exactly the information they share.</p>
-          <p>Lean proves that the combined description matches a separate calculation made from the completed whole. Each item at either side's boundary remains exposed or is accounted for as internal. The dependency rulebook is still supplied rather than derived from the circuit. The required projection-compatible square, obstruction routing, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 70% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-06-residual-terminal-governed-frontier-pushout">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">The proof now keeps its structure when extra bookkeeping is hidden</h2>
+          <p>A computer circuit can be split into overlapping parts. The previous milestone proved that Lean could combine the descriptions of two completed parts. This milestone adds a controlled way to hide selected bookkeeping details and proves that the visible result still has the same physical boundary and shared information.</p>
+          <p>It does this for every finite circuit covered by the formal model and every allowed choice of details to hide, rather than for a fixed example. Combining first and hiding later gives the same visible structure as hiding each side first and then combining them. The dependency rulebook is still supplied, and important mathematical and efficiency steps remain open. This does not prove that P equals NP. The 71% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-06-residual-terminal-governed-projection-square">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>governed_frontier_pushout</code> constructs the governed boundary, interface, and role-preserving profile gluing from the two completed sides of every computed saturated support square. The independently completed join has exactly that boundary, interface, and profile; the meet profile is the exact shared overlap; and the disposition theorems account for each side coordinate as exposed or internalized. The dependency system remains explicit input. This is not yet the manuscript's projection-compatible square or square-legitimacy result, and it does not finish obstruction routing, ZeroSlack, PCCMin, polynomial runtime, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>governed_projection_compatible</code> proves that every allowed forgetful terminal projection preserves the exact physical frontier, filters all ten role profiles exactly, and commutes with the meet and side-only pushout of every computed saturated support square. The dependency system remains explicit input. This is not yet the manuscript's side-tight four-corner minimum or square-legitimacy result, and it does not finish obstruction routing, SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -217,8 +217,18 @@ leanResidualTerminalFrontierInterfaceGlueExactFormalized = true
 leanResidualTerminalFrontierProfileGlueExactFormalized = true
 leanResidualTerminalFrontierInternalizationFormalized = true
 leanResidualTerminalFrontierPushoutAxiomAuditPassed = true
+leanResidualTerminalProjectionSquareFormalized = true
+leanResidualTerminalProjectionPhysicalInvariantFormalized = true
+leanResidualTerminalProjectionProfileExactFormalized = true
+leanResidualTerminalProjectionMeetJoinCommuteFormalized = true
+leanResidualTerminalProjectionPushoutCommuteFormalized = true
+leanResidualTerminalProjectionSquareAxiomAuditPassed = true
+leanResidualTerminalProjectionSquareScope = "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-saturated-support-squares-and-forgetful-terminal-projections"
 leanResidualTerminalSquareLegitimacyFormalized = false
-leanResidualTerminalProjectionSquareFormalized = false
+leanSaturatePositiveFormalized = false
+leanBCELReadyFormalized = false
+leanResidualRoutesGlobalGainCompletenessFormalized = false
+leanZeroSlackCompletenessFormalized = false
 leanPCCMinPolynomialRuntimeFormalized = false
 concretePublicationGate.passed = false</pre>
           <div class="boundary-ledger">
@@ -233,9 +243,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-06-107</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-06-108</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>7e0e7feb895f6ea1c677314b1c2bd8b2ec5f33e826219b0421301e198984720e</code></div>
+            <div><span>Inventory SHA-256</span><code>17abf9c431e40fc2775fde868ff9312acf8db37907aa4a5ca64d5aa5c41e75d0</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -243,18 +253,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>70</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>71</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 70 percent" data-proof-progress="70">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>70</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 71 percent" data-proof-progress="71">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>71</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 70% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 71% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

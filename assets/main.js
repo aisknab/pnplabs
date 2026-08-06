@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-107';
-const STATUS_SHA256 = 'b793312d1177ceaaadb41dda0adafc9c3c5735ed0f19a2b74050faedd97e0685';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-FRONTIER-PUSHOUT-106';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-06-107';
-const INVENTORY_SHA256 = '7e0e7feb895f6ea1c677314b1c2bd8b2ec5f33e826219b0421301e198984720e';
-const SOURCE_CLOSURE_SHA256 = '4f08c63941db8fd92e7a33e8f16f698929247d968ae6fce45f4406f8e0aa02fb';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-108';
+const STATUS_SHA256 = '8e7e4c01da163413c95ca7bf3b096754bf88b8748f782c72d59ed96c0f7fde6f';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-PROJECTION-SQUARE-107';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-06-108';
+const INVENTORY_SHA256 = '17abf9c431e40fc2775fde868ff9312acf8db37907aa4a5ca64d5aa5c41e75d0';
+const SOURCE_CLOSURE_SHA256 = '54ced1d99c5c88c2580956e2b065101f45cbaef8c41de40f0996a3bf74ca0d3a';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 24464,
-  theorems: 13166,
-  assumptionFreeTheorems: 6953,
+  declarations: 24485,
+  theorems: 13183,
+  assumptionFreeTheorems: 6956,
   excludedPrivateDeclarations: 14594,
-  modules: 223,
+  modules: 224,
   axioms: 4,
 });
 
@@ -3562,6 +3562,32 @@ const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
 ]);
 
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalGovernedFrontier.project_boundary", [], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalGovernedFrontier.project_interface", [], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalGovernedFrontier.mem_project_profiles_iff", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalGovernedFrontier.project_profiles_nodup", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalGovernedFrontier.project_idempotent", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.mem_terminalProjectedGovernedFrontierPushout_profiles_iff", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalGovernedFrontier.project_pushout", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_boundary", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_interface", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.mem_projectedFrontier_profiles_iff", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_profiles_nodup", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.forgotten_not_mem_projectedFrontier", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.projected_meet_profile_iff", ["propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.projected_join_profile_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.projected_join_eq_pushout", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governed_projection_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionSquare"],
+  ["PNP.DirectWire.TerminalGovernedFrontier.extensionality", [], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.mem_terminalProfileFrontierPushout_iff", ["propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.terminalProfileFrontierPushout_nodup", ["propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff", ["propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_meet_profile_iff", ["propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_join_profile_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governed_frontier_pushout", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4089,6 +4115,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-saturated-support-square-closure',
   'residual-terminal-governed-support-completion',
   'residual-terminal-governed-frontier-pushout',
+  'residual-terminal-governed-projection-square',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4485,6 +4512,12 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalSupportCompletionFormalized: false,
   leanResidualTerminalSquareLegitimacyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
+  leanResidualTerminalProjectionPhysicalInvariantFormalized: false,
+  leanResidualTerminalProjectionProfileExactFormalized: false,
+  leanResidualTerminalProjectionMeetJoinCommuteFormalized: false,
+  leanResidualTerminalProjectionPushoutCommuteFormalized: false,
+  leanResidualTerminalProjectionSquareAxiomAuditPassed: false,
+  leanResidualTerminalProjectionSquareScope: null,
   leanPCCMinPolynomialRuntimeFormalized: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
@@ -4907,6 +4940,12 @@ leanResidualTerminalInducedRecoveryFormalized = ${payload.leanResidualTerminalIn
 leanResidualTerminalSupportCompletionFormalized = ${payload.leanResidualTerminalSupportCompletionFormalized ?? false}
 leanResidualTerminalSquareLegitimacyFormalized = ${payload.leanResidualTerminalSquareLegitimacyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
+leanResidualTerminalProjectionPhysicalInvariantFormalized = ${payload.leanResidualTerminalProjectionPhysicalInvariantFormalized ?? false}
+leanResidualTerminalProjectionProfileExactFormalized = ${payload.leanResidualTerminalProjectionProfileExactFormalized ?? false}
+leanResidualTerminalProjectionMeetJoinCommuteFormalized = ${payload.leanResidualTerminalProjectionMeetJoinCommuteFormalized ?? false}
+leanResidualTerminalProjectionPushoutCommuteFormalized = ${payload.leanResidualTerminalProjectionPushoutCommuteFormalized ?? false}
+leanResidualTerminalProjectionSquareAxiomAuditPassed = ${payload.leanResidualTerminalProjectionSquareAxiomAuditPassed ?? false}
+leanResidualTerminalProjectionSquareScope = ${payload.leanResidualTerminalProjectionSquareScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalProjectionSquareScope)}
 leanPCCMinPolynomialRuntimeFormalized = ${payload.leanPCCMinPolynomialRuntimeFormalized ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
 leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
@@ -4949,12 +4988,12 @@ function validateInventory(inventory) {
   if (!sameJson(kindCounts, {
     axiom: 4,
     constructor: 687,
-    definition: 10011,
+    definition: 10015,
     inductive: 298,
     opaque: 0,
     quotient: 0,
     recursor: 298,
-    theorem: 13166,
+    theorem: 13183,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5335,6 +5374,11 @@ function validateInventory(inventory) {
     axioms,
     module,
   }));
+  const residualTerminalProjectionSquare = RESIDUAL_TERMINAL_PROJECTION_SQUARE_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -5691,6 +5735,9 @@ function validateInventory(inventory) {
     && residualTerminalFrontierPushout.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalProjectionSquare.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5732,7 +5779,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2263
+    && inventory.milestoneCandidates.length === 2279
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5796,7 +5843,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 84;
+    const shouldBeEarned = index < 85;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5879,6 +5926,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalFrontierPushoutMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-governed-frontier-pushout'
+  );
+  const residualTerminalProjectionSquareMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-governed-projection-square'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -6037,7 +6087,7 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSaturationScope === "all-finite-terminal-primitive-record-universes-with-explicit-boolean-rule-tagged-dependencies"
     && status.leanResidualTerminalSupportCompletionFormalized === true
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
-    && status.leanResidualTerminalProjectionSquareFormalized === false
+    && status.leanResidualTerminalProjectionSquareFormalized === true
     && residualTerminalPhysicalSupportMilestone?.classification === "formalized-terminal-physical-support-completion"
     && residualTerminalPhysicalSupportMilestone.scope === "For every finite direct-wire candidate, explicit terminal dependency system, and finite seed list, a deterministic finite work list computes exactly the inductive saturation, then the actual program computes canonically ordered incoming boundary and outgoing interface wires. Lean proves no crossing wire is omitted or added and the composed physical support is compatible."
     && residualTerminalPhysicalSupportMilestone.nonClaim === "The terminal dependency system remains explicit data rather than an extracted profile frontier. This milestone does not construct proper positive support, prove support completion in the manuscript's full sense or square legitimacy, instantiate the required projection square, prove SaturatePositive, discharge Package E or BCEL/BN2-BN6, generate a complete residual route, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
@@ -6078,7 +6128,7 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalProperSupportScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-canonical-primitive-record-seeds-with-exhaustive-reference-minimum-local-gain"
     && status.leanResidualTerminalSupportCompletionFormalized === true
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
-    && status.leanResidualTerminalProjectionSquareFormalized === false
+    && status.leanResidualTerminalProjectionSquareFormalized === true
     && status.leanPCCMinPolynomialRuntimeFormalized === false
     && residualTerminalSupportSquareMilestone?.classification === "formalized-terminal-saturated-support-square-closure"
     && residualTerminalSupportSquareMilestone.scope === "For every finite direct-wire candidate, every explicit terminal dependency system, and every pair of finite terminal seeds, Lean computes saturated left and right corners, their canonical closed meet, and their closed saturated-union join. It proves the exact greatest-lower-bound and least-upper-bound laws, seed extensionality, computed physical compatibility, exact gate count, open-support semantics, and induced whole-circuit recovery for all four corners."
@@ -6095,7 +6145,7 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSupportSquareClosureScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-pairs-of-finite-terminal-seeds"
     && status.leanResidualTerminalSupportCompletionFormalized === true
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
-    && status.leanResidualTerminalProjectionSquareFormalized === false
+    && status.leanResidualTerminalProjectionSquareFormalized === true
     && status.leanPCCMinPolynomialRuntimeFormalized === false
     && residualTerminalGovernedSupportMilestone?.classification === "formalized-terminal-governed-support-completion"
     && residualTerminalGovernedSupportMilestone.scope === "For every finite direct-wire candidate, explicit terminal dependency system, finite seed list, and computed saturated support-square corner, Lean computes the exact physical boundary, ordered interface, and partition of selected profile coordinates among all ten terminal profile roles. It proves exact membership, no duplicates, pairwise disjointness, record coverage, dependency closure, physical compatibility, and retention of each exact corner."
@@ -6122,6 +6172,26 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFrontierInternalizationFormalized === true
     && status.leanResidualTerminalFrontierPushoutAxiomAuditPassed === true
     && status.leanResidualTerminalFrontierPushoutScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-computed-saturated-support-squares"
+    && residualTerminalProjectionSquareMilestone?.classification === "formalized-terminal-governed-projection-square"
+    && residualTerminalProjectionSquareMilestone.scope === "For every finite direct-wire candidate, explicit terminal dependency system, computed saturated support square, and every forgetful terminal projection, Lean retains the exact physical frontier, filters all ten role profiles exactly, proves projected meet is the shared side overlap, and proves projected join is the side-only projected pushout without reading the join corner."
+    && residualTerminalProjectionSquareMilestone.nonClaim === "The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone proves structural projection commutation for computed saturated support squares, not side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete obstruction routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP."
+    && sameJson(
+      residualTerminalProjectionSquareMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PROJECTION_SQUARE_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalProjectionSquareFormalized === true
+    && status.leanResidualTerminalProjectionPhysicalInvariantFormalized === true
+    && status.leanResidualTerminalProjectionProfileExactFormalized === true
+    && status.leanResidualTerminalProjectionMeetJoinCommuteFormalized === true
+    && status.leanResidualTerminalProjectionPushoutCommuteFormalized === true
+    && status.leanResidualTerminalProjectionSquareAxiomAuditPassed === true
+    && status.leanResidualTerminalProjectionSquareScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-saturated-support-squares-and-forgetful-terminal-projections"
+    && status.leanResidualTerminalSquareLegitimacyFormalized === false
+    && status.leanSaturatePositiveFormalized === false
+    && status.leanBCELReadyFormalized === false
+    && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+    && status.leanZeroSlackCompletenessFormalized === false
+    && status.leanPCCMinPolynomialRuntimeFormalized === false
     && status.mathematicalTheoremEstablished === gatePassed
     && status.publicTheoremEmissionAllowed === gatePassed
     && status.finalTheoremReady === gatePassed

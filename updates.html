@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 70% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 71% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="70" aria-label="Estimated proof reconstruction progress: 70 percent">70%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 70 percent">
+        <progress class="proof-progress-meter" max="100" value="71" aria-label="Estimated proof reconstruction progress: 71 percent">71%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 71 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-06-residual-terminal-governed-projection-square" data-milestone-id="residual-terminal-governed-projection-square">
+        <div class="section-label"><time datetime="2026-08-06T14:36:05Z">2026-08-06</time> · earned milestone 85</div>
+        <h2>The proof now keeps its structure when extra bookkeeping is hidden</h2>
+        <p>A computer circuit can be split into overlapping parts. The previous milestone proved that Lean could combine the descriptions of two completed parts. This milestone adds a controlled way to hide selected bookkeeping details and proves that the visible result still has the same physical boundary and shared information.</p>
+        <p>It does this for every finite circuit covered by the formal model and every allowed choice of details to hide, rather than for a fixed example. Combining first and hiding later gives the same visible structure as hiding each side first and then combining them. The dependency rulebook is still supplied, and important mathematical and efficiency steps remain open. This does not prove that P equals NP. The 71% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 71%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-governed-projection-square</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-governed-projection-square</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire candidate, explicit terminal dependency system, computed saturated support square, and every forgetful terminal projection, Lean retains the exact physical frontier, filters all ten role profiles exactly, proves projected meet is the shared side overlap, and proves projected join is the side-only projected pushout without reading the join corner.</p>
+          <p><strong>Boundary:</strong> The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone proves structural projection commutation for computed saturated support squares, not side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete obstruction routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 23</p>
+          <p><strong>Core source:</strong> commit <code>23abd2eaf8913ea91dc1cf379878f278b9ee3d10</code>, tree <code>5d2468bd4233650eb4a4186ababb9db99ac57f17</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-108</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-PROJECTION-SQUARE-107</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-06-residual-terminal-governed-frontier-pushout" data-milestone-id="residual-terminal-governed-frontier-pushout">
         <div class="section-label"><time datetime="2026-08-06T10:59:14Z">2026-08-06</time> · earned milestone 84</div>
         <h2>The proof can now combine the boundaries of two completed circuit parts</h2>

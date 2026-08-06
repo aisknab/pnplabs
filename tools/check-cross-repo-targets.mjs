@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "31937a36ecc21413e334e5e7f7f27058f0dfecc7";
-const REVIEWED_CORE_TREE = "795ca7177f7a99e301b19e4dca7c3abac914d1ef";
+const REVIEWED_CORE_COMMIT = "23abd2eaf8913ea91dc1cf379878f278b9ee3d10";
+const REVIEWED_CORE_TREE = "5d2468bd4233650eb4a4186ababb9db99ac57f17";
 const REVIEWED_PROOF_COMMIT = "bf6aeac30aae0b04745715e8ec6a1d4be862a724";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -3665,6 +3665,36 @@ const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_SCOPE = "all-finite-direct-wire-candida
 const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_MILESTONE_SCOPE = "For every finite direct-wire candidate, explicit terminal dependency system, and computed saturated support square, Lean constructs the governed boundary, interface, and role-preserving profile pushout from the two side completions alone. The independently completed join frontier equals that gluing, the meet profile is the exact shared overlap, and every side physical coordinate is either retained externally or witnessed as internalized.";
 const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NON_CLAIM = "The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone proves exact frontier gluing for computed saturated support squares, not projection compatibility, side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete obstruction routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.";
 
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS = {
+  "PNP.DirectWire.TerminalGovernedFrontier.project_boundary": { hash: "f8abfe8e5e7778e39d4ea46149f12ed08827441c1f1ce1bbe00ecc7d5ceaf698", axioms: [], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalGovernedFrontier.project_interface": { hash: "4020d8b6d84f93d5d938a18d2e4c475032451fed79766070f075fe342b318b81", axioms: [], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalGovernedFrontier.mem_project_profiles_iff": { hash: "fd0592b431230d38989160e13731461a76bc3fbc527eacde8c65cbf97fdb424b", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalGovernedFrontier.project_profiles_nodup": { hash: "1bb562b19e1f365951831fc3104f4eacd540a574e71c05ddb3228382e2d81de5", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalGovernedFrontier.project_idempotent": { hash: "50e354bfbc108c3ae963cd3eb19b73055f3ac8eb653bc69ae6357d200ebd8b3f", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.mem_terminalProjectedGovernedFrontierPushout_profiles_iff": { hash: "39c9d3b8078740dd0140667219de0c5d66b35bff11f787b8d692e8857ecdaff9", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalGovernedFrontier.project_pushout": { hash: "1e27fb54a4b5c0f3f02bf26d3cd38b89596da3aa57312b928c817bc36a599c90", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_boundary": { hash: "28d9df62f589b2ab8943c4106a692612cc291504a1f3d57b95ee6240f4cf5343", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_interface": { hash: "9a3bb52ded9dfc28a8c1d8c18303ba392f4ddcba000ba9e4fe4e63fd8b372939", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.mem_projectedFrontier_profiles_iff": { hash: "facc10a1bb53afa05adaf689dcb650f13eaa85f7b573d7a07578a2aef59e1bbd", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_profiles_nodup": { hash: "dc3922479745fff935163a6cfa0a9664ae2306589197c6bcbd0b24a2c2c86b08", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.forgotten_not_mem_projectedFrontier": { hash: "c872d6eafff42e0de60e67d52555c203f589a05422392e32f8fa1ef7f7586865", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.projected_meet_profile_iff": { hash: "9e63a2390bccaf3706b0328f2f867bc4911f383ed779faf94bd921eeae68d52e", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.projected_join_profile_iff": { hash: "06481e6e71aa58357ca562058451bea6c64ad44b9c3c69349bb0a1b3219240a2", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.projected_join_eq_pushout": { hash: "ef58638ca6c8567b96f1299b00f33412139dc543934901fd2350fe5717662485", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_projection_compatible": { hash: "e3fb053b19b683438233a65de339ae965d22c26408840ef9b1d5073a978d3982", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProjectionSquare" },
+  "PNP.DirectWire.TerminalGovernedFrontier.extensionality": { hash: "d7408981a1fba26e2939240e6969b97a88484b2fe7fbc2cc3d18e2487258e2d8", axioms: [], module: "PNP.ResidualTerminalFrontierPushout" },
+  "PNP.DirectWire.mem_terminalProfileFrontierPushout_iff": { hash: "2b1fd94df7f19005b5a743deb9497359d1c89328fdd96666ac7a80b6600e8f6b", axioms: ["propext"], module: "PNP.ResidualTerminalFrontierPushout" },
+  "PNP.DirectWire.terminalProfileFrontierPushout_nodup": { hash: "8a6d654f7c16696ab68b3fbfcf95fd2572b178ac9fcbcdb52a01a040a7eba33e", axioms: ["propext"], module: "PNP.ResidualTerminalFrontierPushout" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff": { hash: "9736ce34b616c8b00ac7ca4ba123c3c093dc464c1f07a7a0635b5b5bbe28a9dd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_meet_profile_iff": { hash: "16a72a7de67ce24ac6ce262776e5bb3d26657d36b50dcb037dfd8ddc26bcfc75", axioms: ["propext"], module: "PNP.ResidualTerminalFrontierPushout" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_join_profile_iff": { hash: "00632937ee93f2c36555285245036f31796b4ba205caa3123b3ee671a9f9439a", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFrontierPushout" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_frontier_pushout": { hash: "95d0548c06161609bda41bae89fc2a721d24cb0f5b72f8a09cdc509d81a77696", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFrontierPushout" }
+};
+
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_SCOPE = "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-saturated-support-squares-and-forgetful-terminal-projections";
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_MILESTONE_SCOPE = "For every finite direct-wire candidate, explicit terminal dependency system, computed saturated support square, and every forgetful terminal projection, Lean retains the exact physical frontier, filters all ten role profiles exactly, proves projected meet is the shared side overlap, and proves projected join is the side-only projected pushout without reading the join corner.";
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_NON_CLAIM = "The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone proves structural projection commutation for computed saturated support squares, not side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete obstruction routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.";
+
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
   residualTerminalPrimitiveUniverseTheorem: "PNP.DirectWire.mem_allTerminalPrimitiveRecords",
   residualTerminalSaturationExtensiveTheorem: "PNP.DirectWire.terminalSaturate_extensive",
@@ -3714,6 +3744,32 @@ const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_RELEASE_IDENTITIES = {
   residualTerminalPhysicalIncomingReuseTheorem: "PNP.DirectWire.completeTerminalPhysicalSupport_incoming_complete",
   residualTerminalPhysicalCompatibilityReuseTheorem: "PNP.DirectWire.completeTerminalPhysicalSupport_compatible",
   residualTerminalSaturatedPhysicalCompatibilityReuseTheorem: "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible"
+};
+
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_RELEASE_IDENTITIES = {
+  residualTerminalProjectionFrontierBoundaryTheorem: "PNP.DirectWire.TerminalGovernedFrontier.project_boundary",
+  residualTerminalProjectionFrontierInterfaceTheorem: "PNP.DirectWire.TerminalGovernedFrontier.project_interface",
+  residualTerminalProjectionProfileMembershipTheorem: "PNP.DirectWire.TerminalGovernedFrontier.mem_project_profiles_iff",
+  residualTerminalProjectionProfileNodupTheorem: "PNP.DirectWire.TerminalGovernedFrontier.project_profiles_nodup",
+  residualTerminalProjectionIdempotentTheorem: "PNP.DirectWire.TerminalGovernedFrontier.project_idempotent",
+  residualTerminalProjectedPushoutProfileMembershipTheorem: "PNP.DirectWire.mem_terminalProjectedGovernedFrontierPushout_profiles_iff",
+  residualTerminalProjectionPushoutTheorem: "PNP.DirectWire.TerminalGovernedFrontier.project_pushout",
+  residualTerminalSquareProjectedBoundaryTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_boundary",
+  residualTerminalSquareProjectedInterfaceTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_interface",
+  residualTerminalSquareProjectedProfileMembershipTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.mem_projectedFrontier_profiles_iff",
+  residualTerminalSquareProjectedProfileNodupTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.projectedFrontier_profiles_nodup",
+  residualTerminalSquareForgottenProfileExcludedTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.forgotten_not_mem_projectedFrontier",
+  residualTerminalSquareProjectedMeetProfileTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.projected_meet_profile_iff",
+  residualTerminalSquareProjectedJoinProfileTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.projected_join_profile_iff",
+  residualTerminalSquareProjectedJoinPushoutTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.projected_join_eq_pushout",
+  residualTerminalSquareProjectionCompatibleTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_projection_compatible",
+  residualTerminalProjectionFrontierExtensionalityReuseTheorem: "PNP.DirectWire.TerminalGovernedFrontier.extensionality",
+  residualTerminalProjectionProfilePushoutMembershipReuseTheorem: "PNP.DirectWire.mem_terminalProfileFrontierPushout_iff",
+  residualTerminalProjectionProfilePushoutNodupReuseTheorem: "PNP.DirectWire.terminalProfileFrontierPushout_nodup",
+  residualTerminalProjectionGovernedProfileMembershipReuseTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff",
+  residualTerminalProjectionMeetProfileMembershipReuseTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_meet_profile_iff",
+  residualTerminalProjectionJoinProfileMembershipReuseTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_join_profile_iff",
+  residualTerminalProjectionFrontierPushoutReuseTheorem: "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_frontier_pushout"
 };
 
 const CNF_TO_NAND_SEMANTIC_COMPILER_RELEASE_IDENTITIES = {
@@ -4450,7 +4506,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalProperSupportFormalized === true
       && earned.residualTerminalSupportCompletionFormalized === true
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal saturation boundary mismatch");
   if (JSON.stringify(earned.residualTerminalSaturationAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalSaturationProjectAxiomClosure)
@@ -4473,7 +4529,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalProperSupportFormalized === true
       && earned.residualTerminalSupportCompletionFormalized === true
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal physical-support boundary mismatch");
   if (JSON.stringify(earned.residualTerminalPhysicalSupportCompletionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalPhysicalSupportCompletionProjectAxiomClosure)
@@ -4494,7 +4550,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalProperSupportFormalized === true
       && earned.residualTerminalSupportCompletionFormalized === true
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal support-extraction boundary mismatch");
   if (JSON.stringify(earned.residualTerminalSupportExtractionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalSupportExtractionProjectAxiomClosure)
@@ -4514,7 +4570,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalProperSupportScope === RESIDUAL_TERMINAL_PROPER_SUPPORT_SCOPE
       && earned.residualTerminalSupportCompletionFormalized === true
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal proper-positive support boundary mismatch");
   if (JSON.stringify(earned.residualTerminalProperSupportAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalProperSupportProjectAxiomClosure)
@@ -4534,7 +4590,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalSupportSquareClosureScope === RESIDUAL_TERMINAL_SUPPORT_SQUARE_SCOPE
       && earned.residualTerminalSupportCompletionFormalized === true
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal support-square closure boundary mismatch");
   if (JSON.stringify(earned.residualTerminalSupportSquareClosureAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalSupportSquareClosureProjectAxiomClosure)
@@ -4552,7 +4608,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalGovernedSupportCompletionPropextQuotSoundDeclarationCount === 7
       && earned.residualTerminalGovernedSupportCompletionScope === RESIDUAL_TERMINAL_GOVERNED_SUPPORT_SCOPE
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal governed-support completion boundary mismatch");
   if (JSON.stringify(earned.residualTerminalGovernedSupportCompletionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalGovernedSupportCompletionProjectAxiomClosure)
@@ -4572,7 +4628,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.residualTerminalFrontierPushoutPropextQuotSoundDeclarationCount === 13
       && earned.residualTerminalFrontierPushoutScope === RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_SCOPE
       && earned.residualTerminalSquareLegitimacyFormalized === false
-      && earned.residualTerminalProjectionSquareFormalized === false
+      && earned.residualTerminalProjectionSquareFormalized === true
       && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal frontier-pushout boundary mismatch");
   if (JSON.stringify(earned.residualTerminalFrontierPushoutAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.residualTerminalFrontierPushoutProjectAxiomClosure)
@@ -4580,6 +4636,30 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const residualTerminalFrontierPushoutHashes = earned.residualTerminalFrontierPushoutTheoremKernelTypeSha256;
   if (!residualTerminalFrontierPushoutHashes || Object.keys(residualTerminalFrontierPushoutHashes).length !== 28
       || !Object.entries(RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_THEOREMS).every(([name, row]) => residualTerminalFrontierPushoutHashes[name] === row.hash)) failures.push("current manifest residual terminal frontier-pushout fingerprint mismatch");
+  if (!(earned.residualTerminalProjectionSquareFormalized === true
+      && earned.residualTerminalProjectionPhysicalInvariantFormalized === true
+      && earned.residualTerminalProjectionProfileExactFormalized === true
+      && earned.residualTerminalProjectionMeetJoinCommuteFormalized === true
+      && earned.residualTerminalProjectionPushoutCommuteFormalized === true
+      && earned.residualTerminalProjectionSquareAxiomAuditPassed === true
+      && earned.residualTerminalProjectionSquareAuditedDeclarationCount === 33
+      && earned.residualTerminalProjectionSquareEmptyAxiomDeclarationCount === 6
+      && earned.residualTerminalProjectionSquarePropextOnlyDeclarationCount === 21
+      && earned.residualTerminalProjectionSquarePropextQuotSoundDeclarationCount === 6
+      && earned.residualTerminalProjectionSquareScope === RESIDUAL_TERMINAL_PROJECTION_SQUARE_SCOPE
+      && earned.residualTerminalSquareLegitimacyFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal projection-square boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalProjectionSquareAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalProjectionSquareProjectAxiomClosure)
+      || earned.residualTerminalProjectionSquareProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal projection-square axiom closure mismatch");
+  const residualTerminalProjectionSquareHashes = earned.residualTerminalProjectionSquareTheoremKernelTypeSha256;
+  if (!residualTerminalProjectionSquareHashes || Object.keys(residualTerminalProjectionSquareHashes).length !== 23
+      || !Object.entries(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS).every(([name, row]) => residualTerminalProjectionSquareHashes[name] === row.hash)) failures.push("current manifest residual terminal projection-square fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PROJECTION_SQUARE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal projection-square theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -5188,7 +5268,7 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanResidualTerminalSupportCompletionFormalized === true
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal saturation evidence mismatch");
@@ -5226,7 +5306,7 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanResidualTerminalSupportCompletionFormalized === true
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal physical-support evidence mismatch");
@@ -5262,7 +5342,7 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalProperSupportFormalized === true
       && status.leanResidualTerminalSupportCompletionFormalized === true
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal support-extraction evidence mismatch");
@@ -5297,7 +5377,7 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalProperSupportScope === RESIDUAL_TERMINAL_PROPER_SUPPORT_SCOPE
       && status.leanResidualTerminalSupportCompletionFormalized === true
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal proper-positive support evidence mismatch");
@@ -5333,7 +5413,7 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalSupportSquareClosureScope === RESIDUAL_TERMINAL_SUPPORT_SQUARE_SCOPE
       && status.leanResidualTerminalSupportCompletionFormalized === true
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
@@ -5369,7 +5449,7 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalGovernedSupportCompletionAxiomAuditPassed === true
       && status.leanResidualTerminalGovernedSupportCompletionScope === RESIDUAL_TERMINAL_GOVERNED_SUPPORT_SCOPE
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
@@ -5407,12 +5487,49 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanResidualTerminalFrontierPushoutAxiomAuditPassed === true
       && status.leanResidualTerminalFrontierPushoutScope === RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_SCOPE
       && status.leanResidualTerminalSquareLegitimacyFormalized === false
-      && status.leanResidualTerminalProjectionSquareFormalized === false
+      && status.leanResidualTerminalProjectionSquareFormalized === true
       && status.leanSaturatePositiveFormalized === false
       && status.leanBCELReadyFormalized === false
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal frontier-pushout evidence mismatch");
+  const residualTerminalProjectionSquareMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-governed-projection-square"
+  );
+  const residualTerminalProjectionSquareNames = Object.keys(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS);
+  if (!residualTerminalProjectionSquareMilestone
+      || residualTerminalProjectionSquareMilestone.classification !== "formalized-terminal-governed-projection-square"
+      || residualTerminalProjectionSquareMilestone.status !== "formalized-terminal-governed-projection-square"
+      || residualTerminalProjectionSquareMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_MILESTONE_SCOPE
+      || residualTerminalProjectionSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_NON_CLAIM
+      || JSON.stringify(residualTerminalProjectionSquareMilestone.requiredTheorems) !== JSON.stringify(residualTerminalProjectionSquareNames)
+      || residualTerminalProjectionSquareMilestone.earned !== true
+      || residualTerminalProjectionSquareMilestone.allPresent !== true
+      || residualTerminalProjectionSquareMilestone.allAssumptionFree !== false
+      || residualTerminalProjectionSquareMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalProjectionSquareMilestone.allKernelTypesMatch !== true
+      || residualTerminalProjectionSquareMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal projection-square publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS)) {
+    const row = residualTerminalProjectionSquareMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal projection-square theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalProjectionSquareFormalized === true
+      && status.leanResidualTerminalProjectionPhysicalInvariantFormalized === true
+      && status.leanResidualTerminalProjectionProfileExactFormalized === true
+      && status.leanResidualTerminalProjectionMeetJoinCommuteFormalized === true
+      && status.leanResidualTerminalProjectionPushoutCommuteFormalized === true
+      && status.leanResidualTerminalProjectionSquareAxiomAuditPassed === true
+      && status.leanResidualTerminalProjectionSquareScope === RESIDUAL_TERMINAL_PROJECTION_SQUARE_SCOPE
+      && status.leanResidualTerminalSquareLegitimacyFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal projection-square evidence mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
@@ -5421,7 +5538,7 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.declarationCount !== 24464 || inventory.theoremCount !== 13166 || inventory.assumptionFreeTheoremCount !== 6953 || inventory.excludedPrivateDeclarationCount !== 14594 || inventory.sourceClosureModuleCount !== 223 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
+    if (inventory.declarationCount !== 24485 || inventory.theoremCount !== 13183 || inventory.assumptionFreeTheoremCount !== 6956 || inventory.excludedPrivateDeclarationCount !== 14594 || inventory.sourceClosureModuleCount !== 224 || inventory.axiomCount !== 4) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -6085,8 +6202,14 @@ function validateCurrentPayloads(contents, failures) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal frontier-pushout theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal frontier-pushout fingerprint mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 2263) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2263`);
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal projection-square theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal projection-square fingerprint mismatch: ${name}`);
+    }
+    if (inventory.milestoneCandidates?.length !== 2279) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2279`);
     }
   }
 }
@@ -6679,21 +6802,21 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     const lockedNANDGlobalSemanticThresholdMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-semantic-threshold");
-    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 87 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
+    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 88 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
     const lockedNANDGlobalSemanticThresholdPins = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS)) {
       if (!lockedNANDGlobalSemanticThresholdMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalSemanticThresholdPins[name] !== row.hash) failures.push(`core publication map locked-NAND global semantic-threshold fingerprint mismatch: ${name}`);
     }
     const lockedNANDEncodedSemanticReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
-    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 87 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
+    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 88 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
     const lockedNANDEncodedSemanticReductionPins = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS)) {
       if (!lockedNANDEncodedSemanticReductionMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDEncodedSemanticReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
     }
     const lockedNANDSourceParserMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
         || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20
         || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
@@ -6706,8 +6829,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDTargetEmitterMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-target-emitter");
     if (!lockedNANDTargetEmitterMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || lockedNANDTargetEmitterMilestone.classification !== "formalized-foundation-only"
         || lockedNANDTargetEmitterMilestone.requiredTheorems?.length !== 22
         || lockedNANDTargetEmitterMilestone.scope !== LOCKED_NAND_TARGET_EMITTER_SCOPE
@@ -6720,8 +6843,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
     if (!lockedNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || lockedNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || lockedNANDPolynomialReductionMilestone.requiredTheorems?.length !== 5
         || lockedNANDPolynomialReductionMilestone.scope !== LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE
@@ -6734,8 +6857,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDSemanticCompilerMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-semantic-compiler");
     if (!cnfToNANDSemanticCompilerMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || cnfToNANDSemanticCompilerMilestone.classification !== "formalized-semantic-boundary"
         || cnfToNANDSemanticCompilerMilestone.scope !== CNF_TO_NAND_SEMANTIC_COMPILER_MILESTONE_SCOPE
         || cnfToNANDSemanticCompilerMilestone.nonClaim !== CNF_TO_NAND_SEMANTIC_COMPILER_NON_CLAIM
@@ -6748,8 +6871,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-polynomial-reduction");
     if (!cnfToNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || cnfToNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || cnfToNANDPolynomialReductionMilestone.scope !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE_SCOPE
         || cnfToNANDPolynomialReductionMilestone.nonClaim !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM
@@ -6762,8 +6885,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualGainChainMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-chain-bound");
     if (!residualGainChainMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualGainChainMilestone.classification !== "formalized-iteration-bound-only"
         || residualGainChainMilestone.scope !== RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE
         || residualGainChainMilestone.nonClaim !== RESIDUAL_GAIN_CHAIN_NON_CLAIM
@@ -6776,8 +6899,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualGainStoppingMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-stopping-specification");
     if (!residualGainStoppingMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualGainStoppingMilestone.classification !== "formalized-semantic-stopping-only"
         || residualGainStoppingMilestone.scope !== RESIDUAL_GAIN_STOPPING_MILESTONE_SCOPE
         || residualGainStoppingMilestone.nonClaim !== RESIDUAL_GAIN_STOPPING_NON_CLAIM
@@ -6790,8 +6913,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFullBridgeMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-full-carrier-bridge");
     if (!residualTerminalFullBridgeMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalFullBridgeMilestone.classification !== "formalized-terminal-full-mode-semantic-bridge"
         || residualTerminalFullBridgeMilestone.scope !== RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE
         || residualTerminalFullBridgeMilestone.nonClaim !== RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM
@@ -6804,8 +6927,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalModeFirewallMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-mode-firewall");
     if (!residualTerminalModeFirewallMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalModeFirewallMilestone.classification !== "formalized-terminal-mode-firewall"
         || residualTerminalModeFirewallMilestone.scope !== RESIDUAL_TERMINAL_MODE_FIREWALL_MILESTONE_SCOPE
         || residualTerminalModeFirewallMilestone.nonClaim !== RESIDUAL_TERMINAL_MODE_FIREWALL_NON_CLAIM
@@ -6818,8 +6941,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProjectionMinimumMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-projection-minimum");
     if (!residualTerminalProjectionMinimumMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalProjectionMinimumMilestone.classification !== "formalized-terminal-projection-minimum"
         || residualTerminalProjectionMinimumMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_MINIMUM_MILESTONE_SCOPE
         || residualTerminalProjectionMinimumMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_MINIMUM_NON_CLAIM
@@ -6832,8 +6955,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProjectionTransferMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-projection-transfer");
     if (!residualTerminalProjectionTransferMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalProjectionTransferMilestone.classification !== "formalized-terminal-projection-transfer"
         || residualTerminalProjectionTransferMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_MILESTONE_SCOPE
         || residualTerminalProjectionTransferMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_NON_CLAIM
@@ -6846,8 +6969,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSaturationMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-saturation-closure");
     if (!residualTerminalSaturationMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalSaturationMilestone.classification !== "formalized-terminal-saturation-closure"
         || residualTerminalSaturationMilestone.scope !== RESIDUAL_TERMINAL_SATURATION_MILESTONE_SCOPE
         || residualTerminalSaturationMilestone.nonClaim !== RESIDUAL_TERMINAL_SATURATION_NON_CLAIM
@@ -6860,8 +6983,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalPhysicalSupportMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-physical-support-completion");
     if (!residualTerminalPhysicalSupportMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalPhysicalSupportMilestone.classification !== "formalized-terminal-physical-support-completion"
         || residualTerminalPhysicalSupportMilestone.scope !== RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_MILESTONE_SCOPE
         || residualTerminalPhysicalSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_NON_CLAIM
@@ -6874,8 +6997,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSupportExtractionMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-support-extraction");
     if (!residualTerminalSupportExtractionMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalSupportExtractionMilestone.classification !== "formalized-terminal-support-extraction"
         || residualTerminalSupportExtractionMilestone.scope !== RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_MILESTONE_SCOPE
         || residualTerminalSupportExtractionMilestone.nonClaim !== RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NON_CLAIM
@@ -6888,8 +7011,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProperSupportMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-proper-positive-support-search");
     if (!residualTerminalProperSupportMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalProperSupportMilestone.classification !== "formalized-governed-proper-positive-support-search"
         || residualTerminalProperSupportMilestone.scope !== RESIDUAL_TERMINAL_PROPER_SUPPORT_MILESTONE_SCOPE
         || residualTerminalProperSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PROPER_SUPPORT_NON_CLAIM
@@ -6902,8 +7025,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSupportSquareMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-saturated-support-square-closure");
     if (!residualTerminalSupportSquareMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalSupportSquareMilestone.classification !== "formalized-terminal-saturated-support-square-closure"
         || residualTerminalSupportSquareMilestone.scope !== RESIDUAL_TERMINAL_SUPPORT_SQUARE_MILESTONE_SCOPE
         || residualTerminalSupportSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_SUPPORT_SQUARE_NON_CLAIM
@@ -6928,8 +7051,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFrontierPushoutMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-governed-frontier-pushout");
     if (!residualTerminalFrontierPushoutMilestone
-        || publicationMap.milestones?.length !== 87
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 84
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
         || residualTerminalFrontierPushoutMilestone.classification !== "formalized-terminal-governed-frontier-pushout"
         || residualTerminalFrontierPushoutMilestone.scope !== RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_MILESTONE_SCOPE
         || residualTerminalFrontierPushoutMilestone.nonClaim !== RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NON_CLAIM
@@ -6939,6 +7062,20 @@ export function validateAuditTargets(options = {}) {
       if (!residualTerminalFrontierPushoutMilestone?.requiredTheorems?.includes(name)
           || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
           || residualTerminalFrontierPushoutPins[name] !== row.hash) failures.push(`core publication map residual terminal frontier-pushout fingerprint mismatch: ${name}`);
+    }
+    const residualTerminalProjectionSquareMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-governed-projection-square");
+    if (!residualTerminalProjectionSquareMilestone
+        || publicationMap.milestones?.length !== 88
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 85
+        || residualTerminalProjectionSquareMilestone.classification !== "formalized-terminal-governed-projection-square"
+        || residualTerminalProjectionSquareMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_MILESTONE_SCOPE
+        || residualTerminalProjectionSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_NON_CLAIM
+        || JSON.stringify(residualTerminalProjectionSquareMilestone.requiredTheorems) !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS))) failures.push("core publication map residual terminal projection-square milestone mismatch");
+    const residualTerminalProjectionSquarePins = releaseManifest.earnedBoundary?.residualTerminalProjectionSquareTheoremKernelTypeSha256 || {};
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS)) {
+      if (!residualTerminalProjectionSquareMilestone?.requiredTheorems?.includes(name)
+          || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+          || residualTerminalProjectionSquarePins[name] !== row.hash) failures.push(`core publication map residual terminal projection-square fingerprint mismatch: ${name}`);
     }
   }
 
