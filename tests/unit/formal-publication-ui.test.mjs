@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'fc56f19a06459903b4d234edb72133a398f6e1138230420e2de94f5adeaefcf6');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '7712cae2dd53ef95a9ec7e10ea89ff29681101268a92c06d21a94be5efc02b32');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 81);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 82);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -97,6 +97,23 @@ test('pre-fetch UI state reports terminal physical support completion as fail cl
   assert.match(rendered, /leanResidualTerminalExecutableSaturationFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalPhysicalSupportCompletionFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalPhysicalSupportCompletionScope = null/u);
+});
+
+test('pre-fetch UI state reports saturated terminal support square as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalSupportSquareClosureFormalized',
+    'leanResidualTerminalSupportSquareMeetJoinExactFormalized',
+    'leanResidualTerminalSupportSquarePhysicalCompatibilityFormalized',
+    'leanResidualTerminalSupportSquareSemanticExtractionFormalized',
+    'leanResidualTerminalSupportSquareClosureAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalSupportSquareClosureScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalSupportSquareClosureFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSupportSquareMeetJoinExactFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSupportSquareClosureScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -2896,7 +2913,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '5e261783dc48acfdf7f9b1a78291faa8be3e26ad8e85c188de77978b58184f17'/);
+  assert.match(source, /const STATUS_SHA256 = 'ba386511f193e7f0b18714773e84a91e591c32a91adda70810fa24d6d634a2ec'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3080,6 +3097,46 @@ test('terminal support extraction requires exact pins, open semantics, and a con
   assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
 });
 
+test('saturated terminal support square requires exact pins, order laws, extraction, and a conservative boundary', () => {
+  const milestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-saturated-support-square-closure');
+  assert.equal(milestone.requiredTheorems.length, 23);
+
+  const missingTheorem = structuredClone(inventory);
+  missingTheorem.milestoneCandidates = missingTheorem.milestoneCandidates.filter(
+    (row) => row.name !== 'PNP.DirectWire.TerminalSaturatedSupportSquare.meetRecords_greatest'
+  );
+  assert.equal(validation.validateInventory(missingTheorem), false);
+
+  const forgedAxiom = structuredClone(inventory);
+  forgedAxiom.milestoneCandidates.find(
+    (row) => row.name === 'PNP.DirectWire.TerminalSaturatedSupportSquare.joinRecords_least'
+  ).axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(forgedAxiom), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualTerminalSupportSquareClosureScope = 'all-manuscript-projection-compatible-squares';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const erasedOrderLaw = structuredClone(status);
+  erasedOrderLaw.leanResidualTerminalSupportSquareMeetJoinExactFormalized = false;
+  assert.equal(validation.validateStatus(erasedOrderLaw, inventory), false);
+
+  const erasedExtraction = structuredClone(status);
+  erasedExtraction.leanResidualTerminalSupportSquareSemanticExtractionFormalized = false;
+  assert.equal(validation.validateStatus(erasedExtraction, inventory), false);
+
+  const forgedProjectionSquare = structuredClone(status);
+  forgedProjectionSquare.leanResidualTerminalProjectionSquareFormalized = true;
+  assert.equal(validation.validateStatus(forgedProjectionSquare, inventory), false);
+
+  const erasedBoundary = structuredClone(status);
+  erasedBoundary.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-saturated-support-square-closure'
+  ).nonClaim = 'This proves the manuscript projection square and P = NP.';
+  assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+});
+
 test('static pages remain conservative and distinguish current from historical reports', () => {
   const homepage = readFileSync('index.html', 'utf8');
   const statusPage = readFileSync('status.html', 'utf8');
@@ -3089,12 +3146,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /24,260/);
-  assert.match(statusPage, /Eighty-one scoped milestones/);
+  assert.match(statusPage, /24,337/);
+  assert.match(statusPage, /Eighty-two scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 74-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 75-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);
