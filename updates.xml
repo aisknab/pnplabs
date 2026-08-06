@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-06T10:59:14Z</updated>
+  <updated>2026-08-06T14:36:05Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-projection-square</id>
+    <title>The proof now keeps its structure when extra bookkeeping is hidden</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-projection-square"/>
+    <published>2026-08-06T14:36:05Z</published>
+    <updated>2026-08-06T14:36:05Z</updated>
+    <summary type="text">A computer circuit can be split into overlapping parts. The previous milestone proved that Lean could combine the descriptions of two completed parts. This milestone adds a controlled way to hide selected bookkeeping details and proves that the visible result still has the same physical boundary and shared information. It does this for every finite circuit covered by the formal model and every allowed choice of details to hide, rather than for a fixed example. Combining first and hiding later gives the same visible structure as hiding each side first and then combining them. The dependency rulebook is still supplied, and important mathematical and efficiency steps remain open. This does not prove that P equals NP. The 71% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 71 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;A computer circuit can be split into overlapping parts. The previous milestone proved that Lean could combine the descriptions of two completed parts. This milestone adds a controlled way to hide selected bookkeeping details and proves that the visible result still has the same physical boundary and shared information.&lt;/p&gt;&lt;p&gt;It does this for every finite circuit covered by the formal model and every allowed choice of details to hide, rather than for a fixed example. Combining first and hiding later gives the same visible structure as hiding each side first and then combining them. The dependency rulebook is still supplied, and important mathematical and efficiency steps remain open. This does not prove that P equals NP. The 71% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;71&quot;&gt;Editorial progress estimate at publication: 71%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-projection-square&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-06-residual-terminal-governed-frontier-pushout</id>
     <title>The proof can now combine the boundaries of two completed circuit parts</title>

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-06-residual-terminal-governed-projection-square",
+      "milestoneId": "residual-terminal-governed-projection-square",
+      "publishedAt": "2026-08-06T14:36:05Z",
+      "title": "The proof now keeps its structure when extra bookkeeping is hidden",
+      "plainLanguage": [
+        "A computer circuit can be split into overlapping parts. The previous milestone proved that Lean could combine the descriptions of two completed parts. This milestone adds a controlled way to hide selected bookkeeping details and proves that the visible result still has the same physical boundary and shared information.",
+        "It does this for every finite circuit covered by the formal model and every allowed choice of details to hide, rather than for a fixed example. Combining first and hiding later gives the same visible structure as hiding each side first and then combining them. The dependency rulebook is still supplied, and important mathematical and efficiency steps remain open. This does not prove that P equals NP. The 71% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 71,
+      "source": {
+        "commit": "23abd2eaf8913ea91dc1cf379878f278b9ee3d10",
+        "tree": "5d2468bd4233650eb4a4186ababb9db99ac57f17",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-108",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-PROJECTION-SQUARE-107"
+      }
+    },
+    {
       "id": "2026-08-06-residual-terminal-governed-frontier-pushout",
       "milestoneId": "residual-terminal-governed-frontier-pushout",
       "publishedAt": "2026-08-06T10:59:14Z",

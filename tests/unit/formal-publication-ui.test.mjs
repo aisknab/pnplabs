@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '7e0e7feb895f6ea1c677314b1c2bd8b2ec5f33e826219b0421301e198984720e');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '17abf9c431e40fc2775fde868ff9312acf8db37907aa4a5ca64d5aa5c41e75d0');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 84);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 85);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -132,6 +132,24 @@ test('pre-fetch UI state reports governed terminal frontier pushout as fail clos
   assert.match(rendered, /leanResidualTerminalFrontierPushoutFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFrontierInternalizationFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFrontierPushoutScope = null/u);
+});
+
+test('pre-fetch UI state reports governed terminal projection square as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalProjectionSquareFormalized',
+    'leanResidualTerminalProjectionPhysicalInvariantFormalized',
+    'leanResidualTerminalProjectionProfileExactFormalized',
+    'leanResidualTerminalProjectionMeetJoinCommuteFormalized',
+    'leanResidualTerminalProjectionPushoutCommuteFormalized',
+    'leanResidualTerminalProjectionSquareAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalProjectionSquareScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalProjectionSquareFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalProjectionPushoutCommuteFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalProjectionSquareScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -2931,7 +2949,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'b793312d1177ceaaadb41dda0adafc9c3c5735ed0f19a2b74050faedd97e0685'/);
+  assert.match(source, /const STATUS_SHA256 = '8e7e4c01da163413c95ca7bf3b096754bf88b8748f782c72d59ed96c0f7fde6f'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3154,9 +3172,9 @@ test('saturated terminal support square requires exact pins, order laws, extract
   ).scope = 'A broader unsupported frontier claim.';
   assert.equal(validation.validateStatus(alteredFrontierScope, inventory), false);
 
-  const forgedProjectionSquare = structuredClone(status);
-  forgedProjectionSquare.leanResidualTerminalProjectionSquareFormalized = true;
-  assert.equal(validation.validateStatus(forgedProjectionSquare, inventory), false);
+  const erasedProjectionSquare = structuredClone(status);
+  erasedProjectionSquare.leanResidualTerminalProjectionSquareFormalized = false;
+  assert.equal(validation.validateStatus(erasedProjectionSquare, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
@@ -3174,8 +3192,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /24,464/);
-  assert.match(statusPage, /Eighty-four scoped milestones/);
+  assert.match(statusPage, /24,485/);
+  assert.match(statusPage, /Eighty-five scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

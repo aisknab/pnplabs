@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-107');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-108');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 24464);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13166);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6953);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 24485);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13183);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6956);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14594);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 223);
-  assert.equal(status.formalPublicationMilestones.length, 87);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 84);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 224);
+  assert.equal(status.formalPublicationMilestones.length, 88);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 85);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
@@ -60,6 +60,12 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanResidualTerminalFrontierProfileGlueExactFormalized, true);
   assert.equal(status.leanResidualTerminalFrontierInternalizationFormalized, true);
   assert.equal(status.leanResidualTerminalFrontierPushoutAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalProjectionSquareFormalized, true);
+  assert.equal(status.leanResidualTerminalProjectionPhysicalInvariantFormalized, true);
+  assert.equal(status.leanResidualTerminalProjectionProfileExactFormalized, true);
+  assert.equal(status.leanResidualTerminalProjectionMeetJoinCommuteFormalized, true);
+  assert.equal(status.leanResidualTerminalProjectionPushoutCommuteFormalized, true);
+  assert.equal(status.leanResidualTerminalProjectionSquareAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserAuditedDeclarationCount, 380);
