@@ -3010,9 +3010,9 @@ test('terminal saturation requires the exact finite explicit-dependency closure 
   widenedScope.leanResidualTerminalSaturationScope = 'all-arbitrary-circuit-support-squares';
   assert.equal(validation.validateStatus(widenedScope, inventory), false);
 
-  const forgedCompletion = structuredClone(status);
-  forgedCompletion.leanResidualTerminalSupportCompletionFormalized = true;
-  assert.equal(validation.validateStatus(forgedCompletion, inventory), false);
+  const forgedSquareLegitimacy = structuredClone(status);
+  forgedSquareLegitimacy.leanResidualTerminalSquareLegitimacyFormalized = true;
+  assert.equal(validation.validateStatus(forgedSquareLegitimacy, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
@@ -3046,9 +3046,9 @@ test('terminal physical support requires exact executable saturation and crossin
   forgedAudit.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed = false;
   assert.equal(validation.validateStatus(forgedAudit, inventory), false);
 
-  const forgedCompletion = structuredClone(status);
-  forgedCompletion.leanResidualTerminalSupportCompletionFormalized = true;
-  assert.equal(validation.validateStatus(forgedCompletion, inventory), false);
+  const forgedSquareLegitimacy = structuredClone(status);
+  forgedSquareLegitimacy.leanResidualTerminalSquareLegitimacyFormalized = true;
+  assert.equal(validation.validateStatus(forgedSquareLegitimacy, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
@@ -3086,9 +3086,9 @@ test('terminal support extraction requires exact pins, open semantics, and a con
   erasedSemantics.leanResidualTerminalOpenSemanticsFormalized = false;
   assert.equal(validation.validateStatus(erasedSemantics, inventory), false);
 
-  const forgedCompletion = structuredClone(status);
-  forgedCompletion.leanResidualTerminalSupportCompletionFormalized = true;
-  assert.equal(validation.validateStatus(forgedCompletion, inventory), false);
+  const forgedSquareLegitimacy = structuredClone(status);
+  forgedSquareLegitimacy.leanResidualTerminalSquareLegitimacyFormalized = true;
+  assert.equal(validation.validateStatus(forgedSquareLegitimacy, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
