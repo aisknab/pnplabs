@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 69% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 70% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="69" aria-label="Estimated proof reconstruction progress: 69 percent">69%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 69 percent">
+        <progress class="proof-progress-meter" max="100" value="70" aria-label="Estimated proof reconstruction progress: 70 percent">70%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 70 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-06-residual-terminal-governed-frontier-pushout" data-milestone-id="residual-terminal-governed-frontier-pushout">
+        <div class="section-label"><time datetime="2026-08-06T10:59:14Z">2026-08-06</time> · earned milestone 84</div>
+        <h2>The proof can now combine the boundaries of two completed circuit parts</h2>
+        <p>A circuit is a collection of simple yes-or-no operations connected by wires. Lean could already complete two chosen parts and describe each one&#39;s boundary. It can now combine those two descriptions to build the boundary of everything covered by either part, while keeping exactly the information the parts share.</p>
+        <p>Lean proves that this combined description matches a separate calculation made from the completed whole. Each item at either side&#39;s boundary is accounted for: it remains exposed or becomes internal to the combined part. The dependency rulebook is still supplied rather than derived from the circuit. The required projection-compatible square, obstruction routing, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 70% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 70%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-governed-frontier-pushout</code></p>
+          <p><strong>Classification:</strong> formalized-terminal-governed-frontier-pushout</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire candidate, explicit terminal dependency system, and computed saturated support square, Lean constructs the governed boundary, interface, and role-preserving profile pushout from the two side completions alone. The independently completed join frontier equals that gluing, the meet profile is the exact shared overlap, and every side physical coordinate is either retained externally or witnessed as internalized.</p>
+          <p><strong>Boundary:</strong> The terminal dependency system remains explicit input rather than a profile frontier derived from the circuit. This milestone proves exact frontier gluing for computed saturated support squares, not projection compatibility, side-tight four-corner minima, BN2 square legitimacy, SaturatePositive, Package E, BCEL/BN2-BN6, complete obstruction routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 28</p>
+          <p><strong>Core source:</strong> commit <code>31937a36ecc21413e334e5e7f7f27058f0dfecc7</code>, tree <code>795ca7177f7a99e301b19e4dca7c3abac914d1ef</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-107</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-FRONTIER-PUSHOUT-106</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-06-residual-terminal-governed-support-completion" data-milestone-id="residual-terminal-governed-support-completion">
         <div class="section-label"><time datetime="2026-08-06T04:20:09Z">2026-08-06</time> · earned milestone 83</div>
         <h2>The proof can now organise each completed circuit part into one consistent boundary</h2>

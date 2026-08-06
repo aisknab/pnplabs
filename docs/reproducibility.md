@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 432,609 | `04683262a3cd12a893f7d1d67c750502f52f40a9c8bf7755912b3ebbff76d5fb` |
-| `downloads/canonical-proof-report.pdf` | 432,609 | `04683262a3cd12a893f7d1d67c750502f52f40a9c8bf7755912b3ebbff76d5fb` |
-| `downloads/canonical_proof_report.tex` | 191,295 | `1dc4a81c1f7a9805405019d1298f5324aaf39f599a4b58433bf72ceeb97a5a9c` |
-| `downloads/canonical-proof-report.tex` | 191,295 | `1dc4a81c1f7a9805405019d1298f5324aaf39f599a4b58433bf72ceeb97a5a9c` |
-| `public/pnp-status.json` | 1,798,304 | `5e6356f2b13da0161b4b0fb0ea299b504bfef54f7670f3a4371d1b19df26d10f` |
-| `public/pnp-theorem-inventory.json` | 14,564,176 | `38c53b1e3e80059332ff62f135ffebcf04d6b5e39e158f0f48965295894c6e8d` |
+| `downloads/canonical_proof_report.pdf` | 434,167 | `2bdea0fd4e18e25d08a7b66cf30820d8db83893cc4ab50e14cc8bbcd30b1a264` |
+| `downloads/canonical-proof-report.pdf` | 434,167 | `2bdea0fd4e18e25d08a7b66cf30820d8db83893cc4ab50e14cc8bbcd30b1a264` |
+| `downloads/canonical_proof_report.tex` | 192,373 | `6536c56f5fa0f8c0c8141f214b7f040f2f942b82748652084a5d9ebbafaef435` |
+| `downloads/canonical-proof-report.tex` | 192,373 | `6536c56f5fa0f8c0c8141f214b7f040f2f942b82748652084a5d9ebbafaef435` |
+| `public/pnp-status.json` | 1,798,304 | `b793312d1177ceaaadb41dda0adafc9c3c5735ed0f19a2b74050faedd97e0685` |
+| `public/pnp-theorem-inventory.json` | 14,564,176 | `7e0e7feb895f6ea1c677314b1c2bd8b2ec5f33e826219b0421301e198984720e` |
 
-The PDF must have seventy-five A4 pages. Both filename styles must be byte-identical.
+The PDF must have seventy-six A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout c225e91eeb469cd87f0c52c9731074e8b66fc573
+git -C ../pnp checkout 31937a36ecc21413e334e5e7f7f27058f0dfecc7
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 24,405 public declarations, 13,134 theorem-kind declarations,
-6,945 assumption-free theorem-kind declarations, 14,576 excluded private auxiliaries, 222 modules, and
+Expected compiled inventory counts are 24,464 public declarations, 13,166 theorem-kind declarations,
+6,953 assumption-free theorem-kind declarations, 14,594 excluded private auxiliaries, 223 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -91,16 +91,16 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds twenty-six reviewed theorem pins. For every finite direct-wire candidate,
-explicit terminal dependency system, finite seed list, and computed saturated support-square corner,
-Lean computes the exact physical boundary, ordered interface, and partition of selected profile
-coordinates among all ten terminal profile roles. It proves exact membership, no duplicates,
-pairwise disjointness, record coverage, dependency closure, physical compatibility, and retention of
-each exact corner. The complete 42-declaration audit has 9 empty closures, 26 using only `propext`,
-and 7 using `Quot.sound` with `propext`. The dependency system remains explicit rather than derived
-from the circuit. This does not establish obstruction routing, frontier pushout, the manuscript's
-projection-compatible square or square legitimacy, global gain completeness, `ZeroSlack`, PCCMin
-exactness or polynomial runtime, discharge an assumption, or prove `P = NP`.
+The newest milestone adds twenty-eight reviewed theorem pins. For every finite direct-wire candidate,
+explicit terminal dependency system, and computed saturated support square, Lean constructs the
+governed boundary, interface, and role-preserving profile pushout from the two side completions alone.
+The independently completed join frontier equals that gluing, the meet profile is the exact shared
+overlap, and every side physical coordinate is either retained externally or witnessed as
+internalized. The complete 39-declaration audit has 4 empty closures, 22 using only `propext`, and 13
+using `Quot.sound` with `propext`. The dependency system remains explicit rather than derived from the
+circuit. This does not establish projection compatibility, side-tight four-corner minima, square
+legitimacy, complete obstruction routing, global gain completeness, `ZeroSlack`, PCCMin exactness or
+polynomial runtime, discharge an assumption, or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
