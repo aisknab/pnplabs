@@ -2344,7 +2344,8 @@ function makeProject(t) {
       ...RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREM_HASHES,
-      ...RESIDUAL_TERMINAL_SUPPORT_SQUARE_THEOREM_HASHES
+      ...RESIDUAL_TERMINAL_SUPPORT_SQUARE_THEOREM_HASHES,
+      ...RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -7243,7 +7244,7 @@ test("rejects terminal saturation release, status, inventory, and publication-ma
 
   const statusFlag = makeProject(t);
   const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
-  statusFlagPayload.leanResidualTerminalSupportCompletionFormalized = true;
+  statusFlagPayload.leanResidualTerminalSupportCompletionFormalized = false;
   rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
   expectFailure(statusFlag, /status residual terminal saturation evidence mismatch/);
 
