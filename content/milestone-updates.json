@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-07-residual-terminal-side-tight-minimum-arithmetic",
+      "milestoneId": "residual-terminal-side-tight-minimum-arithmetic",
+      "publishedAt": "2026-08-07T02:05:20Z",
+      "title": "The proof now checks when four related circuit comparisons reach their exact minima",
+      "plainLanguage": [
+        "A later part of the proposed proof compares four related views of a computer circuit: the part they share, two alternatives, and their combination. Each view has a smallest possible size under the formal rules. Lean can now check whether all four sizes are exactly minimal and, when they are, calculate their combined difference without losing track of any excess size.",
+        "The result applies to every finite four-view family covered by this model, not one chosen circuit. The checker fails closed if even one corner is not exactly minimal. An important limitation remains: the four minima may come from four different constructions, so Lean has not yet built one coherent four-corner object that reaches all of them together. Square legitimacy, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 72,
+      "source": {
+        "commit": "4aad02a158f05e18809748e8a6234ea568b76bfc",
+        "tree": "0781b85b3960a177bd421aff73aa88c07370af0a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-109",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-SIDE-TIGHT-MINIMUM-108"
+      }
+    },
+    {
       "id": "2026-08-06-residual-terminal-governed-projection-square",
       "milestoneId": "residual-terminal-governed-projection-square",
       "publishedAt": "2026-08-06T14:36:05Z",

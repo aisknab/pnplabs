@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 71% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 72% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="71" aria-label="Estimated proof reconstruction progress: 71 percent">71%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 71 percent">
+        <progress class="proof-progress-meter" max="100" value="72" aria-label="Estimated proof reconstruction progress: 72 percent">72%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 72 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-07-residual-terminal-side-tight-minimum-arithmetic" data-milestone-id="residual-terminal-side-tight-minimum-arithmetic">
+        <div class="section-label"><time datetime="2026-08-07T02:05:20Z">2026-08-07</time> · earned milestone 86</div>
+        <h2>The proof now checks when four related circuit comparisons reach their exact minima</h2>
+        <p>A later part of the proposed proof compares four related views of a computer circuit: the part they share, two alternatives, and their combination. Each view has a smallest possible size under the formal rules. Lean can now check whether all four sizes are exactly minimal and, when they are, calculate their combined difference without losing track of any excess size.</p>
+        <p>The result applies to every finite four-view family covered by this model, not one chosen circuit. The checker fails closed if even one corner is not exactly minimal. An important limitation remains: the four minima may come from four different constructions, so Lean has not yet built one coherent four-corner object that reaches all of them together. Square legitimacy, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 72%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-side-tight-minimum-arithmetic</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-side-tight-minimum-arithmetic</p>
+          <p><strong>Verified scope:</strong> For every finite terminal projection four-corner family and every independently attained typed full or quotient basis, Lean proves componentwise minimum bounds and the exact signed four-slack identity. A fail-closed Boolean and Option gate returns the corresponding existing delta only when meet, left, right, and join all attain their exact minima; both canonical independently attained minimum bases pass.</p>
+          <p><strong>Boundary:</strong> The canonical corner minima are independently attained. This milestone proves numerical arithmetic and fail-closed exactness, not construction of one coherent four-corner basis, coherent completion, maximization over a finite tight family, BN2 square legitimacy, SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 24</p>
+          <p><strong>Core source:</strong> commit <code>4aad02a158f05e18809748e8a6234ea568b76bfc</code>, tree <code>0781b85b3960a177bd421aff73aa88c07370af0a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-109</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-SIDE-TIGHT-MINIMUM-108</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-06-residual-terminal-governed-projection-square" data-milestone-id="residual-terminal-governed-projection-square">
         <div class="section-label"><time datetime="2026-08-06T14:36:05Z">2026-08-06</time> · earned milestone 85</div>
         <h2>The proof now keeps its structure when extra bookkeeping is hidden</h2>

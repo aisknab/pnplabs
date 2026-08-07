@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,279 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,299 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 24,485 public declarations;
-- 13,183 theorem-kind declarations;
-- 6,956 assumption-free theorem-kind declarations;
-- 224 source-closure modules;
-- 14,594 excluded private compiler auxiliaries;
+- 24,583 public declarations;
+- 13,218 theorem-kind declarations;
+- 6,971 assumption-free theorem-kind declarations;
+- 225 source-closure modules;
+- 14,595 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The eighty-five earned scopes are:
+The eighty-six earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -135,6 +135,7 @@ The eighty-five earned scopes are:
 | Governed terminal support completion | For every finite direct-wire candidate, explicit terminal dependency system, finite seed list, and computed saturated support-square corner, Lean computes the exact physical boundary, ordered interface, and partition of selected profile coordinates among all ten terminal profile roles. Exact membership, no duplicates, pairwise disjointness, record coverage, dependency closure, physical compatibility, and retention of each exact corner hold. The 42-declaration audit has 9 empty closures, 26 using only `propext`, and 7 using `Quot.sound` with `propext`; all 26 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit input rather than a profile frontier derived from the circuit. This governed finite completion is not obstruction routing, frontier pushout, the manuscript's projection-compatible square, side-tight four-corner minima, BN2 square legitimacy, `SaturatePositive`, Package E, BCEL/BN2-BN6, complete residual routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Governed terminal frontier pushout | For every finite direct-wire candidate, explicit terminal dependency system, and computed saturated support square, Lean constructs the governed boundary, interface, and role-preserving profile pushout from the two side completions alone. The independently completed join frontier equals that gluing, the meet profile is the exact shared overlap, and every side physical coordinate is either retained externally or witnessed as internalized. The 39-declaration audit has 4 empty closures, 22 using only `propext`, and 13 using `Quot.sound` with `propext`; all 28 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit input rather than a profile frontier derived from the circuit. This proves exact gluing for computed saturated support squares, not projection compatibility, side-tight four-corner minima, BN2 square legitimacy, `SaturatePositive`, Package E, BCEL/BN2-BN6, complete obstruction routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Governed terminal projection square | For every finite direct-wire candidate, explicit terminal dependency system, computed saturated support square, and forgetful terminal projection, Lean retains the exact physical frontier, filters all ten role profiles exactly, and proves projected meet is the shared overlap while projected join is the side-only projected pushout. The 33-declaration audit has 6 empty closures, 21 using only `propext`, and 6 using `Quot.sound` with `propext`; all 23 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit input rather than a profile frontier derived from the circuit. This structural projection commutation does not prove side-tight four-corner minima, BN2 square legitimacy, `SaturatePositive`, Package E, BCEL/BN2-BN6, complete obstruction routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
+| Side-tight four-corner minimum arithmetic | For every finite terminal projection four-corner family and every independently attained typed full or quotient basis, Lean proves componentwise minimum bounds and the exact signed four-slack identity. A fail-closed Boolean and Option gate returns the existing delta only when meet, left, right, and join all attain their exact minima, and both canonical independently attained minimum bases pass. The 43-declaration audit has 19 empty closures, 17 using only `propext`, and 7 using `Quot.sound` with `propext`; all 24 reviewed pins have permitted Lean-standard closure. | The canonical corner minima are independently attained. This numerical result does not construct one coherent four-corner basis, coherent completion, maximization over a finite tight family, BN2 square legitimacy, `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
