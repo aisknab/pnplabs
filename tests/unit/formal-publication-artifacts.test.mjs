@@ -415,6 +415,37 @@ const RESIDUAL_TERMINAL_PROJECTION_SQUARE_HASHES = Object.fromEntries(
   Object.entries(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS).map(([name, row]) => [name, row.hash])
 );
 
+const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREMS = {
+  "PNP.DirectWire.TerminalFourCornerSizes.componentwiseLE_refl": { hash: "880ac00551719c408bab7c36100da06ab24e6c1082444c481247ca810e71eef3", axioms: [], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.numericallySideTight_iff_eq": { hash: "5129d3bead161bf2fe04630876952c6e84b6ef24561195f8210a115aa6ed4b9b", axioms: [], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.sideTightBool_eq_true_iff": { hash: "a848261642cfdea4df9e4447b325c84c022398c8bb53c45cc08ee5fa01cff359", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.tightValue?_eq_some_iff": { hash: "1e18d14b6a1e2d3ca1cec68ce583ec931d7fdfde04961be055af3da383adb516", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.tightValue?_sound": { hash: "574a7dbebbed80312757727409867ff60e735560b283257bf497db349d78b3bb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.tightValue?_complete": { hash: "7cd287618f14242dd084dc26658322b35ccbb7bc9517e2790feacd942983e1ab", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.incidenceValue_eq_minimum_add_slacks": { hash: "5bccfcc0defe6d9cff4171aac17a7bf87395ca8fc36fb513f02b87f1cc71489b", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.fullMinimumSizes_incidenceValue": { hash: "b97b13db2e6f7c85367618fdbff02012e3e35dac248b9477f1f3d0d83e2d5d41", axioms: [], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFullFourCornerBasis.minimum_componentwiseLE_sizes": { hash: "0fbb68b6581fdd7d689d1a673577167804c1f46559fecec89780691859473f4c", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFullFourCornerBasis.incidenceValue_eq_fullDelta_add_slacks": { hash: "fd67bd71430658938e496d5614df7d7613a529616708ba4e8a6d40bf1fb7e1b1", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalFullBasis_sizes": { hash: "4eada640b465615c6e3e7fb50d2425f3fb0367ceaf1116f730c7eb8529d4dbe0", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalFullBasis_numericallySideTight": { hash: "30667d03f2b79304ef3ba521fdfb603ddbc0fed9d7a500b5cb82b873b5d848b8", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalFullBasis_tightValue?": { hash: "d4f43cea0b57df4a8bc140c107bde3caa14f6dbbd3bb0ff44ea4a57b1fdf9b99", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.quotientMinimumSizes_incidenceValue": { hash: "b367ab312ac141381b359cc844f80378acc7421d8016d8c3b33f24cbe5fa2792", axioms: [], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalQuotientFourCornerBasis.minimum_componentwiseLE_sizes": { hash: "422eab229d2226a474a7742b61dfc18b3ca46e4966d9eed60e596d7b00118ce3", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalQuotientFourCornerBasis.incidenceValue_eq_quotientDelta_add_slacks": { hash: "d39a83cb2b7ddd1d27dd22e66f95521652967e323c3dfbac0549d6bb2fdf35d0", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalQuotientBasis_sizes": { hash: "4a5100e98955c56996c16f6a36e1368d5633f3aac3f8b2cf05124ceb3512c735", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalQuotientBasis_numericallySideTight": { hash: "cf09d5ab284e8ab70e5a292eacf1365ba8ed36726befdaac7437a9391a18e446", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalQuotientBasis_tightValue?": { hash: "118d0bde5404a21c201d076f3d09a8db27cc34a7657ac592df9687f226e8fb62", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonical_numericallySideTight_values": { hash: "4288f8f3bd740dcdb96a2f0b1178e6b86a473f0d06e8c2977381838ab6f538ac", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.terminalFullProfileMinimumRealization_gateCount": { hash: "798da3be48963130ca415d60dbaea20fc06087f64068798e5c62634178d98259", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalQuotientProfileMinimumComparison_gateCount": { hash: "32349bacfe9e5efd16f42006fe912234b0c7459b66db9905e5c5867a696dba80", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalFullProfileMinimum_le": { hash: "56059f1da9c8fe821569dc651bb112eef6ad0f056a6496c668ff45250ada6f0e", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalQuotientProfileMinimum_le": { hash: "ce8486f3b736f1bac59f6a388c73a32d5bfdb4ec64f0994b1ba94fb1c57ab753", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" }
+};
+
+const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -433,15 +464,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "23abd2eaf8913ea91dc1cf379878f278b9ee3d10");
+  assert.equal(result.coreCommit, "4aad02a158f05e18809748e8a6234ea568b76bfc");
 });
 
 test("current release is pinned, seventy-six-page, exposes governed support completion, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-06-91");
-  assert.equal(release.source.commit, "23abd2eaf8913ea91dc1cf379878f278b9ee3d10");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-07-92");
+  assert.equal(release.source.commit, "4aad02a158f05e18809748e8a6234ea568b76bfc");
   assert.equal(release.source.proofCommit, "bf6aeac30aae0b04745715e8ec6a1d4be862a724");
-  assert.equal(release.source.tree, "5d2468bd4233650eb4a4186ababb9db99ac57f17");
+  assert.equal(release.source.tree, "0781b85b3960a177bd421aff73aa88c07370af0a");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 76);
@@ -2163,6 +2194,26 @@ test("current release is pinned, seventy-six-page, exposes governed support comp
   assert.deepEqual(release.earnedBoundary.residualTerminalProjectionSquareProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.residualTerminalProjectionFrontierBoundaryTheorem, "PNP.DirectWire.TerminalGovernedFrontier.project_boundary");
   assert.equal(release.earnedBoundary.residualTerminalSquareProjectionCompatibleTheorem, "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_projection_compatible");
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumArithmeticFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightSignedSlackIdentityFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightFailClosedGateFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightCanonicalFullBasisFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightCanonicalQuotientBasisFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumAuditedDeclarationCount, 43);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumEmptyAxiomDeclarationCount, 19);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumPropextOnlyDeclarationCount, 17);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumPropextQuotSoundDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightMinimumScope, "all-finite-terminal-projection-four-corner-families-and-independently-attained-full-and-quotient-minimum-bases");
+  assert.deepEqual(release.earnedBoundary.residualTerminalSideTightMinimumTheoremKernelTypeSha256, RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSideTightMinimumAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSideTightMinimumProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalSideTightIdentityTheorem, "PNP.DirectWire.TerminalFourCornerSizes.incidenceValue_eq_minimum_add_slacks");
+  assert.equal(release.earnedBoundary.residualTerminalSideTightFullBasisTheorem, "PNP.DirectWire.TerminalFullFourCornerBasis.incidenceValue_eq_fullDelta_add_slacks");
+  assert.equal(release.earnedBoundary.residualTerminalSideTightQuotientBasisTheorem, "PNP.DirectWire.TerminalQuotientFourCornerBasis.incidenceValue_eq_quotientDelta_add_slacks");
+  assert.equal(release.earnedBoundary.residualTerminalSideTightFailClosedSoundnessTheorem, "PNP.DirectWire.TerminalFourCornerSizes.tightValue?_sound");
+  assert.equal(release.earnedBoundary.residualTerminalSideTightFailClosedCompletenessTheorem, "PNP.DirectWire.TerminalFourCornerSizes.tightValue?_complete");
+  assert.equal(release.earnedBoundary.residualTerminalSideTightCanonicalValuesTheorem, "PNP.DirectWire.TerminalProjectionFourCorners.canonical_numericallySideTight_values");
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2194,12 +2245,12 @@ test("current release is pinned, seventy-six-page, exposes governed support comp
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 88 milestones with governed projection square pinned", () => {
+test("status and inventory publish exactly 89 milestones with side-tight minimum arithmetic pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 88);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 85);
+  assert.equal(milestones.length, 89);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 86);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -2762,21 +2813,55 @@ test("status and inventory publish exactly 88 milestones with governed projectio
   assert.equal(status.leanResidualTerminalProjectionSquareAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalProjectionSquareScope, "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-saturated-support-squares-and-forgetful-terminal-projections");
 
-  assert.equal(inventory.declarationCount, 24485);
-  assert.equal(inventory.theoremCount, 13183);
-  assert.equal(inventory.assumptionFreeTheoremCount, 6956);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14594);
-  assert.equal(inventory.sourceClosureModuleCount, 224);
-  assert.equal(inventory.milestoneCandidates.length, 2279);
+  const sideTightMinimum = milestones.find((row) => row.id === "residual-terminal-side-tight-minimum-arithmetic");
+  assert.equal(sideTightMinimum.classification, "formalized-residual-terminal-side-tight-minimum-arithmetic");
+  assert.equal(sideTightMinimum.status, "formalized-residual-terminal-side-tight-minimum-arithmetic");
+  assert.equal(sideTightMinimum.earned, true);
+  assert.equal(sideTightMinimum.allPresent, true);
+  assert.equal(sideTightMinimum.allAssumptionFree, false);
+  assert.equal(sideTightMinimum.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(sideTightMinimum.allKernelTypesMatch, true);
+  assert.equal(sideTightMinimum.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(sideTightMinimum.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(sideTightMinimum.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_HASHES
+  );
+  for (const row of sideTightMinimum.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.match(sideTightMinimum.scope, /exact signed four-slack identity/u);
+  assert.match(sideTightMinimum.nonClaim, /independently attained/u);
+  assert.equal(status.leanResidualTerminalSideTightMinimumArithmeticFormalized, true);
+  assert.equal(status.leanResidualTerminalSideTightSignedSlackIdentityFormalized, true);
+  assert.equal(status.leanResidualTerminalSideTightFailClosedGateFormalized, true);
+  assert.equal(status.leanResidualTerminalSideTightCanonicalFullBasisFormalized, true);
+  assert.equal(status.leanResidualTerminalSideTightCanonicalQuotientBasisFormalized, true);
+  assert.equal(status.leanResidualTerminalSideTightMinimumAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalSideTightMinimumScope, "all-finite-terminal-projection-four-corner-families-and-independently-attained-full-and-quotient-minimum-bases");
+
+  assert.equal(inventory.declarationCount, 24583);
+  assert.equal(inventory.theoremCount, 13218);
+  assert.equal(inventory.assumptionFreeTheoremCount, 6971);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14595);
+  assert.equal(inventory.sourceClosureModuleCount, 225);
+  assert.equal(inventory.milestoneCandidates.length, 2299);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 687,
-    definition: 10015,
-    inductive: 298,
+    constructor: 690,
+    definition: 10069,
+    inductive: 301,
     opaque: 0,
     quotient: 0,
-    recursor: 298,
-    theorem: 13183
+    recursor: 301,
+    theorem: 13218
   });
 });
 
