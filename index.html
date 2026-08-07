@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean can now keep the same circuit positions aligned across four related views</h2>
-          <p>The proposed route compares the shared part of two circuit alternatives, each alternative on its own, and their combined result. Lean now gives all four views one common map of positions. It proves that every boundary and connection is exact and that no position is counted twice.</p>
-          <p>Every side position is also checked: it either remains visible after combination or becomes internal for a verified reason, while absent positions are rejected. This works for every finite computed square covered by the model. Four compatible optimum circuits, one coherent four-corner minimum, and square legitimacy are still missing. This does not prove that P equals NP. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-07-residual-terminal-four-corner-carrier-transport">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean can now compare four independently smallest circuit views on one common map</h2>
+          <p>The proposed route compares four related views of a circuit. Earlier checked work identifies a circuit with the fewest gates for each view, but those four smallest circuits could use different maps of their positions. Lean now places all four on one finite common map without changing what any circuit does or how many gates it has.</p>
+          <p>Every real position translates to the common map and back exactly, while missing positions are rejected. This works for every finite computed square covered by the model. The four smallest circuits have not yet been proved consistent along the square's sides, and square legitimacy and later minimization steps remain open. This does not prove that P equals NP. The 73% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-08-residual-terminal-four-corner-optimum-carrier-compatibility">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>complete_transport</code> packages exact shared, left, right, and joined endpoints in one carrier; duplicate-free boundary, interface, and profile coordinates; exact meet and join profile transport; and fail-closed retained-or-internalized classifications. <code>boundaryDisposition?_eq_some_iff</code> and <code>interfaceDisposition?_eq_some_iff</code> reject absent coordinates. Lean has not transported four optimum realizers, constructed one coherent optimum basis, proved BN2 square legitimacy, or finished obstruction routing, SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>fourCornerOptimaCarrierCompatible</code> places independently attained full and quotient optima for all four corners on one reversible finite carrier. <code>localize_ambientize_semantics</code> and <code>localizeImplementation_gateCount</code> preserve exact behavior and gate count, while <code>ambient_referenceMinimum_eq_corner</code> preserves each reference minimum. Lean has not proved coherent transport along the square's legs, constructed one coherent optimum basis, proved BN2 square legitimacy, or finished obstruction routing, SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -238,6 +238,13 @@ leanResidualTerminalFourCornerCarrierProfileTransportFormalized = true
 leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized = true
 leanResidualTerminalFourCornerCarrierAxiomAuditPassed = true
 leanResidualTerminalFourCornerCarrierScope = "all-finite-computed-saturated-terminal-support-squares-and-canonical-physical-profile-transport-coordinates"
+leanResidualTerminalFourCornerOptimaCarrierCompatibleFormalized = true
+leanResidualTerminalFourCornerOptimaFaithfulAmbientizationFormalized = true
+leanResidualTerminalFourCornerOptimaReferenceMinimumPreservedFormalized = true
+leanResidualTerminalFourCornerOptimaLocalizedMinimaFormalized = true
+leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized = true
+leanResidualTerminalFourCornerOptimaAxiomAuditPassed = true
+leanResidualTerminalFourCornerOptimaCarrierScope = "all-finite-computed-saturated-terminal-support-squares-one-reversible-ambient-carrier-and-shared-observer-projection"
 leanResidualTerminalSquareLegitimacyFormalized = false
 leanSaturatePositiveFormalized = false
 leanBCELReadyFormalized = false
@@ -257,9 +264,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-07-110</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-08-111</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>2e585d493c1b5364f0bf340b7d141bbb231bef97d609056909f19481c77e45c9</code></div>
+            <div><span>Inventory SHA-256</span><code>ea373cfe65d8c99fab5c3896b7d594f96724a8eab2b3d2b7ddf0abdfee81aabe</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -267,18 +274,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>72</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>73</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 72 percent" data-proof-progress="72">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>72</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 73 percent" data-proof-progress="73">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>73</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 72% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 73% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

@@ -4,9 +4,9 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "45e828437ed335a62dbc4e9889e65ee383c53139";
-const CORE_TREE = "89d37dd773ec1369ee22d97f8ee0cb3c9da41c9b";
-const PROOF_COMMIT = "2de442ae6242d32d68732916b3a6817c3ca6d1d3";
+const CORE_COMMIT = "df4f4d830f6a0fd44af51edb0be178652d1b9417";
+const CORE_TREE = "db7e1089cbeed18e98a48bbb5000f0985608f1c9";
+const PROOF_COMMIT = "be013122d332641c54f24c466cf7c5fc9cdb7075";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -3601,6 +3601,43 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_SCOPE = "all-finite-computed-saturat
 const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_MILESTONE_SCOPE = "For every finite computed saturated terminal support square, direct-wire candidate, and forgetful terminal projection, Lean derives all four exact governed and extracted endpoints in common ambient coordinates, proves duplicate-free boundary, interface, and profile lists, transports meet and join profiles exactly, and classifies each present side physical coordinate as identically retained or constructively internalized through fail-closed queries.";
 const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NON_CLAIM = "This milestone supplies a checked common ambient carrier for the computed square. It does not transport four optimum realizers, prove the full four-corner optimum carrier-compatibility obligation, construct a coherent four-corner optimum, prove side-tight completion or BN2 square legitimacy, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.";
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREMS = {
+  "PNP.DirectWire.terminalSupportWireAt_ambientIndex": { hash: "baa6ebaeadcc573a190c2d129568a658e30533b249f7a3c6eafe36cecc8eeb31", axioms: [], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalSupportWire.ambientIndex_terminalSupportWireAt": { hash: "86fa5b9e65c494e7be9a7a74b2492aa8c80501fdcfb6797698794c525f58bddd", axioms: [], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalSupportWire.ambientIndex_injective": { hash: "420732b62abdf78f5ebe14c4f81218eef8b815cc71668b609bf8b534469339a2", axioms: [], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.boundaryIndex?_eq_some_iff": { hash: "a5d142c0ab5e4d5809895394a0e4aa27bc69c6167690e62ae72afa3d790a6f51", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.interfaceIndex?_eq_some_iff": { hash: "c96c26a35dbac2dd661438e54b893a6edf9dfc2ad925bce62cb9c0b7f65e415c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.boundaryIndex?_ambient_get": { hash: "01e4969304b1a8da5ca710f3b97fb6db22ed897d59758873f82863ed7579b1e1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.interfaceIndex?_get": { hash: "4f42d217e9a4b21e4211b9345a06838aa0f46ef81bf9d5a54698dcf0d57c03f9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.boundaryAdapter_semantics_get": { hash: "7296a16167d0e637f40f1b86fd0d74e1e7fbbed0843e29fdf5dcbfea8dde75aa", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.ambientizeCandidate_semantics_present": { hash: "72b55886beb152e1380e567bdda9257dacface6ea6dad200180fb9516004d215", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.ambientizeCandidate_semantics_absent": { hash: "61ad7c80d2de3a313b16b8058bfbf9758be998baf4a1832a69b97ce8353f344f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localizeCandidate_semantics": { hash: "b4c050d17e30ee714a072d299af755549f1d9e64b35e353a38b017dceb988876", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localize_ambientize_semantics": { hash: "8344965d10d1e6b3bb2d4ca424bb7a782bc1cd9b6e8312e621e70a525a5ca6e9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.ambientizeCandidate_gateCount": { hash: "69fb8806dbd2fd724b0643b43c6099c6fb35c1a64d7ae224031253546595d5f8", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localizeCandidate_gateCount": { hash: "e21e7d1af5ebce164fa69a466e49b523da43befcf51d8e532661fae7d2daace5", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.ambientizeCandidate_equivalent": { hash: "42d5de3ba77b231662262fe2429c4a985801ef4810ae568ac8181cdc432f3943", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localizeCandidate_equivalent": { hash: "2c80a21f5d0d8cf703a0738383b24b9cf3362877037845d9033bc388dfca248d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localize_ambientize_equivalent": { hash: "d7c7d0e9fe6d7306139ba4c93b27f765af68ed068922e0dc422f3672c900047c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localizeImplementation_gateCount": { hash: "b16686cdf9678693fcade96a65d91386ab39381301b9fcfbaf1b8f629ec933ec", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.ambient_referenceMinimum_eq_corner": { hash: "de788866dd3f749d769ace9e19bddb3b2b9259dfb83934aafc49331763e855df", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.optimizationCorners_at": { hash: "b9e345e70b97da10e3a55f6ef406521874d0f96f17725c30f1a2f6edcb328b4f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.optimizationCorners_role": { hash: "e1948b30f1ae25554a87cfb71e4d6854aec359c832ea175fbd6780196821331d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.optimizationCorners_projection": { hash: "10db8957f72550e86f288ca7e17278051a4772ba5eba1781d4478235568aaf32", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.localizeRealization_gateCount": { hash: "86d6d702677203a11d3513e88751863984e5d0c75b77645b9a0e046082966d06", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.fourCornerOptimaCarrierCompatible": { hash: "0c8b453d9b62cca81206e8097b11fe630fb81467c30842548b9fabb1b2725304", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.complete_transport": { hash: "5976aa24e0dfafa1d0bab889dbee53df1ca2686923df8b5dab9c0752888ecb27", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerCarrier" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalFullBasis_sizes": { hash: "4eada640b465615c6e3e7fb50d2425f3fb0367ceaf1116f730c7eb8529d4dbe0", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalQuotientBasis_sizes": { hash: "4a5100e98955c56996c16f6a36e1368d5633f3aac3f8b2cf05124ceb3512c735", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.terminalFullProfileMinimumRealization_gateCount": { hash: "798da3be48963130ca415d60dbaea20fc06087f64068798e5c62634178d98259", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalQuotientProfileMinimumComparison_gateCount": { hash: "32349bacfe9e5efd16f42006fe912234b0c7459b66db9905e5c5867a696dba80", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.referenceMinimum_le_of_equivalent": { hash: "f08f2f21b3b60f906c7aa7f7b2d1d5e0dd39106078324c1a0898fd739614efae", axioms: [], module: "PNP.NANDMinimum" }
+};
+
+const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_SCOPE = "all-finite-computed-saturated-terminal-support-squares-one-reversible-ambient-carrier-and-shared-observer-projection";
+const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_MILESTONE_SCOPE = "For every finite computed saturated terminal support square and every explicit observer, Lean embeds all four exact corner candidates into one common ambient carrier, proves reversible semantic and gate-count preservation, proves exact ambient and corner reference minima agree, and localizes canonical full and quotient optima from one shared observer and projection without changing their exact minimum counts.";
+const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NON_CLAIM = "This milestone compares independently attained full and quotient optima on one reversible common carrier. It does not prove coherent transport along the square legs, construct a coherent four-corner optimum, prove sideTightCompletionExists or BN2 square legitimacy, derive the terminal dependency system, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.";
+
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
   residualTerminalPrimitiveUniverseTheorem: "PNP.DirectWire.mem_allTerminalPrimitiveRecords",
   residualTerminalSaturationExtensiveTheorem: "PNP.DirectWire.terminalSaturate_extensive",
@@ -3810,6 +3847,20 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_RELEASE_IDENTITIES = {
   residualTerminalFourCornerCarrierCompleteTransportTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.complete_transport"
 };
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_RELEASE_IDENTITIES = {
+  residualTerminalFourCornerOptimaAmbientRoundTripTheorem: "PNP.DirectWire.TerminalSupportWire.ambientIndex_terminalSupportWireAt",
+  residualTerminalFourCornerOptimaAmbientInjectiveTheorem: "PNP.DirectWire.TerminalSupportWire.ambientIndex_injective",
+  residualTerminalFourCornerOptimaBoundaryQueryTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.boundaryIndex?_eq_some_iff",
+  residualTerminalFourCornerOptimaInterfaceQueryTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.interfaceIndex?_eq_some_iff",
+  residualTerminalFourCornerOptimaAmbientizePresentTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.ambientizeCandidate_semantics_present",
+  residualTerminalFourCornerOptimaAmbientizeAbsentTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.ambientizeCandidate_semantics_absent",
+  residualTerminalFourCornerOptimaLocalizeRoundTripTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.localize_ambientize_semantics",
+  residualTerminalFourCornerOptimaReferenceMinimumTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.ambient_referenceMinimum_eq_corner",
+  residualTerminalFourCornerOptimaSharedProjectionTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.optimizationCorners_projection",
+  residualTerminalFourCornerOptimaLocalizedGateCountTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.localizeRealization_gateCount",
+  residualTerminalFourCornerOptimaCompatibilityTheorem: "PNP.DirectWire.TerminalFourCornerCarrier.fourCornerOptimaCarrierCompatible"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -3998,44 +4049,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     path: "downloads/canonical_proof_report.pdf",
-    bytes: 436374,
-    sha256: "ed75cd52e1a5bb6a143838fa7a86f0d9a88ad66e9f1d039413fab5dc671690ad",
+    bytes: 436878,
+    sha256: "121978e29f6f37caf842fe8ad76c6ce7e8812bc1bbb7c018f068d5247e23e431",
     role: "current inventory-derived seventy-seven-page formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical-proof-report.pdf",
-    bytes: 436374,
-    sha256: "ed75cd52e1a5bb6a143838fa7a86f0d9a88ad66e9f1d039413fab5dc671690ad",
+    bytes: 436878,
+    sha256: "121978e29f6f37caf842fe8ad76c6ce7e8812bc1bbb7c018f068d5247e23e431",
     role: "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     path: "downloads/canonical_proof_report.tex",
-    bytes: 195614,
-    sha256: "51e174f1cbff5030a905ce6e791741a0f69facb1500acfad3b6b1c72ccdea641",
+    bytes: 196791,
+    sha256: "55ffa6aa19ba0c1c3143265d21ac3e481b05556a38f2d9b62591245078b0e492",
     role: "current inventory-derived formal-reconstruction report TeX"
   },
   {
     path: "downloads/canonical-proof-report.tex",
-    bytes: 195614,
-    sha256: "51e174f1cbff5030a905ce6e791741a0f69facb1500acfad3b6b1c72ccdea641",
+    bytes: 196791,
+    sha256: "55ffa6aa19ba0c1c3143265d21ac3e481b05556a38f2d9b62591245078b0e492",
     role: "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     path: "public/pnp-status.json",
-    bytes: 1867836,
-    sha256: "a411b2dae18d3869cea0ba236628604e9041f06010553d1e0cfc8b2434cef805",
+    bytes: 1887604,
+    sha256: "72d754abc757743f41696680d14a795d973fe86285fd93aa61ef322d65062a5f",
     role: "exact current core formal-reconstruction status mirror"
   },
   {
     path: "public/pnp-theorem-inventory.json",
-    bytes: 15168239,
-    sha256: "2e585d493c1b5364f0bf340b7d141bbb231bef97d609056909f19481c77e45c9",
+    bytes: 15645082,
+    sha256: "ea373cfe65d8c99fab5c3896b7d594f96724a8eab2b3d2b7ddf0abdfee81aabe",
     role: "exact current compiled Lean theorem inventory mirror"
   },
   {
     path: "downloads/formal-publication-release.json",
-    bytes: 722339,
-    sha256: "e48caac7148dca13e86268485ff204acc1f829d5ecbe28297561293f6d6eb3f0",
+    bytes: 729400,
+    sha256: "a99d5c421456890c012953ca8b3c4bbab5325eee75ebdd51a6de691a27535feb",
     role: "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -4108,10 +4159,10 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-110") fail("status coordinate mismatch");
-  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-FOUR-CORNER-CARRIER-109") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-07-110" || status.formalPublicationMapSha256 !== "20d29d0d85e4edd2ee0ab1cfbe41f403e17b2655ea82651ffeb089c0fe88372b" || status.leanSourceClosureSha256 !== "77155b9e3cd7ba5c931ccd20f587cb5aa0567e1b016b37845d904eec4205426d") fail("status source identity mismatch");
-  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 90 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 87 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-111") fail("status coordinate mismatch");
+  if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COMPATIBILITY-110") fail("status public-surface coordinate mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-08-111" || status.formalPublicationMapSha256 !== "8efcfb683a0aeb7f2b6884bf6374493b3e69c20f6bb5617d2e63252646b384d6" || status.leanSourceClosureSha256 !== "55b94c1f15c1003306e4efcf83469416817e29530e7eae8a25aa4948efa9d370") fail("status source identity mismatch");
+  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 91 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 88 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -5047,6 +5098,44 @@ function assertFailClosedStatus(status) {
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal four-corner carrier evidence mismatch");
+  const residualTerminalFourCornerOptimaMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-four-corner-optimum-carrier-compatibility"
+  );
+  const residualTerminalFourCornerOptimaNames = Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREMS);
+  if (!residualTerminalFourCornerOptimaMilestone
+      || residualTerminalFourCornerOptimaMilestone.classification !== "formalized-residual-terminal-four-corner-optimum-carrier-compatibility"
+      || residualTerminalFourCornerOptimaMilestone.status !== "formalized-residual-terminal-four-corner-optimum-carrier-compatibility"
+      || residualTerminalFourCornerOptimaMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_MILESTONE_SCOPE
+      || residualTerminalFourCornerOptimaMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NON_CLAIM
+      || JSON.stringify(residualTerminalFourCornerOptimaMilestone.requiredTheorems) !== JSON.stringify(residualTerminalFourCornerOptimaNames)
+      || residualTerminalFourCornerOptimaMilestone.earned !== true
+      || residualTerminalFourCornerOptimaMilestone.allPresent !== true
+      || residualTerminalFourCornerOptimaMilestone.allAssumptionFree !== false
+      || residualTerminalFourCornerOptimaMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalFourCornerOptimaMilestone.allKernelTypesMatch !== true
+      || residualTerminalFourCornerOptimaMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal four-corner optimum carrier compatibility publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREMS)) {
+    const row = residualTerminalFourCornerOptimaMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal four-corner optimum carrier compatibility theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalFourCornerOptimaCarrierCompatibleFormalized === true
+      && status.leanResidualTerminalFourCornerOptimaFaithfulAmbientizationFormalized === true
+      && status.leanResidualTerminalFourCornerOptimaReferenceMinimumPreservedFormalized === true
+      && status.leanResidualTerminalFourCornerOptimaLocalizedMinimaFormalized === true
+      && status.leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized === true
+      && status.leanResidualTerminalFourCornerOptimaAxiomAuditPassed === true
+      && status.leanResidualTerminalFourCornerOptimaCarrierScope === RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_SCOPE
+      && status.leanResidualTerminalCoherentFourCornerBasisFormalized === false
+      && status.leanResidualTerminalSquareLegitimacyFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal four-corner optimum carrier compatibility evidence mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) fail("status locked-NAND remaining-premise inventory mismatch");
   if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) fail("status overstates the CNF-SAT result");
   if (status.leanTheoremInventorySha256 !== EXPECTED_FILES[5].sha256) fail("status inventory digest mismatch");
@@ -5054,10 +5143,10 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-07-110") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 24675 || inventory.theoremCount !== 13260) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 6984 || inventory.excludedPrivateDeclarationCount !== 14607 || inventory.sourceClosureModuleCount !== 226 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
-  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 694, definition: 10109, inductive: 304, opaque: 0, quotient: 0, recursor: 304, theorem: 13260 })) fail("inventory declaration-kind counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-08-111") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 24758 || inventory.theoremCount !== 13298) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 6989 || inventory.excludedPrivateDeclarationCount !== 14645 || inventory.sourceClosureModuleCount !== 227 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 696, definition: 10148, inductive: 306, opaque: 0, quotient: 0, recursor: 306, theorem: 13298 })) fail("inventory declaration-kind counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
@@ -5632,16 +5721,22 @@ function assertInventory(inventory) {
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal four-corner carrier theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal four-corner carrier fingerprint mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 2316) fail("inventory reviewed theorem-candidate count mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal four-corner optimum carrier compatibility theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal four-corner optimum carrier compatibility fingerprint mismatch: ${name}`);
+  }
+  if (inventory.milestoneCandidates?.length !== 2341) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-07-93") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-94") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-07-110" || manifest.source?.formalPublicationMapSha256 !== "20d29d0d85e4edd2ee0ab1cfbe41f403e17b2655ea82651ffeb089c0fe88372b" || manifest.source?.leanSourceClosureSha256 !== "77155b9e3cd7ba5c931ccd20f587cb5aa0567e1b016b37845d904eec4205426d") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-08-111" || manifest.source?.formalPublicationMapSha256 !== "8efcfb683a0aeb7f2b6884bf6374493b3e69c20f6bb5617d2e63252646b384d6" || manifest.source?.leanSourceClosureSha256 !== "55b94c1f15c1003306e4efcf83469416817e29530e7eae8a25aa4948efa9d370") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 77) fail("current report must have seventy-seven pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -6437,6 +6532,29 @@ function assertCurrentManifest(manifest) {
   if (!residualTerminalFourCornerCarrierHashes || Object.keys(residualTerminalFourCornerCarrierHashes).length !== 27
       || !Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_THEOREMS).every(([name, row]) => residualTerminalFourCornerCarrierHashes[name] === row.hash)) fail("current manifest residual terminal four-corner carrier fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal four-corner carrier theorem identity mismatch");
+  if (!(earned.residualTerminalFourCornerOptimaCarrierCompatibleFormalized === true
+      && earned.residualTerminalFourCornerOptimaFaithfulAmbientizationFormalized === true
+      && earned.residualTerminalFourCornerOptimaReferenceMinimumPreservedFormalized === true
+      && earned.residualTerminalFourCornerOptimaLocalizedMinimaFormalized === true
+      && earned.residualTerminalFourCornerOptimaSharedObserverProjectionFormalized === true
+      && earned.residualTerminalFourCornerOptimaAxiomAuditPassed === true
+      && earned.residualTerminalFourCornerOptimaAuditedDeclarationCount === 57
+      && earned.residualTerminalFourCornerOptimaEmptyAxiomDeclarationCount === 13
+      && earned.residualTerminalFourCornerOptimaPropextOnlyDeclarationCount === 5
+      && earned.residualTerminalFourCornerOptimaPropextQuotSoundDeclarationCount === 39
+      && earned.residualTerminalFourCornerOptimaCarrierScope === RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_SCOPE
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal four-corner optimum carrier compatibility boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalFourCornerOptimaAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalFourCornerOptimaProjectAxiomClosure)
+      || earned.residualTerminalFourCornerOptimaProjectAxiomClosure.length !== 0) fail("current manifest residual terminal four-corner optimum carrier compatibility axiom closure mismatch");
+  const residualTerminalFourCornerOptimaHashes = earned.residualTerminalFourCornerOptimaTheoremKernelTypeSha256;
+  if (!residualTerminalFourCornerOptimaHashes || Object.keys(residualTerminalFourCornerOptimaHashes).length !== 30
+      || !Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREMS).every(([name, row]) => residualTerminalFourCornerOptimaHashes[name] === row.hash)) fail("current manifest residual terminal four-corner optimum carrier compatibility fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal four-corner optimum carrier compatibility theorem identity mismatch");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -6466,7 +6584,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-07-93") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-94") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");

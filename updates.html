@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 72% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 73% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="72" aria-label="Estimated proof reconstruction progress: 72 percent">72%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 72 percent">
+        <progress class="proof-progress-meter" max="100" value="73" aria-label="Estimated proof reconstruction progress: 73 percent">73%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 73 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-08-residual-terminal-four-corner-optimum-carrier-compatibility" data-milestone-id="residual-terminal-four-corner-optimum-carrier-compatibility">
+        <div class="section-label"><time datetime="2026-08-07T20:22:49Z">2026-08-07</time> · earned milestone 88</div>
+        <h2>Lean can now compare four independently smallest circuit views on one common map</h2>
+        <p>This part of the proposed proof compares four related views of a computer circuit. For each view, earlier checked work identifies a circuit with the fewest gates. Those four smallest circuits could originally use different maps of their positions, which made a direct comparison unsafe. Lean now places all four on one finite common map without changing what any circuit does or how many gates it has.</p>
+        <p>Lean also proves that every real position can be translated to the common map and back exactly, while a missing position is rejected instead of being invented. This works for every finite computed square covered by the model and uses one shared way of observing all four circuit views. It still does not prove that the four smallest circuits fit together consistently along the square&#39;s sides, establish the manuscript&#39;s square-legitimacy step, or complete the later ZeroSlack, PCCMin, efficient-runtime, SAT-in-P, or P = NP obligations. The 73% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 73%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-four-corner-optimum-carrier-compatibility</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-four-corner-optimum-carrier-compatibility</p>
+          <p><strong>Verified scope:</strong> For every finite computed saturated terminal support square and every explicit observer, Lean embeds all four exact corner candidates into one common ambient carrier, proves reversible semantic and gate-count preservation, proves exact ambient and corner reference minima agree, and localizes canonical full and quotient optima from one shared observer and projection without changing their exact minimum counts.</p>
+          <p><strong>Boundary:</strong> This milestone compares independently attained full and quotient optima on one reversible common carrier. It does not prove coherent transport along the square legs, construct a coherent four-corner optimum, prove sideTightCompletionExists or BN2 square legitimacy, derive the terminal dependency system, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 30</p>
+          <p><strong>Core source:</strong> commit <code>df4f4d830f6a0fd44af51edb0be178652d1b9417</code>, tree <code>db7e1089cbeed18e98a48bbb5000f0985608f1c9</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-111</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COMPATIBILITY-110</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-07-residual-terminal-four-corner-carrier-transport" data-milestone-id="residual-terminal-four-corner-carrier-transport">
         <div class="section-label"><time datetime="2026-08-07T08:01:41Z">2026-08-07</time> · earned milestone 87</div>
         <h2>Lean can now keep the same circuit positions aligned across four related views</h2>

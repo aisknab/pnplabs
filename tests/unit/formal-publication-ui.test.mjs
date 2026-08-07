@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '2e585d493c1b5364f0bf340b7d141bbb231bef97d609056909f19481c77e45c9');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ea373cfe65d8c99fab5c3896b7d594f96724a8eab2b3d2b7ddf0abdfee81aabe');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 87);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 88);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -186,6 +186,24 @@ test('pre-fetch UI state reports four-corner carrier transport as fail closed', 
   assert.match(rendered, /leanResidualTerminalFourCornerCarrierTransportFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFourCornerCarrierScope = null/u);
+});
+
+test('pre-fetch UI state reports four-corner optimum carrier compatibility as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalFourCornerOptimaCarrierCompatibleFormalized',
+    'leanResidualTerminalFourCornerOptimaFaithfulAmbientizationFormalized',
+    'leanResidualTerminalFourCornerOptimaReferenceMinimumPreservedFormalized',
+    'leanResidualTerminalFourCornerOptimaLocalizedMinimaFormalized',
+    'leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized',
+    'leanResidualTerminalFourCornerOptimaAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalFourCornerOptimaCarrierScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalFourCornerOptimaCarrierCompatibleFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFourCornerOptimaCarrierScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -2985,7 +3003,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'a411b2dae18d3869cea0ba236628604e9041f06010553d1e0cfc8b2434cef805'/);
+  assert.match(source, /const STATUS_SHA256 = '72d754abc757743f41696680d14a795d973fe86285fd93aa61ef322d65062a5f'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3232,6 +3250,16 @@ test('saturated terminal support square requires exact pins, order laws, extract
   ).scope = 'A broader unsupported optimum-carrier claim.';
   assert.equal(validation.validateStatus(alteredCarrierScope, inventory), false);
 
+  const erasedOptimumCompatibility = structuredClone(status);
+  erasedOptimumCompatibility.leanResidualTerminalFourCornerOptimaCarrierCompatibleFormalized = false;
+  assert.equal(validation.validateStatus(erasedOptimumCompatibility, inventory), false);
+
+  const alteredOptimumCompatibilityScope = structuredClone(status);
+  alteredOptimumCompatibilityScope.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-four-corner-optimum-carrier-compatibility'
+  ).scope = 'A broader unsupported coherent optimum claim.';
+  assert.equal(validation.validateStatus(alteredOptimumCompatibilityScope, inventory), false);
+
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-saturated-support-square-closure'
@@ -3248,8 +3276,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /24,675/);
-  assert.match(statusPage, /Eighty-seven scoped milestones/);
+  assert.match(statusPage, /24,758/);
+  assert.match(statusPage, /Eighty-eight scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-08-residual-terminal-four-corner-optimum-carrier-compatibility",
+      "milestoneId": "residual-terminal-four-corner-optimum-carrier-compatibility",
+      "publishedAt": "2026-08-07T20:22:49Z",
+      "title": "Lean can now compare four independently smallest circuit views on one common map",
+      "plainLanguage": [
+        "This part of the proposed proof compares four related views of a computer circuit. For each view, earlier checked work identifies a circuit with the fewest gates. Those four smallest circuits could originally use different maps of their positions, which made a direct comparison unsafe. Lean now places all four on one finite common map without changing what any circuit does or how many gates it has.",
+        "Lean also proves that every real position can be translated to the common map and back exactly, while a missing position is rejected instead of being invented. This works for every finite computed square covered by the model and uses one shared way of observing all four circuit views. It still does not prove that the four smallest circuits fit together consistently along the square's sides, establish the manuscript's square-legitimacy step, or complete the later ZeroSlack, PCCMin, efficient-runtime, SAT-in-P, or P = NP obligations. The 73% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 73,
+      "source": {
+        "commit": "df4f4d830f6a0fd44af51edb0be178652d1b9417",
+        "tree": "db7e1089cbeed18e98a48bbb5000f0985608f1c9",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-111",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COMPATIBILITY-110"
+      }
+    },
+    {
       "id": "2026-08-07-residual-terminal-four-corner-carrier-transport",
       "milestoneId": "residual-terminal-four-corner-carrier-transport",
       "publishedAt": "2026-08-07T08:01:41Z",

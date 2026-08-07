@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,316 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,341 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 24,675 public declarations;
-- 13,260 theorem-kind declarations;
-- 6,984 assumption-free theorem-kind declarations;
-- 226 source-closure modules;
-- 14,607 excluded private compiler auxiliaries;
+- 24,758 public declarations;
+- 13,298 theorem-kind declarations;
+- 6,989 assumption-free theorem-kind declarations;
+- 227 source-closure modules;
+- 14,645 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The eighty-seven earned scopes are:
+The eighty-eight earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -137,6 +137,7 @@ The eighty-seven earned scopes are:
 | Governed terminal projection square | For every finite direct-wire candidate, explicit terminal dependency system, computed saturated support square, and forgetful terminal projection, Lean retains the exact physical frontier, filters all ten role profiles exactly, and proves projected meet is the shared overlap while projected join is the side-only projected pushout. The 33-declaration audit has 6 empty closures, 21 using only `propext`, and 6 using `Quot.sound` with `propext`; all 23 reviewed pins have permitted Lean-standard closure. | The dependency system remains explicit input rather than a profile frontier derived from the circuit. This structural projection commutation does not prove side-tight four-corner minima, BN2 square legitimacy, `SaturatePositive`, Package E, BCEL/BN2-BN6, complete obstruction routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Side-tight four-corner minimum arithmetic | For every finite terminal projection four-corner family and every independently attained typed full or quotient basis, Lean proves componentwise minimum bounds and the exact signed four-slack identity. A fail-closed Boolean and Option gate returns the existing delta only when meet, left, right, and join all attain their exact minima, and both canonical independently attained minimum bases pass. The 43-declaration audit has 19 empty closures, 17 using only `propext`, and 7 using `Quot.sound` with `propext`; all 24 reviewed pins have permitted Lean-standard closure. | The canonical corner minima are independently attained. This numerical result does not construct one coherent four-corner basis, coherent completion, maximization over a finite tight family, BN2 square legitimacy, `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Residual terminal four-corner carrier transport | For every finite computed saturated terminal support square, direct-wire candidate, and forgetful terminal projection, Lean places all four exact governed and extracted endpoints into common ambient coordinates. It proves duplicate-free boundary, interface, and profile lists; exact meet and join profile transport; and fail-closed retained-or-internalized classification for each present side physical coordinate. The 38-declaration audit has 5 empty closures, 12 using only `propext`, and 21 using `Quot.sound` with `propext`; all 27 reviewed pins have permitted Lean-standard closure. | This is a structural carrier for computed corners. It does not transport four optimum realizers, construct a coherent four-corner optimum, prove coherent completion, BN2 square legitimacy, `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
+| Residual terminal four-corner optimum carrier compatibility | For every finite computed saturated terminal support square and every explicit observer, Lean embeds all four exact corner candidates into one common ambient carrier, proves reversible semantic and gate-count preservation, proves exact ambient and corner reference minima agree, and localizes canonical full and quotient optima from one shared observer and projection without changing their exact minimum counts. The 57-declaration audit has 13 empty closures, 5 using only `propext`, and 39 using `Quot.sound` with `propext`; all 30 reviewed pins have permitted Lean-standard closure. | This milestone compares independently attained full and quotient optima on one reversible common carrier. It does not prove coherent transport along the square legs, construct a coherent four-corner optimum, prove sideTightCompletionExists or BN2 square legitimacy, derive the terminal dependency system, establish `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
