@@ -26,6 +26,20 @@ const publishedRelease = JSON.parse(readFileSync(
   new URL("../../downloads/formal-publication-release.json", import.meta.url),
   "utf8"
 ));
+
+function earnedTheoremNamesBefore(milestoneId) {
+  const milestoneIndex = publishedStatus.formalPublicationMilestones.findIndex(
+    (row) => row.id === milestoneId
+  );
+  assert.notEqual(milestoneIndex, -1, `missing milestone: ${milestoneId}`);
+  return new Set(
+    publishedStatus.formalPublicationMilestones
+      .slice(0, milestoneIndex)
+      .filter((row) => row.earned)
+      .flatMap((row) => row.requiredTheorems)
+  );
+}
+
 const FORMULA_CURSOR_THEOREM_HASHES =
   publishedRelease.earnedBoundary.cookLevinFormulaCursorTheoremKernelTypeSha256;
 const FORMULA_CURSOR_THEOREM_NAMES = Object.keys(FORMULA_CURSOR_THEOREM_HASHES);
@@ -1193,10 +1207,8 @@ const RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREM_NAMES = Object.keys(
 const RESIDUAL_TERMINAL_PROPER_SUPPORT_CANDIDATES = publishedInventory.milestoneCandidates.filter(
   (candidate) => RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREM_NAMES.includes(candidate.name)
 );
-const PREVIOUS_EARNED_THEOREM_NAMES = new Set(
-  publishedStatus.formalPublicationMilestones
-    .filter((row) => row.earned && row.id !== "residual-terminal-proper-positive-support-search")
-    .flatMap((row) => row.requiredTheorems)
+const PREVIOUS_EARNED_THEOREM_NAMES = earnedTheoremNamesBefore(
+  "residual-terminal-proper-positive-support-search"
 );
 const RESIDUAL_TERMINAL_PROPER_SUPPORT_NEW_CANDIDATES = RESIDUAL_TERMINAL_PROPER_SUPPORT_CANDIDATES.filter(
   (candidate) => !PREVIOUS_EARNED_THEOREM_NAMES.has(candidate.name)
@@ -1328,12 +1340,8 @@ const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_THEOREM_NAMES = Object.keys(
 const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_CANDIDATES = publishedInventory.milestoneCandidates.filter(
   (candidate) => RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_THEOREM_NAMES.includes(candidate.name)
 );
-const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_PREVIOUS_THEOREM_NAMES = new Set(
-  publishedStatus.formalPublicationMilestones
-    .filter((row) => row.earned
-      && row.id !== "residual-terminal-governed-frontier-pushout"
-      && row.id !== "residual-terminal-governed-projection-square")
-    .flatMap((row) => row.requiredTheorems)
+const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_PREVIOUS_THEOREM_NAMES = earnedTheoremNamesBefore(
+  "residual-terminal-governed-frontier-pushout"
 );
 const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NEW_CANDIDATES = RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_CANDIDATES.filter(
   (candidate) => !RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_PREVIOUS_THEOREM_NAMES.has(candidate.name)
@@ -1380,10 +1388,8 @@ const RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREM_NAMES = Object.keys(
 const RESIDUAL_TERMINAL_PROJECTION_SQUARE_CANDIDATES = publishedInventory.milestoneCandidates.filter(
   (candidate) => RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREM_NAMES.includes(candidate.name)
 );
-const RESIDUAL_TERMINAL_PROJECTION_SQUARE_PREVIOUS_THEOREM_NAMES = new Set(
-  publishedStatus.formalPublicationMilestones
-    .filter((row) => row.earned && row.id !== "residual-terminal-governed-projection-square")
-    .flatMap((row) => row.requiredTheorems)
+const RESIDUAL_TERMINAL_PROJECTION_SQUARE_PREVIOUS_THEOREM_NAMES = earnedTheoremNamesBefore(
+  "residual-terminal-governed-projection-square"
 );
 const RESIDUAL_TERMINAL_PROJECTION_SQUARE_NEW_CANDIDATES = RESIDUAL_TERMINAL_PROJECTION_SQUARE_CANDIDATES.filter(
   (candidate) => !RESIDUAL_TERMINAL_PROJECTION_SQUARE_PREVIOUS_THEOREM_NAMES.has(candidate.name)
@@ -1429,10 +1435,8 @@ const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREM_NAMES = Object.keys(
 const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_CANDIDATES = publishedInventory.milestoneCandidates.filter(
   (candidate) => RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREM_NAMES.includes(candidate.name)
 );
-const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_PREVIOUS_THEOREM_NAMES = new Set(
-  publishedStatus.formalPublicationMilestones
-    .filter((row) => row.earned && row.id !== "residual-terminal-side-tight-minimum-arithmetic")
-    .flatMap((row) => row.requiredTheorems)
+const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_PREVIOUS_THEOREM_NAMES = earnedTheoremNamesBefore(
+  "residual-terminal-side-tight-minimum-arithmetic"
 );
 const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NEW_CANDIDATES =
   RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_CANDIDATES.filter(
@@ -1479,10 +1483,8 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_THEOREM_NAMES = Object.keys(
 const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_CANDIDATES = publishedInventory.milestoneCandidates.filter(
   (candidate) => RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_THEOREM_NAMES.includes(candidate.name)
 );
-const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_PREVIOUS_THEOREM_NAMES = new Set(
-  publishedStatus.formalPublicationMilestones
-    .filter((row) => row.earned && row.id !== "residual-terminal-four-corner-carrier-transport")
-    .flatMap((row) => row.requiredTheorems)
+const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_PREVIOUS_THEOREM_NAMES = earnedTheoremNamesBefore(
+  "residual-terminal-four-corner-carrier-transport"
 );
 const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NEW_CANDIDATES =
   RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_CANDIDATES.filter(
