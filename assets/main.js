@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-109';
-const STATUS_SHA256 = 'a29d10e7bc211b2c919910624557941898dc1f2888eb5cd6fc10ba00a6e89abb';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-SIDE-TIGHT-MINIMUM-108';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-07-109';
-const INVENTORY_SHA256 = 'd1743c46154588f40b4f04f5f1a0e02fdd043aa1b62c7f01e5c667d408357212';
-const SOURCE_CLOSURE_SHA256 = 'c13bb497e99007317cf71871ac88dc94c21645caa70c82770690833f05a2494d';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-110';
+const STATUS_SHA256 = 'a411b2dae18d3869cea0ba236628604e9041f06010553d1e0cfc8b2434cef805';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-FOUR-CORNER-CARRIER-109';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-07-110';
+const INVENTORY_SHA256 = '2e585d493c1b5364f0bf340b7d141bbb231bef97d609056909f19481c77e45c9';
+const SOURCE_CLOSURE_SHA256 = '77155b9e3cd7ba5c931ccd20f587cb5aa0567e1b016b37845d904eec4205426d';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 24583,
-  theorems: 13218,
-  assumptionFreeTheorems: 6971,
-  excludedPrivateDeclarations: 14595,
-  modules: 225,
+  declarations: 24675,
+  theorems: 13260,
+  assumptionFreeTheorems: 6984,
+  excludedPrivateDeclarations: 14607,
+  modules: 226,
   axioms: 4,
 });
 
@@ -3615,6 +3615,36 @@ const RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.terminalQuotientProfileMinimum_le", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
 ]);
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalFourCornerCarrier.boundaryDisposition?_eq_some_iff", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.interfaceDisposition?_eq_some_iff", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.boundary_nodup", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.interface_nodup", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.profile_nodup", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.extracted_boundary", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.extracted_interface", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.corner_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.meet_profile_transport", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.side_profile_transport", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.join_profile_transport", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.boundary_retained", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.boundary_internalized", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.interface_retained", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.interface_internalized", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.projection_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.complete_transport", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalGovernedSupportCompletion"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_meet_profile_iff", ["propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.side_profile_mem_join", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_join_profile_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.left_boundary_disposition", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.right_boundary_disposition", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.side_interface_disposition", ["propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_join_boundary_eq_pushout", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_join_interface_eq_pushout", ["Quot.sound", "propext"], "PNP.ResidualTerminalFrontierPushout"],
+  ["PNP.DirectWire.TerminalSaturatedSupportSquare.governed_projection_compatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionSquare"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4144,6 +4174,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-governed-frontier-pushout',
   'residual-terminal-governed-projection-square',
   'residual-terminal-side-tight-minimum-arithmetic',
+  'residual-terminal-four-corner-carrier-transport',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4553,6 +4584,13 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalSideTightCanonicalQuotientBasisFormalized: false,
   leanResidualTerminalSideTightMinimumAxiomAuditPassed: false,
   leanResidualTerminalSideTightMinimumScope: null,
+  leanResidualTerminalFourCornerCarrierTransportFormalized: false,
+  leanResidualTerminalFourCornerCarrierExactEndpointsFormalized: false,
+  leanResidualTerminalFourCornerCarrierInjectiveCoordinatesFormalized: false,
+  leanResidualTerminalFourCornerCarrierProfileTransportFormalized: false,
+  leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized: false,
+  leanResidualTerminalFourCornerCarrierAxiomAuditPassed: false,
+  leanResidualTerminalFourCornerCarrierScope: null,
   leanPCCMinPolynomialRuntimeFormalized: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
@@ -4988,6 +5026,13 @@ leanResidualTerminalSideTightCanonicalFullBasisFormalized = ${payload.leanResidu
 leanResidualTerminalSideTightCanonicalQuotientBasisFormalized = ${payload.leanResidualTerminalSideTightCanonicalQuotientBasisFormalized ?? false}
 leanResidualTerminalSideTightMinimumAxiomAuditPassed = ${payload.leanResidualTerminalSideTightMinimumAxiomAuditPassed ?? false}
 leanResidualTerminalSideTightMinimumScope = ${payload.leanResidualTerminalSideTightMinimumScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSideTightMinimumScope)}
+leanResidualTerminalFourCornerCarrierTransportFormalized = ${payload.leanResidualTerminalFourCornerCarrierTransportFormalized ?? false}
+leanResidualTerminalFourCornerCarrierExactEndpointsFormalized = ${payload.leanResidualTerminalFourCornerCarrierExactEndpointsFormalized ?? false}
+leanResidualTerminalFourCornerCarrierInjectiveCoordinatesFormalized = ${payload.leanResidualTerminalFourCornerCarrierInjectiveCoordinatesFormalized ?? false}
+leanResidualTerminalFourCornerCarrierProfileTransportFormalized = ${payload.leanResidualTerminalFourCornerCarrierProfileTransportFormalized ?? false}
+leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized = ${payload.leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized ?? false}
+leanResidualTerminalFourCornerCarrierAxiomAuditPassed = ${payload.leanResidualTerminalFourCornerCarrierAxiomAuditPassed ?? false}
+leanResidualTerminalFourCornerCarrierScope = ${payload.leanResidualTerminalFourCornerCarrierScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFourCornerCarrierScope)}
 leanPCCMinPolynomialRuntimeFormalized = ${payload.leanPCCMinPolynomialRuntimeFormalized ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
 leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
@@ -5029,13 +5074,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 690,
-    definition: 10069,
-    inductive: 301,
+    constructor: 694,
+    definition: 10109,
+    inductive: 304,
     opaque: 0,
     quotient: 0,
-    recursor: 301,
-    theorem: 13218,
+    recursor: 304,
+    theorem: 13260,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5426,6 +5471,11 @@ function validateInventory(inventory) {
     axioms,
     module,
   }));
+  const residualTerminalFourCornerCarrier = RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_DECLARATIONS.map(([name, axioms, module]) => ({
+    row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+    axioms,
+    module,
+  }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -5788,6 +5838,9 @@ function validateInventory(inventory) {
     && residualTerminalSideTightMinimum.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalFourCornerCarrier.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5829,7 +5882,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2299
+    && inventory.milestoneCandidates.length === 2316
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -5893,7 +5946,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 86;
+    const shouldBeEarned = index < 87;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -5982,6 +6035,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalSideTightMinimumMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-side-tight-minimum-arithmetic'
+  );
+  const residualTerminalFourCornerCarrierMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-four-corner-carrier-transport'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -6253,6 +6309,21 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSideTightCanonicalQuotientBasisFormalized === true
     && status.leanResidualTerminalSideTightMinimumAxiomAuditPassed === true
     && status.leanResidualTerminalSideTightMinimumScope === "all-finite-terminal-projection-four-corner-families-and-independently-attained-full-and-quotient-minimum-bases"
+    && residualTerminalFourCornerCarrierMilestone?.classification === "formalized-residual-terminal-four-corner-carrier-transport"
+    && residualTerminalFourCornerCarrierMilestone.scope === "For every finite computed saturated terminal support square, direct-wire candidate, and forgetful terminal projection, Lean derives all four exact governed and extracted endpoints in common ambient coordinates, proves duplicate-free boundary, interface, and profile lists, transports meet and join profiles exactly, and classifies each present side physical coordinate as identically retained or constructively internalized through fail-closed queries."
+    && residualTerminalFourCornerCarrierMilestone.nonClaim === "This milestone supplies a checked common ambient carrier for the computed square. It does not transport four optimum realizers, prove the full four-corner optimum carrier-compatibility obligation, construct a coherent four-corner optimum, prove side-tight completion or BN2 square legitimacy, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP."
+    && sameJson(
+      residualTerminalFourCornerCarrierMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalFourCornerCarrierTransportFormalized === true
+    && status.leanResidualTerminalFourCornerCarrierExactEndpointsFormalized === true
+    && status.leanResidualTerminalFourCornerCarrierInjectiveCoordinatesFormalized === true
+    && status.leanResidualTerminalFourCornerCarrierProfileTransportFormalized === true
+    && status.leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized === true
+    && status.leanResidualTerminalFourCornerCarrierAxiomAuditPassed === true
+    && status.leanResidualTerminalFourCornerCarrierScope === "all-finite-computed-saturated-terminal-support-squares-and-canonical-physical-profile-transport-coordinates"
+    && status.leanResidualTerminalCoherentFourCornerBasisFormalized === false
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
     && status.leanSaturatePositiveFormalized === false
     && status.leanBCELReadyFormalized === false

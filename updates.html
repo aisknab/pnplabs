@@ -34,6 +34,26 @@
       </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 72 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-07-residual-terminal-four-corner-carrier-transport" data-milestone-id="residual-terminal-four-corner-carrier-transport">
+        <div class="section-label"><time datetime="2026-08-07T08:01:41Z">2026-08-07</time> · earned milestone 87</div>
+        <h2>Lean can now keep the same circuit positions aligned across four related views</h2>
+        <p>This part of the proposed proof compares four related views of a computer circuit: the part two alternatives share, each alternative on its own, and the result of combining them. Lean now gives those views one common map of positions. It proves that every boundary and connection is listed exactly and that no position is accidentally counted twice, so the same wire or bookkeeping item keeps the same identity in all four views.</p>
+        <p>Lean also checks every position that appears on either side. It proves that the position either remains visible after the sides are combined or becomes internal for a verified reason, and its lookup rejects positions that are not actually present. This works for every finite computed square covered by the model, not one selected example. It still does not construct four compatible optimum circuits, one coherent four-corner minimum, or the manuscript&#39;s square-legitimacy result. Later minimization, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 72%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-four-corner-carrier-transport</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-four-corner-carrier-transport</p>
+          <p><strong>Verified scope:</strong> For every finite computed saturated terminal support square, direct-wire candidate, and forgetful terminal projection, Lean derives all four exact governed and extracted endpoints in common ambient coordinates, proves duplicate-free boundary, interface, and profile lists, transports meet and join profiles exactly, and classifies each present side physical coordinate as identically retained or constructively internalized through fail-closed queries.</p>
+          <p><strong>Boundary:</strong> This milestone supplies a checked common ambient carrier for the computed square. It does not transport four optimum realizers, prove the full four-corner optimum carrier-compatibility obligation, construct a coherent four-corner optimum, prove side-tight completion or BN2 square legitimacy, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 27</p>
+          <p><strong>Core source:</strong> commit <code>45e828437ed335a62dbc4e9889e65ee383c53139</code>, tree <code>89d37dd773ec1369ee22d97f8ee0cb3c9da41c9b</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-110</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-FOUR-CORNER-CARRIER-109</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-07-residual-terminal-side-tight-minimum-arithmetic" data-milestone-id="residual-terminal-side-tight-minimum-arithmetic">
         <div class="section-label"><time datetime="2026-08-07T02:05:20Z">2026-08-07</time> · earned milestone 86</div>
         <h2>The proof now checks when four related circuit comparisons reach their exact minima</h2>

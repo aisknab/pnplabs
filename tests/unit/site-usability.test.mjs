@@ -61,7 +61,7 @@ test('plain-language orientation is static and available before technical depth'
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
-  assert.match(paper, /The current 76-page report is generated from the compiled Lean inventory/u);
+  assert.match(paper, /The current 77-page report is generated from the compiled Lean inventory/u);
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
   assert.match(verify, /id="reproduce"/u);
@@ -76,7 +76,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 89 formal milestone records/u);
+  assert.match(status, /Show all 90 formal milestone records/u);
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);

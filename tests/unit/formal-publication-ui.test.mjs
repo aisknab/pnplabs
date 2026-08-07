@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'd1743c46154588f40b4f04f5f1a0e02fdd043aa1b62c7f01e5c667d408357212');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '2e585d493c1b5364f0bf340b7d141bbb231bef97d609056909f19481c77e45c9');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 86);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 87);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -168,6 +168,24 @@ test('pre-fetch UI state reports side-tight minimum arithmetic as fail closed', 
   assert.match(rendered, /leanResidualTerminalSideTightMinimumArithmeticFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalSideTightFailClosedGateFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalSideTightMinimumScope = null/u);
+});
+
+test('pre-fetch UI state reports four-corner carrier transport as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalFourCornerCarrierTransportFormalized',
+    'leanResidualTerminalFourCornerCarrierExactEndpointsFormalized',
+    'leanResidualTerminalFourCornerCarrierInjectiveCoordinatesFormalized',
+    'leanResidualTerminalFourCornerCarrierProfileTransportFormalized',
+    'leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized',
+    'leanResidualTerminalFourCornerCarrierAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalFourCornerCarrierScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalFourCornerCarrierTransportFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFourCornerCarrierScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -2967,7 +2985,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'a29d10e7bc211b2c919910624557941898dc1f2888eb5cd6fc10ba00a6e89abb'/);
+  assert.match(source, /const STATUS_SHA256 = 'a411b2dae18d3869cea0ba236628604e9041f06010553d1e0cfc8b2434cef805'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3204,6 +3222,16 @@ test('saturated terminal support square requires exact pins, order laws, extract
   ).scope = 'A broader unsupported coherent-basis claim.';
   assert.equal(validation.validateStatus(alteredSideTightScope, inventory), false);
 
+  const erasedCarrierTransport = structuredClone(status);
+  erasedCarrierTransport.leanResidualTerminalFourCornerCarrierTransportFormalized = false;
+  assert.equal(validation.validateStatus(erasedCarrierTransport, inventory), false);
+
+  const alteredCarrierScope = structuredClone(status);
+  alteredCarrierScope.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-four-corner-carrier-transport'
+  ).scope = 'A broader unsupported optimum-carrier claim.';
+  assert.equal(validation.validateStatus(alteredCarrierScope, inventory), false);
+
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-saturated-support-square-closure'
@@ -3220,12 +3248,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /24,583/);
-  assert.match(statusPage, /Eighty-six scoped milestones/);
+  assert.match(statusPage, /24,675/);
+  assert.match(statusPage, /Eighty-seven scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 76-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 77-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

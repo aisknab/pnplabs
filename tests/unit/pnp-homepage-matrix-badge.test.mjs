@@ -154,7 +154,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'leanResidualTerminalSquareLegitimacyFormalized = false',
     'leanPCCMinPolynomialRuntimeFormalized = false',
     'concretePublicationGate.passed = false',
-    'PNP-LEAN-THEOREM-INVENTORY-2026-08-07-109',
+    'PNP-LEAN-THEOREM-INVENTORY-2026-08-07-110',
     'About 72% of the known formalisation work',
     'not a probability that the claim is correct, a confidence score, or a mathematical result',
     'P: problems we can solve efficiently',

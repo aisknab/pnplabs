@@ -35,16 +35,16 @@ test("current updates cover every milestone earned after the exact 39-milestone 
   assert.equal(data.trackingBaseline.earnedCount, 39);
   assert.equal(data.kind, "PNPLabsMilestoneUpdates2");
   assert.equal(data.version, 2);
-  assert.equal(model.earnedCount, 86);
-  assert.equal(model.entries.length, 47);
+  assert.equal(model.earnedCount, 87);
+  assert.equal(model.entries.length, 48);
   assert.deepEqual(model.entries.map((entry) => entry.earnedOrdinal), [
-    86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40
+    87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40
   ]);
   assert.deepEqual(model.entries.map((entry) => entry.milestone.requiredTheorems.length), [
-    24, 23, 28, 26, 23, 22, 21, 14, 7, 4, 14, 12, 13, 10, 14, 28, 18, 5, 22, 20, 11, 8, 2, 5, 11, 8, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 39, 39, 39, 41, 92, 75, 40
+    27, 24, 23, 28, 26, 23, 22, 21, 14, 7, 4, 14, 12, 13, 10, 14, 28, 18, 5, 22, 20, 11, 8, 2, 5, 11, 8, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 39, 39, 39, 41, 92, 75, 40
   ]);
   assert.equal(model.progressEstimatePercent, 72);
-  assert.deepEqual(data.entries.map((entry) => entry.progressEstimatePercent), [72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 30, null, null, null, null, null]);
+  assert.deepEqual(data.entries.map((entry) => entry.progressEstimatePercent), [72, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 30, null, null, null, null, null]);
   assert.equal(model.entries[0].source.commit, index.sourceCommitRef);
   assert.equal(model.entries[0].source.tree, index.sourceTree);
 });
@@ -67,7 +67,7 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
   assert.doesNotMatch(html, /<details\s+open/u);
   assert.ok(html.includes(escapeExpected(model.entries[0].milestone.scope)));
   assert.ok(html.includes(escapeExpected(model.entries[0].milestone.nonClaim)));
-  assert.match(html, /Reviewed theorem pins:<\/strong> 24/u);
+  assert.match(html, /Reviewed theorem pins:<\/strong> 27/u);
   assert.match(html, /About 72% of the known formalisation work/u);
   assert.match(html, /<progress[^>]+max="100"[^>]+value="72"/u);
   assert.match(html, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
@@ -225,7 +225,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
 
 test("the checked-in page and feed are exact generated outputs", async () => {
   const result = await generateMilestoneUpdates({ write: false });
-  assert.equal(result.entries.length, 47);
+  assert.equal(result.entries.length, 48);
 });
 
 test("updates are discoverable from every public HTML page and the locked-down static surface", async () => {
