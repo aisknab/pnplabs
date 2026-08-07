@@ -26,7 +26,7 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanTheoremInventoryTheoremCount, 13298);
   assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 6989);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14645);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 226);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 227);
   assert.equal(status.formalPublicationMilestones.length, 91);
   assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 88);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);

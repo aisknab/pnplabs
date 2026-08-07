@@ -14,7 +14,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
     'Lean can now compare four independently smallest circuit views on one common map',
-    'The proposed route compares the shared part of two circuit alternatives',
+    'The proposed route compares four related views of a circuit',
     'one finite common map',
     'fourCornerOptimaCarrierCompatible',
     'localize_ambientize_semantics',

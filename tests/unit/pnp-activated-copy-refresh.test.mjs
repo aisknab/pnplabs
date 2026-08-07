@@ -22,7 +22,7 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'theorems: 13298',
     'assumptionFreeTheorems: 6989',
     'excludedPrivateDeclarations: 14645',
-    'modules: 226',
+    'modules: 227',
     'axioms: 4',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'CNF_TO_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS',
