@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-07-residual-terminal-four-corner-carrier-transport",
+      "milestoneId": "residual-terminal-four-corner-carrier-transport",
+      "publishedAt": "2026-08-07T08:01:41Z",
+      "title": "Lean can now keep the same circuit positions aligned across four related views",
+      "plainLanguage": [
+        "This part of the proposed proof compares four related views of a computer circuit: the part two alternatives share, each alternative on its own, and the result of combining them. Lean now gives those views one common map of positions. It proves that every boundary and connection is listed exactly and that no position is accidentally counted twice, so the same wire or bookkeeping item keeps the same identity in all four views.",
+        "Lean also checks every position that appears on either side. It proves that the position either remains visible after the sides are combined or becomes internal for a verified reason, and its lookup rejects positions that are not actually present. This works for every finite computed square covered by the model, not one selected example. It still does not construct four compatible optimum circuits, one coherent four-corner minimum, or the manuscript's square-legitimacy result. Later minimization, efficient runtime, ZeroSlack, PCCMin, and P = NP remain open. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 72,
+      "source": {
+        "commit": "45e828437ed335a62dbc4e9889e65ee383c53139",
+        "tree": "89d37dd773ec1369ee22d97f8ee0cb3c9da41c9b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-07-110",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-07-RESIDUAL-TERMINAL-FOUR-CORNER-CARRIER-109"
+      }
+    },
+    {
       "id": "2026-08-07-residual-terminal-side-tight-minimum-arithmetic",
       "milestoneId": "residual-terminal-side-tight-minimum-arithmetic",
       "publishedAt": "2026-08-07T02:05:20Z",

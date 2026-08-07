@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">The proof now checks when four related circuit comparisons reach their exact minima</h2>
-          <p>The reconstruction compares four related views of a circuit: their shared part, two side views, and their combined view. Lean now proves the exact arithmetic relationship between those four measurements and checks whether every one has reached its smallest possible value.</p>
-          <p>The result works for every finite family covered by the formal model, not just selected examples. Its executable check fails closed unless all four minima are present. The current canonical witnesses reach each minimum independently; one coherent witness that realizes all four together is still missing, along with square legitimacy and the later minimization steps. This does not prove that P equals NP. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-07-residual-terminal-side-tight-minimum-arithmetic">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean can now keep the same circuit positions aligned across four related views</h2>
+          <p>The proposed route compares the shared part of two circuit alternatives, each alternative on its own, and their combined result. Lean now gives all four views one common map of positions. It proves that every boundary and connection is exact and that no position is counted twice.</p>
+          <p>Every side position is also checked: it either remains visible after combination or becomes internal for a verified reason, while absent positions are rejected. This works for every finite computed square covered by the model. Four compatible optimum circuits, one coherent four-corner minimum, and square legitimacy are still missing. This does not prove that P equals NP. The 72% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-07-residual-terminal-four-corner-carrier-transport">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>incidenceValue_eq_minimum_add_slacks</code> proves the exact signed four-slack identity for every finite terminal four-corner family, and <code>tightValue?</code> returns an existing delta only when all four typed minima are attained. The canonical full and quotient bases pass independently. Lean has not constructed one coherent basis that realizes all four minima together, proved BN2 square legitimacy, or finished obstruction routing, SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>complete_transport</code> packages exact shared, left, right, and joined endpoints in one carrier; duplicate-free boundary, interface, and profile coordinates; exact meet and join profile transport; and fail-closed retained-or-internalized classifications. <code>boundaryDisposition?_eq_some_iff</code> and <code>interfaceDisposition?_eq_some_iff</code> reject absent coordinates. Lean has not transported four optimum realizers, constructed one coherent optimum basis, proved BN2 square legitimacy, or finished obstruction routing, SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -231,6 +231,13 @@ leanResidualTerminalSideTightCanonicalFullBasisFormalized = true
 leanResidualTerminalSideTightCanonicalQuotientBasisFormalized = true
 leanResidualTerminalSideTightMinimumAxiomAuditPassed = true
 leanResidualTerminalSideTightMinimumScope = "all-finite-terminal-projection-four-corner-families-and-independently-attained-full-and-quotient-minimum-bases"
+leanResidualTerminalFourCornerCarrierTransportFormalized = true
+leanResidualTerminalFourCornerCarrierExactEndpointsFormalized = true
+leanResidualTerminalFourCornerCarrierInjectiveCoordinatesFormalized = true
+leanResidualTerminalFourCornerCarrierProfileTransportFormalized = true
+leanResidualTerminalFourCornerCarrierFailClosedPhysicalTransportFormalized = true
+leanResidualTerminalFourCornerCarrierAxiomAuditPassed = true
+leanResidualTerminalFourCornerCarrierScope = "all-finite-computed-saturated-terminal-support-squares-and-canonical-physical-profile-transport-coordinates"
 leanResidualTerminalSquareLegitimacyFormalized = false
 leanSaturatePositiveFormalized = false
 leanBCELReadyFormalized = false
@@ -250,9 +257,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-07-109</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-07-110</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>d1743c46154588f40b4f04f5f1a0e02fdd043aa1b62c7f01e5c667d408357212</code></div>
+            <div><span>Inventory SHA-256</span><code>2e585d493c1b5364f0bf340b7d141bbb231bef97d609056909f19481c77e45c9</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
