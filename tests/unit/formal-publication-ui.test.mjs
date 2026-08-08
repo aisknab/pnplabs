@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ea373cfe65d8c99fab5c3896b7d594f96724a8eab2b3d2b7ddf0abdfee81aabe');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '10ca3467d9c899300ac9c76c84ce62f87c8157e73fc39f8af82b203a4be9a8eb');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 88);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 89);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -204,6 +204,25 @@ test('pre-fetch UI state reports four-corner optimum carrier compatibility as fa
   assert.match(rendered, /leanResidualTerminalFourCornerOptimaCarrierCompatibleFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFourCornerOptimaCarrierScope = null/u);
+});
+
+test('pre-fetch UI state reports four-corner optimum coherence as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized',
+    'leanResidualTerminalFourCornerOptimumFirstFailureFormalized',
+    'leanResidualTerminalFourCornerOptimumRetainedSemanticsFormalized',
+    'leanResidualTerminalFourCornerOptimumProfileTransportFormalized',
+    'leanResidualTerminalFourCornerOptimumModeFirewallFormalized',
+    'leanResidualTerminalFourCornerOptimumSideTightTupleFactsFormalized',
+    'leanResidualTerminalFourCornerOptimumCoherenceAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalFourCornerOptimumCoherenceScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFourCornerOptimumFirstFailureFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFourCornerOptimumCoherenceScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -3003,7 +3022,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '72d754abc757743f41696680d14a795d973fe86285fd93aa61ef322d65062a5f'/);
+  assert.match(source, /const STATUS_SHA256 = 'e0515fe3af9c24f155165f172f2f00c1bbcff21822b5479141183262cf34b8d5'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3276,8 +3295,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /24,758/);
-  assert.match(statusPage, /Eighty-eight scoped milestones/);
+  assert.match(statusPage, /24,934/);
+  assert.match(statusPage, /Eighty-nine scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

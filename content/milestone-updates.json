@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-08-residual-terminal-four-corner-optimum-coherence",
+      "milestoneId": "residual-terminal-four-corner-optimum-coherence-dichotomy",
+      "publishedAt": "2026-08-08T03:05:06Z",
+      "title": "Lean can now check whether four smallest circuit views fit together",
+      "plainLanguage": [
+        "This part of the proposed proof compares four related views of a computer circuit, each represented by a smallest known circuit for that view. Lean can now check whether those four choices agree where the views overlap. It checks the four connections in a fixed order, so the result does not depend on guesswork or on which comparison happens to be tried first.",
+        "If every check passes, Lean returns one package showing exactly how the four choices fit together and retains the size and boundary facts needed by later work. If a check fails, Lean identifies the first exact reason, such as a missing connection, a changed output, a mismatched bookkeeping pattern, or use of the wrong comparison mode. This works for every finite square covered by the model. It does not prove that every square passes, complete the manuscript's square-legitimacy step, or establish P = NP. The 74% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 74,
+      "source": {
+        "commit": "34713d47d7e00298aeb532dc9d5c69e57d11f296",
+        "tree": "8f141b6aa8a7300309c15430e54bf093aceead14",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-112",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COHERENCE-111"
+      }
+    },
+    {
       "id": "2026-08-08-residual-terminal-four-corner-optimum-carrier-compatibility",
       "milestoneId": "residual-terminal-four-corner-optimum-carrier-compatibility",
       "publishedAt": "2026-08-07T20:22:49Z",

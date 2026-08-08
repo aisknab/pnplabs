@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 73% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 74% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="73" aria-label="Estimated proof reconstruction progress: 73 percent">73%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 73 percent">
+        <progress class="proof-progress-meter" max="100" value="74" aria-label="Estimated proof reconstruction progress: 74 percent">74%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 74 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-08-residual-terminal-four-corner-optimum-coherence" data-milestone-id="residual-terminal-four-corner-optimum-coherence-dichotomy">
+        <div class="section-label"><time datetime="2026-08-08T03:05:06Z">2026-08-08</time> · earned milestone 89</div>
+        <h2>Lean can now check whether four smallest circuit views fit together</h2>
+        <p>This part of the proposed proof compares four related views of a computer circuit, each represented by a smallest known circuit for that view. Lean can now check whether those four choices agree where the views overlap. It checks the four connections in a fixed order, so the result does not depend on guesswork or on which comparison happens to be tried first.</p>
+        <p>If every check passes, Lean returns one package showing exactly how the four choices fit together and retains the size and boundary facts needed by later work. If a check fails, Lean identifies the first exact reason, such as a missing connection, a changed output, a mismatched bookkeeping pattern, or use of the wrong comparison mode. This works for every finite square covered by the model. It does not prove that every square passes, complete the manuscript&#39;s square-legitimacy step, or establish P = NP. The 74% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 74%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-four-corner-optimum-coherence-dichotomy</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-four-corner-optimum-coherence-dichotomy</p>
+          <p><strong>Verified scope:</strong> For every finite computed terminal support square, every explicit observer, every terminal projection, and either full or quotient coherence mode, Lean checks the four square legs in a deterministic order and returns either one coherent canonical optimum tuple with exact transport, side-tight, and incidence facts or the exact deterministic first failure.</p>
+          <p><strong>Boundary:</strong> This milestone classifies coherent transport or its exact first failure. It does not prove that every square is coherent, construct the later no-outcome route, prove sideTightCompletionExists or BN2 square legitimacy, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 19</p>
+          <p><strong>Core source:</strong> commit <code>34713d47d7e00298aeb532dc9d5c69e57d11f296</code>, tree <code>8f141b6aa8a7300309c15430e54bf093aceead14</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-112</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COHERENCE-111</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-08-residual-terminal-four-corner-optimum-carrier-compatibility" data-milestone-id="residual-terminal-four-corner-optimum-carrier-compatibility">
         <div class="section-label"><time datetime="2026-08-07T20:22:49Z">2026-08-07</time> · earned milestone 88</div>
         <h2>Lean can now compare four independently smallest circuit views on one common map</h2>
