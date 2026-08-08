@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-113';
-const STATUS_SHA256 = 'b9aff3d3eee8fed7d232c41cf0e81dc2355a3cd27a720b64aafde01746b20656';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-SIDE-TIGHT-COMPLETION-112';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-08-113';
-const INVENTORY_SHA256 = '82fcdfd7443489f917d3987d31f604af6c163e9cb2a6fca2cd8aff98c38ff97f';
-const SOURCE_CLOSURE_SHA256 = '1ed937ea678bb853929da8c6958fe30fe09b837ad53fda5b53d5ce4da2584830';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-114';
+const STATUS_SHA256 = 'a72f8bfd4df79e29c1ea8908883f6211e65094ab162cf98b19a12b8ae080b158';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-TIGHT-BASIS-MAXIMUM-113';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-08-114';
+const INVENTORY_SHA256 = 'fe036a74807d08c1e763a850722eb8113c1b3d186ef41d900641ed6e9eadb44c';
+const SOURCE_CLOSURE_SHA256 = '588c6626fcd4c0996f770b1118648ee99c82453ab303faf884e5e712d0107771';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 24999,
-  theorems: 13376,
-  assumptionFreeTheorems: 7022,
-  excludedPrivateDeclarations: 14691,
-  modules: 229,
+  declarations: 25059,
+  theorems: 13401,
+  assumptionFreeTheorems: 7025,
+  excludedPrivateDeclarations: 14705,
+  modules: 230,
   axioms: 4,
 });
 
@@ -3723,6 +3723,37 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_DECLARATIONS = Object.
   ["PNP.DirectWire.TerminalProjectionFourCorners.canonical_numericallySideTight_values", ["Quot.sound", "propext"], "PNP.ResidualTerminalSideTightMinimum"],
 ]);
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalOptimumCoherenceMode.minimumAt_le_current", ["propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_complete", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationBases_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.tightBasisBool_eq_true_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_complete", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_at", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_sizes", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_isTightCoherent", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_mem_tightFamily", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.tightBasis_incidenceValue_eq_delta", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisValues_eq_delta", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_eq_delta", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_full", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_quotient", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerTightBasisMaximum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.firstBasisCoherenceFailure?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumCoherenceFailure?_eq_basis", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.mem_allBoundedCandidates", [], "PNP.NANDEnumerator"],
+  ["PNP.DirectWire.terminalFullProfileMatchBool_complete", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientProfileMatchBool_complete", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalFullProfileMinimum_le", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.terminalQuotientProfileMinimum_le", ["propext"], "PNP.ResidualTerminalProjectionMinimum"],
+  ["PNP.DirectWire.TerminalFourCornerSizes.numericallySideTight_iff_eq", [], "PNP.ResidualTerminalSideTightMinimum"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumCoherenceFailure?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExists", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerSideTightCompletion"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4256,6 +4287,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-four-corner-optimum-carrier-compatibility',
   'residual-terminal-four-corner-optimum-coherence-dichotomy',
   'residual-terminal-four-corner-side-tight-completion',
+  'residual-terminal-four-corner-tight-basis-maximum',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4695,6 +4727,13 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFourCornerOptimumPromotionFirewallRetained: false,
   leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed: false,
   leanResidualTerminalFourCornerSideTightCompletionScope: null,
+  leanResidualTerminalFourCornerArbitraryFamilyCoherenceFormalized: false,
+  leanResidualTerminalFourCornerExactMinimumFamilyEnumerated: false,
+  leanResidualTerminalFourCornerTightBasisFamilyComplete: false,
+  leanResidualTerminalFourCornerSignedTightBasisMaximumFormalized: false,
+  leanResidualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized: false,
+  leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed: false,
+  leanResidualTerminalFourCornerTightBasisMaximumScope: null,
   leanResidualTerminalCoherentFourCornerBasisFormalized: false,
   leanResidualTerminalCoherentFourCornerBasisScope: null,
 
@@ -5163,6 +5202,13 @@ leanResidualTerminalFourCornerOptimumExactCompletionValuesFormalized = ${payload
 leanResidualTerminalFourCornerOptimumPromotionFirewallRetained = ${payload.leanResidualTerminalFourCornerOptimumPromotionFirewallRetained ?? false}
 leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed = ${payload.leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed ?? false}
 leanResidualTerminalFourCornerSideTightCompletionScope = ${payload.leanResidualTerminalFourCornerSideTightCompletionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFourCornerSideTightCompletionScope)}
+leanResidualTerminalFourCornerArbitraryFamilyCoherenceFormalized = ${payload.leanResidualTerminalFourCornerArbitraryFamilyCoherenceFormalized ?? false}
+leanResidualTerminalFourCornerExactMinimumFamilyEnumerated = ${payload.leanResidualTerminalFourCornerExactMinimumFamilyEnumerated ?? false}
+leanResidualTerminalFourCornerTightBasisFamilyComplete = ${payload.leanResidualTerminalFourCornerTightBasisFamilyComplete ?? false}
+leanResidualTerminalFourCornerSignedTightBasisMaximumFormalized = ${payload.leanResidualTerminalFourCornerSignedTightBasisMaximumFormalized ?? false}
+leanResidualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized = ${payload.leanResidualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized ?? false}
+leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed = ${payload.leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed ?? false}
+leanResidualTerminalFourCornerTightBasisMaximumScope = ${payload.leanResidualTerminalFourCornerTightBasisMaximumScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFourCornerTightBasisMaximumScope)}
 leanResidualTerminalCoherentFourCornerBasisFormalized = ${payload.leanResidualTerminalCoherentFourCornerBasisFormalized ?? false}
 leanResidualTerminalCoherentFourCornerBasisScope = ${payload.leanResidualTerminalCoherentFourCornerBasisScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalCoherentFourCornerBasisScope)}
 
@@ -5207,13 +5253,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 714,
-    definition: 10277,
-    inductive: 314,
+    constructor: 715,
+    definition: 10309,
+    inductive: 315,
     opaque: 0,
     quotient: 0,
-    recursor: 314,
-    theorem: 13376,
+    recursor: 315,
+    theorem: 13401,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5626,6 +5672,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalFourCornerTightBasisMaximum =
+    RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
 
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
@@ -6001,6 +6053,9 @@ function validateInventory(inventory) {
     && residualTerminalFourCornerSideTightCompletion.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalFourCornerTightBasisMaximum.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
@@ -6043,7 +6098,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2364
+    && inventory.milestoneCandidates.length === 2385
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6107,7 +6162,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 90;
+    const shouldBeEarned = index < 91;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6208,6 +6263,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalFourCornerSideTightCompletionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-four-corner-side-tight-completion'
+  );
+  const residualTerminalFourCornerTightBasisMaximumMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-four-corner-tight-basis-maximum'
   );
 
   return status?.kind === 'PNPFormalReconstructionStatus0'
@@ -6538,6 +6596,20 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFourCornerOptimumPromotionFirewallRetained === true
     && status.leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed === true
     && status.leanResidualTerminalFourCornerSideTightCompletionScope === "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-side-tight-coherent-completion-under-exact-local-route-silence"
+    && residualTerminalFourCornerTightBasisMaximumMilestone?.classification === "formalized-residual-terminal-four-corner-complete-tight-basis-maximum"
+    && residualTerminalFourCornerTightBasisMaximumMilestone.scope === "For every finite computed terminal support square, every explicit observer, and either full or quotient mode, Lean enumerates the complete finite tight-basis family, retains every exact profile-constrained minimum implementation at each corner, filters the full Cartesian product with the arbitrary-family coherence query, and proves under exact local route silence that the signed maximum equals the selected delta."
+    && residualTerminalFourCornerTightBasisMaximumMilestone.nonClaim === "This milestone closes the remaining local BN2 tight-basis maximum under computed local route silence. It does not prove universal route silence, connect a local obstruction to the complete global no-outcome route system, prove BN2 square legitimacy, derive the terminal dependency system, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalFourCornerTightBasisMaximumMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalFourCornerArbitraryFamilyCoherenceFormalized === true
+    && status.leanResidualTerminalFourCornerExactMinimumFamilyEnumerated === true
+    && status.leanResidualTerminalFourCornerTightBasisFamilyComplete === true
+    && status.leanResidualTerminalFourCornerSignedTightBasisMaximumFormalized === true
+    && status.leanResidualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized === true
+    && status.leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed === true
+    && status.leanResidualTerminalFourCornerTightBasisMaximumScope === "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-complete-tight-basis-family-and-signed-maximum-under-exact-local-route-silence"
     && status.leanResidualTerminalCoherentFourCornerBasisFormalized === true
     && status.leanResidualTerminalCoherentFourCornerBasisScope === "conditional-on-exact-mode-appropriate-local-route-silence-not-universal-bn2-square-legitimacy"
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
