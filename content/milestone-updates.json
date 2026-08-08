@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-08-residual-terminal-four-corner-tight-basis-maximum",
+      "milestoneId": "residual-terminal-four-corner-tight-basis-maximum",
+      "publishedAt": "2026-08-08T11:58:13Z",
+      "title": "Lean now checks every smallest four-view combination and takes the exact largest result",
+      "plainLanguage": [
+        "A computer circuit is a network of simple yes-or-no operations. This part of the proposed proof compares four related views of one circuit. Each view can have several different designs tied for the smallest size. Lean now lists every smallest design for all four views, tries every possible four-way combination, and keeps exactly the combinations that agree where the views overlap.",
+        "When the existing local mismatch check finds no problem, Lean proves that at least one matching combination remains and that every retained combination gives the same signed number. It therefore calculates the exact largest value without incorrectly replacing a negative answer with zero. This works in both the full and reduced comparison modes. Lean has not proved that every square passes the local check, established the manuscript's BN2 square-legitimacy theorem, or completed SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 76% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 76,
+      "source": {
+        "commit": "fc47845928f2cafb4f7ebbafed38e5e7a8a6c25a",
+        "tree": "fa466d44f3d5cd15ebcd6fabe0a961582cb66c25",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-114",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-TIGHT-BASIS-MAXIMUM-113"
+      }
+    },
+    {
       "id": "2026-08-08-residual-terminal-four-corner-side-tight-completion",
       "milestoneId": "residual-terminal-four-corner-side-tight-completion",
       "publishedAt": "2026-08-08T07:38:25Z",

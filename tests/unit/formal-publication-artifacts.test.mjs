@@ -570,6 +570,45 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_HASHES = Object.fromEn
   Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS).map(([name, row]) => [name, row.hash])
 );
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS = {
+  "PNP.DirectWire.TerminalOptimumCoherenceMode.minimumAt_le_current": { hash: "6c4809c980c1db6594fcf6f245e24dbc193fa9c846635c3f9bdbbb1499df8aaa", axioms: ["propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_sound": { hash: "3d49ba6e76035e93207da04f7cc351cedf024d30efcb5a826f6d34552f6a64a5", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_complete": { hash: "b9eebae3442c7490b366c64f129bff33be7b6fe1de59c11e466482e89a6c6d0f", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_iff": { hash: "a473241e90752a2117efbb2df0a16400aea4affba7f0287a3941b25097d0424e", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationBases_iff": { hash: "c654d12ee2ef6faf1e42a5193afee03e41fe32f38321fc0e7dbd3661d3721829", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisBool_eq_true_iff": { hash: "3c76bfac012bfee03a64ae2d635ce12f42194f41f279784fd4543aaaebaad300", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_sound": { hash: "e18e651e881debd70be534ccc9bbcf32c8db8499cc8b516970da92cdbe6c6ecc", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_complete": { hash: "f2f95759eb14f30cdfaa7ad173f325ff4fc13152b0236deb213a30f67fae2b66", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_iff": { hash: "444b7f59074e4ef386c04cdb1c917f8eeba5cca6cd50894aff7a82abeff5e877", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_at": { hash: "50d2ae7c306e621301a1a71831d3cc07cb55c86bfdf4158b65769f0caf11e4a3", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_sizes": { hash: "a3a79b0d6e5d6cb6a56a8cc365fc611661df47e62781322367260f361de74b4b", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_isTightCoherent": { hash: "b24e97c1e2219daeaf197d2f106660a20e225ed0ea6194672f118233a62f9dee", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_mem_tightFamily": { hash: "c777345eaecc95749978bb08477f9b20a4d15fcc3ed16b2db6359c1ac1274e13", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasis_incidenceValue_eq_delta": { hash: "f9c4269ad9aef9cf22898abeca683841a0b07a976074610ac61e159f7c4f0da3", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisValues_eq_delta": { hash: "66d896dc9993b760660b204d1e42b8c7f3f20c89e244fb13bf4cd8543d28c5f8", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_eq_delta": { hash: "cf899f2ca453722f04ad1e9648edefd3772303ffc70f7a3e35e9116d7e0fed55", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_full": { hash: "15b31bdefa9557e49c23e97eed5540a4ded842e6dfd6e8de3918bb1819d157d3", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_quotient": { hash: "4a49571efc6e506071fe848b68683172739162cfaff84516f7a1df21a12bff73", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstBasisCoherenceFailure?_sound": { hash: "71ac14a1fd03c250d1c1f3b3bb8c5ff9a0a35e6b6ef436b1c0e6df1b3d56aee3", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumCoherenceFailure?_eq_basis": { hash: "fee448e50ef580e58823afaa0d44537cc65e5deede514535e40ce14f826c09b7", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.mem_allBoundedCandidates": { hash: "32b216ecf3faa1be6eb7d6e9f3f32f3de24ed3b5d3d49e1c303a38cad32f6aae", axioms: [], module: "PNP.NANDEnumerator" },
+  "PNP.DirectWire.terminalFullProfileMatchBool_complete": { hash: "ce2551dced7c7b0f50749844f9113fcc9d9de4daf288a07f3932874ac5a9467f", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalQuotientProfileMatchBool_complete": { hash: "bbbe9447463d113efe13ac57c0fbadc387eda47aeb1eef6c08c06e70f885e4c2", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalFullProfileMinimum_le": { hash: "56059f1da9c8fe821569dc651bb112eef6ad0f056a6496c668ff45250ada6f0e", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.terminalQuotientProfileMinimum_le": { hash: "ce8486f3b736f1bac59f6a388c73a32d5bfdb4ec64f0994b1ba94fb1c57ab753", axioms: ["propext"], module: "PNP.ResidualTerminalProjectionMinimum" },
+  "PNP.DirectWire.TerminalFourCornerSizes.numericallySideTight_iff_eq": { hash: "5129d3bead161bf2fe04630876952c6e84b6ef24561195f8210a115aa6ed4b9b", axioms: [], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumCoherenceFailure?_sound": { hash: "f34159b818fab99a0eaba5f7efc5c7016e02d2dca51e5e9d5b0ef2baa7fc31bc", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExists": { hash: "1fe20aab68ffbadb70969c980700cd6a6a77c53b9a90ddca8c618891863ab9a4", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+};
+
+const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_SCOPE = "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-complete-tight-basis-family-and-signed-maximum-under-exact-local-route-silence";
+const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_MILESTONE_SCOPE = "For every finite computed terminal support square, every explicit observer, and either full or quotient mode, Lean enumerates the complete finite tight-basis family, retains every exact profile-constrained minimum implementation at each corner, filters the full Cartesian product with the arbitrary-family coherence query, and proves under exact local route silence that the signed maximum equals the selected delta.";
+const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NON_CLAIM = "This milestone closes the remaining local BN2 tight-basis maximum under computed local route silence. It does not prove universal route silence, connect a local obstruction to the complete global no-outcome route system, prove BN2 square legitimacy, derive the terminal dependency system, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -588,15 +627,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "78c8862e74f251622cdd2eed65e44fd3d0586301");
+  assert.equal(result.coreCommit, "fc47845928f2cafb4f7ebbafed38e5e7a8a6c25a");
 });
 
-test("current release is pinned, seventy-eight-page, exposes conditional four-corner side-tight completion, and fails closed", () => {
+test("current release is pinned, seventy-eight-page, exposes the complete four-corner tight-basis maximum, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-96");
-  assert.equal(release.source.commit, "78c8862e74f251622cdd2eed65e44fd3d0586301");
-  assert.equal(release.source.proofCommit, "4cb36dec53f09af5f40731ecfc70c04709a03c27");
-  assert.equal(release.source.tree, "763dcc3b89004639f93e483e4464b3faf7ac4bf7");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-97");
+  assert.equal(release.source.commit, "fc47845928f2cafb4f7ebbafed38e5e7a8a6c25a");
+  assert.equal(release.source.proofCommit, "cfb0a215cd7499278f060f84f7da2ee1a12505c3");
+  assert.equal(release.source.tree, "fa466d44f3d5cd15ebcd6fabe0a961582cb66c25");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 78);
@@ -2434,6 +2473,28 @@ test("current release is pinned, seventy-eight-page, exposes conditional four-co
   assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumCompletionEachModeTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExistsEachMode");
   assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumFullValueTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletion_fullValue");
   assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumQuotientValueTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletion_quotientValue");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerArbitraryFamilyCoherenceFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisFamilyComplete, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSignedTightBasisMaximumFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumAuditedDeclarationCount, 45);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumEmptyAxiomDeclarationCount, 12);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumPropextOnlyDeclarationCount, 5);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumPropextQuotSoundDeclarationCount, 28);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumScope, RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumTheoremKernelTypeSha256, RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerMinimumAtBoundTheorem, "PNP.DirectWire.TerminalOptimumCoherenceMode.minimumAt_le_current");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerMinimumFamilyCompletenessTheorem, "PNP.DirectWire.TerminalProjectionFourCorners.mem_minimumImplementationsAt_iff");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisFamilyCompletenessTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisFamily_iff");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerCanonicalTightBasisMemberTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.canonicalImplementationBasis_mem_tightFamily");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisValuesTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.mem_tightBasisValues_eq_delta");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_eq_delta");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumFullTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_full");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumQuotientTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_quotient");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerArbitraryFamilyCoherenceTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.firstBasisCoherenceFailure?_sound");
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -2466,12 +2527,12 @@ test("current release is pinned, seventy-eight-page, exposes conditional four-co
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 93 milestones with conditional four-corner side-tight completion pinned", () => {
+test("status and inventory publish exactly 94 milestones with the complete four-corner tight-basis maximum pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 93);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 90);
+  assert.equal(milestones.length, 94);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 91);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3208,21 +3269,54 @@ test("status and inventory publish exactly 93 milestones with conditional four-c
   assert.equal(status.leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalFourCornerSideTightCompletionScope, "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-side-tight-coherent-completion-under-exact-local-route-silence");
 
-  assert.equal(inventory.declarationCount, 24999);
-  assert.equal(inventory.theoremCount, 13376);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7022);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14691);
-  assert.equal(inventory.sourceClosureModuleCount, 229);
-  assert.equal(inventory.milestoneCandidates.length, 2364);
+  const fourCornerTightBasisMaximum = milestones.find((row) => row.id === "residual-terminal-four-corner-tight-basis-maximum");
+  assert.equal(fourCornerTightBasisMaximum.classification, "formalized-residual-terminal-four-corner-complete-tight-basis-maximum");
+  assert.equal(fourCornerTightBasisMaximum.status, "formalized-residual-terminal-four-corner-complete-tight-basis-maximum");
+  assert.equal(fourCornerTightBasisMaximum.earned, true);
+  assert.equal(fourCornerTightBasisMaximum.allPresent, true);
+  assert.equal(fourCornerTightBasisMaximum.allAssumptionFree, false);
+  assert.equal(fourCornerTightBasisMaximum.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(fourCornerTightBasisMaximum.allKernelTypesMatch, true);
+  assert.equal(fourCornerTightBasisMaximum.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(fourCornerTightBasisMaximum.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(fourCornerTightBasisMaximum.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_HASHES
+  );
+  for (const row of fourCornerTightBasisMaximum.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(fourCornerTightBasisMaximum.scope, RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_MILESTONE_SCOPE);
+  assert.equal(fourCornerTightBasisMaximum.nonClaim, RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalFourCornerArbitraryFamilyCoherenceFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerTightBasisFamilyComplete, true);
+  assert.equal(status.leanResidualTerminalFourCornerSignedTightBasisMaximumFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalFourCornerTightBasisMaximumScope, RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_SCOPE);
+
+  assert.equal(inventory.declarationCount, 25059);
+  assert.equal(inventory.theoremCount, 13401);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7025);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14705);
+  assert.equal(inventory.sourceClosureModuleCount, 230);
+  assert.equal(inventory.milestoneCandidates.length, 2385);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 714,
-    definition: 10277,
-    inductive: 314,
+    constructor: 715,
+    definition: 10309,
+    inductive: 315,
     opaque: 0,
     quotient: 0,
-    recursor: 314,
-    theorem: 13376
+    recursor: 315,
+    theorem: 13401
   });
 });
 

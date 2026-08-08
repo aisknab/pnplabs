@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now completes the four-view check when no local mismatch appears</h2>
-          <p>The proposed route compares four related smallest circuit views. Lean already had a fixed checklist for finding the first local mismatch. It can now finish the other side of that checklist: when the relevant checks report no mismatch, Lean constructs one verified package showing that the four selected views fit together in the chosen comparison mode and reach the exact required size balance.</p>
-          <p>This result works for every finite square covered by the formal model, but it is conditional on the local checklist finding no problem. Lean has not proved that this happens for every square, connected every local problem to the manuscript's complete obstruction route, or proved BN2 square legitimacy. This does not prove that P equals NP. The 75% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-08-residual-terminal-four-corner-side-tight-completion">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now checks every smallest four-view combination and takes the exact largest result</h2>
+          <p>A computer circuit is a network of simple yes-or-no operations. This part of the proposed proof compares four related views of one circuit. Each view can have several different designs tied for the smallest size. Lean now lists every smallest design for all four views, tries every possible four-way combination, and keeps exactly the combinations that agree where the views overlap.</p>
+          <p>When the existing local mismatch check finds no problem, Lean proves that at least one matching combination remains and that every retained combination gives the same signed number. It therefore calculates the exact largest value without incorrectly replacing a negative answer with zero. This works in both the full and reduced comparison modes. Lean has not proved that every square passes the local check, established BN2 square legitimacy, or completed SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 76% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-08-residual-terminal-four-corner-tight-basis-maximum">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>sideTightCompletionExists</code> proves that exact mode-appropriate local route silence supplies a checked coherent four-corner optimum tuple. <code>sideTightCompletionOrFirstRoute</code> returns either that completion or the first proof-bearing local route, and the full and quotient value theorems retain the exact minimum incidence result. Lean has not proved universal route silence, connected every local route to the complete global obstruction system, proved BN2 square legitimacy, or finished SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>mem_minimumImplementationBases_iff</code> pins the complete four-corner family of exact minimum implementations, while <code>mem_tightBasisFamily_iff</code> characterizes the full coherence-filtered Cartesian family. <code>tightBasisMaximum?_eq_delta</code>, together with its full and quotient specializations, proves the signed maximum equals the selected delta under exact local route silence. Lean has not proved universal route silence, connected every local route to the complete global obstruction system, proved BN2 square legitimacy, or finished SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -261,6 +261,13 @@ leanResidualTerminalFourCornerOptimumExactCompletionValuesFormalized = true
 leanResidualTerminalFourCornerOptimumPromotionFirewallRetained = true
 leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed = true
 leanResidualTerminalFourCornerSideTightCompletionScope = "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-side-tight-coherent-completion-under-exact-local-route-silence"
+leanResidualTerminalFourCornerArbitraryFamilyCoherenceFormalized = true
+leanResidualTerminalFourCornerExactMinimumFamilyEnumerated = true
+leanResidualTerminalFourCornerTightBasisFamilyComplete = true
+leanResidualTerminalFourCornerSignedTightBasisMaximumFormalized = true
+leanResidualTerminalFourCornerTightBasisMaximumEqualsDeltaFormalized = true
+leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed = true
+leanResidualTerminalFourCornerTightBasisMaximumScope = "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-complete-tight-basis-family-and-signed-maximum-under-exact-local-route-silence"
 leanResidualTerminalCoherentFourCornerBasisFormalized = true
 leanResidualTerminalCoherentFourCornerBasisScope = "conditional-on-exact-mode-appropriate-local-route-silence-not-universal-bn2-square-legitimacy"
 leanResidualTerminalSquareLegitimacyFormalized = false
@@ -282,9 +289,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-08-113</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-08-114</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>82fcdfd7443489f917d3987d31f604af6c163e9cb2a6fca2cd8aff98c38ff97f</code></div>
+            <div><span>Inventory SHA-256</span><code>fe036a74807d08c1e763a850722eb8113c1b3d186ef41d900641ed6e9eadb44c</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -292,18 +299,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>75</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>76</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 75 percent" data-proof-progress="75">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>75</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 76 percent" data-proof-progress="76">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>76</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 75% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 76% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

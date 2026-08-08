@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 78c8862e74f251622cdd2eed65e44fd3d0586301
+git -C ../pnp checkout fc47845928f2cafb4f7ebbafed38e5e7a8a6c25a
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 24,999 public declarations, 13,376 theorem-kind declarations,
-7,022 assumption-free theorem-kind declarations, 14,691 excluded private auxiliaries, 229 modules, and
+Expected compiled inventory counts are 25,059 public declarations, 13,401 theorem-kind declarations,
+7,025 assumption-free theorem-kind declarations, 14,705 excluded private auxiliaries, 230 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -91,15 +91,15 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds twenty reviewed theorem pins. For every finite computed terminal support
-square, explicit observer, and full or quotient coherence mode, the exact first local query returns a
-proof-bearing sound route or, under exact mode-appropriate local route silence, supplies the complete
-checked side-tight coherent optimum tuple with its exact minimum incidence value. The quotient-promotion
-firewall remains separate. The complete 28-declaration audit has 2 empty closures, 2 using only `propext`,
-and 24 using `Quot.sound` with `propext`. This does not prove universal route silence, connect a local
-route to the complete global no-outcome route system, prove square legitimacy, complete obstruction
-routing or global gain completeness, establish `ZeroSlack`, PCCMin exactness or polynomial runtime,
-discharge an assumption, or prove `P = NP`.
+The newest milestone adds twenty-eight reviewed theorem pins. For every finite computed terminal support
+square, explicit observer, and full or quotient mode, Lean enumerates every exact profile-constrained
+minimum at each corner, crosses the complete finite four-corner family, filters it with the arbitrary-family
+coherence query, and proves under exact local route silence that the signed maximum equals the selected
+delta. The complete 45-declaration audit has 12 empty closures, 5 using only `propext`, and 28 using
+`Quot.sound` with `propext`. This does not prove universal route silence, connect a local route to the
+complete global no-outcome route system, prove square legitimacy, complete obstruction routing or global
+gain completeness, establish `ZeroSlack`, PCCMin exactness or polynomial runtime, discharge an assumption,
+or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

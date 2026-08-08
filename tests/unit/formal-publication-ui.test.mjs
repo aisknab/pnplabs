@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '82fcdfd7443489f917d3987d31f604af6c163e9cb2a6fca2cd8aff98c38ff97f');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'fe036a74807d08c1e763a850722eb8113c1b3d186ef41d900641ed6e9eadb44c');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 90);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 91);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -3022,7 +3022,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'b9aff3d3eee8fed7d232c41cf0e81dc2355a3cd27a720b64aafde01746b20656'/);
+  assert.match(source, /const STATUS_SHA256 = 'a72f8bfd4df79e29c1ea8908883f6211e65094ab162cf98b19a12b8ae080b158'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3295,8 +3295,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /24,999/);
-  assert.match(statusPage, /Ninety scoped milestones/);
+  assert.match(statusPage, /25,059/);
+  assert.match(statusPage, /Ninety-one scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
