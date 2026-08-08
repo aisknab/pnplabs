@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-08-residual-terminal-four-corner-side-tight-completion",
+      "milestoneId": "residual-terminal-four-corner-side-tight-completion",
+      "publishedAt": "2026-08-08T07:38:25Z",
+      "title": "Lean now completes the four-view check when no local mismatch appears",
+      "plainLanguage": [
+        "This section of the proposed proof compares four related smallest circuit views. The previous update gave Lean a fixed checklist for finding the first local mismatch between them. Lean can now finish the other side of that checklist: when the relevant checks report no mismatch, it constructs one verified package showing that the four selected views fit together in the chosen comparison mode and reach the exact required size balance.",
+        "This result applies to every finite square covered by the formal model and keeps the full and reduced comparison modes separate. It is conditional on the local checklist finding no problem. Lean has not proved that this happens for every square, connected every local problem to the manuscript's complete obstruction route, or proved the manuscript's BN2 square-legitimacy theorem. Later SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, and P = NP obligations remain open. The 75% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 75,
+      "source": {
+        "commit": "78c8862e74f251622cdd2eed65e44fd3d0586301",
+        "tree": "763dcc3b89004639f93e483e4464b3faf7ac4bf7",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-113",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-SIDE-TIGHT-COMPLETION-112"
+      }
+    },
+    {
       "id": "2026-08-08-residual-terminal-four-corner-optimum-coherence",
       "milestoneId": "residual-terminal-four-corner-optimum-coherence-dichotomy",
       "publishedAt": "2026-08-08T03:05:06Z",

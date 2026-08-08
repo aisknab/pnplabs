@@ -543,6 +543,33 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_HASHES = Object.fromEntrie
   Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_THEOREMS).map(([name, row]) => [name, row.hash])
 );
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS = {
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_coherence": { hash: "eb47244a19f5a8663be3e71301e900265ed532feadf78b29a410176a49fa347a", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_quotientPromotion": { hash: "23b0dc68d549029c4c4b18dd4305c9f1ead913e3bb883f76784bfeb794757473", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerOptimumRoutedFailure.sound": { hash: "2ea820659559ee4037840bc0f4ff94c7f8e92d118ea6c496a35c8c2f52a6bc2d", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.noOptimumCoherenceRoute_iff_noFailure": { hash: "8023984a339982677c5937ffdc949187093d769cf9700a308a507800d2165d92", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.noOptimumPromotionRoute_iff_noModeMismatch": { hash: "50f3c61c1d98dfa4d6dce25a5f7563d52cd798bab7ea7330d48626bf6803a9eb", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_sound": { hash: "fc2eece754495bece99cff522ce50fce00822d9edbd1b30450b0b9e68c04914d", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionOrFirstRoute": { hash: "022a92d15e9c67472fe21b214ad61f734b78e5de9493ba42ada16f7de4adafbc", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerOptimumRoutedFailure.excludesCoherentOptimum": { hash: "4fb542909519be84208977b31cb4d80107b26453c16a2f6c9efd385944b2bfef", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExists": { hash: "1fe20aab68ffbadb70969c980700cd6a6a77c53b9a90ddca8c618891863ab9a4", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExistsEachMode": { hash: "31764bb11ecf298e542f86d66fb163538777611b54e33a9d7536d3cbc78e52fd", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletion_fullValue": { hash: "42a01007d1f7ebbeb9c82905ad90c0767b1b5e70fe95ad6612ffe674b063b74d", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletion_quotientValue": { hash: "9ec1a48c714b7b95fce7428d5f892f5c0ab4d3f9f8797496f0531b0c4b38ae56", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumCoherenceFailure?_sound": { hash: "f34159b818fab99a0eaba5f7efc5c7016e02d2dca51e5e9d5b0ef2baa7fc31bc", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumModeMismatch?_sound": { hash: "e0839eb9e393f9e2d6a03976dc1d8518cff735298274d6ce4e0d14d6977e5796", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.noFailure_iff_coherentOptimumTuple": { hash: "9a9baca321ea735cf5e48f17587acf7dad8c46d2fcac08729fc811c7bf2069bd", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.fourCornerOptimaCarrierCompatible": { hash: "0c8b453d9b62cca81206e8097b11fe630fb81467c30842548b9fabb1b2725304", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.optimumTransportTheta": { hash: "e11bb3cfbc27c2e39c731d4e7fa5842859dcbc4d9a61c6031790f9d1893a37a2", axioms: [], module: "PNP.ResidualTerminalFourCornerOptimumCoherence" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalFullBasis_numericallySideTight": { hash: "30667d03f2b79304ef3ba521fdfb603ddbc0fed9d7a500b5cb82b873b5d848b8", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonicalQuotientBasis_numericallySideTight": { hash: "cf09d5ab284e8ab70e5a292eacf1365ba8ed36726befdaac7437a9391a18e446", axioms: ["propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.canonical_numericallySideTight_values": { hash: "4288f8f3bd740dcdb96a2f0b1178e6b86a473f0d06e8c2977381838ab6f538ac", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSideTightMinimum" },
+};
+
+const RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -561,18 +588,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "34713d47d7e00298aeb532dc9d5c69e57d11f296");
+  assert.equal(result.coreCommit, "78c8862e74f251622cdd2eed65e44fd3d0586301");
 });
 
-test("current release is pinned, seventy-seven-page, exposes four-corner optimum coherence, and fails closed", () => {
+test("current release is pinned, seventy-eight-page, exposes conditional four-corner side-tight completion, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-95");
-  assert.equal(release.source.commit, "34713d47d7e00298aeb532dc9d5c69e57d11f296");
-  assert.equal(release.source.proofCommit, "8a55df2999fb84eb2783d0bc4de4afd1fd3f9ea8");
-  assert.equal(release.source.tree, "8f141b6aa8a7300309c15430e54bf093aceead14");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-96");
+  assert.equal(release.source.commit, "78c8862e74f251622cdd2eed65e44fd3d0586301");
+  assert.equal(release.source.proofCommit, "4cb36dec53f09af5f40731ecfc70c04709a03c27");
+  assert.equal(release.source.tree, "763dcc3b89004639f93e483e4464b3faf7ac4bf7");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 77);
+  assert.equal(release.artifacts.report.pageCount, 78);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -2380,6 +2407,34 @@ test("current release is pinned, seventy-seven-page, exposes four-corner optimum
   assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumProfileTransportTheorem, "PNP.DirectWire.TerminalOptimumLegTransport.profileTransport");
   assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumModeFirewallTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumModeMismatch?_sound");
   assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumSideTightTupleFactsTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.noFailure_iff_coherentOptimumTuple");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumLocalRouteClassifierFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRouteSoundnessFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRouteSilenceFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumSideTightCompletionUnderRouteSilenceFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumExactCompletionValuesFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumPromotionFirewallRetained, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionAuditedDeclarationCount, 28);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionEmptyAxiomDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionPropextQuotSoundDeclarationCount, 24);
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionScope, "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-side-tight-coherent-completion-under-exact-local-route-silence");
+  assert.deepEqual(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionTheoremKernelTypeSha256, RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFourCornerSideTightCompletionProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalCoherentFourCornerBasisFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalCoherentFourCornerBasisScope, "conditional-on-exact-mode-appropriate-local-route-silence-not-universal-bn2-square-legitimacy");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRouteCoherenceTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_coherence");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRoutePromotionTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_quotientPromotion");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRoutedFailureSoundnessTheorem, "PNP.DirectWire.TerminalFourCornerOptimumRoutedFailure.sound");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumCombinedRouteSoundnessTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_sound");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRouteOrCompletionTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionOrFirstRoute");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumRouteExclusionTheorem, "PNP.DirectWire.TerminalFourCornerOptimumRoutedFailure.excludesCoherentOptimum");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumCompletionTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExists");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumCompletionEachModeTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExistsEachMode");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumFullValueTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletion_fullValue");
+  assert.equal(release.earnedBoundary.residualTerminalFourCornerOptimumQuotientValueTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletion_quotientValue");
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2411,12 +2466,12 @@ test("current release is pinned, seventy-seven-page, exposes four-corner optimum
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 92 milestones with four-corner optimum coherence pinned", () => {
+test("status and inventory publish exactly 93 milestones with conditional four-corner side-tight completion pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 92);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 89);
+  assert.equal(milestones.length, 93);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 90);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3115,23 +3170,59 @@ test("status and inventory publish exactly 92 milestones with four-corner optimu
   assert.equal(status.leanResidualTerminalFourCornerOptimumSideTightTupleFactsFormalized, true);
   assert.equal(status.leanResidualTerminalFourCornerOptimumCoherenceAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalFourCornerOptimumCoherenceScope, "all-finite-computed-terminal-support-squares-observers-projections-and-full-or-quotient-modes-coherent-tuple-or-deterministic-first-failure");
-  assert.equal(status.leanResidualTerminalCoherentFourCornerBasisFormalized, false);
+  assert.equal(status.leanResidualTerminalCoherentFourCornerBasisFormalized, true);
+  assert.equal(status.leanResidualTerminalCoherentFourCornerBasisScope, "conditional-on-exact-mode-appropriate-local-route-silence-not-universal-bn2-square-legitimacy");
 
-  assert.equal(inventory.declarationCount, 24934);
-  assert.equal(inventory.theoremCount, 13352);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7015);
+  const fourCornerSideTightCompletion = milestones.find((row) => row.id === "residual-terminal-four-corner-side-tight-completion");
+  assert.equal(fourCornerSideTightCompletion.classification, "formalized-residual-terminal-four-corner-side-tight-completion-under-local-route-silence");
+  assert.equal(fourCornerSideTightCompletion.status, "formalized-residual-terminal-four-corner-side-tight-completion-under-local-route-silence");
+  assert.equal(fourCornerSideTightCompletion.earned, true);
+  assert.equal(fourCornerSideTightCompletion.allPresent, true);
+  assert.equal(fourCornerSideTightCompletion.allAssumptionFree, false);
+  assert.equal(fourCornerSideTightCompletion.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(fourCornerSideTightCompletion.allKernelTypesMatch, true);
+  assert.equal(fourCornerSideTightCompletion.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(fourCornerSideTightCompletion.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(fourCornerSideTightCompletion.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_HASHES
+  );
+  for (const row of fourCornerSideTightCompletion.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.match(fourCornerSideTightCompletion.scope, /computed local route silence/u);
+  assert.match(fourCornerSideTightCompletion.nonClaim, /does not prove universal route silence/u);
+  assert.equal(status.leanResidualTerminalFourCornerOptimumLocalRouteClassifierFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerOptimumRouteSoundnessFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerOptimumRouteSilenceFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerOptimumSideTightCompletionUnderRouteSilenceFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerOptimumExactCompletionValuesFormalized, true);
+  assert.equal(status.leanResidualTerminalFourCornerOptimumPromotionFirewallRetained, true);
+  assert.equal(status.leanResidualTerminalFourCornerSideTightCompletionAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalFourCornerSideTightCompletionScope, "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-side-tight-coherent-completion-under-exact-local-route-silence");
+
+  assert.equal(inventory.declarationCount, 24999);
+  assert.equal(inventory.theoremCount, 13376);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7022);
   assert.equal(inventory.excludedPrivateDeclarationCount, 14691);
-  assert.equal(inventory.sourceClosureModuleCount, 228);
-  assert.equal(inventory.milestoneCandidates.length, 2352);
+  assert.equal(inventory.sourceClosureModuleCount, 229);
+  assert.equal(inventory.milestoneCandidates.length, 2364);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 711,
-    definition: 10243,
-    inductive: 312,
+    constructor: 714,
+    definition: 10277,
+    inductive: 314,
     opaque: 0,
     quotient: 0,
-    recursor: 312,
-    theorem: 13352
+    recursor: 314,
+    theorem: 13376
   });
 });
 
