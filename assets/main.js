@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-111';
-const STATUS_SHA256 = '72d754abc757743f41696680d14a795d973fe86285fd93aa61ef322d65062a5f';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COMPATIBILITY-110';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-08-111';
-const INVENTORY_SHA256 = 'ea373cfe65d8c99fab5c3896b7d594f96724a8eab2b3d2b7ddf0abdfee81aabe';
-const SOURCE_CLOSURE_SHA256 = '55b94c1f15c1003306e4efcf83469416817e29530e7eae8a25aa4948efa9d370';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-112';
+const STATUS_SHA256 = 'e0515fe3af9c24f155165f172f2f00c1bbcff21822b5479141183262cf34b8d5';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-08-RESIDUAL-TERMINAL-FOUR-CORNER-OPTIMUM-COHERENCE-111';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-08-112';
+const INVENTORY_SHA256 = '10ca3467d9c899300ac9c76c84ce62f87c8157e73fc39f8af82b203a4be9a8eb';
+const SOURCE_CLOSURE_SHA256 = '3161b45bbf5468a66e86fac1cf8dd6bef3ea19b1d472c536a620695085e589d1';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 24758,
-  theorems: 13298,
-  assumptionFreeTheorems: 6989,
-  excludedPrivateDeclarations: 14645,
-  modules: 227,
+  declarations: 24934,
+  theorems: 13352,
+  assumptionFreeTheorems: 7015,
+  excludedPrivateDeclarations: 14691,
+  modules: 228,
   axioms: 4,
 });
 
@@ -3678,6 +3678,28 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.referenceMinimum_le_of_equivalent", [], "PNP.NANDMinimum"],
 ]);
 
+const RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalOptimumLegTransport.recordsSubset", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalOptimumLegTransport.profileTransport", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalOptimumLegTransport.ambientCoordinate_exact", [], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalOptimumLegTransport.retainedOutput?_eq_some_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalOptimumLegTransport.retained_or_internalized", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.optimumTransportTheta", [], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumCoherenceFailure?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumModeMismatch?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.noFailure_iff_coherentOptimumTuple", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.classifyOptimumCoherence_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.fourCornerOptimumCoherenceDichotomy", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCoherence"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.fourCornerOptimaCarrierCompatible", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCompatibility"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.complete_transport", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.meet_profile_transport", ["propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.side_profile_transport", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerCarrier"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.interfaceIndex?_eq_some_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerOptimumCompatibility"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.canonicalFullBasis_numericallySideTight", ["propext"], "PNP.ResidualTerminalSideTightMinimum"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.canonicalQuotientBasis_numericallySideTight", ["propext"], "PNP.ResidualTerminalSideTightMinimum"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.canonical_numericallySideTight_values", ["Quot.sound", "propext"], "PNP.ResidualTerminalSideTightMinimum"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4209,6 +4231,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-side-tight-minimum-arithmetic',
   'residual-terminal-four-corner-carrier-transport',
   'residual-terminal-four-corner-optimum-carrier-compatibility',
+  'residual-terminal-four-corner-optimum-coherence-dichotomy',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4632,6 +4655,14 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized: false,
   leanResidualTerminalFourCornerOptimaAxiomAuditPassed: false,
   leanResidualTerminalFourCornerOptimaCarrierScope: null,
+  leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized: false,
+  leanResidualTerminalFourCornerOptimumFirstFailureFormalized: false,
+  leanResidualTerminalFourCornerOptimumRetainedSemanticsFormalized: false,
+  leanResidualTerminalFourCornerOptimumProfileTransportFormalized: false,
+  leanResidualTerminalFourCornerOptimumModeFirewallFormalized: false,
+  leanResidualTerminalFourCornerOptimumSideTightTupleFactsFormalized: false,
+  leanResidualTerminalFourCornerOptimumCoherenceAxiomAuditPassed: false,
+  leanResidualTerminalFourCornerOptimumCoherenceScope: null,
   leanPCCMinPolynomialRuntimeFormalized: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
@@ -5081,6 +5112,14 @@ leanResidualTerminalFourCornerOptimaLocalizedMinimaFormalized = ${payload.leanRe
 leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized = ${payload.leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized ?? false}
 leanResidualTerminalFourCornerOptimaAxiomAuditPassed = ${payload.leanResidualTerminalFourCornerOptimaAxiomAuditPassed ?? false}
 leanResidualTerminalFourCornerOptimaCarrierScope = ${payload.leanResidualTerminalFourCornerOptimaCarrierScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFourCornerOptimaCarrierScope)}
+leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized = ${payload.leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized ?? false}
+leanResidualTerminalFourCornerOptimumFirstFailureFormalized = ${payload.leanResidualTerminalFourCornerOptimumFirstFailureFormalized ?? false}
+leanResidualTerminalFourCornerOptimumRetainedSemanticsFormalized = ${payload.leanResidualTerminalFourCornerOptimumRetainedSemanticsFormalized ?? false}
+leanResidualTerminalFourCornerOptimumProfileTransportFormalized = ${payload.leanResidualTerminalFourCornerOptimumProfileTransportFormalized ?? false}
+leanResidualTerminalFourCornerOptimumModeFirewallFormalized = ${payload.leanResidualTerminalFourCornerOptimumModeFirewallFormalized ?? false}
+leanResidualTerminalFourCornerOptimumSideTightTupleFactsFormalized = ${payload.leanResidualTerminalFourCornerOptimumSideTightTupleFactsFormalized ?? false}
+leanResidualTerminalFourCornerOptimumCoherenceAxiomAuditPassed = ${payload.leanResidualTerminalFourCornerOptimumCoherenceAxiomAuditPassed ?? false}
+leanResidualTerminalFourCornerOptimumCoherenceScope = ${payload.leanResidualTerminalFourCornerOptimumCoherenceScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFourCornerOptimumCoherenceScope)}
 leanPCCMinPolynomialRuntimeFormalized = ${payload.leanPCCMinPolynomialRuntimeFormalized ?? false}
 leanConcreteCNFSATInPFormalized = ${payload.leanConcreteCNFSATInPFormalized ?? false}
 leanConcreteCNFNPCompletenessFormalized = ${payload.leanConcreteCNFNPCompletenessFormalized ?? false}
@@ -5122,13 +5161,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 696,
-    definition: 10148,
-    inductive: 306,
+    constructor: 711,
+    definition: 10243,
+    inductive: 312,
     opaque: 0,
     quotient: 0,
-    recursor: 306,
-    theorem: 13298,
+    recursor: 312,
+    theorem: 13352,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5529,6 +5568,12 @@ function validateInventory(inventory) {
     axioms,
     module,
   }));
+  const residualTerminalFourCornerOptimumCoherence =
+    RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
   const terminalBridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineTerminalBridge.outputBits_compileTerminalBridge_accepting_of_represents');
@@ -5897,6 +5942,9 @@ function validateInventory(inventory) {
     && residualTerminalFourCornerOptima.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalFourCornerOptimumCoherence.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
     && sameJson(bridge.axioms, [])
@@ -5938,7 +5986,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2341
+    && inventory.milestoneCandidates.length === 2352
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6002,7 +6050,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 88;
+    const shouldBeEarned = index < 89;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6097,6 +6145,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalFourCornerOptimaMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-four-corner-optimum-carrier-compatibility'
+  );
+  const residualTerminalFourCornerOptimumCoherenceMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-four-corner-optimum-coherence-dichotomy'
   );
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -6396,6 +6447,21 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFourCornerOptimaSharedObserverProjectionFormalized === true
     && status.leanResidualTerminalFourCornerOptimaAxiomAuditPassed === true
     && status.leanResidualTerminalFourCornerOptimaCarrierScope === "all-finite-computed-saturated-terminal-support-squares-one-reversible-ambient-carrier-and-shared-observer-projection"
+    && residualTerminalFourCornerOptimumCoherenceMilestone?.classification === "formalized-residual-terminal-four-corner-optimum-coherence-dichotomy"
+    && residualTerminalFourCornerOptimumCoherenceMilestone.scope === "For every finite computed terminal support square, every explicit observer, every terminal projection, and either full or quotient coherence mode, Lean checks the four square legs in a deterministic order and returns either one coherent canonical optimum tuple with exact transport, side-tight, and incidence facts or the exact deterministic first failure."
+    && residualTerminalFourCornerOptimumCoherenceMilestone.nonClaim === "This milestone classifies coherent transport or its exact first failure. It does not prove that every square is coherent, construct the later no-outcome route, prove sideTightCompletionExists or BN2 square legitimacy, establish SaturatePositive, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of a project assumption, or P = NP."
+    && sameJson(
+      residualTerminalFourCornerOptimumCoherenceMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized === true
+    && status.leanResidualTerminalFourCornerOptimumFirstFailureFormalized === true
+    && status.leanResidualTerminalFourCornerOptimumRetainedSemanticsFormalized === true
+    && status.leanResidualTerminalFourCornerOptimumProfileTransportFormalized === true
+    && status.leanResidualTerminalFourCornerOptimumModeFirewallFormalized === true
+    && status.leanResidualTerminalFourCornerOptimumSideTightTupleFactsFormalized === true
+    && status.leanResidualTerminalFourCornerOptimumCoherenceAxiomAuditPassed === true
+    && status.leanResidualTerminalFourCornerOptimumCoherenceScope === "all-finite-computed-terminal-support-squares-observers-projections-and-full-or-quotient-modes-coherent-tuple-or-deterministic-first-failure"
     && status.leanResidualTerminalCoherentFourCornerBasisFormalized === false
     && status.leanResidualTerminalSquareLegitimacyFormalized === false
     && status.leanSaturatePositiveFormalized === false

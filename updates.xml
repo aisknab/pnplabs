@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-07T20:22:49Z</updated>
+  <updated>2026-08-08T03:05:06Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-08-residual-terminal-four-corner-optimum-coherence</id>
+    <title>Lean can now check whether four smallest circuit views fit together</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-08-residual-terminal-four-corner-optimum-coherence"/>
+    <published>2026-08-08T03:05:06Z</published>
+    <updated>2026-08-08T03:05:06Z</updated>
+    <summary type="text">This part of the proposed proof compares four related views of a computer circuit, each represented by a smallest known circuit for that view. Lean can now check whether those four choices agree where the views overlap. It checks the four connections in a fixed order, so the result does not depend on guesswork or on which comparison happens to be tried first. If every check passes, Lean returns one package showing exactly how the four choices fit together and retains the size and boundary facts needed by later work. If a check fails, Lean identifies the first exact reason, such as a missing connection, a changed output, a mismatched bookkeeping pattern, or use of the wrong comparison mode. This works for every finite square covered by the model. It does not prove that every square passes, complete the manuscript&#39;s square-legitimacy step, or establish P = NP. The 74% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 74 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;This part of the proposed proof compares four related views of a computer circuit, each represented by a smallest known circuit for that view. Lean can now check whether those four choices agree where the views overlap. It checks the four connections in a fixed order, so the result does not depend on guesswork or on which comparison happens to be tried first.&lt;/p&gt;&lt;p&gt;If every check passes, Lean returns one package showing exactly how the four choices fit together and retains the size and boundary facts needed by later work. If a check fails, Lean identifies the first exact reason, such as a missing connection, a changed output, a mismatched bookkeeping pattern, or use of the wrong comparison mode. This works for every finite square covered by the model. It does not prove that every square passes, complete the manuscript&amp;#39;s square-legitimacy step, or establish P = NP. The 74% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;74&quot;&gt;Editorial progress estimate at publication: 74%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-08-residual-terminal-four-corner-optimum-coherence&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-08-residual-terminal-four-corner-optimum-carrier-compatibility</id>
     <title>Lean can now compare four independently smallest circuit views on one common map</title>

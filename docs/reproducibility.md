@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 436,878 | `121978e29f6f37caf842fe8ad76c6ce7e8812bc1bbb7c018f068d5247e23e431` |
-| `downloads/canonical-proof-report.pdf` | 436,878 | `121978e29f6f37caf842fe8ad76c6ce7e8812bc1bbb7c018f068d5247e23e431` |
-| `downloads/canonical_proof_report.tex` | 196,791 | `55ffa6aa19ba0c1c3143265d21ac3e481b05556a38f2d9b62591245078b0e492` |
-| `downloads/canonical-proof-report.tex` | 196,791 | `55ffa6aa19ba0c1c3143265d21ac3e481b05556a38f2d9b62591245078b0e492` |
-| `public/pnp-status.json` | 1,887,604 | `72d754abc757743f41696680d14a795d973fe86285fd93aa61ef322d65062a5f` |
-| `public/pnp-theorem-inventory.json` | 15,645,082 | `ea373cfe65d8c99fab5c3896b7d594f96724a8eab2b3d2b7ddf0abdfee81aabe` |
+| `downloads/canonical_proof_report.pdf` | 437,284 | `0e30911e395f6054e968b2ac0de1a27cf9bb2e77a182e6744ac37407dd1de058` |
+| `downloads/canonical-proof-report.pdf` | 437,284 | `0e30911e395f6054e968b2ac0de1a27cf9bb2e77a182e6744ac37407dd1de058` |
+| `downloads/canonical_proof_report.tex` | 197,818 | `550fa4769b476b52cae5df3efa912a925b9e4c6d1460fe6a601d060e4a810f72` |
+| `downloads/canonical-proof-report.tex` | 197,818 | `550fa4769b476b52cae5df3efa912a925b9e4c6d1460fe6a601d060e4a810f72` |
+| `public/pnp-status.json` | 1,901,511 | `e0515fe3af9c24f155165f172f2f00c1bbcff21822b5479141183262cf34b8d5` |
+| `public/pnp-theorem-inventory.json` | 15,824,195 | `10ca3467d9c899300ac9c76c84ce62f87c8157e73fc39f8af82b203a4be9a8eb` |
 
 The PDF must have seventy-seven A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout df4f4d830f6a0fd44af51edb0be178652d1b9417
+git -C ../pnp checkout 34713d47d7e00298aeb532dc9d5c69e57d11f296
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 24,758 public declarations, 13,298 theorem-kind declarations,
-6,989 assumption-free theorem-kind declarations, 14,645 excluded private auxiliaries, 227 modules, and
+Expected compiled inventory counts are 24,934 public declarations, 13,352 theorem-kind declarations,
+7,015 assumption-free theorem-kind declarations, 14,691 excluded private auxiliaries, 228 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -91,16 +91,15 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds thirty reviewed theorem pins. For every finite computed saturated terminal
-support square and every explicit observer, Lean embeds all four exact corner candidates into one
-reversible ambient carrier. Conversion preserves exact semantics and gate counts, the ambient and
-corner reference minima agree, and canonical full and quotient optima localize from one shared
-observer and projection without changing their exact minimum counts. The complete 57-declaration
-audit has 13 empty closures, 5 using only `propext`, and 39 using `Quot.sound` with `propext`. The
-full and quotient optima remain independently attained. This does not prove coherent transport along
-the square legs, construct one coherent four-corner basis, prove square legitimacy, complete
-obstruction routing or global gain completeness, establish `ZeroSlack`, PCCMin exactness or
-polynomial runtime, discharge an assumption, or prove `P = NP`.
+The newest milestone adds nineteen reviewed theorem pins. For every finite computed terminal support
+square, explicit observer, terminal projection, and full or quotient coherence mode, Lean checks the
+four square legs in the fixed meet-left, meet-right, left-join, right-join order. It returns either one
+coherent canonical optimum tuple with exact transport, retained-semantics, side-tight, and incidence
+facts, or the exact first transport, semantic, profile, charge-profile, or mode mismatch. The complete
+37-declaration audit has 12 empty closures, 3 using only `propext`, and 22 using `Quot.sound` with
+`propext`. This does not prove that every square is coherent, construct the later no-outcome route,
+prove square legitimacy, complete obstruction routing or global gain completeness, establish
+`ZeroSlack`, PCCMin exactness or polynomial runtime, discharge an assumption, or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
