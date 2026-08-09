@@ -53,7 +53,7 @@
 <div class="shell">
   <section class="section">
     <div class="grid two">
-      <article class="card"><div class="kicker">Mode A</div><h2>Current file integrity</h2><p>Compare the seventy-nine-page PDF, TeX source, status, and inventory against the exact release ledger. This identifies current bytes; it is not external validation of a theorem.</p></article>
+      <article class="card"><div class="kicker">Mode A</div><h2>Current file integrity</h2><p>Compare the eighty-page PDF, TeX source, status, and inventory against the exact release ledger. This identifies current bytes; it is not external validation of a theorem.</p></article>
       <article class="card"><div class="kicker">Mode B</div><h2>Compiled Lean reproduction</h2><p>Build <code>PNP</code>, export the declaration inventory, verify its reviewed SHA-256 and theorem pins, then regenerate the publication status and report.</p></article>
     </div>
   </section>
@@ -116,7 +116,7 @@
           <tr><td><strong>Checksum ledger</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS</code></td></tr>
           <tr><td><strong>Bundled site manifest</strong></td><td><a href="downloads/release-seal.json"><code>downloads/release-seal.json</code></a></td></tr>
           <tr><td><strong>Bundled site checksum ledger</strong></td><td><a href="downloads/SHA256SUMS"><code>downloads/SHA256SUMS</code></a></td></tr>
-          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/f0bad8053fa334d4d996abd8ee5b796138526ec8"><code>f0bad8053fa334d4d996abd8ee5b796138526ec8</code></a></td></tr>
+          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5"><code>e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5</code></a></td></tr>
         </tbody>
       </table>
     </div>
@@ -134,7 +134,7 @@
       <button class="btn secondary small copy-btn" type="button" data-copy="#regen-code">Copy</button>
       <pre id="regen-code">git clone https://github.com/aisknab/pnp.git pnp-review
 cd pnp-review
-git checkout f0bad8053fa334d4d996abd8ee5b796138526ec8
+git checkout e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5
 npm ci
 lake build PNP
 npm run pnp:verify -- --no-write

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-09-residual-terminal-saturation-positivity-firewall",
+      "milestoneId": "residual-terminal-saturation-positivity-firewall",
+      "publishedAt": "2026-08-09T10:51:52Z",
+      "title": "Lean now computes whether terminal projection positivity is lost",
+      "plainLanguage": [
+        "For an explicit finite direct-wire candidate, terminal dependency system, already computed governed proper-positive support, forgetful projection, and executable observer, Lean now computes the whole-support projection defect and handles both possible cases. If the defect is zero, it returns an attained reduced minimum together with a checked full lift. If the defect is positive, it delegates exactly to the existing fail-closed BCEL anchor-nucleus classifier.",
+        "This closes only the named projectionPositivityNotLostSilently obligation in the current finite terminal model. It does not derive the dependency system or support, discharge the other four SaturatePositive obligations, establish full SaturatePositive, Package E or BCELReady, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, or prove P = NP. The 79% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 79,
+      "source": {
+        "commit": "e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5",
+        "tree": "1a326290d19798563b9ed4680228ff595b620248",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-117",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-SATURATION-POSITIVITY-FIREWALL-116"
+      }
+    },
+    {
       "id": "2026-08-09-residual-terminal-computed-bcel-anchor-nucleus",
       "milestoneId": "residual-terminal-computed-bcel-anchor-nucleus",
       "publishedAt": "2026-08-09T07:32:49Z",

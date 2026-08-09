@@ -25,12 +25,12 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,426 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,432 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 25,515 public declarations;
-- 13,564 theorem-kind declarations;
+- 25,571 public declarations;
+- 13,587 theorem-kind declarations;
 - 7,043 assumption-free theorem-kind declarations;
 - 232 source-closure modules;
 - 14,779 excluded private compiler auxiliaries;
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The ninety-three earned scopes are:
+The ninety-four earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -143,6 +143,7 @@ The ninety-three earned scopes are:
 | Complete four-corner BN2 tight-basis maximum | For every finite computed terminal support square, explicit observer, and full or quotient mode, Lean enumerates every exact profile-constrained minimum at each corner, crosses the complete finite four-corner family, filters it with the arbitrary-family coherence query, and proves under exact local route silence that the signed maximum equals the selected delta. The 45-declaration audit has 12 empty closures, 5 using only `propext`, and 28 using `Quot.sound` with `propext`; all 28 reviewed pins have permitted Lean-standard closure. | This milestone closes the local all-finite tight-basis maximum under computed route silence. It does not prove universal route silence, connect a local obstruction to the complete global no-outcome route system, prove BN2 square legitimacy, derive the terminal dependency system, establish `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Computed terminal BN2 square legitimacy | For every square computed from two finite seeds under one explicit terminal dependency system, direct-wire candidate, observer, and forgetful projection, Lean constructs the exact compatible governed frontier and projection square, retains full and quotient minimum quantities on one carrier, and returns either the complete local conclusion under exact route silence or the deterministic full-then-quotient proof-bearing first route. The focused 15-declaration audit uses `Quot.sound` with `propext`; all 20 reviewed pins have permitted Lean-standard closure. | This milestone packages computed structural legitimacy and the exact local no-route conclusion. It does not derive the dependency system from an arbitrary circuit, prove universal route silence, connect a local failure to the complete global no-outcome route system, identify a BCEL anchor square, establish `SaturatePositive`, Package E, BCELReady or later BCEL/BN2-BN6 conclusions, complete obstruction routing, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Computed terminal BCEL anchor nucleus and cut-square dichotomy | For every finite direct-wire candidate, explicit terminal dependency system, computed governed proper-positive support, forgetful projection, executable ambient observer, and positive whole-support projection defect, Lean computes the canonical minimum-cardinality positive anchor nucleus and returns either an insufficient nucleus, the exact first anchor-algebra mismatch, the exact first proper-cut defect mismatch, the first proof-bearing full-before-quotient local route, or exact constant-cut and local BN2 conclusions for every proper cut. The focused 79-declaration audit has 7 empty closures, 8 using only `propext`, and 64 using `Quot.sound` with `propext`; all 36 reviewed pins have permitted Lean-standard closure. | This milestone assumes a positive whole-support projection defect and an explicit terminal dependency system. It does not derive either premise, identify manuscript activation or charge equivalence classes, connect a local failure to the complete global route system, establish `SaturatePositive`, Package E, BCELReady or later BCEL/BN2-BN6 conclusions, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
+| Computed terminal saturation-positivity firewall | For every finite direct-wire candidate, explicit terminal dependency system, computed governed proper-positive support, forgetful projection, and executable ambient observer, Lean computes the whole-support projection defect. Zero returns an attained quotient minimum with a checked full lift, while positive delegates exactly to the existing fail-closed BCEL anchor-nucleus classifier. The focused 20-declaration audit has 1 empty closure, 4 using only `propext`, and 15 using `Quot.sound` with `propext`; all 12 reviewed pins have permitted Lean-standard closure. | This closes only `projectionPositivityNotLostSilently` in the current finite terminal model and assumes the dependency system and governed proper-positive support. It does not discharge `transparentSaturationCostBalanced`, `interfaceExposureRoutesToE`, `originKernelObligationClosureRouted`, or `firstNontransparentStepRecorded`; establish full `SaturatePositive`, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -174,7 +175,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment seventy-nine-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment eighty-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
