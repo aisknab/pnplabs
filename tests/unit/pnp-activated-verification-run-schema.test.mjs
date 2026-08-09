@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-117');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-118');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 25571);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13587);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7043);
-  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14779);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 233);
-  assert.equal(status.formalPublicationMilestones.length, 97);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 94);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 25863);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13665);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7079);
+  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14904);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 235);
+  assert.equal(status.formalPublicationMilestones.length, 98);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 95);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
@@ -134,6 +134,14 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(
     status.leanResidualTerminalSaturationPositivityFirewallScope,
     'all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-governed-proper-positive-supports-forgetful-projections-and-executable-ambient-observers-total-zero-or-positive-whole-support-projection-defect-classification'
+  );
+  assert.equal(status.leanResidualTerminalCandidateSaturationFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationCostBalanceFormalized, true);
+  assert.equal(status.leanResidualTerminalFirstNontransparentStepFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalSaturationCostBalanceScope,
+    'all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-dependency-system-rule-labelled-exact-cost-balance-or-first-nontransparent-step'
   );
   assert.equal(status.remainingBlockers.length, 6);
   assert.equal(status.projectSpecificAxiomInventory.length, 4);

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-09-residual-terminal-candidate-saturation-cost-balance",
+      "milestoneId": "residual-terminal-candidate-saturation-cost-balance",
+      "publishedAt": "2026-08-09T15:28:29Z",
+      "title": "Lean now derives and checks terminal saturation cost balance",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean now derives the physical and context-sensitive dependency system from the candidate itself and computes a deterministic rule-labelled saturation trace. If every event is transparent, Lean proves exact support and full-circuit cost balance while preserving full slack, positivity, and a nondecreasing projection defect across the linked history.",
+        "If an event is not transparent, Lean records the exact first event, its typed reason, and the complete transparent prefix instead of silently continuing. This closes only the finite terminal forms of transparentSaturationCostBalanced and firstNontransparentStepRecorded. The observer and projection remain explicit inputs, and Lean has not routed a nontransparent event, discharged interfaceExposureRoutesToE or originKernelObligationClosureRouted, established full SaturatePositive, Package E or BCELReady, proved ZeroSlack or PCCMin, established polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 80% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 80,
+      "source": {
+        "commit": "ead67f4864902e667e5fd436eea21c61de2f871e",
+        "tree": "072fe73440ac21f5daa7a9a3a79b51deb459aeb6",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-118",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-09-CANDIDATE-SATURATION-COST-BALANCE-117"
+      }
+    },
+    {
       "id": "2026-08-09-residual-terminal-saturation-positivity-firewall",
       "milestoneId": "residual-terminal-saturation-positivity-firewall",
       "publishedAt": "2026-08-09T10:51:52Z",

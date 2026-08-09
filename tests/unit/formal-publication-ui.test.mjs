@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '2973e90172e160d070b3eb722ac146274c14e144b8c38677126149964c35dd28');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '53768f488ff27bf9e43b5b195daaf263fcdcf60e05651d403af23d9a65ff3d78');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 94);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 95);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -359,6 +359,62 @@ test('terminal saturation-positivity firewall requires its exact conservative bo
   const missingPin = structuredClone(status);
   missingPin.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-saturation-positivity-firewall'
+  ).requiredTheorems.pop();
+  assert.equal(validation.validateStatus(missingPin, inventory), false);
+});
+
+test('pre-fetch UI state reports candidate-derived saturation cost balance as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalCandidateSaturationFormalized',
+    'leanResidualTerminalSaturationCostBalanceFormalized',
+    'leanResidualTerminalFirstNontransparentStepFormalized',
+    'leanResidualTerminalSaturationCostBalanceAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalSaturationCostBalanceScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalCandidateSaturationFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSaturationCostBalanceFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFirstNontransparentStepFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSaturationCostBalanceAxiomAuditPassed = false/u);
+  assert.match(rendered, /leanResidualTerminalSaturationCostBalanceScope = null/u);
+});
+
+test('candidate-derived saturation cost balance requires its exact conservative boundary', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-candidate-saturation-cost-balance'
+  );
+  assert.equal(milestone.requiredTheorems.length, 17);
+  assert.equal(milestone.theoremRows.every((row) => row.present && row.kernelTypeFingerprintMatches), true);
+  assert.match(milestone.scope, /candidate-derived dependency system and deterministic rule-labelled saturation trace/u);
+  assert.match(milestone.nonClaim, /finite terminal forms of transparentSaturationCostBalanced and firstNontransparentStepRecorded/u);
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  for (const key of [
+    'leanResidualTerminalCandidateSaturationFormalized',
+    'leanResidualTerminalSaturationCostBalanceFormalized',
+    'leanResidualTerminalFirstNontransparentStepFormalized',
+    'leanResidualTerminalSaturationCostBalanceAxiomAuditPassed',
+  ]) {
+    const altered = structuredClone(status);
+    altered[key] = false;
+    assert.equal(validation.validateStatus(altered, inventory), false, key);
+  }
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualTerminalSaturationCostBalanceScope = 'full-saturate-positive';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const widenedMilestone = structuredClone(status);
+  widenedMilestone.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-candidate-saturation-cost-balance'
+  ).nonClaim = 'This establishes SaturatePositive and P = NP.';
+  assert.equal(validation.validateStatus(widenedMilestone, inventory), false);
+
+  const missingPin = structuredClone(status);
+  missingPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-candidate-saturation-cost-balance'
   ).requiredTheorems.pop();
   assert.equal(validation.validateStatus(missingPin, inventory), false);
 });
@@ -3160,7 +3216,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '148f927c21c7aada97a483658df7d287635cfacf7078ce51089fd859d5b0177a'/);
+  assert.match(source, /const STATUS_SHA256 = '011cb1ee5f5cfe8c1e36b1c3cda6c43638bd22ec27969f2274336e70771052ab'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3433,8 +3489,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /25,571/);
-  assert.match(statusPage, /Ninety-four scoped milestones/);
+  assert.match(statusPage, /25,863/);
+  assert.match(statusPage, /Ninety-five scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 443,105 | `a6c28450e6110a29868f59100856a9598de90225b1d2631a13a900befe5e6429` |
-| `downloads/canonical-proof-report.pdf` | 443,105 | `a6c28450e6110a29868f59100856a9598de90225b1d2631a13a900befe5e6429` |
-| `downloads/canonical_proof_report.tex` | 203,905 | `96a720e1e53d3a9d5facb2988c2f942bada036a9c11776a1a7ccbadb3a92b18e` |
-| `downloads/canonical-proof-report.tex` | 203,905 | `96a720e1e53d3a9d5facb2988c2f942bada036a9c11776a1a7ccbadb3a92b18e` |
-| `public/pnp-status.json` | 1,983,101 | `148f927c21c7aada97a483658df7d287635cfacf7078ce51089fd859d5b0177a` |
-| `public/pnp-theorem-inventory.json` | 16,710,476 | `2973e90172e160d070b3eb722ac146274c14e144b8c38677126149964c35dd28` |
+| `downloads/canonical_proof_report.pdf` | 443,687 | `6a1c209fabb6e2d068cba8959ce83e2080af1060a3d07b412a9cf9f68ff29eb7` |
+| `downloads/canonical-proof-report.pdf` | 443,687 | `6a1c209fabb6e2d068cba8959ce83e2080af1060a3d07b412a9cf9f68ff29eb7` |
+| `downloads/canonical_proof_report.tex` | 205,214 | `1f59114cfa985649dd1d625dcf13b6dddc6aba47e58aba101dd8197668727ef5` |
+| `downloads/canonical-proof-report.tex` | 205,214 | `1f59114cfa985649dd1d625dcf13b6dddc6aba47e58aba101dd8197668727ef5` |
+| `public/pnp-status.json` | 1,995,750 | `011cb1ee5f5cfe8c1e36b1c3cda6c43638bd22ec27969f2274336e70771052ab` |
+| `public/pnp-theorem-inventory.json` | 16,915,940 | `53768f488ff27bf9e43b5b195daaf263fcdcf60e05651d403af23d9a65ff3d78` |
 
 The PDF must have eighty A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5
+git -C ../pnp checkout ead67f4864902e667e5fd436eea21c61de2f871e
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 25,571 public declarations, 13,587 theorem-kind declarations,
-7,043 assumption-free theorem-kind declarations, 14,779 excluded private auxiliaries, 233 modules, and
+Expected compiled inventory counts are 25,863 public declarations, 13,665 theorem-kind declarations,
+7,079 assumption-free theorem-kind declarations, 14,904 excluded private auxiliaries, 235 modules, and
 four project axioms. The publication gate must remain false with six blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled

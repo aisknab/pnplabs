@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-117';
-const STATUS_SHA256 = '148f927c21c7aada97a483658df7d287635cfacf7078ce51089fd859d5b0177a';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-SATURATION-POSITIVITY-FIREWALL-116';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-09-117';
-const INVENTORY_SHA256 = '2973e90172e160d070b3eb722ac146274c14e144b8c38677126149964c35dd28';
-const SOURCE_CLOSURE_SHA256 = 'eec7fd5794e7fc945e4f3ef219b807cc3a6d5a0b07c67a2da5e33c07eda2ce0b';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-118';
+const STATUS_SHA256 = '011cb1ee5f5cfe8c1e36b1c3cda6c43638bd22ec27969f2274336e70771052ab';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-09-CANDIDATE-SATURATION-COST-BALANCE-117';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-09-118';
+const INVENTORY_SHA256 = '53768f488ff27bf9e43b5b195daaf263fcdcf60e05651d403af23d9a65ff3d78';
+const SOURCE_CLOSURE_SHA256 = 'bbede19553a26c6ac1b7075cc22f5fb05662056351406e36183a7a734d32d3d9';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 25571,
-  theorems: 13587,
-  assumptionFreeTheorems: 7043,
-  excludedPrivateDeclarations: 14779,
-  modules: 233,
+  declarations: 25863,
+  theorems: 13665,
+  assumptionFreeTheorems: 7079,
+  excludedPrivateDeclarations: 14904,
+  modules: 235,
   axioms: 4,
 });
 
@@ -3831,6 +3831,26 @@ const RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_DECLARATIONS = Object.fre
   ["PNP.DirectWire.TerminalProperPositiveSupport.extracted_semantics", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
 ]);
 
+const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalSaturateTrace_eventsLinked", ["propext"], "PNP.ResidualTerminalExecutableSaturation"],
+  ["PNP.DirectWire.terminalSaturateTrace_records", ["propext"], "PNP.ResidualTerminalExecutableSaturation"],
+  ["PNP.DirectWire.terminalCandidateSaturationSystem_profileSystem", ["Quot.sound", "propext"], "PNP.ResidualTerminalCandidateSaturation"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.uniqueMaterializerOwner", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.supportCostBalanced", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.fullCostBalanced", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.quotientCostBounded", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.fullSlack_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.projectionDefect_mono", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalTransparentSaturationStep.fullPositive_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationEventsLinked.fullSlack_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationEventsLinked.projectionDefect_mono", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationEventsLinked.fullPositive_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_event", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_fullSlack_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_projectionDefect_mono", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+  ["PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_fullPositive_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4368,6 +4388,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-computed-bn2-square-legitimacy',
   'residual-terminal-computed-bcel-anchor-nucleus',
   'residual-terminal-saturation-positivity-firewall',
+  'residual-terminal-candidate-saturation-cost-balance',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4781,6 +4802,11 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalSaturationPositivityFirewallFormalized: false,
   leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed: false,
   leanResidualTerminalSaturationPositivityFirewallScope: null,
+  leanResidualTerminalCandidateSaturationFormalized: false,
+  leanResidualTerminalSaturationCostBalanceFormalized: false,
+  leanResidualTerminalFirstNontransparentStepFormalized: false,
+  leanResidualTerminalSaturationCostBalanceAxiomAuditPassed: false,
+  leanResidualTerminalSaturationCostBalanceScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5276,6 +5302,11 @@ leanResidualTerminalBCELAnchorNucleusScope = ${payload.leanResidualTerminalBCELA
 leanResidualTerminalSaturationPositivityFirewallFormalized = ${payload.leanResidualTerminalSaturationPositivityFirewallFormalized ?? false}
 leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed = ${payload.leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed ?? false}
 leanResidualTerminalSaturationPositivityFirewallScope = ${payload.leanResidualTerminalSaturationPositivityFirewallScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSaturationPositivityFirewallScope)}
+leanResidualTerminalCandidateSaturationFormalized = ${payload.leanResidualTerminalCandidateSaturationFormalized ?? false}
+leanResidualTerminalSaturationCostBalanceFormalized = ${payload.leanResidualTerminalSaturationCostBalanceFormalized ?? false}
+leanResidualTerminalFirstNontransparentStepFormalized = ${payload.leanResidualTerminalFirstNontransparentStepFormalized ?? false}
+leanResidualTerminalSaturationCostBalanceAxiomAuditPassed = ${payload.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed ?? false}
+leanResidualTerminalSaturationCostBalanceScope = ${payload.leanResidualTerminalSaturationCostBalanceScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSaturationCostBalanceScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5373,13 +5404,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 746,
-    definition: 10562,
-    inductive: 336,
+    constructor: 765,
+    definition: 10735,
+    inductive: 347,
     opaque: 0,
     quotient: 0,
-    recursor: 336,
-    theorem: 13587,
+    recursor: 347,
+    theorem: 13665,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5816,6 +5847,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalCandidateSaturationCostBalance =
+    RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
 
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
@@ -6203,6 +6240,9 @@ function validateInventory(inventory) {
     && residualTerminalSaturationPositivityFirewall.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalCandidateSaturationCostBalance.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
@@ -6245,7 +6285,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2432
+    && inventory.milestoneCandidates.length === 2449
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6309,7 +6349,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 94;
+    const shouldBeEarned = index < 95;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6422,6 +6462,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalSaturationPositivityFirewallMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-saturation-positivity-firewall'
+  );
+  const residualTerminalCandidateSaturationCostBalanceMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-candidate-saturation-cost-balance'
   );
 
   return status?.kind === 'PNPFormalReconstructionStatus0'
@@ -6811,6 +6854,19 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSaturationPositivityFirewallFormalized === true
     && status.leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed === true
     && status.leanResidualTerminalSaturationPositivityFirewallScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-governed-proper-positive-supports-forgetful-projections-and-executable-ambient-observers-total-zero-or-positive-whole-support-projection-defect-classification"
+    && residualTerminalCandidateSaturationCostBalanceMilestone?.classification === "formalized-residual-terminal-candidate-saturation-cost-balance"
+    && residualTerminalCandidateSaturationCostBalanceMilestone.status === "formalized-residual-terminal-candidate-saturation-cost-balance"
+    && residualTerminalCandidateSaturationCostBalanceMilestone.scope === "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean computes the candidate-derived dependency system and deterministic rule-labelled saturation trace, then returns proof that every event is exactly cost-balanced with preserved full slack and nondecreasing projection defect, or records the exact first nontransparent event and complete transparent prefix."
+    && residualTerminalCandidateSaturationCostBalanceMilestone.nonClaim === "This closes only the finite terminal forms of transparentSaturationCostBalanced and firstNontransparentStepRecorded. The executable observer and forgetful projection remain explicit model inputs, and a nontransparent event is recorded rather than routed. It does not discharge interfaceExposureRoutesToE or originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalCandidateSaturationCostBalanceMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalCandidateSaturationFormalized === true
+    && status.leanResidualTerminalSaturationCostBalanceFormalized === true
+    && status.leanResidualTerminalFirstNontransparentStepFormalized === true
+    && status.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed === true
+    && status.leanResidualTerminalSaturationCostBalanceScope === "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-dependency-system-rule-labelled-exact-cost-balance-or-first-nontransparent-step"
     && status.leanSaturatePositiveFormalized === false
     && status.leanBCELReadyFormalized === false
     && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
