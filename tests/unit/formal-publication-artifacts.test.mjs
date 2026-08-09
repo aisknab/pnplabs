@@ -609,6 +609,35 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_HASHES = Object.fromEntr
   Object.entries(RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS).map(([name, row]) => [name, row.hash])
 );
 
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREMS = {
+  "PNP.DirectWire.TerminalComputedBN2SquareLegitimate.cornerCompatible": { hash: "353ae46eab6aa34d13a35841d9645d0872fee705b8bad037d3e767e56a72b071", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareLegitimate.meetProfile": { hash: "5496541d05e720818b80d4c5cb9e01cb19b1e6f39912fb077bfe010ca07a4da3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareLegitimate.joinProfile": { hash: "da482fc3256cea5a7c74a0407cf8c610ec1cb2e784a98cf71dd0a6e12da3035c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareLegitimate.projectionCompatible": { hash: "7fbd5e63bac42fecd0eec47c5f26007f532a180f5e7635f0f8e552c68973efe3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2SquareLegitimate": { hash: "dd1706be5a716430a81242763f216fb58c687178a7363aad9733ad2868c2c47e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareQuantities.sharedRole": { hash: "50c7efac8a8400444fd8326e3d68ef103e2d5f7e5f05c15d089c510600b962e1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareQuantities.sharedProjection": { hash: "cc534e9461c576cd0619a60217f19a2f8051d10ea4227dd07c315fbb462be0f4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareQuantities.referenceMinimumPreserved": { hash: "999c06f0d20fc5781833e93f931b6ce3c9f58a82107feaa510ddffd386263326", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalComputedBN2SquareQuantities.transferIdentity": { hash: "716cb27271f5ee1c30b788d038c193a87b74e25984381192c602ce0e3a2fecf1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2SquareQuantities": { hash: "caf7e7aa90a62c6d1a8604bc57c4d94a08169cea4db44ee8632409404bbcbc90", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusion": { hash: "2ac8a3a6ac748ef68e77c51608c765fe3eedab375e2151ffe3bada21cd4258e1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusionOrFirstRoute": { hash: "7ef5bbf275ada25d79cc41ab25ac3dee6b2463060159468d057f1b621c01ff7d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN2SquareLegitimacy" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.complete_transport": { hash: "5976aa24e0dfafa1d0bab889dbee53df1ca2686923df8b5dab9c0752888ecb27", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerCarrier" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_frontier_pushout": { hash: "95d0548c06161609bda41bae89fc2a721d24cb0f5b72f8a09cdc509d81a77696", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFrontierPushout" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.fourCornerOptimaCarrierCompatible": { hash: "0c8b453d9b62cca81206e8097b11fe630fb81467c30842548b9fabb1b2725304", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerOptimumCompatibility" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExistsEachMode": { hash: "31764bb11ecf298e542f86d66fb163538777611b54e33a9d7536d3cbc78e52fd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_full": { hash: "15b31bdefa9557e49c23e97eed5540a4ded842e6dfd6e8de3918bb1819d157d3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_quotient": { hash: "4a49571efc6e506071fe848b68683172739162cfaff84516f7a1df21a12bff73", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerTightBasisMaximum" },
+  "PNP.DirectWire.TerminalFourCornerOptimumRoutedFailure.sound": { hash: "2ea820659559ee4037840bc0f4ff94c7f8e92d118ea6c496a35c8c2f52a6bc2d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFourCornerSideTightCompletion" },
+  "PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity": { hash: "8a834cd3525cc543e7ec42d58e23836853ad71d0bc2ff97655f7dab1562880ac", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalProjectionTransfer" },
+};
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_SCOPE = "all-finite-computed-terminal-support-squares-explicit-terminal-dependency-systems-direct-wire-candidates-observers-and-forgetful-projections-with-local-route-silence-or-proof-bearing-first-failure";
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE_SCOPE = "For every finite computed terminal support square built from two finite seeds under one explicit terminal dependency system, direct-wire candidate, observer, and forgetful projection, Lean constructs the exact compatible governed frontier and projection square, keeps full and quotient minimum quantities on the same carrier, and returns either the complete local conclusion under exact local route silence or the deterministic full-then-quotient proof-bearing first coherence route.";
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NON_CLAIM = "This milestone packages computed structural legitimacy and the exact local no-route conclusion. It does not derive the terminal dependency system from an arbitrary circuit, prove universal route silence, connect a local failure to the complete global no-outcome route system, identify a BCEL anchor square, establish SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -627,18 +656,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "fc47845928f2cafb4f7ebbafed38e5e7a8a6c25a");
+  assert.equal(result.coreCommit, "ca60f66498eaa4a6242e15c86fa86a2fe62e78f9");
 });
 
-test("current release is pinned, seventy-eight-page, exposes the complete four-corner tight-basis maximum, and fails closed", () => {
+test("current release is pinned, seventy-nine-page, exposes computed terminal BN2 square legitimacy, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-08-97");
-  assert.equal(release.source.commit, "fc47845928f2cafb4f7ebbafed38e5e7a8a6c25a");
-  assert.equal(release.source.proofCommit, "cfb0a215cd7499278f060f84f7da2ee1a12505c3");
-  assert.equal(release.source.tree, "fa466d44f3d5cd15ebcd6fabe0a961582cb66c25");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-09-98");
+  assert.equal(release.source.commit, "ca60f66498eaa4a6242e15c86fa86a2fe62e78f9");
+  assert.equal(release.source.proofCommit, "93f17568ae8c9af2bf3b98cf6b6dc34330ac9169");
+  assert.equal(release.source.tree, "86a19d87f564dd644f78ceea604c18a30ad223ca");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 78);
+  assert.equal(release.artifacts.report.pageCount, 79);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -2340,7 +2369,6 @@ test("current release is pinned, seventy-eight-page, exposes the complete four-c
   assert.deepEqual(release.earnedBoundary.residualTerminalFrontierPushoutTheoremKernelTypeSha256, RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_HASHES);
   assert.deepEqual(release.earnedBoundary.residualTerminalFrontierPushoutAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.residualTerminalFrontierPushoutProjectAxiomClosure, []);
-  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyFormalized, false);
   assert.equal(release.earnedBoundary.residualTerminalProjectionSquareFormalized, true);
   assert.equal(release.earnedBoundary.residualTerminalProjectionPhysicalInvariantFormalized, true);
   assert.equal(release.earnedBoundary.residualTerminalProjectionProfileExactFormalized, true);
@@ -2496,6 +2524,26 @@ test("current release is pinned, seventy-eight-page, exposes the complete four-c
   assert.equal(release.earnedBoundary.residualTerminalFourCornerTightBasisMaximumQuotientTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.tightBasisMaximum?_quotient");
   assert.equal(release.earnedBoundary.residualTerminalFourCornerArbitraryFamilyCoherenceTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.firstBasisCoherenceFailure?_sound");
 
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareStructuralCompatibilityFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareFrontierPushoutFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareSharedQuantityCarrierFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLocalConclusionUnderRouteSilenceFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareFailClosedRouteDichotomyFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyAuditedDeclarationCount, 15);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyPropextQuotSoundDeclarationCount, 15);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyScope, RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSquareLegitimacyTheoremKernelTypeSha256, RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSquareLegitimacyAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSquareLegitimacyProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalSquareLegitimacyTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2SquareLegitimate");
+  assert.equal(release.earnedBoundary.residualTerminalSquareLocalConclusionTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusion");
+  assert.equal(release.earnedBoundary.residualTerminalSquareLocalConclusionOrFirstRouteTheorem, "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusionOrFirstRoute");
+  assert.equal(release.earnedBoundary.residualTerminalSquareFrontierPushoutTheorem, "PNP.DirectWire.TerminalSaturatedSupportSquare.governed_frontier_pushout");
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2527,12 +2575,12 @@ test("current release is pinned, seventy-eight-page, exposes the complete four-c
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 94 milestones with the complete four-corner tight-basis maximum pinned", () => {
+test("status and inventory publish exactly 95 milestones with computed terminal BN2 square legitimacy pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 94);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 91);
+  assert.equal(milestones.length, 95);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 92);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -2866,7 +2914,7 @@ test("status and inventory publish exactly 94 milestones with the complete four-
   assert.equal(status.leanResidualTerminalSaturationIdempotentFormalized, true);
   assert.equal(status.leanResidualTerminalSaturationScope, "all-finite-terminal-primitive-record-universes-with-explicit-boolean-rule-tagged-dependencies");
   assert.equal(status.leanResidualTerminalSupportCompletionFormalized, true);
-  assert.equal(status.leanResidualTerminalSquareLegitimacyFormalized, false);
+  assert.equal(status.leanResidualTerminalSquareLegitimacyFormalized, true);
   assert.equal(status.leanResidualTerminalProjectionSquareFormalized, true);
   assert.equal(status.leanResidualProjectionTransferFormalized, true);
   assert.equal(status.leanResidualProjectionTransferAxiomAuditPassed, true);
@@ -3302,21 +3350,55 @@ test("status and inventory publish exactly 94 milestones with the complete four-
   assert.equal(status.leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalFourCornerTightBasisMaximumScope, RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_SCOPE);
 
-  assert.equal(inventory.declarationCount, 25059);
-  assert.equal(inventory.theoremCount, 13401);
+  const computedBN2SquareLegitimacy = milestones.find((row) => row.id === "residual-terminal-computed-bn2-square-legitimacy");
+  assert.equal(computedBN2SquareLegitimacy.classification, "formalized-residual-terminal-computed-bn2-square-legitimacy");
+  assert.equal(computedBN2SquareLegitimacy.status, "formalized-residual-terminal-computed-bn2-square-legitimacy");
+  assert.equal(computedBN2SquareLegitimacy.earned, true);
+  assert.equal(computedBN2SquareLegitimacy.allPresent, true);
+  assert.equal(computedBN2SquareLegitimacy.allAssumptionFree, false);
+  assert.equal(computedBN2SquareLegitimacy.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(computedBN2SquareLegitimacy.allKernelTypesMatch, true);
+  assert.equal(computedBN2SquareLegitimacy.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(computedBN2SquareLegitimacy.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(computedBN2SquareLegitimacy.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_HASHES
+  );
+  for (const row of computedBN2SquareLegitimacy.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(computedBN2SquareLegitimacy.scope, RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE_SCOPE);
+  assert.equal(computedBN2SquareLegitimacy.nonClaim, RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalSquareStructuralCompatibilityFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareFrontierPushoutFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareSharedQuantityCarrierFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareFailClosedRouteDichotomyFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareLegitimacyAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalSquareLegitimacyScope, RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_SCOPE);
+
+  assert.equal(inventory.declarationCount, 25099);
+  assert.equal(inventory.theoremCount, 13423);
   assert.equal(inventory.assumptionFreeTheoremCount, 7025);
   assert.equal(inventory.excludedPrivateDeclarationCount, 14705);
-  assert.equal(inventory.sourceClosureModuleCount, 230);
-  assert.equal(inventory.milestoneCandidates.length, 2385);
+  assert.equal(inventory.sourceClosureModuleCount, 231);
+  assert.equal(inventory.milestoneCandidates.length, 2397);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 715,
-    definition: 10309,
-    inductive: 315,
+    constructor: 718,
+    definition: 10318,
+    inductive: 318,
     opaque: 0,
     quotient: 0,
-    recursor: 315,
-    theorem: 13401
+    recursor: 318,
+    theorem: 13423
   });
 });
 

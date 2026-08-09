@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-09-residual-terminal-computed-bn2-square-legitimacy",
+      "milestoneId": "residual-terminal-computed-bn2-square-legitimacy",
+      "publishedAt": "2026-08-09T03:20:33Z",
+      "title": "Lean now constructs and checks the complete computed four-view square",
+      "plainLanguage": [
+        "Given two finite seed lists and one explicit set of terminal dependency rules, Lean now computes the four related terminal-support views, completes the governed frontier at every corner, and proves that the frontier and its reduced projection form the exact compatible square required by this local model. It also keeps the full and reduced minimum quantities on one checked carrier, so the comparison does not silently change what is being measured.",
+        "The final checker is fail-closed: when the exact local route queries are silent, Lean returns the complete local square conclusion; otherwise it returns the first full-then-reduced mismatch together with a proof that the route is real. This is computed BN2 square legitimacy for the explicit finite data, not the manuscript's unrestricted conclusion. Lean has not derived the dependency rules from an arbitrary circuit, proved universal route silence, connected every local failure to the complete global no-outcome route system, identified a BCEL anchor square, or completed SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 77% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 77,
+      "source": {
+        "commit": "ca60f66498eaa4a6242e15c86fa86a2fe62e78f9",
+        "tree": "86a19d87f564dd644f78ceea604c18a30ad223ca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-115",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-COMPUTED-BN2-SQUARE-LEGITIMACY-114"
+      }
+    },
+    {
       "id": "2026-08-08-residual-terminal-four-corner-tight-basis-maximum",
       "milestoneId": "residual-terminal-four-corner-tight-basis-maximum",
       "publishedAt": "2026-08-08T11:58:13Z",

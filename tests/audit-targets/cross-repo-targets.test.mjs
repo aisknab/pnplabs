@@ -1706,6 +1706,54 @@ const RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_STATUS_FIELDS = Object.f
   })
 );
 
+const PUBLISHED_RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-computed-bn2-square-legitimacy"
+  );
+assert.ok(PUBLISHED_RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE);
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREM_HASHES = Object.fromEntries(
+  PUBLISHED_RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE.theoremRows.map(
+    (row) => [row.name, row.expectedKernelTypeSha256]
+  )
+);
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREM_NAMES = Object.keys(
+  RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREM_HASHES
+);
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_CANDIDATES =
+  publishedInventory.milestoneCandidates.filter(
+    (candidate) => RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREM_NAMES.includes(candidate.name)
+  );
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_PREVIOUS_THEOREM_NAMES =
+  earnedTheoremNamesBefore("residual-terminal-computed-bn2-square-legitimacy");
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NEW_CANDIDATES =
+  RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_CANDIDATES.filter(
+    (candidate) => !RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_PREVIOUS_THEOREM_NAMES.has(candidate.name)
+  );
+assert.equal(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREM_NAMES.length, 20);
+assert.equal(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_CANDIDATES.length, 20);
+assert.equal(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NEW_CANDIDATES.length, 12);
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_STATUS_KEYS = [
+  "leanResidualTerminalSquareLegitimacyFormalized",
+  "leanResidualTerminalSquareStructuralCompatibilityFormalized",
+  "leanResidualTerminalSquareFrontierPushoutFormalized",
+  "leanResidualTerminalSquareSharedQuantityCarrierFormalized",
+  "leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized",
+  "leanResidualTerminalSquareFailClosedRouteDichotomyFormalized",
+  "leanResidualTerminalSquareLegitimacyAxiomAuditPassed",
+  "leanResidualTerminalSquareLegitimacyScope",
+  "leanSaturatePositiveFormalized",
+  "leanBCELReadyFormalized",
+  "leanResidualRoutesGlobalGainCompletenessFormalized",
+  "leanZeroSlackCompletenessFormalized",
+  "leanPCCMinPolynomialRuntimeFormalized"
+];
+const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
+
 const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
   Object.entries(publishedRelease.earnedBoundary).filter(([key]) => [
     "residualTerminalSaturation",
@@ -1724,6 +1772,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalFrontier",
     "residualTerminalProjection",
     "residualTerminalProjected",
+    "residualTerminalSquare",
     "residualTerminalSquareProjected",
     "residualTerminalSquareForgotten",
     "residualTerminalSquareProjection",
@@ -1806,6 +1855,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_STATUS_FIELDS,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -2473,6 +2523,8 @@ function makeProject(t) {
       ...structuredClone(PUBLISHED_RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_MILESTONE)
     }, {
       ...structuredClone(PUBLISHED_RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_MILESTONE)
+    }, {
+      ...structuredClone(PUBLISHED_RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE)
     }],
     leanConcreteCNFSATInPFormalized: false,
     leanConcreteCNFNPCompletenessFormalized: false
@@ -2495,28 +2547,28 @@ function makeProject(t) {
   statusPayload.formalPublicationMilestones = publishedStatus.formalPublicationMilestones.map(
     (row) => structuredClone(explicitStatusMilestones.get(row.id) ?? row)
   );
-  assert.equal(statusPayload.formalPublicationMilestones.length, 94, "synthetic status must match the published milestone count");
-  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 91, "synthetic status must match the published earned-milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.length, 95, "synthetic status must match the published milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 92, "synthetic status must match the published earned-milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, 3, "synthetic status must retain every fail-closed milestone");
   const status = json(statusPayload);
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
-    declarationCount: 25059,
-    theoremCount: 13401,
+    declarationCount: 25099,
+    theoremCount: 13423,
     assumptionFreeTheoremCount: 7025,
     excludedPrivateDeclarationCount: 14705,
-    sourceClosureModuleCount: 230,
+    sourceClosureModuleCount: 231,
     axiomCount: 4,
     declarationKindCounts: {
       axiom: 4,
-      constructor: 715,
-      definition: 10309,
-      inductive: 315,
+      constructor: 718,
+      definition: 10318,
+      inductive: 318,
       opaque: 0,
       quotient: 0,
-      recursor: 315,
-      theorem: 13401
+      recursor: 318,
+      theorem: 13423
     },
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -2703,7 +2755,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...LOCKED_NAND_TARGET_EMITTER_CANDIDATES, ...LOCKED_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...CNF_TO_NAND_SEMANTIC_COMPILER_CANDIDATES, ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...RESIDUAL_GAIN_CHAIN_CANDIDATES, ...RESIDUAL_GAIN_STOPPING_CANDIDATES, ...RESIDUAL_TERMINAL_FULL_BRIDGE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_MODE_FIREWALL_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_MINIMUM_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_TRANSFER_CANDIDATES, ...RESIDUAL_TERMINAL_SATURATION_CANDIDATES, ...RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROPER_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_GOVERNED_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NEW_CANDIDATES, ...Array.from({ length: 239 }, (_, index) => ({
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...LOCKED_NAND_TARGET_EMITTER_CANDIDATES, ...LOCKED_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...CNF_TO_NAND_SEMANTIC_COMPILER_CANDIDATES, ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...RESIDUAL_GAIN_CHAIN_CANDIDATES, ...RESIDUAL_GAIN_STOPPING_CANDIDATES, ...RESIDUAL_TERMINAL_FULL_BRIDGE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_MODE_FIREWALL_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_MINIMUM_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_TRANSFER_CANDIDATES, ...RESIDUAL_TERMINAL_SATURATION_CANDIDATES, ...RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROPER_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_GOVERNED_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NEW_CANDIDATES, ...Array.from({ length: 239 }, (_, index) => ({
       name: `PNP.Test.Filler${index}`,
       module: "PNP.Test",
       kind: "theorem",
@@ -2716,7 +2768,7 @@ function makeProject(t) {
       axioms: []
     }
   };
-  assert.equal(inventoryPayload.milestoneCandidates.length, 2385, "synthetic inventory must match the published reviewed-candidate count");
+  assert.equal(inventoryPayload.milestoneCandidates.length, 2397, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
   const publicationMap = json({
     kind: "TestPublicationMap",
@@ -2827,7 +2879,8 @@ function makeProject(t) {
       ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREM_HASHES,
-      ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREM_HASHES
+      ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREM_HASHES,
+      ...RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREM_HASHES
     },
     milestones: [{
       id: "concrete-cook-levin-builder-first-clause-prefix",
@@ -8620,6 +8673,87 @@ test("rejects four-corner tight-basis maximum release, status, inventory, and pu
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal four-corner tight-basis maximum fingerprint mismatch/);
+});
+
+test("rejects computed terminal BN2 square-legitimacy release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalSquareFailClosedRouteDichotomyFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal computed BN2 square-legitimacy boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualTerminalSquareLegitimacyTheoremKernelTypeSha256[
+    "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusionOrFirstRoute"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual terminal computed BN2 square-legitimacy fingerprint mismatch/);
+
+  const releaseAxiom = makeProject(t);
+  releaseAxiom.release.earnedBoundary.residualTerminalSquareLegitimacyProjectAxiomClosure = ["PNP.ForgedAxiom"];
+  write(releaseAxiom.root, "downloads/formal-publication-release.json", json(releaseAxiom.release));
+  expectFailure(releaseAxiom, /current manifest residual terminal computed BN2 square-legitimacy axiom closure mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.residualTerminalSquareLocalConclusionOrFirstRouteTheorem =
+    "PNP.DirectWire.TerminalFourCornerCarrier.sideTightCompletionExists";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /current manifest residual terminal computed BN2 square-legitimacy theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal computed BN2 square-legitimacy evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-computed-bn2-square-legitimacy"
+  ).nonClaim = "This proves universal route silence, SaturatePositive, and P = NP.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal computed BN2 square-legitimacy publication boundary mismatch/);
+
+  const statusTheorem = makeProject(t);
+  const statusTheoremPayload = JSON.parse(readFileSync(path.join(statusTheorem.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusTheoremPayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-computed-bn2-square-legitimacy"
+  ).theoremRows.find(
+    (row) => row.name === "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusionOrFirstRoute"
+  ).actualKernelTypeSha256 = "0".repeat(64);
+  rewriteCorePayload(statusTheorem, "public/pnp-status.json", statusTheoremPayload);
+  expectFailure(statusTheorem, /status residual terminal computed BN2 square-legitimacy theorem evidence mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.TerminalComputedBN2SquareLegitimate.cornerCompatible"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal computed BN2 square legitimacy theorem mismatch/);
+
+  const inventoryModule = makeProject(t);
+  const inventoryModulePayload = JSON.parse(readFileSync(path.join(inventoryModule.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryModulePayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.TerminalComputedBN2SquareLegitimate.cornerCompatible"
+  ).module = "PNP.ForgedModule";
+  rewriteCorePayload(inventoryModule, "public/pnp-theorem-inventory.json", inventoryModulePayload);
+  expectFailure(inventoryModule, /inventory residual terminal computed BN2 square legitimacy theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones = mapMilestonePayload.milestones.filter(
+    (row) => row.id !== "residual-terminal-computed-bn2-square-legitimacy"
+  );
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal computed BN2 square-legitimacy boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusionOrFirstRoute"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal computed BN2 square-legitimacy fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

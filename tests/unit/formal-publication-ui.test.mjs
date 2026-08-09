@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'fe036a74807d08c1e763a850722eb8113c1b3d186ef41d900641ed6e9eadb44c');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '42695c4971028fff27f3c7f03eff1450c62845db0654436f59a190c3d2625af5');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 91);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 92);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -223,6 +223,26 @@ test('pre-fetch UI state reports four-corner optimum coherence as fail closed', 
   assert.match(rendered, /leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFourCornerOptimumFirstFailureFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalFourCornerOptimumCoherenceScope = null/u);
+});
+
+test('pre-fetch UI state reports computed terminal BN2 square legitimacy as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalSquareLegitimacyFormalized',
+    'leanResidualTerminalSquareStructuralCompatibilityFormalized',
+    'leanResidualTerminalSquareFrontierPushoutFormalized',
+    'leanResidualTerminalSquareSharedQuantityCarrierFormalized',
+    'leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized',
+    'leanResidualTerminalSquareFailClosedRouteDichotomyFormalized',
+    'leanResidualTerminalSquareLegitimacyAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalSquareLegitimacyScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalSquareLegitimacyFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSquareStructuralCompatibilityFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSquareFailClosedRouteDichotomyFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSquareLegitimacyScope = null/u);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -3022,7 +3042,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'a72f8bfd4df79e29c1ea8908883f6211e65094ab162cf98b19a12b8ae080b158'/);
+  assert.match(source, /const STATUS_SHA256 = 'c8adb9479ce14f702d693fc175710dd37670b0095c29d8522ced3ddb534bbeda'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3119,9 +3139,9 @@ test('terminal saturation requires the exact finite explicit-dependency closure 
   widenedScope.leanResidualTerminalSaturationScope = 'all-arbitrary-circuit-support-squares';
   assert.equal(validation.validateStatus(widenedScope, inventory), false);
 
-  const forgedSquareLegitimacy = structuredClone(status);
-  forgedSquareLegitimacy.leanResidualTerminalSquareLegitimacyFormalized = true;
-  assert.equal(validation.validateStatus(forgedSquareLegitimacy, inventory), false);
+  const forgedSaturatePositive = structuredClone(status);
+  forgedSaturatePositive.leanSaturatePositiveFormalized = true;
+  assert.equal(validation.validateStatus(forgedSaturatePositive, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
@@ -3155,9 +3175,9 @@ test('terminal physical support requires exact executable saturation and crossin
   forgedAudit.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed = false;
   assert.equal(validation.validateStatus(forgedAudit, inventory), false);
 
-  const forgedSquareLegitimacy = structuredClone(status);
-  forgedSquareLegitimacy.leanResidualTerminalSquareLegitimacyFormalized = true;
-  assert.equal(validation.validateStatus(forgedSquareLegitimacy, inventory), false);
+  const forgedSaturatePositive = structuredClone(status);
+  forgedSaturatePositive.leanSaturatePositiveFormalized = true;
+  assert.equal(validation.validateStatus(forgedSaturatePositive, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
@@ -3195,9 +3215,9 @@ test('terminal support extraction requires exact pins, open semantics, and a con
   erasedSemantics.leanResidualTerminalOpenSemanticsFormalized = false;
   assert.equal(validation.validateStatus(erasedSemantics, inventory), false);
 
-  const forgedSquareLegitimacy = structuredClone(status);
-  forgedSquareLegitimacy.leanResidualTerminalSquareLegitimacyFormalized = true;
-  assert.equal(validation.validateStatus(forgedSquareLegitimacy, inventory), false);
+  const forgedSaturatePositive = structuredClone(status);
+  forgedSaturatePositive.leanSaturatePositiveFormalized = true;
+  assert.equal(validation.validateStatus(forgedSaturatePositive, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
@@ -3295,12 +3315,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /25,059/);
-  assert.match(statusPage, /Ninety-one scoped milestones/);
+  assert.match(statusPage, /25,099/);
+  assert.match(statusPage, /Ninety-two scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 78-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 79-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

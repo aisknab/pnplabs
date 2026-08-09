@@ -53,7 +53,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Ninety-one narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone proves that, for every finite computed terminal support square, explicit observer, and full or quotient mode, Lean enumerates every exact profile-constrained minimum at all four corners, coherence-filters their complete finite Cartesian product, and proves under exact local route silence that the signed maximum equals the selected delta. This result does not prove universal route silence, connect each local route to the complete global no-outcome route system, prove BN2 square legitimacy, establish `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing or a residual route, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. Ninety-two narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone proves that, for every finite square computed from two seeds under one explicit terminal dependency system, direct-wire candidate, observer, and forgetful projection, Lean constructs the exact compatible governed frontier and projection square, keeps full and quotient minimum quantities on one carrier, and returns either the complete local conclusion under exact route silence or the deterministic first proof-bearing route. This computed structural result does not derive the dependency system from an arbitrary circuit, prove universal route silence, connect each local failure to the complete global no-outcome route system, identify a BCEL anchor square, establish `SaturatePositive`, Package E, BCELReady or BCEL/BN2-BN6, complete obstruction routing or a residual route, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. Four project-specific axioms and six formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -72,7 +72,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the seventy-eight-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the seventy-nine-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

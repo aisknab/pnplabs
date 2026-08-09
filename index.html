@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now checks every smallest four-view combination and takes the exact largest result</h2>
-          <p>A computer circuit is a network of simple yes-or-no operations. This part of the proposed proof compares four related views of one circuit. Each view can have several different designs tied for the smallest size. Lean now lists every smallest design for all four views, tries every possible four-way combination, and keeps exactly the combinations that agree where the views overlap.</p>
-          <p>When the existing local mismatch check finds no problem, Lean proves that at least one matching combination remains and that every retained combination gives the same signed number. It therefore calculates the exact largest value without incorrectly replacing a negative answer with zero. This works in both the full and reduced comparison modes. Lean has not proved that every square passes the local check, established BN2 square legitimacy, or completed SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 76% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-08-residual-terminal-four-corner-tight-basis-maximum">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now constructs and checks the complete computed four-view square</h2>
+          <p>Given two finite seed lists and one explicit set of terminal dependency rules, Lean now computes the four related terminal-support views, completes the governed frontier at every corner, and proves that the frontier and its reduced projection form the exact compatible square required by this local model. It also keeps the full and reduced minimum quantities on one checked carrier.</p>
+          <p>The final checker is fail-closed: when the exact local route queries are silent, Lean returns the complete local square conclusion; otherwise it returns the first full-then-reduced mismatch together with a proof that the route is real. This is computed BN2 square legitimacy for the explicit finite data, not the manuscript's unrestricted conclusion. Lean has not derived the dependency rules from an arbitrary circuit, proved universal route silence, connected every local failure to the complete global route system, or completed SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 77% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-09-residual-terminal-computed-bn2-square-legitimacy">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>mem_minimumImplementationBases_iff</code> pins the complete four-corner family of exact minimum implementations, while <code>mem_tightBasisFamily_iff</code> characterizes the full coherence-filtered Cartesian family. <code>tightBasisMaximum?_eq_delta</code>, together with its full and quotient specializations, proves the signed maximum equals the selected delta under exact local route silence. Lean has not proved universal route silence, connected every local route to the complete global obstruction system, proved BN2 square legitimacy, or finished SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>computedBN2SquareLegitimate</code> packages the exact governed frontier and forgetful-projection square for explicit finite dependency data. <code>computedBN2SquareQuantities</code> keeps full and quotient minima on one carrier, while <code>computedBN2LocalConclusionOrFirstRoute</code> returns either the exact local conclusion under route silence or the deterministic first proof-bearing route. Lean has not derived the dependency system from an arbitrary circuit, proved universal route silence, connected local failures to the complete global obstruction system, identified a BCEL anchor, or finished SaturatePositive, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -270,7 +270,14 @@ leanResidualTerminalFourCornerTightBasisMaximumAxiomAuditPassed = true
 leanResidualTerminalFourCornerTightBasisMaximumScope = "all-finite-computed-terminal-support-squares-observers-and-full-or-quotient-modes-complete-tight-basis-family-and-signed-maximum-under-exact-local-route-silence"
 leanResidualTerminalCoherentFourCornerBasisFormalized = true
 leanResidualTerminalCoherentFourCornerBasisScope = "conditional-on-exact-mode-appropriate-local-route-silence-not-universal-bn2-square-legitimacy"
-leanResidualTerminalSquareLegitimacyFormalized = false
+leanResidualTerminalSquareLegitimacyFormalized = true
+leanResidualTerminalSquareStructuralCompatibilityFormalized = true
+leanResidualTerminalSquareFrontierPushoutFormalized = true
+leanResidualTerminalSquareSharedQuantityCarrierFormalized = true
+leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized = true
+leanResidualTerminalSquareFailClosedRouteDichotomyFormalized = true
+leanResidualTerminalSquareLegitimacyAxiomAuditPassed = true
+leanResidualTerminalSquareLegitimacyScope = "all-finite-computed-terminal-support-squares-explicit-terminal-dependency-systems-direct-wire-candidates-observers-and-forgetful-projections-with-local-route-silence-or-proof-bearing-first-failure"
 leanSaturatePositiveFormalized = false
 leanBCELReadyFormalized = false
 leanResidualRoutesGlobalGainCompletenessFormalized = false
@@ -289,9 +296,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-08-114</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-09-115</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>fe036a74807d08c1e763a850722eb8113c1b3d186ef41d900641ed6e9eadb44c</code></div>
+            <div><span>Inventory SHA-256</span><code>42695c4971028fff27f3c7f03eff1450c62845db0654436f59a190c3d2625af5</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -299,18 +306,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>76</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>77</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 76 percent" data-proof-progress="76">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>76</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 77 percent" data-proof-progress="77">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>77</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 76% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 77% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
