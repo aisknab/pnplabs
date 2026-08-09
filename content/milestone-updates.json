@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-09-residual-terminal-computed-bcel-anchor-nucleus",
+      "milestoneId": "residual-terminal-computed-bcel-anchor-nucleus",
+      "publishedAt": "2026-08-09T07:32:49Z",
+      "title": "Lean now computes the canonical positive anchor nucleus and checks every proper cut",
+      "plainLanguage": [
+        "For an explicit finite direct-wire candidate, terminal dependency system, governed proper-positive support, forgetful projection, and executable observer, Lean now enumerates every candidate anchor subfamily and selects the unique canonical minimum-cardinality one with positive projection defect. It then checks the anchor algebra and every proper cut in a deterministic order.",
+        "The classifier is fail-closed: it returns an insufficient nucleus, the exact first anchor-algebra mismatch, the exact first proper-cut defect mismatch, the first proof-bearing full-before-reduced local route, or exact constant-cut and local BN2 conclusions for every proper cut. This milestone assumes both the terminal dependency system and a positive whole-support projection defect. It does not derive either premise, identify the manuscript's activation or charge classes, connect every local failure to the complete global route system, or establish SaturatePositive, Package E, BCELReady, ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 78% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 78,
+      "source": {
+        "commit": "f0bad8053fa334d4d996abd8ee5b796138526ec8",
+        "tree": "2e5ee34ffcea47219605756ef3041246996c734c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-116",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-COMPUTED-BCEL-ANCHOR-NUCLEUS-115"
+      }
+    },
+    {
       "id": "2026-08-09-residual-terminal-computed-bn2-square-legitimacy",
       "milestoneId": "residual-terminal-computed-bn2-square-legitimacy",
       "publishedAt": "2026-08-09T03:20:33Z",

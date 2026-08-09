@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '42695c4971028fff27f3c7f03eff1450c62845db0654436f59a190c3d2625af5');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'efb6c71dcef5ac3396058e8930785aef0b11d28c28d1db2dd0fc3234547e82f6');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 92);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 93);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -243,6 +243,74 @@ test('pre-fetch UI state reports computed terminal BN2 square legitimacy as fail
   assert.match(rendered, /leanResidualTerminalSquareStructuralCompatibilityFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalSquareFailClosedRouteDichotomyFormalized = false/u);
   assert.match(rendered, /leanResidualTerminalSquareLegitimacyScope = null/u);
+});
+
+test('pre-fetch UI state reports computed terminal BCEL anchor nucleus as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalComputedBCELAnchorNucleusFormalized',
+    'leanResidualTerminalBCELMinimumPositiveNucleusFormalized',
+    'leanResidualTerminalBCELAnchorAlgebraFormalized',
+    'leanResidualTerminalBCELCutDefectFirewallFormalized',
+    'leanResidualTerminalBCELCutRouteDichotomyFormalized',
+    'leanResidualTerminalBCELConstantCutConclusionFormalized',
+    'leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed',
+    'leanSaturatePositiveFormalized',
+    'leanBCELReadyFormalized',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalBCELAnchorNucleusScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalComputedBCELAnchorNucleusFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalBCELCutRouteDichotomyFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalBCELAnchorNucleusScope = null/u);
+  assert.match(rendered, /leanSaturatePositiveFormalized = false/u);
+  assert.match(rendered, /leanBCELReadyFormalized = false/u);
+});
+
+test('computed terminal BCEL anchor nucleus requires its exact conservative boundary', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-computed-bcel-anchor-nucleus'
+  );
+  assert.equal(milestone.requiredTheorems.length, 36);
+  assert.equal(milestone.theoremRows.every((row) => row.present && row.kernelTypeFingerprintMatches), true);
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  for (const key of [
+    'leanResidualTerminalComputedBCELAnchorNucleusFormalized',
+    'leanResidualTerminalBCELMinimumPositiveNucleusFormalized',
+    'leanResidualTerminalBCELAnchorAlgebraFormalized',
+    'leanResidualTerminalBCELCutDefectFirewallFormalized',
+    'leanResidualTerminalBCELCutRouteDichotomyFormalized',
+    'leanResidualTerminalBCELConstantCutConclusionFormalized',
+    'leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed',
+  ]) {
+    const altered = structuredClone(status);
+    altered[key] = false;
+    assert.equal(validation.validateStatus(altered, inventory), false, key);
+  }
+
+  for (const key of ['leanSaturatePositiveFormalized', 'leanBCELReadyFormalized']) {
+    const widened = structuredClone(status);
+    widened[key] = true;
+    assert.equal(validation.validateStatus(widened, inventory), false, key);
+  }
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualTerminalBCELAnchorNucleusScope = 'unconditional-bcel-ready';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const widenedMilestone = structuredClone(status);
+  widenedMilestone.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-computed-bcel-anchor-nucleus'
+  ).nonClaim = 'This establishes BCELReady and P = NP.';
+  assert.equal(validation.validateStatus(widenedMilestone, inventory), false);
+
+  const missingPin = structuredClone(status);
+  missingPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-computed-bcel-anchor-nucleus'
+  ).requiredTheorems.pop();
+  assert.equal(validation.validateStatus(missingPin, inventory), false);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -3042,7 +3110,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'c8adb9479ce14f702d693fc175710dd37670b0095c29d8522ced3ddb534bbeda'/);
+  assert.match(source, /const STATUS_SHA256 = '454bafaa83b7c4351a73bcc6f69e00f77270272da362216323f64ae50c290345'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3315,8 +3383,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /25,099/);
-  assert.match(statusPage, /Ninety-two scoped milestones/);
+  assert.match(statusPage, /25,515/);
+  assert.match(statusPage, /Ninety-three scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
