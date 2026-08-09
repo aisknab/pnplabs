@@ -54,7 +54,7 @@ test('plain-language orientation is static and available before technical depth'
     'Does this project prove that P equals NP?',
     'What is P versus NP?',
     'What does “machine-checked” mean?',
-    'What does the 77% tracker mean?',
+    'What does the 78% tracker mean?',
     'How can I follow new milestones?',
   ]) assert.ok(faq.includes(question), question);
 
@@ -76,7 +76,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 95 formal milestone records/u);
+  assert.match(status, /Show all 96 formal milestone records/u);
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
@@ -91,21 +91,21 @@ test('updates expose a provider-free feed and a clearly qualified progress estim
   assert.match(updates, /https:\/\/pnplabs\.com\.au\/updates\.xml/u);
   assert.match(updates, /data-copy="#feed-url"/u);
   assert.match(updates, /No email address or PNP Labs account is needed/u);
-  assert.match(updates, /About 77% of the known formalisation work/u);
+  assert.match(updates, /About 78% of the known formalisation work/u);
   assert.match(updates, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
   assert.match(feed, /<link rel="self" type="application\/atom\+xml" href="https:\/\/pnplabs\.com\.au\/updates\.xml"\/>/u);
-  assert.match(svg, /77% ESTIMATED/u);
-  assert.match(updates, /<progress[^>]+value="77"[^>]+aria-label="Estimated proof reconstruction progress: 77 percent"/u);
+  assert.match(svg, /78% ESTIMATED/u);
+  assert.match(updates, /<progress[^>]+value="78"[^>]+aria-label="Estimated proof reconstruction progress: 78 percent"/u);
   assert.match(svg, /editorial · revisable/u);
   assert.match(home, /<aside class="home-progress-rail" aria-labelledby="home-progress-title">/u);
-  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 77 percent"/u);
-  assert.match(home, /data-proof-progress="77"/u);
+  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 78 percent"/u);
+  assert.match(home, /data-proof-progress="78"/u);
   assert.doesNotMatch(home, /style="--proof-progress:/u);
   assert.match(home, /Editorial · revisable\./u);
   assert.equal((home.match(/>Follow updates<\/a>/gu) || []).length, 1);
   assert.doesNotMatch(home, /proof-progress-section/u);
   assert.match(css, /\.home-hero \.artifact-grid \{\s*grid-template-columns: minmax\(0, 880px\) minmax\(250px, 292px\)/u);
-  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 77%;/u);
+  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 78%;/u);
   assert.match(css, /\.proof-tape-scale span:nth-child\(2\) \{\s*bottom: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-fill \{[\s\S]*width: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-scale span:nth-child\(2\) \{[\s\S]*left: var\(--proof-progress\)/u);

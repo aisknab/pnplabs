@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-115';
-const STATUS_SHA256 = 'c8adb9479ce14f702d693fc175710dd37670b0095c29d8522ced3ddb534bbeda';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-COMPUTED-BN2-SQUARE-LEGITIMACY-114';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-09-115';
-const INVENTORY_SHA256 = '42695c4971028fff27f3c7f03eff1450c62845db0654436f59a190c3d2625af5';
-const SOURCE_CLOSURE_SHA256 = '01503dfe0db82b6672d8ace6cce5061846a8f0ad41322fc022f73676bad80124';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-116';
+const STATUS_SHA256 = '454bafaa83b7c4351a73bcc6f69e00f77270272da362216323f64ae50c290345';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-COMPUTED-BCEL-ANCHOR-NUCLEUS-115';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-09-116';
+const INVENTORY_SHA256 = 'efb6c71dcef5ac3396058e8930785aef0b11d28c28d1db2dd0fc3234547e82f6';
+const SOURCE_CLOSURE_SHA256 = '1f466ddd7a7436ab57ddfbccce989d01c4d8e61e90480d76f6265e82c0fdd228';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 25099,
-  theorems: 13423,
-  assumptionFreeTheorems: 7025,
-  excludedPrivateDeclarations: 14705,
-  modules: 231,
+  declarations: 25515,
+  theorems: 13564,
+  assumptionFreeTheorems: 7043,
+  excludedPrivateDeclarations: 14779,
+  modules: 232,
   axioms: 4,
 });
 
@@ -3777,6 +3777,45 @@ const RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_DECLARATIONS = Object.fre
   ["PNP.DirectWire.TerminalProjectionFourCorners.transferIdentity", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionTransfer"],
 ]);
 
+const RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalBCELAnchorProblem.mem_anchorRecords_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalBCELAnchorProblem.anchorRecords_nodup", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalBCELAnchorProblem.anchorRecords_mem_allAnchorSubfamilies", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.findTerminalPositiveAnchorNucleus_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.findTerminalPositiveAnchorNucleus_eq_none_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.findTerminalPositiveAnchorNucleus_exists_of_whole_positive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.findTerminalPositiveAnchorNucleus_unique", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalBCELAnchorAlgebraCheck.disagrees_eq_true_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.terminalBCELAnchorAlgebraCheck_mem", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.mem_allTerminalBCELAnchorAlgebraChecks_governed", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.firstTerminalBCELAnchorAlgebraMismatch?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.firstTerminalBCELAnchorAlgebraMismatch?_eq_none_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.terminalBCELProperCutSeedBool_eq_true_iff", ["propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.mem_allTerminalBCELProperCutSeeds_iff", ["propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalBCELCutDefectCheck.disagrees_eq_true_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.terminalBCELCutDefectCheck_mem", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.mem_allTerminalBCELCutDefectChecks_proper", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.firstTerminalBCELCutDefectMismatch?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.firstTerminalBCELCutDefectMismatch?_eq_none_all", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.firstTerminalBCELCutRoute?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.firstTerminalBCELCutRoute?_eq_none_noRoutes", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.computedBCELCutConclusionOfNoFailures", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.strictSubfamily_defect_zero", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.anchorSizeAtLeastTwo", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.properCutConstantEquation", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.properCutLocalConclusion", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.classifyTerminalBCELAnchorNucleus_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBCELAnchorNucleus"],
+  ["PNP.DirectWire.allTerminalPrimitiveRecords_nodup", ["Quot.sound", "propext"], "PNP.ResidualTerminalExecutableSaturation"],
+  ["PNP.DirectWire.filter_mem_terminalListSubsets", ["Quot.sound", "propext"], "PNP.ResidualTerminalProperSupport"],
+  ["PNP.DirectWire.mem_allTerminalPrimitiveRecords", [], "PNP.ResidualTerminalSaturation"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.firstOptimumRoute?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerSideTightCompletion"],
+  ["PNP.DirectWire.TerminalFourCornerOptimumRoutedFailure.sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalFourCornerSideTightCompletion"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.computedBN2SquareLegitimate", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN2SquareLegitimacy"],
+  ["PNP.DirectWire.TerminalFourCornerCarrier.computedBN2LocalConclusion", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN2SquareLegitimacy"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.constantCutEquation_of_defects", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionTransfer"],
+  ["PNP.DirectWire.TerminalProjectionFourCorners.projectionExcess_pos_of_constantCut", ["Quot.sound", "propext"], "PNP.ResidualTerminalProjectionTransfer"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4312,6 +4351,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-four-corner-side-tight-completion',
   'residual-terminal-four-corner-tight-basis-maximum',
   'residual-terminal-computed-bn2-square-legitimacy',
+  'residual-terminal-computed-bcel-anchor-nucleus',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4714,6 +4754,16 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalSquareFailClosedRouteDichotomyFormalized: false,
   leanResidualTerminalSquareLegitimacyAxiomAuditPassed: false,
   leanResidualTerminalSquareLegitimacyScope: null,
+  leanResidualTerminalComputedBCELAnchorNucleusFormalized: false,
+  leanResidualTerminalBCELMinimumPositiveNucleusFormalized: false,
+  leanResidualTerminalBCELAnchorAlgebraFormalized: false,
+  leanResidualTerminalBCELCutDefectFirewallFormalized: false,
+  leanResidualTerminalBCELCutRouteDichotomyFormalized: false,
+  leanResidualTerminalBCELConstantCutConclusionFormalized: false,
+  leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed: false,
+  leanResidualTerminalBCELAnchorNucleusScope: null,
+  leanSaturatePositiveFormalized: false,
+  leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
   leanResidualTerminalProjectionPhysicalInvariantFormalized: false,
   leanResidualTerminalProjectionProfileExactFormalized: false,
@@ -5196,6 +5246,16 @@ leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized = ${payload
 leanResidualTerminalSquareFailClosedRouteDichotomyFormalized = ${payload.leanResidualTerminalSquareFailClosedRouteDichotomyFormalized ?? false}
 leanResidualTerminalSquareLegitimacyAxiomAuditPassed = ${payload.leanResidualTerminalSquareLegitimacyAxiomAuditPassed ?? false}
 leanResidualTerminalSquareLegitimacyScope = ${payload.leanResidualTerminalSquareLegitimacyScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSquareLegitimacyScope)}
+leanResidualTerminalComputedBCELAnchorNucleusFormalized = ${payload.leanResidualTerminalComputedBCELAnchorNucleusFormalized ?? false}
+leanResidualTerminalBCELMinimumPositiveNucleusFormalized = ${payload.leanResidualTerminalBCELMinimumPositiveNucleusFormalized ?? false}
+leanResidualTerminalBCELAnchorAlgebraFormalized = ${payload.leanResidualTerminalBCELAnchorAlgebraFormalized ?? false}
+leanResidualTerminalBCELCutDefectFirewallFormalized = ${payload.leanResidualTerminalBCELCutDefectFirewallFormalized ?? false}
+leanResidualTerminalBCELCutRouteDichotomyFormalized = ${payload.leanResidualTerminalBCELCutRouteDichotomyFormalized ?? false}
+leanResidualTerminalBCELConstantCutConclusionFormalized = ${payload.leanResidualTerminalBCELConstantCutConclusionFormalized ?? false}
+leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed = ${payload.leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed ?? false}
+leanResidualTerminalBCELAnchorNucleusScope = ${payload.leanResidualTerminalBCELAnchorNucleusScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBCELAnchorNucleusScope)}
+leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
+leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
 leanResidualTerminalProjectionPhysicalInvariantFormalized = ${payload.leanResidualTerminalProjectionPhysicalInvariantFormalized ?? false}
 leanResidualTerminalProjectionProfileExactFormalized = ${payload.leanResidualTerminalProjectionProfileExactFormalized ?? false}
@@ -5291,13 +5351,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 718,
-    definition: 10318,
-    inductive: 318,
+    constructor: 743,
+    definition: 10536,
+    inductive: 334,
     opaque: 0,
     quotient: 0,
-    recursor: 318,
-    theorem: 13423,
+    recursor: 334,
+    theorem: 13564,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5722,6 +5782,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalComputedBCELAnchorNucleus =
+    RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
 
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
@@ -6103,6 +6169,9 @@ function validateInventory(inventory) {
     && residualTerminalComputedBN2SquareLegitimacy.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalComputedBCELAnchorNucleus.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
@@ -6145,7 +6214,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2397
+    && inventory.milestoneCandidates.length === 2426
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6209,7 +6278,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 92;
+    const shouldBeEarned = index < 93;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6316,6 +6385,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalComputedBN2SquareLegitimacyMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-computed-bn2-square-legitimacy'
+  );
+  const residualTerminalComputedBCELAnchorNucleusMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-computed-bcel-anchor-nucleus'
   );
 
   return status?.kind === 'PNPFormalReconstructionStatus0'
@@ -6678,6 +6750,22 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSquareFailClosedRouteDichotomyFormalized === true
     && status.leanResidualTerminalSquareLegitimacyAxiomAuditPassed === true
     && status.leanResidualTerminalSquareLegitimacyScope === "all-finite-computed-terminal-support-squares-explicit-terminal-dependency-systems-direct-wire-candidates-observers-and-forgetful-projections-with-local-route-silence-or-proof-bearing-first-failure"
+    && residualTerminalComputedBCELAnchorNucleusMilestone?.classification === "formalized-residual-terminal-computed-bcel-anchor-nucleus"
+    && residualTerminalComputedBCELAnchorNucleusMilestone.status === "formalized-residual-terminal-computed-bcel-anchor-nucleus"
+    && residualTerminalComputedBCELAnchorNucleusMilestone.scope === "For every finite direct-wire candidate, explicit terminal dependency system, computed governed proper-positive support, forgetful projection, executable ambient observer, and positive whole-support projection defect, Lean computes the canonical minimum-cardinality positive anchor nucleus and returns either an insufficient nucleus, the exact first anchor-algebra mismatch, the exact first proper-cut defect mismatch, the proof-bearing first full-before-quotient local route, or exact constant-cut and local BN2 conclusions for every proper cut."
+    && residualTerminalComputedBCELAnchorNucleusMilestone.nonClaim === "This milestone assumes a positive whole-support projection defect and an explicit terminal dependency system. It does not derive either premise, identify manuscript activation or charge equivalence classes absent from the terminal model, connect a local failure to the complete global no-outcome route system, establish SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalComputedBCELAnchorNucleusMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalComputedBCELAnchorNucleusFormalized === true
+    && status.leanResidualTerminalBCELMinimumPositiveNucleusFormalized === true
+    && status.leanResidualTerminalBCELAnchorAlgebraFormalized === true
+    && status.leanResidualTerminalBCELCutDefectFirewallFormalized === true
+    && status.leanResidualTerminalBCELCutRouteDichotomyFormalized === true
+    && status.leanResidualTerminalBCELConstantCutConclusionFormalized === true
+    && status.leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed === true
+    && status.leanResidualTerminalBCELAnchorNucleusScope === "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-governed-proper-positive-supports-forgetful-projections-executable-ambient-observers-and-positive-whole-support-projection-defect"
     && status.leanSaturatePositiveFormalized === false
     && status.leanBCELReadyFormalized === false
     && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
