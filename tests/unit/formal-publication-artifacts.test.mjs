@@ -704,6 +704,32 @@ const RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_SCOPE = "all-finite-direc
 const RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_MILESTONE_SCOPE = "For every finite direct-wire candidate, explicit terminal dependency system, computed governed proper-positive support, forgetful projection, and executable ambient observer, Lean computes the whole-support defect: zero projection defect returns an attained quotient minimum with a checked full lift, while positive defect delegates exactly to the existing fail-closed BCEL anchor-nucleus classifier.";
 const RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_NON_CLAIM = "This closes only projectionPositivityNotLostSilently in the current finite terminal model. It assumes an explicit terminal dependency system and an already computed governed proper-positive support. It does not discharge transparentSaturationCostBalanced, interfaceExposureRoutesToE, originKernelObligationClosureRouted, or firstNontransparentStepRecorded; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
 
+const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS = {
+  "PNP.DirectWire.terminalSaturateTrace_eventsLinked": { hash: "0a2c3c3837e55a3fc6482b86ad0b384afaf0b6756ad836db6d8d97cf70475f33", axioms: ["propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
+  "PNP.DirectWire.terminalSaturateTrace_records": { hash: "ca6777bcf22e71b8a9fd6c6ba9b642bf5cff1e9da0678951e0727270703395e0", axioms: ["propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
+  "PNP.DirectWire.terminalCandidateSaturationSystem_profileSystem": { hash: "c5a0f51477e004b664a703c7689792b7d08d17198c667336c5aaca09af859a5a", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalCandidateSaturation" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.uniqueMaterializerOwner": { hash: "1d99a8ebcdcb8ab4a92ead32a2165c1d9db4ac1578d92a5e641e419119b5716f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.supportCostBalanced": { hash: "5047cdebb2104dc764d1676f5bdd821d8e45f91e2fba2deb1211fd6585363449", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.fullCostBalanced": { hash: "4c0a1dffcb5ac72d2743c8b92781c0737ea9b1644c00e4fda6e1036494124ce2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.quotientCostBounded": { hash: "3697d87145c0de4be320b907304b0285aba779420f291e96a0e49e4b4ac4b837", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.fullSlack_preserved": { hash: "79cc2719509883de624fd7048b32a6b35a0b42d66a2cfdd03e61ca163e93edbb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.projectionDefect_mono": { hash: "22b7cd1069ba4d5e2353c2c2017d58b7e672de723bbd845ddc2a527bd31b96e1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalTransparentSaturationStep.fullPositive_preserved": { hash: "69b951a411b9579cdc5ebf2519fc6f304f3866f59fdbf803cdfccc0bc3e853f4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationEventsLinked.fullSlack_preserved": { hash: "45847001ac67c7472e6b13432d4602ab47695181c8526459ba3253fb4ad1a34f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationEventsLinked.projectionDefect_mono": { hash: "36c7582fb28d35c3bb9a1086fdb5ffa5604778969adb14bd6b49c4e4f1362e32", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationEventsLinked.fullPositive_preserved": { hash: "da0af342efe39c484b1a5effd9124924581ed638b1e577f511dc6508e9469ffc", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_event": { hash: "130f1fd981cf6b36eec26e96b2595146850c8388a6076fe4504b9c0915203741", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_fullSlack_preserved": { hash: "fa9685981cb6b2db8c729a5fe506fffa0f32a43acdfb26f75b50a85ce7213c4c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_projectionDefect_mono": { hash: "896b644460ba7b1d32ffa7624285c8b9ff501d0dcfe46e10e304ba3aa4160a55", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" },
+  "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_fullPositive_preserved": { hash: "41f32ac41a2fa7a60fe34c561ce71c85a606043eab735f60917ff80b161b669f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSaturationCostBalance" }
+};
+const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_SCOPE = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-dependency-system-rule-labelled-exact-cost-balance-or-first-nontransparent-step";
+const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean computes the candidate-derived dependency system and deterministic rule-labelled saturation trace, then returns proof that every event is exactly cost-balanced with preserved full slack and nondecreasing projection defect, or records the exact first nontransparent event and complete transparent prefix.";
+const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NON_CLAIM = "This closes only the finite terminal forms of transparentSaturationCostBalanced and firstNontransparentStepRecorded. The executable observer and forgetful projection remain explicit model inputs, and a nontransparent event is recorded rather than routed. It does not discharge interfaceExposureRoutesToE or originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -722,15 +748,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5");
+  assert.equal(result.coreCommit, "ead67f4864902e667e5fd436eea21c61de2f871e");
 });
 
-test("current release is pinned, eighty-page, exposes the terminal saturation-positivity firewall, and fails closed", () => {
+test("current release is pinned, eighty-page, exposes candidate-derived saturation cost balance, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-09-100");
-  assert.equal(release.source.commit, "e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5");
-  assert.equal(release.source.proofCommit, "b3147f70cd27349fb93e233ec4a0d0673298c261");
-  assert.equal(release.source.tree, "1a326290d19798563b9ed4680228ff595b620248");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-09-101");
+  assert.equal(release.source.commit, "ead67f4864902e667e5fd436eea21c61de2f871e");
+  assert.equal(release.source.proofCommit, "906b63ac065ee8a1b3605b36e9ac4df2712e0754");
+  assert.equal(release.source.tree, "072fe73440ac21f5daa7a9a3a79b51deb459aeb6");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 80);
@@ -2652,6 +2678,29 @@ test("current release is pinned, eighty-page, exposes the terminal saturation-po
   assert.equal(release.earnedBoundary.residualTerminalSaturationPositivityFirewallNoCheckedLiftTheorem, "PNP.DirectWire.terminalSaturationPositivity_no_checkedFullLiftAtMinimum");
   assert.equal(release.earnedBoundary.residualTerminalSaturationPositivityFirewallClassifierTheorem, "PNP.DirectWire.classifyTerminalSaturationPositivity_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalCandidateSaturationFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFirstNontransparentStepFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceAuditedDeclarationCount, 53);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceEmptyAxiomDeclarationCount, 10);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalancePropextOnlyDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalancePropextQuotSoundDeclarationCount, 37);
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceScope, RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSaturationCostBalanceTheoremKernelTypeSha256, RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSaturationCostBalanceAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalSaturationCostBalanceProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalCandidateSaturationTraceLinkedTheorem, "PNP.DirectWire.terminalSaturateTrace_eventsLinked");
+  assert.equal(release.earnedBoundary.residualTerminalCandidateSaturationTraceRecordsTheorem, "PNP.DirectWire.terminalSaturateTrace_records");
+  assert.equal(release.earnedBoundary.residualTerminalCandidateSaturationProfileSystemTheorem, "PNP.DirectWire.terminalCandidateSaturationSystem_profileSystem");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceUniqueOwnerTheorem, "PNP.DirectWire.TerminalTransparentSaturationStep.uniqueMaterializerOwner");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceSupportCostTheorem, "PNP.DirectWire.TerminalTransparentSaturationStep.supportCostBalanced");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceFullCostTheorem, "PNP.DirectWire.TerminalTransparentSaturationStep.fullCostBalanced");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceQuotientCostTheorem, "PNP.DirectWire.TerminalTransparentSaturationStep.quotientCostBounded");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceHistorySlackTheorem, "PNP.DirectWire.TerminalSaturationEventsLinked.fullSlack_preserved");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceHistoryDefectTheorem, "PNP.DirectWire.TerminalSaturationEventsLinked.projectionDefect_mono");
+  assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceOutcomeTheorem, "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_event");
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2683,12 +2732,12 @@ test("current release is pinned, eighty-page, exposes the terminal saturation-po
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 97 milestones with terminal saturation-positivity firewall pinned", () => {
+test("status and inventory publish exactly 98 milestones with candidate-derived saturation cost balance pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 97);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 94);
+  assert.equal(milestones.length, 98);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 95);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3556,24 +3605,56 @@ test("status and inventory publish exactly 97 milestones with terminal saturatio
   assert.equal(status.leanResidualTerminalSaturationPositivityFirewallFormalized, true);
   assert.equal(status.leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalSaturationPositivityFirewallScope, RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_SCOPE);
+
+  const candidateSaturationCostBalance = milestones.find((row) => row.id === "residual-terminal-candidate-saturation-cost-balance");
+  assert.equal(candidateSaturationCostBalance.classification, "formalized-residual-terminal-candidate-saturation-cost-balance");
+  assert.equal(candidateSaturationCostBalance.status, "formalized-residual-terminal-candidate-saturation-cost-balance");
+  assert.equal(candidateSaturationCostBalance.earned, true);
+  assert.equal(candidateSaturationCostBalance.allPresent, true);
+  assert.equal(candidateSaturationCostBalance.allAssumptionFree, false);
+  assert.equal(candidateSaturationCostBalance.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(candidateSaturationCostBalance.allKernelTypesMatch, true);
+  assert.equal(candidateSaturationCostBalance.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(candidateSaturationCostBalance.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(candidateSaturationCostBalance.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_HASHES
+  );
+  for (const row of candidateSaturationCostBalance.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(candidateSaturationCostBalance.scope, RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_MILESTONE_SCOPE);
+  assert.equal(candidateSaturationCostBalance.nonClaim, RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalCandidateSaturationFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationCostBalanceFormalized, true);
+  assert.equal(status.leanResidualTerminalFirstNontransparentStepFormalized, true);
+  assert.equal(status.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalSaturationCostBalanceScope, RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(inventory.declarationCount, 25571);
-  assert.equal(inventory.theoremCount, 13587);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7043);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14779);
-  assert.equal(inventory.sourceClosureModuleCount, 233);
-  assert.equal(inventory.milestoneCandidates.length, 2432);
+  assert.equal(inventory.declarationCount, 25863);
+  assert.equal(inventory.theoremCount, 13665);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7079);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14904);
+  assert.equal(inventory.sourceClosureModuleCount, 235);
+  assert.equal(inventory.milestoneCandidates.length, 2449);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 746,
-    definition: 10562,
-    inductive: 336,
+    constructor: 765,
+    definition: 10735,
+    inductive: 347,
     opaque: 0,
     quotient: 0,
-    recursor: 336,
-    theorem: 13587
+    recursor: 347,
+    theorem: 13665
   });
 });
 
