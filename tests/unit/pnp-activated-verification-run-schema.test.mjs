@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-08-114');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-115');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 25059);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13401);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 25099);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13423);
   assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7025);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14705);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 230);
-  assert.equal(status.formalPublicationMilestones.length, 94);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 91);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 231);
+  assert.equal(status.formalPublicationMilestones.length, 95);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 92);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
@@ -66,6 +66,17 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.leanResidualTerminalProjectionMeetJoinCommuteFormalized, true);
   assert.equal(status.leanResidualTerminalProjectionPushoutCommuteFormalized, true);
   assert.equal(status.leanResidualTerminalProjectionSquareAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalSquareLegitimacyFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareStructuralCompatibilityFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareFrontierPushoutFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareSharedQuantityCarrierFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareLocalConclusionUnderRouteSilenceFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareFailClosedRouteDichotomyFormalized, true);
+  assert.equal(status.leanResidualTerminalSquareLegitimacyAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalSquareLegitimacyScope,
+    'all-finite-computed-terminal-support-squares-explicit-terminal-dependency-systems-direct-wire-candidates-observers-and-forgetful-projections-with-local-route-silence-or-proof-bearing-first-failure'
+  );
   assert.equal(status.leanConcreteLockedNANDParserMachineFormalized, true);
   assert.equal(status.leanConcreteLockedNANDParserAxiomAuditPassed, true);
   assert.equal(status.leanConcreteLockedNANDParserAuditedDeclarationCount, 380);
