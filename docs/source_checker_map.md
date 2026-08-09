@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `f0bad8053fa334d4d996abd8ee5b796138526ec8`. Its generated status payload is current
+core commit `e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the seventy-nine-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the eighty-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `f0bad8053fa334d4d996abd8ee5b796138526ec8` (tree `2e5ee34ffcea47219605756ef3041246996c734c`) | Exact source tree reviewed and merged through computed BN2 square legitimacy and the canonical minimum-cardinality positive terminal anchor nucleus, including exact fail-closed anchor-algebra, proper-cut defect, route, constant-cut, and local-conclusion branches |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,426 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5` (tree `1a326290d19798563b9ed4680228ff595b620248`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, and the total zero-or-positive whole-support projection-defect classifier with an attained quotient minimum and checked full lift in the zero branch |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,432 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Ninety-three earned scoped milestones through the computed terminal BCEL anchor nucleus; the dependency system and positive whole-support projection defect remain premises; three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current seventy-nine-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Ninety-four earned scoped milestones through the computed terminal saturation-positivity firewall; the dependency system and governed proper-positive support remain premises; only `projectionPositivityNotLostSilently` is closed among the five SaturatePositive obligations; three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

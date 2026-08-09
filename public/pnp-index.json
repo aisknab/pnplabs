@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 98,
+  "version": 99,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "f0bad8053fa334d4d996abd8ee5b796138526ec8",
-  "sourceProofCommitRef": "458e0e097282876d6b02975905c203195c976eeb",
-  "sourceTree": "2e5ee34ffcea47219605756ef3041246996c734c",
+  "sourceCommitRef": "e6fcbad711f1bdfcc67d8e4c748f2a65d192b8a5",
+  "sourceProofCommitRef": "b3147f70cd27349fb93e233ec4a0d0673298c261",
+  "sourceTree": "1a326290d19798563b9ed4680228ff595b620248",
   "syncedOn": "2026-08-09",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-116",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-COMPUTED-BCEL-ANCHOR-NUCLEUS-115",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-09-116",
-  "leanTheoremInventorySha256": "efb6c71dcef5ac3396058e8930785aef0b11d28c28d1db2dd0fc3234547e82f6",
-  "leanSourceClosureSha256": "1f466ddd7a7436ab57ddfbccce989d01c4d8e61e90480d76f6265e82c0fdd228",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-09-116",
-  "canonicalReportPages": 79,
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-117",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-09-RESIDUAL-TERMINAL-SATURATION-POSITIVITY-FIREWALL-116",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-09-117",
+  "leanTheoremInventorySha256": "2973e90172e160d070b3eb722ac146274c14e144b8c38677126149964c35dd28",
+  "leanSourceClosureSha256": "eec7fd5794e7fc945e4f3ef219b807cc3a6d5a0b07c67a2da5e33c07eda2ce0b",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-09-117",
+  "canonicalReportPages": 80,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 25515,
-    "leanTheoremInventoryTheoremCount": 13564,
+    "leanTheoremInventoryDeclarationCount": 25571,
+    "leanTheoremInventoryTheoremCount": 13587,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7043,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 14779,
-    "leanTheoremInventorySourceClosureModuleCount": 232,
+    "leanTheoremInventorySourceClosureModuleCount": 233,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4171,12 +4171,15 @@
     "leanResidualTerminalBCELAnchorNucleusAxiomAuditPassed": true,
     "leanResidualTerminalBCELAnchorNucleusScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-governed-proper-positive-supports-forgetful-projections-executable-ambient-observers-and-positive-whole-support-projection-defect",
     "leanSaturatePositiveFormalized": false,
-    "leanBCELReadyFormalized": false
+    "leanBCELReadyFormalized": false,
+    "leanResidualTerminalSaturationPositivityFirewallFormalized": true,
+    "leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed": true,
+    "leanResidualTerminalSaturationPositivityFirewallScope": "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-computed-governed-proper-positive-supports-forgetful-projections-and-executable-ambient-observers-total-zero-or-positive-whole-support-projection-defect-classification"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 93,
+    "earned": 94,
     "unearned": 3,
-    "total": 96
+    "total": 97
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4271,7 +4274,8 @@
     "residual-terminal-four-corner-side-tight-completion",
     "residual-terminal-four-corner-tight-basis-maximum",
     "residual-terminal-computed-bn2-square-legitimacy",
-    "residual-terminal-computed-bcel-anchor-nucleus"
+    "residual-terminal-computed-bcel-anchor-nucleus",
+    "residual-terminal-saturation-positivity-firewall"
   ],
   "unearnedMilestones": [
     "global-locked-nand-threshold",

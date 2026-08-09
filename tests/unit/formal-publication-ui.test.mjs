@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'efb6c71dcef5ac3396058e8930785aef0b11d28c28d1db2dd0fc3234547e82f6');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '2973e90172e160d070b3eb722ac146274c14e144b8c38677126149964c35dd28');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 93);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 94);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -309,6 +309,56 @@ test('computed terminal BCEL anchor nucleus requires its exact conservative boun
   const missingPin = structuredClone(status);
   missingPin.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-computed-bcel-anchor-nucleus'
+  ).requiredTheorems.pop();
+  assert.equal(validation.validateStatus(missingPin, inventory), false);
+});
+
+test('pre-fetch UI state reports the terminal saturation-positivity firewall as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalSaturationPositivityFirewallFormalized',
+    'leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalSaturationPositivityFirewallScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalSaturationPositivityFirewallFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed = false/u);
+  assert.match(rendered, /leanResidualTerminalSaturationPositivityFirewallScope = null/u);
+});
+
+test('terminal saturation-positivity firewall requires its exact conservative boundary', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-saturation-positivity-firewall'
+  );
+  assert.equal(milestone.requiredTheorems.length, 12);
+  assert.equal(milestone.theoremRows.every((row) => row.present && row.kernelTypeFingerprintMatches), true);
+  assert.match(milestone.scope, /zero projection defect returns an attained quotient minimum with a checked full lift/u);
+  assert.match(milestone.nonClaim, /closes only projectionPositivityNotLostSilently/u);
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  for (const key of [
+    'leanResidualTerminalSaturationPositivityFirewallFormalized',
+    'leanResidualTerminalSaturationPositivityFirewallAxiomAuditPassed',
+  ]) {
+    const altered = structuredClone(status);
+    altered[key] = false;
+    assert.equal(validation.validateStatus(altered, inventory), false, key);
+  }
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualTerminalSaturationPositivityFirewallScope = 'full-saturate-positive';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const widenedMilestone = structuredClone(status);
+  widenedMilestone.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-saturation-positivity-firewall'
+  ).nonClaim = 'This establishes SaturatePositive and P = NP.';
+  assert.equal(validation.validateStatus(widenedMilestone, inventory), false);
+
+  const missingPin = structuredClone(status);
+  missingPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-saturation-positivity-firewall'
   ).requiredTheorems.pop();
   assert.equal(validation.validateStatus(missingPin, inventory), false);
 });
@@ -3110,7 +3160,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '454bafaa83b7c4351a73bcc6f69e00f77270272da362216323f64ae50c290345'/);
+  assert.match(source, /const STATUS_SHA256 = '148f927c21c7aada97a483658df7d287635cfacf7078ce51089fd859d5b0177a'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3383,12 +3433,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /25,515/);
-  assert.match(statusPage, /Ninety-three scoped milestones/);
+  assert.match(statusPage, /25,571/);
+  assert.match(statusPage, /Ninety-four scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 79-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 80-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);
