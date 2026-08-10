@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `19f43501ad87d4c5611ba109d53157fd0bd1dfdb`. Its generated status payload is current
+core commit `3f4352d190b44d34866500e672c2ef2af89e08de`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the eighty-one-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `19f43501ad87d4c5611ba109d53157fd0bd1dfdb` (tree `574fa83fd6dd1b0d124770d1f577bf3f0147aaa4`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, candidate-derived terminal saturation cost balance, and finite interface-exposure routing into a proof-bearing local E-route |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,459 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `3f4352d190b44d34866500e672c2ef2af89e08de` (tree `2133ae4be763f61dda2c6f8fcc6e194ba777feb2`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, candidate-derived terminal saturation cost balance, finite interface-exposure routing, exact origin/kernel/obligation closure routing, and the finite terminal positive-saturation composition |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,468 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Ninety-six earned scoped milestones through finite interface-exposure routing; the observer and projection remain explicit inputs; the finite terminal forms of four SaturatePositive obligations are closed while `originKernelObligationClosureRouted` remains open; three unearned global milestones, four project axioms, and six blockers |
+| Generated status | `public/pnp-status.json` | Ninety-seven earned scoped milestones through the finite terminal positive-saturation composition; the observer, projection, proof-bearing problem, and positive initial full-slack premise remain explicit; this is not manuscript-wide SaturatePositive or global route completeness; three unearned global milestones, four project axioms, and six blockers |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-one-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does

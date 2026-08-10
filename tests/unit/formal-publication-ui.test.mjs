@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '1901e247b93dcfedd06dc09be1ba6ded421ba422baa011a4cf4f9806846ef757');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'e69ac9c84dc15916632cc37b1d0e090d74d5057ce72160060ff8ed48b2623823');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 96);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 97);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -474,6 +474,74 @@ test('terminal interface-exposure routing requires its exact conservative bounda
   const missingPin = structuredClone(status);
   missingPin.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-interface-exposure-routing'
+  ).requiredTheorems.pop();
+  assert.equal(validation.validateStatus(missingPin, inventory), false);
+});
+
+test('pre-fetch UI state reports terminal finite SaturatePositive composition as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalOriginKernelObligationRoutingFormalized',
+    'leanResidualTerminalFiniteOriginKernelObligationClosureRoutedFormalized',
+    'leanResidualTerminalFirstOriginKernelObligationRouteFormalized',
+    'leanResidualTerminalOriginKernelObligationRoutingAxiomAuditPassed',
+    'leanResidualTerminalFiniteSaturatePositiveCompositionFormalized',
+    'leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalOriginKernelObligationRoutingScope, null);
+  assert.equal(failClosed.leanResidualTerminalFiniteSaturatePositiveCompositionScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalOriginKernelObligationRoutingFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFiniteOriginKernelObligationClosureRoutedFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFirstOriginKernelObligationRouteFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalOriginKernelObligationRoutingAxiomAuditPassed = false/u);
+  assert.match(rendered, /leanResidualTerminalOriginKernelObligationRoutingScope = null/u);
+  assert.match(rendered, /leanResidualTerminalFiniteSaturatePositiveCompositionFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed = false/u);
+  assert.match(rendered, /leanResidualTerminalFiniteSaturatePositiveCompositionScope = null/u);
+});
+
+test('terminal finite SaturatePositive composition requires its exact conservative boundary', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-saturate-positive-composition'
+  );
+  assert.equal(milestone.requiredTheorems.length, 9);
+  assert.equal(milestone.theoremRows.every((row) => row.present && row.kernelTypeFingerprintMatches), true);
+  assert.match(milestone.scope, /positive full slack/u);
+  assert.match(milestone.nonClaim, /finite local form of originKernelObligationClosureRouted/u);
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  for (const key of [
+    'leanResidualTerminalOriginKernelObligationRoutingFormalized',
+    'leanResidualTerminalFiniteOriginKernelObligationClosureRoutedFormalized',
+    'leanResidualTerminalFirstOriginKernelObligationRouteFormalized',
+    'leanResidualTerminalOriginKernelObligationRoutingAxiomAuditPassed',
+    'leanResidualTerminalFiniteSaturatePositiveCompositionFormalized',
+    'leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed',
+  ]) {
+    const altered = structuredClone(status);
+    altered[key] = false;
+    assert.equal(validation.validateStatus(altered, inventory), false, key);
+  }
+
+  const widenedRoutingScope = structuredClone(status);
+  widenedRoutingScope.leanResidualTerminalOriginKernelObligationRoutingScope = 'global-route-completeness';
+  assert.equal(validation.validateStatus(widenedRoutingScope, inventory), false);
+
+  const widenedCompositionScope = structuredClone(status);
+  widenedCompositionScope.leanResidualTerminalFiniteSaturatePositiveCompositionScope = 'manuscript-wide-saturate-positive';
+  assert.equal(validation.validateStatus(widenedCompositionScope, inventory), false);
+
+  const widenedMilestone = structuredClone(status);
+  widenedMilestone.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-saturate-positive-composition'
+  ).nonClaim = 'This establishes SaturatePositive, Package E, and P = NP.';
+  assert.equal(validation.validateStatus(widenedMilestone, inventory), false);
+
+  const missingPin = structuredClone(status);
+  missingPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-saturate-positive-composition'
   ).requiredTheorems.pop();
   assert.equal(validation.validateStatus(missingPin, inventory), false);
 });
@@ -3275,7 +3343,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '03fb380c7b0d1a5ed1521d0fe5c06bbe99d34507af56561a5bfdfa85d0839a5e'/);
+  assert.match(source, /const STATUS_SHA256 = '4fd7282f5f7455155f8ed5a86891488add6257f2c3f87f43258b70b04f4f2a6b'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3548,8 +3616,8 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /26,087/);
-  assert.match(statusPage, /Ninety-six scoped milestones/);
+  assert.match(statusPage, /26,485/);
+  assert.match(statusPage, /Ninety-seven scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
