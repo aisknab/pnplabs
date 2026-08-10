@@ -3997,6 +3997,18 @@ test("automation invokes read-only sync and contains no commit or push step", ()
   assert.doesNotMatch(workflow, /contents: write/);
 });
 
+test("source-bound workflows pin the exact core commit from the publication release", () => {
+  const expectedCoreCommit = json("downloads/formal-publication-release.json").source.commit;
+  for (const name of [
+    "pnp-upstream-status-consistency.yml",
+    "sync-public-access-report.yml"
+  ]) {
+    const workflow = readFileSync(path.join(root, ".github/workflows", name), "utf8");
+    const pinnedCoreCommit = workflow.match(/^\s*PNP_CORE_COMMIT:\s*([0-9a-f]{40})\s*$/mu)?.[1];
+    assert.equal(pinnedCoreCommit, expectedCoreCommit, name);
+  }
+});
+
 test("production audit is manual and deployment remains fail-closed outside GitHub Actions", () => {
   const workflow = readFileSync(
     path.join(root, ".github/workflows/production-deployment-consistency.yml"),
