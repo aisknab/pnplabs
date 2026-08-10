@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 83% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 84% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="83" aria-label="Estimated proof reconstruction progress: 83 percent">83%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 83 percent">
+        <progress class="proof-progress-meter" max="100" value="84" aria-label="Estimated proof reconstruction progress: 84 percent">84%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 84 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-10-concrete-locked-nand-threshold-publication" data-milestone-id="global-locked-nand-threshold">
+        <div class="section-label"><time datetime="2026-08-10T14:25:00Z">2026-08-10</time> · earned milestone 99</div>
+        <h2>Lean now publishes the concrete locked-NAND threshold reduction</h2>
+        <p>Lean now proves one uniform polynomial-time transformation from encoded CNF satisfiability instances to the concrete locked-NAND threshold language. The witness is the fixed parser, circuit compiler, and locked-NAND emitter pipeline, and the theorem applies to every input bitstring with fail-closed malformed-input behavior.</p>
+        <p>The theorem depends only on standard Lean logical principles, not on the legacy project assumption with a similar name. It does not put the target language in P, prove concrete CNF-SAT NP-hardness, discharge residual-band minimization, ZeroSlack or PCCMin, establish polynomial certificate checking for the final route, remove the remaining project assumptions, or prove P = NP. The 84% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 84%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>global-locked-nand-threshold</code></p>
+          <p><strong>Classification:</strong> formalized-concrete-locked-nand-threshold</p>
+          <p><strong>Verified scope:</strong> A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder.</p>
+          <p><strong>Boundary:</strong> This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 1</p>
+          <p><strong>Core source:</strong> commit <code>9e1097953c6105cf01de64d2dd58bdd75fcb790d</code>, tree <code>96eb6aaae00dbdee4707b7252fb9c682f93f25ad</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-10-residual-terminal-rank-wf" data-milestone-id="residual-terminal-rank-wf">
         <div class="section-label"><time datetime="2026-08-10T11:35:00Z">2026-08-10</time> · earned milestone 98</div>
         <h2>Lean now fixes the residual terminal rank and proves it well-founded</h2>

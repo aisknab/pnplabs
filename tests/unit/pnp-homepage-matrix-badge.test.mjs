@@ -13,11 +13,11 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'Current result: P = NP is not established.',
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
-    'Lean now fixes the residual terminal rank and proves it well-founded',
-    'residual terminal rank as exactly ten natural-number coordinates',
-    'TerminalResidualRank',
-    'terminalResidualRankLTBool',
-    'terminalResidualRankLexLT_wellFounded',
+    'Lean now publishes the concrete locked-NAND threshold reduction',
+    'one uniform polynomial-time transformation from encoded CNF satisfiability instances',
+    'PNP.Main.locked_nand_threshold',
+    'ReducesTo CNFSAT EncodedLockedNANDThreshold',
+    'compiled closure uses only <code>Quot.sound</code> and <code>propext</code>',
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'rootLeanTheoremPresent = false',
@@ -214,8 +214,14 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'leanBCELReadyFormalized = false',
     'leanPCCMinPolynomialRuntimeFormalized = false',
     'concretePublicationGate.passed = false',
-    'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-121',
-    'About 83% of the known formalisation work',
+    'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122',
+    'Lean now publishes the concrete locked-NAND threshold reduction',
+    'updates.html#2026-08-10-concrete-locked-nand-threshold-publication',
+    'Technical theorem boundary · gate closed · 5 blockers',
+    'PNP.Main.locked_nand_threshold',
+    'ReducesTo CNFSAT EncodedLockedNANDThreshold',
+    'The 84% figure is a revisable estimate of known reconstruction work',
+    'About 84% of the known formalisation work',
     'not a probability that the claim is correct, a confidence score, or a mathematical result',
     'P: problems we can solve efficiently',
     'NP: answers we can check efficiently',
@@ -223,6 +229,8 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'Machine checking now connects CNF-SAT through exact polynomial reductions, not to an efficient solver.',
     'EncodedLockedNANDThreshold',
   ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
+  const latestMilestone = html.match(/<article class="latest-milestone"[\s\S]*?<\/article>/u)?.[0] ?? '';
+  assert.doesNotMatch(latestMilestone, /residual terminal rank|83%|6 blockers/iu);
   assert.doesNotMatch(html, />Historical report</u);
 });
 

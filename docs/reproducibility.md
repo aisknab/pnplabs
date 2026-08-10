@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 446,880 | `96c11cddd00bec1547a337f7f9b004c926ed31c0ef5ae52715eff1270d54e822` |
-| `downloads/canonical-proof-report.pdf` | 446,880 | `96c11cddd00bec1547a337f7f9b004c926ed31c0ef5ae52715eff1270d54e822` |
-| `downloads/canonical_proof_report.tex` | 209,086 | `da46f3db65831263716f80e3ae075ef3110d5298f030a0f00f35c543fb714091` |
-| `downloads/canonical-proof-report.tex` | 209,086 | `da46f3db65831263716f80e3ae075ef3110d5298f030a0f00f35c543fb714091` |
-| `public/pnp-status.json` | 2,024,342 | `14e653dd1cf68986b298983dec19988c8d6094228b0361d7312fc85166690477` |
-| `public/pnp-theorem-inventory.json` | 17,207,326 | `e48dcb80c3fde2a17ea39c5e6337a6e7f5a9988476330ee05e213185f89c7ab9` |
+| `downloads/canonical_proof_report.pdf` | 447,683 | `44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe` |
+| `downloads/canonical-proof-report.pdf` | 447,683 | `44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe` |
+| `downloads/canonical_proof_report.tex` | 209,712 | `924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a` |
+| `downloads/canonical-proof-report.tex` | 209,712 | `924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a` |
+| `public/pnp-status.json` | 2,024,772 | `cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac` |
+| `public/pnp-theorem-inventory.json` | 17,207,898 | `f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434` |
 
 The PDF must have eighty-two A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout dd69b94a762eb830a3b91503faffde3984cce84f
+git -C ../pnp checkout 9e1097953c6105cf01de64d2dd58bdd75fcb790d
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,9 +65,9 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 26,539 public declarations, 13,883 theorem-kind declarations,
-7,159 assumption-free theorem-kind declarations, 14,935 excluded private auxiliaries, 239 modules, and
-four project axioms. The publication gate must remain false with six blockers. The concrete
+Expected compiled inventory counts are 26,540 public declarations, 13,884 theorem-kind declarations,
+7,159 assumption-free theorem-kind declarations, 14,935 excluded private auxiliaries, 240 modules, and
+four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
@@ -78,6 +78,11 @@ and satisfiability semantics including empty edge cases, exact gate count, a qua
 bound, malformed-input failure, all-bitstring language equivalence, and semantic composition with
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
+
+The composed all-input CNF parser, NAND compiler, and locked-NAND emitter are published as
+`PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold`. Its one reviewed pin
+uses only `Quot.sound` and `propext`. This is a polynomial many-one reduction, not a target decider,
+an NP-hardness or NP-completeness theorem, a ZeroSlack or PCCMin result, or the root theorem.
 
 The fixed all-input compiler milestone realizes that semantic function with one fixed 135,070-rule three-node finite
 work graph. Its 28 reviewed theorem pins cover exact all-bitstring execution, exact compiled output, non-timeout

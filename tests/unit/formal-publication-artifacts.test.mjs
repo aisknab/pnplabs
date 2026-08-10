@@ -813,15 +813,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "dd69b94a762eb830a3b91503faffde3984cce84f");
+  assert.equal(result.coreCommit, "9e1097953c6105cf01de64d2dd58bdd75fcb790d");
 });
 
 test("current release is pinned, eighty-two-page, exposes residual terminal RankWF, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-104");
-  assert.equal(release.source.commit, "dd69b94a762eb830a3b91503faffde3984cce84f");
-  assert.equal(release.source.proofCommit, "472e9be7176df693db417d98586b73f3e639c13f");
-  assert.equal(release.source.tree, "d06833216d204b8eca0510267654263e79752e51");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-105");
+  assert.equal(release.source.commit, "9e1097953c6105cf01de64d2dd58bdd75fcb790d");
+  assert.equal(release.source.proofCommit, "b42081738259b107e7204dce052e0dd5642d1457");
+  assert.equal(release.source.tree, "96eb6aaae00dbdee4707b7252fb9c682f93f25ad");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 82);
@@ -2831,6 +2831,21 @@ test("current release is pinned, eighty-two-page, exposes residual terminal Rank
   assert.equal(release.earnedBoundary.residualTerminalRankWFInductionTheorem, "PNP.DirectWire.terminalResidualRank_induction");
   assert.equal(release.earnedBoundary.residualTerminalRankWFDescentSoundTheorem, "PNP.DirectWire.TerminalResidualRankDescent.sound");
 
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationPropextQuotSoundDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationScope, "uniform-all-bitstring-cnf-sat-to-concrete-locked-nand-threshold-polynomial-reduction-and-report-facing-theorem");
+  assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationTheoremKernelTypeSha256, {
+    "PNP.Main.locked_nand_threshold": "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591"
+  });
+  assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
+  assert.match(release.earnedBoundary.scope, /\+plus-concrete-locked-nand-threshold-publication$/);
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2859,7 +2874,7 @@ test("current release is pinned, eighty-two-page, exposes residual terminal Rank
   assert.equal(release.publicationBoundary.compatibilityRootPresent, false);
   assert.equal(release.publicationBoundary.concreteTargetPresent, true);
   assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, true);
-  assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
+  assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
 test("status and inventory publish exactly 101 milestones with residual terminal RankWF pinned", () => {
@@ -2867,8 +2882,8 @@ test("status and inventory publish exactly 101 milestones with residual terminal
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
   assert.equal(milestones.length, 101);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 98);
-  assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 99);
+  assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
   assert.equal(parser.classification, "formalized-foundation-only");
@@ -3873,12 +3888,30 @@ test("status and inventory publish exactly 101 milestones with residual terminal
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(inventory.declarationCount, 26539);
-  assert.equal(inventory.theoremCount, 13883);
+  const lockedThreshold = milestones.find((row) => row.id === "global-locked-nand-threshold");
+  assert.equal(lockedThreshold.classification, "formalized-concrete-locked-nand-threshold");
+  assert.equal(lockedThreshold.status, "formalized-concrete-locked-nand-threshold");
+  assert.equal(lockedThreshold.earned, true);
+  assert.equal(lockedThreshold.allPresent, true);
+  assert.equal(lockedThreshold.allAssumptionFree, false);
+  assert.equal(lockedThreshold.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(lockedThreshold.allKernelTypesMatch, true);
+  assert.equal(lockedThreshold.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(lockedThreshold.requiredTheorems, ["PNP.Main.locked_nand_threshold"]);
+  assert.equal(lockedThreshold.theoremRows[0].expectedKernelTypeSha256, "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591");
+  assert.deepEqual(lockedThreshold.theoremRows[0].axioms, ["Quot.sound", "propext"]);
+  const lockedThresholdCandidate = inventory.milestoneCandidates.find(
+    (row) => row.name === "PNP.Main.locked_nand_threshold"
+  );
+  assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
+  assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
+
+  assert.equal(inventory.declarationCount, 26540);
+  assert.equal(inventory.theoremCount, 13884);
   assert.equal(inventory.assumptionFreeTheoremCount, 7159);
   assert.equal(inventory.excludedPrivateDeclarationCount, 14935);
-  assert.equal(inventory.sourceClosureModuleCount, 239);
-  assert.equal(inventory.milestoneCandidates.length, 2486);
+  assert.equal(inventory.sourceClosureModuleCount, 240);
+  assert.equal(inventory.milestoneCandidates.length, 2487);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
     constructor: 812,
@@ -3887,7 +3920,7 @@ test("status and inventory publish exactly 101 milestones with residual terminal
     opaque: 0,
     quotient: 0,
     recursor: 369,
-    theorem: 13883
+    theorem: 13884
   });
 });
 
@@ -3962,6 +3995,18 @@ test("automation invokes read-only sync and contains no commit or push step", ()
   assert.equal(Number(pageCountAssertion?.[1]), expectedReportPages);
   assert.doesNotMatch(workflow, /git (?:commit|push)/);
   assert.doesNotMatch(workflow, /contents: write/);
+});
+
+test("source-bound workflows pin the exact core commit from the publication release", () => {
+  const expectedCoreCommit = json("downloads/formal-publication-release.json").source.commit;
+  for (const name of [
+    "pnp-upstream-status-consistency.yml",
+    "sync-public-access-report.yml"
+  ]) {
+    const workflow = readFileSync(path.join(root, ".github/workflows", name), "utf8");
+    const pinnedCoreCommit = workflow.match(/^\s*PNP_CORE_COMMIT:\s*([0-9a-f]{40})\s*$/mu)?.[1];
+    assert.equal(pinnedCoreCommit, expectedCoreCommit, name);
+  }
 });
 
 test("production audit is manual and deployment remains fail-closed outside GitHub Actions", () => {

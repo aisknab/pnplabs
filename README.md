@@ -58,17 +58,17 @@ leanConcreteCNFNPCompletenessFormalized = false
 concretePublicationGate.passed = false
 ```
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **26,539** exported public declarations across **239** modules, including **13,883** theorem-kind declarations and **7,159** assumption-free theorem-kind declarations. It excludes **14,935** private compiler auxiliaries and records **four** project axioms.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **26,540** exported public declarations across **240** modules, including **13,884** theorem-kind declarations and **7,159** assumption-free theorem-kind declarations. It excludes **14,935** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 2,486 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Ninety-eight scoped milestones are earned. They cover the concrete machine model, Cook-Levin semantics and the bounded formula-builder prefix, the typed locked-NAND threshold, strict codecs, fixed parsers and emitters, concrete polynomial reductions, verified residual-gain chains, the global semantic stopping specification, terminal carriers and support construction through computed BN2 square legitimacy, the computed terminal BCEL anchor nucleus with fail-closed proper-cut classification, the terminal saturation-positivity firewall, candidate-derived terminal saturation cost balance, finite interface-exposure routing, exact origin/kernel/obligation closure routing, the finite terminal positive-saturation composition, and the fixed ten-coordinate residual RankWF.
+The inventory-derived publication map binds 2,487 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Ninety-nine scoped milestones are earned. They cover the concrete machine model, Cook-Levin semantics and the bounded formula-builder prefix, the typed locked-NAND threshold, strict codecs, fixed parsers and emitters, concrete polynomial reductions, verified residual-gain chains, the global semantic stopping specification, terminal carriers and support construction through computed BN2 square legitimacy, the computed terminal BCEL anchor nucleus with fail-closed proper-cut classification, the terminal saturation-positivity firewall, candidate-derived terminal saturation cost balance, finite interface-exposure routing, exact origin/kernel/obligation closure routing, the finite terminal positive-saturation composition, the fixed ten-coordinate residual RankWF, and the report-facing concrete locked-NAND threshold theorem.
 
-The newest milestone defines the manuscript's residual terminal rank as exactly ten natural-number coordinates in the stated priority order. Lean proves that the executable Boolean comparison agrees with the lexicographic proposition, supplies proof for every possible first-decreasing coordinate, packages proof-bearing descent, and proves accessibility, induction, and kernel-checked well-foundedness.
+The newest milestone publishes `PNP.Main.locked_nand_threshold` at the exact type `ReducesTo CNFSAT EncodedLockedNANDThreshold`. Its witness is the composed finite parser, compiler, and emitter pipeline, so the all-bitstring correctness, runtime, output-size, malformed-input, and raw-refinement results are part of the concrete boundary. Its compiled closure uses only `Quot.sound` and `propext`, with no project axiom.
 
-This is a bounded mathematical step, not the final theorem. It establishes the fixed rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any current route strictly decreases the rank, establish route completeness or Package E, remove the finite composition's explicit positive premise, establish manuscript-wide SaturatePositive or BCELReady, prove `ZeroSlack`, PCCMin exactness or polynomial runtime, discharge an assumption, place CNF-SAT in P, or prove `P = NP`. Three global milestones remain unearned: the global locked-NAND construction/threshold; global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
+This is a polynomial many-one reduction, not a polynomial-time decider for the target. It does not map the current finite terminal routes into the manuscript's complete global outcome system, establish route completeness or Package E, remove the finite composition's explicit positive premise, prove manuscript-wide SaturatePositive or BCELReady, establish `ZeroSlack`, PCCMin exactness or polynomial runtime, prove SAT NP-hardness or CNF-SAT NP-completeness, place CNF-SAT in P, activate the legacy string-handle bridge, or prove `P = NP`. Two global milestones remain unearned: global ZeroSlack, PCCMin and polynomial runtime; and the concrete standard P-versus-NP target/root.
 
 The abstract string-handle `PNP.PEqualsNP` bridge is explicitly publication-ineligible. `PNP.Main.ConcretePEqualsNP` is present as an inactive axiom-free definition for the finite charged-pipeline model, while `PNP.Main.p_eq_np` remains absent. The concrete publication gate is a strict conjunction of concrete semantics, target/root fingerprints, axiom closure and source closure; null expected fingerprints are unconfigured and never match null. All theorem-establishment and theorem-emission fields derive only from that gate.
 
-The active blockers are the six entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete SAT, the locked-NAND threshold, residual-band minimisation, ZeroSlack, polynomial bounds, and the root theorem plus axiom audit.
+The active blockers are the five entries in `remainingFormalObligations` and `remainingBlockers`, covering concrete SAT, residual-band minimisation, ZeroSlack, polynomial runtime and certificate bounds, and the root theorem plus axiom audit.
 
 Legacy JavaScript checker acceptance verifies assertion-bearing records under implemented predicates. It is historical assertion-checker evidence only and is not a formal proof of the named mathematical propositions. Earlier activated coordinates, verifier-run records, digest matrices, and badge summaries are preserved only as historical audit records. Their intake is frozen and they are not current theorem-emission surfaces.
 
@@ -81,7 +81,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout dd69b94a762eb830a3b91503faffde3984cce84f
+git checkout 9e1097953c6105cf01de64d2dd58bdd75fcb790d
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -150,7 +150,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPLockedNANDThresholdBoundaryAxi
 lake env lean -DwarningAsError=true lean-audit/PNPResidualRoutesAxiomAudit.lean
 ```
 
-These commands build the pinned Lean root, regenerate/check the compiled inventory and publication model, verify the report, and run the focused axiom audits. Their success does not fill the three unearned global milestones or establish the target theorem.
+These commands build the pinned Lean root, regenerate/check the compiled inventory and publication model, verify the report, and run the focused axiom audits. Their success does not fill the two unearned global milestones or establish the target theorem.
 
 The public status page is [`status.html`](status.html).
 
