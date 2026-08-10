@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "9e1097953c6105cf01de64d2dd58bdd75fcb790d";
-const REVIEWED_CORE_TREE = "96eb6aaae00dbdee4707b7252fb9c682f93f25ad";
-const REVIEWED_PROOF_COMMIT = "b42081738259b107e7204dce052e0dd5642d1457";
+const REVIEWED_CORE_COMMIT = "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc";
+const REVIEWED_CORE_TREE = "7376c3d35ebfd9a80e38abb86964e60df6d4f4b3";
+const REVIEWED_PROOF_COMMIT = "c67e4499dfc076eb53a85f77917a25804525b565";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4158,6 +4158,9 @@ const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
 const LOCKED_NAND_THRESHOLD_PUBLICATION_SCOPE = "uniform-all-bitstring-cnf-sat-to-concrete-locked-nand-threshold-polynomial-reduction-and-report-facing-theorem";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE_SCOPE = "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder.";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_NON_CLAIM = "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP.";
+const GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE = "Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.";
+const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "Per-cut BN2 basis existence does not construct the cross-cut-stable BN3 request envelope. The pinned legacy package checks an asserted jointSideTightRealizability Boolean rather than an executable uniform construction, so proof-bearing result structures and explicit-list failure still do not supply global ZeroSlack or polynomial PCCMin completeness.";
+const BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM = "The BN3 joint-realizability gap is now pinned by a kernel-checkable logical boundary witness: per-cut side-tight existence does not by itself construct a cross-cut-stable realizing family. This is a missing-lemma witness, not a counterexample to a future candidate-derived BN3 theorem; global ZeroSlack and polynomial PCCMin remain unformalized.";
 
 
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
@@ -5535,10 +5538,10 @@ function validateCurrentPayloads(contents, failures) {
   const inventoryBuffer = contents.get("public.inventory");
   if (statusBuffer) {
     const status = JSON.parse(statusBuffer.toString("utf8"));
-    if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122"
+    if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123"
         || status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
-        || status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122"
-        || status.formalPublicationMapSha256 !== "531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c"
+        || status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123"
+        || status.formalPublicationMapSha256 !== "904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7"
         || status.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") failures.push("public status current source identity mismatch");
     if (!Array.isArray(status.formalPublicationMilestones)
         || status.formalPublicationMilestones.length !== 101
@@ -6884,6 +6887,25 @@ function validateCurrentPayloads(contents, failures) {
         || row.kernelTypeFingerprintMatches !== true) failures.push(`status concrete locked-NAND threshold theorem evidence mismatch: ${name}`);
   }
   if (status.leanLockedNANDThresholdFormalized !== true) failures.push("status concrete locked-NAND threshold result must remain formalized");
+
+  const globalZeroSlackPCCMinMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "global-zeroslack-pccmin"
+  );
+  if (!globalZeroSlackPCCMinMilestone
+      || globalZeroSlackPCCMinMilestone.classification !== "not-formalized"
+      || globalZeroSlackPCCMinMilestone.status !== "not-formalized"
+      || globalZeroSlackPCCMinMilestone.scope !== GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE
+      || globalZeroSlackPCCMinMilestone.nonClaim !== GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM
+      || JSON.stringify(globalZeroSlackPCCMinMilestone.requiredTheorems) !== JSON.stringify([
+        "PNP.Main.pccmin_polynomial_exact",
+        "PNP.Main.zero_slack_complete"
+      ])
+      || globalZeroSlackPCCMinMilestone.earned !== false
+      || globalZeroSlackPCCMinMilestone.allPresent !== false
+      || globalZeroSlackPCCMinMilestone.allAssumptionFree !== false
+      || globalZeroSlackPCCMinMilestone.allKernelTypesMatch !== false
+      || globalZeroSlackPCCMinMilestone.sourceClosureFingerprintMatches !== true) failures.push("status global ZeroSlack/PCCMin boundary mismatch");
+  if (!status.nonClaims?.includes(BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM)) failures.push("status BN3 joint-realizability gap disclosure mismatch");
 
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
@@ -8821,6 +8843,18 @@ export function validateAuditTargets(options = {}) {
       failures.push(`core publication map concrete locked-NAND threshold fingerprint mismatch: ${name}`);
     }
   }
+
+  const globalZeroSlackPCCMinMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "global-zeroslack-pccmin"
+  );
+  if (!globalZeroSlackPCCMinMilestone
+      || globalZeroSlackPCCMinMilestone.classification !== "not-formalized"
+      || globalZeroSlackPCCMinMilestone.scope !== GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE
+      || globalZeroSlackPCCMinMilestone.nonClaim !== GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM
+      || JSON.stringify(globalZeroSlackPCCMinMilestone.requiredTheorems) !== JSON.stringify([
+        "PNP.Main.pccmin_polynomial_exact",
+        "PNP.Main.zero_slack_complete"
+      ])) failures.push("core publication map global ZeroSlack/PCCMin boundary mismatch");
 
   }
 

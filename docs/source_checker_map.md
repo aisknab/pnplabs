@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `9e1097953c6105cf01de64d2dd58bdd75fcb790d`. Its generated status payload is current
+core commit `7445d2afa7af75375d20751b4a0aa7b87e8b8dfc`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the eighty-two-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,7 +23,7 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `9e1097953c6105cf01de64d2dd58bdd75fcb790d` (tree `96eb6aaae00dbdee4707b7252fb9c682f93f25ad`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, candidate-derived terminal saturation cost balance, finite interface-exposure routing, exact origin/kernel/obligation closure routing, the finite terminal positive-saturation composition, the fixed residual RankWF, and the report-facing concrete locked-NAND threshold reduction |
+| Merged formalization | `aisknab/pnp` commit `7445d2afa7af75375d20751b4a0aa7b87e8b8dfc` (tree `7376c3d35ebfd9a80e38abb86964e60df6d4f4b3`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, candidate-derived terminal saturation cost balance, finite interface-exposure routing, exact origin/kernel/obligation closure routing, the finite terminal positive-saturation composition, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, and the axiom-free BN3 joint-realizability gap witness |
 | Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,487 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
 | Generated status | `public/pnp-status.json` | Ninety-nine earned scoped milestones through the concrete locked-NAND threshold reduction; the reduction is not a polynomial-time target decider; two unearned global milestones, four project axioms, and five blockers |

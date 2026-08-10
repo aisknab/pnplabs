@@ -7,8 +7,8 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = '9e1097953c6105cf01de64d2dd58bdd75fcb790d';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122';
+const CORE_COMMIT = '7445d2afa7af75375d20751b4a0aa7b87e8b8dfc';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123';
 const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122';
 const INVENTORY_SHA256 = 'f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434';
 const INVENTORY_BYTES = 16915940;
@@ -358,12 +358,17 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
   assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122');
-  assert.equal(status.formalPublicationMapSha256, '531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123');
+  assert.equal(status.formalPublicationMapSha256, '904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7');
   assert.equal(status.leanSourceClosureSha256, '6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
+  const globalZeroSlack = status.formalPublicationMilestones
+    .find((row) => row.id === 'global-zeroslack-pccmin');
+  assert.equal(globalZeroSlack.earned, false);
+  assert.equal(globalZeroSlack.nonClaim, 'Per-cut BN2 basis existence does not construct the cross-cut-stable BN3 request envelope. The pinned legacy package checks an asserted jointSideTightRealizability Boolean rather than an executable uniform construction, so proof-bearing result structures and explicit-list failure still do not supply global ZeroSlack or polynomial PCCMin completeness.');
+  assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap is now pinned by a kernel-checkable logical boundary witness: per-cut side-tight existence does not by itself construct a cross-cut-stable realizing family. This is a missing-lemma witness, not a counterexample to a future candidate-derived BN3 theorem; global ZeroSlack and polynomial PCCMin remain unformalized.'));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
@@ -2427,7 +2432,7 @@ test('formal publication release pins the residual terminal RankWF boundary', as
   const release = await readJson('downloads/formal-publication-release.json');
   const parser = release.earnedBoundary;
 
-  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-105');
+  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106');
   assert.equal(release.artifacts.report.pageCount, 82);
   assert.equal(release.artifacts.theoremInventory.declarationCount, 26540);
   assert.equal(release.artifacts.theoremInventory.theoremCount, 13884);
@@ -2988,15 +2993,15 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 104);
+  assert.equal(index.version, 105);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, 'b42081738259b107e7204dce052e0dd5642d1457');
-  assert.equal(index.sourceTree, '96eb6aaae00dbdee4707b7252fb9c682f93f25ad');
+  assert.equal(index.sourceProofCommitRef, 'c67e4499dfc076eb53a85f77917a25804525b565');
+  assert.equal(index.sourceTree, '7376c3d35ebfd9a80e38abb86964e60df6d4f4b3');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-10-122');
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-11-123');
   assert.equal(index.canonicalReportPages, 82);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
@@ -4473,7 +4478,7 @@ test('payload index describes current inventory/report and quarantines legacy su
 test('status page has a conservative complete static fallback', async () => {
   const html = await readText('status.html');
   for (const fragment of [
-    'Formal status · 2026-08-10',
+    'Formal status · 2026-08-11',
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
@@ -4832,7 +4837,7 @@ test('static inventory prose matches the compiled declaration boundary', async (
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
   assert.equal(paper.includes('Exactly 14,935 private compiler auxiliaries are excluded.'), true);
   assert.equal(guide.includes('Exactly 14,935 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['26,540', '13,884', '7,159', '14,935', '240 modules', '447,683', '209,712', '2,024,772', '17,207,898', 'eighty-two A4 pages', 'fixed 135,070-rule', '36 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of ['26,540', '13,884', '7,159', '14,935', '240 modules', '448,038', '209,971', '2,025,540', '17,207,898', 'eighty-two A4 pages', 'fixed 135,070-rule', '36 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

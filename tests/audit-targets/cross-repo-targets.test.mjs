@@ -2107,6 +2107,7 @@ function makeProject(t) {
     formalPublicationMapCoordinate: publishedStatus.formalPublicationMapCoordinate,
     formalPublicationMapSha256: publishedStatus.formalPublicationMapSha256,
     leanSourceClosureSha256: publishedStatus.leanSourceClosureSha256,
+    nonClaims: structuredClone(publishedStatus.nonClaims),
     ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_STATUS_FIELDS,
     ...LOCKED_NAND_SOURCE_PARSER_STATUS_FIELDS,
     ...LOCKED_NAND_TARGET_EMITTER_STATUS_FIELDS,
@@ -3747,6 +3748,14 @@ test("accepts exact current mirrors pinned to one core commit and tree", (t) => 
   assert.equal(result.mirroredTargets, 2);
   assert.equal(result.refs.currentCoreRef.commit, project.commit);
   assert.equal(result.refs.currentCoreRef.tree, project.tree);
+});
+
+test("rejects removal of the BN3 joint-realizability gap disclosure", (t) => {
+  const project = makeProject(t);
+  const status = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-status.json"), "utf8"));
+  status.nonClaims = status.nonClaims.filter((entry) => !entry.startsWith("The BN3 joint-realizability gap"));
+  rewriteCorePayload(project, "public/pnp-status.json", status);
+  expectFailure(project, /status BN3 joint-realizability gap disclosure mismatch/);
 });
 
 test("rejects byte drift in a current public mirror", (t) => {

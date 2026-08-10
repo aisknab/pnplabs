@@ -4,9 +4,9 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "9e1097953c6105cf01de64d2dd58bdd75fcb790d";
-const CORE_TREE = "96eb6aaae00dbdee4707b7252fb9c682f93f25ad";
-const PROOF_COMMIT = "b42081738259b107e7204dce052e0dd5642d1457";
+const CORE_COMMIT = "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc";
+const CORE_TREE = "7376c3d35ebfd9a80e38abb86964e60df6d4f4b3";
+const PROOF_COMMIT = "c67e4499dfc076eb53a85f77917a25804525b565";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -3908,6 +3908,9 @@ const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
 const LOCKED_NAND_THRESHOLD_PUBLICATION_SCOPE = "uniform-all-bitstring-cnf-sat-to-concrete-locked-nand-threshold-polynomial-reduction-and-report-facing-theorem";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE_SCOPE = "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder.";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_NON_CLAIM = "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP.";
+const GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE = "Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.";
+const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "Per-cut BN2 basis existence does not construct the cross-cut-stable BN3 request envelope. The pinned legacy package checks an asserted jointSideTightRealizability Boolean rather than an executable uniform construction, so proof-bearing result structures and explicit-list failure still do not supply global ZeroSlack or polynomial PCCMin completeness.";
+const BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM = "The BN3 joint-realizability gap is now pinned by a kernel-checkable logical boundary witness: per-cut side-tight existence does not by itself construct a cross-cut-stable realizing family. This is a missing-lemma witness, not a counterexample to a future candidate-derived BN3 theorem; global ZeroSlack and polynomial PCCMin remain unformalized.";
 
 
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
@@ -4434,32 +4437,32 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 447683,
-    "sha256": "44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe",
+    "bytes": 448038,
+    "sha256": "61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8",
     "role": "current inventory-derived eighty-two-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 447683,
-    "sha256": "44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe",
+    "bytes": 448038,
+    "sha256": "61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 209712,
-    "sha256": "924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a",
+    "bytes": 209971,
+    "sha256": "7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 209712,
-    "sha256": "924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a",
+    "bytes": 209971,
+    "sha256": "7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2024772,
-    "sha256": "cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac",
+    "bytes": 2025540,
+    "sha256": "ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
@@ -4471,7 +4474,7 @@ const EXPECTED_FILES = [
   {
     "path": "downloads/formal-publication-release.json",
     "bytes": 780693,
-    "sha256": "a2318f8d66fd6dbbf333a962b3a2d2681ea74acd226652d2c5c66390b0f8d36c",
+    "sha256": "4593dbf9745cd919192c6531b25a061391b9be68eb8d9787abeb5738ab2cfaff",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -4544,9 +4547,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122" || status.formalPublicationMapSha256 !== "531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c" || status.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123" || status.formalPublicationMapSha256 !== "904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7" || status.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") fail("status source identity mismatch");
   if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 101 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 99 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 2) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
@@ -5906,6 +5909,24 @@ function assertFailClosedStatus(status) {
         || row.kernelTypeFingerprintMatches !== true) fail(`status concrete locked-NAND threshold theorem evidence mismatch: ${name}`);
   }
   if (status.leanLockedNANDThresholdFormalized !== true) fail("status concrete locked-NAND threshold result must remain formalized");
+  const globalZeroSlackPCCMinMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "global-zeroslack-pccmin"
+  );
+  if (!globalZeroSlackPCCMinMilestone
+      || globalZeroSlackPCCMinMilestone.classification !== "not-formalized"
+      || globalZeroSlackPCCMinMilestone.status !== "not-formalized"
+      || globalZeroSlackPCCMinMilestone.scope !== GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE
+      || globalZeroSlackPCCMinMilestone.nonClaim !== GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM
+      || JSON.stringify(globalZeroSlackPCCMinMilestone.requiredTheorems) !== JSON.stringify([
+        "PNP.Main.pccmin_polynomial_exact",
+        "PNP.Main.zero_slack_complete"
+      ])
+      || globalZeroSlackPCCMinMilestone.earned !== false
+      || globalZeroSlackPCCMinMilestone.allPresent !== false
+      || globalZeroSlackPCCMinMilestone.allAssumptionFree !== false
+      || globalZeroSlackPCCMinMilestone.allKernelTypesMatch !== false
+      || globalZeroSlackPCCMinMilestone.sourceClosureFingerprintMatches !== true) fail("status global ZeroSlack/PCCMin boundary mismatch");
+  if (!status.nonClaims?.includes(BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM)) fail("status BN3 joint-realizability gap disclosure mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) fail("status locked-NAND remaining-premise inventory mismatch");
   if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) fail("status overstates the CNF-SAT result");
   if (status.leanTheoremInventorySha256 !== EXPECTED_FILES[5].sha256) fail("status inventory digest mismatch");
@@ -6568,11 +6589,11 @@ function assertInventory(inventory) {
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-105") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122" || manifest.source?.formalPublicationMapSha256 !== "531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c" || manifest.source?.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123" || manifest.source?.formalPublicationMapSha256 !== "904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7" || manifest.source?.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 82) fail("current report must have eighty-two pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -7661,7 +7682,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-105") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");

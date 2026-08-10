@@ -26,11 +26,11 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 447,683 | `44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe` |
-| `downloads/canonical-proof-report.pdf` | 447,683 | `44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe` |
-| `downloads/canonical_proof_report.tex` | 209,712 | `924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a` |
-| `downloads/canonical-proof-report.tex` | 209,712 | `924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a` |
-| `public/pnp-status.json` | 2,024,772 | `cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac` |
+| `downloads/canonical_proof_report.pdf` | 448,038 | `61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8` |
+| `downloads/canonical-proof-report.pdf` | 448,038 | `61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8` |
+| `downloads/canonical_proof_report.tex` | 209,971 | `7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf` |
+| `downloads/canonical-proof-report.tex` | 209,971 | `7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf` |
+| `public/pnp-status.json` | 2,025,540 | `ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1` |
 | `public/pnp-theorem-inventory.json` | 17,207,898 | `f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434` |
 
 The PDF must have eighty-two A4 pages. Both filename styles must be byte-identical.
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 9e1097953c6105cf01de64d2dd58bdd75fcb790d
+git -C ../pnp checkout 7445d2afa7af75375d20751b4a0aa7b87e8b8dfc
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
