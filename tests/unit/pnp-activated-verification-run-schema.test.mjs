@@ -20,16 +20,16 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-121');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 26539);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13883);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 26540);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13884);
   assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7159);
   assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14935);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 239);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 240);
   assert.equal(status.formalPublicationMilestones.length, 101);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 98);
-  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 99);
+  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed, true);
@@ -168,7 +168,7 @@ test('current status supersedes every historical activated coordinate', async ()
   );
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
-  assert.equal(status.remainingBlockers.length, 6);
+  assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.projectSpecificAxiomInventory.length, 4);
   assert.equal(status.projectSpecificAxiomsRemaining, true);
   assert.equal(status.publicTheoremEmissionAllowed, false);

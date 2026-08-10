@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-10T11:35:00Z</updated>
+  <updated>2026-08-10T14:25:00Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-10-concrete-locked-nand-threshold-publication</id>
+    <title>Lean now publishes the concrete locked-NAND threshold reduction</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-10-concrete-locked-nand-threshold-publication"/>
+    <published>2026-08-10T14:25:00Z</published>
+    <updated>2026-08-10T14:25:00Z</updated>
+    <summary type="text">Lean now proves one uniform polynomial-time transformation from encoded CNF satisfiability instances to the concrete locked-NAND threshold language. The witness is the fixed parser, circuit compiler, and locked-NAND emitter pipeline, and the theorem applies to every input bitstring with fail-closed malformed-input behavior. The theorem depends only on standard Lean logical principles, not on the legacy project assumption with a similar name. It does not put the target language in P, prove concrete CNF-SAT NP-hardness, discharge residual-band minimization, ZeroSlack or PCCMin, establish polynomial certificate checking for the final route, remove the remaining project assumptions, or prove P = NP. The 84% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 84 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;Lean now proves one uniform polynomial-time transformation from encoded CNF satisfiability instances to the concrete locked-NAND threshold language. The witness is the fixed parser, circuit compiler, and locked-NAND emitter pipeline, and the theorem applies to every input bitstring with fail-closed malformed-input behavior.&lt;/p&gt;&lt;p&gt;The theorem depends only on standard Lean logical principles, not on the legacy project assumption with a similar name. It does not put the target language in P, prove concrete CNF-SAT NP-hardness, discharge residual-band minimization, ZeroSlack or PCCMin, establish polynomial certificate checking for the final route, remove the remaining project assumptions, or prove P = NP. The 84% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;84&quot;&gt;Editorial progress estimate at publication: 84%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-10-concrete-locked-nand-threshold-publication&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-10-residual-terminal-rank-wf</id>
     <title>Lean now fixes the residual terminal rank and proves it well-founded</title>

@@ -18,13 +18,58 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'e48dcb80c3fde2a17ea39c5e6337a6e7f5a9988476330ee05e213185f89c7ab9');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 98);
-  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 99);
+  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
+});
+
+test('site validator pins the concrete locked-NAND threshold publication theorem', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'global-locked-nand-threshold'
+  );
+  const candidate = inventory.milestoneCandidates.find(
+    (row) => row.name === 'PNP.Main.locked_nand_threshold'
+  );
+  assert.equal(milestone.classification, 'formalized-concrete-locked-nand-threshold');
+  assert.equal(milestone.earned, true);
+  assert.deepEqual(candidate.axioms, ['Quot.sound', 'propext']);
+  assert.equal(candidate.module, 'PNP.Concrete.LockedNANDThresholdPublication');
+
+  const missing = structuredClone(inventory);
+  missing.milestoneCandidates = missing.milestoneCandidates.filter(
+    (row) => row.name !== 'PNP.Main.locked_nand_threshold'
+  );
+  assert.equal(validation.validateInventory(missing), false);
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates.find(
+    (row) => row.name === 'PNP.Main.locked_nand_threshold'
+  ).axioms = ['PNP.LockedNANDThreshold'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const moved = structuredClone(inventory);
+  moved.milestoneCandidates.find(
+    (row) => row.name === 'PNP.Main.locked_nand_threshold'
+  ).module = 'PNP.Main';
+  assert.equal(validation.validateInventory(moved), false);
+
+  const forged = structuredClone(status);
+  const forgedRow = forged.formalPublicationMilestones.find(
+    (row) => row.id === 'global-locked-nand-threshold'
+  );
+  forgedRow.theoremRows[0].actualKernelTypeSha256 = '0'.repeat(64);
+  forgedRow.theoremRows[0].expectedKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(forged, inventory), false);
+
+  const widened = structuredClone(status);
+  widened.formalPublicationMilestones.find(
+    (row) => row.id === 'global-locked-nand-threshold'
+  ).scope = 'A polynomial-time target decider.';
+  assert.equal(validation.validateStatus(widened, inventory), false);
 });
 
 test('pre-fetch UI state reports every source-parser claim as fail closed', () => {
@@ -3397,7 +3442,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '14e653dd1cf68986b298983dec19988c8d6094228b0361d7312fc85166690477'/);
+  assert.match(source, /const STATUS_SHA256 = 'cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3670,9 +3715,9 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /26,539/);
-  assert.match(statusPage, /Ninety-eight scoped milestones/);
-  assert.match(statusPage, /three global milestones/i);
+  assert.match(statusPage, /26,540/);
+  assert.match(statusPage, /Ninety-nine scoped milestones/);
+  assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
   assert.match(reportPage, /current 82-page report is generated from the compiled Lean inventory/i);

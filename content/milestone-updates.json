@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-10-concrete-locked-nand-threshold-publication",
+      "milestoneId": "global-locked-nand-threshold",
+      "publishedAt": "2026-08-10T14:25:00Z",
+      "title": "Lean now publishes the concrete locked-NAND threshold reduction",
+      "plainLanguage": [
+        "Lean now proves one uniform polynomial-time transformation from encoded CNF satisfiability instances to the concrete locked-NAND threshold language. The witness is the fixed parser, circuit compiler, and locked-NAND emitter pipeline, and the theorem applies to every input bitstring with fail-closed malformed-input behavior.",
+        "The theorem depends only on standard Lean logical principles, not on the legacy project assumption with a similar name. It does not put the target language in P, prove concrete CNF-SAT NP-hardness, discharge residual-band minimization, ZeroSlack or PCCMin, establish polynomial certificate checking for the final route, remove the remaining project assumptions, or prove P = NP. The 84% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 84,
+      "source": {
+        "commit": "9e1097953c6105cf01de64d2dd58bdd75fcb790d",
+        "tree": "96eb6aaae00dbdee4707b7252fb9c682f93f25ad",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-10-residual-terminal-rank-wf",
       "milestoneId": "residual-terminal-rank-wf",
       "publishedAt": "2026-08-10T11:35:00Z",

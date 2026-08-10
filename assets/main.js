@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-121';
-const STATUS_SHA256 = '14e653dd1cf68986b298983dec19988c8d6094228b0361d7312fc85166690477';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-RESIDUAL-RANK-WF-120';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-121';
-const INVENTORY_SHA256 = 'e48dcb80c3fde2a17ea39c5e6337a6e7f5a9988476330ee05e213185f89c7ab9';
-const SOURCE_CLOSURE_SHA256 = 'd525c3be0e63e15f8a4336d785651f1d1fdef3dc867d2956302da34a947e85d6';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122';
+const STATUS_SHA256 = 'cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122';
+const INVENTORY_SHA256 = 'f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434';
+const SOURCE_CLOSURE_SHA256 = '6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 26539,
-  theorems: 13883,
+  declarations: 26540,
+  theorems: 13884,
   assumptionFreeTheorems: 7159,
   excludedPrivateDeclarations: 14935,
-  modules: 239,
+  modules: 240,
   axioms: 4,
 });
 
@@ -3897,6 +3897,12 @@ const RESIDUAL_TERMINAL_RANK_WF_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.TerminalResidualRankDescent.sound", [], "PNP.ResidualTerminalRankWF"],
 ]);
 
+const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
+  ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
+]);
+const LOCKED_NAND_THRESHOLD_PUBLICATION_KERNEL_TYPE_SHA256 =
+  '951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591';
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4332,7 +4338,6 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS = Object.freeze([
 
 const REMAINING_BLOCKERS = Object.freeze([
   'Formal.ConcreteSAT',
-  'Formal.LockedNANDThreshold',
   'Formal.ResidualBandMinimizer',
   'Formal.ZeroSlack',
   'Formal.PolynomialRuntimeAndCertificateBounds',
@@ -5493,7 +5498,7 @@ function validateInventory(inventory) {
     opaque: 0,
     quotient: 0,
     recursor: 369,
-    theorem: 13883,
+    theorem: 13884,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5954,6 +5959,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const lockedNANDThresholdPublication =
+    LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
 
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
@@ -6353,6 +6364,9 @@ function validateInventory(inventory) {
     && residualTerminalRankWF.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
@@ -6395,7 +6409,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2486
+    && inventory.milestoneCandidates.length === 2487
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6459,7 +6473,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 98;
+    const shouldBeEarned = index < 99;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6585,6 +6599,13 @@ function validateStatus(status, inventory) {
   const residualTerminalRankWFMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-rank-wf'
   );
+  const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'global-locked-nand-threshold'
+  );
+  const lockedNANDThresholdPublicationTheoremRow =
+    lockedNANDThresholdPublicationMilestone?.theoremRows?.find(
+      (row) => row.name === 'PNP.Main.locked_nand_threshold'
+    );
 
   return status?.kind === 'PNPFormalReconstructionStatus0'
     && status.coordinate === STATUS_COORDINATE
@@ -7027,6 +7048,23 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalRankWFFormalized === true
     && status.leanResidualTerminalRankWFAxiomAuditPassed === true
     && status.leanResidualTerminalRankWFScope === "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness"
+    && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
+    && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
+    && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
+    && lockedNANDThresholdPublicationMilestone.nonClaim === "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP."
+    && sameJson(
+      lockedNANDThresholdPublicationMilestone.requiredTheorems,
+      LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name]) => name)
+    )
+    && lockedNANDThresholdPublicationTheoremRow?.present === true
+    && lockedNANDThresholdPublicationTheoremRow.kind === 'theorem'
+    && sameJson(lockedNANDThresholdPublicationTheoremRow.axioms, ['Quot.sound', 'propext'])
+    && lockedNANDThresholdPublicationTheoremRow.actualKernelTypeSha256 === LOCKED_NAND_THRESHOLD_PUBLICATION_KERNEL_TYPE_SHA256
+    && lockedNANDThresholdPublicationTheoremRow.expectedKernelTypeSha256 === LOCKED_NAND_THRESHOLD_PUBLICATION_KERNEL_TYPE_SHA256
+    && lockedNANDThresholdPublicationTheoremRow.kernelTypeFingerprintMatches === true
+    && status.leanLockedNANDPolynomialBuilderFormalized === true
+    && status.leanLockedNANDBuilderFormalized === true
+    && status.leanLockedNANDThresholdFormalized === true
     && status.leanSaturatePositiveFormalized === false
     && status.leanBCELReadyFormalized === false
     && status.leanResidualRoutesGlobalGainCompletenessFormalized === false

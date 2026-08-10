@@ -64,18 +64,18 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now fixes the residual terminal rank and proves it well-founded</h2>
-          <p>Lean now defines the manuscript's residual terminal rank as exactly ten natural-number coordinates in the stated priority order. It proves that the executable Boolean comparison agrees with the lexicographic proposition, supplies a proof for each possible first-decreasing coordinate, packages proof-bearing descent, and proves accessibility, induction, and kernel-checked well-foundedness for the fixed rank.</p>
-          <p>This establishes the rank domain and RankWF only. Lean has not mapped the current finite terminal routes into the manuscript's complete global outcome system, proved that any current route strictly decreases the rank, established route completeness or Package E, removed the finite composition's explicit positive premise, established manuscript-wide SaturatePositive or BCELReady, proved ZeroSlack or PCCMin, established polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 83% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-10-residual-terminal-rank-wf">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now publishes the concrete locked-NAND threshold reduction</h2>
+          <p>Lean now proves one uniform polynomial-time transformation from encoded CNF satisfiability instances to the concrete locked-NAND threshold language. The witness is the fixed parser, circuit compiler, and locked-NAND emitter pipeline, and the theorem applies to every input bitstring with fail-closed malformed-input behavior.</p>
+          <p>The theorem depends only on standard Lean logical principles, not on the legacy project assumption with a similar name. It does not put the target language in P, prove concrete CNF-SAT NP-hardness, discharge residual-band minimization, ZeroSlack or PCCMin, establish polynomial certificate checking for the final route, remove the remaining project assumptions, or prove P = NP. The 84% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-10-concrete-locked-nand-threshold-publication">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
           <summary class="boundary-head">
-            <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
+            <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>TerminalResidualRank</code> fixes the ten-coordinate priority order, <code>terminalResidualRankLTBool</code> supplies an equivalent executable comparison, and <code>terminalResidualRankLexLT_wellFounded</code> proves RankWF. This does not connect any current finite route to a complete global outcome or prove that a route decreases the rank. Manuscript-wide SaturatePositive, global route completeness, Package E, BCELReady, ZeroSlack, PCCMin, polynomial runtime, SAT in P, and P = NP remain unfinished.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>PNP.Main.locked_nand_threshold</code> has exact type <code>ReducesTo CNFSAT EncodedLockedNANDThreshold</code>. Its witness is the composed finite parser, circuit compiler, and locked-NAND emitter pipeline, and its compiled closure uses only <code>Quot.sound</code> and <code>propext</code>. This does not put the target in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNF-SAT NP-hardness, remove the remaining project assumptions, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -329,9 +329,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-10-121</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>e48dcb80c3fde2a17ea39c5e6337a6e7f5a9988476330ee05e213185f89c7ab9</code></div>
+            <div><span>Inventory SHA-256</span><code>f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -339,18 +339,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>83</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>84</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 83 percent" data-proof-progress="83">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>83</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 84 percent" data-proof-progress="84">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>84</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 83% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 84% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

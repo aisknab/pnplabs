@@ -25,12 +25,12 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,486 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,487 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 26,539 public declarations;
-- 13,883 theorem-kind declarations;
+- 26,540 public declarations;
+- 13,884 theorem-kind declarations;
 - 7,159 assumption-free theorem-kind declarations;
 - 238 source-closure modules;
 - 14,935 excluded private compiler auxiliaries;
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The ninety-eight earned scopes are:
+The ninety-nine earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -122,6 +122,7 @@ The ninety-eight earned scopes are:
 | Concrete strict-v0 locked-NAND polynomial reduction | The parser/emitter composition is packaged as a concrete polynomial many-one reduction from `EncodedNANDSAT` to `EncodedLockedNANDThreshold`; exact function identity, exact output, all-bitstring language equivalence, a `ReducesTo` witness, recursive raw-machine refinement, and the complete 16-declaration approved axiom audit are formalized | The downstream all-input CNF compiler now reaches this source language through a fixed finite machine and composes with this reduction. This milestone does not discharge the abstract target-language assumption, prove the report-level threshold theorem, put CNF-SAT in P, complete ZeroSlack, or prove `P = NP`. |
 | General CNF-to-NAND semantic compiler | A total answer-independent compiler transforms every strict canonical CNF formula into an intrinsically topological well-formed NAND circuit, preserves satisfiability exactly, proves the exact gate count and a quadratic serialized-output bound, fails closed on every malformed bitstring, and composes semantically with the concrete locked-NAND threshold builder. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only, and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`. | This is the pure semantic and size-bound layer. The following all-input milestone supplies the machine and reduction interfaces; neither layer decides CNF-SAT, proves CNFSAT is in deterministic polynomial time, discharges the abstract report-level locked-NAND premise, completes ZeroSlack/PCCMin, or proves P = NP. |
 | Fixed all-input CNF-to-NAND polynomial reduction | One fixed 135,070-rule three-node parser/carrier/controller work graph halts on every bitstring, rejects malformed CNF words with empty output, emits exactly `compileEncodedCNFToNAND` on every valid source, has one external encoded-input polynomial, compiles to a non-timeout `PolynomialTimeFunction`, retains literal `RawRefinement`, packages a direct `PolynomialReduction` from `CNFSAT` to `EncodedNANDSAT`, and composes it with the strict locked-NAND reduction to `EncodedLockedNANDThreshold`. The complete 1,316-declaration audit has 864 empty, 151 `propext`-only, and 301 `propext` plus `Quot.sound` closures. | This syntax-directed compiler does not itself decide CNF-SAT, put `CNFSAT` in deterministic polynomial time, establish SAT NP-hardness or CNF-SAT NP-completeness, connect the concrete locked-NAND target to the abstract report-level threshold theorem, complete residual minimization or ZeroSlack/PCCMin, discharge a project assumption, or prove P = NP. |
+| Report-facing concrete locked-NAND threshold reduction | `PNP.Main.locked_nand_threshold` packages the composed finite CNF parser, NAND compiler, and locked-NAND emitter as `ReducesTo CNFSAT EncodedLockedNANDThreshold`. Correctness, polynomial runtime, output-size bounds, malformed-input behavior, and recursive raw refinement apply uniformly to every bitstring. Its one reviewed theorem pin uses only `Quot.sound` and `propext`, with no project axiom. | This is a polynomial many-one reduction, not a polynomial-time decider for the target, a concrete CNF-SAT NP-hardness or NP-completeness result, a residual-band minimization theorem, `ZeroSlack`, PCCMin, activation of the legacy string-handle bridge, or P = NP. |
 | Universal verified residual-gain chain bound | Every finite proof-bearing or executably verified chain of adjacent strict equivalent gains preserves semantics and the exhaustive reference minimum; endpoint residual slack plus chain length is at most starting residual slack. The locked-NAND slack-at-most-four theorem specializes the bound to at most four verified steps. Twelve generic audited declarations are axiom-free and four locked specializations use only `propext` and `Quot.sound`. | This verifies and bounds a supplied chain. It does not generate a gain, prove route or candidate-list completeness, justify stopping early, construct `ZeroSlack`, compute an exact minimizer, establish polynomial checker or PCCMin runtime, put SAT in P, discharge a project assumption, or prove P = NP. |
 | Terminal full-carrier residual bridge | For every finite direct-wire implementation, terminalization preserves the exact whole implementation, gate count, and complete multi-output semantics. The terminal full minimum equals the exhaustive reference minimum; positive slack is equivalent to a cheaper whole-span full realization, each such realization strictly descends, and zero slack is equivalent to absence of one. All 22 audited public declarations are axiom-free. | This is the direct-wire full-mode specialization. It does not formalize the quotient carrier or quotient-to-full firewall, proper or governed supports, saturation, BCEL/BN2–BN6, packet or selector completeness, route generation, `ZeroSlack`, PCCMin, polynomial minimum search or checking, SAT in P, assumption discharge, or `P = NP`. |
 | Terminal quotient/full mode firewall | For every finite direct-wire implementation, a computed observer records the ten terminal carrier roles and an explicit forgetful projection selects quotient coordinates while retaining the exact implementation, gate count, and complete semantics. A quotient comparison has a checked full lift exactly when every forgotten profile coordinate agrees; lossless projections lift directly, and obligation discharge transports through a checked lift. All 29 audited public declarations are axiom-free. | This supplies only the terminal comparison/lifting firewall. It supplies no proper or governed supports, arbitrary quotient construction, support or projection-defect minimum, saturation, Package E, BCEL/BN2–BN6, packet or selector completeness, global residual route, `ZeroSlack`, PCCMin exactness or polynomial runtime, SAT-in-P result, assumption discharge, or `P = NP`. |
@@ -151,8 +152,8 @@ The ninety-eight earned scopes are:
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
-Three global milestones remain unearned: the unconditional locked-NAND construction/threshold, the
-complete ZeroSlack/PCCMin/residual-band polynomial route, and the concrete standard P-vs-NP root.
+Two global milestones remain unearned: the complete ZeroSlack/PCCMin/residual-band polynomial route
+and the concrete standard P-vs-NP root.
 
 ## Concrete Publication Gate
 
@@ -167,7 +168,7 @@ This pass is intentionally non-activating:
 - the expected activation fingerprints are unset;
 - unset fingerprints are unconfigured and never match null actual values;
 - the abstract string-handle `PNP.PEqualsNP` bridge is categorically ineligible;
-- four project axioms and six blockers remain.
+- four project axioms and five blockers remain.
 
 Every theorem-emission field is derived from `concretePublicationGate.passed`. Historical accepted
 records, JSON values, checker results, or report wording cannot override it.
@@ -188,14 +189,13 @@ it is not a claim of universal cross-toolchain reproducibility.
 
 ## Remaining Route To The Target
 
-The six current blockers are:
+The five current blockers are:
 
 1. `Formal.ConcreteSAT`;
-2. `Formal.LockedNANDThreshold`;
-3. `Formal.ResidualBandMinimizer`;
-4. `Formal.ZeroSlack`;
-5. `Formal.PolynomialRuntimeAndCertificateBounds`;
-6. `Formal.RootTheoremAndAxiomAudit`.
+2. `Formal.ResidualBandMinimizer`;
+3. `Formal.ZeroSlack`;
+4. `Formal.PolynomialRuntimeAndCertificateBounds`;
+5. `Formal.RootTheoremAndAxiomAudit`.
 
 Closing them requires concrete formal definitions, unconditional theorems at the required scopes,
 polynomial bounds, a concrete root theorem, and an acceptable axiom audit. Publication machinery is

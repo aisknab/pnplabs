@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout dd69b94a762eb830a3b91503faffde3984cce84f
+git checkout 9e1097953c6105cf01de64d2dd58bdd75fcb790d
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, the literal four-stage all-input compiler, sequential raw-machine composition, recursive function/decision refinement into one raw machine, the typed locked-NAND semantic threshold with residual slack at most four, exact strict-codec round trips, and the pure fail-closed encoded semantic construction. They do not implement bounded locked-NAND parser or emitter machines, package a concrete `PolynomialReduction`, discharge the abstract threshold axiom, prove CNF-SAT in P, prove NP-completeness, establish ZeroSlack or PCCMin, or prove the target theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and six blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, and `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold`. That newest theorem is a polynomial many-one reduction, not a polynomial-time target decider, an NP-hardness or NP-completeness result, a ZeroSlack or PCCMin theorem, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 
