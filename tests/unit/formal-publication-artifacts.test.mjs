@@ -730,6 +730,25 @@ const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_SCOPE = "all-finite-di
 const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean computes the candidate-derived dependency system and deterministic rule-labelled saturation trace, then returns proof that every event is exactly cost-balanced with preserved full slack and nondecreasing projection defect, or records the exact first nontransparent event and complete transparent prefix.";
 const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NON_CLAIM = "This closes only the finite terminal forms of transparentSaturationCostBalanced and firstNontransparentStepRecorded. The executable observer and forgetful projection remain explicit model inputs, and a nontransparent event is recorded rather than routed. It does not discharge interfaceExposureRoutesToE or originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
 
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS = {
+  "PNP.DirectWire.terminalInterfaceExposureCoordinate?_sound": { hash: "fd588e1aab5d670afcc23cadd40cc3dcf03214f8f4d222b955116e80a5c8f125", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_shape": { hash: "0f6ea712760c01fdb762902ad020dcf4a9f3c45dba0e2a91790b6bfd327cace7", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_edge": { hash: "d168a3362f7b52afd52451d87eff1eedb6302016786c4c763e0965ebcea08880", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalInterfaceOutgoingCoordinate_eventCost_zero": { hash: "74c702f16d6714a455bad571c647ae4903581a174b7c31b1e37b426b10a78160", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalInterfaceExposureERoute.sound": { hash: "57ae2f434a17a9c5c9a91cd17844f55fa7d72086827598e9bcf6ce7d2441803e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.eventCost_zero": { hash: "c098e9bfd76067bbc7a2d4223c0107dae920d3378e47a002f58e71f24ed0404b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.fullSlack_preserved": { hash: "e47bd2a49bb380282d5c6b7b950390dbfea623a55c0c6a5b93a9875215cff293", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalInterfaceExposure_transparent_or_eRoute": { hash: "71207620ad161eb833ad413ed00fccd4d14af5c5720f812c7ecff00eca892336", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound": { hash: "cef4ceb9d4650c0847c740c6126132dc9fa78100d83502b1c887cd6d3d31b8d0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive": { hash: "3f2cf5f03389537c02418758fd531dfa427be40d6773ddfa5fd6104c3a798c38", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" }
+};
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-interface-consumer-transparent-or-local-e-route-with-exact-first-failure";
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean recognizes only an exact candidate-derived interface-consumer edge. Each recognized event is transparently cost-balanced or produces a proof-bearing local E-route; the production trace result records the exact first nontransparent event and complete transparent prefix, while non-interface first failures remain fail-closed.";
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM = "This closes only the finite local form of interfaceExposureRoutesToE. The proof-bearing local E-route is an exposure-obligation coordinate, not a full Package E VerifyDW acceptance, a verified global gain, or global route completeness. The executable observer and forgetful projection remain explicit model inputs. It does not discharge originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -748,18 +767,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "ead67f4864902e667e5fd436eea21c61de2f871e");
+  assert.equal(result.coreCommit, "19f43501ad87d4c5611ba109d53157fd0bd1dfdb");
 });
 
-test("current release is pinned, eighty-page, exposes candidate-derived saturation cost balance, and fails closed", () => {
+test("current release is pinned, eighty-one-page, exposes terminal interface routing, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-09-101");
-  assert.equal(release.source.commit, "ead67f4864902e667e5fd436eea21c61de2f871e");
-  assert.equal(release.source.proofCommit, "906b63ac065ee8a1b3605b36e9ac4df2712e0754");
-  assert.equal(release.source.tree, "072fe73440ac21f5daa7a9a3a79b51deb459aeb6");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-102");
+  assert.equal(release.source.commit, "19f43501ad87d4c5611ba109d53157fd0bd1dfdb");
+  assert.equal(release.source.proofCommit, "f58c971c4499d872a98acbfa7fc1418d83916dfc");
+  assert.equal(release.source.tree, "574fa83fd6dd1b0d124770d1f577bf3f0147aaa4");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 80);
+  assert.equal(release.artifacts.report.pageCount, 81);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -2701,6 +2720,30 @@ test("current release is pinned, eighty-page, exposes candidate-derived saturati
   assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceHistoryDefectTheorem, "PNP.DirectWire.TerminalSaturationEventsLinked.projectionDefect_mono");
   assert.equal(release.earnedBoundary.residualTerminalSaturationCostBalanceOutcomeTheorem, "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_event");
 
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteInterfaceExposureRoutesToEFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureZeroCostRetractFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFirstInterfaceExposureRouteFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingAuditedDeclarationCount, 28);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingEmptyAxiomDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingPropextOnlyDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingPropextQuotSoundDeclarationCount, 25);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRoutingScope, RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalInterfaceExposureRoutingTheoremKernelTypeSha256, RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalInterfaceExposureRoutingAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalInterfaceExposureRoutingProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureCoordinateSoundTheorem, "PNP.DirectWire.terminalInterfaceExposureCoordinate?_sound");
+  assert.equal(release.earnedBoundary.residualTerminalCandidateInterfaceExposureShapeTheorem, "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_shape");
+  assert.equal(release.earnedBoundary.residualTerminalCandidateInterfaceExposureEdgeTheorem, "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_edge");
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureOutgoingZeroCostTheorem, "PNP.DirectWire.terminalInterfaceOutgoingCoordinate_eventCost_zero");
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureERouteSoundTheorem, "PNP.DirectWire.TerminalInterfaceExposureERoute.sound");
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRetractCostTheorem, "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.eventCost_zero");
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureRetractSlackTheorem, "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.fullSlack_preserved");
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureDichotomyTheorem, "PNP.DirectWire.terminalInterfaceExposure_transparent_or_eRoute");
+  assert.equal(release.earnedBoundary.residualTerminalFirstInterfaceExposureRouteTheorem, "PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound");
+  assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureClassifierTheorem, "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive");
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2732,12 +2775,12 @@ test("current release is pinned, eighty-page, exposes candidate-derived saturati
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 98 milestones with candidate-derived saturation cost balance pinned", () => {
+test("status and inventory publish exactly 99 milestones with terminal interface routing pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 98);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 95);
+  assert.equal(milestones.length, 99);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 96);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3637,24 +3680,57 @@ test("status and inventory publish exactly 98 milestones with candidate-derived 
   assert.equal(status.leanResidualTerminalFirstNontransparentStepFormalized, true);
   assert.equal(status.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalSaturationCostBalanceScope, RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_SCOPE);
+
+  const interfaceExposureRouting = milestones.find((row) => row.id === "residual-terminal-interface-exposure-routing");
+  assert.equal(interfaceExposureRouting.classification, "formalized-residual-terminal-interface-exposure-routing");
+  assert.equal(interfaceExposureRouting.status, "formalized-residual-terminal-interface-exposure-routing");
+  assert.equal(interfaceExposureRouting.earned, true);
+  assert.equal(interfaceExposureRouting.allPresent, true);
+  assert.equal(interfaceExposureRouting.allAssumptionFree, false);
+  assert.equal(interfaceExposureRouting.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(interfaceExposureRouting.allKernelTypesMatch, true);
+  assert.equal(interfaceExposureRouting.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(interfaceExposureRouting.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(interfaceExposureRouting.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_HASHES
+  );
+  for (const row of interfaceExposureRouting.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(interfaceExposureRouting.scope, RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE);
+  assert.equal(interfaceExposureRouting.nonClaim, RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalInterfaceExposureRoutingFormalized, true);
+  assert.equal(status.leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized, true);
+  assert.equal(status.leanResidualTerminalInterfaceExposureZeroCostRetractFormalized, true);
+  assert.equal(status.leanResidualTerminalFirstInterfaceExposureRouteFormalized, true);
+  assert.equal(status.leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalInterfaceExposureRoutingScope, RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(inventory.declarationCount, 25863);
-  assert.equal(inventory.theoremCount, 13665);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7079);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14904);
-  assert.equal(inventory.sourceClosureModuleCount, 235);
-  assert.equal(inventory.milestoneCandidates.length, 2449);
+  assert.equal(inventory.declarationCount, 26087);
+  assert.equal(inventory.theoremCount, 13740);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7102);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14908);
+  assert.equal(inventory.sourceClosureModuleCount, 236);
+  assert.equal(inventory.milestoneCandidates.length, 2459);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 765,
-    definition: 10735,
-    inductive: 347,
+    constructor: 778,
+    definition: 10857,
+    inductive: 354,
     opaque: 0,
     quotient: 0,
-    recursor: 347,
-    theorem: 13665
+    recursor: 354,
+    theorem: 13740
   });
 });
 

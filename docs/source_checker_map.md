@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `ead67f4864902e667e5fd436eea21c61de2f871e`. Its generated status payload is current
+core commit `19f43501ad87d4c5611ba109d53157fd0bd1dfdb`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the eighty-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the eighty-one-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `ead67f4864902e667e5fd436eea21c61de2f871e` (tree `072fe73440ac21f5daa7a9a3a79b51deb459aeb6`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, and candidate-derived terminal saturation with exact transparent-event cost balance or a recorded first nontransparent event |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,449 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `19f43501ad87d4c5611ba109d53157fd0bd1dfdb` (tree `574fa83fd6dd1b0d124770d1f577bf3f0147aaa4`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, candidate-derived terminal saturation cost balance, and finite interface-exposure routing into a proof-bearing local E-route |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,459 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Ninety-five earned scoped milestones through candidate-derived terminal saturation cost balance; the observer and projection remain explicit inputs; the finite terminal forms of three SaturatePositive obligations are closed while `interfaceExposureRoutesToE` and `originKernelObligationClosureRouted` remain open; three unearned global milestones, four project axioms, and six blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | Ninety-six earned scoped milestones through finite interface-exposure routing; the observer and projection remain explicit inputs; the finite terminal forms of four SaturatePositive obligations are closed while `originKernelObligationClosureRouted` remains open; three unearned global milestones, four project axioms, and six blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-one-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

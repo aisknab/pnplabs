@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "ead67f4864902e667e5fd436eea21c61de2f871e";
-const REVIEWED_CORE_TREE = "072fe73440ac21f5daa7a9a3a79b51deb459aeb6";
-const REVIEWED_PROOF_COMMIT = "906b63ac065ee8a1b3605b36e9ac4df2712e0754";
+const REVIEWED_CORE_COMMIT = "19f43501ad87d4c5611ba109d53157fd0bd1dfdb";
+const REVIEWED_CORE_TREE = "574fa83fd6dd1b0d124770d1f577bf3f0147aaa4";
+const REVIEWED_PROOF_COMMIT = "f58c971c4499d872a98acbfa7fc1418d83916dfc";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -3394,6 +3394,19 @@ const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_RELEASE_IDENTITIES = {
   residualTerminalSaturationCostBalanceOutcomeTheorem: "PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_event"
 };
 
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_RELEASE_IDENTITIES = {
+  residualTerminalInterfaceExposureCoordinateSoundTheorem: "PNP.DirectWire.terminalInterfaceExposureCoordinate?_sound",
+  residualTerminalCandidateInterfaceExposureShapeTheorem: "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_shape",
+  residualTerminalCandidateInterfaceExposureEdgeTheorem: "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_edge",
+  residualTerminalInterfaceExposureOutgoingZeroCostTheorem: "PNP.DirectWire.terminalInterfaceOutgoingCoordinate_eventCost_zero",
+  residualTerminalInterfaceExposureERouteSoundTheorem: "PNP.DirectWire.TerminalInterfaceExposureERoute.sound",
+  residualTerminalInterfaceExposureRetractCostTheorem: "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.eventCost_zero",
+  residualTerminalInterfaceExposureRetractSlackTheorem: "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.fullSlack_preserved",
+  residualTerminalInterfaceExposureDichotomyTheorem: "PNP.DirectWire.terminalInterfaceExposure_transparent_or_eRoute",
+  residualTerminalFirstInterfaceExposureRouteTheorem: "PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound",
+  residualTerminalInterfaceExposureClassifierTheorem: "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -4056,6 +4069,23 @@ const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_SCOPE = "all-finite-di
 const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean computes the candidate-derived dependency system and deterministic rule-labelled saturation trace, then returns proof that every event is exactly cost-balanced with preserved full slack and nondecreasing projection defect, or records the exact first nontransparent event and complete transparent prefix.";
 const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NON_CLAIM = "This closes only the finite terminal forms of transparentSaturationCostBalanced and firstNontransparentStepRecorded. The executable observer and forgetful projection remain explicit model inputs, and a nontransparent event is recorded rather than routed. It does not discharge interfaceExposureRoutesToE or originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
 
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS = {
+  "PNP.DirectWire.terminalInterfaceExposureCoordinate?_sound": { hash: "fd588e1aab5d670afcc23cadd40cc3dcf03214f8f4d222b955116e80a5c8f125", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_shape": { hash: "0f6ea712760c01fdb762902ad020dcf4a9f3c45dba0e2a91790b6bfd327cace7", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_edge": { hash: "d168a3362f7b52afd52451d87eff1eedb6302016786c4c763e0965ebcea08880", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalInterfaceOutgoingCoordinate_eventCost_zero": { hash: "74c702f16d6714a455bad571c647ae4903581a174b7c31b1e37b426b10a78160", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalInterfaceExposureERoute.sound": { hash: "57ae2f434a17a9c5c9a91cd17844f55fa7d72086827598e9bcf6ce7d2441803e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.eventCost_zero": { hash: "c098e9bfd76067bbc7a2d4223c0107dae920d3378e47a002f58e71f24ed0404b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.fullSlack_preserved": { hash: "e47bd2a49bb380282d5c6b7b950390dbfea623a55c0c6a5b93a9875215cff293", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.terminalInterfaceExposure_transparent_or_eRoute": { hash: "71207620ad161eb833ad413ed00fccd4d14af5c5720f812c7ecff00eca892336", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound": { hash: "cef4ceb9d4650c0847c740c6126132dc9fa78100d83502b1c887cd6d3d31b8d0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" },
+  "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive": { hash: "3f2cf5f03389537c02418758fd531dfa427be40d6773ddfa5fd6104c3a798c38", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalInterfaceExposureRouting" }
+};
+
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-interface-consumer-transparent-or-local-e-route-with-exact-first-failure";
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean recognizes only an exact candidate-derived interface-consumer edge. Each recognized event is transparently cost-balanced or produces a proof-bearing local E-route; the production trace result records the exact first nontransparent event and complete transparent prefix, while non-interface first failures remain fail-closed.";
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM = "This closes only the finite local form of interfaceExposureRoutesToE. The proof-bearing local E-route is an exposure-obligation coordinate, not a full Package E VerifyDW acceptance, a verified global gain, or global route completeness. The executable observer and forgetful projection remain explicit model inputs. It does not discharge originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
+
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
   residualTerminalPrimitiveUniverseTheorem: "PNP.DirectWire.mem_allTerminalPrimitiveRecords",
   residualTerminalSaturationExtensiveTheorem: "PNP.DirectWire.terminalSaturate_extensive",
@@ -4332,7 +4362,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false || boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) failures.push("formal-publication manifest does not fail closed");
   if (boundary.compatibilityRootPresent !== false || boundary.concreteTargetPresent !== true || boundary.projectSpecificAxiomsRemaining !== true || boundary.remainingBlockerCount !== 6) failures.push("formal-publication manifest blocker boundary mismatch");
-  if (manifest.artifacts?.report?.pageCount !== 80) failures.push("formal-publication report must have exactly eighty pages");
+  if (manifest.artifacts?.report?.pageCount !== 81) failures.push("formal-publication report must have exactly eighty-one pages");
   const earned = manifest.earnedBoundary || {};
   if (earned.pipelineStateNamespacesFormalized !== true || earned.pipelineStateNamespaceAxiomAuditPassed !== true || earned.pipelineStateNamespaceAuditedDeclarationCount !== 39) failures.push("formal-publication pipeline namespace boundary mismatch");
   if (earned.pipelineStageBridgesFormalized !== true || earned.pipelineStageBridgeAxiomAuditPassed !== true || earned.pipelineStageBridgeAuditedDeclarationCount !== 56 || earned.pipelineStageLaunchFormalized !== true || earned.pipelineVerdictPreservationFormalized !== true || earned.pipelineInternalOutputHandoffComposed !== true) failures.push("formal-publication pipeline stage-bridge boundary mismatch");
@@ -5312,6 +5342,29 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS).every(([name, row]) => residualTerminalCandidateSaturationCostBalanceHashes[name] === row.hash)) failures.push("current manifest residual terminal candidate saturation cost-balance fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal candidate saturation cost-balance theorem identity mismatch");
 
+  if (!(earned.residualTerminalInterfaceExposureRoutingFormalized === true
+      && earned.residualTerminalFiniteInterfaceExposureRoutesToEFormalized === true
+      && earned.residualTerminalInterfaceExposureZeroCostRetractFormalized === true
+      && earned.residualTerminalFirstInterfaceExposureRouteFormalized === true
+      && earned.residualTerminalInterfaceExposureRoutingAxiomAuditPassed === true
+      && earned.residualTerminalInterfaceExposureRoutingAuditedDeclarationCount === 28
+      && earned.residualTerminalInterfaceExposureRoutingEmptyAxiomDeclarationCount === 2
+      && earned.residualTerminalInterfaceExposureRoutingPropextOnlyDeclarationCount === 1
+      && earned.residualTerminalInterfaceExposureRoutingPropextQuotSoundDeclarationCount === 25
+      && earned.residualTerminalInterfaceExposureRoutingScope === RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal interface-exposure routing boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalInterfaceExposureRoutingAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalInterfaceExposureRoutingProjectAxiomClosure)
+      || earned.residualTerminalInterfaceExposureRoutingProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal interface-exposure routing axiom closure mismatch");
+  const residualTerminalInterfaceExposureRoutingHashes = earned.residualTerminalInterfaceExposureRoutingTheoremKernelTypeSha256;
+  if (!residualTerminalInterfaceExposureRoutingHashes || Object.keys(residualTerminalInterfaceExposureRoutingHashes).length !== 10
+      || !Object.entries(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS).every(([name, row]) => residualTerminalInterfaceExposureRoutingHashes[name] === row.hash)) failures.push("current manifest residual terminal interface-exposure routing fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal interface-exposure routing theorem identity mismatch");
+
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -5348,14 +5401,14 @@ function validateCurrentPayloads(contents, failures) {
   const inventoryBuffer = contents.get("public.inventory");
   if (statusBuffer) {
     const status = JSON.parse(statusBuffer.toString("utf8"));
-    if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-118"
-        || status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-09-CANDIDATE-SATURATION-COST-BALANCE-117"
-        || status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-09-118"
-        || status.formalPublicationMapSha256 !== "9cc215a43b6c50be85f32a313eed36aca73bc332db9ea4faa21def8659c28f28"
-        || status.leanSourceClosureSha256 !== "bbede19553a26c6ac1b7075cc22f5fb05662056351406e36183a7a734d32d3d9") failures.push("public status current source identity mismatch");
+    if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-119"
+        || status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-INTERFACE-EXPOSURE-ROUTING-118"
+        || status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-119"
+        || status.formalPublicationMapSha256 !== "410dc11e15005c24df28c455d3d0e1d96926f2dcffd6c080e45c60a395422849"
+        || status.leanSourceClosureSha256 !== "a7ba81b064643e574a6a5084e4947a61db2fc19528155cf2b11cf37f67f40682") failures.push("public status current source identity mismatch");
     if (!Array.isArray(status.formalPublicationMilestones)
-        || status.formalPublicationMilestones.length !== 98
-        || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 95
+        || status.formalPublicationMilestones.length !== 99
+        || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 96
         || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 3) failures.push("public status milestone count mismatch");
     if (status.concretePublicationGate?.passed !== false || status.publicationStatusDerivedOnlyFromConcreteGate !== true || status.mathematicalTheoremEstablished !== false || status.publicTheoremEmissionAllowed !== false || status.publicTheoremStatement !== null) failures.push("public status does not fail closed");
     if (status.leanConcreteCNFSATMembershipFormalized !== true || status.leanConcreteCNFSATMembershipTheorem !== "PNP.Concrete.FinalUniversalDesign.cnfSATInNP") failures.push("public status does not expose the earned CNF-SAT NP-membership theorem");
@@ -6564,6 +6617,42 @@ function validateCurrentPayloads(contents, failures) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal candidate saturation cost-balance evidence mismatch");
 
+  const residualTerminalInterfaceExposureRoutingMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-interface-exposure-routing"
+  );
+  const residualTerminalInterfaceExposureRoutingNames = Object.keys(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS);
+  if (!residualTerminalInterfaceExposureRoutingMilestone
+      || residualTerminalInterfaceExposureRoutingMilestone.classification !== "formalized-residual-terminal-interface-exposure-routing"
+      || residualTerminalInterfaceExposureRoutingMilestone.status !== "formalized-residual-terminal-interface-exposure-routing"
+      || residualTerminalInterfaceExposureRoutingMilestone.scope !== RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE
+      || residualTerminalInterfaceExposureRoutingMilestone.nonClaim !== RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM
+      || JSON.stringify(residualTerminalInterfaceExposureRoutingMilestone.requiredTheorems) !== JSON.stringify(residualTerminalInterfaceExposureRoutingNames)
+      || residualTerminalInterfaceExposureRoutingMilestone.earned !== true
+      || residualTerminalInterfaceExposureRoutingMilestone.allPresent !== true
+      || residualTerminalInterfaceExposureRoutingMilestone.allAssumptionFree !== false
+      || residualTerminalInterfaceExposureRoutingMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalInterfaceExposureRoutingMilestone.allKernelTypesMatch !== true
+      || residualTerminalInterfaceExposureRoutingMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal interface-exposure routing publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS)) {
+    const row = residualTerminalInterfaceExposureRoutingMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal interface-exposure routing theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalInterfaceExposureRoutingFormalized === true
+      && status.leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized === true
+      && status.leanResidualTerminalInterfaceExposureZeroCostRetractFormalized === true
+      && status.leanResidualTerminalFirstInterfaceExposureRouteFormalized === true
+      && status.leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed === true
+      && status.leanResidualTerminalInterfaceExposureRoutingScope === RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal interface-exposure routing evidence mismatch");
+
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFourthPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintFourthPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-fourth-padding-or-unary-opportunity-step evidence mismatch");
@@ -6572,14 +6661,14 @@ function validateCurrentPayloads(contents, failures) {
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
     if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") failures.push("public inventory publication boundary mismatch");
-    if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-09-118"
-        || inventory.declarationCount !== 25863
-        || inventory.theoremCount !== 13665
-        || inventory.assumptionFreeTheoremCount !== 7079
-        || inventory.excludedPrivateDeclarationCount !== 14904
-        || inventory.sourceClosureModuleCount !== 235
+    if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-10-119"
+        || inventory.declarationCount !== 26087
+        || inventory.theoremCount !== 13740
+        || inventory.assumptionFreeTheoremCount !== 7102
+        || inventory.excludedPrivateDeclarationCount !== 14908
+        || inventory.sourceClosureModuleCount !== 236
         || inventory.axiomCount !== 4
-        || JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 765, definition: 10735, inductive: 347, opaque: 0, quotient: 0, recursor: 347, theorem: 13665 })) failures.push("public inventory count boundary mismatch");
+        || JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 778, definition: 10857, inductive: 354, opaque: 0, quotient: 0, recursor: 354, theorem: 13740 })) failures.push("public inventory count boundary mismatch");
     const cookLevinBridge = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language");
     if (!cookLevinBridge || cookLevinBridge.kind !== "theorem" || cookLevinBridge.module !== "PNP.Concrete.CookLevinRawTapeBridge" || JSON.stringify(cookLevinBridge.axioms) !== JSON.stringify(["Classical.choice", "Quot.sound", "propext"])) failures.push("public inventory Cook-Levin raw-tape theorem mismatch");
     const formulaSize = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_size_le");
@@ -7309,8 +7398,14 @@ function validateCurrentPayloads(contents, failures) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal candidate saturation cost-balance theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal candidate saturation cost-balance fingerprint mismatch: ${name}`);
     }
-    if (inventory.milestoneCandidates?.length !== 2449) {
-      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2449`);
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal interface-exposure routing theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal interface-exposure routing fingerprint mismatch: ${name}`);
+    }
+    if (inventory.milestoneCandidates?.length !== 2459) {
+      failures.push(`public inventory reviewed theorem-candidate count mismatch: found ${inventory.milestoneCandidates?.length ?? "missing"}, expected 2459`);
     }
   }
 }
@@ -7903,21 +7998,21 @@ export function validateAuditTargets(options = {}) {
       if (!lockedNANDGlobalUnsatisfiableFinalZeroMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalUnsatisfiableFinalZeroPins[name] !== row.hash) failures.push(`core publication map locked-NAND unsatisfiable final-zero fingerprint mismatch: ${name}`);
     }
     const lockedNANDGlobalSemanticThresholdMilestone = publicationMap.milestones?.find((row) => row.id === "locked-nand-global-semantic-threshold");
-    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 98 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
+    if (!lockedNANDGlobalSemanticThresholdMilestone || publicationMap.milestones?.length !== 99 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96 || lockedNANDGlobalSemanticThresholdMilestone.classification !== "formalized" || lockedNANDGlobalSemanticThresholdMilestone.requiredTheorems?.length !== 8 || lockedNANDGlobalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable." || lockedNANDGlobalSemanticThresholdMilestone.nonClaim !== "This typed semantic theorem does not construct or compile the report's encoded polynomial-time SAT-to-locked-NAND builder, establish CNFSAT in P, prove NP-hardness transport, discharge the abstract locked-NAND threshold axiom, or prove P = NP.") failures.push("core publication map locked-NAND global semantic-threshold milestone mismatch");
     const lockedNANDGlobalSemanticThresholdPins = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS)) {
       if (!lockedNANDGlobalSemanticThresholdMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDGlobalSemanticThresholdPins[name] !== row.hash) failures.push(`core publication map locked-NAND global semantic-threshold fingerprint mismatch: ${name}`);
     }
     const lockedNANDEncodedSemanticReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
-    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 98 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
+    if (!lockedNANDEncodedSemanticReductionMilestone || publicationMap.milestones?.length !== 99 || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96 || lockedNANDEncodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary" || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11 || lockedNANDEncodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold." || lockedNANDEncodedSemanticReductionMilestone.nonClaim !== "This is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, construction-runtime or output-size bound, abstract locked-NAND threshold discharge, CNFSAT-in-P result, or P = NP.") failures.push("core publication map locked-NAND encoded semantic-reduction milestone mismatch");
     const lockedNANDEncodedSemanticReductionPins = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256 || {};
     for (const [name, row] of Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS)) {
       if (!lockedNANDEncodedSemanticReductionMilestone?.requiredTheorems?.includes(name) || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash || lockedNANDEncodedSemanticReductionPins[name] !== row.hash) failures.push(`core publication map locked-NAND encoded semantic-reduction fingerprint mismatch: ${name}`);
     }
     const lockedNANDSourceParserMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || lockedNANDSourceParserMilestone.classification !== "formalized-foundation-only"
         || lockedNANDSourceParserMilestone.requiredTheorems?.length !== 20
         || lockedNANDSourceParserMilestone.scope !== LOCKED_NAND_SOURCE_PARSER_SCOPE
@@ -7930,8 +8025,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDTargetEmitterMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-target-emitter");
     if (!lockedNANDTargetEmitterMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || lockedNANDTargetEmitterMilestone.classification !== "formalized-foundation-only"
         || lockedNANDTargetEmitterMilestone.requiredTheorems?.length !== 22
         || lockedNANDTargetEmitterMilestone.scope !== LOCKED_NAND_TARGET_EMITTER_SCOPE
@@ -7944,8 +8039,8 @@ export function validateAuditTargets(options = {}) {
     }
     const lockedNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-locked-nand-polynomial-reduction");
     if (!lockedNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || lockedNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || lockedNANDPolynomialReductionMilestone.requiredTheorems?.length !== 5
         || lockedNANDPolynomialReductionMilestone.scope !== LOCKED_NAND_POLYNOMIAL_REDUCTION_SCOPE
@@ -7958,8 +8053,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDSemanticCompilerMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-semantic-compiler");
     if (!cnfToNANDSemanticCompilerMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || cnfToNANDSemanticCompilerMilestone.classification !== "formalized-semantic-boundary"
         || cnfToNANDSemanticCompilerMilestone.scope !== CNF_TO_NAND_SEMANTIC_COMPILER_MILESTONE_SCOPE
         || cnfToNANDSemanticCompilerMilestone.nonClaim !== CNF_TO_NAND_SEMANTIC_COMPILER_NON_CLAIM
@@ -7972,8 +8067,8 @@ export function validateAuditTargets(options = {}) {
     }
     const cnfToNANDPolynomialReductionMilestone = publicationMap.milestones?.find((row) => row.id === "concrete-cnf-to-nand-polynomial-reduction");
     if (!cnfToNANDPolynomialReductionMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || cnfToNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
         || cnfToNANDPolynomialReductionMilestone.scope !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE_SCOPE
         || cnfToNANDPolynomialReductionMilestone.nonClaim !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM
@@ -7986,8 +8081,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualGainChainMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-chain-bound");
     if (!residualGainChainMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualGainChainMilestone.classification !== "formalized-iteration-bound-only"
         || residualGainChainMilestone.scope !== RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE
         || residualGainChainMilestone.nonClaim !== RESIDUAL_GAIN_CHAIN_NON_CLAIM
@@ -8000,8 +8095,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualGainStoppingMilestone = publicationMap.milestones?.find((row) => row.id === "residual-gain-stopping-specification");
     if (!residualGainStoppingMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualGainStoppingMilestone.classification !== "formalized-semantic-stopping-only"
         || residualGainStoppingMilestone.scope !== RESIDUAL_GAIN_STOPPING_MILESTONE_SCOPE
         || residualGainStoppingMilestone.nonClaim !== RESIDUAL_GAIN_STOPPING_NON_CLAIM
@@ -8014,8 +8109,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFullBridgeMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-full-carrier-bridge");
     if (!residualTerminalFullBridgeMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalFullBridgeMilestone.classification !== "formalized-terminal-full-mode-semantic-bridge"
         || residualTerminalFullBridgeMilestone.scope !== RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE
         || residualTerminalFullBridgeMilestone.nonClaim !== RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM
@@ -8028,8 +8123,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalModeFirewallMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-mode-firewall");
     if (!residualTerminalModeFirewallMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalModeFirewallMilestone.classification !== "formalized-terminal-mode-firewall"
         || residualTerminalModeFirewallMilestone.scope !== RESIDUAL_TERMINAL_MODE_FIREWALL_MILESTONE_SCOPE
         || residualTerminalModeFirewallMilestone.nonClaim !== RESIDUAL_TERMINAL_MODE_FIREWALL_NON_CLAIM
@@ -8042,8 +8137,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProjectionMinimumMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-projection-minimum");
     if (!residualTerminalProjectionMinimumMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalProjectionMinimumMilestone.classification !== "formalized-terminal-projection-minimum"
         || residualTerminalProjectionMinimumMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_MINIMUM_MILESTONE_SCOPE
         || residualTerminalProjectionMinimumMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_MINIMUM_NON_CLAIM
@@ -8056,8 +8151,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProjectionTransferMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-projection-transfer");
     if (!residualTerminalProjectionTransferMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalProjectionTransferMilestone.classification !== "formalized-terminal-projection-transfer"
         || residualTerminalProjectionTransferMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_MILESTONE_SCOPE
         || residualTerminalProjectionTransferMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_NON_CLAIM
@@ -8070,8 +8165,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSaturationMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-saturation-closure");
     if (!residualTerminalSaturationMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalSaturationMilestone.classification !== "formalized-terminal-saturation-closure"
         || residualTerminalSaturationMilestone.scope !== RESIDUAL_TERMINAL_SATURATION_MILESTONE_SCOPE
         || residualTerminalSaturationMilestone.nonClaim !== RESIDUAL_TERMINAL_SATURATION_NON_CLAIM
@@ -8084,8 +8179,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalPhysicalSupportMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-physical-support-completion");
     if (!residualTerminalPhysicalSupportMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalPhysicalSupportMilestone.classification !== "formalized-terminal-physical-support-completion"
         || residualTerminalPhysicalSupportMilestone.scope !== RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_MILESTONE_SCOPE
         || residualTerminalPhysicalSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_NON_CLAIM
@@ -8098,8 +8193,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSupportExtractionMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-support-extraction");
     if (!residualTerminalSupportExtractionMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalSupportExtractionMilestone.classification !== "formalized-terminal-support-extraction"
         || residualTerminalSupportExtractionMilestone.scope !== RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_MILESTONE_SCOPE
         || residualTerminalSupportExtractionMilestone.nonClaim !== RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NON_CLAIM
@@ -8112,8 +8207,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProperSupportMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-proper-positive-support-search");
     if (!residualTerminalProperSupportMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalProperSupportMilestone.classification !== "formalized-governed-proper-positive-support-search"
         || residualTerminalProperSupportMilestone.scope !== RESIDUAL_TERMINAL_PROPER_SUPPORT_MILESTONE_SCOPE
         || residualTerminalProperSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PROPER_SUPPORT_NON_CLAIM
@@ -8126,8 +8221,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSupportSquareMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-saturated-support-square-closure");
     if (!residualTerminalSupportSquareMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalSupportSquareMilestone.classification !== "formalized-terminal-saturated-support-square-closure"
         || residualTerminalSupportSquareMilestone.scope !== RESIDUAL_TERMINAL_SUPPORT_SQUARE_MILESTONE_SCOPE
         || residualTerminalSupportSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_SUPPORT_SQUARE_NON_CLAIM
@@ -8152,8 +8247,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFrontierPushoutMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-governed-frontier-pushout");
     if (!residualTerminalFrontierPushoutMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalFrontierPushoutMilestone.classification !== "formalized-terminal-governed-frontier-pushout"
         || residualTerminalFrontierPushoutMilestone.scope !== RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_MILESTONE_SCOPE
         || residualTerminalFrontierPushoutMilestone.nonClaim !== RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NON_CLAIM
@@ -8166,8 +8261,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalProjectionSquareMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-governed-projection-square");
     if (!residualTerminalProjectionSquareMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalProjectionSquareMilestone.classification !== "formalized-terminal-governed-projection-square"
         || residualTerminalProjectionSquareMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_MILESTONE_SCOPE
         || residualTerminalProjectionSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_NON_CLAIM
@@ -8180,8 +8275,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalSideTightMinimumMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-side-tight-minimum-arithmetic");
     if (!residualTerminalSideTightMinimumMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalSideTightMinimumMilestone.classification !== "formalized-residual-terminal-side-tight-minimum-arithmetic"
         || residualTerminalSideTightMinimumMilestone.scope !== RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_MILESTONE_SCOPE
         || residualTerminalSideTightMinimumMilestone.nonClaim !== RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NON_CLAIM
@@ -8194,8 +8289,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFourCornerCarrierMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-four-corner-carrier-transport");
     if (!residualTerminalFourCornerCarrierMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalFourCornerCarrierMilestone.classification !== "formalized-residual-terminal-four-corner-carrier-transport"
         || residualTerminalFourCornerCarrierMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_MILESTONE_SCOPE
         || residualTerminalFourCornerCarrierMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NON_CLAIM
@@ -8208,8 +8303,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFourCornerOptimaMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-four-corner-optimum-carrier-compatibility");
     if (!residualTerminalFourCornerOptimaMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalFourCornerOptimaMilestone.classification !== "formalized-residual-terminal-four-corner-optimum-carrier-compatibility"
         || residualTerminalFourCornerOptimaMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_MILESTONE_SCOPE
         || residualTerminalFourCornerOptimaMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NON_CLAIM
@@ -8222,8 +8317,8 @@ export function validateAuditTargets(options = {}) {
     }
     const residualTerminalFourCornerOptimumCoherenceMilestone = publicationMap.milestones?.find((row) => row.id === "residual-terminal-four-corner-optimum-coherence-dichotomy");
     if (!residualTerminalFourCornerOptimumCoherenceMilestone
-        || publicationMap.milestones?.length !== 98
-        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+        || publicationMap.milestones?.length !== 99
+        || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
         || residualTerminalFourCornerOptimumCoherenceMilestone.classification !== "formalized-residual-terminal-four-corner-optimum-coherence-dichotomy"
         || residualTerminalFourCornerOptimumCoherenceMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_MILESTONE_SCOPE
         || residualTerminalFourCornerOptimumCoherenceMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_NON_CLAIM
@@ -8240,8 +8335,8 @@ export function validateAuditTargets(options = {}) {
   const residualTerminalFourCornerSideTightCompletionNames =
     Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS);
   if (!residualTerminalFourCornerSideTightCompletionMilestone
-      || publicationMap.milestones?.length !== 98
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
       || residualTerminalFourCornerSideTightCompletionMilestone.classification !== "formalized-residual-terminal-four-corner-side-tight-completion-under-local-route-silence"
       || residualTerminalFourCornerSideTightCompletionMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_MILESTONE_SCOPE
       || residualTerminalFourCornerSideTightCompletionMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_NON_CLAIM
@@ -8265,8 +8360,8 @@ export function validateAuditTargets(options = {}) {
   const residualTerminalFourCornerTightBasisMaximumNames =
     Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS);
   if (!residualTerminalFourCornerTightBasisMaximumMilestone
-      || publicationMap.milestones?.length !== 98
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
       || residualTerminalFourCornerTightBasisMaximumMilestone.classification !== "formalized-residual-terminal-four-corner-complete-tight-basis-maximum"
       || residualTerminalFourCornerTightBasisMaximumMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_MILESTONE_SCOPE
       || residualTerminalFourCornerTightBasisMaximumMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NON_CLAIM
@@ -8290,8 +8385,8 @@ export function validateAuditTargets(options = {}) {
   const residualTerminalComputedBN2SquareLegitimacyNames =
     Object.keys(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREMS);
   if (!residualTerminalComputedBN2SquareLegitimacyMilestone
-      || publicationMap.milestones?.length !== 98
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
       || residualTerminalComputedBN2SquareLegitimacyMilestone.classification !== "formalized-residual-terminal-computed-bn2-square-legitimacy"
       || residualTerminalComputedBN2SquareLegitimacyMilestone.scope !== RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE_SCOPE
       || residualTerminalComputedBN2SquareLegitimacyMilestone.nonClaim !== RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NON_CLAIM
@@ -8314,8 +8409,8 @@ export function validateAuditTargets(options = {}) {
   const residualTerminalComputedBCELAnchorNucleusNames =
     Object.keys(RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_THEOREMS);
   if (!residualTerminalComputedBCELAnchorNucleusMilestone
-      || publicationMap.milestones?.length !== 98
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
       || residualTerminalComputedBCELAnchorNucleusMilestone.classification !== "formalized-residual-terminal-computed-bcel-anchor-nucleus"
       || residualTerminalComputedBCELAnchorNucleusMilestone.scope !== RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_MILESTONE_SCOPE
       || residualTerminalComputedBCELAnchorNucleusMilestone.nonClaim !== RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_NON_CLAIM
@@ -8338,8 +8433,8 @@ export function validateAuditTargets(options = {}) {
   const residualTerminalSaturationPositivityFirewallNames =
     Object.keys(RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_THEOREMS);
   if (!residualTerminalSaturationPositivityFirewallMilestone
-      || publicationMap.milestones?.length !== 98
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
       || residualTerminalSaturationPositivityFirewallMilestone.classification !== "formalized-residual-terminal-saturation-positivity-firewall"
       || residualTerminalSaturationPositivityFirewallMilestone.scope !== RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_MILESTONE_SCOPE
       || residualTerminalSaturationPositivityFirewallMilestone.nonClaim !== RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_NON_CLAIM
@@ -8362,8 +8457,8 @@ export function validateAuditTargets(options = {}) {
   const residualTerminalCandidateSaturationCostBalanceNames =
     Object.keys(RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS);
   if (!residualTerminalCandidateSaturationCostBalanceMilestone
-      || publicationMap.milestones?.length !== 98
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 95
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
       || residualTerminalCandidateSaturationCostBalanceMilestone.classification !== "formalized-residual-terminal-candidate-saturation-cost-balance"
       || residualTerminalCandidateSaturationCostBalanceMilestone.scope !== RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_MILESTONE_SCOPE
       || residualTerminalCandidateSaturationCostBalanceMilestone.nonClaim !== RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NON_CLAIM
@@ -8377,6 +8472,30 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalCandidateSaturationCostBalancePins[name] !== row.hash) {
       failures.push(`core publication map residual terminal candidate saturation cost-balance fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalInterfaceExposureRoutingMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-interface-exposure-routing"
+  );
+  const residualTerminalInterfaceExposureRoutingNames =
+    Object.keys(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS);
+  if (!residualTerminalInterfaceExposureRoutingMilestone
+      || publicationMap.milestones?.length !== 99
+      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 96
+      || residualTerminalInterfaceExposureRoutingMilestone.classification !== "formalized-residual-terminal-interface-exposure-routing"
+      || residualTerminalInterfaceExposureRoutingMilestone.scope !== RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE
+      || residualTerminalInterfaceExposureRoutingMilestone.nonClaim !== RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM
+      || JSON.stringify(residualTerminalInterfaceExposureRoutingMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalInterfaceExposureRoutingNames)) {
+    failures.push("core publication map residual terminal interface-exposure routing boundary mismatch");
+  }
+  const residualTerminalInterfaceExposureRoutingPins = releaseManifest.earnedBoundary?.residualTerminalInterfaceExposureRoutingTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS)) {
+    if (!residualTerminalInterfaceExposureRoutingMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalInterfaceExposureRoutingPins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal interface-exposure routing fingerprint mismatch: ${name}`);
     }
   }
 

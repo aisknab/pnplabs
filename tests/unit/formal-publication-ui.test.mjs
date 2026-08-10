@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '53768f488ff27bf9e43b5b195daaf263fcdcf60e05651d403af23d9a65ff3d78');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '1901e247b93dcfedd06dc09be1ba6ded421ba422baa011a4cf4f9806846ef757');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 95);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 96);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
 });
 
@@ -415,6 +415,65 @@ test('candidate-derived saturation cost balance requires its exact conservative 
   const missingPin = structuredClone(status);
   missingPin.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-candidate-saturation-cost-balance'
+  ).requiredTheorems.pop();
+  assert.equal(validation.validateStatus(missingPin, inventory), false);
+});
+
+test('pre-fetch UI state reports terminal interface-exposure routing as fail closed', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  for (const field of [
+    'leanResidualTerminalInterfaceExposureRoutingFormalized',
+    'leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized',
+    'leanResidualTerminalInterfaceExposureZeroCostRetractFormalized',
+    'leanResidualTerminalFirstInterfaceExposureRouteFormalized',
+    'leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed',
+  ]) assert.equal(failClosed[field], false, field);
+  assert.equal(failClosed.leanResidualTerminalInterfaceExposureRoutingScope, null);
+
+  const rendered = validation.formalStatusFields(failClosed);
+  assert.match(rendered, /leanResidualTerminalInterfaceExposureRoutingFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalInterfaceExposureZeroCostRetractFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalFirstInterfaceExposureRouteFormalized = false/u);
+  assert.match(rendered, /leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed = false/u);
+  assert.match(rendered, /leanResidualTerminalInterfaceExposureRoutingScope = null/u);
+});
+
+test('terminal interface-exposure routing requires its exact conservative boundary', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-interface-exposure-routing'
+  );
+  assert.equal(milestone.requiredTheorems.length, 10);
+  assert.equal(milestone.theoremRows.every((row) => row.present && row.kernelTypeFingerprintMatches), true);
+  assert.match(milestone.scope, /exact candidate-derived interface-consumer edge/u);
+  assert.match(milestone.nonClaim, /finite local form of interfaceExposureRoutesToE/u);
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  for (const key of [
+    'leanResidualTerminalInterfaceExposureRoutingFormalized',
+    'leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized',
+    'leanResidualTerminalInterfaceExposureZeroCostRetractFormalized',
+    'leanResidualTerminalFirstInterfaceExposureRouteFormalized',
+    'leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed',
+  ]) {
+    const altered = structuredClone(status);
+    altered[key] = false;
+    assert.equal(validation.validateStatus(altered, inventory), false, key);
+  }
+
+  const widenedScope = structuredClone(status);
+  widenedScope.leanResidualTerminalInterfaceExposureRoutingScope = 'global-package-e-route-completeness';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const widenedMilestone = structuredClone(status);
+  widenedMilestone.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-interface-exposure-routing'
+  ).nonClaim = 'This establishes Package E and P = NP.';
+  assert.equal(validation.validateStatus(widenedMilestone, inventory), false);
+
+  const missingPin = structuredClone(status);
+  missingPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-interface-exposure-routing'
   ).requiredTheorems.pop();
   assert.equal(validation.validateStatus(missingPin, inventory), false);
 });
@@ -3216,7 +3275,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '011cb1ee5f5cfe8c1e36b1c3cda6c43638bd22ec27969f2274336e70771052ab'/);
+  assert.match(source, /const STATUS_SHA256 = '03fb380c7b0d1a5ed1521d0fe5c06bbe99d34507af56561a5bfdfa85d0839a5e'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3489,12 +3548,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /25,863/);
-  assert.match(statusPage, /Ninety-five scoped milestones/);
+  assert.match(statusPage, /26,087/);
+  assert.match(statusPage, /Ninety-six scoped milestones/);
   assert.match(statusPage, /three global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 80-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 81-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

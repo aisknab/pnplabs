@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-10-residual-terminal-interface-exposure-routing",
+      "milestoneId": "residual-terminal-interface-exposure-routing",
+      "publishedAt": "2026-08-09T23:52:23Z",
+      "title": "Lean now routes finite terminal interface exposure",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean now recognizes only an exact interface-consumer edge derived from that candidate. Each recognized event is either proved transparently cost-balanced or turned into a proof-bearing local E-route. Across a saturation trace, Lean records the exact first interface-exposure event and the complete transparent prefix.",
+        "This closes only the finite local form of interfaceExposureRoutesToE. The local E-route identifies an exposure obligation; it is not a full Package E acceptance, verified global gain, or proof that every global route has been found. The observer and projection remain explicit inputs, and Lean has not discharged originKernelObligationClosureRouted, established full SaturatePositive, Package E or BCELReady, proved ZeroSlack or PCCMin, established polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 81% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 81,
+      "source": {
+        "commit": "19f43501ad87d4c5611ba109d53157fd0bd1dfdb",
+        "tree": "574fa83fd6dd1b0d124770d1f577bf3f0147aaa4",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-119",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-INTERFACE-EXPOSURE-ROUTING-118"
+      }
+    },
+    {
       "id": "2026-08-09-residual-terminal-candidate-saturation-cost-balance",
       "milestoneId": "residual-terminal-candidate-saturation-cost-balance",
       "publishedAt": "2026-08-09T15:28:29Z",
