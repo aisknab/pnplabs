@@ -7,8 +7,8 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122';
-const STATUS_SHA256 = 'cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123';
+const STATUS_SHA256 = 'ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
 const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122';
 const INVENTORY_SHA256 = 'f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434';
@@ -6602,6 +6602,9 @@ function validateStatus(status, inventory) {
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
   );
+  const globalZeroSlackPCCMinMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'global-zeroslack-pccmin'
+  );
   const lockedNANDThresholdPublicationTheoremRow =
     lockedNANDThresholdPublicationMilestone?.theoremRows?.find(
       (row) => row.name === 'PNP.Main.locked_nand_threshold'
@@ -7062,6 +7065,15 @@ function validateStatus(status, inventory) {
     && lockedNANDThresholdPublicationTheoremRow.actualKernelTypeSha256 === LOCKED_NAND_THRESHOLD_PUBLICATION_KERNEL_TYPE_SHA256
     && lockedNANDThresholdPublicationTheoremRow.expectedKernelTypeSha256 === LOCKED_NAND_THRESHOLD_PUBLICATION_KERNEL_TYPE_SHA256
     && lockedNANDThresholdPublicationTheoremRow.kernelTypeFingerprintMatches === true
+    && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
+    && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
+    && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
+    && globalZeroSlackPCCMinMilestone.nonClaim === 'Per-cut BN2 basis existence does not construct the cross-cut-stable BN3 request envelope. The pinned legacy package checks an asserted jointSideTightRealizability Boolean rather than an executable uniform construction, so proof-bearing result structures and explicit-list failure still do not supply global ZeroSlack or polynomial PCCMin completeness.'
+    && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
+      'PNP.Main.pccmin_polynomial_exact',
+      'PNP.Main.zero_slack_complete',
+    ])
+    && status.nonClaims?.includes('The BN3 joint-realizability gap is now pinned by a kernel-checkable logical boundary witness: per-cut side-tight existence does not by itself construct a cross-cut-stable realizing family. This is a missing-lemma witness, not a counterexample to a future candidate-derived BN3 theorem; global ZeroSlack and polynomial PCCMin remain unformalized.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true

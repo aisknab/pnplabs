@@ -3442,7 +3442,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac'/);
+  assert.match(source, /const STATUS_SHA256 = 'ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3456,6 +3456,11 @@ test('inventory drift and milestone overclaim fail closed', () => {
   changedStatus.formalPublicationMilestones.find((row) => !row.earned).earned = true;
   assert.equal(validation.validateMilestones(changedStatus), false);
   assert.equal(validation.validateStatus(changedStatus, inventory), false);
+
+  const softenedGap = structuredClone(status);
+  softenedGap.formalPublicationMilestones
+    .find((row) => row.id === 'global-zeroslack-pccmin').nonClaim = 'global completeness remains open';
+  assert.equal(validation.validateStatus(softenedGap, inventory), false);
 });
 
 test('terminal projection minima require their exact theorem and status boundary', () => {

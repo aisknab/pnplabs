@@ -18,8 +18,8 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "9e1097953c6105cf01de64d2dd58bdd75fcb790d";
-const CORE_TREE = "96eb6aaae00dbdee4707b7252fb9c682f93f25ad";
+const CORE_COMMIT = "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc";
+const CORE_TREE = "7376c3d35ebfd9a80e38abb86964e60df6d4f4b3";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -3203,20 +3203,20 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 447683,
-    sha256: "44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe"
+    bytes: 448038,
+    sha256: "61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 209712,
-    sha256: "924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a"
+    bytes: 209971,
+    sha256: "7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2024772,
-    sha256: "cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac"
+    bytes: 2025540,
+    sha256: "ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
@@ -3322,7 +3322,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c") {
+  if (sha256(map) !== "904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7") {
     fail("pinned formal-publication map digest mismatch");
   }
   const publicationMap = JSON.parse(map.toString("utf8"));
@@ -3348,7 +3348,7 @@ function assertPinnedCore(sourceDir) {
     "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaTokenCursor.step_of_done": "72a7018658fadc646c07637bc07792502fdcab845760af862081e618f879732e",
     "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaTokenCursor.step_of_lt": "8d0bc1d099f14e3764d3d01a3f7e54b21c962538012dfd8dcd04eb282434a90b"
   };
-  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122"
+  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123"
       || publicationMap.milestoneSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d"
       || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[rawTapeTheorem] !== "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d") {
     fail("pinned formal-publication map Cook-Levin identity mismatch");
@@ -4558,8 +4558,8 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
   if (!sourcePath.endsWith(".json")) return;
   const payload = JSON.parse(buffer.toString("utf8"));
   if (sourcePath === "public/pnp-status.json") {
-    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("core status coordinate mismatch");
-    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122" || payload.formalPublicationMapSha256 !== "531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c" || payload.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") fail("core status source identity mismatch");
+    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("core status coordinate mismatch");
+    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123" || payload.formalPublicationMapSha256 !== "904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7" || payload.leanSourceClosureSha256 !== "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d") fail("core status source identity mismatch");
     const carrierTraceMilestone = payload.formalPublicationMilestones?.find(
       (row) => row.id === "locked-nand-global-carrier-trace-equivalence"
     );

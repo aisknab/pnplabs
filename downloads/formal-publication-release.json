@@ -1,18 +1,18 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-105",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "9e1097953c6105cf01de64d2dd58bdd75fcb790d",
-    "proofCommit": "b42081738259b107e7204dce052e0dd5642d1457",
-    "tree": "96eb6aaae00dbdee4707b7252fb9c682f93f25ad",
-    "ref": "9e1097953c6105cf01de64d2dd58bdd75fcb790d",
+    "commit": "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc",
+    "proofCommit": "c67e4499dfc076eb53a85f77917a25804525b565",
+    "tree": "7376c3d35ebfd9a80e38abb86964e60df6d4f4b3",
+    "ref": "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-122",
-    "formalPublicationMapSha256": "531a4dbd6d7925582aed1e6011d917e8dfdaf5576e1c259f63cd76a897d2aa5c",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123",
+    "formalPublicationMapSha256": "904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7",
     "leanSourceClosureSha256": "6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
@@ -21,9 +21,9 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 2024772,
-      "sha256": "cb5b4146385a6aa8d91fc1778007e7ea418a382237d5e706277c2d7a362172ac",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-122"
+      "bytes": 2025540,
+      "sha256": "ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
@@ -37,7 +37,7 @@
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-10-122",
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-11-123",
       "pageCount": 82,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
@@ -45,8 +45,8 @@
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 447683,
-        "sha256": "44d07e868371fedb86f48492f857a26d9a38b86b9b8e81a2ace8ba13c96eeafe"
+        "bytes": 448038,
+        "sha256": "61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,8 +54,8 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 209712,
-        "sha256": "924606c880420091e8aff17f185ea52e8080c7729c3a1fba520f678e848be83a"
+        "bytes": 209971,
+        "sha256": "7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf"
       }
     }
   },

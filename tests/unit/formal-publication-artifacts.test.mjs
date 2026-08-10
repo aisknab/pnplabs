@@ -813,15 +813,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "9e1097953c6105cf01de64d2dd58bdd75fcb790d");
+  assert.equal(result.coreCommit, "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc");
 });
 
 test("current release is pinned, eighty-two-page, exposes residual terminal RankWF, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-105");
-  assert.equal(release.source.commit, "9e1097953c6105cf01de64d2dd58bdd75fcb790d");
-  assert.equal(release.source.proofCommit, "b42081738259b107e7204dce052e0dd5642d1457");
-  assert.equal(release.source.tree, "96eb6aaae00dbdee4707b7252fb9c682f93f25ad");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106");
+  assert.equal(release.source.commit, "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc");
+  assert.equal(release.source.proofCommit, "c67e4499dfc076eb53a85f77917a25804525b565");
+  assert.equal(release.source.tree, "7376c3d35ebfd9a80e38abb86964e60df6d4f4b3");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 82);

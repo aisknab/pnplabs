@@ -59,7 +59,7 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `9e1097953c6105cf01de64d2dd58bdd75fcb790d`.
+   `7445d2afa7af75375d20751b4a0aa7b87e8b8dfc`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
 3. Inspect every one of the 2,487 reviewed milestone declarations at its exact kernel type.
