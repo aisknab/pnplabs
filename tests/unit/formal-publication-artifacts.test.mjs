@@ -768,6 +768,33 @@ const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_SCOPE = "all-finite
 const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and proof-bearing candidate BCEL anchor problem whose normalized seed has positive full slack, Lean recognizes exact candidate-derived origin, kernel, and obligation closures in both gate/profile orientations; checks cost transparency, obligation discharge, and forgotten-profile stability; preserves positive full slack across an all-safe trace into the checked-lift or BCEL firewall; or returns the exact first interface, closure, or other fail-closed nontransparent route with its complete safe prefix.";
 const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_NON_CLAIM = "This closes the finite local form of originKernelObligationClosureRouted and composes the five reconstructed terminal sub-obligations only for an explicit proof-bearing problem. A local route is not a complete global outcome, Package E VerifyDW acceptance, verified gain, or global route-completeness result. The positive initial full-slack premise remains explicit. It does not establish manuscript-wide SaturatePositive, BCELReady, RankWF, ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
 
+const RESIDUAL_TERMINAL_RANK_WF_THEOREMS = {
+  "PNP.DirectWire.TerminalResidualRank.coordinates_mk": { hash: "57af7b4eb47b5cbe545130dc28fcd2f55639b943e825554d8bf737d697e523da", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.TerminalResidualRank.coordinates_length": { hash: "f7c47ca67c9e7cacf3b19d070b7fb357070a24c89e0dbb0c1d71a5f60ba61986", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRankLTBool_eq_true_iff": { hash: "2e5d299f8e31bf5acbdd94d3c4b59aa41a65c8068df3a6e0f7db1adb98fc638f", axioms: ["propext"], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRankLTBool_eq_false_iff": { hash: "820ef336efa299fccbd7cb1c821f08e32bc0b48236a3899c1325a5e986fa575a", axioms: ["propext"], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRankLexLT_wellFounded": { hash: "150edb34b098834a1bbf25c81962f15d26a019b4ef771b8dd0ff230eeba73322", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_accessible": { hash: "eff808821047b3ef8c355aa6b0d5ed7d5cfb5e82d31e271ef00259d34124daa9", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_induction": { hash: "cc8b7d24d41d0004ebf5c5dfba80dd253e8525e4da0ba5938c8fdd046b411068", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_witnessType_lt": { hash: "2e375926b8965ff0c03cb1db89f9b60ec9cf3f495f379220cd73e8c917532489", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_spanType_lt": { hash: "c468941041e0df2788ecc3ad46c121402523c3641cc296108079cc50bd54dca3", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_mode_lt": { hash: "350a6ebed3907c37c22c0837ad0ac5f48a24ac67cb3d9cba5ce7738be68129c1", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_frontierDefect_lt": { hash: "af32c68cf5b32ff213f822571b28b4aedf5739381e41dca936426c1b2c97af65", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_projectionDefect_lt": { hash: "4af50f8b8cbf83c711b554bb95a7722d1c40d1848ba76ca2b3287457701dc454", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_saturationDefect_lt": { hash: "c80058655b00ef3a4aead9cd73eaeb2b00657cdaa0844bbeb837d1a64e5dc58a", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_anchorCount_lt": { hash: "dc8ee9116a92beb686e2d28a84c78ed5cc0d333fdbc015a365615d5507eac4cb", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_chargeSize_lt": { hash: "bba66c1a0a7249c35dd7ecc9cf53a7303ce0187058cb0fd25342e6d7154e11ba", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_profileSize_lt": { hash: "42228d10e71af76dd08669f00511a1b43bebb0085ccff8b5d14b848e5903a07f", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.terminalResidualRank_canonicalCode_lt": { hash: "b3783268f850ea30f5e444e8a78a09ed278d1224990bbe725a89681dbd59d10e", axioms: [], module: "PNP.ResidualTerminalRankWF" },
+  "PNP.DirectWire.TerminalResidualRankDescent.sound": { hash: "4c4bf650e6b68d7ec6d654c4fe37ad523959cb254bb5cb871cda50c79515ada5", axioms: [], module: "PNP.ResidualTerminalRankWF" }
+};
+const RESIDUAL_TERMINAL_RANK_WF_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_RANK_WF_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
+const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
+const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -786,18 +813,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "3f4352d190b44d34866500e672c2ef2af89e08de");
+  assert.equal(result.coreCommit, "dd69b94a762eb830a3b91503faffde3984cce84f");
 });
 
-test("current release is pinned, eighty-one-page, exposes finite terminal positive-saturation composition, and fails closed", () => {
+test("current release is pinned, eighty-two-page, exposes residual terminal RankWF, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-103");
-  assert.equal(release.source.commit, "3f4352d190b44d34866500e672c2ef2af89e08de");
-  assert.equal(release.source.proofCommit, "6df4f90d6626478e24ec0d62efd408ac464a34dc");
-  assert.equal(release.source.tree, "2133ae4be763f61dda2c6f8fcc6e194ba777feb2");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-104");
+  assert.equal(release.source.commit, "dd69b94a762eb830a3b91503faffde3984cce84f");
+  assert.equal(release.source.proofCommit, "472e9be7176df693db417d98586b73f3e639c13f");
+  assert.equal(release.source.tree, "d06833216d204b8eca0510267654263e79752e51");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 81);
+  assert.equal(release.artifacts.report.pageCount, 82);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -2788,6 +2815,22 @@ test("current release is pinned, eighty-one-page, exposes finite terminal positi
   assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveOutcomeSoundTheorem, "PNP.DirectWire.TerminalFiniteSaturatePositiveOutcome.sound");
   assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveClassifierTheorem, "PNP.DirectWire.classifyTerminalFiniteSaturatePositive_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalRankWFFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFAuditedDeclarationCount, 39);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFEmptyAxiomDeclarationCount, 37);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFPropextQuotSoundDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFScope, RESIDUAL_TERMINAL_RANK_WF_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalRankWFTheoremKernelTypeSha256, RESIDUAL_TERMINAL_RANK_WF_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalRankWFAxiomClosure, ["propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalRankWFProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalRankWFCoordinatesTheorem, "PNP.DirectWire.TerminalResidualRank.coordinates_mk");
+  assert.equal(release.earnedBoundary.residualTerminalRankWFBooleanEquivalenceTheorem, "PNP.DirectWire.terminalResidualRankLTBool_eq_true_iff");
+  assert.equal(release.earnedBoundary.residualTerminalRankWFWellFoundedTheorem, "PNP.DirectWire.terminalResidualRankLexLT_wellFounded");
+  assert.equal(release.earnedBoundary.residualTerminalRankWFInductionTheorem, "PNP.DirectWire.terminalResidualRank_induction");
+  assert.equal(release.earnedBoundary.residualTerminalRankWFDescentSoundTheorem, "PNP.DirectWire.TerminalResidualRankDescent.sound");
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2819,12 +2862,12 @@ test("current release is pinned, eighty-one-page, exposes finite terminal positi
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 100 milestones with finite terminal positive-saturation composition pinned", () => {
+test("status and inventory publish exactly 101 milestones with residual terminal RankWF pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 100);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 97);
+  assert.equal(milestones.length, 101);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 98);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3797,24 +3840,54 @@ test("status and inventory publish exactly 100 milestones with finite terminal p
   assert.equal(status.leanResidualTerminalFiniteSaturatePositiveCompositionFormalized, true);
   assert.equal(status.leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalFiniteSaturatePositiveCompositionScope, RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_SCOPE);
+
+  const rankWF = milestones.find((row) => row.id === "residual-terminal-rank-wf");
+  assert.equal(rankWF.classification, "formalized-residual-terminal-rank-wf");
+  assert.equal(rankWF.status, "formalized-residual-terminal-rank-wf");
+  assert.equal(rankWF.earned, true);
+  assert.equal(rankWF.allPresent, true);
+  assert.equal(rankWF.allAssumptionFree, false);
+  assert.equal(rankWF.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(rankWF.allKernelTypesMatch, true);
+  assert.equal(rankWF.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(rankWF.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_RANK_WF_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(rankWF.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_RANK_WF_HASHES
+  );
+  for (const row of rankWF.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_RANK_WF_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(rankWF.scope, RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE);
+  assert.equal(rankWF.nonClaim, RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalRankWFFormalized, true);
+  assert.equal(status.leanResidualTerminalRankWFAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalRankWFScope, RESIDUAL_TERMINAL_RANK_WF_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(inventory.declarationCount, 26485);
-  assert.equal(inventory.theoremCount, 13860);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7139);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14928);
-  assert.equal(inventory.sourceClosureModuleCount, 238);
-  assert.equal(inventory.milestoneCandidates.length, 2468);
+  assert.equal(inventory.declarationCount, 26539);
+  assert.equal(inventory.theoremCount, 13883);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7159);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14935);
+  assert.equal(inventory.sourceClosureModuleCount, 239);
+  assert.equal(inventory.milestoneCandidates.length, 2486);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 811,
-    definition: 11074,
-    inductive: 368,
+    constructor: 812,
+    definition: 11102,
+    inductive: 369,
     opaque: 0,
     quotient: 0,
-    recursor: 368,
-    theorem: 13860
+    recursor: 369,
+    theorem: 13883
   });
 });
 
@@ -3882,8 +3955,11 @@ test("exported verification helpers import without a script argv path", () => {
 
 test("automation invokes read-only sync and contains no commit or push step", () => {
   const workflow = readFileSync(path.join(root, ".github/workflows/sync-public-access-report.yml"), "utf8");
+  const expectedReportPages = json("downloads/formal-publication-release.json").artifacts.report.pageCount;
+  const pageCountAssertion = workflow.match(/pdfinfo downloads\/canonical_proof_report\.pdf[^\n]*\)" = "(\d+)"/);
   assert.match(workflow, /permissions:\n  contents: read/);
   assert.match(workflow, /sync-public-access-docs\.mjs --check/);
+  assert.equal(Number(pageCountAssertion?.[1]), expectedReportPages);
   assert.doesNotMatch(workflow, /git (?:commit|push)/);
   assert.doesNotMatch(workflow, /contents: write/);
 });

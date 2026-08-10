@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-10-residual-terminal-rank-wf",
+      "milestoneId": "residual-terminal-rank-wf",
+      "publishedAt": "2026-08-10T11:35:00Z",
+      "title": "Lean now fixes the residual terminal rank and proves it well-founded",
+      "plainLanguage": [
+        "Lean now defines the manuscript's residual terminal rank as exactly ten natural-number coordinates in the stated priority order. It proves that the executable Boolean comparison agrees with the lexicographic proposition, supplies a proof for each of the ten possible first-decreasing coordinates, packages proof-bearing descent, and proves accessibility, induction, and kernel-checked well-foundedness for the fixed rank.",
+        "This establishes the rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any current route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 83% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 83,
+      "source": {
+        "commit": "dd69b94a762eb830a3b91503faffde3984cce84f",
+        "tree": "d06833216d204b8eca0510267654263e79752e51",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-121",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-RESIDUAL-RANK-WF-120"
+      }
+    },
+    {
       "id": "2026-08-10-residual-terminal-finite-saturate-positive-composition",
       "milestoneId": "residual-terminal-finite-saturate-positive-composition",
       "publishedAt": "2026-08-10T04:52:48Z",
@@ -262,7 +279,7 @@
       "progressEstimatePercent": 71,
       "source": {
         "commit": "23abd2eaf8913ea91dc1cf379878f278b9ee3d10",
-        "tree": "5d2468bd4233650eb4a4186ababb9db99ac57f17",
+        "tree": "5d2486bd4233650eb4a4186ababb9db99ac57f17",
         "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-06-108",
         "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-06-RESIDUAL-TERMINAL-PROJECTION-SQUARE-107"
       }
