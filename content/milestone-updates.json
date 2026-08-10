@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-10-residual-terminal-finite-saturate-positive-composition",
+      "milestoneId": "residual-terminal-finite-saturate-positive-composition",
+      "publishedAt": "2026-08-10T04:52:48Z",
+      "title": "Lean now composes the finite terminal positive-saturation route",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, executable observer, forgetful projection, and proof-bearing terminal anchor problem whose normalized starting point has positive full slack, Lean now checks the candidate-derived origin, kernel, and obligation closures in both gate and profile orientations. It verifies that each safe step is cost transparent, discharges its closure obligation, preserves the forgotten profile, and preserves positive full slack through the complete safe prefix into either the checked-lift or BCEL firewall. Otherwise it returns the exact first local route or nontransparent event together with that complete safe prefix.",
+        "This composes the five reconstructed finite terminal obligations only for an explicit proof-bearing problem and closes the finite local form of originKernelObligationClosureRouted. A returned local route is not a complete global outcome, full Package E acceptance, verified gain, or proof of global route completeness, and the initial positive full-slack premise remains explicit. Lean has not established manuscript-wide SaturatePositive, BCELReady or RankWF, proved ZeroSlack or PCCMin, established polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 82% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 82,
+      "source": {
+        "commit": "3f4352d190b44d34866500e672c2ef2af89e08de",
+        "tree": "2133ae4be763f61dda2c6f8fcc6e194ba777feb2",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-120",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-FINITE-SATURATE-POSITIVE-119"
+      }
+    },
+    {
       "id": "2026-08-10-residual-terminal-interface-exposure-routing",
       "milestoneId": "residual-terminal-interface-exposure-routing",
       "publishedAt": "2026-08-09T23:52:23Z",

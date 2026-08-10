@@ -1,19 +1,19 @@
 {
   "kind": "PNPFormalPublicationRelease0",
   "version": 0,
-  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-102",
+  "coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-103",
   "status": "current-formal-reconstruction-publication-theorem-gate-closed",
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "19f43501ad87d4c5611ba109d53157fd0bd1dfdb",
-    "proofCommit": "f58c971c4499d872a98acbfa7fc1418d83916dfc",
-    "tree": "574fa83fd6dd1b0d124770d1f577bf3f0147aaa4",
-    "ref": "19f43501ad87d4c5611ba109d53157fd0bd1dfdb",
+    "commit": "3f4352d190b44d34866500e672c2ef2af89e08de",
+    "proofCommit": "6df4f90d6626478e24ec0d62efd408ac464a34dc",
+    "tree": "2133ae4be763f61dda2c6f8fcc6e194ba777feb2",
+    "ref": "3f4352d190b44d34866500e672c2ef2af89e08de",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-119",
-    "formalPublicationMapSha256": "410dc11e15005c24df28c455d3d0e1d96926f2dcffd6c080e45c60a395422849",
-    "leanSourceClosureSha256": "a7ba81b064643e574a6a5084e4947a61db2fc19528155cf2b11cf37f67f40682",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-08-10-120",
+    "formalPublicationMapSha256": "a36c1099429ae6d1b8d89cba1f40a2f71e3489d919d07770f6a3fca7624d23dc",
+    "leanSourceClosureSha256": "3b31d12fbb322ffd5b93d1315bcff52fce916c120aed66c15c78eca3df983bf2",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,23 +21,23 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 2004368,
-      "sha256": "03fb380c7b0d1a5ed1521d0fe5c06bbe99d34507af56561a5bfdfa85d0839a5e",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-119"
+      "bytes": 2013081,
+      "sha256": "4fd7282f5f7455155f8ed5a86891488add6257f2c3f87f43258b70b04f4f2a6b",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-120"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 17006508,
-      "sha256": "1901e247b93dcfedd06dc09be1ba6ded421ba422baa011a4cf4f9806846ef757",
-      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-10-119",
-      "declarationCount": 26087,
-      "theoremCount": 13740,
-      "assumptionFreeTheoremCount": 7102,
+      "bytes": 17124322,
+      "sha256": "e69ac9c84dc15916632cc37b1d0e090d74d5057ce72160060ff8ed48b2623823",
+      "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-10-120",
+      "declarationCount": 26485,
+      "theoremCount": 13860,
+      "assumptionFreeTheoremCount": 7139,
       "projectAxiomCount": 4
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-10-119",
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-10-120",
       "pageCount": 81,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
@@ -45,8 +45,8 @@
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 444907,
-        "sha256": "e534cfce77a5f849f21af91942a96ce832160a65b42cdb52c15c4df0e8946f74"
+        "bytes": 445928,
+        "sha256": "394e9f2403acc040b13d6bbe104ac0a3f7d55986fdf82cf7530daa93c9dd05c5"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -54,13 +54,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 206457,
-        "sha256": "9293f165e378e9d196e7725a8a895f7a2d4c09b543ba3143ba7d34055b2d236a"
+        "bytes": 207974,
+        "sha256": "df12f68f98ef0ffde0d3f6e92323a1071890e6db5c714cd08fd56192b6b3603b"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter-plus-locked-nand-polynomial-reduction-plus-cnf-to-nand-semantic-compiler-plus-cnf-to-nand-polynomial-reduction-plus-residual-gain-chain-bound-plus-residual-gain-stopping-specification-plus-residual-terminal-full-carrier-bridge-plus-residual-terminal-mode-firewall-plus-residual-terminal-projection-minimum-plus-residual-terminal-projection-transfer-plus-residual-terminal-saturation-closure+plus-residual-terminal-physical-support-completion+plus-residual-terminal-support-extraction+plus-residual-terminal-proper-positive-support-search+plus-residual-terminal-saturated-support-square-closure+plus-residual-terminal-governed-support-completion+plus-residual-terminal-governed-frontier-pushout+plus-residual-terminal-governed-projection-square+plus-residual-terminal-side-tight-minimum-arithmetic+plus-residual-terminal-four-corner-carrier-transport+plus-residual-terminal-four-corner-optimum-carrier-compatibility+plus-residual-terminal-four-corner-optimum-coherence-dichotomy+plus-residual-terminal-four-corner-side-tight-completion-under-local-route-silence+plus-residual-terminal-four-corner-complete-tight-basis-maximum-under-local-route-silence+plus-residual-terminal-computed-bn2-square-legitimacy-and-local-conclusion-under-route-silence+plus-residual-terminal-computed-bcel-anchor-nucleus-and-proper-cut-square-dichotomy+plus-residual-terminal-computed-saturation-positivity-firewall+plus-residual-terminal-candidate-saturation-cost-balance+plus-residual-terminal-interface-exposure-routing",
+    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter-plus-locked-nand-polynomial-reduction-plus-cnf-to-nand-semantic-compiler-plus-cnf-to-nand-polynomial-reduction-plus-residual-gain-chain-bound-plus-residual-gain-stopping-specification-plus-residual-terminal-full-carrier-bridge-plus-residual-terminal-mode-firewall-plus-residual-terminal-projection-minimum-plus-residual-terminal-projection-transfer-plus-residual-terminal-saturation-closure+plus-residual-terminal-physical-support-completion+plus-residual-terminal-support-extraction+plus-residual-terminal-proper-positive-support-search+plus-residual-terminal-saturated-support-square-closure+plus-residual-terminal-governed-support-completion+plus-residual-terminal-governed-frontier-pushout+plus-residual-terminal-governed-projection-square+plus-residual-terminal-side-tight-minimum-arithmetic+plus-residual-terminal-four-corner-carrier-transport+plus-residual-terminal-four-corner-optimum-carrier-compatibility+plus-residual-terminal-four-corner-optimum-coherence-dichotomy+plus-residual-terminal-four-corner-side-tight-completion-under-local-route-silence+plus-residual-terminal-four-corner-complete-tight-basis-maximum-under-local-route-silence+plus-residual-terminal-computed-bn2-square-legitimacy-and-local-conclusion-under-route-silence+plus-residual-terminal-computed-bcel-anchor-nucleus-and-proper-cut-square-dichotomy+plus-residual-terminal-computed-saturation-positivity-firewall+plus-residual-terminal-candidate-saturation-cost-balance+plus-residual-terminal-interface-exposure-routing+plus-residual-terminal-finite-saturate-positive-composition",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -5409,7 +5409,44 @@
     "residualTerminalInterfaceExposureRetractSlackTheorem": "PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.fullSlack_preserved",
     "residualTerminalInterfaceExposureDichotomyTheorem": "PNP.DirectWire.terminalInterfaceExposure_transparent_or_eRoute",
     "residualTerminalFirstInterfaceExposureRouteTheorem": "PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound",
-    "residualTerminalInterfaceExposureClassifierTheorem": "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive"
+    "residualTerminalInterfaceExposureClassifierTheorem": "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive",
+    "residualTerminalOriginKernelObligationRoutingFormalized": true,
+    "residualTerminalFiniteOriginKernelObligationClosureRoutedFormalized": true,
+    "residualTerminalFirstOriginKernelObligationRouteFormalized": true,
+    "residualTerminalOriginKernelObligationRoutingAxiomAuditPassed": true,
+    "residualTerminalOriginKernelObligationRoutingScope": "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-origin-kernel-obligation-closures-with-exact-safety-or-first-route",
+    "residualTerminalFiniteSaturatePositiveCompositionFormalized": true,
+    "residualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed": true,
+    "residualTerminalFiniteSaturatePositiveCompositionAuditedDeclarationCount": 37,
+    "residualTerminalFiniteSaturatePositiveCompositionEmptyAxiomDeclarationCount": 7,
+    "residualTerminalFiniteSaturatePositiveCompositionPropextOnlyDeclarationCount": 1,
+    "residualTerminalFiniteSaturatePositiveCompositionPropextQuotSoundDeclarationCount": 29,
+    "residualTerminalFiniteSaturatePositiveCompositionScope": "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-proof-bearing-positive-full-slack-candidate-bcel-anchor-problems-total-finite-saturate-positive-composition",
+    "residualTerminalFiniteSaturatePositiveCompositionTheoremKernelTypeSha256": {
+      "PNP.DirectWire.terminalOriginKernelObligationCoordinate?_sound": "fe2fafdfcb67fecf4c1b2b544645b0f6af7ec9a5b5761ee8d6a23ba2ae140a60",
+      "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_shape": "5473c0dae862ab3face4f83003143ffb94887a88cdac6edba739f2470fe9b0eb",
+      "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_edge": "12fcaaad403c4bf2f0ed3e218fac247139db20db8b103bd35c751664ebfad8be",
+      "PNP.DirectWire.TerminalOriginKernelObligationClosureRoute.sound": "a6ccf72ac02146fb0d00f77f1bd68f5d10e95bd3a9575881976593dbca19ab17",
+      "PNP.DirectWire.terminalOriginKernelObligation_safe_or_route": "996fad4b79e3d3e5b0cce63e094b597d9ee731556df3c73f38bbb9761343330f",
+      "PNP.DirectWire.TerminalSaturationClosureSafeStep.transparent": "cb47374327a74960b19f7f9bb46af7bd0ad6b766608187d755f10edddd74d4bd",
+      "PNP.DirectWire.classifyTerminalSaturationClosureRouting_exhaustive": "bff24fddcdc569451d7963003194317f0d018bdd4906314ff791d8effd8fac92",
+      "PNP.DirectWire.TerminalFiniteSaturatePositiveOutcome.sound": "5acc708881d1450e3e86abe5c1e0152ee6000d58ed0b5999c249d6efafcab69b",
+      "PNP.DirectWire.classifyTerminalFiniteSaturatePositive_exhaustive": "2f114bbe06ba71cfb038dcc5ff686516e7af0461d9a85e6dbda0e1104a814655"
+    },
+    "residualTerminalFiniteSaturatePositiveCompositionAxiomClosure": [
+      "Quot.sound",
+      "propext"
+    ],
+    "residualTerminalFiniteSaturatePositiveCompositionProjectAxiomClosure": [],
+    "residualTerminalOriginKernelCoordinateSoundTheorem": "PNP.DirectWire.terminalOriginKernelObligationCoordinate?_sound",
+    "residualTerminalCandidateOriginKernelCoordinateShapeTheorem": "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_shape",
+    "residualTerminalCandidateOriginKernelCoordinateEdgeTheorem": "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_edge",
+    "residualTerminalOriginKernelRouteSoundTheorem": "PNP.DirectWire.TerminalOriginKernelObligationClosureRoute.sound",
+    "residualTerminalOriginKernelSafeOrRouteTheorem": "PNP.DirectWire.terminalOriginKernelObligation_safe_or_route",
+    "residualTerminalClosureSafeTransparentTheorem": "PNP.DirectWire.TerminalSaturationClosureSafeStep.transparent",
+    "residualTerminalClosureRoutingClassifierTheorem": "PNP.DirectWire.classifyTerminalSaturationClosureRouting_exhaustive",
+    "residualTerminalFiniteSaturatePositiveOutcomeSoundTheorem": "PNP.DirectWire.TerminalFiniteSaturatePositiveOutcome.sound",
+    "residualTerminalFiniteSaturatePositiveClassifierTheorem": "PNP.DirectWire.classifyTerminalFiniteSaturatePositive_exhaustive"
   },
   "publicationBoundary": {
     "derivedOnlyFromConcreteGate": true,

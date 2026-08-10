@@ -749,6 +749,25 @@ const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE = "all-finite-direct-wi
 const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean recognizes only an exact candidate-derived interface-consumer edge. Each recognized event is transparently cost-balanced or produces a proof-bearing local E-route; the production trace result records the exact first nontransparent event and complete transparent prefix, while non-interface first failures remain fail-closed.";
 const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM = "This closes only the finite local form of interfaceExposureRoutesToE. The proof-bearing local E-route is an exposure-obligation coordinate, not a full Package E VerifyDW acceptance, a verified global gain, or global route completeness. The executable observer and forgetful projection remain explicit model inputs. It does not discharge originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
 
+const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_THEOREMS = {
+  "PNP.DirectWire.terminalOriginKernelObligationCoordinate?_sound": { hash: "fe2fafdfcb67fecf4c1b2b544645b0f6af7ec9a5b5761ee8d6a23ba2ae140a60", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_shape": { hash: "5473c0dae862ab3face4f83003143ffb94887a88cdac6edba739f2470fe9b0eb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_edge": { hash: "12fcaaad403c4bf2f0ed3e218fac247139db20db8b103bd35c751664ebfad8be", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.TerminalOriginKernelObligationClosureRoute.sound": { hash: "a6ccf72ac02146fb0d00f77f1bd68f5d10e95bd3a9575881976593dbca19ab17", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.terminalOriginKernelObligation_safe_or_route": { hash: "996fad4b79e3d3e5b0cce63e094b597d9ee731556df3c73f38bbb9761343330f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.TerminalSaturationClosureSafeStep.transparent": { hash: "cb47374327a74960b19f7f9bb46af7bd0ad6b766608187d755f10edddd74d4bd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.classifyTerminalSaturationClosureRouting_exhaustive": { hash: "bff24fddcdc569451d7963003194317f0d018bdd4906314ff791d8effd8fac92", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalOriginKernelObligationRouting" },
+  "PNP.DirectWire.TerminalFiniteSaturatePositiveOutcome.sound": { hash: "5acc708881d1450e3e86abe5c1e0152ee6000d58ed0b5999c249d6efafcab69b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteSaturatePositive" },
+  "PNP.DirectWire.classifyTerminalFiniteSaturatePositive_exhaustive": { hash: "2f114bbe06ba71cfb038dcc5ff686516e7af0461d9a85e6dbda0e1104a814655", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteSaturatePositive" }
+};
+const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_ORIGIN_KERNEL_OBLIGATION_ROUTING_SCOPE = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-origin-kernel-obligation-closures-with-exact-safety-or-first-route";
+const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_SCOPE = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-proof-bearing-positive-full-slack-candidate-bcel-anchor-problems-total-finite-saturate-positive-composition";
+const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and proof-bearing candidate BCEL anchor problem whose normalized seed has positive full slack, Lean recognizes exact candidate-derived origin, kernel, and obligation closures in both gate/profile orientations; checks cost transparency, obligation discharge, and forgotten-profile stability; preserves positive full slack across an all-safe trace into the checked-lift or BCEL firewall; or returns the exact first interface, closure, or other fail-closed nontransparent route with its complete safe prefix.";
+const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_NON_CLAIM = "This closes the finite local form of originKernelObligationClosureRouted and composes the five reconstructed terminal sub-obligations only for an explicit proof-bearing problem. A local route is not a complete global outcome, Package E VerifyDW acceptance, verified gain, or global route-completeness result. The positive initial full-slack premise remains explicit. It does not establish manuscript-wide SaturatePositive, BCELReady, RankWF, ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
+
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
@@ -767,15 +786,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "19f43501ad87d4c5611ba109d53157fd0bd1dfdb");
+  assert.equal(result.coreCommit, "3f4352d190b44d34866500e672c2ef2af89e08de");
 });
 
-test("current release is pinned, eighty-one-page, exposes terminal interface routing, and fails closed", () => {
+test("current release is pinned, eighty-one-page, exposes finite terminal positive-saturation composition, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-102");
-  assert.equal(release.source.commit, "19f43501ad87d4c5611ba109d53157fd0bd1dfdb");
-  assert.equal(release.source.proofCommit, "f58c971c4499d872a98acbfa7fc1418d83916dfc");
-  assert.equal(release.source.tree, "574fa83fd6dd1b0d124770d1f577bf3f0147aaa4");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-10-103");
+  assert.equal(release.source.commit, "3f4352d190b44d34866500e672c2ef2af89e08de");
+  assert.equal(release.source.proofCommit, "6df4f90d6626478e24ec0d62efd408ac464a34dc");
+  assert.equal(release.source.tree, "2133ae4be763f61dda2c6f8fcc6e194ba777feb2");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 81);
@@ -2744,6 +2763,31 @@ test("current release is pinned, eighty-one-page, exposes terminal interface rou
   assert.equal(release.earnedBoundary.residualTerminalFirstInterfaceExposureRouteTheorem, "PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound");
   assert.equal(release.earnedBoundary.residualTerminalInterfaceExposureClassifierTheorem, "PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalOriginKernelObligationRoutingFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteOriginKernelObligationClosureRoutedFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFirstOriginKernelObligationRouteFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalOriginKernelObligationRoutingAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalOriginKernelObligationRoutingScope, RESIDUAL_TERMINAL_ORIGIN_KERNEL_OBLIGATION_ROUTING_SCOPE);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionAuditedDeclarationCount, 37);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionEmptyAxiomDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionPropextOnlyDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionPropextQuotSoundDeclarationCount, 29);
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionScope, RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionTheoremKernelTypeSha256, RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalFiniteSaturatePositiveCompositionProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalOriginKernelCoordinateSoundTheorem, "PNP.DirectWire.terminalOriginKernelObligationCoordinate?_sound");
+  assert.equal(release.earnedBoundary.residualTerminalCandidateOriginKernelCoordinateShapeTheorem, "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_shape");
+  assert.equal(release.earnedBoundary.residualTerminalCandidateOriginKernelCoordinateEdgeTheorem, "PNP.DirectWire.terminalCandidateOriginKernelObligationCoordinate?_edge");
+  assert.equal(release.earnedBoundary.residualTerminalOriginKernelRouteSoundTheorem, "PNP.DirectWire.TerminalOriginKernelObligationClosureRoute.sound");
+  assert.equal(release.earnedBoundary.residualTerminalOriginKernelSafeOrRouteTheorem, "PNP.DirectWire.terminalOriginKernelObligation_safe_or_route");
+  assert.equal(release.earnedBoundary.residualTerminalClosureSafeTransparentTheorem, "PNP.DirectWire.TerminalSaturationClosureSafeStep.transparent");
+  assert.equal(release.earnedBoundary.residualTerminalClosureRoutingClassifierTheorem, "PNP.DirectWire.classifyTerminalSaturationClosureRouting_exhaustive");
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveOutcomeSoundTheorem, "PNP.DirectWire.TerminalFiniteSaturatePositiveOutcome.sound");
+  assert.equal(release.earnedBoundary.residualTerminalFiniteSaturatePositiveClassifierTheorem, "PNP.DirectWire.classifyTerminalFiniteSaturatePositive_exhaustive");
+
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
   assert.equal(release.earnedBoundary.residualRoutesGlobalGainCompletenessFormalized, false);
@@ -2775,12 +2819,12 @@ test("current release is pinned, eighty-one-page, exposes terminal interface rou
   assert.equal(release.publicationBoundary.remainingBlockerCount, 6);
 });
 
-test("status and inventory publish exactly 99 milestones with terminal interface routing pinned", () => {
+test("status and inventory publish exactly 100 milestones with finite terminal positive-saturation composition pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 99);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 96);
+  assert.equal(milestones.length, 100);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 97);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 3);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3713,24 +3757,64 @@ test("status and inventory publish exactly 99 milestones with terminal interface
   assert.equal(status.leanResidualTerminalFirstInterfaceExposureRouteFormalized, true);
   assert.equal(status.leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalInterfaceExposureRoutingScope, RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_SCOPE);
+
+  const finiteSaturatePositiveComposition = milestones.find(
+    (row) => row.id === "residual-terminal-finite-saturate-positive-composition"
+  );
+  assert.equal(finiteSaturatePositiveComposition.classification, "formalized-residual-terminal-finite-saturate-positive-composition");
+  assert.equal(finiteSaturatePositiveComposition.status, "formalized-residual-terminal-finite-saturate-positive-composition");
+  assert.equal(finiteSaturatePositiveComposition.earned, true);
+  assert.equal(finiteSaturatePositiveComposition.allPresent, true);
+  assert.equal(finiteSaturatePositiveComposition.allAssumptionFree, false);
+  assert.equal(finiteSaturatePositiveComposition.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(finiteSaturatePositiveComposition.allKernelTypesMatch, true);
+  assert.equal(finiteSaturatePositiveComposition.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    finiteSaturatePositiveComposition.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(finiteSaturatePositiveComposition.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_HASHES
+  );
+  for (const row of finiteSaturatePositiveComposition.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(finiteSaturatePositiveComposition.scope, RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_MILESTONE_SCOPE);
+  assert.equal(finiteSaturatePositiveComposition.nonClaim, RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalOriginKernelObligationRoutingFormalized, true);
+  assert.equal(status.leanResidualTerminalFiniteOriginKernelObligationClosureRoutedFormalized, true);
+  assert.equal(status.leanResidualTerminalFirstOriginKernelObligationRouteFormalized, true);
+  assert.equal(status.leanResidualTerminalOriginKernelObligationRoutingAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalOriginKernelObligationRoutingScope, RESIDUAL_TERMINAL_ORIGIN_KERNEL_OBLIGATION_ROUTING_SCOPE);
+  assert.equal(status.leanResidualTerminalFiniteSaturatePositiveCompositionFormalized, true);
+  assert.equal(status.leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalFiniteSaturatePositiveCompositionScope, RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(inventory.declarationCount, 26087);
-  assert.equal(inventory.theoremCount, 13740);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7102);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14908);
-  assert.equal(inventory.sourceClosureModuleCount, 236);
-  assert.equal(inventory.milestoneCandidates.length, 2459);
+  assert.equal(inventory.declarationCount, 26485);
+  assert.equal(inventory.theoremCount, 13860);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7139);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14928);
+  assert.equal(inventory.sourceClosureModuleCount, 238);
+  assert.equal(inventory.milestoneCandidates.length, 2468);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 778,
-    definition: 10857,
-    inductive: 354,
+    constructor: 811,
+    definition: 11074,
+    inductive: 368,
     opaque: 0,
     quotient: 0,
-    recursor: 354,
-    theorem: 13740
+    recursor: 368,
+    theorem: 13860
   });
 });
 
