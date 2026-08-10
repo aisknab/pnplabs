@@ -791,6 +791,26 @@ const RESIDUAL_TERMINAL_RANK_WF_THEOREMS = {
 const RESIDUAL_TERMINAL_RANK_WF_HASHES = Object.fromEntries(
   Object.entries(RESIDUAL_TERMINAL_RANK_WF_THEOREMS).map(([name, row]) => [name, row.hash])
 );
+
+const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_THEOREMS = {
+  "PNP.DirectWire.terminalListSubsets_sublist": { hash: "ea0fefb3d241ebd81df124fbdb49a8409c1e6e77a111af3b6d4755e78c0c4d75", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.TerminalComputedBCELAnchorNucleus.requestAtoms_nodup": { hash: "70d9d0ef627ae3aee1ec6acd2c18851d0ff7b95205b10b44d2a94bf1a10c0782", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.terminalBN3RequestPredicateBool_eq_true_iff": { hash: "d23816d817a4215617f422ba2115ef3479ad37d3874677a233d95d394420a845", axioms: ["propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.terminalBN3RequestPredicate_monotone": { hash: "46738bea433318a3dd0010b1f7fa4a2c7a459e1f1c9e0afc4a3689f102a69bdf", axioms: [], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.terminalBN3RequestPredicate_stable": { hash: "764cfe5b3bc264ca81e21e70e7e37126cc0b0364c3ddef55ad697d04e74b0da4", axioms: [], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.terminalBN3MinimalConsumer_exact": { hash: "a1189497569adab96a59946dd9d36f8a29d2e42f032edeac1b3fff4730c27cc4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.TerminalComputedBCELAnchorNucleus.mem_activeRequestAtoms_iff_properCut": { hash: "28274a11c24513babce9f9e4c688d850cd5cb0bf4d7c9651bb57271ec1b146b0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.TerminalComputedBCELAnchorNucleus.activeRequestAtoms_nodup": { hash: "10d73bb885691775aa9ad252db596e67947b09caf7bf57cb64bb8abff1872f01", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.TerminalComputedBCELAnchorNucleus.canonicalRequestBasis_jointlySideTight": { hash: "67b597e0839d1fccc67284f54d88fb1fcc8990a5fe42360ea07992525b752a68", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.TerminalComputedBCELAnchorNucleus.computedBN3RequestEnvelope": { hash: "f07860cfece7a85bb738c2b951cd6b43b92bbd5ce6365d520888a011b1069ed0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" },
+  "PNP.DirectWire.classifyTerminalBN3RequestEnvelope_exhaustive": { hash: "c88c263df187c383ee764d7c39926988cd8994bb894c33aa7482b2924c53c8de", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN3RequestEnvelope" }
+};
+const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_SCOPE = "successful-computed-finite-bcel-anchor-nuclei-canonical-stable-request-identities-exact-singleton-minimal-consumers-duplicate-free-incidence-and-jointly-side-tight-full-or-quotient-basis-family";
+const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_MILESTONE_SCOPE = "From every successful computed finite BCEL anchor nucleus, Lean uses one canonical duplicate-free primitive-record identity list across every proper cut; gives exact executable monotone request membership stable under extensional transport and exact singleton minimal consumers; accounts active incidences without duplicates; selects one canonical full or quotient side-tight coherent basis for every proper cut; and preserves all upstream proof-bearing classifier failures in a total outcome.";
+const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_NON_CLAIM = "This establishes one exact candidate-derived finite BN3 envelope only after the existing computed BCEL anchor-nucleus classifier succeeds. Proper cuts are enumerated through all subsets, so the construction is exponential reference computation rather than a polynomial algorithm. It does not derive the terminal dependency system, map local routes into the manuscript's complete global outcome system, construct BN4-BN6, prove selector or realizer completeness, establish global ZeroSlack or PCCMin, prove SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -813,15 +833,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc");
+  assert.equal(result.coreCommit, "85c72816225bc6feab4ffc60499475419645dd73");
 });
 
-test("current release is pinned, eighty-two-page, exposes residual terminal RankWF, and fails closed", () => {
+test("current release is pinned, eighty-two-page, exposes the finite BN3 request envelope, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106");
-  assert.equal(release.source.commit, "7445d2afa7af75375d20751b4a0aa7b87e8b8dfc");
-  assert.equal(release.source.proofCommit, "c67e4499dfc076eb53a85f77917a25804525b565");
-  assert.equal(release.source.tree, "7376c3d35ebfd9a80e38abb86964e60df6d4f4b3");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-107");
+  assert.equal(release.source.commit, "85c72816225bc6feab4ffc60499475419645dd73");
+  assert.equal(release.source.proofCommit, "2693f6da059d4ee35a70f4446a36d464895e8136");
+  assert.equal(release.source.tree, "773d96dae8e14038cc35893dc85402a25bf1b655");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 82);
@@ -2831,6 +2851,18 @@ test("current release is pinned, eighty-two-page, exposes residual terminal Rank
   assert.equal(release.earnedBoundary.residualTerminalRankWFInductionTheorem, "PNP.DirectWire.terminalResidualRank_induction");
   assert.equal(release.earnedBoundary.residualTerminalRankWFDescentSoundTheorem, "PNP.DirectWire.TerminalResidualRankDescent.sound");
 
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeAuditedDeclarationCount, 84);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeEmptyAxiomDeclarationCount, 8);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopePropextOnlyDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopePropextQuotSoundDeclarationCount, 73);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeScope, RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN3RequestEnvelopeTheoremKernelTypeSha256, RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN3RequestEnvelopeAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN3RequestEnvelopeProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeClassifierTheorem, "PNP.DirectWire.classifyTerminalBN3RequestEnvelope_exhaustive");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -2844,7 +2876,7 @@ test("current release is pinned, eighty-two-page, exposes residual terminal Rank
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-concrete-locked-nand-threshold-publication$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn3-request-envelope$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -2877,12 +2909,12 @@ test("current release is pinned, eighty-two-page, exposes residual terminal Rank
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 101 milestones with residual terminal RankWF pinned", () => {
+test("status and inventory publish exactly 102 milestones with the finite BN3 request envelope pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 101);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 99);
+  assert.equal(milestones.length, 102);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 100);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3885,6 +3917,44 @@ test("status and inventory publish exactly 101 milestones with residual terminal
   assert.equal(status.leanResidualTerminalRankWFFormalized, true);
   assert.equal(status.leanResidualTerminalRankWFAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalRankWFScope, RESIDUAL_TERMINAL_RANK_WF_SCOPE);
+
+  const bn3RequestEnvelope = milestones.find((row) => row.id === "residual-terminal-bn3-request-envelope");
+  assert.equal(bn3RequestEnvelope.classification, "formalized-residual-terminal-bn3-request-envelope");
+  assert.equal(bn3RequestEnvelope.status, "formalized-residual-terminal-bn3-request-envelope");
+  assert.equal(bn3RequestEnvelope.earned, true);
+  assert.equal(bn3RequestEnvelope.allPresent, true);
+  assert.equal(bn3RequestEnvelope.allAssumptionFree, false);
+  assert.equal(bn3RequestEnvelope.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(bn3RequestEnvelope.allKernelTypesMatch, true);
+  assert.equal(bn3RequestEnvelope.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    bn3RequestEnvelope.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(
+      bn3RequestEnvelope.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+    ),
+    RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_HASHES
+  );
+  for (const row of bn3RequestEnvelope.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(bn3RequestEnvelope.scope, RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_MILESTONE_SCOPE);
+  assert.equal(bn3RequestEnvelope.nonClaim, RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalBN3RequestEnvelopeFormalized, true);
+  assert.equal(status.leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalBN3RequestEnvelopeScope,
+    RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_SCOPE
+  );
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
@@ -3906,21 +3976,21 @@ test("status and inventory publish exactly 101 milestones with residual terminal
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 26540);
-  assert.equal(inventory.theoremCount, 13884);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7159);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14935);
-  assert.equal(inventory.sourceClosureModuleCount, 240);
-  assert.equal(inventory.milestoneCandidates.length, 2487);
+  assert.equal(inventory.declarationCount, 26624);
+  assert.equal(inventory.theoremCount, 13928);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7165);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14939);
+  assert.equal(inventory.sourceClosureModuleCount, 241);
+  assert.equal(inventory.milestoneCandidates.length, 2498);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 812,
-    definition: 11102,
-    inductive: 369,
+    constructor: 818,
+    definition: 11132,
+    inductive: 371,
     opaque: 0,
     quotient: 0,
-    recursor: 369,
-    theorem: 13884
+    recursor: 371,
+    theorem: 13928
   });
 });
 

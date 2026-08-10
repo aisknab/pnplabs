@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `7445d2afa7af75375d20751b4a0aa7b87e8b8dfc`. Its generated status payload is current
+core commit `85c72816225bc6feab4ffc60499475419645dd73`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the eighty-two-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `7445d2afa7af75375d20751b4a0aa7b87e8b8dfc` (tree `7376c3d35ebfd9a80e38abb86964e60df6d4f4b3`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, the whole-support positivity firewall, candidate-derived terminal saturation cost balance, finite interface-exposure routing, exact origin/kernel/obligation closure routing, the finite terminal positive-saturation composition, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, and the axiom-free BN3 joint-realizability gap witness |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,487 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `85c72816225bc6feab4ffc60499475419645dd73` (tree `773d96dae8e14038cc35893dc85402a25bf1b655`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, and the exact finite candidate-derived BN3 request envelope |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,498 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | Ninety-nine earned scoped milestones through the concrete locked-NAND threshold reduction; the reduction is not a polynomial-time target decider; two unearned global milestones, four project axioms, and five blockers |
+| Generated status | `public/pnp-status.json` | One hundred earned scoped milestones through the finite BN3 request envelope; its all-subsets construction is exponential and does not supply BN4-BN6, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-two-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does

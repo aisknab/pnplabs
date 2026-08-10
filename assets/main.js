@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123';
-const STATUS_SHA256 = 'ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-124';
+const STATUS_SHA256 = '0f3e05664980c80d3c8a9fb5cceb4cb10cefaa05a96ea2d0f523c2663956fbc3';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122';
-const INVENTORY_SHA256 = 'f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434';
-const SOURCE_CLOSURE_SHA256 = '6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-123';
+const INVENTORY_SHA256 = '231781715e011ebf8b583ce3c26f9896622d6962faaf8fcebd68f36e511ea003';
+const SOURCE_CLOSURE_SHA256 = 'e30716e5e6ec0ad0f7c084a66d9ff28c1a8cf5a7008b5fc8caff81205e51eb15';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 26540,
-  theorems: 13884,
-  assumptionFreeTheorems: 7159,
-  excludedPrivateDeclarations: 14935,
-  modules: 240,
+  declarations: 26624,
+  theorems: 13928,
+  assumptionFreeTheorems: 7165,
+  excludedPrivateDeclarations: 14939,
+  modules: 241,
   axioms: 4,
 });
 
@@ -3897,6 +3897,20 @@ const RESIDUAL_TERMINAL_RANK_WF_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.TerminalResidualRankDescent.sound", [], "PNP.ResidualTerminalRankWF"],
 ]);
 
+const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalListSubsets_sublist", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.requestAtoms_nodup", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.terminalBN3RequestPredicateBool_eq_true_iff", ["propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.terminalBN3RequestPredicate_monotone", [], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.terminalBN3RequestPredicate_stable", [], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.terminalBN3MinimalConsumer_exact", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.mem_activeRequestAtoms_iff_properCut", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.activeRequestAtoms_nodup", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.canonicalRequestBasis_jointlySideTight", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.TerminalComputedBCELAnchorNucleus.computedBN3RequestEnvelope", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+  ["PNP.DirectWire.classifyTerminalBN3RequestEnvelope_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN3RequestEnvelope"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -4443,6 +4457,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-interface-exposure-routing',
   'residual-terminal-finite-saturate-positive-composition',
   'residual-terminal-rank-wf',
+  'residual-terminal-bn3-request-envelope',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4878,6 +4893,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
+  leanResidualTerminalBN3RequestEnvelopeFormalized: false,
+  leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed: false,
+  leanResidualTerminalBN3RequestEnvelopeScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5395,6 +5413,9 @@ leanResidualTerminalFiniteSaturatePositiveCompositionScope = ${payload.leanResid
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
+leanResidualTerminalBN3RequestEnvelopeFormalized = ${payload.leanResidualTerminalBN3RequestEnvelopeFormalized ?? false}
+leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed = ${payload.leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed ?? false}
+leanResidualTerminalBN3RequestEnvelopeScope = ${payload.leanResidualTerminalBN3RequestEnvelopeScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBN3RequestEnvelopeScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5492,13 +5513,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 812,
-    definition: 11102,
-    inductive: 369,
+    constructor: 818,
+    definition: 11132,
+    inductive: 371,
     opaque: 0,
     quotient: 0,
-    recursor: 369,
-    theorem: 13884,
+    recursor: 371,
+    theorem: 13928,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5959,6 +5980,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalBN3RequestEnvelope =
+    RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6364,6 +6391,9 @@ function validateInventory(inventory) {
     && residualTerminalRankWF.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalBN3RequestEnvelope.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6409,7 +6439,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2487
+    && inventory.milestoneCandidates.length === 2498
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6473,7 +6503,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 99;
+    const shouldBeEarned = index < 100;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6598,6 +6628,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalRankWFMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-rank-wf'
+  );
+  const residualTerminalBN3RequestEnvelopeMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-bn3-request-envelope'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7051,6 +7084,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalRankWFFormalized === true
     && status.leanResidualTerminalRankWFAxiomAuditPassed === true
     && status.leanResidualTerminalRankWFScope === "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness"
+    && residualTerminalBN3RequestEnvelopeMilestone?.classification === "formalized-residual-terminal-bn3-request-envelope"
+    && residualTerminalBN3RequestEnvelopeMilestone.status === "formalized-residual-terminal-bn3-request-envelope"
+    && residualTerminalBN3RequestEnvelopeMilestone.scope === "From every successful computed finite BCEL anchor nucleus, Lean uses one canonical duplicate-free primitive-record identity list across every proper cut; gives exact executable monotone request membership stable under extensional transport and exact singleton minimal consumers; accounts active incidences without duplicates; selects one canonical full or quotient side-tight coherent basis for every proper cut; and preserves all upstream proof-bearing classifier failures in a total outcome."
+    && residualTerminalBN3RequestEnvelopeMilestone.nonClaim === "This establishes one exact candidate-derived finite BN3 envelope only after the existing computed BCEL anchor-nucleus classifier succeeds. Proper cuts are enumerated through all subsets, so the construction is exponential reference computation rather than a polynomial algorithm. It does not derive the terminal dependency system, map local routes into the manuscript's complete global outcome system, construct BN4-BN6, prove selector or realizer completeness, establish global ZeroSlack or PCCMin, prove SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalBN3RequestEnvelopeMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalBN3RequestEnvelopeFormalized === true
+    && status.leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed === true
+    && status.leanResidualTerminalBN3RequestEnvelopeScope === "successful-computed-finite-bcel-anchor-nuclei-canonical-stable-request-identities-exact-singleton-minimal-consumers-duplicate-free-incidence-and-jointly-side-tight-full-or-quotient-basis-family"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7068,12 +7112,12 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === 'Per-cut BN2 basis existence does not construct the cross-cut-stable BN3 request envelope. The pinned legacy package checks an asserted jointSideTightRealizability Boolean rather than an executable uniform construction, so proof-bearing result structures and explicit-list failure still do not supply global ZeroSlack or polynomial PCCMin completeness.'
+    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope now supplies stable request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight canonical basis family after a successful computed BCEL nucleus. Its exhaustive proper-cut enumeration is exponential and it does not construct BN4-BN6, map all residual routes into a decreasing complete global outcome system, or provide selector/realizer and polynomial-runtime completeness; global ZeroSlack and polynomial PCCMin therefore remain unformalized.'
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',
     ])
-    && status.nonClaims?.includes('The BN3 joint-realizability gap is now pinned by a kernel-checkable logical boundary witness: per-cut side-tight existence does not by itself construct a cross-cut-stable realizing family. This is a missing-lemma witness, not a counterexample to a future candidate-derived BN3 theorem; global ZeroSlack and polynomial PCCMin remain unformalized.')
+    && status.nonClaims?.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus now has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential and does not supply BN4-BN6 or global ZeroSlack and polynomial PCCMin completeness.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true

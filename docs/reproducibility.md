@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 448,038 | `61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8` |
-| `downloads/canonical-proof-report.pdf` | 448,038 | `61c6e8a05ed5fca2c63410dcef4058a68c34ec7bc04fb3132c50559d30b6adc8` |
-| `downloads/canonical_proof_report.tex` | 209,971 | `7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf` |
-| `downloads/canonical-proof-report.tex` | 209,971 | `7a0228e0aba98f4bcface05290c8c337d27acd4585a14077b967ee282e22bacf` |
-| `public/pnp-status.json` | 2,025,540 | `ea2527a589b594bddac16bb4cce39df426e81445f2d19c35b1cd4518e05eede1` |
-| `public/pnp-theorem-inventory.json` | 17,207,898 | `f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434` |
+| `downloads/canonical_proof_report.pdf` | 449,511 | `e998779d189f762ffcbcdb82b51de8a15bd0c7c8e4be6d463d5c833323ae45ef` |
+| `downloads/canonical-proof-report.pdf` | 449,511 | `e998779d189f762ffcbcdb82b51de8a15bd0c7c8e4be6d463d5c833323ae45ef` |
+| `downloads/canonical_proof_report.tex` | 211,420 | `b81fbdd17af61400d2883493ee90417affddd37f5d23567ede3d808bb417b0e2` |
+| `downloads/canonical-proof-report.tex` | 211,420 | `b81fbdd17af61400d2883493ee90417affddd37f5d23567ede3d808bb417b0e2` |
+| `public/pnp-status.json` | 2,034,357 | `0f3e05664980c80d3c8a9fb5cceb4cb10cefaa05a96ea2d0f523c2663956fbc3` |
+| `public/pnp-theorem-inventory.json` | 17,275,021 | `231781715e011ebf8b583ce3c26f9896622d6962faaf8fcebd68f36e511ea003` |
 
 The PDF must have eighty-two A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 7445d2afa7af75375d20751b4a0aa7b87e8b8dfc
+git -C ../pnp checkout 85c72816225bc6feab4ffc60499475419645dd73
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 26,540 public declarations, 13,884 theorem-kind declarations,
-7,159 assumption-free theorem-kind declarations, 14,935 excluded private auxiliaries, 240 modules, and
+Expected compiled inventory counts are 26,624 public declarations, 13,928 theorem-kind declarations,
+7,165 assumption-free theorem-kind declarations, 14,939 excluded private auxiliaries, 241 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,15 +96,14 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 36 reviewed theorem pins. For every finite direct-wire candidate, explicit
-terminal dependency system, computed governed proper-positive support, forgetful projection, executable
-ambient observer, and positive whole-support projection defect, Lean computes the canonical
-minimum-cardinality positive anchor nucleus and returns either the exact first algebra, proper-cut defect,
-or local-route failure, or exact constant-cut and local BN2 conclusions for every proper cut. The focused
-79-declaration audit has 7 empty closures, 8 using only `propext`, and 64 using `Quot.sound` with
-`propext`. This does not derive either premise, identify manuscript activation or charge classes, connect
-a local failure to the complete global route system, establish `SaturatePositive`, Package E, BCELReady,
-`ZeroSlack`, PCCMin exactness or polynomial runtime, discharge an assumption, or prove `P = NP`.
+The newest milestone adds 11 reviewed theorem pins. After the computed finite BCEL anchor-nucleus
+classifier succeeds, Lean enumerates every proper cut and constructs one canonical duplicate-free request
+identity list. It proves exact executable monotone and stable membership, exact singleton minimal
+consumers, duplicate-free active incidence, and one canonical full-or-quotient side-tight basis family
+jointly across all cuts. The focused 84-declaration audit has 8 empty closures, 3 using only `propext`, and
+73 using `Quot.sound` with `propext`. The construction enumerates all subsets and is exponential; it does
+not derive the dependency system, construct BN4-BN6, complete global routing, establish selector or
+realizer completeness, prove `ZeroSlack`, polynomial PCCMin, SAT in P, assumption discharge, or `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
