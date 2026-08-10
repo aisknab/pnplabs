@@ -41,7 +41,7 @@ export function assertCheckoutIdentity({ expectedCommit, head, originMain, tree,
 export function buildNotification({ commit, tree }) {
   validateSha(commit, "commit");
   validateSha(tree, "tree");
-  const deployCommand = `sudo env PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`;
+  const deployCommand = `sudo -n /usr/bin/env -i PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`;
   return {
     title: "PNPLabs deployment ready",
     priority: "high",

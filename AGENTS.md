@@ -85,6 +85,12 @@ host, not as a build host.
    read-only production verifier from a clean checkout of the exact PNPLabs merge
    commit. Confirm provenance, complete public bytes, routes, redirects, headers,
    MIME types, cache policy, denial probes, and release identity.
+   The reviewed `deploy/pnplabs-deploy.sudoers` policy records that authorization
+   for `pnp-builder` on `atlast` once it is installed unchanged under
+   `/etc/sudoers.d/pnplabs-deploy`. Use only the exact `sudo -n /usr/bin/env -i`
+   command emitted by the deployment notification, with the literal verified merge
+   commit. If the rule is absent or differs, fail closed and request the documented
+   one-time installation; never request, retain, or transmit a sudo password.
 
 ### Deployment-ready phone notification
 
@@ -95,8 +101,8 @@ host, not as a build host.
   clean checkout with `PNPLABS_NTFY_TOPIC` supplied in the environment. Never
   hardcode the topic or include credentials, private paths, or other secrets in
   the notification.
-- The message must include the exact PNPLabs merge commit, tree, and pinned
-  user-owned deployment command. A dry run is evidence only for message shape;
+- The message must include the exact PNPLabs merge commit, tree, and pinned narrow
+  noninteractive deployment command. A dry run is evidence only for message shape;
   it does not count as a delivered alert.
 
 ### Cheap-failure-first publication preflight

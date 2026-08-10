@@ -1,0 +1,1 @@
+pnp-builder atlast=(root:root) NOPASSWD:NOSETENV: /usr/bin/env ^-i PNPLABS_COMMIT=[0-9a-f]{40} /usr/local/bin/deploy-pnp$

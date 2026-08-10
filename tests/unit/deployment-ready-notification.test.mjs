@@ -43,7 +43,10 @@ test("deployment notification is pinned to a clean origin/main checkout", () => 
 test("deployment notification contains the exact pinned command and no credentials", () => {
   const notification = buildNotification({ commit, tree });
   assert.equal(notification.title, "PNPLabs deployment ready");
-  assert.equal(notification.deployCommand, `sudo env PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`);
+  assert.equal(
+    notification.deployCommand,
+    `sudo -n /usr/bin/env -i PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`
+  );
   assert.match(notification.body, new RegExp(`Commit: ${commit}`, "u"));
   assert.match(notification.body, new RegExp(`Tree: ${tree}`, "u"));
   assert.match(notification.body, new RegExp(notification.deployCommand, "u"));

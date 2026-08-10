@@ -36,6 +36,37 @@ sudo systemctl daemon-reload
 sudo systemctl enable pnplabs-origin.service
 ```
 
+For agent-triggered deployment on the `atlast` host, install the reviewed narrow sudoers policy
+from a clean checkout. Validate the source first, stage it under an ignored suffix, validate that
+copy, then activate it atomically:
+
+```bash
+/usr/sbin/visudo -cf deploy/pnplabs-deploy.sudoers
+sudo install -o root -g root -m 0440 deploy/pnplabs-deploy.sudoers /etc/sudoers.d/pnplabs-deploy.pending
+sudo /usr/sbin/visudo -cf /etc/sudoers.d/pnplabs-deploy.pending
+sudo mv /etc/sudoers.d/pnplabs-deploy.pending /etc/sudoers.d/pnplabs-deploy
+sudo /usr/sbin/visudo -c
+sudo -k
+```
+
+This one policy permits `pnp-builder` to run only `/usr/bin/env -i` with one lowercase 40-hex
+`PNPLABS_COMMIT` and the fixed root-owned `/usr/local/bin/deploy-pnp` path. It does not grant a
+shell, arbitrary environment settings, `systemctl`, or general passwordless sudo. The `-n` flag
+on the client command makes missing or drifted authorization fail immediately instead of prompting
+for a password. Codex or another client may still enforce its own independent approval policy.
+Installing the policy does not create a timer, hook, or merge-triggered deployment. An agent may
+invoke it only after the intended commit is merged to `main`, every durable check is green, and an
+exact clean checkout of that merge commit has passed verification.
+
+To revoke the authorization without deleting its reviewed contents, move the policy outside the
+included sudoers directory, validate the remaining configuration, and expire cached credentials:
+
+```bash
+sudo mv /etc/sudoers.d/pnplabs-deploy /root/pnplabs-deploy.sudoers.disabled
+sudo /usr/sbin/visudo -c
+sudo -k
+```
+
 The root-owned launcher resolves `current/server.mjs` before invoking Node. That makes the first
 migration and rollback compatible with the prior release's symlink-sensitive entry-point check.
 The service runs the allowlisting Node origin as `pnplabs-origin`, binds only
@@ -60,7 +91,7 @@ headers; running the deploy before the proxy migration is expected to fail close
 Run it after the intended PR is merged:
 
 ```bash
-sudo env PNPLABS_COMMIT=<exact-merged-main-commit> /usr/local/bin/deploy-pnp
+sudo -n /usr/bin/env -i PNPLABS_COMMIT=<exact-merged-main-commit> /usr/local/bin/deploy-pnp
 ```
 
 `PNPLABS_COMMIT` is the only deployment input. The script always uses the public GitHub repository,
