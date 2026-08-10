@@ -3955,8 +3955,11 @@ test("exported verification helpers import without a script argv path", () => {
 
 test("automation invokes read-only sync and contains no commit or push step", () => {
   const workflow = readFileSync(path.join(root, ".github/workflows/sync-public-access-report.yml"), "utf8");
+  const expectedReportPages = json("downloads/formal-publication-release.json").artifacts.report.pageCount;
+  const pageCountAssertion = workflow.match(/pdfinfo downloads\/canonical_proof_report\.pdf[^\n]*\)" = "(\d+)"/);
   assert.match(workflow, /permissions:\n  contents: read/);
   assert.match(workflow, /sync-public-access-docs\.mjs --check/);
+  assert.equal(Number(pageCountAssertion?.[1]), expectedReportPages);
   assert.doesNotMatch(workflow, /git (?:commit|push)/);
   assert.doesNotMatch(workflow, /contents: write/);
 });
