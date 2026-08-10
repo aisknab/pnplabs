@@ -27,6 +27,8 @@ host, not as a build host.
   `sed`, `git diff`, `git status`, and targeted syntax checks.
 - Keep host, proxy, key, and network details in the user's SSH configuration; do
   not copy private connection data into this repository.
+- Keep environment-specific automation runbooks, local paths, host capacity, and
+  access state in private local agent instructions, not public repository changes.
 
 ### SSH, package, and remote-job preflight
 
