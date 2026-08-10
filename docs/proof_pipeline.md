@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,468 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,486 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 26,485 public declarations;
-- 13,860 theorem-kind declarations;
-- 7,139 assumption-free theorem-kind declarations;
+- 26,539 public declarations;
+- 13,883 theorem-kind declarations;
+- 7,159 assumption-free theorem-kind declarations;
 - 238 source-closure modules;
-- 14,928 excluded private compiler auxiliaries;
+- 14,935 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The ninety-seven earned scopes are:
+The ninety-eight earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -147,6 +147,7 @@ The ninety-seven earned scopes are:
 | Candidate-derived terminal saturation cost balance | For every finite direct-wire candidate, executable observer, forgetful projection, and finite terminal seed, Lean derives the candidate-specific dependency system and deterministic rule-labelled saturation trace, then proves exact support and full-circuit cost balance throughout a transparent history or records the exact first nontransparent event and complete transparent prefix. The focused 53-declaration audit has 10 empty closures, 6 using only `propext`, and 37 using `Quot.sound` with `propext`; all 17 reviewed pins have permitted Lean-standard closure. | This closes only the finite terminal forms of `transparentSaturationCostBalanced` and `firstNontransparentStepRecorded`. The observer and projection remain explicit inputs, and a nontransparent event is recorded rather than routed. It does not discharge `interfaceExposureRoutesToE` or `originKernelObligationClosureRouted`; establish full `SaturatePositive`, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove `P = NP`. |
 | Finite terminal interface-exposure routing | For every finite direct-wire candidate, executable observer, forgetful projection, and finite terminal seed, Lean recognizes only an exact candidate-derived interface-consumer edge. It proves each recognized event transparently cost-balanced or produces a proof-bearing local E-route, then records the exact first interface-exposure event and complete transparent prefix. The focused 28-declaration audit has 2 empty closures, 1 using only `propext`, and 25 using `Quot.sound` with `propext`; all 10 reviewed pins have permitted Lean-standard closure. | This closes only the finite local form of `interfaceExposureRoutesToE`. The local E-route is an exposure-obligation coordinate, not full Package E acceptance, verified global gain, or global route completeness. The observer and projection remain explicit inputs. It does not discharge `originKernelObligationClosureRouted`; establish full `SaturatePositive`, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove `P = NP`. |
 | Finite terminal positive-saturation composition | For every finite direct-wire candidate, executable observer, forgetful projection, and proof-bearing candidate BCEL anchor problem whose normalized seed has positive full slack, Lean recognizes exact candidate-derived origin, kernel, and obligation closures in both gate and profile orientations; checks cost transparency, obligation discharge, and forgotten-profile stability; preserves positive full slack across an all-safe trace into the checked-lift or BCEL firewall; or returns the exact first interface, closure, or other fail-closed nontransparent route with its complete safe prefix. The focused 37-declaration audit has 7 empty closures, 1 using only `propext`, and 29 using `Quot.sound` with `propext`; all 9 reviewed pins have permitted Lean-standard closure. | This closes the finite local form of `originKernelObligationClosureRouted` and composes the five reconstructed terminal sub-obligations only for an explicit proof-bearing problem. A local route is not a complete global outcome, Package E VerifyDW acceptance, verified gain, or global route completeness. The positive initial full-slack premise remains explicit. It does not establish manuscript-wide `SaturatePositive`, BCELReady, RankWF, `ZeroSlack`, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove `P = NP`. |
+| Fixed residual terminal RankWF | Lean defines exactly ten natural-number coordinates in the manuscript priority order, proves that the executable Boolean comparison agrees with the lexicographic proposition, supplies all ten first-decreasing-coordinate witnesses, packages proof-bearing descent, and proves accessibility, induction, and kernel-checked well-foundedness. The focused 39-declaration audit has 37 empty closures and 2 using only `propext`; all 18 reviewed pins have permitted Lean-standard closure. | This establishes the fixed rank domain and RankWF only. It does not map current finite terminal routes into the complete global outcome system, prove that any current route strictly decreases the rank, establish route completeness or Package E, remove the finite composition's explicit positive premise, establish manuscript-wide `SaturatePositive` or BCELReady, prove `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -178,7 +179,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment eighty-one-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment eighty-two-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

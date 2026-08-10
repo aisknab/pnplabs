@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 102,
+  "version": 103,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "3f4352d190b44d34866500e672c2ef2af89e08de",
-  "sourceProofCommitRef": "6df4f90d6626478e24ec0d62efd408ac464a34dc",
-  "sourceTree": "2133ae4be763f61dda2c6f8fcc6e194ba777feb2",
+  "sourceCommitRef": "dd69b94a762eb830a3b91503faffde3984cce84f",
+  "sourceProofCommitRef": "472e9be7176df693db417d98586b73f3e639c13f",
+  "sourceTree": "d06833216d204b8eca0510267654263e79752e51",
   "syncedOn": "2026-08-10",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-120",
-  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-FINITE-SATURATE-POSITIVE-119",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-10-120",
-  "leanTheoremInventorySha256": "e69ac9c84dc15916632cc37b1d0e090d74d5057ce72160060ff8ed48b2623823",
-  "leanSourceClosureSha256": "3b31d12fbb322ffd5b93d1315bcff52fce916c120aed66c15c78eca3df983bf2",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-10-120",
-  "canonicalReportPages": 81,
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-121",
+  "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-RESIDUAL-RANK-WF-120",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-10-121",
+  "leanTheoremInventorySha256": "e48dcb80c3fde2a17ea39c5e6337a6e7f5a9988476330ee05e213185f89c7ab9",
+  "leanSourceClosureSha256": "d525c3be0e63e15f8a4336d785651f1d1fdef3dc867d2956302da34a947e85d6",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-10-121",
+  "canonicalReportPages": 82,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 26485,
-    "leanTheoremInventoryTheoremCount": 13860,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 7139,
-    "leanTheoremInventoryExcludedPrivateDeclarationCount": 14928,
-    "leanTheoremInventorySourceClosureModuleCount": 238,
+    "leanTheoremInventoryDeclarationCount": 26539,
+    "leanTheoremInventoryTheoremCount": 13883,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 7159,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 14935,
+    "leanTheoremInventorySourceClosureModuleCount": 239,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4193,12 +4193,15 @@
     "leanResidualTerminalOriginKernelObligationRoutingScope": "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-origin-kernel-obligation-closures-with-exact-safety-or-first-route",
     "leanResidualTerminalFiniteSaturatePositiveCompositionFormalized": true,
     "leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed": true,
-    "leanResidualTerminalFiniteSaturatePositiveCompositionScope": "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-proof-bearing-positive-full-slack-candidate-bcel-anchor-problems-total-finite-saturate-positive-composition"
+    "leanResidualTerminalFiniteSaturatePositiveCompositionScope": "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-proof-bearing-positive-full-slack-candidate-bcel-anchor-problems-total-finite-saturate-positive-composition",
+    "leanResidualTerminalRankWFFormalized": true,
+    "leanResidualTerminalRankWFAxiomAuditPassed": true,
+    "leanResidualTerminalRankWFScope": "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 97,
+    "earned": 98,
     "unearned": 3,
-    "total": 100
+    "total": 101
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4297,7 +4300,8 @@
     "residual-terminal-saturation-positivity-firewall",
     "residual-terminal-candidate-saturation-cost-balance",
     "residual-terminal-interface-exposure-routing",
-    "residual-terminal-finite-saturate-positive-composition"
+    "residual-terminal-finite-saturate-positive-composition",
+    "residual-terminal-rank-wf"
   ],
   "unearnedMilestones": [
     "global-locked-nand-threshold",

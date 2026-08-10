@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-120';
-const STATUS_SHA256 = '4fd7282f5f7455155f8ed5a86891488add6257f2c3f87f43258b70b04f4f2a6b';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-FINITE-SATURATE-POSITIVE-119';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-120';
-const INVENTORY_SHA256 = 'e69ac9c84dc15916632cc37b1d0e090d74d5057ce72160060ff8ed48b2623823';
-const SOURCE_CLOSURE_SHA256 = '3b31d12fbb322ffd5b93d1315bcff52fce916c120aed66c15c78eca3df983bf2';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-121';
+const STATUS_SHA256 = '14e653dd1cf68986b298983dec19988c8d6094228b0361d7312fc85166690477';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-RESIDUAL-RANK-WF-120';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-121';
+const INVENTORY_SHA256 = 'e48dcb80c3fde2a17ea39c5e6337a6e7f5a9988476330ee05e213185f89c7ab9';
+const SOURCE_CLOSURE_SHA256 = 'd525c3be0e63e15f8a4336d785651f1d1fdef3dc867d2956302da34a947e85d6';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 26485,
-  theorems: 13860,
-  assumptionFreeTheorems: 7139,
-  excludedPrivateDeclarations: 14928,
-  modules: 238,
+  declarations: 26539,
+  theorems: 13883,
+  assumptionFreeTheorems: 7159,
+  excludedPrivateDeclarations: 14935,
+  modules: 239,
   axioms: 4,
 });
 
@@ -3876,6 +3876,27 @@ const RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_DECLARATIONS = Obje
   ["PNP.DirectWire.classifyTerminalFiniteSaturatePositive_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalFiniteSaturatePositive"],
 ]);
 
+const RESIDUAL_TERMINAL_RANK_WF_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalResidualRank.coordinates_mk", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.TerminalResidualRank.coordinates_length", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRankLTBool_eq_true_iff", ["propext"], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRankLTBool_eq_false_iff", ["propext"], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRankLexLT_wellFounded", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_accessible", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_induction", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_witnessType_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_spanType_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_mode_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_frontierDefect_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_projectionDefect_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_saturationDefect_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_anchorCount_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_chargeSize_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_profileSize_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.terminalResidualRank_canonicalCode_lt", [], "PNP.ResidualTerminalRankWF"],
+  ["PNP.DirectWire.TerminalResidualRankDescent.sound", [], "PNP.ResidualTerminalRankWF"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4416,6 +4437,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-candidate-saturation-cost-balance',
   'residual-terminal-interface-exposure-routing',
   'residual-terminal-finite-saturate-positive-composition',
+  'residual-terminal-rank-wf',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4848,6 +4870,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFiniteSaturatePositiveCompositionFormalized: false,
   leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed: false,
   leanResidualTerminalFiniteSaturatePositiveCompositionScope: null,
+  leanResidualTerminalRankWFFormalized: false,
+  leanResidualTerminalRankWFAxiomAuditPassed: false,
+  leanResidualTerminalRankWFScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5362,6 +5387,9 @@ leanResidualTerminalOriginKernelObligationRoutingScope = ${payload.leanResidualT
 leanResidualTerminalFiniteSaturatePositiveCompositionFormalized = ${payload.leanResidualTerminalFiniteSaturatePositiveCompositionFormalized ?? false}
 leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed = ${payload.leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed ?? false}
 leanResidualTerminalFiniteSaturatePositiveCompositionScope = ${payload.leanResidualTerminalFiniteSaturatePositiveCompositionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFiniteSaturatePositiveCompositionScope)}
+leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
+leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
+leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5459,13 +5487,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 811,
-    definition: 11074,
-    inductive: 368,
+    constructor: 812,
+    definition: 11102,
+    inductive: 369,
     opaque: 0,
     quotient: 0,
-    recursor: 368,
-    theorem: 13860,
+    recursor: 369,
+    theorem: 13883,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5920,6 +5948,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalRankWF =
+    RESIDUAL_TERMINAL_RANK_WF_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
 
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
@@ -6316,6 +6350,9 @@ function validateInventory(inventory) {
     && residualTerminalFiniteSaturatePositiveComposition.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalRankWF.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
@@ -6358,7 +6395,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2468
+    && inventory.milestoneCandidates.length === 2486
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6422,7 +6459,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 97;
+    const shouldBeEarned = index < 98;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6544,6 +6581,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalFiniteSaturatePositiveCompositionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-finite-saturate-positive-composition'
+  );
+  const residualTerminalRankWFMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-rank-wf'
   );
 
   return status?.kind === 'PNPFormalReconstructionStatus0'
@@ -6976,6 +7016,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFiniteSaturatePositiveCompositionFormalized === true
     && status.leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed === true
     && status.leanResidualTerminalFiniteSaturatePositiveCompositionScope === "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-proof-bearing-positive-full-slack-candidate-bcel-anchor-problems-total-finite-saturate-positive-composition"
+    && residualTerminalRankWFMilestone?.classification === "formalized-residual-terminal-rank-wf"
+    && residualTerminalRankWFMilestone.status === "formalized-residual-terminal-rank-wf"
+    && residualTerminalRankWFMilestone.scope === "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness."
+    && residualTerminalRankWFMilestone.nonClaim === "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalRankWFMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_RANK_WF_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalRankWFFormalized === true
+    && status.leanResidualTerminalRankWFAxiomAuditPassed === true
+    && status.leanResidualTerminalRankWFScope === "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness"
     && status.leanSaturatePositiveFormalized === false
     && status.leanBCELReadyFormalized === false
     && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
