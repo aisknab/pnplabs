@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = '7445d2afa7af75375d20751b4a0aa7b87e8b8dfc';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-123';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-122';
-const INVENTORY_SHA256 = 'f86ecb4b91dcc4bbd6988aba15b03dc5998a965dc21aabf830d40b41c871f434';
+const CORE_COMMIT = '85c72816225bc6feab4ffc60499475419645dd73';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-124';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-123';
+const INVENTORY_SHA256 = '231781715e011ebf8b583ce3c26f9896622d6962faaf8fcebd68f36e511ea003';
 const INVENTORY_BYTES = 16915940;
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
@@ -358,28 +358,28 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
   assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-123');
-  assert.equal(status.formalPublicationMapSha256, '904a1e65da26d730de3411f5d45fb927311234d2b21538b1edf65921421e9ff7');
-  assert.equal(status.leanSourceClosureSha256, '6adc25ee3d9920358ea8803adf47ab94d8e70c91026b8756bb45dbad1dda577d');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-124');
+  assert.equal(status.formalPublicationMapSha256, '96e4a8b21a717e2190b5eed64ed50f27402b7690b7b80a52bb98782984f54258');
+  assert.equal(status.leanSourceClosureSha256, 'e30716e5e6ec0ad0f7c084a66d9ff28c1a8cf5a7008b5fc8caff81205e51eb15');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
   const globalZeroSlack = status.formalPublicationMilestones
     .find((row) => row.id === 'global-zeroslack-pccmin');
   assert.equal(globalZeroSlack.earned, false);
-  assert.equal(globalZeroSlack.nonClaim, 'Per-cut BN2 basis existence does not construct the cross-cut-stable BN3 request envelope. The pinned legacy package checks an asserted jointSideTightRealizability Boolean rather than an executable uniform construction, so proof-bearing result structures and explicit-list failure still do not supply global ZeroSlack or polynomial PCCMin completeness.');
-  assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap is now pinned by a kernel-checkable logical boundary witness: per-cut side-tight existence does not by itself construct a cross-cut-stable realizing family. This is a missing-lemma witness, not a counterexample to a future candidate-derived BN3 theorem; global ZeroSlack and polynomial PCCMin remain unformalized.'));
+  assert.equal(globalZeroSlack.nonClaim, 'The finite candidate-derived BN3 envelope now supplies stable request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight canonical basis family after a successful computed BCEL nucleus. Its exhaustive proper-cut enumeration is exponential and it does not construct BN4-BN6, map all residual routes into a decreasing complete global outcome system, or provide selector/realizer and polynomial-runtime completeness; global ZeroSlack and polynomial PCCMin therefore remain unformalized.');
+  assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus now has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential and does not supply BN4-BN6 or global ZeroSlack and polynomial PCCMin completeness.'));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
   assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(inventory.declarationCount, 26540);
-  assert.equal(inventory.theoremCount, 13884);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7159);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14935);
-  assert.equal(inventory.sourceClosureModuleCount, 240);
+  assert.equal(inventory.declarationCount, 26624);
+  assert.equal(inventory.theoremCount, 13928);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7165);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14939);
+  assert.equal(inventory.sourceClosureModuleCount, 241);
   assert.equal(inventory.axiomCount, 4);
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
@@ -1454,7 +1454,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
     assert.equal(compiler.module, module, name);
     assert.deepEqual(compiler.axioms, [], name);
   }
-  assert.equal(inventory.milestoneCandidates.length, 2487);
+  assert.equal(inventory.milestoneCandidates.length, 2498);
 
   const secondConstraintSeventhPaddingOrUnaryMilestone = status.formalPublicationMilestones.find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step');
   assert.equal(secondConstraintSeventhPaddingOrUnaryMilestone.requiredTheorems.length, 40);
@@ -2373,6 +2373,18 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(rankWFMilestone.requiredTheorems.length, 18);
   assert.equal(rankWFMilestone.theoremRows.length, 18);
   assert.equal(rankWFMilestone.theoremRows.filter((row) => row.axioms.join(',') === 'propext').length, 2);
+
+  const bn3RequestEnvelopeMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-bn3-request-envelope');
+  assert.equal(bn3RequestEnvelopeMilestone.classification, 'formalized-residual-terminal-bn3-request-envelope');
+  assert.equal(bn3RequestEnvelopeMilestone.earned, true);
+  assert.equal(bn3RequestEnvelopeMilestone.requiredTheorems.length, 11);
+  assert.equal(bn3RequestEnvelopeMilestone.theoremRows.length, 11);
+  assert.equal(bn3RequestEnvelopeMilestone.theoremRows.filter((row) => row.axioms.length === 0).length, 2);
+  assert.equal(bn3RequestEnvelopeMilestone.theoremRows.filter((row) => row.axioms.join(',') === 'propext').length, 1);
+  assert.equal(status.leanResidualTerminalBN3RequestEnvelopeFormalized, true);
+  assert.equal(status.leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalBN3RequestEnvelopeScope, 'successful-computed-finite-bcel-anchor-nuclei-canonical-stable-request-identities-exact-singleton-minimal-consumers-duplicate-free-incidence-and-jointly-side-tight-full-or-quotient-basis-family');
   assert.equal(rankWFMilestone.theoremRows.filter((row) => row.axioms.length === 0).length, 16);
   for (const theoremRow of rankWFMilestone.theoremRows) {
     assert.equal(theoremRow.present, true, theoremRow.name);
@@ -2390,9 +2402,9 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(status.formalPublicationMilestones.length, 101);
-  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(99).fill(true), false, false]);
-  for (const row of status.formalPublicationMilestones.slice(0, 99)) {
+  assert.equal(status.formalPublicationMilestones.length, 102);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(100).fill(true), false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 100)) {
     assert.equal(row.allPresent, true, row.id);
     assert.equal(row.allKernelTypesMatch, true, row.id);
     assert.equal(row.sourceClosureFingerprintMatches, true, row.id);
@@ -2428,15 +2440,15 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   ]) assert.ok(status.verificationCommands.includes(command), command);
 });
 
-test('formal publication release pins the residual terminal RankWF boundary', async () => {
+test('formal publication release pins the finite BN3 request-envelope boundary', async () => {
   const release = await readJson('downloads/formal-publication-release.json');
   const parser = release.earnedBoundary;
 
-  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-106');
+  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-107');
   assert.equal(release.artifacts.report.pageCount, 82);
-  assert.equal(release.artifacts.theoremInventory.declarationCount, 26540);
-  assert.equal(release.artifacts.theoremInventory.theoremCount, 13884);
-  assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 7159);
+  assert.equal(release.artifacts.theoremInventory.declarationCount, 26624);
+  assert.equal(release.artifacts.theoremInventory.theoremCount, 13928);
+  assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 7165);
   assert.equal(release.artifacts.theoremInventory.projectAxiomCount, 4);
   assert.equal(parser.residualTerminalFourCornerArbitraryFamilyCoherenceFormalized, true);
   assert.equal(parser.residualTerminalFourCornerTightBasisFamilyComplete, true);
@@ -2780,6 +2792,18 @@ test('formal publication release pins the residual terminal RankWF boundary', as
   assert.equal(parser.residualTerminalRankWFWellFoundedTheorem, 'PNP.DirectWire.terminalResidualRankLexLT_wellFounded');
   assert.equal(parser.residualTerminalRankWFInductionTheorem, 'PNP.DirectWire.terminalResidualRank_induction');
   assert.equal(parser.residualTerminalRankWFDescentSoundTheorem, 'PNP.DirectWire.TerminalResidualRankDescent.sound');
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeFormalized, true);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeAxiomAuditPassed, true);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeAuditedDeclarationCount, 84);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeEmptyAxiomDeclarationCount, 8);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopePropextOnlyDeclarationCount, 3);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopePropextQuotSoundDeclarationCount, 73);
+  assert.equal(Object.keys(parser.residualTerminalBN3RequestEnvelopeTheoremKernelTypeSha256).length, 11);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeTheoremKernelTypeSha256['PNP.DirectWire.TerminalComputedBCELAnchorNucleus.computedBN3RequestEnvelope'], 'f07860cfece7a85bb738c2b951cd6b43b92bbd5ce6365d520888a011b1069ed0');
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeTheoremKernelTypeSha256['PNP.DirectWire.classifyTerminalBN3RequestEnvelope_exhaustive'], 'c88c263df187c383ee764d7c39926988cd8994bb894c33aa7482b2924c53c8de');
+  assert.deepEqual(parser.residualTerminalBN3RequestEnvelopeAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(parser.residualTerminalBN3RequestEnvelopeProjectAxiomClosure, []);
+  assert.equal(parser.residualTerminalBN3RequestEnvelopeClassifierTheorem, 'PNP.DirectWire.classifyTerminalBN3RequestEnvelope_exhaustive');
   assert.equal(parser.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(parser.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(parser.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -2790,7 +2814,7 @@ test('formal publication release pins the residual terminal RankWF boundary', as
   assert.deepEqual(parser.lockedNANDThresholdPublicationAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(parser.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(parser.lockedNANDThresholdPublicationTheorem, 'PNP.Main.locked_nand_threshold');
-  assert.match(parser.scope, /\+plus-concrete-locked-nand-threshold-publication$/);
+  assert.match(parser.scope, /\+plus-residual-terminal-bn3-request-envelope$/);
   assert.equal(parser.saturatePositiveFormalized, false);
   assert.equal(parser.bcelReadyFormalized, false);
   assert.equal(parser.residualTerminalProjectionSquareFormalized, true);
@@ -2993,15 +3017,15 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 105);
+  assert.equal(index.version, 106);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, 'c67e4499dfc076eb53a85f77917a25804525b565');
-  assert.equal(index.sourceTree, '7376c3d35ebfd9a80e38abb86964e60df6d4f4b3');
+  assert.equal(index.sourceProofCommitRef, '2693f6da059d4ee35a70f4446a36d464895e8136');
+  assert.equal(index.sourceTree, '773d96dae8e14038cc35893dc85402a25bf1b655');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-11-123');
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-11-124');
   assert.equal(index.canonicalReportPages, 82);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
@@ -3011,11 +3035,11 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
   assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
   assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
-  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 26540);
-  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 13884);
-  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 7159);
-  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 14935);
-  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 240);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 26624);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 13928);
+  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 7165);
+  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 14939);
+  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 241);
   assert.equal(index.claimBoundary.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceAxiomAuditPassed, true);
@@ -4275,6 +4299,9 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanResidualTerminalRankWFFormalized, true);
   assert.equal(index.claimBoundary.leanResidualTerminalRankWFAxiomAuditPassed, true);
   assert.equal(index.claimBoundary.leanResidualTerminalRankWFScope, 'fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness');
+  assert.equal(index.claimBoundary.leanResidualTerminalBN3RequestEnvelopeFormalized, true);
+  assert.equal(index.claimBoundary.leanResidualTerminalBN3RequestEnvelopeAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanResidualTerminalBN3RequestEnvelopeScope, 'successful-computed-finite-bcel-anchor-nuclei-canonical-stable-request-identities-exact-singleton-minimal-consumers-duplicate-free-incidence-and-jointly-side-tight-full-or-quotient-basis-family');
   assert.equal(index.claimBoundary.leanLockedNANDThresholdFormalized, true);
   assert.deepEqual(index.claimBoundary.leanLockedNANDThresholdMissingInstantiationInventory, []);
   assert.equal(index.claimBoundary.leanSaturatePositiveFormalized, false);
@@ -4282,10 +4309,11 @@ test('payload index describes current inventory/report and quarantines legacy su
 
   assert.equal(index.claimBoundary.leanPCCMinPolynomialRuntimeFormalized, false);
 
-  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 99, unearned: 2, total: 101 });
-  assert.equal(index.earnedMilestones.length, 99);
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 100, unearned: 2, total: 102 });
+  assert.equal(index.earnedMilestones.length, 100);
   assert.ok(index.earnedMilestones.includes('global-locked-nand-threshold'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-rank-wf'));
+  assert.ok(index.earnedMilestones.includes('residual-terminal-bn3-request-envelope'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-finite-saturate-positive-composition'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-interface-exposure-routing'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-saturation-positivity-firewall'));
@@ -4483,12 +4511,13 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '26,540',
-    '13,884',
-    '7,159',
-    '<strong>14,935</strong> private compiler auxiliaries excluded',
-    '<strong>240</strong> modules',
-    'Ninety-nine scoped milestones',
+    '26,624',
+    '13,928',
+    '7,165',
+    '<strong>14,939</strong> private compiler auxiliaries excluded',
+    '<strong>241</strong> modules',
+    'One hundred scoped milestones',
+    'residual-terminal-bn3-request-envelope',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -4824,7 +4853,7 @@ test('status page has a conservative complete static fallback', async () => {
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
-  assert.equal((html.match(/data-earned="true"/g) || []).length, 99);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 100);
   assert.equal((html.match(/data-earned="false"/g) || []).length, 2);
 });
 
@@ -4833,11 +4862,11 @@ test('static inventory prose matches the compiled declaration boundary', async (
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(readme.includes('26,540** exported public declarations across **240** modules'), true);
+  assert.equal(readme.includes('26,624** exported public declarations across **241** modules'), true);
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
-  assert.equal(paper.includes('Exactly 14,935 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 14,935 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['26,540', '13,884', '7,159', '14,935', '240 modules', '448,038', '209,971', '2,025,540', '17,207,898', 'eighty-two A4 pages', 'fixed 135,070-rule', '36 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  assert.equal(paper.includes('Exactly 14,939 private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Exactly 14,939 private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['26,624', '13,928', '7,165', '14,939', '241 modules', '449,511', '211,420', '2,034,357', '17,275,021', 'eighty-two A4 pages', 'fixed 135,070-rule', '11 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-10T14:25:00Z</updated>
+  <updated>2026-08-10T20:51:36Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-10-residual-terminal-bn3-request-envelope</id>
+    <title>Lean now constructs one finite BN3 request envelope</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-10-residual-terminal-bn3-request-envelope"/>
+    <published>2026-08-10T20:51:36Z</published>
+    <updated>2026-08-10T20:51:36Z</updated>
+    <summary type="text">After the existing finite anchor classifier succeeds, Lean now constructs one canonical duplicate-free list of request identities across every proper cut. It proves that executable request membership is exact, monotone, and stable, computes exact singleton minimal consumers, accounts for each active incidence once, and selects one shared full-or-quotient side-tight basis family for all cuts while preserving every earlier proof-bearing failure. This is an exact finite reference construction, but it checks every subset of the anchor family and can therefore take exponential time. It does not construct the later BN4 through BN6 stages, prove complete selector or realizer coverage, establish global ZeroSlack or polynomial PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 85% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 85 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;After the existing finite anchor classifier succeeds, Lean now constructs one canonical duplicate-free list of request identities across every proper cut. It proves that executable request membership is exact, monotone, and stable, computes exact singleton minimal consumers, accounts for each active incidence once, and selects one shared full-or-quotient side-tight basis family for all cuts while preserving every earlier proof-bearing failure.&lt;/p&gt;&lt;p&gt;This is an exact finite reference construction, but it checks every subset of the anchor family and can therefore take exponential time. It does not construct the later BN4 through BN6 stages, prove complete selector or realizer coverage, establish global ZeroSlack or polynomial PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 85% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;85&quot;&gt;Editorial progress estimate at publication: 85%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-10-residual-terminal-bn3-request-envelope&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-10-concrete-locked-nand-threshold-publication</id>
     <title>Lean now publishes the concrete locked-NAND threshold reduction</title>
