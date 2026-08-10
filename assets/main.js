@@ -7,19 +7,19 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-118';
-const STATUS_SHA256 = '011cb1ee5f5cfe8c1e36b1c3cda6c43638bd22ec27969f2274336e70771052ab';
-const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-09-CANDIDATE-SATURATION-COST-BALANCE-117';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-09-118';
-const INVENTORY_SHA256 = '53768f488ff27bf9e43b5b195daaf263fcdcf60e05651d403af23d9a65ff3d78';
-const SOURCE_CLOSURE_SHA256 = 'bbede19553a26c6ac1b7075cc22f5fb05662056351406e36183a7a734d32d3d9';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-119';
+const STATUS_SHA256 = '03fb380c7b0d1a5ed1521d0fe5c06bbe99d34507af56561a5bfdfa85d0839a5e';
+const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-INTERFACE-EXPOSURE-ROUTING-118';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-10-119';
+const INVENTORY_SHA256 = '1901e247b93dcfedd06dc09be1ba6ded421ba422baa011a4cf4f9806846ef757';
+const SOURCE_CLOSURE_SHA256 = 'a7ba81b064643e574a6a5084e4947a61db2fc19528155cf2b11cf37f67f40682';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 25863,
-  theorems: 13665,
-  assumptionFreeTheorems: 7079,
-  excludedPrivateDeclarations: 14904,
-  modules: 235,
+  declarations: 26087,
+  theorems: 13740,
+  assumptionFreeTheorems: 7102,
+  excludedPrivateDeclarations: 14908,
+  modules: 236,
   axioms: 4,
 });
 
@@ -3851,6 +3851,19 @@ const RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_DECLARATIONS = Object.
   ["PNP.DirectWire.TerminalSaturationBalanceOutcome.balanced_fullPositive_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalSaturationCostBalance"],
 ]);
 
+const RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalInterfaceExposureCoordinate?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_shape", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.terminalCandidateInterfaceExposureCoordinate?_edge", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.terminalInterfaceOutgoingCoordinate_eventCost_zero", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.TerminalInterfaceExposureERoute.sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.eventCost_zero", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.TerminalInterfaceExposureZeroCostRetract.fullSlack_preserved", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.terminalInterfaceExposure_transparent_or_eRoute", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.TerminalFirstInterfaceExposureRoute.sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+  ["PNP.DirectWire.classifyTerminalSaturationInterfaceRouting_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalInterfaceExposureRouting"],
+]);
+
 const LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_idempotent", ["propext"]],
   ["PNP.Concrete.LockedNAND.RawCircuit.normalize_eval", ["Quot.sound", "propext"]],
@@ -4389,6 +4402,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-computed-bcel-anchor-nucleus',
   'residual-terminal-saturation-positivity-firewall',
   'residual-terminal-candidate-saturation-cost-balance',
+  'residual-terminal-interface-exposure-routing',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4807,6 +4821,12 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFirstNontransparentStepFormalized: false,
   leanResidualTerminalSaturationCostBalanceAxiomAuditPassed: false,
   leanResidualTerminalSaturationCostBalanceScope: null,
+  leanResidualTerminalInterfaceExposureRoutingFormalized: false,
+  leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized: false,
+  leanResidualTerminalInterfaceExposureZeroCostRetractFormalized: false,
+  leanResidualTerminalFirstInterfaceExposureRouteFormalized: false,
+  leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed: false,
+  leanResidualTerminalInterfaceExposureRoutingScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5307,6 +5327,12 @@ leanResidualTerminalSaturationCostBalanceFormalized = ${payload.leanResidualTerm
 leanResidualTerminalFirstNontransparentStepFormalized = ${payload.leanResidualTerminalFirstNontransparentStepFormalized ?? false}
 leanResidualTerminalSaturationCostBalanceAxiomAuditPassed = ${payload.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed ?? false}
 leanResidualTerminalSaturationCostBalanceScope = ${payload.leanResidualTerminalSaturationCostBalanceScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSaturationCostBalanceScope)}
+leanResidualTerminalInterfaceExposureRoutingFormalized = ${payload.leanResidualTerminalInterfaceExposureRoutingFormalized ?? false}
+leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized = ${payload.leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized ?? false}
+leanResidualTerminalInterfaceExposureZeroCostRetractFormalized = ${payload.leanResidualTerminalInterfaceExposureZeroCostRetractFormalized ?? false}
+leanResidualTerminalFirstInterfaceExposureRouteFormalized = ${payload.leanResidualTerminalFirstInterfaceExposureRouteFormalized ?? false}
+leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed = ${payload.leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed ?? false}
+leanResidualTerminalInterfaceExposureRoutingScope = ${payload.leanResidualTerminalInterfaceExposureRoutingScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalInterfaceExposureRoutingScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5404,13 +5430,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 765,
-    definition: 10735,
-    inductive: 347,
+    constructor: 778,
+    definition: 10857,
+    inductive: 354,
     opaque: 0,
     quotient: 0,
-    recursor: 347,
-    theorem: 13665,
+    recursor: 354,
+    theorem: 13740,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -5853,6 +5879,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalInterfaceExposureRouting =
+    RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
 
   const bridge = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.PipelineStageBridges.workBoundedDecide_bridged_timeout_of_stuck_rawRunExact');
   const packer = inventory.milestoneCandidates?.find((row) => row?.name === 'PNP.Concrete.TerminalOutputPacker.machineOutput_compileTerminalOutputPacker_eq');
@@ -6243,6 +6275,9 @@ function validateInventory(inventory) {
     && residualTerminalCandidateSaturationCostBalance.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalInterfaceExposureRouting.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && bridge?.kind === 'theorem'
     && bridge.module === 'PNP.Concrete.PipelineStageBridges'
@@ -6285,7 +6320,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2449
+    && inventory.milestoneCandidates.length === 2459
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6349,7 +6384,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 95;
+    const shouldBeEarned = index < 96;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6465,6 +6500,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalCandidateSaturationCostBalanceMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-candidate-saturation-cost-balance'
+  );
+  const residualTerminalInterfaceExposureRoutingMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-interface-exposure-routing'
   );
 
   return status?.kind === 'PNPFormalReconstructionStatus0'
@@ -6867,6 +6905,20 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFirstNontransparentStepFormalized === true
     && status.leanResidualTerminalSaturationCostBalanceAxiomAuditPassed === true
     && status.leanResidualTerminalSaturationCostBalanceScope === "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-dependency-system-rule-labelled-exact-cost-balance-or-first-nontransparent-step"
+    && residualTerminalInterfaceExposureRoutingMilestone?.classification === "formalized-residual-terminal-interface-exposure-routing"
+    && residualTerminalInterfaceExposureRoutingMilestone.status === "formalized-residual-terminal-interface-exposure-routing"
+    && residualTerminalInterfaceExposureRoutingMilestone.scope === "For every finite direct-wire candidate, executable ambient observer, forgetful projection, and finite terminal seed, Lean recognizes only an exact candidate-derived interface-consumer edge. Each recognized event is transparently cost-balanced or produces a proof-bearing local E-route; the production trace result records the exact first nontransparent event and complete transparent prefix, while non-interface first failures remain fail-closed."
+    && residualTerminalInterfaceExposureRoutingMilestone.nonClaim === "This closes only the finite local form of interfaceExposureRoutesToE. The proof-bearing local E-route is an exposure-obligation coordinate, not a full Package E VerifyDW acceptance, a verified global gain, or global route completeness. The executable observer and forgetful projection remain explicit model inputs. It does not discharge originKernelObligationClosureRouted; establish full SaturatePositive, Package E, BCELReady or later BCEL/BN2-BN6 conclusions; prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalInterfaceExposureRoutingMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalInterfaceExposureRoutingFormalized === true
+    && status.leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized === true
+    && status.leanResidualTerminalInterfaceExposureZeroCostRetractFormalized === true
+    && status.leanResidualTerminalFirstInterfaceExposureRouteFormalized === true
+    && status.leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed === true
+    && status.leanResidualTerminalInterfaceExposureRoutingScope === "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-interface-consumer-transparent-or-local-e-route-with-exact-first-failure"
     && status.leanSaturatePositiveFormalized === false
     && status.leanBCELReadyFormalized === false
     && status.leanResidualRoutesGlobalGainCompletenessFormalized === false

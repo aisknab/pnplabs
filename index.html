@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now derives and checks terminal saturation cost balance</h2>
-          <p>For every finite direct-wire candidate, executable observer, forgetful projection, and finite terminal seed, Lean now derives the physical and context-sensitive dependency system from the candidate and computes a deterministic rule-labelled saturation trace. Transparent events have exact support and full-circuit cost balance, with full slack, positivity, and nondecreasing projection defect preserved across the linked history.</p>
-          <p>If an event is nontransparent, Lean records the exact first event, its typed reason, and the complete transparent prefix. This closes only the finite terminal forms of <code>transparentSaturationCostBalanced</code> and <code>firstNontransparentStepRecorded</code>. It does not route that event, discharge <code>interfaceExposureRoutesToE</code> or <code>originKernelObligationClosureRouted</code>, establish full SaturatePositive, Package E or BCELReady, prove ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, or prove P = NP. The 80% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-09-residual-terminal-candidate-saturation-cost-balance">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now routes finite terminal interface exposure</h2>
+          <p>For every finite direct-wire candidate, executable observer, forgetful projection, and finite terminal seed, Lean now recognizes only an exact interface-consumer edge derived from the candidate. Each recognized event is either proved transparently cost-balanced or turned into a proof-bearing local E-route. Across a saturation trace, Lean records the exact first interface-exposure event and complete transparent prefix.</p>
+          <p>This closes only the finite local form of <code>interfaceExposureRoutesToE</code>. The local E-route identifies an exposure obligation; it is not a full Package E acceptance, verified global gain, or proof that every global route has been found. The observer and projection remain explicit inputs. Lean has not discharged <code>originKernelObligationClosureRouted</code>, established full SaturatePositive, Package E or BCELReady, proved ZeroSlack or PCCMin, established polynomial runtime, put SAT in P, or proved P = NP. The 81% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-10-residual-terminal-interface-exposure-routing">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 6 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>terminalCandidateSaturationSystem</code> derives the terminal dependency system from the candidate and <code>terminalSaturateTrace</code> records the deterministic rule-labelled history. Lean proves exact cost balance throughout a transparent history or records the first nontransparent event and its complete transparent prefix. This closes the finite terminal forms of <code>transparentSaturationCostBalanced</code> and <code>firstNontransparentStepRecorded</code>; the remaining two SaturatePositive obligations, full SaturatePositive, Package E, BCELReady, ZeroSlack, PCCMin, polynomial runtime, SAT in P, and P = NP remain unfinished.</p>
+          <p class="boundary-copy"><strong>Latest checked step:</strong> <code>terminalInterfaceExposureCoordinate?</code> accepts only an exact candidate-derived interface consumer. Lean proves that the event is transparently balanced or returns a proof-bearing local E-route, and <code>classifyTerminalSaturationInterfaceRouting</code> records the exact first interface-exposure event and complete transparent prefix. This closes the finite local form of <code>interfaceExposureRoutesToE</code>; origin-kernel routing, full SaturatePositive, Package E, BCELReady, ZeroSlack, PCCMin, polynomial runtime, SAT in P, and P = NP remain unfinished.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -294,6 +294,12 @@ leanResidualTerminalSaturationCostBalanceFormalized = true
 leanResidualTerminalFirstNontransparentStepFormalized = true
 leanResidualTerminalSaturationCostBalanceAxiomAuditPassed = true
 leanResidualTerminalSaturationCostBalanceScope = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-dependency-system-rule-labelled-exact-cost-balance-or-first-nontransparent-step"
+leanResidualTerminalInterfaceExposureRoutingFormalized = true
+leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized = true
+leanResidualTerminalInterfaceExposureZeroCostRetractFormalized = true
+leanResidualTerminalFirstInterfaceExposureRouteFormalized = true
+leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed = true
+leanResidualTerminalInterfaceExposureRoutingScope = "all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-interface-consumer-transparent-or-local-e-route-with-exact-first-failure"
 leanSaturatePositiveFormalized = false
 leanBCELReadyFormalized = false
 leanResidualRoutesGlobalGainCompletenessFormalized = false
@@ -312,9 +318,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-09-118</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-10-119</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>53768f488ff27bf9e43b5b195daaf263fcdcf60e05651d403af23d9a65ff3d78</code></div>
+            <div><span>Inventory SHA-256</span><code>1901e247b93dcfedd06dc09be1ba6ded421ba422baa011a4cf4f9806846ef757</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -322,18 +328,18 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>80</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>81</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 80 percent" data-proof-progress="80">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>80</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 81 percent" data-proof-progress="81">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>81</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 80% of the known formalisation work</h2>
+          <h2 id="home-progress-title">About 81% of the known formalisation work</h2>
           <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>

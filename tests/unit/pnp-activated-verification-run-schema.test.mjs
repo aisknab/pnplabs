@@ -20,15 +20,15 @@ test('historical activated record schema is retained only for auditability', asy
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-09-118');
+  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-10-119');
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 25863);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 13665);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7079);
-  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14904);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 235);
-  assert.equal(status.formalPublicationMilestones.length, 98);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 95);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, 26087);
+  assert.equal(status.leanTheoremInventoryTheoremCount, 13740);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7102);
+  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 14908);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 236);
+  assert.equal(status.formalPublicationMilestones.length, 99);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 96);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 3);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
@@ -142,6 +142,15 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(
     status.leanResidualTerminalSaturationCostBalanceScope,
     'all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-dependency-system-rule-labelled-exact-cost-balance-or-first-nontransparent-step'
+  );
+  assert.equal(status.leanResidualTerminalInterfaceExposureRoutingFormalized, true);
+  assert.equal(status.leanResidualTerminalFiniteInterfaceExposureRoutesToEFormalized, true);
+  assert.equal(status.leanResidualTerminalInterfaceExposureZeroCostRetractFormalized, true);
+  assert.equal(status.leanResidualTerminalFirstInterfaceExposureRouteFormalized, true);
+  assert.equal(status.leanResidualTerminalInterfaceExposureRoutingAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalInterfaceExposureRoutingScope,
+    'all-finite-direct-wire-candidates-executable-observers-forgetful-projections-candidate-derived-interface-consumer-transparent-or-local-e-route-with-exact-first-failure'
   );
   assert.equal(status.remainingBlockers.length, 6);
   assert.equal(status.projectSpecificAxiomInventory.length, 4);
