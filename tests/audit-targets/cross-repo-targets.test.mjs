@@ -2125,6 +2125,32 @@ const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES =
 assert.equal(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREM_NAMES.length, 10);
 assert.equal(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_CANDIDATES.length, 10);
 assert.equal(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES.length, 10);
+const PUBLISHED_RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-bn6-hypergraph-packet"
+  );
+assert.ok(PUBLISHED_RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE);
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_HASHES = Object.fromEntries(
+  PUBLISHED_RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE.theoremRows.map(
+    (row) => [row.name, row.expectedKernelTypeSha256]
+  )
+);
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_NAMES = Object.keys(
+  RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_HASHES
+);
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_CANDIDATES =
+  publishedInventory.milestoneCandidates.filter(
+    (candidate) => RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_NAMES.includes(candidate.name)
+  );
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_PREVIOUS_THEOREM_NAMES =
+  earnedTheoremNamesBefore("residual-terminal-bn6-hypergraph-packet");
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES =
+  RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_CANDIDATES.filter(
+    (candidate) => !RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_PREVIOUS_THEOREM_NAMES.has(candidate.name)
+  );
+assert.equal(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_NAMES.length, 8);
+assert.equal(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_CANDIDATES.length, 8);
+assert.equal(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES.length, 8);
 const PUBLISHED_LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE =
   publishedStatus.formalPublicationMilestones.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -2206,6 +2232,17 @@ const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS = Obj
     return [key, publishedStatus[key]];
   })
 );
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_KEYS = [
+  "leanResidualTerminalBN6HypergraphPacketFormalized",
+  "leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed",
+  "leanResidualTerminalBN6HypergraphPacketScope"
+];
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 
 const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
   Object.entries(publishedRelease.earnedBoundary).filter(([key]) => [
@@ -2225,6 +2262,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalBN5FullShadowLocalization",
     "residualTerminalV54ConsumerAntichainNormalForm",
     "residualTerminalV53ConstantCutHypergraphRigidity",
+    "residualTerminalBN6HypergraphPacket",
     "residualTerminalPrimitiveUniverse",
     "residualTerminalExecutableSaturation",
     "residualTerminalPhysical",
@@ -2336,6 +2374,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -3041,28 +3080,28 @@ function makeProject(t) {
   statusPayload.formalPublicationMilestones = publishedStatus.formalPublicationMilestones.map(
     (row) => structuredClone(explicitStatusMilestones.get(row.id) ?? row)
   );
-  assert.equal(statusPayload.formalPublicationMilestones.length, 106, "synthetic status must match the published milestone count");
-  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 104, "synthetic status must match the published earned-milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.length, 107, "synthetic status must match the published milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 105, "synthetic status must match the published earned-milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, 2, "synthetic status must retain every fail-closed milestone");
   const status = json(statusPayload);
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
-    declarationCount: 27348,
-    theoremCount: 14272,
-    assumptionFreeTheoremCount: 7281,
-    excludedPrivateDeclarationCount: 14996,
-    sourceClosureModuleCount: 245,
+    declarationCount: 27442,
+    theoremCount: 14309,
+    assumptionFreeTheoremCount: 7290,
+    excludedPrivateDeclarationCount: 14999,
+    sourceClosureModuleCount: 246,
     axiomCount: 4,
     declarationKindCounts: {
       axiom: 4,
-      constructor: 848,
-      definition: 11448,
-      inductive: 388,
+      constructor: 854,
+      definition: 11491,
+      inductive: 392,
       opaque: 0,
       quotient: 0,
-      recursor: 388,
-      theorem: 14272
+      recursor: 392,
+      theorem: 14309
     },
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -3265,9 +3304,10 @@ function makeProject(t) {
   inventoryPayload.milestoneCandidates.push(
     ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_NEW_CANDIDATES,
-    ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES
+    ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES,
+    ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES
   );
-  assert.equal(inventoryPayload.milestoneCandidates.length, 2540, "synthetic inventory must match the published reviewed-candidate count");
+  assert.equal(inventoryPayload.milestoneCandidates.length, 2548, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
   const publicationMap = json({
     kind: "TestPublicationMap",
@@ -3391,6 +3431,7 @@ function makeProject(t) {
       ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREM_HASHES,
+      ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_HASHES,
       ...LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREM_HASHES
     },
     milestones: [{
@@ -9954,6 +9995,64 @@ test("rejects residual terminal V53 constant-cut hypergraph-rigidity release, st
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal V53 constant-cut hypergraph-rigidity fingerprint mismatch/);
+});
+
+test("rejects residual terminal BN6 hypergraph-packet release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalBN6HypergraphPacketFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal BN6 hypergraph-packet boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualTerminalBN6HypergraphPacketTheoremKernelTypeSha256[
+    "PNP.DirectWire.terminalBN6_hypergraph_packet"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual terminal BN6 hypergraph-packet fingerprint mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.residualTerminalBN6HypergraphPacketTheorem =
+    "PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /current manifest residual terminal BN6 hypergraph-packet theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal BN6 hypergraph-packet evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-bn6-hypergraph-packet"
+  ).nonClaim = "This constructs PkgC, completes BN6 and Packet, proves SAT in P, and proves P = NP.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal BN6 hypergraph-packet publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.terminalBN6_hypergraph_packet"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal BN6 hypergraph-packet theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === "residual-terminal-bn6-hypergraph-packet"
+  ).scope = "full-pkgc-bn6-packet-zeroslack-pccmin-and-root";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal BN6 hypergraph-packet boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.terminalBN6_hypergraph_packet"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal BN6 hypergraph-packet fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

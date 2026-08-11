@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-12-residual-terminal-bn6-hypergraph-packet",
+      "milestoneId": "residual-terminal-bn6-hypergraph-packet",
+      "publishedAt": "2026-08-11T16:31:22Z",
+      "title": "Lean now connects grouped V54 survivors to a finite BN6 packet classification",
+      "plainLanguage": [
+        "For an arbitrary finite set of anchors and an explicitly supplied, already-grouped family of positive survivor cells carrying payloads, Lean now converts their V54 cut activation into the exact V53 hypergraph cut sum. Given one common positive value on every nonempty proper cut, it returns the two-anchor pair case, the three-anchor mixed balanced-triple or full-span case, or the four-or-more-anchor full-span case, together with witnesses back to the original payloads.",
+        "The survivor family, grouping, payloads, PkgC singletonization proofs, and constant-cut equation remain explicit inputs. Lean has not constructed PkgC, derived or grouped the survivors from terminal candidates, established the full historical BN6 or Packet selector and realizer results, completed global routes, ZeroSlack, PCCMin, or polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 90% figure is a revisable editorial estimate of known reconstruction work, separate from the 105 of 107 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 90,
+      "source": {
+        "commit": "d77a5faf194b86fd1175065a0930fd485e16ace5",
+        "tree": "34344e42d12991af68f7ed81ca575cff0307f69a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-129",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-11-residual-terminal-constant-cut-hypergraph-rigidity",
       "milestoneId": "residual-terminal-constant-cut-hypergraph-rigidity",
       "publishedAt": "2026-08-11T11:31:58Z",

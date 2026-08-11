@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/8e38de05d9e1b3066484c9fc5555813997076d02/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/8e38de05d9e1b3066484c9fc5555813997076d02/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d77a5faf194b86fd1175065a0930fd485e16ace5/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d77a5faf194b86fd1175065a0930fd485e16ace5/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the eighty-four-page inventory-derived report. Every numbered section or
+The current canonical download is the eighty-five-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 57-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 2,540 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 2,548 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm one hundred and four earned scoped milestones. The newest scope is the V53 constant-cut hypergraph rigidity classification with 10 reviewed theorem pins using only `Quot.sound` and `propext`. Two global milestones, four project axioms, and five blockers remain. The sparse positive hypergraph and constant-cut proof must remain explicit inputs. Their derivation from terminal candidates or V54, PkgC and BN6 construction, a decreasing complete global route system, selector and realizer completeness, manuscript-wide `SaturatePositive`, Package E, BCELReady, `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, and `P = NP` must remain absent. | The V53 kernel is presented as constructing its hypergraph or constant-cut premise, deriving either input from terminal candidates or V54, constructing PkgC or BN6, or proving a global result; a polynomial minimizer, complete gain route, CNF-SAT decider, assumption discharge, or final theorem appears; or a blocker, premise, or axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require eighty-four PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm one hundred and five earned scoped milestones. The newest scope is the finite BN6 grouped hypergraph-packet bridge with 8 reviewed theorem pins using only `Quot.sound` and `propext`. Two global milestones, four project axioms, and five blockers remain. The survivor family, grouping, payload data, PkgC singletonization proofs, and BCEL constant-cut equation must remain explicit inputs. Their derivation from terminal candidates, the full historical BN6 and Packet selector and realizer results, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, and `P = NP` must remain absent. | The BN6 bridge is presented as constructing PkgC, deriving or grouping survivors from terminal candidates, proving the full historical BN6 or Packet result, or proving a global result; a polynomial minimizer, complete gain route, CNF-SAT decider, assumption discharge, or final theorem appears; or a blocker, premise, or axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require eighty-five PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 

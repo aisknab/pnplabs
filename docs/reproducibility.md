@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 453,568 | `28f268221e1087afa38b00708b818a029e2200fa8c4280b33d7a217ac2959933` |
-| `downloads/canonical-proof-report.pdf` | 453,568 | `28f268221e1087afa38b00708b818a029e2200fa8c4280b33d7a217ac2959933` |
-| `downloads/canonical_proof_report.tex` | 216,608 | `ff3fb948c0e05a854f58fb5b36f61d7a64fc735d402927723301b7a9d1c0c244` |
-| `downloads/canonical-proof-report.tex` | 216,608 | `ff3fb948c0e05a854f58fb5b36f61d7a64fc735d402927723301b7a9d1c0c244` |
-| `public/pnp-status.json` | 2,069,206 | `d07f55de837091f1f70a4d871e5d943980c793df9a4e48be25b4ac26057fd258` |
-| `public/pnp-theorem-inventory.json` | 17,687,580 | `3d770295f55293a4775921e965907ef6e59faa3129fc5f387bf3f24c19fa6d85` |
+| `downloads/canonical_proof_report.pdf` | 455,104 | `f48bc615866790d08151198272e89c9e68f8e1fd404ae46700ced768f42aa70c` |
+| `downloads/canonical-proof-report.pdf` | 455,104 | `f48bc615866790d08151198272e89c9e68f8e1fd404ae46700ced768f42aa70c` |
+| `downloads/canonical_proof_report.tex` | 217,706 | `e43ad410bc6e10f4e5d22d24c559b236e5698eb54b8b6b2659e2d0b3a8e4989c` |
+| `downloads/canonical-proof-report.tex` | 217,706 | `e43ad410bc6e10f4e5d22d24c559b236e5698eb54b8b6b2659e2d0b3a8e4989c` |
+| `public/pnp-status.json` | 2,076,560 | `79c3ef6dace2f95cdad66add48c105e4ed5f95609b9c2819533685f63ed941aa` |
+| `public/pnp-theorem-inventory.json` | 17,726,895 | `612342db90e5887e2da6417963946437c82a14003f48deeddeae03d50caf637f` |
 
-The PDF must have eighty-four A4 pages. Both filename styles must be byte-identical.
+The PDF must have eighty-five A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 8e38de05d9e1b3066484c9fc5555813997076d02
+git -C ../pnp checkout d77a5faf194b86fd1175065a0930fd485e16ace5
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 27,348 public declarations, 14,272 theorem-kind declarations,
-7,281 assumption-free theorem-kind declarations, 14,996 excluded private auxiliaries, 245 modules, and
+Expected compiled inventory counts are 27,442 public declarations, 14,309 theorem-kind declarations,
+7,290 assumption-free theorem-kind declarations, 14,999 excluded private auxiliaries, 246 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,14 +96,14 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 10 reviewed theorem pins. Starting from an explicit sparse nonnegative weighted
-hypergraph over an arbitrary finite duplicate-free carrier and a proof that every nonempty proper cut has
-the same positive value, Lean proves the complete V53 two-anchor, three-anchor, and four-or-more-anchor
-classification. The focused 58-declaration audit has 9 empty closures, 18 using only `propext`, and 31
-using `Quot.sound` with `propext`. The hypergraph and constant-cut proof remain explicit inputs. Their
-derivation from terminal candidates or the V54 consumer system, PkgC and BN6 construction, complete global
-routing, selector or realizer completeness, `ZeroSlack`, polynomial PCCMin, SAT in P, assumption discharge,
-and `P = NP` remain unproved.
+The newest milestone adds 8 reviewed theorem pins. Starting from an arbitrary finite duplicate-free anchor
+carrier, explicit already-grouped positive payload-bearing V54 survivor cells, PkgC singletonization proofs,
+and a BCEL common positive proper-cut equation, Lean constructs the exact V53 hypergraph cut sum and returns
+the finite BN6 pair, mixed three-anchor, or full-span packet classification with original payload witnesses.
+The focused 21-declaration audit has 4 empty closures, 6 using only `propext`, and 11 using `Quot.sound` with
+`propext`. PkgC construction, derivation and grouping of survivors from terminal candidates, the full historical
+BN6 and Packet selector and realizer results, complete global routing, `ZeroSlack`, polynomial PCCMin, SAT in P,
+assumption discharge, and `P = NP` remain unproved.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

@@ -885,6 +885,22 @@ const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_HASHES = Object.fro
 const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE = "all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification";
 const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_MILESTONE_SCOPE = "For an arbitrary finite duplicate-free carrier and sparse nonnegative weighted hypergraph with positive listed cells, exact equality of every nonempty proper cut proves the complete V53 q=2, q=3, and q>=4 classification: full-span weight D; one common pair weight p with w_A + 2p = D; or zero weight on every proper footprint with full-span weight D.";
 const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NON_CLAIM = "This theorem consumes an explicit sparse positive hypergraph and an explicit proof that every nonempty proper cut has the same positive value. It does not construct PkgC, derive the hypergraph from a terminal candidate or the V54 consumer system, build BN6 cells or payloads, complete global routes, selectors, or realizers, establish polynomial generation or runtime, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedCell.massPositive": { hash: "52dcb7f7bc53bd8efa1f550ea96f76596b5a267dc1570fc2c7d516bc9177018d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.TerminalBN6GroupedCell.crosses_iff_footprintCrosses": { hash: "046aa9fa7795d8b905a24e3812d93bfcd64a461a5a0de1ffa175e7016e91851b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.TerminalBN6GroupedCell.crossesBool_eq_cutActivationBool": { hash: "ae3cb49dfb2c70dde2e96d5b48a86a5a1f5787715d4e2480f26dde6a5ed521dc", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.cutWeight_eq_activationWeight": { hash: "938b6617e45e2d77005a52cb207b3049a852a9bb27647ba5cbc44bcf7da8b15c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.constantProperCuts": { hash: "34b06191ae4d2b810e5073bffd5a361d9ce5a8c0a64a0bf88bc561e61cbe4f3e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.footprintWeight_eq_groupedMass": { hash: "f97902c2a9421081048eae6a85ffa03a1ecc2eda72ba6aacb43bbbed125652c0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.hasPayloadAt_of_footprintWeight_positive": { hash: "c9f5cfab81884d8636e41bff0dd401fb27e8a4a99c5918ce41027a55e26291f4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" },
+  "PNP.DirectWire.terminalBN6_hypergraph_packet": { hash: "1275e898a6b23670bfbc97c3684c2da75a6b413059e4d2d9c0f0c1cd967a11ba", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN6HypergraphPacket" }
+};
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_SCOPE = "all-finite-explicit-grouped-v54-activation-to-v53-grouped-hypergraph-packet-bn6-pair-mixed-triple-fullspan-with-payload-witnesses";
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE_SCOPE = "For an arbitrary finite duplicate-free anchor carrier and explicit already-grouped family of positive payload-bearing survivor cells, V54 activation is transported exactly into the constructed V53 hypergraph cut sum. A positive BCEL constant-cut premise then yields the complete pair, mixed three-anchor balanced-triple/full-span, or four-or-more-anchor full-span classification with original payload witnesses.";
+const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NON_CLAIM = "This finite bridge consumes explicit exact footprint grouping, PkgC singletonization proofs, positive atom ledgers, payload data, and the BCEL constant-cut equation. It does not construct PkgC, derive or group survivors from a terminal candidate, establish full historical BN6 or Packet selector/realizer completeness, complete global routes, prove polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -907,18 +923,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "8e38de05d9e1b3066484c9fc5555813997076d02");
+  assert.equal(result.coreCommit, "d77a5faf194b86fd1175065a0930fd485e16ace5");
 });
 
-test("current release is pinned, eighty-four-page, exposes finite V53 rigidity, and fails closed", () => {
+test("current release is pinned, eighty-five-page, exposes finite BN6 packet evidence, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-111");
-  assert.equal(release.source.commit, "8e38de05d9e1b3066484c9fc5555813997076d02");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-112");
+  assert.equal(release.source.commit, "d77a5faf194b86fd1175065a0930fd485e16ace5");
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
-  assert.equal(release.source.tree, "1aca9eafba5ac7a0aaf6d2fe63774a479ac24126");
+  assert.equal(release.source.tree, "34344e42d12991af68f7ed81ca575cff0307f69a");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 84);
+  assert.equal(release.artifacts.report.pageCount, 85);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -3005,6 +3021,25 @@ test("current release is pinned, eighty-four-page, exposes finite V53 rigidity, 
   assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityFourAnchorRigidityTheorem, "PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity");
   assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityTheorem, "PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity");
 
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketAuditedDeclarationCount, 21);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketEmptyAxiomDeclarationCount, 4);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketPropextOnlyDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketPropextQuotSoundDeclarationCount, 11);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketScope, RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN6HypergraphPacketTheoremKernelTypeSha256, RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN6HypergraphPacketAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN6HypergraphPacketProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketMassPositiveTheorem, "PNP.DirectWire.TerminalBN6GroupedCell.massPositive");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketCrossesFootprintTheorem, "PNP.DirectWire.TerminalBN6GroupedCell.crosses_iff_footprintCrosses");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketCrossesActivationTheorem, "PNP.DirectWire.TerminalBN6GroupedCell.crossesBool_eq_cutActivationBool");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketCutWeightTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.cutWeight_eq_activationWeight");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketConstantCutsTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.constantProperCuts");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketGroupedMassTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.footprintWeight_eq_groupedMass");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketPayloadWitnessTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.hasPayloadAt_of_footprintWeight_positive");
+  assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketTheorem, "PNP.DirectWire.terminalBN6_hypergraph_packet");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -3018,7 +3053,7 @@ test("current release is pinned, eighty-four-page, exposes finite V53 rigidity, 
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-v53-constant-cut-hypergraph-rigidity$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn6-hypergraph-packet$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -3051,12 +3086,12 @@ test("current release is pinned, eighty-four-page, exposes finite V53 rigidity, 
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 106 milestones with finite V53 rigidity pinned", () => {
+test("status and inventory publish exactly 107 milestones with finite BN6 packet evidence pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 106);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 104);
+  assert.equal(milestones.length, 107);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 105);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -4254,6 +4289,41 @@ test("status and inventory publish exactly 106 milestones with finite V53 rigidi
   assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityFormalized, true);
   assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityScope, RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE);
+
+  const bn6HypergraphPacket = milestones.find(
+    (row) => row.id === "residual-terminal-bn6-hypergraph-packet"
+  );
+  assert.equal(bn6HypergraphPacket.classification, "formalized-residual-terminal-bn6-hypergraph-packet");
+  assert.equal(bn6HypergraphPacket.status, "formalized-residual-terminal-bn6-hypergraph-packet");
+  assert.equal(bn6HypergraphPacket.earned, true);
+  assert.equal(bn6HypergraphPacket.allPresent, true);
+  assert.equal(bn6HypergraphPacket.allAssumptionFree, false);
+  assert.equal(bn6HypergraphPacket.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(bn6HypergraphPacket.allKernelTypesMatch, true);
+  assert.equal(bn6HypergraphPacket.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    bn6HypergraphPacket.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(bn6HypergraphPacket.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_HASHES
+  );
+  for (const row of bn6HypergraphPacket.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(bn6HypergraphPacket.scope, RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE_SCOPE);
+  assert.equal(bn6HypergraphPacket.nonClaim, RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalBN6HypergraphPacketFormalized, true);
+  assert.equal(status.leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalBN6HypergraphPacketScope, RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
@@ -4275,21 +4345,21 @@ test("status and inventory publish exactly 106 milestones with finite V53 rigidi
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 27348);
-  assert.equal(inventory.theoremCount, 14272);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7281);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14996);
-  assert.equal(inventory.sourceClosureModuleCount, 245);
-  assert.equal(inventory.milestoneCandidates.length, 2540);
+  assert.equal(inventory.declarationCount, 27442);
+  assert.equal(inventory.theoremCount, 14309);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7290);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14999);
+  assert.equal(inventory.sourceClosureModuleCount, 246);
+  assert.equal(inventory.milestoneCandidates.length, 2548);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 848,
-    definition: 11448,
-    inductive: 388,
+    constructor: 854,
+    definition: 11491,
+    inductive: 392,
     opaque: 0,
     quotient: 0,
-    recursor: 388,
-    theorem: 14272
+    recursor: 392,
+    theorem: 14309
   });
 });
 
