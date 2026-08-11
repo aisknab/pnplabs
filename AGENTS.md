@@ -46,6 +46,17 @@ host, not as a build host.
 
 ## Formal-publication sync and deployment sequence
 
+Every milestone publication requires a full PNPLabs surface audit. This is a
+workflow invariant, not a milestone-specific cleanup. Before sealing a release,
+reconcile the newest result and its boundary across the homepage (including the
+current bottom line), formal status and complete milestone ledger, FAQ and
+editorial tracker explanation, updates page/feed/progress graphic, paper and
+architecture pages, README, reviewer and audit documentation, source links,
+download metadata, browser-rendered status, and negative tests. Preserve the
+original coordinates and progress estimates of historical milestone entries.
+The editorial progress estimate and the count of earned formal-publication rows
+are separate measures and must never be presented as interchangeable.
+
 1. Merge the corresponding core `pnp` PR first. Fetch its `origin/main`, then
    synchronize from a clean checkout of the exact core merge commit and tree, not
    from the feature-branch tip.

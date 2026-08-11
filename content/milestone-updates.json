@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-11-residual-terminal-constant-cut-hypergraph-rigidity",
+      "milestoneId": "residual-terminal-constant-cut-hypergraph-rigidity",
+      "publishedAt": "2026-08-11T11:31:58Z",
+      "title": "Lean now proves finite V53 constant-cut hypergraph rigidity",
+      "plainLanguage": [
+        "For an arbitrary finite duplicate-free carrier and an explicitly supplied sparse positive weighted hypergraph, Lean now classifies every case in which all nonempty proper cuts have the same positive value. With two anchors the full-span weight is that value. With three anchors all pair weights agree and the full-span weight plus twice the common pair weight is that value. With four or more anchors every proper footprint has zero weight and the full-span weight is that value.",
+        "The hypergraph and constant-cut proof remain explicit inputs. Lean has not constructed PkgC, derived the hypergraph from terminal candidates or the V54 consumer system, built BN6 cells or payloads, completed global routes, ZeroSlack, PCCMin, or polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 89% figure is a revisable editorial estimate of known reconstruction work, separate from the 104 of 106 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 89,
+      "source": {
+        "commit": "8e38de05d9e1b3066484c9fc5555813997076d02",
+        "tree": "1aca9eafba5ac7a0aaf6d2fe63774a479ac24126",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-128",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-11-residual-terminal-consumer-antichain-normal-form",
       "milestoneId": "residual-terminal-consumer-antichain-normal-form",
       "publishedAt": "2026-08-11T07:40:05Z",

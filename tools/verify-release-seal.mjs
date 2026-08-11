@@ -4,8 +4,8 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "dd7b9be6ad6d05d516da2baf48813ae608c4e46d";
-const CORE_TREE = "d755c0b1ab7e407e11ce03428e7f1e68a03ca645";
+const CORE_COMMIT = "8e38de05d9e1b3066484c9fc5555813997076d02";
+const CORE_TREE = "1aca9eafba5ac7a0aaf6d2fe63774a479ac24126";
 const PROOF_COMMIT = "40a46e9e4aea8177256839415407e35ddb95c65c";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -3969,6 +3969,22 @@ const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_SCOPE = "all-finite-m
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_MILESTONE_SCOPE = "For an arbitrary finite carrier and its explicit minimal-consumer antichain, Lean proves monotonicity and empty-request inactivity, proves that nonzero two-sided cut activation is equivalent to the existence of a disjoint consumer pair, and under the exact singletonized-disjoint-pair premise proves literal equality with the corresponding footprint cut indicator.";
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_NON_CLAIM = "This finite kernel starts from an explicit minimal-consumer antichain and an explicit proof that every disjoint consumer pair is singletonized. It does not construct PkgC, derive that singletonization premise, or connect the footprint back to the full BN6 proof. It does not construct complete global routes, selectors, or realizers; establish polynomial generation or runtime, ZeroSlack, or PCCMin; put SAT in P; remove a project assumption; or prove P = NP.";
 
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS = {
+  "PNP.DirectWire.TerminalV53Hypergraph.cell_partition": { hash: "d16379065824e05c2fb07404dc6102c1e715431af0412428fe58762e7c443163", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.cut_partition": { hash: "e2a434fd77b4beb8c1165f6bedd35df5dbe529b00362ce5915acddd46c44239e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.pair_complement_identity": { hash: "5fbeb36fa268a1891851320dda5716ced89a17d9234e1b39380faded0ca97b5c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.pairWeights_equal_of_shared": { hash: "aaf54c3a5054d667fb42dc481a8c11bfabe9fd097491bca8e218b5e1257c8b9d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.pairWeight_eq_zero_of_four": { hash: "5763916217506b3ec2ffbfb4ac6beeac75a09978651daa42ce1e586084d893b2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.properFootprintWeight_eq_zero_of_four": { hash: "5875a9ea0aaab8e4d1598a79262ccae893e25e64f8e280c86145e3e5f2353d82", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.twoAnchor_fullWeight": { hash: "f69d38ce0fc3179c4b64601fc7bc972e5b4d40becc39af61ca811b442f1ec692", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.threeAnchor_rigidity": { hash: "7042a91984504430f872f5496b3492f33cdf368f7e6cee2d6f21689ce411e574", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity": { hash: "046214923b999ee22b3da8460b12de05b47f0f15631fb0f76478b282d6dac585", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity": { hash: "5b5dd2a2dc158dcc4e91ca9f08de3c94a134e530eafc96a096279a6ab48c8b07", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" }
+};
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE = "all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification";
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_MILESTONE_SCOPE = "For an arbitrary finite duplicate-free carrier and sparse nonnegative weighted hypergraph with positive listed cells, exact equality of every nonempty proper cut proves the complete V53 q=2, q=3, and q>=4 classification: full-span weight D; one common pair weight p with w_A + 2p = D; or zero weight on every proper footprint with full-span weight D.";
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NON_CLAIM = "This theorem consumes an explicit sparse positive hypergraph and an explicit proof that every nonempty proper cut has the same positive value. It does not construct PkgC, derive the hypergraph from a terminal candidate or the V54 consumer system, build BN6 cells or payloads, complete global routes, selectors, or realizers, establish polynomial generation or runtime, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -3984,7 +4000,8 @@ const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "The finite candidate-derived BN3 enve
 const BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM = "The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.";
 const BN4_ACTIVATION_CANCELLATION_STATUS_NON_CLAIM = "The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.";
 const BN5_FULL_SHADOW_LOCALIZATION_STATUS_NON_CLAIM = "The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, PkgC, BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.";
-const V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_NON_CLAIM = "The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, V53, BN6, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.";
+const V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_NON_CLAIM = "The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, the bridge from that footprint into V53 and BN6 payloads, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.";
+const V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_NON_CLAIM = "The arbitrary-finite V53 constant-cut hypergraph rigidity theorem proves the exact q=2, q=3, and q>=4 classification for sparse positive hypergraphs with one common nonempty proper-cut value. It consumes an explicit hypergraph and constant-cut proof; PkgC construction, terminal-candidate and V54 derivation, BN6 cellization and payloads, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.";
 
 
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
@@ -4359,6 +4376,19 @@ const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_RELEASE_IDENTITIES = 
   residualTerminalV54ConsumerAntichainNormalFormTheorem: "PNP.DirectWire.terminalV54_consumerAntichain_normal_form"
 };
 
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_RELEASE_IDENTITIES = {
+  residualTerminalV53ConstantCutHypergraphRigidityCellPartitionTheorem: "PNP.DirectWire.TerminalV53Hypergraph.cell_partition",
+  residualTerminalV53ConstantCutHypergraphRigidityCutPartitionTheorem: "PNP.DirectWire.TerminalV53Hypergraph.cut_partition",
+  residualTerminalV53ConstantCutHypergraphRigidityPairComplementIdentityTheorem: "PNP.DirectWire.TerminalV53Hypergraph.pair_complement_identity",
+  residualTerminalV53ConstantCutHypergraphRigiditySharedPairWeightsTheorem: "PNP.DirectWire.TerminalV53Hypergraph.pairWeights_equal_of_shared",
+  residualTerminalV53ConstantCutHypergraphRigidityFourAnchorPairWeightZeroTheorem: "PNP.DirectWire.TerminalV53Hypergraph.pairWeight_eq_zero_of_four",
+  residualTerminalV53ConstantCutHypergraphRigidityFourAnchorProperFootprintZeroTheorem: "PNP.DirectWire.TerminalV53Hypergraph.properFootprintWeight_eq_zero_of_four",
+  residualTerminalV53ConstantCutHypergraphRigidityTwoAnchorFullWeightTheorem: "PNP.DirectWire.TerminalV53Hypergraph.twoAnchor_fullWeight",
+  residualTerminalV53ConstantCutHypergraphRigidityThreeAnchorRigidityTheorem: "PNP.DirectWire.TerminalV53Hypergraph.threeAnchor_rigidity",
+  residualTerminalV53ConstantCutHypergraphRigidityFourAnchorRigidityTheorem: "PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity",
+  residualTerminalV53ConstantCutHypergraphRigidityTheorem: "PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -4547,44 +4577,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 453006,
-    "sha256": "438789317484ce2c73f194613f9906b9f3082b116d1129a0f97cdaf2330c321d",
+    "bytes": 453568,
+    "sha256": "28f268221e1087afa38b00708b818a029e2200fa8c4280b33d7a217ac2959933",
     "role": "current inventory-derived eighty-four-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 453006,
-    "sha256": "438789317484ce2c73f194613f9906b9f3082b116d1129a0f97cdaf2330c321d",
+    "bytes": 453568,
+    "sha256": "28f268221e1087afa38b00708b818a029e2200fa8c4280b33d7a217ac2959933",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 215538,
-    "sha256": "2419f0f72282dc9c19762b0ee7a5ec438a6459901acc7d374ad9f42405921b6e",
+    "bytes": 216608,
+    "sha256": "ff3fb948c0e05a854f58fb5b36f61d7a64fc735d402927723301b7a9d1c0c244",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 215538,
-    "sha256": "2419f0f72282dc9c19762b0ee7a5ec438a6459901acc7d374ad9f42405921b6e",
+    "bytes": 216608,
+    "sha256": "ff3fb948c0e05a854f58fb5b36f61d7a64fc735d402927723301b7a9d1c0c244",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2060926,
-    "sha256": "7b042bf47d86f20dbdb914d61c1ef84d39da0449692cde58cff223bcc50dcf3e",
+    "bytes": 2069206,
+    "sha256": "d07f55de837091f1f70a4d871e5d943980c793df9a4e48be25b4ac26057fd258",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 17583178,
-    "sha256": "884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c",
+    "bytes": 17687580,
+    "sha256": "3d770295f55293a4775921e965907ef6e59faa3129fc5f387bf3f24c19fa6d85",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 793695,
-    "sha256": "865440faa02b598d862dd01497d90c801e8a45d01e0be49d980a2a47d7942133",
+    "bytes": 797505,
+    "sha256": "1f821262af3b95f894c5aa9ba56cae3d5949f4869dddb7df79e38591b0ad9630",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -4657,10 +4687,10 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-127") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-128") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-127" || status.formalPublicationMapSha256 !== "2935c7cb045d0f7ac2bb9baa98ffa7044543c410c84831fc9db36da66b47d157" || status.leanSourceClosureSha256 !== "a6aaa00d8faa48ed1d51bb0346363956d4cd2de8a14ecbe043458831d896dd02") fail("status source identity mismatch");
-  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 105 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 103 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 2) fail("status formal-publication milestone counts mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-128" || status.formalPublicationMapSha256 !== "fd5e93f1f17311d4713e643e74831cab2a66951f6f89256edfe075ea76819a21" || status.leanSourceClosureSha256 !== "dbf73b2875e5aa8a8c9dafb5c054869bc453b911ca4d72e33288fe0527b4db02") fail("status source identity mismatch");
+  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 106 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 104 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 2) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -6122,6 +6152,38 @@ function assertFailClosedStatus(status) {
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal V54 consumer-antichain normal-form evidence mismatch");
+  const residualTerminalV53ConstantCutHypergraphRigidityMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-constant-cut-hypergraph-rigidity"
+  );
+  const residualTerminalV53ConstantCutHypergraphRigidityNames = Object.keys(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS);
+  if (!residualTerminalV53ConstantCutHypergraphRigidityMilestone
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.classification !== "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity"
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.status !== "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity"
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.scope !== RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_MILESTONE_SCOPE
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.nonClaim !== RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NON_CLAIM
+      || JSON.stringify(residualTerminalV53ConstantCutHypergraphRigidityMilestone.requiredTheorems) !== JSON.stringify(residualTerminalV53ConstantCutHypergraphRigidityNames)
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.earned !== true
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.allPresent !== true
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.allAssumptionFree !== false
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.allKernelTypesMatch !== true
+      || residualTerminalV53ConstantCutHypergraphRigidityMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal V53 constant-cut hypergraph-rigidity publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS)) {
+    const row = residualTerminalV53ConstantCutHypergraphRigidityMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal V53 constant-cut hypergraph-rigidity theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalConstantCutHypergraphRigidityFormalized === true
+      && status.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed === true
+      && status.leanResidualTerminalConstantCutHypergraphRigidityScope === RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal V53 constant-cut hypergraph-rigidity evidence mismatch");
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -6168,6 +6230,7 @@ function assertFailClosedStatus(status) {
   if (!status.nonClaims?.includes(BN4_ACTIVATION_CANCELLATION_STATUS_NON_CLAIM)) fail("status BN4 activation-cancellation disclosure mismatch");
   if (!status.nonClaims?.includes(BN5_FULL_SHADOW_LOCALIZATION_STATUS_NON_CLAIM)) fail("status BN5 full-shadow localization disclosure mismatch");
   if (!status.nonClaims?.includes(V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_NON_CLAIM)) fail("status V54 consumer-antichain normal-form disclosure mismatch");
+  if (!status.nonClaims?.includes(V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_NON_CLAIM)) fail("status V53 constant-cut hypergraph-rigidity disclosure mismatch");
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) fail("status locked-NAND remaining-premise inventory mismatch");
   if (status.leanConcreteCNFSATInPFormalized !== false || status.leanConcreteCNFNPCompletenessFormalized !== false) fail("status overstates the CNF-SAT result");
   if (status.leanTheoremInventorySha256 !== EXPECTED_FILES[5].sha256) fail("status inventory digest mismatch");
@@ -6175,10 +6238,10 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-11-126") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 27193 || inventory.theoremCount !== 14163) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 7264 || inventory.excludedPrivateDeclarationCount !== 14995 || inventory.sourceClosureModuleCount !== 244 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
-  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 846, definition: 11408, inductive: 386, opaque: 0, quotient: 0, recursor: 386, theorem: 14163 })) fail("inventory declaration-kind counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-11-127") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 27348 || inventory.theoremCount !== 14272) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 7281 || inventory.excludedPrivateDeclarationCount !== 14996 || inventory.sourceClosureModuleCount !== 245 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 848, definition: 11448, inductive: 388, opaque: 0, quotient: 0, recursor: 388, theorem: 14272 })) fail("inventory declaration-kind counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
@@ -6843,22 +6906,28 @@ function assertInventory(inventory) {
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal V54 consumer-antichain normal-form theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal V54 consumer-antichain normal-form fingerprint mismatch: ${name}`);
   }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal V53 constant-cut hypergraph-rigidity theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal V53 constant-cut hypergraph-rigidity fingerprint mismatch: ${name}`);
+  }
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory concrete locked-NAND threshold theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory concrete locked-NAND threshold fingerprint mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 2530) fail("inventory reviewed theorem-candidate count mismatch");
+  if (inventory.milestoneCandidates?.length !== 2540) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-110") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-111") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-127" || manifest.source?.formalPublicationMapSha256 !== "2935c7cb045d0f7ac2bb9baa98ffa7044543c410c84831fc9db36da66b47d157" || manifest.source?.leanSourceClosureSha256 !== "a6aaa00d8faa48ed1d51bb0346363956d4cd2de8a14ecbe043458831d896dd02") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-11-128" || manifest.source?.formalPublicationMapSha256 !== "fd5e93f1f17311d4713e643e74831cab2a66951f6f89256edfe075ea76819a21" || manifest.source?.leanSourceClosureSha256 !== "dbf73b2875e5aa8a8c9dafb5c054869bc453b911ca4d72e33288fe0527b4db02") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 84) fail("current report must have eighty-four pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -7979,6 +8048,25 @@ function assertCurrentManifest(manifest) {
   if (!residualTerminalV54ConsumerAntichainNormalFormHashes || Object.keys(residualTerminalV54ConsumerAntichainNormalFormHashes).length !== 7
       || !Object.entries(RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS).every(([name, row]) => residualTerminalV54ConsumerAntichainNormalFormHashes[name] === row.hash)) fail("current manifest residual terminal V54 consumer-antichain normal-form fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal V54 consumer-antichain normal-form theorem identity mismatch");
+  if (!(earned.residualTerminalV53ConstantCutHypergraphRigidityFormalized === true
+      && earned.residualTerminalV53ConstantCutHypergraphRigidityAxiomAuditPassed === true
+      && earned.residualTerminalV53ConstantCutHypergraphRigidityAuditedDeclarationCount === 58
+      && earned.residualTerminalV53ConstantCutHypergraphRigidityEmptyAxiomDeclarationCount === 9
+      && earned.residualTerminalV53ConstantCutHypergraphRigidityPropextOnlyDeclarationCount === 18
+      && earned.residualTerminalV53ConstantCutHypergraphRigidityPropextQuotSoundDeclarationCount === 31
+      && earned.residualTerminalV53ConstantCutHypergraphRigidityScope === RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal V53 constant-cut hypergraph-rigidity boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalV53ConstantCutHypergraphRigidityAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalV53ConstantCutHypergraphRigidityProjectAxiomClosure)
+      || earned.residualTerminalV53ConstantCutHypergraphRigidityProjectAxiomClosure.length !== 0) fail("current manifest residual terminal V53 constant-cut hypergraph-rigidity axiom closure mismatch");
+  const residualTerminalV53ConstantCutHypergraphRigidityHashes = earned.residualTerminalV53ConstantCutHypergraphRigidityTheoremKernelTypeSha256;
+  if (!residualTerminalV53ConstantCutHypergraphRigidityHashes || Object.keys(residualTerminalV53ConstantCutHypergraphRigidityHashes).length !== 10
+      || !Object.entries(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS).every(([name, row]) => residualTerminalV53ConstantCutHypergraphRigidityHashes[name] === row.hash)) fail("current manifest residual terminal V53 constant-cut hypergraph-rigidity fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal V53 constant-cut hypergraph-rigidity theorem identity mismatch");
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -7993,7 +8081,7 @@ function assertCurrentManifest(manifest) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-v54-consumer-antichain-normal-form")) fail("current manifest earned scope omits the residual terminal V54 consumer-antichain normal-form kernel");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-v53-constant-cut-hypergraph-rigidity")) fail("current manifest earned scope omits the residual terminal V53 constant-cut hypergraph-rigidity kernel");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -8023,7 +8111,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-110") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-111") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");

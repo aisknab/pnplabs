@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-127';
-const STATUS_SHA256 = '7b042bf47d86f20dbdb914d61c1ef84d39da0449692cde58cff223bcc50dcf3e';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-127';
-const FORMAL_PUBLICATION_MAP_SHA256 = '2935c7cb045d0f7ac2bb9baa98ffa7044543c410c84831fc9db36da66b47d157';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-128';
+const STATUS_SHA256 = 'd07f55de837091f1f70a4d871e5d943980c793df9a4e48be25b4ac26057fd258';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-128';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'fd5e93f1f17311d4713e643e74831cab2a66951f6f89256edfe075ea76819a21';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-126';
-const INVENTORY_SHA256 = '884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c';
-const SOURCE_CLOSURE_SHA256 = 'a6aaa00d8faa48ed1d51bb0346363956d4cd2de8a14ecbe043458831d896dd02';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-127';
+const INVENTORY_SHA256 = '3d770295f55293a4775921e965907ef6e59faa3129fc5f387bf3f24c19fa6d85';
+const SOURCE_CLOSURE_SHA256 = 'dbf73b2875e5aa8a8c9dafb5c054869bc453b911ca4d72e33288fe0527b4db02';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 27193,
-  theorems: 14163,
-  assumptionFreeTheorems: 7264,
-  excludedPrivateDeclarations: 14995,
-  modules: 244,
+  declarations: 27348,
+  theorems: 14272,
+  assumptionFreeTheorems: 7281,
+  excludedPrivateDeclarations: 14996,
+  modules: 245,
   axioms: 4,
 });
 
@@ -3954,6 +3954,19 @@ const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS = Object
   ["PNP.DirectWire.terminalV54_consumerAntichain_normal_form", ["Quot.sound", "propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
 ]);
 
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalV53Hypergraph.cell_partition", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.cut_partition", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.pair_complement_identity", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.pairWeights_equal_of_shared", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.pairWeight_eq_zero_of_four", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.properFootprintWeight_eq_zero_of_four", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.twoAnchor_fullWeight", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.threeAnchor_rigidity", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+  ["PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity", ["Quot.sound", "propext"], "PNP.ResidualTerminalConstantCutHypergraphRigidity"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -4504,6 +4517,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-bn4-activation-cancellation',
   'residual-terminal-bn5-full-shadow-localization',
   'residual-terminal-consumer-antichain-normal-form',
+  'residual-terminal-constant-cut-hypergraph-rigidity',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4951,6 +4965,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalConsumerAntichainNormalFormFormalized: false,
   leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed: false,
   leanResidualTerminalConsumerAntichainNormalFormScope: null,
+  leanResidualTerminalConstantCutHypergraphRigidityFormalized: false,
+  leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed: false,
+  leanResidualTerminalConstantCutHypergraphRigidityScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5480,6 +5497,9 @@ leanResidualTerminalBN5FullShadowLocalizationScope = ${payload.leanResidualTermi
 leanResidualTerminalConsumerAntichainNormalFormFormalized = ${payload.leanResidualTerminalConsumerAntichainNormalFormFormalized ?? false}
 leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = ${payload.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed ?? false}
 leanResidualTerminalConsumerAntichainNormalFormScope = ${payload.leanResidualTerminalConsumerAntichainNormalFormScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalConsumerAntichainNormalFormScope)}
+leanResidualTerminalConstantCutHypergraphRigidityFormalized = ${payload.leanResidualTerminalConstantCutHypergraphRigidityFormalized ?? false}
+leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed = ${payload.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed ?? false}
+leanResidualTerminalConstantCutHypergraphRigidityScope = ${payload.leanResidualTerminalConstantCutHypergraphRigidityScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalConstantCutHypergraphRigidityScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5577,13 +5597,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 846,
-    definition: 11408,
-    inductive: 386,
+    constructor: 848,
+    definition: 11448,
+    inductive: 388,
     opaque: 0,
     quotient: 0,
-    recursor: 386,
-    theorem: 14163,
+    recursor: 388,
+    theorem: 14272,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6068,6 +6088,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalV53ConstantCutHypergraphRigidity =
+    RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6485,6 +6511,9 @@ function validateInventory(inventory) {
     && residualTerminalV54ConsumerAntichainNormalForm.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalV53ConstantCutHypergraphRigidity.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6530,7 +6559,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2530
+    && inventory.milestoneCandidates.length === 2540
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6594,7 +6623,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 103;
+    const shouldBeEarned = index < 104;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6731,6 +6760,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalV54ConsumerAntichainNormalFormMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
+  );
+  const residualTerminalV53ConstantCutHypergraphRigidityMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-constant-cut-hypergraph-rigidity'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7230,6 +7262,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalConsumerAntichainNormalFormFormalized === true
     && status.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed === true
     && status.leanResidualTerminalConsumerAntichainNormalFormScope === "all-finite-minimal-consumer-antichains-monotone-empty-false-nonzero-iff-disjoint-and-pkgc-singletonized-exact-v54-consumer-antichain-cut-indicator"
+    && residualTerminalV53ConstantCutHypergraphRigidityMilestone?.classification === "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity"
+    && residualTerminalV53ConstantCutHypergraphRigidityMilestone.status === "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity"
+    && residualTerminalV53ConstantCutHypergraphRigidityMilestone.scope === "For an arbitrary finite duplicate-free carrier and sparse nonnegative weighted hypergraph with positive listed cells, exact equality of every nonempty proper cut proves the complete V53 q=2, q=3, and q>=4 classification: full-span weight D; one common pair weight p with w_A + 2p = D; or zero weight on every proper footprint with full-span weight D."
+    && residualTerminalV53ConstantCutHypergraphRigidityMilestone.nonClaim === "This theorem consumes an explicit sparse positive hypergraph and an explicit proof that every nonempty proper cut has the same positive value. It does not construct PkgC, derive the hypergraph from a terminal candidate or the V54 consumer system, build BN6 cells or payloads, complete global routes, selectors, or realizers, establish polynomial generation or runtime, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalV53ConstantCutHypergraphRigidityMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalConstantCutHypergraphRigidityFormalized === true
+    && status.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed === true
+    && status.leanResidualTerminalConstantCutHypergraphRigidityScope === "all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7255,7 +7298,8 @@ function validateStatus(status, inventory) {
     && status.nonClaims?.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.')
     && status.nonClaims?.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.')
     && status.nonClaims?.includes('The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, PkgC, BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
-    && status.nonClaims?.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, V53, BN6, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, the bridge from that footprint into V53 and BN6 payloads, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The arbitrary-finite V53 constant-cut hypergraph rigidity theorem proves the exact q=2, q=3, and q>=4 classification for sparse positive hypergraphs with one common nonempty proper-cut value. It consumes an explicit hypergraph and constant-cut proof; PkgC construction, terminal-candidate and V54 derivation, BN6 cellization and payloads, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true
@@ -7889,11 +7933,21 @@ function renderMilestones(milestones) {
       heading.textContent = `${milestone.earned ? 'Formalized' : 'Not formalized'}: ${milestone.title}`;
       const scope = document.createElement('p');
       scope.textContent = milestone.scope;
+      const reviewedDeclaration = document.createElement('p');
+      if (milestone.earned && milestone.requiredTheorems.length > 0) {
+        const strong = document.createElement('strong');
+        strong.textContent = `Reviewed theorem pins (${milestone.requiredTheorems.length}), last listed: `;
+        const code = document.createElement('code');
+        code.textContent = milestone.requiredTheorems.at(-1);
+        reviewedDeclaration.append(strong, code);
+      }
       const boundary = document.createElement('p');
       const strong = document.createElement('strong');
       strong.textContent = 'Boundary: ';
       boundary.append(strong, milestone.nonClaim);
-      card.append(heading, scope, boundary);
+      card.append(heading, scope);
+      if (reviewedDeclaration.hasChildNodes()) card.append(reviewedDeclaration);
+      card.append(boundary);
       return card;
     }));
   });

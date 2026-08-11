@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = 'dd7b9be6ad6d05d516da2baf48813ae608c4e46d';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-127';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-126';
-const INVENTORY_SHA256 = '884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c';
+const CORE_COMMIT = '8e38de05d9e1b3066484c9fc5555813997076d02';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-128';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-127';
+const INVENTORY_SHA256 = '3d770295f55293a4775921e965907ef6e59faa3129fc5f387bf3f24c19fa6d85';
 const INVENTORY_BYTES = 17583178;
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
@@ -358,9 +358,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
   assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-127');
-  assert.equal(status.formalPublicationMapSha256, '2935c7cb045d0f7ac2bb9baa98ffa7044543c410c84831fc9db36da66b47d157');
-  assert.equal(status.leanSourceClosureSha256, 'a6aaa00d8faa48ed1d51bb0346363956d4cd2de8a14ecbe043458831d896dd02');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-128');
+  assert.equal(status.formalPublicationMapSha256, 'fd5e93f1f17311d4713e643e74831cab2a66951f6f89256edfe075ea76819a21');
+  assert.equal(status.leanSourceClosureSha256, 'dbf73b2875e5aa8a8c9dafb5c054869bc453b911ca4d72e33288fe0527b4db02');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -371,18 +371,18 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
   assert.ok(status.nonClaims.includes('The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, PkgC, BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.'));
-  assert.ok(status.nonClaims.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, V53, BN6, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.'));
+  assert.ok(status.nonClaims.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, the bridge from that footprint into V53 and BN6 payloads, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.'));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), INVENTORY_SHA256);
   assert.equal(status.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(status.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(inventory.declarationCount, 27193);
-  assert.equal(inventory.theoremCount, 14163);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7264);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14995);
-  assert.equal(inventory.sourceClosureModuleCount, 244);
+  assert.equal(inventory.declarationCount, 27348);
+  assert.equal(inventory.theoremCount, 14272);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7281);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14996);
+  assert.equal(inventory.sourceClosureModuleCount, 245);
   assert.equal(inventory.axiomCount, 4);
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
@@ -1457,7 +1457,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
     assert.equal(compiler.module, module, name);
     assert.deepEqual(compiler.axioms, [], name);
   }
-  assert.equal(inventory.milestoneCandidates.length, 2530);
+  assert.equal(inventory.milestoneCandidates.length, 2540);
 
   const secondConstraintSeventhPaddingOrUnaryMilestone = status.formalPublicationMilestones.find((row) => row.id === 'concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step');
   assert.equal(secondConstraintSeventhPaddingOrUnaryMilestone.requiredTheorems.length, 40);
@@ -2426,6 +2426,19 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(v54ConsumerAntichainNormalFormMilestone.theoremRows.filter((row) => row.axioms.join(',') === 'Quot.sound,propext').length, 4);
   assert.match(v54ConsumerAntichainNormalFormMilestone.scope, /minimal-consumer antichain/u);
   assert.match(v54ConsumerAntichainNormalFormMilestone.nonClaim, /does not construct PkgC/u);
+  const v53ConstantCutHypergraphRigidityMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-constant-cut-hypergraph-rigidity');
+  assert.equal(v53ConstantCutHypergraphRigidityMilestone.classification, 'formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity');
+  assert.equal(v53ConstantCutHypergraphRigidityMilestone.status, 'formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity');
+  assert.equal(v53ConstantCutHypergraphRigidityMilestone.earned, true);
+  assert.equal(v53ConstantCutHypergraphRigidityMilestone.requiredTheorems.length, 10);
+  assert.equal(v53ConstantCutHypergraphRigidityMilestone.theoremRows.length, 10);
+  assert.equal(v53ConstantCutHypergraphRigidityMilestone.theoremRows.every((row) => row.axioms.join(',') === 'Quot.sound,propext'), true);
+  assert.match(v53ConstantCutHypergraphRigidityMilestone.scope, /q>=4 classification/u);
+  assert.match(v53ConstantCutHypergraphRigidityMilestone.nonClaim, /does not construct PkgC/u);
+  assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityFormalized, true);
+  assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityScope, 'all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification');
   assert.equal(status.leanResidualTerminalConsumerAntichainNormalFormFormalized, true);
   assert.equal(status.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalConsumerAntichainNormalFormScope, 'all-finite-minimal-consumer-antichains-monotone-empty-false-nonzero-iff-disjoint-and-pkgc-singletonized-exact-v54-consumer-antichain-cut-indicator');
@@ -2446,9 +2459,9 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
-  assert.equal(status.formalPublicationMilestones.length, 105);
-  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(103).fill(true), false, false]);
-  for (const row of status.formalPublicationMilestones.slice(0, 103)) {
+  assert.equal(status.formalPublicationMilestones.length, 106);
+  assert.deepEqual(status.formalPublicationMilestones.map((row) => row.earned), [...Array(104).fill(true), false, false]);
+  for (const row of status.formalPublicationMilestones.slice(0, 104)) {
     assert.equal(row.allPresent, true, row.id);
     assert.equal(row.allKernelTypesMatch, true, row.id);
     assert.equal(row.sourceClosureFingerprintMatches, true, row.id);
@@ -2484,15 +2497,15 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   ]) assert.ok(status.verificationCommands.includes(command), command);
 });
 
-test('formal publication release pins the finite V54 consumer-antichain normal-form boundary', async () => {
+test('formal publication release pins the finite V53 constant-cut hypergraph rigidity boundary', async () => {
   const release = await readJson('downloads/formal-publication-release.json');
   const parser = release.earnedBoundary;
 
-  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-110');
+  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-111');
   assert.equal(release.artifacts.report.pageCount, 84);
-  assert.equal(release.artifacts.theoremInventory.declarationCount, 27193);
-  assert.equal(release.artifacts.theoremInventory.theoremCount, 14163);
-  assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 7264);
+  assert.equal(release.artifacts.theoremInventory.declarationCount, 27348);
+  assert.equal(release.artifacts.theoremInventory.theoremCount, 14272);
+  assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, 7281);
   assert.equal(release.artifacts.theoremInventory.projectAxiomCount, 4);
   assert.equal(parser.residualTerminalFourCornerArbitraryFamilyCoherenceFormalized, true);
   assert.equal(parser.residualTerminalFourCornerTightBasisFamilyComplete, true);
@@ -2899,6 +2912,22 @@ test('formal publication release pins the finite V54 consumer-antichain normal-f
   assert.equal(parser.residualTerminalV54ConsumerAntichainNormalFormNonzeroIffTheorem, 'PNP.DirectWire.terminalV54_cutActivation_nonzero_iff_disjoint_consumers');
   assert.equal(parser.residualTerminalV54ConsumerAntichainNormalFormIffTheorem, 'PNP.DirectWire.terminalV54_consumerAntichain_normal_form_iff');
   assert.equal(parser.residualTerminalV54ConsumerAntichainNormalFormTheorem, 'PNP.DirectWire.terminalV54_consumerAntichain_normal_form');
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityFormalized, true);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityAxiomAuditPassed, true);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityAuditedDeclarationCount, 58);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityEmptyAxiomDeclarationCount, 9);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityPropextOnlyDeclarationCount, 18);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityPropextQuotSoundDeclarationCount, 31);
+  assert.equal(Object.keys(parser.residualTerminalV53ConstantCutHypergraphRigidityTheoremKernelTypeSha256).length, 10);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityTheoremKernelTypeSha256['PNP.DirectWire.TerminalV53Hypergraph.cell_partition'], 'd16379065824e05c2fb07404dc6102c1e715431af0412428fe58762e7c443163');
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityTheoremKernelTypeSha256['PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity'], '046214923b999ee22b3da8460b12de05b47f0f15631fb0f76478b282d6dac585');
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityTheoremKernelTypeSha256['PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity'], '5b5dd2a2dc158dcc4e91ca9f08de3c94a134e530eafc96a096279a6ab48c8b07');
+  assert.deepEqual(parser.residualTerminalV53ConstantCutHypergraphRigidityAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(parser.residualTerminalV53ConstantCutHypergraphRigidityProjectAxiomClosure, []);
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityScope, 'all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification');
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityCellPartitionTheorem, 'PNP.DirectWire.TerminalV53Hypergraph.cell_partition');
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityFourAnchorRigidityTheorem, 'PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity');
+  assert.equal(parser.residualTerminalV53ConstantCutHypergraphRigidityTheorem, 'PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity');
   assert.equal(parser.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(parser.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(parser.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -2909,7 +2938,7 @@ test('formal publication release pins the finite V54 consumer-antichain normal-f
   assert.deepEqual(parser.lockedNANDThresholdPublicationAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(parser.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(parser.lockedNANDThresholdPublicationTheorem, 'PNP.Main.locked_nand_threshold');
-  assert.match(parser.scope, /\+plus-residual-terminal-v54-consumer-antichain-normal-form$/);
+  assert.match(parser.scope, /\+plus-residual-terminal-v53-constant-cut-hypergraph-rigidity$/);
   assert.equal(parser.saturatePositiveFormalized, false);
   assert.equal(parser.bcelReadyFormalized, false);
   assert.equal(parser.residualTerminalProjectionSquareFormalized, true);
@@ -3112,15 +3141,15 @@ test('current status inventories publication workflows while PNPLabs operational
 
 test('payload index describes current inventory/report and quarantines legacy surfaces', async () => {
   const index = await readJson('public/pnp-index.json');
-  assert.equal(index.version, 109);
+  assert.equal(index.version, 110);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, '40a46e9e4aea8177256839415407e35ddb95c65c');
-  assert.equal(index.sourceTree, 'd755c0b1ab7e407e11ce03428e7f1e68a03ca645');
+  assert.equal(index.sourceTree, '1aca9eafba5ac7a0aaf6d2fe63774a479ac24126');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
-  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-11-127');
+  assert.equal(index.canonicalReportCoordinate, 'PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-11-128');
   assert.equal(index.canonicalReportPages, 84);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
   assert.equal(index.status, 'formal-reconstruction-current-gate-closed');
@@ -3130,11 +3159,11 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.abstractPEqualsNPPublicationEligible, false);
   assert.equal(index.claimBoundary.publicationStatusDerivedOnlyFromConcreteGate, true);
   assert.equal(index.claimBoundary.concretePublicationGatePassed, false);
-  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 27193);
-  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 14163);
-  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 7264);
-  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 14995);
-  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 244);
+  assert.equal(index.claimBoundary.leanTheoremInventoryDeclarationCount, 27348);
+  assert.equal(index.claimBoundary.leanTheoremInventoryTheoremCount, 14272);
+  assert.equal(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount, 7281);
+  assert.equal(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount, 14996);
+  assert.equal(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount, 245);
   assert.equal(index.claimBoundary.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceFormalized, true);
   assert.equal(index.claimBoundary.leanConcretePipelineStateNamespaceAxiomAuditPassed, true);
@@ -4413,8 +4442,8 @@ test('payload index describes current inventory/report and quarantines legacy su
 
   assert.equal(index.claimBoundary.leanPCCMinPolynomialRuntimeFormalized, false);
 
-  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 103, unearned: 2, total: 105 });
-  assert.equal(index.earnedMilestones.length, 103);
+  assert.deepEqual(index.formalPublicationMilestoneCounts, { earned: 104, unearned: 2, total: 106 });
+  assert.equal(index.earnedMilestones.length, 104);
   assert.ok(index.earnedMilestones.includes('global-locked-nand-threshold'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-rank-wf'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-bn3-request-envelope'));
@@ -4618,17 +4647,19 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '27,193',
-    '14,163',
-    '7,264',
-    '<strong>14,995</strong> private compiler auxiliaries excluded',
-    '<strong>244</strong> modules',
-    'One hundred and three scoped milestones',
+    '27,348',
+    '14,272',
+    '7,281',
+    '<strong>14,996</strong> private compiler auxiliaries excluded',
+    '<strong>245</strong> modules',
+    'One hundred and four scoped milestones',
     'residual-terminal-bn3-request-envelope',
     'residual-terminal-bn4-activation-cancellation',
     'residual-terminal-bn5-full-shadow-localization',
     'residual-terminal-consumer-antichain-normal-form',
     'PNP.DirectWire.terminalV54_consumerAntichain_normal_form',
+    'residual-terminal-constant-cut-hypergraph-rigidity',
+    'PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -4964,7 +4995,7 @@ test('status page has a conservative complete static fallback', async () => {
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
-  assert.equal((html.match(/data-earned="true"/g) || []).length, 103);
+  assert.equal((html.match(/data-earned="true"/g) || []).length, 104);
   assert.equal((html.match(/data-earned="false"/g) || []).length, 2);
 });
 
@@ -4973,11 +5004,11 @@ test('static inventory prose matches the compiled declaration boundary', async (
   const paper = await readText('paper.html');
   const guide = await readText('docs/reviewer_guide.md');
   const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(readme.includes('27,193** exported public declarations across **244** modules'), true);
+  assert.equal(readme.includes('27,348** exported public declarations across **245** modules'), true);
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
-  assert.equal(paper.includes('Exactly 14,995 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 14,995 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['27,193', '14,163', '7,264', '14,995', '244 modules', '453,006', '215,538', '2,060,926', '17,583,178', 'eighty-four A4 pages', 'fixed 135,070-rule', '7 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  assert.equal(paper.includes('Exactly 14,996 private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Exactly 14,996 private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['27,348', '14,272', '7,281', '14,996', '245 modules', '453,568', '216,608', '2,069,206', '17,687,580', 'eighty-four A4 pages', 'fixed 135,070-rule', '10 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);
