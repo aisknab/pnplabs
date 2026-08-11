@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `b829e62744c3e645726f7cba9875fe6926a6b207`. Its generated status payload is current
+core commit `dd7b9be6ad6d05d516da2baf48813ae608c4e46d`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the eighty-four-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `b829e62744c3e645726f7cba9875fe6926a6b207` (tree `dc1e76c188b26b9311b2a65f8a8376f497cdd69d`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, and the finite BN5 full-shadow localization kernel |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,523 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `dd7b9be6ad6d05d516da2baf48813ae608c4e46d` (tree `d755c0b1ab7e407e11ce03428e7f1e68a03ca645`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, and the V54 consumer-antichain normal form |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,530 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and two earned scoped milestones through the finite BN5 full-shadow localization kernel; its BN4 ledger, payloads, and shadow universe are explicit, complete matching is not connected back to a BN4 contradiction, and it does not supply the full historical BN5 diagnosis, PkgC, BN6, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated status | `public/pnp-status.json` | One hundred and three earned scoped milestones through the V54 consumer-antichain normal form; its antichain and singletonization proof are explicit, and it does not construct PkgC or route silence, derive those inputs from terminal candidates, complete V53 or BN6, supply complete global routing, establish global ZeroSlack, or prove polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-four-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does

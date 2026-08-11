@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-11T04:17:43Z</updated>
+  <updated>2026-08-11T07:40:05Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-consumer-antichain-normal-form</id>
+    <title>Lean now proves one finite V54 consumer-antichain normal form</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-consumer-antichain-normal-form"/>
+    <published>2026-08-11T07:40:05Z</published>
+    <updated>2026-08-11T07:40:05Z</updated>
+    <summary type="text">For an arbitrary finite carrier and an explicitly supplied antichain of minimal consumers, Lean now proves that requests are monotone, the empty request is inactive, and two-sided cut activation is nonzero exactly when two consumers are disjoint. If every disjoint consumer pair is singletonized, the exact premise required by the manuscript&#39;s PkgC stage, Lean proves literal equality with the cut indicator of the singleton footprint. The minimal-consumer antichain and singletonization proof remain explicit inputs. Lean has not constructed PkgC or route silence, derived these inputs from terminal candidates, completed V53 or BN6, established complete global routes, ZeroSlack, PCCMin, or polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 88% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 88 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;For an arbitrary finite carrier and an explicitly supplied antichain of minimal consumers, Lean now proves that requests are monotone, the empty request is inactive, and two-sided cut activation is nonzero exactly when two consumers are disjoint. If every disjoint consumer pair is singletonized, the exact premise required by the manuscript&amp;#39;s PkgC stage, Lean proves literal equality with the cut indicator of the singleton footprint.&lt;/p&gt;&lt;p&gt;The minimal-consumer antichain and singletonization proof remain explicit inputs. Lean has not constructed PkgC or route silence, derived these inputs from terminal candidates, completed V53 or BN6, established complete global routes, ZeroSlack, PCCMin, or polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 88% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;88&quot;&gt;Editorial progress estimate at publication: 88%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-consumer-antichain-normal-form&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn5-full-shadow-localization</id>
     <title>Lean now checks one finite BN5 full-shadow localization</title>
