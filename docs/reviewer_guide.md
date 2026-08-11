@@ -6,9 +6,9 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now an eighty-five-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 27,442 public declarations across 246 modules,
-including 14,309 theorem-kind declarations, 7,290 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Exactly 14,999 private compiler auxiliaries are excluded explicitly.
+Lean theorem inventory. The inventory contains 27,573 public declarations across 247 modules,
+including 14,360 theorem-kind declarations, 7,314 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Exactly 15,002 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,548 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,548 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | One hundred and five narrowly scoped formal milestones through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the candidate-derived finite BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge with payload witnesses | Treating explicit BN4 or BN5 inputs, or the BN6 survivor family, grouping, payloads, singletonization proofs, and constant-cut equation, as derived from terminal candidates; treating complete BN5 matching as a BN4 contradiction or the full historical BN5 diagnosis; treating the V54 normal form as a construction of PkgC or route silence; treating the BN6 bridge as the full historical BN6 or Packet selector and realizer result; treating the finite BN3 envelope as polynomial; claiming a complete decreasing global route system, global ZeroSlack, or polynomial PCCMin; treating the concrete reduction as a target decider or hardness theorem; treating RankWF as proof that current routes decrease; treating a local route as a complete global outcome or Package E acceptance; claiming manuscript-wide `SaturatePositive`, BCELReady, a complete Cook-Levin formula builder, CNF-SAT in P, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,557 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,557 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | One hundred and six narrowly scoped formal milestones through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the candidate-derived finite BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the finite PkgC separating-consumer restoration dichotomy, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge with payload witnesses | Treating explicit BN4 or BN5 inputs, the PkgC antichain or restoration universe, or the BN6 survivor family, grouping, payloads, singletonization proofs, and constant-cut equation as derived from terminal candidates; treating complete BN5 matching or PkgC coverage as a BN4/BN5 contradiction; treating the local PkgC Q route as a complete global outcome; treating the PkgC classifier as the full historical PkgC theorem or route silence; treating the BN6 bridge as the full historical BN6 or Packet selector and realizer result; treating the finite BN3 envelope as polynomial; claiming a complete decreasing global route system, global ZeroSlack, or polynomial PCCMin; treating the concrete reduction as a target decider or hardness theorem; treating RankWF as proof that current routes decrease; treating a local route as Package E acceptance; claiming manuscript-wide `SaturatePositive`, BCELReady, a complete Cook-Levin formula builder, CNF-SAT in P, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `d77a5faf194b86fd1175065a0930fd485e16ace5`.
+   `49c463eb734ad7c11ece63177948c9df0af8f52a`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,548 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,557 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.

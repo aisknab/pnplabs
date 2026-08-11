@@ -852,6 +852,23 @@ const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_HASHES = Object.fromEntries
 const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_SCOPE = "all-finite-exact-coordinate-negative-unit-refinements-computed-cut-silence-complete-multiplicity-coverage-or-strict-hall-deficit-with-local-x1-nonsilence";
 const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE_SCOPE = "For every explicit finite negative-unit refinement and quotient-shadow ledger, Lean preserves the complete exact-coordinate data, validates the negative mass refinement, computes whether the cut is silent, and otherwise returns either complete multiplicity coverage or a strict Hall deficit with a literal smaller shadow-neighbor fibre, complete-coordinate preservation, and a proof-bearing local X1 route that prevents active unmatched units from disappearing silently.";
 const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NON_CLAIM = "This kernel starts from explicit finite inputs: one complete BN4 key, a negative cancellation result, a payload list, a cut, and a quotient-shadow coordinate list. It does not derive payloads or shadows from four-corner bases, connect complete matching back to a BN4 contradiction, or prove the full CritC/Q/E/L/X2/X3/X4 diagnosis, so it is not the full historical BN5 theorem. It does not construct PkgC or BN6; complete global routes, selectors, or realizers; establish polynomial generation or runtime, ZeroSlack, or PCCMin; put SAT in P; remove a project assumption; or prove P = NP.";
+const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREMS = {
+  "PNP.DirectWire.terminalPkgCPairNeedsRestoration_eq_true_iff": { hash: "184ddf69a99d22a191c773492f5544b457d72987222ef40fc00edadd977a95e2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.firstTerminalPkgCSeparatingPair?_sound": { hash: "d13683190a71031aa6df3b201dc1507fe83dd005867b9c5d8a4f8738ad3fd6bf", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.firstTerminalPkgCSeparatingPair?_eq_none_iff": { hash: "4b671f164446da2714ecf89d93203f53cf07380f60cfd5d70b7301f6c831cbdc", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.quotientUnits_length": { hash: "207c3a318d1e4bbde2a33bc01afd96f674b6973a0cf5d595e3739af8f3b0e6c9", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.quotientUnits_nonempty": { hash: "1be63df6d57723d5183ecc39a11d3ed346430ecaf57c118399b2358a5862bfbc", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.terminalPkgC_restorationEdge_preservesCoordinate": { hash: "614c064c69d3e39441036d8b1e70a6f2f5f15b2e6523b1ae094ed34b7bae1e8d", axioms: [], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.TerminalBN5HallDeficit.pkgCRestorationNotSilent": { hash: "bec861192dedeca58ccdb1b9764e428715730d5b66c2dd5bdd3f688957ff7b27", axioms: [], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.terminalPkgC_separatingConsumers_restorationDichotomy": { hash: "690a8f82885a284547a453cbfd6858ef8d8d7c4201e710f79a9eca9faa92df81", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" },
+  "PNP.DirectWire.classifyTerminalPkgCSeparatingConsumers_exhaustive": { hash: "a05d8069e347cf7f63b59aef148e10f5587461d09bd0fff8f400b7cc7b4f1d2f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSeparatingConsumers" }
+};
+const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_SCOPE = "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q";
+const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_MILESTONE_SCOPE = "For an arbitrary finite explicit minimal-consumer antichain, Lean canonically scans for the first disjoint pair that is not singleton-singleton. Absence proves exactly V54's singletonization premise. A found pair's atoms are canonically indexed into exact-coordinate quotient units and an explicit full-restoration universe is classified into complete multiplicity coverage or a strict Hall deficit with a deterministic local Q route.";
+const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_NON_CLAIM = "The restoration coordinate universe remains explicit. This theorem does not derive consumers or restorations from a terminal candidate, connect complete coverage back to a BN4 or BN5 contradiction, embed the Hall route into the complete global outcome system, prove global route silence, or establish the full historical PkgC theorem. It does not prove full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS = {
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone": { hash: "2b4b2abc251a6f227f312189bef5f8af6ad139173a5b56bd041b5c0490c56009", axioms: [], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_empty_false": { hash: "6a1188e91a30e61ffbabab94b6419a4e0d9980de8723c4bf3e717c82735e95c9", axioms: ["propext"], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
@@ -923,15 +940,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "d77a5faf194b86fd1175065a0930fd485e16ace5");
+  assert.equal(result.coreCommit, "49c463eb734ad7c11ece63177948c9df0af8f52a");
 });
 
-test("current release is pinned, eighty-five-page, exposes finite BN6 packet evidence, and fails closed", () => {
+test("current release is pinned, eighty-five-page, exposes finite PkgC separating-consumer evidence, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-112");
-  assert.equal(release.source.commit, "d77a5faf194b86fd1175065a0930fd485e16ace5");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-113");
+  assert.equal(release.source.commit, "49c463eb734ad7c11ece63177948c9df0af8f52a");
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
-  assert.equal(release.source.tree, "34344e42d12991af68f7ed81ca575cff0307f69a");
+  assert.equal(release.source.tree, "4622cebf0bf937b0f4d9c9decb62383aefe9b416");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 85);
@@ -2982,6 +2999,26 @@ test("current release is pinned, eighty-five-page, exposes finite BN6 packet evi
   assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationActiveTheorem, "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_active");
   assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationClassifierTheorem, "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersAuditedDeclarationCount, 27);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersEmptyAxiomDeclarationCount, 11);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersPropextOnlyDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersPropextQuotSoundDeclarationCount, 10);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersScope, RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersPairNeedsRestorationTheorem, "PNP.DirectWire.terminalPkgCPairNeedsRestoration_eq_true_iff");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersFirstPairSoundTheorem, "PNP.DirectWire.firstTerminalPkgCSeparatingPair?_sound");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersFirstPairNoneIffTheorem, "PNP.DirectWire.firstTerminalPkgCSeparatingPair?_eq_none_iff");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersQuotientUnitsLengthTheorem, "PNP.DirectWire.TerminalPkgCSeparatingPair.quotientUnits_length");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersQuotientUnitsNonemptyTheorem, "PNP.DirectWire.TerminalPkgCSeparatingPair.quotientUnits_nonempty");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersRestorationEdgeTheorem, "PNP.DirectWire.terminalPkgC_restorationEdge_preservesCoordinate");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersRestorationNotSilentTheorem, "PNP.DirectWire.TerminalBN5HallDeficit.pkgCRestorationNotSilent");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersDichotomyTheorem, "PNP.DirectWire.terminalPkgC_separatingConsumers_restorationDichotomy");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersClassifierTheorem, "PNP.DirectWire.classifyTerminalPkgCSeparatingConsumers_exhaustive");
+
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormFormalized, true);
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormAuditedDeclarationCount, 28);
@@ -3086,12 +3123,12 @@ test("current release is pinned, eighty-five-page, exposes finite BN6 packet evi
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 107 milestones with finite BN6 packet evidence pinned", () => {
+test("status and inventory publish exactly 108 milestones with finite PkgC separating-consumer evidence pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 107);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 105);
+  assert.equal(milestones.length, 108);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 106);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -4213,6 +4250,46 @@ test("status and inventory publish exactly 107 milestones with finite BN6 packet
     RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_SCOPE
   );
 
+  const pkgCSeparatingConsumers = milestones.find(
+    (row) => row.id === "residual-terminal-pkgc-separating-consumers"
+  );
+  assert.equal(pkgCSeparatingConsumers.classification, "formalized-residual-terminal-pkgc-separating-consumers");
+  assert.equal(pkgCSeparatingConsumers.status, "formalized-residual-terminal-pkgc-separating-consumers");
+  assert.equal(pkgCSeparatingConsumers.earned, true);
+  assert.equal(pkgCSeparatingConsumers.allPresent, true);
+  assert.equal(pkgCSeparatingConsumers.allAssumptionFree, false);
+  assert.equal(pkgCSeparatingConsumers.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pkgCSeparatingConsumers.allKernelTypesMatch, true);
+  assert.equal(pkgCSeparatingConsumers.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    pkgCSeparatingConsumers.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(
+      pkgCSeparatingConsumers.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+    ),
+    RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_HASHES
+  );
+  for (const row of pkgCSeparatingConsumers.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(pkgCSeparatingConsumers.scope, RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_MILESTONE_SCOPE);
+  assert.equal(pkgCSeparatingConsumers.nonClaim, RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalPkgCSeparatingConsumersFormalized, true);
+  assert.equal(status.leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPkgCSeparatingConsumersScope,
+    RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_SCOPE
+  );
+
   const v54ConsumerAntichainNormalForm = milestones.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
   );
@@ -4345,21 +4422,21 @@ test("status and inventory publish exactly 107 milestones with finite BN6 packet
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 27442);
-  assert.equal(inventory.theoremCount, 14309);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7290);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14999);
-  assert.equal(inventory.sourceClosureModuleCount, 246);
-  assert.equal(inventory.milestoneCandidates.length, 2548);
+  assert.equal(inventory.declarationCount, 27573);
+  assert.equal(inventory.theoremCount, 14360);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7314);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 15002);
+  assert.equal(inventory.sourceClosureModuleCount, 247);
+  assert.equal(inventory.milestoneCandidates.length, 2557);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 854,
-    definition: 11491,
-    inductive: 392,
+    constructor: 860,
+    definition: 11557,
+    inductive: 396,
     opaque: 0,
     quotient: 0,
-    recursor: 392,
-    theorem: 14309
+    recursor: 396,
+    theorem: 14360
   });
 });
 

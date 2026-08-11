@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-129';
-const STATUS_SHA256 = '79c3ef6dace2f95cdad66add48c105e4ed5f95609b9c2819533685f63ed941aa';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-129';
-const FORMAL_PUBLICATION_MAP_SHA256 = '9093dd1bdc84405be1748831ad59b98a60aabbd80d389f26f38f889de44770ea';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-130';
+const STATUS_SHA256 = '1a4609a63dd44da92cfc4558d1cef0db60430b26942cc6b3e2d199eb35d66ed9';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-130';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'f076b8f813c2877d7a03b7090151d4c9db9f4793a5c4f40fbdc5125c82808ed8';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-128';
-const INVENTORY_SHA256 = '612342db90e5887e2da6417963946437c82a14003f48deeddeae03d50caf637f';
-const SOURCE_CLOSURE_SHA256 = '4fde46c2f495422c43f5d2eb3ed80500c097a94b511aaecc74f5e8da979cd910';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-129';
+const INVENTORY_SHA256 = '859ef0595f1eeea872518b0f399a788225e3a2ed9fefe987c6ae5bd6b3783aaf';
+const SOURCE_CLOSURE_SHA256 = '4608b17afe6e8d0be3f7f6e0fae526025c0050f64dca9670e71ae89f9f27aa7c';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 27442,
-  theorems: 14309,
-  assumptionFreeTheorems: 7290,
-  excludedPrivateDeclarations: 14999,
-  modules: 246,
+  declarations: 27573,
+  theorems: 14360,
+  assumptionFreeTheorems: 7314,
+  excludedPrivateDeclarations: 15002,
+  modules: 247,
   axioms: 4,
 });
 
@@ -3944,6 +3944,18 @@ const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_DECLARATIONS = Object.freez
   ["PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
 ]);
 
+const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalPkgCPairNeedsRestoration_eq_true_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.firstTerminalPkgCSeparatingPair?_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.firstTerminalPkgCSeparatingPair?_eq_none_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.TerminalPkgCSeparatingPair.quotientUnits_length", ["propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.TerminalPkgCSeparatingPair.quotientUnits_nonempty", ["propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.terminalPkgC_restorationEdge_preservesCoordinate", [], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.TerminalBN5HallDeficit.pkgCRestorationNotSilent", [], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.terminalPkgC_separatingConsumers_restorationDichotomy", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+  ["PNP.DirectWire.classifyTerminalPkgCSeparatingConsumers_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
+]);
+
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone", [], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
   ["PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_empty_false", ["propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
@@ -4527,6 +4539,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-bn3-request-envelope',
   'residual-terminal-bn4-activation-cancellation',
   'residual-terminal-bn5-full-shadow-localization',
+  'residual-terminal-pkgc-separating-consumers',
   'residual-terminal-consumer-antichain-normal-form',
   'residual-terminal-constant-cut-hypergraph-rigidity',
   'residual-terminal-bn6-hypergraph-packet',
@@ -4974,6 +4987,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalBN5FullShadowLocalizationFormalized: false,
   leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed: false,
   leanResidualTerminalBN5FullShadowLocalizationScope: null,
+  leanResidualTerminalPkgCSeparatingConsumersFormalized: false,
+  leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed: false,
+  leanResidualTerminalPkgCSeparatingConsumersScope: null,
   leanResidualTerminalConsumerAntichainNormalFormFormalized: false,
   leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed: false,
   leanResidualTerminalConsumerAntichainNormalFormScope: null,
@@ -5509,6 +5525,9 @@ leanResidualTerminalBN4ActivationCancellationScope = ${payload.leanResidualTermi
 leanResidualTerminalBN5FullShadowLocalizationFormalized = ${payload.leanResidualTerminalBN5FullShadowLocalizationFormalized ?? false}
 leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed = ${payload.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed ?? false}
 leanResidualTerminalBN5FullShadowLocalizationScope = ${payload.leanResidualTerminalBN5FullShadowLocalizationScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBN5FullShadowLocalizationScope)}
+leanResidualTerminalPkgCSeparatingConsumersFormalized = ${payload.leanResidualTerminalPkgCSeparatingConsumersFormalized ?? false}
+leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed = ${payload.leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed ?? false}
+leanResidualTerminalPkgCSeparatingConsumersScope = ${payload.leanResidualTerminalPkgCSeparatingConsumersScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCSeparatingConsumersScope)}
 leanResidualTerminalConsumerAntichainNormalFormFormalized = ${payload.leanResidualTerminalConsumerAntichainNormalFormFormalized ?? false}
 leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = ${payload.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed ?? false}
 leanResidualTerminalConsumerAntichainNormalFormScope = ${payload.leanResidualTerminalConsumerAntichainNormalFormScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalConsumerAntichainNormalFormScope)}
@@ -5615,13 +5634,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 854,
-    definition: 11491,
-    inductive: 392,
+    constructor: 860,
+    definition: 11557,
+    inductive: 396,
     opaque: 0,
     quotient: 0,
-    recursor: 392,
-    theorem: 14309,
+    recursor: 396,
+    theorem: 14360,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6100,6 +6119,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalPkgCSeparatingConsumers =
+    RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const residualTerminalV54ConsumerAntichainNormalForm =
     RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6532,6 +6557,9 @@ function validateInventory(inventory) {
     && residualTerminalBN5FullShadowLocalization.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPkgCSeparatingConsumers.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && residualTerminalV54ConsumerAntichainNormalForm.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6586,7 +6614,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2548
+    && inventory.milestoneCandidates.length === 2557
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6650,7 +6678,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 105;
+    const shouldBeEarned = index < 106;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6784,6 +6812,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalBN5FullShadowLocalizationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-bn5-full-shadow-localization'
+  );
+  const residualTerminalPkgCSeparatingConsumersMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-pkgc-separating-consumers'
   );
   const residualTerminalV54ConsumerAntichainNormalFormMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
@@ -7281,6 +7312,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalBN5FullShadowLocalizationFormalized === true
     && status.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed === true
     && status.leanResidualTerminalBN5FullShadowLocalizationScope === "all-finite-exact-coordinate-negative-unit-refinements-computed-cut-silence-complete-multiplicity-coverage-or-strict-hall-deficit-with-local-x1-nonsilence"
+    && residualTerminalPkgCSeparatingConsumersMilestone?.classification === "formalized-residual-terminal-pkgc-separating-consumers"
+    && residualTerminalPkgCSeparatingConsumersMilestone.status === "formalized-residual-terminal-pkgc-separating-consumers"
+    && residualTerminalPkgCSeparatingConsumersMilestone.scope === "For an arbitrary finite explicit minimal-consumer antichain, Lean canonically scans for the first disjoint pair that is not singleton-singleton. Absence proves exactly V54's singletonization premise. A found pair's atoms are canonically indexed into exact-coordinate quotient units and an explicit full-restoration universe is classified into complete multiplicity coverage or a strict Hall deficit with a deterministic local Q route."
+    && residualTerminalPkgCSeparatingConsumersMilestone.nonClaim === "The restoration coordinate universe remains explicit. This theorem does not derive consumers or restorations from a terminal candidate, connect complete coverage back to a BN4 or BN5 contradiction, embed the Hall route into the complete global outcome system, prove global route silence, or establish the full historical PkgC theorem. It does not prove full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPkgCSeparatingConsumersMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalPkgCSeparatingConsumersFormalized === true
+    && status.leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed === true
+    && status.leanResidualTerminalPkgCSeparatingConsumersScope === "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone?.classification === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone.status === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone.scope === "For an arbitrary finite carrier and its explicit minimal-consumer antichain, Lean proves monotonicity and empty-request inactivity, proves that nonzero two-sided cut activation is equivalent to the existence of a disjoint consumer pair, and under the exact singletonized-disjoint-pair premise proves literal equality with the corresponding footprint cut indicator."
@@ -7338,10 +7380,11 @@ function validateStatus(status, inventory) {
     ])
     && status.nonClaims?.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.')
     && status.nonClaims?.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.')
-    && status.nonClaims?.includes('The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, PkgC, BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
-    && status.nonClaims?.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. The theorem itself consumes an explicit antichain. The finite BN6 bridge now transports explicitly grouped instances into V53, but PkgC construction and route silence, derivation and grouping from terminal candidates, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
-    && status.nonClaims?.includes('The arbitrary-finite V53 constant-cut hypergraph rigidity theorem proves the exact q=2, q=3, and q>=4 classification for sparse positive hypergraphs with one common nonempty proper-cut value. The finite BN6 bridge now constructs such a hypergraph from explicit grouped V54 cells and retains payload witnesses, but PkgC construction, terminal-candidate derivation and grouping, full historical BN6 and Packet selector/realizer completeness, global routes, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
-    && status.nonClaims?.includes('The finite BN6 hypergraph-packet bridge transports an explicit already-grouped positive payload-bearing V54 survivor family into the exact V53 cut sum and returns the pair, mixed three-anchor, or full-span packet classification with source payload witnesses. It does not construct PkgC, derive or group survivors from a terminal candidate, establish full historical BN6 or Packet selector/realizer completeness, complete global routes, prove polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, or P = NP.')
+    && status.nonClaims?.includes('The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, full PkgC and BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The finite PkgC separating-consumer classifier scans an arbitrary explicit minimal-consumer antichain for the first disjoint nonsingleton pair, canonically indexes its atoms, and returns exact-coordinate restoration coverage or a strict Hall deficit routed to local Q; absence is exactly the V54 singletonization premise. The restoration coordinate universe remains explicit, coverage is not connected back to a BN4 or BN5 contradiction, the local route is not embedded in the complete global outcome system, and full PkgC route silence, derivation from a terminal candidate, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. The theorem itself consumes an explicit antichain. The finite BN6 bridge now transports explicitly grouped instances into V53, but full PkgC construction and route silence, derivation and grouping from terminal candidates, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The arbitrary-finite V53 constant-cut hypergraph rigidity theorem proves the exact q=2, q=3, and q>=4 classification for sparse positive hypergraphs with one common nonempty proper-cut value. The finite BN6 bridge now constructs such a hypergraph from explicit grouped V54 cells and retains payload witnesses, but full PkgC construction, terminal-candidate derivation and grouping, full historical BN6 and Packet selector/realizer completeness, global routes, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The finite BN6 hypergraph-packet bridge transports an explicit already-grouped positive payload-bearing V54 survivor family into the exact V53 cut sum and returns the pair, mixed three-anchor, or full-span packet classification with source payload witnesses. It does not complete PkgC, derive or group survivors from a terminal candidate, establish full historical BN6 or Packet selector/realizer completeness, complete global routes, prove polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, or P = NP.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true

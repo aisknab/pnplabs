@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-12-residual-terminal-pkgc-separating-consumers",
+      "milestoneId": "residual-terminal-pkgc-separating-consumers",
+      "publishedAt": "2026-08-11T19:58:23Z",
+      "title": "Lean now classifies finite PkgC separating consumers into singletonization or restoration",
+      "plainLanguage": [
+        "For an arbitrary finite explicitly supplied minimal-consumer antichain, Lean now scans in a deterministic order for the first disjoint pair that is not singleton-singleton. If no such pair exists, it proves exactly the singletonization premise used by the V54 normal form. If a pair is found, Lean canonically indexes its atoms as exact-coordinate quotient units and compares them with an explicit finite full-restoration universe.",
+        "The classifier returns complete multiplicity coverage or a strict Hall deficit with a deterministic local Q route, and every restoration edge preserves the full coordinate. The consumer antichain and restoration universe remain explicit inputs. Lean has not derived them from terminal candidates, connected complete coverage back to a BN4 or BN5 contradiction, embedded the local route into the complete global outcome system, proved global route silence or the full historical PkgC result, completed BN6 or Packet selectors and realizers, established polynomial runtime, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 91% figure is a revisable editorial estimate of known reconstruction work, separate from the 106 of 108 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 91,
+      "source": {
+        "commit": "49c463eb734ad7c11ece63177948c9df0af8f52a",
+        "tree": "4622cebf0bf937b0f4d9c9decb62383aefe9b416",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-130",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-12-residual-terminal-bn6-hypergraph-packet",
       "milestoneId": "residual-terminal-bn6-hypergraph-packet",
       "publishedAt": "2026-08-11T16:31:22Z",
