@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-11T00:32:18Z</updated>
+  <updated>2026-08-11T04:17:43Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn5-full-shadow-localization</id>
+    <title>Lean now checks one finite BN5 full-shadow localization</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn5-full-shadow-localization"/>
+    <published>2026-08-11T04:17:43Z</published>
+    <updated>2026-08-11T04:17:43Z</updated>
+    <summary type="text">Starting from one verified negative BN4 cancellation result, Lean now expands its mass into explicit unit records and compares those records with an explicit finite list of quotient-shadow coordinates. It checks whether the chosen cut is silent. When it is active, the classifier either returns complete multiplicity coverage or proves a strict Hall deficit: a specific group of full records has fewer distinct shadow neighbours, and the resulting local route cannot disappear silently. The payloads, cut, and shadow universe remain explicit inputs rather than constructions from the four-corner bases. Complete matching is not yet connected back to a BN4 contradiction, and the full historical BN5 diagnosis, later package and BN6 stages, complete global routing, polynomial runtime, ZeroSlack, PCCMin, SAT in P, removal of a project assumption, and P = NP remain unproved. The 87% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 87 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;Starting from one verified negative BN4 cancellation result, Lean now expands its mass into explicit unit records and compares those records with an explicit finite list of quotient-shadow coordinates. It checks whether the chosen cut is silent. When it is active, the classifier either returns complete multiplicity coverage or proves a strict Hall deficit: a specific group of full records has fewer distinct shadow neighbours, and the resulting local route cannot disappear silently.&lt;/p&gt;&lt;p&gt;The payloads, cut, and shadow universe remain explicit inputs rather than constructions from the four-corner bases. Complete matching is not yet connected back to a BN4 contradiction, and the full historical BN5 diagnosis, later package and BN6 stages, complete global routing, polynomial runtime, ZeroSlack, PCCMin, SAT in P, removal of a project assumption, and P = NP remain unproved. The 87% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;87&quot;&gt;Editorial progress estimate at publication: 87%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn5-full-shadow-localization&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn4-activation-cancellation</id>
     <title>Lean now checks one finite BN4 cancellation ledger</title>

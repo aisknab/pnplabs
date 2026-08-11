@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 450,819 | `f84e248a5cd842af25965669f1e8387d8adfbfad4a2e29828798cf9f855151fc` |
-| `downloads/canonical-proof-report.pdf` | 450,819 | `f84e248a5cd842af25965669f1e8387d8adfbfad4a2e29828798cf9f855151fc` |
-| `downloads/canonical_proof_report.tex` | 212,960 | `92f911ee8d3286aba5f75b476d3691260355ad7c0a906c3478b8daf68f2c9d44` |
-| `downloads/canonical-proof-report.tex` | 212,960 | `92f911ee8d3286aba5f75b476d3691260355ad7c0a906c3478b8daf68f2c9d44` |
-| `public/pnp-status.json` | 2,044,745 | `acd3acd30a52590ed16966c55b62b8aaf1d2d5985b08ea627057a0d9ab4db07f` |
-| `public/pnp-theorem-inventory.json` | 17,400,943 | `80dae39e58e0053129c34e0105fc9635777e2920a1d93529f14493813508c772` |
+| `downloads/canonical_proof_report.pdf` | 452,029 | `14f64fd605590edcb64d38314595db082b4916806c5ae3712977c7ab6cc47610` |
+| `downloads/canonical-proof-report.pdf` | 452,029 | `14f64fd605590edcb64d38314595db082b4916806c5ae3712977c7ab6cc47610` |
+| `downloads/canonical_proof_report.tex` | 214,459 | `348ebff0df6ed0ce7eb27f1a529af88139a8dde58b13aad29433b9096ff321e3` |
+| `downloads/canonical-proof-report.tex` | 214,459 | `348ebff0df6ed0ce7eb27f1a529af88139a8dde58b13aad29433b9096ff321e3` |
+| `public/pnp-status.json` | 2,054,365 | `1e02d5abeb1d1b3138e8b59c4926a037c7653617720eb85a1efc25a1bb487cc8` |
+| `public/pnp-theorem-inventory.json` | 17,551,864 | `fbd4614c550813bc8deff259f9442b37336efb40be3835e07880842c8e8a3be7` |
 
-The PDF must have eighty-three A4 pages. Both filename styles must be byte-identical.
+The PDF must have eighty-four A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout ef94583b39f7050953a78a7a6e0ad431cd2eb459
+git -C ../pnp checkout b829e62744c3e645726f7cba9875fe6926a6b207
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 26,851 public declarations, 14,025 theorem-kind declarations,
-7,197 assumption-free theorem-kind declarations, 14,947 excluded private auxiliaries, 242 modules, and
+Expected compiled inventory counts are 27,129 public declarations, 14,125 theorem-kind declarations,
+7,249 assumption-free theorem-kind declarations, 14,995 excluded private auxiliaries, 243 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,14 +96,15 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 13 reviewed theorem pins. After the finite BN3 request-envelope classifier
-succeeds, Lean assigns canonical singleton activation codes, compares complete typed cancellation keys,
-totals positive and negative mass only at the same key, and returns a canonical balanced, positive, or
-negative residual. The focused 33-declaration audit has 11 empty closures, 6 using only `propext`, and
-16 using `Quot.sound` with `propext`. The cell ledger, semantic signatures, and transport types remain
-explicit inputs rather than outputs derived from four-corner bases. This is not the full historical BN4
-theorem and does not construct BN5, PkgC, or BN6; complete global routing; selector or realizer
-completeness; `ZeroSlack`; polynomial PCCMin; SAT in P; assumption discharge; or `P = NP`.
+The newest milestone adds 12 reviewed theorem pins. Starting from an explicit negative BN4 cancellation
+result, payload list, cut, and quotient-shadow coordinate list, Lean validates exact unit refinement,
+checks cut silence, and otherwise returns complete multiplicity coverage or a strict Hall deficit with a
+literal smaller shadow-neighbour fibre and a proof-bearing local X1 route. The focused 40-declaration audit
+has 23 empty closures, 11 using only `propext`, and 6 using `Quot.sound` with `propext`. The BN4 ledger,
+payloads, and shadow universe remain explicit inputs rather than outputs derived from four-corner bases.
+Complete matching is not connected back to a BN4 contradiction, and the full historical BN5 diagnosis,
+PkgC, BN6, complete global routing, selector or realizer completeness, `ZeroSlack`, polynomial PCCMin,
+SAT in P, assumption discharge, and `P = NP` remain unproved.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
