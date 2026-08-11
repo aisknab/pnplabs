@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '231781715e011ebf8b583ce3c26f9896622d6962faaf8fcebd68f36e511ea003');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '80dae39e58e0053129c34e0105fc9635777e2920a1d93529f14493813508c772');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 100);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 101);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
 });
 
@@ -3442,7 +3442,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '0f3e05664980c80d3c8a9fb5cceb4cb10cefaa05a96ea2d0f523c2663956fbc3'/);
+  assert.match(source, /const STATUS_SHA256 = 'acd3acd30a52590ed16966c55b62b8aaf1d2d5985b08ea627057a0d9ab4db07f'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3720,13 +3720,13 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /26,624/);
-  assert.match(statusPage, /One hundred scoped milestones/);
-  assert.match(statusPage, /candidate-derived finite BN3 request envelope/i);
+  assert.match(statusPage, /26,851/);
+  assert.match(statusPage, /One hundred and one scoped milestones/);
+  assert.match(statusPage, /finite BN4 activation-exact cancellation kernel/i);
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 82-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, /current 83-page report is generated from the compiled Lean inventory/i);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

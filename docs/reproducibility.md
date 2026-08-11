@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 449,511 | `e998779d189f762ffcbcdb82b51de8a15bd0c7c8e4be6d463d5c833323ae45ef` |
-| `downloads/canonical-proof-report.pdf` | 449,511 | `e998779d189f762ffcbcdb82b51de8a15bd0c7c8e4be6d463d5c833323ae45ef` |
-| `downloads/canonical_proof_report.tex` | 211,420 | `b81fbdd17af61400d2883493ee90417affddd37f5d23567ede3d808bb417b0e2` |
-| `downloads/canonical-proof-report.tex` | 211,420 | `b81fbdd17af61400d2883493ee90417affddd37f5d23567ede3d808bb417b0e2` |
-| `public/pnp-status.json` | 2,034,357 | `0f3e05664980c80d3c8a9fb5cceb4cb10cefaa05a96ea2d0f523c2663956fbc3` |
-| `public/pnp-theorem-inventory.json` | 17,275,021 | `231781715e011ebf8b583ce3c26f9896622d6962faaf8fcebd68f36e511ea003` |
+| `downloads/canonical_proof_report.pdf` | 450,819 | `f84e248a5cd842af25965669f1e8387d8adfbfad4a2e29828798cf9f855151fc` |
+| `downloads/canonical-proof-report.pdf` | 450,819 | `f84e248a5cd842af25965669f1e8387d8adfbfad4a2e29828798cf9f855151fc` |
+| `downloads/canonical_proof_report.tex` | 212,960 | `92f911ee8d3286aba5f75b476d3691260355ad7c0a906c3478b8daf68f2c9d44` |
+| `downloads/canonical-proof-report.tex` | 212,960 | `92f911ee8d3286aba5f75b476d3691260355ad7c0a906c3478b8daf68f2c9d44` |
+| `public/pnp-status.json` | 2,044,745 | `acd3acd30a52590ed16966c55b62b8aaf1d2d5985b08ea627057a0d9ab4db07f` |
+| `public/pnp-theorem-inventory.json` | 17,400,943 | `80dae39e58e0053129c34e0105fc9635777e2920a1d93529f14493813508c772` |
 
-The PDF must have eighty-two A4 pages. Both filename styles must be byte-identical.
+The PDF must have eighty-three A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 85c72816225bc6feab4ffc60499475419645dd73
+git -C ../pnp checkout ef94583b39f7050953a78a7a6e0ad431cd2eb459
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 26,624 public declarations, 13,928 theorem-kind declarations,
-7,165 assumption-free theorem-kind declarations, 14,939 excluded private auxiliaries, 241 modules, and
+Expected compiled inventory counts are 26,851 public declarations, 14,025 theorem-kind declarations,
+7,197 assumption-free theorem-kind declarations, 14,947 excluded private auxiliaries, 242 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,14 +96,14 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 11 reviewed theorem pins. After the computed finite BCEL anchor-nucleus
-classifier succeeds, Lean enumerates every proper cut and constructs one canonical duplicate-free request
-identity list. It proves exact executable monotone and stable membership, exact singleton minimal
-consumers, duplicate-free active incidence, and one canonical full-or-quotient side-tight basis family
-jointly across all cuts. The focused 84-declaration audit has 8 empty closures, 3 using only `propext`, and
-73 using `Quot.sound` with `propext`. The construction enumerates all subsets and is exponential; it does
-not derive the dependency system, construct BN4-BN6, complete global routing, establish selector or
-realizer completeness, prove `ZeroSlack`, polynomial PCCMin, SAT in P, assumption discharge, or `P = NP`.
+The newest milestone adds 13 reviewed theorem pins. After the finite BN3 request-envelope classifier
+succeeds, Lean assigns canonical singleton activation codes, compares complete typed cancellation keys,
+totals positive and negative mass only at the same key, and returns a canonical balanced, positive, or
+negative residual. The focused 33-declaration audit has 11 empty closures, 6 using only `propext`, and
+16 using `Quot.sound` with `propext`. The cell ledger, semantic signatures, and transport types remain
+explicit inputs rather than outputs derived from four-corner bases. This is not the full historical BN4
+theorem and does not construct BN5, PkgC, or BN6; complete global routing; selector or realizer
+completeness; `ZeroSlack`; polynomial PCCMin; SAT in P; assumption discharge; or `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

@@ -53,7 +53,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone constructs one exact finite BN3 request envelope after a successful computed BCEL anchor nucleus: canonical stable request identities, exact singleton consumers, duplicate-free incidence, and one jointly side-tight full-or-quotient basis family across every proper cut. The construction enumerates all subsets and is not a polynomial algorithm. It does not construct BN4-BN6, map the finite terminal routes into a decreasing complete global outcome system, establish selector or realizer completeness, manuscript-wide `SaturatePositive`, Package E, BCELReady, `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and one narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone is a finite BN4 activation-exact same-key cancellation kernel after a successful finite BN3 request envelope. It proves exact integer mass conservation and canonical residual properties over an explicit typed cell ledger. The ledger, semantic signatures, and transport types are caller-supplied rather than derived from the four-corner bases, so this is not the full historical BN4 theorem and has no polynomial construction or size bound. It does not construct BN5, PkgC, or BN6, map the finite terminal routes into a decreasing complete global outcome system, establish selector or realizer completeness, manuscript-wide `SaturatePositive`, Package E, BCELReady, `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -72,7 +72,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the eighty-two-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the eighty-three-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
