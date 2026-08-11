@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '3d770295f55293a4775921e965907ef6e59faa3129fc5f387bf3f24c19fa6d85');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 103);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 104);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
 });
 
@@ -672,6 +672,41 @@ test('V54 consumer-antichain normal form is fail closed and requires its exact b
     (row) => row.name === 'PNP.DirectWire.terminalV54_consumerAntichain_normal_form'
   ).actualKernelTypeSha256 = '0'.repeat(64);
   assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+});
+
+test('V53 constant-cut hypergraph rigidity is fail closed and requires its exact boundary', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  assert.equal(failClosed.leanResidualTerminalConstantCutHypergraphRigidityFormalized, false);
+  assert.equal(failClosed.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed, false);
+  assert.equal(failClosed.leanResidualTerminalConstantCutHypergraphRigidityScope, null);
+  assert.match(
+    validation.formalStatusFields(failClosed),
+    /leanResidualTerminalConstantCutHypergraphRigidityFormalized = false/u
+  );
+
+  const erasedAudit = structuredClone(status);
+  erasedAudit.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(erasedAudit, inventory), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-constant-cut-hypergraph-rigidity'
+  ).scope = 'A complete PkgC, BN6, ZeroSlack, and PCCMin construction.';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-constant-cut-hypergraph-rigidity'
+  ).theoremRows.find(
+    (row) => row.name === 'PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity'
+  ).actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+
+  const forgedInventory = structuredClone(inventory);
+  forgedInventory.milestoneCandidates.find(
+    (row) => row.name === 'PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity'
+  ).axioms = ['PNP.CheckPCCPackexp'];
+  assert.equal(validation.validateInventory(forgedInventory), false);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -3471,7 +3506,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '7b042bf47d86f20dbdb914d61c1ef84d39da0449692cde58cff223bcc50dcf3e'/);
+  assert.match(source, /const STATUS_SHA256 = 'd07f55de837091f1f70a4d871e5d943980c793df9a4e48be25b4ac26057fd258'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3749,12 +3784,14 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /27,193/);
-  assert.match(statusPage, /One hundred and three scoped milestones/);
+  assert.match(statusPage, /27,348/);
+  assert.match(statusPage, /One hundred and four scoped milestones/);
   assert.match(statusPage, /finite BN5 full-shadow localization kernel/i);
   assert.match(statusPage, /strict Hall deficit/i);
   assert.match(statusPage, /V54 consumer-antichain normal form/i);
   assert.match(statusPage, /terminalV54_consumerAntichain_normal_form/);
+  assert.match(statusPage, /V53 constant-cut hypergraph rigidity/i);
+  assert.match(statusPage, /terminalV53_constantCut_hypergraph_rigidity/);
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

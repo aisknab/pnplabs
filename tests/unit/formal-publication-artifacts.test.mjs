@@ -867,6 +867,24 @@ const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_HASHES = Object.fromE
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_SCOPE = "all-finite-minimal-consumer-antichains-monotone-empty-false-nonzero-iff-disjoint-and-pkgc-singletonized-exact-v54-consumer-antichain-cut-indicator";
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_MILESTONE_SCOPE = "For an arbitrary finite carrier and its explicit minimal-consumer antichain, Lean proves monotonicity and empty-request inactivity, proves that nonzero two-sided cut activation is equivalent to the existence of a disjoint consumer pair, and under the exact singletonized-disjoint-pair premise proves literal equality with the corresponding footprint cut indicator.";
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_NON_CLAIM = "This finite kernel starts from an explicit minimal-consumer antichain and an explicit proof that every disjoint consumer pair is singletonized. It does not construct PkgC, derive that singletonization premise, or connect the footprint back to the full BN6 proof. It does not construct complete global routes, selectors, or realizers; establish polynomial generation or runtime, ZeroSlack, or PCCMin; put SAT in P; remove a project assumption; or prove P = NP.";
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS = {
+  "PNP.DirectWire.TerminalV53Hypergraph.cell_partition": { hash: "d16379065824e05c2fb07404dc6102c1e715431af0412428fe58762e7c443163", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.cut_partition": { hash: "e2a434fd77b4beb8c1165f6bedd35df5dbe529b00362ce5915acddd46c44239e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.pair_complement_identity": { hash: "5fbeb36fa268a1891851320dda5716ced89a17d9234e1b39380faded0ca97b5c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.pairWeights_equal_of_shared": { hash: "aaf54c3a5054d667fb42dc481a8c11bfabe9fd097491bca8e218b5e1257c8b9d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.pairWeight_eq_zero_of_four": { hash: "5763916217506b3ec2ffbfb4ac6beeac75a09978651daa42ce1e586084d893b2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.properFootprintWeight_eq_zero_of_four": { hash: "5875a9ea0aaab8e4d1598a79262ccae893e25e64f8e280c86145e3e5f2353d82", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.twoAnchor_fullWeight": { hash: "f69d38ce0fc3179c4b64601fc7bc972e5b4d40becc39af61ca811b442f1ec692", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.threeAnchor_rigidity": { hash: "7042a91984504430f872f5496b3492f33cdf368f7e6cee2d6f21689ce411e574", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity": { hash: "046214923b999ee22b3da8460b12de05b47f0f15631fb0f76478b282d6dac585", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" },
+  "PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity": { hash: "5b5dd2a2dc158dcc4e91ca9f08de3c94a134e530eafc96a096279a6ab48c8b07", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalConstantCutHypergraphRigidity" }
+};
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE = "all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification";
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_MILESTONE_SCOPE = "For an arbitrary finite duplicate-free carrier and sparse nonnegative weighted hypergraph with positive listed cells, exact equality of every nonempty proper cut proves the complete V53 q=2, q=3, and q>=4 classification: full-span weight D; one common pair weight p with w_A + 2p = D; or zero weight on every proper footprint with full-span weight D.";
+const RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NON_CLAIM = "This theorem consumes an explicit sparse positive hypergraph and an explicit proof that every nonempty proper cut has the same positive value. It does not construct PkgC, derive the hypergraph from a terminal candidate or the V54 consumer system, build BN6 cells or payloads, complete global routes, selectors, or realizers, establish polynomial generation or runtime, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -889,15 +907,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "dd7b9be6ad6d05d516da2baf48813ae608c4e46d");
+  assert.equal(result.coreCommit, "8e38de05d9e1b3066484c9fc5555813997076d02");
 });
 
-test("current release is pinned, eighty-four-page, exposes the finite V54 normal form, and fails closed", () => {
+test("current release is pinned, eighty-four-page, exposes finite V53 rigidity, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-110");
-  assert.equal(release.source.commit, "dd7b9be6ad6d05d516da2baf48813ae608c4e46d");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-111");
+  assert.equal(release.source.commit, "8e38de05d9e1b3066484c9fc5555813997076d02");
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
-  assert.equal(release.source.tree, "d755c0b1ab7e407e11ce03428e7f1e68a03ca645");
+  assert.equal(release.source.tree, "1aca9eafba5ac7a0aaf6d2fe63774a479ac24126");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.equal(release.artifacts.report.pageCount, 84);
@@ -2966,6 +2984,27 @@ test("current release is pinned, eighty-four-page, exposes the finite V54 normal
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormIffTheorem, "PNP.DirectWire.terminalV54_consumerAntichain_normal_form_iff");
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormTheorem, "PNP.DirectWire.terminalV54_consumerAntichain_normal_form");
 
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityAuditedDeclarationCount, 58);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityEmptyAxiomDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityPropextOnlyDeclarationCount, 18);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityPropextQuotSoundDeclarationCount, 31);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityScope, RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityTheoremKernelTypeSha256, RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityCellPartitionTheorem, "PNP.DirectWire.TerminalV53Hypergraph.cell_partition");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityCutPartitionTheorem, "PNP.DirectWire.TerminalV53Hypergraph.cut_partition");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityPairComplementIdentityTheorem, "PNP.DirectWire.TerminalV53Hypergraph.pair_complement_identity");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigiditySharedPairWeightsTheorem, "PNP.DirectWire.TerminalV53Hypergraph.pairWeights_equal_of_shared");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityFourAnchorPairWeightZeroTheorem, "PNP.DirectWire.TerminalV53Hypergraph.pairWeight_eq_zero_of_four");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityFourAnchorProperFootprintZeroTheorem, "PNP.DirectWire.TerminalV53Hypergraph.properFootprintWeight_eq_zero_of_four");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityTwoAnchorFullWeightTheorem, "PNP.DirectWire.TerminalV53Hypergraph.twoAnchor_fullWeight");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityThreeAnchorRigidityTheorem, "PNP.DirectWire.TerminalV53Hypergraph.threeAnchor_rigidity");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityFourAnchorRigidityTheorem, "PNP.DirectWire.TerminalV53Hypergraph.fourAnchor_rigidity");
+  assert.equal(release.earnedBoundary.residualTerminalV53ConstantCutHypergraphRigidityTheorem, "PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -2979,7 +3018,7 @@ test("current release is pinned, eighty-four-page, exposes the finite V54 normal
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-v54-consumer-antichain-normal-form$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-v53-constant-cut-hypergraph-rigidity$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -3012,12 +3051,12 @@ test("current release is pinned, eighty-four-page, exposes the finite V54 normal
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 105 milestones with the finite V54 normal form pinned", () => {
+test("status and inventory publish exactly 106 milestones with finite V53 rigidity pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 105);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 103);
+  assert.equal(milestones.length, 106);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 104);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -4178,6 +4217,43 @@ test("status and inventory publish exactly 105 milestones with the finite V54 no
     status.leanResidualTerminalConsumerAntichainNormalFormScope,
     RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_SCOPE
   );
+
+  const v53ConstantCutHypergraphRigidity = milestones.find(
+    (row) => row.id === "residual-terminal-constant-cut-hypergraph-rigidity"
+  );
+  assert.equal(v53ConstantCutHypergraphRigidity.classification, "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity");
+  assert.equal(v53ConstantCutHypergraphRigidity.status, "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity");
+  assert.equal(v53ConstantCutHypergraphRigidity.earned, true);
+  assert.equal(v53ConstantCutHypergraphRigidity.allPresent, true);
+  assert.equal(v53ConstantCutHypergraphRigidity.allAssumptionFree, false);
+  assert.equal(v53ConstantCutHypergraphRigidity.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(v53ConstantCutHypergraphRigidity.allKernelTypesMatch, true);
+  assert.equal(v53ConstantCutHypergraphRigidity.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    v53ConstantCutHypergraphRigidity.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(
+      v53ConstantCutHypergraphRigidity.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+    ),
+    RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_HASHES
+  );
+  for (const row of v53ConstantCutHypergraphRigidity.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(v53ConstantCutHypergraphRigidity.scope, RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_MILESTONE_SCOPE);
+  assert.equal(v53ConstantCutHypergraphRigidity.nonClaim, RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityFormalized, true);
+  assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalConstantCutHypergraphRigidityScope, RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
@@ -4199,21 +4275,21 @@ test("status and inventory publish exactly 105 milestones with the finite V54 no
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 27193);
-  assert.equal(inventory.theoremCount, 14163);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7264);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14995);
-  assert.equal(inventory.sourceClosureModuleCount, 244);
-  assert.equal(inventory.milestoneCandidates.length, 2530);
+  assert.equal(inventory.declarationCount, 27348);
+  assert.equal(inventory.theoremCount, 14272);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7281);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14996);
+  assert.equal(inventory.sourceClosureModuleCount, 245);
+  assert.equal(inventory.milestoneCandidates.length, 2540);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 846,
-    definition: 11408,
-    inductive: 386,
+    constructor: 848,
+    definition: 11448,
+    inductive: 388,
     opaque: 0,
     quotient: 0,
-    recursor: 386,
-    theorem: 14163
+    recursor: 388,
+    theorem: 14272
   });
 });
 

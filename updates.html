@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 88% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 89% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="88" aria-label="Estimated proof reconstruction progress: 88 percent">88%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 88 percent">
+        <progress class="proof-progress-meter" max="100" value="89" aria-label="Estimated proof reconstruction progress: 89 percent">89%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 89 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-11-residual-terminal-constant-cut-hypergraph-rigidity" data-milestone-id="residual-terminal-constant-cut-hypergraph-rigidity">
+        <div class="section-label"><time datetime="2026-08-11T11:31:58Z">2026-08-11</time> · earned milestone 104</div>
+        <h2>Lean now proves finite V53 constant-cut hypergraph rigidity</h2>
+        <p>For an arbitrary finite duplicate-free carrier and an explicitly supplied sparse positive weighted hypergraph, Lean now classifies every case in which all nonempty proper cuts have the same positive value. With two anchors the full-span weight is that value. With three anchors all pair weights agree and the full-span weight plus twice the common pair weight is that value. With four or more anchors every proper footprint has zero weight and the full-span weight is that value.</p>
+        <p>The hypergraph and constant-cut proof remain explicit inputs. Lean has not constructed PkgC, derived the hypergraph from terminal candidates or the V54 consumer system, built BN6 cells or payloads, completed global routes, ZeroSlack, PCCMin, or polynomial runtime, put SAT in P, removed a project assumption, or proved P = NP. The 89% figure is a revisable editorial estimate of known reconstruction work, separate from the 104 of 106 scoped formal-publication rows and not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 89%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-constant-cut-hypergraph-rigidity</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity</p>
+          <p><strong>Verified scope:</strong> For an arbitrary finite duplicate-free carrier and sparse nonnegative weighted hypergraph with positive listed cells, exact equality of every nonempty proper cut proves the complete V53 q=2, q=3, and q&gt;=4 classification: full-span weight D; one common pair weight p with w_A + 2p = D; or zero weight on every proper footprint with full-span weight D.</p>
+          <p><strong>Boundary:</strong> This theorem consumes an explicit sparse positive hypergraph and an explicit proof that every nonempty proper cut has the same positive value. It does not construct PkgC, derive the hypergraph from a terminal candidate or the V54 consumer system, build BN6 cells or payloads, complete global routes, selectors, or realizers, establish polynomial generation or runtime, prove ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 10</p>
+          <p><strong>Core source:</strong> commit <code>8e38de05d9e1b3066484c9fc5555813997076d02</code>, tree <code>1aca9eafba5ac7a0aaf6d2fe63774a479ac24126</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-128</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-11-residual-terminal-consumer-antichain-normal-form" data-milestone-id="residual-terminal-consumer-antichain-normal-form">
         <div class="section-label"><time datetime="2026-08-11T07:40:05Z">2026-08-11</time> · earned milestone 103</div>
         <h2>Lean now proves one finite V54 consumer-antichain normal form</h2>

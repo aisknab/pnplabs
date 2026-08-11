@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now proves one finite V54 consumer-antichain normal form</h2>
-          <p>For an arbitrary finite carrier and an explicitly supplied antichain of minimal consumers, Lean now proves that requests are monotone, the empty request is inactive, and two-sided cut activation is nonzero exactly when two consumers are disjoint. Under the manuscript's exact PkgC singletonization premise, Lean also proves literal equality with the cut indicator of the singleton footprint.</p>
-          <p>The antichain and singletonization proof remain explicit inputs. Lean has not constructed PkgC or route silence, derived these inputs from terminal candidates, completed V53 or BN6, established complete global routes, polynomial runtime, ZeroSlack, PCCMin, SAT in P, removal of a project assumption, or P = NP. The 88% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-11-residual-terminal-consumer-antichain-normal-form">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now proves finite V53 constant-cut hypergraph rigidity</h2>
+          <p>For an arbitrary finite duplicate-free carrier and an explicit sparse positive weighted hypergraph whose nonempty proper cuts all have the same positive value, Lean now proves the complete two-anchor, three-anchor, and four-or-more-anchor classification. The cases identify the exact full-span weight, the common pair weight when three anchors remain, and the disappearance of every proper-footprint weight from four anchors onward.</p>
+          <p>The hypergraph and constant-cut proof remain explicit inputs. Lean has not constructed PkgC, derived the hypergraph from terminal candidates or the V54 consumer system, built BN6 cells or payloads, established complete global routes, polynomial runtime, ZeroSlack, PCCMin, SAT in P, removal of a project assumption, or P = NP. The 89% figure is a revisable editorial estimate, separate from the 104 of 106 scoped formal-publication rows and not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-11-residual-terminal-constant-cut-hypergraph-rigidity">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> from an explicit finite antichain of minimal consumers, Lean proves that two-sided cut activation is nonzero exactly when two consumers are disjoint and, under the exact singletonization premise, equals the singleton-footprint cut indicator. The theorem <code>PNP.DirectWire.terminalV54_consumerAntichain_normal_form</code>'s compiled closure uses only <code>Quot.sound</code> and <code>propext</code>. It does not construct PkgC or route silence, derive the antichain or singletonization proof from terminal candidates, complete V53 or BN6, complete decreasing global routing, prove selector or realizer completeness, establish global ZeroSlack or polynomial PCCMin, provide a target decider or discharged axiom boundary, or prove P = NP.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> from an explicit finite sparse positive weighted hypergraph and an exact constant-cut proof, Lean classifies the two-anchor, three-anchor, and four-or-more-anchor cases. The theorem <code>PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity</code>'s compiled closure uses only <code>Quot.sound</code> and <code>propext</code>. It does not construct PkgC, derive the hypergraph from terminal candidates or V54, build BN6 payloads, complete decreasing global routing, prove selector or realizer completeness, establish global ZeroSlack or polynomial PCCMin, provide a target decider or discharged axiom boundary, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -323,6 +323,9 @@ leanResidualTerminalBN5FullShadowLocalizationScope = "all-finite-exact-coordinat
 leanResidualTerminalConsumerAntichainNormalFormFormalized = true
 leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = true
 leanResidualTerminalConsumerAntichainNormalFormScope = "all-finite-minimal-consumer-antichains-monotone-empty-false-nonzero-iff-disjoint-and-pkgc-singletonized-exact-v54-consumer-antichain-cut-indicator"
+leanResidualTerminalConstantCutHypergraphRigidityFormalized = true
+leanResidualTerminalConstantCutHypergraphRigidityAxiomAuditPassed = true
+leanResidualTerminalConstantCutHypergraphRigidityScope = "all-finite-nonnegative-weighted-hypergraphs-constant-cut-hypergraph-rigidity-v53-q2-q3-q4-classification"
 leanSaturatePositiveFormalized = false
 leanBCELReadyFormalized = false
 leanResidualRoutesGlobalGainCompletenessFormalized = false
@@ -341,9 +344,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-11-126</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-11-127</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c</code></div>
+            <div><span>Inventory SHA-256</span><code>3d770295f55293a4775921e965907ef6e59faa3129fc5f387bf3f24c19fa6d85</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -351,19 +354,19 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>88</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>89</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 88 percent" data-proof-progress="88">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>88</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 89 percent" data-proof-progress="89">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>89</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 88% of the known formalisation work</h2>
-          <p>This is a revisable estimate of reconstruction work completed, not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
+          <h2 id="home-progress-title">About 89% of the known formalisation work</h2>
+          <p>This is a revisable editorial estimate of reconstruction work completed. It is separate from the 104 of 106 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
         <div class="home-progress-actions">
@@ -393,7 +396,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now connects CNF-SAT through exact polynomial reductions, not to an efficient solver.</h2><p>One checked machine reduces canonical CNF satisfiability to encoded NAND-circuit satisfiability, and the existing strict parser/emitter reduction carries that result into <code>EncodedLockedNANDThreshold</code>. The target threshold problem is not yet proved efficiently solvable, the abstract threshold assumption and global ZeroSlack obligations remain open, and there is no eligible P = NP root theorem.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now proves the V53 constant-cut classification, but not the construction that would supply it.</h2><p>The new arbitrary-finite theorem exactly classifies every sparse positive weighted hypergraph with one common nonempty proper-cut value. The hypergraph and constant-cut proof are still inputs: PkgC construction, its connection from V54 and terminal candidates, BN6 payloads, complete global routing, an efficient <code>EncodedLockedNANDThreshold</code> target solver, global ZeroSlack, polynomial PCCMin, and an eligible P = NP root theorem remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>
