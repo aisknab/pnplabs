@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'fbd4614c550813bc8deff259f9442b37336efb40be3835e07880842c8e8a3be7');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 102);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 103);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
 });
 
@@ -643,6 +643,35 @@ test('residual terminal RankWF requires its exact conservative boundary', () => 
     (row) => row.name === 'PNP.DirectWire.terminalResidualRankLexLT_wellFounded'
   ).axioms = ['PNP.CheckPCCPackexp'];
   assert.equal(validation.validateInventory(forgedInventory), false);
+});
+
+test('V54 consumer-antichain normal form is fail closed and requires its exact boundary', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  assert.equal(failClosed.leanResidualTerminalConsumerAntichainNormalFormFormalized, false);
+  assert.equal(failClosed.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed, false);
+  assert.equal(failClosed.leanResidualTerminalConsumerAntichainNormalFormScope, null);
+  assert.match(
+    validation.formalStatusFields(failClosed),
+    /leanResidualTerminalConsumerAntichainNormalFormFormalized = false/u
+  );
+
+  const erasedAudit = structuredClone(status);
+  erasedAudit.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(erasedAudit, inventory), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
+  ).scope = 'A complete PkgC and BN6 construction.';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
+  ).theoremRows.find(
+    (row) => row.name === 'PNP.DirectWire.terminalV54_consumerAntichain_normal_form'
+  ).actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
 });
 
 test('null publication fingerprints never match null', () => {
@@ -3442,7 +3471,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '1e02d5abeb1d1b3138e8b59c4926a037c7653617720eb85a1efc25a1bb487cc8'/);
+  assert.match(source, /const STATUS_SHA256 = '7b042bf47d86f20dbdb914d61c1ef84d39da0449692cde58cff223bcc50dcf3e'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3720,10 +3749,12 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /27,129/);
-  assert.match(statusPage, /One hundred and two scoped milestones/);
+  assert.match(statusPage, /27,193/);
+  assert.match(statusPage, /One hundred and three scoped milestones/);
   assert.match(statusPage, /finite BN5 full-shadow localization kernel/i);
   assert.match(statusPage, /strict Hall deficit/i);
+  assert.match(statusPage, /V54 consumer-antichain normal form/i);
+  assert.match(statusPage, /terminalV54_consumerAntichain_normal_form/);
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

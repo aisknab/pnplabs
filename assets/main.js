@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-126';
-const STATUS_SHA256 = '1e02d5abeb1d1b3138e8b59c4926a037c7653617720eb85a1efc25a1bb487cc8';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-126';
-const FORMAL_PUBLICATION_MAP_SHA256 = 'c4c3f6234e7bf80626d9e271991cea7ffdf00fe90c49c805c42e4a00628e59a3';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-127';
+const STATUS_SHA256 = '7b042bf47d86f20dbdb914d61c1ef84d39da0449692cde58cff223bcc50dcf3e';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-127';
+const FORMAL_PUBLICATION_MAP_SHA256 = '2935c7cb045d0f7ac2bb9baa98ffa7044543c410c84831fc9db36da66b47d157';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-125';
-const INVENTORY_SHA256 = 'fbd4614c550813bc8deff259f9442b37336efb40be3835e07880842c8e8a3be7';
-const SOURCE_CLOSURE_SHA256 = 'c939e940c892279b3845b2d30dc0baa724d53b6f9a6249ccfa2900c7c00cb00f';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-126';
+const INVENTORY_SHA256 = '884d84ade0af3ce3d588c6bba011fd21ec0fb7fdf0b0d1fee5d156f051002a8c';
+const SOURCE_CLOSURE_SHA256 = 'a6aaa00d8faa48ed1d51bb0346363956d4cd2de8a14ecbe043458831d896dd02';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 27129,
-  theorems: 14125,
-  assumptionFreeTheorems: 7249,
+  declarations: 27193,
+  theorems: 14163,
+  assumptionFreeTheorems: 7264,
   excludedPrivateDeclarations: 14995,
-  modules: 243,
+  modules: 244,
   axioms: 4,
 });
 
@@ -3944,6 +3944,16 @@ const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_DECLARATIONS = Object.freez
   ["PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
 ]);
 
+const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone", [], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+  ["PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_empty_false", ["propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+  ["PNP.DirectWire.TerminalV54ConsumerSystem.consumer_is_minimal", [], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+  ["PNP.DirectWire.TerminalV54ConsumerSystem.cutActive_has_disjoint_consumers", ["Quot.sound", "propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+  ["PNP.DirectWire.terminalV54_cutActivation_nonzero_iff_disjoint_consumers", ["Quot.sound", "propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+  ["PNP.DirectWire.terminalV54_consumerAntichain_normal_form_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+  ["PNP.DirectWire.terminalV54_consumerAntichain_normal_form", ["Quot.sound", "propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -4493,6 +4503,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-bn3-request-envelope',
   'residual-terminal-bn4-activation-cancellation',
   'residual-terminal-bn5-full-shadow-localization',
+  'residual-terminal-consumer-antichain-normal-form',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4937,6 +4948,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalBN5FullShadowLocalizationFormalized: false,
   leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed: false,
   leanResidualTerminalBN5FullShadowLocalizationScope: null,
+  leanResidualTerminalConsumerAntichainNormalFormFormalized: false,
+  leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed: false,
+  leanResidualTerminalConsumerAntichainNormalFormScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5463,6 +5477,9 @@ leanResidualTerminalBN4ActivationCancellationScope = ${payload.leanResidualTermi
 leanResidualTerminalBN5FullShadowLocalizationFormalized = ${payload.leanResidualTerminalBN5FullShadowLocalizationFormalized ?? false}
 leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed = ${payload.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed ?? false}
 leanResidualTerminalBN5FullShadowLocalizationScope = ${payload.leanResidualTerminalBN5FullShadowLocalizationScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBN5FullShadowLocalizationScope)}
+leanResidualTerminalConsumerAntichainNormalFormFormalized = ${payload.leanResidualTerminalConsumerAntichainNormalFormFormalized ?? false}
+leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = ${payload.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed ?? false}
+leanResidualTerminalConsumerAntichainNormalFormScope = ${payload.leanResidualTerminalConsumerAntichainNormalFormScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalConsumerAntichainNormalFormScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5560,13 +5577,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 845,
-    definition: 11385,
-    inductive: 385,
+    constructor: 846,
+    definition: 11408,
+    inductive: 386,
     opaque: 0,
     quotient: 0,
-    recursor: 385,
-    theorem: 14125,
+    recursor: 386,
+    theorem: 14163,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6045,6 +6062,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalV54ConsumerAntichainNormalForm =
+    RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6459,6 +6482,9 @@ function validateInventory(inventory) {
     && residualTerminalBN5FullShadowLocalization.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalV54ConsumerAntichainNormalForm.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6504,7 +6530,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2523
+    && inventory.milestoneCandidates.length === 2530
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6568,7 +6594,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 102;
+    const shouldBeEarned = index < 103;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6702,6 +6728,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalBN5FullShadowLocalizationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-bn5-full-shadow-localization'
+  );
+  const residualTerminalV54ConsumerAntichainNormalFormMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7190,6 +7219,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalBN5FullShadowLocalizationFormalized === true
     && status.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed === true
     && status.leanResidualTerminalBN5FullShadowLocalizationScope === "all-finite-exact-coordinate-negative-unit-refinements-computed-cut-silence-complete-multiplicity-coverage-or-strict-hall-deficit-with-local-x1-nonsilence"
+    && residualTerminalV54ConsumerAntichainNormalFormMilestone?.classification === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
+    && residualTerminalV54ConsumerAntichainNormalFormMilestone.status === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
+    && residualTerminalV54ConsumerAntichainNormalFormMilestone.scope === "For an arbitrary finite carrier and its explicit minimal-consumer antichain, Lean proves monotonicity and empty-request inactivity, proves that nonzero two-sided cut activation is equivalent to the existence of a disjoint consumer pair, and under the exact singletonized-disjoint-pair premise proves literal equality with the corresponding footprint cut indicator."
+    && residualTerminalV54ConsumerAntichainNormalFormMilestone.nonClaim === "This finite kernel starts from an explicit minimal-consumer antichain and an explicit proof that every disjoint consumer pair is singletonized. It does not construct PkgC, derive that singletonization premise, or connect the footprint back to the full BN6 proof. It does not construct complete global routes, selectors, or realizers; establish polynomial generation or runtime, ZeroSlack, or PCCMin; put SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalV54ConsumerAntichainNormalFormMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalConsumerAntichainNormalFormFormalized === true
+    && status.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed === true
+    && status.leanResidualTerminalConsumerAntichainNormalFormScope === "all-finite-minimal-consumer-antichains-monotone-empty-false-nonzero-iff-disjoint-and-pkgc-singletonized-exact-v54-consumer-antichain-cut-indicator"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7215,6 +7255,7 @@ function validateStatus(status, inventory) {
     && status.nonClaims?.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.')
     && status.nonClaims?.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.')
     && status.nonClaims?.includes('The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, PkgC, BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
+    && status.nonClaims?.includes('The arbitrary-finite V54 consumer-antichain normal form proves that two-sided activation is nonzero exactly when a minimal-consumer antichain has a disjoint pair and, under the exact PkgC singletonization premise, is literally the cut indicator of the singleton footprint. It consumes an explicit minimal-consumer antichain; PkgC construction and route silence, derivation from terminal candidates, V53, BN6, global routes, selectors, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true
