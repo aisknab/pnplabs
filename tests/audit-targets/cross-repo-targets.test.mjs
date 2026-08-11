@@ -2047,6 +2047,32 @@ const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NEW_CANDIDATES =
 assert.equal(RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREM_NAMES.length, 13);
 assert.equal(RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_CANDIDATES.length, 13);
 assert.equal(RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NEW_CANDIDATES.length, 13);
+const PUBLISHED_RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-bn5-full-shadow-localization"
+  );
+assert.ok(PUBLISHED_RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE);
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_HASHES = Object.fromEntries(
+  PUBLISHED_RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE.theoremRows.map(
+    (row) => [row.name, row.expectedKernelTypeSha256]
+  )
+);
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_NAMES = Object.keys(
+  RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_HASHES
+);
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_CANDIDATES =
+  publishedInventory.milestoneCandidates.filter(
+    (candidate) => RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_NAMES.includes(candidate.name)
+  );
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_PREVIOUS_THEOREM_NAMES =
+  earnedTheoremNamesBefore("residual-terminal-bn5-full-shadow-localization");
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NEW_CANDIDATES =
+  RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_CANDIDATES.filter(
+    (candidate) => !RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_PREVIOUS_THEOREM_NAMES.has(candidate.name)
+  );
+assert.equal(RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_NAMES.length, 12);
+assert.equal(RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_CANDIDATES.length, 12);
+assert.equal(RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NEW_CANDIDATES.length, 12);
 const PUBLISHED_LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE =
   publishedStatus.formalPublicationMilestones.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -2095,6 +2121,17 @@ const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_STATUS_FIELDS = Object.fromE
     return [key, publishedStatus[key]];
   })
 );
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_STATUS_KEYS = [
+  "leanResidualTerminalBN5FullShadowLocalizationFormalized",
+  "leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed",
+  "leanResidualTerminalBN5FullShadowLocalizationScope"
+];
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 
 const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
   Object.entries(publishedRelease.earnedBoundary).filter(([key]) => [
@@ -2111,6 +2148,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalRankWF",
     "residualTerminalBN3RequestEnvelope",
     "residualTerminalBN4ActivationCancellation",
+    "residualTerminalBN5FullShadowLocalization",
     "residualTerminalPrimitiveUniverse",
     "residualTerminalExecutableSaturation",
     "residualTerminalPhysical",
@@ -2219,6 +2257,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_RANK_WF_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_STATUS_FIELDS,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -2924,28 +2963,28 @@ function makeProject(t) {
   statusPayload.formalPublicationMilestones = publishedStatus.formalPublicationMilestones.map(
     (row) => structuredClone(explicitStatusMilestones.get(row.id) ?? row)
   );
-  assert.equal(statusPayload.formalPublicationMilestones.length, 103, "synthetic status must match the published milestone count");
-  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 101, "synthetic status must match the published earned-milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.length, 104, "synthetic status must match the published milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 102, "synthetic status must match the published earned-milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, 2, "synthetic status must retain every fail-closed milestone");
   const status = json(statusPayload);
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
-    declarationCount: 26851,
-    theoremCount: 14025,
-    assumptionFreeTheoremCount: 7197,
-    excludedPrivateDeclarationCount: 14947,
-    sourceClosureModuleCount: 242,
+    declarationCount: 27129,
+    theoremCount: 14125,
+    assumptionFreeTheoremCount: 7249,
+    excludedPrivateDeclarationCount: 14995,
+    sourceClosureModuleCount: 243,
     axiomCount: 4,
     declarationKindCounts: {
       axiom: 4,
-      constructor: 832,
-      definition: 11236,
-      inductive: 377,
+      constructor: 845,
+      definition: 11385,
+      inductive: 385,
       opaque: 0,
       quotient: 0,
-      recursor: 377,
-      theorem: 14025
+      recursor: 385,
+      theorem: 14125
     },
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -3145,7 +3184,10 @@ function makeProject(t) {
       axioms: []
     }
   };
-  assert.equal(inventoryPayload.milestoneCandidates.length, 2511, "synthetic inventory must match the published reviewed-candidate count");
+  inventoryPayload.milestoneCandidates.push(
+    ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NEW_CANDIDATES
+  );
+  assert.equal(inventoryPayload.milestoneCandidates.length, 2523, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
   const publicationMap = json({
     kind: "TestPublicationMap",
@@ -3266,6 +3308,7 @@ function makeProject(t) {
       ...RESIDUAL_TERMINAL_RANK_WF_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREM_HASHES,
+      ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_HASHES,
       ...LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREM_HASHES
     },
     milestones: [{
@@ -9655,6 +9698,64 @@ test("rejects residual terminal BN4 activation-cancellation release, status, inv
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal BN4 activation-cancellation fingerprint mismatch/);
+});
+
+test("rejects residual terminal BN5 full-shadow-localization release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalBN5FullShadowLocalizationFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal BN5 full-shadow localization boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualTerminalBN5FullShadowLocalizationTheoremKernelTypeSha256[
+    "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual terminal BN5 full-shadow localization fingerprint mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.residualTerminalBN5FullShadowLocalizationClassifierTheorem =
+    "PNP.DirectWire.classifyTerminalBN4ActivationCancellation_exhaustive";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /current manifest residual terminal BN5 full-shadow localization theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal BN5 full-shadow localization evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-bn5-full-shadow-localization"
+  ).nonClaim = "This establishes the full historical BN5 theorem, PkgC, BN6, and P = NP.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal BN5 full-shadow localization publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal BN5 full-shadow localization theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === "residual-terminal-bn5-full-shadow-localization"
+  ).scope = "full-historical-bn5-through-bn6";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal BN5 full-shadow localization boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal BN5 full-shadow localization fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

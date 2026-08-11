@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-11-residual-terminal-bn5-full-shadow-localization",
+      "milestoneId": "residual-terminal-bn5-full-shadow-localization",
+      "publishedAt": "2026-08-11T04:17:43Z",
+      "title": "Lean now checks one finite BN5 full-shadow localization",
+      "plainLanguage": [
+        "Starting from one verified negative BN4 cancellation result, Lean now expands its mass into explicit unit records and compares those records with an explicit finite list of quotient-shadow coordinates. It checks whether the chosen cut is silent. When it is active, the classifier either returns complete multiplicity coverage or proves a strict Hall deficit: a specific group of full records has fewer distinct shadow neighbours, and the resulting local route cannot disappear silently.",
+        "The payloads, cut, and shadow universe remain explicit inputs rather than constructions from the four-corner bases. Complete matching is not yet connected back to a BN4 contradiction, and the full historical BN5 diagnosis, later package and BN6 stages, complete global routing, polynomial runtime, ZeroSlack, PCCMin, SAT in P, removal of a project assumption, and P = NP remain unproved. The 87% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 87,
+      "source": {
+        "commit": "b829e62744c3e645726f7cba9875fe6926a6b207",
+        "tree": "dc1e76c188b26b9311b2a65f8a8376f497cdd69d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-126",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-11-residual-terminal-bn4-activation-cancellation",
       "milestoneId": "residual-terminal-bn4-activation-cancellation",
       "publishedAt": "2026-08-11T00:32:18Z",

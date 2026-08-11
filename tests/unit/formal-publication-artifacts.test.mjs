@@ -831,7 +831,27 @@ const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_HASHES = Object.fromEntries(
 );
 const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_SCOPE = "successful-computed-finite-bn3-envelope-explicit-typed-cell-ledgers-activation-exact-complete-key-same-key-cancellation-and-exact-integer-mass-residuals";
 const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_MILESTONE_SCOPE = "After a successful computed finite BN3 envelope, Lean gives every request atom a canonical singleton activation code; proves activation-code equality exactly equivalent to equality of activation functions without enumerating cuts; checks equality of a complete typed key containing the atom, explicit semantic signature, and explicit transport type; totals positive and negative natural mass only at that same complete key; classifies a canonical balanced, positive, or negative residual; proves exact integer mass conservation, complete-key preservation, positive residual mass, and absence of opposite-sign residual pairs; computes duplicate-free ledger keys; and preserves all upstream failure branches while rejecting foreign request atoms.";
-const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NON_CLAIM = "This is a finite cancellation kernel over an explicit typed cell ledger. It does not derive cells, semantic signatures, or transport types from four-corner bases and is not the full historical BN4 theorem. It supplies no polynomial construction or size bound; does not construct BN5, PkgC, or BN6; does not complete global routes, selectors, or realizers; does not establish ZeroSlack or PCCMin; does not put SAT in P; does not remove a project assumption; and does not prove P = NP.";
+const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NON_CLAIM = "This is a finite cancellation kernel over an explicit typed cell ledger. It does not derive cells, semantic signatures, or transport types from four-corner bases and is not the full historical BN4 theorem. It supplies no polynomial construction or size bound; does not construct PkgC or BN6; does not complete global routes, selectors, or realizers; does not establish ZeroSlack or PCCMin; does not put SAT in P; does not remove a project assumption; and does not prove P = NP.";
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREMS = {
+  "PNP.DirectWire.terminalBN5ShadowCoordinate_eq_iff": { hash: "8bff617398ee48e2e0b703c252fe76e54989a81857c112937a71e1544db6ce92", axioms: [], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.terminalBN5FullUnits_length": { hash: "7310efd9f63c51b5578b5b680e2f132235c239111bc3e0fc532131a8a08e846d", axioms: ["propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.terminalBN5FullUnits_key_eq": { hash: "7de16fa934c64198752a28206304e046a6a0d894436f6624ca8aa688447459d9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.TerminalBN5HallDeficit.neighbor_card_lt_full_card": { hash: "d39739401d983bac70c43eb4ea55463b5880586f7f617626023feab137f7e890", axioms: [], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.TerminalBN5HallDeficit.fullSubset_coordinate_eq": { hash: "935e457ede4a6d839787b1c563f1fe9b5c48813b2e1d8dbcfac865dabbb44bf3", axioms: ["propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.TerminalBN5HallDeficit.neighbor_coordinate_eq": { hash: "7a044d854c4d37be35b31bea28997ea235d7e088d18f859df8d6c7316b6cda5f", axioms: ["propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.classifyTerminalBN5ShadowMatching_exhaustive": { hash: "daa39d3dc5252bc6eafa09474a9f1f91642c40957251fe7d69b1db28bbd35e29", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.TerminalBN4KeyCancellation.negativeResidualMass?_positive": { hash: "dd8fcb3c7caa6eefd822407110d5621906a6a3f812f651d52ff2d0a5d6c07c9d", axioms: ["propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.TerminalBN5HallDeficit.namedLocalRoute_eq_x1Hall": { hash: "76b66e4be0893605464be5e7498b300a796a6913b5194e09577eae4b00b17e04", axioms: [], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_active": { hash: "022b89b6ed7a65c81d886a4467cea34ee98e37c50fae199996774070ca7b52d4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.TerminalBN5HallDeficit.unmatchedShadowNotSilent": { hash: "1472e6b4b8992222aac9a8a93b52fd0cce8b696f13bc5d2403ff321462be823f", axioms: [], module: "PNP.ResidualTerminalBN5FullShadowLocalization" },
+  "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive": { hash: "be1af480ae6864a553e86c154bcbc67ac7b72b01df96b5580c9b9eadeebb4cc3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN5FullShadowLocalization" }
+};
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_SCOPE = "all-finite-exact-coordinate-negative-unit-refinements-computed-cut-silence-complete-multiplicity-coverage-or-strict-hall-deficit-with-local-x1-nonsilence";
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE_SCOPE = "For every explicit finite negative-unit refinement and quotient-shadow ledger, Lean preserves the complete exact-coordinate data, validates the negative mass refinement, computes whether the cut is silent, and otherwise returns either complete multiplicity coverage or a strict Hall deficit with a literal smaller shadow-neighbor fibre, complete-coordinate preservation, and a proof-bearing local X1 route that prevents active unmatched units from disappearing silently.";
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NON_CLAIM = "This kernel starts from explicit finite inputs: one complete BN4 key, a negative cancellation result, a payload list, a cut, and a quotient-shadow coordinate list. It does not derive payloads or shadows from four-corner bases, connect complete matching back to a BN4 contradiction, or prove the full CritC/Q/E/L/X2/X3/X4 diagnosis, so it is not the full historical BN5 theorem. It does not construct PkgC or BN6; complete global routes, selectors, or realizers; establish polynomial generation or runtime, ZeroSlack, or PCCMin; put SAT in P; remove a project assumption; or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -854,18 +874,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "ef94583b39f7050953a78a7a6e0ad431cd2eb459");
+  assert.equal(result.coreCommit, "b829e62744c3e645726f7cba9875fe6926a6b207");
 });
 
-test("current release is pinned, eighty-three-page, exposes finite BN4 cancellation, and fails closed", () => {
+test("current release is pinned, eighty-four-page, exposes finite BN5 localization, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-108");
-  assert.equal(release.source.commit, "ef94583b39f7050953a78a7a6e0ad431cd2eb459");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-109");
+  assert.equal(release.source.commit, "b829e62744c3e645726f7cba9875fe6926a6b207");
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
-  assert.equal(release.source.tree, "b82aecb1817c83a2b3ec840680aa0f9a9f31870b");
+  assert.equal(release.source.tree, "dc1e76c188b26b9311b2a65f8a8376f497cdd69d");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 83);
+  assert.equal(release.artifacts.report.pageCount, 84);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -2896,6 +2916,23 @@ test("current release is pinned, eighty-three-page, exposes finite BN4 cancellat
   assert.deepEqual(release.earnedBoundary.residualTerminalBN4ActivationCancellationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationClassifierTheorem, "PNP.DirectWire.classifyTerminalBN4ActivationCancellation_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationAuditedDeclarationCount, 40);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationEmptyAxiomDeclarationCount, 23);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationPropextOnlyDeclarationCount, 11);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationPropextQuotSoundDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationScope, RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationTheoremKernelTypeSha256, RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationCoordinateTheorem, "PNP.DirectWire.terminalBN5ShadowCoordinate_eq_iff");
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationFullUnitsTheorem, "PNP.DirectWire.terminalBN5FullUnits_key_eq");
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationHallDeficitTheorem, "PNP.DirectWire.TerminalBN5HallDeficit.neighbor_card_lt_full_card");
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationMatchingClassifierTheorem, "PNP.DirectWire.classifyTerminalBN5ShadowMatching_exhaustive");
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationActiveTheorem, "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_active");
+  assert.equal(release.earnedBoundary.residualTerminalBN5FullShadowLocalizationClassifierTheorem, "PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -2909,7 +2946,7 @@ test("current release is pinned, eighty-three-page, exposes finite BN4 cancellat
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn4-activation-cancellation$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn5-full-shadow-localization$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -2942,12 +2979,12 @@ test("current release is pinned, eighty-three-page, exposes finite BN4 cancellat
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 103 milestones with finite BN4 cancellation pinned", () => {
+test("status and inventory publish exactly 104 milestones with finite BN5 localization pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 103);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 101);
+  assert.equal(milestones.length, 104);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 102);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -4028,6 +4065,46 @@ test("status and inventory publish exactly 103 milestones with finite BN4 cancel
     status.leanResidualTerminalBN4ActivationCancellationScope,
     RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_SCOPE
   );
+
+  const bn5FullShadowLocalization = milestones.find(
+    (row) => row.id === "residual-terminal-bn5-full-shadow-localization"
+  );
+  assert.equal(bn5FullShadowLocalization.classification, "formalized-residual-terminal-bn5-full-shadow-localization");
+  assert.equal(bn5FullShadowLocalization.status, "formalized-residual-terminal-bn5-full-shadow-localization");
+  assert.equal(bn5FullShadowLocalization.earned, true);
+  assert.equal(bn5FullShadowLocalization.allPresent, true);
+  assert.equal(bn5FullShadowLocalization.allAssumptionFree, false);
+  assert.equal(bn5FullShadowLocalization.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(bn5FullShadowLocalization.allKernelTypesMatch, true);
+  assert.equal(bn5FullShadowLocalization.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    bn5FullShadowLocalization.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(
+      bn5FullShadowLocalization.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+    ),
+    RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_HASHES
+  );
+  for (const row of bn5FullShadowLocalization.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(bn5FullShadowLocalization.scope, RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE_SCOPE);
+  assert.equal(bn5FullShadowLocalization.nonClaim, RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalBN5FullShadowLocalizationFormalized, true);
+  assert.equal(status.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalBN5FullShadowLocalizationScope,
+    RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_SCOPE
+  );
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
@@ -4049,21 +4126,21 @@ test("status and inventory publish exactly 103 milestones with finite BN4 cancel
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 26851);
-  assert.equal(inventory.theoremCount, 14025);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7197);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14947);
-  assert.equal(inventory.sourceClosureModuleCount, 242);
-  assert.equal(inventory.milestoneCandidates.length, 2511);
+  assert.equal(inventory.declarationCount, 27129);
+  assert.equal(inventory.theoremCount, 14125);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7249);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14995);
+  assert.equal(inventory.sourceClosureModuleCount, 243);
+  assert.equal(inventory.milestoneCandidates.length, 2523);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 832,
-    definition: 11236,
-    inductive: 377,
+    constructor: 845,
+    definition: 11385,
+    inductive: 385,
     opaque: 0,
     quotient: 0,
-    recursor: 377,
-    theorem: 14025
+    recursor: 385,
+    theorem: 14125
   });
 });
 

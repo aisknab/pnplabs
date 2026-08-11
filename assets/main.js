@@ -7,19 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-125';
-const STATUS_SHA256 = 'acd3acd30a52590ed16966c55b62b8aaf1d2d5985b08ea627057a0d9ab4db07f';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-126';
+const STATUS_SHA256 = '1e02d5abeb1d1b3138e8b59c4926a037c7653617720eb85a1efc25a1bb487cc8';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-11-126';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'c4c3f6234e7bf80626d9e271991cea7ffdf00fe90c49c805c42e4a00628e59a3';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-124';
-const INVENTORY_SHA256 = '80dae39e58e0053129c34e0105fc9635777e2920a1d93529f14493813508c772';
-const SOURCE_CLOSURE_SHA256 = '44067b7a25d092dab39173d5563593fb56921adf0eb3b5d7294c0b5e64b7af2a';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-11-125';
+const INVENTORY_SHA256 = 'fbd4614c550813bc8deff259f9442b37336efb40be3835e07880842c8e8a3be7';
+const SOURCE_CLOSURE_SHA256 = 'c939e940c892279b3845b2d30dc0baa724d53b6f9a6249ccfa2900c7c00cb00f';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 26851,
-  theorems: 14025,
-  assumptionFreeTheorems: 7197,
-  excludedPrivateDeclarations: 14947,
-  modules: 242,
+  declarations: 27129,
+  theorems: 14125,
+  assumptionFreeTheorems: 7249,
+  excludedPrivateDeclarations: 14995,
+  modules: 243,
   axioms: 4,
 });
 
@@ -3927,6 +3929,21 @@ const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_DECLARATIONS = Object.freeze
   ["PNP.DirectWire.classifyTerminalBN4ActivationCancellation_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN4ActivationCancellation"],
 ]);
 
+const RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalBN5ShadowCoordinate_eq_iff", [], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.terminalBN5FullUnits_length", ["propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.terminalBN5FullUnits_key_eq", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.TerminalBN5HallDeficit.neighbor_card_lt_full_card", [], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.TerminalBN5HallDeficit.fullSubset_coordinate_eq", ["propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.TerminalBN5HallDeficit.neighbor_coordinate_eq", ["propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.classifyTerminalBN5ShadowMatching_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.TerminalBN4KeyCancellation.negativeResidualMass?_positive", ["propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.TerminalBN5HallDeficit.namedLocalRoute_eq_x1Hall", [], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_active", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.TerminalBN5HallDeficit.unmatchedShadowNotSilent", [], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+  ["PNP.DirectWire.classifyTerminalBN5FullShadowLocalization_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN5FullShadowLocalization"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -4475,6 +4492,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-rank-wf',
   'residual-terminal-bn3-request-envelope',
   'residual-terminal-bn4-activation-cancellation',
+  'residual-terminal-bn5-full-shadow-localization',
   'global-locked-nand-threshold',
   'global-zeroslack-pccmin',
   'concrete-publication-root',
@@ -4916,6 +4934,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalBN4ActivationCancellationFormalized: false,
   leanResidualTerminalBN4ActivationCancellationAxiomAuditPassed: false,
   leanResidualTerminalBN4ActivationCancellationScope: null,
+  leanResidualTerminalBN5FullShadowLocalizationFormalized: false,
+  leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed: false,
+  leanResidualTerminalBN5FullShadowLocalizationScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5439,6 +5460,9 @@ leanResidualTerminalBN3RequestEnvelopeScope = ${payload.leanResidualTerminalBN3R
 leanResidualTerminalBN4ActivationCancellationFormalized = ${payload.leanResidualTerminalBN4ActivationCancellationFormalized ?? false}
 leanResidualTerminalBN4ActivationCancellationAxiomAuditPassed = ${payload.leanResidualTerminalBN4ActivationCancellationAxiomAuditPassed ?? false}
 leanResidualTerminalBN4ActivationCancellationScope = ${payload.leanResidualTerminalBN4ActivationCancellationScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBN4ActivationCancellationScope)}
+leanResidualTerminalBN5FullShadowLocalizationFormalized = ${payload.leanResidualTerminalBN5FullShadowLocalizationFormalized ?? false}
+leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed = ${payload.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed ?? false}
+leanResidualTerminalBN5FullShadowLocalizationScope = ${payload.leanResidualTerminalBN5FullShadowLocalizationScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBN5FullShadowLocalizationScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5536,13 +5560,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 832,
-    definition: 11236,
-    inductive: 377,
+    constructor: 845,
+    definition: 11385,
+    inductive: 385,
     opaque: 0,
     quotient: 0,
-    recursor: 377,
-    theorem: 14025,
+    recursor: 385,
+    theorem: 14125,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6015,6 +6039,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalBN5FullShadowLocalization =
+    RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6426,6 +6456,9 @@ function validateInventory(inventory) {
     && residualTerminalBN4ActivationCancellation.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalBN5FullShadowLocalization.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6471,7 +6504,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2511
+    && inventory.milestoneCandidates.length === 2523
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6535,7 +6568,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 101;
+    const shouldBeEarned = index < 102;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6667,6 +6700,9 @@ function validateStatus(status, inventory) {
   const residualTerminalBN4ActivationCancellationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-bn4-activation-cancellation'
   );
+  const residualTerminalBN5FullShadowLocalizationMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-bn5-full-shadow-localization'
+  );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
   );
@@ -6693,6 +6729,8 @@ function validateStatus(status, inventory) {
     && status.leanTheoremInventoryAssumptionFreeTheoremCount === INVENTORY_COUNTS.assumptionFreeTheorems
     && status.leanTheoremInventoryExcludedPrivateDeclarationCount === INVENTORY_COUNTS.excludedPrivateDeclarations
     && status.leanTheoremInventorySourceClosureModuleCount === INVENTORY_COUNTS.modules
+    && status.formalPublicationMapCoordinate === FORMAL_PUBLICATION_MAP_COORDINATE
+    && status.formalPublicationMapSha256 === FORMAL_PUBLICATION_MAP_SHA256
     && status.concretePublicationGate?.actualSourceClosureSha256 === SOURCE_CLOSURE_SHA256
     && status.abstractPEqualsNPPublicationEligible === false
     && status.publicationStatusDerivedOnlyFromConcreteGate === true
@@ -7133,7 +7171,7 @@ function validateStatus(status, inventory) {
     && residualTerminalBN4ActivationCancellationMilestone?.classification === "formalized-residual-terminal-bn4-activation-cancellation"
     && residualTerminalBN4ActivationCancellationMilestone.status === "formalized-residual-terminal-bn4-activation-cancellation"
     && residualTerminalBN4ActivationCancellationMilestone.scope === "After a successful computed finite BN3 envelope, Lean gives every request atom a canonical singleton activation code; proves activation-code equality exactly equivalent to equality of activation functions without enumerating cuts; checks equality of a complete typed key containing the atom, explicit semantic signature, and explicit transport type; totals positive and negative natural mass only at that same complete key; classifies a canonical balanced, positive, or negative residual; proves exact integer mass conservation, complete-key preservation, positive residual mass, and absence of opposite-sign residual pairs; computes duplicate-free ledger keys; and preserves all upstream failure branches while rejecting foreign request atoms."
-    && residualTerminalBN4ActivationCancellationMilestone.nonClaim === "This is a finite cancellation kernel over an explicit typed cell ledger. It does not derive cells, semantic signatures, or transport types from four-corner bases and is not the full historical BN4 theorem. It supplies no polynomial construction or size bound; does not construct BN5, PkgC, or BN6; does not complete global routes, selectors, or realizers; does not establish ZeroSlack or PCCMin; does not put SAT in P; does not remove a project assumption; and does not prove P = NP."
+    && residualTerminalBN4ActivationCancellationMilestone.nonClaim === "This is a finite cancellation kernel over an explicit typed cell ledger. It does not derive cells, semantic signatures, or transport types from four-corner bases and is not the full historical BN4 theorem. It supplies no polynomial construction or size bound; does not construct PkgC or BN6; does not complete global routes, selectors, or realizers; does not establish ZeroSlack or PCCMin; does not put SAT in P; does not remove a project assumption; and does not prove P = NP."
     && sameJson(
       residualTerminalBN4ActivationCancellationMilestone.requiredTheorems,
       RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_DECLARATIONS.map(([name]) => name)
@@ -7141,6 +7179,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalBN4ActivationCancellationFormalized === true
     && status.leanResidualTerminalBN4ActivationCancellationAxiomAuditPassed === true
     && status.leanResidualTerminalBN4ActivationCancellationScope === "successful-computed-finite-bn3-envelope-explicit-typed-cell-ledgers-activation-exact-complete-key-same-key-cancellation-and-exact-integer-mass-residuals"
+    && residualTerminalBN5FullShadowLocalizationMilestone?.classification === "formalized-residual-terminal-bn5-full-shadow-localization"
+    && residualTerminalBN5FullShadowLocalizationMilestone.status === "formalized-residual-terminal-bn5-full-shadow-localization"
+    && residualTerminalBN5FullShadowLocalizationMilestone.scope === "For every explicit finite negative-unit refinement and quotient-shadow ledger, Lean preserves the complete exact-coordinate data, validates the negative mass refinement, computes whether the cut is silent, and otherwise returns either complete multiplicity coverage or a strict Hall deficit with a literal smaller shadow-neighbor fibre, complete-coordinate preservation, and a proof-bearing local X1 route that prevents active unmatched units from disappearing silently."
+    && residualTerminalBN5FullShadowLocalizationMilestone.nonClaim === "This kernel starts from explicit finite inputs: one complete BN4 key, a negative cancellation result, a payload list, a cut, and a quotient-shadow coordinate list. It does not derive payloads or shadows from four-corner bases, connect complete matching back to a BN4 contradiction, or prove the full CritC/Q/E/L/X2/X3/X4 diagnosis, so it is not the full historical BN5 theorem. It does not construct PkgC or BN6; complete global routes, selectors, or realizers; establish polynomial generation or runtime, ZeroSlack, or PCCMin; put SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalBN5FullShadowLocalizationMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalBN5FullShadowLocalizationFormalized === true
+    && status.leanResidualTerminalBN5FullShadowLocalizationAxiomAuditPassed === true
+    && status.leanResidualTerminalBN5FullShadowLocalizationScope === "all-finite-exact-coordinate-negative-unit-refinements-computed-cut-silence-complete-multiplicity-coverage-or-strict-hall-deficit-with-local-x1-nonsilence"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7158,13 +7207,14 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family, and the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger. The construction still does not derive that ledger from the bases, establish the full historical BN4 theorem, construct BN5, PkgC, or BN6, map all residual routes into a decreasing complete global outcome system, or provide selector/realizer and polynomial-runtime completeness; global ZeroSlack and polynomial PCCMin therefore remain unformalized.'
+    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; and the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route. The construction still does not derive the BN4 ledger or BN5 payload/shadow universe from the bases, connect matching back to a contradiction, establish the full historical BN4 or BN5 theorems, construct PkgC or BN6, map all residual routes into a decreasing complete global outcome system, or provide selector/realizer and polynomial-runtime completeness; global ZeroSlack and polynomial PCCMin therefore remain unformalized.'
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',
     ])
     && status.nonClaims?.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.')
-    && status.nonClaims?.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct BN5, PkgC, or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.')
+    && status.nonClaims?.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.')
+    && status.nonClaims?.includes('The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, PkgC, BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true
