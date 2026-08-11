@@ -61,7 +61,7 @@ test('plain-language orientation is static and available before technical depth'
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
-  assert.match(paper, /The current 82-page report is generated from the compiled Lean inventory/u);
+  assert.match(paper, /The current 83-page report is generated from the compiled Lean inventory/u);
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
   assert.match(verify, /id="reproduce"/u);
@@ -76,7 +76,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 102 formal milestone records/u);
+  assert.match(status, /Show all 103 formal milestone records/u);
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
@@ -85,27 +85,28 @@ test('technical disclosures announce their controls and remain usable without Ja
 });
 
 test('updates expose a provider-free feed and a clearly qualified progress estimate', async () => {
-  const [home, updates, feed, svg, css] = await Promise.all([
-    read('index.html'), read('updates.html'), read('updates.xml'), read('assets/proof-progress.svg'), read('assets/styles.css'),
+  const [home, updates, feed, svg, css, minCss] = await Promise.all([
+    read('index.html'), read('updates.html'), read('updates.xml'), read('assets/proof-progress.svg'), read('assets/styles.css'), read('assets/styles.min.css'),
   ]);
   assert.match(updates, /https:\/\/pnplabs\.com\.au\/updates\.xml/u);
   assert.match(updates, /data-copy="#feed-url"/u);
   assert.match(updates, /No email address or PNP Labs account is needed/u);
-  assert.match(updates, /About 85% of the known formalisation work/u);
+  assert.match(updates, /About 86% of the known formalisation work/u);
   assert.match(updates, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
   assert.match(feed, /<link rel="self" type="application\/atom\+xml" href="https:\/\/pnplabs\.com\.au\/updates\.xml"\/>/u);
-  assert.match(svg, /85% ESTIMATED/u);
-  assert.match(updates, /<progress[^>]+value="85"[^>]+aria-label="Estimated proof reconstruction progress: 85 percent"/u);
+  assert.match(svg, /86% ESTIMATED/u);
+  assert.match(updates, /<progress[^>]+value="86"[^>]+aria-label="Estimated proof reconstruction progress: 86 percent"/u);
   assert.match(svg, /editorial · revisable/u);
   assert.match(home, /<aside class="home-progress-rail" aria-labelledby="home-progress-title">/u);
-  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 85 percent"/u);
-  assert.match(home, /data-proof-progress="85"/u);
+  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 86 percent"/u);
+  assert.match(home, /data-proof-progress="86"/u);
   assert.doesNotMatch(home, /style="--proof-progress:/u);
   assert.match(home, /Editorial · revisable\./u);
   assert.equal((home.match(/>Follow updates<\/a>/gu) || []).length, 1);
   assert.doesNotMatch(home, /proof-progress-section/u);
   assert.match(css, /\.home-hero \.artifact-grid \{\s*grid-template-columns: minmax\(0, 880px\) minmax\(250px, 292px\)/u);
-  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 85%;/u);
+  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 86%;/u);
+  assert.match(minCss, /\.proof-tape-graphic\{--proof-progress:86%/u);
   assert.match(css, /\.proof-tape-scale span:nth-child\(2\) \{\s*bottom: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-fill \{[\s\S]*width: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-scale span:nth-child\(2\) \{[\s\S]*left: var\(--proof-progress\)/u);

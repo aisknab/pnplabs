@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-10T20:51:36Z</updated>
+  <updated>2026-08-11T00:32:18Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn4-activation-cancellation</id>
+    <title>Lean now checks one finite BN4 cancellation ledger</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn4-activation-cancellation"/>
+    <published>2026-08-11T00:32:18Z</published>
+    <updated>2026-08-11T00:32:18Z</updated>
+    <summary type="text">After the existing finite request-envelope classifier succeeds, Lean now gives each request identity one exact singleton activation code and compares complete typed cancellation keys without enumerating cuts. For an explicit ledger of positive and negative cells, it totals mass only at the same complete key, returns a canonical balanced, positive, or negative residual, and proves exact integer mass conservation, preserved key identity, positive residual mass, and absence of opposite-sign residual pairs. The ledger, semantic signatures, and transport types are supplied explicitly rather than derived from the four-corner bases, so this is a finite cancellation kernel rather than the full historical BN4 theorem. It has no polynomial construction or size bound and does not construct BN5, PkgC, or BN6; complete global routes, selectors, or realizers; ZeroSlack or PCCMin; SAT in P; removal of a project assumption; or P = NP. The 86% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct. Editorial progress estimate at publication: 86 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;After the existing finite request-envelope classifier succeeds, Lean now gives each request identity one exact singleton activation code and compares complete typed cancellation keys without enumerating cuts. For an explicit ledger of positive and negative cells, it totals mass only at the same complete key, returns a canonical balanced, positive, or negative residual, and proves exact integer mass conservation, preserved key identity, positive residual mass, and absence of opposite-sign residual pairs.&lt;/p&gt;&lt;p&gt;The ledger, semantic signatures, and transport types are supplied explicitly rather than derived from the four-corner bases, so this is a finite cancellation kernel rather than the full historical BN4 theorem. It has no polynomial construction or size bound and does not construct BN5, PkgC, or BN6; complete global routes, selectors, or realizers; ZeroSlack or PCCMin; SAT in P; removal of a project assumption; or P = NP. The 86% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;86&quot;&gt;Editorial progress estimate at publication: 86%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-11-residual-terminal-bn4-activation-cancellation&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-10-residual-terminal-bn3-request-envelope</id>
     <title>Lean now constructs one finite BN3 request envelope</title>

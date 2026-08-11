@@ -811,6 +811,27 @@ const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_HASHES = Object.fromEntries(
 const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_SCOPE = "successful-computed-finite-bcel-anchor-nuclei-canonical-stable-request-identities-exact-singleton-minimal-consumers-duplicate-free-incidence-and-jointly-side-tight-full-or-quotient-basis-family";
 const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_MILESTONE_SCOPE = "From every successful computed finite BCEL anchor nucleus, Lean uses one canonical duplicate-free primitive-record identity list across every proper cut; gives exact executable monotone request membership stable under extensional transport and exact singleton minimal consumers; accounts active incidences without duplicates; selects one canonical full or quotient side-tight coherent basis for every proper cut; and preserves all upstream proof-bearing classifier failures in a total outcome.";
 const RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_NON_CLAIM = "This establishes one exact candidate-derived finite BN3 envelope only after the existing computed BCEL anchor-nucleus classifier succeeds. Proper cuts are enumerated through all subsets, so the construction is exponential reference computation rather than a polynomial algorithm. It does not derive the terminal dependency system, map local routes into the manuscript's complete global outcome system, construct BN4-BN6, prove selector or realizer completeness, establish global ZeroSlack or PCCMin, prove SAT in P, remove a project assumption, or prove P = NP.";
+const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREMS = {
+  "PNP.DirectWire.terminalBN4ActivationCode_active_iff": { hash: "8afb6c83f2c71153fa2c1973ce6ce66a1568db44d90e332e767be92d9b6d9049", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.terminalBN4ActivationCode_eq_iff_activation": { hash: "f93b4fd8727f8007268397889168591d99ef685c28745dc9974ab0ffdb0410e4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.terminalBN4ActivationKey_eq_iff": { hash: "b2ad109751baa42293aefadde7bf9abd710ee92d29861446fce5e76d5b1f1c75", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.terminalBN4IntegerMassLedger_exact": { hash: "546e462e0ef7dde2e206b4aa76a5423fdb6e90288d386d5b1e7b40ab4e499307", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.TerminalBN4KeyCancellation.residual_key_eq": { hash: "4f9cfd1be354f2d98412ce0a576b6ac70776fe36e14802c144f55f6f8ec9acfa", axioms: ["propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.TerminalBN4KeyCancellation.residual_mass_positive": { hash: "18a3f982541deffbab7328288f27c9234355cb44cb6582e2a5ea214813cbdd57", axioms: ["propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.TerminalBN4KeyCancellation.no_opposite_sign_residual": { hash: "1068875545d4960dffa31dc9b4a07eea73dadb4f959c91c44631809a9b09c712", axioms: ["propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.TerminalBN4KeyCancellation.residual_signedContribution_exact": { hash: "09061be38da7ae908439addb860433baa3ab6b3b5cb5fe941a98069f898e40f5", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.terminalBN4CancelAtKey_signedContribution_exact": { hash: "32a8c0b81eea0c08a8ad9f2b81a061205c821f47dd02b20a0eaa3e4c49e19bb9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.terminalBN4CanonicalKeys_nodup": { hash: "3bcc443216fe3c17d072c30bc90b0006609e6a3f7222656ac47a622a6c7e3767", axioms: ["propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.terminalBN4CellsUseCanonicalAtoms_iff": { hash: "ed064aad0541a0234527b9e064b4b9cddadaa699a26517e9bd8b662c0ea27b23", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.TerminalComputedBCELAnchorNucleus.computedBN4ActivationCancellation": { hash: "d57599983f9df1f99d9e2784ffb08941c3bf5361754b826e5bf0e6915f3aef7d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" },
+  "PNP.DirectWire.classifyTerminalBN4ActivationCancellation_exhaustive": { hash: "bf2a3ab3f2cc83cb4e4d11885d8b7d012b14fe0b813604648990a6f547505f00", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBN4ActivationCancellation" }
+};
+const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_SCOPE = "successful-computed-finite-bn3-envelope-explicit-typed-cell-ledgers-activation-exact-complete-key-same-key-cancellation-and-exact-integer-mass-residuals";
+const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_MILESTONE_SCOPE = "After a successful computed finite BN3 envelope, Lean gives every request atom a canonical singleton activation code; proves activation-code equality exactly equivalent to equality of activation functions without enumerating cuts; checks equality of a complete typed key containing the atom, explicit semantic signature, and explicit transport type; totals positive and negative natural mass only at that same complete key; classifies a canonical balanced, positive, or negative residual; proves exact integer mass conservation, complete-key preservation, positive residual mass, and absence of opposite-sign residual pairs; computes duplicate-free ledger keys; and preserves all upstream failure branches while rejecting foreign request atoms.";
+const RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NON_CLAIM = "This is a finite cancellation kernel over an explicit typed cell ledger. It does not derive cells, semantic signatures, or transport types from four-corner bases and is not the full historical BN4 theorem. It supplies no polynomial construction or size bound; does not construct BN5, PkgC, or BN6; does not complete global routes, selectors, or realizers; does not establish ZeroSlack or PCCMin; does not put SAT in P; does not remove a project assumption; and does not prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -833,18 +854,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "85c72816225bc6feab4ffc60499475419645dd73");
+  assert.equal(result.coreCommit, "ef94583b39f7050953a78a7a6e0ad431cd2eb459");
 });
 
-test("current release is pinned, eighty-two-page, exposes the finite BN3 request envelope, and fails closed", () => {
+test("current release is pinned, eighty-three-page, exposes finite BN4 cancellation, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-107");
-  assert.equal(release.source.commit, "85c72816225bc6feab4ffc60499475419645dd73");
-  assert.equal(release.source.proofCommit, "2693f6da059d4ee35a70f4446a36d464895e8136");
-  assert.equal(release.source.tree, "773d96dae8e14038cc35893dc85402a25bf1b655");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-11-108");
+  assert.equal(release.source.commit, "ef94583b39f7050953a78a7a6e0ad431cd2eb459");
+  assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
+  assert.equal(release.source.tree, "b82aecb1817c83a2b3ec840680aa0f9a9f31870b");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 82);
+  assert.equal(release.artifacts.report.pageCount, 83);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -2863,6 +2884,18 @@ test("current release is pinned, eighty-two-page, exposes the finite BN3 request
   assert.deepEqual(release.earnedBoundary.residualTerminalBN3RequestEnvelopeProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.residualTerminalBN3RequestEnvelopeClassifierTheorem, "PNP.DirectWire.classifyTerminalBN3RequestEnvelope_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationAuditedDeclarationCount, 33);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationEmptyAxiomDeclarationCount, 11);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationPropextOnlyDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationPropextQuotSoundDeclarationCount, 16);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationScope, RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN4ActivationCancellationTheoremKernelTypeSha256, RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN4ActivationCancellationAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalBN4ActivationCancellationProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalBN4ActivationCancellationClassifierTheorem, "PNP.DirectWire.classifyTerminalBN4ActivationCancellation_exhaustive");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -2876,7 +2909,7 @@ test("current release is pinned, eighty-two-page, exposes the finite BN3 request
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn3-request-envelope$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn4-activation-cancellation$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -2909,12 +2942,12 @@ test("current release is pinned, eighty-two-page, exposes the finite BN3 request
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 102 milestones with the finite BN3 request envelope pinned", () => {
+test("status and inventory publish exactly 103 milestones with finite BN4 cancellation pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 102);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 100);
+  assert.equal(milestones.length, 103);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 101);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -3955,6 +3988,46 @@ test("status and inventory publish exactly 102 milestones with the finite BN3 re
     status.leanResidualTerminalBN3RequestEnvelopeScope,
     RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_SCOPE
   );
+
+  const bn4ActivationCancellation = milestones.find(
+    (row) => row.id === "residual-terminal-bn4-activation-cancellation"
+  );
+  assert.equal(bn4ActivationCancellation.classification, "formalized-residual-terminal-bn4-activation-cancellation");
+  assert.equal(bn4ActivationCancellation.status, "formalized-residual-terminal-bn4-activation-cancellation");
+  assert.equal(bn4ActivationCancellation.earned, true);
+  assert.equal(bn4ActivationCancellation.allPresent, true);
+  assert.equal(bn4ActivationCancellation.allAssumptionFree, false);
+  assert.equal(bn4ActivationCancellation.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(bn4ActivationCancellation.allKernelTypesMatch, true);
+  assert.equal(bn4ActivationCancellation.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    bn4ActivationCancellation.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(
+      bn4ActivationCancellation.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+    ),
+    RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_HASHES
+  );
+  for (const row of bn4ActivationCancellation.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(bn4ActivationCancellation.scope, RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_MILESTONE_SCOPE);
+  assert.equal(bn4ActivationCancellation.nonClaim, RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalBN4ActivationCancellationFormalized, true);
+  assert.equal(status.leanResidualTerminalBN4ActivationCancellationAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalBN4ActivationCancellationScope,
+    RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_SCOPE
+  );
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
@@ -3976,21 +4049,21 @@ test("status and inventory publish exactly 102 milestones with the finite BN3 re
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 26624);
-  assert.equal(inventory.theoremCount, 13928);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7165);
-  assert.equal(inventory.excludedPrivateDeclarationCount, 14939);
-  assert.equal(inventory.sourceClosureModuleCount, 241);
-  assert.equal(inventory.milestoneCandidates.length, 2498);
+  assert.equal(inventory.declarationCount, 26851);
+  assert.equal(inventory.theoremCount, 14025);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7197);
+  assert.equal(inventory.excludedPrivateDeclarationCount, 14947);
+  assert.equal(inventory.sourceClosureModuleCount, 242);
+  assert.equal(inventory.milestoneCandidates.length, 2511);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 818,
-    definition: 11132,
-    inductive: 371,
+    constructor: 832,
+    definition: 11236,
+    inductive: 377,
     opaque: 0,
     quotient: 0,
-    recursor: 371,
-    theorem: 13928
+    recursor: 377,
+    theorem: 14025
   });
 });
 

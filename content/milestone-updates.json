@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-11-residual-terminal-bn4-activation-cancellation",
+      "milestoneId": "residual-terminal-bn4-activation-cancellation",
+      "publishedAt": "2026-08-11T00:32:18Z",
+      "title": "Lean now checks one finite BN4 cancellation ledger",
+      "plainLanguage": [
+        "After the existing finite request-envelope classifier succeeds, Lean now gives each request identity one exact singleton activation code and compares complete typed cancellation keys without enumerating cuts. For an explicit ledger of positive and negative cells, it totals mass only at the same complete key, returns a canonical balanced, positive, or negative residual, and proves exact integer mass conservation, preserved key identity, positive residual mass, and absence of opposite-sign residual pairs.",
+        "The ledger, semantic signatures, and transport types are supplied explicitly rather than derived from the four-corner bases, so this is a finite cancellation kernel rather than the full historical BN4 theorem. It has no polynomial construction or size bound and does not construct BN5, PkgC, or BN6; complete global routes, selectors, or realizers; ZeroSlack or PCCMin; SAT in P; removal of a project assumption; or P = NP. The 86% figure is a revisable estimate of known reconstruction work, not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 86,
+      "source": {
+        "commit": "ef94583b39f7050953a78a7a6e0ad431cd2eb459",
+        "tree": "b82aecb1817c83a2b3ec840680aa0f9a9f31870b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-11-125",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-10-residual-terminal-bn3-request-envelope",
       "milestoneId": "residual-terminal-bn3-request-envelope",
       "publishedAt": "2026-08-10T20:51:36Z",
