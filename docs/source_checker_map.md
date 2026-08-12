@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `d677d7704c29642490b9262b48139f9f3eb097dd`. Its generated status payload is current
+core commit `a98bdbcd759e80cf3953a336f9b7755e68bf29d3`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the eighty-eight-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the eighty-nine-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `d677d7704c29642490b9262b48139f9f3eb097dd` (tree `0c92e684275589eea09c8477b9b7f670c3056b6b`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the finite PkgC separating-consumer restoration dichotomy, typed restoration realization, typed-restoration same-key cancellation, exact ambient-BN4-ledger embedding, and exact ambient residual reduction, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,597 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `a98bdbcd759e80cf3953a336f9b7755e68bf29d3` (tree `cfc43d9c8392fb3a61f4f156c9fff6cd0f216e7f`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, and payload-backed Packet selector-seed extraction |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,600 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and ten earned scoped milestones through finite PkgC ambient-BN4 residual reduction; the ambient ledger, typed restorer, exact embedding, and explicit remainder remain proof-bearing and are not derived from an arbitrary terminal candidate, the remainder is not proved empty or route-producing, and the result does not establish full PkgC route integration or silence, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-eight-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | One hundred and eleven earned scoped milestones through finite Packet selector-seed extraction; the exact BN6 packet conclusion remains proof-bearing, and the result does not establish selector-universe membership, faithfulness or compatibility, enumeration, a realizer or route, polynomial generation or runtime, complete PkgC, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-nine-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

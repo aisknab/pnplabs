@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,597 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,600 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 27,837 public declarations;
-- 14,470 theorem-kind declarations;
+- 27,854 public declarations;
+- 14,479 theorem-kind declarations;
 - 7,347 assumption-free theorem-kind declarations;
-- 251 source-closure modules;
+- 252 source-closure modules;
 - 15,011 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and ten earned scopes are:
+The one hundred and eleven earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -160,6 +160,7 @@ The one hundred and ten earned scopes are:
 | Finite V54 consumer-antichain normal form | For every finite carrier and explicit minimal-consumer antichain, Lean proves request monotonicity, empty-request inactivity, and nonzero two-sided cut activation exactly equivalent to a disjoint consumer pair. Under the exact singletonized-disjoint-pair premise, it proves literal equality with the singleton-footprint cut indicator. The focused 28-declaration audit has 11 empty closures, 9 using only `propext`, and 8 using `Quot.sound` with `propext`; all 7 reviewed pins have permitted Lean-standard closure. | The theorem itself consumes an explicit antichain. The finite BN6 bridge transports explicitly grouped instances into V53, and the PkgC classifier proves singletonization when no separating pair exists, but this does not complete PkgC construction or route silence, derive or group inputs from terminal candidates, establish complete global routes, selectors, realizers, polynomial runtime, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Finite V53 constant-cut hypergraph rigidity | For every finite duplicate-free carrier and explicit sparse nonnegative weighted hypergraph with positive listed cells, equality of every nonempty proper cut proves the complete two-anchor, three-anchor, and four-or-more-anchor classification. The focused 58-declaration audit has 9 empty closures, 18 using only `propext`, and 31 using `Quot.sound` with `propext`; all 10 reviewed pins have permitted Lean-standard closure. | The finite BN6 bridge now constructs this hypergraph and cut equation from explicit grouped V54 cells and retains payload witnesses. Full PkgC construction and route silence, terminal-candidate derivation and grouping, the full historical BN6 and Packet selector and realizer results, complete global routes, polynomial runtime, global `ZeroSlack` or PCCMin, SAT in P, assumption discharge, and `P = NP` remain unproved. |
 | Finite BN6 grouped hypergraph-packet bridge | For every finite duplicate-free anchor carrier and explicit already-grouped family of positive payload-bearing survivor cells, Lean transports V54 activation exactly into the constructed V53 hypergraph cut sum. A supplied common positive value on every nonempty proper cut then yields the pair, mixed three-anchor balanced-triple or full-span, or four-or-more-anchor full-span classification, with witnesses back to the original payloads. The focused 21-declaration audit has 4 empty closures, 6 using only `propext`, and 11 using `Quot.sound` with `propext`; all 8 reviewed pins have permitted Lean-standard closure. | The survivor family, grouping, positive atom ledger, payload data, PkgC singletonization proofs, and BCEL constant-cut equation are explicit inputs. This result does not complete PkgC or route silence, derive or group survivors from a terminal candidate, establish the full historical BN6 or Packet selector and realizer results, complete global routes, prove polynomial generation or runtime, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
+| Finite Packet selector-seed extraction | For every finite exact BN6 packet conclusion, Lean extracts a carrier-contained raw selector seed backed by the original grouped cell and atom payload at the positive pair footprint, every positive pair footprint of a balanced triple, or the positive full-span footprint. The mixed three-anchor alternative does not assert that both masses are positive, and no carrier cardinality is fixed. The focused 5-declaration audit has 2 `propext`-only and 3 `Quot.sound` plus `propext` closures; all 3 reviewed pins have permitted Lean-standard closure. | The exact packet conclusion remains explicit. The result does not prove selector-universe membership, selector faithfulness or compatibility, enumeration, a realizer or route, polynomial generation or runtime, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -191,7 +192,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment eighty-eight-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment eighty-nine-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

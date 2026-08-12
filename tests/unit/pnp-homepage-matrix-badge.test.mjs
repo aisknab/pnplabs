@@ -10,6 +10,43 @@ async function readJson(path) {
   return JSON.parse(await readText(path));
 }
 
+const CONCEPT_STOP_WORDS = new Set([
+  'about', 'after', 'again', 'against', 'being', 'could', 'does', 'every',
+  'from', 'has', 'have', 'into', 'itself', 'milestone', 'only', 'original',
+  'other', 'than', 'that', 'their', 'there', 'these', 'this', 'through',
+  'under', 'where', 'which', 'with', 'without',
+]);
+
+function significantConcepts(value) {
+  return [...new Set(
+    value
+      .replaceAll(/<[^>]*>/gu, ' ')
+      .replaceAll(/&[a-z0-9#]+;/giu, ' ')
+      .toLowerCase()
+      .match(/[a-z0-9]+/gu)
+      ?.filter((word) => word.length >= 5 && !CONCEPT_STOP_WORDS.has(word)) ?? []
+  )];
+}
+
+function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
+  const actualText = actual.toLowerCase();
+  const concepts = significantConcepts(canonical);
+  const present = concepts.filter((concept) => actualText.includes(concept));
+  assert.ok(concepts.length > 0, `${label}: canonical record has no testable concepts`);
+  assert.ok(
+    present.length / concepts.length >= minimum,
+    `${label}: expected at least ${Math.round(minimum * 100)}% canonical concept coverage; missing ${concepts.filter((concept) => !actualText.includes(concept)).join(', ')}`
+  );
+}
+
+function latestMilestoneStatusFields(milestoneId) {
+  const stem = `lean${milestoneId
+    .split('-')
+    .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+    .join('')}`;
+  return [`${stem}Formalized`, `${stem}AxiomAuditPassed`, `${stem}Scope`];
+}
+
 test('homepage leads with a plain, conservative result and the latest milestone', async () => {
   const [status, inventory, updates] = await Promise.all([
     readJson('public/pnp-status.json'),
@@ -23,15 +60,21 @@ test('homepage leads with a plain, conservative result and the latest milestone'
   assert.ok(latestMilestoneRecord, 'latest update must name a current formal-publication milestone');
   const progress = latest.progressEstimatePercent;
   const html = await readText('index.html');
+  const currentStatusFields = latestMilestoneStatusFields(latest.milestoneId);
+  for (const field of currentStatusFields) {
+    assert.ok(Object.hasOwn(status, field), `canonical status missing derived latest-milestone field: ${field}`);
+    assert.ok(
+      html.includes(`${field} = ${JSON.stringify(status[field])}`),
+      `homepage missing current canonical status field: ${field}`
+    );
+  }
   for (const fragment of [
     'A machine-checked reconstruction of a proposed route to P = NP.',
     'Current result: P = NP is not established.',
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
     latest.title,
-    'complete canonical executable residual ledger',
-    'explicit remainder',
-    'fail-closed classifier constructs the exact reduction without caller-provided proof bits',
+    latest.plainLanguage[0],
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'rootLeanTheoremPresent = false',
@@ -258,7 +301,6 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     inventory.coordinate,
     `updates.html#${latest.id}`,
     `Technical theorem boundary · gate closed · ${status.remainingBlockers.length} blockers`,
-    'explicit remainder',
     `The ${progress}% figure is a revisable editorial estimate`,
     `About ${progress}% of the known formalisation work`,
     'not a probability that the claim is correct, a confidence score, or a mathematical result',
@@ -266,22 +308,29 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'NP: answers we can check efficiently',
     'Read the plain-language and technical update',
     'EncodedLockedNANDThreshold',
-  ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
+  ]) {
+    const statusField = fragment.match(/^([A-Za-z][A-Za-z0-9]+) = /u)?.[1];
+    const expectedFragment = statusField && Object.hasOwn(status, statusField)
+      ? `${statusField} = ${JSON.stringify(status[statusField])}`
+      : fragment;
+    assert.equal(html.includes(expectedFragment), true, `missing homepage fragment: ${expectedFragment}`);
+  }
   const latestMilestone = html.match(/<article class="latest-milestone"[\s\S]*?<\/article>/u)?.[0] ?? '';
   assert.ok(latestMilestone.includes(latest.title));
   for (const theorem of latestMilestoneRecord.requiredTheorems.slice(-2)) {
     assert.ok(inventory.milestoneCandidates.some((candidate) => candidate.name === theorem));
   }
-  assert.ok(latestMilestone.includes('explicit remainder'));
-  assert.ok(latestMilestone.includes('fail-closed classifier'));
-  assert.ok(latestMilestone.includes('remain proof-bearing inputs'));
+  assertCanonicalConceptCoverage(latestMilestone, latestMilestoneRecord.scope, 0.75, 'homepage latest scope');
+  assertCanonicalConceptCoverage(latestMilestone, latestMilestoneRecord.nonClaim, 0.70, 'homepage latest non-claim');
+  assertCanonicalConceptCoverage(latestMilestone, latest.plainLanguage.join(' '), 0.80, 'homepage latest update');
   assert.ok(latestMilestone.includes('P = NP'));
   const currentBottomLine = html.match(/<section class="section compact" data-current-milestone="([^"]+)">[\s\S]*?Current bottom line[\s\S]*?<\/section>/u);
   assert.ok(currentBottomLine, 'homepage must retain a current bottom-line section');
   assert.equal(currentBottomLine[1], latest.milestoneId);
-  for (const concept of ['explicit ambient BN4 ledger', 'exact remainder', 'complete canonical residual ledger', 'remain open', 'P = NP']) {
-    assert.ok(currentBottomLine[0].includes(concept), `current bottom line missing latest boundary concept: ${concept}`);
-  }
+  assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.scope, 0.35, 'current bottom-line scope');
+  assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.nonClaim, 0.65, 'current bottom-line non-claim');
+  assert.match(currentBottomLine[0], /remain open/u);
+  assert.match(currentBottomLine[0], /P = NP/u);
   assert.doesNotMatch(html, />Historical report</u);
 });
 

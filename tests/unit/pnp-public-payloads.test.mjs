@@ -7,11 +7,17 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = 'd677d7704c29642490b9262b48139f9f3eb097dd';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-134';
-const INVENTORY_SHA256 = '5a1044bbf0438e67cf19749dae710c7a9a2d0fde5757ca57be997c175780cf86';
-const INVENTORY_BYTES = 18406872;
+const canonicalRelease = JSON.parse(await readFile(
+  new URL('../../downloads/formal-publication-release.json', import.meta.url),
+  'utf8',
+));
+const CORE_COMMIT = canonicalRelease.source.commit;
+const CORE_TREE = canonicalRelease.source.tree;
+const STATUS_COORDINATE = canonicalRelease.artifacts.status.coordinate;
+const INVENTORY_COORDINATE = canonicalRelease.artifacts.theoremInventory.coordinate;
+const INVENTORY_SHA256 = canonicalRelease.artifacts.theoremInventory.sha256;
+const INVENTORY_BYTES = canonicalRelease.artifacts.theoremInventory.bytes;
+const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -360,9 +366,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
   assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-134');
-  assert.equal(status.formalPublicationMapSha256, 'd8e2bb51eb170e70bf30d9768922fc7b8d86195fc9b8f69abe458bfe3ab97da8');
-  assert.equal(status.leanSourceClosureSha256, 'ce07f54409913eabe319f1e9c0adaa9738418fc9af406b6c0329dffa2dd0fa89');
+  assert.equal(status.formalPublicationMapCoordinate, release.source.formalPublicationMapCoordinate);
+  assert.equal(status.formalPublicationMapSha256, release.source.formalPublicationMapSha256);
+  assert.equal(status.leanSourceClosureSha256, release.source.leanSourceClosureSha256);
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -2623,7 +2629,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   ]) assert.ok(status.verificationCommands.includes(command), command);
 });
 
-test('formal publication release pins the finite PkgC ambient-BN4-ledger boundary', async () => {
+test('formal publication release pins the latest milestone from canonical update authority', async () => {
   const release = await readJson('downloads/formal-publication-release.json');
   const inventory = await readJson('public/pnp-theorem-inventory.json');
   const status = await readJson('public/pnp-status.json');
@@ -2633,7 +2639,7 @@ test('formal publication release pins the finite PkgC ambient-BN4-ledger boundar
     (row) => row.id === updates.entries[0].milestoneId
   );
 
-  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-13-117');
+  assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.artifacts.report.pageCount, (await readJson('public/pnp-index.json')).canonicalReportPages);
   assert.equal(release.artifacts.theoremInventory.declarationCount, inventory.declarationCount);
   assert.equal(release.artifacts.theoremInventory.theoremCount, inventory.theoremCount);
@@ -3410,7 +3416,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, '40a46e9e4aea8177256839415407e35ddb95c65c');
-  assert.equal(index.sourceTree, '0c92e684275589eea09c8477b9b7f670c3056b6b');
+  assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
@@ -4947,12 +4953,12 @@ test('status page has a conservative complete static fallback', async () => {
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '27,837',
-    '14,470',
-    '7,347',
-    '<strong>15,011</strong> private compiler auxiliaries excluded',
-    '<strong>251</strong> modules',
-    'One hundred and ten scoped milestones',
+    formatNumber(index.claimBoundary.leanTheoremInventoryDeclarationCount),
+    formatNumber(index.claimBoundary.leanTheoremInventoryTheoremCount),
+    formatNumber(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount),
+    `<strong>${formatNumber(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount)}</strong> private compiler auxiliaries excluded`,
+    `<strong>${formatNumber(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount)}</strong> modules`,
+    `${index.formalPublicationMilestoneCounts.earned} scoped milestones`,
     'residual-terminal-bn3-request-envelope',
     'residual-terminal-bn4-activation-cancellation',
     'residual-terminal-bn5-full-shadow-localization',
@@ -4980,6 +4986,10 @@ test('status page has a conservative complete static fallback', async () => {
     'PNP.DirectWire.terminalV53_constantCut_hypergraph_rigidity',
     'residual-terminal-bn6-hypergraph-packet',
     'PNP.DirectWire.terminalBN6_hypergraph_packet',
+    'residual-terminal-packet-selector-seeds',
+    'PNP.DirectWire.terminalBN6_packet_selector_seeds',
+    'leanResidualTerminalPacketSelectorSeedsFormalized = true',
+    'leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed = true',
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -5320,18 +5330,29 @@ test('status page has a conservative complete static fallback', async () => {
   assert.equal(status.formalPublicationMilestones.length, index.formalPublicationMilestoneCounts.total);
 });
 
-test('static inventory prose matches the compiled declaration boundary', async () => {
-  const [readme, paper, guide, pipeline, reproducibility, status, updates, latestRelease] = await Promise.all([
+test('static inventory prose derives changing publication totals from the canonical payloads', async () => {
+  const [readme, paper, guide, pipeline, reproducibility, status, inventory, updates, latestRelease] = await Promise.all([
     readText('README.md'),
     readText('paper.html'),
     readText('docs/reviewer_guide.md'),
     readText('docs/proof_pipeline.md'),
     readText('docs/reproducibility.md'),
     readJson('public/pnp-status.json'),
+    readJson('public/pnp-theorem-inventory.json'),
     readJson('content/milestone-updates.json'),
     readJson('downloads/formal-publication-release.json'),
   ]);
-  assert.equal(readme.includes('27,837** exported public declarations across **251** modules'), true);
+  const declarations = formatNumber(inventory.declarationCount);
+  const theorems = formatNumber(inventory.theoremCount);
+  const assumptionFreeTheorems = formatNumber(inventory.assumptionFreeTheoremCount);
+  const excludedPrivate = formatNumber(status.leanTheoremInventoryExcludedPrivateDeclarationCount);
+  const sourceModules = formatNumber(status.leanTheoremInventorySourceClosureModuleCount);
+  const projectAxioms = status.projectSpecificAxiomInventory.length;
+  const reportPages = latestRelease.artifacts.report.pageCount;
+  assert.equal(
+    readme.includes(`${declarations}** exported public declarations across **${sourceModules}** modules`),
+    true,
+  );
   const latestEarnedMilestone = status.formalPublicationMilestones.find(
     (milestone) => milestone.id === updates.entries[0].milestoneId
   );
@@ -5340,17 +5361,17 @@ test('static inventory prose matches the compiled declaration boundary', async (
     readme.includes(`Its ${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`),
     true
   );
-  assert.equal(readme.includes('ambient ledger, restorer, exact embedding, and explicit remainder remain proof-bearing inputs'), true);
+  assert.equal(readme.includes('selector-universe membership, selector faithfulness or compatibility, enumeration, a realizer, or a route'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationFormalized = true'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = true'), true);
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
-  assert.equal(paper.includes('Exactly 15,011 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 15,011 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['27,837 public declarations', '14,470 theorem-kind declarations', '7,347 assumption-free theorem-kind declarations', '251 source-closure modules', '15,011 excluded private compiler auxiliaries', 'four project axioms']) {
+  assert.equal(paper.includes(`Exactly ${excludedPrivate} private compiler auxiliaries are excluded.`), true);
+  assert.equal(guide.includes(`Exactly ${excludedPrivate} private compiler auxiliaries are excluded explicitly.`), true);
+  for (const fragment of [`${declarations} public declarations`, `${theorems} theorem-kind declarations`, `${assumptionFreeTheorems} assumption-free theorem-kind declarations`, `${sourceModules} source-closure modules`, `${excludedPrivate} excluded private compiler auxiliaries`, `${projectAxioms === 4 ? 'four' : projectAxioms} project axioms`]) {
     assert.equal(pipeline.includes(fragment), true, `missing proof-pipeline fragment: ${fragment}`);
   }
   assert.equal(pipeline.includes('245 source-closure modules'), false);
-  for (const fragment of ['27,837', '14,470', '7,347', '15,011', '251 modules', '461,415', '224,397', '2,119,653', '18,406,872', 'eighty-eight A4 pages', 'fixed 135,070-rule', `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`, `${latestRelease.earnedBoundary.residualTerminalPkgCAmbientBN4ResidualReductionAuditedDeclarationCount} declarations`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), `${reportPages} A4 pages`, 'fixed 135,070-rule', `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`, 'focused 5-declaration audit', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

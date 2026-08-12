@@ -9,6 +9,7 @@ import { verifyReleaseSeal } from "../../tools/verify-release-seal.mjs";
 import { writeMirrorFileAtomically } from "../../tools/sync-public-access-docs.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+const canonicalRelease = JSON.parse(readFileSync(path.join(root, "downloads/formal-publication-release.json"), "utf8"));
 const SEALED_PATHS = [
   "downloads/release-seal.json",
   "downloads/SHA256SUMS",
@@ -982,6 +983,17 @@ const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_HASHES = Object.fromEntries(
 const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_SCOPE = "all-finite-explicit-grouped-v54-activation-to-v53-grouped-hypergraph-packet-bn6-pair-mixed-triple-fullspan-with-payload-witnesses";
 const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE_SCOPE = "For an arbitrary finite duplicate-free anchor carrier and explicit already-grouped family of positive payload-bearing survivor cells, V54 activation is transported exactly into the constructed V53 hypergraph cut sum. A positive BCEL constant-cut premise then yields the complete pair, mixed three-anchor balanced-triple/full-span, or four-or-more-anchor full-span classification with original payload witnesses.";
 const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NON_CLAIM = "This finite bridge consumes explicit exact footprint grouping, PkgC singletonization proofs, positive atom ledgers, payload data, and the BCEL constant-cut equation. It does not construct PkgC, derive or group survivors from a terminal candidate, establish full historical BN6 or Packet selector/realizer completeness, complete global routes, prove polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.hasPacketSelectorSeedAt_of_hasPayloadAt": { hash: "9896a194aa243404922a3a870bfc5d982f103bbdb3e1c3bdfd42352bb91a3c27", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorSeeds" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.selectorSeeds": { hash: "ab62ea35d210a818af73fc38bac3e21d13e7026d2416a9567faba5c0c026b771", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorSeeds" },
+  "PNP.DirectWire.terminalBN6_packet_selector_seeds": { hash: "a32e4bc92d0af4fa404d1a8ab6640820c431aa1731198ddb4e605483c15ab386", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorSeeds" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_SCOPE = "all-finite-explicit-bn6-packet-conclusions-payload-backed-pair-balanced-triple-or-fullspan-selector-seed-input-extraction";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_MILESTONE_SCOPE = "For an arbitrary finite exact BN6 packet conclusion, Lean extracts a carrier-contained payload-backed raw selector seed at the positive pair footprint, at every positive pair footprint of a balanced triple, or at the positive full-span footprint. The mixed three-anchor positive alternative is handled without asserting that both masses are positive, and the construction fixes no carrier cardinality.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_NON_CLAIM = "This milestone consumes an exact finite BN6 packet conclusion and preserves only carrier containment, selector-relevant footprint size, and original grouped cell-and-atom payload evidence. It does not prove selector-universe membership, selector faithfulness or compatibility, construct a realizer or route, establish enumeration or polynomial generation/runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -1004,15 +1016,15 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "d677d7704c29642490b9262b48139f9f3eb097dd");
+  assert.equal(result.coreCommit, canonicalRelease.source.commit);
 });
 
-test("current release is pinned, exposes finite PkgC ambient-BN4-ledger evidence, and fails closed", () => {
+test("current release pins the Packet selector-seed boundary and remains fail closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-13-117");
-  assert.equal(release.source.commit, "d677d7704c29642490b9262b48139f9f3eb097dd");
+  assert.equal(release.coordinate, canonicalRelease.coordinate);
+  assert.equal(release.source.commit, canonicalRelease.source.commit);
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
-  assert.equal(release.source.tree, "0c92e684275589eea09c8477b9b7f670c3056b6b");
+  assert.equal(release.source.tree, canonicalRelease.source.tree);
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
   assert.ok(Number.isSafeInteger(release.artifacts.report.pageCount));
@@ -3239,6 +3251,20 @@ test("current release is pinned, exposes finite PkgC ambient-BN4-ledger evidence
   assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketPayloadWitnessTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.hasPayloadAt_of_footprintWeight_positive");
   assert.equal(release.earnedBoundary.residualTerminalBN6HypergraphPacketTheorem, "PNP.DirectWire.terminalBN6_hypergraph_packet");
 
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsAuditedDeclarationCount, 5);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsPropextQuotSoundDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorSeedsTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorSeedsAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorSeedsProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsPayloadTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.hasPacketSelectorSeedAt_of_hasPayloadAt");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.selectorSeeds");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorSeedsTheorem, "PNP.DirectWire.terminalBN6_packet_selector_seeds");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -3252,7 +3278,7 @@ test("current release is pinned, exposes finite PkgC ambient-BN4-ledger evidence
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn6-hypergraph-packet\+plus-residual-terminal-pkgc-typed-restoration\+plus-residual-terminal-pkgc-same-key-cancellation\+plus-residual-terminal-pkgc-ambient-bn4-ledger\+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn6-hypergraph-packet\+plus-residual-terminal-pkgc-typed-restoration\+plus-residual-terminal-pkgc-same-key-cancellation\+plus-residual-terminal-pkgc-ambient-bn4-ledger\+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction\+plus-residual-terminal-packet-selector-seeds$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -3285,7 +3311,7 @@ test("current release is pinned, exposes finite PkgC ambient-BN4-ledger evidence
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish the indexed milestones with finite PkgC ambient-BN4-ledger evidence pinned", () => {
+test("status and inventory publish all indexed milestones through Packet selector-seed extraction", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const index = json("public/pnp-index.json");
@@ -4718,6 +4744,41 @@ test("status and inventory publish the indexed milestones with finite PkgC ambie
   assert.equal(status.leanResidualTerminalBN6HypergraphPacketFormalized, true);
   assert.equal(status.leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalBN6HypergraphPacketScope, RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_SCOPE);
+
+  const packetSelectorSeeds = milestones.find(
+    (row) => row.id === "residual-terminal-packet-selector-seeds"
+  );
+  assert.equal(packetSelectorSeeds.classification, "formalized-residual-terminal-packet-selector-seeds");
+  assert.equal(packetSelectorSeeds.status, "formalized-residual-terminal-packet-selector-seeds");
+  assert.equal(packetSelectorSeeds.earned, true);
+  assert.equal(packetSelectorSeeds.allPresent, true);
+  assert.equal(packetSelectorSeeds.allAssumptionFree, false);
+  assert.equal(packetSelectorSeeds.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(packetSelectorSeeds.allKernelTypesMatch, true);
+  assert.equal(packetSelectorSeeds.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSelectorSeeds.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(packetSelectorSeeds.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_HASHES
+  );
+  for (const row of packetSelectorSeeds.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(packetSelectorSeeds.scope, RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_MILESTONE_SCOPE);
+  assert.equal(packetSelectorSeeds.nonClaim, RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalPacketSelectorSeedsFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorSeedsScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 

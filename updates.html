@@ -34,6 +34,26 @@
       </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 95 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-13-residual-terminal-packet-selector-seeds" data-milestone-id="residual-terminal-packet-selector-seeds">
+        <div class="section-label"><time datetime="2026-08-13T10:00:00Z">2026-08-13</time> · earned milestone 111</div>
+        <h2>Lean now extracts payload-backed raw selector seeds from finite BN6 packets</h2>
+        <p>For an arbitrary finite exact BN6 packet conclusion, Lean now extracts a carrier-contained raw selector seed backed by the original grouped cell and atom payload. The output covers the positive pair footprint, every positive pair footprint of a balanced triple, or the positive full-span footprint.</p>
+        <p>The mixed three-anchor case does not assume both masses are positive, and the construction fixes no carrier cardinality. This is input extraction, not a finished Packet selector or route: Lean has not proved selector-universe membership, faithfulness, compatibility, enumeration, a realizer, a route, polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 95% figure remains a revisable editorial estimate of known reconstruction work, separate from the 111 of 113 scoped formal-publication rows and not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 95%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-packet-selector-seeds</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-packet-selector-seeds</p>
+          <p><strong>Verified scope:</strong> For an arbitrary finite exact BN6 packet conclusion, Lean extracts a carrier-contained payload-backed raw selector seed at the positive pair footprint, at every positive pair footprint of a balanced triple, or at the positive full-span footprint. The mixed three-anchor positive alternative is handled without asserting that both masses are positive, and the construction fixes no carrier cardinality.</p>
+          <p><strong>Boundary:</strong> This milestone consumes an exact finite BN6 packet conclusion and preserves only carrier containment, selector-relevant footprint size, and original grouped cell-and-atom payload evidence. It does not prove selector-universe membership, selector faithfulness or compatibility, construct a realizer or route, establish enumeration or polynomial generation/runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 3</p>
+          <p><strong>Core source:</strong> commit <code>a98bdbcd759e80cf3953a336f9b7755e68bf29d3</code>, tree <code>cfc43d9c8392fb3a61f4f156c9fff6cd0f216e7f</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-135</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-13-residual-terminal-pkgc-ambient-bn4-residual-reduction" data-milestone-id="residual-terminal-pkgc-ambient-bn4-residual-reduction">
         <div class="section-label"><time datetime="2026-08-13T03:30:00Z">2026-08-13</time> · earned milestone 110</div>
         <h2>Lean now reduces an ambient BN4 ledger to its explicit remainder</h2>

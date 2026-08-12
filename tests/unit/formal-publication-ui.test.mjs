@@ -112,6 +112,63 @@ test('site validator pins the ambient BN4 residual reduction from canonical payl
   assert.equal(validation.validateMilestones(duplicated), false);
 });
 
+test('site validator pins the Packet selector-seed boundary and rejects hostile mutations', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-packet-selector-seeds'
+  );
+  assert.equal(milestone.requiredTheorems.length, 3);
+  assert.equal(milestone.classification, 'formalized-residual-terminal-packet-selector-seeds');
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  const missing = structuredClone(inventory);
+  missing.milestoneCandidates = missing.milestoneCandidates.filter(
+    (row) => row.name !== milestone.requiredTheorems[0]
+  );
+  assert.equal(validation.validateInventory(missing), false);
+  assert.equal(validation.validateStatus(status, missing), false);
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates.find(
+    (row) => row.name === milestone.requiredTheorems[0]
+  ).axioms = ['PNP.ForgedSelectorAxiom'];
+  assert.equal(validation.validateInventory(assumed), false);
+
+  const moved = structuredClone(inventory);
+  moved.milestoneCandidates.find(
+    (row) => row.name === milestone.requiredTheorems[0]
+  ).module = 'PNP.ForgedSelectorModule';
+  assert.equal(validation.validateInventory(moved), false);
+
+  const forgedFingerprint = structuredClone(status);
+  const forgedRow = forgedFingerprint.formalPublicationMilestones.find(
+    (row) => row.id === milestone.id
+  ).theoremRows[0];
+  forgedRow.actualKernelTypeSha256 = '0'.repeat(64);
+  forgedRow.expectedKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+
+  for (const field of [
+    'leanResidualTerminalPacketSelectorSeedsFormalized',
+    'leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed',
+  ]) {
+    const stripped = structuredClone(status);
+    stripped[field] = false;
+    assert.equal(validation.validateStatus(stripped, inventory), false, field);
+  }
+
+  const widenedScope = structuredClone(status);
+  widenedScope.formalPublicationMilestones.find(
+    (row) => row.id === milestone.id
+  ).scope = 'This constructs a complete polynomial Packet selector and realizer.';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const erasedBoundary = structuredClone(status);
+  erasedBoundary.formalPublicationMilestones.find(
+    (row) => row.id === milestone.id
+  ).nonClaim = 'This proves Packet selector completeness.';
+  assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+});
+
 test('pre-fetch UI state reports every source-parser claim as fail closed', () => {
   const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
   for (const field of [

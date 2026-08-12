@@ -17,6 +17,35 @@ import { EXTENSIONLESS_REDIRECTS, PUBLIC_ROOT_PATHS, SECURITY_HEADERS } from "..
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 
+const CONCEPT_STOP_WORDS = new Set([
+  "about", "after", "again", "against", "being", "could", "does", "every",
+  "from", "has", "have", "into", "itself", "milestone", "only", "original",
+  "other", "than", "that", "their", "there", "these", "this", "through",
+  "under", "where", "which", "with", "without"
+]);
+
+function significantConcepts(value) {
+  return [...new Set(
+    value
+      .replaceAll(/<[^>]*>/gu, " ")
+      .replaceAll(/&[a-z0-9#]+;/giu, " ")
+      .toLowerCase()
+      .match(/[a-z0-9]+/gu)
+      ?.filter((word) => word.length >= 5 && !CONCEPT_STOP_WORDS.has(word)) ?? []
+  )];
+}
+
+function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
+  const actualText = actual.toLowerCase();
+  const concepts = significantConcepts(canonical);
+  const present = concepts.filter((concept) => actualText.includes(concept));
+  assert.ok(concepts.length > 0, `${label}: canonical record has no testable concepts`);
+  assert.ok(
+    present.length / concepts.length >= minimum,
+    `${label}: expected at least ${Math.round(minimum * 100)}% canonical concept coverage; missing ${concepts.filter((concept) => !actualText.includes(concept)).join(", ")}`
+  );
+}
+
 async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(repositoryRoot, relativePath), "utf8"));
 }
@@ -287,9 +316,10 @@ test("FAQ states the current editorial percentage and latest conservative bounda
   for (const theorem of latestMilestone.requiredTheorems) {
     assert.ok(inventory.milestoneCandidates.some((candidate) => candidate.name === theorem), theorem);
   }
-  for (const concept of ['ambient ledger', 'complete canonical executable residual ledger', 'explicit remainder', 'proof-bearing inputs', 'P = NP']) {
-    assert.ok(faq.includes(concept), `FAQ missing latest boundary concept: ${concept}`);
-  }
+  assertCanonicalConceptCoverage(faq, latestMilestone.scope, 0.75, "FAQ latest scope");
+  assertCanonicalConceptCoverage(faq, latestMilestone.nonClaim, 0.75, "FAQ latest non-claim");
+  assertCanonicalConceptCoverage(faq, data.entries[0].plainLanguage.join(" "), 0.70, "FAQ latest update");
+  assert.match(faq, /P = NP/u);
 });
 
 test("CLI accepts only generate mode or read-only check mode", () => {

@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-13T03:30:00Z</updated>
+  <updated>2026-08-13T10:00:00Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-13-residual-terminal-packet-selector-seeds</id>
+    <title>Lean now extracts payload-backed raw selector seeds from finite BN6 packets</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-13-residual-terminal-packet-selector-seeds"/>
+    <published>2026-08-13T10:00:00Z</published>
+    <updated>2026-08-13T10:00:00Z</updated>
+    <summary type="text">For an arbitrary finite exact BN6 packet conclusion, Lean now extracts a carrier-contained raw selector seed backed by the original grouped cell and atom payload. The output covers the positive pair footprint, every positive pair footprint of a balanced triple, or the positive full-span footprint. The mixed three-anchor case does not assume both masses are positive, and the construction fixes no carrier cardinality. This is input extraction, not a finished Packet selector or route: Lean has not proved selector-universe membership, faithfulness, compatibility, enumeration, a realizer, a route, polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 95% figure remains a revisable editorial estimate of known reconstruction work, separate from the 111 of 113 scoped formal-publication rows and not a probability that the claim is correct. Editorial progress estimate at publication: 95 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;For an arbitrary finite exact BN6 packet conclusion, Lean now extracts a carrier-contained raw selector seed backed by the original grouped cell and atom payload. The output covers the positive pair footprint, every positive pair footprint of a balanced triple, or the positive full-span footprint.&lt;/p&gt;&lt;p&gt;The mixed three-anchor case does not assume both masses are positive, and the construction fixes no carrier cardinality. This is input extraction, not a finished Packet selector or route: Lean has not proved selector-universe membership, faithfulness, compatibility, enumeration, a realizer, a route, polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 95% figure remains a revisable editorial estimate of known reconstruction work, separate from the 111 of 113 scoped formal-publication rows and not a probability that the claim is correct.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;95&quot;&gt;Editorial progress estimate at publication: 95%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-13-residual-terminal-packet-selector-seeds&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-13-residual-terminal-pkgc-ambient-bn4-residual-reduction</id>
     <title>Lean now reduces an ambient BN4 ledger to its explicit remainder</title>
