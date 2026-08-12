@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-130';
-const STATUS_SHA256 = '1a4609a63dd44da92cfc4558d1cef0db60430b26942cc6b3e2d199eb35d66ed9';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-130';
-const FORMAL_PUBLICATION_MAP_SHA256 = 'f076b8f813c2877d7a03b7090151d4c9db9f4793a5c4f40fbdc5125c82808ed8';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-131';
+const STATUS_SHA256 = 'f73285c1e43698ba0708b37d39a9ec6346d16f6dfcedbf875d227736e4c2eec4';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-131';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'fd3d1ec5cc318aee5c0b9ec4b53f4a333385a9341dd2a545e568f088517a34f8';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-129';
-const INVENTORY_SHA256 = '859ef0595f1eeea872518b0f399a788225e3a2ed9fefe987c6ae5bd6b3783aaf';
-const SOURCE_CLOSURE_SHA256 = '4608b17afe6e8d0be3f7f6e0fae526025c0050f64dca9670e71ae89f9f27aa7c';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-131';
+const INVENTORY_SHA256 = '7f21404feab8d7f354df31e904fda9a8f5fc9b64caefddf19398602166ca4cf9';
+const SOURCE_CLOSURE_SHA256 = '8bdc5a19e8a7360f6421b229858d95e6a430dece175bcc640b73041c4de768f6';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 27573,
-  theorems: 14360,
-  assumptionFreeTheorems: 7314,
+  declarations: 27659,
+  theorems: 14395,
+  assumptionFreeTheorems: 7336,
   excludedPrivateDeclarations: 15002,
-  modules: 247,
+  modules: 248,
   axioms: 4,
 });
 
@@ -3956,6 +3956,18 @@ const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.classifyTerminalPkgCSeparatingConsumers_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCSeparatingConsumers"],
 ]);
 
+const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPkgCSeparatingPair.fullRestorationCandidates_length", ["propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.TerminalPkgCSeparatingPair.fullRestorationCandidates_coordinates", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.TerminalPkgCTypedRestorer.coordinateUniverse_coordinates", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.terminalBN5FullMultiplicity_indexed_eq", ["propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.terminalBN5ShadowMultiplicity_indexed_eq", ["propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.TerminalPkgCSeparatingPair.typedRestoration_exactCoverage", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.terminalBN5CompleteMultiplicityMatching_not_hallDeficit", [], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.terminalPkgC_typedRestoration_realization", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+  ["PNP.DirectWire.classifyTerminalPkgCTypedRestoration_exhaustive", ["Quot.sound", "propext"], "PNP.ResidualTerminalPkgCTypedRestoration"],
+]);
+
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone", [], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
   ["PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_empty_false", ["propext"], "PNP.ResidualTerminalConsumerAntichainNormalForm"],
@@ -4540,6 +4552,7 @@ const MILESTONE_IDS = Object.freeze([
   'residual-terminal-bn4-activation-cancellation',
   'residual-terminal-bn5-full-shadow-localization',
   'residual-terminal-pkgc-separating-consumers',
+  'residual-terminal-pkgc-typed-restoration',
   'residual-terminal-consumer-antichain-normal-form',
   'residual-terminal-constant-cut-hypergraph-rigidity',
   'residual-terminal-bn6-hypergraph-packet',
@@ -4990,6 +5003,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalPkgCSeparatingConsumersFormalized: false,
   leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed: false,
   leanResidualTerminalPkgCSeparatingConsumersScope: null,
+  leanResidualTerminalPkgCTypedRestorationFormalized: false,
+  leanResidualTerminalPkgCTypedRestorationAxiomAuditPassed: false,
+  leanResidualTerminalPkgCTypedRestorationScope: null,
   leanResidualTerminalConsumerAntichainNormalFormFormalized: false,
   leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed: false,
   leanResidualTerminalConsumerAntichainNormalFormScope: null,
@@ -5528,6 +5544,9 @@ leanResidualTerminalBN5FullShadowLocalizationScope = ${payload.leanResidualTermi
 leanResidualTerminalPkgCSeparatingConsumersFormalized = ${payload.leanResidualTerminalPkgCSeparatingConsumersFormalized ?? false}
 leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed = ${payload.leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed ?? false}
 leanResidualTerminalPkgCSeparatingConsumersScope = ${payload.leanResidualTerminalPkgCSeparatingConsumersScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCSeparatingConsumersScope)}
+leanResidualTerminalPkgCTypedRestorationFormalized = ${payload.leanResidualTerminalPkgCTypedRestorationFormalized ?? false}
+leanResidualTerminalPkgCTypedRestorationAxiomAuditPassed = ${payload.leanResidualTerminalPkgCTypedRestorationAxiomAuditPassed ?? false}
+leanResidualTerminalPkgCTypedRestorationScope = ${payload.leanResidualTerminalPkgCTypedRestorationScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCTypedRestorationScope)}
 leanResidualTerminalConsumerAntichainNormalFormFormalized = ${payload.leanResidualTerminalConsumerAntichainNormalFormFormalized ?? false}
 leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = ${payload.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed ?? false}
 leanResidualTerminalConsumerAntichainNormalFormScope = ${payload.leanResidualTerminalConsumerAntichainNormalFormScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalConsumerAntichainNormalFormScope)}
@@ -5634,13 +5653,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 860,
-    definition: 11557,
-    inductive: 396,
+    constructor: 864,
+    definition: 11598,
+    inductive: 399,
     opaque: 0,
     quotient: 0,
-    recursor: 396,
-    theorem: 14360,
+    recursor: 399,
+    theorem: 14395,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6125,6 +6144,12 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalPkgCTypedRestoration =
+    RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_DECLARATIONS.map(([name, axioms, module]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+    }));
   const residualTerminalV54ConsumerAntichainNormalForm =
     RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6560,6 +6585,9 @@ function validateInventory(inventory) {
     && residualTerminalPkgCSeparatingConsumers.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPkgCTypedRestoration.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && residualTerminalV54ConsumerAntichainNormalForm.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6614,7 +6642,7 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2557
+    && inventory.milestoneCandidates.length === 2566
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6678,7 +6706,7 @@ function validateMilestones(status) {
     || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
 
   return milestones.every((row, index) => {
-    const shouldBeEarned = index < 106;
+    const shouldBeEarned = index < 107;
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6815,6 +6843,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPkgCSeparatingConsumersMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-pkgc-separating-consumers'
+  );
+  const residualTerminalPkgCTypedRestorationMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-pkgc-typed-restoration'
   );
   const residualTerminalV54ConsumerAntichainNormalFormMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
@@ -7323,6 +7354,17 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPkgCSeparatingConsumersFormalized === true
     && status.leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed === true
     && status.leanResidualTerminalPkgCSeparatingConsumersScope === "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q"
+    && residualTerminalPkgCTypedRestorationMilestone?.classification === "formalized-residual-terminal-pkgc-typed-restoration"
+    && residualTerminalPkgCTypedRestorationMilestone.status === "formalized-residual-terminal-pkgc-typed-restoration"
+    && residualTerminalPkgCTypedRestorationMilestone.scope === "For an arbitrary finite explicit minimal-consumer antichain and a typed coordinate-preserving restoration operation, Lean materializes typed full-restoration candidates for every atom of the canonical first disjoint nonsingleton pair, proves exact candidate count and positional coordinate preservation, derives complete equality-fibre multiplicity coverage, excludes a strict Hall deficit for that graph, and otherwise proves V54 singletonization."
+    && residualTerminalPkgCTypedRestorationMilestone.nonClaim === "The typed restoration operation remains explicit caller data. This milestone does not construct it from a terminal candidate or prove its full semantic adequacy. It does not connect complete restoration to a BN4 or BN5 contradiction, embed local routes into the complete global outcome system, prove global PkgC route silence or the full historical PkgC theorem, establish full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPkgCTypedRestorationMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_DECLARATIONS.map(([name]) => name)
+    )
+    && status.leanResidualTerminalPkgCTypedRestorationFormalized === true
+    && status.leanResidualTerminalPkgCTypedRestorationAxiomAuditPassed === true
+    && status.leanResidualTerminalPkgCTypedRestorationScope === "all-finite-explicit-minimal-consumer-antichains-typed-full-restoration-candidates-coordinate-preserving-exact-multiplicity-coverage-no-hall-or-singletonized"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone?.classification === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone.status === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone.scope === "For an arbitrary finite carrier and its explicit minimal-consumer antichain, Lean proves monotonicity and empty-request inactivity, proves that nonzero two-sided cut activation is equivalent to the existence of a disjoint consumer pair, and under the exact singletonized-disjoint-pair premise proves literal equality with the corresponding footprint cut indicator."

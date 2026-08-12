@@ -869,6 +869,24 @@ const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_HASHES = Object.fromEntries(
 const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_SCOPE = "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q";
 const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_MILESTONE_SCOPE = "For an arbitrary finite explicit minimal-consumer antichain, Lean canonically scans for the first disjoint pair that is not singleton-singleton. Absence proves exactly V54's singletonization premise. A found pair's atoms are canonically indexed into exact-coordinate quotient units and an explicit full-restoration universe is classified into complete multiplicity coverage or a strict Hall deficit with a deterministic local Q route.";
 const RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_NON_CLAIM = "The restoration coordinate universe remains explicit. This theorem does not derive consumers or restorations from a terminal candidate, connect complete coverage back to a BN4 or BN5 contradiction, embed the Hall route into the complete global outcome system, prove global route silence, or establish the full historical PkgC theorem. It does not prove full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREMS = {
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.fullRestorationCandidates_length": { hash: "e8ebfbe79ccfd79fd39fa8fb08f4acc15b21ac3db9921fa8d5b52e0e2a5a79fc", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.fullRestorationCandidates_coordinates": { hash: "57100efabcf0df012a064db5aff2245ac10175a4a707f4e77828ae0a8019853f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.TerminalPkgCTypedRestorer.coordinateUniverse_coordinates": { hash: "4920e21b59be97f91a2a1c65a03e7ec45568c7cefac10befd5e3a2eb7bc9dbe1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.terminalBN5FullMultiplicity_indexed_eq": { hash: "ad9719c4739ea079ecad2f390c8d47b5e1d598d4c3a07e8b2dd0934af7c338dd", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.terminalBN5ShadowMultiplicity_indexed_eq": { hash: "e8a05bdc4278abd66b3bdd3bd58a0163a6ccc107019a302fd49613ebffc83cbd", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.typedRestoration_exactCoverage": { hash: "51e6dff93008693f5b2daa3c8b8369933abaff1550bb3482c9ec02b3f7ca4d73", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.terminalBN5CompleteMultiplicityMatching_not_hallDeficit": { hash: "ccad95b996ac06b5c602110f765022263fab1d9db31c979f0fd7b46f9c615929", axioms: [], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.terminalPkgC_typedRestoration_realization": { hash: "0b26c740c02a95570364ba233ce3671bb5250dae0d99237e06e0374e017b5301", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" },
+  "PNP.DirectWire.classifyTerminalPkgCTypedRestoration_exhaustive": { hash: "8a161f64784fb6fc510c7cf8820556b4e774432191713bd1369944b99db13583", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCTypedRestoration" }
+};
+const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_SCOPE = "all-finite-explicit-minimal-consumer-antichains-typed-full-restoration-candidates-coordinate-preserving-exact-multiplicity-coverage-no-hall-or-singletonized";
+const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_MILESTONE_SCOPE = "For an arbitrary finite explicit minimal-consumer antichain and a typed coordinate-preserving restoration operation, Lean materializes typed full-restoration candidates for every atom of the canonical first disjoint nonsingleton pair, proves exact candidate count and positional coordinate preservation, derives complete equality-fibre multiplicity coverage, excludes a strict Hall deficit for that graph, and otherwise proves V54 singletonization.";
+const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NON_CLAIM = "The typed restoration operation remains explicit caller data. This milestone does not construct it from a terminal candidate or prove its full semantic adequacy. It does not connect complete restoration to a BN4 or BN5 contradiction, embed local routes into the complete global outcome system, prove global PkgC route silence or the full historical PkgC theorem, establish full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS = {
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone": { hash: "2b4b2abc251a6f227f312189bef5f8af6ad139173a5b56bd041b5c0490c56009", axioms: [], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_empty_false": { hash: "6a1188e91a30e61ffbabab94b6419a4e0d9980de8723c4bf3e717c82735e95c9", axioms: ["propext"], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
@@ -940,18 +958,18 @@ function copySealFixture(t) {
 test("exact current artifact seal verifies eight reviewed files", () => {
   const result = verifyReleaseSeal({ root });
   assert.equal(result.checked, 8);
-  assert.equal(result.coreCommit, "49c463eb734ad7c11ece63177948c9df0af8f52a");
+  assert.equal(result.coreCommit, "fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd");
 });
 
-test("current release is pinned, eighty-five-page, exposes finite PkgC separating-consumer evidence, and fails closed", () => {
+test("current release is pinned, eighty-seven-page, exposes finite PkgC typed-restoration evidence, and fails closed", () => {
   const release = json("downloads/formal-publication-release.json");
-  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-113");
-  assert.equal(release.source.commit, "49c463eb734ad7c11ece63177948c9df0af8f52a");
+  assert.equal(release.coordinate, "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-114");
+  assert.equal(release.source.commit, "fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd");
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
-  assert.equal(release.source.tree, "4622cebf0bf937b0f4d9c9decb62383aefe9b416");
+  assert.equal(release.source.tree, "31e942af36667a728849744f7512fd690bbd3194");
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
-  assert.equal(release.artifacts.report.pageCount, 85);
+  assert.equal(release.artifacts.report.pageCount, 87);
   assert.equal(release.earnedBoundary.leanTheorem, "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
   assert.equal(release.earnedBoundary.kernelTypeSha256, "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937");
   assert.deepEqual(release.earnedBoundary.axiomClosure, []);
@@ -3019,6 +3037,26 @@ test("current release is pinned, eighty-five-page, exposes finite PkgC separatin
   assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersDichotomyTheorem, "PNP.DirectWire.terminalPkgC_separatingConsumers_restorationDichotomy");
   assert.equal(release.earnedBoundary.residualTerminalPkgCSeparatingConsumersClassifierTheorem, "PNP.DirectWire.classifyTerminalPkgCSeparatingConsumers_exhaustive");
 
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationAuditedDeclarationCount, 17);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationEmptyAxiomDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationPropextOnlyDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationPropextQuotSoundDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationScope, RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPkgCTypedRestorationTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPkgCTypedRestorationAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPkgCTypedRestorationProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationFullCandidatesLengthTheorem, "PNP.DirectWire.TerminalPkgCSeparatingPair.fullRestorationCandidates_length");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationFullCandidatesCoordinatesTheorem, "PNP.DirectWire.TerminalPkgCSeparatingPair.fullRestorationCandidates_coordinates");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationCoordinateUniverseTheorem, "PNP.DirectWire.TerminalPkgCTypedRestorer.coordinateUniverse_coordinates");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationFullMultiplicityTheorem, "PNP.DirectWire.terminalBN5FullMultiplicity_indexed_eq");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationShadowMultiplicityTheorem, "PNP.DirectWire.terminalBN5ShadowMultiplicity_indexed_eq");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationExactCoverageTheorem, "PNP.DirectWire.TerminalPkgCSeparatingPair.typedRestoration_exactCoverage");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationNoHallDeficitTheorem, "PNP.DirectWire.terminalBN5CompleteMultiplicityMatching_not_hallDeficit");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationRealizationTheorem, "PNP.DirectWire.terminalPkgC_typedRestoration_realization");
+  assert.equal(release.earnedBoundary.residualTerminalPkgCTypedRestorationClassifierTheorem, "PNP.DirectWire.classifyTerminalPkgCTypedRestoration_exhaustive");
+
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormFormalized, true);
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.residualTerminalV54ConsumerAntichainNormalFormAuditedDeclarationCount, 28);
@@ -3090,7 +3128,7 @@ test("current release is pinned, eighty-five-page, exposes finite PkgC separatin
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn6-hypergraph-packet$/);
+  assert.match(release.earnedBoundary.scope, /\+plus-residual-terminal-bn6-hypergraph-packet\+plus-residual-terminal-pkgc-typed-restoration$/);
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
   assert.equal(release.earnedBoundary.bcelReadyFormalized, false);
@@ -3123,12 +3161,12 @@ test("current release is pinned, eighty-five-page, exposes finite PkgC separatin
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish exactly 108 milestones with finite PkgC separating-consumer evidence pinned", () => {
+test("status and inventory publish exactly 109 milestones with finite PkgC typed-restoration evidence pinned", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const milestones = status.formalPublicationMilestones;
-  assert.equal(milestones.length, 108);
-  assert.equal(milestones.filter((row) => row.earned === true).length, 106);
+  assert.equal(milestones.length, 109);
+  assert.equal(milestones.filter((row) => row.earned === true).length, 107);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, 2);
 
   const parser = milestones.find((row) => row.id === "concrete-locked-nand-source-parser");
@@ -4290,6 +4328,46 @@ test("status and inventory publish exactly 108 milestones with finite PkgC separ
     RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_SCOPE
   );
 
+  const pkgCTypedRestoration = milestones.find(
+    (row) => row.id === "residual-terminal-pkgc-typed-restoration"
+  );
+  assert.equal(pkgCTypedRestoration.classification, "formalized-residual-terminal-pkgc-typed-restoration");
+  assert.equal(pkgCTypedRestoration.status, "formalized-residual-terminal-pkgc-typed-restoration");
+  assert.equal(pkgCTypedRestoration.earned, true);
+  assert.equal(pkgCTypedRestoration.allPresent, true);
+  assert.equal(pkgCTypedRestoration.allAssumptionFree, false);
+  assert.equal(pkgCTypedRestoration.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pkgCTypedRestoration.allKernelTypesMatch, true);
+  assert.equal(pkgCTypedRestoration.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    pkgCTypedRestoration.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(
+      pkgCTypedRestoration.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+    ),
+    RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_HASHES
+  );
+  for (const row of pkgCTypedRestoration.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(pkgCTypedRestoration.scope, RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_MILESTONE_SCOPE);
+  assert.equal(pkgCTypedRestoration.nonClaim, RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalPkgCTypedRestorationFormalized, true);
+  assert.equal(status.leanResidualTerminalPkgCTypedRestorationAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPkgCTypedRestorationScope,
+    RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_SCOPE
+  );
+
   const v54ConsumerAntichainNormalForm = milestones.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
   );
@@ -4422,21 +4500,21 @@ test("status and inventory publish exactly 108 milestones with finite PkgC separ
   assert.equal(lockedThresholdCandidate.module, "PNP.Concrete.LockedNANDThresholdPublication");
   assert.deepEqual(lockedThresholdCandidate.axioms, ["Quot.sound", "propext"]);
 
-  assert.equal(inventory.declarationCount, 27573);
-  assert.equal(inventory.theoremCount, 14360);
-  assert.equal(inventory.assumptionFreeTheoremCount, 7314);
+  assert.equal(inventory.declarationCount, 27659);
+  assert.equal(inventory.theoremCount, 14395);
+  assert.equal(inventory.assumptionFreeTheoremCount, 7336);
   assert.equal(inventory.excludedPrivateDeclarationCount, 15002);
-  assert.equal(inventory.sourceClosureModuleCount, 247);
-  assert.equal(inventory.milestoneCandidates.length, 2557);
+  assert.equal(inventory.sourceClosureModuleCount, 248);
+  assert.equal(inventory.milestoneCandidates.length, 2566);
   assert.deepEqual(inventory.declarationKindCounts, {
     axiom: 4,
-    constructor: 860,
-    definition: 11557,
-    inductive: 396,
+    constructor: 864,
+    definition: 11598,
+    inductive: 399,
     opaque: 0,
     quotient: 0,
-    recursor: 396,
-    theorem: 14360
+    recursor: 399,
+    theorem: 14395
   });
 });
 
