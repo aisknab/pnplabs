@@ -2125,6 +2125,32 @@ const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NEW_CANDIDATES =
 assert.equal(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREM_NAMES.length, 9);
 assert.equal(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_CANDIDATES.length, 9);
 assert.equal(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NEW_CANDIDATES.length, 9);
+const PUBLISHED_RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-same-key-cancellation"
+  );
+assert.ok(PUBLISHED_RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_MILESTONE);
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_HASHES = Object.fromEntries(
+  PUBLISHED_RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_MILESTONE.theoremRows.map(
+    (row) => [row.name, row.expectedKernelTypeSha256]
+  )
+);
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_NAMES = Object.keys(
+  RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_HASHES
+);
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_CANDIDATES =
+  publishedInventory.milestoneCandidates.filter(
+    (candidate) => RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_NAMES.includes(candidate.name)
+  );
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_PREVIOUS_THEOREM_NAMES =
+  earnedTheoremNamesBefore("residual-terminal-pkgc-same-key-cancellation");
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES =
+  RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_CANDIDATES.filter(
+    (candidate) => !RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_PREVIOUS_THEOREM_NAMES.has(candidate.name)
+  );
+assert.equal(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_NAMES.length, 11);
+assert.equal(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_CANDIDATES.length, 11);
+assert.equal(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES.length, 11);
 const PUBLISHED_RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_MILESTONE =
   publishedStatus.formalPublicationMilestones.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
@@ -2284,6 +2310,17 @@ const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_STATUS_FIELDS = Object.fromEntrie
     return [key, publishedStatus[key]];
   })
 );
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_KEYS = [
+  "leanResidualTerminalPkgCSameKeyCancellationFormalized",
+  "leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed",
+  "leanResidualTerminalPkgCSameKeyCancellationScope"
+];
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_KEYS = [
   "leanResidualTerminalConsumerAntichainNormalFormFormalized",
   "leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed",
@@ -2335,6 +2372,8 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalBN4ActivationCancellation",
     "residualTerminalBN5FullShadowLocalization",
     "residualTerminalPkgCSeparatingConsumers",
+    "residualTerminalPkgCTypedRestoration",
+    "residualTerminalPkgCSameKeyCancellation",
     "residualTerminalV54ConsumerAntichainNormalForm",
     "residualTerminalV53ConstantCutHypergraphRigidity",
     "residualTerminalBN6HypergraphPacket",
@@ -2449,6 +2488,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
@@ -3157,28 +3197,28 @@ function makeProject(t) {
   statusPayload.formalPublicationMilestones = publishedStatus.formalPublicationMilestones.map(
     (row) => structuredClone(explicitStatusMilestones.get(row.id) ?? row)
   );
-  assert.equal(statusPayload.formalPublicationMilestones.length, 109, "synthetic status must match the published milestone count");
-  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 107, "synthetic status must match the published earned-milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.length, 110, "synthetic status must match the published milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 108, "synthetic status must match the published earned-milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, 2, "synthetic status must retain every fail-closed milestone");
   const status = json(statusPayload);
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
-    declarationCount: 27659,
-    theoremCount: 14395,
-    assumptionFreeTheoremCount: 7336,
-    excludedPrivateDeclarationCount: 15002,
-    sourceClosureModuleCount: 248,
+    declarationCount: 27734,
+    theoremCount: 14432,
+    assumptionFreeTheoremCount: 7342,
+    excludedPrivateDeclarationCount: 15005,
+    sourceClosureModuleCount: 249,
     axiomCount: 4,
     declarationKindCounts: {
       axiom: 4,
-      constructor: 864,
-      definition: 11598,
-      inductive: 399,
+      constructor: 867,
+      definition: 11629,
+      inductive: 401,
       opaque: 0,
       quotient: 0,
-      recursor: 399,
-      theorem: 14395
+      recursor: 401,
+      theorem: 14432
     },
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
@@ -3384,9 +3424,10 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES,
-    ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES
+    ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES,
+    ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES
   );
-  assert.equal(inventoryPayload.milestoneCandidates.length, 2566, "synthetic inventory must match the published reviewed-candidate count");
+  assert.equal(inventoryPayload.milestoneCandidates.length, 2577, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
   const publicationMap = json({
     kind: "TestPublicationMap",
@@ -3510,6 +3551,7 @@ function makeProject(t) {
       ...RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREM_HASHES,
+      ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_HASHES,
@@ -10192,6 +10234,64 @@ test("rejects residual terminal PkgC typed-restoration release, status, inventor
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal PkgC typed-restoration fingerprint mismatch/);
+});
+
+test("rejects residual terminal PkgC same-key-cancellation release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalPkgCSameKeyCancellationFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal PkgC same-key-cancellation boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualTerminalPkgCSameKeyCancellationTheoremKernelTypeSha256[
+    "PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual terminal PkgC same-key-cancellation fingerprint mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.residualTerminalPkgCSameKeyCancellationClassifierTheorem =
+    "PNP.DirectWire.classifyTerminalPkgCTypedRestoration_exhaustive";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /current manifest residual terminal PkgC same-key-cancellation theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal PkgC same-key-cancellation evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-same-key-cancellation"
+  ).nonClaim = "This is the terminal candidate's ambient BN4 ledger and proves full PkgC route silence.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal PkgC same-key-cancellation publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal PkgC same-key-cancellation theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === "residual-terminal-pkgc-same-key-cancellation"
+  ).scope = "ambient-bn4-ledger-full-pkgc-global-route-silence";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal PkgC same-key-cancellation boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal PkgC same-key-cancellation fingerprint mismatch/);
 });
 
 test("rejects residual terminal BN6 hypergraph-packet release, status, inventory, and publication-map mutation", (t) => {

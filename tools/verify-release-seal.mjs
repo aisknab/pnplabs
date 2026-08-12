@@ -4,8 +4,8 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd";
-const CORE_TREE = "31e942af36667a728849744f7512fd690bbd3194";
+const CORE_COMMIT = "a46bc46175186748592af32661641fc232dae109";
+const CORE_TREE = "caddf0db1c54ee534653a1435047b796aac8025f";
 const PROOF_COMMIT = "40a46e9e4aea8177256839415407e35ddb95c65c";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -3987,6 +3987,24 @@ const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_SCOPE = "all-finite-explicit-mini
 const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_MILESTONE_SCOPE = "For an arbitrary finite explicit minimal-consumer antichain and a typed coordinate-preserving restoration operation, Lean materializes typed full-restoration candidates for every atom of the canonical first disjoint nonsingleton pair, proves exact candidate count and positional coordinate preservation, derives complete equality-fibre multiplicity coverage, excludes a strict Hall deficit for that graph, and otherwise proves V54 singletonization.";
 const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NON_CLAIM = "The typed restoration operation remains explicit caller data. This milestone does not construct it from a terminal candidate or prove its full semantic adequacy. It does not connect complete restoration to a BN4 or BN5 contradiction, embed local routes into the complete global outcome system, prove global PkgC route silence or the full historical PkgC theorem, establish full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREMS = {
+  "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtom_key_eq": { hash: "5ae8e007ae6df7f2c31cc9206969f2e8a072aad3286a9ac7f725151f52a813b3", axioms: [], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtom_balanced": { hash: "c33bffa228c261859ecbf843b325ad9f6d3ca9b0a9015c79d4b92a38e24feb22", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtoms_length": { hash: "e27a9056fc4becad48acccfbdd79394cf84b3ba2f9fadae0110fe89d08fb637c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtoms_balanced": { hash: "935e170044233eb06f9abea0e550c455372e73fb13f592096393f9fabf077a92", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellationCells_length": { hash: "2479de06e3fe85fd636bca248b0596f524b09d68c18625e2423131431530e075", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellation_balanced": { hash: "d319561914eba29a5673945a4e85a7923e0c47396e0c9f243d90b8057be2ac6e", axioms: ["propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellation_residualCells_empty": { hash: "6cf6d44aa6e244a8f245a79fee4834e0bb2e1836b9353278f522256176499fb6", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellation_signedMass_zero": { hash: "0524782f70301d75c278d5bda7865945e932e2fce0f4a2eff65a284118312a48", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.terminalPkgC_typedRestoration_sameKeyCancellation": { hash: "b8acb10618219c2980c026a7bdfa92bddd5da3810f449e8249bd820f31abb1e7", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.terminalPkgC_sameKeyCancellation_silence_singletonizes": { hash: "c0feb56a30d17811ddf2d13bb7a645ac55d8e99af90d1ccd9cad99409745c229", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" },
+  "PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive": { hash: "c8c63bd0d8f1c967d9e4809d87f62692c9532dd52ea3f895b372baf3aacdfe95", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPkgCSameKeyCancellation" }
+};
+
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_SCOPE = "all-finite-explicit-minimal-consumer-antichains-typed-exact-coordinate-restoration-canonical-opposite-sign-bn4-ledger-every-key-balanced-empty-residual-or-singletonized-under-cancellation-silence";
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_MILESTONE_SCOPE = "For an arbitrary finite explicit minimal-consumer antichain and typed exact-BN5-coordinate restoration operation, Lean mechanically pairs every quotient atom with its restored full candidate as opposite-sign unit cells, proves the complete BN5 coordinate gives the same nested BN4 key, proves exact cell count and positive/negative multiplicity equality at every BN4 key, computes an empty canonical residual and zero signed mass at every key, and derives V54 singletonization from exact absence of every such proof-bearing cancellation outcome.";
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NON_CLAIM = "The typed restoration operation and its complete coordinate maps remain explicit inputs, and the generated opposite-sign cells are not yet proved to be the cells of the terminal candidate's ambient BN4 ledger. This milestone does not construct semantic restorations from a terminal candidate, embed cancellation or Hall outcomes into the complete global route system, prove global route silence or the full historical PkgC theorem, establish full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS = {
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone": { hash: "2b4b2abc251a6f227f312189bef5f8af6ad139173a5b56bd041b5c0490c56009", axioms: [], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_empty_false": { hash: "6a1188e91a30e61ffbabab94b6419a4e0d9980de8723c4bf3e717c82735e95c9", axioms: ["propext"], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
@@ -4436,6 +4454,19 @@ const RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_RELEASE_IDENTITIES = {
   residualTerminalPkgCTypedRestorationRealizationTheorem: "PNP.DirectWire.terminalPkgC_typedRestoration_realization",
   residualTerminalPkgCTypedRestorationClassifierTheorem: "PNP.DirectWire.classifyTerminalPkgCTypedRestoration_exhaustive"
 };
+const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_RELEASE_IDENTITIES = {
+  residualTerminalPkgCSameKeyCancellationAtomKeyTheorem: "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtom_key_eq",
+  residualTerminalPkgCSameKeyCancellationAtomBalancedTheorem: "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtom_balanced",
+  residualTerminalPkgCSameKeyCancellationAtomsLengthTheorem: "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtoms_length",
+  residualTerminalPkgCSameKeyCancellationAtomsBalancedTheorem: "PNP.DirectWire.terminalPkgCRestorationCancellationCellsForAtoms_balanced",
+  residualTerminalPkgCSameKeyCancellationPairCellsLengthTheorem: "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellationCells_length",
+  residualTerminalPkgCSameKeyCancellationPairBalancedTheorem: "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellation_balanced",
+  residualTerminalPkgCSameKeyCancellationResidualCellsEmptyTheorem: "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellation_residualCells_empty",
+  residualTerminalPkgCSameKeyCancellationSignedMassZeroTheorem: "PNP.DirectWire.TerminalPkgCSeparatingPair.restorationCancellation_signedMass_zero",
+  residualTerminalPkgCSameKeyCancellationRealizationTheorem: "PNP.DirectWire.terminalPkgC_typedRestoration_sameKeyCancellation",
+  residualTerminalPkgCSameKeyCancellationSilenceSingletonizesTheorem: "PNP.DirectWire.terminalPkgC_sameKeyCancellation_silence_singletonizes",
+  residualTerminalPkgCSameKeyCancellationClassifierTheorem: "PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive"
+};
 
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_RELEASE_IDENTITIES = {
   residualTerminalV54ConsumerAntichainNormalFormRequestMonotoneTheorem: "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone",
@@ -4659,44 +4690,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 457490,
-    "sha256": "483c29088bc44f6c31d45b247545d88f2649b058d77f7e910409faa137166ca2",
+    "bytes": 458350,
+    "sha256": "7c6fcf6a75ed8bb33527c334542fbf36ed0f64d2eacc79277a746d18184a2122",
     "role": "current inventory-derived eighty-seven-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 457490,
-    "sha256": "483c29088bc44f6c31d45b247545d88f2649b058d77f7e910409faa137166ca2",
+    "bytes": 458350,
+    "sha256": "7c6fcf6a75ed8bb33527c334542fbf36ed0f64d2eacc79277a746d18184a2122",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 220107,
-    "sha256": "11e852d3d9049417f15824033595d560a145adcf62fea7e745d731c025afcfd6",
+    "bytes": 221513,
+    "sha256": "df8ff9aa32c8edc76d9d8f5ba07fbb3bd80fa8435bd3cea28d572d7371cc8e59",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 220107,
-    "sha256": "11e852d3d9049417f15824033595d560a145adcf62fea7e745d731c025afcfd6",
+    "bytes": 221513,
+    "sha256": "df8ff9aa32c8edc76d9d8f5ba07fbb3bd80fa8435bd3cea28d572d7371cc8e59",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2092488,
-    "sha256": "f73285c1e43698ba0708b37d39a9ec6346d16f6dfcedbf875d227736e4c2eec4",
+    "bytes": 2101076,
+    "sha256": "ec7b7955471fc8af320d8751abd26b0338b59ca030b4d01a3a04dfff1db93f31",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 17830363,
-    "sha256": "7f21404feab8d7f354df31e904fda9a8f5fc9b64caefddf19398602166ca4cf9",
+    "bytes": 17980963,
+    "sha256": "ae56cd50f50e6b749e4af8b7d58d8db0790e2c09963ed86c5f507a5c36e7e366",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 807425,
-    "sha256": "823747ab66b0796b08f65ad2d69330f5e86419d0b676409d51ecb9b74ae038cc",
+    "bytes": 811653,
+    "sha256": "35debf08c6959d181c1fa3670bd66448ec52cd0e30a04f0f7fcac594ccaf1bb4",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -4769,10 +4800,10 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-131") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-132") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-131" || status.formalPublicationMapSha256 !== "fd3d1ec5cc318aee5c0b9ec4b53f4a333385a9341dd2a545e568f088517a34f8" || status.leanSourceClosureSha256 !== "8bdc5a19e8a7360f6421b229858d95e6a430dece175bcc640b73041c4de768f6") fail("status source identity mismatch");
-  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 109 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 107 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 2) fail("status formal-publication milestone counts mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-132" || status.formalPublicationMapSha256 !== "40178e6ea310301f0ff94fa6d97de759bd99d132509c79016fddb7fce2b99008" || status.leanSourceClosureSha256 !== "c038a1f4f3d8a95bbb3ff1914dbe5555a448c7b35f7e85a2c2b571b4ce1fb88b") fail("status source identity mismatch");
+  if (!Array.isArray(status.formalPublicationMilestones) || status.formalPublicationMilestones.length !== 110 || status.formalPublicationMilestones.filter((row) => row.earned === true).length !== 108 || status.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length !== 2) fail("status formal-publication milestone counts mismatch");
   if (status.currentStatusAuthority !== true) fail("status must be current authority");
   if (status.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("status must derive publication only from the concrete gate");
   if (status.concretePublicationGate?.passed !== false) fail("concrete publication gate must remain false");
@@ -6266,6 +6297,38 @@ function assertFailClosedStatus(status) {
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal PkgC typed-restoration evidence mismatch");
+  const residualTerminalPkgCSameKeyCancellationMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-pkgc-same-key-cancellation"
+  );
+  const residualTerminalPkgCSameKeyCancellationNames = Object.keys(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREMS);
+  if (!residualTerminalPkgCSameKeyCancellationMilestone
+      || residualTerminalPkgCSameKeyCancellationMilestone.classification !== "formalized-residual-terminal-pkgc-same-key-cancellation"
+      || residualTerminalPkgCSameKeyCancellationMilestone.status !== "formalized-residual-terminal-pkgc-same-key-cancellation"
+      || residualTerminalPkgCSameKeyCancellationMilestone.scope !== RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_MILESTONE_SCOPE
+      || residualTerminalPkgCSameKeyCancellationMilestone.nonClaim !== RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NON_CLAIM
+      || JSON.stringify(residualTerminalPkgCSameKeyCancellationMilestone.requiredTheorems) !== JSON.stringify(residualTerminalPkgCSameKeyCancellationNames)
+      || residualTerminalPkgCSameKeyCancellationMilestone.earned !== true
+      || residualTerminalPkgCSameKeyCancellationMilestone.allPresent !== true
+      || residualTerminalPkgCSameKeyCancellationMilestone.allAssumptionFree !== false
+      || residualTerminalPkgCSameKeyCancellationMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalPkgCSameKeyCancellationMilestone.allKernelTypesMatch !== true
+      || residualTerminalPkgCSameKeyCancellationMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal PkgC same-key-cancellation publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREMS)) {
+    const row = residualTerminalPkgCSameKeyCancellationMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal PkgC same-key-cancellation theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalPkgCSameKeyCancellationFormalized === true
+      && status.leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed === true
+      && status.leanResidualTerminalPkgCSameKeyCancellationScope === RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_SCOPE
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal PkgC same-key-cancellation evidence mismatch");
   const residualTerminalV54ConsumerAntichainNormalFormMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
   );
@@ -6418,10 +6481,10 @@ function assertFailClosedStatus(status) {
 
 function assertInventory(inventory) {
   if (inventory.kind !== "PNPLeanTheoremInventory0") fail("inventory kind mismatch");
-  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-12-131") fail("inventory coordinate mismatch");
-  if (inventory.declarationCount !== 27659 || inventory.theoremCount !== 14395) fail("inventory declaration counts mismatch");
-  if (inventory.assumptionFreeTheoremCount !== 7336 || inventory.excludedPrivateDeclarationCount !== 15002 || inventory.sourceClosureModuleCount !== 248 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
-  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 864, definition: 11598, inductive: 399, opaque: 0, quotient: 0, recursor: 399, theorem: 14395 })) fail("inventory declaration-kind counts mismatch");
+  if (inventory.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-12-132") fail("inventory coordinate mismatch");
+  if (inventory.declarationCount !== 27734 || inventory.theoremCount !== 14432) fail("inventory declaration counts mismatch");
+  if (inventory.assumptionFreeTheoremCount !== 7342 || inventory.excludedPrivateDeclarationCount !== 15005 || inventory.sourceClosureModuleCount !== 249 || inventory.axiomCount !== 4) fail("inventory theorem/module/axiom counts mismatch");
+  if (JSON.stringify(inventory.declarationKindCounts) !== JSON.stringify({ axiom: 4, constructor: 867, definition: 11629, inductive: 401, opaque: 0, quotient: 0, recursor: 401, theorem: 14432 })) fail("inventory declaration-kind counts mismatch");
   if (inventory.compatibilityRootCandidate !== null || inventory.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("inventory publication boundary mismatch");
   if (!Array.isArray(inventory.projectAxioms) || inventory.projectAxioms.length !== 4) fail("inventory must disclose four project axioms");
   const membership = inventory.milestoneCandidates?.find((candidate) => candidate.name === "PNP.Concrete.FinalUniversalDesign.cnfSATInNP");
@@ -7092,6 +7155,12 @@ function assertInventory(inventory) {
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal PkgC typed-restoration theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal PkgC typed-restoration fingerprint mismatch: ${name}`);
   }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal PkgC same-key-cancellation theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal PkgC same-key-cancellation fingerprint mismatch: ${name}`);
+  }
   for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS)) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
@@ -7116,16 +7185,16 @@ function assertInventory(inventory) {
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory concrete locked-NAND threshold theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory concrete locked-NAND threshold fingerprint mismatch: ${name}`);
   }
-  if (inventory.milestoneCandidates?.length !== 2566) fail("inventory reviewed theorem-candidate count mismatch");
+  if (inventory.milestoneCandidates?.length !== 2577) fail("inventory reviewed theorem-candidate count mismatch");
 }
 
 function assertCurrentManifest(manifest) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-114") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-115") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
-  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-131" || manifest.source?.formalPublicationMapSha256 !== "fd3d1ec5cc318aee5c0b9ec4b53f4a333385a9341dd2a545e568f088517a34f8" || manifest.source?.leanSourceClosureSha256 !== "8bdc5a19e8a7360f6421b229858d95e6a430dece175bcc640b73041c4de768f6") fail("current manifest publication-map identity mismatch");
+  if (manifest.source?.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-132" || manifest.source?.formalPublicationMapSha256 !== "40178e6ea310301f0ff94fa6d97de759bd99d132509c79016fddb7fce2b99008" || manifest.source?.leanSourceClosureSha256 !== "c038a1f4f3d8a95bbb3ff1914dbe5555a448c7b35f7e85a2c2b571b4ce1fb88b") fail("current manifest publication-map identity mismatch");
   if (manifest.artifacts?.report?.pageCount !== 87) fail("current report must have eighty-seven pages");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
@@ -8265,6 +8334,25 @@ function assertCurrentManifest(manifest) {
   if (!residualTerminalPkgCTypedRestorationHashes || Object.keys(residualTerminalPkgCTypedRestorationHashes).length !== 9
       || !Object.entries(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREMS).every(([name, row]) => residualTerminalPkgCTypedRestorationHashes[name] === row.hash)) fail("current manifest residual terminal PkgC typed-restoration fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal PkgC typed-restoration theorem identity mismatch");
+  if (!(earned.residualTerminalPkgCSameKeyCancellationFormalized === true
+      && earned.residualTerminalPkgCSameKeyCancellationAxiomAuditPassed === true
+      && earned.residualTerminalPkgCSameKeyCancellationAuditedDeclarationCount === 21
+      && earned.residualTerminalPkgCSameKeyCancellationEmptyAxiomDeclarationCount === 4
+      && earned.residualTerminalPkgCSameKeyCancellationPropextOnlyDeclarationCount === 5
+      && earned.residualTerminalPkgCSameKeyCancellationPropextQuotSoundDeclarationCount === 12
+      && earned.residualTerminalPkgCSameKeyCancellationScope === RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_SCOPE
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal PkgC same-key-cancellation boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalPkgCSameKeyCancellationAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalPkgCSameKeyCancellationProjectAxiomClosure)
+      || earned.residualTerminalPkgCSameKeyCancellationProjectAxiomClosure.length !== 0) fail("current manifest residual terminal PkgC same-key-cancellation axiom closure mismatch");
+  const residualTerminalPkgCSameKeyCancellationHashes = earned.residualTerminalPkgCSameKeyCancellationTheoremKernelTypeSha256;
+  if (!residualTerminalPkgCSameKeyCancellationHashes || Object.keys(residualTerminalPkgCSameKeyCancellationHashes).length !== 11
+      || !Object.entries(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREMS).every(([name, row]) => residualTerminalPkgCSameKeyCancellationHashes[name] === row.hash)) fail("current manifest residual terminal PkgC same-key-cancellation fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal PkgC same-key-cancellation theorem identity mismatch");
   if (!(earned.residualTerminalV54ConsumerAntichainNormalFormFormalized === true
       && earned.residualTerminalV54ConsumerAntichainNormalFormAxiomAuditPassed === true
       && earned.residualTerminalV54ConsumerAntichainNormalFormAuditedDeclarationCount === 28
@@ -8336,7 +8424,7 @@ function assertCurrentManifest(manifest) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration")) fail("current manifest earned scope omits the residual terminal BN6 and typed-PkgC bridges");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation")) fail("current manifest earned scope omits the residual terminal BN6 and PkgC bridges");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -8366,7 +8454,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-114") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-115") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");

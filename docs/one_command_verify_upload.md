@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd
+git checkout a46bc46175186748592af32661641fc232dae109
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, and the finite residual sequence through the typed PkgC restoration realization. The locked-NAND theorem `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold` remains a polynomial many-one reduction, not a polynomial-time target decider or an NP-hardness or NP-completeness result. The newest typed-restoration result still takes its restoration operation as explicit caller data and does not prove full PkgC, ZeroSlack, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, and the finite residual sequence through typed PkgC restoration same-key cancellation. The locked-NAND theorem `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold` remains a polynomial many-one reduction, not a polynomial-time target decider or an NP-hardness or NP-completeness result. The newest result still takes the typed restorer and coordinate maps as explicit inputs, and its generated opposite-sign cells are not yet identified with the terminal candidate's ambient BN4 ledger. It does not prove full PkgC route integration or silence, ZeroSlack, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 
