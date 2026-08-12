@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-12-residual-terminal-pkgc-ambient-bn4-ledger",
+      "milestoneId": "residual-terminal-pkgc-ambient-bn4-ledger",
+      "publishedAt": "2026-08-12T09:30:00Z",
+      "title": "Lean now embeds finite PkgC cancellation into an ambient BN4 ledger",
+      "plainLanguage": [
+        "For an arbitrary finite explicit BN4 cell ledger, Lean now accepts a proof-bearing exact multiset embedding of the generated PkgC opposite-sign cancellation cells. The embedding preserves every duplicate and proves that the ambient ledger is exactly the generated balanced subledger followed by an explicit remainder.",
+        "At every complete BN4 key, positive and negative mass split across the generated cells and remainder, so both ambient signed mass and the executable residual signed contribution equal the remainder. A successful candidate-derived BN4 kernel also ties every generated cell to its canonical request-atom space, and complete bindings plus exact absence of every computed bridge imply V54 singletonization. The ambient ledger, typed restorer, exact permutation certificate or canonical serialization, and successful kernel remain proof-bearing inputs. Lean has not derived those inputs from a terminal candidate, proved global PkgC route silence or the full historical PkgC theorem, completed global routing, BN6 or Packet selector-realizer completeness, polynomial runtime, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 94% figure is a revisable editorial estimate of known reconstruction work, separate from the 109 of 111 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 94,
+      "source": {
+        "commit": "63f38f39881dd8293e139b1687bf09688acb8e5d",
+        "tree": "af26f9121bd2b6e7d2df11e1d7f3152a0af6914a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-133",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-12-residual-terminal-pkgc-same-key-cancellation",
       "milestoneId": "residual-terminal-pkgc-same-key-cancellation",
       "publishedAt": "2026-08-12T04:11:09Z",

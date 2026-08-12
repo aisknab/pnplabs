@@ -64,6 +64,12 @@ are separate measures and must never be presented as interchangeable.
    and digests as exact generated data. Do not paraphrase or independently retype
    them in fixtures. Stabilize the source, run the generators, and record the
    values they actually emit rather than preselecting expected values.
+   Before running affected tests, update the publication-surface contracts to
+   consume those stabilized values. Where a current value already has one
+   checked-in canonical payload, derive test expectations from that payload
+   instead of copying its literal into another fixture. Keep independent literals
+   only for invariants and hostile mutations whose purpose is to challenge the
+   canonical payload rather than mirror it.
    Never use an unscoped global replacement for short counts, ordinals, or digest
    fragments: update named structured fields or anchored phrases, then compare
    every changed SHA-256 token with the clean baseline or generated authority.

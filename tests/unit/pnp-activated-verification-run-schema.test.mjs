@@ -19,17 +19,19 @@ test('historical activated record schema is retained only for auditability', asy
 
 test('current status supersedes every historical activated coordinate', async () => {
   const status = await readJson('public/pnp-status.json');
+  const inventory = await readJson('public/pnp-theorem-inventory.json');
+  const index = await readJson('public/pnp-index.json');
   const registry = await readJson('public/pnp-verification-runs.json');
-  assert.equal(status.coordinate, 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-132');
+  assert.equal(status.coordinate, index.statusCoordinate);
   assert.equal(status.historicalActivatedStatusCoordinate, registry.historicalStatusPayload.coordinate);
-  assert.equal(status.leanTheoremInventoryDeclarationCount, 27734);
-  assert.equal(status.leanTheoremInventoryTheoremCount, 14432);
-  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, 7342);
-  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, 15005);
-  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, 249);
-  assert.equal(status.formalPublicationMilestones.length, 110);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 108);
-  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
+  assert.equal(status.leanTheoremInventoryDeclarationCount, inventory.declarationCount);
+  assert.equal(status.leanTheoremInventoryTheoremCount, inventory.theoremCount);
+  assert.equal(status.leanTheoremInventoryAssumptionFreeTheoremCount, inventory.assumptionFreeTheoremCount);
+  assert.equal(status.leanTheoremInventoryExcludedPrivateDeclarationCount, inventory.excludedPrivateDeclarationCount);
+  assert.equal(status.leanTheoremInventorySourceClosureModuleCount, inventory.sourceClosureModuleCount);
+  assert.equal(status.formalPublicationMilestones.length, index.formalPublicationMilestoneCounts.total);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, index.formalPublicationMilestoneCounts.earned);
+  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, index.formalPublicationMilestoneCounts.unearned);
   assert.equal(status.leanResidualTerminalExecutableSaturationFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionFormalized, true);
   assert.equal(status.leanResidualTerminalPhysicalSupportCompletionAxiomAuditPassed, true);

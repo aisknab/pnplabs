@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `a46bc46175186748592af32661641fc232dae109`. Its generated status payload is current
+core commit `63f38f39881dd8293e139b1687bf09688acb8e5d`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the eighty-seven-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the eighty-eight-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `a46bc46175186748592af32661641fc232dae109` (tree `caddf0db1c54ee534653a1435047b796aac8025f`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the finite PkgC separating-consumer restoration dichotomy, typed restoration realization and typed-restoration same-key cancellation, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,577 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `63f38f39881dd8293e139b1687bf09688acb8e5d` (tree `af26f9121bd2b6e7d2df11e1d7f3152a0af6914a`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the finite PkgC separating-consumer restoration dichotomy, typed restoration realization, typed-restoration same-key cancellation, and exact ambient-BN4-ledger embedding, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,589 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and eight earned scoped milestones through finite PkgC typed-restoration same-key cancellation; its consumer antichain, typed restorer, and coordinate maps are explicit, its generated cells are not identified with the terminal candidate's ambient BN4 ledger, and it does not establish full PkgC route integration or silence, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-seven-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | One hundred and nine earned scoped milestones through finite PkgC ambient-BN4-ledger embedding; the ambient ledger, typed restorer, exact certificate or serialization, and successful candidate kernel remain explicit and are not derived from the terminal candidate, and the result does not establish full PkgC route integration or silence, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-eight-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.
@@ -41,7 +41,7 @@ historical and non-authoritative. It does not establish theorem correctness.
 | Reference class | Role | Pinned ref | Resolved tag object | Resolved commit | Path class |
 | --- | --- | --- | --- | --- | --- |
 | `sourceRef` | Source/checker implementation and source tests. | `final-pnp-proof-report-hardened-7072f8d` | `9b69c4f8d8d6d62eb359af759288e5794d1c81c2` | `7072f8d0bda6d44d240f9bb3fad624fd357e1278` | Source/checker code. |
-| `docsRef` | Correct 7072f8d release documentation and review handoff files. | `final-pnp-proof-report-docs-hardened-7072f8d-sealed` | `9eeb4b85af1c04c43e6f086debcd3ac37d5d27d1` | `3ba356c79b545d2c734283bf10d85d0710de2b60` | Release documentation. |
+| `docsRef` | Correct 7072f8d release documentation and review handoff files. | `final-pnp-proof-report-docs-hardened-7072f8d-sealed` | `9eeb4b85af1c04c43e6f086debcd3ac37d5d27d1` | `3ba356c79b545d2c734783bf10d85d0710de2b60` | Release documentation. |
 | `artifactRef` | Generated proof-report artefact bundle. | `final-pnp-proof-report-artifacts-hardened-7072f8d-sealed` | `e7ea459c907ed9e334af8c0bd5f3bb117348992d` | `9d1de19f827e5cb6880741352eb2349cbbb45994` | Generated artefacts under `proof-artifacts/final-pnp-proof-report-hardened-7072f8d/`. |
 | `publicCheckout` | Historical review mappings retained in this `pnplabs` checkout. | working tree | not applicable | not applicable | Historical audit-coordinate files only. |
 

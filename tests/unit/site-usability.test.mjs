@@ -12,6 +12,27 @@ async function read(relativePath) {
   return readFile(path.join(root, relativePath), 'utf8');
 }
 
+async function readJson(relativePath) {
+  return JSON.parse(await read(relativePath));
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+}
+
+async function currentPublication() {
+  const [updates, index, release] = await Promise.all([
+    readJson('content/milestone-updates.json'),
+    readJson('public/pnp-index.json'),
+    readJson('downloads/formal-publication-release.json'),
+  ]);
+  return {
+    progress: updates.entries[0].progressEstimatePercent,
+    counts: index.formalPublicationMilestoneCounts,
+    reportPages: release.artifacts.report.pageCount,
+  };
+}
+
 test('every public HTML page offers one consistent audience-first navigation and update feed', async () => {
   const htmlPaths = PUBLIC_ROOT_PATHS.filter((relativePath) => relativePath.endsWith('.html'));
   const expectedNavigation = [
@@ -41,6 +62,7 @@ test('every public HTML page offers one consistent audience-first navigation and
 });
 
 test('plain-language orientation is static and available before technical depth', async () => {
+  const { progress, counts, reportPages } = await currentPublication();
   const [home, faq, review, paper, architecture, verify] = await Promise.all([
     read('index.html'), read('faq.html'), read('review.html'), read('paper.html'), read('architecture.html'), read('verify.html'),
   ]);
@@ -54,22 +76,23 @@ test('plain-language orientation is static and available before technical depth'
     'Does this project prove that P equals NP?',
     'What is P versus NP?',
     'What does “machine-checked” mean?',
-    'What does the 93% tracker mean?',
+    `What does the ${progress}% tracker mean?`,
     'How can I follow new milestones?',
   ]) assert.ok(faq.includes(question), question);
-  assert.match(faq, /93% of the known formal reconstruction workload is complete/u);
-  assert.match(faq, /108 of 110 scoped rows are currently earned/u);
+  assert.match(faq, new RegExp(`${progress}% of the known formal reconstruction workload is complete`, 'u'));
+  assert.match(faq, new RegExp(`${counts.earned} of ${counts.total} scoped rows are currently earned`, 'u'));
 
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
-  assert.match(paper, /The current 87-page report is generated from the compiled Lean inventory/u);
+  assert.match(paper, new RegExp(`The current ${reportPages}-page report is generated from the compiled Lean inventory`, 'u'));
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
   assert.match(verify, /id="reproduce"/u);
 });
 
 test('technical disclosures announce their controls and remain usable without JavaScript', async () => {
+  const { counts } = await currentPublication();
   const [home, status, updates, css] = await Promise.all([
     read('index.html'), read('status.html'), read('updates.html'), read('assets/styles.min.css'),
   ]);
@@ -78,7 +101,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, /Show all 110 formal milestone records/u);
+  assert.match(status, new RegExp(`Show all ${counts.total} formal milestone records`, 'u'));
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
@@ -87,28 +110,29 @@ test('technical disclosures announce their controls and remain usable without Ja
 });
 
 test('updates expose a provider-free feed and a clearly qualified progress estimate', async () => {
+  const { progress } = await currentPublication();
   const [home, updates, feed, svg, css, minCss] = await Promise.all([
     read('index.html'), read('updates.html'), read('updates.xml'), read('assets/proof-progress.svg'), read('assets/styles.css'), read('assets/styles.min.css'),
   ]);
   assert.match(updates, /https:\/\/pnplabs\.com\.au\/updates\.xml/u);
   assert.match(updates, /data-copy="#feed-url"/u);
   assert.match(updates, /No email address or PNP Labs account is needed/u);
-  assert.match(updates, /About 93% of the known formalisation work/u);
+  assert.match(updates, new RegExp(`About ${progress}% of the known formalisation work`, 'u'));
   assert.match(updates, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
   assert.match(feed, /<link rel="self" type="application\/atom\+xml" href="https:\/\/pnplabs\.com\.au\/updates\.xml"\/>/u);
-  assert.match(svg, /93% ESTIMATED/u);
-  assert.match(updates, /<progress[^>]+value="93"[^>]+aria-label="Estimated proof reconstruction progress: 93 percent"/u);
+  assert.match(svg, new RegExp(`${progress}% ESTIMATED`, 'u'));
+  assert.match(updates, new RegExp(`<progress[^>]+value="${progress}"[^>]+aria-label="Estimated proof reconstruction progress: ${progress} percent"`, 'u'));
   assert.match(svg, /editorial · revisable/u);
   assert.match(home, /<aside class="home-progress-rail" aria-labelledby="home-progress-title">/u);
-  assert.match(home, /role="img" aria-label="Estimated proof reconstruction progress: 93 percent"/u);
-  assert.match(home, /data-proof-progress="93"/u);
+  assert.match(home, new RegExp(`role="img" aria-label="Estimated proof reconstruction progress: ${progress} percent"`, 'u'));
+  assert.match(home, new RegExp(`data-proof-progress="${progress}"`, 'u'));
   assert.doesNotMatch(home, /style="--proof-progress:/u);
   assert.match(home, /Editorial · revisable\./u);
   assert.equal((home.match(/>Follow updates<\/a>/gu) || []).length, 1);
   assert.doesNotMatch(home, /proof-progress-section/u);
   assert.match(css, /\.home-hero \.artifact-grid \{\s*grid-template-columns: minmax\(0, 880px\) minmax\(250px, 292px\)/u);
-  assert.match(css, /\.proof-tape-graphic \{\s*--proof-progress: 93%;/u);
-  assert.match(minCss, /\.proof-tape-graphic\{--proof-progress:93%/u);
+  assert.match(css, new RegExp(`\\.proof-tape-graphic \\{\\s*--proof-progress: ${progress}%;`, 'u'));
+  assert.match(minCss, new RegExp(`\\.proof-tape-graphic\\{--proof-progress:${progress}%`, 'u'));
   assert.match(css, /\.proof-tape-scale span:nth-child\(2\) \{\s*bottom: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-fill \{[\s\S]*width: var\(--proof-progress\)/u);
   assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.proof-tape-scale span:nth-child\(2\) \{[\s\S]*left: var\(--proof-progress\)/u);

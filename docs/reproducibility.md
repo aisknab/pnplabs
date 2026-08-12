@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 458,350 | `7c6fcf6a75ed8bb33527c334542fbf36ed0f64d2eacc79277a746d18184a2122` |
-| `downloads/canonical-proof-report.pdf` | 458,350 | `7c6fcf6a75ed8bb33527c334542fbf36ed0f64d2eacc79277a746d18184a2122` |
-| `downloads/canonical_proof_report.tex` | 221,513 | `df8ff9aa32c8edc76d9d8f5ba07fbb3bd80fa8435bd3cea28d572d7371cc8e59` |
-| `downloads/canonical-proof-report.tex` | 221,513 | `df8ff9aa32c8edc76d9d8f5ba07fbb3bd80fa8435bd3cea28d572d7371cc8e59` |
-| `public/pnp-status.json` | 2,101,076 | `ec7b7955471fc8af320d8751abd26b0338b59ca030b4d01a3a04dfff1db93f31` |
-| `public/pnp-theorem-inventory.json` | 17,980,963 | `ae56cd50f50e6b749e4af8b7d58d8db0790e2c09963ed86c5f507a5c36e7e366` |
+| `downloads/canonical_proof_report.pdf` | 460,049 | `5bca11cba837c8bdf90e27186974bf5398d4be78fae3360987afbf19746d271b` |
+| `downloads/canonical-proof-report.pdf` | 460,049 | `5bca11cba837c8bdf90e27186974bf5398d4be78fae3360987afbf19746d271b` |
+| `downloads/canonical_proof_report.tex` | 223,061 | `2e42452a0d270c8e36cf7f381dbd38a64a535d07b8bc653e4e13ff526c574e7d` |
+| `downloads/canonical-proof-report.tex` | 223,061 | `2e42452a0d270c8e36cf7f381dbd38a64a535d07b8bc653e4e13ff526c574e7d` |
+| `public/pnp-status.json` | 2,111,583 | `6e7416a60485390b4414251c3b8f00214ed759f93d8091aef73cdb357da2dbfe` |
+| `public/pnp-theorem-inventory.json` | 18,243,895 | `696c76220a092e5a84e7caa804fd1c57889f193968d1285b520c408f8237f5c1` |
 
-The PDF must have eighty-seven A4 pages. Both filename styles must be byte-identical.
+The PDF must have eighty-eight A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout a46bc46175186748592af32661641fc232dae109
+git -C ../pnp checkout 63f38f39881dd8293e139b1687bf09688acb8e5d
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 27,734 public declarations, 14,432 theorem-kind declarations,
-7,342 assumption-free theorem-kind declarations, 15,005 excluded private auxiliaries, 249 modules, and
+Expected compiled inventory counts are 27,794 public declarations, 14,454 theorem-kind declarations,
+7,347 assumption-free theorem-kind declarations, 15,008 excluded private auxiliaries, 250 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,15 +96,16 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 11 reviewed theorem pins. For every quotient atom and its caller-supplied typed
-full-restoration candidate, Lean constructs opposite-sign BN4 unit cells. Exact BN5 coordinate preservation puts
-both cells under the same nested BN4 key, so every key balances, the executable residual is empty, and signed
-mass is zero. The total classifier therefore proves either exact V54 singletonization or a proof-bearing same-key
-cancellation witness; exact absence of every such witness forces singletonization. The focused 21-declaration
-audit has 4 empty closures, 5 using only `propext`, and 12 using `Quot.sound` with `propext`. The restoration and
-coordinate maps remain explicit caller data, and the generated cells are not yet proved to be the terminal
-candidate's ambient BN4 ledger. Full PkgC route integration or silence, complete global routing, `ZeroSlack`,
-polynomial PCCMin, SAT in P, assumption discharge, and `P = NP` remain unproved.
+The newest milestone adds 12 reviewed theorem pins. For an arbitrary finite explicit ambient BN4 ledger, a
+proof-bearing exact multiset decomposition identifies the generated balanced PkgC cancellation cells with an
+ambient subledger while preserving duplicate multiplicities. Positive and negative mass decompose at every
+complete key, and removing the generated subledger leaves both signed mass and executable residual contribution
+equal to an explicit remainder. A successful candidate-derived BN4 kernel retains canonical request atoms, and
+complete bindings with no computed bridge force V54 singletonization. The focused 17-declaration audit has 4
+empty closures, 5 using only `propext`, and 8 using `Quot.sound` with `propext`. The ambient ledger, typed
+restorer, exact permutation certificate or canonical serialization, and successful kernel remain explicit
+proof-bearing inputs. Full PkgC route integration or silence, complete global routing, `ZeroSlack`, polynomial
+PCCMin, SAT in P, assumption discharge, and `P = NP` remain unproved.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
