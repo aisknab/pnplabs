@@ -18,12 +18,12 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), '7f21404feab8d7f354df31e904fda9a8f5fc9b64caefddf19398602166ca4cf9');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ae56cd50f50e6b749e4af8b7d58d8db0790e2c09963ed86c5f507a5c36e7e366');
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 107);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 108);
   assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
 });
 
@@ -775,6 +775,41 @@ test('PkgC typed restoration realization is fail closed and rejects widened or f
   const forgedInventory = structuredClone(inventory);
   forgedInventory.milestoneCandidates.find(
     (row) => row.name === 'PNP.DirectWire.classifyTerminalPkgCTypedRestoration_exhaustive'
+  ).axioms = ['PNP.CheckPCCPackexp'];
+  assert.equal(validation.validateInventory(forgedInventory), false);
+});
+
+test('PkgC same-key cancellation is fail closed and rejects widened or forged evidence', () => {
+  const failClosed = validation.FAIL_CLOSED_FORMAL_STATUS;
+  assert.equal(failClosed.leanResidualTerminalPkgCSameKeyCancellationFormalized, false);
+  assert.equal(failClosed.leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed, false);
+  assert.equal(failClosed.leanResidualTerminalPkgCSameKeyCancellationScope, null);
+  assert.match(
+    validation.formalStatusFields(failClosed),
+    /leanResidualTerminalPkgCSameKeyCancellationFormalized = false/u
+  );
+
+  const erasedAudit = structuredClone(status);
+  erasedAudit.leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(erasedAudit, inventory), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-pkgc-same-key-cancellation'
+  ).scope = 'A complete ambient BN4 ledger, global PkgC, ZeroSlack, PCCMin, and P = NP construction.';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const forgedFingerprint = structuredClone(status);
+  forgedFingerprint.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-pkgc-same-key-cancellation'
+  ).theoremRows.find(
+    (row) => row.name === 'PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive'
+  ).actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+
+  const forgedInventory = structuredClone(inventory);
+  forgedInventory.milestoneCandidates.find(
+    (row) => row.name === 'PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive'
   ).axioms = ['PNP.CheckPCCPackexp'];
   assert.equal(validation.validateInventory(forgedInventory), false);
 });
@@ -3611,7 +3646,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'f73285c1e43698ba0708b37d39a9ec6346d16f6dfcedbf875d227736e4c2eec4'/);
+  assert.match(source, /const STATUS_SHA256 = 'ec7b7955471fc8af320d8751abd26b0338b59ca030b4d01a3a04dfff1db93f31'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3889,12 +3924,14 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /27,659/);
-  assert.match(statusPage, /One hundred and seven scoped milestones/);
+  assert.match(statusPage, /27,734/);
+  assert.match(statusPage, /One hundred and eight scoped milestones/);
   assert.match(statusPage, /finite BN5 full-shadow localization kernel/i);
   assert.match(statusPage, /strict Hall deficit/i);
   assert.match(statusPage, /PkgC separating-consumer restoration dichotomy/i);
   assert.match(statusPage, /classifyTerminalPkgCSeparatingConsumers_exhaustive/);
+  assert.match(statusPage, /PkgC typed-restoration same-key cancellation/i);
+  assert.match(statusPage, /classifyTerminalPkgCSameKeyCancellation_exhaustive/);
   assert.match(statusPage, /V54 consumer-antichain normal form/i);
   assert.match(statusPage, /terminalV54_consumerAntichain_normal_form/);
   assert.match(statusPage, /V53 constant-cut hypergraph rigidity/i);

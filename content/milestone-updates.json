@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-12-residual-terminal-pkgc-same-key-cancellation",
+      "milestoneId": "residual-terminal-pkgc-same-key-cancellation",
+      "publishedAt": "2026-08-12T04:11:09Z",
+      "title": "Lean now verifies same-key cancellation for typed PkgC restorations",
+      "plainLanguage": [
+        "For every atom of the canonical first disjoint nonsingleton pair, Lean now constructs one positive unit cell for the quotient atom and one negative unit cell for its typed restored candidate. Exact preservation of the complete BN5 coordinate proves that each pair has the same nested BN4 key.",
+        "Lean proves the exact cell count, equal positive and negative multiplicity at every BN4 key, an empty computed residual, and zero signed mass. Its total classifier returns either V54 singletonization or a proof-bearing cancellation realization, and exact absence of every cancellation realization forces singletonization. The typed restorer and coordinate maps remain explicit, and the generated cells are not yet identified with a terminal candidate's ambient BN4 ledger. Lean has not completed global route integration or silence, the full historical PkgC result, BN6 or Packet selector-realizer completeness, polynomial runtime, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 93% figure is a revisable editorial estimate of known reconstruction work, separate from the 108 of 110 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 93,
+      "source": {
+        "commit": "a46bc46175186748592af32661641fc232dae109",
+        "tree": "caddf0db1c54ee534653a1435047b796aac8025f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-132",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-12-residual-terminal-pkgc-typed-restoration",
       "milestoneId": "residual-terminal-pkgc-typed-restoration",
       "publishedAt": "2026-08-12T00:57:40Z",
