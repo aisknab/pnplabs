@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-12-residual-terminal-pkgc-typed-restoration",
+      "milestoneId": "residual-terminal-pkgc-typed-restoration",
+      "publishedAt": "2026-08-12T00:57:40Z",
+      "title": "Lean now materializes finite typed PkgC restorations",
+      "plainLanguage": [
+        "For an arbitrary finite explicitly supplied minimal-consumer antichain and an explicitly supplied typed coordinate-preserving restoration operation, Lean now materializes one full-restoration candidate for every atom of the canonical first disjoint nonsingleton pair. It proves the exact candidate count and that every position keeps the source atom's complete coordinate.",
+        "The resulting equality-fibre graph has exact full and shadow multiplicities, gives complete coverage, and cannot satisfy a strict Hall deficit; when no nonsingleton pair exists, the classifier instead proves the V54 singletonization premise. The typed restoration operation remains caller-supplied, and Lean has not constructed it from a terminal candidate, proved its full semantic adequacy, connected restoration coverage to a BN4 or BN5 contradiction, completed PkgC route silence or global routing, established polynomial runtime, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 92% figure is a revisable editorial estimate of known reconstruction work, separate from the 107 of 109 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 92,
+      "source": {
+        "commit": "fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd",
+        "tree": "31e942af36667a728849744f7512fd690bbd3194",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-131",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-12-residual-terminal-pkgc-separating-consumers",
       "milestoneId": "residual-terminal-pkgc-separating-consumers",
       "publishedAt": "2026-08-11T19:58:23Z",

@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `49c463eb734ad7c11ece63177948c9df0af8f52a`. Its generated status payload is current
+core commit `fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the eighty-five-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the eighty-seven-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `49c463eb734ad7c11ece63177948c9df0af8f52a` (tree `4622cebf0bf937b0f4d9c9decb62383aefe9b416`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the finite PkgC separating-consumer restoration dichotomy, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,557 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `fe2c8ceb024d0a1afcb2a79a21015eb2969c37bd` (tree `31e942af36667a728849744f7512fd690bbd3194`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the exact finite candidate-derived BN3 request envelope, the finite BN4 activation-exact cancellation kernel, the finite BN5 full-shadow localization kernel, the finite PkgC separating-consumer restoration dichotomy and typed restoration realization, the V54 consumer-antichain normal form, the V53 constant-cut hypergraph rigidity classification, and the finite BN6 grouped hypergraph-packet bridge |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,566 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and six earned scoped milestones through the finite PkgC separating-consumer restoration dichotomy; its consumer antichain and restoration universe are explicit, and it does not derive them from terminal candidates, connect coverage to a BN4 or BN5 contradiction, embed its local Q route globally, establish full PkgC route silence, supply complete global routing, establish global ZeroSlack, or prove polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-five-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | One hundred and seven earned scoped milestones through the finite PkgC typed restoration realization; its consumer antichain and typed restoration operation are explicit, and it does not construct the operation from terminal candidates or prove full semantic adequacy, connect coverage to a BN4 or BN5 contradiction, embed local routes globally, establish full PkgC route silence, supply complete global routing, establish global ZeroSlack, or prove polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-seven-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.
