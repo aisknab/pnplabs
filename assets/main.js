@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-133';
-const STATUS_SHA256 = '6e7416a60485390b4414251c3b8f00214ed759f93d8091aef73cdb357da2dbfe';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-133';
-const FORMAL_PUBLICATION_MAP_SHA256 = 'a9f7ec898fb04e4842ea86281d2a6b257fc0c65dd422eb04a974bde169bf29d6';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134';
+const STATUS_SHA256 = '68695b5541ff3df5a5aba8f95b3169a79d26a8c938ca830ea20adf18c17cbf54';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-134';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'd8e2bb51eb170e70bf30d9768922fc7b8d86195fc9b8f69abe458bfe3ab97da8';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-133';
-const INVENTORY_SHA256 = '696c76220a092e5a84e7caa804fd1c57889f193968d1285b520c408f8237f5c1';
-const SOURCE_CLOSURE_SHA256 = '9b8afc2bac8c5f5b5fbe3c086f22602358c3f9b641aeb91e7de708f9f1001154';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-134';
+const INVENTORY_SHA256 = '5a1044bbf0438e67cf19749dae710c7a9a2d0fde5757ca57be997c175780cf86';
+const SOURCE_CLOSURE_SHA256 = 'ce07f54409913eabe319f1e9c0adaa9738418fc9af406b6c0329dffa2dd0fa89';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 27794,
-  theorems: 14454,
+  declarations: 27837,
+  theorems: 14470,
   assumptionFreeTheorems: 7347,
-  excludedPrivateDeclarations: 15008,
-  modules: 250,
+  excludedPrivateDeclarations: 15011,
+  modules: 251,
   axioms: 4,
 });
 
@@ -4478,120 +4478,6 @@ const REMAINING_BLOCKERS = Object.freeze([
   'Formal.RootTheoremAndAxiomAudit',
 ]);
 
-const MILESTONE_IDS = Object.freeze([
-  'concrete-machine-cost-kernel',
-  'concrete-complexity-classes',
-  'concrete-cnf-universal-verifier',
-  'concrete-cook-levin-layout',
-  'concrete-cook-levin-fixed-tableau',
-  'concrete-cook-levin-verifier-tableau',
-  'concrete-cook-levin-local-cnf',
-  'concrete-cook-levin-tableau-cnf',
-  'concrete-cook-levin-tableau-cnf-semantics',
-  'concrete-cook-levin-raw-tape-bridge',
-  'concrete-cook-levin-formula-size',
-  'concrete-cook-levin-formula-schedule',
-  'concrete-cook-levin-formula-cursor',
-  'concrete-cook-levin-builder-input-length',
-  'concrete-cook-levin-builder-input-prefix',
-  'concrete-cook-levin-builder-token-appender',
-  'concrete-cook-levin-builder-first-token-prefix',
-  'concrete-cook-levin-builder-complete-header',
-  'concrete-cook-levin-builder-body-start-prefix',
-  'concrete-cook-levin-builder-first-literal-prefix',
-  'concrete-cook-levin-builder-first-clause-prefix',
-  'concrete-cook-levin-builder-dynamic-token-cursor-step',
-  'concrete-cook-levin-builder-first-clause-padding-run',
-  'concrete-cook-levin-builder-second-clause-separator-step',
-  'concrete-cook-levin-builder-second-clause-first-literal-prefix',
-  'concrete-cook-levin-builder-second-clause-second-literal-prefix',
-  'concrete-cook-levin-builder-second-clause-prefix',
-  'concrete-cook-levin-builder-second-clause-padding-run',
-  'concrete-cook-levin-builder-third-clause-separator-step',
-  'concrete-cook-levin-builder-third-clause-first-literal-prefix',
-  'concrete-cook-levin-builder-third-clause-second-literal-prefix',
-  'concrete-cook-levin-builder-third-clause-prefix',
-  'concrete-cook-levin-builder-third-clause-padding-run',
-  'concrete-cook-levin-builder-fourth-clause-separator-step',
-  'concrete-cook-levin-builder-fourth-clause-first-literal-prefix',
-  'concrete-cook-levin-builder-fourth-clause-second-literal-prefix',
-  'concrete-cook-levin-builder-fourth-clause-prefix',
-  'concrete-cook-levin-builder-fourth-clause-padding-run',
-  'concrete-cook-levin-builder-fifth-clause-padding-run',
-  'concrete-cook-levin-builder-first-constraint-padding-run',
-  'concrete-cook-levin-builder-second-constraint-separator-step',
-  'concrete-cook-levin-builder-second-constraint-first-literal-sign-step',
-  'concrete-cook-levin-builder-second-constraint-first-literal-first-unary-unit-step',
-  'concrete-cook-levin-builder-second-constraint-first-literal-second-unary-unit-step',
-  'concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step',
-  'concrete-cook-levin-builder-second-constraint-first-literal-terminator-step',
-  'concrete-cook-levin-builder-second-constraint-first-literal-successor-token-step',
-  'concrete-cook-levin-builder-second-constraint-padding-or-unary-opportunity-step',
-  'concrete-cook-levin-builder-second-constraint-second-padding-or-unary-opportunity-step',
-  'concrete-cook-levin-builder-second-constraint-third-padding-or-unary-opportunity-step',
-  'concrete-cook-levin-builder-second-constraint-fourth-padding-or-unary-opportunity-step',
-  'concrete-cook-levin-builder-second-constraint-fifth-padding-or-terminator-opportunity-step',
-  'concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step',
-  'concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step',
-  'direct-wire-semantics',
-  'finite-enumeration-minimum',
-  'framed-replacement-slack',
-  'locked-nand-local-baseline',
-  'locked-nand-global-carrier-trace-equivalence',
-  'locked-nand-global-candidate-assembly',
-  'locked-nand-global-baseline-distinct',
-  'locked-nand-global-unsatisfiable-final-zero',
-  'locked-nand-global-semantic-threshold',
-  'concrete-locked-nand-encoded-semantic-boundary',
-  'concrete-locked-nand-source-parser',
-  'concrete-locked-nand-target-emitter',
-  'concrete-locked-nand-polynomial-reduction',
-  'concrete-cnf-to-nand-semantic-compiler',
-  'concrete-cnf-to-nand-polynomial-reduction',
-  'locked-nand-conditional-threshold',
-  'explicit-residual-routes',
-  'residual-gain-chain-bound',
-  'residual-gain-stopping-specification',
-  'residual-terminal-full-carrier-bridge',
-  'residual-terminal-mode-firewall',
-  'residual-terminal-projection-minimum',
-  'residual-terminal-projection-transfer',
-  'residual-terminal-saturation-closure',
-  'residual-terminal-physical-support-completion',
-  'residual-terminal-support-extraction',
-  'residual-terminal-proper-positive-support-search',
-  'residual-terminal-saturated-support-square-closure',
-  'residual-terminal-governed-support-completion',
-  'residual-terminal-governed-frontier-pushout',
-  'residual-terminal-governed-projection-square',
-  'residual-terminal-side-tight-minimum-arithmetic',
-  'residual-terminal-four-corner-carrier-transport',
-  'residual-terminal-four-corner-optimum-carrier-compatibility',
-  'residual-terminal-four-corner-optimum-coherence-dichotomy',
-  'residual-terminal-four-corner-side-tight-completion',
-  'residual-terminal-four-corner-tight-basis-maximum',
-  'residual-terminal-computed-bn2-square-legitimacy',
-  'residual-terminal-computed-bcel-anchor-nucleus',
-  'residual-terminal-saturation-positivity-firewall',
-  'residual-terminal-candidate-saturation-cost-balance',
-  'residual-terminal-interface-exposure-routing',
-  'residual-terminal-finite-saturate-positive-composition',
-  'residual-terminal-rank-wf',
-  'residual-terminal-bn3-request-envelope',
-  'residual-terminal-bn4-activation-cancellation',
-  'residual-terminal-bn5-full-shadow-localization',
-  'residual-terminal-pkgc-separating-consumers',
-  'residual-terminal-pkgc-typed-restoration',
-  'residual-terminal-pkgc-same-key-cancellation',
-  'residual-terminal-pkgc-ambient-bn4-ledger',
-  'residual-terminal-consumer-antichain-normal-form',
-  'residual-terminal-constant-cut-hypergraph-rigidity',
-  'residual-terminal-bn6-hypergraph-packet',
-  'global-locked-nand-threshold',
-  'global-zeroslack-pccmin',
-  'concrete-publication-root',
-]);
-
 const GATE_SUBCHECK_KEYS = Object.freeze([
   'standardComplexityModelEligible',
   'concreteTargetPresent',
@@ -5043,6 +4929,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalPkgCAmbientBN4LedgerFormalized: false,
   leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed: false,
   leanResidualTerminalPkgCAmbientBN4LedgerScope: null,
+  leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized: false,
+  leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed: false,
+  leanResidualTerminalPkgCAmbientBN4ResidualReductionScope: null,
   leanResidualTerminalConsumerAntichainNormalFormFormalized: false,
   leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed: false,
   leanResidualTerminalConsumerAntichainNormalFormScope: null,
@@ -5590,6 +5479,9 @@ leanResidualTerminalPkgCSameKeyCancellationScope = ${payload.leanResidualTermina
 leanResidualTerminalPkgCAmbientBN4LedgerFormalized = ${payload.leanResidualTerminalPkgCAmbientBN4LedgerFormalized ?? false}
 leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed = ${payload.leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed ?? false}
 leanResidualTerminalPkgCAmbientBN4LedgerScope = ${payload.leanResidualTerminalPkgCAmbientBN4LedgerScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCAmbientBN4LedgerScope)}
+leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized = ${payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized ?? false}
+leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed = ${payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed ?? false}
+leanResidualTerminalPkgCAmbientBN4ResidualReductionScope = ${payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionScope)}
 leanResidualTerminalConsumerAntichainNormalFormFormalized = ${payload.leanResidualTerminalConsumerAntichainNormalFormFormalized ?? false}
 leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed = ${payload.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed ?? false}
 leanResidualTerminalConsumerAntichainNormalFormScope = ${payload.leanResidualTerminalConsumerAntichainNormalFormScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalConsumerAntichainNormalFormScope)}
@@ -5696,13 +5588,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 871,
-    definition: 11657,
-    inductive: 404,
+    constructor: 874,
+    definition: 11677,
+    inductive: 406,
     opaque: 0,
     quotient: 0,
-    recursor: 404,
-    theorem: 14454,
+    recursor: 406,
+    theorem: 14470,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6703,7 +6595,8 @@ function validateInventory(inventory) {
     && sameJson(totalFramerBound.axioms, [])
     && totalFramerNoTimeout?.kind === 'theorem'
     && sameJson(totalFramerNoTimeout.axioms, [])
-    && inventory.milestoneCandidates.length === 2589
+    && new Set(inventory.milestoneCandidates.map((row) => row.name)).size
+      === inventory.milestoneCandidates.length
     && theoremRows.length === INVENTORY_COUNTS.theorems
     && theoremRows.filter((row) => Array.isArray(row.axioms) && row.axioms.length === 0).length === INVENTORY_COUNTS.assumptionFreeTheorems
     && inventory.declarations.filter((row) => row?.kind === 'axiom').length === INVENTORY_COUNTS.axioms
@@ -6761,13 +6654,22 @@ function validateConcreteGate(status, inventory) {
   return gate.passed === strictConjunction;
 }
 
-function validateMilestones(status) {
+function validateMilestones(status, inventory) {
   const milestones = status?.formalPublicationMilestones;
-  if (!Array.isArray(milestones)
-    || !sameJson(milestones.map((row) => row.id), MILESTONE_IDS)) return false;
+  if (!Array.isArray(milestones) || milestones.length < 3
+    || new Set(milestones.map((row) => row.id)).size !== milestones.length
+    || !Array.isArray(inventory?.milestoneCandidates)) return false;
 
-  return milestones.every((row, index) => {
-    const shouldBeEarned = index < 109;
+  const expectedCandidateNames = new Set(
+    milestones.filter((row) => row.earned === true).flatMap((row) => row.requiredTheorems)
+  );
+  if (expectedCandidateNames.size !== inventory.milestoneCandidates.length
+      || !inventory.milestoneCandidates.every((row) => expectedCandidateNames.has(row.name))) return false;
+  const unearnedCount = milestones.filter((row) => row.status === 'not-formalized').length;
+  if (unearnedCount !== 2) return false;
+
+  return milestones.every((row) => {
+    const shouldBeEarned = row.status !== 'not-formalized';
     const allAssumptionFree = row.theoremRows?.every((theorem) => sameJson(theorem.axioms, []));
     if (row.earned !== shouldBeEarned
       || row.sourceClosureFingerprintMatches !== true
@@ -6914,6 +6816,13 @@ function validateStatus(status, inventory) {
   const residualTerminalPkgCAmbientBN4LedgerMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-pkgc-ambient-bn4-ledger'
   );
+  const residualTerminalPkgCAmbientBN4ResidualReductionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-pkgc-ambient-bn4-residual-reduction'
+  );
+  const residualTerminalPkgCAmbientBN4ResidualReductionCandidates =
+    residualTerminalPkgCAmbientBN4ResidualReductionMilestone?.requiredTheorems?.map((name) =>
+      inventory?.milestoneCandidates?.find((candidate) => candidate.name === name)
+    );
   const residualTerminalV54ConsumerAntichainNormalFormMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-consumer-antichain-normal-form'
   );
@@ -6955,7 +6864,7 @@ function validateStatus(status, inventory) {
     && status.abstractPEqualsNPPublicationEligible === false
     && status.publicationStatusDerivedOnlyFromConcreteGate === true
     && validateConcreteGate(status, inventory)
-    && validateMilestones(status)
+    && validateMilestones(status, inventory)
     && sourceParserMilestone?.classification === 'formalized-foundation-only'
     && sourceParserMilestone.scope === "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement."
     && sourceParserMilestone.nonClaim === "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent."
@@ -7454,6 +7363,24 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPkgCAmbientBN4LedgerFormalized === true
     && status.leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed === true
     && status.leanResidualTerminalPkgCAmbientBN4LedgerScope === "all-finite-explicit-ambient-bn4-ledgers-exact-multiset-embedding-balanced-generated-subledger-removal-preserves-remainder-signed-mass-and-candidate-derived-canonical-atom-linkage"
+    && residualTerminalPkgCAmbientBN4ResidualReductionMilestone?.classification === "formalized-residual-terminal-pkgc-ambient-bn4-residual-reduction"
+    && residualTerminalPkgCAmbientBN4ResidualReductionMilestone.status === "formalized-residual-terminal-pkgc-ambient-bn4-residual-reduction"
+    && residualTerminalPkgCAmbientBN4ResidualReductionMilestone.scope === "For arbitrary finite explicit ambient BN4 ledgers, Lean proves that removing an exactly embedded balanced PkgC generated subledger preserves the executable residual cell at every complete key and the complete canonical executable residual ledger over the ambient key universe. Every remainder key occurs in that universe; a fail-closed canonical classifier constructs the exact reduction without caller-provided proof bits; and an empty remainder yields an empty ambient residual ledger, including for the existing candidate-derived computed bridge."
+    && residualTerminalPkgCAmbientBN4ResidualReductionMilestone.nonClaim === "The ambient ledger, typed restoration operation, exact embedding, and explicit remainder remain proof-bearing inputs. This milestone does not derive those inputs from an arbitrary terminal candidate, prove that the remainder is empty or route-producing, establish restoration semantic adequacy or complete global route silence, reconstruct the full historical PkgC/BN6/Packet path, prove polynomial generation or runtime, establish ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && residualTerminalPkgCAmbientBN4ResidualReductionMilestone.requiredTheorems?.length === 8
+    && residualTerminalPkgCAmbientBN4ResidualReductionMilestone.theoremRows?.every((row) =>
+      row.present === true
+      && row.kind === 'theorem'
+      && sameJson(row.axioms, ['Quot.sound', 'propext'])
+      && row.kernelTypeFingerprintMatches === true
+      && row.actualKernelTypeSha256 === row.expectedKernelTypeSha256)
+    && residualTerminalPkgCAmbientBN4ResidualReductionCandidates?.every((row) =>
+      row?.kind === 'theorem'
+      && row.module === 'PNP.ResidualTerminalPkgCAmbientBN4ResidualReduction'
+      && sameJson(row.axioms, ['Quot.sound', 'propext']))
+    && status.leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized === true
+    && status.leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed === true
+    && status.leanResidualTerminalPkgCAmbientBN4ResidualReductionScope === "all-finite-explicit-ambient-bn4-ledgers-exact-balanced-subledger-removal-preserves-per-key-and-complete-canonical-executable-residual-ledgers-with-empty-remainder-corollary"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone?.classification === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone.status === "formalized-residual-terminal-v54-consumer-antichain-normal-form"
     && residualTerminalV54ConsumerAntichainNormalFormMilestone.scope === "For an arbitrary finite carrier and its explicit minimal-consumer antichain, Lean proves monotonicity and empty-request inactivity, proves that nonzero two-sided cut activation is equivalent to the existence of a disjoint consumer pair, and under the exact singletonized-disjoint-pair premise proves literal equality with the corresponding footprint cut indicator."
@@ -8217,7 +8144,6 @@ globalThis.PNPFormalPublication = Object.freeze({
   INVENTORY_SHA256,
   INVENTORY_COUNTS,
   PROJECT_AXIOMS,
-  MILESTONE_IDS,
   deriveGateSubchecks,
   validateConcreteGate,
   validateInventory,

@@ -13,7 +13,8 @@ const context = vm.createContext({ structuredClone });
 new vm.Script(`${validationSource}\nglobalThis.validation = { FAIL_CLOSED_FORMAL_STATUS, formalStatusFields, validateConcreteGate, validateInventory, validateMilestones, validateStatus, deriveGateSubchecks };`).runInContext(context);
 const validation = context.validation;
 
-const status = JSON.parse(readFileSync('public/pnp-status.json', 'utf8'));
+const statusBytes = readFileSync('public/pnp-status.json');
+const status = JSON.parse(statusBytes);
 const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 const index = JSON.parse(readFileSync('public/pnp-index.json', 'utf8'));
@@ -22,7 +23,7 @@ const release = JSON.parse(readFileSync('downloads/formal-publication-release.js
 test('site validator accepts only the exact current inventory/status boundary', () => {
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), index.leanTheoremInventorySha256);
   assert.equal(validation.validateInventory(inventory), true);
-  assert.equal(validation.validateMilestones(status), true);
+  assert.equal(validation.validateMilestones(status, inventory), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
   assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, index.formalPublicationMilestoneCounts.earned);
@@ -72,6 +73,43 @@ test('site validator pins the concrete locked-NAND threshold publication theorem
     (row) => row.id === 'global-locked-nand-threshold'
   ).scope = 'A polynomial-time target decider.';
   assert.equal(validation.validateStatus(widened, inventory), false);
+});
+
+test('site validator pins the ambient BN4 residual reduction from canonical payload relations', () => {
+  const milestone = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-pkgc-ambient-bn4-residual-reduction'
+  );
+  assert.equal(milestone.requiredTheorems.length, 8);
+  assert.equal(validation.validateStatus(status, inventory), true);
+
+  const missing = structuredClone(inventory);
+  missing.milestoneCandidates = missing.milestoneCandidates.filter(
+    (row) => row.name !== milestone.requiredTheorems[0]
+  );
+  assert.equal(validation.validateInventory(missing), true);
+  assert.equal(validation.validateStatus(status, missing), false);
+
+  const assumed = structuredClone(inventory);
+  assumed.milestoneCandidates.find(
+    (row) => row.name === milestone.requiredTheorems[0]
+  ).axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateStatus(status, assumed), false);
+
+  const moved = structuredClone(inventory);
+  moved.milestoneCandidates.find(
+    (row) => row.name === milestone.requiredTheorems[0]
+  ).module = 'PNP.ForgedModule';
+  assert.equal(validation.validateStatus(status, moved), false);
+
+  const widened = structuredClone(status);
+  widened.formalPublicationMilestones.find(
+    (row) => row.id === milestone.id
+  ).nonClaim = 'This proves complete global route silence.';
+  assert.equal(validation.validateStatus(widened, inventory), false);
+
+  const duplicated = structuredClone(status);
+  duplicated.formalPublicationMilestones.push(structuredClone(duplicated.formalPublicationMilestones[0]));
+  assert.equal(validation.validateMilestones(duplicated), false);
 });
 
 test('pre-fetch UI state reports every source-parser claim as fail closed', () => {
@@ -3648,7 +3686,8 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = '6e7416a60485390b4414251c3b8f00214ed759f93d8091aef73cdb357da2dbfe'/);
+  const expectedDigest = createHash('sha256').update(statusBytes).digest('hex');
+  assert.ok(source.includes(`const STATUS_SHA256 = '${expectedDigest}'`));
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3934,6 +3973,8 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /classifyTerminalPkgCSeparatingConsumers_exhaustive/);
   assert.match(statusPage, /PkgC typed-restoration same-key cancellation/i);
   assert.match(statusPage, /PkgC ambient BN4 ledger embedding/i);
+  assert.match(statusPage, /PkgC ambient BN4 residual reduction/i);
+  assert.match(statusPage, /classifyTerminalPkgCAmbientBN4ResidualReduction_exhaustive/);
   assert.match(statusPage, /terminalPkgC_computedAmbientBN4_silence_singletonizes/);
   assert.match(statusPage, /classifyTerminalPkgCSameKeyCancellation_exhaustive/);
   assert.match(statusPage, /V54 consumer-antichain normal form/i);

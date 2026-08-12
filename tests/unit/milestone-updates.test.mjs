@@ -25,7 +25,8 @@ async function fixtures() {
   return Promise.all([
     readJson("content/milestone-updates.json"),
     readJson("public/pnp-status.json"),
-    readJson("public/pnp-index.json")
+    readJson("public/pnp-index.json"),
+    readJson("public/pnp-theorem-inventory.json")
   ]);
 }
 
@@ -272,7 +273,7 @@ test("updates are discoverable from every public HTML page and the locked-down s
 });
 
 test("FAQ states the current editorial percentage and latest conservative boundary", async () => {
-  const [data, status, index] = await fixtures();
+  const [data, status, index, inventory] = await fixtures();
   const progress = data.entries[0].progressEstimatePercent;
   const latestMilestone = status.formalPublicationMilestones.find(
     (milestone) => milestone.id === data.entries[0].milestoneId
@@ -281,10 +282,12 @@ test("FAQ states the current editorial percentage and latest conservative bounda
   assert.match(faq, new RegExp(`What does the ${progress}% tracker mean\\?`, 'u'));
   assert.match(faq, new RegExp(`current editorial estimate that ${progress}% of the known formal reconstruction workload is complete`, 'u'));
   assert.match(faq, new RegExp(`${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped rows are currently earned`, 'u'));
-  assert.ok(latestMilestone.requiredTheorems.includes(
-    'PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes'
-  ));
-  for (const concept of ['ambient ledger', 'exact permutation certificate or canonical serialization', 'proof-bearing inputs', 'P = NP']) {
+  assert.equal(latestMilestone.earned, true);
+  assert.ok(latestMilestone.requiredTheorems.length > 0);
+  for (const theorem of latestMilestone.requiredTheorems) {
+    assert.ok(inventory.milestoneCandidates.some((candidate) => candidate.name === theorem), theorem);
+  }
+  for (const concept of ['ambient ledger', 'complete canonical executable residual ledger', 'explicit remainder', 'proof-bearing inputs', 'P = NP']) {
     assert.ok(faq.includes(concept), `FAQ missing latest boundary concept: ${concept}`);
   }
 });

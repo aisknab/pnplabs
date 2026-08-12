@@ -22,7 +22,7 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'function isConservativeFormalStatus(status, inventory)',
     'function validateInventory(inventory)',
     'function validateConcreteGate(status, inventory)',
-    'function validateMilestones(status)',
+    'function validateMilestones(status, inventory)',
     'function validateStatus(status, inventory)',
     status.coordinate,
     inventory.coordinate,

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-13-residual-terminal-pkgc-ambient-bn4-residual-reduction",
+      "milestoneId": "residual-terminal-pkgc-ambient-bn4-residual-reduction",
+      "publishedAt": "2026-08-13T03:30:00Z",
+      "title": "Lean now reduces an ambient BN4 ledger to its explicit remainder",
+      "plainLanguage": [
+        "For an arbitrary finite explicit ambient BN4 ledger, Lean now proves that removing an exactly embedded balanced PkgC generated subledger preserves the executable residual cell at every complete key. It also proves the corresponding equality for the complete canonical executable residual ledger over the ambient key universe, with every remainder key covered by that universe.",
+        "A fail-closed classifier constructs the exact reduction without caller-provided success bits. If the explicit remainder is empty, the ambient residual ledger is empty, including through the existing candidate-derived computed bridge. The ambient ledger, typed restoration operation, exact embedding, and explicit remainder remain proof-bearing inputs. Lean has not derived those inputs from an arbitrary terminal candidate, proved that the remainder is empty or route-producing, established restoration adequacy or complete global route silence, reconstructed the full historical PkgC, BN6, or Packet path, proved polynomial runtime, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 95% figure is a revisable editorial estimate of known reconstruction work, separate from the 110 of 112 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 95,
+      "source": {
+        "commit": "d677d7704c29642490b9262b48139f9f3eb097dd",
+        "tree": "0c92e684275589eea09c8477b9b7f670c3056b6b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-12-residual-terminal-pkgc-ambient-bn4-ledger",
       "milestoneId": "residual-terminal-pkgc-ambient-bn4-ledger",
       "publishedAt": "2026-08-12T09:30:00Z",

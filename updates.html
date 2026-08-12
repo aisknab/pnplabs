@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 94% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 95% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="94" aria-label="Estimated proof reconstruction progress: 94 percent">94%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 94 percent">
+        <progress class="proof-progress-meter" max="100" value="95" aria-label="Estimated proof reconstruction progress: 95 percent">95%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 95 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-13-residual-terminal-pkgc-ambient-bn4-residual-reduction" data-milestone-id="residual-terminal-pkgc-ambient-bn4-residual-reduction">
+        <div class="section-label"><time datetime="2026-08-13T03:30:00Z">2026-08-13</time> · earned milestone 110</div>
+        <h2>Lean now reduces an ambient BN4 ledger to its explicit remainder</h2>
+        <p>For an arbitrary finite explicit ambient BN4 ledger, Lean now proves that removing an exactly embedded balanced PkgC generated subledger preserves the executable residual cell at every complete key. It also proves the corresponding equality for the complete canonical executable residual ledger over the ambient key universe, with every remainder key covered by that universe.</p>
+        <p>A fail-closed classifier constructs the exact reduction without caller-provided success bits. If the explicit remainder is empty, the ambient residual ledger is empty, including through the existing candidate-derived computed bridge. The ambient ledger, typed restoration operation, exact embedding, and explicit remainder remain proof-bearing inputs. Lean has not derived those inputs from an arbitrary terminal candidate, proved that the remainder is empty or route-producing, established restoration adequacy or complete global route silence, reconstructed the full historical PkgC, BN6, or Packet path, proved polynomial runtime, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 95% figure is a revisable editorial estimate of known reconstruction work, separate from the 110 of 112 scoped formal-publication rows and not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 95%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-pkgc-ambient-bn4-residual-reduction</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-pkgc-ambient-bn4-residual-reduction</p>
+          <p><strong>Verified scope:</strong> For arbitrary finite explicit ambient BN4 ledgers, Lean proves that removing an exactly embedded balanced PkgC generated subledger preserves the executable residual cell at every complete key and the complete canonical executable residual ledger over the ambient key universe. Every remainder key occurs in that universe; a fail-closed canonical classifier constructs the exact reduction without caller-provided proof bits; and an empty remainder yields an empty ambient residual ledger, including for the existing candidate-derived computed bridge.</p>
+          <p><strong>Boundary:</strong> The ambient ledger, typed restoration operation, exact embedding, and explicit remainder remain proof-bearing inputs. This milestone does not derive those inputs from an arbitrary terminal candidate, prove that the remainder is empty or route-producing, establish restoration semantic adequacy or complete global route silence, reconstruct the full historical PkgC/BN6/Packet path, prove polynomial generation or runtime, establish ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 8</p>
+          <p><strong>Core source:</strong> commit <code>d677d7704c29642490b9262b48139f9f3eb097dd</code>, tree <code>0c92e684275589eea09c8477b9b7f670c3056b6b</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-12-residual-terminal-pkgc-ambient-bn4-ledger" data-milestone-id="residual-terminal-pkgc-ambient-bn4-ledger">
         <div class="section-label"><time datetime="2026-08-12T09:30:00Z">2026-08-12</time> · earned milestone 109</div>
         <h2>Lean now embeds finite PkgC cancellation into an ambient BN4 ledger</h2>
