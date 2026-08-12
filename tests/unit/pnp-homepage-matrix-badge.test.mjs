@@ -29,9 +29,9 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
     latest.title,
-    'proof-bearing exact multiset embedding',
+    'complete canonical executable residual ledger',
     'explicit remainder',
-    'candidate-derived BN4 kernel also proves that every embedded generated cell uses its canonical request-atom space',
+    'fail-closed classifier constructs the exact reduction without caller-provided proof bits',
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'rootLeanTheoremPresent = false',
@@ -265,7 +265,6 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'P: problems we can solve efficiently',
     'NP: answers we can check efficiently',
     'Read the plain-language and technical update',
-    'Machine checking now embeds the generated balanced PkgC cancellation cells into an explicit ambient BN4 ledger, but it has not derived that ledger or completed PkgC.',
     'EncodedLockedNANDThreshold',
   ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
   const latestMilestone = html.match(/<article class="latest-milestone"[\s\S]*?<\/article>/u)?.[0] ?? '';
@@ -274,9 +273,15 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     assert.ok(inventory.milestoneCandidates.some((candidate) => candidate.name === theorem));
   }
   assert.ok(latestMilestone.includes('explicit remainder'));
-  assert.ok(latestMilestone.includes('canonical request-atom space'));
+  assert.ok(latestMilestone.includes('fail-closed classifier'));
   assert.ok(latestMilestone.includes('remain proof-bearing inputs'));
   assert.ok(latestMilestone.includes('P = NP'));
+  const currentBottomLine = html.match(/<section class="section compact" data-current-milestone="([^"]+)">[\s\S]*?Current bottom line[\s\S]*?<\/section>/u);
+  assert.ok(currentBottomLine, 'homepage must retain a current bottom-line section');
+  assert.equal(currentBottomLine[1], latest.milestoneId);
+  for (const concept of ['explicit ambient BN4 ledger', 'exact remainder', 'complete canonical residual ledger', 'remain open', 'P = NP']) {
+    assert.ok(currentBottomLine[0].includes(concept), `current bottom line missing latest boundary concept: ${concept}`);
+  }
   assert.doesNotMatch(html, />Historical report</u);
 });
 

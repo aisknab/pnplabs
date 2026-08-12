@@ -17,10 +17,10 @@ The local workstation is memory-constrained. Treat it as an edit-and-inspection
 host, not as a build host.
 
 - Run full or clean builds, test suites, broad audits, report/PDF generation,
-  deployment verification, and clean-clone reproduction on the configured SSH
-  host alias `pnpbuilder`.
-- Run heavy remote jobs under the `pnp-builder` account's user-level
-  `systemd-run` resource limits.
+  deployment verification, and clean-clone reproduction on the configured
+  remote builder.
+- Run heavy remote jobs in a user-level `systemd-run` scope under the configured
+  resource limits.
 - Never silently fall back to a heavyweight local command when the remote builder
   is unavailable. Stop and report the connection problem instead.
 - Limit local commands to source edits and lightweight inspection, such as `rg`,
@@ -30,8 +30,8 @@ host, not as a build host.
 
 ### SSH, package, and remote-job preflight
 
-- Before a long remote run, probe the configured identity non-interactively with
-  `ssh -o BatchMode=yes -o ConnectTimeout=10 pnpbuilder true`. If the identity is
+- Before a long remote run, probe the configured identity non-interactively using
+  the operator's private SSH configuration. If the identity is
   missing or locked, ask the user to unlock or add the already-configured key in
   their own terminal. Do not create a KDE Wallet, generate a replacement key,
   rewrite SSH configuration, or repeatedly trigger GUI askpass dialogs.
@@ -102,12 +102,12 @@ are separate measures and must never be presented as interchangeable.
    read-only production verifier from a clean checkout of the exact PNPLabs merge
    commit. Confirm provenance, complete public bytes, routes, redirects, headers,
    MIME types, cache policy, denial probes, and release identity.
-   The reviewed `deploy/pnplabs-deploy.sudoers` policy records that authorization
-   for `pnp-builder` on `atlast` once it is installed unchanged under
-   `/etc/sudoers.d/pnplabs-deploy`. Use only the exact `sudo -n /usr/bin/env -i`
-   command emitted by the deployment notification, with the literal verified merge
-   commit. If the rule is absent or differs, fail closed and request the documented
-   one-time installation; never request, retain, or transmit a sudo password.
+   The reviewed repository deployment policy records the narrow authorization
+   expected on the production host. Use only the exact noninteractive command
+   emitted by the deployment notification, with the literal verified merge
+   commit. If the installed rule is absent or differs, fail closed and request the
+   documented one-time installation; never request, retain, or transmit a sudo
+   password.
 
 ### Deployment-ready phone notification
 

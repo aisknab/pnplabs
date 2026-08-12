@@ -43,7 +43,8 @@ test("deployment documentation keeps authorization narrow, revocable, and valida
   assert.match(docs, new RegExp(deploymentCommand, "u"));
   assert.match(docs, /does not create a timer, hook, or merge-triggered deployment/u);
   assert.match(docs, /sudo mv \/etc\/sudoers\.d\/pnplabs-deploy \/root\/pnplabs-deploy\.sudoers\.disabled/u);
-  assert.match(agentInstructions, /Use only the exact `sudo -n \/usr\/bin\/env -i`/u);
-  assert.match(agentInstructions, /never request, retain, or transmit a sudo password/u);
+  assert.match(agentInstructions, /Use only the exact noninteractive command/u);
+  assert.match(agentInstructions, /literal verified merge\s+commit/u);
+  assert.match(agentInstructions, /never request, retain, or transmit a sudo\s+password/u);
   assert.doesNotMatch(docs, /sudo env PNPLABS_COMMIT/u);
 });

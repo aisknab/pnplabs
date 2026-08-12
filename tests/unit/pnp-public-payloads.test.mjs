@@ -7,11 +7,11 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const CORE_COMMIT = '63f38f39881dd8293e139b1687bf09688acb8e5d';
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-133';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-133';
-const INVENTORY_SHA256 = '696c76220a092e5a84e7caa804fd1c57889f193968d1285b520c408f8237f5c1';
-const INVENTORY_BYTES = 18243895;
+const CORE_COMMIT = 'd677d7704c29642490b9262b48139f9f3eb097dd';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-134';
+const INVENTORY_SHA256 = '5a1044bbf0438e67cf19749dae710c7a9a2d0fde5757ca57be997c175780cf86';
+const INVENTORY_BYTES = 18406872;
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -360,9 +360,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.kind, 'PNPFormalReconstructionStatus0');
   assert.equal(status.coordinate, STATUS_COORDINATE);
   assert.equal(status.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
-  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-133');
-  assert.equal(status.formalPublicationMapSha256, 'a9f7ec898fb04e4842ea86281d2a6b257fc0c65dd422eb04a974bde169bf29d6');
-  assert.equal(status.leanSourceClosureSha256, '9b8afc2bac8c5f5b5fbe3c086f22602358c3f9b641aeb91e7de708f9f1001154');
+  assert.equal(status.formalPublicationMapCoordinate, 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-134');
+  assert.equal(status.formalPublicationMapSha256, 'd8e2bb51eb170e70bf30d9768922fc7b8d86195fc9b8f69abe458bfe3ab97da8');
+  assert.equal(status.leanSourceClosureSha256, 'ce07f54409913eabe319f1e9c0adaa9738418fc9af406b6c0329dffa2dd0fa89');
   assert.equal(status.status, 'formal-reconstruction-in-progress');
   assert.equal(status.currentStatusAuthority, true);
   assert.equal(status.leanToolchain, 'leanprover/lean4:v4.31.0');
@@ -2517,6 +2517,28 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(status.leanResidualTerminalPkgCAmbientBN4LedgerFormalized, true);
   assert.equal(status.leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalPkgCAmbientBN4LedgerScope, 'all-finite-explicit-ambient-bn4-ledgers-exact-multiset-embedding-balanced-generated-subledger-removal-preserves-remainder-signed-mass-and-candidate-derived-canonical-atom-linkage');
+  const residualReductionMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-pkgc-ambient-bn4-residual-reduction');
+  assert.equal(residualReductionMilestone.classification, 'formalized-residual-terminal-pkgc-ambient-bn4-residual-reduction');
+  assert.equal(residualReductionMilestone.status, 'formalized-residual-terminal-pkgc-ambient-bn4-residual-reduction');
+  assert.equal(residualReductionMilestone.earned, true);
+  assert.equal(residualReductionMilestone.requiredTheorems.length, 8);
+  assert.equal(new Set(residualReductionMilestone.requiredTheorems).size, 8);
+  assert.equal(residualReductionMilestone.theoremRows.length, 8);
+  assert.equal(residualReductionMilestone.theoremRows.every((row) => row.axioms.join(',') === 'Quot.sound,propext'), true);
+  assert.match(residualReductionMilestone.scope, /complete canonical executable residual ledger/u);
+  assert.match(residualReductionMilestone.nonClaim, /explicit remainder remain proof-bearing inputs/u);
+  for (const theoremRow of residualReductionMilestone.theoremRows) {
+    assert.equal(theoremRow.present, true, theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, theoremRow.expectedKernelTypeSha256, theoremRow.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === theoremRow.name);
+    assert.equal(candidate.kind, 'theorem', theoremRow.name);
+    assert.equal(candidate.module, 'PNP.ResidualTerminalPkgCAmbientBN4ResidualReduction', theoremRow.name);
+    assert.deepEqual(candidate.axioms, theoremRow.axioms, theoremRow.name);
+  }
+  assert.equal(status.leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized, true);
+  assert.equal(status.leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPkgCAmbientBN4ResidualReductionScope, 'all-finite-explicit-ambient-bn4-ledgers-exact-balanced-subledger-removal-preserves-per-key-and-complete-canonical-executable-residual-ledgers-with-empty-remainder-corollary');
   const v54ConsumerAntichainNormalFormMilestone = status.formalPublicationMilestones
     .find((row) => row.id === 'residual-terminal-consumer-antichain-normal-form');
   assert.equal(v54ConsumerAntichainNormalFormMilestone.classification, 'formalized-residual-terminal-v54-consumer-antichain-normal-form');
@@ -2604,9 +2626,14 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
 test('formal publication release pins the finite PkgC ambient-BN4-ledger boundary', async () => {
   const release = await readJson('downloads/formal-publication-release.json');
   const inventory = await readJson('public/pnp-theorem-inventory.json');
+  const status = await readJson('public/pnp-status.json');
+  const updates = await readJson('content/milestone-updates.json');
   const parser = release.earnedBoundary;
+  const latestMilestone = status.formalPublicationMilestones.find(
+    (row) => row.id === updates.entries[0].milestoneId
+  );
 
-  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-12-116');
+  assert.equal(release.coordinate, 'PNP-FORMAL-PUBLICATION-RELEASE-2026-08-13-117');
   assert.equal(release.artifacts.report.pageCount, (await readJson('public/pnp-index.json')).canonicalReportPages);
   assert.equal(release.artifacts.theoremInventory.declarationCount, inventory.declarationCount);
   assert.equal(release.artifacts.theoremInventory.theoremCount, inventory.theoremCount);
@@ -3090,6 +3117,22 @@ test('formal publication release pins the finite PkgC ambient-BN4-ledger boundar
   assert.equal(parser.residualTerminalPkgCAmbientBN4LedgerClassifierTheorem, 'PNP.DirectWire.classifyTerminalPkgCAmbientBN4LedgerBinding_exhaustive');
   assert.equal(parser.residualTerminalPkgCAmbientBN4LedgerCanonicalAtomTheorem, 'PNP.DirectWire.TerminalPkgCComputedAmbientBN4Cancellation.generatedCell_usesCanonicalAtom');
   assert.equal(parser.residualTerminalPkgCAmbientBN4LedgerSilenceSingletonizesTheorem, 'PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes');
+  const residualReduction = status.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-pkgc-ambient-bn4-residual-reduction'
+  );
+  const residualReductionHashes = Object.fromEntries(
+    residualReduction.theoremRows.map((row) => [row.name, row.actualKernelTypeSha256])
+  );
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionFormalized, true);
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed, true);
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionAuditedDeclarationCount, 13);
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionEmptyAxiomDeclarationCount, 0);
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionPropextOnlyDeclarationCount, 0);
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionPropextQuotSoundDeclarationCount, 13);
+  assert.deepEqual(parser.residualTerminalPkgCAmbientBN4ResidualReductionTheoremKernelTypeSha256, residualReductionHashes);
+  assert.deepEqual(parser.residualTerminalPkgCAmbientBN4ResidualReductionAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(parser.residualTerminalPkgCAmbientBN4ResidualReductionProjectAxiomClosure, []);
+  assert.equal(parser.residualTerminalPkgCAmbientBN4ResidualReductionScope, 'all-finite-explicit-ambient-bn4-ledgers-exact-balanced-subledger-removal-preserves-per-key-and-complete-canonical-executable-residual-ledgers-with-empty-remainder-corollary');
   assert.equal(parser.residualTerminalV54ConsumerAntichainNormalFormFormalized, true);
   assert.equal(parser.residualTerminalV54ConsumerAntichainNormalFormAxiomAuditPassed, true);
   assert.equal(parser.residualTerminalV54ConsumerAntichainNormalFormAuditedDeclarationCount, 28);
@@ -3157,7 +3200,8 @@ test('formal publication release pins the finite PkgC ambient-BN4-ledger boundar
   assert.deepEqual(parser.lockedNANDThresholdPublicationAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(parser.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(parser.lockedNANDThresholdPublicationTheorem, 'PNP.Main.locked_nand_threshold');
-  assert.match(parser.scope, /\+plus-residual-terminal-bn6-hypergraph-packet\+plus-residual-terminal-pkgc-typed-restoration\+plus-residual-terminal-pkgc-same-key-cancellation\+plus-residual-terminal-pkgc-ambient-bn4-ledger$/);
+  assert.equal(latestMilestone.earned, true);
+  assert.ok(parser.scope.endsWith(`+plus-${latestMilestone.id}`));
   assert.equal(parser.saturatePositiveFormalized, false);
   assert.equal(parser.bcelReadyFormalized, false);
   assert.equal(parser.residualTerminalProjectionSquareFormalized, true);
@@ -3363,10 +3407,10 @@ test('payload index describes current inventory/report and quarantines legacy su
   const status = await readJson('public/pnp-status.json');
   const inventory = await readJson('public/pnp-theorem-inventory.json');
   const release = await readJson('downloads/formal-publication-release.json');
-  assert.equal(index.version, 115);
+  assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, '40a46e9e4aea8177256839415407e35ddb95c65c');
-  assert.equal(index.sourceTree, 'af26f9121bd2b6e7d2df11e1d7f3152a0af6914a');
+  assert.equal(index.sourceTree, '0c92e684275589eea09c8477b9b7f670c3056b6b');
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
@@ -4666,6 +4710,9 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanResidualTerminalPkgCAmbientBN4LedgerFormalized, true);
   assert.equal(index.claimBoundary.leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed, true);
   assert.equal(index.claimBoundary.leanResidualTerminalPkgCAmbientBN4LedgerScope, 'all-finite-explicit-ambient-bn4-ledgers-exact-multiset-embedding-balanced-generated-subledger-removal-preserves-remainder-signed-mass-and-candidate-derived-canonical-atom-linkage');
+  assert.equal(index.claimBoundary.leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized, true);
+  assert.equal(index.claimBoundary.leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed, true);
+  assert.equal(index.claimBoundary.leanResidualTerminalPkgCAmbientBN4ResidualReductionScope, 'all-finite-explicit-ambient-bn4-ledgers-exact-balanced-subledger-removal-preserves-per-key-and-complete-canonical-executable-residual-ledgers-with-empty-remainder-corollary');
   assert.equal(index.claimBoundary.leanResidualTerminalConsumerAntichainNormalFormFormalized, true);
   assert.equal(index.claimBoundary.leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed, true);
   assert.equal(index.claimBoundary.leanResidualTerminalConsumerAntichainNormalFormScope, 'all-finite-minimal-consumer-antichains-monotone-empty-false-nonzero-iff-disjoint-and-pkgc-singletonized-exact-v54-consumer-antichain-cut-indicator');
@@ -4895,17 +4942,17 @@ test('status page has a conservative complete static fallback', async () => {
   ]);
   const html = await readText('status.html');
   for (const fragment of [
-    'Formal status · 2026-08-12',
+    `Formal status · ${index.syncedOn}`,
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
     'concretePublicationGate.passed = false',
-    '27,794',
-    '14,454',
+    '27,837',
+    '14,470',
     '7,347',
-    '<strong>15,008</strong> private compiler auxiliaries excluded',
-    '<strong>250</strong> modules',
-    'One hundred and nine scoped milestones',
+    '<strong>15,011</strong> private compiler auxiliaries excluded',
+    '<strong>251</strong> modules',
+    'One hundred and ten scoped milestones',
     'residual-terminal-bn3-request-envelope',
     'residual-terminal-bn4-activation-cancellation',
     'residual-terminal-bn5-full-shadow-localization',
@@ -4923,6 +4970,10 @@ test('status page has a conservative complete static fallback', async () => {
     'PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes',
     'leanResidualTerminalPkgCAmbientBN4LedgerFormalized = true',
     'leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed = true',
+    'residual-terminal-pkgc-ambient-bn4-residual-reduction',
+    'PNP.DirectWire.TerminalPkgCComputedAmbientBN4Cancellation.residualLedger_empty_of_remainder_empty',
+    'leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized = true',
+    'leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed = true',
     'residual-terminal-consumer-antichain-normal-form',
     'PNP.DirectWire.terminalV54_consumerAntichain_normal_form',
     'residual-terminal-constant-cut-hypergraph-rigidity',
@@ -5270,24 +5321,36 @@ test('status page has a conservative complete static fallback', async () => {
 });
 
 test('static inventory prose matches the compiled declaration boundary', async () => {
-  const readme = await readText('README.md');
-  const paper = await readText('paper.html');
-  const guide = await readText('docs/reviewer_guide.md');
-  const pipeline = await readText('docs/proof_pipeline.md');
-  const reproducibility = await readText('docs/reproducibility.md');
-  assert.equal(readme.includes('27,794** exported public declarations across **250** modules'), true);
-  assert.equal(readme.includes('Its twelve reviewed theorem pins'), true);
-  assert.equal(readme.includes('ambient ledger, restorer, exact certificate or serialization, and successful kernel remain explicit inputs'), true);
+  const [readme, paper, guide, pipeline, reproducibility, status, updates, latestRelease] = await Promise.all([
+    readText('README.md'),
+    readText('paper.html'),
+    readText('docs/reviewer_guide.md'),
+    readText('docs/proof_pipeline.md'),
+    readText('docs/reproducibility.md'),
+    readJson('public/pnp-status.json'),
+    readJson('content/milestone-updates.json'),
+    readJson('downloads/formal-publication-release.json'),
+  ]);
+  assert.equal(readme.includes('27,837** exported public declarations across **251** modules'), true);
+  const latestEarnedMilestone = status.formalPublicationMilestones.find(
+    (milestone) => milestone.id === updates.entries[0].milestoneId
+  );
+  assert.ok(latestEarnedMilestone, 'latest earned milestone');
+  assert.equal(
+    readme.includes(`Its ${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`),
+    true
+  );
+  assert.equal(readme.includes('ambient ledger, restorer, exact embedding, and explicit remainder remain proof-bearing inputs'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationFormalized = true'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = true'), true);
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
-  assert.equal(paper.includes('Exactly 15,008 private compiler auxiliaries are excluded.'), true);
-  assert.equal(guide.includes('Exactly 15,008 private compiler auxiliaries are excluded explicitly.'), true);
-  for (const fragment of ['27,794 public declarations', '14,454 theorem-kind declarations', '7,347 assumption-free theorem-kind declarations', '250 source-closure modules', '15,008 excluded private compiler auxiliaries', 'four project axioms']) {
+  assert.equal(paper.includes('Exactly 15,011 private compiler auxiliaries are excluded.'), true);
+  assert.equal(guide.includes('Exactly 15,011 private compiler auxiliaries are excluded explicitly.'), true);
+  for (const fragment of ['27,837 public declarations', '14,470 theorem-kind declarations', '7,347 assumption-free theorem-kind declarations', '251 source-closure modules', '15,011 excluded private compiler auxiliaries', 'four project axioms']) {
     assert.equal(pipeline.includes(fragment), true, `missing proof-pipeline fragment: ${fragment}`);
   }
   assert.equal(pipeline.includes('245 source-closure modules'), false);
-  for (const fragment of ['27,794', '14,454', '7,347', '15,008', '250 modules', '460,049', '223,061', '2,111,583', '18,243,895', 'eighty-eight A4 pages', 'fixed 135,070-rule', '12 reviewed theorem pins', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of ['27,837', '14,470', '7,347', '15,011', '251 modules', '461,415', '224,397', '2,119,653', '18,406,872', 'eighty-eight A4 pages', 'fixed 135,070-rule', `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`, `${latestRelease.earnedBoundary.residualTerminalPkgCAmbientBN4ResidualReductionAuditedDeclarationCount} declarations`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

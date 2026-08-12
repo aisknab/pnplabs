@@ -2177,6 +2177,22 @@ const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES =
 assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_NAMES.length, 12);
 assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_CANDIDATES.length, 12);
 assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES.length, 12);
+const PUBLISHED_RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-residual-reduction"
+  );
+assert.ok(PUBLISHED_RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_MILESTONE);
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_THEOREM_NAMES =
+  PUBLISHED_RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_MILESTONE.requiredTheorems;
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_PREVIOUS_THEOREM_NAMES =
+  earnedTheoremNamesBefore("residual-terminal-pkgc-ambient-bn4-residual-reduction");
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_NEW_CANDIDATES =
+  publishedInventory.milestoneCandidates.filter(
+    (candidate) => RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_THEOREM_NAMES.includes(candidate.name)
+      && !RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_PREVIOUS_THEOREM_NAMES.has(candidate.name)
+  );
+assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_THEOREM_NAMES.length, 8);
+assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_NEW_CANDIDATES.length, 8);
 const PUBLISHED_RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_MILESTONE =
   publishedStatus.formalPublicationMilestones.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
@@ -2358,6 +2374,17 @@ const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_STATUS_FIELDS = Object.fromEntri
     return [key, publishedStatus[key]];
   })
 );
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_STATUS_KEYS = [
+  "leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized",
+  "leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed",
+  "leanResidualTerminalPkgCAmbientBN4ResidualReductionScope"
+];
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_KEYS = [
   "leanResidualTerminalConsumerAntichainNormalFormFormalized",
   "leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed",
@@ -2412,6 +2439,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalPkgCTypedRestoration",
     "residualTerminalPkgCSameKeyCancellation",
     "residualTerminalPkgCAmbientBN4Ledger",
+    "residualTerminalPkgCAmbientBN4ResidualReduction",
     "residualTerminalV54ConsumerAntichainNormalForm",
     "residualTerminalV53ConstantCutHypergraphRigidity",
     "residualTerminalBN6HypergraphPacket",
@@ -2528,6 +2556,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
@@ -3233,8 +3262,11 @@ function makeProject(t) {
     [...explicitStatusMilestones.keys()].every((id) => publishedStatusMilestoneIds.has(id)),
     "every explicit synthetic status milestone must remain published"
   );
+  // The checked-in status is the authority for the current milestone ledger.
+  // Hostile cases below mutate a fresh copy of that ledger instead of rebuilding
+  // volatile theorem membership in this fixture.
   statusPayload.formalPublicationMilestones = publishedStatus.formalPublicationMilestones.map(
-    (row) => structuredClone(explicitStatusMilestones.get(row.id) ?? row)
+    (row) => structuredClone(row)
   );
   assert.equal(statusPayload.formalPublicationMilestones.length, publishedStatus.formalPublicationMilestones.length, "synthetic status must match the published milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, publishedStatus.formalPublicationMilestones.filter((row) => row.earned === true).length, "synthetic status must match the published earned-milestone count");
@@ -3451,23 +3483,17 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES,
-    ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES
+    ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES,
+    ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_NEW_CANDIDATES
   );
-  const syntheticFillerCount = publishedInventory.milestoneCandidates.length
-    - inventoryPayload.milestoneCandidates.length;
-  assert.ok(syntheticFillerCount >= 0, "synthetic inventory cannot exceed the published reviewed-candidate count");
-  inventoryPayload.milestoneCandidates.push(...Array.from(
-    { length: syntheticFillerCount },
-    (_, index) => ({
-      name: `PNP.Test.Filler${index}`,
-      module: "PNP.Test",
-      kind: "theorem",
-      axioms: []
-    })
-  ));
+  // Candidate membership and evidence are likewise derived from the canonical
+  // checked-in inventory. Individual hostile tests then mutate only their target.
+  inventoryPayload.milestoneCandidates = publishedInventory.milestoneCandidates.map(
+    (candidate) => structuredClone(candidate)
+  );
   assert.equal(inventoryPayload.milestoneCandidates.length, publishedInventory.milestoneCandidates.length, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
-  const publicationMap = json({
+  const publicationMapPayload = {
     kind: "TestPublicationMap",
     coordinate: "TEST-PUBLICATION-MAP",
     milestoneSourceClosureSha256: "1".repeat(64),
@@ -3792,7 +3818,15 @@ function makeProject(t) {
       nonClaim: PUBLISHED_LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_MILESTONE.nonClaim
     }],
     ...{ milestones: structuredClone(PUBLISHED_FORMAL_PUBLICATION_MAP_MILESTONES) }
-  });
+  };
+  publicationMapPayload.earnedMilestoneTheoremKernelTypeSha256 = Object.fromEntries(
+    publishedStatus.formalPublicationMilestones
+      .filter((milestone) => milestone.earned)
+      .flatMap((milestone) => milestone.theoremRows.map(
+        (row) => [row.name, row.actualKernelTypeSha256]
+      ))
+  );
+  const publicationMap = json(publicationMapPayload);
 
   git(sourceDir, ["init"]);
   git(sourceDir, ["config", "user.email", "audit@example.invalid"]);
@@ -4139,7 +4173,10 @@ function expectFailure(project, pattern, overrides = {}) {
   assert.throws(
     () => validate(project, overrides),
     (error) => {
-      assert.ok(error instanceof AuditTargetValidationError);
+      assert.ok(
+        error instanceof AuditTargetValidationError,
+        `expected AuditTargetValidationError, received ${error?.constructor?.name || typeof error}: ${error?.stack || error?.message || String(error)}`
+      );
       assert.match(error.failures.join("\n"), pattern);
       return true;
     }
@@ -10389,6 +10426,52 @@ test("rejects residual terminal PkgC ambient-BN4-ledger release, status, invento
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal PkgC ambient-BN4-ledger fingerprint mismatch/);
+});
+
+test("rejects residual terminal PkgC ambient BN4 residual-reduction mutations", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalPkgCAmbientBN4ResidualReductionFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal PkgC ambient BN4 residual-reduction boundary mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal PkgC ambient BN4 residual-reduction evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-residual-reduction"
+  ).nonClaim = "This proves complete global PkgC route silence.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal PkgC ambient BN4 residual-reduction boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  const residualReductionMilestone = publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-residual-reduction"
+  );
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === residualReductionMilestone.requiredTheorems[0]
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal PkgC ambient BN4 residual-reduction mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-residual-reduction"
+  ).scope = "complete-global-pkgc-route-silence";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal PkgC ambient BN4 residual-reduction boundary mismatch/);
+
+  const duplicateMilestone = makeProject(t);
+  const duplicatePayload = JSON.parse(readFileSync(path.join(duplicateMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  duplicatePayload.milestones.push(structuredClone(duplicatePayload.milestones[0]));
+  rewriteCorePayload(duplicateMilestone, "publication/FORMAL_PUBLICATION_MAP.json", duplicatePayload);
+  expectFailure(duplicateMilestone, /core publication map milestone relationships mismatch/);
 });
 
 test("rejects residual terminal BN6 hypergraph-packet release, status, inventory, and publication-map mutation", (t) => {

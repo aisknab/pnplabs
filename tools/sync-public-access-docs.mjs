@@ -18,8 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "63f38f39881dd8293e139b1687bf09688acb8e5d";
-const CORE_TREE = "af26f9121bd2b6e7d2df11e1d7f3152a0af6914a";
+const CORE_COMMIT = "d677d7704c29642490b9262b48139f9f3eb097dd";
+const CORE_TREE = "0c92e684275589eea09c8477b9b7f670c3056b6b";
+const CORE_PUBLICATION_MAP_SHA256 = "d8e2bb51eb170e70bf30d9768922fc7b8d86195fc9b8f69abe458bfe3ab97da8";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-134";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-12-134";
+const CORE_SOURCE_CLOSURE_SHA256 = "ce07f54409913eabe319f1e9c0adaa9738418fc9af406b6c0329dffa2dd0fa89";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1018,6 +1023,15 @@ const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREMS = {
 const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_SCOPE = "all-finite-explicit-ambient-bn4-ledgers-exact-multiset-embedding-balanced-generated-subledger-removal-preserves-remainder-signed-mass-and-candidate-derived-canonical-atom-linkage";
 const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_MILESTONE_SCOPE = "For arbitrary finite explicit BN4 cell ledgers, Lean proves that a proof-bearing exact multiset embedding identifies the generated PkgC opposite-sign cancellation ledger with an ambient subledger and preserves every duplicate. Positive and negative mass decompose at every complete key; removing the balanced generated subledger leaves the ambient signed mass and executable residual signed contribution exactly equal to an explicit remainder. A successful candidate-derived BN4 kernel additionally proves every embedded generated cell uses its canonical request-atom space, and complete bindings plus exact absence of every computed bridge imply V54 singletonization.";
 const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NON_CLAIM = "The ambient ledger, typed restoration operation, exact permutation certificate or canonical serialization, and successful candidate-derived BN4 kernel remain explicit proof-bearing inputs. This milestone does not derive the ambient ledger or restorer from a terminal candidate, prove the restorer's semantic adequacy, embed local cancellation or Hall outcomes into the complete global route system, prove global PkgC route silence or the full historical PkgC theorem, establish full BN6 or Packet selector-realizer completeness, polynomial generation or runtime, ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_ID =
+  "residual-terminal-pkgc-ambient-bn4-residual-reduction";
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_CLASSIFICATION =
+  "formalized-residual-terminal-pkgc-ambient-bn4-residual-reduction";
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_SCOPE =
+  "all-finite-explicit-ambient-bn4-ledgers-exact-balanced-subledger-removal-preserves-per-key-and-complete-canonical-executable-residual-ledgers-with-empty-remainder-corollary";
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_MILESTONE_SCOPE = "For arbitrary finite explicit ambient BN4 ledgers, Lean proves that removing an exactly embedded balanced PkgC generated subledger preserves the executable residual cell at every complete key and the complete canonical executable residual ledger over the ambient key universe. Every remainder key occurs in that universe; a fail-closed canonical classifier constructs the exact reduction without caller-provided proof bits; and an empty remainder yields an empty ambient residual ledger, including for the existing candidate-derived computed bridge.";
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_NON_CLAIM = "The ambient ledger, typed restoration operation, exact embedding, and explicit remainder remain proof-bearing inputs. This milestone does not derive those inputs from an arbitrary terminal candidate, prove that the remainder is empty or route-producing, establish restoration semantic adequacy or complete global route silence, reconstruct the full historical PkgC/BN6/Packet path, prove polynomial generation or runtime, establish ZeroSlack or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS = {
   "PNP.DirectWire.TerminalV54ConsumerSystem.requestActive_monotone": { hash: "2b4b2abc251a6f227f312189bef5f8af6ad139173a5b56bd041b5c0490c56009", axioms: [], module: "PNP.ResidualTerminalConsumerAntichainNormalForm" },
@@ -3375,26 +3389,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 460049,
-    sha256: "5bca11cba837c8bdf90e27186974bf5398d4be78fae3360987afbf19746d271b"
+    bytes: 461415,
+    sha256: "042a95832be2f6b37258f244b516b511c8712f07c78d91fc0fc5c8af1bd686a6"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 223061,
-    sha256: "2e42452a0d270c8e36cf7f381dbd38a64a535d07b8bc653e4e13ff526c574e7d"
+    bytes: 224397,
+    sha256: "613dc9d3ccbcd784fd1d66fecab527f0cc6e728dd22223403cc32dec52daa0fd"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2111583,
-    sha256: "6e7416a60485390b4414251c3b8f00214ed759f93d8091aef73cdb357da2dbfe"
+    bytes: 2119653,
+    sha256: "68695b5541ff3df5a5aba8f95b3169a79d26a8c938ca830ea20adf18c17cbf54"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 18243895,
-    sha256: "696c76220a092e5a84e7caa804fd1c57889f193968d1285b520c408f8237f5c1"
+    bytes: 18406872,
+    sha256: "5a1044bbf0438e67cf19749dae710c7a9a2d0fde5757ca57be997c175780cf86"
   }
 ];
 
@@ -3494,7 +3508,7 @@ function assertPinnedCore(sourceDir) {
   if (git(sourceDir, ["rev-parse", `${CORE_COMMIT}^{tree}`]) !== CORE_TREE) fail("pinned core tree does not match the reviewed merge");
 
   const map = coreBlob(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json");
-  if (sha256(map) !== "a9f7ec898fb04e4842ea86281d2a6b257fc0c65dd422eb04a974bde169bf29d6") {
+  if (sha256(map) !== CORE_PUBLICATION_MAP_SHA256) {
     fail("pinned formal-publication map digest mismatch");
   }
   const publicationMap = JSON.parse(map.toString("utf8"));
@@ -3520,10 +3534,24 @@ function assertPinnedCore(sourceDir) {
     "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaTokenCursor.step_of_done": "72a7018658fadc646c07637bc07792502fdcab845760af862081e618f879732e",
     "PNP.Concrete.CookLevin.VerifierTableauProblem.FormulaTokenCursor.step_of_lt": "8d0bc1d099f14e3764d3d01a3f7e54b21c962538012dfd8dcd04eb282434a90b"
   };
-  if (publicationMap.coordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-133"
-      || publicationMap.milestoneSourceClosureSha256 !== "9b8afc2bac8c5f5b5fbe3c086f22602358c3f9b641aeb91e7de708f9f1001154"
+  const publicationMilestoneCount = publicationMap.milestones?.length;
+  const publicationEarnedMilestoneCount = publicationMap.milestones?.filter(
+    (row) => row.classification !== "not-formalized"
+  ).length;
+  const publicationUnearnedMilestoneCount = publicationMap.milestones?.filter(
+    (row) => row.classification === "not-formalized"
+  ).length;
+  if (publicationMap.coordinate !== CORE_PUBLICATION_MAP_COORDINATE
+      || publicationMap.milestoneSourceClosureSha256 !== CORE_SOURCE_CLOSURE_SHA256
       || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[rawTapeTheorem] !== "985c8d12419343045c76abbcfa6def7d4e01ce816d97180dca14d7bf5c0be34d") {
     fail("pinned formal-publication map Cook-Levin identity mismatch");
+  }
+  if (!Number.isSafeInteger(publicationMilestoneCount)
+      || publicationMilestoneCount < 3
+      || publicationEarnedMilestoneCount !== publicationMilestoneCount - 2
+      || publicationUnearnedMilestoneCount !== 2
+      || new Set(publicationMap.milestones.map((row) => row.id)).size !== publicationMilestoneCount) {
+    fail("pinned formal-publication map milestone-count invariant mismatch");
   }
   const carrierTraceMilestone = publicationMap.milestones?.find(
     (milestone) => milestone.id === "locked-nand-global-carrier-trace-equivalence"
@@ -3587,8 +3615,6 @@ function assertPinnedCore(sourceDir) {
     (milestone) => milestone.id === "locked-nand-global-semantic-threshold"
   );
   if (!globalSemanticThresholdMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || globalSemanticThresholdMilestone.classification !== "formalized"
       || globalSemanticThresholdMilestone.requiredTheorems?.length !== 8
       || globalSemanticThresholdMilestone.scope !== "For every finite topologically ordered NAND circuit, one answer-independent full candidate instantiates all six semantic premises, has residual slack at most four, and crosses the exact source-derived minimum threshold exactly when the source circuit is satisfiable."
@@ -3604,8 +3630,6 @@ function assertPinnedCore(sourceDir) {
     (milestone) => milestone.id === "concrete-locked-nand-encoded-semantic-boundary"
   );
   if (!encodedSemanticReductionMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || encodedSemanticReductionMilestone.classification !== "formalized-semantic-boundary"
       || encodedSemanticReductionMilestone.requiredTheorems?.length !== 11
       || encodedSemanticReductionMilestone.scope !== "A strict version-zero bit grammar round-trips normalized NAND circuits and complete locked-NAND candidates; the pure all-bitstring transformation is fail-closed and preserves source satisfiability at the exact target threshold."
@@ -3621,8 +3645,6 @@ function assertPinnedCore(sourceDir) {
     (milestone) => milestone.id === "concrete-locked-nand-source-parser"
   );
   if (!sourceParserMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || sourceParserMilestone.classification !== "formalized-foundation-only"
       || sourceParserMilestone.requiredTheorems?.length !== 20
       || sourceParserMilestone.scope !== "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement."
@@ -3638,8 +3660,6 @@ function assertPinnedCore(sourceDir) {
     (milestone) => milestone.id === "concrete-locked-nand-target-emitter"
   );
   if (!targetEmitterMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || targetEmitterMilestone.classification !== "formalized-foundation-only"
       || targetEmitterMilestone.requiredTheorems?.length !== 22
       || targetEmitterMilestone.scope !== "One literal 1,387,921-rule grammar-only controller emits the exact direct locked-NAND target on every grammar-decoded circuit, rejects malformed grammar with empty output, cannot time out within an explicit all-input polynomial, has an explicit quadratic output-size bound, and supplies compiled polynomial-time machine/function witnesses, exact leaf RawRefinement, and strict parser/emitter composition computing buildLockedNANDInstance."
@@ -3655,8 +3675,6 @@ function assertPinnedCore(sourceDir) {
     (milestone) => milestone.id === "concrete-locked-nand-polynomial-reduction"
   );
   if (!polynomialReductionMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || polynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
       || polynomialReductionMilestone.requiredTheorems?.length !== 5
       || polynomialReductionMilestone.scope !== "The existing strict parser/emitter composition is packaged as a concrete polynomial many-one reduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact function identity, exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive raw-machine refinement."
@@ -3673,8 +3691,6 @@ function assertPinnedCore(sourceDir) {
   );
   const cnfToNANDSemanticCompilerNames = Object.keys(CNF_TO_NAND_SEMANTIC_COMPILER_THEOREMS);
   if (!cnfToNANDSemanticCompilerMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || cnfToNANDSemanticCompilerMilestone.classification !== "formalized-semantic-boundary"
       || cnfToNANDSemanticCompilerMilestone.scope !== CNF_TO_NAND_SEMANTIC_COMPILER_MILESTONE_SCOPE
       || cnfToNANDSemanticCompilerMilestone.nonClaim !== CNF_TO_NAND_SEMANTIC_COMPILER_NON_CLAIM
@@ -3689,8 +3705,6 @@ function assertPinnedCore(sourceDir) {
   );
   const cnfToNANDPolynomialReductionNames = Object.keys(CNF_TO_NAND_POLYNOMIAL_REDUCTION_THEOREMS);
   if (!cnfToNANDPolynomialReductionMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || cnfToNANDPolynomialReductionMilestone.classification !== "formalized-polynomial-reduction"
       || cnfToNANDPolynomialReductionMilestone.scope !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_MILESTONE_SCOPE
       || cnfToNANDPolynomialReductionMilestone.nonClaim !== CNF_TO_NAND_POLYNOMIAL_REDUCTION_NON_CLAIM
@@ -3705,8 +3719,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualGainChainNames = Object.keys(RESIDUAL_GAIN_CHAIN_THEOREMS);
   if (!residualGainChainMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualGainChainMilestone.classification !== "formalized-iteration-bound-only"
       || residualGainChainMilestone.scope !== RESIDUAL_GAIN_CHAIN_MILESTONE_SCOPE
       || residualGainChainMilestone.nonClaim !== RESIDUAL_GAIN_CHAIN_NON_CLAIM
@@ -3721,8 +3733,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualGainStoppingNames = Object.keys(RESIDUAL_GAIN_STOPPING_THEOREMS);
   if (!residualGainStoppingMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualGainStoppingMilestone.classification !== "formalized-semantic-stopping-only"
       || residualGainStoppingMilestone.scope !== RESIDUAL_GAIN_STOPPING_MILESTONE_SCOPE
       || residualGainStoppingMilestone.nonClaim !== RESIDUAL_GAIN_STOPPING_NON_CLAIM
@@ -3737,8 +3747,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalFullBridgeNames = Object.keys(RESIDUAL_TERMINAL_FULL_BRIDGE_THEOREMS);
   if (!residualTerminalFullBridgeMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFullBridgeMilestone.classification !== "formalized-terminal-full-mode-semantic-bridge"
       || residualTerminalFullBridgeMilestone.scope !== RESIDUAL_TERMINAL_FULL_BRIDGE_MILESTONE_SCOPE
       || residualTerminalFullBridgeMilestone.nonClaim !== RESIDUAL_TERMINAL_FULL_BRIDGE_NON_CLAIM
@@ -3753,8 +3761,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalModeFirewallNames = Object.keys(RESIDUAL_TERMINAL_MODE_FIREWALL_THEOREMS);
   if (!residualTerminalModeFirewallMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalModeFirewallMilestone.classification !== "formalized-terminal-mode-firewall"
       || residualTerminalModeFirewallMilestone.scope !== RESIDUAL_TERMINAL_MODE_FIREWALL_MILESTONE_SCOPE
       || residualTerminalModeFirewallMilestone.nonClaim !== RESIDUAL_TERMINAL_MODE_FIREWALL_NON_CLAIM
@@ -3769,8 +3775,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalProjectionMinimumNames = Object.keys(RESIDUAL_TERMINAL_PROJECTION_MINIMUM_THEOREMS);
   if (!residualTerminalProjectionMinimumMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalProjectionMinimumMilestone.classification !== "formalized-terminal-projection-minimum"
       || residualTerminalProjectionMinimumMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_MINIMUM_MILESTONE_SCOPE
       || residualTerminalProjectionMinimumMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_MINIMUM_NON_CLAIM
@@ -3785,8 +3789,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalProjectionTransferNames = Object.keys(RESIDUAL_TERMINAL_PROJECTION_TRANSFER_THEOREMS);
   if (!residualTerminalProjectionTransferMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalProjectionTransferMilestone.classification !== "formalized-terminal-projection-transfer"
       || residualTerminalProjectionTransferMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_MILESTONE_SCOPE
       || residualTerminalProjectionTransferMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_TRANSFER_NON_CLAIM
@@ -3801,8 +3803,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalSaturationNames = Object.keys(RESIDUAL_TERMINAL_SATURATION_THEOREMS);
   if (!residualTerminalSaturationMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalSaturationMilestone.classification !== "formalized-terminal-saturation-closure"
       || residualTerminalSaturationMilestone.scope !== RESIDUAL_TERMINAL_SATURATION_MILESTONE_SCOPE
       || residualTerminalSaturationMilestone.nonClaim !== RESIDUAL_TERMINAL_SATURATION_NON_CLAIM
@@ -3817,8 +3817,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalPhysicalSupportNames = Object.keys(RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_THEOREMS);
   if (!residualTerminalPhysicalSupportMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalPhysicalSupportMilestone.classification !== "formalized-terminal-physical-support-completion"
       || residualTerminalPhysicalSupportMilestone.scope !== RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_MILESTONE_SCOPE
       || residualTerminalPhysicalSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_NON_CLAIM
@@ -3833,8 +3831,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalSupportExtractionNames = Object.keys(RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_THEOREMS);
   if (!residualTerminalSupportExtractionMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalSupportExtractionMilestone.classification !== "formalized-terminal-support-extraction"
       || residualTerminalSupportExtractionMilestone.scope !== RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_MILESTONE_SCOPE
       || residualTerminalSupportExtractionMilestone.nonClaim !== RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NON_CLAIM
@@ -3849,8 +3845,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalProperSupportNames = Object.keys(RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS);
   if (!residualTerminalProperSupportMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalProperSupportMilestone.classification !== "formalized-governed-proper-positive-support-search"
       || residualTerminalProperSupportMilestone.scope !== RESIDUAL_TERMINAL_PROPER_SUPPORT_MILESTONE_SCOPE
       || residualTerminalProperSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_PROPER_SUPPORT_NON_CLAIM
@@ -3865,8 +3859,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalSupportSquareNames = Object.keys(RESIDUAL_TERMINAL_SUPPORT_SQUARE_THEOREMS);
   if (!residualTerminalSupportSquareMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalSupportSquareMilestone.classification !== "formalized-terminal-saturated-support-square-closure"
       || residualTerminalSupportSquareMilestone.scope !== RESIDUAL_TERMINAL_SUPPORT_SQUARE_MILESTONE_SCOPE
       || residualTerminalSupportSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_SUPPORT_SQUARE_NON_CLAIM
@@ -3881,8 +3873,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalGovernedSupportNames = Object.keys(RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS);
   if (!residualTerminalGovernedSupportMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalGovernedSupportMilestone.classification !== "formalized-terminal-governed-support-completion"
       || residualTerminalGovernedSupportMilestone.scope !== RESIDUAL_TERMINAL_GOVERNED_SUPPORT_MILESTONE_SCOPE
       || residualTerminalGovernedSupportMilestone.nonClaim !== RESIDUAL_TERMINAL_GOVERNED_SUPPORT_NON_CLAIM
@@ -3897,8 +3887,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalFrontierPushoutNames = Object.keys(RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_THEOREMS);
   if (!residualTerminalFrontierPushoutMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFrontierPushoutMilestone.classification !== "formalized-terminal-governed-frontier-pushout"
       || residualTerminalFrontierPushoutMilestone.scope !== RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_MILESTONE_SCOPE
       || residualTerminalFrontierPushoutMilestone.nonClaim !== RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NON_CLAIM
@@ -3913,8 +3901,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalProjectionSquareNames = Object.keys(RESIDUAL_TERMINAL_PROJECTION_SQUARE_THEOREMS);
   if (!residualTerminalProjectionSquareMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalProjectionSquareMilestone.classification !== "formalized-terminal-governed-projection-square"
       || residualTerminalProjectionSquareMilestone.scope !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_MILESTONE_SCOPE
       || residualTerminalProjectionSquareMilestone.nonClaim !== RESIDUAL_TERMINAL_PROJECTION_SQUARE_NON_CLAIM
@@ -3929,8 +3915,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalSideTightMinimumNames = Object.keys(RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_THEOREMS);
   if (!residualTerminalSideTightMinimumMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalSideTightMinimumMilestone.classification !== "formalized-residual-terminal-side-tight-minimum-arithmetic"
       || residualTerminalSideTightMinimumMilestone.scope !== RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_MILESTONE_SCOPE
       || residualTerminalSideTightMinimumMilestone.nonClaim !== RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NON_CLAIM
@@ -3945,8 +3929,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalFourCornerCarrierNames = Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_THEOREMS);
   if (!residualTerminalFourCornerCarrierMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFourCornerCarrierMilestone.classification !== "formalized-residual-terminal-four-corner-carrier-transport"
       || residualTerminalFourCornerCarrierMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_MILESTONE_SCOPE
       || residualTerminalFourCornerCarrierMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NON_CLAIM
@@ -3961,8 +3943,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalFourCornerOptimaNames = Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_THEOREMS);
   if (!residualTerminalFourCornerOptimaMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFourCornerOptimaMilestone.classification !== "formalized-residual-terminal-four-corner-optimum-carrier-compatibility"
       || residualTerminalFourCornerOptimaMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_MILESTONE_SCOPE
       || residualTerminalFourCornerOptimaMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NON_CLAIM
@@ -3978,8 +3958,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalFourCornerOptimumCoherenceNames =
     Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_THEOREMS);
   if (!residualTerminalFourCornerOptimumCoherenceMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFourCornerOptimumCoherenceMilestone.classification !== "formalized-residual-terminal-four-corner-optimum-coherence-dichotomy"
       || residualTerminalFourCornerOptimumCoherenceMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_MILESTONE_SCOPE
       || residualTerminalFourCornerOptimumCoherenceMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_NON_CLAIM
@@ -3996,8 +3974,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalFourCornerSideTightCompletionNames =
     Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_THEOREMS);
   if (!residualTerminalFourCornerSideTightCompletionMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFourCornerSideTightCompletionMilestone.classification !== "formalized-residual-terminal-four-corner-side-tight-completion-under-local-route-silence"
       || residualTerminalFourCornerSideTightCompletionMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_MILESTONE_SCOPE
       || residualTerminalFourCornerSideTightCompletionMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_NON_CLAIM
@@ -4014,8 +3990,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalFourCornerTightBasisMaximumNames =
     Object.keys(RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_THEOREMS);
   if (!residualTerminalFourCornerTightBasisMaximumMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFourCornerTightBasisMaximumMilestone.classification !== "formalized-residual-terminal-four-corner-complete-tight-basis-maximum"
       || residualTerminalFourCornerTightBasisMaximumMilestone.scope !== RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_MILESTONE_SCOPE
       || residualTerminalFourCornerTightBasisMaximumMilestone.nonClaim !== RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NON_CLAIM
@@ -4032,8 +4006,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalComputedBN2SquareLegitimacyNames =
     Object.keys(RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_THEOREMS);
   if (!residualTerminalComputedBN2SquareLegitimacyMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalComputedBN2SquareLegitimacyMilestone.classification !== "formalized-residual-terminal-computed-bn2-square-legitimacy"
       || residualTerminalComputedBN2SquareLegitimacyMilestone.scope !== RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_MILESTONE_SCOPE
       || residualTerminalComputedBN2SquareLegitimacyMilestone.nonClaim !== RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NON_CLAIM
@@ -4050,8 +4022,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalComputedBCELAnchorNucleusNames =
     Object.keys(RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_THEOREMS);
   if (!residualTerminalComputedBCELAnchorNucleusMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalComputedBCELAnchorNucleusMilestone.classification !== "formalized-residual-terminal-computed-bcel-anchor-nucleus"
       || residualTerminalComputedBCELAnchorNucleusMilestone.scope !== RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_MILESTONE_SCOPE
       || residualTerminalComputedBCELAnchorNucleusMilestone.nonClaim !== RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_NON_CLAIM
@@ -4068,8 +4038,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalSaturationPositivityFirewallNames =
     Object.keys(RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_THEOREMS);
   if (!residualTerminalSaturationPositivityFirewallMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalSaturationPositivityFirewallMilestone.classification !== "formalized-residual-terminal-saturation-positivity-firewall"
       || residualTerminalSaturationPositivityFirewallMilestone.scope !== RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_MILESTONE_SCOPE
       || residualTerminalSaturationPositivityFirewallMilestone.nonClaim !== RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_NON_CLAIM
@@ -4086,8 +4054,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalCandidateSaturationCostBalanceNames =
     Object.keys(RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_THEOREMS);
   if (!residualTerminalCandidateSaturationCostBalanceMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalCandidateSaturationCostBalanceMilestone.classification !== "formalized-residual-terminal-candidate-saturation-cost-balance"
       || residualTerminalCandidateSaturationCostBalanceMilestone.scope !== RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_MILESTONE_SCOPE
       || residualTerminalCandidateSaturationCostBalanceMilestone.nonClaim !== RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NON_CLAIM
@@ -4104,8 +4070,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalInterfaceExposureRoutingNames =
     Object.keys(RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_THEOREMS);
   if (!residualTerminalInterfaceExposureRoutingMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalInterfaceExposureRoutingMilestone.classification !== "formalized-residual-terminal-interface-exposure-routing"
       || residualTerminalInterfaceExposureRoutingMilestone.scope !== RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_MILESTONE_SCOPE
       || residualTerminalInterfaceExposureRoutingMilestone.nonClaim !== RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NON_CLAIM
@@ -4122,8 +4086,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalFiniteSaturatePositiveCompositionNames =
     Object.keys(RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_THEOREMS);
   if (!residualTerminalFiniteSaturatePositiveCompositionMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalFiniteSaturatePositiveCompositionMilestone.classification !== "formalized-residual-terminal-finite-saturate-positive-composition"
       || residualTerminalFiniteSaturatePositiveCompositionMilestone.scope !== RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_MILESTONE_SCOPE
       || residualTerminalFiniteSaturatePositiveCompositionMilestone.nonClaim !== RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_NON_CLAIM
@@ -4139,8 +4101,6 @@ function assertPinnedCore(sourceDir) {
   );
   const residualTerminalRankWFNames = Object.keys(RESIDUAL_TERMINAL_RANK_WF_THEOREMS);
   if (!residualTerminalRankWFMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalRankWFMilestone.classification !== "formalized-residual-terminal-rank-wf"
       || residualTerminalRankWFMilestone.scope !== RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE
       || residualTerminalRankWFMilestone.nonClaim !== RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM
@@ -4157,8 +4117,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalBN3RequestEnvelopeNames =
     Object.keys(RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_THEOREMS);
   if (!residualTerminalBN3RequestEnvelopeMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalBN3RequestEnvelopeMilestone.classification !== "formalized-residual-terminal-bn3-request-envelope"
       || residualTerminalBN3RequestEnvelopeMilestone.scope !== RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_MILESTONE_SCOPE
       || residualTerminalBN3RequestEnvelopeMilestone.nonClaim !== RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_NON_CLAIM
@@ -4175,8 +4133,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalBN4ActivationCancellationNames =
     Object.keys(RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_THEOREMS);
   if (!residualTerminalBN4ActivationCancellationMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalBN4ActivationCancellationMilestone.classification !== "formalized-residual-terminal-bn4-activation-cancellation"
       || residualTerminalBN4ActivationCancellationMilestone.scope !== RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_MILESTONE_SCOPE
       || residualTerminalBN4ActivationCancellationMilestone.nonClaim !== RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NON_CLAIM
@@ -4193,8 +4149,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalBN5FullShadowLocalizationNames =
     Object.keys(RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_THEOREMS);
   if (!residualTerminalBN5FullShadowLocalizationMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalBN5FullShadowLocalizationMilestone.classification !== "formalized-residual-terminal-bn5-full-shadow-localization"
       || residualTerminalBN5FullShadowLocalizationMilestone.scope !== RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_MILESTONE_SCOPE
       || residualTerminalBN5FullShadowLocalizationMilestone.nonClaim !== RESIDUAL_TERMINAL_BN5_FULL_SHADOW_LOCALIZATION_NON_CLAIM
@@ -4211,8 +4165,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalPkgCSeparatingConsumersNames =
     Object.keys(RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREMS);
   if (!residualTerminalPkgCSeparatingConsumersMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalPkgCSeparatingConsumersMilestone.classification !== "formalized-residual-terminal-pkgc-separating-consumers"
       || residualTerminalPkgCSeparatingConsumersMilestone.scope !== RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_MILESTONE_SCOPE
       || residualTerminalPkgCSeparatingConsumersMilestone.nonClaim !== RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_NON_CLAIM
@@ -4229,8 +4181,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalPkgCTypedRestorationNames =
     Object.keys(RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREMS);
   if (!residualTerminalPkgCTypedRestorationMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalPkgCTypedRestorationMilestone.classification !== "formalized-residual-terminal-pkgc-typed-restoration"
       || residualTerminalPkgCTypedRestorationMilestone.scope !== RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_MILESTONE_SCOPE
       || residualTerminalPkgCTypedRestorationMilestone.nonClaim !== RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_NON_CLAIM
@@ -4247,8 +4197,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalPkgCSameKeyCancellationNames =
     Object.keys(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREMS);
   if (!residualTerminalPkgCSameKeyCancellationMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalPkgCSameKeyCancellationMilestone.classification !== "formalized-residual-terminal-pkgc-same-key-cancellation"
       || residualTerminalPkgCSameKeyCancellationMilestone.scope !== RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_MILESTONE_SCOPE
       || residualTerminalPkgCSameKeyCancellationMilestone.nonClaim !== RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NON_CLAIM
@@ -4265,8 +4213,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalPkgCAmbientBN4LedgerNames =
     Object.keys(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREMS);
   if (!residualTerminalPkgCAmbientBN4LedgerMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalPkgCAmbientBN4LedgerMilestone.classification !== "formalized-residual-terminal-pkgc-ambient-bn4-ledger"
       || residualTerminalPkgCAmbientBN4LedgerMilestone.scope !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_MILESTONE_SCOPE
       || residualTerminalPkgCAmbientBN4LedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NON_CLAIM
@@ -4277,6 +4223,25 @@ function assertPinnedCore(sourceDir) {
       )) {
     fail("pinned formal-publication map residual terminal PkgC ambient-BN4-ledger boundary mismatch");
   }
+  const residualTerminalPkgCAmbientBN4ResidualReductionMilestone = publicationMap.milestones?.find(
+    (row) => row.id === RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_ID
+  );
+  const residualTerminalPkgCAmbientBN4ResidualReductionNames =
+    residualTerminalPkgCAmbientBN4ResidualReductionMilestone?.requiredTheorems;
+  if (!residualTerminalPkgCAmbientBN4ResidualReductionMilestone
+      || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.classification
+        !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_CLASSIFICATION
+      || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.scope
+        !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_MILESTONE_SCOPE
+      || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.nonClaim
+        !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_NON_CLAIM
+      || residualTerminalPkgCAmbientBN4ResidualReductionNames?.length !== 8
+      || new Set(residualTerminalPkgCAmbientBN4ResidualReductionNames).size !== 8
+      || !residualTerminalPkgCAmbientBN4ResidualReductionNames.every((name) =>
+        /^[0-9a-f]{64}$/.test(publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] || "")
+      )) {
+    fail("pinned formal-publication map residual terminal PkgC ambient-BN4 residual-reduction boundary mismatch");
+  }
 
   const residualTerminalV54ConsumerAntichainNormalFormMilestone = publicationMap.milestones?.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
@@ -4284,8 +4249,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalV54ConsumerAntichainNormalFormNames =
     Object.keys(RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREMS);
   if (!residualTerminalV54ConsumerAntichainNormalFormMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalV54ConsumerAntichainNormalFormMilestone.classification !== "formalized-residual-terminal-v54-consumer-antichain-normal-form"
       || residualTerminalV54ConsumerAntichainNormalFormMilestone.scope !== RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_MILESTONE_SCOPE
       || residualTerminalV54ConsumerAntichainNormalFormMilestone.nonClaim !== RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_NON_CLAIM
@@ -4302,8 +4265,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalV53ConstantCutHypergraphRigidityNames =
     Object.keys(RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREMS);
   if (!residualTerminalV53ConstantCutHypergraphRigidityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalV53ConstantCutHypergraphRigidityMilestone.classification !== "formalized-residual-terminal-v53-constant-cut-hypergraph-rigidity"
       || residualTerminalV53ConstantCutHypergraphRigidityMilestone.scope !== RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_MILESTONE_SCOPE
       || residualTerminalV53ConstantCutHypergraphRigidityMilestone.nonClaim !== RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NON_CLAIM
@@ -4320,8 +4281,6 @@ function assertPinnedCore(sourceDir) {
   const residualTerminalBN6HypergraphPacketNames =
     Object.keys(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREMS);
   if (!residualTerminalBN6HypergraphPacketMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || residualTerminalBN6HypergraphPacketMilestone.classification !== "formalized-residual-terminal-bn6-hypergraph-packet"
       || residualTerminalBN6HypergraphPacketMilestone.scope !== RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_MILESTONE_SCOPE
       || residualTerminalBN6HypergraphPacketMilestone.nonClaim !== RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NON_CLAIM
@@ -4337,8 +4296,6 @@ function assertPinnedCore(sourceDir) {
   );
   const lockedNANDThresholdPublicationNames = Object.keys(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS);
   if (!lockedNANDThresholdPublicationMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || lockedNANDThresholdPublicationMilestone.classification !== "formalized-concrete-locked-nand-threshold"
       || lockedNANDThresholdPublicationMilestone.scope !== LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE_SCOPE
       || lockedNANDThresholdPublicationMilestone.nonClaim !== LOCKED_NAND_THRESHOLD_PUBLICATION_NON_CLAIM
@@ -4680,8 +4637,6 @@ function assertPinnedCore(sourceDir) {
   const fifthClausePaddingRunMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-fifth-clause-padding-run");
   if (!fifthClausePaddingRunMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || fifthClausePaddingRunMilestone.classification !== "formalized-foundation-only"
       || fifthClausePaddingRunMilestone.requiredTheorems?.length !== 39
       || !Object.keys(BUILDER_FIFTH_CLAUSE_PADDING_RUN_THEOREMS).every((name) =>
@@ -4694,8 +4649,6 @@ function assertPinnedCore(sourceDir) {
   const firstConstraintPaddingRunMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-first-constraint-padding-run");
   if (!firstConstraintPaddingRunMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || firstConstraintPaddingRunMilestone.classification !== "formalized-foundation-only"
       || firstConstraintPaddingRunMilestone.requiredTheorems?.length !== 39
       || !Object.keys(BUILDER_FIRST_CONSTRAINT_PADDING_RUN_THEOREMS).every((name) =>
@@ -4709,8 +4662,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintSeparatorMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-separator-step");
   if (!secondConstraintSeparatorMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintSeparatorMilestone.classification !== "formalized-foundation-only"
       || secondConstraintSeparatorMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_THEOREMS).every((name) => secondConstraintSeparatorMilestone.requiredTheorems?.includes(name))
@@ -4722,8 +4673,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralSignMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-sign-step");
   if (!secondConstraintFirstLiteralSignMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFirstLiteralSignMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralSignMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_THEOREMS).every((name) =>
@@ -4737,8 +4686,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralFirstUnaryUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-first-unary-unit-step");
   if (!secondConstraintFirstLiteralFirstUnaryUnitMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFirstLiteralFirstUnaryUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralFirstUnaryUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralFirstUnaryUnitMilestone.requiredTheorems?.includes(name))
@@ -4752,8 +4699,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralSecondUnaryUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-second-unary-unit-step");
   if (!secondConstraintFirstLiteralSecondUnaryUnitMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFirstLiteralSecondUnaryUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralSecondUnaryUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralSecondUnaryUnitMilestone.requiredTheorems?.includes(name))
@@ -4766,8 +4711,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralThirdUnaryUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-third-unary-unit-step");
   if (!secondConstraintFirstLiteralThirdUnaryUnitMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFirstLiteralThirdUnaryUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralThirdUnaryUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralThirdUnaryUnitMilestone.requiredTheorems?.includes(name))
@@ -4780,8 +4723,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralTerminatorUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-terminator-step");
   if (!secondConstraintFirstLiteralTerminatorUnitMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFirstLiteralTerminatorUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralTerminatorUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralTerminatorUnitMilestone.requiredTheorems?.includes(name))
@@ -4794,8 +4735,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFirstLiteralSuccessorTokenUnitMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-first-literal-successor-token-step");
   if (!secondConstraintFirstLiteralSuccessorTokenUnitMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFirstLiteralSuccessorTokenUnitMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_THEOREMS).every((name) => secondConstraintFirstLiteralSuccessorTokenUnitMilestone.requiredTheorems?.includes(name))
@@ -4807,8 +4746,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintPaddingOrUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-padding-or-unary-opportunity-step");
   if (!secondConstraintPaddingOrUnaryOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintPaddingOrUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintPaddingOrUnaryOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4821,8 +4758,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintSecondPaddingOrUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-second-padding-or-unary-opportunity-step");
   if (!secondConstraintSecondPaddingOrUnaryOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintSecondPaddingOrUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintSecondPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintSecondPaddingOrUnaryOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4835,8 +4770,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintThirdPaddingOrUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-third-padding-or-unary-opportunity-step");
   if (!secondConstraintThirdPaddingOrUnaryOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintThirdPaddingOrUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintThirdPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintThirdPaddingOrUnaryOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4849,8 +4782,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFourthPaddingOrUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-fourth-padding-or-unary-opportunity-step");
   if (!secondConstraintFourthPaddingOrUnaryOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFourthPaddingOrUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFourthPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintFourthPaddingOrUnaryOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4862,8 +4793,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintFifthPaddingOrTerminatorOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-fifth-padding-or-terminator-opportunity-step");
   if (!secondConstraintFifthPaddingOrTerminatorOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintFifthPaddingOrTerminatorOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintFifthPaddingOrTerminatorOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintFifthPaddingOrTerminatorOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4875,8 +4804,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintSixthPaddingOrOpeningUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-sixth-padding-or-opening-unary-opportunity-step");
   if (!secondConstraintSixthPaddingOrOpeningUnaryOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintSixthPaddingOrOpeningUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintSixthPaddingOrOpeningUnaryOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintSixthPaddingOrOpeningUnaryOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4888,8 +4815,6 @@ function assertPinnedCore(sourceDir) {
   const secondConstraintSeventhPaddingOrUnaryOpportunityMilestone = publicationMap.milestones?.find((row) =>
     row.id === "concrete-cook-levin-builder-second-constraint-seventh-padding-or-unary-opportunity-step");
   if (!secondConstraintSeventhPaddingOrUnaryOpportunityMilestone
-      || publicationMap.milestones?.length !== 111
-      || publicationMap.milestones.filter((row) => row.classification !== "not-formalized").length !== 109
       || secondConstraintSeventhPaddingOrUnaryOpportunityMilestone.classification !== "formalized-foundation-only"
       || secondConstraintSeventhPaddingOrUnaryOpportunityMilestone.requiredTheorems?.length !== 40
       || !Object.keys(BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_THEOREMS).every((name) => secondConstraintSeventhPaddingOrUnaryOpportunityMilestone.requiredTheorems?.includes(name))
@@ -4898,6 +4823,7 @@ function assertPinnedCore(sourceDir) {
     fail("pinned formal-publication map Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step identity mismatch");
   }
 
+  return publicationMap;
 }
 
 function checkPdfPageCount(pdfPath, expectedPageCount) {
@@ -4907,12 +4833,24 @@ function checkPdfPageCount(pdfPath, expectedPageCount) {
   if (!match || Number(match[1]) !== expectedPageCount) fail(`${pdfPath}: expected exactly ${expectedPageCount} pages`);
 }
 
-function assertCorePayloadBoundary(sourcePath, buffer) {
+function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
   if (!sourcePath.endsWith(".json")) return;
   const payload = JSON.parse(buffer.toString("utf8"));
   if (sourcePath === "public/pnp-status.json") {
-    if (payload.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-133" || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("core status coordinate mismatch");
-    if (payload.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-12-133" || payload.formalPublicationMapSha256 !== "a9f7ec898fb04e4842ea86281d2a6b257fc0c65dd422eb04a974bde169bf29d6" || payload.leanSourceClosureSha256 !== "9b8afc2bac8c5f5b5fbe3c086f22602358c3f9b641aeb91e7de708f9f1001154") fail("core status source identity mismatch");
+    if (payload.coordinate !== CORE_STATUS_COORDINATE || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("core status coordinate mismatch");
+    if (payload.formalPublicationMapCoordinate !== CORE_PUBLICATION_MAP_COORDINATE || payload.formalPublicationMapSha256 !== CORE_PUBLICATION_MAP_SHA256 || payload.leanSourceClosureSha256 !== CORE_SOURCE_CLOSURE_SHA256) fail("core status source identity mismatch");
+    const expectedPublicationIds = publicationMap.milestones.map((row) => row.id);
+    const expectedEarnedPublicationCount = publicationMap.milestones.filter(
+      (row) => row.classification !== "not-formalized"
+    ).length;
+    if (JSON.stringify(payload.formalPublicationMilestones?.map((row) => row.id))
+          !== JSON.stringify(expectedPublicationIds)
+        || payload.formalPublicationMilestones.filter((row) => row.earned === true).length
+          !== expectedEarnedPublicationCount
+        || payload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length
+          !== publicationMap.milestones.length - expectedEarnedPublicationCount) {
+      fail("core status formal-publication milestone counts or order mismatch");
+    }
     const carrierTraceMilestone = payload.formalPublicationMilestones?.find(
       (row) => row.id === "locked-nand-global-carrier-trace-equivalence"
     );
@@ -6005,6 +5943,46 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal PkgC ambient-BN4-ledger boundary mismatch");
     }
+    const residualTerminalPkgCAmbientBN4ResidualReductionMapMilestone = publicationMap.milestones.find(
+      (row) => row.id === RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_ID
+    );
+    const residualTerminalPkgCAmbientBN4ResidualReductionMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_ID
+    );
+    if (!residualTerminalPkgCAmbientBN4ResidualReductionMilestone
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.earned !== true
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.allPresent !== true
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.allAssumptionFree !== false
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.allKernelTypesMatch !== true
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.classification
+          !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_CLASSIFICATION
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.scope
+          !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_MILESTONE_SCOPE
+        || residualTerminalPkgCAmbientBN4ResidualReductionMilestone.nonClaim
+          !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_NON_CLAIM
+        || JSON.stringify(residualTerminalPkgCAmbientBN4ResidualReductionMilestone.requiredTheorems)
+          !== JSON.stringify(residualTerminalPkgCAmbientBN4ResidualReductionMapMilestone.requiredTheorems)
+        || !residualTerminalPkgCAmbientBN4ResidualReductionMilestone.theoremRows.every((row) =>
+          row.present === true
+          && row.kind === "theorem"
+          && JSON.stringify(row.axioms) === JSON.stringify(["Quot.sound", "propext"])
+          && row.kernelTypeFingerprintMatches === true
+          && row.actualKernelTypeSha256 === publicationMap.earnedMilestoneTheoremKernelTypeSha256[row.name]
+          && row.expectedKernelTypeSha256 === publicationMap.earnedMilestoneTheoremKernelTypeSha256[row.name]
+        )
+        || payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionFormalized !== true
+        || payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPkgCAmbientBN4ResidualReductionScope
+          !== RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal PkgC ambient-BN4 residual-reduction boundary mismatch");
+    }
     const residualTerminalV54ConsumerAntichainNormalFormMilestone = payload.formalPublicationMilestones?.find(
       (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
     );
@@ -6253,9 +6231,23 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
 
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
-    if (payload.coordinate !== "PNP-LEAN-THEOREM-INVENTORY-2026-08-12-133") fail("core inventory coordinate mismatch");
+    if (payload.coordinate !== CORE_INVENTORY_COORDINATE) fail("core inventory coordinate mismatch");
     if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");
-    if (payload.declarationCount !== 27794 || payload.theoremCount !== 14454 || payload.assumptionFreeTheoremCount !== 7347 || payload.excludedPrivateDeclarationCount !== 15008 || payload.sourceClosureModuleCount !== 250 || payload.axiomCount !== 4 || payload.milestoneCandidates?.length !== 2589) fail("core inventory counts mismatch");
+    const expectedCandidateNames = new Set(
+      publicationMap.milestones
+        .filter((row) => row.classification !== "not-formalized")
+        .flatMap((row) => row.requiredTheorems)
+    );
+    if (payload.milestoneCandidates?.length !== expectedCandidateNames.size
+        || new Set(payload.milestoneCandidates.map((row) => row.name)).size !== expectedCandidateNames.size
+        || !payload.milestoneCandidates.every((row) => expectedCandidateNames.has(row.name))
+        || payload.axiomCount !== payload.projectAxioms?.length
+        || payload.declarationKindCounts?.axiom !== payload.axiomCount
+        || payload.declarationCount < payload.theoremCount
+        || payload.theoremCount < payload.assumptionFreeTheoremCount
+        || payload.sourceClosureModuleCount <= 0) {
+      fail("core inventory internally derived count boundary mismatch");
+    }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {
       const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem
@@ -7201,7 +7193,20 @@ function assertCorePayloadBoundary(sourcePath, buffer) {
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) fail(`core inventory Cook-Levin builder fourth-clause-second-literal-prefix fingerprint mismatch: ${name}`);
     }
 
-    if (payload.milestoneCandidates?.length !== 2589) fail("core inventory reviewed theorem-candidate count mismatch");
+    const residualReductionMilestone = publicationMap.milestones.find(
+      (row) => row.id === RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_RESIDUAL_REDUCTION_ID
+    );
+    for (const name of residualReductionMilestone.requiredTheorems) {
+      const theorem = payload.milestoneCandidates.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== "PNP.ResidualTerminalPkgCAmbientBN4ResidualReduction"
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(["Quot.sound", "propext"])
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType)
+            !== publicationMap.earnedMilestoneTheoremKernelTypeSha256[name]) {
+        fail(`core inventory residual terminal PkgC ambient-BN4 residual-reduction theorem mismatch: ${name}`);
+      }
+    }
   }
 }
 
@@ -7210,14 +7215,14 @@ export function synchronizeFormalPublication(options = {}) {
   const sourceDir = path.resolve(root, options.sourceDir || process.env.PNP_SOURCE_DIR || "../pnp");
   const write = options.write === true;
   const log = options.log || (() => {});
-  assertPinnedCore(sourceDir);
+  const publicationMap = assertPinnedCore(sourceDir);
 
   const mirrors = [];
 
   for (const artifact of CORE_FILES) {
     const blob = coreBlob(sourceDir, artifact.sourcePath);
     if (blob.length !== artifact.bytes || sha256(blob) !== artifact.sha256) fail(`${artifact.sourcePath}: pinned core bytes differ from reviewed identity`);
-    assertCorePayloadBoundary(artifact.sourcePath, blob);
+    assertCorePayloadBoundary(artifact.sourcePath, blob, publicationMap);
     for (const target of artifact.targets) {
       const targetPath = path.resolve(root, target);
       if (!targetPath.startsWith(`${root}${path.sep}`)) fail(`${target}: target escapes repository root`);
