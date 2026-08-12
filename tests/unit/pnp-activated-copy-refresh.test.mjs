@@ -6,7 +6,16 @@ async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
 
+async function readJson(path) {
+  return JSON.parse(await readText(path));
+}
+
 test('shared site script applies the compiled-inventory publication boundary', async () => {
+  const [status, inventory, index] = await Promise.all([
+    readJson('public/pnp-status.json'),
+    readJson('public/pnp-theorem-inventory.json'),
+    readJson('public/pnp-index.json'),
+  ]);
   const script = await readText('assets/main.js');
   for (const fragment of [
     'FAIL_CLOSED_FORMAL_STATUS',
@@ -15,15 +24,15 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'function validateConcreteGate(status, inventory)',
     'function validateMilestones(status)',
     'function validateStatus(status, inventory)',
-    'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-132',
-    'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-132',
-    'ae56cd50f50e6b749e4af8b7d58d8db0790e2c09963ed86c5f507a5c36e7e366',
-    'declarations: 27734',
-    'theorems: 14432',
-    'assumptionFreeTheorems: 7342',
-    'excludedPrivateDeclarations: 15005',
-    'modules: 249',
-    'axioms: 4',
+    status.coordinate,
+    inventory.coordinate,
+    index.leanTheoremInventorySha256,
+    `declarations: ${inventory.declarationCount}`,
+    `theorems: ${inventory.theoremCount}`,
+    `assumptionFreeTheorems: ${inventory.assumptionFreeTheoremCount}`,
+    `excludedPrivateDeclarations: ${inventory.excludedPrivateDeclarationCount}`,
+    `modules: ${inventory.sourceClosureModuleCount}`,
+    `axioms: ${inventory.axiomCount}`,
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'CNF_TO_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS',
     'PNP.Concrete.CNFSourceParser.allInput_exact',
@@ -59,6 +68,11 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'status.leanResidualTerminalPkgCSameKeyCancellationFormalized === true',
     'status.leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed === true',
     'leanResidualTerminalPkgCSameKeyCancellationFormalized: false',
+    'RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_DECLARATIONS',
+    'PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes',
+    'status.leanResidualTerminalPkgCAmbientBN4LedgerFormalized === true',
+    'status.leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed === true',
+    'leanResidualTerminalPkgCAmbientBN4LedgerFormalized: false',
     'RESIDUAL_GAIN_CHAIN_DECLARATIONS',
     'PNP.DirectWire.StrictGainChain.end_residualSlack_add_length_le',
     'PNP.DirectWire.LockedNANDGlobalCandidates.fullCandidate_strictGainChain_length_le_four',

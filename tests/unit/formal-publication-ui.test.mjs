@@ -16,15 +16,17 @@ const validation = context.validation;
 const status = JSON.parse(readFileSync('public/pnp-status.json', 'utf8'));
 const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
+const index = JSON.parse(readFileSync('public/pnp-index.json', 'utf8'));
+const release = JSON.parse(readFileSync('downloads/formal-publication-release.json', 'utf8'));
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
-  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), 'ae56cd50f50e6b749e4af8b7d58d8db0790e2c09963ed86c5f507a5c36e7e366');
+  assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), index.leanTheoremInventorySha256);
   assert.equal(validation.validateInventory(inventory), true);
   assert.equal(validation.validateMilestones(status), true);
   assert.equal(validation.validateConcreteGate(status, inventory), true);
   assert.equal(validation.validateStatus(status, inventory), true);
-  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, 108);
-  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, 2);
+  assert.equal(status.formalPublicationMilestones.filter((row) => row.earned).length, index.formalPublicationMilestoneCounts.earned);
+  assert.equal(status.formalPublicationMilestones.filter((row) => !row.earned).length, index.formalPublicationMilestoneCounts.unearned);
 });
 
 test('site validator pins the concrete locked-NAND threshold publication theorem', () => {
@@ -3646,7 +3648,7 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 });
 
 test('browser loader pins the raw status bytes before parsing', () => {
-  assert.match(source, /const STATUS_SHA256 = 'ec7b7955471fc8af320d8751abd26b0338b59ca030b4d01a3a04dfff1db93f31'/);
+  assert.match(source, /const STATUS_SHA256 = '6e7416a60485390b4414251c3b8f00214ed759f93d8091aef73cdb357da2dbfe'/);
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });
@@ -3924,13 +3926,15 @@ test('static pages remain conservative and distinguish current from historical r
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
   }
-  assert.match(statusPage, /27,734/);
-  assert.match(statusPage, /One hundred and eight scoped milestones/);
+  assert.match(statusPage, new RegExp(status.leanTheoremInventoryDeclarationCount.toLocaleString('en-US'), 'u'));
+  assert.equal((statusPage.match(/data-earned="true"/gu) || []).length, index.formalPublicationMilestoneCounts.earned);
   assert.match(statusPage, /finite BN5 full-shadow localization kernel/i);
   assert.match(statusPage, /strict Hall deficit/i);
   assert.match(statusPage, /PkgC separating-consumer restoration dichotomy/i);
   assert.match(statusPage, /classifyTerminalPkgCSeparatingConsumers_exhaustive/);
   assert.match(statusPage, /PkgC typed-restoration same-key cancellation/i);
+  assert.match(statusPage, /PkgC ambient BN4 ledger embedding/i);
+  assert.match(statusPage, /terminalPkgC_computedAmbientBN4_silence_singletonizes/);
   assert.match(statusPage, /classifyTerminalPkgCSameKeyCancellation_exhaustive/);
   assert.match(statusPage, /V54 consumer-antichain normal form/i);
   assert.match(statusPage, /terminalV54_consumerAntichain_normal_form/);
@@ -3941,7 +3945,7 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, /current 87-page report is generated from the compiled Lean inventory/i);
+  assert.match(reportPage, new RegExp(`current ${release.artifacts.report.pageCount}-page report is generated from the compiled Lean inventory`, 'iu'));
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

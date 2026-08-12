@@ -2151,6 +2151,32 @@ const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES =
 assert.equal(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_NAMES.length, 11);
 assert.equal(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_CANDIDATES.length, 11);
 assert.equal(RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES.length, 11);
+const PUBLISHED_RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_MILESTONE =
+  publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-ledger"
+  );
+assert.ok(PUBLISHED_RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_MILESTONE);
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_HASHES = Object.fromEntries(
+  PUBLISHED_RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_MILESTONE.theoremRows.map(
+    (row) => [row.name, row.expectedKernelTypeSha256]
+  )
+);
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_NAMES = Object.keys(
+  RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_HASHES
+);
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_CANDIDATES =
+  publishedInventory.milestoneCandidates.filter(
+    (candidate) => RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_NAMES.includes(candidate.name)
+  );
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_PREVIOUS_THEOREM_NAMES =
+  earnedTheoremNamesBefore("residual-terminal-pkgc-ambient-bn4-ledger");
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES =
+  RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_CANDIDATES.filter(
+    (candidate) => !RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_PREVIOUS_THEOREM_NAMES.has(candidate.name)
+  );
+assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_NAMES.length, 12);
+assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_CANDIDATES.length, 12);
+assert.equal(RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES.length, 12);
 const PUBLISHED_RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_MILESTONE =
   publishedStatus.formalPublicationMilestones.find(
     (row) => row.id === "residual-terminal-consumer-antichain-normal-form"
@@ -2321,6 +2347,17 @@ const RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_FIELDS = Object.fromEn
     return [key, publishedStatus[key]];
   })
 );
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_STATUS_KEYS = [
+  "leanResidualTerminalPkgCAmbientBN4LedgerFormalized",
+  "leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed",
+  "leanResidualTerminalPkgCAmbientBN4LedgerScope"
+];
+const RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 const RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_KEYS = [
   "leanResidualTerminalConsumerAntichainNormalFormFormalized",
   "leanResidualTerminalConsumerAntichainNormalFormAxiomAuditPassed",
@@ -2374,6 +2411,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalPkgCSeparatingConsumers",
     "residualTerminalPkgCTypedRestoration",
     "residualTerminalPkgCSameKeyCancellation",
+    "residualTerminalPkgCAmbientBN4Ledger",
     "residualTerminalV54ConsumerAntichainNormalForm",
     "residualTerminalV53ConstantCutHypergraphRigidity",
     "residualTerminalBN6HypergraphPacket",
@@ -2489,6 +2527,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
@@ -3197,29 +3236,20 @@ function makeProject(t) {
   statusPayload.formalPublicationMilestones = publishedStatus.formalPublicationMilestones.map(
     (row) => structuredClone(explicitStatusMilestones.get(row.id) ?? row)
   );
-  assert.equal(statusPayload.formalPublicationMilestones.length, 110, "synthetic status must match the published milestone count");
-  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, 108, "synthetic status must match the published earned-milestone count");
-  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, 2, "synthetic status must retain every fail-closed milestone");
+  assert.equal(statusPayload.formalPublicationMilestones.length, publishedStatus.formalPublicationMilestones.length, "synthetic status must match the published milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, publishedStatus.formalPublicationMilestones.filter((row) => row.earned === true).length, "synthetic status must match the published earned-milestone count");
+  assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, publishedStatus.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, "synthetic status must retain every fail-closed milestone");
   const status = json(statusPayload);
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
-    declarationCount: 27734,
-    theoremCount: 14432,
-    assumptionFreeTheoremCount: 7342,
-    excludedPrivateDeclarationCount: 15005,
-    sourceClosureModuleCount: 249,
-    axiomCount: 4,
-    declarationKindCounts: {
-      axiom: 4,
-      constructor: 867,
-      definition: 11629,
-      inductive: 401,
-      opaque: 0,
-      quotient: 0,
-      recursor: 401,
-      theorem: 14432
-    },
+    declarationCount: publishedInventory.declarationCount,
+    theoremCount: publishedInventory.theoremCount,
+    assumptionFreeTheoremCount: publishedInventory.assumptionFreeTheoremCount,
+    excludedPrivateDeclarationCount: publishedInventory.excludedPrivateDeclarationCount,
+    sourceClosureModuleCount: publishedInventory.sourceClosureModuleCount,
+    axiomCount: publishedInventory.axiomCount,
+    declarationKindCounts: structuredClone(publishedInventory.declarationKindCounts),
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
       module: "PNP.Concrete.CookLevinRawTapeBridge",
@@ -3405,12 +3435,7 @@ function makeProject(t) {
       module: "PNP.Concrete.PipelineRefinement",
       kind: "theorem",
       axioms: []
-    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...LOCKED_NAND_TARGET_EMITTER_CANDIDATES, ...LOCKED_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...CNF_TO_NAND_SEMANTIC_COMPILER_CANDIDATES, ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...RESIDUAL_GAIN_CHAIN_CANDIDATES, ...RESIDUAL_GAIN_STOPPING_CANDIDATES, ...RESIDUAL_TERMINAL_FULL_BRIDGE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_MODE_FIREWALL_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_MINIMUM_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_TRANSFER_CANDIDATES, ...RESIDUAL_TERMINAL_SATURATION_CANDIDATES, ...RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROPER_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_GOVERNED_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_RANK_WF_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NEW_CANDIDATES, ...LOCKED_NAND_THRESHOLD_PUBLICATION_CANDIDATES, ...Array.from({ length: 239 }, (_, index) => ({
-      name: `PNP.Test.Filler${index}`,
-      module: "PNP.Test",
-      kind: "theorem",
-      axioms: []
-    }))],
+    }, ...FORMULA_CURSOR_CANDIDATES, ...BUILDER_INPUT_LENGTH_CANDIDATES, ...BUILDER_INPUT_PREFIX_CANDIDATES, ...BUILDER_TOKEN_APPENDER_CANDIDATES, ...BUILDER_FIRST_TOKEN_PREFIX_CANDIDATES, ...BUILDER_UNARY_POLYNOMIAL_CANDIDATES, ...BUILDER_COMPLETE_HEADER_CANDIDATES, ...BUILDER_BODY_START_PREFIX_CANDIDATES, ...BUILDER_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PREFIX_CANDIDATES, ...BUILDER_DYNAMIC_TOKEN_CURSOR_STEP_CANDIDATES, ...BUILDER_FIRST_CLAUSE_PADDING_RUN_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SEPARATOR_STEP_CANDIDATES, ...BUILDER_SECOND_CLAUSE_FIRST_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_SECOND_LITERAL_PREFIX_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_SECOND_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_THIRD_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_FIRST_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_SECOND_LITERAL_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PREFIX_NEW_CANDIDATES, ...BUILDER_FOURTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIFTH_CLAUSE_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_FIRST_CONSTRAINT_PADDING_RUN_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEPARATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SIGN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_FIRST_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SECOND_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_THIRD_UNARY_UNIT_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_TERMINATOR_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIRST_LITERAL_SUCCESSOR_TOKEN_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_PADDING_OR_UNARY_OPPORTUNITY_STEP_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SECOND_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_THIRD_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FOURTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_FIFTH_PADDING_OR_TERMINATOR_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SIXTH_PADDING_OR_OPENING_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...BUILDER_SECOND_CONSTRAINT_SEVENTH_PADDING_OR_UNARY_OPPORTUNITY_STEP_NEW_CANDIDATES, ...LOCKED_NAND_CARRIER_TRACE_CANDIDATES, ...LOCKED_NAND_GLOBAL_CANDIDATE_CANDIDATES, ...LOCKED_NAND_GLOBAL_BASELINE_DISTINCT_CANDIDATES, ...LOCKED_NAND_UNSATISFIABLE_FINAL_ZERO_CANDIDATES, ...LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_NEW_CANDIDATES, ...LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_CANDIDATES, ...LOCKED_NAND_SOURCE_PARSER_CANDIDATES, ...LOCKED_NAND_TARGET_EMITTER_CANDIDATES, ...LOCKED_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...CNF_TO_NAND_SEMANTIC_COMPILER_CANDIDATES, ...CNF_TO_NAND_POLYNOMIAL_REDUCTION_CANDIDATES, ...RESIDUAL_GAIN_CHAIN_CANDIDATES, ...RESIDUAL_GAIN_STOPPING_CANDIDATES, ...RESIDUAL_TERMINAL_FULL_BRIDGE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_MODE_FIREWALL_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_MINIMUM_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_TRANSFER_CANDIDATES, ...RESIDUAL_TERMINAL_SATURATION_CANDIDATES, ...RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROPER_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SUPPORT_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_GOVERNED_SUPPORT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_PROJECTION_SQUARE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SIDE_TIGHT_MINIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_CARRIER_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMA_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_OPTIMUM_COHERENCE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_SIDE_TIGHT_COMPLETION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FOUR_CORNER_TIGHT_BASIS_MAXIMUM_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_COMPUTED_BN2_SQUARE_LEGITIMACY_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_COMPUTED_BCEL_ANCHOR_NUCLEUS_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_SATURATION_POSITIVITY_FIREWALL_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_CANDIDATE_SATURATION_COST_BALANCE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_INTERFACE_EXPOSURE_ROUTING_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_FINITE_SATURATE_POSITIVE_COMPOSITION_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_RANK_WF_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_NEW_CANDIDATES, ...RESIDUAL_TERMINAL_BN4_ACTIVATION_CANCELLATION_NEW_CANDIDATES, ...LOCKED_NAND_THRESHOLD_PUBLICATION_CANDIDATES],
     compatibilityRootCandidate: null,
     concreteTargetCandidate: {
       name: "PNP.Main.ConcretePEqualsNP",
@@ -3425,9 +3450,22 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_NEW_CANDIDATES,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_NEW_CANDIDATES,
-    ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES
+    ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_NEW_CANDIDATES,
+    ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_NEW_CANDIDATES
   );
-  assert.equal(inventoryPayload.milestoneCandidates.length, 2577, "synthetic inventory must match the published reviewed-candidate count");
+  const syntheticFillerCount = publishedInventory.milestoneCandidates.length
+    - inventoryPayload.milestoneCandidates.length;
+  assert.ok(syntheticFillerCount >= 0, "synthetic inventory cannot exceed the published reviewed-candidate count");
+  inventoryPayload.milestoneCandidates.push(...Array.from(
+    { length: syntheticFillerCount },
+    (_, index) => ({
+      name: `PNP.Test.Filler${index}`,
+      module: "PNP.Test",
+      kind: "theorem",
+      axioms: []
+    })
+  ));
+  assert.equal(inventoryPayload.milestoneCandidates.length, publishedInventory.milestoneCandidates.length, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
   const publicationMap = json({
     kind: "TestPublicationMap",
@@ -3552,6 +3590,7 @@ function makeProject(t) {
       ...RESIDUAL_TERMINAL_PKGC_SEPARATING_CONSUMERS_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_PKGC_TYPED_RESTORATION_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_PKGC_SAME_KEY_CANCELLATION_THEOREM_HASHES,
+      ...RESIDUAL_TERMINAL_PKGC_AMBIENT_BN4_LEDGER_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_THEOREM_HASHES,
       ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_THEOREM_HASHES,
@@ -10292,6 +10331,64 @@ test("rejects residual terminal PkgC same-key-cancellation release, status, inve
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal PkgC same-key-cancellation fingerprint mismatch/);
+});
+
+test("rejects residual terminal PkgC ambient-BN4-ledger release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalPkgCAmbientBN4LedgerFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal PkgC ambient-BN4-ledger boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualTerminalPkgCAmbientBN4LedgerTheoremKernelTypeSha256[
+    "PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual terminal PkgC ambient-BN4-ledger fingerprint mismatch/);
+
+  const releaseIdentity = makeProject(t);
+  releaseIdentity.release.earnedBoundary.residualTerminalPkgCAmbientBN4LedgerClassifierTheorem =
+    "PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive";
+  write(releaseIdentity.root, "downloads/formal-publication-release.json", json(releaseIdentity.release));
+  expectFailure(releaseIdentity, /current manifest residual terminal PkgC ambient-BN4-ledger theorem identity mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalPkgCAmbientBN4LedgerAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal PkgC ambient-BN4-ledger evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-ledger"
+  ).nonClaim = "This derives the ambient ledger and proves complete global PkgC route silence.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal PkgC ambient-BN4-ledger publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal PkgC ambient-BN4-ledger theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === "residual-terminal-pkgc-ambient-bn4-ledger"
+  ).scope = "derived-terminal-ledger-and-complete-global-pkgc";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal PkgC ambient-BN4-ledger boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.terminalPkgC_computedAmbientBN4_silence_singletonizes"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal PkgC ambient-BN4-ledger fingerprint mismatch/);
 });
 
 test("rejects residual terminal BN6 hypergraph-packet release, status, inventory, and publication-map mutation", (t) => {

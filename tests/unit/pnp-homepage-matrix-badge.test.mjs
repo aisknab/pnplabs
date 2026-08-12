@@ -6,17 +6,32 @@ async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
 }
 
+async function readJson(path) {
+  return JSON.parse(await readText(path));
+}
+
 test('homepage leads with a plain, conservative result and the latest milestone', async () => {
+  const [status, inventory, updates] = await Promise.all([
+    readJson('public/pnp-status.json'),
+    readJson('public/pnp-theorem-inventory.json'),
+    readJson('content/milestone-updates.json'),
+  ]);
+  const latest = updates.entries[0];
+  const latestMilestoneRecord = status.formalPublicationMilestones.find(
+    (row) => row.id === latest.milestoneId
+  );
+  assert.ok(latestMilestoneRecord, 'latest update must name a current formal-publication milestone');
+  const progress = latest.progressEstimatePercent;
   const html = await readText('index.html');
   for (const fragment of [
     'A machine-checked reconstruction of a proposed route to P = NP.',
     'Current result: P = NP is not established.',
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
     '<strong>Lean</strong> is software that checks each stated mathematical step.',
-    'Lean now verifies same-key cancellation for typed PkgC restorations',
-    'equal positive and negative multiplicity at every key',
-    'PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive',
-    'compiled closure uses only <code>Quot.sound</code> and <code>propext</code>',
+    latest.title,
+    'proof-bearing exact multiset embedding',
+    'explicit remainder',
+    'candidate-derived BN4 kernel also proves that every embedded generated cell uses its canonical request-atom space',
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'rootLeanTheoremPresent = false',
@@ -240,22 +255,28 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'leanBCELReadyFormalized = false',
     'leanPCCMinPolynomialRuntimeFormalized = false',
     'concretePublicationGate.passed = false',
-    'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-132',
-    'Lean now verifies same-key cancellation for typed PkgC restorations',
-    'updates.html#2026-08-12-residual-terminal-pkgc-same-key-cancellation',
-    'Technical theorem boundary · gate closed · 5 blockers',
-    'PNP.DirectWire.classifyTerminalPkgCSameKeyCancellation_exhaustive',
-    'The 93% figure is a revisable editorial estimate',
-    'About 93% of the known formalisation work',
+    inventory.coordinate,
+    `updates.html#${latest.id}`,
+    `Technical theorem boundary · gate closed · ${status.remainingBlockers.length} blockers`,
+    'explicit remainder',
+    `The ${progress}% figure is a revisable editorial estimate`,
+    `About ${progress}% of the known formalisation work`,
     'not a probability that the claim is correct, a confidence score, or a mathematical result',
     'P: problems we can solve efficiently',
     'NP: answers we can check efficiently',
     'Read the plain-language and technical update',
-    'Machine checking now balances generated PkgC restoration pairs at every nested BN4 key, but has not linked those pairs to the ambient terminal ledger or completed PkgC.',
+    'Machine checking now embeds the generated balanced PkgC cancellation cells into an explicit ambient BN4 ledger, but it has not derived that ledger or completed PkgC.',
     'EncodedLockedNANDThreshold',
   ]) assert.equal(html.includes(fragment), true, `missing homepage fragment: ${fragment}`);
   const latestMilestone = html.match(/<article class="latest-milestone"[\s\S]*?<\/article>/u)?.[0] ?? '';
-  assert.doesNotMatch(latestMilestone, /residual terminal rank|83%|6 blockers/iu);
+  assert.ok(latestMilestone.includes(latest.title));
+  for (const theorem of latestMilestoneRecord.requiredTheorems.slice(-2)) {
+    assert.ok(inventory.milestoneCandidates.some((candidate) => candidate.name === theorem));
+  }
+  assert.ok(latestMilestone.includes('explicit remainder'));
+  assert.ok(latestMilestone.includes('canonical request-atom space'));
+  assert.ok(latestMilestone.includes('remain proof-bearing inputs'));
+  assert.ok(latestMilestone.includes('P = NP'));
   assert.doesNotMatch(html, />Historical report</u);
 });
 
