@@ -2418,6 +2418,17 @@ const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS = Object.fromEntries
     return [key, publishedStatus[key]];
   })
 );
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_KEYS = [
+  "leanResidualTerminalPacketSelectorSeedsFormalized",
+  "leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed",
+  "leanResidualTerminalPacketSelectorSeedsScope"
+];
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_FIELDS = Object.fromEntries(
+  RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_KEYS.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 
 const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
   Object.entries(publishedRelease.earnedBoundary).filter(([key]) => [
@@ -2443,6 +2454,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalV54ConsumerAntichainNormalForm",
     "residualTerminalV53ConstantCutHypergraphRigidity",
     "residualTerminalBN6HypergraphPacket",
+    "residualTerminalPacketSelectorSeeds",
     "residualTerminalPrimitiveUniverse",
     "residualTerminalExecutableSaturation",
     "residualTerminalPhysical",
@@ -2560,6 +2572,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_V54_CONSUMER_ANTICHAIN_NORMAL_FORM_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
+    ...RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_FIELDS,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -3271,7 +3284,9 @@ function makeProject(t) {
   assert.equal(statusPayload.formalPublicationMilestones.length, publishedStatus.formalPublicationMilestones.length, "synthetic status must match the published milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.earned === true).length, publishedStatus.formalPublicationMilestones.filter((row) => row.earned === true).length, "synthetic status must match the published earned-milestone count");
   assert.equal(statusPayload.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, publishedStatus.formalPublicationMilestones.filter((row) => row.status === "not-formalized").length, "synthetic status must retain every fail-closed milestone");
-  const status = json(statusPayload);
+  Object.assign(statusPayload, Object.fromEntries(
+    Object.entries(publishedStatus).filter(([key]) => key.startsWith("leanTheoremInventory"))
+  ));
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
@@ -3282,6 +3297,9 @@ function makeProject(t) {
     sourceClosureModuleCount: publishedInventory.sourceClosureModuleCount,
     axiomCount: publishedInventory.axiomCount,
     declarationKindCounts: structuredClone(publishedInventory.declarationKindCounts),
+    projectAxioms: structuredClone(publishedInventory.projectAxioms),
+    declarations: structuredClone(publishedInventory.declarations),
+    sourceClosureModules: structuredClone(publishedInventory.sourceClosureModules),
     milestoneCandidates: [{
       name: "PNP.Concrete.CookLevin.VerifierTableauProblem.encodedFormula_mem_CNFSAT_iff_language",
       module: "PNP.Concrete.CookLevinRawTapeBridge",
@@ -3827,6 +3845,11 @@ function makeProject(t) {
       ))
   );
   const publicationMap = json(publicationMapPayload);
+  statusPayload.publicSurfaceBaselineCoordinate = "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121";
+  statusPayload.formalPublicationMapCoordinate = publicationMapPayload.coordinate;
+  statusPayload.formalPublicationMapSha256 = sha256(Buffer.from(publicationMap));
+  statusPayload.leanSourceClosureSha256 = publicationMapPayload.milestoneSourceClosureSha256;
+  const status = json(statusPayload);
 
   git(sourceDir, ["init"]);
   git(sourceDir, ["config", "user.email", "audit@example.invalid"]);
@@ -3852,20 +3875,22 @@ function makeProject(t) {
       proofCommit: commit,
       tree,
       ref: commit,
-      formalPublicationMapCoordinate: "TEST-PUBLICATION-MAP",
+      formalPublicationMapCoordinate: statusPayload.formalPublicationMapCoordinate,
       formalPublicationMapSha256: sha256(Buffer.from(publicationMap)),
-      leanSourceClosureSha256: "1".repeat(64),
+      leanSourceClosureSha256: statusPayload.leanSourceClosureSha256,
       coordinateAloneIsAuthority: false,
       identityRequiresCommitTreeAndArtifactHashes: true
     },
     artifacts: {
       status: {
+        coordinate: statusPayload.coordinate,
         sourcePath: "public/pnp-status.json",
         publicPath: "public/pnp-status.json",
         bytes: Buffer.byteLength(status),
         sha256: sha256(Buffer.from(status))
       },
       theoremInventory: {
+        coordinate: inventoryPayload.coordinate,
         sourcePath: "public/pnp-theorem-inventory.json",
         publicPath: "public/pnp-theorem-inventory.json",
         bytes: Buffer.byteLength(inventory),
@@ -4137,6 +4162,14 @@ function rewriteCorePayload(project, relativePath, payload) {
     project.release.artifacts.theoremInventory.sha256 = sha256(Buffer.from(content));
   } else if (relativePath === "publication/FORMAL_PUBLICATION_MAP.json") {
     project.release.source.formalPublicationMapSha256 = sha256(Buffer.from(content));
+    const status = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-status.json"), "utf8"));
+    status.formalPublicationMapSha256 = project.release.source.formalPublicationMapSha256;
+    const statusContent = json(status);
+    write(project.sourceDir, "public/pnp-status.json", statusContent);
+    write(project.root, "public/pnp-status.json", statusContent);
+    project.release.artifacts.status.bytes = Buffer.byteLength(statusContent);
+    project.release.artifacts.status.sha256 = sha256(Buffer.from(statusContent));
+    git(project.sourceDir, ["add", "public/pnp-status.json"]);
   } else {
     throw new Error(`unsupported core fixture payload: ${relativePath}`);
   }
@@ -10530,6 +10563,58 @@ test("rejects residual terminal BN6 hypergraph-packet release, status, inventory
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal BN6 hypergraph-packet fingerprint mismatch/);
+});
+
+test("rejects residual terminal Packet selector-seed release, status, inventory, and publication-map mutation", (t) => {
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary.residualTerminalPacketSelectorSeedsFormalized = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest residual terminal Packet selector-seed boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary.residualTerminalPacketSelectorSeedsTheoremKernelTypeSha256[
+    "PNP.DirectWire.terminalBN6_packet_selector_seeds"
+  ] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest residual terminal Packet selector-seed fingerprint mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload.leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status residual terminal Packet selector-seed evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === "residual-terminal-packet-selector-seeds"
+  ).nonClaim = "This constructs a complete faithful selector and polynomial route.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status residual terminal Packet selector-seed publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === "PNP.DirectWire.terminalBN6_packet_selector_seeds"
+  ).axioms = ["PNP.ForgedAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory residual terminal Packet selector-seed theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === "residual-terminal-packet-selector-seeds"
+  ).scope = "complete-faithful-selector-realizer-route-and-polynomial-runtime";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map residual terminal Packet selector-seed boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[
+    "PNP.DirectWire.terminalBN6_packet_selector_seeds"
+  ] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map residual terminal Packet selector-seed fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {

@@ -3,11 +3,11 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and public theorem emission is disabled. The authoritative site payload is
 > [`../public/pnp-status.json`](../public/pnp-status.json). The upstream status and reconstruction
-> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/d677d7704c29642490b9262b48139f9f3eb097dd/status/FORMAL_RECONSTRUCTION_STATUS.json)
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/d677d7704c29642490b9262b48139f9f3eb097dd/docs/FORMAL_RECONSTRUCTION.md).
+> notice are [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/a98bdbcd759e80cf3953a336f9b7755e68bf29d3/status/FORMAL_RECONSTRUCTION_STATUS.json)
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/a98bdbcd759e80cf3953a336f9b7755e68bf29d3/docs/FORMAL_RECONSTRUCTION.md).
 > Claims and release records below are historical assertion-checker audit targets only.
 
-The current canonical download is the eighty-eight-page inventory-derived report. Every numbered section or
+The current canonical download is the eighty-nine-page inventory-derived report. Every numbered section or
 named report citation in the historical worksheet below refers instead to the 57-page manuscript at
 source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current download aliases.
@@ -17,10 +17,10 @@ source tag `final-pnp-proof-report-hardened-7072f8d`, commit
 | Evidence boundary | How to inspect it | What would count as a failure |
 | --- | --- | --- |
 | Inventory identity | Compare `public/pnp-theorem-inventory.json` with the merged-core mirror and with `status.leanTheoremInventorySha256`. | Missing, stale, noncanonical, or digest-mismatched inventory bytes. |
-| Milestone earning | Check all 2,597 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
+| Milestone earning | Check all 2,600 reviewed theorem kinds, kernel-type fingerprints, permitted Lean-standard axiom closures, absence of project axioms, and the full Lean-source digest. | Same-name type weakening, an unapproved axiom, an absent theorem, or source drift still earns a milestone. |
 | Concrete gate | Recompute `passed` as the strict conjunction of every subcheck. Verify that a fingerprint-match subcheck can be true only when its reviewed expected fingerprint is non-null; in this release the null expected fingerprints must remain unconfigured and nonmatching. | Null matches null, the abstract bridge is eligible, a project/unknown axiom passes, or an output field bypasses the gate. |
-| Non-claim boundary | Confirm one hundred and ten earned scoped milestones. The newest scope is finite ambient-BN4 residual reduction with 8 reviewed theorem pins and a 13-declaration focused audit using only `Quot.sound` with `propext`. Two global milestones, four project axioms, and five blockers remain. The ambient ledger, typed restorer, exact embedding, and explicit remainder must remain proof-bearing inputs and must not be presented as derived from an arbitrary terminal candidate. The remainder must not be presented as proved empty or route-producing. Global outcome integration, full PkgC route silence, the full historical PkgC result, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, and `P = NP` must remain absent. | The PkgC classifier is presented as deriving its inputs, proving the remainder empty or route-producing, completing PkgC or global routing, or proving a global result; a polynomial minimizer, complete gain route, CNF-SAT decider, assumption discharge, or final theorem appears; or a blocker, premise, or axiom is hidden. |
-| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require eighty-eight PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
+| Non-claim boundary | Confirm one hundred and eleven earned scoped milestones. The newest scope is finite Packet selector-seed extraction with 3 reviewed theorem pins and a 5-declaration focused audit: 2 use only `propext`, and 3 use `Quot.sound` with `propext`. Two global milestones, four project axioms, and five blockers remain. The exact BN6 packet conclusion must remain proof-bearing input. Selector-universe membership, faithfulness, compatibility, enumeration, a realizer, a route, polynomial generation and runtime, complete PkgC, global outcome integration, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, and `P = NP` must remain absent. | Raw selector seeds are presented as valid selectors, as derived from terminal candidates, or as a realizer or route; a polynomial generator, complete gain route, CNF-SAT decider, assumption discharge, or final theorem appears; or a blocker, premise, or axiom is hidden. |
+| Canonical report | Compare both PDF aliases and both TeX aliases with the current merged-core files; require 89 PDF pages. | An alias differs, the old 57-page direct-claim manuscript hash returns, or report text conflicts with generated status. |
 
 ## Historical Assertion-Checker Worksheet
 

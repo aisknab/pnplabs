@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-12-134';
-const STATUS_SHA256 = '68695b5541ff3df5a5aba8f95b3169a79d26a8c938ca830ea20adf18c17cbf54';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-12-134';
-const FORMAL_PUBLICATION_MAP_SHA256 = 'd8e2bb51eb170e70bf30d9768922fc7b8d86195fc9b8f69abe458bfe3ab97da8';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-135';
+const STATUS_SHA256 = 'f5016346abfd21220bb9d627f6e69892468cd0d1932177a9aea6cc9e4726b5e5';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-13-135';
+const FORMAL_PUBLICATION_MAP_SHA256 = '91724f6c22a7644768b611489d57b1aacb5a1652e0ce1afb48047ed1bd763325';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-12-134';
-const INVENTORY_SHA256 = '5a1044bbf0438e67cf19749dae710c7a9a2d0fde5757ca57be997c175780cf86';
-const SOURCE_CLOSURE_SHA256 = 'ce07f54409913eabe319f1e9c0adaa9738418fc9af406b6c0329dffa2dd0fa89';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-13-135';
+const INVENTORY_SHA256 = 'ebdd71cf1e9b234fe6fc2f053bb94b0bcdd02f1930afe0829dd1b584afc66316';
+const SOURCE_CLOSURE_SHA256 = '7cc382089d974d98edb07a82d8876179583a8d7bb54fe196651e3b9563c55169';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 27837,
-  theorems: 14470,
+  declarations: 27854,
+  theorems: 14479,
   assumptionFreeTheorems: 7347,
   excludedPrivateDeclarations: 15011,
-  modules: 251,
+  modules: 252,
   axioms: 4,
 });
 
@@ -4031,6 +4031,12 @@ const RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.terminalBN6_hypergraph_packet", ["Quot.sound", "propext"], "PNP.ResidualTerminalBN6HypergraphPacket"],
 ]);
 
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.hasPacketSelectorSeedAt_of_hasPayloadAt", ["propext"], "PNP.ResidualTerminalPacketSelectorSeeds", "9896a194aa243404922a3a870bfc5d982f103bbdb3e1c3bdfd42352bb91a3c27"],
+  ["PNP.DirectWire.TerminalBN6PacketConclusion.selectorSeeds", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorSeeds", "ab62ea35d210a818af73fc38bac3e21d13e7026d2416a9567faba5c0c026b771"],
+  ["PNP.DirectWire.terminalBN6_packet_selector_seeds", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorSeeds", "a32e4bc92d0af4fa404d1a8ab6640820c431aa1731198ddb4e605483c15ab386"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -4941,6 +4947,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalBN6HypergraphPacketFormalized: false,
   leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed: false,
   leanResidualTerminalBN6HypergraphPacketScope: null,
+  leanResidualTerminalPacketSelectorSeedsFormalized: false,
+  leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed: false,
+  leanResidualTerminalPacketSelectorSeedsScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -5491,6 +5500,9 @@ leanResidualTerminalConstantCutHypergraphRigidityScope = ${payload.leanResidualT
 leanResidualTerminalBN6HypergraphPacketFormalized = ${payload.leanResidualTerminalBN6HypergraphPacketFormalized ?? false}
 leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed = ${payload.leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed ?? false}
 leanResidualTerminalBN6HypergraphPacketScope = ${payload.leanResidualTerminalBN6HypergraphPacketScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBN6HypergraphPacketScope)}
+leanResidualTerminalPacketSelectorSeedsFormalized = ${payload.leanResidualTerminalPacketSelectorSeedsFormalized ?? false}
+leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed = ${payload.leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed ?? false}
+leanResidualTerminalPacketSelectorSeedsScope = ${payload.leanResidualTerminalPacketSelectorSeedsScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPacketSelectorSeedsScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -5588,13 +5600,13 @@ function validateInventory(inventory) {
   const kindCounts = inventory.declarationKindCounts;
   if (!sameJson(kindCounts, {
     axiom: 4,
-    constructor: 874,
-    definition: 11677,
-    inductive: 406,
+    constructor: 877,
+    definition: 11680,
+    inductive: 407,
     opaque: 0,
     quotient: 0,
-    recursor: 406,
-    theorem: 14470,
+    recursor: 407,
+    theorem: 14479,
   })) return false;
 
   const theoremRows = inventory.declarations.filter((row) => row?.kind === 'theorem');
@@ -6115,6 +6127,13 @@ function validateInventory(inventory) {
       axioms,
       module,
     }));
+  const residualTerminalPacketSelectorSeeds =
+    RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6550,6 +6569,9 @@ function validateInventory(inventory) {
     && residualTerminalBN6HypergraphPacket.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketSelectorSeeds.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6831,6 +6853,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalBN6HypergraphPacketMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-bn6-hypergraph-packet'
+  );
+  const residualTerminalPacketSelectorSeedsMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-selector-seeds'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7414,6 +7439,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalBN6HypergraphPacketFormalized === true
     && status.leanResidualTerminalBN6HypergraphPacketAxiomAuditPassed === true
     && status.leanResidualTerminalBN6HypergraphPacketScope === "all-finite-explicit-grouped-v54-activation-to-v53-grouped-hypergraph-packet-bn6-pair-mixed-triple-fullspan-with-payload-witnesses"
+    && residualTerminalPacketSelectorSeedsMilestone?.classification === "formalized-residual-terminal-packet-selector-seeds"
+    && residualTerminalPacketSelectorSeedsMilestone.status === "formalized-residual-terminal-packet-selector-seeds"
+    && residualTerminalPacketSelectorSeedsMilestone.scope === "For an arbitrary finite exact BN6 packet conclusion, Lean extracts a carrier-contained payload-backed raw selector seed at the positive pair footprint, at every positive pair footprint of a balanced triple, or at the positive full-span footprint. The mixed three-anchor positive alternative is handled without asserting that both masses are positive, and the construction fixes no carrier cardinality."
+    && residualTerminalPacketSelectorSeedsMilestone.nonClaim === "This milestone consumes an exact finite BN6 packet conclusion and preserves only carrier containment, selector-relevant footprint size, and original grouped cell-and-atom payload evidence. It does not prove selector-universe membership, selector faithfulness or compatibility, construct a realizer or route, establish enumeration or polynomial generation/runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPacketSelectorSeedsMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketSelectorSeedsMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketSelectorSeedsFormalized === true
+    && status.leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketSelectorSeedsScope === "all-finite-explicit-bn6-packet-conclusions-payload-backed-pair-balanced-triple-or-fullspan-selector-seed-input-extraction"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-13-residual-terminal-packet-selector-seeds",
+      "milestoneId": "residual-terminal-packet-selector-seeds",
+      "publishedAt": "2026-08-13T10:00:00Z",
+      "title": "Lean now extracts payload-backed raw selector seeds from finite BN6 packets",
+      "plainLanguage": [
+        "For an arbitrary finite exact BN6 packet conclusion, Lean now extracts a carrier-contained raw selector seed backed by the original grouped cell and atom payload. The output covers the positive pair footprint, every positive pair footprint of a balanced triple, or the positive full-span footprint.",
+        "The mixed three-anchor case does not assume both masses are positive, and the construction fixes no carrier cardinality. This is input extraction, not a finished Packet selector or route: Lean has not proved selector-universe membership, faithfulness, compatibility, enumeration, a realizer, a route, polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 95% figure remains a revisable editorial estimate of known reconstruction work, separate from the 111 of 113 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 95,
+      "source": {
+        "commit": "a98bdbcd759e80cf3953a336f9b7755e68bf29d3",
+        "tree": "cfc43d9c8392fb3a61f4f156c9fff6cd0f216e7f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-135",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-13-residual-terminal-pkgc-ambient-bn4-residual-reduction",
       "milestoneId": "residual-terminal-pkgc-ambient-bn4-residual-reduction",
       "publishedAt": "2026-08-13T03:30:00Z",

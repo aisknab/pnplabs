@@ -11,7 +11,7 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout d677d7704c29642490b9262b48139f9f3eb097dd
+git checkout a98bdbcd759e80cf3953a336f9b7755e68bf29d3
 npm ci
 lake build PNP
 node pcc-formal-reconstruction-status0.mjs --json --no-write
@@ -28,7 +28,7 @@ lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
 lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, and the finite residual sequence through typed PkgC restoration, same-key cancellation, exact ambient-BN4-ledger embedding, and exact ambient residual reduction. The locked-NAND theorem `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold` remains a polynomial many-one reduction, not a polynomial-time target decider or an NP-hardness or NP-completeness result. The newest result proves per-key residual preservation, complete canonical residual-ledger equality with an explicit remainder, remainder-key coverage, a fail-closed exact classifier, and an empty-remainder corollary. The ambient ledger, typed restorer, exact embedding, and explicit remainder remain proof-bearing inputs. It does not derive those inputs from an arbitrary terminal candidate, prove the remainder empty or route-producing, complete PkgC route integration or silence, establish ZeroSlack or PCCMin, or prove the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, the finite residual sequence through typed PkgC restoration, same-key cancellation, exact ambient-BN4-ledger embedding and residual reduction, the finite BN6 packet bridge, and payload-backed Packet selector-seed extraction. The locked-NAND theorem `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold` remains a polynomial many-one reduction, not a polynomial-time target decider or an NP-hardness or NP-completeness result. The newest result extracts carrier-contained raw selector seeds from an exact finite BN6 packet conclusion while preserving original grouped cell-and-atom payload evidence. The packet conclusion remains proof-bearing input. It does not prove selector-universe membership, faithfulness or compatibility, enumeration, a realizer or route, polynomial generation or runtime, complete PkgC, ZeroSlack or PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 
