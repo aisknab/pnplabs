@@ -19,6 +19,14 @@ const inventoryBytes = readFileSync('public/pnp-theorem-inventory.json');
 const inventory = JSON.parse(inventoryBytes);
 const index = JSON.parse(readFileSync('public/pnp-index.json', 'utf8'));
 const release = JSON.parse(readFileSync('downloads/formal-publication-release.json', 'utf8'));
+const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
+
+function statusFieldStem(milestoneId) {
+  return milestoneId
+    .split('-')
+    .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+    .join('');
+}
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
   assert.equal(createHash('sha256').update(inventoryBytes).digest('hex'), index.leanTheoremInventorySha256);
@@ -112,12 +120,20 @@ test('site validator pins the ambient BN4 residual reduction from canonical payl
   assert.equal(validation.validateMilestones(duplicated), false);
 });
 
-test('site validator pins the Packet selector-seed boundary and rejects hostile mutations', () => {
+test('site validator pins the latest canonical publication milestone and rejects hostile mutations', () => {
+  const latestUpdate = updates.entries[0];
   const milestone = status.formalPublicationMilestones.find(
-    (row) => row.id === 'residual-terminal-packet-selector-seeds'
+    (row) => row.id === latestUpdate.milestoneId
   );
-  assert.equal(milestone.requiredTheorems.length, 3);
-  assert.equal(milestone.classification, 'formalized-residual-terminal-packet-selector-seeds');
+  assert.ok(milestone, `missing latest milestone ${latestUpdate.milestoneId}`);
+  assert.equal(milestone.earned, true);
+  assert.ok(milestone.requiredTheorems.length > 0);
+  assert.deepEqual(
+    milestone.requiredTheorems,
+    milestone.theoremRows.map((row) => row.name),
+  );
+  assert.equal(latestUpdate.source.commit, release.source.commit);
+  assert.equal(latestUpdate.source.tree, release.source.tree);
   assert.equal(validation.validateStatus(status, inventory), true);
 
   const missing = structuredClone(inventory);
@@ -130,13 +146,13 @@ test('site validator pins the Packet selector-seed boundary and rejects hostile 
   const assumed = structuredClone(inventory);
   assumed.milestoneCandidates.find(
     (row) => row.name === milestone.requiredTheorems[0]
-  ).axioms = ['PNP.ForgedSelectorAxiom'];
+  ).axioms = ['PNP.ForgedLatestMilestoneAxiom'];
   assert.equal(validation.validateInventory(assumed), false);
 
   const moved = structuredClone(inventory);
   moved.milestoneCandidates.find(
     (row) => row.name === milestone.requiredTheorems[0]
-  ).module = 'PNP.ForgedSelectorModule';
+  ).module = 'PNP.ForgedLatestMilestoneModule';
   assert.equal(validation.validateInventory(moved), false);
 
   const forgedFingerprint = structuredClone(status);
@@ -147,25 +163,30 @@ test('site validator pins the Packet selector-seed boundary and rejects hostile 
   forgedRow.expectedKernelTypeSha256 = '0'.repeat(64);
   assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
 
-  for (const field of [
-    'leanResidualTerminalPacketSelectorSeedsFormalized',
-    'leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed',
-  ]) {
+  const fieldStem = statusFieldStem(milestone.id);
+  for (const field of [`lean${fieldStem}Formalized`, `lean${fieldStem}AxiomAuditPassed`]) {
+    assert.equal(status[field], true, `missing latest milestone gate ${field}`);
     const stripped = structuredClone(status);
     stripped[field] = false;
     assert.equal(validation.validateStatus(stripped, inventory), false, field);
   }
 
+  const scopeField = `lean${fieldStem}Scope`;
+  assert.equal(typeof status[scopeField], 'string');
+  const strippedScope = structuredClone(status);
+  strippedScope[scopeField] = 'unsupported-broader-scope';
+  assert.equal(validation.validateStatus(strippedScope, inventory), false, scopeField);
+
   const widenedScope = structuredClone(status);
   widenedScope.formalPublicationMilestones.find(
     (row) => row.id === milestone.id
-  ).scope = 'This constructs a complete polynomial Packet selector and realizer.';
+  ).scope = 'This constructs a complete polynomial selector and realizer.';
   assert.equal(validation.validateStatus(widenedScope, inventory), false);
 
   const erasedBoundary = structuredClone(status);
   erasedBoundary.formalPublicationMilestones.find(
     (row) => row.id === milestone.id
-  ).nonClaim = 'This proves Packet selector completeness.';
+  ).nonClaim = 'This proves the entire remaining claim.';
   assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
 });
 
