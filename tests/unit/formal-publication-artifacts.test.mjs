@@ -1065,6 +1065,26 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_HASHES = Object.from
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_SCOPE = "all-finite-explicit-bn6-grouped-families-total-fail-closed-source-payload-realization-exact-original-cell-footprint-positive-atom-and-packet-branch-preservation";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean defines a total fail-closed function that maps each accepted canonical selector code to its exact decoded handle, original source cell, decoded footprint, and a canonical original positive payload atom. Successful results re-encode to the exact input, remain in the supplied family, retain strict atom positivity, are equivalent to the finite payload-selector predicate, and preserve the pair, balanced-triple, and full-span Packet branches.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_NON_CLAIM = "This is source-payload materialization relative to a supplied explicit grouped family, not the manuscript's gain-or-blocker selector realizer. The unary code still encodes only a list position and does not serialize atom or payload data. This milestone does not construct a replacement circuit, prove selector faithfulness or compatibility, return a gain or typed blocker route, derive or group BN6 survivors from a terminal candidate, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.mem_packetSelectorCandidateImplementations_iff": { hash: "0a1d4dbb85050c296121e30083d309b23e37289eda64f25fe5ea507ff7c853a1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalPacketCandidateGainOutcome.sound": { hash: "14694f4db90e1f37a49a670edf367f06b8e088082d49e2ec5540d74fc0afb94b", axioms: [], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalPacketCandidateGainOutcome.gain_strictResidualDescent": { hash: "7f468d2ffb1d31071c4971c5232e78017d81003e954da16b334313c69155902f", axioms: [], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.scanPacketSelectorGains_eq_none_iff": { hash: "9b3bdfcd5e478fe239211cdc7e2b21841edbb05ef8a4191c72a6f910523bdf16", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.exists_scanPacketSelectorGains_iff": { hash: "deb7e43236b3cb43db356945fb7a9662806163fbfd52593c9c0da9975c83789e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_eq_some_of_gainScan": { hash: "6eb7f2b430542b24beeb43e87a5f4f89fb924a60165e6d1a6962b7a252406d10", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.scanPacketSelectorGains_sound": { hash: "aa97c40ce86ffa1fcde24c71191dd97ac4a4bd8bd842d05ff112ff65e02a9af2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.exists_scanPacketSelectorGains_encode": { hash: "5a8e39e629c17ddff71b06f625a74ec1143ff3e59ed85f3ff0eaa297da66e46f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.hasPacketSelectorGainScanAt_iff_encoded": { hash: "22461d4ebcecae3bad666da8313baaf99ee302d0ea0e6dea80643dc280e66bed", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.gainScans": { hash: "d281b4b953c16f80afa51d606669bbb64e41c12cb24decc77ba379b4b1299a58", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.gainScans": { hash: "c32f91d5404c84e2c5453226b2c4b5ee606c4d2cbc5fb2596f8818e8cefc6bdb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" },
+  "PNP.DirectWire.terminalBN6_packet_selector_gain_scans": { hash: "54570f3b2c287367fd79ed45fe365049ee662b7c2af25faaa0a7f3fef02f4325", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainScan" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_SCOPE = "all-finite-explicit-bn6-grouped-families-direct-wire-implementation-payloads-total-fail-closed-exact-source-cell-checked-strict-gain-or-cell-local-no-gain-packet-branch-preservation";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean decodes each accepted canonical Packet selector, scans every original candidate payload in the exact selected source cell with the executable strict-equivalent-gain checker, and returns only a genuine source-atom StrictEquivalentGain or proof that the selected cell has no such candidate. Every gain strictly decreases residual slack, decoder rejection is exact, and the pair, balanced-triple, and full-span Packet alternatives are preserved.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_NON_CLAIM = "The candidate implementations and grouped BN6 family remain explicit input data. A local no-gain result excludes only payload candidates in one selected source cell; it is not a manuscript BotHN, BotBUD, or lower-rank BotSeed and does not imply global minimality or ZeroSlack. This milestone does not construct replacement candidates, prove selector faithfulness or compatibility, connect payload mass to charge surplus, derive or group survivors from a terminal candidate, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -1090,7 +1110,7 @@ test("exact current artifact seal verifies eight reviewed files", () => {
   assert.equal(result.coreCommit, canonicalRelease.source.commit);
 });
 
-test("current release pins the Packet source-payload realization boundary and remains fail closed", () => {
+test("current release pins the checked Packet selector gain-scan boundary and remains fail closed", () => {
   const release = json("downloads/formal-publication-release.json");
   assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.source.commit, canonicalRelease.source.commit);
@@ -3419,6 +3439,29 @@ test("current release pins the Packet source-payload realization boundary and re
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorPayloadRealizationPacketConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.selectorPayloadRealizations");
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorPayloadRealizationTheorem, "PNP.DirectWire.terminalBN6_packet_selector_payload_realizations");
 
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanAuditedDeclarationCount, 20);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanEmptyAxiomDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanPropextQuotSoundDeclarationCount, 15);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorGainScanTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorGainScanAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorGainScanProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanCandidateMembershipTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.mem_packetSelectorCandidateImplementations_iff");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanOutcomeSoundnessTheorem, "PNP.DirectWire.TerminalPacketCandidateGainOutcome.sound");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanResidualDescentTheorem, "PNP.DirectWire.TerminalPacketCandidateGainOutcome.gain_strictResidualDescent");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanFailClosedTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.scanPacketSelectorGains_eq_none_iff");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanExistenceIffTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.exists_scanPacketSelectorGains_iff");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanDecodedHandleTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_eq_some_of_gainScan");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanSoundnessTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.scanPacketSelectorGains_sound");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanEncodedExistenceTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.exists_scanPacketSelectorGains_encode");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanEncodedIffTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.hasPacketSelectorGainScanAt_iff_encoded");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanEncodedConclusionTheorem, "PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.gainScans");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanPacketConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.gainScans");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanTheorem, "PNP.DirectWire.terminalBN6_packet_selector_gain_scans");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -3466,7 +3509,7 @@ test("current release pins the Packet source-payload realization boundary and re
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish all indexed milestones through Packet source-payload realization", () => {
+test("status and inventory publish all indexed milestones through checked Packet selector gain scans", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const index = json("public/pnp-index.json");
@@ -4945,6 +4988,9 @@ test("status and inventory publish all indexed milestones through Packet source-
     (row) => row.id === "residual-terminal-packet-selector-codec"
   );
   const packetSelectorPayloadRealization = milestones.find(
+    (row) => row.id === "residual-terminal-packet-selector-payload-realization"
+  );
+  const packetSelectorGainScan = milestones.find(
     (row) => row.id === json("content/milestone-updates.json").entries[0].milestoneId
   );
   assert.equal(packetSelectorUniverse.classification, "formalized-residual-terminal-packet-selector-universe");
@@ -5068,6 +5114,41 @@ test("status and inventory publish all indexed milestones through Packet source-
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorPayloadRealizationFormalized, status.leanResidualTerminalPacketSelectorPayloadRealizationFormalized);
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorPayloadRealizationAxiomAuditPassed, status.leanResidualTerminalPacketSelectorPayloadRealizationAxiomAuditPassed);
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorPayloadRealizationScope, status.leanResidualTerminalPacketSelectorPayloadRealizationScope);
+
+  assert.equal(packetSelectorGainScan.classification, "formalized-residual-terminal-packet-selector-gain-scan");
+  assert.equal(packetSelectorGainScan.status, packetSelectorGainScan.classification);
+  assert.equal(packetSelectorGainScan.earned, true);
+  assert.equal(packetSelectorGainScan.allPresent, true);
+  assert.equal(packetSelectorGainScan.allAssumptionFree, false);
+  assert.equal(packetSelectorGainScan.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(packetSelectorGainScan.allKernelTypesMatch, true);
+  assert.equal(packetSelectorGainScan.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSelectorGainScan.requiredTheorems,
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_THEOREMS)
+  );
+  assert.deepEqual(
+    Object.fromEntries(packetSelectorGainScan.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_HASHES
+  );
+  for (const row of packetSelectorGainScan.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(packetSelectorGainScan.scope, RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_MILESTONE_SCOPE);
+  assert.equal(packetSelectorGainScan.nonClaim, RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalPacketSelectorGainScanFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorGainScanScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_SCOPE);
+  assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanFormalized, status.leanResidualTerminalPacketSelectorGainScanFormalized);
+  assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed, status.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed);
+  assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanScope, status.leanResidualTerminalPacketSelectorGainScanScope);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 

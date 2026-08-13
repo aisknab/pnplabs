@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,639 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,651 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 27,973 public declarations;
-- 14,537 theorem-kind declarations;
-- 7,351 assumption-free theorem-kind declarations;
-- 256 source-closure modules;
-- 15,030 excluded private compiler auxiliaries;
+- 28,046 public declarations;
+- 14,561 theorem-kind declarations;
+- 7,359 assumption-free theorem-kind declarations;
+- 257 source-closure modules;
+- 15,033 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and fifteen earned scopes are:
+The one hundred and sixteen earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -165,6 +165,7 @@ The one hundred and fifteen earned scopes are:
 | Canonical finite Packet selector handles | For every arbitrary finite explicit grouped BN6 family, Lean defines canonical indexed handles for the exact duplicate-free grouped-footprint universe, proves decoding injective and every payload selector uniquely handled, and retains payload, carrier-containment, and length-at-least-two evidence across all Packet branches. The focused 16-declaration audit has 4 `propext`-only and 12 `Quot.sound` plus `propext` closures; all 11 reviewed pins have permitted Lean-standard closure. | The handles are input-relative list positions, not the manuscript's bit encoding or a polynomially enumerable selector universe. This result does not prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, establish polynomial encoding length or runtime, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Canonical fail-closed Packet selector-handle codec | For every arbitrary finite explicit grouped BN6 family, Lean encodes each canonical input-relative handle as a unary bitstring, rejects missing delimiters, trailing data, and out-of-range indices, and proves round trip, injectivity, canonical decoding, exact and explicit-list-bounded length, unique accepted codes, and retained payload, carrier, size, cell, and atom evidence. The focused 16-declaration audit has 9 `propext`-only and 7 `Quot.sound` plus `propext` closures; all 11 reviewed pins have permitted Lean-standard closure. | The length bound is by the supplied grouped-family list, not encoded circuit size. This result does not prove polynomial enumeration or runtime, encode atom or payload data, establish manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group survivors from terminal data, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Total fail-closed Packet source-payload realization | For every arbitrary finite explicit grouped BN6 family, Lean maps each accepted canonical selector code to its exact decoded handle, original source cell, decoded footprint, and a canonical original positive payload atom. Successful results re-encode exactly, remain in the supplied family, retain strict atom positivity, are equivalent to the finite payload-selector predicate, and preserve every Packet branch. The focused 21-declaration audit has 12 `propext`-only and 9 `Quot.sound` plus `propext` closures; all 11 reviewed pins have permitted Lean-standard closure. | This is source-payload materialization relative to a supplied grouped family, not the manuscript's gain-or-blocker selector realizer. The code still denotes only a list position and does not serialize atom or payload data. This result does not construct a replacement circuit, prove selector faithfulness or compatibility, return a gain or typed blocker route, derive or group survivors from terminal data, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
+| Checked Packet selector candidate-gain scan | For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean decodes each accepted canonical selector, scans every original candidate payload in the exact selected source cell with the executable strict-equivalent-gain checker, and returns a genuine source-atom strict equivalent gain or exact cell-local no-gain. Every gain strictly decreases residual slack, decoder rejection is exact, and every Packet branch is preserved. The focused 20-declaration audit has 3 empty, 2 `propext`-only, and 15 `Quot.sound` plus `propext` closures; all 12 reviewed pins have permitted Lean-standard closure. | The candidate implementations and grouped BN6 family remain explicit inputs. Cell-local no-gain is not an HN, budget, or lower-rank manuscript blocker and does not imply global minimality or `ZeroSlack`. This result does not construct candidates, prove selector faithfulness or compatibility, connect payload mass to charge surplus, derive or group survivors from terminal data, bound the family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -196,7 +197,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment ninety-one-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment ninety-two-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
