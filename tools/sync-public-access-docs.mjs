@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "81155a482de1e7cf1cd974cc8078dbd94d88d8ae";
-const CORE_TREE = "613e81db14201e554d47a6cb56d4411a80bdff1d";
-const CORE_PUBLICATION_MAP_SHA256 = "d89bb13875bbce39bd3ea39412fd4398c2270c548905d8844d9d7f31f85f4dad";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-13-138";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-138";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-138";
-const CORE_SOURCE_CLOSURE_SHA256 = "faa452511b2bf16517c70ffecc20592831e9b270d452a5a8500044e88c41c78e";
+const CORE_COMMIT = "38ad00f1798b703371c4d32d1507b43268f0ea9f";
+const CORE_TREE = "9f12ba9e28d68818e6ecf7f776181e80a42d1b1b";
+const CORE_PUBLICATION_MAP_SHA256 = "544a1858f41abaeccb2423c858c5032d74b2eb7a3e5f9e8de5351f2a26ab7853";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-13-139";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-139";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-139";
+const CORE_SOURCE_CLOSURE_SHA256 = "3630542354b65b11e33a9ed55fd1a670f4c41887f76286f2c6663622f81247a3";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1133,6 +1133,23 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_SCOPE = "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean gives each canonical input-relative selector handle a unary bitstring with fail-closed total decoding of missing delimiters, trailing data, and out-of-range indices, proves exact round trip, injectivity, canonical successful decoding, exact and explicit-universe-bounded length, retains payload, carrier, size, cell, and atom evidence, and gives every payload selector one unique accepted code across the pair, balanced-triple, and full-span Packet branches.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_NON_CLAIM = "The code-length bound is relative to the explicit grouped-family list and does not bound that list by encoded circuit size. This milestone does not prove polynomial enumeration or runtime, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorCell_footprint": { hash: "585917f43db54d9d5be3852605dcfcc01256d09d34bde1ed3e7ff0b0e2500e0f", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadAtom_mem": { hash: "bc42f6f75392b9ce43345b06aba862a758d32d9a8670945f111f33960abdbe3d", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.realizePacketSelectorPayload_eq_none_iff": { hash: "cbc666a2d051af090a607a177509340486e60215434e7ed7b15692e6ffe0557b", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_eq_some_of_realize": { hash: "d09a9d1b541eed299f676de5b47dfd84fe9b54228b6b2c2789db4a989c033e0e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.exists_realizePacketSelectorPayload_encode": { hash: "5b52d770dcba2dac6f9314dbf3620d01445d2a71b1b47f0fd52d65719a5312bd", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.realizePacketSelectorPayload_sound": { hash: "5a40df6a1b6f66efa77c827ff11ce46698aa0960a4891cd70d6196d8bfc156cf", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.isRealizedPacketSelectorAt_iff_encoded": { hash: "2d0a3ccb47c7b326c8fb44ce651fe5da452d986adc8435c71385fef772bc8870", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.hasRealizedPacketSelectorAt_iff_payloadSelector": { hash: "65968a464059a6b3d4805f2e451306e0fd37d46bf5a7cb30b720b632d376a444", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.selectorPayloadRealizations": { hash: "d369c4f09b76a34298569a24eb7a7586e5e538fa03c5c80061ce057319e7d977", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.selectorPayloadRealizations": { hash: "c9ee54cb1fc4b623af2e96a88481a62ccf66e14f5aed608d8975ee4690c0b6c4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" },
+  "PNP.DirectWire.terminalBN6_packet_selector_payload_realizations": { hash: "87e78d7623809a2026145930b4df7438605f484d17f11e99f700abf99cd5338d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorPayloadRealization" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_SCOPE = "all-finite-explicit-bn6-grouped-families-total-fail-closed-source-payload-realization-exact-original-cell-footprint-positive-atom-and-packet-branch-preservation";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean defines a total fail-closed function that maps each accepted canonical selector code to its exact decoded handle, original source cell, decoded footprint, and a canonical original positive payload atom. Successful results re-encode to the exact input, remain in the supplied family, retain strict atom positivity, are equivalent to the finite payload-selector predicate, and preserve the pair, balanced-triple, and full-span Packet branches.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_NON_CLAIM = "This is source-payload materialization relative to a supplied explicit grouped family, not the manuscript's gain-or-blocker selector realizer. The unary code still encodes only a list position and does not serialize atom or payload data. This milestone does not construct a replacement circuit, prove selector faithfulness or compatibility, return a gain or typed blocker route, derive or group BN6 survivors from a terminal candidate, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3444,26 +3461,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 466098,
-    sha256: "4d7ed40867143ddaceea3476640b1fef5a8648605614941ee1bea9f701352ab1"
+    bytes: 468467,
+    sha256: "ed9ddc387c2b5a8160eaae8c5730d3244d53585de6f2d1be9608ce28f28e3147"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 230400,
-    sha256: "41c0301848ed5b82b92b6af010fb21652746b8f59f0678d3d031e10eb68da390"
+    bytes: 232593,
+    sha256: "aeaf86123a1791a002ce4b7c71a587c0bb22151dfa18d14fa198818e317ca4fa"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2148025,
-    sha256: "c33039bc1e8b4aacf88424c6cf76df163028af069b6c628fae2d46bbfb839c94"
+    bytes: 2157593,
+    sha256: "255d3aa2901e7d96a646e78b7f3f9b2c9e55ad321bb85b9198ff3b58e4a536ae"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 18521840,
-    sha256: "347e07429f53e9d61cd4ccb0492e7710a03879bf5b75a1aa97e0772ca1eb8161"
+    bytes: 18583462,
+    sha256: "eb2998acbac0571f0b408e4ce0bb97cebe9ab89eea79d72dcfd8d42c19accf69"
   }
 ];
 
@@ -4409,6 +4426,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector-codec boundary mismatch");
+  }
+  const residualTerminalPacketSelectorPayloadRealizationMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-selector-payload-realization"
+  );
+  const residualTerminalPacketSelectorPayloadRealizationNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_THEOREMS);
+  if (!residualTerminalPacketSelectorPayloadRealizationMilestone
+      || residualTerminalPacketSelectorPayloadRealizationMilestone.classification !== "formalized-residual-terminal-packet-selector-payload-realization"
+      || residualTerminalPacketSelectorPayloadRealizationMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_MILESTONE_SCOPE
+      || residualTerminalPacketSelectorPayloadRealizationMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSelectorPayloadRealizationMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSelectorPayloadRealizationNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet selector payload-realization boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6313,6 +6346,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector-codec boundary mismatch");
     }
+    const residualTerminalPacketSelectorPayloadRealizationMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-selector-payload-realization"
+    );
+    if (!residualTerminalPacketSelectorPayloadRealizationMilestone
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.earned !== true
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.allPresent !== true
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.classification !== "formalized-residual-terminal-packet-selector-payload-realization"
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_MILESTONE_SCOPE
+        || residualTerminalPacketSelectorPayloadRealizationMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSelectorPayloadRealizationMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSelectorPayloadRealizationMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSelectorPayloadRealizationFormalized !== true
+        || payload.leanResidualTerminalPacketSelectorPayloadRealizationAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSelectorPayloadRealizationScope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet selector payload-realization boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -6629,6 +6696,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal Packet selector-codec theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_PAYLOAD_REALIZATION_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet selector payload-realization theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-13-residual-terminal-packet-selector-payload-realization",
+      "milestoneId": "residual-terminal-packet-selector-payload-realization",
+      "publishedAt": "2026-08-13T21:30:00Z",
+      "title": "Lean now materializes the exact source payload behind every accepted Packet selector code",
+      "plainLanguage": [
+        "For every arbitrary finite explicit grouped BN6 family, Lean now gives the selector codec a total fail-closed source-payload lookup. Every accepted canonical code returns its exact decoded handle, the original grouped cell at that footprint, and a canonical original positive payload atom. Successful results re-encode to the exact input, remain in the supplied family, and preserve the pair, balanced-triple, and full-span Packet branches.",
+        "This is deterministic source-payload materialization relative to the supplied explicit family, not the manuscript's gain-or-blocker selector realizer. The unary code still carries only a list position: it does not serialize atom or payload data, construct a replacement circuit or route, prove selector faithfulness or compatibility, bound the family by encoded circuit size, establish polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 98% figure remains a revisable editorial estimate, separate from the 115 of 117 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "38ad00f1798b703371c4d32d1507b43268f0ea9f",
+        "tree": "9f12ba9e28d68818e6ecf7f776181e80a42d1b1b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-139",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-13-residual-terminal-packet-selector-codec",
       "milestoneId": "residual-terminal-packet-selector-codec",
       "publishedAt": "2026-08-13T20:50:16Z",

@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now gives every canonical Packet selector handle one fail-closed unary code</h2>
-          <p>For every arbitrary finite explicit grouped BN6 family, Lean now encodes each canonical input-relative selector handle as a unary bitstring. Its total decoder rejects a missing delimiter, trailing data, and out-of-range indices. Lean proves exact round trip, injectivity, canonical successful decoding, exact code length, a bound by the supplied explicit selector list, retained payload evidence, and one unique accepted code for every payload selector across all three Packet branches.</p>
-          <p>This is a concrete codec for input-relative list positions, but its length bound is by the already-supplied grouped-family list, not by encoded circuit size. It does not polynomially enumerate that list, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 98% figure is a revisable editorial estimate of known reconstruction work, separate from the 114 of 116 scoped formal-publication rows and not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-13-residual-terminal-packet-selector-codec">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now materializes the exact source payload behind every accepted Packet selector code</h2>
+          <p>For every arbitrary finite explicit grouped BN6 family, Lean now gives the selector codec a total fail-closed source-payload lookup. Every accepted canonical code returns its exact decoded handle, the original grouped cell at that footprint, and a canonical original positive payload atom. Successful results re-encode to the exact input, remain in the supplied family, and preserve the pair, balanced-triple, and full-span Packet branches.</p>
+          <p>This is deterministic source-payload materialization relative to the supplied explicit family, not the manuscript's gain-or-blocker selector realizer. The unary code still carries only a list position: it does not serialize atom or payload data, construct a replacement circuit or route, prove selector faithfulness or compatibility, bound the family by encoded circuit size, establish polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 98% figure remains a revisable editorial estimate, separate from the 115 of 117 scoped formal-publication rows and not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-13-residual-terminal-packet-selector-payload-realization">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> every canonical input-relative selector handle in an explicit finite grouped BN6 family has a unary bitstring whose total decoder fails closed on malformed or out-of-range input. Lean proves round trip, injectivity, exact and explicit-list-bounded length, unique accepted codes, and retained payload, carrier, and size evidence. This does not bound the supplied family by circuit size, polynomially enumerate it, encode payloads, prove selector faithfulness or compatibility, construct a realizer or route, establish global ZeroSlack or polynomial PCCMin, provide a target decider or discharged axiom boundary, or prove P = NP.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> a total fail-closed function now maps each accepted canonical selector code for an explicit finite grouped BN6 family to its exact handle, original cell, footprint, and canonical original positive payload atom. Successful results re-encode exactly, remain in the supplied family, preserve positivity, and cover every Packet branch. This does not derive the family from terminal data, serialize its payload, prove selector faithfulness or compatibility, construct a replacement circuit or gain-or-blocker route, establish global ZeroSlack or polynomial PCCMin, provide a target decider or discharged axiom boundary, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -341,6 +341,9 @@ leanResidualTerminalPacketSelectorHandlesScope = "all-finite-explicit-bn6-groupe
 leanResidualTerminalPacketSelectorCodecFormalized = true
 leanResidualTerminalPacketSelectorCodecAxiomAuditPassed = true
 leanResidualTerminalPacketSelectorCodecScope = "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound"
+leanResidualTerminalPacketSelectorPayloadRealizationFormalized = true
+leanResidualTerminalPacketSelectorPayloadRealizationAxiomAuditPassed = true
+leanResidualTerminalPacketSelectorPayloadRealizationScope = "all-finite-explicit-bn6-grouped-families-total-fail-closed-source-payload-realization-exact-original-cell-footprint-positive-atom-and-packet-branch-preservation"
 leanResidualTerminalPkgCSeparatingConsumersFormalized = true
 leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed = true
 leanResidualTerminalPkgCSeparatingConsumersScope = "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q"
@@ -371,9 +374,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-13-138</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-13-139</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>347e07429f53e9d61cd4ccb0492e7710a03879bf5b75a1aa97e0772ca1eb8161</code></div>
+            <div><span>Inventory SHA-256</span><code>eb2998acbac0571f0b408e4ce0bb97cebe9ab89eea79d72dcfd8d42c19accf69</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -393,7 +396,7 @@ concretePublicationGate.passed = false</pre>
         </div>
         <div class="home-progress-copy">
           <h2 id="home-progress-title">About 98% of the known formalisation work</h2>
-          <p>This is a revisable editorial estimate of reconstruction work completed. It is separate from the 114 of 116 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
+          <p>The 98% figure is a revisable editorial estimate of reconstruction work completed. It is separate from the 115 of 117 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
         <div class="home-progress-actions">
@@ -423,7 +426,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact" data-current-milestone="residual-terminal-packet-selector-codec"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now gives every canonical finite Packet selector handle a fail-closed unary code, but it has not built a circuit-size-bounded selector system, realizer, or route.</h2><p>The arbitrary-finite result rejects missing delimiters, trailing data, and out-of-range indices; proves round trip, injectivity, exact code length, and a bound by the explicit grouped-family list; and preserves payload, carrier, size, cell, and atom evidence. Deriving and grouping BN6 survivors from terminal data, bounding or enumerating the supplied selector family polynomially in circuit size, encoding atom or payload data, proving selector faithfulness and compatibility, constructing a realizer or route, completing PkgC and decreasing global routing, solving <code>EncodedLockedNANDThreshold</code> efficiently, global ZeroSlack, polynomial PCCMin, and an eligible P = NP root theorem remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact" data-current-milestone="residual-terminal-packet-selector-payload-realization"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now recovers the exact original source payload behind every accepted finite Packet selector code, but it has not built the manuscript's gain-or-blocker realizer or route.</h2><p>The arbitrary-finite result fails closed outside the canonical code set and, on success, returns the exact decoded handle, original cell, footprint, and canonical original positive payload atom with exact re-encoding and branch preservation.</p><p>This is source-payload materialization relative to a supplied explicit grouped family, not the manuscript's gain-or-blocker selector realizer. The unary code still encodes only a list position and does not serialize atom or payload data. This milestone does not construct a replacement circuit, prove selector faithfulness or compatibility, return a gain or typed blocker route, derive or group BN6 survivors from a terminal candidate, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. It does not solve <code>EncodedLockedNANDThreshold</code> efficiently. Those global conclusions remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>
