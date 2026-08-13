@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 97% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 98% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="97" aria-label="Estimated proof reconstruction progress: 97 percent">97%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 97 percent">
+        <progress class="proof-progress-meter" max="100" value="98" aria-label="Estimated proof reconstruction progress: 98 percent">98%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 98 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-13-residual-terminal-packet-selector-codec" data-milestone-id="residual-terminal-packet-selector-codec">
+        <div class="section-label"><time datetime="2026-08-13T20:50:16Z">2026-08-13</time> · earned milestone 114</div>
+        <h2>Lean now gives every canonical Packet selector handle one fail-closed unary code</h2>
+        <p>For every arbitrary finite explicit grouped BN6 family, Lean now encodes each canonical input-relative selector handle as a unary bitstring. Its total decoder rejects a missing delimiter, trailing data, and out-of-range indices. Lean proves exact round trip, injectivity, canonical successful decoding, exact code length, a bound by the supplied explicit selector list, retained payload evidence, and one unique accepted code for every payload selector across all three Packet branches.</p>
+        <p>This is a concrete codec for input-relative list positions, but its length bound is by the already-supplied grouped-family list, not by encoded circuit size. It does not polynomially enumerate that list, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 98% figure is a revisable editorial estimate of known reconstruction work, separate from the 114 of 116 scoped formal-publication rows and not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 98%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-packet-selector-codec</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-packet-selector-codec</p>
+          <p><strong>Verified scope:</strong> For every arbitrary finite explicit grouped BN6 family, Lean gives each canonical input-relative selector handle a unary bitstring with fail-closed total decoding of missing delimiters, trailing data, and out-of-range indices, proves exact round trip, injectivity, canonical successful decoding, exact and explicit-universe-bounded length, retains payload, carrier, size, cell, and atom evidence, and gives every payload selector one unique accepted code across the pair, balanced-triple, and full-span Packet branches.</p>
+          <p><strong>Boundary:</strong> The code-length bound is relative to the explicit grouped-family list and does not bound that list by encoded circuit size. This milestone does not prove polynomial enumeration or runtime, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 11</p>
+          <p><strong>Core source:</strong> commit <code>81155a482de1e7cf1cd974cc8078dbd94d88d8ae</code>, tree <code>613e81db14201e554d47a6cb56d4411a80bdff1d</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-138</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-13-residual-terminal-packet-selector-handles" data-milestone-id="residual-terminal-packet-selector-handles">
         <div class="section-label"><time datetime="2026-08-13T14:00:00Z">2026-08-13</time> · earned milestone 113</div>
         <h2>Lean now gives every finite payload selector a unique canonical handle</h2>

@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "d9940d34f6273831dd889f1e23073ce9bff1b039";
-const CORE_TREE = "287a5b7c0ea9abb3165851028b753eb55d61dd12";
-const CORE_PUBLICATION_MAP_SHA256 = "b9a5f91f50a21ce40c2213a925a9b35625ee27b984f6b5a66052bf7dec8e04e6";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-13-137";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-137";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-137";
-const CORE_SOURCE_CLOSURE_SHA256 = "1c5517f11088a984b0eab7afac73a30850b539024237c36c4f4284080d9237e7";
+const CORE_COMMIT = "81155a482de1e7cf1cd974cc8078dbd94d88d8ae";
+const CORE_TREE = "613e81db14201e554d47a6cb56d4411a80bdff1d";
+const CORE_PUBLICATION_MAP_SHA256 = "d89bb13875bbce39bd3ea39412fd4398c2270c548905d8844d9d7f31f85f4dad";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-13-138";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-138";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-138";
+const CORE_SOURCE_CLOSURE_SHA256 = "faa452511b2bf16517c70ffecc20592831e9b270d452a5a8500044e88c41c78e";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1116,6 +1116,23 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_SCOPE = "all-finite-explicit-bn6-grouped-families-canonical-indexed-grouped-footprint-handles-unique-decoding-payload-carrier-and-size-compatibility";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean defines canonical indexed grouped-footprint handles, proves exact decoding is injective and every payload selector has a unique handle, retains original payload evidence, and proves every decoded footprint remains carrier-contained and has length at least two across the pair, balanced-triple, and full-span Packet branches.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_NON_CLAIM = "These handles are input-relative list positions, not the manuscript's bit encoding or a polynomially enumerable selector universe. The milestone does not prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, establish polynomial encoding length or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_encode": { hash: "0e4d125f4ada88d0f2f9d188a1ba2c69a17d675c555f0e6eed8dacedf4660f40", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_injective": { hash: "be5a7248d1de95c8adb730c061003887a2a0afd7667cd8e085560ffdddc52b7f", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_length": { hash: "9e90b81134401241f8e9b448adb3588605e502d8a67b8eeea8d619b7e3b84140", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_length_le_universe": { hash: "7f5caf0819a8e1696463e99993399a78d3bc6a786a64b13604e69f08c7c40485", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_canonical": { hash: "0a85db798dea4e5fc887c33e7db492fa102a081123cf1adfccd4cf30561f6165", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_payloadEvidence": { hash: "df145b8b2bac1ea58116085bc04500a96c44248cd6aac404e0d9b769565d608b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.hasEncodedPacketSelectorAt_iff_payloadSelector": { hash: "accf0d6418551d74babe5b1ce76b0f490d217b463e57b7b725b9c9b01b84dd1b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.existsUnique_encodedPacketSelector_iff_payloadSelector": { hash: "f8f44b0800ee90410e97ae05705549c3bb5f11cd7c5e63a7d6161f605ed40108", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalPacketPayloadSelectorConclusion.selectorCodes": { hash: "f518eec40806af1a781cddec358e0970e4bca8a5341865477865ad794d5c6ccc", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.selectorCodes": { hash: "a52bf419363cbe01c1101984c07ee9cf551796860db78d53faeeafa00ee1d2aa", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.terminalBN6_packet_selector_codes": { hash: "031617e6b11b9c96848cfb9597d2afff584fc5e8dba4ad0d12b6a329a1b26ffe", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_SCOPE = "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean gives each canonical input-relative selector handle a unary bitstring with fail-closed total decoding of missing delimiters, trailing data, and out-of-range indices, proves exact round trip, injectivity, canonical successful decoding, exact and explicit-universe-bounded length, retains payload, carrier, size, cell, and atom evidence, and gives every payload selector one unique accepted code across the pair, balanced-triple, and full-span Packet branches.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_NON_CLAIM = "The code-length bound is relative to the explicit grouped-family list and does not bound that list by encoded circuit size. This milestone does not prove polynomial enumeration or runtime, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3427,26 +3444,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 464968,
-    sha256: "d7d0888c425d7d4621ad67fa513dc84279a25281fb077413cbfc3c91baa29f64"
+    bytes: 466098,
+    sha256: "4d7ed40867143ddaceea3476640b1fef5a8648605614941ee1bea9f701352ab1"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 228431,
-    sha256: "85b5daa8719a4828fc364fab6de96e69890cbafdf693f2a203d9ff4ca548df67"
+    bytes: 230400,
+    sha256: "41c0301848ed5b82b92b6af010fb21652746b8f59f0678d3d031e10eb68da390"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2138830,
-    sha256: "9663cb30abd44a65fafa6f5fda1c0125579af1190868d3a0bf01c21e830d010b"
+    bytes: 2148025,
+    sha256: "c33039bc1e8b4aacf88424c6cf76df163028af069b6c628fae2d46bbfb839c94"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 18476163,
-    sha256: "b1aaf7ab34ed836a79179d8f383009a7450283ec393f46c3336d3d50a9c0be05"
+    bytes: 18521840,
+    sha256: "347e07429f53e9d61cd4ccb0492e7710a03879bf5b75a1aa97e0772ca1eb8161"
   }
 ];
 
@@ -4376,6 +4393,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector-handle boundary mismatch");
+  }
+  const residualTerminalPacketSelectorCodecMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-selector-codec"
+  );
+  const residualTerminalPacketSelectorCodecNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS);
+  if (!residualTerminalPacketSelectorCodecMilestone
+      || residualTerminalPacketSelectorCodecMilestone.classification !== "formalized-residual-terminal-packet-selector-codec"
+      || residualTerminalPacketSelectorCodecMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_MILESTONE_SCOPE
+      || residualTerminalPacketSelectorCodecMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSelectorCodecMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSelectorCodecNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet selector-codec boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6246,6 +6279,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector-handle boundary mismatch");
     }
+    const residualTerminalPacketSelectorCodecMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-selector-codec"
+    );
+    if (!residualTerminalPacketSelectorCodecMilestone
+        || residualTerminalPacketSelectorCodecMilestone.earned !== true
+        || residualTerminalPacketSelectorCodecMilestone.allPresent !== true
+        || residualTerminalPacketSelectorCodecMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSelectorCodecMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSelectorCodecMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSelectorCodecMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSelectorCodecMilestone.classification !== "formalized-residual-terminal-packet-selector-codec"
+        || residualTerminalPacketSelectorCodecMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_MILESTONE_SCOPE
+        || residualTerminalPacketSelectorCodecMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSelectorCodecMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSelectorCodecMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSelectorCodecFormalized !== true
+        || payload.leanResidualTerminalPacketSelectorCodecAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSelectorCodecScope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet selector-codec boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -6552,6 +6619,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory CNF-to-NAND polynomial-reduction theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet selector-codec theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-13-residual-terminal-packet-selector-codec",
+      "milestoneId": "residual-terminal-packet-selector-codec",
+      "publishedAt": "2026-08-13T20:50:16Z",
+      "title": "Lean now gives every canonical Packet selector handle one fail-closed unary code",
+      "plainLanguage": [
+        "For every arbitrary finite explicit grouped BN6 family, Lean now encodes each canonical input-relative selector handle as a unary bitstring. Its total decoder rejects a missing delimiter, trailing data, and out-of-range indices. Lean proves exact round trip, injectivity, canonical successful decoding, exact code length, a bound by the supplied explicit selector list, retained payload evidence, and one unique accepted code for every payload selector across all three Packet branches.",
+        "This is a concrete codec for input-relative list positions, but its length bound is by the already-supplied grouped-family list, not by encoded circuit size. It does not polynomially enumerate that list, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 98% figure is a revisable editorial estimate of known reconstruction work, separate from the 114 of 116 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "81155a482de1e7cf1cd974cc8078dbd94d88d8ae",
+        "tree": "613e81db14201e554d47a6cb56d4411a80bdff1d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-138",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-13-residual-terminal-packet-selector-handles",
       "milestoneId": "residual-terminal-packet-selector-handles",
       "publishedAt": "2026-08-13T14:00:00Z",

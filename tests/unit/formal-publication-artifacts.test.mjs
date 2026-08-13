@@ -1027,6 +1027,25 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_HASHES = Object.fromEntries(
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_SCOPE = "all-finite-explicit-bn6-grouped-families-canonical-indexed-grouped-footprint-handles-unique-decoding-payload-carrier-and-size-compatibility";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean defines canonical indexed grouped-footprint handles, proves exact decoding is injective and every payload selector has a unique handle, retains original payload evidence, and proves every decoded footprint remains carrier-contained and has length at least two across the pair, balanced-triple, and full-span Packet branches.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_NON_CLAIM = "These handles are input-relative list positions, not the manuscript's bit encoding or a polynomially enumerable selector universe. The milestone does not prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, establish polynomial encoding length or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_encode": { hash: "0e4d125f4ada88d0f2f9d188a1ba2c69a17d675c555f0e6eed8dacedf4660f40", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_injective": { hash: "be5a7248d1de95c8adb730c061003887a2a0afd7667cd8e085560ffdddc52b7f", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_length": { hash: "9e90b81134401241f8e9b448adb3588605e502d8a67b8eeea8d619b7e3b84140", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_length_le_universe": { hash: "7f5caf0819a8e1696463e99993399a78d3bc6a786a64b13604e69f08c7c40485", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_canonical": { hash: "0a85db798dea4e5fc887c33e7db492fa102a081123cf1adfccd4cf30561f6165", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_payloadEvidence": { hash: "df145b8b2bac1ea58116085bc04500a96c44248cd6aac404e0d9b769565d608b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.hasEncodedPacketSelectorAt_iff_payloadSelector": { hash: "accf0d6418551d74babe5b1ce76b0f490d217b463e57b7b725b9c9b01b84dd1b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.existsUnique_encodedPacketSelector_iff_payloadSelector": { hash: "f8f44b0800ee90410e97ae05705549c3bb5f11cd7c5e63a7d6161f605ed40108", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalPacketPayloadSelectorConclusion.selectorCodes": { hash: "f518eec40806af1a781cddec358e0970e4bca8a5341865477865ad794d5c6ccc", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.selectorCodes": { hash: "a52bf419363cbe01c1101984c07ee9cf551796860db78d53faeeafa00ee1d2aa", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" },
+  "PNP.DirectWire.terminalBN6_packet_selector_codes": { hash: "031617e6b11b9c96848cfb9597d2afff584fc5e8dba4ad0d12b6a329a1b26ffe", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorCodec" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_HASHES = Object.fromEntries(
+  Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS).map(([name, row]) => [name, row.hash])
+);
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_SCOPE = "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, Lean gives each canonical input-relative selector handle a unary bitstring with fail-closed total decoding of missing delimiters, trailing data, and out-of-range indices, proves exact round trip, injectivity, canonical successful decoding, exact and explicit-universe-bounded length, retains payload, carrier, size, cell, and atom evidence, and gives every payload selector one unique accepted code across the pair, balanced-triple, and full-span Packet branches.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_NON_CLAIM = "The code-length bound is relative to the explicit grouped-family list and does not bound that list by encoded circuit size. This milestone does not prove polynomial enumeration or runtime, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
@@ -1052,7 +1071,7 @@ test("exact current artifact seal verifies eight reviewed files", () => {
   assert.equal(result.coreCommit, canonicalRelease.source.commit);
 });
 
-test("current release pins the canonical Packet selector-handle boundary and remains fail closed", () => {
+test("current release pins the canonical Packet selector-codec boundary and remains fail closed", () => {
   const release = json("downloads/formal-publication-release.json");
   assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.source.commit, canonicalRelease.source.commit);
@@ -3337,6 +3356,28 @@ test("current release pins the canonical Packet selector-handle boundary and rem
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorHandlesPacketConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.selectorHandles");
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorHandlesTheorem, "PNP.DirectWire.terminalBN6_packet_selector_handles");
 
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecFormalized, true);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecAuditedDeclarationCount, 16);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecPropextOnlyDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecPropextQuotSoundDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_SCOPE);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorCodecTheoremKernelTypeSha256, RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_HASHES);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorCodecAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.residualTerminalPacketSelectorCodecProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecRoundTripTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_encode");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecInjectiveTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_injective");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecExactLengthTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_length");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecUniverseBoundTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.encodePacketSelectorHandle_length_le_universe");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecCanonicalTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_canonical");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecPayloadEvidenceTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.decodePacketSelectorHandle_payloadEvidence");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecExistenceTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.hasEncodedPacketSelectorAt_iff_payloadSelector");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecUniqueTheorem, "PNP.DirectWire.TerminalBN6GroupedFamily.existsUnique_encodedPacketSelector_iff_payloadSelector");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecPayloadConclusionTheorem, "PNP.DirectWire.TerminalPacketPayloadSelectorConclusion.selectorCodes");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecPacketConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.selectorCodes");
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorCodecTheorem, "PNP.DirectWire.terminalBN6_packet_selector_codes");
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -3384,7 +3425,7 @@ test("current release pins the canonical Packet selector-handle boundary and rem
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish all indexed milestones through canonical Packet selector handles", () => {
+test("status and inventory publish all indexed milestones through the canonical Packet selector codec", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const index = json("public/pnp-index.json");
@@ -4857,6 +4898,9 @@ test("status and inventory publish all indexed milestones through canonical Pack
     (row) => row.id === "residual-terminal-packet-selector-universe"
   );
   const packetSelectorHandles = milestones.find(
+    (row) => row.id === "residual-terminal-packet-selector-handles"
+  );
+  const packetSelectorCodec = milestones.find(
     (row) => row.id === json("content/milestone-updates.json").entries[0].milestoneId
   );
   assert.equal(packetSelectorUniverse.classification, "formalized-residual-terminal-packet-selector-universe");
@@ -4916,6 +4960,35 @@ test("status and inventory publish all indexed milestones through canonical Pack
   assert.equal(status.leanResidualTerminalPacketSelectorHandlesFormalized, true);
   assert.equal(status.leanResidualTerminalPacketSelectorHandlesAxiomAuditPassed, true);
   assert.equal(status.leanResidualTerminalPacketSelectorHandlesScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_HANDLES_SCOPE);
+
+  assert.equal(packetSelectorCodec.classification, "formalized-residual-terminal-packet-selector-codec");
+  assert.equal(packetSelectorCodec.status, packetSelectorCodec.classification);
+  assert.equal(packetSelectorCodec.earned, true);
+  assert.equal(packetSelectorCodec.allPresent, true);
+  assert.equal(packetSelectorCodec.allAssumptionFree, false);
+  assert.equal(packetSelectorCodec.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(packetSelectorCodec.allKernelTypesMatch, true);
+  assert.equal(packetSelectorCodec.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(packetSelectorCodec.requiredTheorems, Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS));
+  assert.deepEqual(
+    Object.fromEntries(packetSelectorCodec.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_HASHES
+  );
+  for (const row of packetSelectorCodec.theoremRows) {
+    const expected = RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_THEOREMS[row.name];
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, expected.hash, row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.equal(candidate.module, expected.module, row.name);
+    assert.deepEqual(candidate.axioms, expected.axioms, row.name);
+  }
+  assert.equal(packetSelectorCodec.scope, RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_MILESTONE_SCOPE);
+  assert.equal(packetSelectorCodec.nonClaim, RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_NON_CLAIM);
+  assert.equal(status.leanResidualTerminalPacketSelectorCodecFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorCodecAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorCodecScope, RESIDUAL_TERMINAL_PACKET_SELECTOR_CODEC_SCOPE);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
