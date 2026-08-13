@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-14-residual-terminal-packet-selector-gain-scan",
+      "milestoneId": "residual-terminal-packet-selector-gain-scan",
+      "publishedAt": "2026-08-14T00:00:00Z",
+      "title": "Lean now checks every original payload in a selected Packet cell for a genuine strict gain",
+      "plainLanguage": [
+        "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean now decodes each accepted canonical Packet selector and checks every original payload candidate in the exact selected source cell with the executable strict-equivalent-gain checker. A successful result names an original atom with a genuine strict equivalent gain and proved residual-slack descent; otherwise it proves that no payload candidate in that selected cell passes the checker. Decoder rejection remains exact, and the pair, balanced-triple, and full-span Packet branches remain preserved.",
+        "The candidate implementations and grouped family remain supplied inputs. A no-gain result is local to one selected cell: it is not an HN, budget, or lower-rank manuscript blocker and does not imply global minimality or ZeroSlack. Lean has not constructed the candidates, proved selector faithfulness or compatibility, connected payload mass to charge surplus, derived or grouped survivors from terminal data, bounded the family by encoded circuit size, proved polynomial generation or runtime, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 116 of 118 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "fa7436c2bb0efcc77f1a8b193b918c6d97d3d3b5",
+        "tree": "eb155a196d8e73a6d28efe23d76bc89b5df1a075",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-140",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-13-residual-terminal-packet-selector-payload-realization",
       "milestoneId": "residual-terminal-packet-selector-payload-realization",
       "publishedAt": "2026-08-13T21:30:00Z",
