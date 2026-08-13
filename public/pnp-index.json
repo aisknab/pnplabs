@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 118,
+  "version": 119,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "28829559f3c2a151fb1983fa408e979296cdde76",
+  "sourceCommitRef": "d9940d34f6273831dd889f1e23073ce9bff1b039",
   "sourceProofCommitRef": "40a46e9e4aea8177256839415407e35ddb95c65c",
-  "sourceTree": "42c42a0b0add5d589c6402d27cac321465e8059e",
+  "sourceTree": "287a5b7c0ea9abb3165851028b753eb55d61dd12",
   "syncedOn": "2026-08-13",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-136",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-137",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-136",
-  "leanTheoremInventorySha256": "cbb5e77f789feb29378d9e5b6ef7a26781ab79af4540e805046947c8d77e38a4",
-  "leanSourceClosureSha256": "e6edd5464411a5f0796614709a6b4bcda4d2c64657fd8b25b11beab239bafe2d",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-13-136",
-  "canonicalReportPages": 89,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-137",
+  "leanTheoremInventorySha256": "b1aaf7ab34ed836a79179d8f383009a7450283ec393f46c3336d3d50a9c0be05",
+  "leanSourceClosureSha256": "1c5517f11088a984b0eab7afac73a30850b539024237c36c4f4284080d9237e7",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-13-137",
+  "canonicalReportPages": 90,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 27869,
-    "leanTheoremInventoryTheoremCount": 14485,
+    "leanTheoremInventoryDeclarationCount": 27891,
+    "leanTheoremInventoryTheoremCount": 14497,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7347,
-    "leanTheoremInventoryExcludedPrivateDeclarationCount": 15011,
-    "leanTheoremInventorySourceClosureModuleCount": 253,
+    "leanTheoremInventoryExcludedPrivateDeclarationCount": 15022,
+    "leanTheoremInventorySourceClosureModuleCount": 254,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4234,12 +4234,15 @@
     "leanResidualTerminalPacketSelectorSeedsScope": "all-finite-explicit-bn6-packet-conclusions-payload-backed-pair-balanced-triple-or-fullspan-selector-seed-input-extraction",
     "leanResidualTerminalPacketSelectorUniverseFormalized": true,
     "leanResidualTerminalPacketSelectorUniverseAxiomAuditPassed": true,
-    "leanResidualTerminalPacketSelectorUniverseScope": "all-finite-explicit-bn6-grouped-families-exact-grouped-footprint-payload-selector-universe-membership"
+    "leanResidualTerminalPacketSelectorUniverseScope": "all-finite-explicit-bn6-grouped-families-exact-grouped-footprint-payload-selector-universe-membership",
+    "leanResidualTerminalPacketSelectorHandlesFormalized": true,
+    "leanResidualTerminalPacketSelectorHandlesAxiomAuditPassed": true,
+    "leanResidualTerminalPacketSelectorHandlesScope": "all-finite-explicit-bn6-grouped-families-canonical-indexed-grouped-footprint-handles-unique-decoding-payload-carrier-and-size-compatibility"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 112,
+    "earned": 113,
     "unearned": 2,
-    "total": 114
+    "total": 115
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4353,6 +4356,7 @@
     "residual-terminal-bn6-hypergraph-packet",
     "residual-terminal-packet-selector-seeds",
     "residual-terminal-packet-selector-universe",
+    "residual-terminal-packet-selector-handles",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [

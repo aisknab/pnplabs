@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 96% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 97% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="96" aria-label="Estimated proof reconstruction progress: 96 percent">96%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 96 percent">
+        <progress class="proof-progress-meter" max="100" value="97" aria-label="Estimated proof reconstruction progress: 97 percent">97%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 97 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-13-residual-terminal-packet-selector-handles" data-milestone-id="residual-terminal-packet-selector-handles">
+        <div class="section-label"><time datetime="2026-08-13T14:00:00Z">2026-08-13</time> · earned milestone 113</div>
+        <h2>Lean now gives every finite payload selector a unique canonical handle</h2>
+        <p>For every arbitrary finite explicit grouped BN6 family, Lean now assigns each payload-selector footprint a canonical handle: its position in the exact duplicate-free grouped-footprint universe. Decoding is injective, every payload selector has exactly one handle, and the decoded footprint retains the original payload evidence, stays inside the carrier, and has at least two elements in every Packet branch.</p>
+        <p>These handles are input-relative list positions, not the manuscript&#39;s bit encoding or a polynomially enumerable selector universe. Lean has not proved manuscript-level selector faithfulness or compatibility, constructed a selector realizer or route, derived or grouped BN6 survivors from a terminal candidate, established polynomial encoding length or runtime, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 97% figure is a revisable editorial estimate of known reconstruction work, separate from the 113 of 115 scoped formal-publication rows and not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 97%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-packet-selector-handles</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-packet-selector-handles</p>
+          <p><strong>Verified scope:</strong> For every arbitrary finite explicit grouped BN6 family, Lean defines canonical indexed grouped-footprint handles, proves exact decoding is injective and every payload selector has a unique handle, retains original payload evidence, and proves every decoded footprint remains carrier-contained and has length at least two across the pair, balanced-triple, and full-span Packet branches.</p>
+          <p><strong>Boundary:</strong> These handles are input-relative list positions, not the manuscript&#39;s bit encoding or a polynomially enumerable selector universe. The milestone does not prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, establish polynomial encoding length or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 11</p>
+          <p><strong>Core source:</strong> commit <code>d9940d34f6273831dd889f1e23073ce9bff1b039</code>, tree <code>287a5b7c0ea9abb3165851028b753eb55d61dd12</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-137</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-13-residual-terminal-packet-selector-universe" data-milestone-id="residual-terminal-packet-selector-universe">
         <div class="section-label"><time datetime="2026-08-13T12:00:00Z">2026-08-13</time> · earned milestone 112</div>
         <h2>Lean now places finite payload selectors in an exact grouped-footprint universe</h2>

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-13-residual-terminal-packet-selector-handles",
+      "milestoneId": "residual-terminal-packet-selector-handles",
+      "publishedAt": "2026-08-13T14:00:00Z",
+      "title": "Lean now gives every finite payload selector a unique canonical handle",
+      "plainLanguage": [
+        "For every arbitrary finite explicit grouped BN6 family, Lean now assigns each payload-selector footprint a canonical handle: its position in the exact duplicate-free grouped-footprint universe. Decoding is injective, every payload selector has exactly one handle, and the decoded footprint retains the original payload evidence, stays inside the carrier, and has at least two elements in every Packet branch.",
+        "These handles are input-relative list positions, not the manuscript's bit encoding or a polynomially enumerable selector universe. Lean has not proved manuscript-level selector faithfulness or compatibility, constructed a selector realizer or route, derived or grouped BN6 survivors from a terminal candidate, established polynomial encoding length or runtime, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 97% figure is a revisable editorial estimate of known reconstruction work, separate from the 113 of 115 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 97,
+      "source": {
+        "commit": "d9940d34f6273831dd889f1e23073ce9bff1b039",
+        "tree": "287a5b7c0ea9abb3165851028b753eb55d61dd12",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-137",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-13-residual-terminal-packet-selector-universe",
       "milestoneId": "residual-terminal-packet-selector-universe",
       "publishedAt": "2026-08-13T12:00:00Z",
