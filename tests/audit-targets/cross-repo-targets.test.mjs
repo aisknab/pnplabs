@@ -49,6 +49,14 @@ const latestPublishedMilestoneStatusFields = Object.fromEntries(
     return [key, publishedStatus[key]];
   })
 );
+const publishedMilestoneStatusFields = Object.fromEntries(
+  Object.entries(publishedStatus).filter(([key]) =>
+    key.startsWith("lean")
+      && (key.endsWith("Formalized")
+        || key.endsWith("AxiomAuditPassed")
+        || key.endsWith("Scope"))
+  )
+);
 
 function earnedTheoremNamesBefore(milestoneId) {
   const milestoneIndex = publishedStatus.formalPublicationMilestones.findIndex(
@@ -2597,6 +2605,10 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_FIELDS,
+    // Derive every milestone's stable status triplet from the checked-in
+    // authority so advancing the latest row cannot make the former latest row
+    // disappear from this baseline fixture.
+    ...publishedMilestoneStatusFields,
     ...latestPublishedMilestoneStatusFields,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,

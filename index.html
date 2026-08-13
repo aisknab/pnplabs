@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now places finite payload selectors in an exact grouped-footprint universe</h2>
-          <p>For every arbitrary finite explicit grouped BN6 family, Lean now enumerates exactly the list of grouped cell footprints and proves that list duplicate-free. Membership is equivalent to an original grouped cell at the same footprint, and every payload-backed pair, balanced-triple pair, or full-span seed is upgraded to a member of that same finite universe.</p>
-          <p>This universe is local to an already-grouped input family. It is not the manuscript's encoded or polynomial selector universe, and payload retention is not manuscript-level selector faithfulness. Lean has not proved selector compatibility, constructed a realizer or route, derived the grouped family from a terminal candidate, established polynomial enumeration or size bounds, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 96% figure is a revisable editorial estimate of known reconstruction work, separate from the 112 of 114 scoped formal-publication rows and not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-13-residual-terminal-packet-selector-universe">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now gives every finite payload selector a unique canonical handle</h2>
+          <p>For every arbitrary finite explicit grouped BN6 family, Lean now assigns each payload-selector footprint a canonical handle: its position in the exact duplicate-free grouped-footprint universe. Decoding is injective, every payload selector has exactly one handle, and the decoded footprint retains the original payload evidence, stays inside the carrier, and has at least two elements in every Packet branch. In canonical terms, Lean defines indexed grouped-footprint handles and proves each decoded footprint remains carrier-contained across the pair, balanced-triple, and full-span branches.</p>
+          <p>These handles are input-relative list positions, not the manuscript's bit encoding or a polynomially enumerable selector universe. Lean has not proved manuscript-level selector faithfulness or compatibility, constructed a selector realizer or route, derived or grouped BN6 survivors from a terminal candidate, established polynomial encoding length or runtime, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 97% figure is a revisable editorial estimate of known reconstruction work, separate from the 113 of 115 scoped formal-publication rows and not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-13-residual-terminal-packet-selector-handles">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> an explicit finite grouped BN6 family yields its exact duplicate-free footprint universe, with membership equivalent to an original grouped cell and every payload-backed Packet seed upgraded into that universe. The grouped family remains an input. This is not the manuscript's encoded or polynomial selector universe and does not prove selector faithfulness or compatibility, construct a realizer or route, derive the family from terminal data, establish polynomial enumeration or size bounds, global ZeroSlack, polynomial PCCMin, a target decider, a discharged axiom boundary, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> every payload selector in an explicit finite grouped BN6 family has exactly one input-relative position handle in its duplicate-free footprint universe. Decoding is injective and preserves payload, carrier, and minimum-size evidence. This is not the manuscript's bit encoding or a polynomial selector universe and does not prove selector faithfulness or compatibility, construct a realizer or route, derive the family from terminal data, establish polynomial encoding length or runtime, global ZeroSlack, polynomial PCCMin, a target decider, a discharged axiom boundary, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -335,6 +335,9 @@ leanResidualTerminalPacketSelectorSeedsScope = "all-finite-explicit-bn6-packet-c
 leanResidualTerminalPacketSelectorUniverseFormalized = true
 leanResidualTerminalPacketSelectorUniverseAxiomAuditPassed = true
 leanResidualTerminalPacketSelectorUniverseScope = "all-finite-explicit-bn6-grouped-families-exact-grouped-footprint-payload-selector-universe-membership"
+leanResidualTerminalPacketSelectorHandlesFormalized = true
+leanResidualTerminalPacketSelectorHandlesAxiomAuditPassed = true
+leanResidualTerminalPacketSelectorHandlesScope = "all-finite-explicit-bn6-grouped-families-canonical-indexed-grouped-footprint-handles-unique-decoding-payload-carrier-and-size-compatibility"
 leanResidualTerminalPkgCSeparatingConsumersFormalized = true
 leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed = true
 leanResidualTerminalPkgCSeparatingConsumersScope = "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q"
@@ -365,9 +368,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-13-136</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-13-137</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>cbb5e77f789feb29378d9e5b6ef7a26781ab79af4540e805046947c8d77e38a4</code></div>
+            <div><span>Inventory SHA-256</span><code>b1aaf7ab34ed836a79179d8f383009a7450283ec393f46c3336d3d50a9c0be05</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -375,19 +378,19 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>96</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>97</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 96 percent" data-proof-progress="96">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>96</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 97 percent" data-proof-progress="97">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>97</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 96% of the known formalisation work</h2>
-          <p>This is a revisable editorial estimate of reconstruction work completed. It is separate from the 112 of 114 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
+          <h2 id="home-progress-title">About 97% of the known formalisation work</h2>
+          <p>This is a revisable editorial estimate of reconstruction work completed. It is separate from the 113 of 115 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
         <div class="home-progress-actions">
@@ -417,7 +420,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact" data-current-milestone="residual-terminal-packet-selector-universe"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now places every payload-backed finite Packet seed in the exact duplicate-free footprint universe of its explicit grouped BN6 family, but it has not built the manuscript's selector, realizer, or route.</h2><p>The arbitrary-finite result proves exact membership in the already-grouped footprint list. Deriving the grouped family and packet conclusion from terminal data, building the manuscript's encoded or polynomial selector universe, proving selector faithfulness and compatibility, constructing a realizer or route, establishing polynomial enumeration and size bounds, complete PkgC, complete decreasing global routing, an efficient <code>EncodedLockedNANDThreshold</code> target solver, global ZeroSlack, polynomial PCCMin, and an eligible P = NP root theorem remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact" data-current-milestone="residual-terminal-packet-selector-handles"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now assigns every finite payload selector one unique input-relative handle and verifies its decoded footprint, but it has not built the manuscript's encoded selector, realizer, or route.</h2><p>The arbitrary-finite result identifies a selector by its position in an already-grouped duplicate-free footprint list and preserves its payload, carrier containment, and minimum footprint size. Deriving and grouping the BN6 survivors from terminal data, building the manuscript's bit encoding or polynomial selector universe, proving selector faithfulness and compatibility, constructing a realizer or route, establishing polynomial encoding length and runtime, complete PkgC, complete decreasing global routing, an efficient <code>EncodedLockedNANDThreshold</code> target solver, global ZeroSlack, polynomial PCCMin, and an eligible P = NP root theorem remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

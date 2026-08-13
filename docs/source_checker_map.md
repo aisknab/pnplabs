@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `28829559f3c2a151fb1983fa408e979296cdde76`. Its generated status payload is current
+core commit `d9940d34f6273831dd889f1e23073ce9bff1b039`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the eighty-nine-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the ninety-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `28829559f3c2a151fb1983fa408e979296cdde76` (tree `42c42a0b0add5d589c6402d27cac321465e8059e`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, payload-backed Packet selector-seed extraction, and exact finite grouped-footprint payload-selector-universe membership |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,606 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `d9940d34f6273831dd889f1e23073ce9bff1b039` (tree `287a5b7c0ea9abb3165851028b753eb55d61dd12`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, payload-backed Packet selector seeds, exact grouped-footprint universe membership, and unique canonical input-relative selector handles with decoded payload, carrier, and size evidence |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,617 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and twelve earned scoped milestones through exact finite grouped-footprint payload-selector-universe membership; the grouped BN6 family remains proof-bearing, the universe is not the manuscript's encoded or polynomial selector universe, and the result does not establish selector faithfulness or compatibility, a realizer or route, derivation from terminal data, polynomial enumeration or size bounds, complete PkgC, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current eighty-nine-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | One hundred and thirteen earned scoped milestones through unique canonical finite Packet selector handles; the grouped BN6 family remains proof-bearing, the handles are input-relative list positions rather than the manuscript's bit encoding or a polynomially enumerable selector universe, and the result does not establish manuscript-level selector faithfulness or compatibility, a realizer or route, derivation from terminal data, polynomial encoding bounds or runtime, complete PkgC, complete global routing, global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current ninety-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.
