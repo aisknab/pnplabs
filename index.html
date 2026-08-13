@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now gives every finite payload selector a unique canonical handle</h2>
-          <p>For every arbitrary finite explicit grouped BN6 family, Lean now assigns each payload-selector footprint a canonical handle: its position in the exact duplicate-free grouped-footprint universe. Decoding is injective, every payload selector has exactly one handle, and the decoded footprint retains the original payload evidence, stays inside the carrier, and has at least two elements in every Packet branch. In canonical terms, Lean defines indexed grouped-footprint handles and proves each decoded footprint remains carrier-contained across the pair, balanced-triple, and full-span branches.</p>
-          <p>These handles are input-relative list positions, not the manuscript's bit encoding or a polynomially enumerable selector universe. Lean has not proved manuscript-level selector faithfulness or compatibility, constructed a selector realizer or route, derived or grouped BN6 survivors from a terminal candidate, established polynomial encoding length or runtime, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 97% figure is a revisable editorial estimate of known reconstruction work, separate from the 113 of 115 scoped formal-publication rows and not a probability that the claim is correct.</p>
-          <a href="updates.html#2026-08-13-residual-terminal-packet-selector-handles">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now gives every canonical Packet selector handle one fail-closed unary code</h2>
+          <p>For every arbitrary finite explicit grouped BN6 family, Lean now encodes each canonical input-relative selector handle as a unary bitstring. Its total decoder rejects a missing delimiter, trailing data, and out-of-range indices. Lean proves exact round trip, injectivity, canonical successful decoding, exact code length, a bound by the supplied explicit selector list, retained payload evidence, and one unique accepted code for every payload selector across all three Packet branches.</p>
+          <p>This is a concrete codec for input-relative list positions, but its length bound is by the already-supplied grouped-family list, not by encoded circuit size. It does not polynomially enumerate that list, encode atom or payload data, prove manuscript-level selector faithfulness or compatibility, construct a selector realizer or route, derive or group BN6 survivors from a terminal candidate, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. The 98% figure is a revisable editorial estimate of known reconstruction work, separate from the 114 of 116 scoped formal-publication rows and not a probability that the claim is correct.</p>
+          <a href="updates.html#2026-08-13-residual-terminal-packet-selector-codec">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> every payload selector in an explicit finite grouped BN6 family has exactly one input-relative position handle in its duplicate-free footprint universe. Decoding is injective and preserves payload, carrier, and minimum-size evidence. This is not the manuscript's bit encoding or a polynomial selector universe and does not prove selector faithfulness or compatibility, construct a realizer or route, derive the family from terminal data, establish polynomial encoding length or runtime, global ZeroSlack, polynomial PCCMin, a target decider, a discharged axiom boundary, or P = NP.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> every canonical input-relative selector handle in an explicit finite grouped BN6 family has a unary bitstring whose total decoder fails closed on malformed or out-of-range input. Lean proves round trip, injectivity, exact and explicit-list-bounded length, unique accepted codes, and retained payload, carrier, and size evidence. This does not bound the supplied family by circuit size, polynomially enumerate it, encode payloads, prove selector faithfulness or compatibility, construct a realizer or route, establish global ZeroSlack or polynomial PCCMin, provide a target decider or discharged axiom boundary, or prove P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -338,6 +338,9 @@ leanResidualTerminalPacketSelectorUniverseScope = "all-finite-explicit-bn6-group
 leanResidualTerminalPacketSelectorHandlesFormalized = true
 leanResidualTerminalPacketSelectorHandlesAxiomAuditPassed = true
 leanResidualTerminalPacketSelectorHandlesScope = "all-finite-explicit-bn6-grouped-families-canonical-indexed-grouped-footprint-handles-unique-decoding-payload-carrier-and-size-compatibility"
+leanResidualTerminalPacketSelectorCodecFormalized = true
+leanResidualTerminalPacketSelectorCodecAxiomAuditPassed = true
+leanResidualTerminalPacketSelectorCodecScope = "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound"
 leanResidualTerminalPkgCSeparatingConsumersFormalized = true
 leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed = true
 leanResidualTerminalPkgCSeparatingConsumersScope = "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q"
@@ -368,9 +371,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-13-137</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-13-138</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>b1aaf7ab34ed836a79179d8f383009a7450283ec393f46c3336d3d50a9c0be05</code></div>
+            <div><span>Inventory SHA-256</span><code>347e07429f53e9d61cd4ccb0492e7710a03879bf5b75a1aa97e0772ca1eb8161</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -378,19 +381,19 @@ concretePublicationGate.passed = false</pre>
       <aside class="home-progress-rail" aria-labelledby="home-progress-title">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Proof reconstruction tracker</span>
-          <p class="home-progress-number"><strong>97</strong><span>%</span></p>
+          <p class="home-progress-number"><strong>98</strong><span>%</span></p>
           <span class="home-progress-estimate">best current estimate</span>
         </div>
-        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 97 percent" data-proof-progress="97">
-          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>97</span><span>0</span></div>
+        <div class="proof-tape-graphic" role="img" aria-label="Estimated proof reconstruction progress: 98 percent" data-proof-progress="98">
+          <div class="proof-tape-scale" aria-hidden="true"><span>100</span><span>98</span><span>0</span></div>
           <div class="proof-tape-track" aria-hidden="true">
             <span class="proof-tape-fill"><span class="proof-tape-head"></span></span>
           </div>
           <div class="proof-tape-legend" aria-hidden="true"><span>reconstructed</span><span>known work</span></div>
         </div>
         <div class="home-progress-copy">
-          <h2 id="home-progress-title">About 97% of the known formalisation work</h2>
-          <p>This is a revisable editorial estimate of reconstruction work completed. It is separate from the 113 of 115 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
+          <h2 id="home-progress-title">About 98% of the known formalisation work</h2>
+          <p>This is a revisable editorial estimate of reconstruction work completed. It is separate from the 114 of 116 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
         <div class="home-progress-actions">
@@ -420,7 +423,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact" data-current-milestone="residual-terminal-packet-selector-handles"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now assigns every finite payload selector one unique input-relative handle and verifies its decoded footprint, but it has not built the manuscript's encoded selector, realizer, or route.</h2><p>The arbitrary-finite result identifies a selector by its position in an already-grouped duplicate-free footprint list and preserves its payload, carrier containment, and minimum footprint size. Deriving and grouping the BN6 survivors from terminal data, building the manuscript's bit encoding or polynomial selector universe, proving selector faithfulness and compatibility, constructing a realizer or route, establishing polynomial encoding length and runtime, complete PkgC, complete decreasing global routing, an efficient <code>EncodedLockedNANDThreshold</code> target solver, global ZeroSlack, polynomial PCCMin, and an eligible P = NP root theorem remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact" data-current-milestone="residual-terminal-packet-selector-codec"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now gives every canonical finite Packet selector handle a fail-closed unary code, but it has not built a circuit-size-bounded selector system, realizer, or route.</h2><p>The arbitrary-finite result rejects missing delimiters, trailing data, and out-of-range indices; proves round trip, injectivity, exact code length, and a bound by the explicit grouped-family list; and preserves payload, carrier, size, cell, and atom evidence. Deriving and grouping BN6 survivors from terminal data, bounding or enumerating the supplied selector family polynomially in circuit size, encoding atom or payload data, proving selector faithfulness and compatibility, constructing a realizer or route, completing PkgC and decreasing global routing, solving <code>EncodedLockedNANDThreshold</code> efficiently, global ZeroSlack, polynomial PCCMin, and an eligible P = NP root theorem remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

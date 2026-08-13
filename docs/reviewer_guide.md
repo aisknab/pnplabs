@@ -6,9 +6,9 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a ninety-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 27,891 public declarations across 254 modules,
-including 14,497 theorem-kind declarations, 7,347 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Exactly 15,022 private compiler auxiliaries are excluded explicitly.
+Lean theorem inventory. The inventory contains 27,920 public declarations across 255 modules,
+including 14,512 theorem-kind declarations, 7,351 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Exactly 15,030 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,617 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,617 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | One hundred and thirteen narrowly scoped formal milestones through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, payload-backed Packet selector seeds, exact finite grouped-footprint universe membership, and unique canonical input-relative selector handles with decoded payload, carrier, and size evidence | Treating explicit upstream data or the grouped family as derived from terminal candidates; treating the handles as the manuscript's bit encoding or a polynomially enumerable selector universe, a manuscript-level faithful or compatible selector, a realizer, or a route; claiming polynomial encoding bounds or runtime, complete PkgC or decreasing global routing, global ZeroSlack, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,628 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,628 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | One hundred and fourteen narrowly scoped formal milestones through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, payload-backed Packet selector seeds, exact finite grouped-footprint universe membership, unique canonical input-relative handles, and their fail-closed unary codec with exact round trip, unique decoding, explicit-list-bounded length, and retained evidence | Treating explicit upstream data or the grouped family as derived from terminal candidates; treating the codec as circuit-size-bounded, polynomially enumerable, payload-complete, manuscript-level faithful or compatible, a realizer, or a route; claiming polynomial generation or runtime, complete PkgC or decreasing global routing, global ZeroSlack, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `d9940d34f6273831dd889f1e23073ce9bff1b039`.
+   `81155a482de1e7cf1cd974cc8078dbd94d88d8ae`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,617 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,628 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,7 +72,7 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns one hundred and thirteen scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns one hundred and fourteen scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
