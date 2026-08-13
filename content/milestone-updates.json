@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-13-residual-terminal-packet-selector-universe",
+      "milestoneId": "residual-terminal-packet-selector-universe",
+      "publishedAt": "2026-08-13T12:00:00Z",
+      "title": "Lean now places finite payload selectors in an exact grouped-footprint universe",
+      "plainLanguage": [
+        "For every arbitrary finite explicit grouped BN6 family, Lean now enumerates exactly the list of grouped cell footprints and proves that list duplicate-free. Membership is equivalent to an original grouped cell at the same footprint, and every payload-backed pair, balanced-triple pair, or full-span seed is upgraded to a member of that same finite universe.",
+        "This universe is local to an already-grouped input family. It is not the manuscript's encoded or polynomial selector universe, and payload retention is not manuscript-level selector faithfulness. Lean has not proved selector compatibility, constructed a realizer or route, derived the grouped family from a terminal candidate, established polynomial enumeration or size bounds, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 96% figure is a revisable editorial estimate of known reconstruction work, separate from the 112 of 114 scoped formal-publication rows and not a probability that the claim is correct."
+      ],
+      "progressEstimatePercent": 96,
+      "source": {
+        "commit": "28829559f3c2a151fb1983fa408e979296cdde76",
+        "tree": "42c42a0b0add5d589c6402d27cac321465e8059e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-136",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-13-residual-terminal-packet-selector-seeds",
       "milestoneId": "residual-terminal-packet-selector-seeds",
       "publishedAt": "2026-08-13T10:00:00Z",

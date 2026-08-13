@@ -28,12 +28,32 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">
-      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 95% of the known formalisation work</h2>
+      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About 96% of the known formalisation work</h2>
         <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>
-        <progress class="proof-progress-meter" max="100" value="95" aria-label="Estimated proof reconstruction progress: 95 percent">95%</progress>
-      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 95 percent">
+        <progress class="proof-progress-meter" max="100" value="96" aria-label="Estimated proof reconstruction progress: 96 percent">96%</progress>
+      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 96 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-13-residual-terminal-packet-selector-universe" data-milestone-id="residual-terminal-packet-selector-universe">
+        <div class="section-label"><time datetime="2026-08-13T12:00:00Z">2026-08-13</time> · earned milestone 112</div>
+        <h2>Lean now places finite payload selectors in an exact grouped-footprint universe</h2>
+        <p>For every arbitrary finite explicit grouped BN6 family, Lean now enumerates exactly the list of grouped cell footprints and proves that list duplicate-free. Membership is equivalent to an original grouped cell at the same footprint, and every payload-backed pair, balanced-triple pair, or full-span seed is upgraded to a member of that same finite universe.</p>
+        <p>This universe is local to an already-grouped input family. It is not the manuscript&#39;s encoded or polynomial selector universe, and payload retention is not manuscript-level selector faithfulness. Lean has not proved selector compatibility, constructed a realizer or route, derived the grouped family from a terminal candidate, established polynomial enumeration or size bounds, completed PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 96% figure is a revisable editorial estimate of known reconstruction work, separate from the 112 of 114 scoped formal-publication rows and not a probability that the claim is correct.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 96%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-packet-selector-universe</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-packet-selector-universe</p>
+          <p><strong>Verified scope:</strong> For every arbitrary finite explicit grouped BN6 family, Lean enumerates the exact duplicate-free list of grouped footprints, proves membership equivalent to an original grouped cell at that footprint, and upgrades every payload-backed pair, balanced-triple pair, or full-span seed to membership in that same finite universe.</p>
+          <p><strong>Boundary:</strong> This finite universe is exactly the grouped-footprint list already present in an explicit BN6 family. It is not the manuscript&#39;s encoded or polynomial selector universe, and payload retention is not manuscript-level selector faithfulness. It does not prove selector compatibility, construct a realizer or route, derive the grouped family from a terminal candidate, establish polynomial enumeration or size bounds, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 6</p>
+          <p><strong>Core source:</strong> commit <code>28829559f3c2a151fb1983fa408e979296cdde76</code>, tree <code>42c42a0b0add5d589c6402d27cac321465e8059e</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-136</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-13-residual-terminal-packet-selector-seeds" data-milestone-id="residual-terminal-packet-selector-seeds">
         <div class="section-label"><time datetime="2026-08-13T10:00:00Z">2026-08-13</time> · earned milestone 111</div>
         <h2>Lean now extracts payload-backed raw selector seeds from finite BN6 packets</h2>

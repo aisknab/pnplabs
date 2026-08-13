@@ -18,6 +18,10 @@ const INVENTORY_COORDINATE = canonicalRelease.artifacts.theoremInventory.coordin
 const INVENTORY_SHA256 = canonicalRelease.artifacts.theoremInventory.sha256;
 const INVENTORY_BYTES = canonicalRelease.artifacts.theoremInventory.bytes;
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
+const milestoneFieldStem = (milestoneId) => milestoneId
+  .split('-')
+  .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+  .join('');
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -4942,10 +4946,16 @@ test('payload index describes current inventory/report and quarantines legacy su
 });
 
 test('status page has a conservative complete static fallback', async () => {
-  const [status, index] = await Promise.all([
+  const [status, index, updates] = await Promise.all([
     readJson('public/pnp-status.json'),
     readJson('public/pnp-index.json'),
+    readJson('content/milestone-updates.json'),
   ]);
+  const latestMilestone = status.formalPublicationMilestones.find(
+    (row) => row.id === updates.entries[0].milestoneId,
+  );
+  assert.ok(latestMilestone, `missing latest milestone ${updates.entries[0].milestoneId}`);
+  const latestFieldStem = milestoneFieldStem(latestMilestone.id);
   const html = await readText('status.html');
   for (const fragment of [
     `Formal status · ${index.syncedOn}`,
@@ -4990,6 +5000,11 @@ test('status page has a conservative complete static fallback', async () => {
     'PNP.DirectWire.terminalBN6_packet_selector_seeds',
     'leanResidualTerminalPacketSelectorSeedsFormalized = true',
     'leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed = true',
+    latestMilestone.id,
+    ...latestMilestone.requiredTheorems,
+    `lean${latestFieldStem}Formalized = true`,
+    `lean${latestFieldStem}AxiomAuditPassed = true`,
+    `lean${latestFieldStem}Scope = ${JSON.stringify(status[`lean${latestFieldStem}Scope`])}`,
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -5325,6 +5340,9 @@ test('status page has a conservative complete static fallback', async () => {
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
   ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
+  for (const milestone of status.formalPublicationMilestones) {
+    assert.equal(html.includes(milestone.id), true, `missing canonical milestone: ${milestone.id}`);
+  }
   assert.equal((html.match(/data-earned="true"/g) || []).length, index.formalPublicationMilestoneCounts.earned);
   assert.equal((html.match(/data-earned="false"/g) || []).length, index.formalPublicationMilestoneCounts.unearned);
   assert.equal(status.formalPublicationMilestones.length, index.formalPublicationMilestoneCounts.total);
@@ -5357,11 +5375,22 @@ test('static inventory prose derives changing publication totals from the canoni
     (milestone) => milestone.id === updates.entries[0].milestoneId
   );
   assert.ok(latestEarnedMilestone, 'latest earned milestone');
+  const latestUpdate = updates.entries[0];
+  const latestReleasePrefix = milestoneFieldStem(latestEarnedMilestone.id)
+    .replace(/^./u, (character) => character.toLowerCase());
+  const latestFocusedAuditCount = latestRelease.earnedBoundary[
+    `${latestReleasePrefix}AuditedDeclarationCount`
+  ];
+  assert.ok(Number.isSafeInteger(latestFocusedAuditCount));
+  assert.ok(latestFocusedAuditCount > 0);
   assert.equal(
     readme.includes(`Its ${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`),
     true
   );
-  assert.equal(readme.includes('selector-universe membership, selector faithfulness or compatibility, enumeration, a realizer, or a route'), true);
+  assert.equal(readme.includes(latestUpdate.title), true);
+  for (const paragraph of latestUpdate.plainLanguage) {
+    assert.equal(readme.includes(paragraph), true, `missing latest README paragraph: ${paragraph}`);
+  }
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationFormalized = true'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = true'), true);
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
@@ -5371,7 +5400,7 @@ test('static inventory prose derives changing publication totals from the canoni
     assert.equal(pipeline.includes(fragment), true, `missing proof-pipeline fragment: ${fragment}`);
   }
   assert.equal(pipeline.includes('245 source-closure modules'), false);
-  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), `${reportPages} A4 pages`, 'fixed 135,070-rule', `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`, 'focused 5-declaration audit', 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), `${reportPages} A4 pages`, 'fixed 135,070-rule', `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`, `focused ${latestFocusedAuditCount}-declaration audit`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibility.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 462,371 | `5952abcc454dacde02dadeddc2e1969eaa6b9258d9ad353d56cbf68ea12435b5` |
-| `downloads/canonical-proof-report.pdf` | 462,371 | `5952abcc454dacde02dadeddc2e1969eaa6b9258d9ad353d56cbf68ea12435b5` |
-| `downloads/canonical_proof_report.tex` | 225,476 | `ed5cd1df72e44975de2043562b45143a8e7c9585c3de89a903c9d2014948aa54` |
-| `downloads/canonical-proof-report.tex` | 225,476 | `ed5cd1df72e44975de2043562b45143a8e7c9585c3de89a903c9d2014948aa54` |
-| `public/pnp-status.json` | 2,123,844 | `f5016346abfd21220bb9d627f6e69892468cd0d1932177a9aea6cc9e4726b5e5` |
-| `public/pnp-theorem-inventory.json` | 18,418,804 | `ebdd71cf1e9b234fe6fc2f053bb94b0bcdd02f1930afe0829dd1b584afc66316` |
+| `downloads/canonical_proof_report.pdf` | 462,761 | `ef39314a60161409c856dc40e8f6d6267a76920b313550fe90a77eec0f754832` |
+| `downloads/canonical-proof-report.pdf` | 462,761 | `ef39314a60161409c856dc40e8f6d6267a76920b313550fe90a77eec0f754832` |
+| `downloads/canonical_proof_report.tex` | 226,546 | `1efe07c294afc7734ccda514419717fa81b7e3dc2e9d69099b6e072c5026be80` |
+| `downloads/canonical-proof-report.tex` | 226,546 | `1efe07c294afc7734ccda514419717fa81b7e3dc2e9d69099b6e072c5026be80` |
+| `public/pnp-status.json` | 2,129,754 | `7d2558758d3f6dd03391f929a3803aab7dfd3ea7d0971060b5c14a14988f2fbc` |
+| `public/pnp-theorem-inventory.json` | 18,438,519 | `cbb5e77f789feb29378d9e5b6ef7a26781ab79af4540e805046947c8d77e38a4` |
 
 The PDF must have 89 A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout a98bdbcd759e80cf3953a336f9b7755e68bf29d3
+git -C ../pnp checkout 28829559f3c2a151fb1983fa408e979296cdde76
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 27,854 public declarations, 14,479 theorem-kind declarations,
-7,347 assumption-free theorem-kind declarations, 15,011 excluded private auxiliaries, 252 modules, and
+Expected compiled inventory counts are 27,869 public declarations, 14,485 theorem-kind declarations,
+7,347 assumption-free theorem-kind declarations, 15,011 excluded private auxiliaries, 253 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,15 +96,14 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 3 reviewed theorem pins. For an arbitrary finite exact BN6 packet conclusion, Lean
-extracts a carrier-contained raw selector seed backed by the original grouped cell and atom payload at the
-positive pair footprint, at every positive pair footprint of a balanced triple, or at the positive full-span
-footprint. The mixed three-anchor positive alternative does not assert that both masses are positive, and the
-construction fixes no carrier cardinality. The focused 5-declaration audit has 2 `propext`-only declarations and
-3 using `Quot.sound` with `propext`. The exact packet conclusion remains proof-bearing input. Lean does not prove
-selector-universe membership, faithfulness or compatibility, enumeration, a realizer or route, polynomial
-generation or runtime, complete PkgC, `ZeroSlack` or polynomial PCCMin, put SAT in P, discharge an assumption,
-or prove `P = NP`.
+The newest milestone adds 6 reviewed theorem pins. For every arbitrary finite explicit grouped BN6 family, Lean
+enumerates the exact duplicate-free list of grouped footprints, proves membership equivalent to an original grouped
+cell at that footprint, and upgrades every payload-backed pair, balanced-triple pair, or full-span seed into that
+same finite universe. The focused 9-declaration audit has 3 `propext`-only declarations and 6 using `Quot.sound`
+with `propext`. The grouped family remains proof-bearing input. This is not the manuscript's encoded or polynomial
+selector universe. Lean does not prove selector faithfulness or compatibility, construct a realizer or route,
+derive the family from terminal data, establish polynomial enumeration or size bounds, complete PkgC, `ZeroSlack`
+or polynomial PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

@@ -26,6 +26,29 @@ const publishedRelease = JSON.parse(readFileSync(
   new URL("../../downloads/formal-publication-release.json", import.meta.url),
   "utf8"
 ));
+const publishedUpdates = JSON.parse(readFileSync(
+  new URL("../../content/milestone-updates.json", import.meta.url),
+  "utf8"
+));
+
+const latestPublishedMilestoneId = publishedUpdates.entries[0].milestoneId;
+const latestPublishedMilestoneFieldStem = latestPublishedMilestoneId
+  .split("-")
+  .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+  .join("");
+const latestPublishedMilestoneReleasePrefix =
+  `${latestPublishedMilestoneFieldStem[0].toLowerCase()}${latestPublishedMilestoneFieldStem.slice(1)}`;
+const latestPublishedMilestoneStatusKeys = [
+  `lean${latestPublishedMilestoneFieldStem}Formalized`,
+  `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`,
+  `lean${latestPublishedMilestoneFieldStem}Scope`
+];
+const latestPublishedMilestoneStatusFields = Object.fromEntries(
+  latestPublishedMilestoneStatusKeys.map((key) => {
+    assert.notEqual(publishedStatus[key], undefined, "missing latest published status field: " + key);
+    return [key, publishedStatus[key]];
+  })
+);
 
 function earnedTheoremNamesBefore(milestoneId) {
   const milestoneIndex = publishedStatus.formalPublicationMilestones.findIndex(
@@ -2455,6 +2478,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "residualTerminalV53ConstantCutHypergraphRigidity",
     "residualTerminalBN6HypergraphPacket",
     "residualTerminalPacketSelectorSeeds",
+    latestPublishedMilestoneReleasePrefix,
     "residualTerminalPrimitiveUniverse",
     "residualTerminalExecutableSaturation",
     "residualTerminalPhysical",
@@ -2573,6 +2597,7 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_FIELDS,
+    ...latestPublishedMilestoneStatusFields,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -10615,6 +10640,65 @@ test("rejects residual terminal Packet selector-seed release, status, inventory,
   ] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
   expectFailure(mapFingerprint, /core publication map residual terminal Packet selector-seed fingerprint mismatch/);
+});
+
+test("rejects mutations of the latest canonical publication milestone across every trust layer", (t) => {
+  const latestMilestone = publishedStatus.formalPublicationMilestones.find(
+    (row) => row.id === latestPublishedMilestoneId
+  );
+  assert.ok(latestMilestone, `missing latest published milestone: ${latestPublishedMilestoneId}`);
+  assert.equal(latestMilestone.earned, true);
+  assert.ok(latestMilestone.requiredTheorems.length > 0);
+  const theoremName = latestMilestone.requiredTheorems[0];
+  const releaseFormalizedField = `${latestPublishedMilestoneReleasePrefix}Formalized`;
+  const releaseFingerprintField = `${latestPublishedMilestoneReleasePrefix}TheoremKernelTypeSha256`;
+  const statusAuditField = `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`;
+
+  const releaseFlag = makeProject(t);
+  releaseFlag.release.earnedBoundary[releaseFormalizedField] = false;
+  write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
+  expectFailure(releaseFlag, /current manifest .* boundary mismatch/);
+
+  const releaseFingerprint = makeProject(t);
+  releaseFingerprint.release.earnedBoundary[releaseFingerprintField][theoremName] = "0".repeat(64);
+  write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
+  expectFailure(releaseFingerprint, /current manifest .* fingerprint mismatch/);
+
+  const statusFlag = makeProject(t);
+  const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusFlagPayload[statusAuditField] = false;
+  rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
+  expectFailure(statusFlag, /status .* evidence mismatch/);
+
+  const statusMilestone = makeProject(t);
+  const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
+  statusMilestonePayload.formalPublicationMilestones.find(
+    (row) => row.id === latestPublishedMilestoneId
+  ).nonClaim = "This mutation removes the conservative claim boundary.";
+  rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
+  expectFailure(statusMilestone, /status .* publication boundary mismatch/);
+
+  const inventoryAxiom = makeProject(t);
+  const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventoryAxiomPayload.milestoneCandidates.find(
+    (row) => row.name === theoremName
+  ).axioms = ["PNP.ForgedLatestMilestoneAxiom"];
+  rewriteCorePayload(inventoryAxiom, "public/pnp-theorem-inventory.json", inventoryAxiomPayload);
+  expectFailure(inventoryAxiom, /inventory .* theorem mismatch/);
+
+  const mapMilestone = makeProject(t);
+  const mapMilestonePayload = JSON.parse(readFileSync(path.join(mapMilestone.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapMilestonePayload.milestones.find(
+    (row) => row.id === latestPublishedMilestoneId
+  ).scope = "unsupported-complete-global-claim";
+  rewriteCorePayload(mapMilestone, "publication/FORMAL_PUBLICATION_MAP.json", mapMilestonePayload);
+  expectFailure(mapMilestone, /core publication map .* boundary mismatch/);
+
+  const mapFingerprint = makeProject(t);
+  const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
+  mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[theoremName] = "0".repeat(64);
+  rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
+  expectFailure(mapFingerprint, /core publication map .* fingerprint mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
