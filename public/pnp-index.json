@@ -2,17 +2,17 @@
   "kind": "PNPLabsPNPPayloadIndex0",
   "version": 120,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "81155a482de1e7cf1cd974cc8078dbd94d88d8ae",
+  "sourceCommitRef": "38ad00f1798b703371c4d32d1507b43268f0ea9f",
   "sourceProofCommitRef": "40a46e9e4aea8177256839415407e35ddb95c65c",
-  "sourceTree": "613e81db14201e554d47a6cb56d4411a80bdff1d",
+  "sourceTree": "9f12ba9e28d68818e6ecf7f776181e80a42d1b1b",
   "syncedOn": "2026-08-13",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-138",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-13-139",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-138",
-  "leanTheoremInventorySha256": "347e07429f53e9d61cd4ccb0492e7710a03879bf5b75a1aa97e0772ca1eb8161",
-  "leanSourceClosureSha256": "faa452511b2bf16517c70ffecc20592831e9b270d452a5a8500044e88c41c78e",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-13-138",
-  "canonicalReportPages": 90,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-13-139",
+  "leanTheoremInventorySha256": "eb2998acbac0571f0b408e4ce0bb97cebe9ab89eea79d72dcfd8d42c19accf69",
+  "leanSourceClosureSha256": "3630542354b65b11e33a9ed55fd1a670f4c41887f76286f2c6663622f81247a3",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-13-139",
+  "canonicalReportPages": 91,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 27920,
-    "leanTheoremInventoryTheoremCount": 14512,
+    "leanTheoremInventoryDeclarationCount": 27973,
+    "leanTheoremInventoryTheoremCount": 14537,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7351,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15030,
-    "leanTheoremInventorySourceClosureModuleCount": 255,
+    "leanTheoremInventorySourceClosureModuleCount": 256,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4240,12 +4240,15 @@
     "leanResidualTerminalPacketSelectorHandlesScope": "all-finite-explicit-bn6-grouped-families-canonical-indexed-grouped-footprint-handles-unique-decoding-payload-carrier-and-size-compatibility",
     "leanResidualTerminalPacketSelectorCodecFormalized": true,
     "leanResidualTerminalPacketSelectorCodecAxiomAuditPassed": true,
-    "leanResidualTerminalPacketSelectorCodecScope": "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound"
+    "leanResidualTerminalPacketSelectorCodecScope": "all-finite-explicit-bn6-grouped-families-canonical-unary-fail-closed-handle-codec-round-trip-unique-decoding-payload-carrier-size-and-explicit-universe-length-bound",
+    "leanResidualTerminalPacketSelectorPayloadRealizationFormalized": true,
+    "leanResidualTerminalPacketSelectorPayloadRealizationAxiomAuditPassed": true,
+    "leanResidualTerminalPacketSelectorPayloadRealizationScope": "all-finite-explicit-bn6-grouped-families-total-fail-closed-source-payload-realization-exact-original-cell-footprint-positive-atom-and-packet-branch-preservation"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 114,
+    "earned": 115,
     "unearned": 2,
-    "total": 116
+    "total": 117
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4361,6 +4364,7 @@
     "residual-terminal-packet-selector-universe",
     "residual-terminal-packet-selector-handles",
     "residual-terminal-packet-selector-codec",
+    "residual-terminal-packet-selector-payload-realization",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [
