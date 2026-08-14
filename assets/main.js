@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-144';
-const STATUS_SHA256 = '468ac36c7499913636f1c1beb7476c80ad447f9cdad42d89f1c0fc3185d143e1';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-14-144';
-const FORMAL_PUBLICATION_MAP_SHA256 = '10aa7fcc548f7871f312ab204584deb50ede549083e4505ac1759a4fd6d4d092';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-145';
+const STATUS_SHA256 = '7214e2de3076caa534cff19abee2b2d5b5e5ee8440a1b89d11226428c0930838';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-15-145';
+const FORMAL_PUBLICATION_MAP_SHA256 = '8a4ae068046f7bdc5813e294c539f5c7de10425af0fe37b7a45be51ec3598398';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-14-144';
-const INVENTORY_SHA256 = '83d2cd0ba63f926964d483370a44630c25e9bcca86c921f35a6a837bfa75eb5b';
-const SOURCE_CLOSURE_SHA256 = '1de9b2cb477d6b6c668acf5774763e85dc226121b67f5d9ca0be75359cf6ac31';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-15-145';
+const INVENTORY_SHA256 = 'fdbdbc9aee0533c257d45fc130116320aa33c84fbbcb6ac9e271c5082478b36c';
+const SOURCE_CLOSURE_SHA256 = '14e701028dee5672fccf1c50219af92003fbcf6df9ab748d38161d99f2451967';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 28414,
-  theorems: 14690,
-  assumptionFreeTheorems: 7390,
-  excludedPrivateDeclarations: 15043,
-  modules: 261,
+  declarations: 28580,
+  theorems: 14754,
+  assumptionFreeTheorems: 7434,
+  excludedPrivateDeclarations: 15047,
+  modules: 262,
   axioms: 4,
 });
 
@@ -4153,6 +4153,14 @@ const RESIDUAL_TERMINAL_PACKET_UNIT_CHARGE_BLUEPRINT_REALIZER_DECLARATIONS = Obj
   ["PNP.DirectWire.terminalBN6_packet_unit_charge_blueprint_realizer_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketUnitChargeBlueprintRealizer", "c4b7dcbb96bd06db9db3f4b862d1586b6a7e96d4a8c9c0c4f9ae7a2a02de3912"],
 ]);
 
+const RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPacketTypedRealizerBot.check_eq_true_iff", ["propext"], "PNP.ResidualTerminalPacketTypedRealizerContract", "783ed4f17604f8ddb4c3c2fa4a4853898b68fe8fa1e75ef4196124c78ebc429e"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerClaim.check_eq_true_iff", ["propext"], "PNP.ResidualTerminalPacketTypedRealizerContract", "54c82cf8fd115ae869777235e75ff5fa161d351ff3ebd2ef85fd2b75e676fa41"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerEvidence.sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketTypedRealizerContract", "46f457bf3450394aa78f6f11438244bc9ca1e5cab17a0404179d0e2499dad3e4"],
+  ["PNP.DirectWire.checkTerminalPacketFaithfulRealizerClaims_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketTypedRealizerContract", "606778690b6c10ea92a29dc00118331efd7af642dda948804b288a4ad6f00224"],
+  ["PNP.DirectWire.terminalBN6_packet_typed_realizer_contract", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketTypedRealizerContract", "22f72519a2e8ba68b7227d09432641c941d7744a39b3fae47fa69515f038cf76"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6314,6 +6322,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketTypedRealizerContract =
+    RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6779,6 +6794,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketUnitChargeBlueprintRealizer.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketTypedRealizerContract.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -7090,6 +7108,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketUnitChargeBlueprintRealizerMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-unit-charge-blueprint-realizer'
+  );
+  const residualTerminalPacketTypedRealizerContractMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-typed-realizer-contract'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7883,6 +7904,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketUnitChargeBlueprintRealizerFormalized === true
     && status.leanResidualTerminalPacketUnitChargeBlueprintRealizerAxiomAuditPassed === true
     && status.leanResidualTerminalPacketUnitChargeBlueprintRealizerScope === "all-finite-explicit-bn6-grouped-blueprint-families-constructive-exact-occurrence-checker-canonical-unit-charge-ledgers-semantic-validation-strict-gain-residual-descent-and-packet-preservation"
+    && residualTerminalPacketTypedRealizerContractMilestone?.classification === "formalized-residual-terminal-packet-typed-realizer-contract"
+    && residualTerminalPacketTypedRealizerContractMilestone.status === "formalized-residual-terminal-packet-typed-realizer-contract"
+    && residualTerminalPacketTypedRealizerContractMilestone.scope === "For arbitrary selector types, finite selector lists, positive finite rank carriers, executable faithfulness and blocker-activity tables, and data-only realizer claims, Lean accepts a faithful selector row exactly as a checked unit-charge gain, an active same-or-lower-rank HN bot, an active same-or-lower-rank budget bot, or a faithful strictly lower-rank seed bot. The list validator covers every faithful member, and its grouped-BN6 specialization covers every canonical input-relative Packet handle."
+    && residualTerminalPacketTypedRealizerContractMilestone.nonClaim === "The selector family, finite rank assignment, faithfulness predicate, realizer claims, hereditary activity table, and budget activity table remain explicit inputs. Finite indices are not the manuscript's tuple-valued packet ranks, and an invalid faithful row is rejected rather than reinterpreted as a bot. This milestone does not construct blueprints or blockers from terminal data, prove selector faithfulness or compatibility, establish blocker semantics or HB acyclicity, derive global selector silence, or establish encoded-size or polynomial-runtime bounds. It does not complete PkgC, unconditional ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPacketTypedRealizerContractMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketTypedRealizerContractMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketTypedRealizerContractFormalized === true
+    && status.leanResidualTerminalPacketTypedRealizerContractAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketTypedRealizerContractScope === "all-arbitrary-finite-selector-lists-and-explicit-bn6-canonical-handle-families-data-only-gain-or-typed-hn-budget-strictly-lower-faithful-seed-validation"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7900,7 +7942,7 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; and the checked unit-charge blueprint realizer now derives canonical ledgers and gains for every valid blueprint in one supplied family. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, or gain-coverage certificate from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, compatible realizer, blocker, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.'
+    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; and the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables from terminal data; connect matching back to a contradiction; prove the blocker semantics or HB acyclicity; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, compatible realizer, global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.'
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',
@@ -7914,6 +7956,7 @@ function validateStatus(status, inventory) {
     && status.nonClaims?.includes('The finite BN6 hypergraph-packet bridge transports an explicit already-grouped positive payload-bearing V54 survivor family into the exact V53 cut sum and returns the pair, mixed three-anchor, or full-span packet classification with source payload witnesses. It does not complete PkgC, derive or group survivors from a terminal candidate, establish full historical BN6 or Packet selector/realizer completeness, complete global routes, prove polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, or P = NP.')
     && status.nonClaims?.includes('The finite Packet charge-surplus kernel derives strict replacement weight from exact occurrence accounting, pairwise weight preservation, and an unmatched positive support charge, then derives a StrictEquivalentGain only when exact gate accounting and semantic equivalence are separately proved. It does not construct a replacement or its ledger from terminal data, so it is not the complete realizer, not unconditional ZeroSlack, and not a polynomial-runtime or PCCMin result.')
     && status.nonClaims?.includes('The checked Packet unit-charge blueprint realizer derives canonical gate-occurrence ledgers, strict charge surplus, and a genuine gain only after a constructive exact-multiplicity validator accepts one supplied data-only blueprint and semantic equivalence. It scans every original blueprint atom behind every canonical handle in one supplied family. The blueprints and family remain explicit; unresolved means only supplied-family validator silence, not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, ZeroSlack, or polynomial realizer completeness.')
+    && status.nonClaims?.includes('The checked Packet typed-realizer contract validates every faithful row in an arbitrary finite supplied selector table as only a checked unit-charge gain, active same-or-lower-rank HN bot, active same-or-lower-rank budget bot, or faithful strictly lower-rank seed bot; its grouped-family specialization covers every canonical handle. The rank assignment, faithfulness predicate, claims, and activity tables remain inputs, so this does not construct blockers, prove their semantics or HB acyclicity, establish global selector silence, ZeroSlack, or polynomial realizer completeness.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true

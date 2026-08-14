@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 479,413 | `98e7800ea2042edde6e4a6d1599fca2420df310b1a3b082ab6c7137f8cde0b53` |
-| `downloads/canonical-proof-report.pdf` | 479,413 | `98e7800ea2042edde6e4a6d1599fca2420df310b1a3b082ab6c7137f8cde0b53` |
-| `downloads/canonical_proof_report.tex` | 245,265 | `d2a1a7af05fe6d98ff6e6741628f6c16e1eafda1b493e514c899c719c406dece` |
-| `downloads/canonical-proof-report.tex` | 245,265 | `d2a1a7af05fe6d98ff6e6741628f6c16e1eafda1b493e514c899c719c406dece` |
-| `public/pnp-status.json` | 2,202,100 | `468ac36c7499913636f1c1beb7476c80ad447f9cdad42d89f1c0fc3185d143e1` |
-| `public/pnp-theorem-inventory.json` | 19,095,850 | `83d2cd0ba63f926964d483370a44630c25e9bcca86c921f35a6a837bfa75eb5b` |
+| `downloads/canonical_proof_report.pdf` | 481,967 | `eb431091ae103b4cf84ca2efe8c19e5a2d74a0522c03cd6692837977f3bb74b1` |
+| `downloads/canonical-proof-report.pdf` | 481,967 | `eb431091ae103b4cf84ca2efe8c19e5a2d74a0522c03cd6692837977f3bb74b1` |
+| `downloads/canonical_proof_report.tex` | 247,858 | `5923b763bbc4b39b352ca1d02eba4d4052afdb83dc80c2d90a44e4f7e6ecae65` |
+| `downloads/canonical-proof-report.tex` | 247,858 | `5923b763bbc4b39b352ca1d02eba4d4052afdb83dc80c2d90a44e4f7e6ecae65` |
+| `public/pnp-status.json` | 2,208,212 | `7214e2de3076caa534cff19abee2b2d5b5e5ee8440a1b89d11226428c0930838` |
+| `public/pnp-theorem-inventory.json` | 19,151,733 | `fdbdbc9aee0533c257d45fc130116320aa33c84fbbcb6ac9e271c5082478b36c` |
 
-The PDF must have 95 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 96 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 5f2d880b953cfc1f2d26b6fc0d6a97d5a1c2b8cf
+git -C ../pnp checkout 7cba7335d300b31617fde64a2c7a96c758c6fdf5
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 28,414 public declarations, 14,690 theorem-kind declarations,
-7,390 assumption-free theorem-kind declarations, 15,043 excluded private auxiliaries, 261 modules, and
+Expected compiled inventory counts are 28,580 public declarations, 14,754 theorem-kind declarations,
+7,434 assumption-free theorem-kind declarations, 15,047 excluded private auxiliaries, 262 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,18 +96,19 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 13 reviewed theorem pins. For arbitrary direct-wire arities and every finite explicit grouped
-BN6 family of replacement blueprints, Lean derives canonical unit-charge gate-occurrence ledgers and constructively
-checks exact occurrence multiplicity, a nonempty unmatched current-gate remainder, and semantic equivalence. Acceptance
-instantiates the charge-surplus kernel and constructs a genuine `StrictEquivalentGain` with strict residual descent
-without accepting a gate inequality; the exhaustive scan visits every original blueprint atom behind every canonical
-handle while retaining all three Packet branches. The focused 30-declaration audit has 6 empty closures, 11
-`propext`-only declarations, and 13 using `Quot.sound` with `propext`; no reviewed closure uses a project axiom or
-`Classical.choice`. The grouped family, candidates, replacement blueprints, occurrence pairings, and unmatched lists
-remain proof-bearing inputs. Family-local validator silence is not a typed blocker, global no-gain result, semantic
-minimum, or `ZeroSlack`. Lean does not derive blueprints from terminal data, prove selector faithfulness or
-compatibility, close HB/rank routing, establish encoded-size or polynomial-runtime bounds, complete global PkgC,
-unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`.
+The newest milestone adds 5 reviewed theorem pins. For arbitrary selector types, finite selector lists, positive
+finite rank carriers, executable faithfulness and blocker-activity tables, and data-only realizer claims, Lean accepts
+each faithful row only as a checked unit-charge gain, an active same-or-lower-rank HN bot, an active same-or-lower-rank
+budget bot, or a faithful strictly lower-rank seed bot. The generic list validator covers every faithful member, and its
+grouped-BN6 specialization covers every canonical input-relative Packet handle. The focused 20-declaration audit has 10
+empty closures, five `propext`-only declarations, and five using `Quot.sound` with `propext`; no reviewed closure uses a
+project axiom or `Classical.choice`. The selector family, finite rank assignment, faithfulness predicate, claims,
+hereditary and budget activity tables, and blueprints remain proof-bearing inputs. Finite indices are not manuscript
+packet ranks, blocker activity is not blocker semantics, and an invalid faithful row is rejected rather than
+reinterpreted as a bot. Lean does not construct blockers or blueprints from terminal data, prove selector faithfulness
+or compatibility, establish HB acyclicity or global selector silence, establish encoded-size or polynomial-runtime
+bounds, complete global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove
+`P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

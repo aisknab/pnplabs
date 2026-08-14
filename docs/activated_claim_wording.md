@@ -45,6 +45,8 @@ leanResidualProjectionTransferAxiomAuditPassed = true
 leanResidualProjectionTransferSignedDeltasFormalized = true
 leanResidualProjectionTransferIdentityFormalized = true
 leanResidualProjectionTransferConstantCutFormalized = true
+leanResidualTerminalPacketTypedRealizerContractFormalized = true
+leanResidualTerminalPacketTypedRealizerContractAxiomAuditPassed = true
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 ```
@@ -53,7 +55,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone constructively checks exact occurrence multiplicity, a nonempty unmatched current-gate remainder, and semantic equivalence for every supplied unit-charge replacement blueprint in one finite Packet family. Acceptance derives canonical ledgers, instantiates the generic charge-surplus kernel, and constructs a genuine strict equivalent gain with strict residual descent without accepting a gate inequality; an exhaustive scan visits every original blueprint atom behind every canonical handle. The grouped family, candidates, blueprints, occurrence pairings, and unmatched lists remain proof-bearing inputs. Family-local validator silence is not `BotHN`, `BotBUD`, a lower-rank `BotSeed`, global absence of strict gains, semantic minimality, or `ZeroSlack`. The milestone does not derive blueprints from Packet or terminal data, prove selector faithfulness or compatibility, establish encoded-size or runtime bounds, produce typed blockers or HB/rank closure, complete global PkgC, embed outcomes in a decreasing complete global route system, establish manuscript-wide `SaturatePositive`, Package E, BCELReady, unconditional `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-one narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone checks every faithful row in an arbitrary finite supplied Packet realizer table as only a checked unit-charge gain, an active same-or-lower-rank hereditary blocker, an active same-or-lower-rank budget blocker, or a faithful strictly lower-rank seed; its grouped specialization covers every canonical input-relative handle. The selector family, finite rank assignment, faithfulness predicate, claims, activity tables, and blueprints remain proof-bearing inputs. Finite indices are not manuscript packet ranks, blocker activity is not blocker semantics, and rejection is not reinterpretation as a bot. The milestone does not construct blockers or blueprints from Packet or terminal data, prove selector faithfulness or compatibility, establish HB acyclicity or global selector silence, establish encoded-size or runtime bounds, complete global PkgC, embed outcomes in a decreasing complete global route system, establish manuscript-wide `SaturatePositive`, Package E, BCELReady, unconditional `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -72,7 +74,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the ninety-five-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the ninety-six-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

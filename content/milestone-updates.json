@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-14-residual-terminal-packet-typed-realizer-contract",
+      "milestoneId": "residual-terminal-packet-typed-realizer-contract",
+      "publishedAt": "2026-08-14T19:46:21Z",
+      "title": "Lean now checks a finite Packet typed-realizer table",
+      "plainLanguage": [
+        "For arbitrary selector types, finite selector lists, positive finite rank carriers, executable faithfulness and blocker-activity tables, and data-only realizer claims, Lean now accepts each faithful row only as one of four checked outcomes: a unit-charge blueprint that constructs a genuine strict equivalent gain, an active same-or-lower-rank hereditary blocker, an active same-or-lower-rank budget blocker, or a faithful strictly lower-rank seed. The generic list checker covers every faithful member, and its grouped-BN6 specialization covers every canonical input-relative Packet handle.",
+        "The selector family, finite rank assignment, faithfulness predicate, claims, hereditary and budget activity tables, and blueprints remain supplied inputs. The finite indices are not the manuscript's tuple-valued packet ranks, blocker activity is not blocker semantics, and an invalid faithful row is rejected rather than reinterpreted as a bot. Lean has not constructed blockers or blueprints from terminal data, proved selector faithfulness or compatibility, established HB acyclicity or global selector silence, bounded encoding size or runtime, completed PkgC, unconditional ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 121 of 123 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "7cba7335d300b31617fde64a2c7a96c758c6fdf5",
+        "tree": "96a3a0b839c0ca66d32572dd54146b1a5e773772",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-145",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-14-residual-terminal-packet-unit-charge-blueprint-realizer",
       "milestoneId": "residual-terminal-packet-unit-charge-blueprint-realizer",
       "publishedAt": "2026-08-14T14:48:08Z",
