@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,668 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,676 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 28,193 public declarations;
-- 14,607 theorem-kind declarations;
-- 7,359 assumption-free theorem-kind declarations;
-- 259 source-closure modules;
+- 28,241 public declarations;
+- 14,628 theorem-kind declarations;
+- 7,370 assumption-free theorem-kind declarations;
+- 260 source-closure modules;
 - 15,033 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and eighteen earned scopes are:
+The one hundred and nineteen earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -168,6 +168,7 @@ The one hundred and eighteen earned scopes are:
 | Checked Packet selector candidate-gain scan | For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean decodes each accepted canonical selector, scans every original candidate payload in the exact selected source cell with the executable strict-equivalent-gain checker, and returns a genuine source-atom strict equivalent gain or exact cell-local no-gain. Every gain strictly decreases residual slack, decoder rejection is exact, and every Packet branch is preserved. The focused 20-declaration audit has 3 empty, 2 `propext`-only, and 15 `Quot.sound` plus `propext` closures; all 12 reviewed pins have permitted Lean-standard closure. | The candidate implementations and grouped BN6 family remain explicit inputs. Cell-local no-gain is not an HN, budget, or lower-rank manuscript blocker and does not imply global minimality or `ZeroSlack`. This result does not construct candidates, prove selector faithfulness or compatibility, connect payload mass to charge surplus, derive or group survivors from terminal data, bound the family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Exhaustive Packet selector-universe gain scan | For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean enumerates every canonical input-relative selector handle, scans every original candidate payload in every exact source cell, and returns a canonical source-atom strict equivalent gain with an accepted code and strict residual-slack descent or exact no-gain over the complete supplied selector universe. Every Packet branch remains literal. The focused 19-declaration audit has 9 `propext`-only and 10 `Quot.sound` plus `propext` closures; all 10 reviewed pins have permitted Lean-standard closure. | The candidate implementations and grouped BN6 family remain explicit inputs. Supplied-universe no-gain is not an HN, budget, or lower-rank manuscript blocker, does not establish selector faithfulness or compatibility, and does not imply global minimality or `ZeroSlack`. This result does not construct replacement candidates, connect payload mass to charge surplus, derive or group survivors from terminal data, bound the family by encoded circuit size, prove polynomial enumeration or runtime, complete PkgC, global `ZeroSlack` or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Conditional Packet selector gain-or-ZeroSlack coverage | For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, an explicit proof-bearing coverage certificate requires every strict equivalent gain from the current implementation to occur as an original payload atom in an exact canonical selector source cell. Under precisely that premise, the exhaustive scan returns either a source-atom gain with strict residual descent or a proof-bearing semantic minimum and zero residual slack, while preserving every Packet branch literally. The focused 14-declaration audit has 7 `propext`-only and 7 `Quot.sound` plus `propext` closures; all 7 reviewed pins have permitted Lean-standard closure. | The gain-coverage certificate, grouped BN6 family, and candidate implementations remain explicit inputs. This result does not construct the certificate from terminal data, prove selector faithfulness or compatibility, construct or polynomially enumerate replacement candidates, establish encoded-size or runtime bounds, produce typed blockers or HB/rank closure, complete global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
+| Finite Packet charge-surplus realizer kernel | For arbitrary finite support and replacement charge ledgers, exact multiplicity-preserving occurrence pairing and pairwise weight preservation leave an unmatched positive support charge and derive strict occurrence count and strict total replacement weight. Exact NAND-gate accounting and independently proved semantic equivalence then construct a genuine `StrictEquivalentGain` and strict reference-residual descent without assuming either strict inequality. The focused 10-declaration audit has 2 empty, 2 `propext`-only, and 6 `Quot.sound` plus `propext` closures; all 8 reviewed pins have permitted Lean-standard closure. | The finite ledgers, pairing, unmatched witness, gate accounting, and semantic equivalence remain explicit inputs. This result does not construct a replacement or its charge ledger from Packet or terminal data, prove selector faithfulness or compatibility, produce `BotHN`, `BotBUD`, or a lower-rank `BotSeed`, close HB/rank routing, establish encoded-size or polynomial-runtime bounds, complete global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

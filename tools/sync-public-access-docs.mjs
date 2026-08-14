@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "f149a972c366b96a3db704aaa1a23679abc21b6a";
-const CORE_TREE = "6b526cd25b1b871e1d6a65e20162c23d92d4b4ae";
-const CORE_PUBLICATION_MAP_SHA256 = "e724b339c8e602a9f9d2d2022a4018d169d138f2af83ff7d9197257de01e2c87";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-142";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-142";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-142";
-const CORE_SOURCE_CLOSURE_SHA256 = "276efe1faa91f14e04a7cbf52734664086c3ab1e43c46323adf1380efb6ed63a";
+const CORE_COMMIT = "77b275efe586e68339f6dd61abb5a2d3abcdce68";
+const CORE_TREE = "4b71837f0f4c8d078a95f003264c157a5e4d33d3";
+const CORE_PUBLICATION_MAP_SHA256 = "a1f15b43d116833461d3b189d56129ad74c7507e185b7de50148837526530cb4";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-143";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-143";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-143";
+const CORE_SOURCE_CLOSURE_SHA256 = "51ef16d4aec38a1c179c7620dcc67980d9842f2bb202726beabf9bdd94ac1cbe";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1197,6 +1197,20 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_SCOPE = "all-finite-explicit-bn6-grouped-families-explicit-global-gain-coverage-certificate-conditional-source-gain-or-proof-bearing-zero-slack-with-packet-branch-preservation";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, an explicit proof-bearing coverage certificate requires every strict equivalent gain from the current implementation to occur as an original payload atom in an exact canonical selector source cell. Under precisely that premise, the exhaustive scan returns either a source-atom gain with strict residual descent or a proof-bearing semantic minimum and zero residual slack, while preserving the pair, balanced-triple, and full-span Packet alternatives literally.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_NON_CLAIM = "The explicit gain-coverage certificate, grouped BN6 family, and candidate implementations remain inputs. This milestone does not construct the coverage certificate from terminal data, prove selector faithfulness or compatibility, construct or polynomially enumerate replacement candidates, establish encoded-size or runtime bounds, produce typed blockers or HB/rank closure, or complete global PkgC, ZeroSlack, or PCCMin. It is conditional and not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketChargeSurplus.matchedWeight_eq": { hash: "f93edb2a63467ca1efdd9589172a12b304c9ec0530b23032069613f9f8903eb6", axioms: ["propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.supportWeight_eq_matched_add_unmatched": { hash: "d22021b63f150710925e2307d9e495054aab366505e184e22872610ec9ccbbcb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.replacementWeight_eq_matched": { hash: "6b202ff6af0c4c616962b5f546846fb6ef6375594c413aa248d8a0e110d4187c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.unmatchedWeight_pos": { hash: "8036cdeee6b28489069687c2506a605a255f331afbf445b1fe05acb74b94e63f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.replacementLength_lt_supportLength": { hash: "0fddee3599dde5c5e14024968ff31be788f5e05dc7a0298a30bf0268b474c6ff", axioms: ["propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.replacementWeight_lt_supportWeight": { hash: "7a862aad6ccb2a54aff55331b8294fe334c8fc005da680e1e2c44672d6205489", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplusRealization.strictEquivalentGain": { hash: "22429c08765b2229a69bfb2062cf775e2793a66521cbab4bb264038b34e2496e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplusRealization.strictResidualDescent": { hash: "996f27da8b42eac154281a84232b7ae57a8f54fce85c34156640080beb462bd2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" }
+};
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_SCOPE = "all-arbitrary-finite-occurrence-ledgers-exact-multiplicity-preserving-charge-injection-positive-unmatched-support-strict-weight-gain-and-residual-descent";
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_MILESTONE_SCOPE = "For arbitrary finite support and replacement charge ledgers, exact multiplicity-preserving occurrence pairing and pairwise weight preservation leave an unmatched positive support charge and derive strict occurrence count and strict total replacement weight. When the totals exactly account for current and replacement NAND gates and semantic equivalence is proved independently, Lean constructs a genuine StrictEquivalentGain and strict reference-residual descent without assuming either strict inequality.";
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_NON_CLAIM = "The finite ledgers, exact occurrence pairing, gate accounting, and semantic equivalence remain explicit inputs. This milestone does not construct a replacement or its charge ledger from a Packet blueprint or terminal data, prove selector faithfulness or compatibility, produce BotHN, BotBUD, or a lower-rank BotSeed, close HB/rank routing, establish encoded-size or polynomial-runtime bounds, or complete global PkgC, ZeroSlack, or PCCMin. It is not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3508,26 +3522,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 475449,
-    sha256: "262010fc739d26415a73779c6d6659c931dae2b9c2b9e3e497396da7004404ba"
+    bytes: 477348,
+    sha256: "4020096c9cbb9cea6efe1e7f4b17cbee91ba32e82fb58a45b0c449f52318213a"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 240015,
-    sha256: "2f8c315301c6ef5458975713ec5570bca857e31f6e9a955a2d65c95348b640f9"
+    bytes: 242419,
+    sha256: "0c55d98b0171ed5d72fba0cc5f12c8980d80795adb42f999cf046fbfbf904cf7"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2183773,
-    sha256: "0159f095d0347fced0feeadd4f9dadea1cefddc3e23801069918509b6ff7772e"
+    bytes: 2191451,
+    sha256: "af858640a86ca2bade03e610a998698fe911a37b4f2df8b94cf780c41683b1b8"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 18927425,
-    sha256: "405055d9ac1742189429da35ae4f9367b4d18b977d0a337b97b92ae371c623f2"
+    bytes: 18976883,
+    sha256: "0d3b3475c79bf3af4f9056b3ccaaec8abffa3da4cb58e0b9609f9c7add279673"
   }
 ];
 
@@ -4537,6 +4551,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector gain-coverage boundary mismatch");
+  }
+  const residualTerminalPacketChargeSurplusMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-charge-surplus"
+  );
+  const residualTerminalPacketChargeSurplusNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS);
+  if (!residualTerminalPacketChargeSurplusMilestone
+      || residualTerminalPacketChargeSurplusMilestone.classification !== "formalized-residual-terminal-packet-charge-surplus"
+      || residualTerminalPacketChargeSurplusMilestone.scope !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_MILESTONE_SCOPE
+      || residualTerminalPacketChargeSurplusMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketChargeSurplusMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketChargeSurplusNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet charge-surplus boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6577,6 +6607,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector gain-coverage boundary mismatch");
     }
+    const residualTerminalPacketChargeSurplusMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-charge-surplus"
+    );
+    if (!residualTerminalPacketChargeSurplusMilestone
+        || residualTerminalPacketChargeSurplusMilestone.earned !== true
+        || residualTerminalPacketChargeSurplusMilestone.allPresent !== true
+        || residualTerminalPacketChargeSurplusMilestone.allAssumptionFree !== false
+        || residualTerminalPacketChargeSurplusMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketChargeSurplusMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketChargeSurplusMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketChargeSurplusMilestone.classification !== "formalized-residual-terminal-packet-charge-surplus"
+        || residualTerminalPacketChargeSurplusMilestone.scope !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_MILESTONE_SCOPE
+        || residualTerminalPacketChargeSurplusMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketChargeSurplusMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketChargeSurplusMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketChargeSurplusFormalized !== true
+        || payload.leanResidualTerminalPacketChargeSurplusAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketChargeSurplusScope !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet charge-surplus boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -6933,6 +6997,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal Packet selector gain-coverage theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet charge-surplus theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
