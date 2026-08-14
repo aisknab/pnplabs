@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "fa7436c2bb0efcc77f1a8b193b918c6d97d3d3b5";
-const CORE_TREE = "eb155a196d8e73a6d28efe23d76bc89b5df1a075";
-const CORE_PUBLICATION_MAP_SHA256 = "a1278469830a9cefe73eec19869d3713bbf600f65355df5fc7ff0fb462da0d45";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-140";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-140";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-140";
-const CORE_SOURCE_CLOSURE_SHA256 = "07c0f641a90fec3d9e7649fef1ae68759842885eade9e47d0fddcfbc78666eba";
+const CORE_COMMIT = "5055eaaa82a57ee5ce0793f07e2f49ae82189169";
+const CORE_TREE = "3f35e3fb250da4ed62fa68e29f69ba4bef81e6dd";
+const CORE_PUBLICATION_MAP_SHA256 = "684f6bf5dc72e7dc12d1786ff1ad0c234f85087a6adb68b529e29a35bcb2f428";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-141";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-141";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-141";
+const CORE_SOURCE_CLOSURE_SHA256 = "794760e09b118041da76b16b5eda92a6bff496a96decf07951a7f9a0fc3d987e";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1168,6 +1168,22 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_SCOPE = "all-finite-explicit-bn6-grouped-families-direct-wire-implementation-payloads-total-fail-closed-exact-source-cell-checked-strict-gain-or-cell-local-no-gain-packet-branch-preservation";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean decodes each accepted canonical Packet selector, scans every original candidate payload in the exact selected source cell with the executable strict-equivalent-gain checker, and returns only a genuine source-atom StrictEquivalentGain or proof that the selected cell has no such candidate. Every gain strictly decreases residual slack, decoder rejection is exact, and the pair, balanced-triple, and full-span Packet alternatives are preserved.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_NON_CLAIM = "The candidate implementations and grouped BN6 family remain explicit input data. A local no-gain result excludes only payload candidates in one selected source cell; it is not a manuscript BotHN, BotBUD, or lower-rank BotSeed and does not imply global minimality or ZeroSlack. This milestone does not construct replacement candidates, prove selector faithfulness or compatibility, connect payload mass to charge surplus, derive or group survivors from a terminal candidate, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.mem_packetSelectorHandles": { hash: "22cb55480f5bbe81fb8540e5e44baae06fe2a37d1f569a315d1ea6e613d77a1d", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorHandles_length": { hash: "3d685cc640a9b0eebec7e777ba4eb0ba97e849864b1a49f983701f713c0f72db", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalPacketSelectorHandleListGainOutcome.sound": { hash: "ad8a3c4868e04bac82feacae9f4da4240351fbaea9de3366a0bab4243495af76", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalPacketSelectorUniverseGainOutcome.sound": { hash: "6f1bab3555fe49689a663406f474357fa987a15a5978be77aa0c592d2942b624", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.scanPacketSelectorUniverseGains_sound": { hash: "c52533b196e485c0bf91c0dff1f6ae39289c30946c7e8f792786953ca68c76a8", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalPacketSelectorUniverseGainOutcome.gain_strictResidualDescent": { hash: "211b3c22fb1a6c4c6bf9803a38a7d04902d79dd054ebda9e3d3ea492e00a4549", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.universeGain_source_and_code": { hash: "908bfb961e16547356af3e1dacda10db97114f3f3658dcbc404fa57527ca38cc", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.universeNoGain_of_gainScan": { hash: "b31b67e308423d933c862df8872bd70b331ac6fd86be0e1c658849a569e1f133", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.universeGainScan_packet": { hash: "373902d79d328259df3d62d93d2ab45f63191d236f52a3cc03eb2e50aeb1c418", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" },
+  "PNP.DirectWire.terminalBN6_packet_selector_universe_gain_scan_sound": { hash: "a9a9e9ccf505501b0576f0462c43d3d9283177b2079cae2c2a8d432a43153b8f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorUniverseGainScan" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_SCOPE = "all-finite-explicit-bn6-grouped-families-exhaustive-canonical-selector-scan-with-checked-strict-gain-or-family-local-no-gain-and-packet-branch-preservation";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean enumerates every canonical input-relative selector handle, scans every original candidate payload in each exact source cell with the executable strict-equivalent-gain checker, and returns only a canonical source-atom StrictEquivalentGain or proof that the complete supplied selector universe has no such candidate. Every gain retains a canonical accepted code and strictly decreases residual slack, while the pair, balanced-triple, and full-span Packet alternatives are preserved literally.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_NON_CLAIM = "The grouped BN6 family and candidate implementations remain explicit inputs. Family-wide no-gain is silence only for that supplied input-relative selector universe; it is not a manuscript BotHN, BotBUD, or lower-rank BotSeed, does not establish selector faithfulness or compatibility, and does not imply global minimality or ZeroSlack. This milestone does not construct replacement candidates, connect payload mass to charge surplus, derive or group survivors from terminal data, bound the family by encoded circuit size, prove polynomial enumeration or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3479,26 +3495,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 470474,
-    sha256: "c6ba155fdaeff66098827cb687acb5c5ba1af25eb04553ac3049dec8dabb606c"
+    bytes: 473178,
+    sha256: "bcfe475938c8cb7e6a62849bce919442895b6c6fa0642151d34e0a504006ff2f"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 235073,
-    sha256: "935d224bca96dba81dd97d2946c2e5b2c9eba6aae025c78878a7f972b318f292"
+    bytes: 237579,
+    sha256: "f8d72f7b26bec141ab7a06bf226b7732dd13e60117f2cc49c2d03a8d7072ecf5"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2167733,
-    sha256: "ff42bf51562cd4c7292c843c67e5a9d46b559bb971888408fc445afc45da4600"
+    bytes: 2176632,
+    sha256: "1536aa0df294cc1bd165ae8c027d427029c5c155e955046b6b50a18db88914ba"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 18697880,
-    sha256: "79bfc428f4744369f565b3489b439a81656a0768b23da6b60e3b66312cc56fba"
+    bytes: 18847489,
+    sha256: "6705f67c74816c38d7c9645a25f4c85d8e0125d7b6f97c73c65bb3fcdd9cfe50"
   }
 ];
 
@@ -4476,6 +4492,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector gain-scan boundary mismatch");
+  }
+  const residualTerminalPacketSelectorUniverseGainScanMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-selector-universe-gain-scan"
+  );
+  const residualTerminalPacketSelectorUniverseGainScanNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS);
+  if (!residualTerminalPacketSelectorUniverseGainScanMilestone
+      || residualTerminalPacketSelectorUniverseGainScanMilestone.classification !== "formalized-residual-terminal-packet-selector-universe-gain-scan"
+      || residualTerminalPacketSelectorUniverseGainScanMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_MILESTONE_SCOPE
+      || residualTerminalPacketSelectorUniverseGainScanMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSelectorUniverseGainScanMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSelectorUniverseGainScanNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet selector-universe gain-scan boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6448,6 +6480,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector gain-scan boundary mismatch");
     }
+    const residualTerminalPacketSelectorUniverseGainScanMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-selector-universe-gain-scan"
+    );
+    if (!residualTerminalPacketSelectorUniverseGainScanMilestone
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.earned !== true
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.allPresent !== true
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.classification !== "formalized-residual-terminal-packet-selector-universe-gain-scan"
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_MILESTONE_SCOPE
+        || residualTerminalPacketSelectorUniverseGainScanMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSelectorUniverseGainScanMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSelectorUniverseGainScanMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSelectorUniverseGainScanFormalized !== true
+        || payload.leanResidualTerminalPacketSelectorUniverseGainScanAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSelectorUniverseGainScanScope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet selector-universe gain-scan boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -6784,6 +6850,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal Packet selector gain-scan theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet selector-universe gain-scan theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {

@@ -2,17 +2,17 @@
   "kind": "PNPLabsPNPPayloadIndex0",
   "version": 120,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "fa7436c2bb0efcc77f1a8b193b918c6d97d3d3b5",
+  "sourceCommitRef": "5055eaaa82a57ee5ce0793f07e2f49ae82189169",
   "sourceProofCommitRef": "40a46e9e4aea8177256839415407e35ddb95c65c",
-  "sourceTree": "eb155a196d8e73a6d28efe23d76bc89b5df1a075",
+  "sourceTree": "3f35e3fb250da4ed62fa68e29f69ba4bef81e6dd",
   "syncedOn": "2026-08-14",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-140",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-141",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-140",
-  "leanTheoremInventorySha256": "79bfc428f4744369f565b3489b439a81656a0768b23da6b60e3b66312cc56fba",
-  "leanSourceClosureSha256": "07c0f641a90fec3d9e7649fef1ae68759842885eade9e47d0fddcfbc78666eba",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-14-140",
-  "canonicalReportPages": 92,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-141",
+  "leanTheoremInventorySha256": "6705f67c74816c38d7c9645a25f4c85d8e0125d7b6f97c73c65bb3fcdd9cfe50",
+  "leanSourceClosureSha256": "794760e09b118041da76b16b5eda92a6bff496a96decf07951a7f9a0fc3d987e",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-14-141",
+  "canonicalReportPages": 93,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 28046,
-    "leanTheoremInventoryTheoremCount": 14561,
+    "leanTheoremInventoryDeclarationCount": 28135,
+    "leanTheoremInventoryTheoremCount": 14590,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7359,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15033,
-    "leanTheoremInventorySourceClosureModuleCount": 257,
+    "leanTheoremInventorySourceClosureModuleCount": 258,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4246,12 +4246,15 @@
     "leanResidualTerminalPacketSelectorPayloadRealizationScope": "all-finite-explicit-bn6-grouped-families-total-fail-closed-source-payload-realization-exact-original-cell-footprint-positive-atom-and-packet-branch-preservation",
     "leanResidualTerminalPacketSelectorGainScanFormalized": true,
     "leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed": true,
-    "leanResidualTerminalPacketSelectorGainScanScope": "all-finite-explicit-bn6-grouped-families-direct-wire-implementation-payloads-total-fail-closed-exact-source-cell-checked-strict-gain-or-cell-local-no-gain-packet-branch-preservation"
+    "leanResidualTerminalPacketSelectorGainScanScope": "all-finite-explicit-bn6-grouped-families-direct-wire-implementation-payloads-total-fail-closed-exact-source-cell-checked-strict-gain-or-cell-local-no-gain-packet-branch-preservation",
+    "leanResidualTerminalPacketSelectorUniverseGainScanFormalized": true,
+    "leanResidualTerminalPacketSelectorUniverseGainScanAxiomAuditPassed": true,
+    "leanResidualTerminalPacketSelectorUniverseGainScanScope": "all-finite-explicit-bn6-grouped-families-exhaustive-canonical-selector-scan-with-checked-strict-gain-or-family-local-no-gain-and-packet-branch-preservation"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 116,
+    "earned": 117,
     "unearned": 2,
-    "total": 118
+    "total": 119
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4369,6 +4372,7 @@
     "residual-terminal-packet-selector-codec",
     "residual-terminal-packet-selector-payload-realization",
     "residual-terminal-packet-selector-gain-scan",
+    "residual-terminal-packet-selector-universe-gain-scan",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [

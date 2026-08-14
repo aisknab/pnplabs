@@ -1085,12 +1085,17 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_HASHES = Object.fromEntries(
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_SCOPE = "all-finite-explicit-bn6-grouped-families-direct-wire-implementation-payloads-total-fail-closed-exact-source-cell-checked-strict-gain-or-cell-local-no-gain-packet-branch-preservation";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean decodes each accepted canonical Packet selector, scans every original candidate payload in the exact selected source cell with the executable strict-equivalent-gain checker, and returns only a genuine source-atom StrictEquivalentGain or proof that the selected cell has no such candidate. Every gain strictly decreases residual slack, decoder rejection is exact, and the pair, balanced-triple, and full-span Packet alternatives are preserved.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_NON_CLAIM = "The candidate implementations and grouped BN6 family remain explicit input data. A local no-gain result excludes only payload candidates in one selected source cell; it is not a manuscript BotHN, BotBUD, or lower-rank BotSeed and does not imply global minimality or ZeroSlack. This milestone does not construct replacement candidates, prove selector faithfulness or compatibility, connect payload mass to charge surplus, derive or group survivors from a terminal candidate, bound the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
 const RESIDUAL_TERMINAL_RANK_WF_SCOPE = "fixed-ten-coordinate-natural-lexicographic-order-executable-comparison-accessibility-induction-and-kernel-well-foundedness";
 const RESIDUAL_TERMINAL_RANK_WF_MILESTONE_SCOPE = "For the fixed manuscript residual rank of exactly ten natural coordinates in the stated witness-type, span-type, mode, frontier-defect, projection-defect, saturation-defect, anchor-count, charge-size, profile-size, canonical-code priority order, Lean provides the exact lexicographic proposition, an equivalent executable comparison, all ten priority witnesses, proof-bearing descent, accessibility, induction, and kernel-checked well-foundedness.";
 const RESIDUAL_TERMINAL_RANK_WF_NON_CLAIM = "This establishes the fixed residual rank domain and RankWF only. It does not map the current finite terminal routes into the manuscript's complete global outcome system, prove that any existing route strictly decreases the rank, establish route completeness or Package E, remove the explicit positive premise from the finite composition, establish full manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP.";
 
 function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
+}
+
+function milestoneFieldStem(milestoneId) {
+  return milestoneId.replace(/-([a-z0-9])/gu, (_match, character) => character.toUpperCase());
 }
 
 function copySealFixture(t) {
@@ -1110,8 +1115,20 @@ test("exact current artifact seal verifies eight reviewed files", () => {
   assert.equal(result.coreCommit, canonicalRelease.source.commit);
 });
 
-test("current release pins the checked Packet selector gain-scan boundary and remains fail closed", () => {
+test("current release pins the latest canonical earned boundary and remains fail closed", () => {
   const release = json("downloads/formal-publication-release.json");
+  const latestStatusPayload = json("public/pnp-status.json");
+  const latestUpdate = json("content/milestone-updates.json").entries[0];
+  const latestMilestone = latestStatusPayload.formalPublicationMilestones.find(
+    (row) => row.id === latestUpdate.milestoneId
+  );
+  assert.ok(latestMilestone, "latest milestone must come from the canonical status payload");
+  const latestStem = milestoneFieldStem(latestUpdate.milestoneId);
+  const latestStatusStem = `lean${latestStem[0].toUpperCase()}${latestStem.slice(1)}`;
+  const latestTheoremHashes = Object.fromEntries(
+    latestMilestone.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
+  );
+  const latestAxiomClosure = [...new Set(latestMilestone.theoremRows.flatMap((row) => row.axioms))].sort();
   assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.source.commit, canonicalRelease.source.commit);
   assert.equal(release.source.proofCommit, "40a46e9e4aea8177256839415407e35ddb95c65c");
@@ -3462,6 +3479,32 @@ test("current release pins the checked Packet selector gain-scan boundary and re
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanPacketConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.gainScans");
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanTheorem, "PNP.DirectWire.terminalBN6_packet_selector_gain_scans");
 
+  assert.equal(release.earnedBoundary[`${latestStem}Formalized`], true);
+  assert.equal(release.earnedBoundary[`${latestStem}AxiomAuditPassed`], true);
+  for (const suffix of [
+    "AuditedDeclarationCount",
+    "EmptyAxiomDeclarationCount",
+    "PropextOnlyDeclarationCount",
+    "PropextQuotSoundDeclarationCount",
+  ]) {
+    assert.ok(Number.isSafeInteger(release.earnedBoundary[`${latestStem}${suffix}`]), suffix);
+  }
+  assert.equal(
+    release.earnedBoundary[`${latestStem}AuditedDeclarationCount`],
+    release.earnedBoundary[`${latestStem}EmptyAxiomDeclarationCount`]
+      + release.earnedBoundary[`${latestStem}PropextOnlyDeclarationCount`]
+      + release.earnedBoundary[`${latestStem}PropextQuotSoundDeclarationCount`]
+  );
+  assert.equal(release.earnedBoundary[`${latestStem}Scope`], latestStatusPayload[`${latestStatusStem}Scope`]);
+  assert.deepEqual(release.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`], latestTheoremHashes);
+  assert.deepEqual(release.earnedBoundary[`${latestStem}AxiomClosure`], latestAxiomClosure);
+  assert.deepEqual(release.earnedBoundary[`${latestStem}ProjectAxiomClosure`], []);
+  const latestReleaseTheorems = Object.entries(release.earnedBoundary)
+    .filter(([key, value]) => key.startsWith(latestStem) && key.endsWith("Theorem") && typeof value === "string")
+    .map(([_key, value]) => value)
+    .sort();
+  assert.deepEqual(latestReleaseTheorems, [...latestMilestone.requiredTheorems].sort());
+
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAuditedDeclarationCount, 1);
@@ -3475,7 +3518,6 @@ test("current release pins the checked Packet selector gain-scan boundary and re
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.lockedNANDThresholdPublicationProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationTheorem, "PNP.Main.locked_nand_threshold");
-  const latestUpdate = json("content/milestone-updates.json").entries[0];
   assert.ok(release.earnedBoundary.scope.endsWith(`+plus-${latestUpdate.milestoneId}`));
 
   assert.equal(release.earnedBoundary.saturatePositiveFormalized, false);
@@ -3509,10 +3551,14 @@ test("current release pins the checked Packet selector gain-scan boundary and re
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 
-test("status and inventory publish all indexed milestones through checked Packet selector gain scans", () => {
+test("status and inventory publish the canonical latest earned milestone", () => {
   const status = json("public/pnp-status.json");
   const inventory = json("public/pnp-theorem-inventory.json");
   const index = json("public/pnp-index.json");
+  const latestUpdate = json("content/milestone-updates.json").entries[0];
+  const latestStem = milestoneFieldStem(latestUpdate.milestoneId);
+  const latestStatusStem = `lean${latestStem[0].toUpperCase()}${latestStem.slice(1)}`;
+  const latestReleaseHashes = canonicalRelease.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`];
   const milestones = status.formalPublicationMilestones;
   assert.equal(milestones.length, index.formalPublicationMilestoneCounts.total);
   assert.equal(milestones.filter((row) => row.earned === true).length, index.formalPublicationMilestoneCounts.earned);
@@ -4991,7 +5037,10 @@ test("status and inventory publish all indexed milestones through checked Packet
     (row) => row.id === "residual-terminal-packet-selector-payload-realization"
   );
   const packetSelectorGainScan = milestones.find(
-    (row) => row.id === json("content/milestone-updates.json").entries[0].milestoneId
+    (row) => row.id === "residual-terminal-packet-selector-gain-scan"
+  );
+  const packetSelectorUniverseGainScan = milestones.find(
+    (row) => row.id === latestUpdate.milestoneId
   );
   assert.equal(packetSelectorUniverse.classification, "formalized-residual-terminal-packet-selector-universe");
   assert.equal(packetSelectorUniverse.status, packetSelectorUniverse.classification);
@@ -5149,6 +5198,42 @@ test("status and inventory publish all indexed milestones through checked Packet
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanFormalized, status.leanResidualTerminalPacketSelectorGainScanFormalized);
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed, status.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed);
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanScope, status.leanResidualTerminalPacketSelectorGainScanScope);
+
+  assert.equal(packetSelectorUniverseGainScan.classification, `formalized-${latestUpdate.milestoneId}`);
+  assert.equal(packetSelectorUniverseGainScan.status, packetSelectorUniverseGainScan.classification);
+  assert.equal(packetSelectorUniverseGainScan.earned, true);
+  assert.equal(packetSelectorUniverseGainScan.allPresent, true);
+  assert.equal(packetSelectorUniverseGainScan.allAssumptionFree, false);
+  assert.equal(packetSelectorUniverseGainScan.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(packetSelectorUniverseGainScan.allKernelTypesMatch, true);
+  assert.equal(packetSelectorUniverseGainScan.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSelectorUniverseGainScan.requiredTheorems,
+    packetSelectorUniverseGainScan.theoremRows.map((row) => row.name)
+  );
+  assert.deepEqual(
+    Object.fromEntries(packetSelectorUniverseGainScan.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    latestReleaseHashes
+  );
+  for (const row of packetSelectorUniverseGainScan.theoremRows) {
+    assert.equal(row.present, true, row.name);
+    assert.equal(row.kind, "theorem", row.name);
+    assert.equal(row.actualKernelTypeSha256, row.expectedKernelTypeSha256, row.name);
+    assert.equal(row.expectedKernelTypeSha256, latestReleaseHashes[row.name], row.name);
+    assert.equal(row.kernelTypeFingerprintMatches, true, row.name);
+    const candidate = inventory.milestoneCandidates.find((entry) => entry.name === row.name);
+    assert.ok(candidate?.module, row.name);
+    assert.deepEqual(candidate.axioms, row.axioms, row.name);
+  }
+  assert.equal(packetSelectorUniverseGainScan.scope, packetSelectorUniverseGainScan.scope.trim());
+  assert.match(packetSelectorUniverseGainScan.nonClaim, /P = NP/u);
+  assert.equal(status[`${latestStatusStem}Formalized`], true);
+  assert.equal(status[`${latestStatusStem}AxiomAuditPassed`], true);
+  assert.equal(packetSelectorUniverseGainScan.scope.length > 0, true);
+  assert.equal(canonicalRelease.earnedBoundary[`${latestStem}Scope`], status[`${latestStatusStem}Scope`]);
+  assert.equal(index.claimBoundary[`${latestStatusStem}Formalized`], status[`${latestStatusStem}Formalized`]);
+  assert.equal(index.claimBoundary[`${latestStatusStem}AxiomAuditPassed`], status[`${latestStatusStem}AxiomAuditPassed`]);
+  assert.equal(index.claimBoundary[`${latestStatusStem}Scope`], status[`${latestStatusStem}Scope`]);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 
