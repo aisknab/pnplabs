@@ -383,7 +383,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /explicit global gain-coverage certificate/u);
   assert.match(globalZeroSlack.nonClaim, /generic finite R-ChargeSurplus kernel/u);
   assert.match(globalZeroSlack.nonClaim, /checked unit-charge blueprint realizer/u);
-  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing/u);
+  assert.match(globalZeroSlack.nonClaim, /checked typed-realizer contract/u);
+  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables/u);
+  assert.match(globalZeroSlack.nonClaim, /prove the blocker semantics or HB acyclicity/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -441,6 +443,59 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(
     status.nonClaims.some((nonClaim) => /checked Packet unit-charge blueprint realizer/u.test(nonClaim)
       && /not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, ZeroSlack/u.test(nonClaim)),
+    true,
+  );
+  const typedRealizerMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-typed-realizer-contract');
+  const typedRealizerHashes = release.earnedBoundary
+    .residualTerminalPacketTypedRealizerContractTheoremKernelTypeSha256;
+  assert.ok(typedRealizerMilestone);
+  assert.equal(typedRealizerMilestone.earned, true);
+  assert.equal(typedRealizerMilestone.allPresent, true);
+  assert.equal(typedRealizerMilestone.allKernelTypesMatch, true);
+  assert.equal(typedRealizerMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    typedRealizerMilestone.requiredTheorems,
+    Object.keys(typedRealizerHashes),
+  );
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketTypedRealizerContractAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketTypedRealizerContractEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketTypedRealizerContractPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketTypedRealizerContractPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketTypedRealizerContractAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketTypedRealizerContractProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of typedRealizerMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, typedRealizerHashes[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, typedRealizerHashes[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(typedRealizerMilestone.scope, /active same-or-lower-rank HN bot/u);
+  assert.match(typedRealizerMilestone.scope, /grouped-BN6 specialization covers every canonical input-relative Packet handle/u);
+  assert.match(typedRealizerMilestone.nonClaim, /Finite indices are not the manuscript's tuple-valued packet ranks/u);
+  assert.match(typedRealizerMilestone.nonClaim, /invalid faithful row is rejected rather than reinterpreted as a bot/u);
+  assert.match(typedRealizerMilestone.nonClaim, /does not construct blueprints or blockers from terminal data/u);
+  assert.equal(status.leanResidualTerminalPacketTypedRealizerContractFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketTypedRealizerContractAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketTypedRealizerContractScope,
+    release.earnedBoundary.residualTerminalPacketTypedRealizerContractScope,
+  );
+  assert.ok(index.earnedMilestones.includes(typedRealizerMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked Packet typed-realizer contract/u.test(nonClaim)
+      && /rank assignment, faithfulness predicate, claims, and activity tables remain inputs/u.test(nonClaim)
+      && /does not construct blockers, prove their semantics or HB acyclicity/u.test(nonClaim)),
     true,
   );
 
