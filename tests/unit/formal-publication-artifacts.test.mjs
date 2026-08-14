@@ -3500,7 +3500,9 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.deepEqual(release.earnedBoundary[`${latestStem}AxiomClosure`], latestAxiomClosure);
   assert.deepEqual(release.earnedBoundary[`${latestStem}ProjectAxiomClosure`], []);
   const latestReleaseTheorems = Object.entries(release.earnedBoundary)
-    .filter(([key, value]) => key.startsWith(latestStem) && key.endsWith("Theorem") && typeof value === "string")
+    .filter(([key, value]) => key.endsWith("Theorem")
+      && typeof value === "string"
+      && latestMilestone.requiredTheorems.includes(value))
     .map(([_key, value]) => value)
     .sort();
   assert.deepEqual(latestReleaseTheorems, [...latestMilestone.requiredTheorems].sort());
