@@ -5039,7 +5039,7 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   const packetSelectorGainScan = milestones.find(
     (row) => row.id === "residual-terminal-packet-selector-gain-scan"
   );
-  const packetSelectorUniverseGainScan = milestones.find(
+  const latestPublicationMilestone = milestones.find(
     (row) => row.id === latestUpdate.milestoneId
   );
   assert.equal(packetSelectorUniverse.classification, "formalized-residual-terminal-packet-selector-universe");
@@ -5199,23 +5199,23 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed, status.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed);
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanScope, status.leanResidualTerminalPacketSelectorGainScanScope);
 
-  assert.equal(packetSelectorUniverseGainScan.classification, `formalized-${latestUpdate.milestoneId}`);
-  assert.equal(packetSelectorUniverseGainScan.status, packetSelectorUniverseGainScan.classification);
-  assert.equal(packetSelectorUniverseGainScan.earned, true);
-  assert.equal(packetSelectorUniverseGainScan.allPresent, true);
-  assert.equal(packetSelectorUniverseGainScan.allAssumptionFree, false);
-  assert.equal(packetSelectorUniverseGainScan.axiomClosureUsesOnlyLeanStandardAllowlist, true);
-  assert.equal(packetSelectorUniverseGainScan.allKernelTypesMatch, true);
-  assert.equal(packetSelectorUniverseGainScan.sourceClosureFingerprintMatches, true);
+  assert.equal(latestPublicationMilestone.classification, `formalized-${latestUpdate.milestoneId}`);
+  assert.equal(latestPublicationMilestone.status, latestPublicationMilestone.classification);
+  assert.equal(latestPublicationMilestone.earned, true);
+  assert.equal(latestPublicationMilestone.allPresent, true);
+  assert.equal(latestPublicationMilestone.allAssumptionFree, false);
+  assert.equal(latestPublicationMilestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(latestPublicationMilestone.allKernelTypesMatch, true);
+  assert.equal(latestPublicationMilestone.sourceClosureFingerprintMatches, true);
   assert.deepEqual(
-    packetSelectorUniverseGainScan.requiredTheorems,
-    packetSelectorUniverseGainScan.theoremRows.map((row) => row.name)
+    latestPublicationMilestone.requiredTheorems,
+    latestPublicationMilestone.theoremRows.map((row) => row.name)
   );
   assert.deepEqual(
-    Object.fromEntries(packetSelectorUniverseGainScan.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
+    Object.fromEntries(latestPublicationMilestone.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])),
     latestReleaseHashes
   );
-  for (const row of packetSelectorUniverseGainScan.theoremRows) {
+  for (const row of latestPublicationMilestone.theoremRows) {
     assert.equal(row.present, true, row.name);
     assert.equal(row.kind, "theorem", row.name);
     assert.equal(row.actualKernelTypeSha256, row.expectedKernelTypeSha256, row.name);
@@ -5225,11 +5225,11 @@ test("status and inventory publish the canonical latest earned milestone", () =>
     assert.ok(candidate?.module, row.name);
     assert.deepEqual(candidate.axioms, row.axioms, row.name);
   }
-  assert.equal(packetSelectorUniverseGainScan.scope, packetSelectorUniverseGainScan.scope.trim());
-  assert.match(packetSelectorUniverseGainScan.nonClaim, /P = NP/u);
+  assert.equal(latestPublicationMilestone.scope, latestPublicationMilestone.scope.trim());
+  assert.match(latestPublicationMilestone.nonClaim, /P = NP/u);
   assert.equal(status[`${latestStatusStem}Formalized`], true);
   assert.equal(status[`${latestStatusStem}AxiomAuditPassed`], true);
-  assert.equal(packetSelectorUniverseGainScan.scope.length > 0, true);
+  assert.equal(latestPublicationMilestone.scope.length > 0, true);
   assert.equal(canonicalRelease.earnedBoundary[`${latestStem}Scope`], status[`${latestStatusStem}Scope`]);
   assert.equal(index.claimBoundary[`${latestStatusStem}Formalized`], status[`${latestStatusStem}Formalized`]);
   assert.equal(index.claimBoundary[`${latestStatusStem}AxiomAuditPassed`], status[`${latestStatusStem}AxiomAuditPassed`]);
