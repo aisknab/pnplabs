@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-14-residual-terminal-packet-charge-surplus",
+      "milestoneId": "residual-terminal-packet-charge-surplus",
+      "publishedAt": "2026-08-14T10:06:05Z",
+      "title": "Lean now turns a finite Packet charge surplus into a genuine strict gain",
+      "plainLanguage": [
+        "For arbitrary finite support and replacement charge ledgers, Lean now proves that an exact multiplicity-preserving occurrence pairing, with pairwise charge preserved, leaves one unmatched positive support occurrence and forces both a strictly shorter replacement ledger and a strictly lower total replacement weight. With exact gate accounting and independently proved semantic equivalence, the same kernel constructs a genuine strict equivalent gain and strict residual-slack descent without assuming either strict inequality.",
+        "The ledgers, pairing, unmatched positive charge, gate accounting, and semantic equivalence remain supplied proof-bearing inputs. Lean has not constructed a replacement or its ledger from a Packet blueprint or terminal data, proved selector faithfulness or compatibility, produced an HN, budget, or lower-rank selector blocker, closed HB or rank routing, established encoded-size or polynomial-runtime bounds, or completed global PkgC, ZeroSlack, or PCCMin. This is not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 119 of 121 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "77b275efe586e68339f6dd61abb5a2d3abcdce68",
+        "tree": "4b71837f0f4c8d078a95f003264c157a5e4d33d3",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-143",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-14-residual-terminal-packet-selector-gain-coverage",
       "milestoneId": "residual-terminal-packet-selector-gain-coverage",
       "publishedAt": "2026-08-14T05:00:00Z",

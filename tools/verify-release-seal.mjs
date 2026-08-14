@@ -4,8 +4,8 @@ import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-const CORE_COMMIT = "f149a972c366b96a3db704aaa1a23679abc21b6a";
-const CORE_TREE = "6b526cd25b1b871e1d6a65e20162c23d92d4b4ae";
+const CORE_COMMIT = "77b275efe586e68339f6dd61abb5a2d3abcdce68";
+const CORE_TREE = "4b71837f0f4c8d078a95f003264c157a5e4d33d3";
 const PROOF_COMMIT = "40a46e9e4aea8177256839415407e35ddb95c65c";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -4208,6 +4208,20 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_SCOPE = "all-finite-explic
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, an explicit proof-bearing coverage certificate requires every strict equivalent gain from the current implementation to occur as an original payload atom in an exact canonical selector source cell. Under precisely that premise, the exhaustive scan returns either a source-atom gain with strict residual descent or a proof-bearing semantic minimum and zero residual slack, while preserving the pair, balanced-triple, and full-span Packet alternatives literally.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_NON_CLAIM = "The explicit gain-coverage certificate, grouped BN6 family, and candidate implementations remain inputs. This milestone does not construct the coverage certificate from terminal data, prove selector faithfulness or compatibility, construct or polynomially enumerate replacement candidates, establish encoded-size or runtime bounds, produce typed blockers or HB/rank closure, or complete global PkgC, ZeroSlack, or PCCMin. It is conditional and not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP.";
 
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketChargeSurplus.matchedWeight_eq": { hash: "f93edb2a63467ca1efdd9589172a12b304c9ec0530b23032069613f9f8903eb6", axioms: ["propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.supportWeight_eq_matched_add_unmatched": { hash: "d22021b63f150710925e2307d9e495054aab366505e184e22872610ec9ccbbcb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.replacementWeight_eq_matched": { hash: "6b202ff6af0c4c616962b5f546846fb6ef6375594c413aa248d8a0e110d4187c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.unmatchedWeight_pos": { hash: "8036cdeee6b28489069687c2506a605a255f331afbf445b1fe05acb74b94e63f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.replacementLength_lt_supportLength": { hash: "0fddee3599dde5c5e14024968ff31be788f5e05dc7a0298a30bf0268b474c6ff", axioms: ["propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplus.replacementWeight_lt_supportWeight": { hash: "7a862aad6ccb2a54aff55331b8294fe334c8fc005da680e1e2c44672d6205489", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplusRealization.strictEquivalentGain": { hash: "22429c08765b2229a69bfb2062cf775e2793a66521cbab4bb264038b34e2496e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" },
+  "PNP.DirectWire.TerminalPacketChargeSurplusRealization.strictResidualDescent": { hash: "996f27da8b42eac154281a84232b7ae57a8f54fce85c34156640080beb462bd2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketChargeSurplus" }
+};
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_SCOPE = "all-arbitrary-finite-occurrence-ledgers-exact-multiplicity-preserving-charge-injection-positive-unmatched-support-strict-weight-gain-and-residual-descent";
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_MILESTONE_SCOPE = "For arbitrary finite support and replacement charge ledgers, exact multiplicity-preserving occurrence pairing and pairwise weight preservation leave an unmatched positive support charge and derive strict occurrence count and strict total replacement weight. When the totals exactly account for current and replacement NAND gates and semantic equivalence is proved independently, Lean constructs a genuine StrictEquivalentGain and strict reference-residual descent without assuming either strict inequality.";
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_NON_CLAIM = "The finite ledgers, exact occurrence pairing, gate accounting, and semantic equivalence remain explicit inputs. This milestone does not construct a replacement or its charge ledger from a Packet blueprint or terminal data, prove selector faithfulness or compatibility, produce BotHN, BotBUD, or a lower-rank BotSeed, close HB/rank routing, establish encoded-size or polynomial-runtime bounds, or complete global PkgC, ZeroSlack, or PCCMin. It is not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -4219,7 +4233,7 @@ const LOCKED_NAND_THRESHOLD_PUBLICATION_SCOPE = "uniform-all-bitstring-cnf-sat-t
 const LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE_SCOPE = "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder.";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_NON_CLAIM = "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP.";
 const GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE = "Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.";
-const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; and an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement candidates, or gain-coverage certificate from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, realizer, blocker, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.";
+const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; and the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement candidate, charge-surplus witness, or gain-coverage certificate from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, realizer, blocker, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.";
 const BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM = "The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.";
 const BN4_ACTIVATION_CANCELLATION_STATUS_NON_CLAIM = "The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.";
 const BN5_FULL_SHADOW_LOCALIZATION_STATUS_NON_CLAIM = "The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, full PkgC and BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.";
@@ -4771,6 +4785,17 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_RELEASE_IDENTITIES = {
   residualTerminalPacketSelectorGainCoverageTheorem: "PNP.DirectWire.terminalBN6_packet_selector_covered_gain_scan_sound"
 };
 
+const RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_RELEASE_IDENTITIES = {
+  residualTerminalPacketChargeSurplusMatchedWeightTheorem: "PNP.DirectWire.TerminalPacketChargeSurplus.matchedWeight_eq",
+  residualTerminalPacketChargeSurplusSupportWeightDecompositionTheorem: "PNP.DirectWire.TerminalPacketChargeSurplus.supportWeight_eq_matched_add_unmatched",
+  residualTerminalPacketChargeSurplusReplacementWeightTheorem: "PNP.DirectWire.TerminalPacketChargeSurplus.replacementWeight_eq_matched",
+  residualTerminalPacketChargeSurplusUnmatchedWeightPositiveTheorem: "PNP.DirectWire.TerminalPacketChargeSurplus.unmatchedWeight_pos",
+  residualTerminalPacketChargeSurplusReplacementLengthTheorem: "PNP.DirectWire.TerminalPacketChargeSurplus.replacementLength_lt_supportLength",
+  residualTerminalPacketChargeSurplusReplacementWeightStrictTheorem: "PNP.DirectWire.TerminalPacketChargeSurplus.replacementWeight_lt_supportWeight",
+  residualTerminalPacketChargeSurplusStrictGainTheorem: "PNP.DirectWire.TerminalPacketChargeSurplusRealization.strictEquivalentGain",
+  residualTerminalPacketChargeSurplusResidualDescentTheorem: "PNP.DirectWire.TerminalPacketChargeSurplusRealization.strictResidualDescent"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -4959,44 +4984,44 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 475449,
-    "sha256": "262010fc739d26415a73779c6d6659c931dae2b9c2b9e3e497396da7004404ba",
+    "bytes": 477348,
+    "sha256": "4020096c9cbb9cea6efe1e7f4b17cbee91ba32e82fb58a45b0c449f52318213a",
     "role": "current inventory-derived ninety-four-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 475449,
-    "sha256": "262010fc739d26415a73779c6d6659c931dae2b9c2b9e3e497396da7004404ba",
+    "bytes": 477348,
+    "sha256": "4020096c9cbb9cea6efe1e7f4b17cbee91ba32e82fb58a45b0c449f52318213a",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 240015,
-    "sha256": "2f8c315301c6ef5458975713ec5570bca857e31f6e9a955a2d65c95348b640f9",
+    "bytes": 242419,
+    "sha256": "0c55d98b0171ed5d72fba0cc5f12c8980d80795adb42f999cf046fbfbf904cf7",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 240015,
-    "sha256": "2f8c315301c6ef5458975713ec5570bca857e31f6e9a955a2d65c95348b640f9",
+    "bytes": 242419,
+    "sha256": "0c55d98b0171ed5d72fba0cc5f12c8980d80795adb42f999cf046fbfbf904cf7",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2183773,
-    "sha256": "0159f095d0347fced0feeadd4f9dadea1cefddc3e23801069918509b6ff7772e",
+    "bytes": 2191451,
+    "sha256": "af858640a86ca2bade03e610a998698fe911a37b4f2df8b94cf780c41683b1b8",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 18927425,
-    "sha256": "405055d9ac1742189429da35ae4f9367b4d18b977d0a337b97b92ae371c623f2",
+    "bytes": 18976883,
+    "sha256": "0d3b3475c79bf3af4f9056b3ccaaec8abffa3da4cb58e0b9609f9c7add279673",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 848194,
-    "sha256": "67cbc9555be230e59022613b62acfba99b1cc99c9e9ac15b8901064f5824affb",
+    "bytes": 851453,
+    "sha256": "7208d9ae5159c4aa949d6b5dd1ad0ee8040e82759ac04f500920a09a651b66b5",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -5069,9 +5094,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-142") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-143") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-142" || status.formalPublicationMapSha256 !== "e724b339c8e602a9f9d2d2022a4018d169d138f2af83ff7d9197257de01e2c87" || status.leanSourceClosureSha256 !== "276efe1faa91f14e04a7cbf52734664086c3ab1e43c46323adf1380efb6ed63a") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-143" || status.formalPublicationMapSha256 !== "a1f15b43d116833461d3b189d56129ad74c7507e185b7de50148837526530cb4" || status.leanSourceClosureSha256 !== "51ef16d4aec38a1c179c7620dcc67980d9842f2bb202726beabf9bdd94ac1cbe") fail("status source identity mismatch");
   const milestones = status.formalPublicationMilestones;
   if (!Array.isArray(milestones) || milestones.length < 3
       || new Set(milestones.map((row) => row.id)).size !== milestones.length
@@ -7030,6 +7055,38 @@ function assertFailClosedStatus(status) {
       && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal Packet selector gain-coverage evidence mismatch");
+  const residualTerminalPacketChargeSurplusMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-packet-charge-surplus"
+  );
+  const residualTerminalPacketChargeSurplusNames = Object.keys(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS);
+  if (!residualTerminalPacketChargeSurplusMilestone
+      || residualTerminalPacketChargeSurplusMilestone.classification !== "formalized-residual-terminal-packet-charge-surplus"
+      || residualTerminalPacketChargeSurplusMilestone.status !== "formalized-residual-terminal-packet-charge-surplus"
+      || residualTerminalPacketChargeSurplusMilestone.scope !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_MILESTONE_SCOPE
+      || residualTerminalPacketChargeSurplusMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketChargeSurplusMilestone.requiredTheorems) !== JSON.stringify(residualTerminalPacketChargeSurplusNames)
+      || residualTerminalPacketChargeSurplusMilestone.earned !== true
+      || residualTerminalPacketChargeSurplusMilestone.allPresent !== true
+      || residualTerminalPacketChargeSurplusMilestone.allAssumptionFree !== false
+      || residualTerminalPacketChargeSurplusMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalPacketChargeSurplusMilestone.allKernelTypesMatch !== true
+      || residualTerminalPacketChargeSurplusMilestone.sourceClosureFingerprintMatches !== true) fail("status residual terminal Packet charge-surplus publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS)) {
+    const row = residualTerminalPacketChargeSurplusMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status residual terminal Packet charge-surplus theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalPacketChargeSurplusFormalized === true
+      && status.leanResidualTerminalPacketChargeSurplusAxiomAuditPassed === true
+      && status.leanResidualTerminalPacketChargeSurplusScope === RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_SCOPE
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status residual terminal Packet charge-surplus evidence mismatch");
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -7846,6 +7903,12 @@ function assertInventory(inventory, status) {
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal Packet selector gain-coverage theorem mismatch: ${name}`);
     if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal Packet selector gain-coverage fingerprint mismatch: ${name}`);
   }
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory residual terminal Packet charge-surplus theorem mismatch: ${name}`);
+    if (milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory residual terminal Packet charge-surplus fingerprint mismatch: ${name}`);
+  }
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
     const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
@@ -7881,7 +7944,7 @@ function assertInventory(inventory, status) {
 
 function assertCurrentManifest(manifest, status) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
-  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-14-125") fail("current formal-publication coordinate mismatch");
+  if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-14-126") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
   if (manifest.source?.commit !== CORE_COMMIT || manifest.source?.proofCommit !== PROOF_COMMIT || manifest.source?.tree !== CORE_TREE || manifest.source?.ref !== CORE_COMMIT) fail("current manifest is not pinned to the reviewed core merge and proof commit");
   if (manifest.source?.coordinateAloneIsAuthority !== false || manifest.source?.identityRequiresCommitTreeAndArtifactHashes !== true) fail("current manifest identity policy mismatch");
@@ -9299,6 +9362,25 @@ function assertCurrentManifest(manifest, status) {
   if (!residualTerminalPacketSelectorGainCoverageHashes || Object.keys(residualTerminalPacketSelectorGainCoverageHashes).length !== 7
       || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS).every(([name, row]) => residualTerminalPacketSelectorGainCoverageHashes[name] === row.hash)) fail("current manifest residual terminal Packet selector gain-coverage fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal Packet selector gain-coverage theorem identity mismatch");
+  if (!(earned.residualTerminalPacketChargeSurplusFormalized === true
+      && earned.residualTerminalPacketChargeSurplusAxiomAuditPassed === true
+      && earned.residualTerminalPacketChargeSurplusAuditedDeclarationCount === 10
+      && earned.residualTerminalPacketChargeSurplusEmptyAxiomDeclarationCount === 2
+      && earned.residualTerminalPacketChargeSurplusPropextOnlyDeclarationCount === 2
+      && earned.residualTerminalPacketChargeSurplusPropextQuotSoundDeclarationCount === 6
+      && earned.residualTerminalPacketChargeSurplusScope === RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_SCOPE
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest residual terminal Packet charge-surplus boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalPacketChargeSurplusAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalPacketChargeSurplusProjectAxiomClosure)
+      || earned.residualTerminalPacketChargeSurplusProjectAxiomClosure.length !== 0) fail("current manifest residual terminal Packet charge-surplus axiom closure mismatch");
+  const residualTerminalPacketChargeSurplusHashes = earned.residualTerminalPacketChargeSurplusTheoremKernelTypeSha256;
+  if (!residualTerminalPacketChargeSurplusHashes || Object.keys(residualTerminalPacketChargeSurplusHashes).length !== 8
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_THEOREMS).every(([name, row]) => residualTerminalPacketChargeSurplusHashes[name] === row.hash)) fail("current manifest residual terminal Packet charge-surplus fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PACKET_CHARGE_SURPLUS_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal Packet charge-surplus theorem identity mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest residual terminal BN6 hypergraph-packet theorem identity mismatch");
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -9314,7 +9396,7 @@ function assertCurrentManifest(manifest, status) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage")) fail("current manifest earned scope omits the residual terminal BN6, PkgC, or Packet selector gain-coverage bridges");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus")) fail("current manifest earned scope omits the residual terminal BN6, PkgC, or Packet charge-surplus bridges");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
@@ -9344,7 +9426,7 @@ export function verifyReleaseSeal(options = {}) {
   ], "release seal");
   if (seal.kind !== "PNPLabsFormalPublicationSeal0" || seal.version !== 0) fail("release seal kind/version mismatch");
   if (seal.status !== "file identity only; not theorem validation") fail("release seal must deny theorem validation");
-  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-14-125") fail("release seal publication coordinate mismatch");
+  if (seal.current_publication_coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-14-126") fail("release seal publication coordinate mismatch");
   if (seal.current_core_commit !== CORE_COMMIT || seal.current_core_tree !== CORE_TREE) fail("release seal core identity mismatch");
   if (seal.theorem_gate_passed !== false || seal.public_theorem_emission_allowed !== false) fail("release seal must fail closed");
   if (seal.historical_metadata_status !== "historical-quarantined-not-current-authority") fail("release seal historical status mismatch");
