@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 470,474 | `c6ba155fdaeff66098827cb687acb5c5ba1af25eb04553ac3049dec8dabb606c` |
-| `downloads/canonical-proof-report.pdf` | 470,474 | `c6ba155fdaeff66098827cb687acb5c5ba1af25eb04553ac3049dec8dabb606c` |
-| `downloads/canonical_proof_report.tex` | 235,073 | `935d224bca96dba81dd97d2946c2e5b2c9eba6aae025c78878a7f972b318f292` |
-| `downloads/canonical-proof-report.tex` | 235,073 | `935d224bca96dba81dd97d2946c2e5b2c9eba6aae025c78878a7f972b318f292` |
-| `public/pnp-status.json` | 2,167,733 | `ff42bf51562cd4c7292c843c67e5a9d46b559bb971888408fc445afc45da4600` |
-| `public/pnp-theorem-inventory.json` | 18,697,880 | `79bfc428f4744369f565b3489b439a81656a0768b23da6b60e3b66312cc56fba` |
+| `downloads/canonical_proof_report.pdf` | 473,178 | `bcfe475938c8cb7e6a62849bce919442895b6c6fa0642151d34e0a504006ff2f` |
+| `downloads/canonical-proof-report.pdf` | 473,178 | `bcfe475938c8cb7e6a62849bce919442895b6c6fa0642151d34e0a504006ff2f` |
+| `downloads/canonical_proof_report.tex` | 237,579 | `f8d72f7b26bec141ab7a06bf226b7732dd13e60117f2cc49c2d03a8d7072ecf5` |
+| `downloads/canonical-proof-report.tex` | 237,579 | `f8d72f7b26bec141ab7a06bf226b7732dd13e60117f2cc49c2d03a8d7072ecf5` |
+| `public/pnp-status.json` | 2,176,632 | `1536aa0df294cc1bd165ae8c027d427029c5c155e955046b6b50a18db88914ba` |
+| `public/pnp-theorem-inventory.json` | 18,847,489 | `6705f67c74816c38d7c9645a25f4c85d8e0125d7b6f97c73c65bb3fcdd9cfe50` |
 
-The PDF must have 92 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 93 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout fa7436c2bb0efcc77f1a8b193b918c6d97d3d3b5
+git -C ../pnp checkout 5055eaaa82a57ee5ce0793f07e2f49ae82189169
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 28,046 public declarations, 14,561 theorem-kind declarations,
-7,359 assumption-free theorem-kind declarations, 15,033 excluded private auxiliaries, 257 modules, and
+Expected compiled inventory counts are 28,135 public declarations, 14,590 theorem-kind declarations,
+7,359 assumption-free theorem-kind declarations, 15,033 excluded private auxiliaries, 258 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,17 +96,18 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 12 reviewed theorem pins. For every arbitrary finite explicit grouped BN6 family whose
-payloads are direct-wire implementations, Lean decodes each accepted canonical Packet selector and scans every
-original payload candidate in the exact selected source cell with the executable strict-equivalent-gain checker. It
-returns a genuine source-atom strict equivalent gain with proved residual-slack descent or exact cell-local no-gain,
-while decoder rejection and every Packet branch remain exact. The focused 20-declaration audit has 3 empty closures,
-2 `propext`-only declarations, and 15 using `Quot.sound` with `propext`. The candidate implementations and grouped
-family remain proof-bearing inputs. Cell-local no-gain is not an HN, budget, or lower-rank manuscript blocker and
-does not imply global minimality or `ZeroSlack`. Lean does not construct the candidates, prove selector faithfulness
-or compatibility, connect payload mass to charge surplus, derive or group BN6 survivors from terminal data, bound
-the selector family by encoded circuit size, prove polynomial generation or runtime, complete PkgC, `ZeroSlack` or
-polynomial PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`.
+The newest milestone adds 10 reviewed theorem pins. For every arbitrary finite explicit grouped BN6 family whose
+payloads are direct-wire implementations, Lean enumerates every canonical input-relative selector handle and scans
+every original payload candidate in every exact source cell with the executable strict-equivalent-gain checker. It
+returns a canonical source-atom strict equivalent gain with an accepted code and proved residual-slack descent, or
+exact no-gain over the complete supplied selector universe, while every Packet branch remains literal. The focused 19-declaration audit
+has 9 `propext`-only declarations and 10 using `Quot.sound` with `propext`. The candidate
+implementations and grouped family remain proof-bearing inputs. Supplied-universe no-gain is not an HN, budget, or
+lower-rank manuscript blocker, does not prove selector faithfulness or compatibility, and does not imply global
+minimality or `ZeroSlack`. Lean does not construct replacement candidates, connect payload mass to charge surplus,
+derive or group BN6 survivors from terminal data, bound the selector family by encoded circuit size, prove polynomial
+enumeration or runtime, complete PkgC, `ZeroSlack` or polynomial PCCMin, put SAT in P, discharge an assumption, or
+prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

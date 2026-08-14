@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-140';
-const STATUS_SHA256 = 'ff42bf51562cd4c7292c843c67e5a9d46b559bb971888408fc445afc45da4600';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-14-140';
-const FORMAL_PUBLICATION_MAP_SHA256 = 'a1278469830a9cefe73eec19869d3713bbf600f65355df5fc7ff0fb462da0d45';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-141';
+const STATUS_SHA256 = '1536aa0df294cc1bd165ae8c027d427029c5c155e955046b6b50a18db88914ba';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-14-141';
+const FORMAL_PUBLICATION_MAP_SHA256 = '684f6bf5dc72e7dc12d1786ff1ad0c234f85087a6adb68b529e29a35bcb2f428';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-14-140';
-const INVENTORY_SHA256 = '79bfc428f4744369f565b3489b439a81656a0768b23da6b60e3b66312cc56fba';
-const SOURCE_CLOSURE_SHA256 = '07c0f641a90fec3d9e7649fef1ae68759842885eade9e47d0fddcfbc78666eba';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-14-141';
+const INVENTORY_SHA256 = '6705f67c74816c38d7c9645a25f4c85d8e0125d7b6f97c73c65bb3fcdd9cfe50';
+const SOURCE_CLOSURE_SHA256 = '794760e09b118041da76b16b5eda92a6bff496a96decf07951a7f9a0fc3d987e';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 28046,
-  theorems: 14561,
+  declarations: 28135,
+  theorems: 14590,
   assumptionFreeTheorems: 7359,
   excludedPrivateDeclarations: 15033,
-  modules: 257,
+  modules: 258,
   axioms: 4,
 });
 
@@ -4103,6 +4103,19 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_SCAN_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.terminalBN6_packet_selector_gain_scans", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorGainScan", "54570f3b2c287367fd79ed45fe365049ee662b7c2af25faaa0a7f3fef02f4325"],
 ]);
 
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.mem_packetSelectorHandles", ["propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "22cb55480f5bbe81fb8540e5e44baae06fe2a37d1f569a315d1ea6e613d77a1d"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorHandles_length", ["propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "3d685cc640a9b0eebec7e777ba4eb0ba97e849864b1a49f983701f713c0f72db"],
+  ["PNP.DirectWire.TerminalPacketSelectorHandleListGainOutcome.sound", ["propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "ad8a3c4868e04bac82feacae9f4da4240351fbaea9de3366a0bab4243495af76"],
+  ["PNP.DirectWire.TerminalPacketSelectorUniverseGainOutcome.sound", ["propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "6f1bab3555fe49689a663406f474357fa987a15a5978be77aa0c592d2942b624"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.scanPacketSelectorUniverseGains_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "c52533b196e485c0bf91c0dff1f6ae39289c30946c7e8f792786953ca68c76a8"],
+  ["PNP.DirectWire.TerminalPacketSelectorUniverseGainOutcome.gain_strictResidualDescent", ["propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "211b3c22fb1a6c4c6bf9803a38a7d04902d79dd054ebda9e3d3ea492e00a4549"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.universeGain_source_and_code", ["propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "908bfb961e16547356af3e1dacda10db97114f3f3658dcbc404fa57527ca38cc"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.universeNoGain_of_gainScan", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "b31b67e308423d933c862df8872bd70b331ac6fd86be0e1c658849a569e1f133"],
+  ["PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.universeGainScan_packet", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "373902d79d328259df3d62d93d2ab45f63191d236f52a3cc03eb2e50aeb1c418"],
+  ["PNP.DirectWire.terminalBN6_packet_selector_universe_gain_scan_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "a9a9e9ccf505501b0576f0462c43d3d9283177b2079cae2c2a8d432a43153b8f"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6236,6 +6249,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketSelectorUniverseGainScan =
+    RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6689,6 +6709,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketSelectorGainScan.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketSelectorUniverseGainScan.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -6988,6 +7011,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketSelectorGainScanMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-selector-gain-scan'
+  );
+  const residualTerminalPacketSelectorUniverseGainScanMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-selector-universe-gain-scan'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7697,6 +7723,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketSelectorGainScanFormalized === true
     && status.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed === true
     && status.leanResidualTerminalPacketSelectorGainScanScope === "all-finite-explicit-bn6-grouped-families-direct-wire-implementation-payloads-total-fail-closed-exact-source-cell-checked-strict-gain-or-cell-local-no-gain-packet-branch-preservation"
+    && residualTerminalPacketSelectorUniverseGainScanMilestone?.classification === "formalized-residual-terminal-packet-selector-universe-gain-scan"
+    && residualTerminalPacketSelectorUniverseGainScanMilestone.status === "formalized-residual-terminal-packet-selector-universe-gain-scan"
+    && residualTerminalPacketSelectorUniverseGainScanMilestone.scope === "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean enumerates every canonical input-relative selector handle, scans every original candidate payload in each exact source cell with the executable strict-equivalent-gain checker, and returns only a canonical source-atom StrictEquivalentGain or proof that the complete supplied selector universe has no such candidate. Every gain retains a canonical accepted code and strictly decreases residual slack, while the pair, balanced-triple, and full-span Packet alternatives are preserved literally."
+    && residualTerminalPacketSelectorUniverseGainScanMilestone.nonClaim === "The grouped BN6 family and candidate implementations remain explicit inputs. Family-wide no-gain is silence only for that supplied input-relative selector universe; it is not a manuscript BotHN, BotBUD, or lower-rank BotSeed, does not establish selector faithfulness or compatibility, and does not imply global minimality or ZeroSlack. This milestone does not construct replacement candidates, connect payload mass to charge surplus, derive or group survivors from terminal data, bound the family by encoded circuit size, prove polynomial enumeration or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPacketSelectorUniverseGainScanMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketSelectorUniverseGainScanMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketSelectorUniverseGainScanFormalized === true
+    && status.leanResidualTerminalPacketSelectorUniverseGainScanAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketSelectorUniverseGainScanScope === "all-finite-explicit-bn6-grouped-families-exhaustive-canonical-selector-scan-with-checked-strict-gain-or-family-local-no-gain-and-packet-branch-preservation"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7714,7 +7761,7 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; and the checked Packet scan verifies strict gains or exact local no-gain over explicit source-cell candidate payloads. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, or replacement candidates from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector/realizer and polynomial-runtime completeness. Global ZeroSlack and polynomial PCCMin therefore remain unformalized.'
+    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; and the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, or replacement candidates from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, realizer, blocker, and polynomial-runtime completeness. Global ZeroSlack and polynomial PCCMin therefore remain unformalized.'
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',
