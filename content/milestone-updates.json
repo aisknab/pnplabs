@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-14-residual-terminal-packet-selector-gain-coverage",
+      "milestoneId": "residual-terminal-packet-selector-gain-coverage",
+      "publishedAt": "2026-08-14T05:00:00Z",
+      "title": "Lean now gives the exhaustive Packet scan a conditional gain-or-zero-slack certificate",
+      "plainLanguage": [
+        "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean now consumes an explicit proof-bearing coverage certificate saying that every strict equivalent gain from the current implementation appears as an original atom in a canonical selector source cell. Under exactly that premise, the exhaustive scan returns either an original source-atom gain with strict residual-slack descent or a proof-bearing semantic minimum with zero residual slack, while preserving the pair, balanced-triple, and full-span Packet alternatives.",
+        "The gain-coverage certificate, grouped family, and candidate implementations remain supplied inputs. Lean has not constructed the certificate from terminal data, proved selector faithfulness or compatibility, constructed or polynomially enumerated replacement candidates, established encoded-size or runtime bounds, produced the manuscript blockers or rank closure, or completed global PkgC, ZeroSlack, or PCCMin. This is conditional, not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 118 of 120 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "f149a972c366b96a3db704aaa1a23679abc21b6a",
+        "tree": "6b526cd25b1b871e1d6a65e20162c23d92d4b4ae",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-142",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-14-residual-terminal-packet-selector-universe-gain-scan",
       "milestoneId": "residual-terminal-packet-selector-universe-gain-scan",
       "publishedAt": "2026-08-14T00:19:34Z",

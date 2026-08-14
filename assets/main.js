@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-141';
-const STATUS_SHA256 = '1536aa0df294cc1bd165ae8c027d427029c5c155e955046b6b50a18db88914ba';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-14-141';
-const FORMAL_PUBLICATION_MAP_SHA256 = '684f6bf5dc72e7dc12d1786ff1ad0c234f85087a6adb68b529e29a35bcb2f428';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-142';
+const STATUS_SHA256 = '0159f095d0347fced0feeadd4f9dadea1cefddc3e23801069918509b6ff7772e';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-14-142';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'e724b339c8e602a9f9d2d2022a4018d169d138f2af83ff7d9197257de01e2c87';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-14-141';
-const INVENTORY_SHA256 = '6705f67c74816c38d7c9645a25f4c85d8e0125d7b6f97c73c65bb3fcdd9cfe50';
-const SOURCE_CLOSURE_SHA256 = '794760e09b118041da76b16b5eda92a6bff496a96decf07951a7f9a0fc3d987e';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-14-142';
+const INVENTORY_SHA256 = '405055d9ac1742189429da35ae4f9367b4d18b977d0a337b97b92ae371c623f2';
+const SOURCE_CLOSURE_SHA256 = '276efe1faa91f14e04a7cbf52734664086c3ab1e43c46323adf1380efb6ed63a';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 28135,
-  theorems: 14590,
+  declarations: 28193,
+  theorems: 14607,
   assumptionFreeTheorems: 7359,
   excludedPrivateDeclarations: 15033,
-  modules: 258,
+  modules: 259,
   axioms: 4,
 });
 
@@ -4116,6 +4116,16 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_DECLARATIONS = Object
   ["PNP.DirectWire.terminalBN6_packet_selector_universe_gain_scan_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorUniverseGainScan", "a9a9e9ccf505501b0576f0462c43d3d9283177b2079cae2c2a8d432a43153b8f"],
 ]);
 
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPacketSelectorGainCoverage.noStrictEquivalentGain", ["propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "7b1ef90c27c9aceb97b855c14a94d198ef82637d27434fd2de966841a42dee32"],
+  ["PNP.DirectWire.TerminalPacketSelectorGainCoverage.residualSlack_eq_zero_of_noGain", ["propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "543a2c30236108717a975f337b6fe9e6419d61bf39adb4c0f55735df8b8473c2"],
+  ["PNP.DirectWire.TerminalPacketSelectorCoveredGainOutcome.sound", ["propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "def8db61dd5030d4c8c04c4dec62898c81955561bbdffcee39493ed2dc326380"],
+  ["PNP.DirectWire.TerminalPacketSelectorCoveredGainOutcome.residualSlack_spec", ["propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "59e59cd46feb3e8d7ccd20649d876a17ee8e240acf01b01d7d151cf4017f547c"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.scanCoveredPacketSelectorGains_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "7474e55f1b655cfc544b8edd7dbcee3afc58e8f6542eae2c327782eafead28b2"],
+  ["PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.coveredGainScan_packet", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "6e718e5038e7b09be9f0fba0772c7861094c45929f950fe9e859678ed2e1fffd"],
+  ["PNP.DirectWire.terminalBN6_packet_selector_covered_gain_scan_sound", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketSelectorGainCoverage", "bcc35fc1024c340c7eac8bb0d3359b66b3363df819002c8eea8bf4cd64272031"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6256,6 +6266,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketSelectorGainCoverage =
+    RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -6712,6 +6729,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketSelectorUniverseGainScan.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketSelectorGainCoverage.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -7014,6 +7034,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketSelectorUniverseGainScanMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-selector-universe-gain-scan'
+  );
+  const residualTerminalPacketSelectorGainCoverageMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-selector-gain-coverage'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -7744,6 +7767,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketSelectorUniverseGainScanFormalized === true
     && status.leanResidualTerminalPacketSelectorUniverseGainScanAxiomAuditPassed === true
     && status.leanResidualTerminalPacketSelectorUniverseGainScanScope === "all-finite-explicit-bn6-grouped-families-exhaustive-canonical-selector-scan-with-checked-strict-gain-or-family-local-no-gain-and-packet-branch-preservation"
+    && residualTerminalPacketSelectorGainCoverageMilestone?.classification === "formalized-residual-terminal-packet-selector-gain-coverage"
+    && residualTerminalPacketSelectorGainCoverageMilestone.status === "formalized-residual-terminal-packet-selector-gain-coverage"
+    && residualTerminalPacketSelectorGainCoverageMilestone.scope === "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, an explicit proof-bearing coverage certificate requires every strict equivalent gain from the current implementation to occur as an original payload atom in an exact canonical selector source cell. Under precisely that premise, the exhaustive scan returns either a source-atom gain with strict residual descent or a proof-bearing semantic minimum and zero residual slack, while preserving the pair, balanced-triple, and full-span Packet alternatives literally."
+    && residualTerminalPacketSelectorGainCoverageMilestone.nonClaim === "The explicit gain-coverage certificate, grouped BN6 family, and candidate implementations remain inputs. This milestone does not construct the coverage certificate from terminal data, prove selector faithfulness or compatibility, construct or polynomially enumerate replacement candidates, establish encoded-size or runtime bounds, produce typed blockers or HB/rank closure, or complete global PkgC, ZeroSlack, or PCCMin. It is conditional and not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPacketSelectorGainCoverageMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketSelectorGainCoverageMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketSelectorGainCoverageFormalized === true
+    && status.leanResidualTerminalPacketSelectorGainCoverageAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketSelectorGainCoverageScope === "all-finite-explicit-bn6-grouped-families-explicit-global-gain-coverage-certificate-conditional-source-gain-or-proof-bearing-zero-slack-with-packet-branch-preservation"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -7761,7 +7805,7 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; and the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, or replacement candidates from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, realizer, blocker, and polynomial-runtime completeness. Global ZeroSlack and polynomial PCCMin therefore remain unformalized.'
+    && globalZeroSlackPCCMinMilestone.nonClaim === 'The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; and an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement candidates, or gain-coverage certificate from terminal data; connect matching back to a contradiction; construct the permitted HN, budget, or lower-rank selector blockers; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, realizer, blocker, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.'
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',

@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `5055eaaa82a57ee5ce0793f07e2f49ae82189169`. Its generated status payload is current
+core commit `f149a972c366b96a3db704aaa1a23679abc21b6a`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the ninety-three-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the ninety-four-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `5055eaaa82a57ee5ce0793f07e2f49ae82189169` (tree `3f35e3fb250da4ed62fa68e29f69ba4bef81e6dd`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, payload-backed Packet selector seeds, exact grouped-footprint universe membership, unique canonical input-relative handles, their fail-closed unary codec, exact source-payload materialization for accepted codes, the checked source-cell candidate-gain scan, and the exhaustive supplied-universe gain scan |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,661 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `f149a972c366b96a3db704aaa1a23679abc21b6a` (tree `6b526cd25b1b871e1d6a65e20162c23d92d4b4ae`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through exhaustive supplied-universe gain scanning, and the conditional source-gain-or-ZeroSlack bridge under an explicit proof-bearing global gain-coverage certificate |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,668 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and seventeen earned scoped milestones through the exhaustive Packet selector-universe gain scan; the candidate implementations and grouped BN6 family remain supplied inputs, and supplied-universe no-gain is not a manuscript blocker, selector faithfulness or compatibility, or a global minimality result; the result does not derive the family from terminal data, bound it by circuit size, prove polynomial enumeration or runtime, complete PkgC or global routing, establish global ZeroSlack, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current ninety-three-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | One hundred and eighteen earned scoped milestones through conditional Packet selector gain-or-ZeroSlack coverage; the gain-coverage certificate, candidate implementations, and grouped BN6 family remain supplied inputs, so the result is not unconditional ZeroSlack; it does not construct the certificate from terminal data, prove selector faithfulness or compatibility, construct or polynomially enumerate replacements, establish encoded-size or runtime bounds, produce typed blockers or rank closure, complete global PkgC or global routing, or establish polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current ninety-four-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

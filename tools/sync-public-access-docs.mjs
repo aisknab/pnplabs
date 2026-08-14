@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "5055eaaa82a57ee5ce0793f07e2f49ae82189169";
-const CORE_TREE = "3f35e3fb250da4ed62fa68e29f69ba4bef81e6dd";
-const CORE_PUBLICATION_MAP_SHA256 = "684f6bf5dc72e7dc12d1786ff1ad0c234f85087a6adb68b529e29a35bcb2f428";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-141";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-141";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-141";
-const CORE_SOURCE_CLOSURE_SHA256 = "794760e09b118041da76b16b5eda92a6bff496a96decf07951a7f9a0fc3d987e";
+const CORE_COMMIT = "f149a972c366b96a3db704aaa1a23679abc21b6a";
+const CORE_TREE = "6b526cd25b1b871e1d6a65e20162c23d92d4b4ae";
+const CORE_PUBLICATION_MAP_SHA256 = "e724b339c8e602a9f9d2d2022a4018d169d138f2af83ff7d9197257de01e2c87";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-14-142";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-142";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-14-142";
+const CORE_SOURCE_CLOSURE_SHA256 = "276efe1faa91f14e04a7cbf52734664086c3ab1e43c46323adf1380efb6ed63a";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1184,6 +1184,19 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_SCOPE = "all-finite-explicit-bn6-grouped-families-exhaustive-canonical-selector-scan-with-checked-strict-gain-or-family-local-no-gain-and-packet-branch-preservation";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, Lean enumerates every canonical input-relative selector handle, scans every original candidate payload in each exact source cell with the executable strict-equivalent-gain checker, and returns only a canonical source-atom StrictEquivalentGain or proof that the complete supplied selector universe has no such candidate. Every gain retains a canonical accepted code and strictly decreases residual slack, while the pair, balanced-triple, and full-span Packet alternatives are preserved literally.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_UNIVERSE_GAIN_SCAN_NON_CLAIM = "The grouped BN6 family and candidate implementations remain explicit inputs. Family-wide no-gain is silence only for that supplied input-relative selector universe; it is not a manuscript BotHN, BotBUD, or lower-rank BotSeed, does not establish selector faithfulness or compatibility, and does not imply global minimality or ZeroSlack. This milestone does not construct replacement candidates, connect payload mass to charge surplus, derive or group survivors from terminal data, bound the family by encoded circuit size, prove polynomial enumeration or runtime, complete PkgC, ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketSelectorGainCoverage.noStrictEquivalentGain": { hash: "7b1ef90c27c9aceb97b855c14a94d198ef82637d27434fd2de966841a42dee32", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" },
+  "PNP.DirectWire.TerminalPacketSelectorGainCoverage.residualSlack_eq_zero_of_noGain": { hash: "543a2c30236108717a975f337b6fe9e6419d61bf39adb4c0f55735df8b8473c2", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" },
+  "PNP.DirectWire.TerminalPacketSelectorCoveredGainOutcome.sound": { hash: "def8db61dd5030d4c8c04c4dec62898c81955561bbdffcee39493ed2dc326380", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" },
+  "PNP.DirectWire.TerminalPacketSelectorCoveredGainOutcome.residualSlack_spec": { hash: "59e59cd46feb3e8d7ccd20649d876a17ee8e240acf01b01d7d151cf4017f547c", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.scanCoveredPacketSelectorGains_sound": { hash: "7474e55f1b655cfc544b8edd7dbcee3afc58e8f6542eae2c327782eafead28b2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" },
+  "PNP.DirectWire.TerminalPacketEncodedSelectorConclusion.coveredGainScan_packet": { hash: "6e718e5038e7b09be9f0fba0772c7861094c45929f950fe9e859678ed2e1fffd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" },
+  "PNP.DirectWire.terminalBN6_packet_selector_covered_gain_scan_sound": { hash: "bcc35fc1024c340c7eac8bb0d3359b66b3363df819002c8eea8bf4cd64272031", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorGainCoverage" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_SCOPE = "all-finite-explicit-bn6-grouped-families-explicit-global-gain-coverage-certificate-conditional-source-gain-or-proof-bearing-zero-slack-with-packet-branch-preservation";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family whose payloads are direct-wire implementations, an explicit proof-bearing coverage certificate requires every strict equivalent gain from the current implementation to occur as an original payload atom in an exact canonical selector source cell. Under precisely that premise, the exhaustive scan returns either a source-atom gain with strict residual descent or a proof-bearing semantic minimum and zero residual slack, while preserving the pair, balanced-triple, and full-span Packet alternatives literally.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_NON_CLAIM = "The explicit gain-coverage certificate, grouped BN6 family, and candidate implementations remain inputs. This milestone does not construct the coverage certificate from terminal data, prove selector faithfulness or compatibility, construct or polynomially enumerate replacement candidates, establish encoded-size or runtime bounds, produce typed blockers or HB/rank closure, or complete global PkgC, ZeroSlack, or PCCMin. It is conditional and not unconditional ZeroSlack; it does not put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3495,26 +3508,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 473178,
-    sha256: "bcfe475938c8cb7e6a62849bce919442895b6c6fa0642151d34e0a504006ff2f"
+    bytes: 475449,
+    sha256: "262010fc739d26415a73779c6d6659c931dae2b9c2b9e3e497396da7004404ba"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 237579,
-    sha256: "f8d72f7b26bec141ab7a06bf226b7732dd13e60117f2cc49c2d03a8d7072ecf5"
+    bytes: 240015,
+    sha256: "2f8c315301c6ef5458975713ec5570bca857e31f6e9a955a2d65c95348b640f9"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2176632,
-    sha256: "1536aa0df294cc1bd165ae8c027d427029c5c155e955046b6b50a18db88914ba"
+    bytes: 2183773,
+    sha256: "0159f095d0347fced0feeadd4f9dadea1cefddc3e23801069918509b6ff7772e"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 18847489,
-    sha256: "6705f67c74816c38d7c9645a25f4c85d8e0125d7b6f97c73c65bb3fcdd9cfe50"
+    bytes: 18927425,
+    sha256: "405055d9ac1742189429da35ae4f9367b4d18b977d0a337b97b92ae371c623f2"
   }
 ];
 
@@ -4508,6 +4521,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector-universe gain-scan boundary mismatch");
+  }
+  const residualTerminalPacketSelectorGainCoverageMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-selector-gain-coverage"
+  );
+  const residualTerminalPacketSelectorGainCoverageNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS);
+  if (!residualTerminalPacketSelectorGainCoverageMilestone
+      || residualTerminalPacketSelectorGainCoverageMilestone.classification !== "formalized-residual-terminal-packet-selector-gain-coverage"
+      || residualTerminalPacketSelectorGainCoverageMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_MILESTONE_SCOPE
+      || residualTerminalPacketSelectorGainCoverageMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSelectorGainCoverageMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSelectorGainCoverageNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet selector gain-coverage boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6514,6 +6543,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector-universe gain-scan boundary mismatch");
     }
+    const residualTerminalPacketSelectorGainCoverageMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-selector-gain-coverage"
+    );
+    if (!residualTerminalPacketSelectorGainCoverageMilestone
+        || residualTerminalPacketSelectorGainCoverageMilestone.earned !== true
+        || residualTerminalPacketSelectorGainCoverageMilestone.allPresent !== true
+        || residualTerminalPacketSelectorGainCoverageMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSelectorGainCoverageMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSelectorGainCoverageMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSelectorGainCoverageMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSelectorGainCoverageMilestone.classification !== "formalized-residual-terminal-packet-selector-gain-coverage"
+        || residualTerminalPacketSelectorGainCoverageMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_MILESTONE_SCOPE
+        || residualTerminalPacketSelectorGainCoverageMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSelectorGainCoverageMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSelectorGainCoverageMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSelectorGainCoverageFormalized !== true
+        || payload.leanResidualTerminalPacketSelectorGainCoverageAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSelectorGainCoverageScope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet selector gain-coverage boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -6860,6 +6923,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal Packet selector-universe gain-scan theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_GAIN_COVERAGE_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet selector gain-coverage theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(RESIDUAL_GAIN_CHAIN_THEOREMS)) {
