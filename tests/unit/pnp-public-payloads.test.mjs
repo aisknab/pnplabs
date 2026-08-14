@@ -382,7 +382,8 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(globalZeroSlack.nonClaim, globalZeroSlack.nonClaim.trim());
   assert.match(globalZeroSlack.nonClaim, /explicit global gain-coverage certificate/u);
   assert.match(globalZeroSlack.nonClaim, /generic finite R-ChargeSurplus kernel/u);
-  assert.match(globalZeroSlack.nonClaim, /charge-surplus witness/u);
+  assert.match(globalZeroSlack.nonClaim, /checked unit-charge blueprint realizer/u);
+  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -392,6 +393,56 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.ok(status.nonClaims.includes('The arbitrary-finite V53 constant-cut hypergraph rigidity theorem proves the exact q=2, q=3, and q>=4 classification for sparse positive hypergraphs with one common nonempty proper-cut value. The finite BN6 bridge now constructs such a hypergraph from explicit grouped V54 cells and retains payload witnesses, but full PkgC construction, terminal-candidate derivation and grouping, full historical BN6 and Packet selector/realizer completeness, global routes, polynomial runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.'));
   assert.ok(status.nonClaims.includes('The finite BN6 hypergraph-packet bridge transports an explicit already-grouped positive payload-bearing V54 survivor family into the exact V53 cut sum and returns the pair, mixed three-anchor, or full-span packet classification with source payload witnesses. It does not complete PkgC, derive or group survivors from a terminal candidate, establish full historical BN6 or Packet selector/realizer completeness, complete global routes, prove polynomial generation or runtime, ZeroSlack or PCCMin, SAT in P, or P = NP.'));
   assert.ok(status.nonClaims.includes('The finite Packet charge-surplus kernel derives strict replacement weight from exact occurrence accounting, pairwise weight preservation, and an unmatched positive support charge, then derives a StrictEquivalentGain only when exact gate accounting and semantic equivalence are separately proved. It does not construct a replacement or its ledger from terminal data, so it is not the complete realizer, not unconditional ZeroSlack, and not a polynomial-runtime or PCCMin result.'));
+  const unitChargeBlueprintMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-unit-charge-blueprint-realizer');
+  const unitChargeBlueprintHashes = release.earnedBoundary
+    .residualTerminalPacketUnitChargeBlueprintRealizerTheoremKernelTypeSha256;
+  assert.ok(unitChargeBlueprintMilestone);
+  assert.equal(unitChargeBlueprintMilestone.earned, true);
+  assert.equal(unitChargeBlueprintMilestone.allPresent, true);
+  assert.equal(unitChargeBlueprintMilestone.allKernelTypesMatch, true);
+  assert.equal(unitChargeBlueprintMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    unitChargeBlueprintMilestone.requiredTheorems,
+    Object.keys(unitChargeBlueprintHashes),
+  );
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of unitChargeBlueprintMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, unitChargeBlueprintHashes[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, unitChargeBlueprintHashes[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(unitChargeBlueprintMilestone.scope, /constructive exact permutation checker/u);
+  assert.match(unitChargeBlueprintMilestone.nonClaim, /Supplied-family validator silence is not BotHN, BotBUD, a lower-rank BotSeed/u);
+  assert.match(unitChargeBlueprintMilestone.nonClaim, /does not derive blueprints from terminal data/u);
+  assert.equal(status.leanResidualTerminalPacketUnitChargeBlueprintRealizerFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketUnitChargeBlueprintRealizerAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketUnitChargeBlueprintRealizerScope,
+    release.earnedBoundary.residualTerminalPacketUnitChargeBlueprintRealizerScope,
+  );
+  assert.ok(index.earnedMilestones.includes(unitChargeBlueprintMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked Packet unit-charge blueprint realizer/u.test(nonClaim)
+      && /not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, ZeroSlack/u.test(nonClaim)),
+    true,
+  );
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
@@ -5393,8 +5444,9 @@ test('static inventory prose derives changing publication totals from the canoni
     true
   );
   assert.equal(readme.includes(latestUpdate.title), true);
+  const readmePlainText = readme.replaceAll('`', '');
   for (const paragraph of latestUpdate.plainLanguage) {
-    assert.equal(readme.includes(paragraph), true, `missing latest README paragraph: ${paragraph}`);
+    assert.equal(readmePlainText.includes(paragraph), true, `missing latest README paragraph: ${paragraph}`);
   }
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationFormalized = true'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = true'), true);

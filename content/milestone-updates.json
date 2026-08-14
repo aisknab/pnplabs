@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-14-residual-terminal-packet-unit-charge-blueprint-realizer",
+      "milestoneId": "residual-terminal-packet-unit-charge-blueprint-realizer",
+      "publishedAt": "2026-08-14T14:48:08Z",
+      "title": "Lean now checks Packet unit-charge blueprints and constructs genuine strict gains",
+      "plainLanguage": [
+        "For arbitrary direct-wire input and output arities and every finite explicit grouped BN6 family of replacement blueprints, Lean now derives canonical unit-charge gate-occurrence ledgers and uses a constructive exact-permutation checker to validate every pairing, a nonempty unmatched current-gate remainder, and semantic equivalence. Every accepted blueprint mechanically instantiates the generic charge-surplus kernel, constructs a genuine strict equivalent gain and strict residual-slack descent without accepting a gate inequality, and every original blueprint atom behind every canonical selector handle is scanned while all three Packet branches remain literal.",
+        "The grouped family, candidate implementations, replacement blueprints, occurrence pairings, and unmatched lists remain supplied inputs. Validator silence is only silence for that supplied family: it is not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, semantic minimality, or ZeroSlack. Lean has not derived the blueprints from terminal data, established manuscript selector faithfulness or compatibility, closed HB or rank routing, proved encoded-size or polynomial-runtime bounds, completed global PkgC, ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 120 of 122 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "5f2d880b953cfc1f2d26b6fc0d6a97d5a1c2b8cf",
+        "tree": "e5f2d5c750718a77248b7f4f84f2d80f2897d696",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-14-144",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-14-residual-terminal-packet-charge-surplus",
       "milestoneId": "residual-terminal-packet-charge-surplus",
       "publishedAt": "2026-08-14T10:06:05Z",
