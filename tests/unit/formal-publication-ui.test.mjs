@@ -22,9 +22,10 @@ const release = JSON.parse(readFileSync('downloads/formal-publication-release.js
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
 function statusFieldStem(milestoneId) {
+  const fieldParts = { hb: 'HB' };
   return milestoneId
     .split('-')
-    .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+    .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
     .join('');
 }
 

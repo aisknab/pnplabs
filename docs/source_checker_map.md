@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `7cba7335d300b31617fde64a2c7a96c758c6fdf5`. Its generated status payload is current
+core commit `9835168ab80564fce8a7a66c0a2c2d0d9027ff07`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the ninety-six-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the ninety-seven-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `7cba7335d300b31617fde64a2c7a96c758c6fdf5` (tree `96a3a0b839c0ca66d32572dd54146b1a5e773772`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite Packet charge-surplus strict-gain kernel, the checked unit-charge blueprint realizer, and the checked finite Packet typed-realizer contract |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,694 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `9835168ab80564fce8a7a66c0a2c2d0d9027ff07` (tree `efd51b34650f9e4fd8d91bdf7258185e8256503f`) | Exact source tree reviewed and merged through computed BN2 square legitimacy, the canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite Packet charge-surplus strict-gain kernel, the checked unit-charge blueprint realizer, the checked finite Packet typed-realizer contract, and exact-rank acyclicity for a supplied finite HN and budget dependency graph |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,701 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | One hundred and twenty-one earned scoped milestones through the checked finite Packet typed-realizer contract; the rank assignment, faithfulness predicate, claims, activity tables, grouped BN6 family, candidate implementations, replacement blueprints, occurrence pairings, unmatched lists, and gain-coverage certificate remain supplied inputs; finite ranks are not manuscript packet ranks, activity is not blocker semantics, and rejection is not bot reclassification; the result does not construct blockers or blueprints from terminal data, prove selector faithfulness or compatibility, establish HB acyclicity or global selector silence, establish encoded-size or runtime bounds, complete global PkgC or global routing, or establish polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current ninety-six-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | One hundred and twenty-two earned scoped milestones through exact-rank acyclicity for a supplied finite HN and budget dependency graph; the graph, edges, rank mapping, blocker semantics, dependency completeness, active-row coverage, rank assignment, faithfulness predicate, claims, activity tables, grouped BN6 family, candidate implementations, replacement blueprints, occurrence pairings, unmatched lists, and gain-coverage certificate remain supplied inputs or open obligations; the result does not establish selector compatibility, rank-complete selector silence, the full HB negative closure, encoded-size or runtime bounds, complete global PkgC or global routing, or polynomial PCCMin; two unearned global milestones, four project axioms, and five blockers |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current ninety-seven-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

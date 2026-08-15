@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "7cba7335d300b31617fde64a2c7a96c758c6fdf5";
-const CORE_TREE = "96a3a0b839c0ca66d32572dd54146b1a5e773772";
-const CORE_PUBLICATION_MAP_SHA256 = "8a4ae068046f7bdc5813e294c539f5c7de10425af0fe37b7a45be51ec3598398";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-15-145";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-145";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-145";
-const CORE_SOURCE_CLOSURE_SHA256 = "14e701028dee5672fccf1c50219af92003fbcf6df9ab748d38161d99f2451967";
+const CORE_COMMIT = "9835168ab80564fce8a7a66c0a2c2d0d9027ff07";
+const CORE_TREE = "efd51b34650f9e4fd8d91bdf7258185e8256503f";
+const CORE_PUBLICATION_MAP_SHA256 = "ef54168ede6cd460f1f00485cedc205d9fd77890845722fd729044efd60f2103";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-15-146";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-146";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-146";
+const CORE_SOURCE_CLOSURE_SHA256 = "2220e0ceef3fdaaf0ca74bf591b45d39666e5801a830b186c5ed3e1ab0d4b662";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1241,6 +1241,19 @@ const RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_SCOPE = "all-arbitrary-finite-selector-lists-and-explicit-bn6-canonical-handle-families-data-only-gain-or-typed-hn-budget-strictly-lower-faithful-seed-validation";
 const RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_MILESTONE_SCOPE = "For arbitrary selector types, finite selector lists, positive finite rank carriers, executable faithfulness and blocker-activity tables, and data-only realizer claims, Lean accepts a faithful selector row exactly as a checked unit-charge gain, an active same-or-lower-rank HN bot, an active same-or-lower-rank budget bot, or a faithful strictly lower-rank seed bot. The list validator covers every faithful member, and its grouped-BN6 specialization covers every canonical input-relative Packet handle.";
 const RESIDUAL_TERMINAL_PACKET_TYPED_REALIZER_CONTRACT_NON_CLAIM = "The selector family, finite rank assignment, faithfulness predicate, realizer claims, hereditary activity table, and budget activity table remain explicit inputs. Finite indices are not the manuscript's tuple-valued packet ranks, and an invalid faithful row is rejected rather than reinterpreted as a bot. This milestone does not construct blueprints or blockers from terminal data, prove selector faithfulness or compatibility, establish blocker semantics or HB acyclicity, derive global selector silence, or establish encoded-size or polynomial-runtime bounds. It does not complete PkgC, unconditional ZeroSlack, or PCCMin, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketHBDependencyGraph.checkRankEmbedding_eq_true_iff": { hash: "a32276f0c8b799900766c0a752e8e5d1de4f6ff226622e5a16d307d763975115", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" },
+  "PNP.DirectWire.TerminalPacketHBDependencyGraph.check_eq_true_iff": { hash: "2c9f567d1209679bac5cc47bfb8f6bb1845136bd6332b21a59309322aee11b43", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" },
+  "PNP.DirectWire.TerminalPacketHBDependencyGraph.depends_rank_lt": { hash: "7a16a5c655f82886d6faff81d29775c54c8d6e8ed0ebe9f9994dafa082c33a4e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" },
+  "PNP.DirectWire.TerminalPacketHBDependencyGraph.depends_wellFounded": { hash: "a1493253f36ef68f1f50a34983edb6123da2de4f6f2ec9802596a5bf0050162e", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" },
+  "PNP.DirectWire.TerminalPacketHBDependencyGraph.noCycle": { hash: "ac9ec7b4a9b535599f6c803a8b8cdc5d57d317c01792960e06249a796e65692a", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" },
+  "PNP.DirectWire.TerminalPacketHBDependencyGraph.lowerSeed_rankTuple_lt_of_valid": { hash: "9881f5aef2ad8fc383da80d850b3c77846ee74ef905ecb975bdb293e716975b8", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" },
+  "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_acyclicity_contract": { hash: "676f6659a31ae0b9a854c9162f1d51762c1e8255b76c1d80021bf0f9c61d0886", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBBlockerGraphAcyclicity" }
+};
+const RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_SCOPE = "all-arbitrary-finite-hn-budget-data-edge-graphs-exhaustive-finite-to-exact-rank-embedding-strict-edge-descent-well-foundedness-and-no-directed-cycle";
+const RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_MILESTONE_SCOPE = "For arbitrary finite HN/BUD data-edge graphs, Lean exhaustively checks that the supplied finite rank indices embed strictly into the exact ten-coordinate residual rank and that every supplied dependency edge strictly descends that rank. Acceptance derives accessibility and well-foundedness of the exact supplied dependency relation, proves that it has no nonempty directed cycle, upgrades valid lower-seed bots to exact-rank descent, and composes these facts with every faithful canonical handle in an accepted Packet typed-realizer table.";
+const RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_NON_CLAIM = "The graph, edges, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. This milestone does not prove dependency completeness, blocker semantics, that every active HN or budget row records all dependencies, or construction of the graph or rank mapping from terminal data. It does not establish selector compatibility, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3552,26 +3565,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 481967,
-    sha256: "eb431091ae103b4cf84ca2efe8c19e5a2d74a0522c03cd6692837977f3bb74b1"
+    bytes: 484743,
+    sha256: "301b127be4a0e0d2e630bbb7fcf0ef69052aa676184b417350900b89a069ed3b"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 247858,
-    sha256: "5923b763bbc4b39b352ca1d02eba4d4052afdb83dc80c2d90a44e4f7e6ecae65"
+    bytes: 250390,
+    sha256: "1643b0932489b5324ed14ae50241acfe5162ada6d716fa705c71cee69f0317f1"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2208212,
-    sha256: "7214e2de3076caa534cff19abee2b2d5b5e5ee8440a1b89d11226428c0930838"
+    bytes: 2215438,
+    sha256: "50063aae82f32a42e7f915ddeabe2bd0c2fceeb961a95de8bbc3eb294ddd7f79"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 19151733,
-    sha256: "fdbdbc9aee0533c257d45fc130116320aa33c84fbbcb6ac9e271c5082478b36c"
+    bytes: 19196256,
+    sha256: "2dc8b59a739778899103da0bb30c43b29319a70da2944f41c25fc76d30a2185b"
   }
 ];
 
@@ -4629,6 +4642,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet typed-realizer contract boundary mismatch");
+  }
+  const residualTerminalHBBlockerGraphAcyclicityMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hb-blocker-graph-acyclicity"
+  );
+  const residualTerminalHBBlockerGraphAcyclicityNames =
+    Object.keys(RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_THEOREMS);
+  if (!residualTerminalHBBlockerGraphAcyclicityMilestone
+      || residualTerminalHBBlockerGraphAcyclicityMilestone.classification !== "formalized-residual-terminal-hb-blocker-graph-acyclicity"
+      || residualTerminalHBBlockerGraphAcyclicityMilestone.scope !== RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_MILESTONE_SCOPE
+      || residualTerminalHBBlockerGraphAcyclicityMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_NON_CLAIM
+      || JSON.stringify(residualTerminalHBBlockerGraphAcyclicityMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHBBlockerGraphAcyclicityNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HB blocker-graph acyclicity boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6770,6 +6799,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanZeroSlackCompletenessFormalized !== false
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet typed-realizer contract boundary mismatch");
+    }
+    const residualTerminalHBBlockerGraphAcyclicityMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hb-blocker-graph-acyclicity"
+    );
+    if (!residualTerminalHBBlockerGraphAcyclicityMilestone
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.earned !== true
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.allPresent !== true
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.allAssumptionFree !== false
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.allKernelTypesMatch !== true
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.classification !== "formalized-residual-terminal-hb-blocker-graph-acyclicity"
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.scope !== RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_MILESTONE_SCOPE
+        || residualTerminalHBBlockerGraphAcyclicityMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_NON_CLAIM
+        || JSON.stringify(residualTerminalHBBlockerGraphAcyclicityMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHBBlockerGraphAcyclicityMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHBBlockerGraphAcyclicityFormalized !== true
+        || payload.leanResidualTerminalHBBlockerGraphAcyclicityAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHBBlockerGraphAcyclicityScope !== RESIDUAL_TERMINAL_HB_BLOCKER_GRAPH_ACYCLICITY_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HB blocker-graph acyclicity boundary mismatch");
     }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");

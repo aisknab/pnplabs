@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 124,
+  "version": 125,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "7cba7335d300b31617fde64a2c7a96c758c6fdf5",
+  "sourceCommitRef": "9835168ab80564fce8a7a66c0a2c2d0d9027ff07",
   "sourceProofCommitRef": "40a46e9e4aea8177256839415407e35ddb95c65c",
-  "sourceTree": "96a3a0b839c0ca66d32572dd54146b1a5e773772",
+  "sourceTree": "efd51b34650f9e4fd8d91bdf7258185e8256503f",
   "syncedOn": "2026-08-15",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-145",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-146",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-145",
-  "leanTheoremInventorySha256": "fdbdbc9aee0533c257d45fc130116320aa33c84fbbcb6ac9e271c5082478b36c",
-  "leanSourceClosureSha256": "14e701028dee5672fccf1c50219af92003fbcf6df9ab748d38161d99f2451967",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-15-145",
-  "canonicalReportPages": 96,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-146",
+  "leanTheoremInventorySha256": "2dc8b59a739778899103da0bb30c43b29319a70da2944f41c25fc76d30a2185b",
+  "leanSourceClosureSha256": "2220e0ceef3fdaaf0ca74bf591b45d39666e5801a830b186c5ed3e1ab0d4b662",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-15-146",
+  "canonicalReportPages": 97,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 28580,
-    "leanTheoremInventoryTheoremCount": 14754,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 7434,
+    "leanTheoremInventoryDeclarationCount": 28673,
+    "leanTheoremInventoryTheoremCount": 14786,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 7452,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15047,
-    "leanTheoremInventorySourceClosureModuleCount": 262,
+    "leanTheoremInventorySourceClosureModuleCount": 263,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4261,12 +4261,15 @@
     "leanResidualTerminalPacketUnitChargeBlueprintRealizerScope": "all-finite-explicit-bn6-grouped-blueprint-families-constructive-exact-occurrence-checker-canonical-unit-charge-ledgers-semantic-validation-strict-gain-residual-descent-and-packet-preservation",
     "leanResidualTerminalPacketTypedRealizerContractFormalized": true,
     "leanResidualTerminalPacketTypedRealizerContractAxiomAuditPassed": true,
-    "leanResidualTerminalPacketTypedRealizerContractScope": "all-arbitrary-finite-selector-lists-and-explicit-bn6-canonical-handle-families-data-only-gain-or-typed-hn-budget-strictly-lower-faithful-seed-validation"
+    "leanResidualTerminalPacketTypedRealizerContractScope": "all-arbitrary-finite-selector-lists-and-explicit-bn6-canonical-handle-families-data-only-gain-or-typed-hn-budget-strictly-lower-faithful-seed-validation",
+    "leanResidualTerminalHBBlockerGraphAcyclicityFormalized": true,
+    "leanResidualTerminalHBBlockerGraphAcyclicityAxiomAuditPassed": true,
+    "leanResidualTerminalHBBlockerGraphAcyclicityScope": "all-arbitrary-finite-hn-budget-data-edge-graphs-exhaustive-finite-to-exact-rank-embedding-strict-edge-descent-well-foundedness-and-no-directed-cycle"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 121,
+    "earned": 122,
     "unearned": 2,
-    "total": 123
+    "total": 124
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4389,6 +4392,7 @@
     "residual-terminal-packet-charge-surplus",
     "residual-terminal-packet-unit-charge-blueprint-realizer",
     "residual-terminal-packet-typed-realizer-contract",
+    "residual-terminal-hb-blocker-graph-acyclicity",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [
@@ -4804,6 +4808,7 @@
     "The finite Packet charge-surplus kernel accepts exact finite support and replacement ledgers, multiplicity-preserving occurrence pairing, one unmatched positive support charge, exact gate accounting, and independent semantic equivalence. It derives strict occurrence and weight inequalities, a genuine StrictEquivalentGain, and strict residual descent. It does not construct the replacement, ledger, or witness from Packet or terminal data, prove selector faithfulness or compatibility, produce BotHN, BotBUD, or a lower-rank BotSeed, close HB or rank routing, establish encoded-size or polynomial runtime, or complete global PkgC, unconditional ZeroSlack, or PCCMin.",
     "The checked Packet unit-charge blueprint realizer derives canonical unit-charge ledgers, a genuine StrictEquivalentGain, and strict residual descent only when a constructive exact-multiplicity validator accepts one supplied blueprint and semantic equivalence. It scans every blueprint atom behind every canonical handle in one supplied family. The blueprints, occurrence pairings, family, and candidates remain explicit inputs; family-local validator silence is not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, ZeroSlack, selector completeness, or a polynomial-runtime result.",
     "The checked Packet typed-realizer contract accepts each faithful row in an arbitrary finite supplied selector table only as a checked unit-charge gain, active same-or-lower-rank HN bot, active same-or-lower-rank budget bot, or faithful strictly lower-rank seed bot; its grouped-BN6 specialization covers every canonical handle. The finite rank assignment, faithfulness predicate, claims, and activity tables remain explicit inputs. These ranks are not the manuscript's tuple-valued packet ranks, and the result does not construct blockers, prove their semantics or HB acyclicity, establish global selector silence, ZeroSlack, or polynomial realizer completeness.",
+    "The checked exact-rank HB blocker-graph layer proves strict ten-coordinate rank descent, well-foundedness, and absence of nonempty directed cycles only for one supplied finite HN/BUD data-edge graph with a supplied exact rank embedding. It upgrades valid lower-seed bots to exact-rank descent and composes with an accepted typed-realizer table, but does not prove graph or dependency completeness, blocker semantics, active-row coverage, selector compatibility, rank-complete silence, the full HB.NegativeClosure theorem, ZeroSlack, PCCMin, or polynomial runtime.",
     "The current Lean bridge is partial and does not contain the required concrete, assumption-audited root theorem.",
     "The pinned Lean library/root-status build is reconstruction data, not a proof of P = NP.",
     "Blank-delimited Tape.outputBits removes dependence on the unobservable represented-list boundary; Tape.handoffTarget itself is a pure canonical specification. PipelineOutputHandoff is a separate executable internal represented handoff, not terminal raw output normalization.",

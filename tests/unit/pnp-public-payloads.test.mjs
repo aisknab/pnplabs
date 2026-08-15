@@ -18,10 +18,20 @@ const INVENTORY_COORDINATE = canonicalRelease.artifacts.theoremInventory.coordin
 const INVENTORY_SHA256 = canonicalRelease.artifacts.theoremInventory.sha256;
 const INVENTORY_BYTES = canonicalRelease.artifacts.theoremInventory.bytes;
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
+const MILESTONE_FIELD_PARTS = Object.freeze({ hb: 'HB' });
 const milestoneFieldStem = (milestoneId) => milestoneId
   .split('-')
-  .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+  .map((part) => MILESTONE_FIELD_PARTS[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
   .join('');
+const HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketHBDependencyGraph.checkRankEmbedding_eq_true_iff': 'a32276f0c8b799900766c0a752e8e5d1de4f6ff226622e5a16d307d763975115',
+  'PNP.DirectWire.TerminalPacketHBDependencyGraph.check_eq_true_iff': '2c9f567d1209679bac5cc47bfb8f6bb1845136bd6332b21a59309322aee11b43',
+  'PNP.DirectWire.TerminalPacketHBDependencyGraph.depends_rank_lt': '7a16a5c655f82886d6faff81d29775c54c8d6e8ed0ebe9f9994dafa082c33a4e',
+  'PNP.DirectWire.TerminalPacketHBDependencyGraph.depends_wellFounded': 'a1493253f36ef68f1f50a34983edb6123da2de4f6f2ec9802596a5bf0050162e',
+  'PNP.DirectWire.TerminalPacketHBDependencyGraph.noCycle': 'ac9ec7b4a9b535599f6c803a8b8cdc5d57d317c01792960e06249a796e65692a',
+  'PNP.DirectWire.TerminalPacketHBDependencyGraph.lowerSeed_rankTuple_lt_of_valid': '9881f5aef2ad8fc383da80d850b3c77846ee74ef905ecb975bdb293e716975b8',
+  'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_acyclicity_contract': '676f6659a31ae0b9a854c9162f1d51762c1e8255b76c1d80021bf0f9c61d0886',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -384,8 +394,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /generic finite R-ChargeSurplus kernel/u);
   assert.match(globalZeroSlack.nonClaim, /checked unit-charge blueprint realizer/u);
   assert.match(globalZeroSlack.nonClaim, /checked typed-realizer contract/u);
+  assert.match(globalZeroSlack.nonClaim, /checked exact-rank HB graph contract/u);
+  assert.match(globalZeroSlack.nonClaim, /excludes all nonempty directed cycles/u);
   assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables/u);
-  assert.match(globalZeroSlack.nonClaim, /prove the blocker semantics or HB acyclicity/u);
+  assert.match(globalZeroSlack.nonClaim, /prove blocker semantics, dependency completeness, or coverage of every active blocker row/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -496,6 +508,52 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /checked Packet typed-realizer contract/u.test(nonClaim)
       && /rank assignment, faithfulness predicate, claims, and activity tables remain inputs/u.test(nonClaim)
       && /does not construct blockers, prove their semantics or HB acyclicity/u.test(nonClaim)),
+    true,
+  );
+  const hbGraphMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hb-blocker-graph-acyclicity');
+  const hbGraphHashes = release.earnedBoundary
+    .residualTerminalHBBlockerGraphAcyclicityTheoremKernelTypeSha256;
+  assert.ok(hbGraphMilestone);
+  assert.equal(hbGraphMilestone.earned, true);
+  assert.equal(hbGraphMilestone.allPresent, true);
+  assert.equal(hbGraphMilestone.allKernelTypesMatch, true);
+  assert.equal(hbGraphMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(hbGraphHashes, HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256);
+  assert.deepEqual(hbGraphMilestone.requiredTheorems, Object.keys(HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256));
+  assert.equal(release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityAuditedDeclarationCount, 22);
+  assert.equal(release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityEmptyAxiomDeclarationCount, 12);
+  assert.equal(release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityPropextOnlyDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityPropextQuotSoundDeclarationCount, 9);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityProjectAxiomClosure, []);
+  for (const theoremRow of hbGraphMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(hbGraphMilestone.scope, /every supplied dependency edge strictly descends that rank/u);
+  assert.match(hbGraphMilestone.scope, /no nonempty directed cycle/u);
+  assert.match(hbGraphMilestone.nonClaim, /does not prove dependency completeness, blocker semantics/u);
+  assert.match(hbGraphMilestone.nonClaim, /full HB\.NegativeClosure theorem/u);
+  assert.equal(status.leanResidualTerminalHBBlockerGraphAcyclicityFormalized, true);
+  assert.equal(status.leanResidualTerminalHBBlockerGraphAcyclicityAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHBBlockerGraphAcyclicityScope,
+    release.earnedBoundary.residualTerminalHBBlockerGraphAcyclicityScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hbGraphMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked HB blocker-graph acyclicity contract/u.test(nonClaim)
+      && /graph, edges, rank mapping, blocker semantics, and dependency completeness remain inputs or open obligations/u.test(nonClaim)
+      && /not the full HB negative closure, rank-complete selector silence, ZeroSlack, or polynomial PCCMin/u.test(nonClaim)),
     true,
   );
 

@@ -32,9 +32,10 @@ const publishedUpdates = JSON.parse(readFileSync(
 ));
 
 const latestPublishedMilestoneId = publishedUpdates.entries[0].milestoneId;
+const milestoneFieldParts = Object.freeze({ hb: "HB" });
 const latestPublishedMilestoneFieldStem = latestPublishedMilestoneId
   .split("-")
-  .map((part) => `${part[0].toUpperCase()}${part.slice(1)}`)
+  .map((part) => milestoneFieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
   .join("");
 const latestPublishedMilestoneReleasePrefix =
   `${latestPublishedMilestoneFieldStem[0].toLowerCase()}${latestPublishedMilestoneFieldStem.slice(1)}`;

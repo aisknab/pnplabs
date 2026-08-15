@@ -1095,7 +1095,12 @@ function json(relativePath) {
 }
 
 function milestoneFieldStem(milestoneId) {
-  return milestoneId.replace(/-([a-z0-9])/gu, (_match, character) => character.toUpperCase());
+  const fieldParts = { hb: "HB" };
+  const pascalStem = milestoneId
+    .split("-")
+    .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
+    .join("");
+  return `${pascalStem[0].toLowerCase()}${pascalStem.slice(1)}`;
 }
 
 function copySealFixture(t) {
