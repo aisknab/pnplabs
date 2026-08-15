@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "ff003dc1e86367a072e783d7fb8e32d374feed05";
-const CORE_TREE = "31387d243fbcfa8fa62f683377c238861b0830f9";
-const CORE_PUBLICATION_MAP_SHA256 = "92427491f9d889c4b841e976b2ba51a799fd7ff06af6366a1d41a8bfb805acc0";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-15-148";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-148";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-148";
-const CORE_SOURCE_CLOSURE_SHA256 = "303bac031ee4a1c6e2456e1f9d2ed054b1e9f8a86f07f729157beadbda62100b";
+const CORE_COMMIT = "f3ca3346b3cd2b33e1259321297b6149ac5c52db";
+const CORE_TREE = "893ca3bf26930886e798ce69e1f846fd96460e8b";
+const CORE_PUBLICATION_MAP_SHA256 = "69626d40ed96dc8bca955a0579c29caaf5387067658e8ebbe431463a36e892fe";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-15-149";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-149";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-149";
+const CORE_SOURCE_CLOSURE_SHA256 = "d007c127195b4832e22750de2429d06d157b27e3a047f577ad871030957989d3";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1284,6 +1284,16 @@ const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS = {
 const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_SCOPE = "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition";
 const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE = "For every arbitrary finite rank carrier and supplied typed-realizer environment, Lean exhaustively checks that every active HN or budget node has an active dependency in its own total row and independently checks strict exact-rank descent for every row dependency. Well-founded induction then proves every supplied HN and budget activity bit is false. Composition with every faithful canonical grouped-BN6 handle eliminates HN/BUD typed bots while preserving a genuine checked strict gain or a faithful strictly lower-rank seed.";
 const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM = "The activity bits, dependency rows, finite-to-exact rank mapping, selector family, faithfulness predicate, and realizer claims remain explicit inputs. The local check does not derive blocker activity, blocker semantics, or semantic dependency completeness from terminal data. It eliminates HN/BUD bots only after the supplied tables pass; a checked gain or faithful lower-rank seed remains. This milestone does not establish selector compatibility, gain exclusion, lower-seed closure, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithful_of_noStrictEquivalentGain": { hash: "bfc7dfbf112c6ea12d1bc9f80bf813aa4fa140f05315d57e5ceb12596cb1d5de", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBSelectorSilenceClosure" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithful_of_gainCoverageNoGain": { hash: "fd05e64f3dbf4438bccd34f960ebcf7c186892e9bb70aadc068351c494d806ad", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBSelectorSilenceClosure" },
+  "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_closure_contract": { hash: "bb80815c42a2ad17e8cfcb0d7764233806489e547875433c9ab8cb5c4191b899", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBSelectorSilenceClosure" },
+  "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_gain_coverage_contract": { hash: "353ae4076dfb315ae6c6e0b82396ab858e9a8755f84f89d44c257e744c43ad74", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBSelectorSilenceClosure" }
+};
+const RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_SCOPE = "all-arbitrary-finite-canonical-selector-tables-explicit-global-semantic-gain-exclusion-checked-hn-budget-inactivity-strong-rank-induction-and-rank-complete-selector-silence";
+const RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_MILESTONE_SCOPE = "For every arbitrary finite accepted typed-realizer table, checked HN/BUD active-dependency closure and semantic exclusion of every strict equivalent gain leave a faithful selector only if there is a faithful selector at strictly lower finite rank. Strong induction proves every canonical selector in the supplied grouped-BN6 family nonfaithful. A second theorem obtains the global gain-exclusion premise from the existing explicit gain-coverage certificate and exact source-cell no-gain evidence.";
+const RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_NON_CLAIM = "The global semantic gain exclusion is an explicit proof-bearing premise. The coverage specialization still requires a supplied certificate covering every strict equivalent gain plus exact source-cell no-gain evidence. The grouped family, finite rank and faithfulness tables, realizer claims, blocker activity, dependency rows, and rank map remain explicit inputs. This does not establish selector faithfulness or compatibility, construct those inputs from terminal data, derive blocker semantics or semantic dependency completeness, prove the unconditional HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3595,26 +3605,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 489530,
-    sha256: "626e21c1e82fa9af5ba97b869d4f20955544649854aa74efd5d2fa453c7ed686"
+    bytes: 492199,
+    sha256: "7a69eeac4e9056f0f3054fe9ba412c06d22af7da7eb328270ce242f346b6b0cc"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 255851,
-    sha256: "dc435d35cba2a8bad8604cc780eaa296a847d287996fe57b26a0ac971e2bee21"
+    bytes: 258441,
+    sha256: "aece396ab23a3d8fde5e4f92f5ac8281c5852b541f489df11015dcefe944747f"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2232774,
-    sha256: "8b2831251aca7bcb7c3b8fb03468261cd72d2925b50ea5db16569f99948861cd"
+    bytes: 2238797,
+    sha256: "aaaece73e9fa184c770014d20bb0235386954905dd54e66c591663f6bf076258"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 19289357,
-    sha256: "af545fd828b34a034ec0e4e83cf6a97c96cae635d6860596b36c415dbaac22bf"
+    bytes: 19374280,
+    sha256: "3dbdf51fd5dccaf5e128c4ea38300b01df8904b349f180ee03529e60571c4d3c"
   }
 ];
 
@@ -4720,6 +4730,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal HB active-dependency closure boundary mismatch");
+  }
+  const residualTerminalHBSelectorSilenceClosureMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hb-selector-silence-closure"
+  );
+  const residualTerminalHBSelectorSilenceClosureNames =
+    Object.keys(RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_THEOREMS);
+  if (!residualTerminalHBSelectorSilenceClosureMilestone
+      || residualTerminalHBSelectorSilenceClosureMilestone.classification !== "formalized-residual-terminal-hb-selector-silence-closure"
+      || residualTerminalHBSelectorSilenceClosureMilestone.scope !== RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_MILESTONE_SCOPE
+      || residualTerminalHBSelectorSilenceClosureMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_NON_CLAIM
+      || JSON.stringify(residualTerminalHBSelectorSilenceClosureMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHBSelectorSilenceClosureNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HB selector-silence closure boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6964,6 +6990,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal HB active-dependency closure boundary mismatch");
     }
+    const residualTerminalHBSelectorSilenceClosureMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hb-selector-silence-closure"
+    );
+    if (!residualTerminalHBSelectorSilenceClosureMilestone
+        || residualTerminalHBSelectorSilenceClosureMilestone.earned !== true
+        || residualTerminalHBSelectorSilenceClosureMilestone.allPresent !== true
+        || residualTerminalHBSelectorSilenceClosureMilestone.allAssumptionFree !== false
+        || residualTerminalHBSelectorSilenceClosureMilestone.allKernelTypesMatch !== true
+        || residualTerminalHBSelectorSilenceClosureMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHBSelectorSilenceClosureMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHBSelectorSilenceClosureMilestone.classification !== "formalized-residual-terminal-hb-selector-silence-closure"
+        || residualTerminalHBSelectorSilenceClosureMilestone.scope !== RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_MILESTONE_SCOPE
+        || residualTerminalHBSelectorSilenceClosureMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_NON_CLAIM
+        || JSON.stringify(residualTerminalHBSelectorSilenceClosureMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHBSelectorSilenceClosureMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHBSelectorSilenceClosureFormalized !== true
+        || payload.leanResidualTerminalHBSelectorSilenceClosureAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHBSelectorSilenceClosureScope !== RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HB selector-silence closure boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -7172,6 +7232,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal HB active-dependency closure theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HB_SELECTOR_SILENCE_CLOSURE_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal HB selector-silence closure theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {

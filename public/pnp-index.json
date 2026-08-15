@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 127,
+  "version": 128,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "ff003dc1e86367a072e783d7fb8e32d374feed05",
+  "sourceCommitRef": "f3ca3346b3cd2b33e1259321297b6149ac5c52db",
   "sourceProofCommitRef": "40a46e9e4aea8177256839415407e35ddb95c65c",
-  "sourceTree": "31387d243fbcfa8fa62f683377c238861b0830f9",
+  "sourceTree": "893ca3bf26930886e798ce69e1f846fd96460e8b",
   "syncedOn": "2026-08-15",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-148",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-149",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-148",
-  "leanTheoremInventorySha256": "af545fd828b34a034ec0e4e83cf6a97c96cae635d6860596b36c415dbaac22bf",
-  "leanSourceClosureSha256": "303bac031ee4a1c6e2456e1f9d2ed054b1e9f8a86f07f729157beadbda62100b",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-15-148",
-  "canonicalReportPages": 99,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-149",
+  "leanTheoremInventorySha256": "3dbdf51fd5dccaf5e128c4ea38300b01df8904b349f180ee03529e60571c4d3c",
+  "leanSourceClosureSha256": "d007c127195b4832e22750de2429d06d157b27e3a047f577ad871030957989d3",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-15-149",
+  "canonicalReportPages": 100,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 28736,
-    "leanTheoremInventoryTheoremCount": 14820,
+    "leanTheoremInventoryDeclarationCount": 28740,
+    "leanTheoremInventoryTheoremCount": 14824,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7462,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15047,
-    "leanTheoremInventorySourceClosureModuleCount": 265,
+    "leanTheoremInventorySourceClosureModuleCount": 266,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4270,12 +4270,15 @@
     "leanResidualTerminalHBDependencyTableClosureScope": "all-arbitrary-finite-hn-budget-total-dependency-tables-exact-row-to-edge-coverage-strict-exact-rank-descent-well-founded-induction-and-no-directed-cycle",
     "leanResidualTerminalHBActiveDependencyClosureFormalized": true,
     "leanResidualTerminalHBActiveDependencyClosureAxiomAuditPassed": true,
-    "leanResidualTerminalHBActiveDependencyClosureScope": "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition"
+    "leanResidualTerminalHBActiveDependencyClosureScope": "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition",
+    "leanResidualTerminalHBSelectorSilenceClosureFormalized": true,
+    "leanResidualTerminalHBSelectorSilenceClosureAxiomAuditPassed": true,
+    "leanResidualTerminalHBSelectorSilenceClosureScope": "all-arbitrary-finite-canonical-selector-tables-explicit-global-semantic-gain-exclusion-checked-hn-budget-inactivity-strong-rank-induction-and-rank-complete-selector-silence"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 124,
+    "earned": 125,
     "unearned": 2,
-    "total": 126
+    "total": 127
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4401,6 +4404,7 @@
     "residual-terminal-hb-blocker-graph-acyclicity",
     "residual-terminal-hb-dependency-table-closure",
     "residual-terminal-hb-active-dependency-closure",
+    "residual-terminal-hb-selector-silence-closure",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [
@@ -4948,6 +4952,7 @@
     "PNP.Main.ConcretePEqualsNP now names the inactive finite charged-pipeline target, while PNP.Main.p_eq_np remains absent.",
     "All five reviewed activation fingerprints remain intentionally unset, so target presence alone cannot open the concrete publication gate.",
     "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only.",
-    "The checked HB active-dependency closure exhaustively verifies that every active supplied HN/BUD node names an active dependency in its total row and combines that local condition with strict exact-rank descent. Well-founded induction forces every supplied activity bit to be false and removes HN/BUD bot branches from the checked typed-realizer result. Activity bits, dependency rows, rank mapping, selector data, blocker semantics, and semantic dependency completeness remain supplied or open; gain and lower-seed branches remain, so this is not rank-complete selector silence, the full HB negative closure, ZeroSlack, or polynomial PCCMin."
+    "The checked HB active-dependency closure exhaustively verifies that every active supplied HN/BUD node names an active dependency in its total row and combines that local condition with strict exact-rank descent. Well-founded induction forces every supplied activity bit to be false and removes HN/BUD bot branches from the checked typed-realizer result. Activity bits, dependency rows, rank mapping, selector data, blocker semantics, and semantic dependency completeness remain supplied or open; gain and lower-seed branches remain, so this is not rank-complete selector silence, the full HB negative closure, ZeroSlack, or polynomial PCCMin.",
+    "The conditional selector-silence rank closure combines checked HN/BUD inactivity with an explicit global semantic gain exclusion premise and strong induction on the supplied finite selector ranks. It proves every canonical handle in that accepted supplied table nonfaithful. The gain-coverage specialization still consumes an explicit coverage certificate plus source-cell no-gain. This does not establish selector faithfulness or compatibility, construct the tables or certificate from terminal data, prove blocker semantics or semantic dependency completeness, establish unconditional HB negative closure or ZeroSlack, or provide encoded-size and polynomial-runtime bounds."
   ]
 }

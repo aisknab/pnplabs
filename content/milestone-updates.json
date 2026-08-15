@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-15-residual-terminal-hb-selector-silence-closure",
+      "milestoneId": "residual-terminal-hb-selector-silence-closure",
+      "publishedAt": "2026-08-15T13:49:08Z",
+      "title": "Lean now closes every supplied selector under explicit global no-gain",
+      "plainLanguage": [
+        "For every accepted finite typed-realizer table, Lean now combines checked HN and budget inactivity with an explicit semantic premise that no strict equivalent gain exists. Any faithful selector would then force a faithful selector at strictly lower finite rank, so strong induction proves every canonical selector in the supplied grouped family nonfaithful. A second theorem obtains the no-gain premise from an explicit gain-coverage certificate plus exact source-cell no-gain evidence.",
+        "The global semantic gain exclusion is an explicit proof-bearing premise, and the specialization still consumes a supplied coverage certificate. The grouped family, selector table, finite ranks, faithfulness predicate, realizer claims, blocker activity, dependency rows, and rank map remain supplied inputs rather than constructions from terminal data. This is not selector faithfulness or compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, unconditional ZeroSlack, PCCMin, a polynomial-runtime result, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 125 of 127 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "f3ca3346b3cd2b33e1259321297b6149ac5c52db",
+        "tree": "893ca3bf26930886e798ce69e1f846fd96460e8b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-149",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-15-residual-terminal-hb-active-dependency-closure",
       "milestoneId": "residual-terminal-hb-active-dependency-closure",
       "publishedAt": "2026-08-15T09:23:46Z",
