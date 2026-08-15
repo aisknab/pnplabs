@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-15-residual-terminal-hb-blocker-graph-acyclicity",
+      "milestoneId": "residual-terminal-hb-blocker-graph-acyclicity",
+      "publishedAt": "2026-08-15T00:13:17Z",
+      "title": "Lean now excludes cycles in a checked exact-rank HB dependency graph",
+      "plainLanguage": [
+        "For any finite HN and budget dependency graph supplied as data, Lean now checks that every finite rank index maps into the exact ten-coordinate residual rank and that every listed edge strictly lowers that rank. An accepted graph is therefore accessible and well founded, cannot contain a nonempty directed cycle, and turns every valid lower-seed outcome into exact-rank descent. The result also composes with every faithful canonical handle in an accepted Packet typed-realizer table.",
+        "The graph, edges, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker-activity tables, and realizer claims remain supplied inputs. Lean has not proved that the graph contains every dependency, that blocker activity has the manuscript's blocker semantics, that every active HN or budget row records all dependencies, or that terminal data constructs the graph or rank mapping. This is not rank-complete selector silence, the full HB negative-closure theorem, unconditional ZeroSlack, PCCMin, a polynomial-runtime result, SAT in P, removal of a project assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 122 of 124 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "9835168ab80564fce8a7a66c0a2c2d0d9027ff07",
+        "tree": "efd51b34650f9e4fd8d91bdf7258185e8256503f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-146",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-14-residual-terminal-packet-typed-realizer-contract",
       "milestoneId": "residual-terminal-packet-typed-realizer-contract",
       "publishedAt": "2026-08-14T19:46:21Z",

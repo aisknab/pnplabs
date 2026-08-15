@@ -64,10 +64,11 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Lean now checks a finite Packet typed-realizer table</h2>
-          <p>For arbitrary selector types, finite selector lists, positive finite rank carriers, executable faithfulness and blocker-activity tables, and data-only realizer claims, Lean now accepts each faithful row only as one of four checked outcomes: a unit-charge blueprint that constructs a genuine strict equivalent gain, an active same-or-lower-rank hereditary blocker, an active same-or-lower-rank budget blocker, or a faithful strictly lower-rank seed. The generic list checker covers every faithful member, and its grouped-BN6 specialization covers every canonical input-relative Packet handle.</p>
-          <p>The selector family, finite rank assignment, faithfulness predicate, claims, hereditary and budget activity tables, and blueprints remain supplied inputs. The finite indices are not the manuscript's tuple-valued packet ranks, blocker activity is not blocker semantics, and an invalid faithful row is rejected rather than reinterpreted as a bot. Lean has not constructed blockers or blueprints from terminal data, proved selector faithfulness or compatibility, established HB acyclicity or global selector silence, bounded encoding size or runtime, completed PkgC, unconditional ZeroSlack, or PCCMin, put SAT in P, removed a project assumption, or proved P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 121 of 123 scoped publication rows.</p>
-          <a href="updates.html#2026-08-14-residual-terminal-packet-typed-realizer-contract">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Lean now excludes cycles in a checked exact-rank HB dependency graph</h2>
+          <p>For any finite HN and budget dependency graph supplied as data, Lean now checks that every finite rank index maps into the exact ten-coordinate residual rank and that every listed edge strictly lowers that rank. An accepted graph is therefore accessible and well founded, cannot contain a nonempty directed cycle, and turns every valid lower-seed outcome into exact-rank descent. The result also composes with every faithful canonical handle in an accepted Packet typed-realizer table.</p>
+          <p><strong>Checked scope:</strong> For arbitrary finite HN/BUD data-edge graphs, Lean exhaustively checks that the supplied finite rank indices embed strictly into the exact ten-coordinate residual rank and that every supplied dependency edge strictly descends that rank. Acceptance derives accessibility and well-foundedness of the exact supplied dependency relation, proves that it has no nonempty directed cycle, upgrades valid lower-seed bots to exact-rank descent, and composes these facts with every faithful canonical handle in an accepted Packet typed-realizer table.</p>
+          <p>The graph, edges, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker-activity tables, and realizer claims remain supplied inputs. Lean has not proved that the graph contains every dependency, that blocker activity has the manuscript's blocker semantics, that every active HN or budget row records all dependencies, or that terminal data constructs the graph or rank mapping. This is not rank-complete selector silence, the full HB negative-closure theorem, unconditional ZeroSlack, PCCMin, a polynomial-runtime result, SAT in P, removal of a project assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 122 of 124 scoped publication rows.</p>
+          <a href="updates.html#2026-08-15-residual-terminal-hb-blocker-graph-acyclicity">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +76,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> a checked finite Packet table now accepts each faithful selector row only as a genuine unit-charge gain, an active same-or-lower-rank hereditary blocker, an active same-or-lower-rank budget blocker, or a faithful strictly lower-rank seed. The supplied ranks, faithfulness predicate, claims, activity tables, and blueprints remain inputs; activity is not blocker semantics, and this is not global selector silence or ZeroSlack. Earlier earned scope includes a polynomial many-one reduction to <code>EncodedLockedNANDThreshold</code>, not a target decider. This does not construct blockers or blueprints from terminal data, prove selector faithfulness or compatibility, establish HB acyclicity, complete polynomial PCCMin, discharge the root boundary, or prove P = NP.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> a checked finite HN and budget dependency graph now maps its supplied rank indices into the exact ten-coordinate residual rank and accepts only strictly descending edges, which proves that the supplied relation is well founded and has no nonempty directed cycle. The graph, edges, mapping, blocker semantics, dependency completeness, and active-row coverage remain inputs or open obligations. Earlier earned scope includes the finite Packet typed-realizer validator and a polynomial many-one reduction to <code>EncodedLockedNANDThreshold</code>, not a target decider. This is not rank-complete selector silence, the full HB negative closure, global ZeroSlack, polynomial PCCMin, a discharged root boundary, or P = NP.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -362,6 +363,9 @@ leanResidualTerminalPacketUnitChargeBlueprintRealizerScope = "all-finite-explici
 leanResidualTerminalPacketTypedRealizerContractFormalized = true
 leanResidualTerminalPacketTypedRealizerContractAxiomAuditPassed = true
 leanResidualTerminalPacketTypedRealizerContractScope = "all-arbitrary-finite-selector-lists-and-explicit-bn6-canonical-handle-families-data-only-gain-or-typed-hn-budget-strictly-lower-faithful-seed-validation"
+leanResidualTerminalHBBlockerGraphAcyclicityFormalized = true
+leanResidualTerminalHBBlockerGraphAcyclicityAxiomAuditPassed = true
+leanResidualTerminalHBBlockerGraphAcyclicityScope = "all-arbitrary-finite-hn-budget-data-edge-graphs-exhaustive-finite-to-exact-rank-embedding-strict-edge-descent-well-foundedness-and-no-directed-cycle"
 leanResidualTerminalPkgCSeparatingConsumersFormalized = true
 leanResidualTerminalPkgCSeparatingConsumersAxiomAuditPassed = true
 leanResidualTerminalPkgCSeparatingConsumersScope = "all-finite-explicit-minimal-consumer-antichains-pkgc-separating-consumer-first-pair-canonical-atoms-exact-coordinate-restoration-or-strict-hall-local-q"
@@ -392,9 +396,9 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-15-145</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-15-146</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>fdbdbc9aee0533c257d45fc130116320aa33c84fbbcb6ac9e271c5082478b36c</code></div>
+            <div><span>Inventory SHA-256</span><code>2dc8b59a739778899103da0bb30c43b29319a70da2944f41c25fc76d30a2185b</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
@@ -414,7 +418,7 @@ concretePublicationGate.passed = false</pre>
         </div>
         <div class="home-progress-copy">
           <h2 id="home-progress-title">About 98% of the known formalisation work</h2>
-          <p>The 98% figure is a revisable editorial estimate of reconstruction work completed. It is separate from the 121 of 123 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
+          <p>The 98% figure is a revisable editorial estimate of reconstruction work completed. It is separate from the 122 of 124 scoped formal-publication rows and is not a probability that the claim is correct, a confidence score, or a mathematical result.</p>
           <p class="home-progress-caveat"><strong>Editorial · revisable.</strong> It can go down if new work is discovered.</p>
         </div>
         <div class="home-progress-actions">
@@ -444,7 +448,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact" data-current-milestone="residual-terminal-packet-typed-realizer-contract"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now rejects every faithful finite Packet row outside four typed outcomes.</h2><p>Each faithful row must check as a genuine unit-charge gain, an active same-or-lower-rank hereditary blocker, an active same-or-lower-rank budget blocker, or a faithful strictly lower-rank seed. The grouped specialization covers every canonical handle in one supplied Packet family.</p><p>The selector family, finite ranks, faithfulness predicate, claims, activity tables, and blueprints remain explicit inputs. Finite indices are not manuscript packet ranks, activity is not blocker semantics, and rejection is not reclassification as a bot. The milestone does not construct blockers or blueprints from terminal data, prove selector faithfulness or compatibility, establish HB acyclicity or global selector silence, prove polynomial bounds, complete global PkgC or PCCMin, put SAT in P, remove a project assumption, or prove P = NP. Those global conclusions remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact" data-current-milestone="residual-terminal-hb-blocker-graph-acyclicity"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>Machine checking now excludes cycles in a supplied exact-rank HB dependency graph.</h2><p>Every listed HN or budget dependency edge must descend the exact ten-coordinate residual rank. Acceptance proves accessibility and well-foundedness of that supplied relation, excludes every nonempty directed cycle, upgrades valid lower-seed outcomes to exact-rank descent, and composes with the checked Packet typed-realizer table.</p><p>The graph, edges, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. This milestone does not prove dependency completeness, blocker semantics, that every active HN or budget row records all dependencies, or construction of the graph or rank mapping from terminal data. It does not establish selector compatibility, rank-complete selector silence, the full <code>HB.NegativeClosure</code> theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP. Those global conclusions remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>
