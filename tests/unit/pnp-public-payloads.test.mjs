@@ -32,6 +32,19 @@ const HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalPacketHBDependencyGraph.lowerSeed_rankTuple_lt_of_valid': '9881f5aef2ad8fc383da80d850b3c77846ee74ef905ecb975bdb293e716975b8',
   'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_acyclicity_contract': '676f6659a31ae0b9a854c9162f1d51762c1e8255b76c1d80021bf0f9c61d0886',
 });
+const HB_DEPENDENCY_TABLE_CLOSURE_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.mem_allTerminalPacketHBNodes': '88fdba9d4e6db862d111ec9c71deb2d8c03db04ddfb07cfeadca7d76da8fb089',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.edge_mem_toGraph_iff': '7b4e6910383a38eaffdcfbe78d9d5b1ac8f7d7cac7fd24abd344ee878e440171',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.toGraph_depends_iff': 'ac6d0fe0e870fce5eeb4414f72b0731d4ef293f1337ff9e367d410d28c6f6d1b',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.rowCovered': '84f713c3ad8330c2cad27d49060815a8b109e098d4c46abee74dc0bc18572f64',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.check_eq_true_iff': '04cf8fba733851458892e17a260dc84cd690e6e027c88d4380ca33606ceca335',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.depends_rank_lt': 'e649f2ea9b1458a21069742edf61e527f166463ee756ad561cf23d243dbf1af6',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.depends_wellFounded': '4414385e70cab392dfa85c0ec08c2c1f621530d5a227ce791eea8b8b750c7161',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.depends_induction': '43e488bde4020096ebb22635d00be0716f1b8b8552d24bd1930be5fb55021543',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.noCycle': '088c0ae7b22b89383e259db7a939a1b93fa921e1c26c6bb30b607b1fc93697ff',
+  'PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbTableSound': 'f78565e502500f88f1a1cfe2e53d8d70c78d06a37b4dad0af58b8cc815a7114d',
+  'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_dependency_table_closure_contract': 'b8fa8701e2a8fabfbc70d83069fd54b8732e8aa670ab86992ef6c03c3bebc31a',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -395,9 +408,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /checked unit-charge blueprint realizer/u);
   assert.match(globalZeroSlack.nonClaim, /checked typed-realizer contract/u);
   assert.match(globalZeroSlack.nonClaim, /checked exact-rank HB graph contract/u);
-  assert.match(globalZeroSlack.nonClaim, /excludes all nonempty directed cycles/u);
+  assert.match(globalZeroSlack.nonClaim, /checked total-table HB contract/u);
+  assert.match(globalZeroSlack.nonClaim, /derives well-founded induction and cycle exclusion/u);
   assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables/u);
-  assert.match(globalZeroSlack.nonClaim, /prove blocker semantics, dependency completeness, or coverage of every active blocker row/u);
+  assert.match(globalZeroSlack.nonClaim, /prove blocker semantics, semantic dependency completeness, or the local invariant needed to silence active blocker rows/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -554,6 +568,52 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /checked HB blocker-graph acyclicity contract/u.test(nonClaim)
       && /graph, edges, rank mapping, blocker semantics, and dependency completeness remain inputs or open obligations/u.test(nonClaim)
       && /not the full HB negative closure, rank-complete selector silence, ZeroSlack, or polynomial PCCMin/u.test(nonClaim)),
+    true,
+  );
+  const hbTableMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hb-dependency-table-closure');
+  const hbTableHashes = release.earnedBoundary
+    .residualTerminalHBDependencyTableClosureTheoremKernelTypeSha256;
+  assert.ok(hbTableMilestone);
+  assert.equal(hbTableMilestone.earned, true);
+  assert.equal(hbTableMilestone.allPresent, true);
+  assert.equal(hbTableMilestone.allKernelTypesMatch, true);
+  assert.equal(hbTableMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(hbTableHashes, HB_DEPENDENCY_TABLE_CLOSURE_THEOREM_SHA256);
+  assert.deepEqual(hbTableMilestone.requiredTheorems, Object.keys(HB_DEPENDENCY_TABLE_CLOSURE_THEOREM_SHA256));
+  assert.equal(release.earnedBoundary.residualTerminalHBDependencyTableClosureAuditedDeclarationCount, 21);
+  assert.equal(release.earnedBoundary.residualTerminalHBDependencyTableClosureEmptyAxiomDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalHBDependencyTableClosurePropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHBDependencyTableClosurePropextQuotSoundDeclarationCount, 12);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHBDependencyTableClosureAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(release.earnedBoundary.residualTerminalHBDependencyTableClosureProjectAxiomClosure, []);
+  for (const theoremRow of hbTableMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, HB_DEPENDENCY_TABLE_CLOSURE_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, HB_DEPENDENCY_TABLE_CLOSURE_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(hbTableMilestone.scope, /materializes the graph mechanically from all rows without accepting a second edge list/u);
+  assert.match(hbTableMilestone.scope, /well-founded rank induction for arbitrary predicates with an explicit local premise/u);
+  assert.match(hbTableMilestone.nonClaim, /semantic dependency completeness relative to terminal data/u);
+  assert.match(hbTableMilestone.nonClaim, /local invariant premise needed by generic rank induction/u);
+  assert.equal(status.leanResidualTerminalHBDependencyTableClosureFormalized, true);
+  assert.equal(status.leanResidualTerminalHBDependencyTableClosureAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHBDependencyTableClosureScope,
+    release.earnedBoundary.residualTerminalHBDependencyTableClosureScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hbTableMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked total-table HB dependency contract/u.test(nonClaim)
+      && /table, rank mapping, and local invariant premise remain inputs/u.test(nonClaim)
+      && /semantic dependency completeness/u.test(nonClaim)),
     true,
   );
 

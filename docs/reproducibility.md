@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 484,743 | `301b127be4a0e0d2e630bbb7fcf0ef69052aa676184b417350900b89a069ed3b` |
-| `downloads/canonical-proof-report.pdf` | 484,743 | `301b127be4a0e0d2e630bbb7fcf0ef69052aa676184b417350900b89a069ed3b` |
-| `downloads/canonical_proof_report.tex` | 250,390 | `1643b0932489b5324ed14ae50241acfe5162ada6d716fa705c71cee69f0317f1` |
-| `downloads/canonical-proof-report.tex` | 250,390 | `1643b0932489b5324ed14ae50241acfe5162ada6d716fa705c71cee69f0317f1` |
-| `public/pnp-status.json` | 2,215,438 | `50063aae82f32a42e7f915ddeabe2bd0c2fceeb961a95de8bbc3eb294ddd7f79` |
-| `public/pnp-theorem-inventory.json` | 19,196,256 | `2dc8b59a739778899103da0bb30c43b29319a70da2944f41c25fc76d30a2185b` |
+| `downloads/canonical_proof_report.pdf` | 487,533 | `9e632fe27db2fc39925e2c429135695301ccb3d63471b9bfdac032d928608c5f` |
+| `downloads/canonical-proof-report.pdf` | 487,533 | `9e632fe27db2fc39925e2c429135695301ccb3d63471b9bfdac032d928608c5f` |
+| `downloads/canonical_proof_report.tex` | 253,190 | `9ef98a83f7f156dabfce3fafe5fadfe7c054deccd84407ed7f6b0bb2fdbf1f20` |
+| `downloads/canonical-proof-report.tex` | 253,190 | `9ef98a83f7f156dabfce3fafe5fadfe7c054deccd84407ed7f6b0bb2fdbf1f20` |
+| `public/pnp-status.json` | 2,225,094 | `845ee277e7cf9061d9175ef3912ab6254e4639e049dcd30187276292dd3ab1e0` |
+| `public/pnp-theorem-inventory.json` | 19,245,429 | `989d6747a0d2516aff118fb976f1cde5b0cf549cb925188ed5a0afe453bac1be` |
 
-The PDF must have 97 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 98 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 9835168ab80564fce8a7a66c0a2c2d0d9027ff07
+git -C ../pnp checkout d3794beaf85242ea6d5c4f141f74e52876261c4f
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm test
 npm run pnp:verify -- --no-write
 ```
 
-Expected compiled inventory counts are 28,673 public declarations, 14,786 theorem-kind declarations,
-7,452 assumption-free theorem-kind declarations, 15,047 excluded private auxiliaries, 263 modules, and
+Expected compiled inventory counts are 28,720 public declarations, 14,811 theorem-kind declarations,
+7,460 assumption-free theorem-kind declarations, 15,047 excluded private auxiliaries, 264 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -96,17 +96,19 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 7 reviewed theorem pins. For arbitrary finite HN and budget data-edge graphs, Lean checks
-that every supplied finite rank index embeds into the exact ten-coordinate residual rank and every supplied dependency
-edge strictly descends it. Acceptance derives accessibility and well-foundedness of exactly that supplied relation,
-excludes every nonempty directed cycle, upgrades valid lower-seed outcomes to exact-rank descent, and composes with
-every faithful canonical handle in an accepted Packet typed-realizer table. The focused 22-declaration audit has 12
-empty closures, one `propext`-only declaration, and nine using `Quot.sound` with `propext`; no reviewed closure uses a
-project axiom or `Classical.choice`. The graph, edges, finite-to-exact rank mapping, selector family, faithfulness
-predicate, blocker-activity tables, and realizer claims remain proof-bearing inputs. Lean does not prove dependency
-completeness, blocker semantics, active-row coverage, construction from terminal data, selector compatibility,
-rank-complete selector silence, the full HB negative closure, encoded-size or polynomial-runtime bounds, global PkgC,
-unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`.
+The newest milestone adds 11 reviewed theorem pins. For every finite rank carrier, Lean enumerates all HN and budget
+nodes, requires one total data-only dependency row per node, and materializes the graph mechanically from those rows
+without accepting an independent edge list. The checker validates the exact ten-coordinate rank embedding and strict
+rank descent for every listed dependency. Acceptance derives exact row-to-edge coverage, accessibility, well-founded
+induction for arbitrary predicates with an explicit local premise, exclusion of every nonempty directed cycle, covered
+HN/BUD bot rows, and exact-rank descent for lower seeds. The focused 21-declaration audit has nine empty closures and 12
+using `Quot.sound` with `propext`; no reviewed closure is `propext`-only or uses a project axiom or `Classical.choice`.
+The dependency table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker-activity tables,
+and realizer claims remain proof-bearing inputs. Total row coverage does not prove blocker semantics, semantic
+dependency completeness relative to terminal data, or the local premise needed by generic induction. Lean does not
+establish selector compatibility, rank-complete selector silence, the full HB negative closure, encoded-size or
+polynomial-runtime bounds, global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or
+prove `P = NP`.
 
 `report:check` performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under
