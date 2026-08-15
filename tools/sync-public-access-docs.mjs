@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "d3794beaf85242ea6d5c4f141f74e52876261c4f";
-const CORE_TREE = "b870327f236eca3badc60cdd020028f90a5dcfe3";
-const CORE_PUBLICATION_MAP_SHA256 = "f20395f94e594e690fbba19eabb06c59c7571230a9516faad255ddd9799e8eb6";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-15-147";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-147";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-147";
-const CORE_SOURCE_CLOSURE_SHA256 = "e33c230b5da2e29405b7c69438ecfbace8d66735d5343d63be9bd5316431dbdf";
+const CORE_COMMIT = "ff003dc1e86367a072e783d7fb8e32d374feed05";
+const CORE_TREE = "31387d243fbcfa8fa62f683377c238861b0830f9";
+const CORE_PUBLICATION_MAP_SHA256 = "92427491f9d889c4b841e976b2ba51a799fd7ff06af6366a1d41a8bfb805acc0";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-15-148";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-148";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-148";
+const CORE_SOURCE_CLOSURE_SHA256 = "303bac031ee4a1c6e2456e1f9d2ed054b1e9f8a86f07f729157beadbda62100b";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1271,6 +1271,19 @@ const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_THEOREMS = {
 const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_SCOPE = "all-arbitrary-finite-hn-budget-total-dependency-tables-exact-row-to-edge-coverage-strict-exact-rank-descent-well-founded-induction-and-no-directed-cycle";
 const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_MILESTONE_SCOPE = "For every arbitrary finite rank carrier, Lean enumerates all HN and budget nodes, assigns each node one total data-only dependency row, and materializes the graph mechanically from all rows without accepting a second edge list. The checker exhaustively validates the finite-to-exact ten-coordinate rank embedding and strict exact-rank descent for every row dependency. Acceptance proves exact row-to-edge coverage, accessibility, well-founded rank induction for arbitrary predicates with an explicit local premise, absence of every nonempty dependency cycle, covered HN/BUD bot rows, and exact-rank descent for lower seeds.";
 const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_NON_CLAIM = "The dependency table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. Total table coverage means only that every finite HN/BUD node has a row and every dependency listed in that row becomes a graph edge. It does not prove blocker semantics, semantic dependency completeness relative to terminal data, or the local invariant premise needed by generic rank induction. It does not establish selector compatibility, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.checkActiveDependencyClosed_eq_true_iff": { hash: "5c3919ecfb9d733958c127d6cd5c3f0cb06af25229aaebbecc28200700934518", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.checkNoOutcomeActiveClosure_eq_true_iff": { hash: "14b532f9572c1e3e9024d5a0a594f39c629b1180d7660eb13fb7b2e6edea435f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.noActive_of_noOutcomeActiveClosure": { hash: "69c036adc81c3fad489dc446bb719f886885871f292fbd012ab87355c1c4d949", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.hnActive_eq_false": { hash: "9d8b342b4697a8eb815cd4353092b7439bef4cb91547ef11f9bc43bd0d559ce4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.budgetActive_eq_false": { hash: "58e82e3318d66431391f740396744ac679ab95ca23f1f67f90a4773c99605798", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbActiveClosureSound": { hash: "614947844ab205e0efa442fc2b8fa65b500d64cd7b0a6a1ade0d62106e0ab3b8", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_active_dependency_closure_contract": { hash: "e21c72385d24487dfbcd64d708d4d43e9fda3369754128352a65d965b4687879", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" }
+};
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_SCOPE = "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition";
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE = "For every arbitrary finite rank carrier and supplied typed-realizer environment, Lean exhaustively checks that every active HN or budget node has an active dependency in its own total row and independently checks strict exact-rank descent for every row dependency. Well-founded induction then proves every supplied HN and budget activity bit is false. Composition with every faithful canonical grouped-BN6 handle eliminates HN/BUD typed bots while preserving a genuine checked strict gain or a faithful strictly lower-rank seed.";
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM = "The activity bits, dependency rows, finite-to-exact rank mapping, selector family, faithfulness predicate, and realizer claims remain explicit inputs. The local check does not derive blocker activity, blocker semantics, or semantic dependency completeness from terminal data. It eliminates HN/BUD bots only after the supplied tables pass; a checked gain or faithful lower-rank seed remains. This milestone does not establish selector compatibility, gain exclusion, lower-seed closure, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3582,26 +3595,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 487533,
-    sha256: "9e632fe27db2fc39925e2c429135695301ccb3d63471b9bfdac032d928608c5f"
+    bytes: 489530,
+    sha256: "626e21c1e82fa9af5ba97b869d4f20955544649854aa74efd5d2fa453c7ed686"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 253190,
-    sha256: "9ef98a83f7f156dabfce3fafe5fadfe7c054deccd84407ed7f6b0bb2fdbf1f20"
+    bytes: 255851,
+    sha256: "dc435d35cba2a8bad8604cc780eaa296a847d287996fe57b26a0ac971e2bee21"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2225094,
-    sha256: "845ee277e7cf9061d9175ef3912ab6254e4639e049dcd30187276292dd3ab1e0"
+    bytes: 2232774,
+    sha256: "8b2831251aca7bcb7c3b8fb03468261cd72d2925b50ea5db16569f99948861cd"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 19245429,
-    sha256: "989d6747a0d2516aff118fb976f1cde5b0cf549cb925188ed5a0afe453bac1be"
+    bytes: 19289357,
+    sha256: "af545fd828b34a034ec0e4e83cf6a97c96cae635d6860596b36c415dbaac22bf"
   }
 ];
 
@@ -4691,6 +4704,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal HB dependency-table closure boundary mismatch");
+  }
+  const residualTerminalHBActiveDependencyClosureMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hb-active-dependency-closure"
+  );
+  const residualTerminalHBActiveDependencyClosureNames =
+    Object.keys(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS);
+  if (!residualTerminalHBActiveDependencyClosureMilestone
+      || residualTerminalHBActiveDependencyClosureMilestone.classification !== "formalized-residual-terminal-hb-active-dependency-closure"
+      || residualTerminalHBActiveDependencyClosureMilestone.scope !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE
+      || residualTerminalHBActiveDependencyClosureMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM
+      || JSON.stringify(residualTerminalHBActiveDependencyClosureMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHBActiveDependencyClosureNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HB active-dependency closure boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -6901,6 +6930,40 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal HB dependency-table closure boundary mismatch");
     }
+    const residualTerminalHBActiveDependencyClosureMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hb-active-dependency-closure"
+    );
+    if (!residualTerminalHBActiveDependencyClosureMilestone
+        || residualTerminalHBActiveDependencyClosureMilestone.earned !== true
+        || residualTerminalHBActiveDependencyClosureMilestone.allPresent !== true
+        || residualTerminalHBActiveDependencyClosureMilestone.allAssumptionFree !== false
+        || residualTerminalHBActiveDependencyClosureMilestone.allKernelTypesMatch !== true
+        || residualTerminalHBActiveDependencyClosureMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHBActiveDependencyClosureMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHBActiveDependencyClosureMilestone.classification !== "formalized-residual-terminal-hb-active-dependency-closure"
+        || residualTerminalHBActiveDependencyClosureMilestone.scope !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE
+        || residualTerminalHBActiveDependencyClosureMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM
+        || JSON.stringify(residualTerminalHBActiveDependencyClosureMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHBActiveDependencyClosureMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHBActiveDependencyClosureFormalized !== true
+        || payload.leanResidualTerminalHBActiveDependencyClosureAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHBActiveDependencyClosureScope !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HB active-dependency closure boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -7099,6 +7162,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal HB dependency-table closure theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal HB active-dependency closure theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {

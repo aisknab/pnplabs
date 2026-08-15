@@ -45,6 +45,15 @@ const HB_DEPENDENCY_TABLE_CLOSURE_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbTableSound': 'f78565e502500f88f1a1cfe2e53d8d70c78d06a37b4dad0af58b8cc815a7114d',
   'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_dependency_table_closure_contract': 'b8fa8701e2a8fabfbc70d83069fd54b8732e8aa670ab86992ef6c03c3bebc31a',
 });
+const HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.checkActiveDependencyClosed_eq_true_iff': '5c3919ecfb9d733958c127d6cd5c3f0cb06af25229aaebbecc28200700934518',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.checkNoOutcomeActiveClosure_eq_true_iff': '14b532f9572c1e3e9024d5a0a594f39c629b1180d7660eb13fb7b2e6edea435f',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.noActive_of_noOutcomeActiveClosure': '69c036adc81c3fad489dc446bb719f886885871f292fbd012ab87355c1c4d949',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.hnActive_eq_false': '9d8b342b4697a8eb815cd4353092b7439bef4cb91547ef11f9bc43bd0d559ce4',
+  'PNP.DirectWire.TerminalPacketHBDependencyTable.budgetActive_eq_false': '58e82e3318d66431391f740396744ac679ab95ca23f1f67f90a4773c99605798',
+  'PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbActiveClosureSound': '614947844ab205e0efa442fc2b8fa65b500d64cd7b0a6a1ade0d62106e0ab3b8',
+  'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_active_dependency_closure_contract': 'e21c72385d24487dfbcd64d708d4d43e9fda3369754128352a65d965b4687879',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -409,9 +418,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /checked typed-realizer contract/u);
   assert.match(globalZeroSlack.nonClaim, /checked exact-rank HB graph contract/u);
   assert.match(globalZeroSlack.nonClaim, /checked total-table HB contract/u);
-  assert.match(globalZeroSlack.nonClaim, /derives well-founded induction and cycle exclusion/u);
+  assert.match(globalZeroSlack.nonClaim, /checked HB active-dependency closure/u);
+  assert.match(globalZeroSlack.nonClaim, /prove every supplied HN\/BUD activity bit false/u);
   assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables/u);
-  assert.match(globalZeroSlack.nonClaim, /prove blocker semantics, semantic dependency completeness, or the local invariant needed to silence active blocker rows/u);
+  assert.match(globalZeroSlack.nonClaim, /derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data/u);
+  assert.match(globalZeroSlack.nonClaim, /exclude verified gains or close faithful lower-seed descent/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -614,6 +625,52 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /checked total-table HB dependency contract/u.test(nonClaim)
       && /table, rank mapping, and local invariant premise remain inputs/u.test(nonClaim)
       && /semantic dependency completeness/u.test(nonClaim)),
+    true,
+  );
+  const hbActiveMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hb-active-dependency-closure');
+  const hbActiveHashes = release.earnedBoundary
+    .residualTerminalHBActiveDependencyClosureTheoremKernelTypeSha256;
+  assert.ok(hbActiveMilestone);
+  assert.equal(hbActiveMilestone.earned, true);
+  assert.equal(hbActiveMilestone.allPresent, true);
+  assert.equal(hbActiveMilestone.allKernelTypesMatch, true);
+  assert.equal(hbActiveMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(hbActiveHashes, HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREM_SHA256);
+  assert.deepEqual(hbActiveMilestone.requiredTheorems, Object.keys(HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREM_SHA256));
+  assert.equal(release.earnedBoundary.residualTerminalHBActiveDependencyClosureAuditedDeclarationCount, 13);
+  assert.equal(release.earnedBoundary.residualTerminalHBActiveDependencyClosureEmptyAxiomDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalHBActiveDependencyClosurePropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHBActiveDependencyClosurePropextQuotSoundDeclarationCount, 7);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHBActiveDependencyClosureAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(release.earnedBoundary.residualTerminalHBActiveDependencyClosureProjectAxiomClosure, []);
+  for (const theoremRow of hbActiveMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(hbActiveMilestone.scope, /every active HN or budget node has an active dependency in its own total row/u);
+  assert.match(hbActiveMilestone.scope, /proves every supplied HN and budget activity bit is false/u);
+  assert.match(hbActiveMilestone.nonClaim, /does not derive blocker activity, blocker semantics, or semantic dependency completeness from terminal data/u);
+  assert.match(hbActiveMilestone.nonClaim, /checked gain or faithful lower-rank seed remains/u);
+  assert.equal(status.leanResidualTerminalHBActiveDependencyClosureFormalized, true);
+  assert.equal(status.leanResidualTerminalHBActiveDependencyClosureAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHBActiveDependencyClosureScope,
+    release.earnedBoundary.residualTerminalHBActiveDependencyClosureScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hbActiveMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked HB active-dependency closure/u.test(nonClaim)
+      && /every supplied activity bit to be false/u.test(nonClaim)
+      && /gain and lower-seed branches remain/u.test(nonClaim)),
     true,
   );
 

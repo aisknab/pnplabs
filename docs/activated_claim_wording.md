@@ -47,6 +47,9 @@ leanResidualProjectionTransferIdentityFormalized = true
 leanResidualProjectionTransferConstantCutFormalized = true
 leanResidualTerminalPacketTypedRealizerContractFormalized = true
 leanResidualTerminalPacketTypedRealizerContractAxiomAuditPassed = true
+leanResidualTerminalHBActiveDependencyClosureFormalized = true
+leanResidualTerminalHBActiveDependencyClosureAxiomAuditPassed = true
+leanResidualTerminalHBActiveDependencyClosureScope = "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition"
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 ```
@@ -55,7 +58,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-three narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone gives every finite HN/BUD node one data-only dependency row, materializes the graph from all rows without a second edge list, validates exact-rank descent for every dependency, and derives exact representation coverage, well-founded induction, and cycle exclusion. The table, rank mapping, selector family, faithfulness predicate, claims, activity tables, and blueprints remain proof-bearing inputs. Blocker semantics, semantic dependency completeness, and the local invariant needed to silence active rows remain open. The milestone does not construct those inputs from terminal data, establish selector compatibility, prove rank-complete selector silence or the full HB negative closure, establish encoded-size or runtime bounds, complete global PkgC, embed outcomes in a decreasing complete global route system, establish manuscript-wide `SaturatePositive`, Package E, BCELReady, unconditional `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-four narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone checks, for every supplied finite HN and budget activity table, that each active node names an active dependency in its own total row and that every row dependency strictly lowers the exact ten-coordinate residual rank. Well-founded induction then proves every supplied HN and budget activity bit false, and composition removes those typed-bot branches while retaining a checked gain or faithful lower-rank seed. The activity bits, dependency rows, rank mapping, selector family, faithfulness predicate, and realizer claims remain proof-bearing inputs. The checker does not derive blocker activity, blocker semantics, or semantic dependency completeness from terminal data. The milestone does not establish gain exclusion, lower-seed closure, selector compatibility, rank-complete selector silence or the full HB negative closure, encoded-size or runtime bounds, complete global PkgC, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, unconditional `ZeroSlack`, polynomial PCCMin, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -74,7 +77,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the ninety-eight-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the ninety-nine-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
