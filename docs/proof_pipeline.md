@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,701 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,712 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 28,673 public declarations;
-- 14,786 theorem-kind declarations;
-- 7,452 assumption-free theorem-kind declarations;
-- 263 source-closure modules;
+- 28,720 public declarations;
+- 14,811 theorem-kind declarations;
+- 7,460 assumption-free theorem-kind declarations;
+- 264 source-closure modules;
 - 15,047 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and twenty-two earned scopes are:
+The one hundred and twenty-three earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -172,6 +172,7 @@ The one hundred and twenty-two earned scopes are:
 | Checked Packet unit-charge blueprint realizer | For arbitrary direct-wire arities and every finite explicit grouped BN6 family of replacement blueprints, Lean derives canonical unit-charge gate-occurrence ledgers and constructively checks exact occurrence multiplicity, a nonempty unmatched current-gate remainder, and semantic equivalence. Acceptance instantiates the charge-surplus kernel, constructs a genuine `StrictEquivalentGain` and strict residual descent without accepting a gate inequality, and the exhaustive scan visits every original blueprint atom behind every canonical handle while retaining all three Packet branches. The focused 30-declaration audit has 6 empty, 11 `propext`-only, and 13 `Quot.sound` plus `propext` closures; all 13 reviewed pins have permitted Lean-standard closure and none uses `Classical.choice`. | The grouped family, candidates, replacement blueprints, occurrence pairings, and unmatched lists remain explicit inputs. Supplied-family validator silence is not `BotHN`, `BotBUD`, a lower-rank `BotSeed`, global absence of strict gains, semantic minimality, or `ZeroSlack`. This result does not derive blueprints from terminal data, prove selector faithfulness or compatibility, close HB/rank routing, establish encoded-size or polynomial-runtime bounds, complete global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Checked Packet typed-realizer contract | For arbitrary selector types, finite selector lists, positive finite rank carriers, executable faithfulness and blocker-activity tables, and data-only realizer claims, Lean accepts a faithful row exactly as a checked unit-charge gain, an active same-or-lower-rank HN bot, an active same-or-lower-rank budget bot, or a faithful strictly lower-rank seed bot. The generic list validator covers every faithful member, and its grouped-BN6 specialization covers every canonical input-relative Packet handle. The focused 20-declaration audit has 10 empty, five `propext`-only, and five `Quot.sound` plus `propext` closures; all five reviewed pins have permitted Lean-standard closure and none uses `Classical.choice`. | The selector family, finite rank assignment, faithfulness predicate, claims, hereditary and budget activity tables, and blueprints remain explicit inputs. Finite indices are not the manuscript's tuple-valued packet ranks, blocker activity is not blocker semantics, and an invalid faithful row is rejected rather than reinterpreted as a bot. This result does not construct blockers or blueprints from terminal data, prove selector faithfulness or compatibility, establish HB acyclicity or global selector silence, establish encoded-size or polynomial-runtime bounds, complete global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Checked exact-rank HB blocker-graph acyclicity | For arbitrary finite HN and budget data-edge graphs, Lean checks that every supplied finite rank index embeds into the exact ten-coordinate residual rank and every supplied dependency edge strictly descends it. Acceptance derives accessibility and well-foundedness of exactly that relation, excludes every nonempty directed cycle, upgrades valid lower-seed bots to exact-rank descent, and composes with every faithful canonical handle in an accepted Packet typed-realizer table. The focused 22-declaration audit has 12 empty, one `propext`-only, and nine `Quot.sound` plus `propext` closures; all seven reviewed pins have permitted Lean-standard closure and none uses `Classical.choice`. | The graph, edges, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. This result does not prove dependency completeness, blocker semantics, active-row coverage, construction from terminal data, selector compatibility, rank-complete selector silence, the full `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, discharge an assumption, or prove `P = NP`. |
+| Checked total-table HB dependency closure | For every arbitrary finite rank carrier, Lean enumerates every HN and budget node, requires one data-only dependency row for each node, and materializes the graph from all rows without a second edge list. It validates exact-rank descent for every listed dependency and derives exact row-to-edge coverage, accessibility, well-founded induction for arbitrary predicates with an explicit local premise, exclusion of every nonempty cycle, covered HN/BUD bot rows, and exact-rank descent for lower seeds. The focused 21-declaration audit has nine empty and 12 `Quot.sound` plus `propext` closures; all eleven reviewed pins have permitted Lean-standard closure and none uses `Classical.choice`. | The table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. Total table coverage does not prove blocker semantics, semantic dependency completeness relative to terminal data, or the local invariant premise required by generic induction. This result does not establish selector compatibility, rank-complete selector silence, the full `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, discharge an assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -203,7 +204,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment ninety-seven-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment ninety-eight-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

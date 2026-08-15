@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-15-residual-terminal-hb-dependency-table-closure",
+      "milestoneId": "residual-terminal-hb-dependency-table-closure",
+      "publishedAt": "2026-08-15T04:05:41Z",
+      "title": "Lean now checks a total-table HB dependency closure",
+      "plainLanguage": [
+        "For every finite rank carrier, Lean now enumerates all HN and budget nodes, requires one data-only dependency row for each node, and materializes the graph mechanically from all rows instead of accepting a second edge list. Every listed dependency must strictly lower the exact ten-coordinate residual rank. Acceptance proves exact row-to-edge coverage, accessibility, well-founded induction for arbitrary predicates with an explicit local premise, and exclusion of every nonempty dependency cycle.",
+        "The dependency table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker-activity tables, and realizer claims remain supplied inputs. Total row coverage does not prove blocker semantics, semantic dependency completeness relative to terminal data, or the local invariant premise needed by generic induction. This is not rank-complete selector silence, the full HB negative-closure theorem, unconditional ZeroSlack, PCCMin, a polynomial-runtime result, SAT in P, removal of a project assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 123 of 125 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "d3794beaf85242ea6d5c4f141f74e52876261c4f",
+        "tree": "b870327f236eca3badc60cdd020028f90a5dcfe3",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-147",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-15-residual-terminal-hb-blocker-graph-acyclicity",
       "milestoneId": "residual-terminal-hb-blocker-graph-acyclicity",
       "publishedAt": "2026-08-15T00:13:17Z",

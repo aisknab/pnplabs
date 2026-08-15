@@ -34,6 +34,26 @@
       </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 98 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-15-residual-terminal-hb-dependency-table-closure" data-milestone-id="residual-terminal-hb-dependency-table-closure">
+        <div class="section-label"><time datetime="2026-08-15T04:05:41Z">2026-08-15</time> · earned milestone 123</div>
+        <h2>Lean now checks a total-table HB dependency closure</h2>
+        <p>For every finite rank carrier, Lean now enumerates all HN and budget nodes, requires one data-only dependency row for each node, and materializes the graph mechanically from all rows instead of accepting a second edge list. Every listed dependency must strictly lower the exact ten-coordinate residual rank. Acceptance proves exact row-to-edge coverage, accessibility, well-founded induction for arbitrary predicates with an explicit local premise, and exclusion of every nonempty dependency cycle.</p>
+        <p>The dependency table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker-activity tables, and realizer claims remain supplied inputs. Total row coverage does not prove blocker semantics, semantic dependency completeness relative to terminal data, or the local invariant premise needed by generic induction. This is not rank-complete selector silence, the full HB negative-closure theorem, unconditional ZeroSlack, PCCMin, a polynomial-runtime result, SAT in P, removal of a project assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 123 of 125 scoped publication rows.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 98%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-hb-dependency-table-closure</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-hb-dependency-table-closure</p>
+          <p><strong>Verified scope:</strong> For every arbitrary finite rank carrier, Lean enumerates all HN and budget nodes, assigns each node one total data-only dependency row, and materializes the graph mechanically from all rows without accepting a second edge list. The checker exhaustively validates the finite-to-exact ten-coordinate rank embedding and strict exact-rank descent for every row dependency. Acceptance proves exact row-to-edge coverage, accessibility, well-founded rank induction for arbitrary predicates with an explicit local premise, absence of every nonempty dependency cycle, covered HN/BUD bot rows, and exact-rank descent for lower seeds.</p>
+          <p><strong>Boundary:</strong> The dependency table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. Total table coverage means only that every finite HN/BUD node has a row and every dependency listed in that row becomes a graph edge. It does not prove blocker semantics, semantic dependency completeness relative to terminal data, or the local invariant premise needed by generic rank induction. It does not establish selector compatibility, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 11</p>
+          <p><strong>Core source:</strong> commit <code>d3794beaf85242ea6d5c4f141f74e52876261c4f</code>, tree <code>b870327f236eca3badc60cdd020028f90a5dcfe3</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-147</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-15-residual-terminal-hb-blocker-graph-acyclicity" data-milestone-id="residual-terminal-hb-blocker-graph-acyclicity">
         <div class="section-label"><time datetime="2026-08-15T00:13:17Z">2026-08-15</time> · earned milestone 122</div>
         <h2>Lean now excludes cycles in a checked exact-rank HB dependency graph</h2>
