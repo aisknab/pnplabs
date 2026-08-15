@@ -54,6 +54,12 @@ const HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbActiveClosureSound': '614947844ab205e0efa442fc2b8fa65b500d64cd7b0a6a1ade0d62106e0ab3b8',
   'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_active_dependency_closure_contract': 'e21c72385d24487dfbcd64d708d4d43e9fda3369754128352a65d965b4687879',
 });
+const HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithful_of_noStrictEquivalentGain': 'bfc7dfbf112c6ea12d1bc9f80bf813aa4fa140f05315d57e5ceb12596cb1d5de',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithful_of_gainCoverageNoGain': 'fd05e64f3dbf4438bccd34f960ebcf7c186892e9bb70aadc068351c494d806ad',
+  'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_closure_contract': 'bb80815c42a2ad17e8cfcb0d7764233806489e547875433c9ab8cb5c4191b899',
+  'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_gain_coverage_contract': '353ae4076dfb315ae6c6e0b82396ab858e9a8755f84f89d44c257e744c43ad74',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -420,9 +426,12 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /checked total-table HB contract/u);
   assert.match(globalZeroSlack.nonClaim, /checked HB active-dependency closure/u);
   assert.match(globalZeroSlack.nonClaim, /prove every supplied HN\/BUD activity bit false/u);
+  assert.match(globalZeroSlack.nonClaim, /conditional selector-silence rank closure/u);
+  assert.match(globalZeroSlack.nonClaim, /strong finite-rank induction to prove every canonical handle/u);
   assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables/u);
   assert.match(globalZeroSlack.nonClaim, /derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data/u);
-  assert.match(globalZeroSlack.nonClaim, /exclude verified gains or close faithful lower-seed descent/u);
+  assert.match(globalZeroSlack.nonClaim, /derive global gain exclusion or its coverage certificate from terminal data rather than consume it as an explicit premise/u);
+  assert.match(globalZeroSlack.nonClaim, /selector faithfulness or compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -671,6 +680,61 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /checked HB active-dependency closure/u.test(nonClaim)
       && /every supplied activity bit to be false/u.test(nonClaim)
       && /gain and lower-seed branches remain/u.test(nonClaim)),
+    true,
+  );
+  const hbSelectorSilenceMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hb-selector-silence-closure');
+  const hbSelectorSilenceHashes = release.earnedBoundary
+    .residualTerminalHBSelectorSilenceClosureTheoremKernelTypeSha256;
+  assert.ok(hbSelectorSilenceMilestone);
+  assert.equal(hbSelectorSilenceMilestone.earned, true);
+  assert.equal(hbSelectorSilenceMilestone.allPresent, true);
+  assert.equal(hbSelectorSilenceMilestone.allKernelTypesMatch, true);
+  assert.equal(hbSelectorSilenceMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(hbSelectorSilenceHashes, HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256);
+  assert.deepEqual(
+    hbSelectorSilenceMilestone.requiredTheorems,
+    Object.keys(HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256),
+  );
+  assert.equal(
+    release.earnedBoundary.residualTerminalHBSelectorSilenceClosureAuditedDeclarationCount,
+    Object.keys(HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256).length,
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHBSelectorSilenceClosureEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHBSelectorSilenceClosurePropextOnlyDeclarationCount, 0);
+  assert.equal(
+    release.earnedBoundary.residualTerminalHBSelectorSilenceClosurePropextQuotSoundDeclarationCount,
+    Object.keys(HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256).length,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHBSelectorSilenceClosureAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(release.earnedBoundary.residualTerminalHBSelectorSilenceClosureProjectAxiomClosure, []);
+  for (const theoremRow of hbSelectorSilenceMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(hbSelectorSilenceMilestone.scope, /semantic exclusion of every strict equivalent gain/u);
+  assert.match(hbSelectorSilenceMilestone.scope, /Strong induction proves every canonical selector/u);
+  assert.match(hbSelectorSilenceMilestone.nonClaim, /global semantic gain exclusion is an explicit proof-bearing premise/u);
+  assert.match(hbSelectorSilenceMilestone.nonClaim, /does not establish selector faithfulness or compatibility/u);
+  assert.equal(status.leanResidualTerminalHBSelectorSilenceClosureFormalized, true);
+  assert.equal(status.leanResidualTerminalHBSelectorSilenceClosureAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHBSelectorSilenceClosureScope,
+    release.earnedBoundary.residualTerminalHBSelectorSilenceClosureScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hbSelectorSilenceMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /conditional selector-silence rank closure/u.test(nonClaim)
+      && /explicit global semantic gain exclusion premise/u.test(nonClaim)
+      && /does not establish selector faithfulness or compatibility/u.test(nonClaim)),
     true,
   );
 
@@ -5254,7 +5318,7 @@ test('status page has a conservative complete static fallback', async () => {
     formatNumber(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount),
     `<strong>${formatNumber(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount)}</strong> private compiler auxiliaries excluded`,
     `<strong>${formatNumber(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount)}</strong> modules`,
-    `${index.formalPublicationMilestoneCounts.earned} scoped milestones`,
+    `${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped milestone rows`,
     'residual-terminal-bn3-request-envelope',
     'residual-terminal-bn4-activation-cancellation',
     'residual-terminal-bn5-full-shadow-localization',
