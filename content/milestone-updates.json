@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-15-residual-terminal-hb-active-dependency-closure",
+      "milestoneId": "residual-terminal-hb-active-dependency-closure",
+      "publishedAt": "2026-08-15T09:23:46Z",
+      "title": "Lean now closes supplied HN and budget activity tables under checked descent",
+      "plainLanguage": [
+        "For every finite rank carrier and supplied typed-realizer environment, Lean now checks that each active HN or budget node names an active dependency in its own total row while every row dependency strictly lowers the exact ten-coordinate residual rank. Well-founded induction then proves every supplied activity bit false. The composed result removes the HN and budget bot branches while preserving a genuine checked strict gain or a faithful lower-rank seed.",
+        "The activity bits, dependency rows, rank mapping, selector family, faithfulness predicate, and realizer claims remain supplied inputs. The checker does not derive blocker activity, blocker semantics, or semantic dependency completeness from terminal data, and it does not exclude the checked-gain branch or close faithful lower-seed descent. This is not selector compatibility, rank-complete selector silence, the full HB negative closure, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 124 of 126 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "ff003dc1e86367a072e783d7fb8e32d374feed05",
+        "tree": "31387d243fbcfa8fa62f683377c238861b0830f9",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-148",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-15-residual-terminal-hb-dependency-table-closure",
       "milestoneId": "residual-terminal-hb-dependency-table-closure",
       "publishedAt": "2026-08-15T04:05:41Z",

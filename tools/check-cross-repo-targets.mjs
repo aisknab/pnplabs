@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "d3794beaf85242ea6d5c4f141f74e52876261c4f";
-const REVIEWED_CORE_TREE = "b870327f236eca3badc60cdd020028f90a5dcfe3";
+const REVIEWED_CORE_COMMIT = "ff003dc1e86367a072e783d7fb8e32d374feed05";
+const REVIEWED_CORE_TREE = "31387d243fbcfa8fa62f683377c238861b0830f9";
 const REVIEWED_PROOF_COMMIT = "40a46e9e4aea8177256839415407e35ddb95c65c";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -3693,6 +3693,16 @@ const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_RELEASE_IDENTITIES = {
   residualTerminalHBDependencyTableClosureComposedContractTheorem: "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_dependency_table_closure_contract"
 };
 
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_RELEASE_IDENTITIES = {
+  residualTerminalHBActiveDependencyClosureActiveDependencyCheckIffTheorem: "PNP.DirectWire.TerminalPacketHBDependencyTable.checkActiveDependencyClosed_eq_true_iff",
+  residualTerminalHBActiveDependencyClosureCombinedCheckIffTheorem: "PNP.DirectWire.TerminalPacketHBDependencyTable.checkNoOutcomeActiveClosure_eq_true_iff",
+  residualTerminalHBActiveDependencyClosureAllNodesInactiveTheorem: "PNP.DirectWire.TerminalPacketHBDependencyTable.noActive_of_noOutcomeActiveClosure",
+  residualTerminalHBActiveDependencyClosureHNInactiveTheorem: "PNP.DirectWire.TerminalPacketHBDependencyTable.hnActive_eq_false",
+  residualTerminalHBActiveDependencyClosureBudgetInactiveTheorem: "PNP.DirectWire.TerminalPacketHBDependencyTable.budgetActive_eq_false",
+  residualTerminalHBActiveDependencyClosureTypedRealizerEvidenceTheorem: "PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbActiveClosureSound",
+  residualTerminalHBActiveDependencyClosureComposedContractTheorem: "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_active_dependency_closure_contract"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -4797,6 +4807,19 @@ const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_SCOPE = "all-arbitrary-finit
 const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_MILESTONE_SCOPE = "For every arbitrary finite rank carrier, Lean enumerates all HN and budget nodes, assigns each node one total data-only dependency row, and materializes the graph mechanically from all rows without accepting a second edge list. The checker exhaustively validates the finite-to-exact ten-coordinate rank embedding and strict exact-rank descent for every row dependency. Acceptance proves exact row-to-edge coverage, accessibility, well-founded rank induction for arbitrary predicates with an explicit local premise, absence of every nonempty dependency cycle, covered HN/BUD bot rows, and exact-rank descent for lower seeds.";
 const RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_NON_CLAIM = "The dependency table, finite-to-exact rank mapping, selector family, faithfulness predicate, blocker activity tables, and realizer claims remain explicit inputs. Total table coverage means only that every finite HN/BUD node has a row and every dependency listed in that row becomes a graph edge. It does not prove blocker semantics, semantic dependency completeness relative to terminal data, or the local invariant premise needed by generic rank induction. It does not establish selector compatibility, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
 
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.checkActiveDependencyClosed_eq_true_iff": { hash: "5c3919ecfb9d733958c127d6cd5c3f0cb06af25229aaebbecc28200700934518", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.checkNoOutcomeActiveClosure_eq_true_iff": { hash: "14b532f9572c1e3e9024d5a0a594f39c629b1180d7660eb13fb7b2e6edea435f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.noActive_of_noOutcomeActiveClosure": { hash: "69c036adc81c3fad489dc446bb719f886885871f292fbd012ab87355c1c4d949", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.hnActive_eq_false": { hash: "9d8b342b4697a8eb815cd4353092b7439bef4cb91547ef11f9bc43bd0d559ce4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketHBDependencyTable.budgetActive_eq_false": { hash: "58e82e3318d66431391f740396744ac679ab95ca23f1f67f90a4773c99605798", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerEvidence.hbActiveClosureSound": { hash: "614947844ab205e0efa442fc2b8fa65b500d64cd7b0a6a1ade0d62106e0ab3b8", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" },
+  "PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_active_dependency_closure_contract": { hash: "e21c72385d24487dfbcd64d708d4d43e9fda3369754128352a65d965b4687879", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHBActiveDependencyClosure" }
+};
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_SCOPE = "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition";
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE = "For every arbitrary finite rank carrier and supplied typed-realizer environment, Lean exhaustively checks that every active HN or budget node has an active dependency in its own total row and independently checks strict exact-rank descent for every row dependency. Well-founded induction then proves every supplied HN and budget activity bit is false. Composition with every faithful canonical grouped-BN6 handle eliminates HN/BUD typed bots while preserving a genuine checked strict gain or a faithful strictly lower-rank seed.";
+const RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM = "The activity bits, dependency rows, finite-to-exact rank mapping, selector family, faithfulness predicate, and realizer claims remain explicit inputs. The local check does not derive blocker activity, blocker semantics, or semantic dependency completeness from terminal data. It eliminates HN/BUD bots only after the supplied tables pass; a checked gain or faithful lower-rank seed remains. This milestone does not establish selector compatibility, gain exclusion, lower-seed closure, rank-complete selector silence, the full HB.NegativeClosure theorem, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -4808,7 +4831,7 @@ const LOCKED_NAND_THRESHOLD_PUBLICATION_SCOPE = "uniform-all-bitstring-cnf-sat-t
 const LOCKED_NAND_THRESHOLD_PUBLICATION_MILESTONE_SCOPE = "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder.";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_NON_CLAIM = "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP.";
 const GLOBAL_ZEROSLACK_PCCMIN_MILESTONE_SCOPE = "Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.";
-const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot; the checked exact-rank HB graph contract validates every edge in a supplied finite HN/BUD dependency graph; and the checked total-table HB contract gives every finite HN/BUD node one row, materializes every listed dependency as an edge, and derives well-founded induction and cycle exclusion for that supplied table. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables from terminal data; connect matching back to a contradiction; prove blocker semantics, semantic dependency completeness, or the local invariant needed to silence active blocker rows; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, compatible realizer, global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.";
+const GLOBAL_ZEROSLACK_PCCMIN_NON_CLAIM = "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot; the checked exact-rank HB graph contract validates every edge in a supplied finite HN/BUD dependency graph; the checked total-table HB contract gives every finite HN/BUD node one row, materializes every listed dependency as an edge, and derives well-founded induction and cycle exclusion for that supplied table; and the checked HB active-dependency closure combines an exhaustive active-to-active row condition with strict rank descent to prove every supplied HN/BUD activity bit false and remove HN/budget typed-bot branches. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables from terminal data; connect matching back to a contradiction; derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data; exclude verified gains or close faithful lower-seed descent; map all residual routes into a decreasing complete global outcome system; or provide selector faithfulness, compatible realizer, global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized.";
 const BN3_JOINT_REALIZABILITY_GAP_STATUS_NON_CLAIM = "The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.";
 const BN4_ACTIVATION_CANCELLATION_STATUS_NON_CLAIM = "The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.";
 const BN5_FULL_SHADOW_LOCALIZATION_STATUS_NON_CLAIM = "The finite BN5 full-shadow localization kernel uniformly handles arbitrary finite exact-coordinate unit and quotient-shadow ledgers. It validates negative-mass refinement, computes cut silence, and returns complete multiplicity coverage or a strict Hall deficit routed to local X1. The payloads and shadow universe are explicit inputs; complete matching is not connected back to a BN4 contradiction; full CritC/Q/E/L/X2/X3/X4 diagnosis, the full historical BN5 theorem, full PkgC and BN6, global routes, selectors, polynomial generation and runtime, ZeroSlack, PCCMin, SAT in P, and P = NP remain unproved.";
@@ -4821,6 +4844,7 @@ const PACKET_UNIT_CHARGE_BLUEPRINT_STATUS_NON_CLAIM = "The checked Packet unit-c
 const PACKET_TYPED_REALIZER_STATUS_NON_CLAIM = "The checked Packet typed-realizer contract validates every faithful row in an arbitrary finite supplied selector table as only a checked unit-charge gain, active same-or-lower-rank HN bot, active same-or-lower-rank budget bot, or faithful strictly lower-rank seed bot; its grouped-family specialization covers every canonical handle. The rank assignment, faithfulness predicate, claims, and activity tables remain inputs, so this does not construct blockers, prove their semantics or HB acyclicity, establish global selector silence, ZeroSlack, or polynomial realizer completeness.";
 const HB_BLOCKER_GRAPH_ACYCLICITY_STATUS_NON_CLAIM = "The checked HB blocker-graph acyclicity contract exhaustively validates a supplied finite-index embedding into the exact ten-coordinate residual rank and every supplied HN/BUD dependency edge, deriving well-foundedness and excluding every nonempty directed cycle. The graph, edges, rank mapping, blocker semantics, and dependency completeness remain inputs or open obligations; this is not the full HB negative closure, rank-complete selector silence, ZeroSlack, or polynomial PCCMin.";
 const HB_DEPENDENCY_TABLE_CLOSURE_STATUS_NON_CLAIM = "The checked total-table HB dependency contract assigns every finite HN/BUD node one data-only row and materializes every listed dependency as a graph edge, deriving exact representation coverage, well-founded rank induction, and cycle exclusion. The table, rank mapping, and local invariant premise remain inputs; this does not prove blocker semantics or semantic dependency completeness, silence an active blocker, establish the full HB negative closure, rank-complete selector silence, ZeroSlack, or polynomial PCCMin.";
+const HB_ACTIVE_DEPENDENCY_CLOSURE_STATUS_NON_CLAIM = "The checked HB active-dependency closure exhaustively verifies that every active supplied HN/BUD node names an active dependency in its total row and combines that local condition with strict exact-rank descent. Well-founded induction forces every supplied activity bit to be false and removes HN/BUD bot branches from the checked typed-realizer result. Activity bits, dependency rows, rank mapping, selector data, blocker semantics, and semantic dependency completeness remain supplied or open; gain and lower-seed branches remain, so this is not rank-complete selector silence, the full HB negative closure, ZeroSlack, or polynomial PCCMin.";
 
 
 const RESIDUAL_TERMINAL_SATURATION_RELEASE_IDENTITIES = {
@@ -6626,6 +6650,26 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_THEOREMS).every(([name, row]) => residualTerminalHBDependencyTableClosureHashes[name] === row.hash)) failures.push("current manifest residual terminal HB dependency-table closure fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_HB_DEPENDENCY_TABLE_CLOSURE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal HB dependency-table closure theorem identity mismatch");
 
+  if (!(earned.residualTerminalHBActiveDependencyClosureFormalized === true
+      && earned.residualTerminalHBActiveDependencyClosureAxiomAuditPassed === true
+      && earned.residualTerminalHBActiveDependencyClosureAuditedDeclarationCount === 13
+      && earned.residualTerminalHBActiveDependencyClosureEmptyAxiomDeclarationCount === 6
+      && earned.residualTerminalHBActiveDependencyClosurePropextOnlyDeclarationCount === 0
+      && earned.residualTerminalHBActiveDependencyClosurePropextQuotSoundDeclarationCount === 7
+      && earned.residualTerminalHBActiveDependencyClosureScope === RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_SCOPE
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal HB active-dependency closure boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalHBActiveDependencyClosureAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalHBActiveDependencyClosureProjectAxiomClosure)
+      || earned.residualTerminalHBActiveDependencyClosureProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal HB active-dependency closure axiom closure mismatch");
+  const residualTerminalHBActiveDependencyClosureHashes = earned.residualTerminalHBActiveDependencyClosureTheoremKernelTypeSha256;
+  if (!residualTerminalHBActiveDependencyClosureHashes || Object.keys(residualTerminalHBActiveDependencyClosureHashes).length !== 7
+      || !Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS).every(([name, row]) => residualTerminalHBActiveDependencyClosureHashes[name] === row.hash)) failures.push("current manifest residual terminal HB active-dependency closure fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal HB active-dependency closure theorem identity mismatch");
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -6640,7 +6684,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure")) failures.push("current manifest earned scope omits the residual terminal BN6, PkgC, or HB closure bridges");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure")) failures.push("current manifest earned scope omits the residual terminal BN6, PkgC, or HB closure bridges");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -8804,6 +8848,39 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal HB dependency-table closure evidence mismatch");
 
+  const residualTerminalHBActiveDependencyClosureMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-hb-active-dependency-closure"
+  );
+  const residualTerminalHBActiveDependencyClosureNames = Object.keys(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS);
+  if (!residualTerminalHBActiveDependencyClosureMilestone
+      || residualTerminalHBActiveDependencyClosureMilestone.classification !== "formalized-residual-terminal-hb-active-dependency-closure"
+      || residualTerminalHBActiveDependencyClosureMilestone.status !== "formalized-residual-terminal-hb-active-dependency-closure"
+      || residualTerminalHBActiveDependencyClosureMilestone.scope !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE
+      || residualTerminalHBActiveDependencyClosureMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM
+      || JSON.stringify(residualTerminalHBActiveDependencyClosureMilestone.requiredTheorems) !== JSON.stringify(residualTerminalHBActiveDependencyClosureNames)
+      || residualTerminalHBActiveDependencyClosureMilestone.earned !== true
+      || residualTerminalHBActiveDependencyClosureMilestone.allPresent !== true
+      || residualTerminalHBActiveDependencyClosureMilestone.allAssumptionFree !== false
+      || residualTerminalHBActiveDependencyClosureMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalHBActiveDependencyClosureMilestone.allKernelTypesMatch !== true
+      || residualTerminalHBActiveDependencyClosureMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal HB active-dependency closure publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS)) {
+    const row = residualTerminalHBActiveDependencyClosureMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal HB active-dependency closure theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalHBActiveDependencyClosureFormalized === true
+      && status.leanResidualTerminalHBActiveDependencyClosureAxiomAuditPassed === true
+      && status.leanResidualTerminalHBActiveDependencyClosureScope === RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_SCOPE
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal HB active-dependency closure evidence mismatch");
+
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -8859,6 +8936,7 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
   if (!status.nonClaims?.includes(PACKET_TYPED_REALIZER_STATUS_NON_CLAIM)) failures.push("status Packet typed-realizer contract disclosure mismatch");
   if (!status.nonClaims?.includes(HB_BLOCKER_GRAPH_ACYCLICITY_STATUS_NON_CLAIM)) failures.push("status HB blocker-graph acyclicity disclosure mismatch");
   if (!status.nonClaims?.includes(HB_DEPENDENCY_TABLE_CLOSURE_STATUS_NON_CLAIM)) failures.push("status HB dependency-table closure disclosure mismatch");
+  if (!status.nonClaims?.includes(HB_ACTIVE_DEPENDENCY_CLOSURE_STATUS_NON_CLAIM)) failures.push("status HB active-dependency closure disclosure mismatch");
 
   if (JSON.stringify(status.leanLockedNANDThresholdMissingInstantiationInventory) !== JSON.stringify([])) failures.push("public status locked-NAND remaining-premise inventory mismatch");
     if (!(status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAxiomAuditPassed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepAuditedDeclarationCount === 82 && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepCompiledRawMachineFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExternalInputSizePolynomialFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepExactFormulaBitsFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepSeventhPaddingOrUnaryOpportunityFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true && status.leanConcreteCookLevinBuilderSecondConstraintSeventhPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true)) failures.push("public status Cook-Levin builder second-constraint-seventh-padding-or-unary-opportunity-step evidence mismatch");
@@ -9767,6 +9845,12 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal HB dependency-table closure theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal HB dependency-table closure fingerprint mismatch: ${name}`);
+    }
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal HB active-dependency closure theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal HB active-dependency closure fingerprint mismatch: ${name}`);
     }
     for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
@@ -11431,6 +11515,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalHBDependencyTableClosurePins[name] !== row.hash) {
       failures.push(`core publication map residual terminal HB dependency-table closure fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalHBActiveDependencyClosureMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hb-active-dependency-closure"
+  );
+  const residualTerminalHBActiveDependencyClosureNames = Object.keys(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS);
+  if (!residualTerminalHBActiveDependencyClosureMilestone
+      || residualTerminalHBActiveDependencyClosureMilestone.classification !== "formalized-residual-terminal-hb-active-dependency-closure"
+      || residualTerminalHBActiveDependencyClosureMilestone.scope !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_MILESTONE_SCOPE
+      || residualTerminalHBActiveDependencyClosureMilestone.nonClaim !== RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_NON_CLAIM
+      || JSON.stringify(residualTerminalHBActiveDependencyClosureMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHBActiveDependencyClosureNames)) {
+    failures.push("core publication map residual terminal HB active-dependency closure boundary mismatch");
+  }
+  const residualTerminalHBActiveDependencyClosurePins =
+    releaseManifest.earnedBoundary?.residualTerminalHBActiveDependencyClosureTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HB_ACTIVE_DEPENDENCY_CLOSURE_THEOREMS)) {
+    if (!residualTerminalHBActiveDependencyClosureMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalHBActiveDependencyClosurePins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal HB active-dependency closure fingerprint mismatch: ${name}`);
     }
   }
 
