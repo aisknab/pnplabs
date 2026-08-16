@@ -101,6 +101,14 @@ const PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalBN6PacketConclusion.existsFirstRoute_of_computedTableSelectorSilence': '3631f55536cc941ec835177ec51cf7b4ca58d7ecbb9f9c3a03cfee1e559c895f',
   'PNP.DirectWire.terminalBN6_packet_computed_faithfulness_hb_first_route': 'a7aa76d129b8ceb296249d5791fc3bc94e782b6eb5ee94c8e13e2e56ad7b1949',
 });
+const PACKET_SELECTOR_FIRST_ROUTE_SEMANTICS_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.firstRoute_eq_some_iff_failureAt': 'cf64142c05e65d744556593f434d6b70e8ebb265dec03116dde1e6bea8c7169f',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.failureAt_unique': '583184f10df9d315d4b5882fa198c97c43cffdaeecd00a49816740b1cdbfe256',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.check_eq_false_iff_exists_failureAt': 'e3132c8d2bd9c4f4b8ae82d220aa96ad63813240587bc17e1e39bc2a08f30416',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRoute_eq_some_iff_failureAt': '86bc5031b8563b12ba78b3e98a49953134db1545329095fe5b99500dfe71d240',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsFirstRouteFailure_of_computedTableSelectorSilence': '3950cae39552713ff72cda54ef5f88970e0b9dc179afb4e9f5c89ecb068f40e3',
+  'PNP.DirectWire.terminalBN6_packet_computed_faithfulness_hb_first_route_failure': '2ec660ddfa7e2d019866b1dc3a7e45b8d12893ef717610fcdf01d00cb3868967',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -474,6 +482,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise/u);
   assert.match(globalZeroSlack.nonClaim, /total first-route classification turns every canonical payload rejection into one earliest typed route/u);
   assert.match(globalZeroSlack.nonClaim, /without route-clear or binding premises/u);
+  assert.match(globalZeroSlack.nonClaim, /exact first-route semantics milestone additionally identifies every returned route with its unique earliest failed supplied payload field/u);
   assert.match(globalZeroSlack.nonClaim, /prove any reported route's external semantics/u);
   assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
@@ -1066,6 +1075,80 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /total Packet selector first-route outcome/u.test(nonClaim)
       && /without route-clear or binding premises/u.test(nonClaim)
       && /does not prove route semantics/u.test(nonClaim)),
+    true,
+  );
+
+  const packetSelectorFirstRouteSemanticsMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-selector-first-route-semantics');
+  const packetSelectorFirstRouteSemanticsHashes = release.earnedBoundary
+    .residualTerminalPacketSelectorFirstRouteSemanticsTheoremKernelTypeSha256;
+  assert.ok(packetSelectorFirstRouteSemanticsMilestone);
+  assert.equal(packetSelectorFirstRouteSemanticsMilestone.earned, true);
+  assert.equal(packetSelectorFirstRouteSemanticsMilestone.allPresent, true);
+  assert.equal(packetSelectorFirstRouteSemanticsMilestone.allKernelTypesMatch, true);
+  assert.equal(packetSelectorFirstRouteSemanticsMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSelectorFirstRouteSemanticsHashes,
+    PACKET_SELECTOR_FIRST_ROUTE_SEMANTICS_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetSelectorFirstRouteSemanticsMilestone.requiredTheorems,
+    Object.keys(PACKET_SELECTOR_FIRST_ROUTE_SEMANTICS_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsAuditedDeclarationCount, 8);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsPropextOnlyDeclarationCount, 5);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsPropextQuotSoundDeclarationCount, 2);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetSelectorFirstRouteSemanticsMilestone.theoremRows) {
+    const expectedAxioms = [
+      'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.firstRoute_eq_some_iff_failureAt',
+      'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.failureAt_unique',
+      'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.check_eq_false_iff_exists_failureAt',
+      'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRoute_eq_some_iff_failureAt',
+    ].includes(theoremRow.name) ? ['propext'] : ['Quot.sound', 'propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_SELECTOR_FIRST_ROUTE_SEMANTICS_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_SELECTOR_FIRST_ROUTE_SEMANTICS_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(packetSelectorFirstRouteSemanticsMilestone.scope, /exact earliest failed supplied field/u);
+  assert.match(packetSelectorFirstRouteSemanticsMilestone.scope, /failure is unique/u);
+  assert.match(packetSelectorFirstRouteSemanticsMilestone.nonClaim, /does not derive the payload fields or family from terminal data/u);
+  assert.match(packetSelectorFirstRouteSemanticsMilestone.nonClaim, /does not prove their external manuscript semantics/u);
+  assert.equal(status.leanResidualTerminalPacketSelectorFirstRouteSemanticsFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorFirstRouteSemanticsAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketSelectorFirstRouteSemanticsScope,
+    release.earnedBoundary.residualTerminalPacketSelectorFirstRouteSemanticsScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetSelectorFirstRouteSemanticsMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /exact Packet first-route semantics milestone/u.test(nonClaim)
+      && /all ten route constructors/u.test(nonClaim)
+      && /external manuscript semantics/u.test(nonClaim)),
     true,
   );
 
@@ -4100,7 +4183,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '1d5065bb2c03f593c69a9b3d4154a8eb2bec9b39');
+  assert.equal(index.sourceProofCommitRef, '245f7f6ca560355115ac0ae00b22ff24a793e216');
   assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
