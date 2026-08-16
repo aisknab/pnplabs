@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 128,
+  "version": 129,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "f3ca3346b3cd2b33e1259321297b6149ac5c52db",
+  "sourceCommitRef": "0a21d196359069a09be43c489a8fe4a95f5c8cf6",
   "sourceProofCommitRef": "40a46e9e4aea8177256839415407e35ddb95c65c",
-  "sourceTree": "893ca3bf26930886e798ce69e1f846fd96460e8b",
-  "syncedOn": "2026-08-15",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-15-149",
+  "sourceTree": "96c474678413f986a0fd8e58be029ba1bb860f1b",
+  "syncedOn": "2026-08-16",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-150",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-15-149",
-  "leanTheoremInventorySha256": "3dbdf51fd5dccaf5e128c4ea38300b01df8904b349f180ee03529e60571c4d3c",
-  "leanSourceClosureSha256": "d007c127195b4832e22750de2429d06d157b27e3a047f577ad871030957989d3",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-15-149",
-  "canonicalReportPages": 100,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-16-150",
+  "leanTheoremInventorySha256": "7f4b65411371fd64a741e85c0b8ac55b14a648aba2a9cf34031c4862e58534c5",
+  "leanSourceClosureSha256": "f76b9f9533621c7e72e4fbbb709c87dbbf1cb216531b849740ad6008facd52e8",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-16-150",
+  "canonicalReportPages": 102,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 28740,
-    "leanTheoremInventoryTheoremCount": 14824,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 7462,
+    "leanTheoremInventoryDeclarationCount": 28751,
+    "leanTheoremInventoryTheoremCount": 14832,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 7463,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15047,
-    "leanTheoremInventorySourceClosureModuleCount": 266,
+    "leanTheoremInventorySourceClosureModuleCount": 267,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4273,12 +4273,15 @@
     "leanResidualTerminalHBActiveDependencyClosureScope": "all-arbitrary-finite-hn-budget-total-tables-exhaustive-active-dependency-local-closure-exact-rank-induction-all-node-blocker-silence-and-gain-or-lower-seed-composition",
     "leanResidualTerminalHBSelectorSilenceClosureFormalized": true,
     "leanResidualTerminalHBSelectorSilenceClosureAxiomAuditPassed": true,
-    "leanResidualTerminalHBSelectorSilenceClosureScope": "all-arbitrary-finite-canonical-selector-tables-explicit-global-semantic-gain-exclusion-checked-hn-budget-inactivity-strong-rank-induction-and-rank-complete-selector-silence"
+    "leanResidualTerminalHBSelectorSilenceClosureScope": "all-arbitrary-finite-canonical-selector-tables-explicit-global-semantic-gain-exclusion-checked-hn-budget-inactivity-strong-rank-induction-and-rank-complete-selector-silence",
+    "leanResidualTerminalHBExecutableSelectorSilenceInductionFormalized": true,
+    "leanResidualTerminalHBExecutableSelectorSilenceInductionAxiomAuditPassed": true,
+    "leanResidualTerminalHBExecutableSelectorSilenceInductionScope": "all-arbitrary-finite-canonical-selector-tables-executable-all-row-selector-silence-checked-hn-budget-inactivity-strong-rank-induction-without-global-semantic-no-gain"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 125,
+    "earned": 126,
     "unearned": 2,
-    "total": 127
+    "total": 128
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4405,6 +4408,7 @@
     "residual-terminal-hb-dependency-table-closure",
     "residual-terminal-hb-active-dependency-closure",
     "residual-terminal-hb-selector-silence-closure",
+    "residual-terminal-hb-executable-selector-silence-induction",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [
@@ -4817,11 +4821,14 @@
     "The checked Packet selector candidate-gain scan decodes one canonical selector and tests every implementation payload in its exact original source cell. A gain outcome carries a genuine StrictEquivalentGain and strict residual descent; local no-gain excludes only candidates in that selected cell. The candidates and grouped family are explicit inputs, and local failure is not BotHN, BotBUD, a lower-rank BotSeed, global minimality, ZeroSlack, or a complete gain-or-blocker realizer.",
     "The exhaustive Packet selector-universe gain scan enumerates every canonical handle in one supplied explicit grouped family and tests every implementation payload in each exact source cell. A gain retains its source atom and canonical code; family-wide no-gain is only silence for that input-relative universe. It is not manuscript selector silence, BotHN, BotBUD, a lower-rank BotSeed, global minimality, ZeroSlack, selector faithfulness, realizer completeness, or a polynomial-runtime result.",
     "The conditional Packet gain-or-ZeroSlack bridge consumes an explicit gain-coverage certificate proving that every strict equivalent gain occurs as an original payload in a canonical source cell. Under that premise, exhaustive family silence yields a proof-bearing semantic minimum and zero residual slack. The certificate is not constructed from terminal data, so this is not unconditional ZeroSlack, selector-faithfulness completeness, a polynomial-runtime result, or PCCMin.",
-    "The finite Packet charge-surplus kernel accepts exact finite support and replacement ledgers, multiplicity-preserving occurrence pairing, one unmatched positive support charge, exact gate accounting, and independent semantic equivalence. It derives strict occurrence and weight inequalities, a genuine StrictEquivalentGain, and strict residual descent. It does not construct the replacement, ledger, or witness from Packet or terminal data, prove selector faithfulness or compatibility, produce BotHN, BotBUD, or a lower-rank BotSeed, close HB or rank routing, establish encoded-size or polynomial runtime, or complete global PkgC, unconditional ZeroSlack, or PCCMin.",
-    "The checked Packet unit-charge blueprint realizer derives canonical unit-charge ledgers, a genuine StrictEquivalentGain, and strict residual descent only when a constructive exact-multiplicity validator accepts one supplied blueprint and semantic equivalence. It scans every blueprint atom behind every canonical handle in one supplied family. The blueprints, occurrence pairings, family, and candidates remain explicit inputs; family-local validator silence is not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, ZeroSlack, selector completeness, or a polynomial-runtime result.",
-    "The checked Packet typed-realizer contract accepts each faithful row in an arbitrary finite supplied selector table only as a checked unit-charge gain, active same-or-lower-rank HN bot, active same-or-lower-rank budget bot, or faithful strictly lower-rank seed bot; its grouped-BN6 specialization covers every canonical handle. The finite rank assignment, faithfulness predicate, claims, and activity tables remain explicit inputs. These ranks are not the manuscript's tuple-valued packet ranks, and the result does not construct blockers, prove their semantics or HB acyclicity, establish global selector silence, ZeroSlack, or polynomial realizer completeness.",
-    "The checked exact-rank HB blocker-graph layer proves strict ten-coordinate rank descent, well-foundedness, and absence of nonempty directed cycles only for one supplied finite HN/BUD data-edge graph with a supplied exact rank embedding. It upgrades valid lower-seed bots to exact-rank descent and composes with an accepted typed-realizer table, but does not prove graph or dependency completeness, blocker semantics, active-row coverage, selector compatibility, rank-complete silence, the full HB.NegativeClosure theorem, ZeroSlack, PCCMin, or polynomial runtime.",
+    "The finite Packet charge-surplus kernel derives strict replacement weight from exact occurrence accounting, pairwise weight preservation, and an unmatched positive support charge, then derives a StrictEquivalentGain only when exact gate accounting and semantic equivalence are separately proved. It does not construct a replacement or its ledger from terminal data, so it is not the complete realizer, not unconditional ZeroSlack, and not a polynomial-runtime or PCCMin result.",
+    "The checked Packet unit-charge blueprint realizer derives canonical gate-occurrence ledgers, strict charge surplus, and a genuine gain only after a constructive exact-multiplicity validator accepts one supplied data-only blueprint and semantic equivalence. It scans every original blueprint atom behind every canonical handle in one supplied family. The blueprints and family remain explicit; unresolved means only supplied-family validator silence, not BotHN, BotBUD, a lower-rank BotSeed, global no-gain, ZeroSlack, or polynomial realizer completeness.",
+    "The checked Packet typed-realizer contract validates every faithful row in an arbitrary finite supplied selector table as only a checked unit-charge gain, active same-or-lower-rank HN bot, active same-or-lower-rank budget bot, or faithful strictly lower-rank seed bot; its grouped-family specialization covers every canonical handle. The rank assignment, faithfulness predicate, claims, and activity tables remain inputs, so this does not construct blockers, prove their semantics or HB acyclicity, establish global selector silence, ZeroSlack, or polynomial realizer completeness.",
+    "The checked HB blocker-graph acyclicity contract exhaustively validates a supplied finite-index embedding into the exact ten-coordinate residual rank and every supplied HN/BUD dependency edge, deriving well-foundedness and excluding every nonempty directed cycle. The graph, edges, rank mapping, blocker semantics, and dependency completeness remain inputs or open obligations; this is not the full HB negative closure, rank-complete selector silence, ZeroSlack, or polynomial PCCMin.",
     "The checked total-table HB dependency contract assigns every finite HN/BUD node one data-only row and materializes every listed dependency as a graph edge, deriving exact representation coverage, well-founded rank induction, and cycle exclusion. The table, rank mapping, and local invariant premise remain inputs; this does not prove blocker semantics or semantic dependency completeness, silence an active blocker, establish the full HB negative closure, rank-complete selector silence, ZeroSlack, or polynomial PCCMin.",
+    "The checked HB active-dependency closure exhaustively verifies that every active supplied HN/BUD node names an active dependency in its total row and combines that local condition with strict exact-rank descent. Well-founded induction forces every supplied activity bit to be false and removes HN/BUD bot branches from the checked typed-realizer result. Activity bits, dependency rows, rank mapping, selector data, blocker semantics, and semantic dependency completeness remain supplied or open; gain and lower-seed branches remain, so this is not rank-complete selector silence, the full HB negative closure, ZeroSlack, or polynomial PCCMin.",
+    "The conditional selector-silence rank closure combines checked HN/BUD inactivity with an explicit global semantic gain exclusion premise and strong induction on the supplied finite selector ranks. It proves every canonical handle in that accepted supplied table nonfaithful. The gain-coverage specialization still consumes an explicit coverage certificate plus source-cell no-gain. This does not establish selector faithfulness or compatibility, construct the tables or certificate from terminal data, prove blocker semantics or semantic dependency completeness, establish unconditional HB negative closure or ZeroSlack, or provide encoded-size and polynomial-runtime bounds.",
+    "The executable selector-silence induction replaces the global semantic no-gain premise with an exhaustive data-only check that every canonical realizer claim is a typed bottom. Checked HB active-dependency closure removes HN/BUD bottoms, and strong finite-rank induction removes faithful lower seeds. The grouped family, rank and faithfulness functions, claims, activity functions, dependency rows, and rank map remain explicit data inputs; it does not construct them from terminal candidates, establish selector faithfulness or compatibility, prove blocker semantics or semantic dependency completeness, establish the full unconditional HB negative closure or ZeroSlack, or provide encoded-size and polynomial-runtime bounds.",
     "The current Lean bridge is partial and does not contain the required concrete, assumption-audited root theorem.",
     "The pinned Lean library/root-status build is reconstruction data, not a proof of P = NP.",
     "Blank-delimited Tape.outputBits removes dependence on the unobservable represented-list boundary; Tape.handoffTarget itself is a pure canonical specification. PipelineOutputHandoff is a separate executable internal represented handoff, not terminal raw output normalization.",
@@ -4951,8 +4958,6 @@
     "PNP.PEqualsNP uses abstract string-handle witnesses rather than a concrete standard complexity model and is categorically ineligible for public theorem activation.",
     "PNP.Main.ConcretePEqualsNP now names the inactive finite charged-pipeline target, while PNP.Main.p_eq_np remains absent.",
     "All five reviewed activation fingerprints remain intentionally unset, so target presence alone cannot open the concrete publication gate.",
-    "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only.",
-    "The checked HB active-dependency closure exhaustively verifies that every active supplied HN/BUD node names an active dependency in its total row and combines that local condition with strict exact-rank descent. Well-founded induction forces every supplied activity bit to be false and removes HN/BUD bot branches from the checked typed-realizer result. Activity bits, dependency rows, rank mapping, selector data, blocker semantics, and semantic dependency completeness remain supplied or open; gain and lower-seed branches remain, so this is not rank-complete selector silence, the full HB negative closure, ZeroSlack, or polynomial PCCMin.",
-    "The conditional selector-silence rank closure combines checked HN/BUD inactivity with an explicit global semantic gain exclusion premise and strong induction on the supplied finite selector ranks. It proves every canonical handle in that accepted supplied table nonfaithful. The gain-coverage specialization still consumes an explicit coverage certificate plus source-cell no-gain. This does not establish selector faithfulness or compatibility, construct the tables or certificate from terminal data, prove blocker semantics or semantic dependency completeness, establish unconditional HB negative closure or ZeroSlack, or provide encoded-size and polynomial-runtime bounds."
+    "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only."
   ]
 }

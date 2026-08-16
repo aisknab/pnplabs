@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-16-residual-terminal-hb-executable-selector-silence-induction",
+      "milestoneId": "residual-terminal-hb-executable-selector-silence-induction",
+      "publishedAt": "2026-08-16T01:52:00Z",
+      "title": "Lean now proves selector silence from an executable all-row check",
+      "plainLanguage": [
+        "For every accepted finite typed-realizer table, Lean now exhaustively checks that every canonical realizer claim is a typed bottom and retains faithful-row validity. Checked HN and budget inactivity eliminate those blocker bottoms, while strong induction on the supplied finite rank eliminates faithful lower seeds. Every canonical selector in the supplied grouped family is therefore nonfaithful without a global semantic no-gain theorem premise.",
+        "The grouped family, finite ranks, faithfulness function, claims, blocker activity, dependency rows, and rank map remain explicit inputs rather than constructions from terminal data. This is not selector faithfulness or compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 126 of 128 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "0a21d196359069a09be43c489a8fe4a95f5c8cf6",
+        "tree": "96c474678413f986a0fd8e58be029ba1bb860f1b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-150",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-15-residual-terminal-hb-selector-silence-closure",
       "milestoneId": "residual-terminal-hb-selector-silence-closure",
       "publishedAt": "2026-08-15T13:49:08Z",

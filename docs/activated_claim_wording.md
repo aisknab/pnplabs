@@ -53,6 +53,9 @@ leanResidualTerminalHBActiveDependencyClosureScope = "all-arbitrary-finite-hn-bu
 leanResidualTerminalHBSelectorSilenceClosureFormalized = true
 leanResidualTerminalHBSelectorSilenceClosureAxiomAuditPassed = true
 leanResidualTerminalHBSelectorSilenceClosureScope = "all-arbitrary-finite-canonical-selector-tables-explicit-global-semantic-gain-exclusion-checked-hn-budget-inactivity-strong-rank-induction-and-rank-complete-selector-silence"
+leanResidualTerminalHBExecutableSelectorSilenceInductionFormalized = true
+leanResidualTerminalHBExecutableSelectorSilenceInductionAxiomAuditPassed = true
+leanResidualTerminalHBExecutableSelectorSilenceInductionScope = "all-arbitrary-finite-canonical-selector-tables-executable-all-row-selector-silence-checked-hn-budget-inactivity-strong-rank-induction-without-global-semantic-no-gain"
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
 ```
@@ -61,7 +64,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-five narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone starts from an accepted supplied Packet typed-realizer table, checked HN and budget inactivity, and an explicit semantic premise that no strict equivalent gain exists. Strong induction on the supplied finite selector ranks eliminates faithful lower-rank seeds and proves every canonical selector in the table nonfaithful. A specialization obtains the global gain-exclusion premise from a supplied gain-coverage certificate plus exact source-cell no-gain evidence. The grouped family, finite rank and faithfulness tables, realizer claims, blocker activity, dependency rows, rank map, semantic gain exclusion, and coverage certificate remain proof-bearing inputs rather than constructions from terminal data. The milestone does not establish selector faithfulness or compatibility, blocker semantics or semantic dependency completeness, the unconditional `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, complete global PkgC, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-six narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone starts from an accepted supplied Packet typed-realizer table and exhaustively checks that every canonical realizer claim is a typed bottom while retaining faithful-row validity. Checked HN and budget inactivity removes those bot branches, and strong induction on the supplied finite selector ranks eliminates faithful lower-rank seeds, proving every canonical selector in the table nonfaithful without a global semantic no-gain premise. The grouped family, finite rank and faithfulness functions, realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs rather than constructions from terminal data. The milestone does not establish selector faithfulness or compatibility, blocker semantics or semantic dependency completeness, the unconditional `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, complete global PkgC, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -80,7 +83,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 100-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 102-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
