@@ -2516,6 +2516,7 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
     "saturatePositiveFormalized",
     "bcelReadyFormalized",
     "residualRoutesGlobalGainCompletenessFormalized",
+    "zeroSlackPositiveSlackContradictionFormalized",
     "zeroSlackCompletenessFormalized",
     "pccMinPolynomialRuntimeFormalized"
   ].includes(key))

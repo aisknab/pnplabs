@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-16-residual-terminal-packet-selector-faithfulness-routing",
+      "milestoneId": "residual-terminal-packet-selector-faithfulness-routing",
+      "publishedAt": "2026-08-16T07:18:00Z",
+      "title": "Lean now routes positive Packets to a selector-silence contradiction",
+      "plainLanguage": [
+        "For every explicit finite grouped BN6 family, Lean now checks ten canonical payload conditions and exact agreement with the supplied HB faithfulness table. A positive Packet conclusion then yields a faithful canonical handle, while the accepted executable selector-silence result proves that same handle nonfaithful. Those accepted inputs therefore produce a contradiction with selector silence.",
+        "The grouped family, payload fields, finite rank tags, route-clear checks, HB table, realizer claims, blocker activity, dependencies, and finite-to-exact rank map remain supplied inputs rather than constructions from terminal data. This is not positive slack, SaturatePositive, BCELReady, unconditional HB negative closure, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 127 of 129 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "b2e0b1e97744e365528b7c1a06e208a6481d7d1a",
+        "tree": "28ee8cf19a2092479f2661ac5ad7cb5c54cfe734",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-151",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-16-residual-terminal-hb-executable-selector-silence-induction",
       "milestoneId": "residual-terminal-hb-executable-selector-silence-induction",
       "publishedAt": "2026-08-16T01:52:00Z",

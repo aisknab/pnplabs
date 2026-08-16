@@ -69,6 +69,19 @@ const HB_EXECUTABLE_SELECTOR_SILENCE_INDUCTION_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithfulAtOrBelow_of_selectorSilent': '3e392d7466f9986e35656dd110a0b62bb1576961b0ec0c7b5e50569b1d51d018',
   'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_induction_contract': 'a2b84373303f881928ce4dd46bcb59d1569c3d41e63cab9360218d375ce77d90',
 });
+const PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.check_eq_true_iff': '6494e15fc2f6bd3a2fcd87c2a94588ba0d9ab00a0ce58e7a140e73596ba89bac',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.firstRoute_eq_none_of_check': 'b8ec7bc6f95908e7d01d7d1f69f6cd1fc672a8d6d3725326c6f5a367eda18449',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.check_eq_false_of_firstRoute': 'b20244efafa29ed90265bc2e6afeb0bd37ff3e665b1e363765a4d460c785ba53',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFaithful_eq_true_iff': 'fbec83e97141a40af4736f1faaa334f8e48a3ead9941eceaa0fa0156a5d2d9e3',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRoute_eq_none': 'f943a8f317d63bbe7d1fe386c0ac93cfe48701fc7f41655d5cc18e3417b6f4fa',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.checkPacketSelectorRoutesClear_eq_true_iff': '708f48bfd74bd4da6b585cea59cbfa728dce1fac5ae627fe8487b43f7d7348d5',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketSelectorFaithfulnessBinding_eq_true_iff': 'c17f7d216ed04db28b418d851aa7b5805328070e85f29c3999af8829d65ee3e6',
+  'PNP.DirectWire.TerminalPacketSelectorHandleConclusion.existsHandle': '85578022b001c2bf43499f3cd1b8a655398eeca5f050f938ef76c76934233827',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsPacketSelectorHandle': '4ee2e6f3aff4f13fe61dc4009adc901244d1144ee33d38f46bcd59f73a107a9e',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsFaithfulHandle_of_routesClear': '33688388f34a9d463aa29174da608036b7433b2c2d7faf4ac5ff232be1b49ca1',
+  'PNP.DirectWire.terminalBN6_packet_selector_faithfulness_hb_contradiction': '1a373a54ce5c7f264483ddaf34593ff550d2cae07c4afd19e918b27f3f7fe058',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -439,8 +452,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /exhaustively checks that every canonical realizer claim is a typed bottom/u);
   assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, rank assignment, faithfulness predicate, exhaustive realizer claims, or blocker tables/u);
   assert.match(globalZeroSlack.nonClaim, /derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data/u);
-  assert.match(globalZeroSlack.nonClaim, /prove every terminal-derived realizer claim is a typed bottom/u);
-  assert.match(globalZeroSlack.nonClaim, /selector faithfulness or compatibility, an independently constructed realizer, unconditional global silence/u);
+  assert.match(globalZeroSlack.nonClaim, /Packet selector-faithfulness routing milestone now checks ten canonical source-payload fields/u);
+  assert.match(globalZeroSlack.nonClaim, /derive the route-clear payload checks or exact HB binding from terminal data/u);
+  assert.match(globalZeroSlack.nonClaim, /provide selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -806,6 +820,82 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /executable selector-silence induction/u.test(nonClaim)
       && /exhaustive data-only check/u.test(nonClaim)
       && /does not construct them from terminal candidates/u.test(nonClaim)),
+    true,
+  );
+
+  const packetSelectorFaithfulnessRoutingMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-selector-faithfulness-routing');
+  const packetSelectorFaithfulnessRoutingHashes = release.earnedBoundary
+    .residualTerminalPacketSelectorFaithfulnessRoutingTheoremKernelTypeSha256;
+  assert.ok(packetSelectorFaithfulnessRoutingMilestone);
+  assert.equal(packetSelectorFaithfulnessRoutingMilestone.earned, true);
+  assert.equal(packetSelectorFaithfulnessRoutingMilestone.allPresent, true);
+  assert.equal(packetSelectorFaithfulnessRoutingMilestone.allKernelTypesMatch, true);
+  assert.equal(packetSelectorFaithfulnessRoutingMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSelectorFaithfulnessRoutingHashes,
+    PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetSelectorFaithfulnessRoutingMilestone.requiredTheorems,
+    Object.keys(PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingAuditedDeclarationCount, 20);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingEmptyAxiomDeclarationCount, 5);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingPropextOnlyDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingPropextQuotSoundDeclarationCount, 6);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetSelectorFaithfulnessRoutingMilestone.theoremRows) {
+    const expectedAxioms = [
+      'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.check_eq_true_iff',
+      'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.firstRoute_eq_none_of_check',
+      'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.check_eq_false_of_firstRoute',
+      'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFaithful_eq_true_iff',
+      'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRoute_eq_none',
+    ].includes(theoremRow.name) ? ['propext'] : ['Quot.sound', 'propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(packetSelectorFaithfulnessRoutingMilestone.scope, /exhaustive route-clear canonical payload checks/u);
+  assert.match(packetSelectorFaithfulnessRoutingMilestone.scope, /contradiction with selector silence/u);
+  assert.match(packetSelectorFaithfulnessRoutingMilestone.nonClaim, /remain explicit terminal-relative inputs/u);
+  assert.match(packetSelectorFaithfulnessRoutingMilestone.nonClaim, /does not derive positive slack/u);
+  assert.equal(status.leanResidualTerminalPacketSelectorFaithfulnessRoutingFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorFaithfulnessRoutingAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketSelectorFaithfulnessRoutingScope,
+    release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessRoutingScope,
+  );
+  assert.equal(status.leanZeroSlackPositiveSlackContradictionFormalized, false);
+  assert.ok(index.earnedMilestones.includes(packetSelectorFaithfulnessRoutingMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /Packet selector-faithfulness routing checker/u.test(nonClaim)
+      && /ten data-only fields/u.test(nonClaim)
+      && /positive slack/u.test(nonClaim)),
     true,
   );
 
@@ -5213,6 +5303,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('residual-gain-chain-bound'));
   assert.ok(index.earnedMilestones.includes('residual-gain-stopping-specification'));
   assert.ok(index.earnedMilestones.includes('residual-terminal-full-carrier-bridge'));
+  assert.ok(index.earnedMilestones.includes('residual-terminal-packet-selector-faithfulness-routing'));
   assert.ok(index.earnedMilestones.includes('concrete-cnf-universal-verifier'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-raw-tape-bridge'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-formula-size'));
