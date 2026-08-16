@@ -21,14 +21,16 @@ function escapeRegExp(value) {
 }
 
 async function currentPublication() {
-  const [updates, index, release] = await Promise.all([
+  const [updates, index, release, status] = await Promise.all([
     readJson('content/milestone-updates.json'),
     readJson('public/pnp-index.json'),
     readJson('downloads/formal-publication-release.json'),
+    readJson('public/pnp-status.json'),
   ]);
   return {
     progress: updates.entries[0].progressEstimatePercent,
     counts: index.formalPublicationMilestoneCounts,
+    milestoneRecordCount: status.formalPublicationMilestones.length,
     reportPages: release.artifacts.report.pageCount,
   };
 }
@@ -92,7 +94,7 @@ test('plain-language orientation is static and available before technical depth'
 });
 
 test('technical disclosures announce their controls and remain usable without JavaScript', async () => {
-  const { counts } = await currentPublication();
+  const { milestoneRecordCount } = await currentPublication();
   const [home, status, updates, css] = await Promise.all([
     read('index.html'), read('status.html'), read('updates.html'), read('assets/styles.min.css'),
   ]);
@@ -101,7 +103,7 @@ test('technical disclosures announce their controls and remain usable without Ja
   assert.match(home, /<details class="boundary-panel"[^>]*>/u);
   assert.doesNotMatch(home, /<details class="boundary-panel"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(status, /<details class="milestone-ledger">/u);
-  assert.match(status, new RegExp(`Show all ${counts.total} formal milestone records`, 'u'));
+  assert.match(status, new RegExp(`Show all ${milestoneRecordCount} formal milestone records`, 'u'));
   assert.match(updates, /<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.match(updates, /class="disclosure-chevron"/u);
   assert.match(css, /\.disclosure-summary\{[^}]*min-height:44px/u);
