@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 2,741 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 2,749 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 28,865 public declarations;
-- 14,874 theorem-kind declarations;
+- 28,874 public declarations;
+- 14,882 theorem-kind declarations;
 - 7,492 assumption-free theorem-kind declarations;
-- 268 source-closure modules;
+- 269 source-closure modules;
 - 15,047 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and twenty-six earned scopes are:
+The one hundred and twenty-eight earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -177,6 +177,7 @@ The one hundred and twenty-six earned scopes are:
 | Conditional HB selector-silence rank closure | For every arbitrary finite accepted typed-realizer table, checked HN/BUD inactivity and explicit semantic exclusion of every strict equivalent gain leave a faithful selector only if a faithful selector exists at strictly lower finite rank. Strong induction proves every canonical selector in the supplied grouped-BN6 family nonfaithful. A specialization obtains global gain exclusion from the existing explicit gain-coverage certificate plus exact source-cell no-gain evidence. The four reviewed pins form a focused four-declaration audit, and all four use `Quot.sound` with `propext`; none uses a project axiom or `Classical.choice`. | Global semantic gain exclusion is an explicit proof-bearing premise. The specialization still requires a supplied coverage certificate and exact source-cell no-gain evidence. The grouped family, finite rank and faithfulness tables, realizer claims, blocker activity, dependency rows, and rank map remain explicit inputs. This does not establish selector faithfulness or compatibility, construct those inputs from terminal data, derive blocker semantics or semantic dependency completeness, prove unconditional `HB.NegativeClosure`, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, discharge an assumption, or prove `P = NP`. |
 | Executable HB selector-silence induction | For every arbitrary finite accepted typed-realizer table, one exhaustive executable check proves that every canonical realizer claim is a typed bottom and retains faithful-row validity. Checked HN/BUD active-dependency closure eliminates hereditary and budget bottoms, while strong induction on the supplied finite rank eliminates faithful strictly lower-rank seeds. Every canonical selector is therefore nonfaithful without global semantic no-gain as a theorem premise. The seven reviewed pins have one empty and six `Quot.sound` plus `propext` closures. The focused nine-declaration audit has three empty and six `Quot.sound` plus `propext` closures; none uses only `propext`, a project axiom, or `Classical.choice`. | The grouped family, finite rank and faithfulness functions, realizer claim function, blocker activity functions, dependency rows, and finite-to-exact rank map remain explicit data inputs. The checker validates these data but does not construct them from terminal candidates or prove selector faithfulness, selector compatibility, blocker semantics, or semantic dependency completeness. This milestone does not establish the full unconditional `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Packet selector-faithfulness routing and HB contradiction | For every arbitrary finite explicit grouped BN6 family, Lean checks ten canonical source-payload fields, exposes the first failed route, exhaustively checks every canonical handle, and binds computed faithfulness exactly to the supplied HB table. Every positive Packet conclusion yields a faithful canonical handle, while accepted executable HB selector silence proves that handle nonfaithful. Five of the 11 reviewed pins use only `propext` and six use `Quot.sound` plus `propext`. The focused 20-declaration audit has five empty, nine `propext`-only, and six `Quot.sound` plus `propext` closures; none uses a project axiom or `Classical.choice`. | The grouped family, payload field Booleans, finite rank tags, route-clear payload checks, exact HB binding, realizer claims, blocker activity, dependency rows, and finite-to-exact rank map remain explicit terminal-relative inputs. The checkers do not derive them from a terminal candidate or prove their external manuscript semantics. This milestone does not derive positive slack, `SaturatePositive`, BCELReady, the grouped family, or the no-lower ledger; establish unconditional `HB.NegativeClosure` or complete route silence; prove unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove `P = NP`. |
+| Canonical Packet faithfulness-table construction | For every arbitrary finite explicit grouped BN6 family and finite rank carrier, Lean replaces a supplied typed-realizer table's free faithfulness function with the canonical positive source-payload computation while preserving rank, HN activity, budget activity, and every realizer claim exactly. Exhaustive faithfulness binding accepts by construction, and a route-clear positive Packet contradicts accepted executable HB selector silence without an independent binding premise. Five of the eight reviewed pins use only `propext` and three use `Quot.sound` plus `propext`. The focused nine-declaration audit has one empty, five `propext`-only, and three `Quot.sound` plus `propext` closures; none uses a project axiom or `Classical.choice`. | The grouped family, ten payload field Booleans, finite rank tags and rank assignment, route-clear acceptance, realizer claims, HN/BUD activity, dependency rows, and finite-to-exact rank map remain explicit inputs. The constructor does not derive those inputs from a terminal candidate or prove their external manuscript semantics. This milestone does not establish full external selector compatibility, complete route silence, unconditional `HB.NegativeClosure`, positive slack, `SaturatePositive`, BCELReady, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -208,7 +209,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 102-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 103-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

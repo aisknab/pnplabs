@@ -5342,11 +5342,14 @@ test("exported verification helpers import without a script argv path", () => {
 
 test("automation invokes read-only sync and contains no commit or push step", () => {
   const workflow = readFileSync(path.join(root, ".github/workflows/sync-public-access-report.yml"), "utf8");
+  const synchronizer = readFileSync(path.join(root, "tools/sync-public-access-docs.mjs"), "utf8");
   assert.match(workflow, /permissions:\n  contents: read/);
   assert.match(workflow, /sync-public-access-docs\.mjs --check/);
-  assert.match(workflow, /expected_pages="\$\(node -p .*formal-publication-release\.json.*pageCount.*\)"/);
-  assert.match(workflow, /actual_pages="\$\(pdfinfo downloads\/canonical_proof_report\.pdf/);
-  assert.match(workflow, /test "\$actual_pages" = "\$expected_pages"/);
+  assert.match(synchronizer, /verifyReleaseSeal\(\{ root \}\)/);
+  assert.match(synchronizer, /checkPdfPageCount\(path\.join\(root, CORE_FILES\[0\]\.targets\[0\]\), expectedPageCount\)/);
+  assert.match(synchronizer, /OLD_PDF_SHA256/);
+  assert.match(synchronizer, /OLD_TEX_SHA256/);
+  assert.doesNotMatch(workflow, /actual_pages=|sha256sum|node tools\/verify-release-seal\.mjs/);
   assert.doesNotMatch(workflow, /git (?:commit|push)/);
   assert.doesNotMatch(workflow, /contents: write/);
 });
