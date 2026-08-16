@@ -60,6 +60,15 @@ const HB_SELECTOR_SILENCE_CLOSURE_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_closure_contract': 'bb80815c42a2ad17e8cfcb0d7764233806489e547875433c9ab8cb5c4191b899',
   'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_gain_coverage_contract': '353ae4076dfb315ae6c6e0b82396ab858e9a8755f84f89d44c257e744c43ad74',
 });
+const HB_EXECUTABLE_SELECTOR_SILENCE_INDUCTION_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketTypedRealizerClaim.isBotBool_eq_true_iff': '2ff68cf7dd46a900b31bb45e2934db6940656dbc46c1f0edc06c0f9edff83499',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkSelectorSilent_eq_true_iff': '986270ac38886cc8c5772c43cb22ad422940385393e8a614153e590d7289d681',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkFaithful_of_selectorSilent': 'c5fa7412d8f8f01e76cf07c557a35442866dcc8cc51d92f5061112c64b940be3',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.claim_eq_bot_of_selectorSilent': '793b46540495a634d566375f143ab6ab7a85b5bdd0e9bebc791a5f83e12be320',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithful_of_selectorSilent': 'ffd3b7e3f436801bb5398c1360c86bd041c5bf8b207c9be0b83bc491232b0201',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.noFaithfulAtOrBelow_of_selectorSilent': '3e392d7466f9986e35656dd110a0b62bb1576961b0ec0c7b5e50569b1d51d018',
+  'PNP.DirectWire.terminalBN6_packet_typed_realizer_hb_selector_silence_induction_contract': 'a2b84373303f881928ce4dd46bcb59d1569c3d41e63cab9360218d375ce77d90',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -426,11 +435,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /checked total-table HB contract/u);
   assert.match(globalZeroSlack.nonClaim, /checked HB active-dependency closure/u);
   assert.match(globalZeroSlack.nonClaim, /prove every supplied HN\/BUD activity bit false/u);
-  assert.match(globalZeroSlack.nonClaim, /conditional selector-silence rank closure/u);
-  assert.match(globalZeroSlack.nonClaim, /strong finite-rank induction to prove every canonical handle/u);
-  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, gain-coverage certificate, rank assignment, faithfulness predicate, or blocker tables/u);
+  assert.match(globalZeroSlack.nonClaim, /executable selector-silence induction/u);
+  assert.match(globalZeroSlack.nonClaim, /exhaustively checks that every canonical realizer claim is a typed bottom/u);
+  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, rank assignment, faithfulness predicate, exhaustive realizer claims, or blocker tables/u);
   assert.match(globalZeroSlack.nonClaim, /derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data/u);
-  assert.match(globalZeroSlack.nonClaim, /derive global gain exclusion or its coverage certificate from terminal data rather than consume it as an explicit premise/u);
+  assert.match(globalZeroSlack.nonClaim, /prove every terminal-derived realizer claim is a typed bottom/u);
   assert.match(globalZeroSlack.nonClaim, /selector faithfulness or compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
@@ -735,6 +744,68 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /conditional selector-silence rank closure/u.test(nonClaim)
       && /explicit global semantic gain exclusion premise/u.test(nonClaim)
       && /does not establish selector faithfulness or compatibility/u.test(nonClaim)),
+    true,
+  );
+
+  const hbExecutableSelectorSilenceMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hb-executable-selector-silence-induction');
+  const hbExecutableSelectorSilenceHashes = release.earnedBoundary
+    .residualTerminalHBExecutableSelectorSilenceInductionTheoremKernelTypeSha256;
+  assert.ok(hbExecutableSelectorSilenceMilestone);
+  assert.equal(hbExecutableSelectorSilenceMilestone.earned, true);
+  assert.equal(hbExecutableSelectorSilenceMilestone.allPresent, true);
+  assert.equal(hbExecutableSelectorSilenceMilestone.allKernelTypesMatch, true);
+  assert.equal(hbExecutableSelectorSilenceMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    hbExecutableSelectorSilenceHashes,
+    HB_EXECUTABLE_SELECTOR_SILENCE_INDUCTION_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    hbExecutableSelectorSilenceMilestone.requiredTheorems,
+    Object.keys(HB_EXECUTABLE_SELECTOR_SILENCE_INDUCTION_THEOREM_SHA256),
+  );
+  assert.equal(
+    release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionAuditedDeclarationCount,
+    9,
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionEmptyAxiomDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionPropextQuotSoundDeclarationCount, 6);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hbExecutableSelectorSilenceMilestone.theoremRows) {
+    const expectedAxioms = theoremRow.name === 'PNP.DirectWire.TerminalPacketTypedRealizerClaim.isBotBool_eq_true_iff'
+      ? []
+      : ['Quot.sound', 'propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(theoremRow.actualKernelTypeSha256, HB_EXECUTABLE_SELECTOR_SILENCE_INDUCTION_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.expectedKernelTypeSha256, HB_EXECUTABLE_SELECTOR_SILENCE_INDUCTION_THEOREM_SHA256[theoremRow.name], theoremRow.name);
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)), false, theoremRow.name);
+  }
+  assert.match(hbExecutableSelectorSilenceMilestone.scope, /exhaustive executable check/u);
+  assert.match(hbExecutableSelectorSilenceMilestone.scope, /without global semantic no-gain as a theorem premise/u);
+  assert.match(hbExecutableSelectorSilenceMilestone.nonClaim, /remain explicit data inputs/u);
+  assert.match(hbExecutableSelectorSilenceMilestone.nonClaim, /does not construct them from terminal candidates/u);
+  assert.equal(status.leanResidualTerminalHBExecutableSelectorSilenceInductionFormalized, true);
+  assert.equal(status.leanResidualTerminalHBExecutableSelectorSilenceInductionAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHBExecutableSelectorSilenceInductionScope,
+    release.earnedBoundary.residualTerminalHBExecutableSelectorSilenceInductionScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hbExecutableSelectorSilenceMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /executable selector-silence induction/u.test(nonClaim)
+      && /exhaustive data-only check/u.test(nonClaim)
+      && /does not construct them from terminal candidates/u.test(nonClaim)),
     true,
   );
 
