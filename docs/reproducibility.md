@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 499,520 | `f7d584abb790c13dc83b40b80d72ffaf9d572c155cfe25687a01debc99774316` |
-| `downloads/canonical-proof-report.pdf` | 499,520 | `f7d584abb790c13dc83b40b80d72ffaf9d572c155cfe25687a01debc99774316` |
-| `downloads/canonical_proof_report.tex` | 267,839 | `f6ea2f2e171b449dc19faf9aab56f819616dec7d8fd6c77dfdeb956b7b426f21` |
-| `downloads/canonical-proof-report.tex` | 267,839 | `f6ea2f2e171b449dc19faf9aab56f819616dec7d8fd6c77dfdeb956b7b426f21` |
-| `public/pnp-status.json` | 2,271,886 | `2bd1b2e6e39f9ae368254b35962733d3f5e2b6dba21eb0bec909bb61b016c8e3` |
-| `public/pnp-theorem-inventory.json` | 19,696,843 | `86ec3df3c13b17585118f616bcc3093bfaefb2d2208f20d037ccf57af79f51d8` |
+| `downloads/canonical_proof_report.pdf` | 501,907 | `ba744d4cb5ad559ceae3262256bd0382e14b76e8b6f44d667699aba0478f8025` |
+| `downloads/canonical-proof-report.pdf` | 501,907 | `ba744d4cb5ad559ceae3262256bd0382e14b76e8b6f44d667699aba0478f8025` |
+| `downloads/canonical_proof_report.tex` | 270,184 | `a679115839301c54a039927864fb01061005e1a1b8aa7ac21d71872cd002702e` |
+| `downloads/canonical-proof-report.tex` | 270,184 | `a679115839301c54a039927864fb01061005e1a1b8aa7ac21d71872cd002702e` |
+| `public/pnp-status.json` | 2,278,851 | `4fefada05b5f036a13f7e4973694893e9a1782d29303251db683fc6797318964` |
+| `public/pnp-theorem-inventory.json` | 19,760,305 | `5dfd67ade5f31501fabe34c12f72e75bc2f5bf7f4f35e70f8faef39205fe938b` |
 
-The PDF must have 103 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 104 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 72e2509cb18080700a764dde8309060a7d9bb21c
+git -C ../pnp checkout b69c7419158154187c2adc6991ebe31aef6538f9
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -64,8 +64,8 @@ npm run formal:inventory:check
 npm run report:check
 ```
 
-Expected compiled inventory counts are 28,883 public declarations, 14,889 theorem-kind declarations,
-7,492 assumption-free theorem-kind declarations, 15,047 excluded private auxiliaries, 270 modules, and
+Expected compiled inventory counts are 28,902 public declarations, 14,905 theorem-kind declarations,
+7,502 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 271 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -95,18 +95,17 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 7 reviewed theorem pins. For every arbitrary finite explicit grouped BN6 family and finite
-rank carrier, Lean proves the canonical payload first-route classifier total: no route exactly on acceptance and one
-earliest typed route exactly on rejection. Every positive Packet under the canonicalized HB table, accepted executable
-selector silence, and accepted active-dependency closure yields a first typed route without route-clear or binding
-premises. Four reviewed pins use only `propext` and three use `Quot.sound` plus `propext`. The
-focused 9-declaration audit has 0 empty, 6 `propext`-only, and 3 `Quot.sound` plus `propext` closures; none uses a project axiom or
-`Classical.choice`. The grouped family, ten payload field Booleans, finite rank tags and assignment, realizer claims,
-HN/BUD activity, dependency rows, and finite-to-exact rank map remain proof-bearing inputs. Lean does not derive
-positive slack or those inputs from terminal data, prove any reported route's external semantics or decreasing global
-coverage, provide full external selector compatibility, establish complete route silence or unconditional HB negative
-closure, encoded-size or polynomial-runtime bounds, global PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P,
-discharge an assumption, or prove `P = NP`.
+The newest milestone adds 6 reviewed theorem pins. For every arbitrary finite payload rank and all ten route constructors,
+Lean proves the executable first route equivalent to the exact earliest failed supplied field, with every preceding field
+accepted. The failure is unique, rejection is equivalent to exact failure existence, and the canonical positive Packet/HB
+endpoint carries both route and field-failure proof without route-clear or binding premises. Four reviewed pins use only
+`propext` and two use `Quot.sound` plus `propext`. The focused 8-declaration audit has 1 empty, 5 `propext`-only,
+and 2 `Quot.sound` plus `propext` closures; none uses a project axiom or `Classical.choice`. The grouped family, ten
+payload field Booleans, finite rank tags and assignment, realizer claims, HN/BUD activity, dependency rows, and
+finite-to-exact rank map remain proof-bearing inputs. Lean does not derive the fields or family from terminal data, prove
+the fields' external manuscript semantics or decreasing global coverage, provide full external selector compatibility,
+establish complete route silence or unconditional HB negative closure, encoded-size or polynomial-runtime bounds, global
+PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`.
 
 The authority verifier runs its current regression, axiom-audit, status, public-surface, and legacy-archive checks once. `report:check` includes the formal-publication check, then performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

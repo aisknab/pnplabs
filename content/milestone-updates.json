@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-17-residual-terminal-packet-selector-first-route-semantics",
+      "milestoneId": "residual-terminal-packet-selector-first-route-semantics",
+      "publishedAt": "2026-08-16T20:21:51Z",
+      "title": "Lean now identifies the exact earliest failed Packet field",
+      "plainLanguage": [
+        "For every arbitrary finite payload rank and all ten route constructors, Lean now proves that the executable first route is equivalent to the exact earliest failed supplied field, with every preceding field accepted. The failure is unique, rejection is equivalent to exact failure existence, and the canonical positive Packet/HB endpoint carries both the route and its exact field-failure proof without route-clear or binding premises.",
+        "The grouped family, ten payload fields, finite rank tags and assignment, realizer claims, HN and budget activity, dependency rows, and finite-to-exact rank map remain supplied inputs rather than constructions from terminal data. These are exact semantics of the existing Boolean payload only: the result does not derive those fields or their family from terminal data, prove their external manuscript semantics, or map a reported failure into a decreasing complete global outcome system. This is not full external selector compatibility, complete route silence, unconditional HB negative closure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 130 of 132 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "b69c7419158154187c2adc6991ebe31aef6538f9",
+        "tree": "43afa4efa61e45a6d94c099d235b4fb691401b2c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-154",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-17-residual-terminal-packet-selector-first-route-outcome",
       "milestoneId": "residual-terminal-packet-selector-first-route-outcome",
       "publishedAt": "2026-08-16T16:45:46Z",
