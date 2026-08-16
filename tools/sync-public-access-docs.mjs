@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "b2e0b1e97744e365528b7c1a06e208a6481d7d1a";
-const CORE_TREE = "28ee8cf19a2092479f2661ac5ad7cb5c54cfe734";
-const CORE_PUBLICATION_MAP_SHA256 = "379314764412bf27536510644a6f4e74f57572cf7c49158ec417f111330d40bf";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-16-151";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-151";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-16-151";
-const CORE_SOURCE_CLOSURE_SHA256 = "8e2cce7c3326bc6d1e7e7c47e6e443b0a8b861cadb92302d5a64c6b9e99da5a7";
+const CORE_COMMIT = "8bc8d36fea5abf3f486e9dbfe7cfccea5c6b34e0";
+const CORE_TREE = "f25cf38b740b398e071a2a9c3e964d933bd26838";
+const CORE_PUBLICATION_MAP_SHA256 = "1be8e62cb4af7c2a9031890229b672bac14886656facfad4cb80bcfa5c98e667";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-16-152";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-152";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-16-152";
+const CORE_SOURCE_CLOSURE_SHA256 = "e694c3f4edcf59e6ba7c914be035f3d627b1b944a824eb11a032251addd67b6c";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1324,6 +1324,20 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_ROUTING_SCOPE = "all-arbitrary-finite-positive-bn6-packets-executable-canonical-payload-route-clearance-exact-hb-faithfulness-binding-and-selector-silence-contradiction";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_ROUTING_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family, exhaustive route-clear canonical payload checks plus exact binding to the supplied HB faithfulness table turn every positive Packet conclusion into a faithful canonical handle. Accepted executable HB selector silence and active-dependency closure prove that same handle nonfaithful, yielding a contradiction with selector silence. A fixed first-failure classifier exposes colour, frontier, charge, obligation, activation, direction, budget, rank, exact-route, or descent failure.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_ROUTING_NON_CLAIM = "The grouped family, payload field Booleans, finite rank tags, route-clear payload checks, exact HB binding, realizer claims, blocker activity, dependency rows, and finite-to-exact rank map remain explicit terminal-relative inputs. The checkers do not derive those inputs from a terminal candidate or prove their external manuscript semantics. This milestone does not derive positive slack, SaturatePositive, BCELReady, the grouped family, or the no-lower ledger; establish unconditional HB.NegativeClosure or complete route silence; prove unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_rankOf": { hash: "088940164c00d7360b99be61fde51071bd7daef927cf505c209abc4ecbbeafdd", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_hnActive": { hash: "bcc9dc25c2332e9576384f892c5a586b1c1f5612548289692cff843d782611db", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_budgetActive": { hash: "cb7c8043a77f9b00a6fc0583da778a78ce649fd88a3d0bd4e110fea4b0d340b2", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_claim": { hash: "3df43b9aa7cf6f84930dfda0e5d156eaf8107ac0c4cfda8ca1d97a78224ceaf8", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_faithful": { hash: "0306f47499f7d56cd570b28ff422d39117337abf9563bddc0f74b1a23e3e30d0", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_binding": { hash: "2fddc41eb1fb1b8c5fd853e3806e9507886c8913a6ae40200c7da83c1dc26709", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsFaithfulHandle_of_computedTable": { hash: "a66485e30b5d093a9a30a7a407d96f78a123a49d5f6ceea300b64d044aef1555", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" },
+  "PNP.DirectWire.terminalBN6_packet_computed_faithfulness_hb_contradiction": { hash: "5da9aaf35e5e487d21ae0a21558aa8fcbf7815e7570f07b79b6597221af29a8d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorFaithfulnessTable" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_SCOPE = "all-arbitrary-finite-canonical-packet-payload-faithfulness-table-construction-preserved-rank-claims-blocker-activity-binding-free-selector-silence-contradiction";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family and finite rank carrier, Lean canonicalizes a typed-realizer table by replacing its free faithfulness function with the canonical positive source-payload computation while preserving rank, HN activity, budget activity, and every realizer claim exactly. Exhaustive faithfulness binding accepts by construction, and a route-clear positive Packet contradicts accepted executable HB selector silence without an independent binding premise.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_NON_CLAIM = "The grouped family, ten payload field Booleans, finite rank tags and rank assignment, route-clear acceptance, realizer claims, HN/BUD activity, dependency rows, and finite-to-exact rank map remain explicit inputs. The constructor does not derive those inputs from a terminal candidate or prove their external manuscript semantics. This milestone does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3635,26 +3649,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 495369,
-    sha256: "f1b81d20eb72d5a2d2087a2ebc6ebd06b4f34fea3c80c8644061113d6266d38a"
+    bytes: 497445,
+    sha256: "3b1c5a24fe6cf548b622f12b48f763da4ae88b125930eb7af0dc74fa7862f9ed"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 263090,
-    sha256: "ae4ed60d2cab068cac1e9fffd32d9d34a2db369b31e692a6d6590554524ecd23"
+    bytes: 265406,
+    sha256: "52cf74f0f7c5f91fb52ffa74e2d929e3f8d4f9f2f3b8874621502f080fe750d7"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2256287,
-    sha256: "19fad1bf08813237c4d8ec95dd80607ea079a3558212279fc62b3de502f9efbc"
+    bytes: 2264408,
+    sha256: "0e5de9750176c6860a1df1fc371d019b2e0b126b64cd10fadc5941da6aecf7c4"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 19550980,
-    sha256: "d1d0155ca532610c3f2be755e10543c081d1372803a42926611ed24fa4cb7f85"
+    bytes: 19634358,
+    sha256: "c3bfe2aaef651ef74c921e0e253fcd3e2fa9d1516c3f3edd00c5f4cdfef3e7fd"
   }
 ];
 
@@ -4808,6 +4822,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector-faithfulness routing boundary mismatch");
+  }
+  const residualTerminalPacketSelectorFaithfulnessTableMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-selector-faithfulness-table"
+  );
+  const residualTerminalPacketSelectorFaithfulnessTableNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS);
+  if (!residualTerminalPacketSelectorFaithfulnessTableMilestone
+      || residualTerminalPacketSelectorFaithfulnessTableMilestone.classification !== "formalized-residual-terminal-packet-selector-faithfulness-table"
+      || residualTerminalPacketSelectorFaithfulnessTableMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_MILESTONE_SCOPE
+      || residualTerminalPacketSelectorFaithfulnessTableMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSelectorFaithfulnessTableMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSelectorFaithfulnessTableNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet selector-faithfulness table boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -7155,6 +7185,41 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector-faithfulness routing boundary mismatch");
     }
+    const residualTerminalPacketSelectorFaithfulnessTableMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-selector-faithfulness-table"
+    );
+    if (!residualTerminalPacketSelectorFaithfulnessTableMilestone
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.earned !== true
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.allPresent !== true
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.classification !== "formalized-residual-terminal-packet-selector-faithfulness-table"
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_MILESTONE_SCOPE
+        || residualTerminalPacketSelectorFaithfulnessTableMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSelectorFaithfulnessTableMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSelectorFaithfulnessTableMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSelectorFaithfulnessTableFormalized !== true
+        || payload.leanResidualTerminalPacketSelectorFaithfulnessTableAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSelectorFaithfulnessTableScope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet selector-faithfulness table boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -7393,6 +7458,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal Packet selector-faithfulness routing theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet selector-faithfulness table theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {

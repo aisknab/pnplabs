@@ -59,6 +59,9 @@ leanResidualTerminalHBExecutableSelectorSilenceInductionScope = "all-arbitrary-f
 leanResidualTerminalPacketSelectorFaithfulnessRoutingFormalized = true
 leanResidualTerminalPacketSelectorFaithfulnessRoutingAxiomAuditPassed = true
 leanResidualTerminalPacketSelectorFaithfulnessRoutingScope = "all-arbitrary-finite-positive-bn6-packets-executable-canonical-payload-route-clearance-exact-hb-faithfulness-binding-and-selector-silence-contradiction"
+leanResidualTerminalPacketSelectorFaithfulnessTableFormalized = true
+leanResidualTerminalPacketSelectorFaithfulnessTableAxiomAuditPassed = true
+leanResidualTerminalPacketSelectorFaithfulnessTableScope = "all-arbitrary-finite-canonical-packet-payload-faithfulness-table-construction-preserved-rank-claims-blocker-activity-binding-free-selector-silence-contradiction"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -68,7 +71,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-seven narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone checks ten canonical source-payload routes and exact agreement with a supplied HB faithfulness table. Every positive Packet conclusion then yields a faithful canonical handle, while accepted executable selector silence proves the same handle nonfaithful, producing a contradiction under those explicit inputs. The grouped family, payload fields, finite rank tags, route-clear checks, HB table, realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs rather than constructions from terminal data. The milestone does not derive positive slack, terminal construction of those inputs, selector compatibility, blocker semantics or semantic dependency completeness, the unconditional `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, complete global PkgC, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and twenty-eight narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone rebuilds a supplied typed-realizer table so that canonical-handle faithfulness is computed from positive source payloads while rank, realizer claims, and HN/BUD activity are preserved exactly. Binding accepts by construction, so a route-clear positive Packet contradicts accepted executable selector silence without a separate binding premise. The grouped family, payload fields, finite rank tags and assignment, route-clear acceptance, realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs rather than constructions from terminal data. The milestone does not establish full external selector compatibility, complete route silence, positive slack, terminal construction of those inputs, blocker semantics or semantic dependency completeness, the unconditional `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, complete global PkgC, a decreasing complete global route system, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -87,7 +90,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 102-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 103-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

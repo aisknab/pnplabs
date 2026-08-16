@@ -82,6 +82,16 @@ const PACKET_SELECTOR_FAITHFULNESS_ROUTING_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalBN6PacketConclusion.existsFaithfulHandle_of_routesClear': '33688388f34a9d463aa29174da608036b7433b2c2d7faf4ac5ff232be1b49ca1',
   'PNP.DirectWire.terminalBN6_packet_selector_faithfulness_hb_contradiction': '1a373a54ce5c7f264483ddaf34593ff550d2cae07c4afd19e918b27f3f7fe058',
 });
+const PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_rankOf': '088940164c00d7360b99be61fde51071bd7daef927cf505c209abc4ecbbeafdd',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_hnActive': 'bcc9dc25c2332e9576384f892c5a586b1c1f5612548289692cff843d782611db',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_budgetActive': 'cb7c8043a77f9b00a6fc0583da778a78ce649fd88a3d0bd4e110fea4b0d340b2',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_claim': '3df43b9aa7cf6f84930dfda0e5d156eaf8107ac0c4cfda8ca1d97a78224ceaf8',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_faithful': '0306f47499f7d56cd570b28ff422d39117337abf9563bddc0f74b1a23e3e30d0',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_binding': '2fddc41eb1fb1b8c5fd853e3806e9507886c8913a6ae40200c7da83c1dc26709',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsFaithfulHandle_of_computedTable': 'a66485e30b5d093a9a30a7a407d96f78a123a49d5f6ceea300b64d044aef1555',
+  'PNP.DirectWire.terminalBN6_packet_computed_faithfulness_hb_contradiction': '5da9aaf35e5e487d21ae0a21558aa8fcbf7815e7570f07b79b6597221af29a8d',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -450,11 +460,11 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /prove every supplied HN\/BUD activity bit false/u);
   assert.match(globalZeroSlack.nonClaim, /executable selector-silence induction/u);
   assert.match(globalZeroSlack.nonClaim, /exhaustively checks that every canonical realizer claim is a typed bottom/u);
-  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, rank assignment, faithfulness predicate, exhaustive realizer claims, or blocker tables/u);
+  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, rank assignment, payload checks, exhaustive realizer claims, or blocker tables/u);
   assert.match(globalZeroSlack.nonClaim, /derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data/u);
-  assert.match(globalZeroSlack.nonClaim, /Packet selector-faithfulness routing milestone now checks ten canonical source-payload fields/u);
-  assert.match(globalZeroSlack.nonClaim, /derive the route-clear payload checks or exact HB binding from terminal data/u);
-  assert.match(globalZeroSlack.nonClaim, /provide selector compatibility, an independently constructed realizer, unconditional global silence/u);
+  assert.match(globalZeroSlack.nonClaim, /canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise/u);
+  assert.match(globalZeroSlack.nonClaim, /derive route-clear payload evidence from terminal data/u);
+  assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
   assert.ok(status.nonClaims.includes('The finite BN4 activation-exact cancellation kernel classifies exact integer positive and negative mass at each complete typed key over an explicit caller-supplied cell ledger. It does not derive the cells, semantic signatures, or transport types from four-corner bases; establish the full historical BN4 theorem; construct PkgC or BN6; complete global routes or selectors; establish ZeroSlack or polynomial PCCMin; put SAT in P; or prove P = NP.'));
@@ -896,6 +906,81 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /Packet selector-faithfulness routing checker/u.test(nonClaim)
       && /ten data-only fields/u.test(nonClaim)
       && /positive slack/u.test(nonClaim)),
+    true,
+  );
+
+  const packetSelectorFaithfulnessTableMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-selector-faithfulness-table');
+  const packetSelectorFaithfulnessTableHashes = release.earnedBoundary
+    .residualTerminalPacketSelectorFaithfulnessTableTheoremKernelTypeSha256;
+  assert.ok(packetSelectorFaithfulnessTableMilestone);
+  assert.equal(packetSelectorFaithfulnessTableMilestone.earned, true);
+  assert.equal(packetSelectorFaithfulnessTableMilestone.allPresent, true);
+  assert.equal(packetSelectorFaithfulnessTableMilestone.allKernelTypesMatch, true);
+  assert.equal(packetSelectorFaithfulnessTableMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSelectorFaithfulnessTableHashes,
+    PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetSelectorFaithfulnessTableMilestone.requiredTheorems,
+    Object.keys(PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTableAuditedDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTableEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTablePropextOnlyDeclarationCount, 5);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTablePropextQuotSoundDeclarationCount, 3);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTableAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTableProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetSelectorFaithfulnessTableMilestone.theoremRows) {
+    const expectedAxioms = [
+      'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_rankOf',
+      'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_hnActive',
+      'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_budgetActive',
+      'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_claim',
+      'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorFaithfulness_faithful',
+    ].includes(theoremRow.name) ? ['propext'] : ['Quot.sound', 'propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(packetSelectorFaithfulnessTableMilestone.scope, /replacing its free faithfulness function/u);
+  assert.match(packetSelectorFaithfulnessTableMilestone.scope, /without an independent binding premise/u);
+  assert.match(packetSelectorFaithfulnessTableMilestone.nonClaim, /remain explicit inputs/u);
+  assert.match(packetSelectorFaithfulnessTableMilestone.nonClaim, /does not establish full external selector compatibility/u);
+  assert.equal(status.leanResidualTerminalPacketSelectorFaithfulnessTableFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSelectorFaithfulnessTableAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketSelectorFaithfulnessTableScope,
+    release.earnedBoundary.residualTerminalPacketSelectorFaithfulnessTableScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetSelectorFaithfulnessTableMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /canonical Packet faithfulness-table constructor/u.test(nonClaim)
+      && /no binding premise/u.test(nonClaim)
+      && /full external selector compatibility/u.test(nonClaim)),
     true,
   );
 

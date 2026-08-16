@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-16-residual-terminal-packet-selector-faithfulness-table",
+      "milestoneId": "residual-terminal-packet-selector-faithfulness-table",
+      "publishedAt": "2026-08-16T11:40:33Z",
+      "title": "Lean now constructs the canonical Packet faithfulness table",
+      "plainLanguage": [
+        "For every explicit finite grouped BN6 family and finite rank carrier, Lean now rebuilds a supplied typed-realizer table so each canonical handle's faithfulness is computed from its positive source payload. The constructor preserves rank, HN and budget activity, and every realizer claim exactly. Binding accepts by construction, so a route-clear positive Packet contradicts accepted executable selector silence without a separate binding premise.",
+        "The grouped family, ten payload fields, finite rank tags and assignment, route-clear acceptance, realizer claims, HN and budget activity, dependency rows, and finite-to-exact rank map remain supplied inputs rather than constructions from terminal data. This is not full external selector compatibility, complete route silence, unconditional HB negative closure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 128 of 130 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "8bc8d36fea5abf3f486e9dbfe7cfccea5c6b34e0",
+        "tree": "f25cf38b740b398e071a2a9c3e964d933bd26838",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-152",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-16-residual-terminal-packet-selector-faithfulness-routing",
       "milestoneId": "residual-terminal-packet-selector-faithfulness-routing",
       "publishedAt": "2026-08-16T07:18:00Z",

@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PNP_CORE_COMMIT: b2e0b1e97744e365528b7c1a06e208a6481d7d1a
+  PNP_CORE_COMMIT: 8bc8d36fea5abf3f486e9dbfe7cfccea5c6b34e0
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
@@ -51,25 +51,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends poppler-utils
 
-      - name: Verify exact core artifacts without writing
+      - name: Verify exact core artifacts and release seal without writing
         run: node tools/sync-public-access-docs.mjs --check
 
-      - name: Verify current report metadata and reject historical bytes
-        shell: bash
-        run: |
-          set -euo pipefail
-          expected_pages="$(node -p "require('./downloads/formal-publication-release.json').artifacts.report.pageCount")"
-          actual_pages="$(pdfinfo downloads/canonical_proof_report.pdf | awk '/^Pages:/ {print $2}')"
-          test "$actual_pages" = "$expected_pages"
-          cmp downloads/canonical_proof_report.pdf downloads/canonical-proof-report.pdf
-          cmp downloads/canonical_proof_report.tex downloads/canonical-proof-report.tex
-          test "$(sha256sum downloads/canonical_proof_report.pdf | cut -d' ' -f1)" != "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d"
-          test "$(sha256sum downloads/canonical_proof_report.tex | cut -d' ' -f1)" != "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7"
-
-      - name: Verify exact seal and cross-repository coordinates
-        run: |
-          node tools/verify-release-seal.mjs
-          node tools/check-cross-repo-targets.mjs --require-source
+      - name: Verify cross-repository coordinates
+        run: node tools/check-cross-repo-targets.mjs --require-source
 
       - name: Run focused artifact tests
         run: |

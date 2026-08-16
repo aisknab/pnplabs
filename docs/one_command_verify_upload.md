@@ -11,24 +11,16 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout b2e0b1e97744e365528b7c1a06e208a6481d7d1a
+git checkout 8bc8d36fea5abf3f486e9dbfe7cfccea5c6b34e0
 npm ci
 lake build PNP
-node pcc-formal-reconstruction-status0.mjs --json --no-write
-node pcc-formal-public-surface0.mjs --json --no-write
+npm run check
 npm run pnp:verify -- --no-write
-node scripts/export-lean-theorem-inventory.mjs --check
-node scripts/generate-formal-publication.mjs --check
+npm run formal:inventory:check
 npm run report:check
-node --test audits/lean-root-target0.test.mjs
-node --test audits/lean-nand-semantics0.test.mjs
-node --test audits/lean-nand-enumerator0.test.mjs
-lake env lean -DwarningAsError=true lean-audit/PNPBridgeAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDSemanticsAxiomAudit.lean
-lake env lean -DwarningAsError=true lean-audit/PNPNANDEnumeratorAxiomAudit.lean
 ```
 
-These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, the finite residual sequence through typed PkgC restoration, same-key cancellation, exact ambient-BN4-ledger embedding and residual reduction, the finite BN6 packet bridge, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite Packet charge-surplus kernel, the checked unit-charge blueprint realizer, the checked finite Packet typed-realizer contract, exact-rank acyclicity and total-table coverage for a supplied finite HN and budget dependency system, checked active-dependency closure, conditional and executable selector silence, and selector-faithfulness routing from positive Packets to a contradiction with that silence. The locked-NAND theorem `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold` remains a polynomial many-one reduction, not a polynomial-time target decider or an NP-hardness or NP-completeness result. The newest result checks ten canonical payload routes, binds computed faithfulness exactly to a supplied HB table, and turns every positive Packet into a faithful handle that accepted executable silence proves nonfaithful. The grouped family, payload fields, finite rank tags, route-clear checks, HB table and binding, exhaustive realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs and are not derived from terminal data. The result does not prove positive slack, selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, encoded-size or runtime bounds, global PkgC, unconditional `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+These commands expose current status, rebuild the compiled inventory and generated report, build the pinned Lean `PNP` library root, and audit supporting declarations without separately repeating the authority verifier's regression, axiom-audit, status, public-surface, or legacy-archive checks. `report:check` already checks the formal-publication output. They reproduce the earned concrete `CNFSAT ∈ NP` theorem, literal all-input and sequential compilers, recursive raw-machine refinement, the typed locked-NAND semantic threshold, exact strict codecs, concrete parser/emitter machines and polynomial reductions, the finite residual sequence through typed PkgC restoration, same-key cancellation, exact ambient-BN4-ledger embedding and residual reduction, the finite BN6 packet bridge, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite Packet charge-surplus kernel, the checked unit-charge blueprint realizer, the checked finite Packet typed-realizer contract, exact-rank acyclicity and total-table coverage for a supplied finite HN and budget dependency system, checked active-dependency closure, conditional and executable selector silence, selector-faithfulness routing from positive Packets to a contradiction with that silence, and canonical faithfulness-table construction. The locked-NAND theorem `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold` remains a polynomial many-one reduction, not a polynomial-time target decider or an NP-hardness or NP-completeness result. The newest result computes the HB faithfulness function from canonical positive source payloads, preserves the supplied rank map, realizer claims, and HN/BUD activity exactly, and removes the separate binding premise from the positive-Packet contradiction. The grouped family, payload fields, finite rank tags and assignment, route-clear checks, exhaustive realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs and are not derived from terminal data. The result does not prove positive slack, full external selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, encoded-size or runtime bounds, global PkgC, unconditional `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 
