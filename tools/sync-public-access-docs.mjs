@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "8bc8d36fea5abf3f486e9dbfe7cfccea5c6b34e0";
-const CORE_TREE = "f25cf38b740b398e071a2a9c3e964d933bd26838";
-const CORE_PUBLICATION_MAP_SHA256 = "1be8e62cb4af7c2a9031890229b672bac14886656facfad4cb80bcfa5c98e667";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-16-152";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-16-152";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-16-152";
-const CORE_SOURCE_CLOSURE_SHA256 = "e694c3f4edcf59e6ba7c914be035f3d627b1b944a824eb11a032251addd67b6c";
+const CORE_COMMIT = "72e2509cb18080700a764dde8309060a7d9bb21c";
+const CORE_TREE = "c943e898cd30d1ad1c479af2a29718b3c336c583";
+const CORE_PUBLICATION_MAP_SHA256 = "3463ece76b7994f38938c45a3a1822bdd4d94fa0b116e560e35d246798d68ad7";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-17-153";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-153";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-17-153";
+const CORE_SOURCE_CLOSURE_SHA256 = "d956ca0e44b1460f910a81d79082ba8790c2b2d911dabb5a3d9da7904d99e174";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1338,6 +1338,19 @@ const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_SCOPE = "all-arbitrary-finite-canonical-packet-payload-faithfulness-table-construction-preserved-rank-claims-blocker-activity-binding-free-selector-silence-contradiction";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family and finite rank carrier, Lean canonicalizes a typed-realizer table by replacing its free faithfulness function with the canonical positive source-payload computation while preserving rank, HN activity, budget activity, and every realizer claim exactly. Exhaustive faithfulness binding accepts by construction, and a route-clear positive Packet contradicts accepted executable HB selector silence without an independent binding premise.";
 const RESIDUAL_TERMINAL_PACKET_SELECTOR_FAITHFULNESS_TABLE_NON_CLAIM = "The grouped family, ten payload field Booleans, finite rank tags and rank assignment, route-clear acceptance, realizer claims, HN/BUD activity, dependency rows, and finite-to-exact rank map remain explicit inputs. The constructor does not derive those inputs from a terminal candidate or prove their external manuscript semantics. This milestone does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.firstRoute_eq_none_iff_check_eq_true": { hash: "b625a59e34476438f381dda5275afae154e11f3c732ca4917c2c5405b3a0afb0", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" },
+  "PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.exists_firstRoute_iff_check_eq_false": { hash: "79da1d37a618b4c1cd3d5ba0523c2009a8180fb1f991f926a2ccff81e00c0867", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRoute_eq_none_iff": { hash: "4aec62315c14bee2482274c7032dce3f990a4d8fc89efc67d58f2049df72e888", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" },
+  "PNP.DirectWire.TerminalBN6GroupedFamily.exists_packetSelectorPayloadFirstRoute_iff": { hash: "85f9dcff475feec9607f7c2948e138369086c28f8ec9a1dde16f26ca968f539a", axioms: ["propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsFaithfulOrFirstRoute": { hash: "c4cd83be265db5731337023dcc23f5d6e785e62c159e00c7273cbe573d8dd32a", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsFirstRoute_of_computedTableSelectorSilence": { hash: "3631f55536cc941ec835177ec51cf7b4ca58d7ecbb9f9c3a03cfee1e559c895f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" },
+  "PNP.DirectWire.terminalBN6_packet_computed_faithfulness_hb_first_route": { hash: "a7aa76d129b8ceb296249d5791fc3bc94e782b6eb5ee94c8e13e2e56ad7b1949", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketSelectorFirstRouteOutcome" }
+};
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_SCOPE = "all-arbitrary-finite-total-packet-first-route-classification-canonical-hb-selector-silence-without-route-clear-or-binding-premises";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_MILESTONE_SCOPE = "For every arbitrary finite explicit grouped BN6 family and finite rank carrier, Lean proves the canonical payload first-route classifier total: no route exactly on acceptance and one earliest typed route exactly on rejection. Every positive Packet under the canonicalized HB table, accepted executable selector silence, and accepted active-dependency closure yields a first typed route without route-clear or binding premises.";
+const RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_NON_CLAIM = "The grouped family, ten payload field Booleans, finite rank tags and rank assignment, realizer claims, HN/BUD activity, dependency rows, and finite-to-exact rank map remain explicit inputs. The result does not prove any route's external semantics and does not map reported routes into a decreasing complete global outcome system. It does not construct those inputs from a terminal candidate, establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3649,26 +3662,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 497445,
-    sha256: "3b1c5a24fe6cf548b622f12b48f763da4ae88b125930eb7af0dc74fa7862f9ed"
+    bytes: 499520,
+    sha256: "f7d584abb790c13dc83b40b80d72ffaf9d572c155cfe25687a01debc99774316"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 265406,
-    sha256: "52cf74f0f7c5f91fb52ffa74e2d929e3f8d4f9f2f3b8874621502f080fe750d7"
+    bytes: 267839,
+    sha256: "f6ea2f2e171b449dc19faf9aab56f819616dec7d8fd6c77dfdeb956b7b426f21"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2264408,
-    sha256: "0e5de9750176c6860a1df1fc371d019b2e0b126b64cd10fadc5941da6aecf7c4"
+    bytes: 2271886,
+    sha256: "2bd1b2e6e39f9ae368254b35962733d3f5e2b6dba21eb0bec909bb61b016c8e3"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 19634358,
-    sha256: "c3bfe2aaef651ef74c921e0e253fcd3e2fa9d1516c3f3edd00c5f4cdfef3e7fd"
+    bytes: 19696843,
+    sha256: "86ec3df3c13b17585118f616bcc3093bfaefb2d2208f20d037ccf57af79f51d8"
   }
 ];
 
@@ -4838,6 +4851,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet selector-faithfulness table boundary mismatch");
+  }
+  const residualTerminalPacketSelectorFirstRouteOutcomeMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-selector-first-route-outcome"
+  );
+  const residualTerminalPacketSelectorFirstRouteOutcomeNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREMS);
+  if (!residualTerminalPacketSelectorFirstRouteOutcomeMilestone
+      || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.classification !== "formalized-residual-terminal-packet-selector-first-route-outcome"
+      || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_MILESTONE_SCOPE
+      || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSelectorFirstRouteOutcomeMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSelectorFirstRouteOutcomeNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet selector first-route outcome boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -7220,6 +7249,41 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status residual terminal Packet selector-faithfulness table boundary mismatch");
     }
+    const residualTerminalPacketSelectorFirstRouteOutcomeMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-selector-first-route-outcome"
+    );
+    if (!residualTerminalPacketSelectorFirstRouteOutcomeMilestone
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.earned !== true
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.allPresent !== true
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.classification !== "formalized-residual-terminal-packet-selector-first-route-outcome"
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_MILESTONE_SCOPE
+        || residualTerminalPacketSelectorFirstRouteOutcomeMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSelectorFirstRouteOutcomeMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSelectorFirstRouteOutcomeMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSelectorFirstRouteOutcomeFormalized !== true
+        || payload.leanResidualTerminalPacketSelectorFirstRouteOutcomeAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSelectorFirstRouteOutcomeScope !== RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet selector first-route outcome boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -7468,6 +7532,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail(`core inventory residual terminal Packet selector-faithfulness table theorem mismatch: ${name}`);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SELECTOR_FIRST_ROUTE_OUTCOME_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail(`core inventory residual terminal Packet selector first-route outcome theorem mismatch: ${name}`);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {

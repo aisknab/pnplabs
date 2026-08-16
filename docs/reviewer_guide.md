@@ -6,8 +6,8 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 103-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 28,874 public declarations across 269 modules,
-including 14,882 theorem-kind declarations, 7,492 assumption-free theorem-kind declarations, and four
+Lean theorem inventory. The inventory contains 28,883 public declarations across 270 modules,
+including 14,889 theorem-kind declarations, 7,492 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,047 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,749 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,749 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 128 of 130 scoped formal milestone rows, through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite charge-surplus strict-gain kernel, a checked unit-charge blueprint realizer, a checked finite Packet typed-realizer contract, exact-rank acyclicity and total-table coverage for a supplied finite HN and budget dependency system, checked HN/BUD inactivity, conditional and executable selector silence, selector-faithfulness routing from every positive Packet to a contradiction with that silence, and a canonical faithfulness-table constructor that removes the independent binding premise | Treating payload checks, route-clear evidence, activity bits, dependency rows, rank mapping, rank assignment, exhaustive claims, grouped family, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as derived from terminal candidates; presenting the conditional contradiction as positive slack, full external selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, independently constructed global silence, or unconditional ZeroSlack; claiming a circuit-size bound, polynomial enumeration, a completed global gain-or-blocker route, complete PkgC or decreasing global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,756 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,756 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 129 of 131 scoped formal milestone rows, through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite charge-surplus strict-gain kernel, a checked unit-charge blueprint realizer, a checked finite Packet typed-realizer contract, exact-rank acyclicity and total-table coverage for a supplied finite HN and budget dependency system, checked HN/BUD inactivity, conditional and executable selector silence, selector-faithfulness routing, canonical faithfulness-table construction, and total acceptance-or-earliest-route classification for every canonical payload | Treating payload fields, activity bits, dependency rows, rank mapping, rank assignment, exhaustive claims, grouped family, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as derived from terminal candidates; presenting a typed first route as externally sound, decreasing globally complete routing, positive slack, full external selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, independently constructed global silence, or unconditional ZeroSlack; claiming a circuit-size bound, polynomial enumeration, a completed global gain-or-blocker route, complete PkgC, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `8bc8d36fea5abf3f486e9dbfe7cfccea5c6b34e0`.
+   `72e2509cb18080700a764dde8309060a7d9bb21c`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,749 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,756 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,7 +72,7 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns one hundred and twenty-eight scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns one hundred and twenty-nine scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
@@ -137,7 +137,9 @@ checks every canonical realizer claim as a typed bottom, then combines HN/BUD in
 every canonical selector nonfaithful without global semantic no-gain as a theorem premise; and selector-faithfulness
 routing that checks ten source-payload routes and turns every positive Packet into a faithful handle that contradicts
 accepted executable silence; and a canonical table constructor that computes faithfulness from those payloads while
-preserving the supplied rank map, realizer claims, and HN/BUD activity exactly.
+preserving the supplied rank map, realizer claims, and HN/BUD activity exactly; and a total payload classifier that
+returns no route exactly on acceptance and an earliest typed route exactly on rejection, yielding a first route for every
+positive Packet under canonical-table selector silence without route-clear or binding premises.
 
 Review the gaps between those scopes and the target theorem:
 
