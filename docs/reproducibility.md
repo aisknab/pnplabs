@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 506,748 | `275f9ef5c2a431b22658e22f13af16e35d916edf45632def34658a3f30430afe` |
-| `downloads/canonical-proof-report.pdf` | 506,748 | `275f9ef5c2a431b22658e22f13af16e35d916edf45632def34658a3f30430afe` |
-| `downloads/canonical_proof_report.tex` | 275,016 | `e5d7fc090580ea1281c9d24055dce175cb655a7f53252586c63bd2e1b526cc6d` |
-| `downloads/canonical-proof-report.tex` | 275,016 | `e5d7fc090580ea1281c9d24055dce175cb655a7f53252586c63bd2e1b526cc6d` |
-| `public/pnp-status.json` | 2,298,594 | `6c2fb00867fc12038f249e50026834af74301df903cc53e0108dc89b8d1ed8a1` |
-| `public/pnp-theorem-inventory.json` | 20,076,218 | `5220ceef1a402ca3d3ee00f9346fdd890f9914f6f1e5dee18a62b84c1b1de59b` |
+| `downloads/canonical_proof_report.pdf` | 509,330 | `faa8fdaa61ad5863849b6e7d73aff349e1044f1c04913506a1d24ea99ba6cd34` |
+| `downloads/canonical-proof-report.pdf` | 509,330 | `faa8fdaa61ad5863849b6e7d73aff349e1044f1c04913506a1d24ea99ba6cd34` |
+| `downloads/canonical_proof_report.tex` | 277,868 | `30a72b917e58b186f6f7f7d2dff3df4b2994c42506381ca4e63209b0cf56079c` |
+| `downloads/canonical-proof-report.tex` | 277,868 | `30a72b917e58b186f6f7f7d2dff3df4b2994c42506381ca4e63209b0cf56079c` |
+| `public/pnp-status.json` | 2,312,612 | `4b418b6ffceebf9347e90707ea692970635ab69abae4e4f0dd2db3bd0deae042` |
+| `public/pnp-theorem-inventory.json` | 20,260,884 | `33882c99c73111a5ec70c7fcc187a23708492f9f3299b9c1eb9f402d089bb3aa` |
 
-The PDF must have 107 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 108 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 206e3d3a3fa6d173bde009a5afca0f0510759d2c
+git -C ../pnp checkout 26547c1a3c05de0c907021320352a46a8145dbaa
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -64,8 +64,8 @@ npm run formal:inventory:check
 npm run report:check
 ```
 
-Expected compiled inventory counts are 28,947 public declarations, 14,936 theorem-kind declarations,
-7,504 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 273 modules, and
+Expected compiled inventory counts are 28,975 public declarations, 14,957 theorem-kind declarations,
+7,505 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 274 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -95,20 +95,22 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 12 reviewed theorem pins. For every arbitrary finite grouped BN6 family and
-selector-rank carrier, Lean copies the payload rank tag from the authoritative handle rank while retaining exact
-descent computation from the ten-coordinate `RankWF` comparison. The canonical classifier cannot return the rank
-route, a final descent route carries actual nondecrease, and the positive Packet/HB endpoint carries exact failure
-evidence without route-clear or binding premises. Ten reviewed pins use only `propext`, and two use `Quot.sound`
-plus `propext`. The focused 20-declaration audit has 1 empty, 17 `propext`-only, and 2 `Quot.sound` plus `propext`
-closures; none uses a project axiom or `Classical.choice`. The finite rank map, before/after residual ranks and
-their handle assignment, seven earlier Boolean payload fields, exact-route field, grouped family, realizer claims,
-HN/BUD activity, dependency rows, and finite-to-exact rank map remain proof-bearing inputs. Lean does not construct
-the grouped family or rank map from terminal data, prove external manuscript semantics for the eight remaining
-routes, map those routes into the complete global outcome system, prove that a decreasing transition exists, or
-construct the no-lower ledger. Full external selector compatibility, complete route silence, unconditional HB
-negative closure, positive slack, SaturatePositive, BCELReady, unconditional `ZeroSlack`, PCCMin, encoded-size or
-polynomial-runtime bounds, SAT in P, removal of an assumption, and `P = NP` remain outside the earned scope.
+The newest milestone adds 16 reviewed theorem pins. For every arbitrary finite grouped BN6 family and
+selector-rank carrier, Lean follows each canonical handle to an original positive payload atom in its exact grouped
+cell and footprint, marks that internal source route clear by construction, copies the authoritative handle rank,
+and retains exact descent computation from the ten-coordinate `RankWF` comparison. The classifier cannot return
+exactRoute or rank, a final descent route carries actual nondecrease, and the positive Packet/HB endpoint carries
+exact failure evidence without route-clear or binding premises. Fourteen reviewed pins use only `propext`, and two
+use `Quot.sound` plus `propext`. The focused 24-declaration audit has 1 empty, 21 `propext`-only, and 2 `Quot.sound`
+plus `propext` closures; none uses a project axiom or `Classical.choice`. The finite rank map, before/after residual
+ranks, seven semantic Boolean payload fields, grouped family, realizer claims, HN/BUD activity, dependency rows,
+and finite-to-exact rank map remain proof-bearing inputs. The internal source route is not an external exact minimum.
+Lean does not construct the grouped family or rank map from terminal data, derive the seven fields from a terminal
+candidate, prove external manuscript semantics for the seven remaining routes, map those routes into the complete
+global outcome system, prove that a decreasing transition exists, or construct the no-lower ledger. Full external
+selector compatibility, complete route silence, unconditional HB negative closure, positive slack,
+SaturatePositive, BCELReady, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P,
+removal of an assumption, and `P = NP` remain outside the earned scope.
 
 The authority verifier runs its current regression, axiom-audit, status, public-surface, and legacy-archive checks once. `report:check` includes the formal-publication check, then performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

@@ -311,6 +311,7 @@ test("FAQ states the current editorial percentage and latest conservative bounda
   assert.match(faq, new RegExp(`What does the ${progress}% tracker mean\\?`, 'u'));
   assert.match(faq, new RegExp(`current editorial estimate that ${progress}% of the known formal reconstruction workload is complete`, 'u'));
   assert.match(faq, new RegExp(`${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped rows are currently earned`, 'u'));
+  assert.match(faq, new RegExp(`${index.formalPublicationMilestoneCounts.earned} divided by ${index.formalPublicationMilestoneCounts.total} is not the project completion percentage`, 'u'));
   assert.equal(latestMilestone.earned, true);
   assert.ok(latestMilestone.requiredTheorems.length > 0);
   for (const theorem of latestMilestone.requiredTheorems) {

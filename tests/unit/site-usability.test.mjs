@@ -83,12 +83,15 @@ test('plain-language orientation is static and available before technical depth'
   ]) assert.ok(faq.includes(question), question);
   assert.match(faq, new RegExp(`${progress}% of the known formal reconstruction workload is complete`, 'u'));
   assert.match(faq, new RegExp(`${counts.earned} of ${counts.total} scoped rows are currently earned`, 'u'));
+  assert.match(faq, new RegExp(`${counts.earned} divided by ${counts.total} is not the project completion percentage`, 'u'));
 
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
   assert.match(paper, new RegExp(`The current ${reportPages}-page report is generated from the compiled Lean inventory`, 'u'));
+  assert.match(paper, new RegExp(`${counts.earned} scoped milestones; ${counts.unearned} missing global milestones`, 'u'));
   assert.match(architecture, /See how Lean source becomes a public status report/u);
+  assert.match(architecture, new RegExp(`${counts.earned} of ${counts.total} scoped rows are earned`, 'u'));
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
   assert.match(verify, /id="reproduce"/u);
 });
