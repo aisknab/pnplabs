@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-155';
-const STATUS_SHA256 = 'a92b46c4703919944550bf1284a934be24dc445e3ff5a5d06927e63e7a4f5cea';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-17-155';
-const FORMAL_PUBLICATION_MAP_SHA256 = '8cbe84c6fccbbef0e7c56f38869fc9342ce8b3dbe6389a9f11873e00bf954869';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-156';
+const STATUS_SHA256 = '6c2fb00867fc12038f249e50026834af74301df903cc53e0108dc89b8d1ed8a1';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-17-156';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'ea3eb5a45c63659ecd3e3092345e3260f8c25524d99db3480bc0cbc524221b65';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-17-155';
-const INVENTORY_SHA256 = '4626ee076d7609b2071527db66efe31780838a6ad23ff64042283d84cc6eeba1';
-const SOURCE_CLOSURE_SHA256 = '1265702f1567f638bf831c7a814214cf6522aa63f6bd6ba885881f378e1b7a7b';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-17-156';
+const INVENTORY_SHA256 = '5220ceef1a402ca3d3ee00f9346fdd890f9914f6f1e5dee18a62b84c1b1de59b';
+const SOURCE_CLOSURE_SHA256 = '470b0b948845a0ef89657a1a440edcbf14e4a9d9182b0f73616c1dc5d96ca346';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 28923,
-  theorems: 14919,
-  assumptionFreeTheorems: 7503,
+  declarations: 28947,
+  theorems: 14936,
+  assumptionFreeTheorems: 7504,
   excludedPrivateDeclarations: 15058,
-  modules: 272,
+  modules: 273,
   axioms: 4,
 });
 
@@ -4268,6 +4268,21 @@ const RESIDUAL_TERMINAL_PACKET_DESCENT_ROUTE_REFLECTION_DECLARATIONS = Object.fr
   ["PNP.DirectWire.terminalBN6_packet_rank_reflected_hb_first_route_failure", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketDescentRouteReflection", "00cd9d32fea316bae09838a5d7ae952db0e0b51f604ffb51e46c567723f3bd7e"],
 ]);
 
+const RESIDUAL_TERMINAL_PACKET_RANK_ROUTE_REFLECTION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedRankDescent_valid_iff", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "119299ae2b208b07b8a117396d7dbd4112b13ddd28787521af59f68c29911e60"],
+  ["PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedRankDescent_failureAt_rank_iff_false", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "9fe0fdf15e480dea4955d44b02b28c05a8484ee54aa8ca3e74a3b661597d7ab3"],
+  ["PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedRankDescent_firstRoute_ne_some_rank", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "7950b2e521fc50e68bc10195047ef1363eff44bb82b3ff219db3628d180a3316"],
+  ["PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedRankDescent_failureAt_descent_iff", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "752a2cb196998e9a15f0c23c55cfd23e3b032749928b60e7b1be1bb5f8e8d36e"],
+  ["PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedRankDescent_firstRoute_eq_some_descent_iff", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "bc95dd94ff38dc6c343873f0a43481c35e36940fc99d71b92502b2b80eb34f76"],
+  ["PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.rankDescent_of_withComputedRankDescent_check", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "b2003264d53c0fb00d8056dbdf593e8c4f4c26e459c84517a28bbd6602e07a9a"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedRankDescent_eq_some_iff", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "9d6270fe2dbda1621fe94b239674d9369e61ffbe7b91806160d75d56a3db631c"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedRankDescent_firstRoute_ne_some_rank", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "7bea49aa95a5cb018f88a4385f7e85a5310f47bedf7d02c01ff6c32d69678620"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedRankDescent_firstRoute_descent", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "b2820595f2d30ac7213eee11258b3433acd069629c6fccb2c3fe9511ddac6aed"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorRankDescentFaithfulness_preserves", ["propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "ee4c15e354aac6f6594230f3e763e438c61460d586c92c9ed718a365c5a48ff0"],
+  ["PNP.DirectWire.TerminalBN6PacketConclusion.existsRankTagReflectedFirstRouteFailure_of_selectorSilence", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "45dfb3c3f9697134fd1a71609681f4f0f16a12d316c0d7a8237f2ea33d4f82c5"],
+  ["PNP.DirectWire.terminalBN6_packet_rank_tag_reflected_hb_first_route_failure", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketRankRouteReflection", "d52207fc8e5eb2ec8dee120d435937b9a2d49d37d6c2dab252d327b6ad399bdf"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6506,6 +6521,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketRankRouteReflection =
+    RESIDUAL_TERMINAL_PACKET_RANK_ROUTE_REFLECTION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -7004,6 +7026,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketDescentRouteReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketRankRouteReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -7348,6 +7373,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketDescentRouteReflectionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-descent-route-reflection'
+  );
+  const residualTerminalPacketRankRouteReflectionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-rank-route-reflection'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -8372,6 +8400,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketDescentRouteReflectionFormalized === true
     && status.leanResidualTerminalPacketDescentRouteReflectionAxiomAuditPassed === true
     && status.leanResidualTerminalPacketDescentRouteReflectionScope === "all-arbitrary-finite-rank-reflected-packet-descent-route-exact-rankwf-nondecrease-or-earlier-first-route-without-route-clear-or-descent-binding-premises"
+    && residualTerminalPacketRankRouteReflectionMilestone?.classification === "formalized-residual-terminal-packet-rank-route-reflection"
+    && residualTerminalPacketRankRouteReflectionMilestone.status === "formalized-residual-terminal-packet-rank-route-reflection"
+    && residualTerminalPacketRankRouteReflectionMilestone.scope === "For every arbitrary finite grouped BN6 family and selector-rank carrier, the payload rank tag is copied from the authoritative handle rank while final residual descent remains computed from the exact ten-coordinate RankWF comparison. The canonical first-route classifier cannot return rank; a final descent route proves the supplied transition is nondecreasing, and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises."
+    && residualTerminalPacketRankRouteReflectionMilestone.nonClaim === "The finite rank map, before/after residual ranks and their handle assignment, seven earlier Boolean payload fields, exactRouteClear, grouped family, realizer claims, HN/BUD activity, dependency rows, and finite-to-exact rank map remain explicit inputs. The result does not construct the grouped family or rank map from terminal data, prove external manuscript semantics for the eight remaining routes, map those routes into the complete global outcome system, prove that a decreasing transition exists, or construct the no-lower ledger. It does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalPacketRankRouteReflectionMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_RANK_ROUTE_REFLECTION_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketRankRouteReflectionMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_RANK_ROUTE_REFLECTION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketRankRouteReflectionFormalized === true
+    && status.leanResidualTerminalPacketRankRouteReflectionAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketRankRouteReflectionScope === "all-arbitrary-finite-canonical-rank-tag-reflection-rank-route-excluded-exact-rankwf-nondecrease-or-earlier-route-without-route-clear-or-binding-premises"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -8389,7 +8438,7 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot; the checked exact-rank HB graph contract validates every edge in a supplied finite HN/BUD dependency graph; the checked total-table HB contract gives every finite HN/BUD node one row, materializes every listed dependency as an edge, and derives well-founded induction and cycle exclusion for that supplied table; the checked HB active-dependency closure combines an exhaustive active-to-active row condition with strict rank descent to prove every supplied HN/BUD activity bit false and remove HN/budget typed-bot branches; and the executable selector-silence induction exhaustively checks that every canonical realizer claim is a typed bottom, then combines supplied-table HB inactivity with strong finite-rank induction to prove every canonical handle in the accepted table nonfaithful without a global semantic no-gain premise. The Packet selector-faithfulness routing milestone checks ten canonical source-payload fields and derives a contradiction for every positive Packet under explicit route-clear inputs; the canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise; and total first-route classification turns every canonical payload rejection into one earliest typed route, which canonical HB selector silence forces for a positive Packet without route-clear or binding premises. The exact first-route semantics milestone additionally identifies every returned route with its unique earliest failed supplied payload field. The rank-reflection milestone computes the final descent field from the exact ten-coordinate RankWF relation and proves a forced final route is genuinely nondecreasing, while the other nine fields and all per-handle ranks remain explicit. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, rank assignment, payload checks, exhaustive realizer claims, or blocker tables from terminal data; connect matching back to a contradiction; derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data; prove the earlier reported routes' external semantics or map all residual routes into a decreasing complete global outcome system; or provide full external selector compatibility, an independently constructed realizer, unconditional global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized."
+    && globalZeroSlackPCCMinMilestone.nonClaim === "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot; the checked exact-rank HB graph contract validates every edge in a supplied finite HN/BUD dependency graph; the checked total-table HB contract gives every finite HN/BUD node one row, materializes every listed dependency as an edge, and derives well-founded induction and cycle exclusion for that supplied table; the checked HB active-dependency closure combines an exhaustive active-to-active row condition with strict rank descent to prove every supplied HN/BUD activity bit false and remove HN/budget typed-bot branches; and the executable selector-silence induction exhaustively checks that every canonical realizer claim is a typed bottom, then combines supplied-table HB inactivity with strong finite-rank induction to prove every canonical handle in the accepted table nonfaithful without a global semantic no-gain premise. The Packet selector-faithfulness routing milestone checks ten canonical source-payload fields and derives a contradiction for every positive Packet under explicit route-clear inputs; the canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise; and total first-route classification turns every canonical payload rejection into one earliest typed route, which canonical HB selector silence forces for a positive Packet without route-clear or binding premises. The exact first-route semantics milestone additionally identifies every returned route with its unique earliest failed supplied payload field. The descent-reflection milestone computes the final descent field from the exact ten-coordinate RankWF relation and proves a forced final route is genuinely nondecreasing. The rank-tag-reflection milestone then copies the table-owned handle rank into the payload and excludes the duplicate rank route, while the eight remaining fields and routes and the finite rank map remain explicit. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, rank assignment, payload checks, exhaustive realizer claims, or blocker tables from terminal data; connect matching back to a contradiction; derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data; prove the earlier reported routes' external semantics or map all residual routes into a decreasing complete global outcome system; or provide full external selector compatibility, an independently constructed realizer, unconditional global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized."
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',

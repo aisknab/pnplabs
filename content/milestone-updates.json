@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-17-residual-terminal-packet-rank-route-reflection",
+      "milestoneId": "residual-terminal-packet-rank-route-reflection",
+      "publishedAt": "2026-08-17T04:04:58Z",
+      "title": "Lean now makes the Packet rank route impossible by construction",
+      "plainLanguage": [
+        "For every arbitrary finite grouped BN6 family and selector-rank carrier, Lean now copies the payload rank tag from the authoritative per-handle rank while still computing final residual descent from the exact ten-coordinate RankWF comparison. The canonical classifier therefore cannot return the rank route; a final descent route proves the supplied transition is nondecreasing; and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises.",
+        "The finite rank map, before/after residual ranks and their handle assignment, seven earlier Boolean payload fields, exact-route clearance, grouped family, realizer claims, HN and budget activity, dependency rows, and finite-to-exact rank map remain supplied inputs. The result does not construct those inputs from terminal data, prove external manuscript semantics for the eight remaining routes, map them into a decreasing complete global outcome system, guarantee a decreasing transition, or construct the no-lower ledger. This is not full external selector compatibility, complete route silence, unconditional HB negative closure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 132 of 134 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "206e3d3a3fa6d173bde009a5afca0f0510759d2c",
+        "tree": "bdb78783c739ac72c1dfd368dee60917e03fa276",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-156",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-17-residual-terminal-packet-descent-route-reflection",
       "milestoneId": "residual-terminal-packet-descent-route-reflection",
       "publishedAt": "2026-08-17T00:30:32Z",
