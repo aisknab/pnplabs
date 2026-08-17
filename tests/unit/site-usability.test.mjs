@@ -89,7 +89,7 @@ test('plain-language orientation is static and available before technical depth'
     assert.ok(review.includes(route), route);
   }
   assert.match(paper, new RegExp(`The current ${reportPages}-page report is generated from the compiled Lean inventory`, 'u'));
-  assert.match(paper, new RegExp(`${counts.earned} scoped milestones; ${counts.unearned} missing global milestones`, 'u'));
+  assert.match(paper, new RegExp(`${counts.earned} earned scoped milestones; ${counts.unearned} missing global milestones`, 'u'));
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(architecture, new RegExp(`${counts.earned} of ${counts.total} scoped rows are earned`, 'u'));
   assert.match(verify, /A quick browser check confirms that a report file matches its published hash/u);
