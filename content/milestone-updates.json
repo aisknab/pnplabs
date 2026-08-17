@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-17-residual-terminal-packet-exact-route-reflection",
+      "milestoneId": "residual-terminal-packet-exact-route-reflection",
+      "publishedAt": "2026-08-17T08:49:45Z",
+      "title": "Lean now clears the Packet source route by construction",
+      "plainLanguage": [
+        "For every arbitrary finite grouped BN6 family and selector-rank carrier, Lean now identifies each canonical handle with an original positive payload atom in its exact grouped cell and footprint. That internal handle-to-cell-to-payload source route is marked clear by construction while the table-owned rank is retained and residual descent is computed from the exact ten-coordinate RankWF comparison. The first-route classifier can return neither exactRoute nor rank; a final descent route proves nondecrease; and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises.",
+        "The seven semantic Boolean payload fields, finite rank map, before/after residual ranks, grouped family, realizer claims, HN and budget activity, dependency rows, and finite-to-exact rank map remain supplied inputs. This internal source route is not an external exact minimum or a proof of manuscript exact-minimum semantics. The seven remaining routes still lack complete external semantics and global integration. The result does not construct those inputs from terminal data, prove that a decreasing transition exists, construct the no-lower ledger, establish full external selector compatibility or complete route silence, close unconditional HB negative closure or ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove an assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 133 of 135 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "26547c1a3c05de0c907021320352a46a8145dbaa",
+        "tree": "9e6f148199075ef04d6d5a19405ceaa6121cd18f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-157",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-17-residual-terminal-packet-rank-route-reflection",
       "milestoneId": "residual-terminal-packet-rank-route-reflection",
       "publishedAt": "2026-08-17T04:04:58Z",

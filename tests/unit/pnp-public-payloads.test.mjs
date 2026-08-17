@@ -134,6 +134,24 @@ const PACKET_RANK_ROUTE_REFLECTION_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalBN6PacketConclusion.existsRankTagReflectedFirstRouteFailure_of_selectorSilence': '45dfb3c3f9697134fd1a71609681f4f0f16a12d316c0d7a8237f2ea33d4f82c5',
   'PNP.DirectWire.terminalBN6_packet_rank_tag_reflected_hb_first_route_failure': 'd52207fc8e5eb2ec8dee120d435937b9a2d49d37d6c2dab252d327b6ad399bdf',
 });
+const PACKET_EXACT_ROUTE_REFLECTION_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_valid_iff': '025decf3f8024bc6b0290b8dbb7a0566da1ad2ca4f1f07eaa698ba60ec7a46b5',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_failureAt_rank_iff_false': '2e75d5c393be2bfc6d91049064e12cce054eae1f61fccf78dd43e1bd9e449cf5',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_failureAt_exactRoute_iff_false': '22111865261f70c9eb1c192c7710231c7c874181691db56b8af2828ef7e3de0c',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_firstRoute_ne_some_rank': 'e419055dd0b4f83f191b5e02609363011a25c45208fc09096ba2815db5087d75',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_firstRoute_ne_some_exactRoute': '7afcee7e1a14107d74f2b2cb71f37072d2e4fb42b46421721935a64d7598c1af',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_failureAt_descent_iff': '19a5ddd13d54c8906fac04b4b90cd151e25b1f9630aa6aed94f83c042cc60ace',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedExactRouteRankDescent_firstRoute_eq_some_descent_iff': 'd9e2aab8f40148333dec6e0b93b642fcf87924471bc840f6e94cb41dfc3fffe6',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.rankDescent_of_withComputedExactRouteRankDescent_check': '3bcd32fbf2d5cd8f5eb4a75320b1a3adbbabf18fbd9af55061730c21fb1dafd0',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorCanonicalSourceRoute': '1059f12b1b7ea3fc95d8186e9cd5353e17f26bc20ba3324f961be9421d4ca348',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedExactRouteRankDescent_eq_some_iff': '2e41b15294c69dfc7d91a881617f6314a3350d173a97666f24e25084807f565c',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.computedExactRouteRankDescent_firstRoute_ne_some_rank': '1283f8a0958b7785f5eb3d30c94c0e93843eac9f74e60372d88e850ef5384c6a',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.computedExactRouteRankDescent_firstRoute_ne_some_exactRoute': '0495273935847c75145aad4134ed4f4d7d4a67e28cf5e23af0a470f8491cf210',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedExactRouteRankDescent_firstRoute_descent': '7766ded83fc3adc67442ed3a0643e74f00abce86a6a4f6768f25bef72db306fa',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorExactRouteRankDescentFaithfulness_preserves': '57538134a5b952422a030e182426d3f93bb6919f4c0ffdaddb8e3a8c13689e12',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsExactRouteReflectedFirstRouteFailure_of_selectorSilence': '8816af58cb277525aa761f6ab86f6fc0fca29d468ad04be8b6d1df04b454c10d',
+  'PNP.DirectWire.terminalBN6_packet_exact_route_reflected_hb_first_route_failure': '927033b5faf21b78f6f33e8cd8544957243bf7037b2e08ab192905cbdbec7078',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -511,7 +529,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /descent-reflection milestone computes the final descent field from the exact ten-coordinate RankWF relation/u);
   assert.match(globalZeroSlack.nonClaim, /forced final route is genuinely nondecreasing/u);
   assert.match(globalZeroSlack.nonClaim, /rank-tag-reflection milestone then copies the table-owned handle rank into the payload and excludes the duplicate rank route/u);
-  assert.match(globalZeroSlack.nonClaim, /eight remaining fields and routes and the finite rank map remain explicit/u);
+  assert.match(globalZeroSlack.nonClaim, /exact-route-reflection milestone marks the already proved internal handle-to-cell-to-positive-payload source route clear by construction/u);
+  assert.match(globalZeroSlack.nonClaim, /this internal route is not an external exact minimum/u);
+  assert.match(globalZeroSlack.nonClaim, /seven semantic fields and routes and the finite rank map remain explicit/u);
   assert.match(globalZeroSlack.nonClaim, /prove the earlier reported routes' external semantics/u);
   assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
@@ -1319,6 +1339,76 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /Canonical Packet rank-tag reflection/u.test(nonClaim)
       && /canonical first route cannot be rank/u.test(nonClaim)
       && /eight remaining routes/u.test(nonClaim)),
+    true,
+  );
+
+  const packetExactRouteReflectionMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-exact-route-reflection');
+  const packetExactRouteReflectionHashes = release.earnedBoundary
+    .residualTerminalPacketExactRouteReflectionTheoremKernelTypeSha256;
+  assert.ok(packetExactRouteReflectionMilestone);
+  assert.equal(packetExactRouteReflectionMilestone.earned, true);
+  assert.equal(packetExactRouteReflectionMilestone.allPresent, true);
+  assert.equal(packetExactRouteReflectionMilestone.allKernelTypesMatch, true);
+  assert.equal(packetExactRouteReflectionMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(packetExactRouteReflectionHashes, PACKET_EXACT_ROUTE_REFLECTION_THEOREM_SHA256);
+  assert.deepEqual(
+    packetExactRouteReflectionMilestone.requiredTheorems,
+    Object.keys(PACKET_EXACT_ROUTE_REFLECTION_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketExactRouteReflectionAuditedDeclarationCount, 24);
+  assert.equal(release.earnedBoundary.residualTerminalPacketExactRouteReflectionEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalPacketExactRouteReflectionPropextOnlyDeclarationCount, 21);
+  assert.equal(release.earnedBoundary.residualTerminalPacketExactRouteReflectionPropextQuotSoundDeclarationCount, 2);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketExactRouteReflectionAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketExactRouteReflectionProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetExactRouteReflectionMilestone.theoremRows) {
+    const expectedAxioms = theoremRow.name.includes('existsExactRouteReflectedFirstRouteFailure_of_selectorSilence')
+      || theoremRow.name.includes('terminalBN6_packet_exact_route_reflected_hb_first_route_failure')
+      ? ['Quot.sound', 'propext']
+      : ['propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_EXACT_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_EXACT_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(packetExactRouteReflectionMilestone.scope, /canonical handle-to-cell-to-payload source route/u);
+  assert.match(packetExactRouteReflectionMilestone.scope, /cannot return exactRoute or rank/u);
+  assert.match(packetExactRouteReflectionMilestone.nonClaim, /seven semantic Boolean payload fields/u);
+  assert.match(packetExactRouteReflectionMilestone.nonClaim, /not an external exact minimum/u);
+  assert.match(packetExactRouteReflectionMilestone.nonClaim, /seven remaining routes/u);
+  assert.equal(status.leanResidualTerminalPacketExactRouteReflectionFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketExactRouteReflectionAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketExactRouteReflectionScope,
+    release.earnedBoundary.residualTerminalPacketExactRouteReflectionScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetExactRouteReflectionMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /Canonical Packet exact-route reflection/u.test(nonClaim)
+      && /can return neither exactRoute nor rank/u.test(nonClaim)
+      && /not an external exact minimum/u.test(nonClaim)),
     true,
   );
 
@@ -4353,7 +4443,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '308c7496e99b8c2f0b647db1057f33152104eb70');
+  assert.equal(index.sourceProofCommitRef, '3ebd08d5b5e4b990156d6dcd5d9f956d73e7e7ad');
   assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
