@@ -1136,7 +1136,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   const latestAxiomClosure = [...new Set(latestMilestone.theoremRows.flatMap((row) => row.axioms))].sort();
   assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.source.commit, canonicalRelease.source.commit);
-  assert.equal(release.source.proofCommit, "db8a930127274844178cf40297b29fb1cbdf20ff");
+  assert.equal(release.source.proofCommit, "1fad59060a49477d5076dcf08d4496c3688cb873");
   assert.equal(release.source.tree, canonicalRelease.source.tree);
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
