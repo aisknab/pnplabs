@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-17-residual-terminal-packet-descent-route-reflection",
+      "milestoneId": "residual-terminal-packet-descent-route-reflection",
+      "publishedAt": "2026-08-17T00:30:32Z",
+      "title": "Lean now reflects the Packet descent route into the exact rank order",
+      "plainLanguage": [
+        "For every arbitrary finite grouped BN6 family and selector-rank carrier, Lean now computes the final strict-descent payload condition from the exact ten-coordinate RankWF comparison while preserving the preceding nine fields. An accepted computed payload carries actual rank descent; a final descent failure carries actual nondecrease; and the positive Packet/HB endpoint returns either an earlier exact field route or proof that the supplied transition is nondecreasing, without route-clear or descent-binding premises.",
+        "The first nine payload fields, before/after residual ranks and their handle assignment, grouped family, finite selector-rank map, realizer claims, HN and budget activity, dependency rows, and finite-to-exact rank map remain supplied inputs. The result does not construct the grouped family or ranks from terminal data, prove external manuscript semantics for the earlier fields, map those other nine routes into the complete global outcome system, prove that a decreasing transition exists, or construct the no-lower ledger. This is not full external selector compatibility, complete route silence, unconditional HB negative closure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, removal of an assumption, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 131 of 133 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "60ac6413b5329650b68cac8f6fefcee2f7a430f4",
+        "tree": "61bb9ad09c600518ab0884e26c3b85bfedc96532",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-155",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-17-residual-terminal-packet-selector-first-route-semantics",
       "milestoneId": "residual-terminal-packet-selector-first-route-semantics",
       "publishedAt": "2026-08-16T20:21:51Z",

@@ -62,6 +62,9 @@ leanResidualTerminalPacketSelectorFaithfulnessRoutingScope = "all-arbitrary-fini
 leanResidualTerminalPacketSelectorFaithfulnessTableFormalized = true
 leanResidualTerminalPacketSelectorFaithfulnessTableAxiomAuditPassed = true
 leanResidualTerminalPacketSelectorFaithfulnessTableScope = "all-arbitrary-finite-canonical-packet-payload-faithfulness-table-construction-preserved-rank-claims-blocker-activity-binding-free-selector-silence-contradiction"
+leanResidualTerminalPacketDescentRouteReflectionFormalized = true
+leanResidualTerminalPacketDescentRouteReflectionAxiomAuditPassed = true
+leanResidualTerminalPacketDescentRouteReflectionScope = "all-arbitrary-finite-rank-reflected-packet-descent-route-exact-rankwf-nondecrease-or-earlier-first-route-without-route-clear-or-descent-binding-premises"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -71,7 +74,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and thirty narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone proves every returned canonical Packet route equivalent to its unique earliest failed supplied field, with every preceding field accepted. Rejection is equivalent to exact failure existence, and the positive Packet/HB endpoint carries both route and field-failure proof without route-clear or binding premises. The grouped family, payload fields, finite rank tags and assignment, realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs rather than constructions from terminal data. The milestone proves semantics only for those existing Boolean fields; it does not prove their external manuscript semantics or decreasing global coverage, full external selector compatibility, complete route silence, positive slack, terminal construction of those inputs, blocker semantics or semantic dependency completeness, the unconditional `HB.NegativeClosure` theorem, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds, complete global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and thirty-one narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone computes the final Packet strict-descent field from the exact ten-coordinate RankWF comparison. Acceptance carries genuine rank descent; a forced final route carries genuine nondecrease; and the positive Packet/HB endpoint returns that proof or an earlier exact field route without route-clear or descent-binding premises. The first nine fields, before/after ranks and their handle assignment, grouped family, finite selector-rank map, realizer claims, blocker activity, dependency rows, and rank map remain proof-bearing inputs rather than constructions from terminal data. The milestone does not prove the earlier routes' external manuscript semantics or decreasing complete global coverage, prove that a decreasing transition exists, construct the no-lower ledger, establish full external selector compatibility or complete route silence, derive positive slack or those inputs from terminal data, prove blocker semantics or semantic dependency completeness, close the unconditional `HB.NegativeClosure` theorem or unconditional `ZeroSlack`, establish PCCMin or encoded-size and polynomial-runtime bounds, complete global PkgC, prove manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -90,7 +93,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 104-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 105-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

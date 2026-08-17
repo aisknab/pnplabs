@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 501,907 | `ba744d4cb5ad559ceae3262256bd0382e14b76e8b6f44d667699aba0478f8025` |
-| `downloads/canonical-proof-report.pdf` | 501,907 | `ba744d4cb5ad559ceae3262256bd0382e14b76e8b6f44d667699aba0478f8025` |
-| `downloads/canonical_proof_report.tex` | 270,184 | `a679115839301c54a039927864fb01061005e1a1b8aa7ac21d71872cd002702e` |
-| `downloads/canonical-proof-report.tex` | 270,184 | `a679115839301c54a039927864fb01061005e1a1b8aa7ac21d71872cd002702e` |
-| `public/pnp-status.json` | 2,278,851 | `4fefada05b5f036a13f7e4973694893e9a1782d29303251db683fc6797318964` |
-| `public/pnp-theorem-inventory.json` | 19,760,305 | `5dfd67ade5f31501fabe34c12f72e75bc2f5bf7f4f35e70f8faef39205fe938b` |
+| `downloads/canonical_proof_report.pdf` | 503,959 | `851552d7430dce117d129fc8c03955a9eb31c15d0b01e883299bb904438fd88e` |
+| `downloads/canonical-proof-report.pdf` | 503,959 | `851552d7430dce117d129fc8c03955a9eb31c15d0b01e883299bb904438fd88e` |
+| `downloads/canonical_proof_report.tex` | 272,637 | `23d55bdb04c9ea93f1a849f5939a8235e3bd6981e01c5edf1e45f695c9a62065` |
+| `downloads/canonical-proof-report.tex` | 272,637 | `23d55bdb04c9ea93f1a849f5939a8235e3bd6981e01c5edf1e45f695c9a62065` |
+| `public/pnp-status.json` | 2,287,770 | `a92b46c4703919944550bf1284a934be24dc445e3ff5a5d06927e63e7a4f5cea` |
+| `public/pnp-theorem-inventory.json` | 19,912,756 | `4626ee076d7609b2071527db66efe31780838a6ad23ff64042283d84cc6eeba1` |
 
-The PDF must have 104 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 105 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout b69c7419158154187c2adc6991ebe31aef6538f9
+git -C ../pnp checkout 60ac6413b5329650b68cac8f6fefcee2f7a430f4
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -64,8 +64,8 @@ npm run formal:inventory:check
 npm run report:check
 ```
 
-Expected compiled inventory counts are 28,902 public declarations, 14,905 theorem-kind declarations,
-7,502 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 271 modules, and
+Expected compiled inventory counts are 28,923 public declarations, 14,919 theorem-kind declarations,
+7,503 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 272 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -95,17 +95,21 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 6 reviewed theorem pins. For every arbitrary finite payload rank and all ten route constructors,
-Lean proves the executable first route equivalent to the exact earliest failed supplied field, with every preceding field
-accepted. The failure is unique, rejection is equivalent to exact failure existence, and the canonical positive Packet/HB
-endpoint carries both route and field-failure proof without route-clear or binding premises. Four reviewed pins use only
-`propext` and two use `Quot.sound` plus `propext`. The focused 8-declaration audit has 1 empty, 5 `propext`-only,
-and 2 `Quot.sound` plus `propext` closures; none uses a project axiom or `Classical.choice`. The grouped family, ten
-payload field Booleans, finite rank tags and assignment, realizer claims, HN/BUD activity, dependency rows, and
-finite-to-exact rank map remain proof-bearing inputs. Lean does not derive the fields or family from terminal data, prove
-the fields' external manuscript semantics or decreasing global coverage, provide full external selector compatibility,
-establish complete route silence or unconditional HB negative closure, encoded-size or polynomial-runtime bounds, global
-PkgC, unconditional `ZeroSlack`, or PCCMin, put SAT in P, discharge an assumption, or prove `P = NP`.
+The newest milestone adds 9 reviewed theorem pins. For every arbitrary finite grouped BN6 family and
+selector-rank carrier, Lean computes the final strict-descent payload condition from the exact ten-coordinate
+`RankWF` comparison while preserving the preceding nine fields. An accepted computed payload carries actual
+rank descent, a final descent failure carries actual nondecrease, and the positive Packet/HB endpoint returns
+either an earlier exact field route or proof that the supplied transition is nondecreasing, without route-clear
+or descent-binding premises. Seven reviewed pins use only `propext`, and two use `Quot.sound` plus `propext`.
+The focused 17-declaration audit has 1 empty, 14 `propext`-only, and 2 `Quot.sound` plus `propext` closures;
+none uses a project axiom or `Classical.choice`. The first nine payload fields, before/after residual ranks and
+their handle assignment, grouped family, finite selector-rank map, realizer claims, HN/BUD activity, dependency
+rows, and finite-to-exact rank map remain proof-bearing inputs. Lean does not construct the grouped family or
+ranks from terminal data, prove external manuscript semantics for the earlier fields, map those other nine routes
+into the complete global outcome system, prove that a decreasing transition exists, or construct the no-lower
+ledger. Full external selector compatibility, complete route silence, unconditional HB negative closure, positive
+slack, SaturatePositive, BCELReady, unconditional `ZeroSlack`, PCCMin, encoded-size or polynomial-runtime bounds,
+SAT in P, removal of an assumption, and `P = NP` remain outside the earned scope.
 
 The authority verifier runs its current regression, axiom-audit, status, public-surface, and legacy-archive checks once. `report:check` includes the formal-publication check, then performs a same-environment deterministic double build, exact byte comparison, PDF
 metadata/text checks, and full-page rendering. This is not a promise of identical PDF bytes under

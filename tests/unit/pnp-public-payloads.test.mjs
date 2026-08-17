@@ -109,6 +109,17 @@ const PACKET_SELECTOR_FIRST_ROUTE_SEMANTICS_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalBN6PacketConclusion.existsFirstRouteFailure_of_computedTableSelectorSilence': '3950cae39552713ff72cda54ef5f88970e0b9dc179afb4e9f5c89ecb068f40e3',
   'PNP.DirectWire.terminalBN6_packet_computed_faithfulness_hb_first_route_failure': '2ec660ddfa7e2d019866b1dc3a7e45b8d12893ef717610fcdf01d00cb3868967',
 });
+const PACKET_DESCENT_ROUTE_REFLECTION_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedDescent_valid_iff': 'b4a207dc50b88188780ef5e054fd3fb205b51a1e46b82737ca7d248ccb9320f9',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedDescent_failureAt_descent_iff': 'aff643834beadafd9029c2af8fc49086bcb8cf0b6a9223a2059dcb2b7b3ab5a6',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedDescent_firstRoute_eq_some_descent_iff': 'b65d545a53dddcf53ebd4510dac1774ac991022456eeed86ea759f105b0884b9',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.rankDescent_of_withComputedDescent_check': '2766105081f26f84694afcf92145d4d0b10456cfcb086f8969822e5acab9a0f5',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedDescent_eq_some_iff': 'b65d068dcde20d9c160cb6afd13aa217c6e5ea98f66b0d6a6e53e0cf7e66844b',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computed_firstRoute_descent': 'e22743c146ba75239e42aca1ffa1f5a878488d897c0062548c7b09eea5e8ae50',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorDescentFaithfulness_preserves': 'd63e0357ba24057b73abb7c3cfb7c496fd0731c1f2d30d20b19cf6a6dce3a621',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsRankReflectedFirstRouteFailure_of_selectorSilence': 'c7cd05bacdd75cfe4ca366abef0041c3ec75ee725bbb5a46e7da10aa6ae15435',
+  'PNP.DirectWire.terminalBN6_packet_rank_reflected_hb_first_route_failure': '00cd9d32fea316bae09838a5d7ae952db0e0b51f604ffb51e46c567723f3bd7e',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -483,7 +494,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /total first-route classification turns every canonical payload rejection into one earliest typed route/u);
   assert.match(globalZeroSlack.nonClaim, /without route-clear or binding premises/u);
   assert.match(globalZeroSlack.nonClaim, /exact first-route semantics milestone additionally identifies every returned route with its unique earliest failed supplied payload field/u);
-  assert.match(globalZeroSlack.nonClaim, /prove any reported route's external semantics/u);
+  assert.match(globalZeroSlack.nonClaim, /rank-reflection milestone computes the final descent field from the exact ten-coordinate RankWF relation/u);
+  assert.match(globalZeroSlack.nonClaim, /forced final route is genuinely nondecreasing/u);
+  assert.match(globalZeroSlack.nonClaim, /prove the earlier reported routes' external semantics/u);
   assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
@@ -1149,6 +1162,78 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /exact Packet first-route semantics milestone/u.test(nonClaim)
       && /all ten route constructors/u.test(nonClaim)
       && /external manuscript semantics/u.test(nonClaim)),
+    true,
+  );
+
+  const packetDescentRouteReflectionMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-descent-route-reflection');
+  const packetDescentRouteReflectionHashes = release.earnedBoundary
+    .residualTerminalPacketDescentRouteReflectionTheoremKernelTypeSha256;
+  assert.ok(packetDescentRouteReflectionMilestone);
+  assert.equal(packetDescentRouteReflectionMilestone.earned, true);
+  assert.equal(packetDescentRouteReflectionMilestone.allPresent, true);
+  assert.equal(packetDescentRouteReflectionMilestone.allKernelTypesMatch, true);
+  assert.equal(packetDescentRouteReflectionMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetDescentRouteReflectionHashes,
+    PACKET_DESCENT_ROUTE_REFLECTION_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetDescentRouteReflectionMilestone.requiredTheorems,
+    Object.keys(PACKET_DESCENT_ROUTE_REFLECTION_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentRouteReflectionAuditedDeclarationCount, 17);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentRouteReflectionEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentRouteReflectionPropextOnlyDeclarationCount, 14);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentRouteReflectionPropextQuotSoundDeclarationCount, 2);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketDescentRouteReflectionAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketDescentRouteReflectionProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetDescentRouteReflectionMilestone.theoremRows) {
+    const expectedAxioms = theoremRow.name.includes('existsRankReflectedFirstRouteFailure_of_selectorSilence')
+      || theoremRow.name.includes('terminalBN6_packet_rank_reflected_hb_first_route_failure')
+      ? ['Quot.sound', 'propext']
+      : ['propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_DESCENT_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_DESCENT_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(packetDescentRouteReflectionMilestone.scope, /final strict-descent payload condition is computed/u);
+  assert.match(packetDescentRouteReflectionMilestone.scope, /final descent failure carries actual nondecrease/u);
+  assert.match(packetDescentRouteReflectionMilestone.nonClaim, /first nine payload fields/u);
+  assert.match(packetDescentRouteReflectionMilestone.nonClaim, /does not construct the grouped family or ranks from terminal data/u);
+  assert.equal(status.leanResidualTerminalPacketDescentRouteReflectionFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketDescentRouteReflectionAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketDescentRouteReflectionScope,
+    release.earnedBoundary.residualTerminalPacketDescentRouteReflectionScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetDescentRouteReflectionMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /rank-reflected Packet descent route/u.test(nonClaim)
+      && /exact ten-coordinate RankWF comparison/u.test(nonClaim)
+      && /supplied transition is nondecreasing/u.test(nonClaim)),
     true,
   );
 
@@ -4183,7 +4268,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '245f7f6ca560355115ac0ae00b22ff24a793e216');
+  assert.equal(index.sourceProofCommitRef, '322991b4a2902e651634324ff4f465ab261ba8eb');
   assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
