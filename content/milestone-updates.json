@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-17-residual-terminal-packet-charge-route-reflection",
+      "milestoneId": "residual-terminal-packet-charge-route-reflection",
+      "publishedAt": "2026-08-17T12:41:26Z",
+      "title": "Lean now clears the Packet charge route by construction",
+      "plainLanguage": [
+        "For every arbitrary finite grouped BN6 family and selector-rank carrier, Lean now uses the selected canonical source atom's proved positive mass to set the internal charge check by construction. The already canonical source route, table-owned rank, and exact ten-coordinate RankWF descent comparison are retained. The first-route classifier can return none of charge, exactRoute, or rank; a final descent route proves nondecrease; and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises.",
+        "Six semantic Boolean payload fields, the finite rank map, before/after residual ranks, grouped family, realizer claims, HN and budget activity, dependency rows, and finite-to-exact rank map remain supplied inputs. Positive source mass is not full external charge-surplus, budget, replacement, or selector-compatibility semantics. The six remaining routes still lack complete external semantics and global integration. The result does not construct those inputs from terminal data, prove that a decreasing transition exists, construct the no-lower ledger, establish complete route silence, close unconditional HB negative closure or ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove an assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 134 of 136 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "83b2a786c1960e15d193404eb7a5eef14fd0cb89",
+        "tree": "256aa873ed2d18e3650a5a2c22d8ea13ae960443",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-17-158",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-17-residual-terminal-packet-exact-route-reflection",
       "milestoneId": "residual-terminal-packet-exact-route-reflection",
       "publishedAt": "2026-08-17T08:49:45Z",

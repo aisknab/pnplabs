@@ -152,6 +152,27 @@ const PACKET_EXACT_ROUTE_REFLECTION_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalBN6PacketConclusion.existsExactRouteReflectedFirstRouteFailure_of_selectorSilence': '8816af58cb277525aa761f6ab86f6fc0fca29d468ad04be8b6d1df04b454c10d',
   'PNP.DirectWire.terminalBN6_packet_exact_route_reflected_hb_first_route_failure': '927033b5faf21b78f6f33e8cd8544957243bf7037b2e08ab192905cbdbec7078',
 });
+const PACKET_CHARGE_ROUTE_REFLECTION_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_valid_iff': 'daf0d6573ade1ddea7679d3558ad39a494ea25fe2a2b9e5da975baedc79472fe',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_failureAt_charge_iff_false': 'f63b359ec21dfb294c9b8a4b3e50ad4489f7d6a02a5c398226d6601adcda7b07',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_failureAt_rank_iff_false': '3c5ea508338d4d22c97fa66c75fac014f1fd9b71bc473e565f45d90d07725146',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_failureAt_exactRoute_iff_false': '8be07899a011436a18bcf58a94a26751b7d2a5fa266b7640d7304ccbe90ab216',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_firstRoute_ne_some_charge': 'fa0deb1607ccf04e34445502d5f96f0e1e30a8b0fc191ada33025c08773d4499',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_firstRoute_ne_some_rank': '1bc4f5d155628edc092cbd8a6ce89c765d927ff67494aee76e4244e14066e0bc',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_firstRoute_ne_some_exactRoute': 'ebb2204741f8838fa9a04f3dea8a1aa7cc06edd655f2e3399f6e5377fe52be27',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_failureAt_descent_iff': '21e40fe99e90de6413d598529533c4d37f642f1b62bedf4ca616ce61b37b9ec4',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.withComputedChargeExactRouteRankDescent_firstRoute_eq_some_descent_iff': '245ba86a7d5e32c9c6bb24d635937aa43a1bcd26398c4836fecb4204a1caac9d',
+  'PNP.DirectWire.TerminalPacketSelectorFaithfulnessPayload.rankDescent_of_withComputedChargeExactRouteRankDescent_check': '46adeefc226fe676fea6bcab66d90646bfe1ba667d4ae840c5b5cc0fadb808ef',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorCanonicalPositiveCharge': '38b4c8c30c513b26c545625477ac04e2d4ffd03c2dd72b09c1e1fc27046cc4a9',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedChargeExactRouteRankDescent_eq_some_iff': '33ef42832d16483c7d8901865e1f51bcb004b028018225c5d0fb4fcd58a01499',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.computedChargeExactRouteRankDescent_firstRoute_ne_some_charge': '261338ddeb1a75724c114f0dfb290f7f87f7c3a7b1a50b5cb9a44c1773ede51b',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.computedChargeExactRouteRankDescent_firstRoute_ne_some_rank': '9a5e68fd48c12cc6d8bc4a629cd87c79fa1871c6978f608666515a5f3b3987d5',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.computedChargeExactRouteRankDescent_firstRoute_ne_some_exactRoute': '98b6632e7f96a32561350dfa31863f46bccf463d6d739b09c1d6639c292016bd',
+  'PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedChargeExactRouteRankDescent_firstRoute_descent': '2197350be3bb30db0a1f92ddc2a2808fac12149377486fdeceb3a33fe2e52d9c',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorChargeExactRouteRankDescentFaithfulness_preserves': 'a6069e89648da57cfa94a3b98a75ba8110214681c8c8228821dcb8419c80b3e1',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsChargeReflectedFirstRouteFailure_of_selectorSilence': 'c0e7de8081000b99ceadbc337e083add781109060a621c40c9207a89f5c6a040',
+  'PNP.DirectWire.terminalBN6_packet_charge_reflected_hb_first_route_failure': '5705f2031ba7d3ac9bd60b0da8c12b41e400aabb775768344157ad7df2b74dc6',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -531,7 +552,9 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /rank-tag-reflection milestone then copies the table-owned handle rank into the payload and excludes the duplicate rank route/u);
   assert.match(globalZeroSlack.nonClaim, /exact-route-reflection milestone marks the already proved internal handle-to-cell-to-positive-payload source route clear by construction/u);
   assert.match(globalZeroSlack.nonClaim, /this internal route is not an external exact minimum/u);
-  assert.match(globalZeroSlack.nonClaim, /seven semantic fields and routes and the finite rank map remain explicit/u);
+  assert.match(globalZeroSlack.nonClaim, /charge-route-reflection milestone then derives the internal charge check from the canonical source atom with strictly positive mass/u);
+  assert.match(globalZeroSlack.nonClaim, /positive mass is not the full external charge-surplus or replacement semantics/u);
+  assert.match(globalZeroSlack.nonClaim, /six semantic fields and routes and the finite rank map remain explicit/u);
   assert.match(globalZeroSlack.nonClaim, /prove the earlier reported routes' external semantics/u);
   assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
@@ -1409,6 +1432,76 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     status.nonClaims.some((nonClaim) => /Canonical Packet exact-route reflection/u.test(nonClaim)
       && /can return neither exactRoute nor rank/u.test(nonClaim)
       && /not an external exact minimum/u.test(nonClaim)),
+    true,
+  );
+
+  const packetChargeRouteReflectionMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-charge-route-reflection');
+  const packetChargeRouteReflectionHashes = release.earnedBoundary
+    .residualTerminalPacketChargeRouteReflectionTheoremKernelTypeSha256;
+  assert.ok(packetChargeRouteReflectionMilestone);
+  assert.equal(packetChargeRouteReflectionMilestone.earned, true);
+  assert.equal(packetChargeRouteReflectionMilestone.allPresent, true);
+  assert.equal(packetChargeRouteReflectionMilestone.allKernelTypesMatch, true);
+  assert.equal(packetChargeRouteReflectionMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(packetChargeRouteReflectionHashes, PACKET_CHARGE_ROUTE_REFLECTION_THEOREM_SHA256);
+  assert.deepEqual(
+    packetChargeRouteReflectionMilestone.requiredTheorems,
+    Object.keys(PACKET_CHARGE_ROUTE_REFLECTION_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketChargeRouteReflectionAuditedDeclarationCount, 27);
+  assert.equal(release.earnedBoundary.residualTerminalPacketChargeRouteReflectionEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalPacketChargeRouteReflectionPropextOnlyDeclarationCount, 24);
+  assert.equal(release.earnedBoundary.residualTerminalPacketChargeRouteReflectionPropextQuotSoundDeclarationCount, 2);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketChargeRouteReflectionAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketChargeRouteReflectionProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetChargeRouteReflectionMilestone.theoremRows) {
+    const expectedAxioms = theoremRow.name.includes('existsChargeReflectedFirstRouteFailure_of_selectorSilence')
+      || theoremRow.name.includes('terminalBN6_packet_charge_reflected_hb_first_route_failure')
+      ? ['Quot.sound', 'propext']
+      : ['propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_CHARGE_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_CHARGE_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(packetChargeRouteReflectionMilestone.scope, /strictly positive source payload atom/u);
+  assert.match(packetChargeRouteReflectionMilestone.scope, /cannot return charge, rank, or exactRoute/u);
+  assert.match(packetChargeRouteReflectionMilestone.nonClaim, /six remaining semantic Boolean payload fields/u);
+  assert.match(packetChargeRouteReflectionMilestone.nonClaim, /not the full external charge-surplus/u);
+  assert.match(packetChargeRouteReflectionMilestone.nonClaim, /six remaining routes/u);
+  assert.equal(status.leanResidualTerminalPacketChargeRouteReflectionFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketChargeRouteReflectionAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketChargeRouteReflectionScope,
+    release.earnedBoundary.residualTerminalPacketChargeRouteReflectionScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetChargeRouteReflectionMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /Canonical Packet charge-route reflection/u.test(nonClaim)
+      && /can return none of charge, exactRoute, or rank/u.test(nonClaim)
+      && /six remaining routes/u.test(nonClaim)),
     true,
   );
 
@@ -4443,7 +4536,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '3ebd08d5b5e4b990156d6dcd5d9f956d73e7e7ad');
+  assert.equal(index.sourceProofCommitRef, 'db8a930127274844178cf40297b29fb1cbdf20ff');
   assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
