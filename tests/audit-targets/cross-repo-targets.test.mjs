@@ -32,7 +32,7 @@ const publishedUpdates = JSON.parse(readFileSync(
 ));
 
 const latestPublishedMilestoneId = publishedUpdates.entries[0].milestoneId;
-const milestoneFieldParts = Object.freeze({ hb: "HB" });
+const milestoneFieldParts = Object.freeze({ bn5: "BN5", hb: "HB" });
 const latestPublishedMilestoneFieldStem = latestPublishedMilestoneId
   .split("-")
   .map((part) => milestoneFieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)

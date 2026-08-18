@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-18-residual-terminal-packet-bn5-obligation-route-reflection",
+      "milestoneId": "residual-terminal-packet-bn5-obligation-route-reflection",
+      "publishedAt": "2026-08-18T04:41:41Z",
+      "title": "Lean now reflects Packet frontier and obligation routes from BN5 coordinates",
+      "plainLanguage": [
+        "For every arbitrary finite grouped BN6 family, selector-rank carrier, and typed terminal BN5 coordinate, Lean now computes canonical Packet frontier and obligation acceptance from exact equality of the corresponding source and selector BN5 fields. Grouped colour, positive charge, the internal source route, table-owned rank, and exact ten-coordinate RankWF descent comparison remain canonical. A frontier first route is exactly frontier inequality. An obligation first route is prior frontier equality together with exact obligation inequality. The classifier also cannot return colour, charge, exactRoute, or rank; a final descent route proves nondecrease; and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises.",
+        "The source and selector terminal BN5 coordinates remain supplied inputs. They are not constructed from terminal data and this milestone does not prove the manuscript's complete BN5 or Packet adequacy bridge. Activation, direction, and budget remain supplied Boolean fields, and those three routes still lack complete external semantics and global integration. The result does not construct the grouped family or rank map from terminal data, prove that a decreasing transition exists, construct the no-lower ledger, establish complete route silence, close unconditional HB negative closure or ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove an assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 137 of 139 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "97ca87c3588deab60b8126c204d4d63b10dc2c85",
+        "tree": "ad75312852cd810d4caae740e2b2c8ebbfd456cb",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-18-161",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-18-residual-terminal-packet-frontier-route-reflection",
       "milestoneId": "residual-terminal-packet-frontier-route-reflection",
       "publishedAt": "2026-08-17T23:28:02Z",

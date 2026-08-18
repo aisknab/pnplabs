@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 111-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,102 public declarations across 277 modules,
-including 15,044 theorem-kind declarations, 7,514 assumption-free theorem-kind declarations, and four
+The canonical report downloads are now a 113-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 29,164 public declarations across 278 modules,
+including 15,081 theorem-kind declarations, 7,519 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,058 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 111-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 113-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,863 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,863 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 136 of 138 scoped formal milestone rows, through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite charge-surplus strict-gain kernel, a checked unit-charge blueprint realizer, a checked finite Packet typed-realizer contract, exact-rank acyclicity and total-table coverage for a supplied finite HN and budget dependency system, checked HN/BUD inactivity, conditional and executable selector silence, selector-faithfulness routing, canonical faithfulness-table construction, total acceptance-or-earliest-route classification, exact earliest-failed-field semantics, exact RankWF reflection of the final Packet descent field into actual descent or nondecrease, canonical reflection of the table-owned handle rank, construction-time reflection of the internal source route, positive source charge, and grouped-footprint colour eligibility, plus typed-frontier acceptance computed from equality of explicit source and selector signatures. A frontier first route is exactly signature inequality; equal signatures exclude it; colour, charge, exactRoute, and rank remain excluded. | Treating the signatures, finite rank map, obligation, activation, direction, budget, before/after ranks, activity bits, dependency rows, exhaustive claims, grouped family, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as derived from terminal candidates; presenting the supplied signatures as BN5-bound or as full manuscript frontier-faithful comparison; presenting route exclusion as proof that a decreasing transition exists, that the four remaining routes have external manuscript semantics, or that routing is globally complete; claiming positive slack, full external selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, independently constructed global silence, unconditional ZeroSlack, a no-lower ledger, circuit-size bound, polynomial enumeration, completed global gain-or-blocker routing, complete PkgC, polynomial PCCMin, target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,889 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,889 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 137 of 139 scoped formal milestone rows, through computed BN2 square legitimacy, a canonical positive terminal BCEL anchor nucleus, candidate-derived terminal saturation and finite routing, the fixed residual RankWF, the report-facing concrete locked-NAND threshold reduction, the finite BN3, BN4, BN5, PkgC, V54, V53, and grouped BN6 packet chain, the complete finite Packet selector pipeline through conditional gain coverage, the generic finite charge-surplus strict-gain kernel, a checked unit-charge blueprint realizer, a checked finite Packet typed-realizer contract, exact-rank acyclicity and total-table coverage for a supplied finite HN and budget dependency system, checked HN/BUD inactivity, conditional and executable selector silence, selector-faithfulness routing, canonical faithfulness-table construction, total acceptance-or-earliest-route classification, exact earliest-failed-field semantics, exact RankWF reflection of the final Packet descent field into actual descent or nondecrease, canonical reflection of the table-owned handle rank, construction-time reflection of the internal source route, positive source charge, grouped-footprint colour eligibility, and frontier and obligation acceptance computed from corresponding exact fields of explicit typed source and selector terminal BN5 coordinates. A frontier route is exact frontier inequality; an obligation route is prior frontier equality with obligation inequality; colour, charge, exactRoute, and rank remain excluded. | Treating the BN5 coordinates, finite rank map, activation, direction, budget, before/after ranks, activity bits, dependency rows, exhaustive claims, grouped family, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as derived from terminal candidates; presenting the supplied coordinates as a complete manuscript BN5 or Packet adequacy bridge; presenting route exclusion as proof that a decreasing transition exists, that the three remaining routes have external manuscript semantics, or that routing is globally complete; claiming positive slack, full external selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, independently constructed global silence, unconditional ZeroSlack, a no-lower ledger, circuit-size bound, polynomial enumeration, completed global gain-or-blocker routing, complete PkgC, polynomial PCCMin, target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `52b77de8a79e41527b4fbab788d433ec031da459`.
+   `97ca87c3588deab60b8126c204d4d63b10dc2c85`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,863 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,889 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -227,7 +227,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 111-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 113-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the
