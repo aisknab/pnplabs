@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-18-161';
-const STATUS_SHA256 = '143d289e56aa567e7e4167dbd36e481c69536334e7835e84920e3199000533c7';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-18-161';
-const FORMAL_PUBLICATION_MAP_SHA256 = '1f5001a11886e81d733328c004e34c7f69f7c85f56460ea79f3d0b234d54d65e';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-18-162';
+const STATUS_SHA256 = 'cb7ca67b3f09000f943696d108faf9dac7852ebf58cc57c06689a37b7e81ca61';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-18-162';
+const FORMAL_PUBLICATION_MAP_SHA256 = 'e6af48428f21b6247550963e8fed2146add8b3ad3463b288adabe90559549114';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-18-161';
-const INVENTORY_SHA256 = 'bf78bfe81ea3f813cb23b5ea07766612ffd1621689696f7c535334bfa3694d58';
-const SOURCE_CLOSURE_SHA256 = '6d5511abb43648f868cd212d6bbd4ebb8fc1fd2275288d46533d290a33576f02';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-18-162';
+const INVENTORY_SHA256 = 'ba154acdd554dc57cebb5f5921ac54670aa2918da1d61f2e7ff779e77b2c0445';
+const SOURCE_CLOSURE_SHA256 = '0a9b09ed72e42bb6cdee50a934df5ec8feaa36d77506c69e98d78c043e3b30da';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29164,
-  theorems: 15081,
-  assumptionFreeTheorems: 7519,
+  declarations: 29204,
+  theorems: 15114,
+  assumptionFreeTheorems: 7520,
   excludedPrivateDeclarations: 15058,
-  modules: 278,
+  modules: 279,
   axioms: 4,
 });
 
@@ -4403,6 +4403,36 @@ const RESIDUAL_TERMINAL_PACKET_BN5_OBLIGATION_ROUTE_REFLECTION_DECLARATIONS = Ob
   ["PNP.DirectWire.TerminalBN6PacketConclusion.existsBN5FrontierObligationReflectedFirstRouteFailure_of_selectorSilence", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN5ObligationRouteReflection", "1e87cdb6552b35647c9e8a118c6e28e6a91ec94af77df7169867990152d2772b"],
   ["PNP.DirectWire.terminalBN6_packet_bn5_frontier_obligation_reflected_hb_first_route_failure", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN5ObligationRouteReflection", "71f310f4091f8d031041e67cbbe865a6d629dc8434fcefbc11d2cac15bf9c07b"],
 ]);
+const RESIDUAL_TERMINAL_PACKET_BN4_ACTIVATION_ROUTE_REFLECTION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPacketSelectorBN5ObligationPayload.activationCheck_eq_true_iff", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "867dc60cc56156ea58a390936d859c4a7e78e566e08a0e4f6b733a1dd0d98b3e"],
+  ["PNP.DirectWire.TerminalPacketSelectorBN5ObligationPayload.activationCheck_eq_false_iff", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "33227f5d456b764becbbd03f736dce6682d9fa5fde8af71acf2d727114d2bd59"],
+  ["PNP.DirectWire.TerminalPacketSelectorBN5ObligationPayload.activationCheck_eq_true_iff_activation", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "520c930b8ecf4c0968b08c9a5ba290328cadd3873d97dd6fd91946f30b8daed0"],
+  ["PNP.DirectWire.TerminalPacketSelectorBN5ObligationPayload.activationCheck_eq_false_iff_not_activation", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "36dd2bdc803bca6989ae8066d58dd769bc93e66a90929854caf24d018f2dd347"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_fields", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "a0c913b65e2ad91ebc2cc88433ccdb43b34d0a5f50aa7e658b7653d65d28069c"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_valid_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "82bc09367b318712dff44391f52f1cf241e156f90d78071bde60d5b7a2b85bb2"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_colour_iff_false", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "145bc42a327b3cf875ae8ff9b0f5c3fba186679ded86dee95f0a830ffe9139cf"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_frontier_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "15bc8682283535971f9d0fd636432944d0083d1daacbead3f11e4d210449ce88"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_charge_iff_false", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "71ca7ce5fe41dba1dd4eace717f98d373dd10f22d83ea4ed3329c3f081db3e7d"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_obligation_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "b7750f0fba4cd161bf61e0f1119fd0d663372458e2eeb074eba1a3193a13a7d3"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_activation_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "0831b041c48b5756d237702df66de658680ea61f69bc8c8d06c5d772e6b9403e"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_rank_iff_false", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "4e791b0060da3278263ce7a3467ecf4db8fe74e8385aa76fc52d3c51d9677623"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_exactRoute_iff_false", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "42bbb31c57dffa7cb42cace8ae48a7cf891a497a5e277ab19f4b1fe3d25fa990"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationRoutes_failureAt_descent_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "7360662ae21ed821756b6698b0d60710b33ac5d96a3103735922a7d10b23e179"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationRoutes_eq_some_iff", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "018e603af22e51a13ffd8868bbda1d2a05ee8c8a8c46c80ac916f556bb964dcd"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationRoutes_eq_some_frontier_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "2d0f464bbd7d548790d9dc9b5ea36a0c54d97580166d75774b23db97319870f0"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationRoutes_eq_some_obligation_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "19039f985e21b04eac7dc9e73d7cfbf3c149ef0505e1c0c3ab2d35bbecb18036"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationRoutes_eq_some_activation_iff", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "4def1541b1476e78ffdca27f5235e0e73705fc714263dd3b798ced5a81d45a24"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationRoutes_firstRoute_ne_some_colour", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "df511f38d4027c7eb2145f67c1b864cb69795a1b04fa03f9069eaa423896e672"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationRoutes_firstRoute_ne_some_charge", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "de7dd10107a30def704279109aa08e1c8643b32f24481ec4503f86b11bd3e0c3"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationRoutes_firstRoute_ne_some_rank", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "cc269256b584d4404512211d141af4fa104de4f3f2dfd186af3d896c17750851"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationRoutes_firstRoute_ne_some_exactRoute", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "8b0d888392be3cbf603df918e3f793ece534ca009eb8efa8d3c71c10176010b4"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedBN5FrontierObligationActivationRoutes_firstRoute_descent", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "ac4c2916e58371fb305dc3e45156a76f5bd0c614f5cfba012f4df1e40729ba74"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.rankDescent_of_packetSelectorPayloadFaithfulWithComputedBN5FrontierObligationActivationRoutes", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "e58e47c9ba5e34aeefb3022ec0e85675eee95d05bca6562ae23372929c85a863"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorBN5FrontierObligationActivationFaithfulness_preserves", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "7aff465daa6e5bf5070e20c83b4ad29a65663c09cb7a7342ba97597421decad8"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorBN5FrontierObligationActivationFaithfulness_faithful", ["propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "7752f2b774b0c7f9aae13bfee00180ba3e0a0dec7cb75ae6f186e04736119e12"],
+  ["PNP.DirectWire.TerminalBN6PacketConclusion.existsBN4ActivationReflectedFirstRouteFailure_of_selectorSilence", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "f51b8b54f0154b14891ae93c2e11b1b8f869a18961d7a34cd10d0c9eb124d8b7"],
+  ["PNP.DirectWire.terminalBN6_packet_bn4_activation_reflected_hb_first_route_failure", ["Quot.sound","propext"], "PNP.ResidualTerminalPacketBN4ActivationRouteReflection", "9ba3eede1deb9433671ebf085abc57e786c9876a347d2b72be89a6012efd742a"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6683,6 +6713,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketBN4ActivationRouteReflection =
+    RESIDUAL_TERMINAL_PACKET_BN4_ACTIVATION_ROUTE_REFLECTION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7200,6 +7237,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketBN5ObligationRouteReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketBN4ActivationRouteReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -7563,6 +7603,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketBN5ObligationRouteReflectionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-bn5-obligation-route-reflection'
+  );
+  const residualTerminalPacketBN4ActivationRouteReflectionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-bn4-activation-route-reflection'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -8714,6 +8757,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketBN5ObligationRouteReflectionFormalized === true
     && status.leanResidualTerminalPacketBN5ObligationRouteReflectionAxiomAuditPassed === true
     && status.leanResidualTerminalPacketBN5ObligationRouteReflectionScope === "all-arbitrary-finite-BN5-coordinate-frontier-obligation-routes-reflected-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-three-earlier-semantic-routes-without-route-clear-or-binding-premises"
+    && residualTerminalPacketBN4ActivationRouteReflectionMilestone?.classification === "formalized-residual-terminal-packet-bn4-activation-route-reflection"
+    && residualTerminalPacketBN4ActivationRouteReflectionMilestone.status === "formalized-residual-terminal-packet-bn4-activation-route-reflection"
+    && residualTerminalPacketBN4ActivationRouteReflectionMilestone.scope === "For every arbitrary finite grouped BN6 family, selector-rank carrier, and typed terminal BN5 coordinate with decidable equality of activation atoms, the canonical payload computes frontier and obligation acceptance from the corresponding BN5 fields and activation acceptance from equality of the nested BN4 activation atoms while retaining grouped colour, positive charge, the internal source route, authoritative handle rank, and exact ten-coordinate descent comparison. Activation-atom equality is equivalent to equality of the canonical BN4 activation predicates on every cut. An activation first route is prior frontier and obligation equality together with exact activation-atom inequality. The first-route classifier also cannot return colour, charge, rank, or exactRoute; a final descent route proves nondecrease, and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises."
+    && residualTerminalPacketBN4ActivationRouteReflectionMilestone.nonClaim === "The source and selector terminal BN5 coordinates remain explicit inputs: this milestone does not construct those coordinates from terminal data or prove the manuscript's complete BN4, BN5, or Packet adequacy bridge. Direction and budget remain supplied Boolean fields. Those two remaining routes still lack complete external semantics and global integration. The result does not construct the grouped family or rank map from terminal data, prove that a decreasing transition exists, or construct the no-lower ledger. It does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalPacketBN4ActivationRouteReflectionMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_BN4_ACTIVATION_ROUTE_REFLECTION_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketBN4ActivationRouteReflectionMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_BN4_ACTIVATION_ROUTE_REFLECTION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketBN4ActivationRouteReflectionFormalized === true
+    && status.leanResidualTerminalPacketBN4ActivationRouteReflectionAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketBN4ActivationRouteReflectionScope === "all-arbitrary-finite-BN4-activation-predicate-route-reflected-BN5-frontier-obligation-routes-reflected-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-two-earlier-semantic-routes-without-route-clear-or-binding-premises"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
@@ -8753,6 +8817,7 @@ function validateStatus(status, inventory) {
     && status.nonClaims?.includes('The conditional selector-silence rank closure combines checked HN/BUD inactivity with an explicit global semantic gain exclusion premise and strong induction on the supplied finite selector ranks. It proves every canonical handle in that accepted supplied table nonfaithful. The gain-coverage specialization still consumes an explicit coverage certificate plus source-cell no-gain. This does not establish selector faithfulness or compatibility, construct the tables or certificate from terminal data, prove blocker semantics or semantic dependency completeness, establish unconditional HB negative closure or ZeroSlack, or provide encoded-size and polynomial-runtime bounds.')
     && status.nonClaims?.includes('The executable selector-silence induction replaces the global semantic no-gain premise with an exhaustive data-only check that every canonical realizer claim is a typed bottom. Checked HB active-dependency closure removes HN/BUD bottoms, and strong finite-rank induction removes faithful lower seeds. The grouped family, rank and faithfulness functions, claims, activity functions, dependency rows, and rank map remain explicit data inputs; it does not construct them from terminal candidates, establish selector faithfulness or compatibility, prove blocker semantics or semantic dependency completeness, establish the full unconditional HB negative closure or ZeroSlack, or provide encoded-size and polynomial-runtime bounds.')
     && status.nonClaims?.includes('The Packet selector-faithfulness routing checker computes faithfulness from ten data-only fields on each canonical positive source payload, exposes the first failed route, exhaustively checks every canonical handle, and binds the result exactly to the supplied HB table. A positive Packet then yields a faithful handle that contradicts accepted executable HB selector silence. The grouped family, payload fields, rank tags, route-clear data, HB table, claims, blocker activity, and dependencies remain explicit inputs; positive slack, SaturatePositive, BCELReady, terminal-data construction, complete route silence, unconditional ZeroSlack, and polynomial PCCMin remain open.')
+    && status.nonClaims?.includes('BN4 activation-exact Packet route reflection computes the activation field from equality of the nested BN4 activation atoms in the explicit source and selector BN5 coordinates. That equality is equivalent to equality of the canonical activation predicates on every cut. An activation route carries prior BN5 frontier and obligation equality plus activation-atom inequality; colour, charge, exactRoute, and rank remain excluded; and a final descent route still proves actual nondecrease. Direction and budget are the two remaining explicit fields and routes. The coordinates are not constructed from terminal data, so complete route silence, unconditional ZeroSlack, and polynomial PCCMin remain open.')
     && status.leanLockedNANDPolynomialBuilderFormalized === true
     && status.leanLockedNANDBuilderFormalized === true
     && status.leanLockedNANDThresholdFormalized === true
