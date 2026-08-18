@@ -84,6 +84,49 @@ test('site validator pins the concrete locked-NAND threshold publication theorem
   assert.equal(validation.validateStatus(widened, inventory), false);
 });
 
+test('site validator rejects hostile Packet typed-frontier publication mutations', () => {
+  const milestoneId = 'residual-terminal-packet-frontier-route-reflection';
+  const theoremName = 'PNP.DirectWire.TerminalPacketSelectorTypedFrontierPayload.frontierCheck_eq_true_iff';
+  const quotientTheoremName = 'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_valid_iff';
+  const milestone = status.formalPublicationMilestones.find((row) => row.id === milestoneId);
+  assert.equal(milestone.requiredTheorems.length, 23);
+  assert.equal(milestone.earned, true);
+
+  const missing = structuredClone(inventory);
+  missing.milestoneCandidates = missing.milestoneCandidates.filter((row) => row.name !== theoremName);
+  assert.equal(validation.validateInventory(missing), false);
+
+  const forgedAxiom = structuredClone(inventory);
+  forgedAxiom.milestoneCandidates.find((row) => row.name === theoremName).axioms = ['PNP.ForgedAxiom'];
+  assert.equal(validation.validateInventory(forgedAxiom), false);
+
+  const moved = structuredClone(inventory);
+  moved.milestoneCandidates.find((row) => row.name === quotientTheoremName).module = 'PNP.Main';
+  assert.equal(validation.validateInventory(moved), false);
+
+  const forgedFingerprint = structuredClone(status);
+  const forgedRow = forgedFingerprint.formalPublicationMilestones
+    .find((row) => row.id === milestoneId).theoremRows
+    .find((row) => row.name === theoremName);
+  forgedRow.actualKernelTypeSha256 = '0'.repeat(64);
+  forgedRow.expectedKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
+
+  const widenedScope = structuredClone(status);
+  widenedScope.formalPublicationMilestones.find((row) => row.id === milestoneId).scope =
+    'The signatures are constructed from terminal data and prove full frontier faithfulness.';
+  assert.equal(validation.validateStatus(widenedScope, inventory), false);
+
+  const erasedBoundary = structuredClone(status);
+  erasedBoundary.formalPublicationMilestones.find((row) => row.id === milestoneId).nonClaim =
+    'All remaining routes are complete and P = NP.';
+  assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+
+  const forgedStatus = structuredClone(status);
+  forgedStatus.leanResidualTerminalPacketFrontierRouteReflectionFormalized = false;
+  assert.equal(validation.validateStatus(forgedStatus, inventory), false);
+});
+
 test('site validator pins the ambient BN4 residual reduction from canonical payload relations', () => {
   const milestone = status.formalPublicationMilestones.find(
     (row) => row.id === 'residual-terminal-pkgc-ambient-bn4-residual-reduction'

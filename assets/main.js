@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-18-159';
-const STATUS_SHA256 = 'e6a6b0c8c3555219fc14c334863912fa73dc7e40477eeefdc11e0fd796d86070';
-const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-18-159';
-const FORMAL_PUBLICATION_MAP_SHA256 = '6dad05c44f7150e98f21fa332198d6f5a51e2994a3ac6b2e8f3053eca7d1730d';
+const STATUS_COORDINATE = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-18-160';
+const STATUS_SHA256 = '29d8b13b2aba67701623f8fd471d2f94836c87d0e20cced83eed3dc01776eb74';
+const FORMAL_PUBLICATION_MAP_COORDINATE = 'PNP-FORMAL-PUBLICATION-MAP-2026-08-18-160';
+const FORMAL_PUBLICATION_MAP_SHA256 = '98d4f49daac8c75423dbec3e6ff4fb0cc3d8efdd5d46cf59c9167b9959634130';
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-18-159';
-const INVENTORY_SHA256 = 'ad5609d62bfb336e08175e952ce073e6063d74373975d98cffd659150bb68ded';
-const SOURCE_CLOSURE_SHA256 = '62e439d2672e3c3b5f06dbd280632447a81f89e3d73abe5c0a8c7c15023d07c1';
+const INVENTORY_COORDINATE = 'PNP-LEAN-THEOREM-INVENTORY-2026-08-18-160';
+const INVENTORY_SHA256 = '2dbec4f03fc4336894ec32b1ff99a09ec49edcdf195eb42cb6fceac0faea6d89';
+const SOURCE_CLOSURE_SHA256 = 'a93e946989a1a009a49c3fd0da299cc24700d77ccab2f8bca557e2163c7d7329';
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29042,
-  theorems: 15009,
-  assumptionFreeTheorems: 7507,
+  declarations: 29102,
+  theorems: 15044,
+  assumptionFreeTheorems: 7514,
   excludedPrivateDeclarations: 15058,
-  modules: 276,
+  modules: 277,
   axioms: 4,
 });
 
@@ -4349,6 +4349,32 @@ const RESIDUAL_TERMINAL_PACKET_COLOUR_ROUTE_REFLECTION_DECLARATIONS = Object.fre
   ["PNP.DirectWire.terminalBN6_packet_colour_reflected_hb_first_route_failure",["Quot.sound","propext"],"PNP.ResidualTerminalPacketColourRouteReflection","822b586ce4e908fb41fe4039ba7c96ae0d98dd1af685c5398856d7a8aed52983"],
 ]);
 
+const RESIDUAL_TERMINAL_PACKET_FRONTIER_ROUTE_REFLECTION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPacketSelectorTypedFrontierPayload.frontierCheck_eq_true_iff", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "778ea1b8492b6885dac7e4d0ca0282eae466af9607798e0dfb8014803d5d253f"],
+  ["PNP.DirectWire.TerminalPacketSelectorTypedFrontierPayload.frontierCheck_eq_false_iff", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "20487643be537fefe2c5822181b27af1bc894dddee437473b192c50ca1c9c89b"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_fields", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "4bf67af558d3c292ad47e0cf546fa458a44680ae883e136d36430eb2bd5d4871"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_valid_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "5efa1169b2da66d6c71055b4c92088d73d56642a3cbc50839f0a20731b281a37"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_failureAt_colour_iff_false", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "e84fc2617ce89d1297340d85501eb7b5bfa874172dda0c0957d4a32c976c9c57"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_failureAt_frontier_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "1131ed511be88686def06bf36ab3043642a5cdfb06a6be9ec2d596c3a55c942d"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_failureAt_charge_iff_false", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "b2b050ecf18a038df1939976f3c48b7cdb030dc6ac3fce8d9565eebb86921aa7"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_failureAt_rank_iff_false", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "4eb742d4098486d5bd894029c301cefbcdebe1011075b27a58a0c7b1d2f38464"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_failureAt_exactRoute_iff_false", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "d1e8ce294444a36e042f0c620ae1dd0f7729d0ef8056dbc9a1c4cab16fa0e776"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_failureAt_descent_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "17819b6773daf5687110cb29765c1f24f6840ffa788b7cb2b46396619595de04"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedTypedFrontierColourChargeExactRouteRankDescent_eq_some_iff", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "76cbaf3b8df9487eb2424ac0ce356f040c310a7581f4f29cd4ca60e145b96d2a"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedTypedFrontierColourChargeExactRouteRankDescent_eq_some_frontier_iff", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "44c1825d8793af3ef40c4f504202ddb3d009d5b5ce4763b2e8c8ed83b66c4794"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedTypedFrontierColourChargeExactRouteRankDescent_ne_some_frontier_of_eq", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "8e22542fbffe63b6288e52405e6602cea825a3d936110505295485778ba724bf"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedTypedFrontierColourChargeExactRouteRankDescent_firstRoute_ne_some_colour", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "a3a13ef926b10d17c1575c94a83ddd29a41a46114a20dae4f95a2e0794fcb22f"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedTypedFrontierColourChargeExactRouteRankDescent_firstRoute_ne_some_charge", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "e40891ae9a30caaca224f4714f373e95e2dae5b27ee7d056d03bf37c4cfc1b69"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedTypedFrontierColourChargeExactRouteRankDescent_firstRoute_ne_some_rank", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "8c2327a5832c35bc3ee801b363258c0c785ca42e1f6bdb9e31e38b84730671b8"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.computedTypedFrontierColourChargeExactRouteRankDescent_firstRoute_ne_some_exactRoute", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "3b6139366cf25599862ed7d56bd0944a3b860a07b86515e760acde61fea31e95"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedTypedFrontierColourChargeExactRouteRankDescent_firstRoute_descent", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "13cadc4e2f39f3348326668ed7e285f92966d77e27dfedd982c7bd04e191fb8c"],
+  ["PNP.DirectWire.TerminalBN6GroupedFamily.rankDescent_of_packetSelectorPayloadFaithfulWithComputedTypedFrontierColourChargeExactRouteRankDescent", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "0d6aa22e4fd829d8b61aa50aee2584448904361e2a5a7a595d8207c72c4aa22d"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorTypedFrontierColourChargeExactRouteRankDescentFaithfulness_preserves", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "2e47736ef79c72e16247210bad135d2073217694a632a34ff2131170aa1d79db"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorTypedFrontierColourChargeExactRouteRankDescentFaithfulness_faithful", ["propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "4f0a5780d3477a3312024459db150ecd0184b5ea82891d271756881ab68476f8"],
+  ["PNP.DirectWire.TerminalBN6PacketConclusion.existsTypedFrontierReflectedFirstRouteFailure_of_selectorSilence", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "ce83e296a5ec8736a419f534a437090aa45fbba82143fed4c1be6766f45925e1"],
+  ["PNP.DirectWire.terminalBN6_packet_typed_frontier_reflected_hb_first_route_failure", ["Quot.sound", "propext"], "PNP.ResidualTerminalPacketFrontierRouteReflection", "24de27f2195e119fdfc8ae82b5e8ab7a4f6ddc687199b416dbf4427eb42d693a"],
+]);
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6615,6 +6641,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketFrontierRouteReflection =
+    RESIDUAL_TERMINAL_PACKET_FRONTIER_ROUTE_REFLECTION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -7125,6 +7158,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketColourRouteReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketFrontierRouteReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -7481,6 +7517,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketColourRouteReflectionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-colour-route-reflection'
+  );
+  const residualTerminalPacketFrontierRouteReflectionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-frontier-route-reflection'
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -8589,6 +8628,27 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketColourRouteReflectionFormalized === true
     && status.leanResidualTerminalPacketColourRouteReflectionAxiomAuditPassed === true
     && status.leanResidualTerminalPacketColourRouteReflectionScope === "all-arbitrary-finite-grouped-footprint-colour-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-five-earlier-semantic-routes-without-route-clear-or-binding-premises"
+    && residualTerminalPacketFrontierRouteReflectionMilestone?.classification === "formalized-residual-terminal-packet-frontier-route-reflection"
+    && residualTerminalPacketFrontierRouteReflectionMilestone.status === "formalized-residual-terminal-packet-frontier-route-reflection"
+    && residualTerminalPacketFrontierRouteReflectionMilestone.scope === "For every arbitrary finite grouped BN6 family, selector-rank carrier, and typed frontier-signature domain with decidable equality, the canonical payload computes frontier acceptance from exact equality of the supplied source and selector signatures while retaining grouped colour, positive charge, the internal source route, authoritative handle rank, and exact ten-coordinate descent comparison. A frontier first route is exactly typed signature inequality; equal signatures exclude it. The first-route classifier also cannot return colour, charge, rank, or exactRoute; a final descent route proves nondecrease, and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises."
+    && residualTerminalPacketFrontierRouteReflectionMilestone.nonClaim === "The source and selector frontier signatures remain explicit inputs: this milestone does not construct the supplied signatures from terminal data, bind them to a BN5 coordinate, or prove the manuscript's full frontier-faithful comparison. Obligation, activation, direction, and budget remain supplied Boolean fields. Those four remaining routes still lack complete external semantics and global integration. The result does not construct the grouped family or rank map from terminal data, prove that a decreasing transition exists, or construct the no-lower ledger. It does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalPacketFrontierRouteReflectionMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_FRONTIER_ROUTE_REFLECTION_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketFrontierRouteReflectionMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_FRONTIER_ROUTE_REFLECTION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketFrontierRouteReflectionFormalized === true
+    && status.leanResidualTerminalPacketFrontierRouteReflectionAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketFrontierRouteReflectionScope === "all-arbitrary-finite-typed-frontier-equality-frontier-route-reflected-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-four-earlier-semantic-routes-without-route-clear-or-binding-premises"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -8606,7 +8666,7 @@ function validateStatus(status, inventory) {
     && globalZeroSlackPCCMinMilestone?.classification === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.status === 'not-formalized'
     && globalZeroSlackPCCMinMilestone.scope === 'Complete residual routing, global ZeroSlack contradiction, exact minimization, and polynomial bounds.'
-    && globalZeroSlackPCCMinMilestone.nonClaim === "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot; the checked exact-rank HB graph contract validates every edge in a supplied finite HN/BUD dependency graph; the checked total-table HB contract gives every finite HN/BUD node one row, materializes every listed dependency as an edge, and derives well-founded induction and cycle exclusion for that supplied table; the checked HB active-dependency closure combines an exhaustive active-to-active row condition with strict rank descent to prove every supplied HN/BUD activity bit false and remove HN/budget typed-bot branches; and the executable selector-silence induction exhaustively checks that every canonical realizer claim is a typed bottom, then combines supplied-table HB inactivity with strong finite-rank induction to prove every canonical handle in the accepted table nonfaithful without a global semantic no-gain premise. The Packet selector-faithfulness routing milestone checks ten canonical source-payload fields and derives a contradiction for every positive Packet under explicit route-clear inputs; the canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise; and total first-route classification turns every canonical payload rejection into one earliest typed route, which canonical HB selector silence forces for a positive Packet without route-clear or binding premises. The exact first-route semantics milestone additionally identifies every returned route with its unique earliest failed supplied payload field. The descent-reflection milestone computes the final descent field from the exact ten-coordinate RankWF relation and proves a forced final route is genuinely nondecreasing. The rank-tag-reflection milestone then copies the table-owned handle rank into the payload and excludes the duplicate rank route. The exact-route-reflection milestone marks the already proved internal handle-to-cell-to-positive-payload source route clear by construction and excludes the duplicate exact-route result as well; this internal route is not an external exact minimum. The charge-route-reflection milestone then derives the internal charge check from the canonical source atom with strictly positive mass and excludes the charge result; that positive mass is not the full external charge-surplus or replacement semantics. The colour-route-reflection milestone then derives internal grouped-footprint eligibility from each canonical handle and excludes colour; this is not external manuscript colour equivalence. The five semantic fields and routes and the finite rank map remain explicit. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, rank assignment, payload checks, exhaustive realizer claims, or blocker tables from terminal data; connect matching back to a contradiction; derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data; prove the earlier reported routes' external semantics or map all residual routes into a decreasing complete global outcome system; or provide full external selector compatibility, an independently constructed realizer, unconditional global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized."
+    && globalZeroSlackPCCMinMilestone.nonClaim === "The finite candidate-derived BN3 envelope supplies stable request identities and one jointly side-tight canonical basis family; the finite BN4 kernel supplies activation-exact same-key integer cancellation over an explicit typed cell ledger; the finite BN5 kernel localizes explicit full/shadow multiplicity failure to a strict Hall deficit and local X1 route; the exhaustive Packet scan verifies strict gains or exact no-gain over every canonical selector in one supplied explicit grouped family; an explicit global gain-coverage certificate conditionally upgrades that silence to a proof-bearing ZeroSlack result; the generic finite R-ChargeSurplus kernel derives strict gain from exact ledgers, an unmatched positive support charge, exact gate accounting, and separately proved semantics; the checked unit-charge blueprint realizer derives canonical ledgers and gains for every valid blueprint in one supplied family; the checked typed-realizer contract rejects every faithful-table row except a genuine blueprint gain or an explicitly active bounded-rank HN, budget, or strictly lower faithful seed bot; the checked exact-rank HB graph contract validates every edge in a supplied finite HN/BUD dependency graph; the checked total-table HB contract gives every finite HN/BUD node one row, materializes every listed dependency as an edge, and derives well-founded induction and cycle exclusion for that supplied table; the checked HB active-dependency closure combines an exhaustive active-to-active row condition with strict rank descent to prove every supplied HN/BUD activity bit false and remove HN/budget typed-bot branches; and the executable selector-silence induction exhaustively checks that every canonical realizer claim is a typed bottom, then combines supplied-table HB inactivity with strong finite-rank induction to prove every canonical handle in the accepted table nonfaithful without a global semantic no-gain premise. The Packet selector-faithfulness routing milestone checks ten canonical source-payload fields and derives a contradiction for every positive Packet under explicit route-clear inputs; the canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise; and total first-route classification turns every canonical payload rejection into one earliest typed route, which canonical HB selector silence forces for a positive Packet without route-clear or binding premises. The exact first-route semantics milestone additionally identifies every returned route with its unique earliest failed supplied payload field. The descent-reflection milestone computes the final descent field from the exact ten-coordinate RankWF relation and proves a forced final route is genuinely nondecreasing. The rank-tag-reflection milestone then copies the table-owned handle rank into the payload and excludes the duplicate rank route. The exact-route-reflection milestone marks the already proved internal handle-to-cell-to-positive-payload source route clear by construction and excludes the duplicate exact-route result as well; this internal route is not an external exact minimum. The charge-route-reflection milestone then derives the internal charge check from the canonical source atom with strictly positive mass and excludes the charge result; that positive mass is not the full external charge-surplus or replacement semantics. The colour-route-reflection milestone then derives internal grouped-footprint eligibility from each canonical handle and excludes colour; this is not external manuscript colour equivalence. The typed-frontier-route-reflection milestone replaces the caller frontier bit with executable equality of explicit typed source and selector signatures, so a frontier route carries exact inequality; the signatures are not constructed from terminal data or bound to the manuscript BN5 frontier. The four remaining semantic fields and routes and the finite rank map remain explicit. The construction still does not derive the BN4 ledger, BN5 payload/shadow universe, grouped BN6 family, replacement blueprints, occurrence pairing, rank assignment, payload checks, exhaustive realizer claims, or blocker tables from terminal data; connect matching back to a contradiction; derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data; prove the earlier reported routes' external semantics or map all residual routes into a decreasing complete global outcome system; or provide full external selector compatibility, an independently constructed realizer, unconditional global silence, and polynomial-runtime completeness. Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized."
     && sameJson(globalZeroSlackPCCMinMilestone.requiredTheorems, [
       'PNP.Main.pccmin_polynomial_exact',
       'PNP.Main.zero_slack_complete',
