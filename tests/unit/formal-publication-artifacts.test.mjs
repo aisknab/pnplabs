@@ -1095,7 +1095,7 @@ function json(relativePath) {
 }
 
 function milestoneFieldStem(milestoneId) {
-  const fieldParts = { bn5: "BN5", hb: "HB" };
+  const fieldParts = { bn4: "BN4", bn5: "BN5", hb: "HB" };
   const pascalStem = milestoneId
     .split("-")
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -1136,7 +1136,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   const latestAxiomClosure = [...new Set(latestMilestone.theoremRows.flatMap((row) => row.axioms))].sort();
   assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.source.commit, canonicalRelease.source.commit);
-  assert.equal(release.source.proofCommit, "bc9f678844257063f829e96e78e848c6bb6de164");
+  assert.equal(release.source.proofCommit, "05919ef2f7408d588d6073adacc785ccc6bb76fc");
   assert.equal(release.source.tree, canonicalRelease.source.tree);
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
@@ -3490,6 +3490,7 @@ test("current release pins the latest canonical earned boundary and remains fail
     "AuditedDeclarationCount",
     "EmptyAxiomDeclarationCount",
     "PropextOnlyDeclarationCount",
+    "QuotSoundOnlyDeclarationCount",
     "PropextQuotSoundDeclarationCount",
   ]) {
     assert.ok(Number.isSafeInteger(release.earnedBoundary[`${latestStem}${suffix}`]), suffix);
@@ -3498,6 +3499,7 @@ test("current release pins the latest canonical earned boundary and remains fail
     release.earnedBoundary[`${latestStem}AuditedDeclarationCount`],
     release.earnedBoundary[`${latestStem}EmptyAxiomDeclarationCount`]
       + release.earnedBoundary[`${latestStem}PropextOnlyDeclarationCount`]
+      + release.earnedBoundary[`${latestStem}QuotSoundOnlyDeclarationCount`]
       + release.earnedBoundary[`${latestStem}PropextQuotSoundDeclarationCount`]
   );
   assert.equal(release.earnedBoundary[`${latestStem}Scope`], latestStatusPayload[`${latestStatusStem}Scope`]);
