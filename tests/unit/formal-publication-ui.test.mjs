@@ -22,7 +22,7 @@ const release = JSON.parse(readFileSync('downloads/formal-publication-release.js
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
 function statusFieldStem(milestoneId) {
-  const fieldParts = { hb: 'HB' };
+  const fieldParts = { bn5: 'BN5', hb: 'HB' };
   return milestoneId
     .split('-')
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -84,12 +84,13 @@ test('site validator pins the concrete locked-NAND threshold publication theorem
   assert.equal(validation.validateStatus(widened, inventory), false);
 });
 
-test('site validator rejects hostile Packet typed-frontier publication mutations', () => {
-  const milestoneId = 'residual-terminal-packet-frontier-route-reflection';
-  const theoremName = 'PNP.DirectWire.TerminalPacketSelectorTypedFrontierPayload.frontierCheck_eq_true_iff';
-  const quotientTheoremName = 'PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedTypedFrontierColourChargeExactRouteRankDescent_valid_iff';
+test('site validator rejects hostile Packet BN5 frontier-and-obligation publication mutations', () => {
+  const milestoneId = 'residual-terminal-packet-bn5-obligation-route-reflection';
   const milestone = status.formalPublicationMilestones.find((row) => row.id === milestoneId);
-  assert.equal(milestone.requiredTheorems.length, 23);
+  const theoremName = milestone.requiredTheorems.find((name) => name.endsWith('.frontierCheck_eq_true_iff'));
+  const quotientTheoremName = milestone.theoremRows.find((row) => row.axioms.includes('Quot.sound')).name;
+  assert.equal(milestone.requiredTheorems.length, milestone.theoremRows.length);
+  assert.ok(milestone.requiredTheorems.length > 0);
   assert.equal(milestone.earned, true);
 
   const missing = structuredClone(inventory);
@@ -114,7 +115,7 @@ test('site validator rejects hostile Packet typed-frontier publication mutations
 
   const widenedScope = structuredClone(status);
   widenedScope.formalPublicationMilestones.find((row) => row.id === milestoneId).scope =
-    'The signatures are constructed from terminal data and prove full frontier faithfulness.';
+    'The BN5 coordinates are constructed from terminal data and prove complete Packet adequacy.';
   assert.equal(validation.validateStatus(widenedScope, inventory), false);
 
   const erasedBoundary = structuredClone(status);
@@ -123,7 +124,7 @@ test('site validator rejects hostile Packet typed-frontier publication mutations
   assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
 
   const forgedStatus = structuredClone(status);
-  forgedStatus.leanResidualTerminalPacketFrontierRouteReflectionFormalized = false;
+  forgedStatus.leanResidualTerminalPacketBN5ObligationRouteReflectionFormalized = false;
   assert.equal(validation.validateStatus(forgedStatus, inventory), false);
 });
 

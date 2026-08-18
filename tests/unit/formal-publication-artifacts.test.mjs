@@ -1095,7 +1095,7 @@ function json(relativePath) {
 }
 
 function milestoneFieldStem(milestoneId) {
-  const fieldParts = { hb: "HB" };
+  const fieldParts = { bn5: "BN5", hb: "HB" };
   const pascalStem = milestoneId
     .split("-")
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -1136,7 +1136,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   const latestAxiomClosure = [...new Set(latestMilestone.theoremRows.flatMap((row) => row.axioms))].sort();
   assert.equal(release.coordinate, canonicalRelease.coordinate);
   assert.equal(release.source.commit, canonicalRelease.source.commit);
-  assert.equal(release.source.proofCommit, "1fad59060a49477d5076dcf08d4496c3688cb873");
+  assert.equal(release.source.proofCommit, "bc9f678844257063f829e96e78e848c6bb6de164");
   assert.equal(release.source.tree, canonicalRelease.source.tree);
   assert.equal(release.source.coordinateAloneIsAuthority, false);
   assert.equal(release.source.identityRequiresCommitTreeAndArtifactHashes, true);
