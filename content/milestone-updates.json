@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-19-residual-terminal-packet-budget-route-reflection",
+      "milestoneId": "residual-terminal-packet-budget-route-reflection",
+      "publishedAt": "2026-08-18T18:40:56Z",
+      "title": "Lean now reflects the Packet budget route from typed equality",
+      "plainLanguage": [
+        "Lean now evaluates the last local Packet Boolean check, budget, by comparing the explicit typed budget value attached to the source with the value selected for the route. The already computed frontier, obligation, activation, and direction checks are preserved. If budget is the first failing route, those four earlier fields agree and the two budget values differ. The classifier still cannot return colour, charge, exactRoute, or rank, and a final descent failure still proves nondecrease. This holds for arbitrary finite grouped BN6 families, selector-rank carriers, and budget types with decidable equality; the positive Packet/HB endpoint retains exact failure evidence without route-clear or binding premises.",
+        "The source and selector budget values remain explicit inputs: this milestone does not construct those budget values from terminal data, prove the manuscript's complete Bud(u) budget-envelope or Packet adequacy bridge, or identify local Packet budget coherence with BudgetResolve or HB budget activity. Computing every local Packet classifier field does not establish that terminal data supplies adequate values or that all routes are globally excluded. The result does not construct the grouped family or rank map from terminal data, prove that a decreasing transition exists, or construct the no-lower ledger. It does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 140 of 142 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "055325ee54abddefc595ccb826ea410dc8be2231",
+        "tree": "b7901a65cf63fcef9a029023761085f234b6bc5e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-164",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-18-residual-terminal-packet-direction-route-reflection",
       "milestoneId": "residual-terminal-packet-direction-route-reflection",
       "publishedAt": "2026-08-18T13:54:15Z",

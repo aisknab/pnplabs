@@ -374,6 +374,58 @@ const PACKET_DIRECTION_ROUTE_REFLECTION_QUOT_SOUND_THEOREMS = new Set([
   "PNP.DirectWire.TerminalBN6PacketConclusion.existsDirectionReflectedFirstRouteFailure_of_selectorSilence",
   "PNP.DirectWire.terminalBN6_packet_direction_reflected_hb_first_route_failure",
 ]);
+const PACKET_BUDGET_ROUTE_REFLECTION_THEOREM_SHA256 = Object.freeze({
+  "PNP.DirectWire.TerminalPacketSelectorBN5BudgetPayload.budgetCheck_eq_true_iff": "9a5b6cd37382fdf78def0c24495475d62a38e9556e4e3a3dfea079e7938a6784",
+  "PNP.DirectWire.TerminalPacketSelectorBN5BudgetPayload.budgetCheck_eq_false_iff": "9adcd092ef11e13a0edc7e8881e5239eda948c7d77f2a9a66fe74ae124ebb9d0",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_fields": "8a670bc055f97b138940434557b36763e4a1b0e76c0c14713680cbc4e52cbc73",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_valid_iff": "fc1a51608f81086617748ed2a37198581c28a37f3824d6fd9494c55f3c63af60",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_colour_iff_false": "0bd919fb8871d0af742536e113b672d90daa458f6caa48c2e0b9e76c31590ecd",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_frontier_iff": "2b0abba123142f7486337e2d235437b390130e11c591ea6221abbe1f1687ef09",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_charge_iff_false": "25728062451ed71708c4173f7dda5f4ccdb88c46a359e538eaf5358a828134e2",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_obligation_iff": "631812753250a4545cec2a891fbe32ce1e4c638fee744367ef1ee76248f0e8a7",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_activation_iff": "11851156736436017ea5ee1096c72616de9c7fe650613e1cefc414e1d40eb924",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_direction_iff": "beeaef4790706024b44dededb1d0134b77b7986bdd2d59a000a1ffb7ab960311",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_budget_iff": "2c2169095336f7d189182db0eeabe61a7055090a9c26a2ef91e2255245b0a930",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_rank_iff_false": "53f03964d19cfbec8fb60ef029f70d297aeeb8417f74b182298e60677bc98868",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_exactRoute_iff_false": "557c8d1ff3f7df03bf7bb0d3dc1e5ccc9018d7a804def06bf9ccd6c73e13a0db",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_descent_iff": "74a945602db46582c40d07447b8f979e7bdfb6a2b1da109a6215309de6fe8b08",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_iff": "4485ffa81de1cc5dfdfa6c666dfb3d3d93137ccddb22e240bc90525dad17094b",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_frontier_iff": "556d65c936d144c54eebb406b1f5ceb69247c1089797b988e49896e7f954ab2c",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_obligation_iff": "92f893d6190691015be6811c4cd8c7562e4a62f18a6911e472bdff1b5d59f759",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_activation_iff": "2e7cf474f62070d82e9b2f0aed485705d387b935af53cfec4533e9be8178faf2",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_direction_iff": "6ed4712863a070746f8b8cfe69b5767bcf3d28f5eb4b1dd05b8e283688fea3ce",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_budget_iff": "2837158472f4d80ce817f51f40b0e20cdba44a273e24ffd30f57f8401177adb2",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_ne_some_colour": "8cbae6339b9d5a8e9fd130b3568ee3bbc8f29d733329fec5b714f1477dba833f",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_ne_some_charge": "b82aebceefa7508c0a92e90e4a04b5eb836b519b0db5c67322c9c4e18404809e",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_ne_some_rank": "49e6103b75a8e0881fb83b8f4d6eb99589190413e4a02cafadca99f985a406fe",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_ne_some_exactRoute": "b8b119cab9837647e92c67facbd9a691523a8b2b570f1a403eacff4d1d9e5754",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_descent": "d3098e22029dc763a564c005fd5d8b03cf5eb2a7895fbf867c050e8f71bce8e2",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.rankDescent_of_packetSelectorPayloadFaithfulWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes": "2afc86acce8f98627175a418d30ca8da56a5d293f913a795596a6bcc3567793e",
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorBN5FrontierObligationActivationDirectionBudgetFaithfulness_preserves": "32a5bdd21561b3bea26b048cee03e1f195aba4dc6e9d8cd6c088676a431742d0",
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.withComputedPacketSelectorBN5FrontierObligationActivationDirectionBudgetFaithfulness_faithful": "bbcb4952562e8067944b54769bad107ca35ebb8b5d0e97df86484ac6a6c087d3",
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsBudgetReflectedFirstRouteFailure_of_selectorSilence": "7c7dc39f0076467549cfc0c8310dfc7f3cbc62ce0f27f18228b5306ca829d1cb",
+  "PNP.DirectWire.terminalBN6_packet_budget_reflected_hb_first_route_failure": "ed64670e66b710acf2b80ab0f56d08219af5f4b66e17c847cdfae8cb0b39a3d7",
+});
+const PACKET_BUDGET_ROUTE_REFLECTION_QUOT_SOUND_THEOREMS = new Set([
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_valid_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_colour_iff_false",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_frontier_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_obligation_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_activation_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_direction_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_budget_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_failureAt_descent_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_frontier_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_obligation_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_activation_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_direction_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.packetSelectorPayloadFirstRouteWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes_eq_some_budget_iff",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_ne_some_colour",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.not_rankDescent_of_computedBN5FrontierObligationActivationDirectionBudgetRoutes_firstRoute_descent",
+  "PNP.DirectWire.TerminalBN6GroupedFamily.rankDescent_of_packetSelectorPayloadFaithfulWithComputedBN5FrontierObligationActivationDirectionBudgetRoutes",
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsBudgetReflectedFirstRouteFailure_of_selectorSilence",
+  "PNP.DirectWire.terminalBN6_packet_budget_reflected_hb_first_route_failure",
+]);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -742,7 +794,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /prove every supplied HN\/BUD activity bit false/u);
   assert.match(globalZeroSlack.nonClaim, /executable selector-silence induction/u);
   assert.match(globalZeroSlack.nonClaim, /exhaustively checks that every canonical realizer claim is a typed bottom/u);
-  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, rank assignment, payload checks, exhaustive realizer claims, or blocker tables/u);
+  assert.match(globalZeroSlack.nonClaim, /replacement blueprints, occurrence pairing, rank assignment, payload values, exhaustive realizer claims, or blocker tables/u);
   assert.match(globalZeroSlack.nonClaim, /derive blocker semantics, semantic dependency completeness, or the checked local active-dependency premise from terminal data/u);
   assert.match(globalZeroSlack.nonClaim, /canonical table constructor now computes the HB faithfulness function from those payloads and removes the separate binding premise/u);
   assert.match(globalZeroSlack.nonClaim, /total first-route classification turns every canonical payload rejection into one earliest typed route/u);
@@ -759,9 +811,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /this is not external manuscript colour equivalence/u);
   assert.match(globalZeroSlack.nonClaim, /typed-frontier-route-reflection milestone replaces the caller frontier bit with executable equality/u);
   assert.match(globalZeroSlack.nonClaim, /BN5-bound frontier-and-obligation milestone then binds both checks to exact fields of explicit typed terminal BN5 coordinates/u);
-  assert.match(globalZeroSlack.nonClaim, /coordinates and direction values are not constructed from terminal data/u);
-  assert.match(globalZeroSlack.nonClaim, /Budget is the sole remaining supplied Boolean field and route/u);
-  assert.match(globalZeroSlack.nonClaim, /prove the earlier reported routes' external semantics/u);
+  assert.match(globalZeroSlack.nonClaim, /typed-budget milestone computes the last caller-supplied Packet Boolean from equality of explicit source and selector budget values/u);
+  assert.match(globalZeroSlack.nonClaim, /coordinates, direction values, and budget values are not constructed from terminal data/u);
+  assert.match(globalZeroSlack.nonClaim, /local budget equality is not BudgetResolve or HB budget semantics/u);
+  assert.match(globalZeroSlack.nonClaim, /prove the reported routes' external semantics/u);
   assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
   assert.ok(status.nonClaims.includes('The BN3 joint-realizability gap still shows that arbitrary per-cut side-tight existence cannot imply a stable family. The successful computed BCEL nucleus has a candidate-derived finite repair with canonical request identities, exact minimal consumers, duplicate-free incidence, and one jointly side-tight basis selection function, but its all-subsets enumeration is exponential. The finite BN4 kernel consumes that repaired envelope without repairing arbitrary caller-supplied per-cut witnesses.'));
@@ -2092,6 +2145,88 @@ test('current status binds the compiled inventory and fails the concrete gate cl
       && /typed-direction inequality/u.test(nonClaim)
       && /sole remaining supplied Boolean field and route/u.test(nonClaim)
       && /direction values remain explicit/u.test(nonClaim)),
+    true,
+  );
+
+  const packetBudgetRouteReflectionMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-budget-route-reflection');
+  const packetBudgetRouteReflectionHashes = release.earnedBoundary
+    .residualTerminalPacketBudgetRouteReflectionTheoremKernelTypeSha256;
+  assert.ok(packetBudgetRouteReflectionMilestone);
+  assert.equal(packetBudgetRouteReflectionMilestone.earned, true);
+  assert.equal(packetBudgetRouteReflectionMilestone.allPresent, true);
+  assert.equal(packetBudgetRouteReflectionMilestone.allKernelTypesMatch, true);
+  assert.equal(packetBudgetRouteReflectionMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(packetBudgetRouteReflectionHashes, PACKET_BUDGET_ROUTE_REFLECTION_THEOREM_SHA256);
+  assert.deepEqual(
+    packetBudgetRouteReflectionMilestone.requiredTheorems,
+    Object.keys(PACKET_BUDGET_ROUTE_REFLECTION_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionAuditedDeclarationCount, 37);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionEmptyAxiomDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionPropextOnlyDeclarationCount, 17);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionPropextQuotSoundDeclarationCount, 18);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetBudgetRouteReflectionMilestone.theoremRows) {
+    const expectedAxioms = PACKET_BUDGET_ROUTE_REFLECTION_QUOT_SOUND_THEOREMS.has(theoremRow.name)
+      ? ['Quot.sound', 'propext']
+      : ['propext'];
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_BUDGET_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_BUDGET_ROUTE_REFLECTION_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, expectedAxioms, theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.equal(PACKET_BUDGET_ROUTE_REFLECTION_QUOT_SOUND_THEOREMS.size, 18);
+  assert.match(packetBudgetRouteReflectionMilestone.scope, /typed budget values with decidable equality/u);
+  assert.match(packetBudgetRouteReflectionMilestone.scope, /budget acceptance from exact source and selector budget equality/u);
+  assert.match(packetBudgetRouteReflectionMilestone.scope, /budget first route is prior frontier, obligation, activation, and direction equality/u);
+  assert.match(packetBudgetRouteReflectionMilestone.scope, /cannot return colour, charge, rank, or exactRoute/u);
+  assert.match(packetBudgetRouteReflectionMilestone.nonClaim, /budget values remain explicit inputs/u);
+  assert.match(packetBudgetRouteReflectionMilestone.nonClaim, /complete Bud\(u\) budget-envelope or Packet adequacy bridge/u);
+  assert.match(packetBudgetRouteReflectionMilestone.nonClaim, /BudgetResolve or HB budget activity/u);
+  assert.match(packetBudgetRouteReflectionMilestone.nonClaim, /all routes are globally excluded/u);
+  assert.equal(status.leanResidualTerminalPacketBudgetRouteReflectionFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketBudgetRouteReflectionAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketBudgetRouteReflectionScope,
+    release.earnedBoundary.residualTerminalPacketBudgetRouteReflectionScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetBudgetRouteReflectionMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /Typed Packet budget-route reflection/u.test(nonClaim)
+      && /typed-budget inequality/u.test(nonClaim)
+      && /final supplied Packet Boolean/u.test(nonClaim)
+      && /BudgetResolve or HB budget activity/u.test(nonClaim)),
     true,
   );
 
@@ -5126,7 +5261,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '2462530716d9033615565e1f8f7bf57b5ed02ae8');
+  assert.equal(index.sourceProofCommitRef, '64708565e8964a38f516fc27d8fb55b9c41e4999');
   assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
