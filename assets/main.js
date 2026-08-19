@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-167";
-const STATUS_SHA256 = '0e9b7f1edd099801be071e8e7bc266298aec52d33c1afec65c3c8b0345b73872';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-167";
-const FORMAL_PUBLICATION_MAP_SHA256 = "8b54e35be593aaabd0e976f58138450d9c672212c2876233e1f6e86609faff58";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-168";
+const STATUS_SHA256 = '028554723a713ff6177c90f9fa12e7be0e254fb65b917228b2fb27a06ece2970';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-168";
+const FORMAL_PUBLICATION_MAP_SHA256 = "8802c229d5fdba5c823dfce4e58200091972953eaab72d6f902f312e24924a69";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-167";
-const INVENTORY_SHA256 = "f166b7a68506ac989ae78daad4e08c027f104a463dea18e24407d00973a6894a";
-const SOURCE_CLOSURE_SHA256 = "b2f06927f0e5d05c7437f192e1da7b109284e189a77cc79c16615181866ae088";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-168";
+const INVENTORY_SHA256 = "c18bafdc91d3d903b915473a0ab641a3b5ddb4c1b8b4d47948f618b8daa3db4b";
+const SOURCE_CLOSURE_SHA256 = "e7f8da7888f27347bb67ef97d75a39bc3e8feb74f1491e9a624d3d1ee7dbea32";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29347,
-  theorems: 15206,
+  declarations: 29357,
+  theorems: 15214,
   assumptionFreeTheorems: 7526,
   excludedPrivateDeclarations: 15058,
-  modules: 284,
+  modules: 285,
   axioms: 4,
 });
 
@@ -4515,6 +4515,12 @@ const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_DECLARATIONS = Object.fr
   ["PNP.DirectWire.TerminalBN6PacketConclusion.false_of_checkedPacketDescentNoLower_and_selectorSilence",["Quot.sound","propext"],"PNP.ResidualTerminalPacketDescentNoLowerBinding","d235dacd3be3be6e5a568614dfe14bcdf9ffcabed2fe7f5e4e6aa603af671e9e"],
   ["PNP.DirectWire.terminalBN6_packet_descent_no_lower_rejected",["Quot.sound","propext"],"PNP.ResidualTerminalPacketDescentNoLowerBinding","4c8a1a5f2a0d27e55df9144a40ba608421b7c7f41271ad683a2ef603821a8cda"],
 ]);
+const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketNoLowerLedger_eq_true_iff",["propext"],"PNP.ResidualTerminalPacketNoLowerLedger","4933640232598ca15f5e59a1e44afc61cb3d0464b99acb85817b10a942756e0f"],
+  ["PNP.DirectWire.TerminalBN6PacketConclusion.checkPacketNoLowerLedger_eq_false",["Quot.sound","propext"],"PNP.ResidualTerminalPacketNoLowerLedger","0823247a05acf3b9e710e938e5443fb4e0c600c5e73957a2e7c0bfb580a17d99"],
+  ["PNP.DirectWire.TerminalPacketTypedRealizerTable.not_packetConclusion_of_checkedPacketNoLowerLedger",["Quot.sound","propext"],"PNP.ResidualTerminalPacketNoLowerLedger","fafceb9656698473415a9221ca9a36c63021be6f3d09f370dc73b63fc5d94615"],
+  ["PNP.DirectWire.terminalBN6_packet_no_lower_ledger_excludes_positive_packet",["Quot.sound","propext"],"PNP.ResidualTerminalPacketNoLowerLedger","67c93587e524fb98ecefa2f653fe2d398ffc283a17756d7d68e4dbfa78fa35a9"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5990,6 +5996,9 @@ leanResidualTerminalPacketSelectorUniverseScope = ${payload.leanResidualTerminal
 leanResidualTerminalPacketDescentNoLowerBindingFormalized = ${payload.leanResidualTerminalPacketDescentNoLowerBindingFormalized ?? false}
 leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed = ${payload.leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed ?? false}
 leanResidualTerminalPacketDescentNoLowerBindingScope = ${payload.leanResidualTerminalPacketDescentNoLowerBindingScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPacketDescentNoLowerBindingScope)}
+leanResidualTerminalPacketNoLowerLedgerFormalized = ${payload.leanResidualTerminalPacketNoLowerLedgerFormalized ?? false}
+leanResidualTerminalPacketNoLowerLedgerAxiomAuditPassed = ${payload.leanResidualTerminalPacketNoLowerLedgerAxiomAuditPassed ?? false}
+leanResidualTerminalPacketNoLowerLedgerScope = ${payload.leanResidualTerminalPacketNoLowerLedgerScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPacketNoLowerLedgerScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -6842,6 +6851,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketNoLowerLedger =
+    RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7379,6 +7395,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketDescentNoLowerBinding.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketNoLowerLedger.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -7762,6 +7781,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketDescentNoLowerBindingMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-descent-no-lower-binding'
+  );
+  const residualTerminalPacketNoLowerLedgerMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-no-lower-ledger'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9044,6 +9066,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketDescentNoLowerBindingFormalized === true
     && status.leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed === true
     && status.leanResidualTerminalPacketDescentNoLowerBindingScope === "all-arbitrary-finite-canonical-packet-handles-exhaustive-local-descent-no-lower-row-rejected-under-checked-positive-packet-semantic-HN-budget-HB-selector-silence-and-HB-closure"
+
+    && residualTerminalPacketNoLowerLedgerMilestone?.classification === "formalized-residual-terminal-packet-no-lower-ledger"
+    && residualTerminalPacketNoLowerLedgerMilestone.status === "formalized-residual-terminal-packet-no-lower-ledger"
+    && residualTerminalPacketNoLowerLedgerMilestone.scope === "For every supplied arbitrary finite grouped BN6 family, typed realizer table, HB dependency table, finite rank map, and before/after residual ranks, one Boolean recomputes the five executable checks for semantic/HN binding, budget/HB binding, selector silence, HB no-outcome closure, and Packet descent/no-lower. Its reflection theorem characterizes exact acceptance, a positive Packet forces rejection, and an accepted ledger excludes a positive Packet conclusion for those same inputs."
+    && residualTerminalPacketNoLowerLedgerMilestone.nonClaim === "This closes the Packet branch only, not the complete no-lower ledger. The grouped family, BN5 coordinates, activation atoms, direction and budget values, rank map, residual ranks, realizer claims, activity environment, dependency rows, and all terminal data remain supplied. It does not implement HResolve, BudgetResolve, normalization, other named obstructions, saturation, or replay; derive unconditional HB closure; establish unconditional ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalPacketNoLowerLedgerMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketNoLowerLedgerMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketNoLowerLedgerFormalized === true
+    && status.leanResidualTerminalPacketNoLowerLedgerAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketNoLowerLedgerScope === "all-arbitrary-finite-five-row-Packet-no-lower-ledger-positive-Packet-exclusion-under-computed-semantic-HN-budget-HB-selector-silence-and-HB-closure"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

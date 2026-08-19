@@ -455,6 +455,15 @@ const PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256 = Object.freeze({
 const PACKET_DESCENT_NO_LOWER_BINDING_QUOT_SOUND_THEOREMS = new Set(
   Object.keys(PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256),
 );
+const PACKET_NO_LOWER_LEDGER_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketNoLowerLedger_eq_true_iff': '4933640232598ca15f5e59a1e44afc61cb3d0464b99acb85817b10a942756e0f',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.checkPacketNoLowerLedger_eq_false': '0823247a05acf3b9e710e938e5443fb4e0c600c5e73957a2e7c0bfb580a17d99',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.not_packetConclusion_of_checkedPacketNoLowerLedger': 'fafceb9656698473415a9221ca9a36c63021be6f3d09f370dc73b63fc5d94615',
+  'PNP.DirectWire.terminalBN6_packet_no_lower_ledger_excludes_positive_packet': '67c93587e524fb98ecefa2f653fe2d398ffc283a17756d7d68e4dbfa78fa35a9',
+});
+const PACKET_NO_LOWER_LEDGER_PROPEXT_ONLY_THEOREMS = new Set([
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketNoLowerLedger_eq_true_iff',
+]);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -2508,6 +2517,82 @@ test('current status binds the compiled inventory and fails the concrete gate cl
       && /closes one local no-lower row only/u.test(nonClaim)),
     true,
   );
+
+  const packetNoLowerLedgerMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-no-lower-ledger');
+  const packetNoLowerLedgerHashes = release.earnedBoundary
+    .residualTerminalPacketNoLowerLedgerTheoremKernelTypeSha256;
+  assert.ok(packetNoLowerLedgerMilestone);
+  assert.equal(packetNoLowerLedgerMilestone.earned, true);
+  assert.equal(packetNoLowerLedgerMilestone.allPresent, true);
+  assert.equal(packetNoLowerLedgerMilestone.allKernelTypesMatch, true);
+  assert.equal(packetNoLowerLedgerMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(packetNoLowerLedgerHashes, PACKET_NO_LOWER_LEDGER_THEOREM_SHA256);
+  assert.deepEqual(
+    packetNoLowerLedgerMilestone.requiredTheorems,
+    Object.keys(PACKET_NO_LOWER_LEDGER_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketNoLowerLedgerAuditedDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalPacketNoLowerLedgerEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketNoLowerLedgerPropextOnlyDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalPacketNoLowerLedgerQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketNoLowerLedgerPropextQuotSoundDeclarationCount, 3);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketNoLowerLedgerAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketNoLowerLedgerEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketNoLowerLedgerPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketNoLowerLedgerQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketNoLowerLedgerPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketNoLowerLedgerAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketNoLowerLedgerProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetNoLowerLedgerMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_NO_LOWER_LEDGER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_NO_LOWER_LEDGER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(
+      theoremRow.axioms,
+      PACKET_NO_LOWER_LEDGER_PROPEXT_ONLY_THEOREMS.has(theoremRow.name)
+        ? ['propext']
+        : ['Quot.sound', 'propext'],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.equal(PACKET_NO_LOWER_LEDGER_PROPEXT_ONLY_THEOREMS.size, 1);
+  assert.match(packetNoLowerLedgerMilestone.scope, /one Boolean recomputes the five executable checks/u);
+  assert.match(packetNoLowerLedgerMilestone.scope, /a positive Packet forces rejection/u);
+  assert.match(packetNoLowerLedgerMilestone.scope, /accepted ledger excludes a positive Packet conclusion/u);
+  assert.match(packetNoLowerLedgerMilestone.nonClaim, /closes the Packet branch only/u);
+  assert.match(packetNoLowerLedgerMilestone.nonClaim, /not the complete no-lower ledger/u);
+  assert.match(packetNoLowerLedgerMilestone.nonClaim, /all terminal data remain supplied/u);
+  assert.equal(status.leanResidualTerminalPacketNoLowerLedgerFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketNoLowerLedgerAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketNoLowerLedgerScope,
+    release.earnedBoundary.residualTerminalPacketNoLowerLedgerScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetNoLowerLedgerMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);

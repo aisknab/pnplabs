@@ -116,7 +116,7 @@
           <tr><td><strong>Checksum ledger</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS</code></td></tr>
           <tr><td><strong>Bundled site manifest</strong></td><td><a href="downloads/release-seal.json"><code>downloads/release-seal.json</code></a></td></tr>
           <tr><td><strong>Bundled site checksum ledger</strong></td><td><a href="downloads/SHA256SUMS"><code>downloads/SHA256SUMS</code></a></td></tr>
-          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/7a3308520a68b5553cc95a7b56c560a20508111a"><code>7a3308520a68b5553cc95a7b56c560a20508111a</code></a></td></tr>
+          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/8b074cc2e8f840009a4ee064dd9dc6299c278004"><code>8b074cc2e8f840009a4ee064dd9dc6299c278004</code></a></td></tr>
         </tbody>
       </table>
     </div>
@@ -134,14 +134,13 @@
       <button class="btn secondary small copy-btn" type="button" data-copy="#regen-code">Copy</button>
       <pre id="regen-code">git clone https://github.com/aisknab/pnp.git pnp-review
 cd pnp-review
-git checkout 7a3308520a68b5553cc95a7b56c560a20508111a
+git checkout 8b074cc2e8f840009a4ee064dd9dc6299c278004
 npm ci
-lake build PNP
-npm run pnp:verify -- --no-write
 npm run formal:inventory:check
-npm run formal:publication:check
+npm run validate
 npm run report:check</pre>
     </div>
+    <p>The inventory command owns the Lean build. Validation and report checks then exercise distinct contracts without a second standalone build.</p>
   </section>
   <section class="section">
     <div class="section-head"><div><div class="section-label">Historical 57-page manuscript</div><h2>What the legacy assertion checker reported.</h2></div><p>Tag <code>final-pnp-proof-report-hardened-7072f8d</code>, commit <code>7072f8d0bda6d44d240f9bb3fad624fd357e1278</code>, provenance <code>archive/legacy-v0/ARCHIVE.json</code>. Historical only.</p></div>
