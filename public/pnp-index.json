@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 135,
+  "version": 136,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832",
-  "sourceProofCommitRef": "f659ccb8817396f8846eeda7eab4de1b2d61bde8",
-  "sourceTree": "71bf1d7b3b7b0cfa4ed35065404277258e52d118",
+  "sourceCommitRef": "7a3308520a68b5553cc95a7b56c560a20508111a",
+  "sourceProofCommitRef": "59443dce1b81e1e500809620fef16b95567d3eea",
+  "sourceTree": "792ed1354928bb38a9582af0f7c57d18992fe85f",
   "syncedOn": "2026-08-19",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-166",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-167",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-166",
-  "leanTheoremInventorySha256": "d90cfce89bf6cce5339624ed1c78758d1c916f98453d8b3a86f6ada17556907e",
-  "leanSourceClosureSha256": "9488b70ef8e9028f805e7570518d8232573b08ad03f638627f16f4988ae33686",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-19-166",
-  "canonicalReportPages": 119,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-167",
+  "leanTheoremInventorySha256": "f166b7a68506ac989ae78daad4e08c027f104a463dea18e24407d00973a6894a",
+  "leanSourceClosureSha256": "b2f06927f0e5d05c7437f192e1da7b109284e189a77cc79c16615181866ae088",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-19-167",
+  "canonicalReportPages": 120,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 29341,
-    "leanTheoremInventoryTheoremCount": 15202,
+    "leanTheoremInventoryDeclarationCount": 29347,
+    "leanTheoremInventoryTheoremCount": 15206,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7526,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15058,
-    "leanTheoremInventorySourceClosureModuleCount": 283,
+    "leanTheoremInventorySourceClosureModuleCount": 284,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4324,12 +4324,15 @@
     "leanResidualTerminalPacketBudgetHBActivityBindingScope": "all-arbitrary-finite-typed-budget-mismatch-to-HB-activity-checked-budget-route-excluded-under-checked-well-founded-HB-closure",
     "leanResidualTerminalPacketSemanticHNActivityBindingFormalized": true,
     "leanResidualTerminalPacketSemanticHNActivityBindingAxiomAuditPassed": true,
-    "leanResidualTerminalPacketSemanticHNActivityBindingScope": "all-arbitrary-finite-frontier-obligation-activation-direction-mismatch-to-HN-activity-checked-sole-descent-route-under-checked-semantic-HN-budget-HB-and-well-founded-HB-closure"
+    "leanResidualTerminalPacketSemanticHNActivityBindingScope": "all-arbitrary-finite-frontier-obligation-activation-direction-mismatch-to-HN-activity-checked-sole-descent-route-under-checked-semantic-HN-budget-HB-and-well-founded-HB-closure",
+    "leanResidualTerminalPacketDescentNoLowerBindingFormalized": true,
+    "leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed": true,
+    "leanResidualTerminalPacketDescentNoLowerBindingScope": "all-arbitrary-finite-canonical-packet-handles-exhaustive-local-descent-no-lower-row-rejected-under-checked-positive-packet-semantic-HN-budget-HB-selector-silence-and-HB-closure"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 142,
+    "earned": 143,
     "unearned": 2,
-    "total": 144
+    "total": 145
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4473,6 +4476,7 @@
     "residual-terminal-packet-budget-route-reflection",
     "residual-terminal-packet-budget-hb-activity-binding",
     "residual-terminal-packet-semantic-hn-activity-binding",
+    "residual-terminal-packet-descent-no-lower-binding",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [

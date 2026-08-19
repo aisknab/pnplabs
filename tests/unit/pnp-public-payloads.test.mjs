@@ -446,6 +446,15 @@ const PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256 = Object.freeze({
 const PACKET_SEMANTIC_HN_ACTIVITY_BINDING_QUOT_SOUND_THEOREMS = new Set(
   Object.keys(PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256),
 );
+const PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalBN6GroupedFamily.checkPacketDescentNoLower_eq_true_iff': '33307742fc9844bddbdf9a828ac9f2946b29d0aaf5aa0294efa083b5575855e3',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.checkPacketDescentNoLower_eq_false_of_selectorSilence': '2652da58ccbfd2978e2c7779636b6e93c0a03853bf96870c4e51b6aad73e0ba0',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.false_of_checkedPacketDescentNoLower_and_selectorSilence': 'd235dacd3be3be6e5a568614dfe14bcdf9ffcabed2fe7f5e4e6aa603af671e9e',
+  'PNP.DirectWire.terminalBN6_packet_descent_no_lower_rejected': '4c8a1a5f2a0d27e55df9144a40ba608421b7c7f41271ad683a2ef603821a8cda',
+});
+const PACKET_DESCENT_NO_LOWER_BINDING_QUOT_SOUND_THEOREMS = new Set(
+  Object.keys(PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256),
+);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -2415,6 +2424,88 @@ test('current status binds the compiled inventory and fails the concrete gate cl
       && /table-owned handle rank/u.test(nonClaim)
       && /leaves only the exact residual-nondecrease route/u.test(nonClaim)
       && /does not prove HN blocker semantics or semantic dependency completeness/u.test(nonClaim)),
+    true,
+  );
+
+  const packetDescentNoLowerBindingMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-descent-no-lower-binding');
+  const packetDescentNoLowerBindingHashes = release.earnedBoundary
+    .residualTerminalPacketDescentNoLowerBindingTheoremKernelTypeSha256;
+  assert.ok(packetDescentNoLowerBindingMilestone);
+  assert.equal(packetDescentNoLowerBindingMilestone.earned, true);
+  assert.equal(packetDescentNoLowerBindingMilestone.allPresent, true);
+  assert.equal(packetDescentNoLowerBindingMilestone.allKernelTypesMatch, true);
+  assert.equal(packetDescentNoLowerBindingMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetDescentNoLowerBindingHashes,
+    PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetDescentNoLowerBindingMilestone.requiredTheorems,
+    Object.keys(PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingAuditedDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingPropextQuotSoundDeclarationCount, 4);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetDescentNoLowerBindingMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_DESCENT_NO_LOWER_BINDING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.equal(PACKET_DESCENT_NO_LOWER_BINDING_QUOT_SOUND_THEOREMS.size, 4);
+  assert.match(packetDescentNoLowerBindingMilestone.scope, /executable local Packet descent no-lower checker scans every canonical handle/u);
+  assert.match(packetDescentNoLowerBindingMilestone.scope, /accepts exactly when no fully computed first route is residual nondecrease/u);
+  assert.match(packetDescentNoLowerBindingMilestone.scope, /checker is forced to reject/u);
+  assert.match(packetDescentNoLowerBindingMilestone.scope, /same local row accepted yields a contradiction/u);
+  assert.match(packetDescentNoLowerBindingMilestone.nonClaim, /one checked local Packet no-lower row/u);
+  assert.match(packetDescentNoLowerBindingMilestone.nonClaim, /does not construct those inputs from terminal data/u);
+  assert.match(packetDescentNoLowerBindingMilestone.nonClaim, /complete the manuscript's no-lower ledger/u);
+  assert.match(packetDescentNoLowerBindingMilestone.nonClaim, /does not cover HResolve, BudgetResolve, normalization, named descent routes, saturation, or replay/u);
+  assert.equal(status.leanResidualTerminalPacketDescentNoLowerBindingFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketDescentNoLowerBindingScope,
+    release.earnedBoundary.residualTerminalPacketDescentNoLowerBindingScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetDescentNoLowerBindingMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked Packet descent no-lower binding/u.test(nonClaim)
+      && /every canonical handle/u.test(nonClaim)
+      && /checker is forced to reject/u.test(nonClaim)
+      && /closes one local no-lower row only/u.test(nonClaim)),
     true,
   );
 

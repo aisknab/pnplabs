@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832`. Its generated status payload is current
+core commit `7a3308520a68b5553cc95a7b56c560a20508111a`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the 119-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the 120-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832` (tree `71bf1d7b3b7b0cfa4ed35065404277258e52d118`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, successive reflection of every local Packet field, the checked budget/HB binding, and the checked semantic/HN binding. The supplied checked well-founded HB no-outcome closure forces frontier, obligation, activation, direction, and budget agreement; executable selector silence leaves only exact residual nondecrease. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,985 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `7a3308520a68b5553cc95a7b56c560a20508111a` (tree `792ed1354928bb38a9582af0f7c57d18992fe85f`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, successive reflection of every local Packet field, checked budget/HB and semantic/HN bindings, and one executable local Packet descent no-lower row. The supplied positive Packet, binding, selector-silence, and well-founded HB-closure checks force that row's checker to reject. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 2,989 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 142 of 144 scoped milestone rows are earned. The newest result exhaustively checks that any failure of simultaneous frontier, obligation, activation, and direction agreement implies HN-node activity at the table-owned handle rank. The supplied checked well-founded HB no-outcome closure forces all four fields to agree; the separately checked budget/HB binding and executable selector silence leave only exact residual nondecrease. The bindings, typed coordinates and values, grouped family, rank map, activity environment, dependency table, blocker semantics, and closure premise remain supplied inputs or open obligations. The result does not derive those inputs from terminal data, prove HN blocker semantics or semantic dependency completeness, construct a decreasing transition or no-lower contradiction, establish full Packet adequacy or unconditional HB negative closure, provide encoded-size or runtime bounds, complete global PkgC, prove unconditional ZeroSlack, or establish polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 119-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | 143 of 145 scoped milestone rows are earned. The newest result exhaustively scans every canonical Packet handle and recognizes exactly the absence of the fully computed residual-nondecrease first route. Under a supplied positive Packet conclusion, checked semantic/HN and budget/HB bindings, selector silence, and well-founded HB no-outcome closure, the checker must reject; accepting the same local row is contradictory. The family, rank map, residual ranks, typed fields, realizer and dependency tables, bindings, silence, and closure checks remain supplied inputs. The result closes one local row only: it does not complete the no-lower ledger, cover HResolve, BudgetResolve, normalization, named descent routes, saturation or replay, derive unconditional HB closure, provide encoded-size or runtime bounds, complete global PkgC, prove unconditional ZeroSlack, or establish polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 120-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence.

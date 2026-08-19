@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 534,181 | `29d61a663c6a3e2531ac7d137034ead98687f2318145e966f844d475b3378742` |
-| `downloads/canonical-proof-report.pdf` | 534,181 | `29d61a663c6a3e2531ac7d137034ead98687f2318145e966f844d475b3378742` |
-| `downloads/canonical_proof_report.tex` | 305,364 | `bd2f7920acf67e27bf829898a4e8b378399a46422f6c8f1982b7c5809fb14e1d` |
-| `downloads/canonical-proof-report.tex` | 305,364 | `bd2f7920acf67e27bf829898a4e8b378399a46422f6c8f1982b7c5809fb14e1d` |
-| `public/pnp-status.json` | 2,475,058 | `82ef473fe09506db61f06629f1ca53208bc9d7f0fb223845225ca370677b2f1f` |
-| `public/pnp-theorem-inventory.json` | 30,188,919 | `d90cfce89bf6cce5339624ed1c78758d1c916f98453d8b3a86f6ada17556907e` |
+| `downloads/canonical_proof_report.pdf` | 536,483 | `c91273cf43b441c0c28ccbfd012449d4bfa503eada6fa9b9d7d7fe0350774cec` |
+| `downloads/canonical-proof-report.pdf` | 536,483 | `c91273cf43b441c0c28ccbfd012449d4bfa503eada6fa9b9d7d7fe0350774cec` |
+| `downloads/canonical_proof_report.tex` | 307,702 | `4c0a3276af53037332207cb779479e6faaf1fa05e7d7059fa0fdcf7616aa6af6` |
+| `downloads/canonical-proof-report.tex` | 307,702 | `4c0a3276af53037332207cb779479e6faaf1fa05e7d7059fa0fdcf7616aa6af6` |
+| `public/pnp-status.json` | 2,480,839 | `0e9b7f1edd099801be071e8e7bc266298aec52d33c1afec65c3c8b0345b73872` |
+| `public/pnp-theorem-inventory.json` | 30,504,323 | `f166b7a68506ac989ae78daad4e08c027f104a463dea18e24407d00973a6894a` |
 
-The PDF must have 119 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 120 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832
+git -C ../pnp checkout 7a3308520a68b5553cc95a7b56c560a20508111a
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -64,8 +64,8 @@ npm run formal:inventory:check
 npm run report:check
 ```
 
-Expected compiled inventory counts are 29,341 public declarations, 15,202 theorem-kind declarations,
-7,526 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 283 modules, and
+Expected compiled inventory counts are 29,347 public declarations, 15,206 theorem-kind declarations,
+7,526 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 284 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -78,12 +78,14 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest checked Packet semantic/HN activity-binding milestone has 5 reviewed theorem pins. Its
-focused 9-declaration audit has zero empty, four `propext`-only, and five `Quot.sound` plus `propext`
-closures, with no project axiom or `Classical.choice`. It checks a supplied binding, composes the
-separately checked budget/HB binding, and reuses the already verified well-founded HB no-outcome
-closure. The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned
-source identity and byte-exact publication artifacts and does not rebuild Lean.
+The latest checked Packet descent no-lower milestone has 4 reviewed theorem pins. Its focused
+6-declaration audit has zero empty, two `propext`-only, and four `Quot.sound` plus `propext`
+closures, with no project axiom or `Classical.choice`. Its executable local checker scans every
+canonical handle and must reject under the supplied positive Packet, checked semantic/HN and
+budget/HB bindings, executable selector silence, and checked well-founded HB no-outcome closure;
+acceptance of that same local row is contradictory. The exact core merge owns Lean compilation and
+axiom evidence; PNPLabs verifies the pinned source identity and byte-exact publication artifacts and
+does not rebuild Lean.
 
 The composed all-input CNF parser, NAND compiler, and locked-NAND emitter are published as
 `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold`. Its one reviewed pin
