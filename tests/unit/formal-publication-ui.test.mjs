@@ -87,7 +87,7 @@ test('site validator pins the concrete locked-NAND threshold publication theorem
 test('site validator rejects hostile latest Packet publication mutations', () => {
   const milestoneId = updates.entries[0].milestoneId;
   const milestone = status.formalPublicationMilestones.find((row) => row.id === milestoneId);
-  const theoremName = milestone.theoremRows.find((row) => !row.axioms.includes('Quot.sound')).name;
+  const theoremName = milestone.theoremRows[0].name;
   const quotientTheoremName = milestone.theoremRows.find((row) => row.axioms.includes('Quot.sound')).name;
   assert.equal(milestone.requiredTheorems.length, milestone.theoremRows.length);
   assert.ok(milestone.requiredTheorems.length > 0);
