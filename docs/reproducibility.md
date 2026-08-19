@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 531,836 | `449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd` |
-| `downloads/canonical-proof-report.pdf` | 531,836 | `449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd` |
-| `downloads/canonical_proof_report.tex` | 302,423 | `8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e` |
-| `downloads/canonical-proof-report.tex` | 302,423 | `8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e` |
-| `public/pnp-status.json` | 2,467,913 | `3c5cb857d110c76667de89771135577df4ffddbc2ab8593d78a6d1de1aad407c` |
-| `public/pnp-theorem-inventory.json` | 29,752,610 | `c92f904095922ba6864a09dd9849505849ba8e4626c8bd36c6d2d0a25c6baabd` |
+| `downloads/canonical_proof_report.pdf` | 534,181 | `29d61a663c6a3e2531ac7d137034ead98687f2318145e966f844d475b3378742` |
+| `downloads/canonical-proof-report.pdf` | 534,181 | `29d61a663c6a3e2531ac7d137034ead98687f2318145e966f844d475b3378742` |
+| `downloads/canonical_proof_report.tex` | 305,364 | `bd2f7920acf67e27bf829898a4e8b378399a46422f6c8f1982b7c5809fb14e1d` |
+| `downloads/canonical-proof-report.tex` | 305,364 | `bd2f7920acf67e27bf829898a4e8b378399a46422f6c8f1982b7c5809fb14e1d` |
+| `public/pnp-status.json` | 2,475,058 | `82ef473fe09506db61f06629f1ca53208bc9d7f0fb223845225ca370677b2f1f` |
+| `public/pnp-theorem-inventory.json` | 30,188,919 | `d90cfce89bf6cce5339624ed1c78758d1c916f98453d8b3a86f6ada17556907e` |
 
-The PDF must have 117 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 119 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 9f26c50f8e8bfbda9cb15a8142c6191482148220
+git -C ../pnp checkout fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -64,8 +64,8 @@ npm run formal:inventory:check
 npm run report:check
 ```
 
-Expected compiled inventory counts are 29,332 public declarations, 15,196 theorem-kind declarations,
-7,526 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 282 modules, and
+Expected compiled inventory counts are 29,341 public declarations, 15,202 theorem-kind declarations,
+7,526 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 283 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -78,11 +78,12 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest checked Packet budget/HB activity-binding milestone has 5 reviewed theorem pins. Its
-focused 7-declaration audit has zero empty, two `propext`-only, and five `Quot.sound` plus `propext`
-closures, with no project axiom or `Classical.choice`. It checks a supplied binding and reuses the
-already verified well-founded HB no-outcome closure; PNPLabs mirrors these publication artifacts and
-does not rebuild Lean.
+The latest checked Packet semantic/HN activity-binding milestone has 5 reviewed theorem pins. Its
+focused 9-declaration audit has zero empty, four `propext`-only, and five `Quot.sound` plus `propext`
+closures, with no project axiom or `Classical.choice`. It checks a supplied binding, composes the
+separately checked budget/HB binding, and reuses the already verified well-founded HB no-outcome
+closure. The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned
+source identity and byte-exact publication artifacts and does not rebuild Lean.
 
 The composed all-input CNF parser, NAND compiler, and locked-NAND emitter are published as
 `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold`. Its one reviewed pin
@@ -101,7 +102,7 @@ This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hard
 NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
 complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
 
-The newest milestone adds 30 reviewed theorem pins. For every arbitrary finite grouped BN6 family,
+The earlier typed-budget reflection milestone adds 30 reviewed theorem pins. For every arbitrary finite grouped BN6 family,
 selector-rank carrier, and domain of typed budget values with decidable equality, Lean computes
 Packet budget acceptance from exact equality of the explicit source and selector budget values
 while retaining the computed frontier, obligation, activation, and direction fields, grouped colour,

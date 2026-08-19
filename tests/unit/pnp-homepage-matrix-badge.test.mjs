@@ -40,7 +40,7 @@ function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
 }
 
 function latestMilestoneStatusFields(milestoneId) {
-  const fieldParts = { bn4: 'BN4', bn5: 'BN5', hb: 'HB' };
+  const fieldParts = { bn4: 'BN4', bn5: 'BN5', hb: 'HB', hn: 'HN' };
   const stem = `lean${milestoneId
     .split('-')
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)

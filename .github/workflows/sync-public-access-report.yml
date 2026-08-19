@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PNP_CORE_COMMIT: 9f26c50f8e8bfbda9cb15a8142c6191482148220
+  PNP_CORE_COMMIT: fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
