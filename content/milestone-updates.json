@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-19-residual-terminal-packet-no-lower-ledger",
+      "milestoneId": "residual-terminal-packet-no-lower-ledger",
+      "publishedAt": "2026-08-19T22:12:21Z",
+      "title": "Lean now composes the checked Packet no-lower ledger",
+      "plainLanguage": [
+        "For every supplied arbitrary finite grouped BN6 family, typed realizer table, HB dependency table, finite rank map, and pair of before/after residual ranks, one executable Boolean now recomputes the five checked Packet rows: semantic/HN binding, budget/HB binding, selector silence, HB no-outcome closure, and descent/no-lower. Lean proves the exact acceptance condition, proves that a positive Packet forces rejection, and proves that an accepted ledger excludes a positive Packet conclusion for the same inputs.",
+        "This closes the Packet branch only, not the complete no-lower ledger. The grouped family, BN5 coordinates, activation atoms, direction and budget values, rank map, residual ranks, realizer claims, activity environment, dependency rows, and all terminal data remain supplied. It does not implement HResolve, BudgetResolve, normalization, other named obstructions, saturation, or replay; derive unconditional HB closure; establish unconditional ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 144 of 146 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "8b074cc2e8f840009a4ee064dd9dc6299c278004",
+        "tree": "50d363cc8746af0a4e19f5a5467923bcd463e39b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-168",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-19-residual-terminal-packet-descent-no-lower-binding",
       "milestoneId": "residual-terminal-packet-descent-no-lower-binding",
       "publishedAt": "2026-08-19T09:47:30Z",

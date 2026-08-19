@@ -6,8 +6,8 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 120-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,347 public declarations across 284 modules,
-including 15,206 theorem-kind declarations, 7,526 assumption-free theorem-kind declarations, and four
+Lean theorem inventory. The inventory contains 29,357 public declarations across 285 modules,
+including 15,214 theorem-kind declarations, 7,526 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,058 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,989 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,989 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 143 of 145 scoped formal milestone rows. The newest executable checker scans every canonical Packet handle and accepts exactly when no fully computed first route is residual nondecrease. A supplied positive Packet conclusion, checked semantic/HN and budget/HB bindings, selector silence, and well-founded HB closure force it to reject; accepting that local row is contradictory. | Treating the grouped family, rank map, residual ranks, typed fields, realizer or dependency tables, bindings, silence, closure checks, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as terminal-derived; presenting one local row as the complete no-lower ledger, HResolve, BudgetResolve, normalization, named descent routing, saturation, replay, unconditional HB closure, ZeroSlack, or complete global routing; claiming positive slack, a circuit-size bound, polynomial enumeration, complete PkgC, polynomial PCCMin, target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,993 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,993 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 144 of 146 scoped formal milestone rows. The newest executable ledger recomputes five exact Packet checks; a positive Packet forces rejection, and accepted ledger data excludes a positive Packet conclusion. | Treating supplied family, coordinates, values, ranks, realizer claims, activity environment, dependency rows, or terminal data as constructed; presenting the closed Packet branch as the complete no-lower ledger, HResolve, BudgetResolve, normalization, other named obstruction routing, saturation, replay, unconditional HB closure, ZeroSlack, or complete global routing; claiming positive slack, a circuit-size bound, polynomial enumeration, complete PkgC, polynomial PCCMin, target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `7a3308520a68b5553cc95a7b56c560a20508111a`.
+   `8b074cc2e8f840009a4ee064dd9dc6299c278004`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,989 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,993 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.

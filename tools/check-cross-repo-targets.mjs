@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "7a3308520a68b5553cc95a7b56c560a20508111a";
-const REVIEWED_CORE_TREE = "792ed1354928bb38a9582af0f7c57d18992fe85f";
-const REVIEWED_PROOF_COMMIT = "59443dce1b81e1e500809620fef16b95567d3eea";
+const REVIEWED_CORE_COMMIT = "8b074cc2e8f840009a4ee064dd9dc6299c278004";
+const REVIEWED_CORE_TREE = "50d363cc8746af0a4e19f5a5467923bcd463e39b";
+const REVIEWED_PROOF_COMMIT = "5a6a7b93c45b0ca3a2f7c0602ed3cd8e1770d61a";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4030,6 +4030,13 @@ const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_RELEASE_IDENTITIES = {
   residualTerminalPacketDescentNoLowerBindingNamedEndpointTheorem: "PNP.DirectWire.terminalBN6_packet_descent_no_lower_rejected"
 };
 
+const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_RELEASE_IDENTITIES = {
+  residualTerminalPacketNoLowerLedgerCheckIffTheorem: "PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketNoLowerLedger_eq_true_iff",
+  residualTerminalPacketNoLowerLedgerRejectionTheorem: "PNP.DirectWire.TerminalBN6PacketConclusion.checkPacketNoLowerLedger_eq_false",
+  residualTerminalPacketNoLowerLedgerExclusionTheorem: "PNP.DirectWire.TerminalPacketTypedRealizerTable.not_packetConclusion_of_checkedPacketNoLowerLedger",
+  residualTerminalPacketNoLowerLedgerNamedEndpointTheorem: "PNP.DirectWire.terminalBN6_packet_no_lower_ledger_excludes_positive_packet"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -5530,6 +5537,16 @@ const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_SCOPE = "all-arbitrary-finite-canonical-packet-handles-exhaustive-local-descent-no-lower-row-rejected-under-checked-positive-packet-semantic-HN-budget-HB-selector-silence-and-HB-closure";
 const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family and selector-rank carrier, the executable local Packet descent no-lower checker scans every canonical handle and accepts exactly when no fully computed first route is residual nondecrease. Under a supplied positive Packet conclusion, checked semantic/HN and budget/HB bindings, executable selector silence, and checked well-founded HB no-outcome closure, the checker is forced to reject; assuming that same local row accepted yields a contradiction.";
 const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_NON_CLAIM = "This is one checked local Packet no-lower row over a supplied finite grouped family, rank map, residual ranks, typed fields, realizer table, dependency table, and accepted binding, silence, and closure checks. It does not construct those inputs from terminal data or complete the manuscript's no-lower ledger. It does not cover HResolve, BudgetResolve, normalization, named descent routes, saturation, or replay; derive unconditional HB closure; establish complete Packet adequacy or unconditional ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketNoLowerLedger_eq_true_iff": { hash: "4933640232598ca15f5e59a1e44afc61cb3d0464b99acb85817b10a942756e0f", axioms: ["propext"], module: "PNP.ResidualTerminalPacketNoLowerLedger" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.checkPacketNoLowerLedger_eq_false": { hash: "0823247a05acf3b9e710e938e5443fb4e0c600c5e73957a2e7c0bfb580a17d99", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketNoLowerLedger" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.not_packetConclusion_of_checkedPacketNoLowerLedger": { hash: "fafceb9656698473415a9221ca9a36c63021be6f3d09f370dc73b63fc5d94615", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketNoLowerLedger" },
+  "PNP.DirectWire.terminalBN6_packet_no_lower_ledger_excludes_positive_packet": { hash: "67c93587e524fb98ecefa2f653fe2d398ffc283a17756d7d68e4dbfa78fa35a9", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketNoLowerLedger" }
+};
+const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_SCOPE = "all-arbitrary-finite-five-row-Packet-no-lower-ledger-positive-Packet-exclusion-under-computed-semantic-HN-budget-HB-selector-silence-and-HB-closure";
+const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_MILESTONE_SCOPE = "For every supplied arbitrary finite grouped BN6 family, typed realizer table, HB dependency table, finite rank map, and before/after residual ranks, one Boolean recomputes the five executable checks for semantic/HN binding, budget/HB binding, selector silence, HB no-outcome closure, and Packet descent/no-lower. Its reflection theorem characterizes exact acceptance, a positive Packet forces rejection, and an accepted ledger excludes a positive Packet conclusion for those same inputs.";
+const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_NON_CLAIM = "This closes the Packet branch only, not the complete no-lower ledger. The grouped family, BN5 coordinates, activation atoms, direction and budget values, rank map, residual ranks, realizer claims, activity environment, dependency rows, and all terminal data remain supplied. It does not implement HResolve, BudgetResolve, normalization, other named obstructions, saturation, or replay; derive unconditional HB closure; establish unconditional ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -7804,6 +7821,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS).every(([name, row]) => residualTerminalPacketDescentNoLowerBindingHashes[name] === row.hash)) failures.push("current manifest residual terminal Packet descent no-lower binding fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal Packet descent no-lower binding theorem identity mismatch");
 
+  if (!(earned.residualTerminalPacketNoLowerLedgerFormalized === true
+      && earned.residualTerminalPacketNoLowerLedgerAxiomAuditPassed === true
+      && earned.residualTerminalPacketNoLowerLedgerAuditedDeclarationCount === 6
+      && earned.residualTerminalPacketNoLowerLedgerEmptyAxiomDeclarationCount === 0
+      && earned.residualTerminalPacketNoLowerLedgerPropextOnlyDeclarationCount === 3
+      && earned.residualTerminalPacketNoLowerLedgerQuotSoundOnlyDeclarationCount === 0
+      && earned.residualTerminalPacketNoLowerLedgerPropextQuotSoundDeclarationCount === 3
+      && earned.residualTerminalPacketNoLowerLedgerScope === RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_SCOPE
+      && earned.zeroSlackPositiveSlackContradictionFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal Packet no-lower ledger boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalPacketNoLowerLedgerAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalPacketNoLowerLedgerProjectAxiomClosure)
+      || earned.residualTerminalPacketNoLowerLedgerProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal Packet no-lower ledger axiom closure mismatch");
+  const residualTerminalPacketNoLowerLedgerHashes = earned.residualTerminalPacketNoLowerLedgerTheoremKernelTypeSha256;
+  if (!residualTerminalPacketNoLowerLedgerHashes || Object.keys(residualTerminalPacketNoLowerLedgerHashes).length !== 4
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS).every(([name, row]) => residualTerminalPacketNoLowerLedgerHashes[name] === row.hash)) failures.push("current manifest residual terminal Packet no-lower ledger fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal Packet no-lower ledger theorem identity mismatch");
+
 
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -7819,7 +7858,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -10660,6 +10699,40 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal Packet descent no-lower binding evidence mismatch");
 
+  const residualTerminalPacketNoLowerLedgerMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-packet-no-lower-ledger"
+  );
+  const residualTerminalPacketNoLowerLedgerNames = Object.keys(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS);
+  if (!residualTerminalPacketNoLowerLedgerMilestone
+      || residualTerminalPacketNoLowerLedgerMilestone.classification !== "formalized-residual-terminal-packet-no-lower-ledger"
+      || residualTerminalPacketNoLowerLedgerMilestone.status !== "formalized-residual-terminal-packet-no-lower-ledger"
+      || residualTerminalPacketNoLowerLedgerMilestone.scope !== RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_MILESTONE_SCOPE
+      || residualTerminalPacketNoLowerLedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketNoLowerLedgerMilestone.requiredTheorems) !== JSON.stringify(residualTerminalPacketNoLowerLedgerNames)
+      || residualTerminalPacketNoLowerLedgerMilestone.earned !== true
+      || residualTerminalPacketNoLowerLedgerMilestone.allPresent !== true
+      || residualTerminalPacketNoLowerLedgerMilestone.allAssumptionFree !== false
+      || residualTerminalPacketNoLowerLedgerMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalPacketNoLowerLedgerMilestone.allKernelTypesMatch !== true
+      || residualTerminalPacketNoLowerLedgerMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal Packet no-lower ledger publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS)) {
+    const row = residualTerminalPacketNoLowerLedgerMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal Packet no-lower ledger theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalPacketNoLowerLedgerFormalized === true
+      && status.leanResidualTerminalPacketNoLowerLedgerAxiomAuditPassed === true
+      && status.leanResidualTerminalPacketNoLowerLedgerScope === RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_SCOPE
+      && status.leanZeroSlackPositiveSlackContradictionFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal Packet no-lower ledger evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -11762,6 +11835,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal Packet descent no-lower binding theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal Packet descent no-lower binding fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal Packet no-lower ledger theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal Packet no-lower ledger fingerprint mismatch: ${name}`);
     }
 
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -13866,6 +13946,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalPacketDescentNoLowerBindingPins[name] !== row.hash) {
       failures.push(`core publication map residual terminal Packet descent no-lower binding fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalPacketNoLowerLedgerMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-no-lower-ledger"
+  );
+  const residualTerminalPacketNoLowerLedgerNames = Object.keys(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS);
+  if (!residualTerminalPacketNoLowerLedgerMilestone
+      || residualTerminalPacketNoLowerLedgerMilestone.classification !== "formalized-residual-terminal-packet-no-lower-ledger"
+      || residualTerminalPacketNoLowerLedgerMilestone.scope !== RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_MILESTONE_SCOPE
+      || residualTerminalPacketNoLowerLedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketNoLowerLedgerMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketNoLowerLedgerNames)) {
+    failures.push("core publication map residual terminal Packet no-lower ledger boundary mismatch");
+  }
+  const residualTerminalPacketNoLowerLedgerPins =
+    releaseManifest.earnedBoundary?.residualTerminalPacketNoLowerLedgerTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS)) {
+    if (!residualTerminalPacketNoLowerLedgerMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalPacketNoLowerLedgerPins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal Packet no-lower ledger fingerprint mismatch: ${name}`);
     }
   }
 

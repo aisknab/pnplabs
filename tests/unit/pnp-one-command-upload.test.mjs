@@ -23,17 +23,17 @@ function assertNonduplicatingCoreCommands(text, label) {
   assert.equal(blocks.length, 1, `${label} must have one core command block`);
   const lines = blocks[0].split('\n').map((line) => line.trim()).filter(Boolean);
   for (const command of [
-    'lake build PNP',
-    'npm run check',
-    'npm run pnp:verify -- --no-write',
     'npm run formal:inventory:check',
+    'npm run validate',
     'npm run report:check',
   ]) {
     assert.equal(lines.filter((line) => line === command).length, 1, `${label}: ${command}`);
   }
   for (const redundant of [
-    'npm run validate',
+    'lake build PNP',
+    'npm run check',
     'npm test',
+    'npm run pnp:verify -- --no-write',
     'npm run formal:publication:check',
     'npm run legacy:v0:check',
   ]) {
