@@ -1,18 +1,18 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 134,
+  "version": 135,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "9f26c50f8e8bfbda9cb15a8142c6191482148220",
-  "sourceProofCommitRef": "ffd476e232cc3687187034e7acd398b644b5cce0",
-  "sourceTree": "8eb9cf577a94722f3f805a463fcdf7072e60a4d2",
+  "sourceCommitRef": "fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832",
+  "sourceProofCommitRef": "f659ccb8817396f8846eeda7eab4de1b2d61bde8",
+  "sourceTree": "71bf1d7b3b7b0cfa4ed35065404277258e52d118",
   "syncedOn": "2026-08-19",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-165",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-166",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-165",
-  "leanTheoremInventorySha256": "c92f904095922ba6864a09dd9849505849ba8e4626c8bd36c6d2d0a25c6baabd",
-  "leanSourceClosureSha256": "57e2c23813d166123744da7eb3adab5ddaac77820dc053bdbd24154bb0921776",
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-19-165",
-  "canonicalReportPages": 117,
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-166",
+  "leanTheoremInventorySha256": "d90cfce89bf6cce5339624ed1c78758d1c916f98453d8b3a86f6ada17556907e",
+  "leanSourceClosureSha256": "9488b70ef8e9028f805e7570518d8232573b08ad03f638627f16f4988ae33686",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-19-166",
+  "canonicalReportPages": 119,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -21,11 +21,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 29332,
-    "leanTheoremInventoryTheoremCount": 15196,
+    "leanTheoremInventoryDeclarationCount": 29341,
+    "leanTheoremInventoryTheoremCount": 15202,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7526,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15058,
-    "leanTheoremInventorySourceClosureModuleCount": 282,
+    "leanTheoremInventorySourceClosureModuleCount": 283,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -4321,12 +4321,15 @@
     "leanResidualTerminalPacketBudgetRouteReflectionScope": "all-arbitrary-finite-typed-budget-equality-all-packet-route-fields-reflected-colour-charge-exact-route-rank-excluded-exact-rankwf-nondecrease-without-route-clear-or-binding-premises",
     "leanResidualTerminalPacketBudgetHBActivityBindingFormalized": true,
     "leanResidualTerminalPacketBudgetHBActivityBindingAxiomAuditPassed": true,
-    "leanResidualTerminalPacketBudgetHBActivityBindingScope": "all-arbitrary-finite-typed-budget-mismatch-to-HB-activity-checked-budget-route-excluded-under-checked-well-founded-HB-closure"
+    "leanResidualTerminalPacketBudgetHBActivityBindingScope": "all-arbitrary-finite-typed-budget-mismatch-to-HB-activity-checked-budget-route-excluded-under-checked-well-founded-HB-closure",
+    "leanResidualTerminalPacketSemanticHNActivityBindingFormalized": true,
+    "leanResidualTerminalPacketSemanticHNActivityBindingAxiomAuditPassed": true,
+    "leanResidualTerminalPacketSemanticHNActivityBindingScope": "all-arbitrary-finite-frontier-obligation-activation-direction-mismatch-to-HN-activity-checked-sole-descent-route-under-checked-semantic-HN-budget-HB-and-well-founded-HB-closure"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 141,
+    "earned": 142,
     "unearned": 2,
-    "total": 143
+    "total": 144
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4469,6 +4472,7 @@
     "residual-terminal-packet-direction-route-reflection",
     "residual-terminal-packet-budget-route-reflection",
     "residual-terminal-packet-budget-hb-activity-binding",
+    "residual-terminal-packet-semantic-hn-activity-binding",
     "global-locked-nand-threshold"
   ],
   "unearnedMilestones": [
@@ -4904,6 +4908,7 @@
     "Typed Packet direction-route reflection computes the direction field from equality of explicit typed source and selector direction values while retaining computed BN5 frontier, obligation, and BN4 activation checks. A direction route carries all three prior equalities plus typed-direction inequality; colour, charge, exactRoute, and rank remain excluded; and a final descent route still proves actual nondecrease. The direction values remain explicit and are not constructed from terminal data or proved to implement the manuscript Dir(u) semantics. Budget is the sole remaining supplied Boolean field and route, so complete route silence, unconditional ZeroSlack, and polynomial PCCMin remain open.",
     "Typed Packet budget-route reflection computes the final supplied Packet Boolean from equality of explicit typed source and selector budget values while retaining the computed BN5 frontier, obligation, BN4 activation, and typed direction checks. A budget route carries all four prior equalities plus typed-budget inequality; colour, charge, exactRoute, and rank remain excluded; and a final descent route still proves actual nondecrease. The budget values remain explicit and are not constructed from terminal data, proved to implement the manuscript Bud(u) envelope semantics, or identified with BudgetResolve or HB budget activity. Complete external route adequacy, unconditional ZeroSlack, and polynomial PCCMin remain open.",
     "Checked Packet budget/HB activity binding exhaustively requires every explicit typed budget mismatch in the supplied canonical family to activate the HB budget node at the table-owned rank. Together with the existing checked well-founded no-outcome closure, this forces typed budget equality at every canonical handle and excludes the local budget first route. The grouped family, budgets, rank map, activity environment, dependency table, and closure premise remain explicit rather than terminal-derived. This is not BudgetResolve, blocker semantic completeness, full Packet adequacy, unconditional HB negative closure, ZeroSlack, or polynomial PCCMin.",
+    "Checked Packet semantic/HN activity binding exhaustively requires every failure of simultaneous frontier, obligation, activation, and direction agreement in the supplied canonical family to activate the HN node at the table-owned rank. The checked well-founded HB no-outcome closure forces all four fields to agree; composing the separate budget/HB binding and executable selector silence leaves only exact residual nondecrease. The grouped family, typed coordinates and values, bindings, rank map, activity environment, dependency table, and closure premise remain explicit rather than terminal-derived. This is not HN blocker semantics, semantic dependency completeness, complete Packet adequacy, a decreasing transition, a no-lower contradiction, unconditional HB negative closure, ZeroSlack, or polynomial PCCMin.",
     "The current Lean bridge is partial and does not contain the required concrete, assumption-audited root theorem.",
     "The pinned Lean library/root-status build is reconstruction data, not a proof of P = NP.",
     "Blank-delimited Tape.outputBits removes dependence on the unobservable represented-list boundary; Tape.handoffTarget itself is a pure canonical specification. PipelineOutputHandoff is a separate executable internal represented handoff, not terminal raw output normalization.",

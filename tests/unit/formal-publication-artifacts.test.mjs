@@ -1095,7 +1095,7 @@ function json(relativePath) {
 }
 
 function milestoneFieldStem(milestoneId) {
-  const fieldParts = { bn4: "BN4", bn5: "BN5", hb: "HB" };
+  const fieldParts = { bn4: "BN4", bn5: "BN5", hb: "HB", hn: "HN" };
   const pascalStem = milestoneId
     .split("-")
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)

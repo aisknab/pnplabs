@@ -18,7 +18,7 @@ const INVENTORY_COORDINATE = canonicalRelease.artifacts.theoremInventory.coordin
 const INVENTORY_SHA256 = canonicalRelease.artifacts.theoremInventory.sha256;
 const INVENTORY_BYTES = canonicalRelease.artifacts.theoremInventory.bytes;
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
-const MILESTONE_FIELD_PARTS = Object.freeze({ bn4: 'BN4', bn5: 'BN5', hb: 'HB' });
+const MILESTONE_FIELD_PARTS = Object.freeze({ bn4: 'BN4', bn5: 'BN5', hb: 'HB', hn: 'HN' });
 const milestoneFieldStem = (milestoneId) => milestoneId
   .split('-')
   .map((part) => MILESTONE_FIELD_PARTS[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -435,6 +435,16 @@ const PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256 = Object.freeze({
 });
 const PACKET_BUDGET_HB_ACTIVITY_BINDING_QUOT_SOUND_THEOREMS = new Set(
   Object.keys(PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256),
+);
+const PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketSemanticHNActivityBinding_eq_true_iff': 'd0c5415add270e972a377a7c8729fcd9a6df7692f1f9b39e5bc5009d223415c2',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.packetSemanticFieldsAgree_of_checkedHNActivityBinding': '6b0f5f837cec199fa603493791dc88e2f3abddda853113cd513a0677868129f5',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.packetSelectorSemanticFirstRoutes_ne_of_checkedHNActivityBinding': '523bccc3a2d4345f67e878f6a91b783d702c8e43b6b06642997952390374c0a9',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsSemanticHNBudgetBoundDescentFailure_of_selectorSilence': '2d0d295b380d37ddb5d6a6a8e6114480e456c43721c513bcd7998baaf412a8c5',
+  'PNP.DirectWire.terminalBN6_packet_semantic_hn_activity_bound_descent_failure': 'c58d517ad2209fa46b2a86f22099ff388b47bf965de9145a8c6a1e652f05b6af',
+});
+const PACKET_SEMANTIC_HN_ACTIVITY_BINDING_QUOT_SOUND_THEOREMS = new Set(
+  Object.keys(PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256),
 );
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
@@ -2323,6 +2333,88 @@ test('current status binds the compiled inventory and fails the concrete gate cl
       && /table-owned handle rank/u.test(nonClaim)
       && /forces exact budget equality and excludes the local budget first route/u.test(nonClaim)
       && /does not implement BudgetResolve/u.test(nonClaim)),
+    true,
+  );
+
+  const packetSemanticHNActivityBindingMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-semantic-hn-activity-binding');
+  const packetSemanticHNActivityBindingHashes = release.earnedBoundary
+    .residualTerminalPacketSemanticHNActivityBindingTheoremKernelTypeSha256;
+  assert.ok(packetSemanticHNActivityBindingMilestone);
+  assert.equal(packetSemanticHNActivityBindingMilestone.earned, true);
+  assert.equal(packetSemanticHNActivityBindingMilestone.allPresent, true);
+  assert.equal(packetSemanticHNActivityBindingMilestone.allKernelTypesMatch, true);
+  assert.equal(packetSemanticHNActivityBindingMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetSemanticHNActivityBindingHashes,
+    PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetSemanticHNActivityBindingMilestone.requiredTheorems,
+    Object.keys(PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingAuditedDeclarationCount, 9);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingPropextOnlyDeclarationCount, 4);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingPropextQuotSoundDeclarationCount, 5);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetSemanticHNActivityBindingMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.equal(PACKET_SEMANTIC_HN_ACTIVITY_BINDING_QUOT_SOUND_THEOREMS.size, 5);
+  assert.match(packetSemanticHNActivityBindingMilestone.scope, /executable binding checker exhaustively requires/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.scope, /frontier, obligation, activation, and direction agreement/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.scope, /checked well-founded HB no-outcome closure/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.scope, /sole exact residual-nondecrease route/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.nonClaim, /binding is still an explicit checked input/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.nonClaim, /does not establish HN blocker semantics/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.nonClaim, /semantic dependency completeness/u);
+  assert.match(packetSemanticHNActivityBindingMilestone.nonClaim, /no-lower contradiction/u);
+  assert.equal(status.leanResidualTerminalPacketSemanticHNActivityBindingFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketSemanticHNActivityBindingAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketSemanticHNActivityBindingScope,
+    release.earnedBoundary.residualTerminalPacketSemanticHNActivityBindingScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetSemanticHNActivityBindingMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked Packet semantic\/HN activity binding/u.test(nonClaim)
+      && /table-owned handle rank/u.test(nonClaim)
+      && /leaves only the exact residual-nondecrease route/u.test(nonClaim)
+      && /does not prove HN blocker semantics or semantic dependency completeness/u.test(nonClaim)),
     true,
   );
 

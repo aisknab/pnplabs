@@ -18,15 +18,15 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "9f26c50f8e8bfbda9cb15a8142c6191482148220";
-const CORE_TREE = "8eb9cf577a94722f3f805a463fcdf7072e60a4d2";
-const CORE_PUBLICATION_MAP_SHA256 = "9081640a169409986dd08f3f5cfb01fae463af141d6d0886f11f05ef661c5027";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-165";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-165";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-165";
-const CORE_SOURCE_CLOSURE_SHA256 = "57e2c23813d166123744da7eb3adab5ddaac77820dc053bdbd24154bb0921776";
-const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
-const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
+const CORE_COMMIT = "fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832";
+const CORE_TREE = "71bf1d7b3b7b0cfa4ed35065404277258e52d118";
+const CORE_PUBLICATION_MAP_SHA256 = "79d181fe8825489e31471286f9f0a94d2b3e1274b794428a9ebe68c43da9b9ed";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-166";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-166";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-166";
+const CORE_SOURCE_CLOSURE_SHA256 = "9488b70ef8e9028f805e7570518d8232573b08ad03f638627f16f4988ae33686";
+const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
+const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1647,6 +1647,17 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_SCOPE = "all-arbitrary-finite-typed-budget-mismatch-to-HB-activity-checked-budget-route-excluded-under-checked-well-founded-HB-closure";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family, the executable binding checker exhaustively requires each typed source/selector budget mismatch to imply activity of the HB budget node at the table-owned handle rank. When that check and the existing checked well-founded HB no-outcome closure both pass, every canonical handle has equal typed budgets, the Packet first-route classifier excludes the budget route, and the positive Packet endpoint is confined to frontier, obligation, activation, direction, or exact residual nondecrease.";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_NON_CLAIM = "The Packet-to-HB budget binding is still an explicit checked input over a supplied grouped family, rank map, activity environment, and dependency table; this milestone does not construct that binding, the typed budget values, or a manuscript Bud(u) envelope from terminal data. It does not implement BudgetResolve, prove blocker semantic completeness, derive the HB table or its local closure premise from terminal data, or exclude the remaining frontier, obligation, activation, direction, and descent routes. It does not establish full Packet adequacy, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketSemanticHNActivityBinding_eq_true_iff": { hash: "d0c5415add270e972a377a7c8729fcd9a6df7692f1f9b39e5bc5009d223415c2", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketSemanticHNActivityBinding" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.packetSemanticFieldsAgree_of_checkedHNActivityBinding": { hash: "6b0f5f837cec199fa603493791dc88e2f3abddda853113cd513a0677868129f5", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketSemanticHNActivityBinding" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.packetSelectorSemanticFirstRoutes_ne_of_checkedHNActivityBinding": { hash: "523bccc3a2d4345f67e878f6a91b783d702c8e43b6b06642997952390374c0a9", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketSemanticHNActivityBinding" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsSemanticHNBudgetBoundDescentFailure_of_selectorSilence": { hash: "2d0d295b380d37ddb5d6a6a8e6114480e456c43721c513bcd7998baaf412a8c5", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketSemanticHNActivityBinding" },
+  "PNP.DirectWire.terminalBN6_packet_semantic_hn_activity_bound_descent_failure": { hash: "c58d517ad2209fa46b2a86f22099ff388b47bf965de9145a8c6a1e652f05b6af", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketSemanticHNActivityBinding" }
+};
+const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_SCOPE = "all-arbitrary-finite-frontier-obligation-activation-direction-mismatch-to-HN-activity-checked-sole-descent-route-under-checked-semantic-HN-budget-HB-and-well-founded-HB-closure";
+const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family, the executable binding checker exhaustively requires any failure of simultaneous frontier, obligation, activation, and direction agreement to imply activity of the HN node at the table-owned handle rank. When that check and the existing checked well-founded HB no-outcome closure both pass, all four typed semantic fields agree. Combined with the separately checked budget/HB binding and executable selector silence, every semantic first route is excluded and the positive Packet endpoint has the sole exact residual-nondecrease route.";
+const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_NON_CLAIM = "The Packet-to-HN semantic binding is still an explicit checked input over a supplied grouped family, typed BN5 coordinates, activation atoms, direction values, rank map, activity environment, and dependency table; this milestone does not construct that binding or those values from terminal data. It does not establish HN blocker semantics, semantic dependency completeness, a decreasing transition, a no-lower contradiction, complete external Packet adequacy, or unconditional HB negative closure. It does not prove ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3958,26 +3969,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 531836,
-    sha256: "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd"
+    bytes: 534181,
+    sha256: "29d61a663c6a3e2531ac7d137034ead98687f2318145e966f844d475b3378742"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 302423,
-    sha256: "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e"
+    bytes: 305364,
+    sha256: "bd2f7920acf67e27bf829898a4e8b378399a46422f6c8f1982b7c5809fb14e1d"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2467913,
-    sha256: "3c5cb857d110c76667de89771135577df4ffddbc2ab8593d78a6d1de1aad407c"
+    bytes: 2475058,
+    sha256: "82ef473fe09506db61f06629f1ca53208bc9d7f0fb223845225ca370677b2f1f"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 29752610,
-    sha256: "c92f904095922ba6864a09dd9849505849ba8e4626c8bd36c6d2d0a25c6baabd"
+    bytes: 30188919,
+    sha256: "d90cfce89bf6cce5339624ed1c78758d1c916f98453d8b3a86f6ada17556907e"
   }
 ];
 
@@ -5357,6 +5368,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet budget/HB activity binding boundary mismatch");
+  }
+
+  const residualTerminalPacketSemanticHNActivityBindingMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-semantic-hn-activity-binding"
+  );
+  const residualTerminalPacketSemanticHNActivityBindingNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS);
+  if (!residualTerminalPacketSemanticHNActivityBindingMilestone
+      || residualTerminalPacketSemanticHNActivityBindingMilestone.classification !== "formalized-residual-terminal-packet-semantic-hn-activity-binding"
+      || residualTerminalPacketSemanticHNActivityBindingMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_MILESTONE_SCOPE
+      || residualTerminalPacketSemanticHNActivityBindingMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketSemanticHNActivityBindingMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketSemanticHNActivityBindingNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet semantic/HN activity binding boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8198,6 +8226,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal Packet budget/HB activity binding boundary mismatch");
     }
 
+    const residualTerminalPacketSemanticHNActivityBindingMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-semantic-hn-activity-binding"
+    );
+    if (!residualTerminalPacketSemanticHNActivityBindingMilestone
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.earned !== true
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.allPresent !== true
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.allAssumptionFree !== false
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.classification !== "formalized-residual-terminal-packet-semantic-hn-activity-binding"
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.scope !== RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_MILESTONE_SCOPE
+        || residualTerminalPacketSemanticHNActivityBindingMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketSemanticHNActivityBindingMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketSemanticHNActivityBindingMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketSemanticHNActivityBindingFormalized !== true
+        || payload.leanResidualTerminalPacketSemanticHNActivityBindingAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketSemanticHNActivityBindingScope !== RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet semantic/HN activity binding boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -8576,6 +8640,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal Packet budget/HB activity binding theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal Packet semantic/HN activity binding theorem mismatch: " + name);
       }
     }
 
