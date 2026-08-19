@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "fe6c20fe6929c9e57c5ab7c483f7c56bfa9e9832";
-const CORE_TREE = "71bf1d7b3b7b0cfa4ed35065404277258e52d118";
-const CORE_PUBLICATION_MAP_SHA256 = "79d181fe8825489e31471286f9f0a94d2b3e1274b794428a9ebe68c43da9b9ed";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-166";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-166";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-166";
-const CORE_SOURCE_CLOSURE_SHA256 = "9488b70ef8e9028f805e7570518d8232573b08ad03f638627f16f4988ae33686";
+const CORE_COMMIT = "7a3308520a68b5553cc95a7b56c560a20508111a";
+const CORE_TREE = "792ed1354928bb38a9582af0f7c57d18992fe85f";
+const CORE_PUBLICATION_MAP_SHA256 = "8b54e35be593aaabd0e976f58138450d9c672212c2876233e1f6e86609faff58";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-167";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-167";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-167";
+const CORE_SOURCE_CLOSURE_SHA256 = "b2f06927f0e5d05c7437f192e1da7b109284e189a77cc79c16615181866ae088";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1658,6 +1658,16 @@ const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_SCOPE = "all-arbitrary-finite-frontier-obligation-activation-direction-mismatch-to-HN-activity-checked-sole-descent-route-under-checked-semantic-HN-budget-HB-and-well-founded-HB-closure";
 const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family, the executable binding checker exhaustively requires any failure of simultaneous frontier, obligation, activation, and direction agreement to imply activity of the HN node at the table-owned handle rank. When that check and the existing checked well-founded HB no-outcome closure both pass, all four typed semantic fields agree. Combined with the separately checked budget/HB binding and executable selector silence, every semantic first route is excluded and the positive Packet endpoint has the sole exact residual-nondecrease route.";
 const RESIDUAL_TERMINAL_PACKET_SEMANTIC_HN_ACTIVITY_BINDING_NON_CLAIM = "The Packet-to-HN semantic binding is still an explicit checked input over a supplied grouped family, typed BN5 coordinates, activation atoms, direction values, rank map, activity environment, and dependency table; this milestone does not construct that binding or those values from terminal data. It does not establish HN blocker semantics, semantic dependency completeness, a decreasing transition, a no-lower contradiction, complete external Packet adequacy, or unconditional HB negative closure. It does not prove ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS = {
+  "PNP.DirectWire.TerminalBN6GroupedFamily.checkPacketDescentNoLower_eq_true_iff": { hash: "33307742fc9844bddbdf9a828ac9f2946b29d0aaf5aa0294efa083b5575855e3", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketDescentNoLowerBinding" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.checkPacketDescentNoLower_eq_false_of_selectorSilence": { hash: "2652da58ccbfd2978e2c7779636b6e93c0a03853bf96870c4e51b6aad73e0ba0", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketDescentNoLowerBinding" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.false_of_checkedPacketDescentNoLower_and_selectorSilence": { hash: "d235dacd3be3be6e5a568614dfe14bcdf9ffcabed2fe7f5e4e6aa603af671e9e", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketDescentNoLowerBinding" },
+  "PNP.DirectWire.terminalBN6_packet_descent_no_lower_rejected": { hash: "4c8a1a5f2a0d27e55df9144a40ba608421b7c7f41271ad683a2ef603821a8cda", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketDescentNoLowerBinding" }
+};
+const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_SCOPE = "all-arbitrary-finite-canonical-packet-handles-exhaustive-local-descent-no-lower-row-rejected-under-checked-positive-packet-semantic-HN-budget-HB-selector-silence-and-HB-closure";
+const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family and selector-rank carrier, the executable local Packet descent no-lower checker scans every canonical handle and accepts exactly when no fully computed first route is residual nondecrease. Under a supplied positive Packet conclusion, checked semantic/HN and budget/HB bindings, executable selector silence, and checked well-founded HB no-outcome closure, the checker is forced to reject; assuming that same local row accepted yields a contradiction.";
+const RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_NON_CLAIM = "This is one checked local Packet no-lower row over a supplied finite grouped family, rank map, residual ranks, typed fields, realizer table, dependency table, and accepted binding, silence, and closure checks. It does not construct those inputs from terminal data or complete the manuscript's no-lower ledger. It does not cover HResolve, BudgetResolve, normalization, named descent routes, saturation, or replay; derive unconditional HB closure; establish complete Packet adequacy or unconditional ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3969,26 +3979,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 534181,
-    sha256: "29d61a663c6a3e2531ac7d137034ead98687f2318145e966f844d475b3378742"
+    bytes: 536483,
+    sha256: "c91273cf43b441c0c28ccbfd012449d4bfa503eada6fa9b9d7d7fe0350774cec"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 305364,
-    sha256: "bd2f7920acf67e27bf829898a4e8b378399a46422f6c8f1982b7c5809fb14e1d"
+    bytes: 307702,
+    sha256: "4c0a3276af53037332207cb779479e6faaf1fa05e7d7059fa0fdcf7616aa6af6"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2475058,
-    sha256: "82ef473fe09506db61f06629f1ca53208bc9d7f0fb223845225ca370677b2f1f"
+    bytes: 2480839,
+    sha256: "0e9b7f1edd099801be071e8e7bc266298aec52d33c1afec65c3c8b0345b73872"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 30188919,
-    sha256: "d90cfce89bf6cce5339624ed1c78758d1c916f98453d8b3a86f6ada17556907e"
+    bytes: 30504323,
+    sha256: "f166b7a68506ac989ae78daad4e08c027f104a463dea18e24407d00973a6894a"
   }
 ];
 
@@ -5385,6 +5395,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet semantic/HN activity binding boundary mismatch");
+  }
+
+  const residualTerminalPacketDescentNoLowerBindingMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-descent-no-lower-binding"
+  );
+  const residualTerminalPacketDescentNoLowerBindingNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS);
+  if (!residualTerminalPacketDescentNoLowerBindingMilestone
+      || residualTerminalPacketDescentNoLowerBindingMilestone.classification !== "formalized-residual-terminal-packet-descent-no-lower-binding"
+      || residualTerminalPacketDescentNoLowerBindingMilestone.scope !== RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_MILESTONE_SCOPE
+      || residualTerminalPacketDescentNoLowerBindingMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketDescentNoLowerBindingMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketDescentNoLowerBindingNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet descent no-lower binding boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8262,6 +8289,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal Packet semantic/HN activity binding boundary mismatch");
     }
 
+    const residualTerminalPacketDescentNoLowerBindingMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-descent-no-lower-binding"
+    );
+    if (!residualTerminalPacketDescentNoLowerBindingMilestone
+        || residualTerminalPacketDescentNoLowerBindingMilestone.earned !== true
+        || residualTerminalPacketDescentNoLowerBindingMilestone.allPresent !== true
+        || residualTerminalPacketDescentNoLowerBindingMilestone.allAssumptionFree !== false
+        || residualTerminalPacketDescentNoLowerBindingMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketDescentNoLowerBindingMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketDescentNoLowerBindingMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketDescentNoLowerBindingMilestone.classification !== "formalized-residual-terminal-packet-descent-no-lower-binding"
+        || residualTerminalPacketDescentNoLowerBindingMilestone.scope !== RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_MILESTONE_SCOPE
+        || residualTerminalPacketDescentNoLowerBindingMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketDescentNoLowerBindingMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketDescentNoLowerBindingMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketDescentNoLowerBindingFormalized !== true
+        || payload.leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketDescentNoLowerBindingScope !== RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet descent no-lower binding boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -8650,6 +8713,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal Packet semantic/HN activity binding theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_DESCENT_NO_LOWER_BINDING_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal Packet descent no-lower binding theorem mismatch: " + name);
       }
     }
 

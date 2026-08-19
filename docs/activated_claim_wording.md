@@ -98,6 +98,9 @@ leanResidualTerminalPacketBudgetHBActivityBindingScope = "all-arbitrary-finite-t
 leanResidualTerminalPacketSemanticHNActivityBindingFormalized = true
 leanResidualTerminalPacketSemanticHNActivityBindingAxiomAuditPassed = true
 leanResidualTerminalPacketSemanticHNActivityBindingScope = "all-arbitrary-finite-frontier-obligation-activation-direction-mismatch-to-HN-activity-checked-sole-descent-route-under-checked-semantic-HN-budget-HB-and-well-founded-HB-closure"
+leanResidualTerminalPacketDescentNoLowerBindingFormalized = true
+leanResidualTerminalPacketDescentNoLowerBindingAxiomAuditPassed = true
+leanResidualTerminalPacketDescentNoLowerBindingScope = "all-arbitrary-finite-canonical-packet-handles-exhaustive-local-descent-no-lower-row-rejected-under-checked-positive-packet-semantic-HN-budget-HB-selector-silence-and-HB-closure"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -126,7 +129,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 119-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 120-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
