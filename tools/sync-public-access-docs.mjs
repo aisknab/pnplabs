@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "055325ee54abddefc595ccb826ea410dc8be2231";
-const CORE_TREE = "b7901a65cf63fcef9a029023761085f234b6bc5e";
-const CORE_PUBLICATION_MAP_SHA256 = "a0f6dc12c16512879081f013bb786c2740e857eef30e3dc4fd2a90a6cdca0f1b";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-164";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-164";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-164";
-const CORE_SOURCE_CLOSURE_SHA256 = "d1eba933b3593c644b7e9493b718f5b1351c52667df30a3c76eb643318495a5c";
+const CORE_COMMIT = "9f26c50f8e8bfbda9cb15a8142c6191482148220";
+const CORE_TREE = "8eb9cf577a94722f3f805a463fcdf7072e60a4d2";
+const CORE_PUBLICATION_MAP_SHA256 = "9081640a169409986dd08f3f5cfb01fae463af141d6d0886f11f05ef661c5027";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-165";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-165";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-165";
+const CORE_SOURCE_CLOSURE_SHA256 = "57e2c23813d166123744da7eb3adab5ddaac77820dc053bdbd24154bb0921776";
 const OLD_PDF_SHA256 = "00335f3b3dd41e1480c0eafec61692269d2b3c8221a342fccf6fa421e69d8cb4";
 const OLD_TEX_SHA256 = "fe90cef934814a20e0fdc18061911ea005f6b788135c856a3aa89dc084555fa4";
 
@@ -1636,6 +1636,17 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_ROUTE_REFLECTION_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_BUDGET_ROUTE_REFLECTION_SCOPE = "all-arbitrary-finite-typed-budget-equality-all-packet-route-fields-reflected-colour-charge-exact-route-rank-excluded-exact-rankwf-nondecrease-without-route-clear-or-binding-premises";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_ROUTE_REFLECTION_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family, selector-rank carrier, and domain of typed budget values with decidable equality, the canonical payload computes budget acceptance from exact source and selector budget equality while retaining computed BN5 frontier, obligation, BN4 activation, and typed direction acceptance, grouped colour, positive charge, the internal source route, authoritative handle rank, and exact ten-coordinate descent comparison. A budget first route is prior frontier, obligation, activation, and direction equality together with exact typed-budget inequality. The first-route classifier cannot return colour, charge, rank, or exactRoute; a final descent route proves nondecrease, and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises.";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_ROUTE_REFLECTION_NON_CLAIM = "The source and selector budget values remain explicit inputs: this milestone does not construct those budget values from terminal data, prove the manuscript's complete Bud(u) budget-envelope or Packet adequacy bridge, or identify local Packet budget coherence with BudgetResolve or HB budget activity. Computing every local Packet classifier field does not establish that terminal data supplies adequate values or that all routes are globally excluded. The result does not construct the grouped family or rank map from terminal data, prove that a decreasing transition exists, or construct the no-lower ledger. It does not establish full external selector compatibility, complete route silence, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS = {
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketBudgetHBActivityBinding_eq_true_iff": { hash: "6a6cd87546f8f2aef1a9ed997f529b7f02c78de3308a5af055ecd210f6e012eb", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketBudgetHBActivityBinding" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.packetBudget_eq_of_checkedHBActivityBinding": { hash: "a85109f07cd409aadd8aa5252a34a88f45ff1b6e8077623d4e7a51d232db2eda", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketBudgetHBActivityBinding" },
+  "PNP.DirectWire.TerminalPacketTypedRealizerTable.packetSelectorBudgetFirstRoute_ne_of_checkedHBActivityBinding": { hash: "838fbf43402969bcbe4142fce596591d4451d0396f049a114193d166237963bd", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketBudgetHBActivityBinding" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.existsBudgetHBBoundFirstRouteFailure_of_selectorSilence": { hash: "c549af4b703d02dc667c55adba2f27ef6c987288a6cd2332f1674e3ebc3ea8fa", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketBudgetHBActivityBinding" },
+  "PNP.DirectWire.terminalBN6_packet_budget_hb_activity_bound_first_route_failure": { hash: "3505d0a82f82f6b4e8e524dc5f0079a6aee3629d2175e66116ca11f43c25fc14", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalPacketBudgetHBActivityBinding" }
+};
+const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_SCOPE = "all-arbitrary-finite-typed-budget-mismatch-to-HB-activity-checked-budget-route-excluded-under-checked-well-founded-HB-closure";
+const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_MILESTONE_SCOPE = "For every arbitrary finite grouped BN6 family, the executable binding checker exhaustively requires each typed source/selector budget mismatch to imply activity of the HB budget node at the table-owned handle rank. When that check and the existing checked well-founded HB no-outcome closure both pass, every canonical handle has equal typed budgets, the Packet first-route classifier excludes the budget route, and the positive Packet endpoint is confined to frontier, obligation, activation, direction, or exact residual nondecrease.";
+const RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_NON_CLAIM = "The Packet-to-HB budget binding is still an explicit checked input over a supplied grouped family, rank map, activity environment, and dependency table; this milestone does not construct that binding, the typed budget values, or a manuscript Bud(u) envelope from terminal data. It does not implement BudgetResolve, prove blocker semantic completeness, derive the HB table or its local closure premise from terminal data, or exclude the remaining frontier, obligation, activation, direction, and descent routes. It does not establish full Packet adequacy, unconditional HB.NegativeClosure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3947,26 +3958,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 529432,
-    sha256: "33a93f772e931eb7a921c0e375e5360ad299fbd3c7162c00b7ca332d1f00bcc2"
+    bytes: 531836,
+    sha256: "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 299597,
-    sha256: "d7bf9405d562ade16e6d9efa90d033552d6002dfd0a0ebecebcb75b0fcd9084f"
+    bytes: 302423,
+    sha256: "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2460915,
-    sha256: "5354eb4f6a54decbd06241ba6750c5700656354cad435d9236dc9fa8477b8b83"
+    bytes: 2467913,
+    sha256: "3c5cb857d110c76667de89771135577df4ffddbc2ab8593d78a6d1de1aad407c"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 29355108,
-    sha256: "3448f55c9bb397f4eaa502b3bf6c6c0d1114e6bce190a3bce705d410cbfa6b4a"
+    bytes: 29752610,
+    sha256: "c92f904095922ba6864a09dd9849505849ba8e4626c8bd36c6d2d0a25c6baabd"
   }
 ];
 
@@ -5329,6 +5340,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet budget-route reflection boundary mismatch");
+  }
+
+  const residualTerminalPacketBudgetHBActivityBindingMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-budget-hb-activity-binding"
+  );
+  const residualTerminalPacketBudgetHBActivityBindingNames =
+    Object.keys(RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS);
+  if (!residualTerminalPacketBudgetHBActivityBindingMilestone
+      || residualTerminalPacketBudgetHBActivityBindingMilestone.classification !== "formalized-residual-terminal-packet-budget-hb-activity-binding"
+      || residualTerminalPacketBudgetHBActivityBindingMilestone.scope !== RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_MILESTONE_SCOPE
+      || residualTerminalPacketBudgetHBActivityBindingMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketBudgetHBActivityBindingMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketBudgetHBActivityBindingNames)
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Packet budget/HB activity binding boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8134,6 +8162,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal Packet budget-route reflection boundary mismatch");
     }
 
+    const residualTerminalPacketBudgetHBActivityBindingMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-packet-budget-hb-activity-binding"
+    );
+    if (!residualTerminalPacketBudgetHBActivityBindingMilestone
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.earned !== true
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.allPresent !== true
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.allAssumptionFree !== false
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.allKernelTypesMatch !== true
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.classification !== "formalized-residual-terminal-packet-budget-hb-activity-binding"
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.scope !== RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_MILESTONE_SCOPE
+        || residualTerminalPacketBudgetHBActivityBindingMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_NON_CLAIM
+        || JSON.stringify(residualTerminalPacketBudgetHBActivityBindingMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalPacketBudgetHBActivityBindingMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalPacketBudgetHBActivityBindingFormalized !== true
+        || payload.leanResidualTerminalPacketBudgetHBActivityBindingAxiomAuditPassed !== true
+        || payload.leanResidualTerminalPacketBudgetHBActivityBindingScope !== RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Packet budget/HB activity binding boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -8502,6 +8566,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal Packet budget-route reflection theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal Packet budget/HB activity binding theorem mismatch: " + name);
       }
     }
 

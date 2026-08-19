@@ -83,6 +83,18 @@ leanResidualTerminalPacketFrontierRouteReflectionScope = "all-arbitrary-finite-t
 leanResidualTerminalPacketBN5ObligationRouteReflectionFormalized = true
 leanResidualTerminalPacketBN5ObligationRouteReflectionAxiomAuditPassed = true
 leanResidualTerminalPacketBN5ObligationRouteReflectionScope = "all-arbitrary-finite-BN5-coordinate-frontier-obligation-routes-reflected-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-three-earlier-semantic-routes-without-route-clear-or-binding-premises"
+leanResidualTerminalPacketBN4ActivationRouteReflectionFormalized = true
+leanResidualTerminalPacketBN4ActivationRouteReflectionAxiomAuditPassed = true
+leanResidualTerminalPacketBN4ActivationRouteReflectionScope = "all-arbitrary-finite-BN4-activation-predicate-route-reflected-BN5-frontier-obligation-routes-reflected-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-two-earlier-semantic-routes-without-route-clear-or-binding-premises"
+leanResidualTerminalPacketDirectionRouteReflectionFormalized = true
+leanResidualTerminalPacketDirectionRouteReflectionAxiomAuditPassed = true
+leanResidualTerminalPacketDirectionRouteReflectionScope = "all-arbitrary-finite-typed-direction-equality-route-reflected-BN5-frontier-obligation-activation-routes-reflected-colour-route-excluded-charge-route-excluded-exact-route-excluded-rank-route-excluded-exact-rankwf-nondecrease-or-sole-remaining-budget-route-without-route-clear-or-binding-premises"
+leanResidualTerminalPacketBudgetRouteReflectionFormalized = true
+leanResidualTerminalPacketBudgetRouteReflectionAxiomAuditPassed = true
+leanResidualTerminalPacketBudgetRouteReflectionScope = "all-arbitrary-finite-typed-budget-equality-all-packet-route-fields-reflected-colour-charge-exact-route-rank-excluded-exact-rankwf-nondecrease-without-route-clear-or-binding-premises"
+leanResidualTerminalPacketBudgetHBActivityBindingFormalized = true
+leanResidualTerminalPacketBudgetHBActivityBindingAxiomAuditPassed = true
+leanResidualTerminalPacketBudgetHBActivityBindingScope = "all-arbitrary-finite-typed-budget-mismatch-to-HB-activity-checked-budget-route-excluded-under-checked-well-founded-HB-closure"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -92,7 +104,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and forty narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone computes the Packet budget field from equality of explicit typed source and selector budget values while retaining computed BN5 frontier, obligation, BN4 activation, typed direction, grouped colour, positive charge, the canonical source route, authoritative handle rank, and exact residual descent computation. A budget route is prior frontier, obligation, activation, and direction equality with typed-budget inequality; colour, charge, exactRoute, and rank remain impossible; and the positive Packet/HB endpoint carries exact failure evidence without route-clear or binding premises. Every local Packet classifier field is now computed, but the coordinates, direction and budget values, finite rank map, before/after ranks, grouped family, realizer claims, blocker activity, and dependency rows remain proof-bearing inputs rather than terminal-derived constructions. The milestone does not prove the manuscript's complete BN5, Dir(u), Bud(u), or Packet adequacy bridge; identify local budget coherence with BudgetResolve or HB budget activity; prove a decreasing transition or no-lower ledger; establish full external selector compatibility or complete route silence; prove blocker semantics, unconditional `HB.NegativeClosure` or `ZeroSlack`, PCCMin or polynomial runtime, complete global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and forty-one narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone exhaustively checks that every typed Packet budget mismatch maps to activity of the HB budget node at the table-owned handle rank. When that checked binding and the existing checked well-founded HB no-outcome closure both pass, every canonical handle has equal typed budgets and the Packet classifier cannot return the budget route. The grouped family, binding, typed budget values, rank map, activity environment, dependency table, and local HB closure premise remain explicit proof-bearing inputs rather than terminal-derived constructions. The milestone does not construct a manuscript Bud(u) envelope, implement BudgetResolve, prove blocker semantic completeness, derive the HB table or closure premise from terminal data, exclude the remaining frontier, obligation, activation, direction, or descent routes, prove full Packet adequacy, establish unconditional `HB.NegativeClosure` or `ZeroSlack`, PCCMin or polynomial runtime, complete global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -111,7 +123,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 116-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 117-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

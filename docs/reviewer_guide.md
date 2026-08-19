@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 116-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,322 public declarations across 281 modules,
-including 15,188 theorem-kind declarations, 7,526 assumption-free theorem-kind declarations, and four
+The canonical report downloads are now a 117-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 29,332 public declarations across 282 modules,
+including 15,196 theorem-kind declarations, 7,526 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,058 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 116-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 117-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,975 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 2,975 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 140 of 142 scoped formal milestone rows, through the terminal chain, complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, and successive reflection of descent, rank, exact source route, charge, colour, BN5 frontier, obligation, BN4 activation, typed direction, and typed budget. Budget acceptance is computed from equality of explicit typed source and selector values; a budget route carries prior frontier, obligation, activation, and direction equality plus typed-budget inequality; colour, charge, exactRoute, and rank remain excluded. | Treating the coordinates, direction or budget values, finite rank map, before/after ranks, activity bits, dependency rows, exhaustive claims, grouped family, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as derived from terminal candidates; presenting computed local classifier fields as a complete BN5, Dir(u), Bud(u), or Packet adequacy bridge; identifying local budget equality with BudgetResolve or HB budget activity; presenting route exclusion as proof that a decreasing transition exists or routing is globally complete; claiming positive slack, full external selector compatibility, blocker semantics, semantic dependency completeness, unconditional HB negative closure, independently constructed global silence, unconditional ZeroSlack, a no-lower ledger, circuit-size bound, polynomial enumeration, completed global gain-or-blocker routing, complete PkgC, polynomial PCCMin, target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 2,980 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 2,980 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 141 of 143 scoped formal milestone rows. The newest checked binding requires every typed Packet budget mismatch to imply HB budget-node activity at the table-owned handle rank; with the existing checked well-founded HB no-outcome closure, all canonical typed budgets agree and the budget route is excluded. | Treating the grouped family, binding, typed budget values, rank map, activity environment, dependency table, closure premise, candidates, blueprints, occurrence pairings, unmatched lists, or upstream data as terminal-derived; presenting the result as a manuscript Bud(u) construction, BudgetResolve, complete Packet adequacy, blocker semantic completeness, unconditional HB negative closure, or exclusion of frontier, obligation, activation, direction, and descent; claiming positive slack, unconditional ZeroSlack, a no-lower ledger, circuit-size bound, polynomial enumeration, completed global routing, complete PkgC, polynomial PCCMin, target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -59,10 +59,10 @@ non-claiming because the gate is false.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `055325ee54abddefc595ccb826ea410dc8be2231`.
+   `9f26c50f8e8bfbda9cb15a8142c6191482148220`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 2,975 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 2,980 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -72,7 +72,7 @@ non-claiming because the gate is false.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns one hundred and twenty-nine scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns one hundred and forty-one scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
@@ -227,7 +227,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 116-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 117-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the
