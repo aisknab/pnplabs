@@ -426,6 +426,16 @@ const PACKET_BUDGET_ROUTE_REFLECTION_QUOT_SOUND_THEOREMS = new Set([
   "PNP.DirectWire.TerminalBN6PacketConclusion.existsBudgetReflectedFirstRouteFailure_of_selectorSilence",
   "PNP.DirectWire.terminalBN6_packet_budget_reflected_hb_first_route_failure",
 ]);
+const PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketBudgetHBActivityBinding_eq_true_iff': '6a6cd87546f8f2aef1a9ed997f529b7f02c78de3308a5af055ecd210f6e012eb',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.packetBudget_eq_of_checkedHBActivityBinding': 'a85109f07cd409aadd8aa5252a34a88f45ff1b6e8077623d4e7a51d232db2eda',
+  'PNP.DirectWire.TerminalPacketTypedRealizerTable.packetSelectorBudgetFirstRoute_ne_of_checkedHBActivityBinding': '838fbf43402969bcbe4142fce596591d4451d0396f049a114193d166237963bd',
+  'PNP.DirectWire.TerminalBN6PacketConclusion.existsBudgetHBBoundFirstRouteFailure_of_selectorSilence': 'c549af4b703d02dc667c55adba2f27ef6c987288a6cd2332f1674e3ebc3ea8fa',
+  'PNP.DirectWire.terminalBN6_packet_budget_hb_activity_bound_first_route_failure': '3505d0a82f82f6b4e8e524dc5f0079a6aee3629d2175e66116ca11f43c25fc14',
+});
+const PACKET_BUDGET_HB_ACTIVITY_BINDING_QUOT_SOUND_THEOREMS = new Set(
+  Object.keys(PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256),
+);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -814,6 +824,10 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.match(globalZeroSlack.nonClaim, /typed-budget milestone computes the last caller-supplied Packet Boolean from equality of explicit source and selector budget values/u);
   assert.match(globalZeroSlack.nonClaim, /coordinates, direction values, and budget values are not constructed from terminal data/u);
   assert.match(globalZeroSlack.nonClaim, /local budget equality is not BudgetResolve or HB budget semantics/u);
+  assert.match(globalZeroSlack.nonClaim, /checked Packet budget\/HB activity-binding milestone now exhaustively maps each typed budget mismatch/u);
+  assert.match(globalZeroSlack.nonClaim, /with the supplied checked well-founded HB closure, proves typed budget equality and excludes the local budget route/u);
+  assert.match(globalZeroSlack.nonClaim, /binding, rank map, activity environment, dependency table, and closure premise remain explicit/u);
+  assert.match(globalZeroSlack.nonClaim, /not BudgetResolve, a terminal-data construction, or semantic completeness/u);
   assert.match(globalZeroSlack.nonClaim, /prove the reported routes' external semantics/u);
   assert.match(globalZeroSlack.nonClaim, /provide full external selector compatibility, an independently constructed realizer, unconditional global silence/u);
   assert.match(globalZeroSlack.nonClaim, /Global unconditional ZeroSlack and polynomial PCCMin therefore remain unformalized\./u);
@@ -2227,6 +2241,88 @@ test('current status binds the compiled inventory and fails the concrete gate cl
       && /typed-budget inequality/u.test(nonClaim)
       && /final supplied Packet Boolean/u.test(nonClaim)
       && /BudgetResolve or HB budget activity/u.test(nonClaim)),
+    true,
+  );
+
+  const packetBudgetHBActivityBindingMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-packet-budget-hb-activity-binding');
+  const packetBudgetHBActivityBindingHashes = release.earnedBoundary
+    .residualTerminalPacketBudgetHBActivityBindingTheoremKernelTypeSha256;
+  assert.ok(packetBudgetHBActivityBindingMilestone);
+  assert.equal(packetBudgetHBActivityBindingMilestone.earned, true);
+  assert.equal(packetBudgetHBActivityBindingMilestone.allPresent, true);
+  assert.equal(packetBudgetHBActivityBindingMilestone.allKernelTypesMatch, true);
+  assert.equal(packetBudgetHBActivityBindingMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    packetBudgetHBActivityBindingHashes,
+    PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    packetBudgetHBActivityBindingMilestone.requiredTheorems,
+    Object.keys(PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingAuditedDeclarationCount, 7);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingPropextOnlyDeclarationCount, 2);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingPropextQuotSoundDeclarationCount, 5);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of packetBudgetHBActivityBindingMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      PACKET_BUDGET_HB_ACTIVITY_BINDING_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.equal(PACKET_BUDGET_HB_ACTIVITY_BINDING_QUOT_SOUND_THEOREMS.size, 5);
+  assert.match(packetBudgetHBActivityBindingMilestone.scope, /executable binding checker exhaustively requires/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.scope, /typed source\/selector budget mismatch/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.scope, /checked well-founded HB no-outcome closure/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.scope, /confined to frontier, obligation, activation, direction, or exact residual nondecrease/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.nonClaim, /binding is still an explicit checked input/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.nonClaim, /does not implement BudgetResolve/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.nonClaim, /derive the HB table or its local closure premise from terminal data/u);
+  assert.match(packetBudgetHBActivityBindingMilestone.nonClaim, /does not establish full Packet adequacy/u);
+  assert.equal(status.leanResidualTerminalPacketBudgetHBActivityBindingFormalized, true);
+  assert.equal(status.leanResidualTerminalPacketBudgetHBActivityBindingAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalPacketBudgetHBActivityBindingScope,
+    release.earnedBoundary.residualTerminalPacketBudgetHBActivityBindingScope,
+  );
+  assert.ok(index.earnedMilestones.includes(packetBudgetHBActivityBindingMilestone.id));
+  assert.equal(
+    status.nonClaims.some((nonClaim) => /checked Packet budget\/HB activity binding/u.test(nonClaim)
+      && /table-owned handle rank/u.test(nonClaim)
+      && /forces exact budget equality and excludes the local budget first route/u.test(nonClaim)
+      && /does not implement BudgetResolve/u.test(nonClaim)),
     true,
   );
 
@@ -5261,7 +5357,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
-  assert.equal(index.sourceProofCommitRef, '64708565e8964a38f516fc27d8fb55b9c41e4999');
+  assert.equal(index.sourceProofCommitRef, release.source.proofCommit);
   assert.equal(index.sourceTree, CORE_TREE);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-19-residual-terminal-packet-budget-hb-activity-binding",
+      "milestoneId": "residual-terminal-packet-budget-hb-activity-binding",
+      "publishedAt": "2026-08-18T23:48:37Z",
+      "title": "Lean now binds Packet budget mismatch to checked HB activity",
+      "plainLanguage": [
+        "For every arbitrary finite grouped BN6 family, Lean now checks a precise local Packet-to-HB condition: whenever the explicit typed source and selector budgets differ, the HB budget node at the table-owned handle rank must be active. When that exhaustive binding check and the existing checked well-founded HB no-outcome closure both pass, the budgets agree at every canonical handle, the Packet first-route classifier cannot return budget, and a positive Packet endpoint is confined to frontier, obligation, activation, direction, or exact residual nondecrease.",
+        "The Packet-to-HB binding remains an explicit checked input over a supplied grouped family, rank map, activity environment, and dependency table. It does not construct the typed budgets or a manuscript Bud(u) envelope from terminal data, implement BudgetResolve, prove blocker semantic completeness, derive the HB table or its local closure premise from terminal data, or exclude the remaining frontier, obligation, activation, direction, and descent routes. Full Packet adequacy, unconditional HB negative closure, positive slack, SaturatePositive, BCELReady, unconditional ZeroSlack, PCCMin, encoded-size and polynomial-runtime bounds, SAT in P, removal of a project assumption, and P = NP remain unproved. The 98 percent figure remains a revisable editorial estimate, separate from the 141 of 143 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "9f26c50f8e8bfbda9cb15a8142c6191482148220",
+        "tree": "8eb9cf577a94722f3f805a463fcdf7072e60a4d2",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-165",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-19-residual-terminal-packet-budget-route-reflection",
       "milestoneId": "residual-terminal-packet-budget-route-reflection",
       "publishedAt": "2026-08-18T18:40:56Z",
