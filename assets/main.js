@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-170";
-const STATUS_SHA256 = 'b7fca55c750c536bb6f6e1fd12a7f61fd7d7f83b0bbe937617f06cedbc02c11c';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-20-170";
-const FORMAL_PUBLICATION_MAP_SHA256 = "4cbf743affb706f3b8c7432c8dc074af762069311ce9e991a0facb139e1ce84b";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-171";
+const STATUS_SHA256 = '37a1f22b71f559725adf70f91b404a071c2b551c6bbd60ed007956dbe9764c16';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-171";
+const FORMAL_PUBLICATION_MAP_SHA256 = "9206725cab0f14e00c26e816f03f2d62cebcdbe006c386097f4f3992f043662c";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-20-170";
-const INVENTORY_SHA256 = "50d246b707757a179a5428e16ced026a3143c785465beff079a62e004042a314";
-const SOURCE_CLOSURE_SHA256 = "dbc693ed1057a21df9c46a0c2b51fca2d04d56da5f148d89629e1c9d9adfe6af";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-171";
+const INVENTORY_SHA256 = "588d30907c045d6c75444a4905742c33ca26443955c526fc55ecfe3f4867dd2c";
+const SOURCE_CLOSURE_SHA256 = "fd7d4bc83334116e1e38a7578eeb8a5ea256df1657186a75359c18c7008339b2";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29437,
-  theorems: 15247,
-  assumptionFreeTheorems: 7537,
-  excludedPrivateDeclarations: 15067,
-  modules: 287,
+  declarations: 29532,
+  theorems: 15283,
+  assumptionFreeTheorems: 7542,
+  excludedPrivateDeclarations: 15104,
+  modules: 288,
   axioms: 4,
 });
 
@@ -4545,6 +4545,15 @@ const RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.terminalHResolveSupportClassify_constructive",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveSupportResolver","83f05b0a786470c8ac3af4c877755b8217d42ed473b9d28f99f5a09aa1e4ed61"],
   ["PNP.DirectWire.terminal_hresolve_support_resolver_constructive_complete",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveSupportResolver","40fffd11b3aa05581df958f8a2a4d13af5a108b373c18a91b45e782f7c672493"],
 ]);
+const RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.TerminalSupportBudget.check_eq_true_iff",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","07a8a83678d8f91f6d962105d1bf46804dccaabbaf89464355a12df03c92f358"],
+  ["PNP.DirectWire.findTerminalBudgetFeasibleSupport_sound",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","d9cb114d80911cd43227315402c0bc3e563022fa043d236d5b9b26bb82ab4cdb"],
+  ["PNP.DirectWire.findTerminalBudgetFeasibleSupport_exists_of_seed",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","05ea7628193e9525c57c8ce2236c13823cad985f9c25897d7eef6350bfe8beba"],
+  ["PNP.DirectWire.findTerminalBudgetFeasibleSupport_eq_none_iff",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","f73ec4a8c268deddaf7ab1f07e28c575163159649c1178fcc7c19219cd57d818"],
+  ["PNP.DirectWire.findTerminalBudgetFeasibleSupport_unique",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","96e01d4d3fb2e33fbe6cdc204980f3eb63a1353e8d72670cbc016a8fe3ccb01d"],
+  ["PNP.DirectWire.TerminalBudgetEnvelopeOutcome.sound",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","68d5a2989d51d6e06527cfa178d73418b15b64625a699df4a78569bf46692d84"],
+  ["PNP.DirectWire.terminal_budget_envelope_resolver_constructive_complete",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetEnvelopeResolver","6cae4b93729bd09929234e66ef3bc836066dfe8a8c1fd81a7513828db1de251b"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5473,6 +5482,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalHResolveSupportResolverFormalized: false,
   leanResidualTerminalHResolveSupportResolverAxiomAuditPassed: false,
   leanResidualTerminalHResolveSupportResolverScope: null,
+  leanResidualTerminalBudgetEnvelopeResolverFormalized: false,
+  leanResidualTerminalBudgetEnvelopeResolverAxiomAuditPassed: false,
+  leanResidualTerminalBudgetEnvelopeResolverScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -6041,6 +6053,9 @@ leanResidualTerminalHResolveCoverageLedgerScope = ${payload.leanResidualTerminal
 leanResidualTerminalHResolveSupportResolverFormalized = ${payload.leanResidualTerminalHResolveSupportResolverFormalized ?? false}
 leanResidualTerminalHResolveSupportResolverAxiomAuditPassed = ${payload.leanResidualTerminalHResolveSupportResolverAxiomAuditPassed ?? false}
 leanResidualTerminalHResolveSupportResolverScope = ${payload.leanResidualTerminalHResolveSupportResolverScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalHResolveSupportResolverScope)}
+leanResidualTerminalBudgetEnvelopeResolverFormalized = ${payload.leanResidualTerminalBudgetEnvelopeResolverFormalized ?? false}
+leanResidualTerminalBudgetEnvelopeResolverAxiomAuditPassed = ${payload.leanResidualTerminalBudgetEnvelopeResolverAxiomAuditPassed ?? false}
+leanResidualTerminalBudgetEnvelopeResolverScope = ${payload.leanResidualTerminalBudgetEnvelopeResolverScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBudgetEnvelopeResolverScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -6914,6 +6929,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalBudgetEnvelopeResolver =
+    RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7460,6 +7482,9 @@ function validateInventory(inventory) {
     && residualTerminalHResolveSupportResolver.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalBudgetEnvelopeResolver.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -7852,6 +7877,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalHResolveSupportResolverMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-hresolve-support-resolver'
+  );
+  const residualTerminalBudgetEnvelopeResolverMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-budget-envelope-resolver'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9200,6 +9228,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalHResolveSupportResolverFormalized === true
     && status.leanResidualTerminalHResolveSupportResolverAxiomAuditPassed === true
     && status.leanResidualTerminalHResolveSupportResolverScope === "all-finite-direct-wire-candidates-terminal-derived-duplicate-free-support-universe-computed-exact-or-gain-with-semantic-minimum-or-strict-equivalent-gain-evidence"
+
+    && residualTerminalBudgetEnvelopeResolverMilestone?.classification === "formalized-residual-terminal-budget-envelope-resolver"
+    && residualTerminalBudgetEnvelopeResolverMilestone.status === "formalized-residual-terminal-budget-envelope-resolver"
+    && residualTerminalBudgetEnvelopeResolverMilestone.scope === "For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural resource caps, Lean scans the canonical terminal support universe, recomputes nonempty gate and interface feasibility plus gate and saturated-record caps, and returns a feasible semantic minimum, a feasible strict equivalent gain, or complete NoBudget exclusion for every canonical seed."
+    && residualTerminalBudgetEnvelopeResolverMilestone.nonClaim === "The budget caps remain supplied, and the complete terminal subset scan, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This milestone does not implement the manuscript's HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, the complete no-lower ledger, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP."
+    && sameJson(
+      residualTerminalBudgetEnvelopeResolverMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalBudgetEnvelopeResolverMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalBudgetEnvelopeResolverFormalized === true
+    && status.leanResidualTerminalBudgetEnvelopeResolverAxiomAuditPassed === true
+    && status.leanResidualTerminalBudgetEnvelopeResolverScope === "all-finite-direct-wire-candidates-terminal-derived-computed-budget-envelope-exact-gain-or-NoBudget-over-canonical-support-universe"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
