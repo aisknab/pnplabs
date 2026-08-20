@@ -50,7 +50,7 @@ export function buildNotification({ commit, tree }) {
       "PNPLabs has passed its release checks and is ready for your pinned deployment.",
       `Commit: ${commit}`,
       `Tree: ${tree}`,
-      "Run on atlast:",
+      "Run on the deployment host:",
       deployCommand
     ].join("\n"),
     deployCommand

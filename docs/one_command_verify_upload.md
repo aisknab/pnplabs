@@ -11,14 +11,14 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 8b074cc2e8f840009a4ee064dd9dc6299c278004
+git checkout ed0ba30a44abb27dbd4e5914541b9fcc8bd82950
 npm ci
 npm run formal:inventory:check
 npm run validate
 npm run report:check
 ```
 
-`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, local descent/no-lower, and one executable ledger composing the five exact Packet checks. A positive Packet forces ledger rejection, and accepted ledger data excludes a positive Packet conclusion. The family, coordinates, values, ranks, realizer claims, activity environment, dependency rows, and terminal data remain supplied. The result closes the Packet branch only; it does not complete the remaining no-lower ledger, HResolve, BudgetResolve, normalization, other named obstructions, saturation, replay, unconditional HB or `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, and a finite supplied HResolve classifier with a sound-and-complete route ledger and checked `NoHereditary` sidecar. The HResolve candidate universe and exact, gain, and blocker predicates remain supplied. The latest result does not construct their terminal semantics, discharge full HResolve, complete the no-lower ledger, implement BudgetResolve or normalization, establish unconditional HB or `ZeroSlack`, prove PCCMin, or prove the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 

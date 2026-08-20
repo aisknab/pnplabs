@@ -6,13 +6,14 @@ const policyPath = new URL("../../deploy/pnplabs-deploy.sudoers", import.meta.ur
 const deploymentDocsPath = new URL("../../docs/deployment_verification.md", import.meta.url);
 const agentInstructionsPath = new URL("../../AGENTS.md", import.meta.url);
 const expectedPolicy =
-  "pnp-builder atlast=(root:root) NOPASSWD:NOSETENV: /usr/bin/env ^-i PNPLABS_COMMIT=[0-9a-f]{40} /usr/local/bin/deploy-pnp$\n";
+  "pnplabs-operator pnplabs-host=(root:root) NOPASSWD:NOSETENV: /usr/bin/env ^-i PNPLABS_COMMIT=[0-9a-f]{40} /usr/local/bin/deploy-pnp$\n";
 const deploymentCommand =
   "sudo -n /usr/bin/env -i PNPLABS_COMMIT=<exact-merged-main-commit> /usr/local/bin/deploy-pnp";
 
 test("sudoers policy grants only the exact noninteractive deployment command", () => {
   const policy = readFileSync(policyPath, "utf8");
   assert.equal(policy, expectedPolicy);
+  assert.match(policy, /^pnplabs-operator pnplabs-host=/u);
   assert.doesNotMatch(policy, /\bALL\b|SETENV(?!:)|[?*]|\/bin\/(?:ba)?sh|systemctl|sudoedit/u);
 
   const argumentPattern = policy

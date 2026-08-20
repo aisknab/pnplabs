@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "8b074cc2e8f840009a4ee064dd9dc6299c278004";
-const CORE_TREE = "50d363cc8746af0a4e19f5a5467923bcd463e39b";
-const CORE_PUBLICATION_MAP_SHA256 = "8802c229d5fdba5c823dfce4e58200091972953eaab72d6f902f312e24924a69";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-19-168";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-19-168";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-19-168";
-const CORE_SOURCE_CLOSURE_SHA256 = "e7f8da7888f27347bb67ef97d75a39bc3e8feb74f1491e9a624d3d1ee7dbea32";
+const CORE_COMMIT = "ed0ba30a44abb27dbd4e5914541b9fcc8bd82950";
+const CORE_TREE = "c5b783f5bb02e59a5601921b294c7c4872d29ed5";
+const CORE_PUBLICATION_MAP_SHA256 = "9bafdb272bcad3df7db85348610407223a5cca2920ceb0d89ad86be1d2be5c6b";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-20-169";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-169";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-20-169";
+const CORE_SOURCE_CLOSURE_SHA256 = "52a78e46b9e0cddd5e62383f60976e6fd29746a651f43d107bb7afefecb064b3";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1678,6 +1678,22 @@ const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_SCOPE = "all-arbitrary-finite-five-row-Packet-no-lower-ledger-positive-Packet-exclusion-under-computed-semantic-HN-budget-HB-selector-silence-and-HB-closure";
 const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_MILESTONE_SCOPE = "For every supplied arbitrary finite grouped BN6 family, typed realizer table, HB dependency table, finite rank map, and before/after residual ranks, one Boolean recomputes the five executable checks for semantic/HN binding, budget/HB binding, selector silence, HB no-outcome closure, and Packet descent/no-lower. Its reflection theorem characterizes exact acceptance, a positive Packet forces rejection, and an accepted ledger excludes a positive Packet conclusion for those same inputs.";
 const RESIDUAL_TERMINAL_PACKET_NO_LOWER_LEDGER_NON_CLAIM = "This closes the Packet branch only, not the complete no-lower ledger. The grouped family, BN5 coordinates, activation atoms, direction and budget values, rank map, residual ranks, realizer claims, activity environment, dependency rows, and all terminal data remain supplied. It does not implement HResolve, BudgetResolve, normalization, other named obstructions, saturation, or replay; derive unconditional HB closure; establish unconditional ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS = {
+  "PNP.DirectWire.terminalHResolveClassify_eq_exact_iff": { hash: "fbf117b9fe425a364742a0f9310f056ed81326485a140a3c3315208ebc31bfa4", axioms: ["propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.terminalHResolveClassify_eq_gain_iff": { hash: "8d280c65ea8eefb7c9592a9674aa34d8f565575e571b7d22527b539c422d5ffb", axioms: ["propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.terminalHResolveClassify_eq_blocked_iff": { hash: "a09c47ec9b07293b759d3c2f1d6a955df0a479b3b3bc8022086e72e8438a1e9d", axioms: ["propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.terminalHResolveClassify_eq_unresolved_iff": { hash: "754f7099a176615266cc3309566ad843290e0fc1dfebcb5d1c09e22250512a81", axioms: ["propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.TerminalHResolveFamily.routeLedger_sound": { hash: "ef104717e64db666abafa383155d81596a7d1f508badfc3dfb4563bef8fc3727", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.TerminalHResolveFamily.routeLedger_complete": { hash: "6a40d0d984d3e418278030815c4db34591f1414785c9d38d2e8e7155754ed34a", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.TerminalHResolveFamily.checkNoHereditarySidecar_eq_true_iff": { hash: "a3bd27b58349e7e0d0a8bca62885d788e48f0959ef0687f266fe4466ce126f2d", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.TerminalHResolveFamily.not_exact_of_checkedNoHereditarySidecar": { hash: "6e921a877da8b723eb0e03d698f3f4c1226a518c7a5aae98291dd686ebf5f624", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.TerminalHResolveFamily.not_gain_of_checkedNoHereditarySidecar": { hash: "0ee82be4fa054e56a77c1b36e446b12188a0d3753cbb65f80a8a84023b4d5510", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" },
+  "PNP.DirectWire.terminal_hresolve_checked_sidecar_excludes_constructive_routes": { hash: "34a58ece01f76e5c93c809d514db65e2d09b3114c474d9a6385cea7d2ba35fa8", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalHResolveCoverageLedger" }
+};
+const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_SCOPE = "all-arbitrary-finite-supplied-HResolve-candidates-unique-route-ledger-and-NoHereditary-sidecar-excludes-exact-and-gain-under-decidable-supplied-predicates";
+const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_MILESTONE_SCOPE = "For every arbitrary finite supplied HResolve candidate family with decidable equality and arbitrary decidable exact, gain, and blocker predicates, Lean computes a fixed-priority exact, gain, blocked, or unresolved route for every candidate, generates a sound and complete route ledger, and checks both duplicate-free enumeration and all-candidate blocked coverage. The checker accepts exactly a NoHereditary sidecar for that supplied family, and acceptance excludes exact and gain routes for every enumerated candidate.";
+const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_NON_CLAIM = "The finite HResolve candidate family and its decidable exact, gain, and blocker predicates remain supplied. This milestone does not construct the governed hereditary universe from terminal data or prove that those predicates implement the manuscript's HN grammar, BWL exactness, H-disjointness, exact-minimum semantics, strict-gain semantics, or blocker dependency semantics. It does not discharge the full historical HResolve theorem, implement BudgetResolve, normalization, the complete no-lower ledger, saturation, or replay; establish unconditional HB closure or ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -3989,26 +4005,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 537978,
-    sha256: "860c7c0393d102e025960a2d07118170b08453ebdac25decde3b3e917e5cd314"
+    bytes: 540304,
+    sha256: "cbbcdfe4cb2f5377a35967a8c65be306e3f9dc84cd13e9524394d542c14d5faf"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 309650,
-    sha256: "395f51eb66ed2bd72fcb201f621fde212e50265f368b73daa9d3ab817fc6a67c"
+    bytes: 312022,
+    sha256: "e6446d4c6fdba3f703a561828d6ae9cf9699851d77c31fda93c52b4085a8650e"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2486215,
-    sha256: "028554723a713ff6177c90f9fa12e7be0e254fb65b917228b2fb27a06ece2970"
+    bytes: 2495138,
+    sha256: "a8cbd9173e0957c3c0c7c3506e3b4fd6c866442ce983f88bcd81caa124c454c7"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 30632135,
-    sha256: "c18bafdc91d3d903b915473a0ab641a3b5ddb4c1b8b4d47948f618b8daa3db4b"
+    bytes: 30700599,
+    sha256: "3a74f7cca0582e109212108d437fa61d2440d3d6a7f7af44f94c80ffed13365d"
   }
 ];
 
@@ -5439,6 +5455,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet no-lower ledger boundary mismatch");
+  }
+
+  const residualTerminalHResolveCoverageLedgerMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-coverage-ledger"
+  );
+  const residualTerminalHResolveCoverageLedgerNames =
+    Object.keys(RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS);
+  if (!residualTerminalHResolveCoverageLedgerMilestone
+      || residualTerminalHResolveCoverageLedgerMilestone.classification !== "formalized-residual-terminal-hresolve-coverage-ledger"
+      || residualTerminalHResolveCoverageLedgerMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_MILESTONE_SCOPE
+      || residualTerminalHResolveCoverageLedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveCoverageLedgerMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHResolveCoverageLedgerNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HResolve coverage ledger boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8388,6 +8421,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal Packet no-lower ledger boundary mismatch");
     }
 
+    const residualTerminalHResolveCoverageLedgerMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hresolve-coverage-ledger"
+    );
+    if (!residualTerminalHResolveCoverageLedgerMilestone
+        || residualTerminalHResolveCoverageLedgerMilestone.earned !== true
+        || residualTerminalHResolveCoverageLedgerMilestone.allPresent !== true
+        || residualTerminalHResolveCoverageLedgerMilestone.allAssumptionFree !== false
+        || residualTerminalHResolveCoverageLedgerMilestone.allKernelTypesMatch !== true
+        || residualTerminalHResolveCoverageLedgerMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHResolveCoverageLedgerMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHResolveCoverageLedgerMilestone.classification !== "formalized-residual-terminal-hresolve-coverage-ledger"
+        || residualTerminalHResolveCoverageLedgerMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_MILESTONE_SCOPE
+        || residualTerminalHResolveCoverageLedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_NON_CLAIM
+        || JSON.stringify(residualTerminalHResolveCoverageLedgerMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHResolveCoverageLedgerMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHResolveCoverageLedgerFormalized !== true
+        || payload.leanResidualTerminalHResolveCoverageLedgerAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHResolveCoverageLedgerScope !== RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HResolve coverage ledger boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -8796,6 +8865,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal Packet no-lower ledger theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal HResolve coverage ledger theorem mismatch: " + name);
       }
     }
 

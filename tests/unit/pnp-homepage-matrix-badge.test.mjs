@@ -39,8 +39,27 @@ function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
   );
 }
 
+function visibleText(value) {
+  return value
+    .replaceAll(/<[^>]*>/gu, ' ')
+    .replaceAll('&nbsp;', ' ')
+    .replaceAll('&amp;', '&')
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll(/&#(?:39|x27);|&apos;/giu, "'")
+    .replaceAll(/&quot;/giu, '"')
+    .replaceAll(/\s+/gu, ' ')
+    .trim();
+}
+
 function latestMilestoneStatusFields(milestoneId) {
-  const fieldParts = { bn4: 'BN4', bn5: 'BN5', hb: 'HB', hn: 'HN' };
+  const fieldParts = {
+    bn4: 'BN4',
+    bn5: 'BN5',
+    hb: 'HB',
+    hn: 'HN',
+    hresolve: 'HResolve',
+  };
   const stem = `lean${milestoneId
     .split('-')
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -314,7 +333,10 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     const expectedFragment = statusField && Object.hasOwn(status, statusField)
       ? `${statusField} = ${JSON.stringify(status[statusField])}`
       : fragment;
-    assert.equal(html.includes(expectedFragment), true, `missing homepage fragment: ${expectedFragment}`);
+    const fragmentPresent = fragment === latest.plainLanguage[0]
+      ? visibleText(html).includes(visibleText(expectedFragment))
+      : html.includes(expectedFragment);
+    assert.equal(fragmentPresent, true, `missing homepage fragment: ${expectedFragment}`);
   }
   const latestMilestone = html.match(/<article class="latest-milestone"[\s\S]*?<\/article>/u)?.[0] ?? '';
   assert.ok(latestMilestone.includes(latest.title));
