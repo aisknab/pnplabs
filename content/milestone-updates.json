@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-budget-envelope-resolver",
+      "milestoneId": "residual-terminal-budget-envelope-resolver",
+      "publishedAt": "2026-08-20T18:33:22Z",
+      "title": "Lean now resolves finite terminal budget envelopes",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural gate and saturated-record caps, Lean now scans every canonical terminal support seed. It recomputes nonempty gate and interface support and both resource caps, then returns a feasible semantic minimum, a feasible strict equivalent gain, or a complete NoBudget exclusion for every canonical seed.",
+        "The budget caps remain supplied, and the complete terminal subset scan, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This does not implement the manuscript's HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, the complete no-lower ledger, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 147 of 149 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "6d598d9ef6a866f475bcc0fa0e5d1f65061524d4",
+        "tree": "5fcde27e914cfe44410a28b9b9755aefa4cdc27d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-171",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-20-residual-terminal-hresolve-support-resolver",
       "milestoneId": "residual-terminal-hresolve-support-resolver",
       "publishedAt": "2026-08-20T13:46:01Z",

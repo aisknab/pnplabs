@@ -500,6 +500,15 @@ const HRESOLVE_SUPPORT_RESOLVER_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.terminalHResolveSupportClassify_constructive': '83f05b0a786470c8ac3af4c877755b8217d42ed473b9d28f99f5a09aa1e4ed61',
   'PNP.DirectWire.terminal_hresolve_support_resolver_constructive_complete': '40fffd11b3aa05581df958f8a2a4d13af5a108b373c18a91b45e782f7c672493',
 });
+const BUDGET_ENVELOPE_RESOLVER_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalSupportBudget.check_eq_true_iff': '07a8a83678d8f91f6d962105d1bf46804dccaabbaf89464355a12df03c92f358',
+  'PNP.DirectWire.findTerminalBudgetFeasibleSupport_sound': 'd9cb114d80911cd43227315402c0bc3e563022fa043d236d5b9b26bb82ab4cdb',
+  'PNP.DirectWire.findTerminalBudgetFeasibleSupport_exists_of_seed': '05ea7628193e9525c57c8ce2236c13823cad985f9c25897d7eef6350bfe8beba',
+  'PNP.DirectWire.findTerminalBudgetFeasibleSupport_eq_none_iff': 'f73ec4a8c268deddaf7ab1f07e28c575163159649c1178fcc7c19219cd57d818',
+  'PNP.DirectWire.findTerminalBudgetFeasibleSupport_unique': '96e01d4d3fb2e33fbe6cdc204980f3eb63a1353e8d72670cbc016a8fe3ccb01d',
+  'PNP.DirectWire.TerminalBudgetEnvelopeOutcome.sound': '68d5a2989d51d6e06527cfa178d73418b15b64625a699df4a78569bf46692d84',
+  'PNP.DirectWire.terminal_budget_envelope_resolver_constructive_complete': '6cae4b93729bd09929234e66ef3bc836066dfe8a8c1fd81a7513828db1de251b',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -2778,6 +2787,77 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalHResolveSupportResolverScope,
   );
   assert.ok(index.earnedMilestones.includes(hresolveSupportResolverMilestone.id));
+
+  const budgetEnvelopeResolverMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-budget-envelope-resolver');
+  const budgetEnvelopeResolverHashes = release.earnedBoundary
+    .residualTerminalBudgetEnvelopeResolverTheoremKernelTypeSha256;
+  assert.ok(budgetEnvelopeResolverMilestone);
+  assert.equal(budgetEnvelopeResolverMilestone.earned, true);
+  assert.equal(budgetEnvelopeResolverMilestone.allPresent, true);
+  assert.equal(budgetEnvelopeResolverMilestone.allKernelTypesMatch, true);
+  assert.equal(budgetEnvelopeResolverMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(budgetEnvelopeResolverHashes, BUDGET_ENVELOPE_RESOLVER_THEOREM_SHA256);
+  assert.deepEqual(
+    budgetEnvelopeResolverMilestone.requiredTheorems,
+    Object.keys(BUDGET_ENVELOPE_RESOLVER_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalBudgetEnvelopeResolverAuditedDeclarationCount, 15);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetEnvelopeResolverEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetEnvelopeResolverPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetEnvelopeResolverQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetEnvelopeResolverPropextQuotSoundDeclarationCount, 14);
+  assert.equal(
+    release.earnedBoundary.residualTerminalBudgetEnvelopeResolverAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalBudgetEnvelopeResolverEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalBudgetEnvelopeResolverPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalBudgetEnvelopeResolverQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalBudgetEnvelopeResolverPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalBudgetEnvelopeResolverAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalBudgetEnvelopeResolverProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of budgetEnvelopeResolverMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      BUDGET_ENVELOPE_RESOLVER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      BUDGET_ENVELOPE_RESOLVER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(budgetEnvelopeResolverMilestone.scope, /candidate-derived saturation model/u);
+  assert.match(budgetEnvelopeResolverMilestone.scope, /supplied natural resource caps/u);
+  assert.match(budgetEnvelopeResolverMilestone.scope, /canonical terminal support universe/u);
+  assert.match(budgetEnvelopeResolverMilestone.scope, /complete NoBudget exclusion/u);
+  assert.match(budgetEnvelopeResolverMilestone.nonClaim, /budget caps remain supplied/u);
+  assert.match(budgetEnvelopeResolverMilestone.nonClaim, /may be exponential/u);
+  assert.match(budgetEnvelopeResolverMilestone.nonClaim, /does not implement the manuscript's HN\/BUD grammar/u);
+  assert.match(budgetEnvelopeResolverMilestone.nonClaim, /polynomial BudgetResolve/u);
+  assert.equal(status.leanResidualTerminalBudgetEnvelopeResolverFormalized, true);
+  assert.equal(status.leanResidualTerminalBudgetEnvelopeResolverAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalBudgetEnvelopeResolverScope,
+    release.earnedBoundary.residualTerminalBudgetEnvelopeResolverScope,
+  );
+  assert.ok(index.earnedMilestones.includes(budgetEnvelopeResolverMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
