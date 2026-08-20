@@ -18,7 +18,13 @@ const INVENTORY_COORDINATE = canonicalRelease.artifacts.theoremInventory.coordin
 const INVENTORY_SHA256 = canonicalRelease.artifacts.theoremInventory.sha256;
 const INVENTORY_BYTES = canonicalRelease.artifacts.theoremInventory.bytes;
 const formatNumber = (value) => new Intl.NumberFormat('en-US').format(value);
-const MILESTONE_FIELD_PARTS = Object.freeze({ bn4: 'BN4', bn5: 'BN5', hb: 'HB', hn: 'HN' });
+const MILESTONE_FIELD_PARTS = Object.freeze({
+  bn4: 'BN4',
+  bn5: 'BN5',
+  hb: 'HB',
+  hn: 'HN',
+  hresolve: 'HResolve',
+});
 const milestoneFieldStem = (milestoneId) => milestoneId
   .split('-')
   .map((part) => MILESTONE_FIELD_PARTS[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -463,6 +469,24 @@ const PACKET_NO_LOWER_LEDGER_THEOREM_SHA256 = Object.freeze({
 });
 const PACKET_NO_LOWER_LEDGER_PROPEXT_ONLY_THEOREMS = new Set([
   'PNP.DirectWire.TerminalPacketTypedRealizerTable.checkPacketNoLowerLedger_eq_true_iff',
+]);
+const HRESOLVE_COVERAGE_LEDGER_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.terminalHResolveClassify_eq_exact_iff': 'fbf117b9fe425a364742a0f9310f056ed81326485a140a3c3315208ebc31bfa4',
+  'PNP.DirectWire.terminalHResolveClassify_eq_gain_iff': '8d280c65ea8eefb7c9592a9674aa34d8f565575e571b7d22527b539c422d5ffb',
+  'PNP.DirectWire.terminalHResolveClassify_eq_blocked_iff': 'a09c47ec9b07293b759d3c2f1d6a955df0a479b3b3bc8022086e72e8438a1e9d',
+  'PNP.DirectWire.terminalHResolveClassify_eq_unresolved_iff': '754f7099a176615266cc3309566ad843290e0fc1dfebcb5d1c09e22250512a81',
+  'PNP.DirectWire.TerminalHResolveFamily.routeLedger_sound': 'ef104717e64db666abafa383155d81596a7d1f508badfc3dfb4563bef8fc3727',
+  'PNP.DirectWire.TerminalHResolveFamily.routeLedger_complete': '6a40d0d984d3e418278030815c4db34591f1414785c9d38d2e8e7155754ed34a',
+  'PNP.DirectWire.TerminalHResolveFamily.checkNoHereditarySidecar_eq_true_iff': 'a3bd27b58349e7e0d0a8bca62885d788e48f0959ef0687f266fe4466ce126f2d',
+  'PNP.DirectWire.TerminalHResolveFamily.not_exact_of_checkedNoHereditarySidecar': '6e921a877da8b723eb0e03d698f3f4c1226a518c7a5aae98291dd686ebf5f624',
+  'PNP.DirectWire.TerminalHResolveFamily.not_gain_of_checkedNoHereditarySidecar': '0ee82be4fa054e56a77c1b36e446b12188a0d3753cbb65f80a8a84023b4d5510',
+  'PNP.DirectWire.terminal_hresolve_checked_sidecar_excludes_constructive_routes': '34a58ece01f76e5c93c809d514db65e2d09b3114c474d9a6385cea7d2ba35fa8',
+});
+const HRESOLVE_COVERAGE_LEDGER_PROPEXT_ONLY_THEOREMS = new Set([
+  'PNP.DirectWire.terminalHResolveClassify_eq_exact_iff',
+  'PNP.DirectWire.terminalHResolveClassify_eq_gain_iff',
+  'PNP.DirectWire.terminalHResolveClassify_eq_blocked_iff',
+  'PNP.DirectWire.terminalHResolveClassify_eq_unresolved_iff',
 ]);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
@@ -2593,6 +2617,84 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalPacketNoLowerLedgerScope,
   );
   assert.ok(index.earnedMilestones.includes(packetNoLowerLedgerMilestone.id));
+
+  const hresolveCoverageLedgerMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hresolve-coverage-ledger');
+  const hresolveCoverageLedgerHashes = release.earnedBoundary
+    .residualTerminalHResolveCoverageLedgerTheoremKernelTypeSha256;
+  assert.ok(hresolveCoverageLedgerMilestone);
+  assert.equal(hresolveCoverageLedgerMilestone.earned, true);
+  assert.equal(hresolveCoverageLedgerMilestone.allPresent, true);
+  assert.equal(hresolveCoverageLedgerMilestone.allKernelTypesMatch, true);
+  assert.equal(hresolveCoverageLedgerMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(hresolveCoverageLedgerHashes, HRESOLVE_COVERAGE_LEDGER_THEOREM_SHA256);
+  assert.deepEqual(
+    hresolveCoverageLedgerMilestone.requiredTheorems,
+    Object.keys(HRESOLVE_COVERAGE_LEDGER_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCoverageLedgerAuditedDeclarationCount, 10);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCoverageLedgerEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCoverageLedgerPropextOnlyDeclarationCount, 4);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCoverageLedgerQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCoverageLedgerPropextQuotSoundDeclarationCount, 6);
+  assert.equal(
+    release.earnedBoundary.residualTerminalHResolveCoverageLedgerAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalHResolveCoverageLedgerEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalHResolveCoverageLedgerPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalHResolveCoverageLedgerQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalHResolveCoverageLedgerPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveCoverageLedgerAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveCoverageLedgerProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hresolveCoverageLedgerMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      HRESOLVE_COVERAGE_LEDGER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      HRESOLVE_COVERAGE_LEDGER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(
+      theoremRow.axioms,
+      HRESOLVE_COVERAGE_LEDGER_PROPEXT_ONLY_THEOREMS.has(theoremRow.name)
+        ? ['propext']
+        : ['Quot.sound', 'propext'],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.equal(HRESOLVE_COVERAGE_LEDGER_PROPEXT_ONLY_THEOREMS.size, 4);
+  assert.match(hresolveCoverageLedgerMilestone.scope, /arbitrary finite supplied HResolve candidate family/u);
+  assert.match(hresolveCoverageLedgerMilestone.scope, /fixed-priority exact, gain, blocked, or unresolved route/u);
+  assert.match(hresolveCoverageLedgerMilestone.scope, /duplicate-free enumeration and all-candidate blocked coverage/u);
+  assert.match(hresolveCoverageLedgerMilestone.scope, /acceptance excludes exact and gain routes/u);
+  assert.match(hresolveCoverageLedgerMilestone.nonClaim, /candidate family and its decidable exact, gain, and blocker predicates remain supplied/u);
+  assert.match(hresolveCoverageLedgerMilestone.nonClaim, /does not construct the governed hereditary universe from terminal data/u);
+  assert.match(hresolveCoverageLedgerMilestone.nonClaim, /does not discharge the full historical HResolve theorem/u);
+  assert.match(hresolveCoverageLedgerMilestone.nonClaim, /complete no-lower ledger/u);
+  assert.equal(status.leanResidualTerminalHResolveCoverageLedgerFormalized, true);
+  assert.equal(status.leanResidualTerminalHResolveCoverageLedgerAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHResolveCoverageLedgerScope,
+    release.earnedBoundary.residualTerminalHResolveCoverageLedgerScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hresolveCoverageLedgerMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);

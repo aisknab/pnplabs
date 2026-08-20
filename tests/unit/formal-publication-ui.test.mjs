@@ -22,7 +22,13 @@ const release = JSON.parse(readFileSync('downloads/formal-publication-release.js
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
 function statusFieldStem(milestoneId) {
-  const fieldParts = { bn4: 'BN4', bn5: 'BN5', hb: 'HB', hn: 'HN' };
+  const fieldParts = {
+    bn4: 'BN4',
+    bn5: 'BN5',
+    hb: 'HB',
+    hn: 'HN',
+    hresolve: 'HResolve',
+  };
   return milestoneId
     .split('-')
     .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
@@ -221,6 +227,30 @@ test('site validator pins the latest canonical publication milestone and rejects
   const strippedScope = structuredClone(status);
   strippedScope[scopeField] = 'unsupported-broader-scope';
   assert.equal(validation.validateStatus(strippedScope, inventory), false, scopeField);
+
+  const renderedStatusLines = new Set(validation.formalStatusFields(status).split('\n'));
+  const renderedFailClosedLines = new Set(
+    validation.formalStatusFields(validation.FAIL_CLOSED_FORMAL_STATUS).split('\n'),
+  );
+  for (const [field, value, failClosedValue] of [
+    [`lean${fieldStem}Formalized`, true, false],
+    [`lean${fieldStem}AxiomAuditPassed`, true, false],
+    [scopeField, status[scopeField], null],
+  ]) {
+    assert.ok(
+      renderedStatusLines.has(`${field} = ${JSON.stringify(value)}`),
+      `rendered current status omits latest milestone field: ${field}`,
+    );
+    assert.equal(
+      validation.FAIL_CLOSED_FORMAL_STATUS[field],
+      failClosedValue,
+      `fail-closed status omits latest milestone field: ${field}`,
+    );
+    assert.ok(
+      renderedFailClosedLines.has(`${field} = ${JSON.stringify(failClosedValue)}`),
+      `rendered fail-closed status omits latest milestone field: ${field}`,
+    );
+  }
 
   const widenedScope = structuredClone(status);
   widenedScope.formalPublicationMilestones.find(

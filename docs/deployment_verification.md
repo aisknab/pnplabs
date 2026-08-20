@@ -36,20 +36,22 @@ sudo systemctl daemon-reload
 sudo systemctl enable pnplabs-origin.service
 ```
 
-For agent-triggered deployment on the `atlast` host, install the reviewed narrow sudoers policy
-from a clean checkout. Validate the source first, stage it under an ignored suffix, validate that
-copy, then activate it atomically:
+For agent-triggered deployment on a deployment host, adapt the generic `pnplabs-operator` and
+`pnplabs-host` principals in the reviewed narrow sudoers sample to site-local identities outside
+the public repository. From a clean checkout, validate the adapted source first, stage it under an
+ignored suffix, validate that copy, then activate it atomically:
 
 ```bash
 /usr/sbin/visudo -cf deploy/pnplabs-deploy.sudoers
 sudo install -o root -g root -m 0440 deploy/pnplabs-deploy.sudoers /etc/sudoers.d/pnplabs-deploy.pending
+sudoedit /etc/sudoers.d/pnplabs-deploy.pending
 sudo /usr/sbin/visudo -cf /etc/sudoers.d/pnplabs-deploy.pending
 sudo mv /etc/sudoers.d/pnplabs-deploy.pending /etc/sudoers.d/pnplabs-deploy
 sudo /usr/sbin/visudo -c
 sudo -k
 ```
 
-This one policy permits `pnp-builder` to run only `/usr/bin/env -i` with one lowercase 40-hex
+This one policy permits the adapted deployment operator to run only `/usr/bin/env -i` with one lowercase 40-hex
 `PNPLABS_COMMIT` and the fixed root-owned `/usr/local/bin/deploy-pnp` path. It does not grant a
 shell, arbitrary environment settings, `systemctl`, or general passwordless sudo. The `-n` flag
 on the client command makes missing or drifted authorization fail immediately instead of prompting

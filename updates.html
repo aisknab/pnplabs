@@ -34,6 +34,26 @@
       </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: 98 percent">
     </div></section>
     <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">
+      <article class="card" id="2026-08-20-residual-terminal-hresolve-coverage-ledger" data-milestone-id="residual-terminal-hresolve-coverage-ledger">
+        <div class="section-label"><time datetime="2026-08-20T02:17:40Z">2026-08-20</time> · earned milestone 145</div>
+        <h2>Lean now checks finite HResolve route coverage</h2>
+        <p>For every arbitrary supplied finite candidate family, Lean now computes one fixed-priority route per candidate: exact, gain, blocked, or unresolved. The generated ledger is proved sound and complete for that enumeration. A separate NoHereditary sidecar check recomputes duplicate-free membership and accepts only when every listed candidate has neither an exact nor a gain route and has a positive blocker predicate; acceptance therefore excludes both constructive routes for every listed candidate.</p>
+        <p>The candidate family and the decidable exact, gain, and blocker predicates remain supplied. This does not construct the governed hereditary universe from terminal data or prove HN grammar, BWL exactness, H-disjointness, exact-minimum, strict-gain, or blocker dependency semantics. It does not discharge full HResolve, implement BudgetResolve, normalization, the complete no-lower ledger, saturation, or replay; establish unconditional HB closure or ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 145 of 147 scoped publication rows.</p>
+        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> 98%.</p>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>residual-terminal-hresolve-coverage-ledger</code></p>
+          <p><strong>Classification:</strong> formalized-residual-terminal-hresolve-coverage-ledger</p>
+          <p><strong>Verified scope:</strong> For every arbitrary finite supplied HResolve candidate family with decidable equality and arbitrary decidable exact, gain, and blocker predicates, Lean computes a fixed-priority exact, gain, blocked, or unresolved route for every candidate, generates a sound and complete route ledger, and checks both duplicate-free enumeration and all-candidate blocked coverage. The checker accepts exactly a NoHereditary sidecar for that supplied family, and acceptance excludes exact and gain routes for every enumerated candidate.</p>
+          <p><strong>Boundary:</strong> The finite HResolve candidate family and its decidable exact, gain, and blocker predicates remain supplied. This milestone does not construct the governed hereditary universe from terminal data or prove that those predicates implement the manuscript&#39;s HN grammar, BWL exactness, H-disjointness, exact-minimum semantics, strict-gain semantics, or blocker dependency semantics. It does not discharge the full historical HResolve theorem, implement BudgetResolve, normalization, the complete no-lower ledger, saturation, or replay; establish unconditional HB closure or ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 10</p>
+          <p><strong>Core source:</strong> commit <code>ed0ba30a44abb27dbd4e5914541b9fcc8bd82950</code>, tree <code>c5b783f5bb02e59a5601921b294c7c4872d29ed5</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-169</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
       <article class="card" id="2026-08-19-residual-terminal-packet-no-lower-ledger" data-milestone-id="residual-terminal-packet-no-lower-ledger">
         <div class="section-label"><time datetime="2026-08-19T22:12:21Z">2026-08-19</time> · earned milestone 144</div>
         <h2>Lean now composes the checked Packet no-lower ledger</h2>

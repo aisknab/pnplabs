@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-20-residual-terminal-hresolve-coverage-ledger",
+      "milestoneId": "residual-terminal-hresolve-coverage-ledger",
+      "publishedAt": "2026-08-20T02:17:40Z",
+      "title": "Lean now checks finite HResolve route coverage",
+      "plainLanguage": [
+        "For every arbitrary supplied finite candidate family, Lean now computes one fixed-priority route per candidate: exact, gain, blocked, or unresolved. The generated ledger is proved sound and complete for that enumeration. A separate NoHereditary sidecar check recomputes duplicate-free membership and accepts only when every listed candidate has neither an exact nor a gain route and has a positive blocker predicate; acceptance therefore excludes both constructive routes for every listed candidate.",
+        "The candidate family and the decidable exact, gain, and blocker predicates remain supplied. This does not construct the governed hereditary universe from terminal data or prove HN grammar, BWL exactness, H-disjointness, exact-minimum, strict-gain, or blocker dependency semantics. It does not discharge full HResolve, implement BudgetResolve, normalization, the complete no-lower ledger, saturation, or replay; establish unconditional HB closure or ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 145 of 147 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "ed0ba30a44abb27dbd4e5914541b9fcc8bd82950",
+        "tree": "c5b783f5bb02e59a5601921b294c7c4872d29ed5",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-169",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-19-residual-terminal-packet-no-lower-ledger",
       "milestoneId": "residual-terminal-packet-no-lower-ledger",
       "publishedAt": "2026-08-19T22:12:21Z",
