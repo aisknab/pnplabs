@@ -488,6 +488,18 @@ const HRESOLVE_COVERAGE_LEDGER_PROPEXT_ONLY_THEOREMS = new Set([
   'PNP.DirectWire.terminalHResolveClassify_eq_blocked_iff',
   'PNP.DirectWire.terminalHResolveClassify_eq_unresolved_iff',
 ]);
+const HRESOLVE_SUPPORT_RESOLVER_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.terminalListSubsets_nodup': '20b2a4997693c2992627f3bd6bbac935529209ff80172a7e72c89822993ef3fa',
+  'PNP.DirectWire.terminalHResolveSupportFamily_nodup': '12b545debd0204200afc5be09fd1e0c881f642bda7fbadefdbd76c824aef4596',
+  'PNP.DirectWire.canonicalTerminalSupportSeed_mem_terminalHResolveSupportFamily': '8524cf247dd11640bf472ed4c77b0ccac2411286bfc8f8c50137466ac5cd470b',
+  'PNP.DirectWire.terminalHResolveSupportExact_iff_semanticallyMinimum': 'ecf50b36d176945b7e72e3cacf3439bf840c413b39cc2636baefcbcaaa671c90',
+  'PNP.DirectWire.terminalHResolveSupportGain_iff_exists_strictEquivalentGain': 'f1b66d49979d7aa5a03ffb01d219daf0241d41aa1b68df16a94d9cc93fcba73b',
+  'PNP.DirectWire.terminalHResolveSupport_exact_or_gain': '59a11a45ff57d9e3aa84fb66d458554111090797cff4e0ff6cfb6f6cef0da231',
+  'PNP.DirectWire.terminalHResolveSupportClassify_eq_exact_iff': '9117a221c84b2c039fb4803d92d83988700ef51de0c70f8bf9ce88423e8d8b85',
+  'PNP.DirectWire.terminalHResolveSupportClassify_eq_gain_iff': 'f155ba3303e3189f18777ca5aae2ac909cacfd08ca02c38ac71b020c401736ab',
+  'PNP.DirectWire.terminalHResolveSupportClassify_constructive': '83f05b0a786470c8ac3af4c877755b8217d42ed473b9d28f99f5a09aa1e4ed61',
+  'PNP.DirectWire.terminal_hresolve_support_resolver_constructive_complete': '40fffd11b3aa05581df958f8a2a4d13af5a108b373c18a91b45e782f7c672493',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -2695,6 +2707,77 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalHResolveCoverageLedgerScope,
   );
   assert.ok(index.earnedMilestones.includes(hresolveCoverageLedgerMilestone.id));
+
+  const hresolveSupportResolverMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hresolve-support-resolver');
+  const hresolveSupportResolverHashes = release.earnedBoundary
+    .residualTerminalHResolveSupportResolverTheoremKernelTypeSha256;
+  assert.ok(hresolveSupportResolverMilestone);
+  assert.equal(hresolveSupportResolverMilestone.earned, true);
+  assert.equal(hresolveSupportResolverMilestone.allPresent, true);
+  assert.equal(hresolveSupportResolverMilestone.allKernelTypesMatch, true);
+  assert.equal(hresolveSupportResolverMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(hresolveSupportResolverHashes, HRESOLVE_SUPPORT_RESOLVER_THEOREM_SHA256);
+  assert.deepEqual(
+    hresolveSupportResolverMilestone.requiredTheorems,
+    Object.keys(HRESOLVE_SUPPORT_RESOLVER_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHResolveSupportResolverAuditedDeclarationCount, 15);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveSupportResolverEmptyAxiomDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveSupportResolverPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveSupportResolverQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveSupportResolverPropextQuotSoundDeclarationCount, 14);
+  assert.equal(
+    release.earnedBoundary.residualTerminalHResolveSupportResolverAuditedDeclarationCount,
+    release.earnedBoundary.residualTerminalHResolveSupportResolverEmptyAxiomDeclarationCount
+      + release.earnedBoundary.residualTerminalHResolveSupportResolverPropextOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalHResolveSupportResolverQuotSoundOnlyDeclarationCount
+      + release.earnedBoundary.residualTerminalHResolveSupportResolverPropextQuotSoundDeclarationCount,
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveSupportResolverAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveSupportResolverProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hresolveSupportResolverMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      HRESOLVE_SUPPORT_RESOLVER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      HRESOLVE_SUPPORT_RESOLVER_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(hresolveSupportResolverMilestone.scope, /complete duplicate-free family of canonical terminal support seeds/u);
+  assert.match(hresolveSupportResolverMilestone.scope, /candidate-derived terminal system/u);
+  assert.match(hresolveSupportResolverMilestone.scope, /semantic-minimum evidence/u);
+  assert.match(hresolveSupportResolverMilestone.scope, /strict-equivalent-gain witness/u);
+  assert.match(hresolveSupportResolverMilestone.nonClaim, /may be exponential/u);
+  assert.match(hresolveSupportResolverMilestone.nonClaim, /does not implement the manuscript's HN grammar/u);
+  assert.match(hresolveSupportResolverMilestone.nonClaim, /blocker or NoHereditary semantics/u);
+  assert.match(hresolveSupportResolverMilestone.nonClaim, /polynomial HResolve/u);
+  assert.equal(status.leanResidualTerminalHResolveSupportResolverFormalized, true);
+  assert.equal(status.leanResidualTerminalHResolveSupportResolverAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHResolveSupportResolverScope,
+    release.earnedBoundary.residualTerminalHResolveSupportResolverScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hresolveSupportResolverMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
