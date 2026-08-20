@@ -11,14 +11,14 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout ed0ba30a44abb27dbd4e5914541b9fcc8bd82950
+git checkout 7080186d2b2701c9b472071cc14c04292a5dff6f
 npm ci
 npm run formal:inventory:check
 npm run validate
 npm run report:check
 ```
 
-`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, and a finite supplied HResolve classifier with a sound-and-complete route ledger and checked `NoHereditary` sidecar. The HResolve candidate universe and exact, gain, and blocker predicates remain supplied. The latest result does not construct their terminal semantics, discharge full HResolve, complete the no-lower ledger, implement BudgetResolve or normalization, establish unconditional HB or `ZeroSlack`, prove PCCMin, or prove the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the supplied-family HResolve coverage ledger, and the terminal-derived complete finite support resolver with exact-or-gain evidence. The newest resolver is exhaustive and may be exponential. It does not implement manuscript HN grammar, blocker or `NoHereditary` semantics, polynomial HResolve, the complete no-lower ledger, BudgetResolve, unconditional HB or `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 

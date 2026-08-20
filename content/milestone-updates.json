@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-20-residual-terminal-hresolve-support-resolver",
+      "milestoneId": "residual-terminal-hresolve-support-resolver",
+      "publishedAt": "2026-08-20T13:46:01Z",
+      "title": "Lean now derives terminal HResolve exact-or-gain support routes",
+      "plainLanguage": [
+        "For every finite direct-wire candidate and profile-width model, Lean now constructs the complete duplicate-free family of canonical terminal support seeds. It saturates every seed in the terminal system derived from that candidate and computes either an exact route carrying semantic-minimum evidence or a gain route carrying a strict-equivalent-gain witness.",
+        "This is a complete finite reference search, not a polynomial HResolve algorithm: exhaustive subset enumeration may be exponential in the number of primitive records. It does not implement manuscript HN grammar, BWL exactness, H-disjointness, blocker or NoHereditary semantics, BudgetResolve, the complete no-lower ledger, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 146 of 148 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "7080186d2b2701c9b472071cc14c04292a5dff6f",
+        "tree": "4f42045af939c79fdb3f5bfd6f2ed8ea4c70ef9c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-170",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-20-residual-terminal-hresolve-coverage-ledger",
       "milestoneId": "residual-terminal-hresolve-coverage-ledger",
       "publishedAt": "2026-08-20T02:17:40Z",

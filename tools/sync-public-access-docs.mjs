@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "ed0ba30a44abb27dbd4e5914541b9fcc8bd82950";
-const CORE_TREE = "c5b783f5bb02e59a5601921b294c7c4872d29ed5";
-const CORE_PUBLICATION_MAP_SHA256 = "9bafdb272bcad3df7db85348610407223a5cca2920ceb0d89ad86be1d2be5c6b";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-20-169";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-169";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-20-169";
-const CORE_SOURCE_CLOSURE_SHA256 = "52a78e46b9e0cddd5e62383f60976e6fd29746a651f43d107bb7afefecb064b3";
+const CORE_COMMIT = "7080186d2b2701c9b472071cc14c04292a5dff6f";
+const CORE_TREE = "4f42045af939c79fdb3f5bfd6f2ed8ea4c70ef9c";
+const CORE_PUBLICATION_MAP_SHA256 = "4cbf743affb706f3b8c7432c8dc074af762069311ce9e991a0facb139e1ce84b";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-20-170";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-20-170";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-20-170";
+const CORE_SOURCE_CLOSURE_SHA256 = "dbc693ed1057a21df9c46a0c2b51fca2d04d56da5f148d89629e1c9d9adfe6af";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1694,6 +1694,22 @@ const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_THEOREMS = {
 const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_SCOPE = "all-arbitrary-finite-supplied-HResolve-candidates-unique-route-ledger-and-NoHereditary-sidecar-excludes-exact-and-gain-under-decidable-supplied-predicates";
 const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_MILESTONE_SCOPE = "For every arbitrary finite supplied HResolve candidate family with decidable equality and arbitrary decidable exact, gain, and blocker predicates, Lean computes a fixed-priority exact, gain, blocked, or unresolved route for every candidate, generates a sound and complete route ledger, and checks both duplicate-free enumeration and all-candidate blocked coverage. The checker accepts exactly a NoHereditary sidecar for that supplied family, and acceptance excludes exact and gain routes for every enumerated candidate.";
 const RESIDUAL_TERMINAL_HRESOLVE_COVERAGE_LEDGER_NON_CLAIM = "The finite HResolve candidate family and its decidable exact, gain, and blocker predicates remain supplied. This milestone does not construct the governed hereditary universe from terminal data or prove that those predicates implement the manuscript's HN grammar, BWL exactness, H-disjointness, exact-minimum semantics, strict-gain semantics, or blocker dependency semantics. It does not discharge the full historical HResolve theorem, implement BudgetResolve, normalization, the complete no-lower ledger, saturation, or replay; establish unconditional HB closure or ZeroSlack; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_THEOREMS = {
+  "PNP.DirectWire.terminalListSubsets_nodup": { hash: "20b2a4997693c2992627f3bd6bbac935529209ff80172a7e72c89822993ef3fa", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupportFamily_nodup": { hash: "12b545debd0204200afc5be09fd1e0c881f642bda7fbadefdbd76c824aef4596", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.canonicalTerminalSupportSeed_mem_terminalHResolveSupportFamily": { hash: "8524cf247dd11640bf472ed4c77b0ccac2411286bfc8f8c50137466ac5cd470b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupportExact_iff_semanticallyMinimum": { hash: "ecf50b36d176945b7e72e3cacf3439bf840c413b39cc2636baefcbcaaa671c90", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupportGain_iff_exists_strictEquivalentGain": { hash: "f1b66d49979d7aa5a03ffb01d219daf0241d41aa1b68df16a94d9cc93fcba73b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupport_exact_or_gain": { hash: "59a11a45ff57d9e3aa84fb66d458554111090797cff4e0ff6cfb6f6cef0da231", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupportClassify_eq_exact_iff": { hash: "9117a221c84b2c039fb4803d92d83988700ef51de0c70f8bf9ce88423e8d8b85", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupportClassify_eq_gain_iff": { hash: "f155ba3303e3189f18777ca5aae2ac909cacfd08ca02c38ac71b020c401736ab", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminalHResolveSupportClassify_constructive": { hash: "83f05b0a786470c8ac3af4c877755b8217d42ed473b9d28f99f5a09aa1e4ed61", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" },
+  "PNP.DirectWire.terminal_hresolve_support_resolver_constructive_complete": { hash: "40fffd11b3aa05581df958f8a2a4d13af5a108b373c18a91b45e782f7c672493", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveSupportResolver" }
+};
+const RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_SCOPE = "all-finite-direct-wire-candidates-terminal-derived-duplicate-free-support-universe-computed-exact-or-gain-with-semantic-minimum-or-strict-equivalent-gain-evidence";
+const RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_MILESTONE_SCOPE = "For every finite direct-wire candidate and profile-width model, Lean constructs the complete duplicate-free family of canonical terminal support seeds, saturates each seed in the candidate-derived terminal system, and computes either an exact route with semantic-minimum evidence or a gain route with a strict-equivalent-gain witness.";
+const RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_NON_CLAIM = "The reference search is exhaustive over the complete finite terminal support universe and may be exponential in the number of primitive records. This milestone does not implement the manuscript's HN grammar, BWL exactness, H-disjointness, blocker or NoHereditary semantics, polynomial HResolve, BudgetResolve, the complete no-lower ledger, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4005,26 +4021,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 540304,
-    sha256: "cbbcdfe4cb2f5377a35967a8c65be306e3f9dc84cd13e9524394d542c14d5faf"
+    bytes: 541555,
+    sha256: "71b6170475e415aa6741a35d1316b3d50fd0f73f9b02b93360ec10ef13d551e3"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 312022,
-    sha256: "e6446d4c6fdba3f703a561828d6ae9cf9699851d77c31fda93c52b4085a8650e"
+    bytes: 313968,
+    sha256: "88c2e0b375bc64005f702a8f895e80095729273ff7a3f1b2cf57952c7afea237"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2495138,
-    sha256: "a8cbd9173e0957c3c0c7c3506e3b4fd6c866442ce983f88bcd81caa124c454c7"
+    bytes: 2502582,
+    sha256: "b7fca55c750c536bb6f6e1fd12a7f61fd7d7f83b0bbe937617f06cedbc02c11c"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 30700599,
-    sha256: "3a74f7cca0582e109212108d437fa61d2440d3d6a7f7af44f94c80ffed13365d"
+    bytes: 30792790,
+    sha256: "50d246b707757a179a5428e16ced026a3143c785465beff079a62e004042a314"
   }
 ];
 
@@ -5472,6 +5488,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal HResolve coverage ledger boundary mismatch");
+  }
+
+  const residualTerminalHResolveSupportResolverMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-support-resolver"
+  );
+  const residualTerminalHResolveSupportResolverNames =
+    Object.keys(RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_THEOREMS);
+  if (!residualTerminalHResolveSupportResolverMilestone
+      || residualTerminalHResolveSupportResolverMilestone.classification !== "formalized-residual-terminal-hresolve-support-resolver"
+      || residualTerminalHResolveSupportResolverMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_MILESTONE_SCOPE
+      || residualTerminalHResolveSupportResolverMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveSupportResolverMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHResolveSupportResolverNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HResolve support resolver boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8457,6 +8490,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal HResolve coverage ledger boundary mismatch");
     }
 
+    const residualTerminalHResolveSupportResolverMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hresolve-support-resolver"
+    );
+    if (!residualTerminalHResolveSupportResolverMilestone
+        || residualTerminalHResolveSupportResolverMilestone.earned !== true
+        || residualTerminalHResolveSupportResolverMilestone.allPresent !== true
+        || residualTerminalHResolveSupportResolverMilestone.allAssumptionFree !== false
+        || residualTerminalHResolveSupportResolverMilestone.allKernelTypesMatch !== true
+        || residualTerminalHResolveSupportResolverMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHResolveSupportResolverMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHResolveSupportResolverMilestone.classification !== "formalized-residual-terminal-hresolve-support-resolver"
+        || residualTerminalHResolveSupportResolverMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_MILESTONE_SCOPE
+        || residualTerminalHResolveSupportResolverMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_NON_CLAIM
+        || JSON.stringify(residualTerminalHResolveSupportResolverMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHResolveSupportResolverMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHResolveSupportResolverFormalized !== true
+        || payload.leanResidualTerminalHResolveSupportResolverAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHResolveSupportResolverScope !== RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HResolve support resolver boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -8875,6 +8944,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal HResolve coverage ledger theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_SUPPORT_RESOLVER_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal HResolve support resolver theorem mismatch: " + name);
       }
     }
 

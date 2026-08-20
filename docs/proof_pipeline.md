@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,003 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,013 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,422 public declarations;
-- 15,237 theorem-kind declarations;
+- 29,437 public declarations;
+- 15,247 theorem-kind declarations;
 - 7,537 assumption-free theorem-kind declarations;
-- 286 source-closure modules;
-- 15,058 excluded private compiler auxiliaries;
+- 287 source-closure modules;
+- 15,067 excluded private compiler auxiliaries;
 - four project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and forty-three earned scopes are:
+The one hundred and forty-six earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -195,6 +195,7 @@ The one hundred and forty-three earned scopes are:
 | Checked Packet descent no-lower binding | For every arbitrary finite grouped BN6 family and selector-rank carrier, an executable local checker scans every canonical handle and accepts exactly when no fully computed first route is residual nondecrease. A supplied positive Packet conclusion, checked semantic/HN and budget/HB bindings, executable selector silence, and checked well-founded HB no-outcome closure force the checker to reject; accepting that same local row yields a contradiction. All four reviewed pins use `Quot.sound` plus `propext`. The focused six-declaration audit has zero empty, two `propext`-only, and four `Quot.sound` plus `propext` closures; none uses a project axiom or `Classical.choice`. | This closes one checked local no-lower row over a supplied family, rank map, residual ranks, typed fields, realizer and dependency tables, bindings, silence, and closure checks. It does not construct terminal inputs or complete the manuscript's no-lower ledger; cover HResolve, BudgetResolve, normalization, named descent routes, saturation, or replay; derive unconditional HB closure; establish unconditional `ZeroSlack`; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove `P = NP`. |
 | Checked Packet no-lower ledger | For every supplied arbitrary finite grouped BN6 family, typed realizer table, HB dependency table, finite rank map, and before/after residual ranks, one executable Boolean recomputes semantic/HN binding, budget/HB binding, selector silence, HB no-outcome closure, and descent/no-lower. A positive Packet forces rejection, and accepted ledger data excludes a positive Packet conclusion. Of the four reviewed pins, one uses only `propext` and three use `Quot.sound` plus `propext`. The focused six-declaration audit has zero empty, three `propext`-only, and three `Quot.sound` plus `propext` closures; none uses a project axiom or `Classical.choice`. | This closes the Packet branch only, not the complete no-lower ledger. The family, typed coordinates and values, rank map, residual ranks, realizer claims, activity environment, dependency rows, and terminal data remain supplied. It does not implement HResolve, BudgetResolve, normalization, other named obstructions, saturation, or replay; derive unconditional HB closure or `ZeroSlack`; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove `P = NP`. |
 | Checked finite HResolve coverage ledger | For every arbitrary supplied finite candidate family with decidable equality and decidable exact, gain, and blocker predicates, Lean computes one fixed-priority exact, gain, blocked, or unresolved route per candidate and proves the generated ledger sound and complete for that enumeration. A separate Boolean checks duplicate-free membership and all-candidate blocked coverage; accepted `NoHereditary` sidecar data excludes exact and gain for every listed candidate. Four of the ten reviewed pins use only `propext` and six use `Quot.sound` plus `propext`; the focused ten-declaration audit has the same four/six distribution, with no empty closure, project axiom, or `Classical.choice`. | The candidate universe and exact, gain, and blocker predicates remain supplied. The milestone does not construct them from terminal data or prove HN grammar, BWL exactness, H-disjointness, exact-minimum, strict-gain, or blocker dependency semantics. It does not discharge full HResolve, complete the no-lower ledger, implement BudgetResolve, normalization, saturation, or replay; establish unconditional HB closure or `ZeroSlack`; prove PCCMin, encoded-size or polynomial-runtime bounds, SAT in P; remove a project assumption; or prove `P = NP`. |
+| Terminal-derived HResolve support resolver | For every finite direct-wire candidate and profile-width model, Lean constructs the complete duplicate-free family of canonical terminal support seeds, saturates every seed in the candidate-derived terminal system, and computes either an exact route with semantic-minimum evidence or a gain route with a strict-equivalent-gain witness. All ten reviewed pins use `Quot.sound` plus `propext`. The focused 15-declaration audit has one empty closure and 14 `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The reference search exhausts the complete finite terminal support universe and may be exponential in the number of primitive records. It does not implement manuscript HN grammar, BWL exactness, H-disjointness, blocker or `NoHereditary` semantics, polynomial HResolve, BudgetResolve, the complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

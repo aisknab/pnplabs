@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 540,304 | `cbbcdfe4cb2f5377a35967a8c65be306e3f9dc84cd13e9524394d542c14d5faf` |
-| `downloads/canonical-proof-report.pdf` | 540,304 | `cbbcdfe4cb2f5377a35967a8c65be306e3f9dc84cd13e9524394d542c14d5faf` |
-| `downloads/canonical_proof_report.tex` | 312,022 | `e6446d4c6fdba3f703a561828d6ae9cf9699851d77c31fda93c52b4085a8650e` |
-| `downloads/canonical-proof-report.tex` | 312,022 | `e6446d4c6fdba3f703a561828d6ae9cf9699851d77c31fda93c52b4085a8650e` |
-| `public/pnp-status.json` | 2,495,138 | `a8cbd9173e0957c3c0c7c3506e3b4fd6c866442ce983f88bcd81caa124c454c7` |
-| `public/pnp-theorem-inventory.json` | 30,700,599 | `3a74f7cca0582e109212108d437fa61d2440d3d6a7f7af44f94c80ffed13365d` |
+| `downloads/canonical_proof_report.pdf` | 541,555 | `71b6170475e415aa6741a35d1316b3d50fd0f73f9b02b93360ec10ef13d551e3` |
+| `downloads/canonical-proof-report.pdf` | 541,555 | `71b6170475e415aa6741a35d1316b3d50fd0f73f9b02b93360ec10ef13d551e3` |
+| `downloads/canonical_proof_report.tex` | 313,968 | `88c2e0b375bc64005f702a8f895e80095729273ff7a3f1b2cf57952c7afea237` |
+| `downloads/canonical-proof-report.tex` | 313,968 | `88c2e0b375bc64005f702a8f895e80095729273ff7a3f1b2cf57952c7afea237` |
+| `public/pnp-status.json` | 2,502,582 | `b7fca55c750c536bb6f6e1fd12a7f61fd7d7f83b0bbe937617f06cedbc02c11c` |
+| `public/pnp-theorem-inventory.json` | 30,792,790 | `50d246b707757a179a5428e16ced026a3143c785465beff079a62e004042a314` |
 
 The PDF must have 121 A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout ed0ba30a44abb27dbd4e5914541b9fcc8bd82950
+git -C ../pnp checkout 7080186d2b2701c9b472071cc14c04292a5dff6f
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -65,8 +65,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,422 public declarations, 15,237 theorem-kind declarations,
-7,537 assumption-free theorem-kind declarations, 15,058 excluded private auxiliaries, 286 modules, and
+Expected compiled inventory counts are 29,437 public declarations, 15,247 theorem-kind declarations,
+7,537 assumption-free theorem-kind declarations, 15,067 excluded private auxiliaries, 287 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -79,15 +79,15 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest finite HResolve coverage-ledger milestone has 10 reviewed theorem pins. Its focused
-10-declaration audit has zero empty, four `propext`-only, and six `Quot.sound` plus `propext`
-closures, with no project axiom or `Classical.choice`. Every member of an arbitrary supplied finite
-candidate family receives one fixed-priority exact, gain, blocked, or unresolved route; the generated
-ledger is sound and complete for that enumeration; and a checked duplicate-free `NoHereditary`
-sidecar excludes exact and gain for every listed candidate. The candidate universe and predicates
-remain supplied, so this is not full HResolve. The exact core merge owns Lean compilation and axiom
-evidence; PNPLabs verifies the pinned source identity and byte-exact publication artifacts and does
-not rebuild Lean.
+The latest terminal-derived HResolve support-resolver milestone has 10 reviewed theorem pins. All ten
+use only `Quot.sound` and `propext`; its focused 15-declaration audit has one empty closure and 14
+`Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. For every finite
+direct-wire candidate, Lean constructs the complete duplicate-free canonical terminal support family,
+saturates every seed, and computes either semantic-minimum evidence or a strict-equivalent-gain witness.
+The exhaustive reference search may be exponential and is not manuscript HN grammar, blocker or
+`NoHereditary` semantics, polynomial HResolve, or the complete no-lower ledger. The exact core merge
+owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source identity and byte-exact
+publication artifacts and does not rebuild Lean.
 
 The composed all-input CNF parser, NAND compiler, and locked-NAND emitter are published as
 `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold`. Its one reviewed pin

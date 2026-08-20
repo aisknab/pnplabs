@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `ed0ba30a44abb27dbd4e5914541b9fcc8bd82950`. Its generated status payload is current
+core commit `7080186d2b2701c9b472071cc14c04292a5dff6f`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the 121-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `ed0ba30a44abb27dbd4e5914541b9fcc8bd82950` (tree `c5b783f5bb02e59a5601921b294c7c4872d29ed5`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, and the finite supplied HResolve classifier, sound-and-complete route ledger, and checked `NoHereditary` sidecar. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,003 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `7080186d2b2701c9b472071cc14c04292a5dff6f` (tree `4f42045af939c79fdb3f5bfd6f2ed8ea4c70ef9c`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the finite supplied HResolve coverage ledger, and the terminal-derived support resolver. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,013 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 145 of 147 scoped milestone rows are earned. The newest result gives every member of an arbitrary supplied finite HResolve family one fixed-priority exact, gain, blocked, or unresolved route, proves the generated ledger sound and complete, and checks a duplicate-free `NoHereditary` sidecar that excludes exact and gain for every listed candidate. The candidate universe and exact, gain, and blocker predicates remain supplied. Full HResolve, the complete no-lower ledger, BudgetResolve, normalization, other named obstructions, saturation, replay, unconditional HB, encoded-size and runtime bounds, global ZeroSlack, and polynomial PCCMin remain open. Two global rows, four project axioms, and five blockers remain. |
+| Generated status | `public/pnp-status.json` | 146 of 148 scoped milestone rows are earned. The newest result constructs the complete duplicate-free canonical terminal support family for every finite direct-wire candidate, saturates every seed, and computes either semantic-minimum evidence or a strict-equivalent-gain witness. The exhaustive reference search may be exponential. Manuscript HN grammar, BWL exactness, H-disjointness, blocker and `NoHereditary` semantics, polynomial HResolve, the complete no-lower ledger, BudgetResolve, unconditional HB, global ZeroSlack, and polynomial PCCMin remain open. Two global rows, four project axioms, and five blockers remain. |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 121-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
