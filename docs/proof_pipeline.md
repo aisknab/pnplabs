@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,028 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,032 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,574 public declarations;
-- 15,298 theorem-kind declarations;
+- 29,584 public declarations;
+- 15,306 theorem-kind declarations;
 - 7,548 assumption-free theorem-kind declarations;
-- 289 source-closure modules;
+- 290 source-closure modules;
 - 15,104 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -198,6 +198,7 @@ The one hundred and forty-eight earned scopes are:
 | Terminal-derived HResolve support resolver | For every finite direct-wire candidate and profile-width model, Lean constructs the complete duplicate-free family of canonical terminal support seeds, saturates every seed in the candidate-derived terminal system, and computes either an exact route with semantic-minimum evidence or a gain route with a strict-equivalent-gain witness. All ten reviewed pins use `Quot.sound` plus `propext`. The focused 15-declaration audit has one empty closure and 14 `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The reference search exhausts the complete finite terminal support universe and may be exponential in the number of primitive records. It does not implement manuscript HN grammar, BWL exactness, H-disjointness, blocker or `NoHereditary` semantics, polynomial HResolve, BudgetResolve, the complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Finite terminal budget-envelope resolver | For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural gate and saturated-record caps, Lean scans every canonical terminal support seed, recomputes nonempty gate and interface feasibility plus both caps, and returns a feasible semantic minimum, a feasible strict equivalent gain, or complete `NoBudget` exclusion. All seven reviewed pins use `Quot.sound` plus `propext`. The focused 15-declaration audit has one empty closure and 14 `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The caps remain supplied, and complete subset enumeration, candidate-derived saturation, and reference minimization may be exponential. This does not implement manuscript HN/BUD grammar, BWL or its budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, the complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Finite terminal budget no-lower ledger | For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural resource caps, Lean classifies every canonical terminal support as exact, strict gain, or `NoBudget`, materializes the complete route ledger, and proves that accepted exhaustive coverage makes every budget-feasible governed support a semantic minimum while excluding every feasible strict-equivalent gain. All eight reviewed pins use `Quot.sound` plus `propext`. The focused 13-declaration audit has one empty closure and 12 `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The caps remain supplied, and complete terminal subset enumeration, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This closes only the finite terminal-derived budget branch. It does not implement manuscript HN/BUD grammar, BWL or its budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
+| Finite terminal Packet-budget no-lower composition | For every finite direct-wire candidate, candidate-derived saturation model, supplied caps, and supplied Packet family and tables over that same candidate, one Boolean recomputes the complete canonical budget-support no-lower ledger and the checked five-row Packet no-lower ledger. Acceptance makes every governed budget-feasible canonical support a semantic minimum, excludes every feasible strict-equivalent gain, and excludes a positive Packet conclusion. All four reviewed pins use `Quot.sound` plus `propext`. The focused six-declaration audit has all six declarations in that permitted closure, with no project axiom or `Classical.choice`. | The caps, Packet family, typed payloads, ranks, realizer claims, activity environment, and dependency tables remain supplied. This is a finite two-branch composition, not the complete no-lower ledger. It does not construct Packet data from terminal data, implement HN/BUD grammar, polynomial HResolve or BudgetResolve, cover normalization, remaining named routes, saturation, or replay, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -229,7 +230,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 124-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 125-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

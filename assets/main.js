@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-172";
-const STATUS_SHA256 = '60a71e568e5bff334b0c71ceb7059f98656e122eca0cce8f2649bef44e9d0282';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-172";
-const FORMAL_PUBLICATION_MAP_SHA256 = "f4c7d7d4191767dccc3719fe3626ebfc35940706c0eb7ecc9ff56729758c9b71";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-173";
+const STATUS_SHA256 = 'b85c973bcf4385efa4899dff2c9c8a2a68c9f554725c21b3d707d04414e1cd4f';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-173";
+const FORMAL_PUBLICATION_MAP_SHA256 = "6536e6bd51b8bfe3ac561c7c93c10ea30a3a82bb97fd6b6947499ec41ae5580a";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-172";
-const INVENTORY_SHA256 = "846863be54eb7c95cd51297e7c3445e508abb837449a0c9c90885f64e8c6d821";
-const SOURCE_CLOSURE_SHA256 = "11e4dd1bb6fcc92bce76787ba93a4297fb290c02c05bf52b6f127a32ef05d071";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-173";
+const INVENTORY_SHA256 = "aee7598d21dadadc37f541b94dfc19acd1bb08840ef2b9c234c39b236e77db76";
+const SOURCE_CLOSURE_SHA256 = "a3c7d3419433bfb2ce7f27a2a3b34edee657e7283ba818b7e16db7270f720f4b";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29574,
-  theorems: 15298,
+  declarations: 29584,
+  theorems: 15306,
   assumptionFreeTheorems: 7548,
   excludedPrivateDeclarations: 15104,
-  modules: 289,
+  modules: 290,
   axioms: 4,
 });
 
@@ -4564,6 +4564,12 @@ const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.TerminalBudgetNoLowerLedgerAccepted.iff_all_feasible_minimum",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetNoLowerLedger","36c035fb88bd174cb5dbc51ee20c9c4938f12b37a4af9c8623f8a1c430aa351c"],
   ["PNP.DirectWire.terminal_budget_no_lower_ledger_excludes_feasible_gain",["Quot.sound","propext"],"PNP.ResidualTerminalBudgetNoLowerLedger","9a3865e01a924f3ae5b649153cbf23c6e9f220b19906b8f28c525cc1b0bc01bb"],
 ]);
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_true_iff",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerComposition","87b0c2ea3159533827c4a1a3f4c5db18a493304bb2db3d85990bbd7385105bfd"],
+  ["PNP.DirectWire.terminal_packet_budget_no_lower_composition_excludes_gain_and_packet",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerComposition","bc323316e68622fca406fce8fe7bd74be6c9c15fcc13c9118f36a93a1b4ed451"],
+  ["PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_false_of_feasible_gain",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerComposition","8e391c19bc0edcf5a2ddb5f22547cf9a98f3197c12901ebdf250339b01550007"],
+  ["PNP.DirectWire.TerminalBN6PacketConclusion.checkTerminalPacketBudgetNoLowerComposition_eq_false",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerComposition","224e93639a4b61fa8be116750fd9bd29039d4f8cdc0cdf969338dfd4cb596cbb"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5498,6 +5504,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalBudgetNoLowerLedgerFormalized: false,
   leanResidualTerminalBudgetNoLowerLedgerAxiomAuditPassed: false,
   leanResidualTerminalBudgetNoLowerLedgerScope: null,
+  leanResidualTerminalPacketBudgetNoLowerCompositionFormalized: false,
+  leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed: false,
+  leanResidualTerminalPacketBudgetNoLowerCompositionScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -6072,6 +6081,9 @@ leanResidualTerminalBudgetEnvelopeResolverScope = ${payload.leanResidualTerminal
 leanResidualTerminalBudgetNoLowerLedgerFormalized = ${payload.leanResidualTerminalBudgetNoLowerLedgerFormalized ?? false}
 leanResidualTerminalBudgetNoLowerLedgerAxiomAuditPassed = ${payload.leanResidualTerminalBudgetNoLowerLedgerAxiomAuditPassed ?? false}
 leanResidualTerminalBudgetNoLowerLedgerScope = ${payload.leanResidualTerminalBudgetNoLowerLedgerScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalBudgetNoLowerLedgerScope)}
+leanResidualTerminalPacketBudgetNoLowerCompositionFormalized = ${payload.leanResidualTerminalPacketBudgetNoLowerCompositionFormalized ?? false}
+leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed = ${payload.leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed ?? false}
+leanResidualTerminalPacketBudgetNoLowerCompositionScope = ${payload.leanResidualTerminalPacketBudgetNoLowerCompositionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPacketBudgetNoLowerCompositionScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -6959,6 +6971,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketBudgetNoLowerComposition =
+    RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7511,6 +7530,9 @@ function validateInventory(inventory) {
     && residualTerminalBudgetNoLowerLedger.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketBudgetNoLowerComposition.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -7909,6 +7931,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalBudgetNoLowerLedgerMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-budget-no-lower-ledger'
+  );
+  const residualTerminalPacketBudgetNoLowerCompositionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-budget-no-lower-composition'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9301,6 +9326,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalBudgetNoLowerLedgerFormalized === true
     && status.leanResidualTerminalBudgetNoLowerLedgerAxiomAuditPassed === true
     && status.leanResidualTerminalBudgetNoLowerLedgerScope === "all-finite-direct-wire-candidates-terminal-derived-budget-feasible-gain-exclusion-over-complete-canonical-support-ledger"
+
+    && residualTerminalPacketBudgetNoLowerCompositionMilestone?.classification === "formalized-residual-terminal-packet-budget-no-lower-composition"
+    && residualTerminalPacketBudgetNoLowerCompositionMilestone.status === "formalized-residual-terminal-packet-budget-no-lower-composition"
+    && residualTerminalPacketBudgetNoLowerCompositionMilestone.scope === "For every finite direct-wire candidate, candidate-derived saturation model, supplied caps, and supplied Packet family and tables over that same direct-wire candidate, one Boolean recomputes both finite ledgers. Acceptance makes every governed budget-feasible canonical support a semantic minimum, excludes every feasible strict equivalent gain, and excludes a positive Packet conclusion."
+    && residualTerminalPacketBudgetNoLowerCompositionMilestone.nonClaim === "The caps, Packet family, typed payloads, ranks, realizer claims, activity environment, and dependency tables remain supplied. This is a finite two-branch composition, not the complete no-lower ledger. It does not construct Packet data from terminal data, implement HN/BUD grammar, polynomial HResolve or BudgetResolve, cover normalization, remaining named routes, saturation, or replay, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPacketBudgetNoLowerCompositionMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketBudgetNoLowerCompositionMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketBudgetNoLowerCompositionFormalized === true
+    && status.leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketBudgetNoLowerCompositionScope === "all-finite-direct-wire-candidates-same-candidate-terminal-budget-and-Packet-two-branch-no-lower-gain-and-positive-Packet-exclusion"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

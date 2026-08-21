@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "2d66e5a7c3468b51e019c638f43780e7acfb8f93";
-const REVIEWED_CORE_TREE = "ee59e6669ba9aa9df52997cf86aa68e73415d349";
-const REVIEWED_PROOF_COMMIT = "a20556f5a9a87bea9c2455c99a9cc137aec40a5c";
+const REVIEWED_CORE_COMMIT = "f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a";
+const REVIEWED_CORE_TREE = "855b8c6001b757836b65b80e1107f1043131251e";
+const REVIEWED_PROOF_COMMIT = "6304e55d57275d2f8ae031730e17b4319a5bc0f2";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4084,6 +4084,13 @@ const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_RELEASE_IDENTITIES = {
   residualTerminalBudgetNoLowerLedgerNamedEndpointTheorem: "PNP.DirectWire.terminal_budget_no_lower_ledger_excludes_feasible_gain"
 };
 
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_RELEASE_IDENTITIES = {
+  residualTerminalPacketBudgetNoLowerCompositionCheckIffTheorem: "PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_true_iff",
+  residualTerminalPacketBudgetNoLowerCompositionNamedEndpointTheorem: "PNP.DirectWire.terminal_packet_budget_no_lower_composition_excludes_gain_and_packet",
+  residualTerminalPacketBudgetNoLowerCompositionGainRejectionTheorem: "PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_false_of_feasible_gain",
+  residualTerminalPacketBudgetNoLowerCompositionPacketRejectionTheorem: "PNP.DirectWire.TerminalBN6PacketConclusion.checkTerminalPacketBudgetNoLowerComposition_eq_false"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -5653,6 +5660,16 @@ const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS = {
 const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_SCOPE = "all-finite-direct-wire-candidates-terminal-derived-budget-feasible-gain-exclusion-over-complete-canonical-support-ledger";
 const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_MILESTONE_SCOPE = "For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural resource caps, Lean classifies every canonical terminal support as exact, strict gain, or NoBudget, materializes the complete route ledger, and proves that accepted exhaustive coverage makes every budget-feasible governed support a semantic minimum while excluding every feasible strict equivalent gain.";
 const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_NON_CLAIM = "The budget caps remain supplied, and complete terminal subset enumeration, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This closes only the finite terminal-derived budget branch. It does not implement the manuscript's HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS = {
+  "PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_true_iff": { hash: "87b0c2ea3159533827c4a1a3f4c5db18a493304bb2db3d85990bbd7385105bfd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerComposition" },
+  "PNP.DirectWire.terminal_packet_budget_no_lower_composition_excludes_gain_and_packet": { hash: "bc323316e68622fca406fce8fe7bd74be6c9c15fcc13c9118f36a93a1b4ed451", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerComposition" },
+  "PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_false_of_feasible_gain": { hash: "8e391c19bc0edcf5a2ddb5f22547cf9a98f3197c12901ebdf250339b01550007", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerComposition" },
+  "PNP.DirectWire.TerminalBN6PacketConclusion.checkTerminalPacketBudgetNoLowerComposition_eq_false": { hash: "224e93639a4b61fa8be116750fd9bd29039d4f8cdc0cdf969338dfd4cb596cbb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerComposition" }
+};
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_SCOPE = "all-finite-direct-wire-candidates-same-candidate-terminal-budget-and-Packet-two-branch-no-lower-gain-and-positive-Packet-exclusion";
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire candidate, candidate-derived saturation model, supplied caps, and supplied Packet family and tables over that same direct-wire candidate, one Boolean recomputes both finite ledgers. Acceptance makes every governed budget-feasible canonical support a semantic minimum, excludes every feasible strict equivalent gain, and excludes a positive Packet conclusion.";
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_NON_CLAIM = "The caps, Packet family, typed payloads, ranks, realizer claims, activity environment, and dependency tables remain supplied. This is a finite two-branch composition, not the complete no-lower ledger. It does not construct Packet data from terminal data, implement HN/BUD grammar, polynomial HResolve or BudgetResolve, cover normalization, remaining named routes, saturation, or replay, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -8037,6 +8054,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS).every(([name, row]) => residualTerminalBudgetNoLowerLedgerHashes[name] === row.hash)) failures.push("current manifest residual terminal budget no-lower ledger fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal budget no-lower ledger theorem identity mismatch");
 
+  if (!(earned.residualTerminalPacketBudgetNoLowerCompositionFormalized === true
+      && earned.residualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed === true
+      && earned.residualTerminalPacketBudgetNoLowerCompositionAuditedDeclarationCount === 6
+      && earned.residualTerminalPacketBudgetNoLowerCompositionEmptyAxiomDeclarationCount === 0
+      && earned.residualTerminalPacketBudgetNoLowerCompositionPropextOnlyDeclarationCount === 0
+      && earned.residualTerminalPacketBudgetNoLowerCompositionQuotSoundOnlyDeclarationCount === 0
+      && earned.residualTerminalPacketBudgetNoLowerCompositionPropextQuotSoundDeclarationCount === 6
+      && earned.residualTerminalPacketBudgetNoLowerCompositionScope === RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_SCOPE
+      && earned.zeroSlackPositiveSlackContradictionFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal Packet-budget no-lower composition boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalPacketBudgetNoLowerCompositionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalPacketBudgetNoLowerCompositionProjectAxiomClosure)
+      || earned.residualTerminalPacketBudgetNoLowerCompositionProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal Packet-budget no-lower composition axiom closure mismatch");
+  const residualTerminalPacketBudgetNoLowerCompositionHashes = earned.residualTerminalPacketBudgetNoLowerCompositionTheoremKernelTypeSha256;
+  if (!residualTerminalPacketBudgetNoLowerCompositionHashes || Object.keys(residualTerminalPacketBudgetNoLowerCompositionHashes).length !== 4
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS).every(([name, row]) => residualTerminalPacketBudgetNoLowerCompositionHashes[name] === row.hash)) failures.push("current manifest residual terminal Packet-budget no-lower composition fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal Packet-budget no-lower composition theorem identity mismatch");
+
 
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -8052,7 +8091,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -11063,6 +11102,40 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal budget no-lower ledger evidence mismatch");
 
+  const residualTerminalPacketBudgetNoLowerCompositionMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-packet-budget-no-lower-composition"
+  );
+  const residualTerminalPacketBudgetNoLowerCompositionNames = Object.keys(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS);
+  if (!residualTerminalPacketBudgetNoLowerCompositionMilestone
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.classification !== "formalized-residual-terminal-packet-budget-no-lower-composition"
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.status !== "formalized-residual-terminal-packet-budget-no-lower-composition"
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.scope !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_MILESTONE_SCOPE
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketBudgetNoLowerCompositionMilestone.requiredTheorems) !== JSON.stringify(residualTerminalPacketBudgetNoLowerCompositionNames)
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.earned !== true
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.allPresent !== true
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.allAssumptionFree !== false
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.allKernelTypesMatch !== true
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal Packet-budget no-lower composition publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS)) {
+    const row = residualTerminalPacketBudgetNoLowerCompositionMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal Packet-budget no-lower composition theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalPacketBudgetNoLowerCompositionFormalized === true
+      && status.leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed === true
+      && status.leanResidualTerminalPacketBudgetNoLowerCompositionScope === RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_SCOPE
+      && status.leanZeroSlackPositiveSlackContradictionFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal Packet-budget no-lower composition evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -12200,6 +12273,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal budget no-lower ledger theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal budget no-lower ledger fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal Packet-budget no-lower composition theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal Packet-budget no-lower composition fingerprint mismatch: ${name}`);
     }
 
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -14414,6 +14494,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalBudgetNoLowerLedgerPins[name] !== row.hash) {
       failures.push(`core publication map residual terminal budget no-lower ledger fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalPacketBudgetNoLowerCompositionMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-budget-no-lower-composition"
+  );
+  const residualTerminalPacketBudgetNoLowerCompositionNames = Object.keys(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS);
+  if (!residualTerminalPacketBudgetNoLowerCompositionMilestone
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.classification !== "formalized-residual-terminal-packet-budget-no-lower-composition"
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.scope !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_MILESTONE_SCOPE
+      || residualTerminalPacketBudgetNoLowerCompositionMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketBudgetNoLowerCompositionMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketBudgetNoLowerCompositionNames)) {
+    failures.push("core publication map residual terminal Packet-budget no-lower composition boundary mismatch");
+  }
+  const residualTerminalPacketBudgetNoLowerCompositionPins =
+    releaseManifest.earnedBoundary?.residualTerminalPacketBudgetNoLowerCompositionTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS)) {
+    if (!residualTerminalPacketBudgetNoLowerCompositionMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalPacketBudgetNoLowerCompositionPins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal Packet-budget no-lower composition fingerprint mismatch: ${name}`);
     }
   }
 
