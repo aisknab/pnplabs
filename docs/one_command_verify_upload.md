@@ -11,14 +11,14 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 6d598d9ef6a866f475bcc0fa0e5d1f65061524d4
+git checkout 2d66e5a7c3468b51e019c638f43780e7acfb8f93
 npm ci
 npm run formal:inventory:check
 npm run validate
 npm run report:check
 ```
 
-`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the supplied-family HResolve coverage ledger, the terminal-derived complete finite support resolver, and the finite terminal budget-envelope resolver. The newest resolver checks every canonical seed under supplied gate and saturated-record caps and returns a feasible minimum, feasible gain, or complete `NoBudget` exclusion. The caps remain supplied and the search may be exponential. It does not implement manuscript HN/BUD grammar, BWL or its dynamic program, blocker semantics, polynomial BudgetResolve, the complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the supplied-family HResolve coverage ledger, the terminal-derived complete finite support resolver, the finite terminal budget-envelope resolver, and its complete finite terminal budget no-gain ledger. The newest ledger classifies every canonical support as exact, strict gain, or `NoBudget`; acceptance makes every budget-feasible governed support a semantic minimum and excludes every feasible strict-equivalent gain. The caps remain supplied and the search may be exponential. This closes only the finite terminal-derived budget branch. It does not implement manuscript HN/BUD grammar, BWL or its dynamic program, blocker semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 
