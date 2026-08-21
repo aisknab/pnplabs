@@ -573,6 +573,18 @@ const HN_BWL_CERTIFIED_PATH_MINIMUM_PROPEXT_ONLY_THEOREMS = new Set([
   'PNP.DirectWire.terminalHNBWLMinimum?_exists_of_ne_nil',
   'PNP.DirectWire.terminal_hn_bwl_certified_path_minimum_complete',
 ]);
+const HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.checkHDisjoint_eq_true_iff': '618f82dee094b60602bd719d146f6134b6b4847f7cd6d1b0aaa608a3132a1e65',
+  'PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.minimum?_complete': '20fb52927e7c5f7ca6a4bf9e9af307a878d2f60b46fef3a3a2a78707f9ad4bbf',
+  'PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_subset': '8aeb7125af254557137e52e763908fbb8f46fdc1cab001f4a49ae517e34c0b6a',
+  'PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_nodup': 'a133a454e5f3700d5c644bbab7f81649462c36bb77228caf96418361e4613aa4',
+  'PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_pairwise': '8327cf69dc20a587804765d4747097718daad235528d803169d22462c0f9c46b',
+  'PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_maximal': '53998173b2aa4fcdf6c200d830bd4081c9e7857c181469e3873372c822cadeae',
+  'PNP.DirectWire.terminal_hresolve_certified_path_family_complete': 'afa671a255c4e3e1e840ad632863d9441604275906436d6ff40462af4ce008e9',
+});
+const HRESOLVE_CERTIFIED_PATH_FAMILY_PROPEXT_ONLY_THEOREMS = new Set([
+  'PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.minimum?_complete',
+]);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -3221,6 +3233,79 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumScope,
   );
   assert.ok(index.earnedMilestones.includes(hnBwlCertifiedPathMinimumMilestone.id));
+
+  const hresolveCertifiedPathFamilyMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hresolve-certified-path-family');
+  const hresolveCertifiedPathFamilyHashes = release.earnedBoundary
+    .residualTerminalHResolveCertifiedPathFamilyTheoremKernelTypeSha256;
+  assert.ok(hresolveCertifiedPathFamilyMilestone);
+  assert.equal(hresolveCertifiedPathFamilyMilestone.earned, true);
+  assert.equal(hresolveCertifiedPathFamilyMilestone.allPresent, true);
+  assert.equal(hresolveCertifiedPathFamilyMilestone.allAssumptionFree, false);
+  assert.equal(hresolveCertifiedPathFamilyMilestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(hresolveCertifiedPathFamilyMilestone.allKernelTypesMatch, true);
+  assert.equal(hresolveCertifiedPathFamilyMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    hresolveCertifiedPathFamilyHashes,
+    HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    hresolveCertifiedPathFamilyMilestone.requiredTheorems,
+    Object.keys(HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyAuditedDeclarationCount, 13);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyEmptyAxiomDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyPropextOnlyDeclarationCount, 1);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyPropextQuotSoundDeclarationCount, 6);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hresolveCertifiedPathFamilyMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(
+      theoremRow.axioms,
+      HRESOLVE_CERTIFIED_PATH_FAMILY_PROPEXT_ONLY_THEOREMS.has(theoremRow.name)
+        ? ['propext']
+        : ['Quot.sound', 'propext'],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(hresolveCertifiedPathFamilyMilestone.scope, /maximal pairwise H-disjoint selected family/u);
+  assert.match(hresolveCertifiedPathFamilyMilestone.scope, /four-coordinate certified-path minimum/u);
+  assert.match(hresolveCertifiedPathFamilyMilestone.scope, /selected blocker/u);
+  assert.match(hresolveCertifiedPathFamilyMilestone.nonClaim, /remain supplied inputs/u);
+  assert.match(hresolveCertifiedPathFamilyMilestone.nonClaim, /HB rank semantics/u);
+  assert.match(hresolveCertifiedPathFamilyMilestone.nonClaim, /full or polynomial HResolve/u);
+  assert.equal(status.leanResidualTerminalHResolveCertifiedPathFamilyFormalized, true);
+  assert.equal(status.leanResidualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHResolveCertifiedPathFamilyScope,
+    release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hresolveCertifiedPathFamilyMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);

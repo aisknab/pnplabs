@@ -11,14 +11,14 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout fe62125f12511d042b119c9f17ceb202d03448bb
+git checkout ca501ca3df44c8d19933e59fe132612bea5422c2
 npm ci
 npm run formal:inventory:check
 npm run validate
 npm run report:check
 ```
 
-`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, and an exact four-coordinate minimum over a supplied certified-path family. The path family, governed predicate, and completeness premise remain supplied. This is not terminal path derivation, manuscript HN grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, the full BWL theorem, full or polynomial HResolve, the complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
+`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks the distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. The current earned scope includes the concrete `CNFSAT ∈ NP` theorem, literal compilers, typed locked-NAND reductions, the residual and terminal chains, the finite Packet selector and HB layers, all reflected Packet classifier fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact four-coordinate minimum over a supplied certified-path family, and a maximal H-disjoint family over supplied proof-bearing candidates with selected blocker routes. The candidates, paths, footprints, governed predicates, completeness proofs, and coherence proofs remain supplied. This is not terminal derivation, manuscript HN grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, blocker-to-HB-rank semantics, full or polynomial HResolve, the complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, or the root theorem. `PNP.Main.p_eq_np` is absent; four project-specific axioms and five blockers remain.
 
 ## Freeze controls
 
