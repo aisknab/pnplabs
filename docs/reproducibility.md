@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 550,135 | `4b2fc7d012c97719f2f5d73842aeaed05ee9363f3f5b284a2ea6f9be54007b68` |
-| `downloads/canonical-proof-report.pdf` | 550,135 | `4b2fc7d012c97719f2f5d73842aeaed05ee9363f3f5b284a2ea6f9be54007b68` |
-| `downloads/canonical_proof_report.tex` | 323,330 | `b8e6374b19d770c73bbf108342121a4739e2cd04aff870385084be242fe2666a` |
-| `downloads/canonical-proof-report.tex` | 323,330 | `b8e6374b19d770c73bbf108342121a4739e2cd04aff870385084be242fe2666a` |
-| `public/pnp-status.json` | 2,540,587 | `17cb64ebead1153df4a3ee044eae620f5bf6ad487004a60b415ddb0474194d3a` |
-| `public/pnp-theorem-inventory.json` | 31,660,157 | `b5c50100ca3357c488a70c82f3a9cfc157cbc15aea3581c6266bdf0950f9b343` |
+| `downloads/canonical_proof_report.pdf` | 551,205 | `8ea5707807ae9c9f1bde7b7928f02088504c6c9ce47e79c9ace81a47526467a8` |
+| `downloads/canonical-proof-report.pdf` | 551,205 | `8ea5707807ae9c9f1bde7b7928f02088504c6c9ce47e79c9ace81a47526467a8` |
+| `downloads/canonical_proof_report.tex` | 325,419 | `249dd194811b2292abe0c757f4950ce72885692128eca47a7b89df5c54468962` |
+| `downloads/canonical-proof-report.tex` | 325,419 | `249dd194811b2292abe0c757f4950ce72885692128eca47a7b89df5c54468962` |
+| `public/pnp-status.json` | 2,546,974 | `fa7f06389953e0191d70899958859a8b01ba71d6c7b855003fe29b866bb5ad07` |
+| `public/pnp-theorem-inventory.json` | 32,209,928 | `5ea73993e56570d87fa4d84b4c574b02125864847c1c4922592dbb7fa3159393` |
 
 The PDF must have 126 A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout fe62125f12511d042b119c9f17ceb202d03448bb
+git -C ../pnp checkout ca501ca3df44c8d19933e59fe132612bea5422c2
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -66,8 +66,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,836 public declarations, 15,403 theorem-kind declarations,
-7,620 assumption-free theorem-kind declarations, 15,131 excluded private auxiliaries, 292 modules, and
+Expected compiled inventory counts are 29,879 public declarations, 15,421 theorem-kind declarations,
+7,628 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 293 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -80,16 +80,18 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest terminal HN BWL certified-path minimum has 15 reviewed theorem pins. Seven have empty
-axiom closures and eight use only `propext`; its focused 27-declaration audit has nineteen empty
-closures and eight `propext`-only closures, with no project axiom or `Classical.choice`. For every
-nonempty finite supplied family of certified hereditary paths, the selector returns the exact
-lexicographic minimum by realized cost, residual rank, frontier deviation, and direct-wire code.
-An explicit completeness premise extends its lower bound to the supplied governed predicate. The
-family, predicate, and premise remain supplied. This is not terminal path derivation, manuscript HN
-grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, the full
-BWL theorem, full or polynomial HResolve, the complete no-lower ledger, unconditional ZeroSlack, or
-polynomial PCCMin. The exact core merge owns Lean
+The latest terminal HResolve certified-path family has 7 reviewed theorem pins. One uses only
+`propext` and six use only `Quot.sound` plus `propext`; its focused 13-declaration audit has six empty,
+one `propext`-only, and six `Quot.sound` plus `propext` closures, with no project axiom or
+`Classical.choice`. For every duplicate-free finite supplied family of proof-bearing hereditary
+candidates, the constructor selects a duplicate-free maximal pairwise H-disjoint family. Every
+selected candidate preserves an exact certified-path minimum and footprint-coherence evidence, and
+every rejected candidate has a selected blocker carrying its first interference route. The candidates,
+paths, footprints, governed predicates, completeness proofs, and coherence proofs remain supplied.
+This is not terminal derivation, manuscript HN grammar soundness or completeness, LN confluence,
+ParseOrExit, independent leaf tightness, the full NoHereditary sidecar, blocker-to-HB-rank semantics,
+full or polynomial HResolve, the complete no-lower ledger, unconditional ZeroSlack, or polynomial
+PCCMin. The exact core merge owns Lean
 compilation and axiom evidence; PNPLabs verifies the pinned source identity and byte-exact
 publication artifacts and does not rebuild Lean.
 

@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "fe62125f12511d042b119c9f17ceb202d03448bb";
-const REVIEWED_CORE_TREE = "680292d98320fa9a60bfff9abb2bac5bcd4333ca";
-const REVIEWED_PROOF_COMMIT = "6be83b0938ac9a490c6390e2ef8ecf72f5c8deda";
+const REVIEWED_CORE_COMMIT = "ca501ca3df44c8d19933e59fe132612bea5422c2";
+const REVIEWED_CORE_TREE = "ceab2cfa341b7437c01a98772912a464902451eb";
+const REVIEWED_PROOF_COMMIT = "bd287cdc8a4ce5caf56a04fcb0197d4a743d8f6d";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4122,6 +4122,16 @@ const RESIDUAL_TERMINAL_HN_BWL_CERTIFIED_PATH_MINIMUM_RELEASE_IDENTITIES = {
   residualTerminalHNBWLCertifiedPathMinimumNamedEndpointTheorem: "PNP.DirectWire.terminal_hn_bwl_certified_path_minimum_complete"
 };
 
+const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_RELEASE_IDENTITIES = {
+  residualTerminalHResolveCertifiedPathFamilyCheckHDisjointIffTheorem: "PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.checkHDisjoint_eq_true_iff",
+  residualTerminalHResolveCertifiedPathFamilyMinimumCompleteTheorem: "PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.minimum?_complete",
+  residualTerminalHResolveCertifiedPathFamilyGreedySubsetTheorem: "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_subset",
+  residualTerminalHResolveCertifiedPathFamilyGreedyNodupTheorem: "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_nodup",
+  residualTerminalHResolveCertifiedPathFamilyGreedyPairwiseTheorem: "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_pairwise",
+  residualTerminalHResolveCertifiedPathFamilyGreedyMaximalTheorem: "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_maximal",
+  residualTerminalHResolveCertifiedPathFamilyNamedEndpointTheorem: "PNP.DirectWire.terminal_hresolve_certified_path_family_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -5739,6 +5749,19 @@ const RESIDUAL_TERMINAL_HN_BWL_CERTIFIED_PATH_MINIMUM_SCOPE = "all-nonempty-fini
 const RESIDUAL_TERMINAL_HN_BWL_CERTIFIED_PATH_MINIMUM_MILESTONE_SCOPE = "For every nonempty finite supplied family of certified hereditary paths, Lean computes the exact four-coordinate lexicographic minimum by realized cost, residual rank, frontier deviation, and direct-wire code. The selected member preserves semantic fidelity, frontier fidelity, nonempty block coverage, and one of four HN shapes; an explicit completeness premise extends its lower bound to every path in the supplied governed predicate.";
 const RESIDUAL_TERMINAL_HN_BWL_CERTIFIED_PATH_MINIMUM_NON_CLAIM = "The certified path family, governed predicate, and family completeness remain supplied inputs. This milestone does not derive accepted paths from terminal data, prove shape-grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, or the full BWL theorem, solve a leaf, construct the H0-H4 NoHereditary sidecar, implement full HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial generation and runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
+const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS = {
+  "PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.checkHDisjoint_eq_true_iff": { hash: "618f82dee094b60602bd719d146f6134b6b4847f7cd6d1b0aaa608a3132a1e65", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" },
+  "PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.minimum?_complete": { hash: "20fb52927e7c5f7ca6a4bf9e9af307a878d2f60b46fef3a3a2a78707f9ad4bbf", axioms: ["propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_subset": { hash: "8aeb7125af254557137e52e763908fbb8f46fdc1cab001f4a49ae517e34c0b6a", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_nodup": { hash: "a133a454e5f3700d5c644bbab7f81649462c36bb77228caf96418361e4613aa4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_pairwise": { hash: "8327cf69dc20a587804765d4747097718daad235528d803169d22462c0f9c46b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_maximal": { hash: "53998173b2aa4fcdf6c200d830bd4081c9e7857c181469e3873372c822cadeae", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" },
+  "PNP.DirectWire.terminal_hresolve_certified_path_family_complete": { hash: "afa671a255c4e3e1e840ad632863d9441604275906436d6ff40462af4ce008e9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveCertifiedPathFamily" }
+};
+const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_SCOPE = "all-duplicate-free-finite-supplied-proof-bearing-hereditary-candidates-maximal-H-disjoint-family-with-exact-certified-path-minima-and-selected-blocker-routes";
+const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_MILESTONE_SCOPE = "For every duplicate-free finite supplied family of proof-bearing hereditary candidates, Lean constructs a duplicate-free maximal pairwise H-disjoint selected family. Every selected candidate has an exact four-coordinate certified-path minimum preserving semantic, frontier, block, shape, and footprint-coherence evidence; every rejected candidate has a selected blocker carrying the exact first interference route.";
+const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_NON_CLAIM = "The candidates, certified paths, hereditary footprints, governed predicates, family-completeness proofs, and path-to-footprint coherence proofs remain supplied inputs. This milestone does not derive them from terminal data, prove HN grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, or the H0-H4 NoHereditary sidecar, connect blockers to HB rank semantics, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -5996,10 +6019,13 @@ function safeRelativePath(value, label, failures) {
   return true;
 }
 
-function runGit(sourceDir, args, encoding = "utf8") {
+const MIN_GIT_OUTPUT_BUFFER_BYTES = 32 * 1024 * 1024;
+const GIT_OUTPUT_BUFFER_HEADROOM_BYTES = 1024 * 1024;
+
+function runGit(sourceDir, args, encoding = "utf8", maxBuffer = MIN_GIT_OUTPUT_BUFFER_BYTES) {
   const result = spawnSync("git", ["-C", sourceDir, ...args], {
     encoding,
-    maxBuffer: 32 * 1024 * 1024,
+    maxBuffer,
     stdio: ["ignore", "pipe", "pipe"]
   });
   return {
@@ -6019,8 +6045,12 @@ function gitText(sourceDir, args, label, failures) {
   return result.stdout.trim();
 }
 
-function gitBlob(sourceDir, ref, targetPath, label, failures) {
-  const result = runGit(sourceDir, ["show", `${ref}:${targetPath}`], null);
+function gitBlob(sourceDir, ref, targetPath, label, failures, expectedBytes = 0) {
+  const maxBuffer = Math.max(
+    MIN_GIT_OUTPUT_BUFFER_BYTES,
+    expectedBytes + GIT_OUTPUT_BUFFER_HEADROOM_BYTES
+  );
+  const result = runGit(sourceDir, ["show", `${ref}:${targetPath}`], null, maxBuffer);
   if (!result.ok) {
     const stderr = Buffer.isBuffer(result.stderr) ? result.stderr.toString("utf8") : result.stderr;
     failures.push(`${label}: missing path ${ref}:${targetPath}: ${(stderr || "git show failed").trim()}`);
@@ -8188,6 +8218,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_HN_BWL_CERTIFIED_PATH_MINIMUM_THEOREMS).every(([name, row]) => residualTerminalHNBWLCertifiedPathMinimumHashes[name] === row.hash)) failures.push("current manifest residual terminal HN BWL certified-path-minimum fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_HN_BWL_CERTIFIED_PATH_MINIMUM_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal HN BWL certified-path-minimum theorem identity mismatch");
 
+  if (!(earned.residualTerminalHResolveCertifiedPathFamilyFormalized === true
+      && earned.residualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed === true
+      && earned.residualTerminalHResolveCertifiedPathFamilyAuditedDeclarationCount === 13
+      && earned.residualTerminalHResolveCertifiedPathFamilyEmptyAxiomDeclarationCount === 6
+      && earned.residualTerminalHResolveCertifiedPathFamilyPropextOnlyDeclarationCount === 1
+      && earned.residualTerminalHResolveCertifiedPathFamilyQuotSoundOnlyDeclarationCount === 0
+      && earned.residualTerminalHResolveCertifiedPathFamilyPropextQuotSoundDeclarationCount === 6
+      && earned.residualTerminalHResolveCertifiedPathFamilyScope === RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_SCOPE
+      && earned.zeroSlackPositiveSlackContradictionFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal HResolve certified-path-family boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalHResolveCertifiedPathFamilyAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalHResolveCertifiedPathFamilyProjectAxiomClosure)
+      || earned.residualTerminalHResolveCertifiedPathFamilyProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal HResolve certified-path-family axiom closure mismatch");
+  const residualTerminalHResolveCertifiedPathFamilyHashes = earned.residualTerminalHResolveCertifiedPathFamilyTheoremKernelTypeSha256;
+  if (!residualTerminalHResolveCertifiedPathFamilyHashes || Object.keys(residualTerminalHResolveCertifiedPathFamilyHashes).length !== 7
+      || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS).every(([name, row]) => residualTerminalHResolveCertifiedPathFamilyHashes[name] === row.hash)) failures.push("current manifest residual terminal HResolve certified-path-family fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal HResolve certified-path-family theorem identity mismatch");
+
 
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -8203,7 +8255,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -11316,6 +11368,40 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal HN BWL certified-path-minimum evidence mismatch");
 
+  const residualTerminalHResolveCertifiedPathFamilyMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-certified-path-family"
+  );
+  const residualTerminalHResolveCertifiedPathFamilyNames = Object.keys(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS);
+  if (!residualTerminalHResolveCertifiedPathFamilyMilestone
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.classification !== "formalized-residual-terminal-hresolve-certified-path-family"
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.status !== "formalized-residual-terminal-hresolve-certified-path-family"
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_MILESTONE_SCOPE
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveCertifiedPathFamilyMilestone.requiredTheorems) !== JSON.stringify(residualTerminalHResolveCertifiedPathFamilyNames)
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.earned !== true
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.allPresent !== true
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.allAssumptionFree !== false
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.allKernelTypesMatch !== true
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal HResolve certified-path-family publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS)) {
+    const row = residualTerminalHResolveCertifiedPathFamilyMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal HResolve certified-path-family theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalHResolveCertifiedPathFamilyFormalized === true
+      && status.leanResidualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed === true
+      && status.leanResidualTerminalHResolveCertifiedPathFamilyScope === RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_SCOPE
+      && status.leanZeroSlackPositiveSlackContradictionFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal HResolve certified-path-family evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -12476,6 +12562,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal HN BWL certified-path-minimum fingerprint mismatch: ${name}`);
     }
 
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal HResolve certified-path-family theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal HResolve certified-path-family fingerprint mismatch: ${name}`);
+    }
+
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
       const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
@@ -12573,7 +12666,18 @@ export function validateAuditTargets(options = {}) {
   for (const target of targetManifest.targets || []) {
     if (target.refClass === "publicCheckout") continue;
     const refInfo = targetManifest.refs[target.refClass];
-    const blob = gitBlob(sourceDir, refInfo.ref, target.path, target.id, failures);
+    const mirrorTarget = (targetManifest.targets || []).find(
+      (candidate) => candidate.mirrorOf === target.id
+    );
+    const expectedBytes = mirrorTarget ? contents.get(mirrorTarget.id)?.length || 0 : 0;
+    const blob = gitBlob(
+      sourceDir,
+      refInfo.ref,
+      target.path,
+      target.id,
+      failures,
+      expectedBytes
+    );
     if (blob !== null) {
       contents.set(target.id, blob);
       result.checkedTargets += 1;
@@ -14754,6 +14858,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalHNBWLCertifiedPathMinimumPins[name] !== row.hash) {
       failures.push(`core publication map residual terminal HN BWL certified-path-minimum fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalHResolveCertifiedPathFamilyMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-certified-path-family"
+  );
+  const residualTerminalHResolveCertifiedPathFamilyNames = Object.keys(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS);
+  if (!residualTerminalHResolveCertifiedPathFamilyMilestone
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.classification !== "formalized-residual-terminal-hresolve-certified-path-family"
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_MILESTONE_SCOPE
+      || residualTerminalHResolveCertifiedPathFamilyMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveCertifiedPathFamilyMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHResolveCertifiedPathFamilyNames)) {
+    failures.push("core publication map residual terminal HResolve certified-path-family boundary mismatch");
+  }
+  const residualTerminalHResolveCertifiedPathFamilyPins =
+    releaseManifest.earnedBoundary?.residualTerminalHResolveCertifiedPathFamilyTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS)) {
+    if (!residualTerminalHResolveCertifiedPathFamilyMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalHResolveCertifiedPathFamilyPins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal HResolve certified-path-family fingerprint mismatch: ${name}`);
     }
   }
 

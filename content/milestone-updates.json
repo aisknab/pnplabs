@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-hresolve-certified-path-family",
+      "milestoneId": "residual-terminal-hresolve-certified-path-family",
+      "publishedAt": "2026-08-21T15:01:34Z",
+      "title": "Lean now combines certified paths into a maximal H-disjoint family",
+      "plainLanguage": [
+        "For every duplicate-free finite supplied family of proof-bearing hereditary candidates, Lean now constructs a duplicate-free maximal pairwise H-disjoint selected family. Every selected candidate carries an exact four-coordinate certified-path minimum preserving semantic, frontier, block, shape, and footprint-coherence evidence; every rejected candidate has a selected blocker carrying the exact first interference route.",
+        "The candidates, certified paths, hereditary footprints, governed predicates, family-completeness proofs, and path-to-footprint coherence proofs remain supplied inputs. This milestone does not derive them from terminal data, prove HN grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, or the H0-H4 NoHereditary sidecar, connect blockers to HB rank semantics, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 152 of 154 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "ca501ca3df44c8d19933e59fe132612bea5422c2",
+        "tree": "ceab2cfa341b7437c01a98772912a464902451eb",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-176",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-hn-bwl-certified-path-minimum",
       "milestoneId": "residual-terminal-hn-bwl-certified-path-minimum",
       "publishedAt": "2026-08-21T11:39:53Z",
