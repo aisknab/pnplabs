@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-packet-budget-no-lower-composition",
+      "milestoneId": "residual-terminal-packet-budget-no-lower-composition",
+      "publishedAt": "2026-08-21T03:31:00Z",
+      "title": "Lean now checks one finite terminal budget and Packet no-lower composition",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, one Boolean now recomputes both the complete canonical budget-support no-lower ledger and the checked five-row Packet no-lower ledger over that same candidate. Acceptance makes every governed budget-feasible canonical support a semantic minimum, excludes every feasible strict-equivalent gain, and excludes a positive Packet conclusion.",
+        "The caps, Packet family, typed payloads, ranks, realizer claims, activity environment, and dependency tables remain supplied. This is a finite two-branch composition, not the complete no-lower ledger. It does not construct Packet data from terminal data, implement HN/BUD grammar, polynomial HResolve or BudgetResolve, cover normalization, remaining named routes, saturation, or replay, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 149 of 151 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a",
+        "tree": "855b8c6001b757836b65b80e1107f1043131251e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-173",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-budget-no-lower-ledger",
       "milestoneId": "residual-terminal-budget-no-lower-ledger",
       "publishedAt": "2026-08-20T23:08:17Z",

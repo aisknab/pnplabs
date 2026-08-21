@@ -5,9 +5,9 @@
   "refs": {
     "currentCoreRef": {
       "repo": "aisknab/pnp",
-      "ref": "2d66e5a7c3468b51e019c638f43780e7acfb8f93",
-      "expectedCommit": "2d66e5a7c3468b51e019c638f43780e7acfb8f93",
-      "expectedTree": "ee59e6669ba9aa9df52997cf86aa68e73415d349",
+      "ref": "f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a",
+      "expectedCommit": "f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a",
+      "expectedTree": "855b8c6001b757836b65b80e1107f1043131251e",
       "class": "current formal-reconstruction publication",
       "status": "current-authority-theorem-gate-closed"
     },

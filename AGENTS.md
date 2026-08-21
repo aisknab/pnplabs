@@ -57,6 +57,10 @@ original coordinates and progress estimates of historical milestone entries.
 The editorial progress estimate and the count of earned formal-publication rows
 are separate measures and must never be presented as interchangeable.
 
+Core theorem compilation and formal-evidence generation belong to `pnp`.
+PNPLabs must not execute `lean`, `lake`, or `elan`; it verifies exact imported
+core bytes and the publication, site, provenance, and deployment contracts.
+
 1. Merge the corresponding core `pnp` PR first. Fetch its `origin/main`, then
    synchronize from a clean checkout of the exact core merge commit and tree, not
    from the feature-branch tip.
