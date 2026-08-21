@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "6d598d9ef6a866f475bcc0fa0e5d1f65061524d4";
-const CORE_TREE = "5fcde27e914cfe44410a28b9b9755aefa4cdc27d";
-const CORE_PUBLICATION_MAP_SHA256 = "9206725cab0f14e00c26e816f03f2d62cebcdbe006c386097f4f3992f043662c";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-171";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-171";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-171";
-const CORE_SOURCE_CLOSURE_SHA256 = "fd7d4bc83334116e1e38a7578eeb8a5ea256df1657186a75359c18c7008339b2";
+const CORE_COMMIT = "2d66e5a7c3468b51e019c638f43780e7acfb8f93";
+const CORE_TREE = "ee59e6669ba9aa9df52997cf86aa68e73415d349";
+const CORE_PUBLICATION_MAP_SHA256 = "f4c7d7d4191767dccc3719fe3626ebfc35940706c0eb7ecc9ff56729758c9b71";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-172";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-172";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-172";
+const CORE_SOURCE_CLOSURE_SHA256 = "11e4dd1bb6fcc92bce76787ba93a4297fb290c02c05bf52b6f127a32ef05d071";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1723,6 +1723,20 @@ const RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_THEOREMS = {
 const RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_SCOPE = "all-finite-direct-wire-candidates-terminal-derived-computed-budget-envelope-exact-gain-or-NoBudget-over-canonical-support-universe";
 const RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_MILESTONE_SCOPE = "For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural resource caps, Lean scans the canonical terminal support universe, recomputes nonempty gate and interface feasibility plus gate and saturated-record caps, and returns a feasible semantic minimum, a feasible strict equivalent gain, or complete NoBudget exclusion for every canonical seed.";
 const RESIDUAL_TERMINAL_BUDGET_ENVELOPE_RESOLVER_NON_CLAIM = "The budget caps remain supplied, and the complete terminal subset scan, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This milestone does not implement the manuscript's HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, the complete no-lower ledger, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.";
+
+const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS = {
+  "PNP.DirectWire.terminalBudgetNoLowerClassify_eq_exact_iff": { hash: "41c86fdd39c37c99a7f836f74fdfb4bbfcd7be4750c797cb96a2ec24232498f6", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.terminalBudgetNoLowerClassify_eq_gain_iff": { hash: "91eb2fb51691fa4a633d45a1742ea1332c94c69999dd6eaaecee6728e0c1146f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.terminalBudgetNoLowerClassify_eq_noBudget_iff": { hash: "b4d2167b67ba29a3a1171ebdafdc143ae1f878fa7bf8d8a9fed7832cf1ff3ea9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.terminalBudgetNoLowerRouteLedger_complete": { hash: "ab09bb0e1000df6e81daa528f4dc4ab5ae93e4d0d746e2f8f8b866a44418cd12", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.terminalBudgetNoLowerRouteLedger_sound": { hash: "18305b5c8522e34cd549aea56f21101217169772556dfee709ed067d1d67645f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.checkTerminalBudgetNoLowerLedger_eq_true_iff": { hash: "61315099cf4bf6e35c28e847dd3ec9a56118f2961a7d7143d3907669e4b6506f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.TerminalBudgetNoLowerLedgerAccepted.iff_all_feasible_minimum": { hash: "36c035fb88bd174cb5dbc51ee20c9c4938f12b37a4af9c8623f8a1c430aa351c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" },
+  "PNP.DirectWire.terminal_budget_no_lower_ledger_excludes_feasible_gain": { hash: "9a3865e01a924f3ae5b649153cbf23c6e9f220b19906b8f28c525cc1b0bc01bb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetNoLowerLedger" }
+};
+const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_SCOPE = "all-finite-direct-wire-candidates-terminal-derived-budget-feasible-gain-exclusion-over-complete-canonical-support-ledger";
+const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_MILESTONE_SCOPE = "For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural resource caps, Lean classifies every canonical terminal support as exact, strict gain, or NoBudget, materializes the complete route ledger, and proves that accepted exhaustive coverage makes every budget-feasible governed support a semantic minimum while excluding every feasible strict equivalent gain.";
+const RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_NON_CLAIM = "The budget caps remain supplied, and complete terminal subset enumeration, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This closes only the finite terminal-derived budget branch. It does not implement the manuscript's HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4034,26 +4048,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 542867,
-    sha256: "a9bc79f10063d400aa7199b952ff3b4223cbfffc91c615d4b1ebcb11d0cce7e9"
+    bytes: 544910,
+    sha256: "e5a4cf0eccb8202f91f49df6950b740cf3d4476af22f84bcec1b75a555ec602b"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 315828,
-    sha256: "1725550ab30951773927c8a8d64840560e494bbddde0a815f16ae496bf30c4dc"
+    bytes: 317611,
+    sha256: "5c4c86a9719ced2da42eff7610fbede460f75ff18d229461a9487fece6ecc0f5"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2510193,
-    sha256: "37a1f22b71f559725adf70f91b404a071c2b551c6bbd60ed007956dbe9764c16"
+    bytes: 2517532,
+    sha256: "60a71e568e5bff334b0c71ceb7059f98656e122eca0cce8f2649bef44e9d0282"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 30907709,
-    sha256: "588d30907c045d6c75444a4905742c33ca26443955c526fc55ecfe3f4867dd2c"
+    bytes: 31041096,
+    sha256: "846863be54eb7c95cd51297e7c3445e508abb837449a0c9c90885f64e8c6d821"
   }
 ];
 
@@ -5535,6 +5549,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal budget-envelope resolver boundary mismatch");
+  }
+
+  const residualTerminalBudgetNoLowerLedgerMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-budget-no-lower-ledger"
+  );
+  const residualTerminalBudgetNoLowerLedgerNames =
+    Object.keys(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS);
+  if (!residualTerminalBudgetNoLowerLedgerMilestone
+      || residualTerminalBudgetNoLowerLedgerMilestone.classification !== "formalized-residual-terminal-budget-no-lower-ledger"
+      || residualTerminalBudgetNoLowerLedgerMilestone.scope !== RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_MILESTONE_SCOPE
+      || residualTerminalBudgetNoLowerLedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_NON_CLAIM
+      || JSON.stringify(residualTerminalBudgetNoLowerLedgerMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalBudgetNoLowerLedgerNames)
+      || !Object.entries(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal budget no-lower ledger boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8592,6 +8623,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal budget-envelope resolver boundary mismatch");
     }
 
+    const residualTerminalBudgetNoLowerLedgerMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-budget-no-lower-ledger"
+    );
+    if (!residualTerminalBudgetNoLowerLedgerMilestone
+        || residualTerminalBudgetNoLowerLedgerMilestone.earned !== true
+        || residualTerminalBudgetNoLowerLedgerMilestone.allPresent !== true
+        || residualTerminalBudgetNoLowerLedgerMilestone.allAssumptionFree !== false
+        || residualTerminalBudgetNoLowerLedgerMilestone.allKernelTypesMatch !== true
+        || residualTerminalBudgetNoLowerLedgerMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalBudgetNoLowerLedgerMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalBudgetNoLowerLedgerMilestone.classification !== "formalized-residual-terminal-budget-no-lower-ledger"
+        || residualTerminalBudgetNoLowerLedgerMilestone.scope !== RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_MILESTONE_SCOPE
+        || residualTerminalBudgetNoLowerLedgerMilestone.nonClaim !== RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_NON_CLAIM
+        || JSON.stringify(residualTerminalBudgetNoLowerLedgerMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalBudgetNoLowerLedgerMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalBudgetNoLowerLedgerFormalized !== true
+        || payload.leanResidualTerminalBudgetNoLowerLedgerAxiomAuditPassed !== true
+        || payload.leanResidualTerminalBudgetNoLowerLedgerScope !== RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal budget no-lower ledger boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -9030,6 +9097,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal budget-envelope resolver theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_BUDGET_NO_LOWER_LEDGER_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal budget no-lower ledger theorem mismatch: " + name);
       }
     }
 

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-budget-no-lower-ledger",
+      "milestoneId": "residual-terminal-budget-no-lower-ledger",
+      "publishedAt": "2026-08-20T23:08:17Z",
+      "title": "Lean now checks the complete finite terminal budget ledger",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural gate and saturated-record caps, Lean now classifies every canonical terminal support as exact, strict gain, or NoBudget. It materializes the complete route ledger, and its checker accepts exactly when every budget-feasible governed support is a semantic minimum while excluding every feasible strict-equivalent gain.",
+        "The caps remain supplied, and complete terminal subset enumeration, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This closes only the finite terminal-derived budget branch. It does not implement the manuscript's HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 148 of 150 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "2d66e5a7c3468b51e019c638f43780e7acfb8f93",
+        "tree": "ee59e6669ba9aa9df52997cf86aa68e73415d349",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-172",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-budget-envelope-resolver",
       "milestoneId": "residual-terminal-budget-envelope-resolver",
       "publishedAt": "2026-08-20T18:33:22Z",

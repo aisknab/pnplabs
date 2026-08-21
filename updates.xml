@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-20T18:33:22Z</updated>
+  <updated>2026-08-20T23:08:17Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-21-residual-terminal-budget-no-lower-ledger</id>
+    <title>Lean now checks the complete finite terminal budget ledger</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-21-residual-terminal-budget-no-lower-ledger"/>
+    <published>2026-08-20T23:08:17Z</published>
+    <updated>2026-08-20T23:08:17Z</updated>
+    <summary type="text">For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural gate and saturated-record caps, Lean now classifies every canonical terminal support as exact, strict gain, or NoBudget. It materializes the complete route ledger, and its checker accepts exactly when every budget-feasible governed support is a semantic minimum while excluding every feasible strict-equivalent gain. The caps remain supplied, and complete terminal subset enumeration, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This closes only the finite terminal-derived budget branch. It does not implement the manuscript&#39;s HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 148 of 150 scoped publication rows. Editorial progress estimate at publication: 98 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;For every finite direct-wire candidate, candidate-derived saturation model, and supplied natural gate and saturated-record caps, Lean now classifies every canonical terminal support as exact, strict gain, or NoBudget. It materializes the complete route ledger, and its checker accepts exactly when every budget-feasible governed support is a semantic minimum while excluding every feasible strict-equivalent gain.&lt;/p&gt;&lt;p&gt;The caps remain supplied, and complete terminal subset enumeration, candidate-derived saturation, and reference minimization are exhaustive and may be exponential. This closes only the finite terminal-derived budget branch. It does not implement the manuscript&amp;#39;s HN/BUD grammar, BWL or budget-envelope dynamic program, blocker dependency semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 148 of 150 scoped publication rows.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;98&quot;&gt;Editorial progress estimate at publication: 98%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-21-residual-terminal-budget-no-lower-ledger&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-21-residual-terminal-budget-envelope-resolver</id>
     <title>Lean now resolves finite terminal budget envelopes</title>

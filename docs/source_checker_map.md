@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `6d598d9ef6a866f475bcc0fa0e5d1f65061524d4`. Its generated status payload is current
+core commit `2d66e5a7c3468b51e019c638f43780e7acfb8f93`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the 122-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the 124-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,14 +23,15 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `6d598d9ef6a866f475bcc0fa0e5d1f65061524d4` (tree `5fcde27e914cfe44410a28b9b9755aefa4cdc27d`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the finite supplied HResolve coverage ledger, the terminal-derived support resolver, and the finite terminal budget-envelope resolver. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,020 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `2d66e5a7c3468b51e019c638f43780e7acfb8f93` (tree `ee59e6669ba9aa9df52997cf86aa68e73415d349`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the finite supplied HResolve coverage ledger, the terminal-derived support resolver, the finite terminal budget-envelope resolver, and its complete finite terminal budget no-gain ledger. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,028 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 147 of 149 scoped milestone rows are earned. The newest result scans every canonical terminal support seed under candidate-derived saturation and supplied gate and saturated-record caps, returning a feasible semantic minimum, feasible strict equivalent gain, or complete `NoBudget` exclusion. The caps remain supplied and the exhaustive search may be exponential. Manuscript HN/BUD grammar, BWL and its budget-envelope dynamic program, blocker semantics, polynomial BudgetResolve, the complete no-lower ledger, unconditional global ZeroSlack, and polynomial PCCMin remain open. Two global rows, four project axioms, and five blockers remain. |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 122-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | 148 of 150 scoped milestone rows are earned. The newest result materializes the complete finite terminal budget ledger and proves that an accepted ledger makes every budget-feasible governed support a semantic minimum while excluding every feasible strict-equivalent gain. The caps remain supplied and the exhaustive search may be exponential. This closes only the finite terminal-derived budget branch; manuscript HN/BUD grammar, BWL and its budget-envelope dynamic program, blocker semantics, polynomial BudgetResolve, Packet or complete no-lower composition, unconditional global ZeroSlack, and polynomial PCCMin remain open. Two global rows, four project axioms, and five blockers remain. |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 124-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
-not treat equality as independent theorem evidence.
+not treat equality as independent theorem evidence and does not rerun Lean in PNPLabs; proof
+compilation and axiom verification belong to the pinned core source boundary.
 
 ## Reference Classes
 
