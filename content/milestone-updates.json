@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-hresolve-maximal-h-disjoint-family",
+      "milestoneId": "residual-terminal-hresolve-maximal-h-disjoint-family",
+      "publishedAt": "2026-08-21T06:47:44Z",
+      "title": "Lean now constructs a maximal eight-domain H-disjoint family",
+      "plainLanguage": [
+        "For every arbitrary finite duplicate-free family of supplied hereditary footprints, Lean now checks eight exact interference domains and deterministically constructs a governed duplicate-free maximal pairwise H-disjoint subfamily. Every rejected governed candidate receives a selected blocker carrying its first exact support, frontier, origin, kernel, obligation, prefix-tail, charge, or interface interference route.",
+        "The hereditary footprints remain supplied inputs. This milestone does not derive them from a terminal candidate, formalize the HN pair/tripod/spine/non-flat grammar, prove BWL exactness or ParseOrExit, establish leaf tightness or solve a leaf, construct the full H0-H4 NoHereditary sidecar, connect blockers to HB ranks, implement full HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 150 of 152 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "b1b93861a2205deec70452df3db8d66a5cf8a8d5",
+        "tree": "8602575fed235009bd4b8ea4e988b77799066950",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-174",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-packet-budget-no-lower-composition",
       "milestoneId": "residual-terminal-packet-budget-no-lower-composition",
       "publishedAt": "2026-08-21T03:31:00Z",

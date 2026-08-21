@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-173";
-const STATUS_SHA256 = 'b85c973bcf4385efa4899dff2c9c8a2a68c9f554725c21b3d707d04414e1cd4f';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-173";
-const FORMAL_PUBLICATION_MAP_SHA256 = "6536e6bd51b8bfe3ac561c7c93c10ea30a3a82bb97fd6b6947499ec41ae5580a";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-174";
+const STATUS_SHA256 = '1891a1bcce46339bf301b29e124a50e522d5a569ddfec527143491f077393c08';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-174";
+const FORMAL_PUBLICATION_MAP_SHA256 = "35437ec7ff5312759a5b0a85caab29700a48c840f7eb7e24f9896d86f1747221";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-173";
-const INVENTORY_SHA256 = "aee7598d21dadadc37f541b94dfc19acd1bb08840ef2b9c234c39b236e77db76";
-const SOURCE_CLOSURE_SHA256 = "a3c7d3419433bfb2ce7f27a2a3b34edee657e7283ba818b7e16db7270f720f4b";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-174";
+const INVENTORY_SHA256 = "cb066150366ad0e870f5139ed056a028c16f887604b40371ef18adaefb5b414d";
+const SOURCE_CLOSURE_SHA256 = "b0890ab07937a7d9afbc8cafe20f7c4317db0466e684575392c017f3a4ea9fc3";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29584,
-  theorems: 15306,
-  assumptionFreeTheorems: 7548,
-  excludedPrivateDeclarations: 15104,
-  modules: 290,
+  declarations: 29699,
+  theorems: 15353,
+  assumptionFreeTheorems: 7580,
+  excludedPrivateDeclarations: 15120,
+  modules: 291,
   axioms: 4,
 });
 
@@ -4570,6 +4570,18 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_DECLARATIONS = Object
   ["PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_false_of_feasible_gain",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerComposition","8e391c19bc0edcf5a2ddb5f22547cf9a98f3197c12901ebdf250339b01550007"],
   ["PNP.DirectWire.TerminalBN6PacketConclusion.checkTerminalPacketBudgetNoLowerComposition_eq_false",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerComposition","224e93639a4b61fa8be116750fd9bd29039d4f8cdc0cdf969338dfd4cb596cbb"],
 ]);
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.checkTerminalHCoordinateDisjoint_eq_true_iff",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","005791015cc4d09ba0901036af84dca5e7260887531a603feaf64125700ca264"],
+  ["PNP.DirectWire.terminalHCoordinateDisjoint_symm",[],"PNP.ResidualTerminalHResolveHDisjointFamily","695e82fd3e7b52a1868179504e74efdc886dc3e7ab0b1c964eecdfcd0268b638"],
+  ["PNP.DirectWire.TerminalHereditaryFootprint.checkHDisjoint_eq_true_iff",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","12661a1dbd2ae24573724fbaa1f7f4c531d42f58af8819cf5275714b473f5078"],
+  ["PNP.DirectWire.TerminalHereditaryFootprint.hDisjoint_symm",[],"PNP.ResidualTerminalHResolveHDisjointFamily","3e0cd6541bc41e20a07b64d34334fbeb37c7edef21ba3426e65800b45e98d941"],
+  ["PNP.DirectWire.TerminalHereditaryFootprint.firstInterference?_eq_none_iff_hDisjoint",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","968780b78a938a588fcae3bf585b57acdcc9d7f4edae239979dbabd9939bb8fb"],
+  ["PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_subset",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","515188d2371fa817cbc9320ff388e2f11009df76bda4751389342f73266beffb"],
+  ["PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_nodup",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","896faf43d23d8e2d0210448545bca6de79ec0951a2cb9673112eaf6d3a3de042"],
+  ["PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_pairwise",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","e1c0f61959f5d6a31418a17f5e7009ac6eace3f2106763dd6fa9e0355714348a"],
+  ["PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_maximal",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","16910cce3352126a72da9cfb84ca13c65ebe04e8fc3f8aa7989d452745f2ee09"],
+  ["PNP.DirectWire.terminal_hresolve_maximal_hdisjoint_family_complete",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveHDisjointFamily","cd3be2c48949ee1746e78094c9459c1e8ea664f5b210a1243a27a0d7d1af472c"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5507,6 +5519,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalPacketBudgetNoLowerCompositionFormalized: false,
   leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed: false,
   leanResidualTerminalPacketBudgetNoLowerCompositionScope: null,
+  leanResidualTerminalHResolveHDisjointFamilyFormalized: false,
+  leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed: false,
+  leanResidualTerminalHResolveHDisjointFamilyScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -6084,6 +6099,9 @@ leanResidualTerminalBudgetNoLowerLedgerScope = ${payload.leanResidualTerminalBud
 leanResidualTerminalPacketBudgetNoLowerCompositionFormalized = ${payload.leanResidualTerminalPacketBudgetNoLowerCompositionFormalized ?? false}
 leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed = ${payload.leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed ?? false}
 leanResidualTerminalPacketBudgetNoLowerCompositionScope = ${payload.leanResidualTerminalPacketBudgetNoLowerCompositionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPacketBudgetNoLowerCompositionScope)}
+leanResidualTerminalHResolveHDisjointFamilyFormalized = ${payload.leanResidualTerminalHResolveHDisjointFamilyFormalized ?? false}
+leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed = ${payload.leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed ?? false}
+leanResidualTerminalHResolveHDisjointFamilyScope = ${payload.leanResidualTerminalHResolveHDisjointFamilyScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalHResolveHDisjointFamilyScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -6978,6 +6996,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalHResolveMaximalHDisjointFamily =
+    RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7533,6 +7558,9 @@ function validateInventory(inventory) {
     && residualTerminalPacketBudgetNoLowerComposition.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalHResolveMaximalHDisjointFamily.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -7934,6 +7962,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalPacketBudgetNoLowerCompositionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-packet-budget-no-lower-composition'
+  );
+  const residualTerminalHResolveMaximalHDisjointFamilyMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-hresolve-maximal-h-disjoint-family'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9348,6 +9379,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPacketBudgetNoLowerCompositionFormalized === true
     && status.leanResidualTerminalPacketBudgetNoLowerCompositionAxiomAuditPassed === true
     && status.leanResidualTerminalPacketBudgetNoLowerCompositionScope === "all-finite-direct-wire-candidates-same-candidate-terminal-budget-and-Packet-two-branch-no-lower-gain-and-positive-Packet-exclusion"
+
+    && residualTerminalHResolveMaximalHDisjointFamilyMilestone?.classification === "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+    && residualTerminalHResolveMaximalHDisjointFamilyMilestone.status === "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+    && residualTerminalHResolveMaximalHDisjointFamilyMilestone.scope === "For every arbitrary finite duplicate-free family of supplied hereditary footprints over eight decidable coordinate domains, Lean deterministically constructs a governed duplicate-free maximal pairwise H-disjoint family. Every rejected governed candidate has a selected blocker carrying the exact first support, frontier, origin, kernel, obligation, prefix-tail, charge, or interface interference route."
+    && residualTerminalHResolveMaximalHDisjointFamilyMilestone.nonClaim === "The hereditary footprints remain supplied inputs. This milestone does not derive them from a terminal candidate, formalize the HN pair/tripod/spine/non-flat grammar, prove BWL exactness or ParseOrExit, establish leaf tightness or solve a leaf, construct the full H0-H4 NoHereditary sidecar, connect blockers to HB ranks, implement full HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalHResolveMaximalHDisjointFamilyMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalHResolveMaximalHDisjointFamilyMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalHResolveHDisjointFamilyFormalized === true
+    && status.leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed === true
+    && status.leanResidualTerminalHResolveHDisjointFamilyScope === "all-arbitrary-finite-supplied-eight-domain-hereditary-footprints-deterministic-maximal-H-disjoint-family-with-exact-selected-blocker-routes"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

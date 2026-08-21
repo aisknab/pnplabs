@@ -21,18 +21,15 @@ const index = JSON.parse(readFileSync('public/pnp-index.json', 'utf8'));
 const release = JSON.parse(readFileSync('downloads/formal-publication-release.json', 'utf8'));
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
-function statusFieldStem(milestoneId) {
-  const fieldParts = {
-    bn4: 'BN4',
-    bn5: 'BN5',
-    hb: 'HB',
-    hn: 'HN',
-    hresolve: 'HResolve',
-  };
-  return milestoneId
-    .split('-')
-    .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
-    .join('');
+function statusFieldStem(milestone) {
+  const suffix = 'NamedEndpointTheorem';
+  const namedEndpoint = milestone.requiredTheorems.at(-1);
+  const matchingField = Object.entries(release.earnedBoundary).find(
+    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint,
+  );
+  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  const releasePrefix = matchingField[0].slice(0, -suffix.length);
+  return `${releasePrefix[0].toUpperCase()}${releasePrefix.slice(1)}`;
 }
 
 test('site validator accepts only the exact current inventory/status boundary', () => {
@@ -90,7 +87,7 @@ test('site validator pins the concrete locked-NAND threshold publication theorem
   assert.equal(validation.validateStatus(widened, inventory), false);
 });
 
-test('site validator rejects hostile latest Packet publication mutations', () => {
+test('site validator rejects hostile latest publication mutations', () => {
   const milestoneId = updates.entries[0].milestoneId;
   const milestone = status.formalPublicationMilestones.find((row) => row.id === milestoneId);
   const theoremName = milestone.theoremRows[0].name;
@@ -130,7 +127,7 @@ test('site validator rejects hostile latest Packet publication mutations', () =>
   assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
 
   const forgedStatus = structuredClone(status);
-  forgedStatus[`lean${statusFieldStem(milestoneId)}Formalized`] = false;
+  forgedStatus[`lean${statusFieldStem(milestone)}Formalized`] = false;
   assert.equal(validation.validateStatus(forgedStatus, inventory), false);
 });
 
@@ -214,7 +211,7 @@ test('site validator pins the latest canonical publication milestone and rejects
   forgedRow.expectedKernelTypeSha256 = '0'.repeat(64);
   assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
 
-  const fieldStem = statusFieldStem(milestone.id);
+  const fieldStem = statusFieldStem(milestone);
   for (const field of [`lean${fieldStem}Formalized`, `lean${fieldStem}AxiomAuditPassed`]) {
     assert.equal(status[field], true, `missing latest milestone gate ${field}`);
     const stripped = structuredClone(status);

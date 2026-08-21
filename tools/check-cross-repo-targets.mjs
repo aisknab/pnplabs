@@ -8,9 +8,9 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a";
-const REVIEWED_CORE_TREE = "855b8c6001b757836b65b80e1107f1043131251e";
-const REVIEWED_PROOF_COMMIT = "6304e55d57275d2f8ae031730e17b4319a5bc0f2";
+const REVIEWED_CORE_COMMIT = "b1b93861a2205deec70452df3db8d66a5cf8a8d5";
+const REVIEWED_CORE_TREE = "8602575fed235009bd4b8ea4e988b77799066950";
+const REVIEWED_PROOF_COMMIT = "c1d32ab42a1ab8f94675178a8b4b74ced1603766";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4091,6 +4091,19 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_RELEASE_IDENTITIES = 
   residualTerminalPacketBudgetNoLowerCompositionPacketRejectionTheorem: "PNP.DirectWire.TerminalBN6PacketConclusion.checkTerminalPacketBudgetNoLowerComposition_eq_false"
 };
 
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_RELEASE_IDENTITIES = {
+  residualTerminalHResolveHDisjointFamilyCoordinateCheckIffTheorem: "PNP.DirectWire.checkTerminalHCoordinateDisjoint_eq_true_iff",
+  residualTerminalHResolveHDisjointFamilyCoordinateSymmetryTheorem: "PNP.DirectWire.terminalHCoordinateDisjoint_symm",
+  residualTerminalHResolveHDisjointFamilyFootprintCheckIffTheorem: "PNP.DirectWire.TerminalHereditaryFootprint.checkHDisjoint_eq_true_iff",
+  residualTerminalHResolveHDisjointFamilyFootprintSymmetryTheorem: "PNP.DirectWire.TerminalHereditaryFootprint.hDisjoint_symm",
+  residualTerminalHResolveHDisjointFamilyFirstInterferenceTheorem: "PNP.DirectWire.TerminalHereditaryFootprint.firstInterference?_eq_none_iff_hDisjoint",
+  residualTerminalHResolveHDisjointFamilySubsetTheorem: "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_subset",
+  residualTerminalHResolveHDisjointFamilyNodupTheorem: "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_nodup",
+  residualTerminalHResolveHDisjointFamilyPairwiseTheorem: "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_pairwise",
+  residualTerminalHResolveHDisjointFamilyMaximalTheorem: "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_maximal",
+  residualTerminalHResolveHDisjointFamilyNamedEndpointTheorem: "PNP.DirectWire.terminal_hresolve_maximal_hdisjoint_family_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -5670,6 +5683,22 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_SCOPE = "all-finite-direct-wire-candidates-same-candidate-terminal-budget-and-Packet-two-branch-no-lower-gain-and-positive-Packet-exclusion";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire candidate, candidate-derived saturation model, supplied caps, and supplied Packet family and tables over that same direct-wire candidate, one Boolean recomputes both finite ledgers. Acceptance makes every governed budget-feasible canonical support a semantic minimum, excludes every feasible strict equivalent gain, and excludes a positive Packet conclusion.";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_NON_CLAIM = "The caps, Packet family, typed payloads, ranks, realizer claims, activity environment, and dependency tables remain supplied. This is a finite two-branch composition, not the complete no-lower ledger. It does not construct Packet data from terminal data, implement HN/BUD grammar, polynomial HResolve or BudgetResolve, cover normalization, remaining named routes, saturation, or replay, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS = {
+  "PNP.DirectWire.checkTerminalHCoordinateDisjoint_eq_true_iff": { hash: "005791015cc4d09ba0901036af84dca5e7260887531a603feaf64125700ca264", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHCoordinateDisjoint_symm": { hash: "695e82fd3e7b52a1868179504e74efdc886dc3e7ab0b1c964eecdfcd0268b638", axioms: [], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.TerminalHereditaryFootprint.checkHDisjoint_eq_true_iff": { hash: "12661a1dbd2ae24573724fbaa1f7f4c531d42f58af8819cf5275714b473f5078", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.TerminalHereditaryFootprint.hDisjoint_symm": { hash: "3e0cd6541bc41e20a07b64d34334fbeb37c7edef21ba3426e65800b45e98d941", axioms: [], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.TerminalHereditaryFootprint.firstInterference?_eq_none_iff_hDisjoint": { hash: "968780b78a938a588fcae3bf585b57acdcc9d7f4edae239979dbabd9939bb8fb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_subset": { hash: "515188d2371fa817cbc9320ff388e2f11009df76bda4751389342f73266beffb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_nodup": { hash: "896faf43d23d8e2d0210448545bca6de79ec0951a2cb9673112eaf6d3a3de042", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_pairwise": { hash: "e1c0f61959f5d6a31418a17f5e7009ac6eace3f2106763dd6fa9e0355714348a", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_maximal": { hash: "16910cce3352126a72da9cfb84ca13c65ebe04e8fc3f8aa7989d452745f2ee09", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminal_hresolve_maximal_hdisjoint_family_complete": { hash: "cd3be2c48949ee1746e78094c9459c1e8ea664f5b210a1243a27a0d7d1af472c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" }
+};
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_SCOPE = "all-arbitrary-finite-supplied-eight-domain-hereditary-footprints-deterministic-maximal-H-disjoint-family-with-exact-selected-blocker-routes";
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_MILESTONE_SCOPE = "For every arbitrary finite duplicate-free family of supplied hereditary footprints over eight decidable coordinate domains, Lean deterministically constructs a governed duplicate-free maximal pairwise H-disjoint family. Every rejected governed candidate has a selected blocker carrying the exact first support, frontier, origin, kernel, obligation, prefix-tail, charge, or interface interference route.";
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_NON_CLAIM = "The hereditary footprints remain supplied inputs. This milestone does not derive them from a terminal candidate, formalize the HN pair/tripod/spine/non-flat grammar, prove BWL exactness or ParseOrExit, establish leaf tightness or solve a leaf, construct the full H0-H4 NoHereditary sidecar, connect blockers to HB ranks, implement full HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -8076,6 +8105,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS).every(([name, row]) => residualTerminalPacketBudgetNoLowerCompositionHashes[name] === row.hash)) failures.push("current manifest residual terminal Packet-budget no-lower composition fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal Packet-budget no-lower composition theorem identity mismatch");
 
+  if (!(earned.residualTerminalHResolveHDisjointFamilyFormalized === true
+      && earned.residualTerminalHResolveHDisjointFamilyAxiomAuditPassed === true
+      && earned.residualTerminalHResolveHDisjointFamilyAuditedDeclarationCount === 18
+      && earned.residualTerminalHResolveHDisjointFamilyEmptyAxiomDeclarationCount === 10
+      && earned.residualTerminalHResolveHDisjointFamilyPropextOnlyDeclarationCount === 0
+      && earned.residualTerminalHResolveHDisjointFamilyQuotSoundOnlyDeclarationCount === 0
+      && earned.residualTerminalHResolveHDisjointFamilyPropextQuotSoundDeclarationCount === 8
+      && earned.residualTerminalHResolveHDisjointFamilyScope === RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_SCOPE
+      && earned.zeroSlackPositiveSlackContradictionFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal HResolve maximal H-disjoint-family boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalHResolveHDisjointFamilyAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalHResolveHDisjointFamilyProjectAxiomClosure)
+      || earned.residualTerminalHResolveHDisjointFamilyProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal HResolve maximal H-disjoint-family axiom closure mismatch");
+  const residualTerminalHResolveHDisjointFamilyHashes = earned.residualTerminalHResolveHDisjointFamilyTheoremKernelTypeSha256;
+  if (!residualTerminalHResolveHDisjointFamilyHashes || Object.keys(residualTerminalHResolveHDisjointFamilyHashes).length !== 10
+      || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS).every(([name, row]) => residualTerminalHResolveHDisjointFamilyHashes[name] === row.hash)) failures.push("current manifest residual terminal HResolve maximal H-disjoint-family fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal HResolve maximal H-disjoint-family theorem identity mismatch");
+
 
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -8091,7 +8142,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -11136,6 +11187,40 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal Packet-budget no-lower composition evidence mismatch");
 
+  const residualTerminalHResolveMaximalHDisjointFamilyMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-maximal-h-disjoint-family"
+  );
+  const residualTerminalHResolveMaximalHDisjointFamilyNames = Object.keys(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS);
+  if (!residualTerminalHResolveMaximalHDisjointFamilyMilestone
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.classification !== "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.status !== "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_MILESTONE_SCOPE
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyMilestone.requiredTheorems) !== JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyNames)
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.earned !== true
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.allPresent !== true
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.allAssumptionFree !== false
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.allKernelTypesMatch !== true
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal HResolve maximal H-disjoint-family publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS)) {
+    const row = residualTerminalHResolveMaximalHDisjointFamilyMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal HResolve maximal H-disjoint-family theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalHResolveHDisjointFamilyFormalized === true
+      && status.leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed === true
+      && status.leanResidualTerminalHResolveHDisjointFamilyScope === RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_SCOPE
+      && status.leanZeroSlackPositiveSlackContradictionFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal HResolve maximal H-disjoint-family evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -12280,6 +12365,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal Packet-budget no-lower composition theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal Packet-budget no-lower composition fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal HResolve maximal H-disjoint-family theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal HResolve maximal H-disjoint-family fingerprint mismatch: ${name}`);
     }
 
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -14516,6 +14608,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalPacketBudgetNoLowerCompositionPins[name] !== row.hash) {
       failures.push(`core publication map residual terminal Packet-budget no-lower composition fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalHResolveMaximalHDisjointFamilyMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-maximal-h-disjoint-family"
+  );
+  const residualTerminalHResolveMaximalHDisjointFamilyNames = Object.keys(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS);
+  if (!residualTerminalHResolveMaximalHDisjointFamilyMilestone
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.classification !== "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_MILESTONE_SCOPE
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyNames)) {
+    failures.push("core publication map residual terminal HResolve maximal H-disjoint-family boundary mismatch");
+  }
+  const residualTerminalHResolveMaximalHDisjointFamilyPins =
+    releaseManifest.earnedBoundary?.residualTerminalHResolveHDisjointFamilyTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS)) {
+    if (!residualTerminalHResolveMaximalHDisjointFamilyMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalHResolveMaximalHDisjointFamilyPins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal HResolve maximal H-disjoint-family fingerprint mismatch: ${name}`);
     }
   }
 
