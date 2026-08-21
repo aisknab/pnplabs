@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-hn-bwl-certified-path-minimum",
+      "milestoneId": "residual-terminal-hn-bwl-certified-path-minimum",
+      "publishedAt": "2026-08-21T11:39:53Z",
+      "title": "Lean now selects an exact certified-path BWL minimum",
+      "plainLanguage": [
+        "For every nonempty finite supplied family of certified hereditary paths, Lean now computes the exact four-coordinate lexicographic minimum by realized cost, residual rank, frontier deviation, and direct-wire code. The selected listed path preserves semantic fidelity, frontier fidelity, nonempty block coverage, and one of the pair, tripod, spine, or non-flat shapes; an explicit completeness premise extends the lower bound to every path in the supplied governed predicate.",
+        "The certified path family, governed predicate, and family completeness remain supplied inputs. This milestone does not derive accepted paths from terminal data, prove shape-grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, or the full BWL theorem, solve a leaf, construct the H0-H4 NoHereditary sidecar, implement full HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial generation and runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 151 of 153 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "fe62125f12511d042b119c9f17ceb202d03448bb",
+        "tree": "680292d98320fa9a60bfff9abb2bac5bcd4333ca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-175",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-hresolve-maximal-h-disjoint-family",
       "milestoneId": "residual-terminal-hresolve-maximal-h-disjoint-family",
       "publishedAt": "2026-08-21T06:47:44Z",

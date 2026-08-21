@@ -91,7 +91,6 @@ test('site validator rejects hostile latest publication mutations', () => {
   const milestoneId = updates.entries[0].milestoneId;
   const milestone = status.formalPublicationMilestones.find((row) => row.id === milestoneId);
   const theoremName = milestone.theoremRows[0].name;
-  const quotientTheoremName = milestone.theoremRows.find((row) => row.axioms.includes('Quot.sound')).name;
   assert.equal(milestone.requiredTheorems.length, milestone.theoremRows.length);
   assert.ok(milestone.requiredTheorems.length > 0);
   assert.equal(milestone.earned, true);
@@ -105,7 +104,7 @@ test('site validator rejects hostile latest publication mutations', () => {
   assert.equal(validation.validateInventory(forgedAxiom), false);
 
   const moved = structuredClone(inventory);
-  moved.milestoneCandidates.find((row) => row.name === quotientTheoremName).module = 'PNP.Main';
+  moved.milestoneCandidates.find((row) => row.name === theoremName).module = 'PNP.ForgedModule';
   assert.equal(validation.validateInventory(moved), false);
 
   const forgedFingerprint = structuredClone(status);
