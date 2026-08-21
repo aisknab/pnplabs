@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a";
-const CORE_TREE = "855b8c6001b757836b65b80e1107f1043131251e";
-const CORE_PUBLICATION_MAP_SHA256 = "6536e6bd51b8bfe3ac561c7c93c10ea30a3a82bb97fd6b6947499ec41ae5580a";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-173";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-173";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-173";
-const CORE_SOURCE_CLOSURE_SHA256 = "a3c7d3419433bfb2ce7f27a2a3b34edee657e7283ba818b7e16db7270f720f4b";
+const CORE_COMMIT = "b1b93861a2205deec70452df3db8d66a5cf8a8d5";
+const CORE_TREE = "8602575fed235009bd4b8ea4e988b77799066950";
+const CORE_PUBLICATION_MAP_SHA256 = "35437ec7ff5312759a5b0a85caab29700a48c840f7eb7e24f9896d86f1747221";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-174";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-174";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-174";
+const CORE_SOURCE_CLOSURE_SHA256 = "b0890ab07937a7d9afbc8cafe20f7c4317db0466e684575392c017f3a4ea9fc3";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1747,6 +1747,22 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_SCOPE = "all-finite-direct-wire-candidates-same-candidate-terminal-budget-and-Packet-two-branch-no-lower-gain-and-positive-Packet-exclusion";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire candidate, candidate-derived saturation model, supplied caps, and supplied Packet family and tables over that same direct-wire candidate, one Boolean recomputes both finite ledgers. Acceptance makes every governed budget-feasible canonical support a semantic minimum, excludes every feasible strict equivalent gain, and excludes a positive Packet conclusion.";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_COMPOSITION_NON_CLAIM = "The caps, Packet family, typed payloads, ranks, realizer claims, activity environment, and dependency tables remain supplied. This is a finite two-branch composition, not the complete no-lower ledger. It does not construct Packet data from terminal data, implement HN/BUD grammar, polynomial HResolve or BudgetResolve, cover normalization, remaining named routes, saturation, or replay, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS = {
+  "PNP.DirectWire.checkTerminalHCoordinateDisjoint_eq_true_iff": { hash: "005791015cc4d09ba0901036af84dca5e7260887531a603feaf64125700ca264", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHCoordinateDisjoint_symm": { hash: "695e82fd3e7b52a1868179504e74efdc886dc3e7ab0b1c964eecdfcd0268b638", axioms: [], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.TerminalHereditaryFootprint.checkHDisjoint_eq_true_iff": { hash: "12661a1dbd2ae24573724fbaa1f7f4c531d42f58af8819cf5275714b473f5078", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.TerminalHereditaryFootprint.hDisjoint_symm": { hash: "3e0cd6541bc41e20a07b64d34334fbeb37c7edef21ba3426e65800b45e98d941", axioms: [], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.TerminalHereditaryFootprint.firstInterference?_eq_none_iff_hDisjoint": { hash: "968780b78a938a588fcae3bf585b57acdcc9d7f4edae239979dbabd9939bb8fb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_subset": { hash: "515188d2371fa817cbc9320ff388e2f11009df76bda4751389342f73266beffb", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_nodup": { hash: "896faf43d23d8e2d0210448545bca6de79ec0951a2cb9673112eaf6d3a3de042", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_pairwise": { hash: "e1c0f61959f5d6a31418a17f5e7009ac6eace3f2106763dd6fa9e0355714348a", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_maximal": { hash: "16910cce3352126a72da9cfb84ca13c65ebe04e8fc3f8aa7989d452745f2ee09", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" },
+  "PNP.DirectWire.terminal_hresolve_maximal_hdisjoint_family_complete": { hash: "cd3be2c48949ee1746e78094c9459c1e8ea664f5b210a1243a27a0d7d1af472c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveHDisjointFamily" }
+};
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_SCOPE = "all-arbitrary-finite-supplied-eight-domain-hereditary-footprints-deterministic-maximal-H-disjoint-family-with-exact-selected-blocker-routes";
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_MILESTONE_SCOPE = "For every arbitrary finite duplicate-free family of supplied hereditary footprints over eight decidable coordinate domains, Lean deterministically constructs a governed duplicate-free maximal pairwise H-disjoint family. Every rejected governed candidate has a selected blocker carrying the exact first support, frontier, origin, kernel, obligation, prefix-tail, charge, or interface interference route.";
+const RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_NON_CLAIM = "The hereditary footprints remain supplied inputs. This milestone does not derive them from a terminal candidate, formalize the HN pair/tripod/spine/non-flat grammar, prove BWL exactness or ParseOrExit, establish leaf tightness or solve a leaf, construct the full H0-H4 NoHereditary sidecar, connect blockers to HB ranks, implement full HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4058,26 +4074,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 546788,
-    sha256: "f27c53dfc5cb0a90488cb888eb0dfbd65843114e087782decf09c4aafd351c21"
+    bytes: 548764,
+    sha256: "a11f228928ecff15dc193b24d690747035edd0316d21fe6f42f1263ea157fb03"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 319551,
-    sha256: "657760c068ee66ad8551371799965c4e6ca0c2c9122f577d02bb4b2d74a343ba"
+    bytes: 321414,
+    sha256: "ee648a9bf2d972157f0fec9c0ac413e4be43e24e3b00687c98ea82584cb581d0"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2522221,
-    sha256: "b85c973bcf4385efa4899dff2c9c8a2a68c9f554725c21b3d707d04414e1cd4f"
+    bytes: 2530690,
+    sha256: "1891a1bcce46339bf301b29e124a50e522d5a569ddfec527143491f077393c08"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 31336879,
-    sha256: "aee7598d21dadadc37f541b94dfc19acd1bb08840ef2b9c234c39b236e77db76"
+    bytes: 31540130,
+    sha256: "cb066150366ad0e870f5139ed056a028c16f887604b40371ef18adaefb5b414d"
   }
 ];
 
@@ -5593,6 +5609,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet-budget no-lower composition boundary mismatch");
+  }
+
+  const residualTerminalHResolveMaximalHDisjointFamilyMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-maximal-h-disjoint-family"
+  );
+  const residualTerminalHResolveMaximalHDisjointFamilyNames =
+    Object.keys(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS);
+  if (!residualTerminalHResolveMaximalHDisjointFamilyMilestone
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.classification !== "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_MILESTONE_SCOPE
+      || residualTerminalHResolveMaximalHDisjointFamilyMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HResolve maximal H-disjoint-family boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8722,6 +8755,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal Packet-budget no-lower composition boundary mismatch");
     }
 
+    const residualTerminalHResolveMaximalHDisjointFamilyMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hresolve-maximal-h-disjoint-family"
+    );
+    if (!residualTerminalHResolveMaximalHDisjointFamilyMilestone
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.earned !== true
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.allPresent !== true
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.allAssumptionFree !== false
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.allKernelTypesMatch !== true
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.classification !== "formalized-residual-terminal-hresolve-maximal-h-disjoint-family"
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_MILESTONE_SCOPE
+        || residualTerminalHResolveMaximalHDisjointFamilyMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_NON_CLAIM
+        || JSON.stringify(residualTerminalHResolveMaximalHDisjointFamilyMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHResolveMaximalHDisjointFamilyMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHResolveHDisjointFamilyFormalized !== true
+        || payload.leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHResolveHDisjointFamilyScope !== RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HResolve maximal H-disjoint-family boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -9180,6 +9249,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal Packet-budget no-lower composition theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal HResolve maximal H-disjoint-family theorem mismatch: " + name);
       }
     }
 

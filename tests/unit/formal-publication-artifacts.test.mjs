@@ -1094,19 +1094,14 @@ function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
 
-function milestoneFieldStem(milestoneId) {
-  const fieldParts = {
-    bn4: "BN4",
-    bn5: "BN5",
-    hb: "HB",
-    hn: "HN",
-    hresolve: "HResolve",
-  };
-  const pascalStem = milestoneId
-    .split("-")
-    .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
-    .join("");
-  return `${pascalStem[0].toLowerCase()}${pascalStem.slice(1)}`;
+function releaseBoundaryPrefixForMilestone(release, milestone) {
+  const suffix = "NamedEndpointTheorem";
+  const namedEndpoint = milestone.requiredTheorems.at(-1);
+  const matchingField = Object.entries(release.earnedBoundary).find(
+    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint
+  );
+  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  return matchingField[0].slice(0, -suffix.length);
 }
 
 function copySealFixture(t) {
@@ -1134,7 +1129,7 @@ test("current release pins the latest canonical earned boundary and remains fail
     (row) => row.id === latestUpdate.milestoneId
   );
   assert.ok(latestMilestone, "latest milestone must come from the canonical status payload");
-  const latestStem = milestoneFieldStem(latestUpdate.milestoneId);
+  const latestStem = releaseBoundaryPrefixForMilestone(release, latestMilestone);
   const latestStatusStem = `lean${latestStem[0].toUpperCase()}${latestStem.slice(1)}`;
   const latestTheoremHashes = Object.fromEntries(
     latestMilestone.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
@@ -3571,10 +3566,14 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   const inventory = json("public/pnp-theorem-inventory.json");
   const index = json("public/pnp-index.json");
   const latestUpdate = json("content/milestone-updates.json").entries[0];
-  const latestStem = milestoneFieldStem(latestUpdate.milestoneId);
+  const milestones = status.formalPublicationMilestones;
+  const latestPublicationMilestone = milestones.find(
+    (row) => row.id === latestUpdate.milestoneId
+  );
+  assert.ok(latestPublicationMilestone, `missing latest milestone ${latestUpdate.milestoneId}`);
+  const latestStem = releaseBoundaryPrefixForMilestone(canonicalRelease, latestPublicationMilestone);
   const latestStatusStem = `lean${latestStem[0].toUpperCase()}${latestStem.slice(1)}`;
   const latestReleaseHashes = canonicalRelease.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`];
-  const milestones = status.formalPublicationMilestones;
   assert.equal(milestones.length, index.formalPublicationMilestoneCounts.total);
   assert.equal(milestones.filter((row) => row.earned === true).length, index.formalPublicationMilestoneCounts.earned);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, index.formalPublicationMilestoneCounts.unearned);
@@ -5053,9 +5052,6 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   );
   const packetSelectorGainScan = milestones.find(
     (row) => row.id === "residual-terminal-packet-selector-gain-scan"
-  );
-  const latestPublicationMilestone = milestones.find(
-    (row) => row.id === latestUpdate.milestoneId
   );
   assert.equal(packetSelectorUniverse.classification, "formalized-residual-terminal-packet-selector-universe");
   assert.equal(packetSelectorUniverse.status, packetSelectorUniverse.classification);

@@ -32,19 +32,20 @@ const publishedUpdates = JSON.parse(readFileSync(
 ));
 
 const latestPublishedMilestoneId = publishedUpdates.entries[0].milestoneId;
-const milestoneFieldParts = Object.freeze({
-  bn4: "BN4",
-  bn5: "BN5",
-  hb: "HB",
-  hn: "HN",
-  hresolve: "HResolve",
-});
-const latestPublishedMilestoneFieldStem = latestPublishedMilestoneId
-  .split("-")
-  .map((part) => milestoneFieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
-  .join("");
-const latestPublishedMilestoneReleasePrefix =
-  `${latestPublishedMilestoneFieldStem[0].toLowerCase()}${latestPublishedMilestoneFieldStem.slice(1)}`;
+const latestPublishedMilestone = publishedStatus.formalPublicationMilestones.find(
+  (row) => row.id === latestPublishedMilestoneId
+);
+assert.ok(latestPublishedMilestone, `missing latest published milestone: ${latestPublishedMilestoneId}`);
+const latestNamedEndpoint = latestPublishedMilestone.requiredTheorems.at(-1);
+const namedEndpointSuffix = "NamedEndpointTheorem";
+const latestNamedEndpointField = Object.entries(publishedRelease.earnedBoundary).find(
+  ([key, value]) => key.endsWith(namedEndpointSuffix) && value === latestNamedEndpoint
+);
+assert.ok(latestNamedEndpointField, `missing earned-boundary endpoint for ${latestPublishedMilestoneId}`);
+const latestPublishedMilestoneReleasePrefix = latestNamedEndpointField[0]
+  .slice(0, -namedEndpointSuffix.length);
+const latestPublishedMilestoneFieldStem =
+  `${latestPublishedMilestoneReleasePrefix[0].toUpperCase()}${latestPublishedMilestoneReleasePrefix.slice(1)}`;
 const latestPublishedMilestoneStatusKeys = [
   `lean${latestPublishedMilestoneFieldStem}Formalized`,
   `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`,

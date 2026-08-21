@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 546,788 | `f27c53dfc5cb0a90488cb888eb0dfbd65843114e087782decf09c4aafd351c21` |
-| `downloads/canonical-proof-report.pdf` | 546,788 | `f27c53dfc5cb0a90488cb888eb0dfbd65843114e087782decf09c4aafd351c21` |
-| `downloads/canonical_proof_report.tex` | 319,551 | `657760c068ee66ad8551371799965c4e6ca0c2c9122f577d02bb4b2d74a343ba` |
-| `downloads/canonical-proof-report.tex` | 319,551 | `657760c068ee66ad8551371799965c4e6ca0c2c9122f577d02bb4b2d74a343ba` |
-| `public/pnp-status.json` | 2,522,221 | `b85c973bcf4385efa4899dff2c9c8a2a68c9f554725c21b3d707d04414e1cd4f` |
-| `public/pnp-theorem-inventory.json` | 31,336,879 | `aee7598d21dadadc37f541b94dfc19acd1bb08840ef2b9c234c39b236e77db76` |
+| `downloads/canonical_proof_report.pdf` | 548,764 | `a11f228928ecff15dc193b24d690747035edd0316d21fe6f42f1263ea157fb03` |
+| `downloads/canonical-proof-report.pdf` | 548,764 | `a11f228928ecff15dc193b24d690747035edd0316d21fe6f42f1263ea157fb03` |
+| `downloads/canonical_proof_report.tex` | 321,414 | `ee648a9bf2d972157f0fec9c0ac413e4be43e24e3b00687c98ea82584cb581d0` |
+| `downloads/canonical-proof-report.tex` | 321,414 | `ee648a9bf2d972157f0fec9c0ac413e4be43e24e3b00687c98ea82584cb581d0` |
+| `public/pnp-status.json` | 2,530,690 | `1891a1bcce46339bf301b29e124a50e522d5a569ddfec527143491f077393c08` |
+| `public/pnp-theorem-inventory.json` | 31,540,130 | `cb066150366ad0e870f5139ed056a028c16f887604b40371ef18adaefb5b414d` |
 
 The PDF must have 125 A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a
+git -C ../pnp checkout b1b93861a2205deec70452df3db8d66a5cf8a8d5
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -66,8 +66,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,584 public declarations, 15,306 theorem-kind declarations,
-7,548 assumption-free theorem-kind declarations, 15,104 excluded private auxiliaries, 290 modules, and
+Expected compiled inventory counts are 29,699 public declarations, 15,353 theorem-kind declarations,
+7,580 assumption-free theorem-kind declarations, 15,120 excluded private auxiliaries, 291 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -80,14 +80,16 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest finite terminal Packet-budget no-lower composition has 4 reviewed theorem pins. All
-4 use only `Quot.sound` and `propext`; its focused 6-declaration audit has all 6 declarations
-in that permitted closure, with no project axiom or `Classical.choice`. For every finite direct-wire
-candidate, one Boolean recomputes the complete canonical budget-support ledger and the checked
-five-row Packet no-lower ledger over that same candidate. Acceptance excludes both every feasible
-strict-equivalent gain and a positive Packet conclusion. The caps and Packet-side data remain
-supplied. This is a finite two-branch composition, not manuscript HN/BUD grammar, polynomial
-HResolve or BudgetResolve, or the complete no-lower ledger. The exact core merge owns Lean
+The latest terminal HResolve maximal H-disjoint family has 10 reviewed theorem pins. Two have
+empty axiom closures and eight use only `Quot.sound` and `propext`; its focused 18-declaration audit
+has ten empty closures and eight in that permitted closure, with no project axiom or
+`Classical.choice`. For every arbitrary finite duplicate-free family of supplied hereditary
+footprints over eight decidable coordinate domains, the construction returns a governed
+duplicate-free maximal pairwise H-disjoint subfamily and an exact selected blocker route for every
+rejected governed candidate. The hereditary footprints remain supplied. This is not their
+terminal-data derivation, manuscript HN grammar, BWL exactness, ParseOrExit, leaf tightness, the
+full NoHereditary sidecar, blocker-to-rank semantics, full or polynomial HResolve, the complete
+no-lower ledger, unconditional ZeroSlack, or polynomial PCCMin. The exact core merge owns Lean
 compilation and axiom evidence; PNPLabs verifies the pinned source identity and byte-exact
 publication artifacts and does not rebuild Lean.
 

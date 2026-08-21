@@ -5,7 +5,7 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a`. Its generated status payload is current
+core commit `b1b93861a2205deec70452df3db8d66a5cf8a8d5`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
 the 125-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
@@ -23,10 +23,10 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a` (tree `855b8c6001b757836b65b80e1107f1043131251e`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the finite supplied HResolve coverage ledger, the terminal-derived support resolver, the finite terminal budget-envelope and budget no-lower ledgers, and their same-candidate finite composition with the Packet no-lower ledger. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,032 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `b1b93861a2205deec70452df3db8d66a5cf8a8d5` (tree `8602575fed235009bd4b8ea4e988b77799066950`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, the finite supplied HResolve coverage ledger, the terminal-derived support resolver, the finite terminal budget-envelope and budget no-lower ledgers, their same-candidate finite Packet composition, and a deterministic maximal pairwise H-disjoint subfamily over eight supplied footprint-interference domains with selected first blocker routes. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,042 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 149 of 151 scoped milestone rows are earned. The newest result recomputes the complete finite terminal budget-support ledger and checked five-row Packet no-lower ledger over the same candidate; acceptance excludes feasible strict-equivalent gain and a positive Packet conclusion. The caps and Packet-side data remain supplied. This is a finite two-branch composition, not manuscript HN/BUD grammar, polynomial HResolve or BudgetResolve, the complete no-lower ledger, unconditional global ZeroSlack, or polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
+| Generated status | `public/pnp-status.json` | 150 of 152 scoped milestone rows are earned. The newest result checks eight exact interference domains over an arbitrary finite duplicate-free family of supplied hereditary footprints, selects a governed duplicate-free maximal pairwise H-disjoint subfamily, and gives every rejected governed candidate its selected first blocker route. The footprints remain supplied. This is not terminal derivation, manuscript HN grammar, BWL exactness, ParseOrExit, the full NoHereditary sidecar, blocker-to-rank semantics, full or polynomial HResolve, unconditional global ZeroSlack, or polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
 | Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 125-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does

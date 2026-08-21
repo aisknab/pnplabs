@@ -6,9 +6,9 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 125-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,584 public declarations across 290 modules,
-including 15,306 theorem-kind declarations, 7,548 assumption-free theorem-kind declarations, and four
-disclosed project axioms. Exactly 15,104 private compiler auxiliaries are excluded explicitly.
+Lean theorem inventory. The inventory contains 29,699 public declarations across 291 modules,
+including 15,353 theorem-kind declarations, 7,580 assumption-free theorem-kind declarations, and four
+disclosed project axioms. Exactly 15,120 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,032 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,032 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 149 of 151 scoped formal milestone rows. The newest row recomputes the complete finite terminal budget-support ledger and the checked five-row Packet no-lower ledger over the same candidate; acceptance excludes feasible strict-equivalent gain and a positive Packet conclusion. | Treating this finite two-branch composition as manuscript HN/BUD grammar, polynomial HResolve or BudgetResolve, the complete no-lower ledger, unconditional ZeroSlack, or complete global routing; hiding supplied caps or Packet-side data; claiming polynomial enumeration, complete PkgC, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,042 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,042 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 150 of 152 scoped formal milestone rows. The newest row checks eight exact interference domains over supplied hereditary footprints, constructs a deterministic governed duplicate-free maximal pairwise H-disjoint subfamily, and gives every rejected governed candidate its selected first blocker route. | Treating a maximal H-disjoint subfamily over supplied footprints as terminal derivation, manuscript HN grammar, BWL exactness, ParseOrExit, the full NoHereditary sidecar, full or polynomial HResolve, the complete no-lower ledger, unconditional ZeroSlack, or complete global routing; hiding the supplied-footprint boundary; claiming polynomial enumeration, complete PkgC, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -61,10 +61,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `f3dd861bf522e9fca2a3c1ba4a4c3e78f5454b4a`.
+   `b1b93861a2205deec70452df3db8d66a5cf8a8d5`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,032 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,042 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -74,7 +74,7 @@ commit in the formal-methods path below.
 
 ## Audit Path: Complexity Theory
 
-The formal inventory earns one hundred and forty-eight scoped milestones: the concrete bitstring/machine/cost kernel,
+The formal inventory earns one hundred and fifty scoped milestones: the concrete bitstring/machine/cost kernel,
 including collision-free state namespaces and one full four-stage raw compiler for every raw input to a proof-bearing
 polynomial-time target; charged-pipeline P/NP/reduction definitions; universal concrete CNF-SAT verifier correctness,
 no-timeout and NP membership; Cook-Levin layout, tableau, CNF compilation, finite semantics, the raw-tape bridge, encoded-size bound, exact rectangular formula schedule, direct coordinate cursor with exact fuelled traversal, all four complete fixed clauses, traversal through the remaining first-constraint padding, the complete first literal of its second scheduled constraint, its width-selected successor token, its first six width-selected opportunities, and the seventh padding-or-unary opportunity under an external polynomial bound; typed direct-wire semantics; finite reference enumeration/minimum;
@@ -156,11 +156,15 @@ The later HResolve layers first classify an arbitrary supplied finite candidate 
 `NoHereditary` sidecar, then derive the complete duplicate-free canonical support-seed family from each finite
 direct-wire candidate and compute exact semantic-minimum or strict-equivalent-gain evidence. The budget-envelope
 and budget no-lower layers add supplied natural resource caps, recompute feasibility across that complete
-canonical universe, and prove accepted exhaustive coverage excludes every feasible strict-equivalent gain. The
-newest layer composes that complete finite ledger with the checked five-row Packet no-lower ledger over the same
-candidate, so acceptance also excludes a positive Packet conclusion. These reference searches are exhaustive and
-potentially exponential. The caps and Packet-side data remain supplied; this is a finite two-branch composition,
-not manuscript HN/BUD grammar, polynomial HResolve or BudgetResolve, or the complete no-lower ledger.
+canonical universe, and prove accepted exhaustive coverage excludes every feasible strict-equivalent gain. A
+same-candidate composition with the checked five-row Packet no-lower ledger also excludes a positive Packet
+conclusion. The newest layer takes an arbitrary finite duplicate-free family of supplied hereditary footprints,
+checks eight exact interference domains, constructs a governed duplicate-free maximal pairwise H-disjoint
+subfamily, and gives every rejected governed candidate its selected first blocker route. These reference
+searches are exhaustive and potentially exponential. The caps, Packet-side data, and hereditary footprints
+remain supplied. This is not terminal footprint derivation, manuscript HN grammar, BWL exactness, ParseOrExit,
+the full NoHereditary sidecar, blocker-to-rank semantics, full or polynomial HResolve or BudgetResolve, or the
+complete no-lower ledger.
 
 Review the gaps between those scopes and the target theorem:
 

@@ -52,26 +52,24 @@ function visibleText(value) {
     .trim();
 }
 
-function latestMilestoneStatusFields(milestoneId) {
-  const fieldParts = {
-    bn4: 'BN4',
-    bn5: 'BN5',
-    hb: 'HB',
-    hn: 'HN',
-    hresolve: 'HResolve',
-  };
-  const stem = `lean${milestoneId
-    .split('-')
-    .map((part) => fieldParts[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
-    .join('')}`;
+function latestMilestoneStatusFields(release, milestone) {
+  const suffix = 'NamedEndpointTheorem';
+  const namedEndpoint = milestone.requiredTheorems.at(-1);
+  const matchingField = Object.entries(release.earnedBoundary).find(
+    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint,
+  );
+  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  const releasePrefix = matchingField[0].slice(0, -suffix.length);
+  const stem = `lean${releasePrefix[0].toUpperCase()}${releasePrefix.slice(1)}`;
   return [`${stem}Formalized`, `${stem}AxiomAuditPassed`, `${stem}Scope`];
 }
 
 test('homepage leads with a plain, conservative result and the latest milestone', async () => {
-  const [status, inventory, updates] = await Promise.all([
+  const [status, inventory, updates, release] = await Promise.all([
     readJson('public/pnp-status.json'),
     readJson('public/pnp-theorem-inventory.json'),
     readJson('content/milestone-updates.json'),
+    readJson('downloads/formal-publication-release.json'),
   ]);
   const latest = updates.entries[0];
   const latestMilestoneRecord = status.formalPublicationMilestones.find(
@@ -80,7 +78,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
   assert.ok(latestMilestoneRecord, 'latest update must name a current formal-publication milestone');
   const progress = latest.progressEstimatePercent;
   const html = await readText('index.html');
-  const currentStatusFields = latestMilestoneStatusFields(latest.milestoneId);
+  const currentStatusFields = latestMilestoneStatusFields(release, latestMilestoneRecord);
   for (const field of currentStatusFields) {
     assert.ok(Object.hasOwn(status, field), `canonical status missing derived latest-milestone field: ${field}`);
     assert.ok(

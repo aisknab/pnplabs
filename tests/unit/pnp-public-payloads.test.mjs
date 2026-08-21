@@ -29,6 +29,15 @@ const milestoneFieldStem = (milestoneId) => milestoneId
   .split('-')
   .map((part) => MILESTONE_FIELD_PARTS[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
   .join('');
+const releaseBoundaryPrefixForMilestone = (release, milestone) => {
+  const namedEndpoint = milestone.requiredTheorems.at(-1);
+  const suffix = 'NamedEndpointTheorem';
+  const matchingField = Object.entries(release.earnedBoundary).find(
+    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint,
+  );
+  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  return matchingField[0].slice(0, -suffix.length);
+};
 const HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalPacketHBDependencyGraph.checkRankEmbedding_eq_true_iff': 'a32276f0c8b799900766c0a752e8e5d1de4f6ff226622e5a16d307d763975115',
   'PNP.DirectWire.TerminalPacketHBDependencyGraph.check_eq_true_iff': '2c9f567d1209679bac5cc47bfb8f6bb1845136bd6332b21a59309322aee11b43',
@@ -524,6 +533,18 @@ const PACKET_BUDGET_NO_LOWER_COMPOSITION_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.terminal_packet_budget_no_lower_composition_excludes_gain_and_packet': 'bc323316e68622fca406fce8fe7bd74be6c9c15fcc13c9118f36a93a1b4ed451',
   'PNP.DirectWire.checkTerminalPacketBudgetNoLowerComposition_eq_false_of_feasible_gain': '8e391c19bc0edcf5a2ddb5f22547cf9a98f3197c12901ebdf250339b01550007',
   'PNP.DirectWire.TerminalBN6PacketConclusion.checkTerminalPacketBudgetNoLowerComposition_eq_false': '224e93639a4b61fa8be116750fd9bd29039d4f8cdc0cdf969338dfd4cb596cbb',
+});
+const HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.checkTerminalHCoordinateDisjoint_eq_true_iff': '005791015cc4d09ba0901036af84dca5e7260887531a603feaf64125700ca264',
+  'PNP.DirectWire.terminalHCoordinateDisjoint_symm': '695e82fd3e7b52a1868179504e74efdc886dc3e7ab0b1c964eecdfcd0268b638',
+  'PNP.DirectWire.TerminalHereditaryFootprint.checkHDisjoint_eq_true_iff': '12661a1dbd2ae24573724fbaa1f7f4c531d42f58af8819cf5275714b473f5078',
+  'PNP.DirectWire.TerminalHereditaryFootprint.hDisjoint_symm': '3e0cd6541bc41e20a07b64d34334fbeb37c7edef21ba3426e65800b45e98d941',
+  'PNP.DirectWire.TerminalHereditaryFootprint.firstInterference?_eq_none_iff_hDisjoint': '968780b78a938a588fcae3bf585b57acdcc9d7f4edae239979dbabd9939bb8fb',
+  'PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_subset': '515188d2371fa817cbc9320ff388e2f11009df76bda4751389342f73266beffb',
+  'PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_nodup': '896faf43d23d8e2d0210448545bca6de79ec0951a2cb9673112eaf6d3a3de042',
+  'PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_pairwise': 'e1c0f61959f5d6a31418a17f5e7009ac6eace3f2106763dd6fa9e0355714348a',
+  'PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_maximal': '16910cce3352126a72da9cfb84ca13c65ebe04e8fc3f8aa7989d452745f2ee09',
+  'PNP.DirectWire.terminal_hresolve_maximal_hdisjoint_family_complete': 'cd3be2c48949ee1746e78094c9459c1e8ea664f5b210a1243a27a0d7d1af472c',
 });
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
@@ -3033,6 +3054,75 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalPacketBudgetNoLowerCompositionScope,
   );
   assert.ok(index.earnedMilestones.includes(packetBudgetNoLowerCompositionMilestone.id));
+
+  const hresolveMaximalHDisjointFamilyMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hresolve-maximal-h-disjoint-family');
+  const hresolveMaximalHDisjointFamilyHashes = release.earnedBoundary
+    .residualTerminalHResolveHDisjointFamilyTheoremKernelTypeSha256;
+  assert.ok(hresolveMaximalHDisjointFamilyMilestone);
+  assert.equal(hresolveMaximalHDisjointFamilyMilestone.earned, true);
+  assert.equal(hresolveMaximalHDisjointFamilyMilestone.allPresent, true);
+  assert.equal(hresolveMaximalHDisjointFamilyMilestone.allKernelTypesMatch, true);
+  assert.equal(hresolveMaximalHDisjointFamilyMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    hresolveMaximalHDisjointFamilyHashes,
+    HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    hresolveMaximalHDisjointFamilyMilestone.requiredTheorems,
+    Object.keys(HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHResolveHDisjointFamilyAuditedDeclarationCount, 18);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveHDisjointFamilyEmptyAxiomDeclarationCount, 10);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveHDisjointFamilyPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveHDisjointFamilyQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveHDisjointFamilyPropextQuotSoundDeclarationCount, 8);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveHDisjointFamilyAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveHDisjointFamilyProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hresolveMaximalHDisjointFamilyMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(
+      theoremRow.axioms,
+      theoremRow.name.endsWith('_symm') ? [] : ['Quot.sound', 'propext'],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(hresolveMaximalHDisjointFamilyMilestone.scope, /eight decidable coordinate domains/u);
+  assert.match(hresolveMaximalHDisjointFamilyMilestone.scope, /maximal pairwise H-disjoint family/u);
+  assert.match(hresolveMaximalHDisjointFamilyMilestone.scope, /selected blocker/u);
+  assert.match(hresolveMaximalHDisjointFamilyMilestone.nonClaim, /footprints remain supplied inputs/u);
+  assert.match(hresolveMaximalHDisjointFamilyMilestone.nonClaim, /HN pair\/tripod\/spine\/non-flat grammar/u);
+  assert.match(hresolveMaximalHDisjointFamilyMilestone.nonClaim, /full HResolve/u);
+  assert.equal(status.leanResidualTerminalHResolveHDisjointFamilyFormalized, true);
+  assert.equal(status.leanResidualTerminalHResolveHDisjointFamilyAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHResolveHDisjointFamilyScope,
+    release.earnedBoundary.residualTerminalHResolveHDisjointFamilyScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hresolveMaximalHDisjointFamilyMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
@@ -7593,16 +7683,18 @@ test('payload index describes current inventory/report and quarantines legacy su
 });
 
 test('status page has a conservative complete static fallback', async () => {
-  const [status, index, updates] = await Promise.all([
+  const [status, index, updates, latestRelease] = await Promise.all([
     readJson('public/pnp-status.json'),
     readJson('public/pnp-index.json'),
     readJson('content/milestone-updates.json'),
+    readJson('downloads/formal-publication-release.json'),
   ]);
   const latestMilestone = status.formalPublicationMilestones.find(
     (row) => row.id === updates.entries[0].milestoneId,
   );
   assert.ok(latestMilestone, `missing latest milestone ${updates.entries[0].milestoneId}`);
-  const latestFieldStem = milestoneFieldStem(latestMilestone.id);
+  const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestMilestone);
+  const latestStatusStem = `${latestReleasePrefix[0].toUpperCase()}${latestReleasePrefix.slice(1)}`;
   const html = await readText('status.html');
   for (const fragment of [
     `Formal status · ${index.syncedOn}`,
@@ -7649,9 +7741,9 @@ test('status page has a conservative complete static fallback', async () => {
     'leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed = true',
     latestMilestone.id,
     ...latestMilestone.requiredTheorems,
-    `lean${latestFieldStem}Formalized = true`,
-    `lean${latestFieldStem}AxiomAuditPassed = true`,
-    `lean${latestFieldStem}Scope = ${JSON.stringify(status[`lean${latestFieldStem}Scope`])}`,
+    `lean${latestStatusStem}Formalized = true`,
+    `lean${latestStatusStem}AxiomAuditPassed = true`,
+    `lean${latestStatusStem}Scope = ${JSON.stringify(status[`lean${latestStatusStem}Scope`])}`,
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -8023,8 +8115,7 @@ test('static inventory prose derives changing publication totals from the canoni
   );
   assert.ok(latestEarnedMilestone, 'latest earned milestone');
   const latestUpdate = updates.entries[0];
-  const latestReleasePrefix = milestoneFieldStem(latestEarnedMilestone.id)
-    .replace(/^./u, (character) => character.toLowerCase());
+  const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone);
   const latestFocusedAuditCount = latestRelease.earnedBoundary[
     `${latestReleasePrefix}AuditedDeclarationCount`
   ];
