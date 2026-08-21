@@ -585,6 +585,19 @@ const HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREM_SHA256 = Object.freeze({
 const HRESOLVE_CERTIFIED_PATH_FAMILY_PROPEXT_ONLY_THEOREMS = new Set([
   'PNP.DirectWire.TerminalHResolveCertifiedPathCandidate.minimum?_complete',
 ]);
+const HRESOLVE_ZEROSLACK_SIDECAR_THEOREM_SHA256 = Object.freeze({
+  'PNP.HResolveSidecarCertificate.accepted': '55d744332baf2b97d8f09878f43fbc2a3f1321fb44c98875d1adddc333b0fba9',
+  'PNP.HResolveSidecarCertificate.not_exact': '150bbe27229f80035a9f909cade997afa2a8dc5d764208daa9ffb5c610c7f165',
+  'PNP.HResolveSidecarCertificate.not_gain': 'be1830a305f072269dc4b87fcc83431b680c3ac5997228230a3a0e3b258fe552',
+  'PNP.HResolveSidecarCertificate.blocked_of_mem': 'a4ef62fd886cc9790b082a46846385e82423096a2cd8441905943b0e495408b4',
+  'PNP.HResolveSidecarCertificate.exact_route_sound': '12972e8b0b6f869bdcca53829b3609cf214b2586eb6e0d5d1ac9541c7755f100',
+  'PNP.HResolveSidecarCertificate.gain_route_sound': '129f4d0176153b831ed957ee92a62c2073e09e09fb778caa66bb4893e629d56d',
+  'PNP.hresolve_zeroslack_sidecar_checked_complete': 'fd970a799e2afdcc83b011d3d7476557efe33bdbc48decc563785d1602d89709',
+});
+const HRESOLVE_ZEROSLACK_SIDECAR_EMPTY_AXIOM_THEOREMS = new Set([
+  'PNP.HResolveSidecarCertificate.exact_route_sound',
+  'PNP.HResolveSidecarCertificate.gain_route_sound',
+]);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -3306,6 +3319,79 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalHResolveCertifiedPathFamilyScope,
   );
   assert.ok(index.earnedMilestones.includes(hresolveCertifiedPathFamilyMilestone.id));
+
+  const hresolveZeroSlackSidecarMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hresolve-zeroslack-sidecar');
+  const hresolveZeroSlackSidecarHashes = release.earnedBoundary
+    .residualTerminalHResolveZeroSlackSidecarTheoremKernelTypeSha256;
+  assert.ok(hresolveZeroSlackSidecarMilestone);
+  assert.equal(hresolveZeroSlackSidecarMilestone.earned, true);
+  assert.equal(hresolveZeroSlackSidecarMilestone.allPresent, true);
+  assert.equal(hresolveZeroSlackSidecarMilestone.allAssumptionFree, false);
+  assert.equal(hresolveZeroSlackSidecarMilestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(hresolveZeroSlackSidecarMilestone.allKernelTypesMatch, true);
+  assert.equal(hresolveZeroSlackSidecarMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    hresolveZeroSlackSidecarHashes,
+    HRESOLVE_ZEROSLACK_SIDECAR_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    hresolveZeroSlackSidecarMilestone.requiredTheorems,
+    Object.keys(HRESOLVE_ZEROSLACK_SIDECAR_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarAuditedDeclarationCount, 8);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarEmptyAxiomDeclarationCount, 3);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarPropextQuotSoundDeclarationCount, 5);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hresolveZeroSlackSidecarMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      HRESOLVE_ZEROSLACK_SIDECAR_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      HRESOLVE_ZEROSLACK_SIDECAR_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(
+      theoremRow.axioms,
+      HRESOLVE_ZEROSLACK_SIDECAR_EMPTY_AXIOM_THEOREMS.has(theoremRow.name)
+        ? []
+        : ['Quot.sound', 'propext'],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(hresolveZeroSlackSidecarMilestone.scope, /checked proof-bearing NoHereditary sidecar/u);
+  assert.match(hresolveZeroSlackSidecarMilestone.scope, /total blocked coverage/u);
+  assert.match(hresolveZeroSlackSidecarMilestone.scope, /semantic minimum and strict equivalent gain/u);
+  assert.match(hresolveZeroSlackSidecarMilestone.nonClaim, /remain supplied inputs/u);
+  assert.match(hresolveZeroSlackSidecarMilestone.nonClaim, /H0-H4 blocker semantics/u);
+  assert.match(hresolveZeroSlackSidecarMilestone.nonClaim, /unconditional ZeroSlack/u);
+  assert.equal(status.leanResidualTerminalHResolveZeroSlackSidecarFormalized, true);
+  assert.equal(status.leanResidualTerminalHResolveZeroSlackSidecarAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHResolveZeroSlackSidecarScope,
+    release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hresolveZeroSlackSidecarMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);

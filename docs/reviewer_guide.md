@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 126-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,879 public declarations across 293 modules,
-including 15,421 theorem-kind declarations, 7,628 assumption-free theorem-kind declarations, and four
+The canonical report downloads are now a 127-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 29,898 public declarations across 294 modules,
+including 15,431 theorem-kind declarations, 7,633 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,135 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 126-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 127-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,064 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,064 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 152 of 154 scoped formal milestone rows. The newest row constructs a maximal pairwise H-disjoint family over supplied proof-bearing hereditary candidates, preserves exact certified-path minima and coherence evidence for selected candidates, and records selected blocker routes for rejections. | Treating that supplied-candidate family as terminal derivation, HN grammar soundness or completeness, the full NoHereditary sidecar, blocker-to-HB-rank semantics, full or polynomial HResolve, the complete no-lower ledger, unconditional ZeroSlack, or complete global routing; hiding the supplied candidates, paths, footprints, completeness or coherence proofs; claiming polynomial enumeration, complete PkgC, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,071 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,071 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 153 of 155 scoped formal milestone rows. The newest row replaces report-facing HResolve ZeroSlack string assertions with checked finite-family coverage, exact and gain exclusions, and semantic route bindings. | Treating that supplied-family sidecar as hereditary-candidate derivation, HN grammar soundness or completeness, H0-H4 blocker semantics, full or polynomial HResolve, unconditional ZeroSlack, the complete no-lower ledger, or complete global routing; hiding the supplied family, implementation map, predicates, decidability, or blocker semantics; claiming polynomial enumeration, complete PkgC, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -61,10 +61,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `ca501ca3df44c8d19933e59fe132612bea5422c2`.
+   `337e07e725f72ddd832c2a7885d505e9044838be`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,064 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,071 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -161,14 +161,15 @@ same-candidate composition with the checked five-row Packet no-lower ledger also
 conclusion. The next layer constructs a governed maximal H-disjoint subfamily over an arbitrary finite
 duplicate-free family of supplied hereditary footprints. A later layer computes the exact lexicographic
 minimum by realized cost, residual rank, frontier deviation, and direct-wire code over every nonempty finite
-supplied family of certified hereditary paths. The newest layer combines supplied proof-bearing candidates,
+supplied family of certified hereditary paths. A later layer combines supplied proof-bearing candidates,
 those exact minima, supplied footprints, and supplied path-to-footprint coherence into a maximal pairwise
-H-disjoint selected family, with a selected first interference route for every rejection. These reference
-searches may be exhaustive. The caps, Packet-side data, candidates, certified paths, predicates, completeness
-proofs, footprints, and coherence proofs remain supplied. This is not terminal derivation, manuscript HN
-grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, the full
-NoHereditary sidecar, blocker-to-HB-rank semantics, full or polynomial HResolve or BudgetResolve, or the
-complete no-lower ledger.
+H-disjoint selected family, with a selected first interference route for every rejection. The newest layer
+replaces report-facing HResolve ZeroSlack string assertions with a checked proof-bearing sidecar that recomputes
+duplicate-free blocked coverage, excludes exact and gain routes, and binds them to semantic propositions. These
+reference searches may be exhaustive. The caps, Packet-side data, governed candidate family, implementation map,
+route predicates, decidability, and blocker semantics remain supplied. This is not terminal derivation,
+manuscript HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics,
+full or polynomial HResolve or BudgetResolve, unconditional ZeroSlack, or the complete no-lower ledger.
 
 Review the gaps between those scopes and the target theorem:
 
@@ -247,7 +248,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 126-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 127-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

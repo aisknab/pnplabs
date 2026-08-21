@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-176";
-const STATUS_SHA256 = 'fa7f06389953e0191d70899958859a8b01ba71d6c7b855003fe29b866bb5ad07';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-176";
-const FORMAL_PUBLICATION_MAP_SHA256 = "aa598e71df691a8eaffcfb1ae66f1c4d92a3d369c546e608bf5041f03404b2c0";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-177";
+const STATUS_SHA256 = '7cf4276906881ac4310b5f85f1fa28021a59fbf8b3994fe5280a89f8c3660e90';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-177";
+const FORMAL_PUBLICATION_MAP_SHA256 = "1bc070253b910cfe5b5e26ff545d582dd6f72a3afc9c3ebc69d8b676a854b1d4";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-176";
-const INVENTORY_SHA256 = "5ea73993e56570d87fa4d84b4c574b02125864847c1c4922592dbb7fa3159393";
-const SOURCE_CLOSURE_SHA256 = "015f16685bdacbc122847cc72b17601d2748ed02a8a8ca432f84abff36ae7580";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-177";
+const INVENTORY_SHA256 = "fa08e2b8f2a1faecc91bf45501951900aa9205254a041606d7bc0662f4fe400a";
+const SOURCE_CLOSURE_SHA256 = "aaa9e359b91852f852a82688ce61c78d4931fb36ff148e80292b4244f3c92a5b";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29879,
-  theorems: 15421,
-  assumptionFreeTheorems: 7628,
+  declarations: 29898,
+  theorems: 15431,
+  assumptionFreeTheorems: 7633,
   excludedPrivateDeclarations: 15135,
-  modules: 293,
+  modules: 294,
   axioms: 4,
 });
 
@@ -4608,6 +4608,15 @@ const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_DECLARATIONS = Object.fre
   ["PNP.DirectWire.terminalHResolveGreedyCertifiedPathFamily_maximal",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveCertifiedPathFamily","53998173b2aa4fcdf6c200d830bd4081c9e7857c181469e3873372c822cadeae"],
   ["PNP.DirectWire.terminal_hresolve_certified_path_family_complete",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveCertifiedPathFamily","afa671a255c4e3e1e840ad632863d9441604275906436d6ff40462af4ce008e9"],
 ]);
+const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_DECLARATIONS = Object.freeze([
+  ["PNP.HResolveSidecarCertificate.accepted",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveZeroSlackSidecar","55d744332baf2b97d8f09878f43fbc2a3f1321fb44c98875d1adddc333b0fba9"],
+  ["PNP.HResolveSidecarCertificate.not_exact",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveZeroSlackSidecar","150bbe27229f80035a9f909cade997afa2a8dc5d764208daa9ffb5c610c7f165"],
+  ["PNP.HResolveSidecarCertificate.not_gain",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveZeroSlackSidecar","be1830a305f072269dc4b87fcc83431b680c3ac5997228230a3a0e3b258fe552"],
+  ["PNP.HResolveSidecarCertificate.blocked_of_mem",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveZeroSlackSidecar","a4ef62fd886cc9790b082a46846385e82423096a2cd8441905943b0e495408b4"],
+  ["PNP.HResolveSidecarCertificate.exact_route_sound",[],"PNP.ResidualTerminalHResolveZeroSlackSidecar","12972e8b0b6f869bdcca53829b3609cf214b2586eb6e0d5d1ac9541c7755f100"],
+  ["PNP.HResolveSidecarCertificate.gain_route_sound",[],"PNP.ResidualTerminalHResolveZeroSlackSidecar","129f4d0176153b831ed957ee92a62c2073e09e09fb778caa66bb4893e629d56d"],
+  ["PNP.hresolve_zeroslack_sidecar_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalHResolveZeroSlackSidecar","fd970a799e2afdcc83b011d3d7476557efe33bdbc48decc563785d1602d89709"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5554,6 +5563,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalHResolveCertifiedPathFamilyFormalized: false,
   leanResidualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed: false,
   leanResidualTerminalHResolveCertifiedPathFamilyScope: null,
+  leanResidualTerminalHResolveZeroSlackSidecarFormalized: false,
+  leanResidualTerminalHResolveZeroSlackSidecarAxiomAuditPassed: false,
+  leanResidualTerminalHResolveZeroSlackSidecarScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -6140,6 +6152,9 @@ leanResidualTerminalHNBWLCertifiedPathMinimumScope = ${payload.leanResidualTermi
 leanResidualTerminalHResolveCertifiedPathFamilyFormalized = ${payload.leanResidualTerminalHResolveCertifiedPathFamilyFormalized ?? false}
 leanResidualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed = ${payload.leanResidualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed ?? false}
 leanResidualTerminalHResolveCertifiedPathFamilyScope = ${payload.leanResidualTerminalHResolveCertifiedPathFamilyScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalHResolveCertifiedPathFamilyScope)}
+leanResidualTerminalHResolveZeroSlackSidecarFormalized = ${payload.leanResidualTerminalHResolveZeroSlackSidecarFormalized ?? false}
+leanResidualTerminalHResolveZeroSlackSidecarAxiomAuditPassed = ${payload.leanResidualTerminalHResolveZeroSlackSidecarAxiomAuditPassed ?? false}
+leanResidualTerminalHResolveZeroSlackSidecarScope = ${payload.leanResidualTerminalHResolveZeroSlackSidecarScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalHResolveZeroSlackSidecarScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -7055,6 +7070,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalHResolveZeroSlackSidecar =
+    RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7619,6 +7641,9 @@ function validateInventory(inventory) {
     && residualTerminalHResolveCertifiedPathFamily.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalHResolveZeroSlackSidecar.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8029,6 +8054,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalHResolveCertifiedPathFamilyMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-hresolve-certified-path-family'
+  );
+  const residualTerminalHResolveZeroSlackSidecarMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-hresolve-zeroslack-sidecar'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9509,6 +9537,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalHResolveCertifiedPathFamilyFormalized === true
     && status.leanResidualTerminalHResolveCertifiedPathFamilyAxiomAuditPassed === true
     && status.leanResidualTerminalHResolveCertifiedPathFamilyScope === "all-duplicate-free-finite-supplied-proof-bearing-hereditary-candidates-maximal-H-disjoint-family-with-exact-certified-path-minima-and-selected-blocker-routes"
+
+    && residualTerminalHResolveZeroSlackSidecarMilestone?.classification === "formalized-residual-terminal-hresolve-zeroslack-sidecar"
+    && residualTerminalHResolveZeroSlackSidecarMilestone.status === "formalized-residual-terminal-hresolve-zeroslack-sidecar"
+    && residualTerminalHResolveZeroSlackSidecarMilestone.scope === "For every arbitrary finite supplied governed HResolve family, the report-facing ZeroSlack boundary now consumes a checked proof-bearing NoHereditary sidecar: duplicate-free total blocked coverage is recomputed, exact and gain routes are excluded for every listed candidate, and those route predicates are separately bound to semantic minimum and strict equivalent gain propositions."
+    && residualTerminalHResolveZeroSlackSidecarMilestone.nonClaim === "The governed candidate family, implementation map, exact, gain, and blocked predicates, their decidability, and blocker semantics remain supplied inputs. This milestone does not derive hereditary candidates from terminal data, prove HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalHResolveZeroSlackSidecarMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalHResolveZeroSlackSidecarMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalHResolveZeroSlackSidecarFormalized === true
+    && status.leanResidualTerminalHResolveZeroSlackSidecarAxiomAuditPassed === true
+    && status.leanResidualTerminalHResolveZeroSlackSidecarScope === "all-arbitrary-finite-proof-bearing-HResolve-NoHereditary-sidecars-with-checked-coverage-and-semantic-exact-gain-bindings"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
