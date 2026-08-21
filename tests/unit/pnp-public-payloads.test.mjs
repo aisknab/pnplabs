@@ -546,6 +546,33 @@ const HRESOLVE_MAXIMAL_H_DISJOINT_FAMILY_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.terminalHResolveGreedyHDisjointFamily_maximal': '16910cce3352126a72da9cfb84ca13c65ebe04e8fc3f8aa7989d452745f2ee09',
   'PNP.DirectWire.terminal_hresolve_maximal_hdisjoint_family_complete': 'cd3be2c48949ee1746e78094c9459c1e8ea664f5b210a1243a27a0d7d1af472c',
 });
+const HN_BWL_CERTIFIED_PATH_MINIMUM_THEOREM_SHA256 = Object.freeze({
+  'PNP.DirectWire.checkTerminalNatVectorLexLE_eq_true_iff': '1d06a97fd7f748cf57fa79b1a60a053e008e5274e145b42ec00c165b91440dc5',
+  'PNP.DirectWire.terminalNatVectorLexLE_total_of_length_eq': '488506033db9fd823277f370c9d22109776728339e378c3d96999bd93f55851d',
+  'PNP.DirectWire.terminalNatVectorLexLE_refl': '0ecda227d6cabf9cf9ffa51c1d7b8754cca8230b58a8293c3c35ad5ea62ea603',
+  'PNP.DirectWire.terminalNatVectorLexLE_trans': 'd3acbda51a53d19fd5a10a04658aa727b1b77762efb09e9e4e3bd8cfdf7c8948',
+  'PNP.DirectWire.TerminalHNBWLObjective.checkLexLE_eq_true_iff': 'de254f24492b2bb71bba226789807e836329570ea943347b824693450cd98fdb',
+  'PNP.DirectWire.TerminalHNBWLObjective.lexLE_refl': '531648222febca4b35e2df7fe2dab44a350aa50f1e77c4f601017fd289afee53',
+  'PNP.DirectWire.TerminalHNBWLObjective.lexLE_total': '4d311abcde5d778e771a8b1676df1bc2760e65d23cb59e47106f3feb2b071c6f',
+  'PNP.DirectWire.TerminalHNBWLObjective.lexLE_trans': 'eb9187fcf760208e67646c15d389b640007b9527456e1904f5714297c27d12ef',
+  'PNP.DirectWire.terminalHNBWLChoose_eq_left_or_right': 'd62799fda97f2aee33ecf46682db164ec869203999b2f56547ca2865df171bda',
+  'PNP.DirectWire.terminalHNBWLChoose_lexLE_left': 'ff6c4ac17c938c02b5466df8abedce31acceaa04453e3e2a5e71a8b0c21141da',
+  'PNP.DirectWire.terminalHNBWLChoose_lexLE_right': '96bf5e9bc018ff1f96e19018f9919cf083c5509abcdfe2d264290912def78a03',
+  'PNP.DirectWire.terminalHNBWLMinimum?_eq_none_iff': '64141090dfed234bb678fb9d758bb2b7b0af8c470fee411a6c0593e400b42055',
+  'PNP.DirectWire.terminalHNBWLMinimum?_sound': '49fe1209297af83ac6d68bfa95c5e9c559b2f9d32176000ad2ad33231dd9309d',
+  'PNP.DirectWire.terminalHNBWLMinimum?_exists_of_ne_nil': '9a53ee168de637d01731595a4d0b3c96af2039cecef531a0d4fe62a47888b634',
+  'PNP.DirectWire.terminal_hn_bwl_certified_path_minimum_complete': 'fd5a191f5cc72cab4e766e663becaee9d07366c6ba347a897ad8a3b03d9e2d25',
+});
+const HN_BWL_CERTIFIED_PATH_MINIMUM_PROPEXT_ONLY_THEOREMS = new Set([
+  'PNP.DirectWire.checkTerminalNatVectorLexLE_eq_true_iff',
+  'PNP.DirectWire.TerminalHNBWLObjective.checkLexLE_eq_true_iff',
+  'PNP.DirectWire.terminalHNBWLChoose_lexLE_left',
+  'PNP.DirectWire.terminalHNBWLChoose_lexLE_right',
+  'PNP.DirectWire.terminalHNBWLMinimum?_eq_none_iff',
+  'PNP.DirectWire.terminalHNBWLMinimum?_sound',
+  'PNP.DirectWire.terminalHNBWLMinimum?_exists_of_ne_nil',
+  'PNP.DirectWire.terminal_hn_bwl_certified_path_minimum_complete',
+]);
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -3123,6 +3150,77 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalHResolveHDisjointFamilyScope,
   );
   assert.ok(index.earnedMilestones.includes(hresolveMaximalHDisjointFamilyMilestone.id));
+
+  const hnBwlCertifiedPathMinimumMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-hn-bwl-certified-path-minimum');
+  const hnBwlCertifiedPathMinimumHashes = release.earnedBoundary
+    .residualTerminalHNBWLCertifiedPathMinimumTheoremKernelTypeSha256;
+  assert.ok(hnBwlCertifiedPathMinimumMilestone);
+  assert.equal(hnBwlCertifiedPathMinimumMilestone.earned, true);
+  assert.equal(hnBwlCertifiedPathMinimumMilestone.allPresent, true);
+  assert.equal(hnBwlCertifiedPathMinimumMilestone.allAssumptionFree, false);
+  assert.equal(hnBwlCertifiedPathMinimumMilestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(hnBwlCertifiedPathMinimumMilestone.allKernelTypesMatch, true);
+  assert.equal(hnBwlCertifiedPathMinimumMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    hnBwlCertifiedPathMinimumHashes,
+    HN_BWL_CERTIFIED_PATH_MINIMUM_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    hnBwlCertifiedPathMinimumMilestone.requiredTheorems,
+    Object.keys(HN_BWL_CERTIFIED_PATH_MINIMUM_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumAuditedDeclarationCount, 27);
+  assert.equal(release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumEmptyAxiomDeclarationCount, 19);
+  assert.equal(release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumPropextOnlyDeclarationCount, 8);
+  assert.equal(release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumPropextQuotSoundDeclarationCount, 0);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumAxiomClosure,
+    ['propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of hnBwlCertifiedPathMinimumMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      HN_BWL_CERTIFIED_PATH_MINIMUM_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      HN_BWL_CERTIFIED_PATH_MINIMUM_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(
+      theoremRow.axioms,
+      HN_BWL_CERTIFIED_PATH_MINIMUM_PROPEXT_ONLY_THEOREMS.has(theoremRow.name) ? ['propext'] : [],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(hnBwlCertifiedPathMinimumMilestone.scope, /four-coordinate lexicographic minimum/u);
+  assert.match(hnBwlCertifiedPathMinimumMilestone.scope, /four HN shapes/u);
+  assert.match(hnBwlCertifiedPathMinimumMilestone.scope, /governed predicate/u);
+  assert.match(hnBwlCertifiedPathMinimumMilestone.nonClaim, /family completeness remain supplied inputs/u);
+  assert.match(hnBwlCertifiedPathMinimumMilestone.nonClaim, /shape-grammar soundness or completeness/u);
+  assert.match(hnBwlCertifiedPathMinimumMilestone.nonClaim, /full BWL theorem/u);
+  assert.equal(status.leanResidualTerminalHNBWLCertifiedPathMinimumFormalized, true);
+  assert.equal(status.leanResidualTerminalHNBWLCertifiedPathMinimumAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalHNBWLCertifiedPathMinimumScope,
+    release.earnedBoundary.residualTerminalHNBWLCertifiedPathMinimumScope,
+  );
+  assert.ok(index.earnedMilestones.includes(hnBwlCertifiedPathMinimumMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);

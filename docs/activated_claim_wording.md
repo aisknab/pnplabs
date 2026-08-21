@@ -113,7 +113,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone checks eight exact interference domains over an arbitrary finite duplicate-free family of supplied hereditary footprints, deterministically constructs a governed duplicate-free maximal pairwise H-disjoint subfamily, and gives every rejected governed candidate its selected first blocker route. The hereditary footprints remain supplied inputs. This does not derive them from a terminal candidate, formalize manuscript HN pair/tripod/spine/non-flat grammar, prove BWL exactness or ParseOrExit, establish leaf tightness, construct the full H0-H4 NoHereditary sidecar, connect blockers to HB ranks, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-one narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone computes the exact four-coordinate lexicographic minimum over every nonempty supplied family of certified hereditary paths and extends its lower bound through an explicit governed-family completeness premise. The family, predicate, and premise remain supplied. This does not derive accepted paths from terminal data, prove manuscript HN grammar soundness or completeness, establish LN confluence or ParseOrExit, prove independent leaf tightness or the full BWL theorem, construct the full H0-H4 NoHereditary sidecar, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial generation and runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -132,7 +132,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 125-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 126-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
