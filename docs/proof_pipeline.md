@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,064 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,071 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,879 public declarations;
-- 15,421 theorem-kind declarations;
-- 7,628 assumption-free theorem-kind declarations;
-- 293 source-closure modules;
+- 29,898 public declarations;
+- 15,431 theorem-kind declarations;
+- 7,633 assumption-free theorem-kind declarations;
+- 294 source-closure modules;
 - 15,135 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -202,6 +202,7 @@ The one hundred and fifty-two earned scopes are:
 | Terminal HResolve maximal H-disjoint family | For every arbitrary finite duplicate-free family of supplied hereditary footprints over eight decidable coordinate domains, Lean checks exact pairwise interference and deterministically constructs a governed duplicate-free maximal pairwise H-disjoint subfamily. Every rejected governed candidate has a selected blocker carrying its first exact support, frontier, origin, kernel, obligation, prefix-tail, charge, or interface interference route. Two of the ten reviewed pins have empty axiom closures and eight use `Quot.sound` plus `propext`. The focused 18-declaration audit has ten empty closures and eight `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The hereditary footprints remain supplied inputs. This milestone does not derive them from a terminal candidate, formalize the HN pair/tripod/spine/non-flat grammar, prove BWL exactness or ParseOrExit, establish leaf tightness or solve a leaf, construct the full H0-H4 NoHereditary sidecar, connect blockers to HB ranks, implement full HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Terminal HN BWL certified-path minimum | For every nonempty finite supplied family of certified hereditary paths, Lean computes the exact lexicographic minimum by realized cost, residual rank, frontier deviation, and direct-wire code. The selected member preserves semantic fidelity, frontier fidelity, nonempty block coverage, and one of four HN shapes; an explicit completeness premise extends its lower bound to every path in the supplied governed predicate. Seven of the fifteen reviewed pins have empty axiom closures and eight use only `propext`. The focused 27-declaration audit has nineteen empty and eight `propext`-only closures, with no project axiom or `Classical.choice`. | The certified path family, governed predicate, and family completeness remain supplied inputs. This milestone does not derive accepted paths from terminal data, prove shape-grammar soundness or completeness, establish LN confluence or ParseOrExit, prove independent leaf tightness or the full BWL theorem, solve a leaf, construct the H0-H4 NoHereditary sidecar, implement full HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial generation and runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Terminal HResolve certified-path family | For every duplicate-free finite supplied family of proof-bearing hereditary candidates, Lean constructs a duplicate-free maximal pairwise H-disjoint selected family. Every selected candidate has an exact four-coordinate certified-path minimum preserving semantic, frontier, block, shape, and footprint-coherence evidence; every rejected candidate has a selected blocker carrying the exact first interference route. One of the seven reviewed pins uses only `propext` and six use `Quot.sound` plus `propext`. The focused 13-declaration audit has six empty, one `propext`-only, and six `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The candidates, certified paths, hereditary footprints, governed predicates, family-completeness proofs, and path-to-footprint coherence proofs remain supplied inputs. This milestone does not derive them from terminal data, prove HN grammar soundness or completeness, establish LN confluence or ParseOrExit, prove independent leaf tightness, construct the H0-H4 NoHereditary sidecar, connect blockers to HB rank semantics, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
+| Terminal HResolve ZeroSlack sidecar | For every arbitrary finite supplied governed HResolve family, the report-facing ZeroSlack boundary consumes a checked proof-bearing NoHereditary sidecar. Duplicate-free total blocked coverage is recomputed, exact and gain routes are excluded for every listed candidate, and those route predicates are separately bound to semantic minimum and strict equivalent gain propositions. Two of the seven reviewed pins have empty axiom closures and five use `Quot.sound` plus `propext`. The focused 8-declaration audit has three empty and five `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The governed candidate family, implementation map, exact, gain, and blocked predicates, their decidability, and blocker semantics remain supplied inputs. This milestone does not derive hereditary candidates from terminal data, prove HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -233,7 +234,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 126-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 127-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

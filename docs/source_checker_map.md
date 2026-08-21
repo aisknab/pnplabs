@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `ca501ca3df44c8d19933e59fe132612bea5422c2`. Its generated status payload is current
+core commit `337e07e725f72ddd832c2a7885d505e9044838be`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the 126-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the 127-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `ca501ca3df44c8d19933e59fe132612bea5422c2` (tree `ceab2cfa341b7437c01a98772912a464902451eb`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact four-coordinate minimum over a supplied certified-path family, and a maximal H-disjoint family over supplied proof-bearing candidates with selected blocker routes. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,064 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `337e07e725f72ddd832c2a7885d505e9044838be` (tree `0432aef434d94ab43847aeec7730b76f739c5d05`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact certified-path minimum, a maximal H-disjoint certified-path family, and a proof-bearing report-side HResolve ZeroSlack sidecar. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,071 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 152 of 154 scoped milestone rows are earned. The newest result constructs a maximal pairwise H-disjoint family over supplied proof-bearing candidates, preserves exact certified-path minima for selected candidates, and records selected blocker routes for rejections. The candidates, paths, footprints, governed predicates, completeness proofs, and coherence proofs remain supplied. This is not terminal derivation, HN grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, blocker-to-HB-rank semantics, full or polynomial HResolve, unconditional global ZeroSlack, or polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 126-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | 153 of 155 scoped milestone rows are earned. The newest result replaces report-facing HResolve ZeroSlack string assertions with checked finite-family coverage, exact and gain exclusions, and semantic route bindings. The governed family, implementation map, predicates, decidability, and blocker semantics remain supplied. This is not hereditary-candidate derivation, HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, unconditional global ZeroSlack, or polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 127-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence and does not rerun Lean in PNPLabs; proof

@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-21-residual-terminal-hresolve-zeroslack-sidecar",
+      "milestoneId": "residual-terminal-hresolve-zeroslack-sidecar",
+      "publishedAt": "2026-08-21T21:08:10Z",
+      "title": "Lean makes the HResolve ZeroSlack sidecar proof-bearing",
+      "plainLanguage": [
+        "For every arbitrary finite supplied governed HResolve family, the report-facing ZeroSlack boundary now consumes a checked proof-bearing NoHereditary sidecar. Lean recomputes duplicate-free total blocked coverage, excludes exact and gain routes for every listed candidate, and separately binds those route predicates to semantic minimum and strict equivalent gain propositions.",
+        "The governed candidate family, implementation map, exact, gain, and blocked predicates, their decidability, and blocker semantics remain supplied inputs. This milestone does not derive hereditary candidates from terminal data, prove HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 153 of 155 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "337e07e725f72ddd832c2a7885d505e9044838be",
+        "tree": "0432aef434d94ab43847aeec7730b76f739c5d05",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-177",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-hresolve-certified-path-family",
       "milestoneId": "residual-terminal-hresolve-certified-path-family",
       "publishedAt": "2026-08-21T15:01:34Z",

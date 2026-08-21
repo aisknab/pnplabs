@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "ca501ca3df44c8d19933e59fe132612bea5422c2";
-const CORE_TREE = "ceab2cfa341b7437c01a98772912a464902451eb";
-const CORE_PUBLICATION_MAP_SHA256 = "aa598e71df691a8eaffcfb1ae66f1c4d92a3d369c546e608bf5041f03404b2c0";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-21-176";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-21-176";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-21-176";
-const CORE_SOURCE_CLOSURE_SHA256 = "015f16685bdacbc122847cc72b17601d2748ed02a8a8ca432f84abff36ae7580";
+const CORE_COMMIT = "337e07e725f72ddd832c2a7885d505e9044838be";
+const CORE_TREE = "0432aef434d94ab43847aeec7730b76f739c5d05";
+const CORE_PUBLICATION_MAP_SHA256 = "1bc070253b910cfe5b5e26ff545d582dd6f72a3afc9c3ebc69d8b676a854b1d4";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-177";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-177";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-177";
+const CORE_SOURCE_CLOSURE_SHA256 = "aaa9e359b91852f852a82688ce61c78d4931fb36ff148e80292b4244f3c92a5b";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1797,6 +1797,19 @@ const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_THEOREMS = {
 const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_SCOPE = "all-duplicate-free-finite-supplied-proof-bearing-hereditary-candidates-maximal-H-disjoint-family-with-exact-certified-path-minima-and-selected-blocker-routes";
 const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_MILESTONE_SCOPE = "For every duplicate-free finite supplied family of proof-bearing hereditary candidates, Lean constructs a duplicate-free maximal pairwise H-disjoint selected family. Every selected candidate has an exact four-coordinate certified-path minimum preserving semantic, frontier, block, shape, and footprint-coherence evidence; every rejected candidate has a selected blocker carrying the exact first interference route.";
 const RESIDUAL_TERMINAL_HRESOLVE_CERTIFIED_PATH_FAMILY_NON_CLAIM = "The candidates, certified paths, hereditary footprints, governed predicates, family-completeness proofs, and path-to-footprint coherence proofs remain supplied inputs. This milestone does not derive them from terminal data, prove HN grammar soundness or completeness, LN confluence, ParseOrExit, independent leaf tightness, or the H0-H4 NoHereditary sidecar, connect blockers to HB rank semantics, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS = {
+  "PNP.HResolveSidecarCertificate.accepted": { hash: "55d744332baf2b97d8f09878f43fbc2a3f1321fb44c98875d1adddc333b0fba9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" },
+  "PNP.HResolveSidecarCertificate.not_exact": { hash: "150bbe27229f80035a9f909cade997afa2a8dc5d764208daa9ffb5c610c7f165", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" },
+  "PNP.HResolveSidecarCertificate.not_gain": { hash: "be1830a305f072269dc4b87fcc83431b680c3ac5997228230a3a0e3b258fe552", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" },
+  "PNP.HResolveSidecarCertificate.blocked_of_mem": { hash: "a4ef62fd886cc9790b082a46846385e82423096a2cd8441905943b0e495408b4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" },
+  "PNP.HResolveSidecarCertificate.exact_route_sound": { hash: "12972e8b0b6f869bdcca53829b3609cf214b2586eb6e0d5d1ac9541c7755f100", axioms: [], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" },
+  "PNP.HResolveSidecarCertificate.gain_route_sound": { hash: "129f4d0176153b831ed957ee92a62c2073e09e09fb778caa66bb4893e629d56d", axioms: [], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" },
+  "PNP.hresolve_zeroslack_sidecar_checked_complete": { hash: "fd970a799e2afdcc83b011d3d7476557efe33bdbc48decc563785d1602d89709", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalHResolveZeroSlackSidecar" }
+};
+const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-HResolve-NoHereditary-sidecars-with-checked-coverage-and-semantic-exact-gain-bindings";
+const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For every arbitrary finite supplied governed HResolve family, the report-facing ZeroSlack boundary now consumes a checked proof-bearing NoHereditary sidecar: duplicate-free total blocked coverage is recomputed, exact and gain routes are excluded for every listed candidate, and those route predicates are separately bound to semantic minimum and strict equivalent gain propositions.";
+const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_NON_CLAIM = "The governed candidate family, implementation map, exact, gain, and blocked predicates, their decidability, and blocker semantics remain supplied inputs. This milestone does not derive hereditary candidates from terminal data, prove HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4108,26 +4121,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 551205,
-    sha256: "8ea5707807ae9c9f1bde7b7928f02088504c6c9ce47e79c9ace81a47526467a8"
+    bytes: 553119,
+    sha256: "15c782145365af511c37cac66c4b0bb8515ab14abb7efe41cef953c6ebb8228f"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 325419,
-    sha256: "249dd194811b2292abe0c757f4950ce72885692128eca47a7b89df5c54468962"
+    bytes: 327325,
+    sha256: "a14b2173c0afd842e2d41245f407b32fa16cc9f49430f1d3d0d5dc9c40820e07"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2546974,
-    sha256: "fa7f06389953e0191d70899958859a8b01ba71d6c7b855003fe29b866bb5ad07"
+    bytes: 2554604,
+    sha256: "7cf4276906881ac4310b5f85f1fa28021a59fbf8b3994fe5280a89f8c3660e90"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 32209928,
-    sha256: "5ea73993e56570d87fa4d84b4c574b02125864847c1c4922592dbb7fa3159393"
+    bytes: 32230233,
+    sha256: "fa08e2b8f2a1faecc91bf45501951900aa9205254a041606d7bc0662f4fe400a"
   }
 ];
 
@@ -5694,6 +5707,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal HResolve certified-path-family boundary mismatch");
+  }
+
+  const residualTerminalHResolveZeroSlackSidecarMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-hresolve-zeroslack-sidecar"
+  );
+  const residualTerminalHResolveZeroSlackSidecarNames =
+    Object.keys(RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS);
+  if (!residualTerminalHResolveZeroSlackSidecarMilestone
+      || residualTerminalHResolveZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-hresolve-zeroslack-sidecar"
+      || residualTerminalHResolveZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+      || residualTerminalHResolveZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_NON_CLAIM
+      || JSON.stringify(residualTerminalHResolveZeroSlackSidecarMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalHResolveZeroSlackSidecarNames)
+      || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal HResolve ZeroSlack-sidecar boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8931,6 +8961,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal HResolve certified-path-family boundary mismatch");
     }
 
+    const residualTerminalHResolveZeroSlackSidecarMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-hresolve-zeroslack-sidecar"
+    );
+    if (!residualTerminalHResolveZeroSlackSidecarMilestone
+        || residualTerminalHResolveZeroSlackSidecarMilestone.earned !== true
+        || residualTerminalHResolveZeroSlackSidecarMilestone.allPresent !== true
+        || residualTerminalHResolveZeroSlackSidecarMilestone.allAssumptionFree !== false
+        || residualTerminalHResolveZeroSlackSidecarMilestone.allKernelTypesMatch !== true
+        || residualTerminalHResolveZeroSlackSidecarMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalHResolveZeroSlackSidecarMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalHResolveZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-hresolve-zeroslack-sidecar"
+        || residualTerminalHResolveZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+        || residualTerminalHResolveZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_NON_CLAIM
+        || JSON.stringify(residualTerminalHResolveZeroSlackSidecarMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalHResolveZeroSlackSidecarMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalHResolveZeroSlackSidecarFormalized !== true
+        || payload.leanResidualTerminalHResolveZeroSlackSidecarAxiomAuditPassed !== true
+        || payload.leanResidualTerminalHResolveZeroSlackSidecarScope !== RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal HResolve ZeroSlack-sidecar boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -9419,6 +9485,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal HResolve certified-path-family theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal HResolve ZeroSlack-sidecar theorem mismatch: " + name);
       }
     }
 
