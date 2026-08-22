@@ -107,6 +107,9 @@ leanResidualTerminalPacketNoLowerLedgerScope = "all-arbitrary-finite-five-row-Pa
 leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarFormalized = true
 leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarAxiomAuditPassed = true
 leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarScope = "all-arbitrary-finite-proof-bearing-BCEL-constant-activation-to-positive-Packet-contradiction-against-the-same-checked-no-lower-family"
+leanResidualTerminalZeroSlackPacketSelectorHBCoherenceFormalized = true
+leanResidualTerminalZeroSlackPacketSelectorHBCoherenceAxiomAuditPassed = true
+leanResidualTerminalZeroSlackPacketSelectorHBCoherenceScope = "all-arbitrary-finite-proof-bearing-same-family-Selector-HB-Packet-and-BCEL-ZeroSlack-coherence-derived-from-one-accepted-Packet-budget-certificate"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -116,7 +119,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-seven narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone connects the accepted same-family Packet/budget no-lower certificate to the report-facing BCEL branch. With at least two checked grouped-carrier anchors, BCEL constant activation would construct the positive BN6 Packet excluded by that certificate. The grouped family and all inherited terminal, budget, Packet, realizer, dependency, and rank data remain supplied. This does not derive constant activation from positive residual slack, construct BCELReady, complete the manuscript no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-eight narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone derives the report-facing Selector/HB evidence from the exact grouped family, computed realizer table, and dependency table in one supplied accepted M180 certificate, then reuses that certificate for the Packet and dependent M181 BCEL exclusions. Exact identities prevent a detached certificate pairing. The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied. This does not derive those inputs or constant activation from positive residual slack, complete the manuscript no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -135,7 +138,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 129-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 130-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

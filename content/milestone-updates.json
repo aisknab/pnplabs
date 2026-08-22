@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-23-residual-terminal-zeroslack-packet-selector-hb-coherence",
+      "milestoneId": "residual-terminal-zeroslack-packet-selector-hb-coherence",
+      "publishedAt": "2026-08-22T17:38:06Z",
+      "title": "Lean derives same-family Selector/HB coherence for the Packet and BCEL ZeroSlack boundary",
+      "plainLanguage": [
+        "For every arbitrary finite accepted M180 Packet/budget no-lower certificate and its dependent M181 BCEL boundary, the report-facing ZeroSlack layer now derives the Selector/HB sidecar from the exact grouped family, computed realizer table, and dependency table. Definitional identities prevent a detached Selector/HB certificate from being paired with the checked Packet and BCEL exclusions.",
+        "The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied inputs. This milestone does not derive those inputs or BCEL constant activation from positive residual slack, establish unconditional ZeroSlack, complete the manuscript no-lower ledger, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 158 of 160 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "f6f78026f9ff3be2f45b8fce859d2c09b6a8d764",
+        "tree": "c6feae0f7d20a0c80c561e822f6db85252563585",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-182",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-22-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar",
       "milestoneId": "residual-terminal-bcel-packet-no-lower-zeroslack-sidecar",
       "publishedAt": "2026-08-22T13:56:29Z",

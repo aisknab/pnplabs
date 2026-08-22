@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "a9559242cd6171e217e9917c9c70f99a98ca7757";
-const REVIEWED_CORE_TREE = "9d24021681b86580c96dab85e80aec98263abf70";
+const REVIEWED_CORE_COMMIT = "f6f78026f9ff3be2f45b8fce859d2c09b6a8d764";
+const REVIEWED_CORE_TREE = "c6feae0f7d20a0c80c561e822f6db85252563585";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -4172,6 +4172,15 @@ const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_RELEASE_IDENTITIE
   residualTerminalBCELPacketNoLowerZeroSlackSidecarNotConstantActivationTheorem: "PNP.BCELContradictionCertificate.not_constant_activation",
   residualTerminalBCELPacketNoLowerZeroSlackSidecarNamedEndpointTheorem: "PNP.bcel_packet_no_lower_zeroslack_sidecar_checked_complete"
 };
+const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_RELEASE_IDENTITIES = {
+  residualTerminalZeroSlackPacketSelectorHBCoherenceSelectorSilenceAcceptedTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selector_silence_accepted",
+  residualTerminalZeroSlackPacketSelectorHBCoherenceHBClosureAcceptedTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.hb_closure_accepted",
+  residualTerminalZeroSlackPacketSelectorHBCoherenceFamilyIdentityTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selectorHB_family",
+  residualTerminalZeroSlackPacketSelectorHBCoherenceRealizerTableIdentityTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selectorHB_realizerTable",
+  residualTerminalZeroSlackPacketSelectorHBCoherenceDependencyTableIdentityTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selectorHB_dependencyTable",
+  residualTerminalZeroSlackPacketSelectorHBCoherenceCheckedCompleteTheorem: "PNP.packet_selector_hb_bcel_coherent_checked_complete",
+  residualTerminalZeroSlackPacketSelectorHBCoherenceNamedEndpointTheorem: "PNP.zeroslack_packet_selector_hb_bcel_coherent_checked_complete"
+};
 
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
@@ -5860,6 +5869,19 @@ const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS = {
 const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-BCEL-constant-activation-to-positive-Packet-contradiction-against-the-same-checked-no-lower-family";
 const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For every arbitrary finite supplied M180 Packet/budget no-lower certificate whose grouped carrier passes the exact at-least-two-anchor check, the report-facing ZeroSlack boundary now consumes one checked proof-bearing BCEL/Packet contradiction sidecar. BCEL constant activation would construct a positive BN6 Packet, contradicting the accepted same-family no-lower exclusion.";
 const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM = "The grouped BN6 family and all terminal, budget, Packet, realizer, dependency, and rank inputs inherited from M180 remain supplied. This milestone does not derive the family or BCEL constant activation from positive residual slack, construct BCELReady from a terminal candidate, complete the manuscript no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS = {
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selector_silence_accepted": { hash: "fed0bc5c88f8d9966ba42fa5ad61a73c3f662baa5c5d1f3f2d85a57086204efd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.hb_closure_accepted": { hash: "f932e8665720dcfca05ddf7048cb434c79386f83aff931f576435530f02b1f74", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selectorHB_family": { hash: "35f7733147bdf16a90f9df2d1ee7679bdc6e1ab3d8c75f4aea27bcf0c9d3a924", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selectorHB_realizerTable": { hash: "2ada28647ecc16ef8f963b82a2b5738d64591bfb003b203431f6d24c89693649", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.selectorHB_dependencyTable": { hash: "2f94c5fb77d7c266f6958fbdabc97e450c2205bceace58fed7ce0fa14c1bd583", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence" },
+  "PNP.packet_selector_hb_bcel_coherent_checked_complete": { hash: "97ce8e0d6988332dfd6387ccab2bf779721444534a9924f9b1198d4705ec01de", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence" },
+  "PNP.zeroslack_packet_selector_hb_bcel_coherent_checked_complete": { hash: "119db0567f3e4b314f5e9347e700aa53c749813938a5cf3b1e26a6cbf3c0a48d", axioms: ["Quot.sound", "propext"], module: "PNP.ZeroSlack" }
+};
+const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_SCOPE = "all-arbitrary-finite-proof-bearing-same-family-Selector-HB-Packet-and-BCEL-ZeroSlack-coherence-derived-from-one-accepted-Packet-budget-certificate";
+const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_MILESTONE_SCOPE = "For every arbitrary finite accepted M180 certificate and its dependent M181 boundary, the report-facing ZeroSlack layer now derives same-family Selector/HB, Packet, and BCEL evidence from the exact grouped family, computed realizer table, and dependency table. Definitional identities prevent a detached Selector/HB certificate from being paired with the checked Packet and BCEL exclusions.";
+const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_NON_CLAIM = "The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied inputs. This milestone does not derive those inputs or BCEL constant activation from positive residual slack, establish unconditional ZeroSlack, complete the manuscript no-lower ledger, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -8450,6 +8472,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS).every(([name, row]) => residualTerminalBCELPacketNoLowerZeroSlackSidecarHashes[name] === row.hash)) failures.push("current manifest residual terminal BCEL/Packet no-lower ZeroSlack-sidecar fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal BCEL/Packet no-lower ZeroSlack-sidecar theorem identity mismatch");
 
+  if (!(earned.residualTerminalZeroSlackPacketSelectorHBCoherenceFormalized === true
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherenceAxiomAuditPassed === true
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherenceAuditedDeclarationCount === 11
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherenceEmptyAxiomDeclarationCount === 0
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherencePropextOnlyDeclarationCount === 1
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherenceQuotSoundOnlyDeclarationCount === 0
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherencePropextQuotSoundDeclarationCount === 10
+      && earned.residualTerminalZeroSlackPacketSelectorHBCoherenceScope === RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_SCOPE
+      && earned.zeroSlackPositiveSlackContradictionFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal ZeroSlack Packet/Selector/HB coherence boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalZeroSlackPacketSelectorHBCoherenceAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalZeroSlackPacketSelectorHBCoherenceProjectAxiomClosure)
+      || earned.residualTerminalZeroSlackPacketSelectorHBCoherenceProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal ZeroSlack Packet/Selector/HB coherence axiom closure mismatch");
+  const residualTerminalZeroSlackPacketSelectorHBCoherenceHashes = earned.residualTerminalZeroSlackPacketSelectorHBCoherenceTheoremKernelTypeSha256;
+  if (!residualTerminalZeroSlackPacketSelectorHBCoherenceHashes || Object.keys(residualTerminalZeroSlackPacketSelectorHBCoherenceHashes).length !== 7
+      || !Object.entries(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS).every(([name, row]) => residualTerminalZeroSlackPacketSelectorHBCoherenceHashes[name] === row.hash)) failures.push("current manifest residual terminal ZeroSlack Packet/Selector/HB coherence fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal ZeroSlack Packet/Selector/HB coherence theorem identity mismatch");
+
 
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -8465,7 +8509,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -11782,6 +11826,40 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal BCEL/Packet no-lower ZeroSlack-sidecar evidence mismatch");
 
+  const residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-zeroslack-packet-selector-hb-coherence"
+  );
+  const residualTerminalZeroSlackPacketSelectorHBCoherenceNames = Object.keys(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS);
+  if (!residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.classification !== "formalized-residual-terminal-zeroslack-packet-selector-hb-coherence"
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.status !== "formalized-residual-terminal-zeroslack-packet-selector-hb-coherence"
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.scope !== RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_MILESTONE_SCOPE
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.nonClaim !== RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_NON_CLAIM
+      || JSON.stringify(residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.requiredTheorems) !== JSON.stringify(residualTerminalZeroSlackPacketSelectorHBCoherenceNames)
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.earned !== true
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.allPresent !== true
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.allAssumptionFree !== false
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.allKernelTypesMatch !== true
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal ZeroSlack Packet/Selector/HB coherence publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS)) {
+    const row = residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal ZeroSlack Packet/Selector/HB coherence theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalZeroSlackPacketSelectorHBCoherenceFormalized === true
+      && status.leanResidualTerminalZeroSlackPacketSelectorHBCoherenceAxiomAuditPassed === true
+      && status.leanResidualTerminalZeroSlackPacketSelectorHBCoherenceScope === RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_SCOPE
+      && status.leanZeroSlackPositiveSlackContradictionFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal ZeroSlack Packet/Selector/HB coherence evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -12982,6 +13060,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal BCEL/Packet no-lower ZeroSlack-sidecar theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal BCEL/Packet no-lower ZeroSlack-sidecar fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal ZeroSlack Packet/Selector/HB coherence theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal ZeroSlack Packet/Selector/HB coherence fingerprint mismatch: ${name}`);
     }
 
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -15405,6 +15490,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalBCELPacketNoLowerZeroSlackSidecarPins[name] !== row.hash) {
       failures.push(`core publication map residual terminal BCEL/Packet no-lower ZeroSlack-sidecar fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-zeroslack-packet-selector-hb-coherence"
+  );
+  const residualTerminalZeroSlackPacketSelectorHBCoherenceNames = Object.keys(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS);
+  if (!residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.classification !== "formalized-residual-terminal-zeroslack-packet-selector-hb-coherence"
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.scope !== RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_MILESTONE_SCOPE
+      || residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.nonClaim !== RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_NON_CLAIM
+      || JSON.stringify(residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalZeroSlackPacketSelectorHBCoherenceNames)) {
+    failures.push("core publication map residual terminal ZeroSlack Packet/Selector/HB coherence boundary mismatch");
+  }
+  const residualTerminalZeroSlackPacketSelectorHBCoherencePins =
+    releaseManifest.earnedBoundary?.residualTerminalZeroSlackPacketSelectorHBCoherenceTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS)) {
+    if (!residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalZeroSlackPacketSelectorHBCoherencePins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal ZeroSlack Packet/Selector/HB coherence fingerprint mismatch: ${name}`);
     }
   }
 
