@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-22-residual-terminal-selector-hb-zeroslack-sidecar",
+      "milestoneId": "residual-terminal-selector-hb-zeroslack-sidecar",
+      "publishedAt": "2026-08-22T05:10:06Z",
+      "title": "Lean makes the Selector/HB ZeroSlack sidecar proof-bearing",
+      "plainLanguage": [
+        "For arbitrary finite supplied grouped BN6, typed-realizer, and exact-rank HB dependency tables, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Selector/HB sidecar. Its exact executable checks yield nonfaithfulness for every canonical selector, exact typed-bottom rows, complete no-outcome closure, inactive HN and budget nodes, and a well-founded dependency relation.",
+        "The grouped family, tables, environment, claims, activity bits, dependencies, and rank map remain supplied inputs. This milestone does not prove selector faithfulness or compatibility, HN/BUD blocker semantics or semantic dependency completeness, connect selector silence to the BCEL contradiction, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 155 of 157 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "29279d1a9608a97832b7ad05e69a3fea05f39dd3",
+        "tree": "1cf0190b5994fb14d4316c0c7852a15240d9d483",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-179",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-22-residual-terminal-budget-zeroslack-sidecar",
       "milestoneId": "residual-terminal-budget-zeroslack-sidecar",
       "publishedAt": "2026-08-22T01:20:28Z",
