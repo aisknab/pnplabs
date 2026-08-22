@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-23-residual-terminal-finite-bcel-ready-composition",
+      "milestoneId": "residual-terminal-finite-bcel-ready-composition",
+      "publishedAt": "2026-08-22T22:22:32Z",
+      "title": "Checked finite SaturatePositive-to-BCEL-ready composition",
+      "plainLanguage": [
+        "For every finite direct-wire candidate, executable terminal saturation model, and proof-bearing candidate BCEL anchor problem with explicit initial positive full slack, Lean reruns the finite SaturatePositive classifier and accepts only its positive-projection branch with a computed BCEL-ready anchor nucleus. The certificate retains the exact classifier equality, complete safe trace, positive final slack and whole-support defect, an at-least-two-anchor bound, the exact constant-cut equation, and the local full/quotient BN2 conclusion for every proper cut.",
+        "The terminal candidate, executable model, candidate-derived anchor problem, and initial positive full-slack premise remain explicit. Rejection of another finite branch is not a mapping into the complete global route system. This does not derive positivity from residual slack, construct BN3 through BN6 data or a grouped family, derive constant activation, establish manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 159 of 161 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "74d7f531bebe302cba08ad992fd4d48d46a8b29e",
+        "tree": "0744ba3a38151338dada4171453093b05e4af3a2",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-183",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-23-residual-terminal-zeroslack-packet-selector-hb-coherence",
       "milestoneId": "residual-terminal-zeroslack-packet-selector-hb-coherence",
       "publishedAt": "2026-08-22T17:38:06Z",

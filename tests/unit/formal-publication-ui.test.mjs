@@ -22,12 +22,17 @@ const release = JSON.parse(readFileSync('downloads/formal-publication-release.js
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
 function statusFieldStem(milestone) {
-  const suffix = 'NamedEndpointTheorem';
-  const namedEndpoint = milestone.requiredTheorems.at(-1);
+  const suffix = 'TheoremKernelTypeSha256';
+  const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
-    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint,
+    ([key, value]) => key.endsWith(suffix)
+      && value !== null
+      && typeof value === 'object'
+      && !Array.isArray(value)
+      && Object.keys(value).length === requiredTheorems.size
+      && [...requiredTheorems].every((name) => Object.hasOwn(value, name)),
   );
-  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   const releasePrefix = matchingField[0].slice(0, -suffix.length);
   return `${releasePrefix[0].toUpperCase()}${releasePrefix.slice(1)}`;
 }
@@ -4103,6 +4108,22 @@ test('saturated terminal support square requires exact pins, order laws, extract
     (row) => row.id === 'residual-terminal-saturated-support-square-closure'
   ).nonClaim = 'This proves the manuscript projection square and P = NP.';
   assert.equal(validation.validateStatus(erasedBoundary, inventory), false);
+
+  const widenedFiniteBCELReadyBoundary = structuredClone(status);
+  widenedFiniteBCELReadyBoundary.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-ready-composition'
+  ).nonClaim = 'This proves manuscript-wide BCELReady.';
+  assert.equal(validation.validateStatus(widenedFiniteBCELReadyBoundary, inventory), false);
+
+  const alteredFiniteBCELReadyPin = structuredClone(status);
+  alteredFiniteBCELReadyPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-ready-composition'
+  ).theoremRows[0].actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(alteredFiniteBCELReadyPin, inventory), false);
+
+  const erasedFiniteBCELReadyAudit = structuredClone(status);
+  erasedFiniteBCELReadyAudit.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(erasedFiniteBCELReadyAudit, inventory), false);
 });
 
 test('static pages remain conservative and distinguish current from historical reports', () => {
@@ -4132,6 +4153,9 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /terminalV53_constantCut_hypergraph_rigidity/);
   assert.match(statusPage, /BN6 grouped hypergraph packet bridge/i);
   assert.match(statusPage, /terminalBN6_hypergraph_packet/);
+  assert.match(statusPage, /residual-terminal-finite-bcel-ready-composition/);
+  assert.match(statusPage, /terminal_finite_saturate_positive_bcel_ready_checked_complete/);
+  assert.match(statusPage, /Checked finite SaturatePositive-to-BCEL-ready composition/i);
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

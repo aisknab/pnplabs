@@ -36,14 +36,19 @@ const latestPublishedMilestone = publishedStatus.formalPublicationMilestones.fin
   (row) => row.id === latestPublishedMilestoneId
 );
 assert.ok(latestPublishedMilestone, `missing latest published milestone: ${latestPublishedMilestoneId}`);
-const latestNamedEndpoint = latestPublishedMilestone.requiredTheorems.at(-1);
-const namedEndpointSuffix = "NamedEndpointTheorem";
-const latestNamedEndpointField = Object.entries(publishedRelease.earnedBoundary).find(
-  ([key, value]) => key.endsWith(namedEndpointSuffix) && value === latestNamedEndpoint
+const theoremFingerprintSuffix = "TheoremKernelTypeSha256";
+const latestRequiredTheorems = new Set(latestPublishedMilestone.requiredTheorems);
+const latestTheoremFingerprintField = Object.entries(publishedRelease.earnedBoundary).find(
+  ([key, value]) => key.endsWith(theoremFingerprintSuffix)
+    && value !== null
+    && typeof value === "object"
+    && !Array.isArray(value)
+    && Object.keys(value).length === latestRequiredTheorems.size
+    && [...latestRequiredTheorems].every((name) => Object.hasOwn(value, name))
 );
-assert.ok(latestNamedEndpointField, `missing earned-boundary endpoint for ${latestPublishedMilestoneId}`);
-const latestPublishedMilestoneReleasePrefix = latestNamedEndpointField[0]
-  .slice(0, -namedEndpointSuffix.length);
+assert.ok(latestTheoremFingerprintField, `missing earned-boundary fingerprint map for ${latestPublishedMilestoneId}`);
+const latestPublishedMilestoneReleasePrefix = latestTheoremFingerprintField[0]
+  .slice(0, -theoremFingerprintSuffix.length);
 const latestPublishedMilestoneFieldStem =
   `${latestPublishedMilestoneReleasePrefix[0].toUpperCase()}${latestPublishedMilestoneReleasePrefix.slice(1)}`;
 const latestPublishedMilestoneStatusKeys = [

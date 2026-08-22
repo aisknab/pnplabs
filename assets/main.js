@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-182";
-const STATUS_SHA256 = '1270284355b4b5ee48934b8a80ddd46adbcd1be0d3b41a228d77ada26ea5de5c';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-182";
-const FORMAL_PUBLICATION_MAP_SHA256 = "5a92d95886747fb3d97219758f1798d8db43aef8f15454221ab91aa836199d37";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-183";
+const STATUS_SHA256 = 'a33cb324d7cf64ee4a1a99dd2aa0e7d6618c6c77d69d897b367cb4d73372aa89';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-183";
+const FORMAL_PUBLICATION_MAP_SHA256 = "1738658fc96d7fad290060709af38d8791038e951e3a290457ff34b668e4f3a1";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-182";
-const INVENTORY_SHA256 = "28a4fff137c7219d372297dbdd81de2b86045544d8456b6fbd536dd2ea1dc6a5";
-const SOURCE_CLOSURE_SHA256 = "3c7ef2e518e3b290a46a5e65b334e2729f38b794576ed56c83d1d2675d4bf26e";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-183";
+const INVENTORY_SHA256 = "8bb4f8bb4ce2bfdcfd3709d19c971b5c178bf1c2f437ec37d4360f80b6c49efc";
+const SOURCE_CLOSURE_SHA256 = "3e91cc99bedfdac25795f923914ee765ce0f55200c7d1e6d05fcad58940c73ee";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29955,
-  theorems: 15463,
+  declarations: 29989,
+  theorems: 15480,
   assumptionFreeTheorems: 7617,
   excludedPrivateDeclarations: 15135,
-  modules: 299,
+  modules: 300,
   axioms: 4,
 });
 
@@ -4655,6 +4655,12 @@ const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_DECLARATIONS = Ob
   ["PNP.packet_selector_hb_bcel_coherent_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalZeroSlackPacketSelectorHBCoherence","97ce8e0d6988332dfd6387ccab2bf779721444534a9924f9b1198d4705ec01de"],
   ["PNP.zeroslack_packet_selector_hb_bcel_coherent_checked_complete",["Quot.sound","propext"],"PNP.ZeroSlack","119db0567f3e4b314f5e9347e700aa53c749813938a5cf3b1e26a6cbf3c0a48d"],
 ]);
+const RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminal_finite_saturate_positive_bcel_ready_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELReady","729a21c3ecfb2ae1fc36fcab7ef8bb3b183c00a63937eccf0add6667aec99f8c"],
+  ["PNP.DirectWire.TerminalFiniteBCELReadyCertificate.anchorSizeAtLeastTwo",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELReady","949202faf572d7c7a1c21b70c6218f67c87fb2c339c86c898029e85e260801fa"],
+  ["PNP.DirectWire.TerminalFiniteBCELReadyCertificate.properCutConstantEquation",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELReady","4635f3630a32626934ee048659823d116bcde9688f091ad79b56b72a27ca5fba"],
+  ["PNP.DirectWire.TerminalFiniteBCELReadyCertificate.properCutLocalConclusion",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELReady","7a2596b6be371cfa7a484ead0d195c485ad9e384126662a37f3e91c2ba751167"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5529,6 +5535,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFiniteSaturatePositiveCompositionFormalized: false,
   leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed: false,
   leanResidualTerminalFiniteSaturatePositiveCompositionScope: null,
+  leanResidualTerminalFiniteBCELReadyCompositionFormalized: false,
+  leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed: false,
+  leanResidualTerminalFiniteBCELReadyCompositionScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6133,6 +6142,9 @@ leanResidualTerminalOriginKernelObligationRoutingScope = ${payload.leanResidualT
 leanResidualTerminalFiniteSaturatePositiveCompositionFormalized = ${payload.leanResidualTerminalFiniteSaturatePositiveCompositionFormalized ?? false}
 leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed = ${payload.leanResidualTerminalFiniteSaturatePositiveCompositionAxiomAuditPassed ?? false}
 leanResidualTerminalFiniteSaturatePositiveCompositionScope = ${payload.leanResidualTerminalFiniteSaturatePositiveCompositionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFiniteSaturatePositiveCompositionScope)}
+leanResidualTerminalFiniteBCELReadyCompositionFormalized = ${payload.leanResidualTerminalFiniteBCELReadyCompositionFormalized ?? false}
+leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed = ${payload.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed ?? false}
+leanResidualTerminalFiniteBCELReadyCompositionScope = ${payload.leanResidualTerminalFiniteBCELReadyCompositionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFiniteBCELReadyCompositionScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7180,6 +7192,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalFiniteBCELReadyComposition =
+    RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7762,6 +7781,9 @@ function validateInventory(inventory) {
     && residualTerminalZeroSlackPacketSelectorHBCoherence.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalFiniteBCELReadyComposition.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8190,6 +8212,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalZeroSlackPacketSelectorHBCoherenceMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-zeroslack-packet-selector-hb-coherence'
+  );
+  const residualTerminalFiniteBCELReadyCompositionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-ready-composition'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9802,6 +9827,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalZeroSlackPacketSelectorHBCoherenceFormalized === true
     && status.leanResidualTerminalZeroSlackPacketSelectorHBCoherenceAxiomAuditPassed === true
     && status.leanResidualTerminalZeroSlackPacketSelectorHBCoherenceScope === "all-arbitrary-finite-proof-bearing-same-family-Selector-HB-Packet-and-BCEL-ZeroSlack-coherence-derived-from-one-accepted-Packet-budget-certificate"
+
+    && residualTerminalFiniteBCELReadyCompositionMilestone?.classification === "formalized-residual-terminal-finite-bcel-ready-composition"
+    && residualTerminalFiniteBCELReadyCompositionMilestone.status === "formalized-residual-terminal-finite-bcel-ready-composition"
+    && residualTerminalFiniteBCELReadyCompositionMilestone.scope === "For every finite direct-wire candidate, executable terminal saturation model, and proof-bearing candidate BCEL anchor problem with explicit initial positive full slack, Lean reruns the recomputed finite SaturatePositive classifier and accepts only its positive-projection branch with a computed BCEL-ready anchor nucleus. The certificate retains the exact classifier equality, complete safe trace, positive final slack, positive whole-support defect, at-least-two anchor bound, exact constant-cut equation, and local full/quotient BN2 conclusion for every proper cut."
+    && residualTerminalFiniteBCELReadyCompositionMilestone.nonClaim === "The terminal candidate, executable model, candidate-derived anchor problem, and initial positive full-slack premise remain explicit. Rejection of another finite branch is not a mapping into the complete global route system. This does not derive positivity from residual slack, construct BN3--BN6 data or a grouped family, derive constant activation, establish manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP."
+    && sameJson(
+      residualTerminalFiniteBCELReadyCompositionMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalFiniteBCELReadyCompositionMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalFiniteBCELReadyCompositionFormalized === true
+    && status.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed === true
+    && status.leanResidualTerminalFiniteBCELReadyCompositionScope === "all-finite-direct-wire-candidates-executable-models-proof-bearing-positive-full-slack-anchor-problems-recomputed-finite-saturate-positive-to-computed-bcel-ready-branch"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

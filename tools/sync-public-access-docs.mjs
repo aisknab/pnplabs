@@ -18,15 +18,15 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "f6f78026f9ff3be2f45b8fce859d2c09b6a8d764";
-const CORE_TREE = "c6feae0f7d20a0c80c561e822f6db85252563585";
-const CORE_PUBLICATION_MAP_SHA256 = "5a92d95886747fb3d97219758f1798d8db43aef8f15454221ab91aa836199d37";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-182";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-182";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-182";
-const CORE_SOURCE_CLOSURE_SHA256 = "3c7ef2e518e3b290a46a5e65b334e2729f38b794576ed56c83d1d2675d4bf26e";
-const OLD_PDF_SHA256 = "4ea2d49af19730d9c06cbe5e1f3ba50b600d2c9beef9b50b1c65f087c504fa00";
-const OLD_TEX_SHA256 = "af020ae4b164ab907a699ba094379125d0f18a0c8db705b101c6f424566106aa";
+const CORE_COMMIT = "74d7f531bebe302cba08ad992fd4d48d46a8b29e";
+const CORE_TREE = "0744ba3a38151338dada4171453093b05e4af3a2";
+const CORE_PUBLICATION_MAP_SHA256 = "1738658fc96d7fad290060709af38d8791038e951e3a290457ff34b668e4f3a1";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-183";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-183";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-183";
+const CORE_SOURCE_CLOSURE_SHA256 = "3e91cc99bedfdac25795f923914ee765ce0f55200c7d1e6d05fcad58940c73ee";
+const OLD_PDF_SHA256 = "142c64520fcb89e287ddf59962fe5582ab16bec82cf70684221eee3a3e0458f5";
+const OLD_TEX_SHA256 = "0a04abf635f17c7a5ed5cb3eb31a20002efcffeb13059199350106d579d736b3";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1868,6 +1868,16 @@ const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_THEOREMS = {
 const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_SCOPE = "all-arbitrary-finite-proof-bearing-same-family-Selector-HB-Packet-and-BCEL-ZeroSlack-coherence-derived-from-one-accepted-Packet-budget-certificate";
 const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_MILESTONE_SCOPE = "For every arbitrary finite accepted M180 certificate and its dependent M181 boundary, the report-facing ZeroSlack layer now derives same-family Selector/HB, Packet, and BCEL evidence from the exact grouped family, computed realizer table, and dependency table. Definitional identities prevent a detached Selector/HB certificate from being paired with the checked Packet and BCEL exclusions.";
 const RESIDUAL_TERMINAL_ZEROSLACK_PACKET_SELECTOR_HB_COHERENCE_NON_CLAIM = "The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied inputs. This milestone does not derive those inputs or BCEL constant activation from positive residual slack, establish unconditional ZeroSlack, complete the manuscript no-lower ledger, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_THEOREMS = {
+  "PNP.DirectWire.terminal_finite_saturate_positive_bcel_ready_checked_complete": { hash: "729a21c3ecfb2ae1fc36fcab7ef8bb3b183c00a63937eccf0add6667aec99f8c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELReady" },
+  "PNP.DirectWire.TerminalFiniteBCELReadyCertificate.anchorSizeAtLeastTwo": { hash: "949202faf572d7c7a1c21b70c6218f67c87fb2c339c86c898029e85e260801fa", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELReady" },
+  "PNP.DirectWire.TerminalFiniteBCELReadyCertificate.properCutConstantEquation": { hash: "4635f3630a32626934ee048659823d116bcde9688f091ad79b56b72a27ca5fba", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELReady" },
+  "PNP.DirectWire.TerminalFiniteBCELReadyCertificate.properCutLocalConclusion": { hash: "7a2596b6be371cfa7a484ead0d195c485ad9e384126662a37f3e91c2ba751167", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELReady" }
+};
+const RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_SCOPE = "all-finite-direct-wire-candidates-executable-models-proof-bearing-positive-full-slack-anchor-problems-recomputed-finite-saturate-positive-to-computed-bcel-ready-branch";
+const RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire candidate, executable terminal saturation model, and proof-bearing candidate BCEL anchor problem with explicit initial positive full slack, Lean reruns the recomputed finite SaturatePositive classifier and accepts only its positive-projection branch with a computed BCEL-ready anchor nucleus. The certificate retains the exact classifier equality, complete safe trace, positive final slack, positive whole-support defect, at-least-two anchor bound, exact constant-cut equation, and local full/quotient BN2 conclusion for every proper cut.";
+const RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_NON_CLAIM = "The terminal candidate, executable model, candidate-derived anchor problem, and initial positive full-slack premise remain explicit. Rejection of another finite branch is not a mapping into the complete global route system. This does not derive positivity from residual slack, construct BN3--BN6 data or a grouped family, derive constant activation, establish manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P; remove a project assumption; or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4180,26 +4190,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 560881,
-    sha256: "142c64520fcb89e287ddf59962fe5582ab16bec82cf70684221eee3a3e0458f5"
+    bytes: 562275,
+    sha256: "a87e24ad9ff7d4e40a0a2a14c7c5a17e718020ef0dc4f968155013fa427e8f6b"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 336745,
-    sha256: "0a04abf635f17c7a5ed5cb3eb31a20002efcffeb13059199350106d579d736b3"
+    bytes: 338671,
+    sha256: "45b210abc81d7ad190768b98f28c903603471a8c40a942dad06509d04b72664f"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2584198,
-    sha256: "1270284355b4b5ee48934b8a80ddd46adbcd1be0d3b41a228d77ada26ea5de5c"
+    bytes: 2589631,
+    sha256: "a33cb324d7cf64ee4a1a99dd2aa0e7d6618c6c77d69d897b367cb4d73372aa89"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 32718966,
-    sha256: "28a4fff137c7219d372297dbdd81de2b86045544d8456b6fbd536dd2ea1dc6a5"
+    bytes: 32815875,
+    sha256: "8bb4f8bb4ce2bfdcfd3709d19c971b5c178bf1c2f437ec37d4360f80b6c49efc"
   }
 ];
 
@@ -5868,6 +5878,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal ZeroSlack Packet/Selector/HB coherence boundary mismatch");
+  }
+
+  const residualTerminalFiniteBCELReadyCompositionMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-finite-bcel-ready-composition"
+  );
+  const residualTerminalFiniteBCELReadyCompositionNames =
+    Object.keys(RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_THEOREMS);
+  if (!residualTerminalFiniteBCELReadyCompositionMilestone
+      || residualTerminalFiniteBCELReadyCompositionMilestone.classification !== "formalized-residual-terminal-finite-bcel-ready-composition"
+      || residualTerminalFiniteBCELReadyCompositionMilestone.scope !== RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_MILESTONE_SCOPE
+      || residualTerminalFiniteBCELReadyCompositionMilestone.nonClaim !== RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_NON_CLAIM
+      || JSON.stringify(residualTerminalFiniteBCELReadyCompositionMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalFiniteBCELReadyCompositionNames)
+      || !Object.entries(RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal finite BCEL-ready composition boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -9321,6 +9348,41 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal ZeroSlack Packet/Selector/HB coherence boundary mismatch");
     }
 
+    const residualTerminalFiniteBCELReadyCompositionMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-finite-bcel-ready-composition"
+    );
+    if (!residualTerminalFiniteBCELReadyCompositionMilestone
+        || residualTerminalFiniteBCELReadyCompositionMilestone.earned !== true
+        || residualTerminalFiniteBCELReadyCompositionMilestone.allPresent !== true
+        || residualTerminalFiniteBCELReadyCompositionMilestone.allAssumptionFree !== false
+        || residualTerminalFiniteBCELReadyCompositionMilestone.allKernelTypesMatch !== true
+        || residualTerminalFiniteBCELReadyCompositionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalFiniteBCELReadyCompositionMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalFiniteBCELReadyCompositionMilestone.classification !== "formalized-residual-terminal-finite-bcel-ready-composition"
+        || residualTerminalFiniteBCELReadyCompositionMilestone.scope !== RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_MILESTONE_SCOPE
+        || residualTerminalFiniteBCELReadyCompositionMilestone.nonClaim !== RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_NON_CLAIM
+        || JSON.stringify(residualTerminalFiniteBCELReadyCompositionMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalFiniteBCELReadyCompositionMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalFiniteBCELReadyCompositionFormalized !== true
+        || payload.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed !== true
+        || payload.leanResidualTerminalFiniteBCELReadyCompositionScope !== RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal finite BCEL-ready composition boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -9869,6 +9931,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal ZeroSlack Packet/Selector/HB coherence theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal finite BCEL-ready composition theorem mismatch: " + name);
       }
     }
 

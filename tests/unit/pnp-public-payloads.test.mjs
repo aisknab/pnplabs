@@ -30,12 +30,17 @@ const milestoneFieldStem = (milestoneId) => milestoneId
   .map((part) => MILESTONE_FIELD_PARTS[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
   .join('');
 const releaseBoundaryPrefixForMilestone = (release, milestone) => {
-  const namedEndpoint = milestone.requiredTheorems.at(-1);
-  const suffix = 'NamedEndpointTheorem';
+  const suffix = 'TheoremKernelTypeSha256';
+  const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
-    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint,
+    ([key, value]) => key.endsWith(suffix)
+      && value !== null
+      && typeof value === 'object'
+      && !Array.isArray(value)
+      && Object.keys(value).length === requiredTheorems.size
+      && [...requiredTheorems].every((name) => Object.hasOwn(value, name)),
   );
-  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   return matchingField[0].slice(0, -suffix.length);
 };
 const HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256 = Object.freeze({
@@ -8135,6 +8140,7 @@ test('status page has a conservative complete static fallback', async () => {
     `<strong>${formatNumber(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount)}</strong> private compiler auxiliaries excluded`,
     `<strong>${formatNumber(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount)}</strong> modules`,
     `${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped milestone rows`,
+    `${index.formalPublicationMilestoneCounts.earned} scoped milestones earned`,
     'residual-terminal-bn3-request-envelope',
     'residual-terminal-bn4-activation-cancellation',
     'residual-terminal-bn5-full-shadow-localization',
@@ -8515,13 +8521,15 @@ test('status page has a conservative complete static fallback', async () => {
 });
 
 test('static inventory prose derives changing publication totals from the canonical payloads', async () => {
-  const [readme, paper, guide, pipeline, reproducibility, status, inventory, updates, latestRelease] = await Promise.all([
+  const [readme, paper, guide, pipeline, reproducibility, activatedClaimWording, status, index, inventory, updates, latestRelease] = await Promise.all([
     readText('README.md'),
     readText('paper.html'),
     readText('docs/reviewer_guide.md'),
     readText('docs/proof_pipeline.md'),
     readText('docs/reproducibility.md'),
+    readText('docs/activated_claim_wording.md'),
     readJson('public/pnp-status.json'),
+    readJson('public/pnp-index.json'),
     readJson('public/pnp-theorem-inventory.json'),
     readJson('content/milestone-updates.json'),
     readJson('downloads/formal-publication-release.json'),
@@ -8543,6 +8551,7 @@ test('static inventory prose derives changing publication totals from the canoni
   assert.ok(latestEarnedMilestone, 'latest earned milestone');
   const latestUpdate = updates.entries[0];
   const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone);
+  const latestStatusStem = `${latestReleasePrefix[0].toUpperCase()}${latestReleasePrefix.slice(1)}`;
   const latestFocusedAuditCount = latestRelease.earnedBoundary[
     `${latestReleasePrefix}AuditedDeclarationCount`
   ];
@@ -8553,6 +8562,19 @@ test('static inventory prose derives changing publication totals from the canoni
     true
   );
   assert.equal(readme.includes(latestUpdate.title), true);
+  assert.equal(pipeline.includes(`The ${index.formalPublicationMilestoneCounts.earned} earned scopes are:`), true);
+  assert.equal(activatedClaimWording.includes(`${index.formalPublicationMilestoneCounts.earned} narrowly scoped milestones are earned`), true);
+  assert.equal(activatedClaimWording.includes(latestUpdate.title), true);
+  for (const paragraph of latestUpdate.plainLanguage) {
+    assert.equal(activatedClaimWording.includes(paragraph), true, `activated claim wording missing current paragraph: ${paragraph}`);
+  }
+  for (const field of [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`, `lean${latestStatusStem}Scope`]) {
+    assert.equal(
+      activatedClaimWording.includes(`${field} = ${JSON.stringify(status[field])}`),
+      true,
+      `activated claim wording missing current status field: ${field}`,
+    );
+  }
   const readmePlainText = readme.replaceAll('`', '');
   for (const paragraph of latestUpdate.plainLanguage) {
     assert.equal(readmePlainText.includes(paragraph), true, `missing latest README paragraph: ${paragraph}`);
