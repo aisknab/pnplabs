@@ -113,7 +113,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-four narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone gives the report-facing Budget ZeroSlack boundary a checked proof-bearing NoBudget sidecar: failed exhaustive terminal-envelope search, complete canonical-support exclusion, and semantic exact/gain bindings. The natural caps remain supplied and the search may be exponential. This does not formalize B0-B4 Budget grammar or blocker semantics, implement full or polynomial BudgetResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-five narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone replaces report-facing Selector/HB ZeroSlack string handles with one checked certificate establishing canonical-selector silence, typed-bottom rows, complete no-outcome closure, inactive HN/BUD nodes, and well-founded supplied dependencies. The grouped family, tables, environment, claims, activity bits, dependency rows, and rank map remain supplied. This does not prove selector compatibility, blocker semantics, semantic dependency completeness, the BCEL contradiction, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -132,7 +132,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 128-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 129-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

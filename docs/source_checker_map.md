@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `98da0c0ad5614d69f5f5b50f629a759dc5c29fb9`. Its generated status payload is current
+core commit `29279d1a9608a97832b7ad05e69a3fea05f39dd3`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the 128-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the 129-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `98da0c0ad5614d69f5f5b50f629a759dc5c29fb9` (tree `359c4da36a69e7c9ea0f1b95b8ec6448e40f4b89`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact certified-path minimum, a maximal H-disjoint certified-path family, a proof-bearing HResolve ZeroSlack sidecar, and a proof-bearing Budget ZeroSlack sidecar. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,076 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `29279d1a9608a97832b7ad05e69a3fea05f39dd3` (tree `1cf0190b5994fb14d4316c0c7852a15240d9d483`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact certified-path minimum, a maximal H-disjoint certified-path family, proof-bearing HResolve and Budget ZeroSlack sidecars, and one proof-bearing Selector/HB ZeroSlack sidecar. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,083 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 154 of 156 scoped milestone rows are earned. The newest result gives the report-facing Budget ZeroSlack boundary a checked proof-bearing NoBudget sidecar: failed exhaustive terminal-envelope search, complete canonical-support exclusion, and semantic exact/gain bindings. The natural caps remain supplied and the search may be exponential. This is not B0-B4 blocker semantics, full or polynomial BudgetResolve, unconditional global ZeroSlack, or polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 128-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | 155 of 157 scoped milestone rows are earned. The newest result replaces report-facing Selector/HB ZeroSlack strings with a checked sidecar establishing canonical-selector silence, typed-bottom rows, complete no-outcome closure, inactive HN/BUD nodes, and well-founded supplied dependencies. The grouped family and tables remain supplied. This is not selector compatibility, blocker semantics, semantic dependency completeness, the BCEL contradiction, unconditional global ZeroSlack, or polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 129-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence and does not rerun Lean in PNPLabs; proof

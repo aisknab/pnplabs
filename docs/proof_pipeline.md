@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,076 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,083 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,908 public declarations;
-- 15,437 theorem-kind declarations;
-- 7,623 assumption-free theorem-kind declarations;
-- 295 source-closure modules;
+- 29,903 public declarations;
+- 15,443 theorem-kind declarations;
+- 7,619 assumption-free theorem-kind declarations;
+- 296 source-closure modules;
 - 15,135 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -235,7 +235,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 128-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 129-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
