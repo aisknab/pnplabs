@@ -8,8 +8,8 @@ import { pathToFileURL } from "node:url";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "29279d1a9608a97832b7ad05e69a3fea05f39dd3";
-const REVIEWED_CORE_TREE = "1cf0190b5994fb14d4316c0c7852a15240d9d483";
+const REVIEWED_CORE_COMMIT = "54305498ca55425a39cfee7892b40181e250bbdd";
+const REVIEWED_CORE_TREE = "82fe3fa227ef1c48f70369bdcadcdaaefe40c8ab";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -4159,6 +4159,13 @@ const RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_RELEASE_IDENTITIES = {
   residualTerminalSelectorHBZeroSlackSidecarDependsWellFoundedTheorem: "PNP.SelectorHBZeroSlackSidecarCertificate.depends_wellFounded",
   residualTerminalSelectorHBZeroSlackSidecarNamedEndpointTheorem: "PNP.selector_hb_zeroslack_sidecar_checked_complete"
 };
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_RELEASE_IDENTITIES = {
+  residualTerminalPacketBudgetNoLowerZeroSlackSidecarAcceptedTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.accepted",
+  residualTerminalPacketBudgetNoLowerZeroSlackSidecarAllFeasibleSupportMinimumTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.all_feasible_support_minimum",
+  residualTerminalPacketBudgetNoLowerZeroSlackSidecarNoFeasibleGainTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.no_feasible_gain",
+  residualTerminalPacketBudgetNoLowerZeroSlackSidecarNoPositivePacketTheorem: "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.no_positive_packet",
+  residualTerminalPacketBudgetNoLowerZeroSlackSidecarNamedEndpointTheorem: "PNP.packet_budget_no_lower_zeroslack_sidecar_checked_complete"
+};
 
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
@@ -5826,6 +5833,17 @@ const RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_THEOREMS = {
 const RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-selector-silence-and-HB-closure-sidecars-with-checked-typed-bottom-rows-all-node-inactivity-and-well-founded-dependencies";
 const RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For arbitrary finite supplied grouped BN6, typed-realizer, and exact-rank HB dependency tables, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Selector/HB sidecar. The exact executable checks yield all-canonical-selector nonfaithfulness, exact typed-bottom rows, complete no-outcome closure, all-node HN/BUD inactivity, and a well-founded dependency relation.";
 const RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_NON_CLAIM = "The grouped BN6 family, typed-realizer and dependency tables, environment, realizer claims, activity bits, dependency rows, and finite rank map remain supplied inputs. This milestone does not derive them from terminal data, prove selector faithfulness or compatibility, establish HN/BUD blocker semantics or semantic dependency completeness, connect selector silence to the BCEL contradiction, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS = {
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.accepted": { hash: "91ab1ab5f4fb05d97c2d14ffa7bd712517c13457dc14a24121cad74570bfec5c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.all_feasible_support_minimum": { hash: "f7168be59f47c908fba68a3c5905cf31991e7ec514952f13e43ded3fca2fab83", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.no_feasible_gain": { hash: "9a6e605bee0f9582e8e3b77618a43147015603bc725e56674b7ee52d52bf32c4", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar" },
+  "PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.no_positive_packet": { hash: "d5348c9349c05723fe6de3cc006389afe55e03270906a946ef73041aa0b34ba2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar" },
+  "PNP.packet_budget_no_lower_zeroslack_sidecar_checked_complete": { hash: "be5948772dac68e28bbda201620f74eb6d31ba1265eb263162f1ff8107c505db", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar" }
+};
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-same-candidate-Packet-budget-two-branch-no-lower-sidecars-with-semantic-minimum-and-gain-and-positive-Packet-exclusion";
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Packet/budget no-lower sidecar. Its exact executable composition equation proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family.";
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM = "The caps, candidate-derived model, grouped BN6 family, typed payloads, finite ranks, realizer claims, activity environment, dependency rows, and rank maps remain supplied inputs. This finite two-branch sidecar does not complete no-lower ledger coverage for the manuscript, derive its inputs from terminal data, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -8372,6 +8390,28 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_THEOREMS).every(([name, row]) => residualTerminalSelectorHBZeroSlackSidecarHashes[name] === row.hash)) failures.push("current manifest residual terminal Selector/HB ZeroSlack-sidecar fingerprint mismatch");
   if (!Object.entries(RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal Selector/HB ZeroSlack-sidecar theorem identity mismatch");
 
+  if (!(earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarFormalized === true
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomAuditPassed === true
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarAuditedDeclarationCount === 6
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarEmptyAxiomDeclarationCount === 1
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarPropextOnlyDeclarationCount === 0
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarQuotSoundOnlyDeclarationCount === 0
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarPropextQuotSoundDeclarationCount === 5
+      && earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarScope === RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE
+      && earned.zeroSlackPositiveSlackContradictionFormalized === false
+      && earned.saturatePositiveFormalized === false
+      && earned.bcelReadyFormalized === false
+      && earned.residualRoutesGlobalGainCompletenessFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest residual terminal Packet/budget no-lower ZeroSlack-sidecar boundary mismatch");
+  if (JSON.stringify(earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarProjectAxiomClosure)
+      || earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarProjectAxiomClosure.length !== 0) failures.push("current manifest residual terminal Packet/budget no-lower ZeroSlack-sidecar axiom closure mismatch");
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarHashes = earned.residualTerminalPacketBudgetNoLowerZeroSlackSidecarTheoremKernelTypeSha256;
+  if (!residualTerminalPacketBudgetNoLowerZeroSlackSidecarHashes || Object.keys(residualTerminalPacketBudgetNoLowerZeroSlackSidecarHashes).length !== 5
+      || !Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS).every(([name, row]) => residualTerminalPacketBudgetNoLowerZeroSlackSidecarHashes[name] === row.hash)) failures.push("current manifest residual terminal Packet/budget no-lower ZeroSlack-sidecar fingerprint mismatch");
+  if (!Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest residual terminal Packet/budget no-lower ZeroSlack-sidecar theorem identity mismatch");
+
 
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
@@ -8387,7 +8427,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDThresholdPublicationHashes = earned.lockedNANDThresholdPublicationTheoremKernelTypeSha256;
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
@@ -11636,6 +11676,40 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal Selector/HB ZeroSlack-sidecar evidence mismatch");
 
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+  );
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarNames = Object.keys(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS);
+  if (!residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.status !== "formalized-residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.requiredTheorems) !== JSON.stringify(residualTerminalPacketBudgetNoLowerZeroSlackSidecarNames)
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.earned !== true
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.allPresent !== true
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.allAssumptionFree !== false
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.allKernelTypesMatch !== true
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.sourceClosureFingerprintMatches !== true) failures.push("status residual terminal Packet/budget no-lower ZeroSlack-sidecar publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS)) {
+    const row = residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status residual terminal Packet/budget no-lower ZeroSlack-sidecar theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarFormalized === true
+      && status.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomAuditPassed === true
+      && status.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarScope === RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE
+      && status.leanZeroSlackPositiveSlackContradictionFormalized === false
+      && status.leanSaturatePositiveFormalized === false
+      && status.leanBCELReadyFormalized === false
+      && status.leanResidualRoutesGlobalGainCompletenessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status residual terminal Packet/budget no-lower ZeroSlack-sidecar evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -12822,6 +12896,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal Selector/HB ZeroSlack-sidecar theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal Selector/HB ZeroSlack-sidecar fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory residual terminal Packet/budget no-lower ZeroSlack-sidecar theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory residual terminal Packet/budget no-lower ZeroSlack-sidecar fingerprint mismatch: ${name}`);
     }
 
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -15201,6 +15282,28 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || residualTerminalSelectorHBZeroSlackSidecarPins[name] !== row.hash) {
       failures.push(`core publication map residual terminal Selector/HB ZeroSlack-sidecar fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+  );
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarNames = Object.keys(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS);
+  if (!residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+      || residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM
+      || JSON.stringify(residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalPacketBudgetNoLowerZeroSlackSidecarNames)) {
+    failures.push("core publication map residual terminal Packet/budget no-lower ZeroSlack-sidecar boundary mismatch");
+  }
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarPins =
+    releaseManifest.earnedBoundary?.residualTerminalPacketBudgetNoLowerZeroSlackSidecarTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS)) {
+    if (!residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || residualTerminalPacketBudgetNoLowerZeroSlackSidecarPins[name] !== row.hash) {
+      failures.push(`core publication map residual terminal Packet/budget no-lower ZeroSlack-sidecar fingerprint mismatch: ${name}`);
     }
   }
 

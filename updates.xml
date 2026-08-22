@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-22T05:10:06Z</updated>
+  <updated>2026-08-22T09:05:46Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-packet-budget-no-lower-zeroslack-sidecar</id>
+    <title>Lean makes the Packet/budget no-lower ZeroSlack sidecar proof-bearing</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-packet-budget-no-lower-zeroslack-sidecar"/>
+    <published>2026-08-22T09:05:46Z</published>
+    <updated>2026-08-22T09:05:46Z</updated>
+    <summary type="text">For arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Packet/budget no-lower sidecar. Its exact executable composition proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family. The caps, candidate-derived model, grouped BN6 family, typed payloads, finite ranks, realizer claims, activity environment, dependency rows, and rank maps remain supplied inputs. This finite two-branch sidecar does not complete no-lower ledger coverage for the manuscript, derive its inputs from terminal data, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 156 of 158 scoped publication rows. Editorial progress estimate at publication: 98 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;For arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Packet/budget no-lower sidecar. Its exact executable composition proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family.&lt;/p&gt;&lt;p&gt;The caps, candidate-derived model, grouped BN6 family, typed payloads, finite ranks, realizer claims, activity environment, dependency rows, and rank maps remain supplied inputs. This finite two-branch sidecar does not complete no-lower ledger coverage for the manuscript, derive its inputs from terminal data, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 156 of 158 scoped publication rows.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;98&quot;&gt;Editorial progress estimate at publication: 98%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-packet-budget-no-lower-zeroslack-sidecar&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-selector-hb-zeroslack-sidecar</id>
     <title>Lean makes the Selector/HB ZeroSlack sidecar proof-bearing</title>
