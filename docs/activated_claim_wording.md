@@ -104,6 +104,9 @@ leanResidualTerminalPacketDescentNoLowerBindingScope = "all-arbitrary-finite-can
 leanResidualTerminalPacketNoLowerLedgerFormalized = true
 leanResidualTerminalPacketNoLowerLedgerAxiomAuditPassed = true
 leanResidualTerminalPacketNoLowerLedgerScope = "all-arbitrary-finite-five-row-Packet-no-lower-ledger-positive-Packet-exclusion-under-computed-semantic-HN-budget-HB-selector-silence-and-HB-closure"
+leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarFormalized = true
+leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarAxiomAuditPassed = true
+leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarScope = "all-arbitrary-finite-proof-bearing-BCEL-constant-activation-to-positive-Packet-contradiction-against-the-same-checked-no-lower-family"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -113,7 +116,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-six narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone composes the same-candidate Packet and terminal-budget equations in one checked proof-bearing no-lower sidecar. It proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family. The caps, candidate-derived model, grouped family, payloads, ranks, claims, environment, dependency rows, and rank maps remain supplied. This does not complete the manuscript no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, BCELReady, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. One hundred and fifty-seven narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone connects the accepted same-family Packet/budget no-lower certificate to the report-facing BCEL branch. With at least two checked grouped-carrier anchors, BCEL constant activation would construct the positive BN6 Packet excluded by that certificate. The grouped family and all inherited terminal, budget, Packet, realizer, dependency, and rank data remain supplied. This does not derive constant activation from positive residual slack, construct BCELReady, complete the manuscript no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, global PkgC, manuscript-wide `SaturatePositive`, Package E, CNF-SAT in P, or `P = NP`. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
