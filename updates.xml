@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-22T13:56:29Z</updated>
+  <updated>2026-08-22T17:38:06Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-23-residual-terminal-zeroslack-packet-selector-hb-coherence</id>
+    <title>Lean derives same-family Selector/HB coherence for the Packet and BCEL ZeroSlack boundary</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-23-residual-terminal-zeroslack-packet-selector-hb-coherence"/>
+    <published>2026-08-22T17:38:06Z</published>
+    <updated>2026-08-22T17:38:06Z</updated>
+    <summary type="text">For every arbitrary finite accepted M180 Packet/budget no-lower certificate and its dependent M181 BCEL boundary, the report-facing ZeroSlack layer now derives the Selector/HB sidecar from the exact grouped family, computed realizer table, and dependency table. Definitional identities prevent a detached Selector/HB certificate from being paired with the checked Packet and BCEL exclusions. The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied inputs. This milestone does not derive those inputs or BCEL constant activation from positive residual slack, establish unconditional ZeroSlack, complete the manuscript no-lower ledger, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 158 of 160 scoped publication rows. Editorial progress estimate at publication: 98 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;For every arbitrary finite accepted M180 Packet/budget no-lower certificate and its dependent M181 BCEL boundary, the report-facing ZeroSlack layer now derives the Selector/HB sidecar from the exact grouped family, computed realizer table, and dependency table. Definitional identities prevent a detached Selector/HB certificate from being paired with the checked Packet and BCEL exclusions.&lt;/p&gt;&lt;p&gt;The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied inputs. This milestone does not derive those inputs or BCEL constant activation from positive residual slack, establish unconditional ZeroSlack, complete the manuscript no-lower ledger, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 158 of 160 scoped publication rows.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;98&quot;&gt;Editorial progress estimate at publication: 98%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-23-residual-terminal-zeroslack-packet-selector-hb-coherence&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar</id>
     <title>Lean makes the BCEL/Packet no-lower ZeroSlack sidecar proof-bearing</title>

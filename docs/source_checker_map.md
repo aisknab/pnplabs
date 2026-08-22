@@ -5,9 +5,9 @@
 `pnplabs` is the public website, exact current-formal-publication mirror, artefact-identity,
 smoke-test, and reviewer-documentation checkout. The current release is pinned by
 [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json) to merged
-core commit `a9559242cd6171e217e9917c9c70f99a98ca7757`. Its generated status payload is current
+core commit `f6f78026f9ff3be2f45b8fce859d2c09b6a8d764`. Its generated status payload is current
 publication-status authority. The compiled theorem inventory is the exact evidence mirror, while
-the 129-page TeX/PDF report is derived presentation of the same fail-closed gate.
+the 130-page TeX/PDF report is derived presentation of the same fail-closed gate.
 
 `pnp` is also the source repository for the current Lean formalization. Reproduce the current build
 at the merged commit above and compare the inventory/report bytes through the current-release
@@ -23,11 +23,11 @@ There is no default `pnp` ref for all paths. A path existing at one tag does not
 
 | Review area | Exact current target | What it supports |
 | --- | --- | --- |
-| Merged formalization | `aisknab/pnp` commit `a9559242cd6171e217e9917c9c70f99a98ca7757` (tree `9d24021681b86580c96dab85e80aec98263abf70`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact certified-path minimum, a maximal H-disjoint certified-path family, and proof-bearing HResolve, Budget, Selector/HB, Packet/budget no-lower, and BCEL/Packet no-lower ZeroSlack sidecars. |
-| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,092 reviewed milestone candidates; canonical counts |
+| Merged formalization | `aisknab/pnp` commit `f6f78026f9ff3be2f45b8fce859d2c09b6a8d764` (tree `c6feae0f7d20a0c80c561e822f6db85252563585`) | Exact source tree reviewed and merged through the concrete and terminal chain, the complete finite Packet selector pipeline, checked realizer and dependency layers, exact earliest-route semantics, all reflected local Packet fields, checked budget/HB and semantic/HN bindings, the Packet no-lower ledger, supplied-family HResolve routing, the terminal-derived support and budget resolvers, their same-candidate finite Packet composition, a deterministic maximal H-disjoint subfamily over supplied footprints, an exact certified-path minimum, a maximal H-disjoint certified-path family, and proof-bearing HResolve, Budget, Selector/HB, Packet/budget no-lower, BCEL/Packet no-lower, and same-family Selector/HB/Packet/BCEL coherence ZeroSlack sidecars. |
+| Compiled declaration evidence | `public/pnp-theorem-inventory.json` in that commit | Names, modules, kinds, and axiom closures for all public declarations; raw kernel types for 3,099 reviewed milestone candidates; canonical counts |
 | Publication derivation | `publication/FORMAL_PUBLICATION_MAP.json` and `formal-publication0.mjs` | Type/source-pinned milestones and fail-closed concrete gate logic |
-| Generated status | `public/pnp-status.json` | 157 of 159 scoped milestone rows are earned. The newest result proves that, for a supplied M180 certificate with at least two grouped-carrier anchors, BCEL constant activation would construct the positive BN6 Packet excluded by the same-family no-lower certificate. The grouped family and all inherited terminal, budget, Packet, realizer, dependency, and rank data remain supplied. This does not derive constant activation from positive residual slack, construct BCELReady, complete the manuscript no-lower ledger, establish unconditional global ZeroSlack, or prove polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
-| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 129-page non-claiming report; mirrored by this site |
+| Generated status | `public/pnp-status.json` | 158 of 160 scoped milestone rows are earned. The newest result derives Selector/HB evidence from the exact grouped family, computed realizer table, and dependency table in one supplied accepted M180 certificate, then reuses that certificate for the Packet and dependent M181 BCEL exclusions. Exact identities prevent a detached certificate pairing. The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied. This does not derive those inputs or constant activation from positive residual slack, complete the manuscript no-lower ledger, establish unconditional global ZeroSlack, or prove polynomial PCCMin. Two global rows, four project axioms, and five blockers remain. |
+| Generated report | root `canonical_proof_report.tex` and `.pdf` | Current 130-page non-claiming report; mirrored by this site |
 
 The cross-repository checker compares the companion copies to these exact current targets. It does
 not treat equality as independent theorem evidence and does not rerun Lean in PNPLabs; proof
