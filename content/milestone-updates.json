@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-22-residual-terminal-budget-zeroslack-sidecar",
+      "milestoneId": "residual-terminal-budget-zeroslack-sidecar",
+      "publishedAt": "2026-08-22T01:20:28Z",
+      "title": "Lean makes the Budget ZeroSlack sidecar proof-bearing",
+      "plainLanguage": [
+        "For arbitrary finite direct-wire candidates and supplied natural gate and record caps, the report-facing ZeroSlack boundary now consumes a checked proof-bearing NoBudget sidecar. Lean records the exact failed exhaustive terminal-envelope search, excludes every budget-feasible canonical support, and separately binds exact and gain routes to semantic minimum and strict equivalent gain propositions.",
+        "The caps remain supplied, and support enumeration, saturation, and reference minimization may be exponential. This milestone does not formalize the B0-B4 Budget grammar or blocker semantics, implement full or polynomial BudgetResolve, prove the complete no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 154 of 156 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "98da0c0ad5614d69f5f5b50f629a759dc5c29fb9",
+        "tree": "359c4da36a69e7c9ea0f1b95b8ec6448e40f4b89",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-178",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-21-residual-terminal-hresolve-zeroslack-sidecar",
       "milestoneId": "residual-terminal-hresolve-zeroslack-sidecar",
       "publishedAt": "2026-08-21T21:08:10Z",
