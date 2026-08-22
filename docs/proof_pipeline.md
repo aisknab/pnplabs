@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,099 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,103 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,955 public declarations;
-- 15,463 theorem-kind declarations;
+- 29,989 public declarations;
+- 15,480 theorem-kind declarations;
 - 7,617 assumption-free theorem-kind declarations;
-- 299 source-closure modules;
+- 300 source-closure modules;
 - 15,135 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and fifty-eight earned scopes are:
+The 159 earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -208,6 +208,7 @@ The one hundred and fifty-eight earned scopes are:
 | Packet/budget no-lower ZeroSlack sidecar | For arbitrary finite supplied same-candidate Packet and terminal-budget data, one checked certificate composes the executable equations to prove every governed budget-feasible support semantically minimum, exclude every such strict equivalent gain, and exclude a positive Packet conclusion for the supplied family. All five reviewed pins use `Quot.sound` plus `propext`; the focused six-declaration audit has one empty-axiom structure and five `Quot.sound` plus `propext` theorem closures. | The caps, candidate-derived model, grouped family, payloads, ranks, claims, environment, dependency rows, and rank maps remain supplied. This finite two-branch sidecar is not the complete manuscript no-lower ledger, unconditional `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | BCEL/Packet no-lower ZeroSlack sidecar | For a supplied M180 Packet/budget no-lower certificate whose grouped carrier passes the exact at-least-two-anchor check, one dependent certificate proves the carrier bound, reuses the accepted same-family positive-Packet exclusion, and shows that BCEL constant activation is impossible because it would construct that excluded positive BN6 Packet. The four reviewed theorem pins close with one `propext`-only theorem and three `Quot.sound` plus `propext` theorems; the focused five-declaration audit also includes one empty-axiom structure. | The grouped family and all inherited terminal, budget, Packet, realizer, dependency, and rank inputs remain supplied. The sidecar does not derive constant activation from positive residual slack, construct BCELReady from a terminal candidate, complete the manuscript no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, discharge an assumption, or prove `P = NP`. |
 | Same-family Selector/HB, Packet, and BCEL ZeroSlack coherence | For every arbitrary finite accepted M180 certificate and its dependent M181 boundary, the report-facing ZeroSlack layer derives Selector/HB evidence from the exact grouped family, computed realizer table, and dependency table already consumed by the Packet and BCEL exclusions. Exact identities prevent a detached certificate pairing. All seven reviewed theorem pins use only `Quot.sound` and `propext`; the focused eleven-declaration audit has one `propext`-only definition and ten `Quot.sound` plus `propext` theorem closures. | The grouped family and all terminal, budget, Packet, realizer, dependency, rank, and BCEL data remain supplied. This does not derive those inputs or constant activation from positive residual slack, complete the manuscript no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, discharge an assumption, or prove `P = NP`. |
+| Checked finite SaturatePositive-to-BCEL-ready composition | For every finite direct-wire candidate, executable terminal saturation model, and proof-bearing candidate BCEL anchor problem with explicit initial positive full slack, Lean reruns the finite SaturatePositive classifier and accepts only its positive-projection branch with a computed BCEL-ready anchor nucleus. Four reviewed theorem pins retain the exact classifier equality, complete safe trace, positive final slack and whole-support defect, at-least-two anchor bound, exact constant-cut equation, and local full/quotient BN2 conclusion for every proper cut. All six focused declarations use only `Quot.sound` and `propext`. | The terminal candidate, executable model, candidate-derived anchor problem, and initial positive full-slack premise remain explicit. Rejection of another finite branch is not a mapping into the complete global route system. This does not derive positivity from residual slack, construct BN3 through BN6 data or a grouped family, derive constant activation, establish manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

@@ -1095,12 +1095,17 @@ function json(relativePath) {
 }
 
 function releaseBoundaryPrefixForMilestone(release, milestone) {
-  const suffix = "NamedEndpointTheorem";
-  const namedEndpoint = milestone.requiredTheorems.at(-1);
+  const suffix = "TheoremKernelTypeSha256";
+  const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
-    ([key, value]) => key.endsWith(suffix) && value === namedEndpoint
+    ([key, value]) => key.endsWith(suffix)
+      && value !== null
+      && typeof value === "object"
+      && !Array.isArray(value)
+      && Object.keys(value).length === requiredTheorems.size
+      && [...requiredTheorems].every((name) => Object.hasOwn(value, name))
   );
-  assert.ok(matchingField, `missing earned-boundary endpoint for ${milestone.id}`);
+  assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   return matchingField[0].slice(0, -suffix.length);
 }
 
