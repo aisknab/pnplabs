@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-179";
-const STATUS_SHA256 = 'dd16963d04598adffca270f6bce64a08a3dab24aaa2bfb02904d1e2c6e69bc0f';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-179";
-const FORMAL_PUBLICATION_MAP_SHA256 = "7fd81bc4bb3dac467f202a97141b6b74e3b97552b24702374e5d15dae4b65ba4";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-180";
+const STATUS_SHA256 = 'e6f6a5f6e7e3c316d7992ae7b0716995aaf10bb286474f99f68a3f8e02cc5c70';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-180";
+const FORMAL_PUBLICATION_MAP_SHA256 = "b63692b4c5069c36f97d7ca3a5e440a879d0c37f70545855271a0c81780d149f";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-179";
-const INVENTORY_SHA256 = "4089caf6cb75eadfee204781c052d7118ac3a7948a2c64a9c2df83561abad308";
-const SOURCE_CLOSURE_SHA256 = "3f746125b6e29864fa87312026c2a5e5422e3c850b76b8cfdc72b8c96a044079";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-180";
+const INVENTORY_SHA256 = "d4bc2810502790504af9ebe0e1da7ef7f89b85971120300f57ce926bfa5b3e0b";
+const SOURCE_CLOSURE_SHA256 = "99bcce8eb3005173e6c199a5ac86956f627515f96253e45502964a46c58b8233";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29903,
-  theorems: 15443,
+  declarations: 29954,
+  theorems: 15452,
   assumptionFreeTheorems: 7619,
   excludedPrivateDeclarations: 15135,
-  modules: 296,
+  modules: 297,
   axioms: 4,
 });
 
@@ -4633,6 +4633,13 @@ const RESIDUAL_TERMINAL_SELECTOR_HB_ZEROSLACK_SIDECAR_DECLARATIONS = Object.free
   ["PNP.SelectorHBZeroSlackSidecarCertificate.depends_wellFounded",["Quot.sound","propext"],"PNP.ResidualTerminalSelectorHBZeroSlackSidecar","5271acc313495928f3c92cd7af78837c8e40d4b4efbfc1b65e558b4e22877e8a"],
   ["PNP.selector_hb_zeroslack_sidecar_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalSelectorHBZeroSlackSidecar","2a9dbe37bb6f13d6cb78be8d374fbcc826079845b2c9c724ac4f6d58ad2c51e3"],
 ]);
+const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_DECLARATIONS = Object.freeze([
+  ["PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.accepted",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar","91ab1ab5f4fb05d97c2d14ffa7bd712517c13457dc14a24121cad74570bfec5c"],
+  ["PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.all_feasible_support_minimum",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar","f7168be59f47c908fba68a3c5905cf31991e7ec514952f13e43ded3fca2fab83"],
+  ["PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.no_feasible_gain",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar","9a6e605bee0f9582e8e3b77618a43147015603bc725e56674b7ee52d52bf32c4"],
+  ["PNP.PacketBudgetNoLowerZeroSlackSidecarCertificate.no_positive_packet",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar","d5348c9349c05723fe6de3cc006389afe55e03270906a946ef73041aa0b34ba2"],
+  ["PNP.packet_budget_no_lower_zeroslack_sidecar_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalPacketBudgetNoLowerZeroSlackSidecar","be5948772dac68e28bbda201620f74eb6d31ba1265eb263162f1ff8107c505db"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5588,6 +5595,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalSelectorHBZeroSlackSidecarFormalized: false,
   leanResidualTerminalSelectorHBZeroSlackSidecarAxiomAuditPassed: false,
   leanResidualTerminalSelectorHBZeroSlackSidecarScope: null,
+  leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarFormalized: false,
+  leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomAuditPassed: false,
+  leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarScope: null,
   leanSaturatePositiveFormalized: false,
   leanBCELReadyFormalized: false,
   leanResidualTerminalProjectionSquareFormalized: false,
@@ -6183,6 +6193,9 @@ leanResidualTerminalBudgetZeroSlackSidecarScope = ${payload.leanResidualTerminal
 leanResidualTerminalSelectorHBZeroSlackSidecarFormalized = ${payload.leanResidualTerminalSelectorHBZeroSlackSidecarFormalized ?? false}
 leanResidualTerminalSelectorHBZeroSlackSidecarAxiomAuditPassed = ${payload.leanResidualTerminalSelectorHBZeroSlackSidecarAxiomAuditPassed ?? false}
 leanResidualTerminalSelectorHBZeroSlackSidecarScope = ${payload.leanResidualTerminalSelectorHBZeroSlackSidecarScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalSelectorHBZeroSlackSidecarScope)}
+leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarFormalized = ${payload.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarFormalized ?? false}
+leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomAuditPassed = ${payload.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomAuditPassed ?? false}
+leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarScope = ${payload.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarScope)}
 leanSaturatePositiveFormalized = ${payload.leanSaturatePositiveFormalized ?? false}
 leanBCELReadyFormalized = ${payload.leanBCELReadyFormalized ?? false}
 leanResidualTerminalProjectionSquareFormalized = ${payload.leanResidualTerminalProjectionSquareFormalized ?? false}
@@ -7119,6 +7132,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecar =
+    RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7692,6 +7712,9 @@ function validateInventory(inventory) {
     && residualTerminalSelectorHBZeroSlackSidecar.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalPacketBudgetNoLowerZeroSlackSidecar.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8111,6 +8134,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalSelectorHBZeroSlackSidecarMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-selector-hb-zeroslack-sidecar'
+  );
+  const residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-packet-budget-no-lower-zeroslack-sidecar'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9657,6 +9683,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalSelectorHBZeroSlackSidecarFormalized === true
     && status.leanResidualTerminalSelectorHBZeroSlackSidecarAxiomAuditPassed === true
     && status.leanResidualTerminalSelectorHBZeroSlackSidecarScope === "all-arbitrary-finite-proof-bearing-selector-silence-and-HB-closure-sidecars-with-checked-typed-bottom-rows-all-node-inactivity-and-well-founded-dependencies"
+
+    && residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone?.classification === "formalized-residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+    && residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.status === "formalized-residual-terminal-packet-budget-no-lower-zeroslack-sidecar"
+    && residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.scope === "For arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Packet/budget no-lower sidecar. Its exact executable composition equation proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family."
+    && residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.nonClaim === "The caps, candidate-derived model, grouped BN6 family, typed payloads, finite ranks, realizer claims, activity environment, dependency rows, and rank maps remain supplied inputs. This finite two-branch sidecar does not complete no-lower ledger coverage for the manuscript, derive its inputs from terminal data, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPacketBudgetNoLowerZeroSlackSidecarMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarFormalized === true
+    && status.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarAxiomAuditPassed === true
+    && status.leanResidualTerminalPacketBudgetNoLowerZeroSlackSidecarScope === "all-arbitrary-finite-proof-bearing-same-candidate-Packet-budget-two-branch-no-lower-sidecars-with-semantic-minimum-and-gain-and-positive-Packet-exclusion"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

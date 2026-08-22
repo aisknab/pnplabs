@@ -6,8 +6,8 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 129-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,903 public declarations across 296 modules,
-including 15,443 theorem-kind declarations, 7,619 assumption-free theorem-kind declarations, and four
+Lean theorem inventory. The inventory contains 29,954 public declarations across 297 modules,
+including 15,452 theorem-kind declarations, 7,619 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,135 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,083 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,083 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 155 of 157 scoped formal milestone rows. The newest row replaces report-facing Selector/HB ZeroSlack string handles with one checked sidecar establishing canonical-selector silence, typed-bottom rows, complete no-outcome closure, inactive HN/BUD nodes, and well-founded supplied dependencies. | Treating supplied tables as derived terminal data; claiming selector compatibility, blocker semantics, semantic dependency completeness, the BCEL contradiction, unconditional ZeroSlack, complete global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,088 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,088 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 156 of 158 scoped formal milestone rows. The newest row composes the same-candidate Packet and terminal-budget equations in one checked no-lower sidecar, establishing semantic minimum for every governed budget-feasible support, excluding every such strict equivalent gain, and excluding a positive Packet conclusion for the supplied family. | Treating supplied data as derived terminal data; claiming a complete manuscript no-lower result, unconditional ZeroSlack, complete global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -61,10 +61,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `29279d1a9608a97832b7ad05e69a3fea05f39dd3`.
+   `54305498ca55425a39cfee7892b40181e250bbdd`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,083 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,088 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -166,12 +166,12 @@ those exact minima, supplied footprints, and supplied path-to-footprint coherenc
 H-disjoint selected family, with a selected first interference route for every rejection. The following layer
 makes the report-facing HResolve ZeroSlack sidecar proof-bearing through checked blocked coverage and exact/gain
 route bindings. A following layer makes the Budget ZeroSlack sidecar proof-bearing through the exact failed
-terminal-envelope search and semantic route bindings. The newest layer replaces report-facing Selector/HB
-ZeroSlack strings with one checked certificate: its exact equations establish canonical-selector silence,
-typed-bottom rows, complete no-outcome closure, inactive HN/BUD nodes, and well-founded dependencies. The grouped
-family, typed-realizer and dependency tables, environment, claims, activity bits, dependency rows, and rank map
-remain supplied. This is not selector compatibility, blocker semantics, semantic dependency completeness, the
-BCEL contradiction, unconditional ZeroSlack, or the complete no-lower ledger.
+terminal-envelope search and semantic route bindings. The newest layer composes the same-candidate Packet and
+terminal-budget equations in one checked proof-bearing no-lower sidecar. Its exact equation proves every governed
+budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive
+Packet conclusion for the supplied family. The caps, candidate-derived model, grouped family, payloads, ranks,
+claims, environment, dependency rows, and rank maps remain supplied. This is not the complete manuscript no-lower
+ledger, unconditional ZeroSlack, or polynomial PCCMin.
 
 Review the gaps between those scopes and the target theorem:
 

@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,083 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,088 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,903 public declarations;
-- 15,443 theorem-kind declarations;
+- 29,954 public declarations;
+- 15,452 theorem-kind declarations;
 - 7,619 assumption-free theorem-kind declarations;
-- 296 source-closure modules;
+- 297 source-closure modules;
 - 15,135 excluded private compiler auxiliaries;
 - four project axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The one hundred and fifty-four earned scopes are:
+The one hundred and fifty-six earned scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -204,6 +204,8 @@ The one hundred and fifty-four earned scopes are:
 | Terminal HResolve certified-path family | For every duplicate-free finite supplied family of proof-bearing hereditary candidates, Lean constructs a duplicate-free maximal pairwise H-disjoint selected family. Every selected candidate has an exact four-coordinate certified-path minimum preserving semantic, frontier, block, shape, and footprint-coherence evidence; every rejected candidate has a selected blocker carrying the exact first interference route. One of the seven reviewed pins uses only `propext` and six use `Quot.sound` plus `propext`. The focused 13-declaration audit has six empty, one `propext`-only, and six `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The candidates, certified paths, hereditary footprints, governed predicates, family-completeness proofs, and path-to-footprint coherence proofs remain supplied inputs. This milestone does not derive them from terminal data, prove HN grammar soundness or completeness, establish LN confluence or ParseOrExit, prove independent leaf tightness, construct the H0-H4 NoHereditary sidecar, connect blockers to HB rank semantics, implement full or polynomial HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Terminal HResolve ZeroSlack sidecar | For every arbitrary finite supplied governed HResolve family, the report-facing ZeroSlack boundary consumes a checked proof-bearing NoHereditary sidecar. Duplicate-free total blocked coverage is recomputed, exact and gain routes are excluded for every listed candidate, and those route predicates are separately bound to semantic minimum and strict equivalent gain propositions. Two of the seven reviewed pins have empty axiom closures and five use `Quot.sound` plus `propext`. The focused 8-declaration audit has three empty and five `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The governed candidate family, implementation map, exact, gain, and blocked predicates, their decidability, and blocker semantics remain supplied inputs. This milestone does not derive hereditary candidates from terminal data, prove HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, complete the no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Terminal Budget ZeroSlack sidecar | For arbitrary finite direct-wire candidates and supplied natural caps, the report-facing ZeroSlack boundary consumes a checked proof-bearing NoBudget sidecar. A failed exhaustive search over the complete canonical terminal support universe excludes every budget-feasible support, while separately checked exact and gain routes entail semantic minimum and strict equivalent gain propositions. All five reviewed pins use `Quot.sound` plus `propext`. The focused 6-declaration audit has six `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. | The natural terminal support caps remain supplied inputs, and exhaustive enumeration, saturation, and reference minimization may be exponential. This milestone does not formalize the B0-B4 Budget grammar or blocker semantics, implement full or polynomial BudgetResolve, prove a complete no-lower ledger, establish unconditional `ZeroSlack`, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
+| Selector/HB ZeroSlack sidecar | For arbitrary finite supplied grouped BN6, typed-realizer, and exact-rank HB dependency tables, one checked certificate proves every canonical selector nonfaithful, every claim an exact typed bottom, complete no-outcome closure, all-node HN/BUD inactivity, and well-founded dependencies. All seven reviewed pins use `Quot.sound` plus `propext`; the focused eight-declaration audit has one `propext`-only structure and seven `Quot.sound` plus `propext` theorem closures. | The grouped family, tables, environment, claims, activity bits, dependencies, and rank map remain supplied. This is not selector compatibility, blocker semantics, semantic dependency completeness, the BCEL contradiction, a complete no-lower ledger, unconditional `ZeroSlack`, PCCMin, or polynomial runtime. |
+| Packet/budget no-lower ZeroSlack sidecar | For arbitrary finite supplied same-candidate Packet and terminal-budget data, one checked certificate composes the executable equations to prove every governed budget-feasible support semantically minimum, exclude every such strict equivalent gain, and exclude a positive Packet conclusion for the supplied family. All five reviewed pins use `Quot.sound` plus `propext`; the focused six-declaration audit has one empty-axiom structure and five `Quot.sound` plus `propext` theorem closures. | The caps, candidate-derived model, grouped family, payloads, ranks, claims, environment, dependency rows, and rank maps remain supplied. This finite two-branch sidecar is not the complete manuscript no-lower ledger, unconditional `ZeroSlack`, PCCMin, polynomial runtime, SAT in P, assumption discharge, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

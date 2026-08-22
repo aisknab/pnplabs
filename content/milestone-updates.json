@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-22-residual-terminal-packet-budget-no-lower-zeroslack-sidecar",
+      "milestoneId": "residual-terminal-packet-budget-no-lower-zeroslack-sidecar",
+      "publishedAt": "2026-08-22T09:05:46Z",
+      "title": "Lean makes the Packet/budget no-lower ZeroSlack sidecar proof-bearing",
+      "plainLanguage": [
+        "For arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Packet/budget no-lower sidecar. Its exact executable composition proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family.",
+        "The caps, candidate-derived model, grouped BN6 family, typed payloads, finite ranks, realizer claims, activity environment, dependency rows, and rank maps remain supplied inputs. This finite two-branch sidecar does not complete no-lower ledger coverage for the manuscript, derive its inputs from terminal data, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 156 of 158 scoped publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "54305498ca55425a39cfee7892b40181e250bbdd",
+        "tree": "82fe3fa227ef1c48f70369bdcadcdaaefe40c8ab",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-180",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-22-residual-terminal-selector-hb-zeroslack-sidecar",
       "milestoneId": "residual-terminal-selector-hb-zeroslack-sidecar",
       "publishedAt": "2026-08-22T05:10:06Z",

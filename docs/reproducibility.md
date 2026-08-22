@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 557,072 | `d1bb11a294bca0536555462cb5c24daeff6be588c70a7eb2cc9284da54cf615f` |
-| `downloads/canonical-proof-report.pdf` | 557,072 | `d1bb11a294bca0536555462cb5c24daeff6be588c70a7eb2cc9284da54cf615f` |
-| `downloads/canonical_proof_report.tex` | 331,245 | `00fb38c4a1018d553ee0590a4d09b34a5808c917f5e3c2eb0d13e2d697f9bb74` |
-| `downloads/canonical-proof-report.tex` | 331,245 | `00fb38c4a1018d553ee0590a4d09b34a5808c917f5e3c2eb0d13e2d697f9bb74` |
-| `public/pnp-status.json` | 2,566,478 | `dd16963d04598adffca270f6bce64a08a3dab24aaa2bfb02904d1e2c6e69bc0f` |
-| `public/pnp-theorem-inventory.json` | 32,427,318 | `4089caf6cb75eadfee204781c052d7118ac3a7948a2c64a9c2df83561abad308` |
+| `downloads/canonical_proof_report.pdf` | 558,307 | `fdb248507879408574845826d50a7d453a57f6179f72f64dd41c45efc001e1e0` |
+| `downloads/canonical-proof-report.pdf` | 558,307 | `fdb248507879408574845826d50a7d453a57f6179f72f64dd41c45efc001e1e0` |
+| `downloads/canonical_proof_report.tex` | 333,156 | `1d7931fa08a5e6d7ec82339550506445614334aac31d91afdcb265aeb354890d` |
+| `downloads/canonical-proof-report.tex` | 333,156 | `1d7931fa08a5e6d7ec82339550506445614334aac31d91afdcb265aeb354890d` |
+| `public/pnp-status.json` | 2,572,310 | `e6f6a5f6e7e3c316d7992ae7b0716995aaf10bb286474f99f68a3f8e02cc5c70` |
+| `public/pnp-theorem-inventory.json` | 32,594,614 | `d4bc2810502790504af9ebe0e1da7ef7f89b85971120300f57ce926bfa5b3e0b` |
 
 The PDF must have 129 A4 pages. Both filename styles must be byte-identical.
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 29279d1a9608a97832b7ad05e69a3fea05f39dd3
+git -C ../pnp checkout 54305498ca55425a39cfee7892b40181e250bbdd
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -66,8 +66,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,903 public declarations, 15,443 theorem-kind declarations,
-7,619 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 296 modules, and
+Expected compiled inventory counts are 29,954 public declarations, 15,452 theorem-kind declarations,
+7,619 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 297 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -80,15 +80,14 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest Selector/HB ZeroSlack sidecar has 7 reviewed theorem pins, all using only `Quot.sound`
-plus `propext`; its focused 8-declaration audit has one `propext`-only certificate declaration and seven
-`Quot.sound` plus `propext` theorem closures, with no project axiom or `Classical.choice`. For arbitrary
-finite supplied grouped BN6, typed-realizer, and exact-rank HB dependency tables, the report-facing
-boundary checks all-canonical-selector nonfaithfulness, exact typed-bottom rows, complete no-outcome
-closure, all-node HN/BUD inactivity, and a well-founded dependency relation. The grouped family,
-tables, environment, claims, activity bits, dependencies, and rank map remain supplied inputs. This is
-not selector faithfulness or compatibility, blocker semantics or semantic dependency completeness, the
-BCEL contradiction, the complete no-lower ledger, unconditional ZeroSlack, or polynomial PCCMin. The
+The latest Packet/budget no-lower ZeroSlack sidecar has 5 reviewed theorem pins, all using only
+`Quot.sound` plus `propext`; its focused 6-declaration audit has one empty-axiom structure declaration
+and five `Quot.sound` plus `propext` theorem closures, with no project axiom or `Classical.choice`. For
+arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing boundary
+proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent
+gain, and excludes a positive Packet conclusion for the supplied family. The caps, candidate-derived
+model, grouped family, payloads, ranks, claims, environment, dependency rows, and rank maps remain supplied
+inputs. This is not the complete manuscript no-lower ledger, unconditional ZeroSlack, or polynomial PCCMin. The
 exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source identity
 and byte-exact publication artifacts and does not rebuild Lean.
 
