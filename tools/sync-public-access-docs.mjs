@@ -18,15 +18,15 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "54305498ca55425a39cfee7892b40181e250bbdd";
-const CORE_TREE = "82fe3fa227ef1c48f70369bdcadcdaaefe40c8ab";
-const CORE_PUBLICATION_MAP_SHA256 = "b63692b4c5069c36f97d7ca3a5e440a879d0c37f70545855271a0c81780d149f";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-180";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-180";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-180";
-const CORE_SOURCE_CLOSURE_SHA256 = "99bcce8eb3005173e6c199a5ac86956f627515f96253e45502964a46c58b8233";
-const OLD_PDF_SHA256 = "d1bb11a294bca0536555462cb5c24daeff6be588c70a7eb2cc9284da54cf615f";
-const OLD_TEX_SHA256 = "00fb38c4a1018d553ee0590a4d09b34a5808c917f5e3c2eb0d13e2d697f9bb74";
+const CORE_COMMIT = "a9559242cd6171e217e9917c9c70f99a98ca7757";
+const CORE_TREE = "9d24021681b86580c96dab85e80aec98263abf70";
+const CORE_PUBLICATION_MAP_SHA256 = "400cbeaef324fd9f4ce7732a10600abafd4c23df85cc8a0690a8421a0c3ec3c8";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-181";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-181";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-181";
+const CORE_SOURCE_CLOSURE_SHA256 = "8460081a1d46638486a7c339dd1c77c7c834886630b3facfc0b67c6551050d6b";
+const OLD_PDF_SHA256 = "fdb248507879408574845826d50a7d453a57f6179f72f64dd41c45efc001e1e0";
+const OLD_TEX_SHA256 = "1d7931fa08a5e6d7ec82339550506445614334aac31d91afdcb265aeb354890d";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1845,6 +1845,16 @@ const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS = {
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-same-candidate-Packet-budget-two-branch-no-lower-sidecars-with-semantic-minimum-and-gain-and-positive-Packet-exclusion";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For arbitrary finite supplied same-candidate Packet and terminal-budget data, the report-facing ZeroSlack boundary now consumes one checked proof-bearing Packet/budget no-lower sidecar. Its exact executable composition equation proves every governed budget-feasible support semantically minimum, excludes every such strict equivalent gain, and excludes a positive Packet conclusion for the supplied family.";
 const RESIDUAL_TERMINAL_PACKET_BUDGET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM = "The caps, candidate-derived model, grouped BN6 family, typed payloads, finite ranks, realizer claims, activity environment, dependency rows, and rank maps remain supplied inputs. This finite two-branch sidecar does not complete no-lower ledger coverage for the manuscript, derive its inputs from terminal data, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS = {
+  "PNP.BCELContradictionCertificate.carrier_at_least_two": { hash: "ed0307a0b38e578db8dc43d64f796dfc058725db1fbd4ebba36c58310221a269", axioms: ["propext"], module: "PNP.ResidualTerminalBCELPacketNoLowerZeroSlackSidecar" },
+  "PNP.BCELContradictionCertificate.no_positive_packet": { hash: "92c361ce259cc8f0024dcbe9c4785c7067a81858f93013f1b376e9eb7f99823c", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBCELPacketNoLowerZeroSlackSidecar" },
+  "PNP.BCELContradictionCertificate.not_constant_activation": { hash: "8f50f730be1a30e338bd5d773905aef8317bd6711e0d7a6d80fcfb22d0da89c5", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBCELPacketNoLowerZeroSlackSidecar" },
+  "PNP.bcel_packet_no_lower_zeroslack_sidecar_checked_complete": { hash: "cb6356f351ce9fe13f5fdcc0e71eb11174631c5a836e0c3f112bc924ccdba8d2", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBCELPacketNoLowerZeroSlackSidecar" }
+};
+const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-BCEL-constant-activation-to-positive-Packet-contradiction-against-the-same-checked-no-lower-family";
+const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For every arbitrary finite supplied M180 Packet/budget no-lower certificate whose grouped carrier passes the exact at-least-two-anchor check, the report-facing ZeroSlack boundary now consumes one checked proof-bearing BCEL/Packet contradiction sidecar. BCEL constant activation would construct a positive BN6 Packet, contradicting the accepted same-family no-lower exclusion.";
+const RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM = "The grouped BN6 family and all terminal, budget, Packet, realizer, dependency, and rank inputs inherited from M180 remain supplied. This milestone does not derive the family or BCEL constant activation from positive residual slack, construct BCELReady from a terminal candidate, complete the manuscript no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4157,26 +4167,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 558307,
-    sha256: "fdb248507879408574845826d50a7d453a57f6179f72f64dd41c45efc001e1e0"
+    bytes: 559364,
+    sha256: "4ea2d49af19730d9c06cbe5e1f3ba50b600d2c9beef9b50b1c65f087c504fa00"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 333156,
-    sha256: "1d7931fa08a5e6d7ec82339550506445614334aac31d91afdcb265aeb354890d"
+    bytes: 334972,
+    sha256: "af020ae4b164ab907a699ba094379125d0f18a0c8db705b101c6f424566106aa"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2572310,
-    sha256: "e6f6a5f6e7e3c316d7992ae7b0716995aaf10bb286474f99f68a3f8e02cc5c70"
+    bytes: 2577351,
+    sha256: "b43adc49d6879cd8795ed01408f18164bcfb34a402cff07e9900c78b8a266c4e"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 32594614,
-    sha256: "d4bc2810502790504af9ebe0e1da7ef7f89b85971120300f57ce926bfa5b3e0b"
+    bytes: 32621215,
+    sha256: "69013577c9f8e6765edd9f5ad262c55f0acb4c86d223bbf592c8261a94869812"
   }
 ];
 
@@ -5811,6 +5821,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal Packet/budget no-lower ZeroSlack-sidecar boundary mismatch");
+  }
+
+  const residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-bcel-packet-no-lower-zeroslack-sidecar"
+  );
+  const residualTerminalBCELPacketNoLowerZeroSlackSidecarNames =
+    Object.keys(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS);
+  if (!residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone
+      || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar"
+      || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+      || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM
+      || JSON.stringify(residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalBCELPacketNoLowerZeroSlackSidecarNames)
+      || !Object.entries(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal BCEL/Packet no-lower ZeroSlack-sidecar boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -9192,6 +9219,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal Packet/budget no-lower ZeroSlack-sidecar boundary mismatch");
     }
 
+    const residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-bcel-packet-no-lower-zeroslack-sidecar"
+    );
+    if (!residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.earned !== true
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.allPresent !== true
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.allAssumptionFree !== false
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.allKernelTypesMatch !== true
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar"
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+        || residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_NON_CLAIM
+        || JSON.stringify(residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalBCELPacketNoLowerZeroSlackSidecarMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarFormalized !== true
+        || payload.leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarAxiomAuditPassed !== true
+        || payload.leanResidualTerminalBCELPacketNoLowerZeroSlackSidecarScope !== RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal BCEL/Packet no-lower ZeroSlack-sidecar boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -9720,6 +9783,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal Packet/budget no-lower ZeroSlack-sidecar theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_BCEL_PACKET_NO_LOWER_ZEROSLACK_SIDECAR_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal BCEL/Packet no-lower ZeroSlack-sidecar theorem mismatch: " + name);
       }
     }
 

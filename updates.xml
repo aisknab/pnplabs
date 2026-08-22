@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-22T09:05:46Z</updated>
+  <updated>2026-08-22T13:56:29Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar</id>
+    <title>Lean makes the BCEL/Packet no-lower ZeroSlack sidecar proof-bearing</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar"/>
+    <published>2026-08-22T13:56:29Z</published>
+    <updated>2026-08-22T13:56:29Z</updated>
+    <summary type="text">For every arbitrary finite supplied Packet/budget no-lower certificate whose grouped carrier passes the exact at-least-two-anchor check, the report-facing ZeroSlack boundary now uses one checked proof-bearing BCEL/Packet contradiction sidecar. BCEL constant activation would construct a positive BN6 Packet, contradicting the accepted same-family exclusion. The grouped BN6 family and all terminal, budget, Packet, realizer, dependency, and rank inputs inherited from M180 remain supplied. This milestone does not derive the family or BCEL constant activation from positive residual slack, construct BCELReady from a terminal candidate, complete the manuscript no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 157 of 159 scoped publication rows. Editorial progress estimate at publication: 98 percent; this is not a probability, confidence score, or theorem-correctness claim.</summary>
+    <content type="html">&lt;p&gt;For every arbitrary finite supplied Packet/budget no-lower certificate whose grouped carrier passes the exact at-least-two-anchor check, the report-facing ZeroSlack boundary now uses one checked proof-bearing BCEL/Packet contradiction sidecar. BCEL constant activation would construct a positive BN6 Packet, contradicting the accepted same-family exclusion.&lt;/p&gt;&lt;p&gt;The grouped BN6 family and all terminal, budget, Packet, realizer, dependency, and rank inputs inherited from M180 remain supplied. This milestone does not derive the family or BCEL constant activation from positive residual slack, construct BCELReady from a terminal candidate, complete the manuscript no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 157 of 159 scoped publication rows.&lt;/p&gt;&lt;p data-progress-estimate-percent=&quot;98&quot;&gt;Editorial progress estimate at publication: 98%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-22-residual-terminal-packet-budget-no-lower-zeroslack-sidecar</id>
     <title>Lean makes the Packet/budget no-lower ZeroSlack sidecar proof-bearing</title>

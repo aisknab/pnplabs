@@ -6,8 +6,8 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 129-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 29,954 public declarations across 297 modules,
-including 15,452 theorem-kind declarations, 7,619 assumption-free theorem-kind declarations, and four
+Lean theorem inventory. The inventory contains 29,946 public declarations across 298 modules,
+including 15,456 theorem-kind declarations, 7,617 assumption-free theorem-kind declarations, and four
 disclosed project axioms. Exactly 15,135 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,088 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,088 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 156 of 158 scoped formal milestone rows. The newest row composes the same-candidate Packet and terminal-budget equations in one checked no-lower sidecar, establishing semantic minimum for every governed budget-feasible support, excluding every such strict equivalent gain, and excluding a positive Packet conclusion for the supplied family. | Treating supplied data as derived terminal data; claiming a complete manuscript no-lower result, unconditional ZeroSlack, complete global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,092 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,092 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 157 of 159 scoped formal milestone rows. The newest row ties a supplied M180 no-lower certificate to BCEL: with at least two carrier anchors, constant activation would construct the positive BN6 Packet excluded by the same-family certificate. | Treating supplied data as derived terminal data; claiming positive slack supplies constant activation or BCELReady, a complete manuscript no-lower result, unconditional ZeroSlack, complete global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -61,10 +61,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `54305498ca55425a39cfee7892b40181e250bbdd`.
+   `a9559242cd6171e217e9917c9c70f99a98ca7757`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,088 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,092 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
