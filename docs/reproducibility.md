@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 553,119 | `15c782145365af511c37cac66c4b0bb8515ab14abb7efe41cef953c6ebb8228f` |
-| `downloads/canonical-proof-report.pdf` | 553,119 | `15c782145365af511c37cac66c4b0bb8515ab14abb7efe41cef953c6ebb8228f` |
-| `downloads/canonical_proof_report.tex` | 327,325 | `a14b2173c0afd842e2d41245f407b32fa16cc9f49430f1d3d0d5dc9c40820e07` |
-| `downloads/canonical-proof-report.tex` | 327,325 | `a14b2173c0afd842e2d41245f407b32fa16cc9f49430f1d3d0d5dc9c40820e07` |
-| `public/pnp-status.json` | 2,554,604 | `7cf4276906881ac4310b5f85f1fa28021a59fbf8b3994fe5280a89f8c3660e90` |
-| `public/pnp-theorem-inventory.json` | 32,230,233 | `fa08e2b8f2a1faecc91bf45501951900aa9205254a041606d7bc0662f4fe400a` |
+| `downloads/canonical_proof_report.pdf` | 555,065 | `052452997abb19f314b7e33598758f2c07940b944d66ee6584aafd4ac4b79324` |
+| `downloads/canonical-proof-report.pdf` | 555,065 | `052452997abb19f314b7e33598758f2c07940b944d66ee6584aafd4ac4b79324` |
+| `downloads/canonical_proof_report.tex` | 329,211 | `04e40b0135e73fa8206773575d9f6d395ddbdd68137ef32ffa91385ddb428d1c` |
+| `downloads/canonical-proof-report.tex` | 329,211 | `04e40b0135e73fa8206773575d9f6d395ddbdd68137ef32ffa91385ddb428d1c` |
+| `public/pnp-status.json` | 2,559,917 | `27b571090f42573c31c1db215b8d86699caa2787f85b56148b5b535b79863748` |
+| `public/pnp-theorem-inventory.json` | 32,351,781 | `dd3a871e4b3371352c13bf39507b0b19a5b004b3fa453583ae8fdb6d429ee8b7` |
 
-The PDF must have 127 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 128 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 337e07e725f72ddd832c2a7885d505e9044838be
+git -C ../pnp checkout 98da0c0ad5614d69f5f5b50f629a759dc5c29fb9
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -66,8 +66,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,898 public declarations, 15,431 theorem-kind declarations,
-7,633 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 294 modules, and
+Expected compiled inventory counts are 29,908 public declarations, 15,437 theorem-kind declarations,
+7,623 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 295 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -80,18 +80,17 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest terminal HResolve ZeroSlack sidecar has 7 reviewed theorem pins. Two have empty axiom
-closures and five use only `Quot.sound` plus `propext`; its focused 8-declaration audit has three empty
-and five `Quot.sound` plus `propext` closures, with no project axiom or `Classical.choice`. For every
-arbitrary finite supplied governed family, the report-facing boundary recomputes duplicate-free total
-blocked coverage, excludes exact and gain routes for every listed candidate, and binds those routes to
-semantic minimum and strict equivalent gain propositions. The governed family, implementation map,
-predicates, decidability, and blocker semantics remain supplied. This is not hereditary-candidate
-derivation, manuscript HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4
-blocker semantics, full or polynomial HResolve, the complete no-lower ledger, unconditional ZeroSlack,
-or polynomial PCCMin. The exact core merge owns Lean
-compilation and axiom evidence; PNPLabs verifies the pinned source identity and byte-exact
-publication artifacts and does not rebuild Lean.
+The latest terminal Budget ZeroSlack sidecar has 5 reviewed theorem pins, all using only `Quot.sound`
+plus `propext`; its focused 6-declaration audit has six `Quot.sound` plus `propext` closures, with no
+project axiom or `Classical.choice`. For arbitrary finite direct-wire candidates and supplied natural
+caps, the report-facing boundary records the failed exhaustive search over the complete canonical
+terminal support universe, excludes every budget-feasible support, and separately binds exact and gain
+routes to semantic minimum and strict equivalent gain propositions. The natural caps remain supplied,
+and enumeration, saturation, and reference minimization may be exponential. This is not the B0-B4
+Budget grammar or blocker semantics, full or polynomial BudgetResolve, the complete no-lower ledger,
+unconditional ZeroSlack, or polynomial PCCMin. The exact core merge owns Lean compilation and axiom
+evidence; PNPLabs verifies the pinned source identity and byte-exact publication artifacts and does not
+rebuild Lean.
 
 The composed all-input CNF parser, NAND compiler, and locked-NAND emitter are published as
 `PNP.Main.locked_nand_threshold : ReducesTo CNFSAT EncodedLockedNANDThreshold`. Its one reviewed pin

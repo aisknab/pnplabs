@@ -18,13 +18,13 @@ import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "337e07e725f72ddd832c2a7885d505e9044838be";
-const CORE_TREE = "0432aef434d94ab43847aeec7730b76f739c5d05";
-const CORE_PUBLICATION_MAP_SHA256 = "1bc070253b910cfe5b5e26ff545d582dd6f72a3afc9c3ebc69d8b676a854b1d4";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-177";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-177";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-177";
-const CORE_SOURCE_CLOSURE_SHA256 = "aaa9e359b91852f852a82688ce61c78d4931fb36ff148e80292b4244f3c92a5b";
+const CORE_COMMIT = "98da0c0ad5614d69f5f5b50f629a759dc5c29fb9";
+const CORE_TREE = "359c4da36a69e7c9ea0f1b95b8ec6448e40f4b89";
+const CORE_PUBLICATION_MAP_SHA256 = "8830a9b9336dd0bb533603998b5ef7efadb7462541493d960d2fdec85ebdf76b";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-22-178";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-22-178";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-22-178";
+const CORE_SOURCE_CLOSURE_SHA256 = "a9b1e661dfcae428062fc340977abf316ca4fcfd1de6e2ee613351eaf22d9be4";
 const OLD_PDF_SHA256 = "449e8619458cb416a9b5fc6ec117f3c69db02d696c92d90771baceb1dcb56cfd";
 const OLD_TEX_SHA256 = "8cab8a12bdd79109da715841a2db82efec5a9bdf9893ad6eda93a5474082d30e";
 
@@ -1810,6 +1810,18 @@ const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_THEOREMS = {
 const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_SCOPE = "all-arbitrary-finite-proof-bearing-HResolve-NoHereditary-sidecars-with-checked-coverage-and-semantic-exact-gain-bindings";
 const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For every arbitrary finite supplied governed HResolve family, the report-facing ZeroSlack boundary now consumes a checked proof-bearing NoHereditary sidecar: duplicate-free total blocked coverage is recomputed, exact and gain routes are excluded for every listed candidate, and those route predicates are separately bound to semantic minimum and strict equivalent gain propositions.";
 const RESIDUAL_TERMINAL_HRESOLVE_ZEROSLACK_SIDECAR_NON_CLAIM = "The governed candidate family, implementation map, exact, gain, and blocked predicates, their decidability, and blocker semantics remain supplied inputs. This milestone does not derive hereditary candidates from terminal data, prove HN grammar soundness or completeness, BWL, ParseOrExit, leaf tightness, H0-H4 blocker semantics, full or polynomial HResolve, complete the no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_THEOREMS = {
+  "PNP.BudgetSidecarCertificate.excluded": { hash: "a15cd6efe59fd66ddaab02635ee9f7aef0a82b43476ae57404cc7a1453fa5ba3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetZeroSlackSidecar" },
+  "PNP.BudgetSidecarCertificate.no_feasible_support": { hash: "c43f95f6685ef2bfd1c74341121879e8800e14071c71551b6f52443214c3c9f5", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetZeroSlackSidecar" },
+  "PNP.BudgetSidecarCertificate.exact_route_sound": { hash: "d8a95988cf255477a8e89a4677c8ab5acfa3129540dbf8aac0d9e477cb4e1922", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetZeroSlackSidecar" },
+  "PNP.BudgetSidecarCertificate.gain_route_sound": { hash: "030c2b43009fff9c76409479aa0ed39d46451e011b4de89e09f604e0f0eb9968", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetZeroSlackSidecar" },
+  "PNP.budget_zeroslack_sidecar_checked_complete": { hash: "7829c7dd487dfec295ad0504483a30ebe0a22e43cd4da685920f8df8f40bce4b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalBudgetZeroSlackSidecar" }
+};
+const RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_SCOPE = "all-finite-direct-wire-candidates-proof-bearing-Budget-NoBudget-sidecars-with-checked-terminal-envelope-exclusion-and-semantic-exact-gain-bindings";
+const RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_MILESTONE_SCOPE = "For arbitrary finite direct-wire candidates and supplied natural caps, the report-facing ZeroSlack boundary now consumes a checked proof-bearing NoBudget sidecar. A failed exhaustive search over the complete canonical terminal support universe excludes every budget-feasible support, while separately checked exact and gain routes entail semantic minimum and strict equivalent gain propositions.";
+const RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_NON_CLAIM = "The natural terminal support caps are supplied inputs, and exhaustive enumeration, saturation, and reference minimization may be exponential. This milestone does not formalize the B0-B4 Budget grammar or blocker semantics, implement full or polynomial BudgetResolve, prove a complete no-lower ledger, establish unconditional ZeroSlack, prove PCCMin or polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4121,26 +4133,26 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 553119,
-    sha256: "15c782145365af511c37cac66c4b0bb8515ab14abb7efe41cef953c6ebb8228f"
+    bytes: 555065,
+    sha256: "052452997abb19f314b7e33598758f2c07940b944d66ee6584aafd4ac4b79324"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 327325,
-    sha256: "a14b2173c0afd842e2d41245f407b32fa16cc9f49430f1d3d0d5dc9c40820e07"
+    bytes: 329211,
+    sha256: "04e40b0135e73fa8206773575d9f6d395ddbdd68137ef32ffa91385ddb428d1c"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2554604,
-    sha256: "7cf4276906881ac4310b5f85f1fa28021a59fbf8b3994fe5280a89f8c3660e90"
+    bytes: 2559917,
+    sha256: "27b571090f42573c31c1db215b8d86699caa2787f85b56148b5b535b79863748"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 32230233,
-    sha256: "fa08e2b8f2a1faecc91bf45501951900aa9205254a041606d7bc0662f4fe400a"
+    bytes: 32351781,
+    sha256: "dd3a871e4b3371352c13bf39507b0b19a5b004b3fa453583ae8fdb6d429ee8b7"
   }
 ];
 
@@ -5724,6 +5736,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal HResolve ZeroSlack-sidecar boundary mismatch");
+  }
+
+  const residualTerminalBudgetZeroSlackSidecarMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-budget-zeroslack-sidecar"
+  );
+  const residualTerminalBudgetZeroSlackSidecarNames =
+    Object.keys(RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_THEOREMS);
+  if (!residualTerminalBudgetZeroSlackSidecarMilestone
+      || residualTerminalBudgetZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-budget-zeroslack-sidecar"
+      || residualTerminalBudgetZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+      || residualTerminalBudgetZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_NON_CLAIM
+      || JSON.stringify(residualTerminalBudgetZeroSlackSidecarMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalBudgetZeroSlackSidecarNames)
+      || !Object.entries(RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal Budget ZeroSlack-sidecar boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -8997,6 +9026,42 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal HResolve ZeroSlack-sidecar boundary mismatch");
     }
 
+    const residualTerminalBudgetZeroSlackSidecarMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-budget-zeroslack-sidecar"
+    );
+    if (!residualTerminalBudgetZeroSlackSidecarMilestone
+        || residualTerminalBudgetZeroSlackSidecarMilestone.earned !== true
+        || residualTerminalBudgetZeroSlackSidecarMilestone.allPresent !== true
+        || residualTerminalBudgetZeroSlackSidecarMilestone.allAssumptionFree !== false
+        || residualTerminalBudgetZeroSlackSidecarMilestone.allKernelTypesMatch !== true
+        || residualTerminalBudgetZeroSlackSidecarMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalBudgetZeroSlackSidecarMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalBudgetZeroSlackSidecarMilestone.classification !== "formalized-residual-terminal-budget-zeroslack-sidecar"
+        || residualTerminalBudgetZeroSlackSidecarMilestone.scope !== RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_MILESTONE_SCOPE
+        || residualTerminalBudgetZeroSlackSidecarMilestone.nonClaim !== RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_NON_CLAIM
+        || JSON.stringify(residualTerminalBudgetZeroSlackSidecarMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalBudgetZeroSlackSidecarMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalBudgetZeroSlackSidecarFormalized !== true
+        || payload.leanResidualTerminalBudgetZeroSlackSidecarAxiomAuditPassed !== true
+        || payload.leanResidualTerminalBudgetZeroSlackSidecarScope !== RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_SCOPE
+        || payload.leanZeroSlackPositiveSlackContradictionFormalized !== false
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal Budget ZeroSlack-sidecar boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -9495,6 +9560,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal HResolve ZeroSlack-sidecar theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_BUDGET_ZEROSLACK_SIDECAR_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal Budget ZeroSlack-sidecar theorem mismatch: " + name);
       }
     }
 

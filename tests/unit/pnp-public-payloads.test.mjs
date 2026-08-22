@@ -598,6 +598,13 @@ const HRESOLVE_ZEROSLACK_SIDECAR_EMPTY_AXIOM_THEOREMS = new Set([
   'PNP.HResolveSidecarCertificate.exact_route_sound',
   'PNP.HResolveSidecarCertificate.gain_route_sound',
 ]);
+const BUDGET_ZEROSLACK_SIDECAR_THEOREM_SHA256 = Object.freeze({
+  'PNP.BudgetSidecarCertificate.excluded': 'a15cd6efe59fd66ddaab02635ee9f7aef0a82b43476ae57404cc7a1453fa5ba3',
+  'PNP.BudgetSidecarCertificate.no_feasible_support': 'c43f95f6685ef2bfd1c74341121879e8800e14071c71551b6f52443214c3c9f5',
+  'PNP.BudgetSidecarCertificate.exact_route_sound': 'd8a95988cf255477a8e89a4677c8ab5acfa3129540dbf8aac0d9e477cb4e1922',
+  'PNP.BudgetSidecarCertificate.gain_route_sound': '030c2b43009fff9c76409479aa0ed39d46451e011b4de89e09f604e0f0eb9968',
+  'PNP.budget_zeroslack_sidecar_checked_complete': '7829c7dd487dfec295ad0504483a30ebe0a22e43cd4da685920f8df8f40bce4b',
+});
 const LOCKED_NAND_SOURCE_PARSER_THEOREM_SHA256 = {
   'PNP.Concrete.LockedNAND.SourceParser.acceptedTape_outputBits': 'd701ab9e34ecabc1d16ea08faa44671e875b59bd6133b11e2fcf7e020d3e1634',
   'PNP.Concrete.LockedNAND.SourceParser.allInput_exact': '78d0acb8ae788b9216e67ac5be635c1d0f34953e1bc57c9b6e884d7f04d54a03',
@@ -3392,6 +3399,77 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     release.earnedBoundary.residualTerminalHResolveZeroSlackSidecarScope,
   );
   assert.ok(index.earnedMilestones.includes(hresolveZeroSlackSidecarMilestone.id));
+
+  const budgetZeroSlackSidecarMilestone = status.formalPublicationMilestones
+    .find((row) => row.id === 'residual-terminal-budget-zeroslack-sidecar');
+  const budgetZeroSlackSidecarHashes = release.earnedBoundary
+    .residualTerminalBudgetZeroSlackSidecarTheoremKernelTypeSha256;
+  assert.ok(budgetZeroSlackSidecarMilestone);
+  assert.equal(budgetZeroSlackSidecarMilestone.earned, true);
+  assert.equal(budgetZeroSlackSidecarMilestone.allPresent, true);
+  assert.equal(budgetZeroSlackSidecarMilestone.allAssumptionFree, false);
+  assert.equal(budgetZeroSlackSidecarMilestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(budgetZeroSlackSidecarMilestone.allKernelTypesMatch, true);
+  assert.equal(budgetZeroSlackSidecarMilestone.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(
+    budgetZeroSlackSidecarHashes,
+    BUDGET_ZEROSLACK_SIDECAR_THEOREM_SHA256,
+  );
+  assert.deepEqual(
+    budgetZeroSlackSidecarMilestone.requiredTheorems,
+    Object.keys(BUDGET_ZEROSLACK_SIDECAR_THEOREM_SHA256),
+  );
+  assert.equal(release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarAuditedDeclarationCount, 6);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarEmptyAxiomDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarPropextOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarQuotSoundOnlyDeclarationCount, 0);
+  assert.equal(release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarPropextQuotSoundDeclarationCount, 6);
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarAxiomClosure,
+    ['Quot.sound', 'propext'],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarProjectAxiomClosure,
+    [],
+  );
+  for (const theoremRow of budgetZeroSlackSidecarMilestone.theoremRows) {
+    assert.equal(theoremRow.kind, 'theorem', theoremRow.name);
+    assert.equal(
+      theoremRow.actualKernelTypeSha256,
+      BUDGET_ZEROSLACK_SIDECAR_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(
+      theoremRow.expectedKernelTypeSha256,
+      BUDGET_ZEROSLACK_SIDECAR_THEOREM_SHA256[theoremRow.name],
+      theoremRow.name,
+    );
+    assert.equal(theoremRow.kernelTypeFingerprintMatches, true, theoremRow.name);
+    assert.deepEqual(theoremRow.axioms, ['Quot.sound', 'propext'], theoremRow.name);
+    assert.equal(theoremRow.axioms.includes('Classical.choice'), false, theoremRow.name);
+    assert.equal(
+      theoremRow.axioms.some((axiom) => status.projectSpecificAxiomInventory.includes(axiom)),
+      false,
+      theoremRow.name,
+    );
+  }
+  assert.match(budgetZeroSlackSidecarMilestone.scope, /checked proof-bearing NoBudget sidecar/u);
+  assert.match(budgetZeroSlackSidecarMilestone.scope, /complete canonical terminal support universe/u);
+  assert.match(budgetZeroSlackSidecarMilestone.scope, /semantic minimum and strict equivalent gain/u);
+  assert.match(budgetZeroSlackSidecarMilestone.nonClaim, /caps are supplied inputs/u);
+  assert.match(budgetZeroSlackSidecarMilestone.nonClaim, /B0-B4 Budget grammar/u);
+  assert.match(budgetZeroSlackSidecarMilestone.nonClaim, /unconditional ZeroSlack/u);
+  assert.equal(status.leanResidualTerminalBudgetZeroSlackSidecarFormalized, true);
+  assert.equal(status.leanResidualTerminalBudgetZeroSlackSidecarAxiomAuditPassed, true);
+  assert.equal(
+    status.leanResidualTerminalBudgetZeroSlackSidecarScope,
+    release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarScope,
+  );
+  assert.equal(
+    release.earnedBoundary.residualTerminalBudgetZeroSlackSidecarNamedEndpointTheorem,
+    'PNP.budget_zeroslack_sidecar_checked_complete',
+  );
+  assert.ok(index.earnedMilestones.includes(budgetZeroSlackSidecarMilestone.id));
 
   assert.equal(inventory.kind, 'PNPLeanTheoremInventory0');
   assert.equal(inventory.coordinate, INVENTORY_COORDINATE);
