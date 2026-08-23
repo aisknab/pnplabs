@@ -16,10 +16,11 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
+import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "539040537eb91c62ca405c048f0be95067596f5e";
-const CORE_TREE = "5155f087f5243d0e4b44b3c9e34766dfbb420c9c";
+const CORE_COMMIT = "1061db268348734ecbf26306a76ef1cfb609672f";
+const CORE_TREE = "b25716fc93fa1efcc1888ad36977977c9f75d5d7";
 const CORE_PUBLICATION_MAP_SHA256 = "d135c0114d74ba74788bd2b50f77747bf0b4f2886ecb254a5ea5b49bb3f3f9d5";
 const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-184";
 const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184";
@@ -4221,6 +4222,12 @@ const CORE_FILES = [
     targets: ["public/pnp-theorem-inventory.json"],
     bytes: 32938756,
     sha256: "1de7ba070a3b7e9e2faafce2639805ade6cd4508afcb9a17c94594885a897c46"
+  },
+  {
+    sourcePath: "status/PROOF_PROGRESS.json",
+    targets: ["public/pnp-proof-progress.json"],
+    bytes: 32341,
+    sha256: "8ebde653ce149a8ce7dd8161d01b68d816215b25656fe24506bf4a9bb72ee591"
   }
 ];
 
@@ -6470,7 +6477,14 @@ function checkPdfPageCount(pdfPath, expectedPageCount) {
 function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
   if (!sourcePath.endsWith(".json")) return;
   const payload = JSON.parse(buffer.toString("utf8"));
-  if (sourcePath === "public/pnp-status.json") {
+  if (sourcePath === "status/PROOF_PROGRESS.json") {
+    if (payload.kind !== "PNPProofProgress0"
+        || payload.version !== 0
+        || payload.modelId !== "fixed-risk-weighted-checkpoints-v0"
+        || payload.asOfCoordinate !== CORE_STATUS_COORDINATE) {
+      fail("core proof-progress ledger identity mismatch");
+    }
+  } else if (sourcePath === "public/pnp-status.json") {
     if (payload.coordinate !== CORE_STATUS_COORDINATE || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("core status coordinate mismatch");
     if (payload.formalPublicationMapCoordinate !== CORE_PUBLICATION_MAP_COORDINATE || payload.formalPublicationMapSha256 !== CORE_PUBLICATION_MAP_SHA256 || payload.leanSourceClosureSha256 !== CORE_SOURCE_CLOSURE_SHA256) fail("core status source identity mismatch");
     const expectedPublicationIds = publicationMap.milestones.map((row) => row.id);
@@ -11093,6 +11107,11 @@ export function synchronizeFormalPublication(options = {}) {
 
   if (sha256(readFileSync(path.join(root, CORE_FILES[0].targets[0]))) === OLD_PDF_SHA256) fail("the previous-release PDF was restored into the current report");
   if (sha256(readFileSync(path.join(root, CORE_FILES[1].targets[0]))) === OLD_TEX_SHA256) fail("the previous-release TeX was restored into the current report");
+  validateProofProgressModel(
+    JSON.parse(readFileSync(path.join(root, "public/pnp-proof-progress.json"), "utf8")),
+    JSON.parse(readFileSync(path.join(root, "public/pnp-status.json"), "utf8")),
+    JSON.parse(readFileSync(path.join(root, "public/pnp-theorem-inventory.json"), "utf8"))
+  );
   verifyReleaseSeal({ root });
   const release = JSON.parse(readFileSync(path.join(root, "downloads/formal-publication-release.json"), "utf8"));
   const expectedPageCount = release?.artifacts?.report?.pageCount;

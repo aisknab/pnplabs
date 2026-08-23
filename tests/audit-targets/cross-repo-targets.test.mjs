@@ -22,6 +22,10 @@ const publishedStatus = JSON.parse(readFileSync(
   new URL("../../public/pnp-status.json", import.meta.url),
   "utf8"
 ));
+const publishedProgress = JSON.parse(readFileSync(
+  new URL("../../public/pnp-proof-progress.json", import.meta.url),
+  "utf8"
+));
 const publishedRelease = JSON.parse(readFileSync(
   new URL("../../downloads/formal-publication-release.json", import.meta.url),
   "utf8"
@@ -3901,12 +3905,14 @@ function makeProject(t) {
   statusPayload.formalPublicationMapSha256 = sha256(Buffer.from(publicationMap));
   statusPayload.leanSourceClosureSha256 = publicationMapPayload.milestoneSourceClosureSha256;
   const status = json(statusPayload);
+  const progress = json(publishedProgress);
 
   git(sourceDir, ["init"]);
   git(sourceDir, ["config", "user.email", "audit@example.invalid"]);
   git(sourceDir, ["config", "user.name", "Audit Test"]);
   write(sourceDir, "public/pnp-status.json", status);
   write(sourceDir, "public/pnp-theorem-inventory.json", inventory);
+  write(sourceDir, "status/PROOF_PROGRESS.json", progress);
   write(sourceDir, "publication/FORMAL_PUBLICATION_MAP.json", publicationMap);
   git(sourceDir, ["add", "."]);
   git(sourceDir, ["commit", "-m", "fixture"]);
@@ -3915,6 +3921,7 @@ function makeProject(t) {
 
   write(root, "public/pnp-status.json", status);
   write(root, "public/pnp-theorem-inventory.json", inventory);
+  write(root, "public/pnp-proof-progress.json", progress);
 
   const release = {
     kind: "PNPFormalPublicationRelease0",
@@ -3946,6 +3953,22 @@ function makeProject(t) {
         publicPath: "public/pnp-theorem-inventory.json",
         bytes: Buffer.byteLength(inventory),
         sha256: sha256(Buffer.from(inventory))
+      },
+      proofProgress: {
+        coordinate: publishedProgress.asOfCoordinate,
+        modelId: publishedProgress.modelId,
+        sourcePath: "status/PROOF_PROGRESS.json",
+        publicPath: "public/pnp-proof-progress.json",
+        bytes: Buffer.byteLength(progress),
+        sha256: sha256(Buffer.from(progress)),
+        pointsEarned: publishedProgress.proofCompletion.pointsEarned,
+        pointsAvailable: publishedProgress.proofCompletion.pointsAvailable,
+        uncertaintyLowPercent: publishedProgress.proofCompletion.uncertaintyLowPercent,
+        uncertaintyHighPercent: publishedProgress.proofCompletion.uncertaintyHighPercent,
+        formalArtefactCoverageEarnedRows: publishedProgress.formalArtefactCoverage.earnedRows,
+        formalArtefactCoverageTotalRows: publishedProgress.formalArtefactCoverage.totalRows,
+        globalGatesClosed: publishedProgress.globalGates.filter((gate) => gate.status === "closed").length,
+        globalGatesAvailable: publishedProgress.globalGates.length
       },
       report: {
         pageCount: publishedRelease.artifacts.report.pageCount,
@@ -4188,10 +4211,12 @@ function makeProject(t) {
     targets: [
       { id: "core.status", kind: "current core publication file", refClass: "currentCoreRef", path: "public/pnp-status.json" },
       { id: "core.inventory", kind: "current core publication file", refClass: "currentCoreRef", path: "public/pnp-theorem-inventory.json" },
+      { id: "core.proof_progress", kind: "current core publication file", refClass: "currentCoreRef", path: "status/PROOF_PROGRESS.json" },
       { id: "core.publication_map", kind: "current core publication file", refClass: "currentCoreRef", path: "publication/FORMAL_PUBLICATION_MAP.json" },
       { id: "public.formal_publication_manifest", kind: "pnplabs current release metadata", refClass: "publicCheckout", path: "downloads/formal-publication-release.json" },
       { id: "public.status", kind: "pnplabs current core mirror", refClass: "publicCheckout", path: "public/pnp-status.json", mirrorOf: "core.status" },
-      { id: "public.inventory", kind: "pnplabs current core mirror", refClass: "publicCheckout", path: "public/pnp-theorem-inventory.json", mirrorOf: "core.inventory" }
+      { id: "public.inventory", kind: "pnplabs current core mirror", refClass: "publicCheckout", path: "public/pnp-theorem-inventory.json", mirrorOf: "core.inventory" },
+      { id: "public.proof_progress", kind: "pnplabs current core mirror", refClass: "publicCheckout", path: "public/pnp-proof-progress.json", mirrorOf: "core.proof_progress" }
     ]
   };
   write(root, "docs/audit_targets.json", json(targets));
@@ -4276,7 +4301,7 @@ test("accepts exact current mirrors pinned to one core commit and tree", (t) => 
     assert.fail(error.failures?.join("\n") || String(error));
   }
   assert.equal(result.skipped, false);
-  assert.equal(result.mirroredTargets, 2);
+  assert.equal(result.mirroredTargets, 3);
   assert.equal(result.refs.currentCoreRef.commit, project.commit);
   assert.equal(result.refs.currentCoreRef.tree, project.tree);
 });

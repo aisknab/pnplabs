@@ -4,12 +4,13 @@ import { existsSync, lstatSync, readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "539040537eb91c62ca405c048f0be95067596f5e";
-const REVIEWED_CORE_TREE = "5155f087f5243d0e4b44b3c9e34766dfbb420c9c";
+const REVIEWED_CORE_COMMIT = "1061db268348734ecbf26306a76ef1cfb609672f";
+const REVIEWED_CORE_TREE = "b25716fc93fa1efcc1888ad36977977c9f75d5d7";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -8600,6 +8601,7 @@ function validateLocalArtifactHashes(root, release, failures) {
   const artifacts = release.artifacts || {};
   if (artifacts.status) expected.push({ path: artifacts.status.publicPath, ...artifacts.status });
   if (artifacts.theoremInventory) expected.push({ path: artifacts.theoremInventory.publicPath, ...artifacts.theoremInventory });
+  if (artifacts.proofProgress) expected.push({ path: artifacts.proofProgress.publicPath, ...artifacts.proofProgress });
   for (const type of ["pdf", "tex"]) {
     const report = artifacts.report?.[type];
     for (const publicPath of report?.publicPaths || []) expected.push({ path: publicPath, bytes: report.bytes, sha256: report.sha256 });
@@ -13261,6 +13263,29 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
         failures.push(`inventory residual terminal PkgC ambient BN4 residual-reduction mismatch: ${row.name}`);
       }
     }
+  }
+  const progressBuffer = contents.get("public.proof_progress");
+  if (statusBuffer && inventoryBuffer && progressBuffer) {
+    try {
+      const progress = validateProofProgressModel(
+        JSON.parse(progressBuffer.toString("utf8")),
+        JSON.parse(statusBuffer.toString("utf8")),
+        JSON.parse(inventoryBuffer.toString("utf8"))
+      );
+      const artifact = releaseManifest.artifacts?.proofProgress;
+      if (artifact?.coordinate !== progress.coordinate || artifact?.modelId !== progress.modelId
+          || artifact?.pointsEarned !== progress.pointsEarned || artifact?.pointsAvailable !== progress.pointsAvailable
+          || artifact?.formalArtefactCoverageEarnedRows !== progress.formalArtefactCoverage.earnedRows
+          || artifact?.formalArtefactCoverageTotalRows !== progress.formalArtefactCoverage.totalRows
+          || artifact?.globalGatesClosed !== progress.globalGatesClosed
+          || artifact?.globalGatesAvailable !== progress.globalGatesAvailable) {
+        failures.push("public proof-progress release metadata mismatch");
+      }
+    } catch (error) {
+      failures.push(`public proof-progress model mismatch: ${error.message}`);
+    }
+  } else {
+    failures.push("public proof-progress evidence is incomplete");
   }
 }
 

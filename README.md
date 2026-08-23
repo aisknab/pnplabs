@@ -173,13 +173,22 @@ concretePublicationGate.passed = false
 
 The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root. [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact public mirror of the compiled environment inventory: **30,015** exported public declarations across **301** modules, including **15,490** theorem-kind declarations and **7,617** assumption-free theorem-kind declarations. It excludes **15,135** private compiler auxiliaries and records **four** project axioms.
 
-The inventory-derived publication map binds 3,108 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Exactly 160 of 162 scoped milestone rows are earned. They cover the concrete machine model, Cook-Levin semantics and bounded formula-builder prefix, typed locked-NAND semantics and concrete reductions, verified residual and terminal chains, the finite BN3 through BN6 and PkgC construction, the complete finite Packet selector pipeline, checked realizer and HB dependency layers, exact earliest-route semantics, successive computation of every local Packet classifier field, checked budget/HB and semantic/HN bindings, executable selector silence, the local descent/no-lower row and composed Packet ledger, the finite supplied HResolve route classifier and coverage sidecar, the terminal-derived support resolver, the finite terminal budget-envelope and budget no-lower ledgers, their same-candidate composition with the Packet no-lower ledger, a deterministic maximal pairwise H-disjoint subfamily over eight supplied footprint-interference domains, an exact four-coordinate minimum over a supplied certified-path family, a maximal H-disjoint family over supplied proof-bearing candidates, proof-bearing HResolve, Budget, Selector/HB, Packet/budget no-lower, and BCEL/Packet no-lower ZeroSlack sidecars, the checked finite SaturatePositive-to-BCEL-ready composition, and a checked bijective identity between its computed ready nucleus and the exact grouped Packet carrier for the same candidate and model. The newest row transfers the existing nontrivial-size, positive-Packet exclusion, and constant-activation exclusion facts to that single coherent family. The terminal problem, positive full-slack premise, Packet family, bijective map, and downstream certificate data remain supplied. This is not a derivation of constant activation from positive residual slack, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or `P = NP`.
+The inventory-derived publication map binds 3,108 reviewed theorem candidates to kernel-type fingerprints and binds the complete Lean source/configuration closure. Exactly 160 of 162 scoped milestone rows are earned. This is **formal artefact coverage**, not proof completion. The rows cover the concrete machine model, Cook-Levin semantics and bounded formula-builder prefix, typed locked-NAND semantics and concrete reductions, verified residual and terminal chains, the finite BN3 through BN6 and PkgC construction, the complete finite Packet selector pipeline, checked realizer and HB dependency layers, exact earliest-route semantics, successive computation of every local Packet classifier field, checked budget/HB and semantic/HN bindings, executable selector silence, the local descent/no-lower row and composed Packet ledger, the finite supplied HResolve route classifier and coverage sidecar, the terminal-derived support resolver, the finite terminal budget-envelope and budget no-lower ledgers, their same-candidate composition with the Packet no-lower ledger, a deterministic maximal pairwise H-disjoint subfamily over eight supplied footprint-interference domains, an exact four-coordinate minimum over a supplied certified-path family, a maximal H-disjoint family over supplied proof-bearing candidates, proof-bearing HResolve, Budget, Selector/HB, Packet/budget no-lower, and BCEL/Packet no-lower ZeroSlack sidecars, the checked finite SaturatePositive-to-BCEL-ready composition, and a checked bijective identity between its computed ready nucleus and the exact grouped Packet carrier for the same candidate and model. The newest row transfers the existing nontrivial-size, positive-Packet exclusion, and constant-activation exclusion facts to that single coherent family. The terminal problem, positive full-slack premise, Packet family, bijective map, and downstream certificate data remain supplied. This is not a derivation of constant activation from positive residual slack, unconditional ZeroSlack, PCCMin, polynomial runtime, SAT in P, or `P = NP`.
+
+## Progress tracker
+
+[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184` it reports two separate metrics:
+
+- Formal artefact coverage: **160 of 162** current scoped publication rows earned (**98.8%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
+- Risk-weighted proof completion estimate: **30%**, with a current uncertainty range of **20% to 40%**. This is a conservative estimate of complete proof burden retired, not the probability that the route is correct and not a time estimate.
+
+The fixed track scores are 13/15 for formal foundations, 14/20 for concrete reductions, 2/35 for the unconditional residual core, 1/20 for exact PCCMin, and 0/10 for the root theorem and axiom elimination. All five global gates remain open, four project-specific axioms remain, `PNP.Main.p_eq_np` is absent, and the publication gate is false. Scores change only when a named fixed checkpoint changes state and can decrease when dependencies, assumptions, complexity, or blockers worsen.
 
 **Same-candidate finite BCEL-ready and Packet carrier coherence**
 
 This milestone starts from an accepted finite Packet/budget no-lower certificate and verifies that its computed BCEL-ready nucleus and grouped Packet carrier belong to the same candidate, model, and family. A supplied bijective anchor correspondence carries explicit injectivity and surjectivity proofs, while an exact Boolean-reflected list equality is used to identify the two carriers. The inherited nontrivial size bound, positive-Packet exclusion, and non-constant-activation conclusion therefore apply coherently to the family used by the report-facing ZeroSlack boundary.
 
-The result still starts from a supplied terminal problem, positive full-slack premise, Packet family, anchor correspondence, payloads, budget, realizer and dependency tables, and rank data. It does not equate activation weights with projection excess, derive constant activation from positive residual slack, construct the remaining global data, close ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, or prove P = NP. The 98 percent figure remains a revisable editorial estimate. It is separate from the 160 of 162 formally earned publication rows.
+The result still starts from a supplied terminal problem, positive full-slack premise, Packet family, anchor correspondence, payloads, budget, realizer and dependency tables, and rank data. It does not equate activation weights with projection excess, derive constant activation from positive residual slack, construct the remaining global data, close ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, or prove P = NP. The canonical tracker keeps 160 of 162 formal artefact rows separate from the 30% fixed-weight proof-completion estimate.
 
 Its 5 reviewed theorem pins, and all six declarations in the focused audit, use only Lean-standard `Quot.sound` and `propext`, with no project axiom or `Classical.choice`.
 
@@ -200,8 +209,9 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 539040537eb91c62ca405c048f0be95067596f5e
+git checkout 1061db268348734ecbf26306a76ef1cfb609672f
 npm ci
+npm run formal:progress
 npm run formal:inventory:check
 npm run validate
 npm run report:check
@@ -222,7 +232,7 @@ collapsed technical section generated from the canonical milestone record rather
 than independently maintained prose. [`updates.xml`](updates.xml) is the Atom/RSS
 subscription feed; following it requires no account or email address.
 
-The editorial source is [`content/milestone-updates.json`](content/milestone-updates.json).
+The historical milestone-update source is [`content/milestone-updates.json`](content/milestone-updates.json).
 Its baseline set and entries must exactly cover the currently earned milestones,
 so a formal-publication sync fails closed if it earns a milestone without adding
 an update. Each entry binds to the exact merged core commit, tree, status, and
@@ -236,6 +246,7 @@ independently.
 - [`public/pnp-index.json`](public/pnp-index.json) is the payload index and current conservative boundary summary.
 - [`public/pnp-status.json`](public/pnp-status.json) is the exact authoritative status mirror.
 - [`public/pnp-theorem-inventory.json`](public/pnp-theorem-inventory.json) is the exact compiled Lean declaration inventory mirror, hash-bound by the status payload.
+- [`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact canonical fixed-weight progress-ledger mirror, validated against both payloads above.
 - [`public/pnp-one-command-upload.json`](public/pnp-one-command-upload.json) records that the former activated-run upload path is frozen.
 - [`public/pnp-verification-runs.json`](public/pnp-verification-runs.json) preserves the old run registry as a frozen historical snapshot.
 - [`public/pnp-verifier-run-comparison-matrix.json`](public/pnp-verifier-run-comparison-matrix.json) and [`public/pnp-verifier-run-matrix-summary.json`](public/pnp-verifier-run-matrix-summary.json) are historical comparison records, not a current green status badge.
@@ -294,6 +305,13 @@ The pages load `assets/styles.min.css`. If CSS changes, regenerate it from `asse
 
 ```bash
 npx clean-css-cli -o assets/styles.min.css assets/styles.css
+```
+
+Current progress regions and the update page/feed/graphic are deterministic generated surfaces:
+
+```bash
+npm run progress:generate
+npm run updates:generate
 ```
 
 The first viewport also uses an inline critical CSS block in each HTML page. If that block changes, update the matching `style-src` SHA-256 hash in `_headers` and `public-surface.mjs`.

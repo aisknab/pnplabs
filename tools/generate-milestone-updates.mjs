@@ -8,11 +8,14 @@ import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import { renderProofProgressDashboard, validateProofProgressModel } from "./proof-progress-model.mjs";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = "content/milestone-updates.json";
 const STATUS_PATH = "public/pnp-status.json";
 const INDEX_PATH = "public/pnp-index.json";
+const PROGRESS_PATH = "public/pnp-proof-progress.json";
+const INVENTORY_PATH = "public/pnp-theorem-inventory.json";
 const HTML_PATH = "updates.html";
 const FEED_PATH = "updates.xml";
 const PROGRESS_SVG_PATH = "assets/proof-progress.svg";
@@ -91,7 +94,7 @@ function milestoneIsEarned(milestone) {
   return milestone.classification !== "not-formalized";
 }
 
-function validateUpdatesModel(data, status, index) {
+function validateUpdatesModel(data, status, index, progress, inventory) {
   assertExactKeys(data, ["kind", "version", "trackingBaseline", "entries"], "updates data");
   if (data.kind !== "PNPLabsMilestoneUpdates2" || data.version !== 2) {
     fail("updates data: unsupported kind or version");
@@ -204,8 +207,8 @@ function validateUpdatesModel(data, status, index) {
   if (latest.progressEstimatePercent === null) {
     fail("latest entry: progressEstimatePercent is required after progress tracking begins");
   }
-  if (latest.source.commit !== index.sourceCommitRef) fail("latest entry: source commit does not match pnp-index.json");
-  if (latest.source.tree !== index.sourceTree) fail("latest entry: source tree does not match pnp-index.json");
+  if (latest.source.commit !== index.latestEarnedMilestoneSourceCommitRef) fail("latest entry: source commit does not match the pinned latest earned milestone");
+  if (latest.source.tree !== index.latestEarnedMilestoneSourceTree) fail("latest entry: source tree does not match the pinned latest earned milestone");
   if (latest.source.statusCoordinate !== index.statusCoordinate
     || latest.source.statusCoordinate !== status.coordinate) {
     fail("latest entry: status coordinate does not match current publication payloads");
@@ -216,32 +219,38 @@ function validateUpdatesModel(data, status, index) {
   return {
     entries: orderedEntries,
     earnedCount: earnedIds.size,
-    progressEstimatePercent: latest.progressEstimatePercent
+    historicalProgressEstimatePercent: latest.progressEstimatePercent,
+    proofProgress: validateProofProgressModel(progress, status, inventory)
   };
 }
 
 function renderProgressSvg(model) {
-  const percent = model.progressEstimatePercent;
+  const percent = model.proofProgress.percent;
+  const low = model.proofProgress.uncertaintyLowPercent;
+  const high = model.proofProgress.uncertaintyHighPercent;
   const trackX = 72;
   const trackWidth = 816;
   const fillWidth = trackWidth * percent / 100;
   const headX = trackX + fillWidth;
+  const uncertaintyX = trackX + trackWidth * low / 100;
+  const uncertaintyWidth = trackWidth * (high - low) / 100;
   const gridLines = Array.from({ length: 21 }, (_, index) => {
     const x = trackX + trackWidth * index / 20;
     return `  <path d="M${x} 112v52" stroke="#f8f1e8" stroke-width="2" opacity="0.82"/>`;
   }).join("\n");
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 240" width="960" height="240" role="img" aria-labelledby="proof-progress-title proof-progress-desc">\n`
-    + `  <title id="proof-progress-title">Proof reconstruction progress estimate: ${percent} percent</title>\n`
-    + `  <desc id="proof-progress-desc">An editorial estimate of the known formalisation work completed. It is not a probability, confidence score, or statement of theorem correctness, and it may decrease as the remaining work becomes clearer.</desc>\n`
+    + `  <title id="proof-progress-title">Risk-weighted proof completion estimate: ${percent} percent</title>\n`
+    + `  <desc id="proof-progress-desc">A conservative estimate of proof burden retired, with a current uncertainty range from ${low} to ${high} percent. It is not a probability of correctness, confidence that P equals NP, or a time estimate.</desc>\n`
     + `  <rect width="960" height="240" rx="28" fill="#f8f1e8"/>\n`
     + `  <path d="M36 52h888" stroke="#6f193c" stroke-width="2" opacity="0.22"/>\n`
-    + `  <text x="72" y="84" fill="#371124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="23" font-weight="700">PROOF RECONSTRUCTION TAPE</text>\n`
+    + `  <text x="72" y="84" fill="#371124" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="23" font-weight="700">RISK-WEIGHTED PROOF COMPLETION</text>\n`
     + `  <rect x="${trackX}" y="112" width="${trackWidth}" height="52" rx="8" fill="#6f193c"/>\n`
+    + `  <rect x="${uncertaintyX}" y="106" width="${uncertaintyWidth}" height="64" rx="8" fill="#e3a72f" opacity="0.62"/>\n`
     + `  <rect x="${trackX}" y="112" width="${fillWidth}" height="52" rx="8" fill="#168b87"/>\n`
     + `${gridLines}\n`
     + `  <path d="M${headX} 101l11 11-11 11-11-11z" fill="#e3a72f" stroke="#371124" stroke-width="3"/>\n`
-    + `  <text x="72" y="207" fill="#6f193c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800">${percent}% ESTIMATED</text>\n`
-    + `  <text x="888" y="205" text-anchor="end" fill="#5d4b54" font-family="system-ui, sans-serif" font-size="16">editorial · revisable</text>\n`
+    + `  <text x="72" y="207" fill="#6f193c" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800">${percent}% ESTIMATE</text>\n`
+    + `  <text x="888" y="205" text-anchor="end" fill="#5d4b54" font-family="system-ui, sans-serif" font-size="16">uncertainty ${low}% to ${high}% · may decrease</text>\n`
     + `</svg>\n`;
 }
 
@@ -261,16 +270,32 @@ function renderTechnicalDetails(entry) {
     + `        </details>`;
 }
 
+function renderProgressBaselineUpdate(progress) {
+  const baseline = progress.history[0];
+  return `      <article class="card progress-baseline-update" id="proof-progress-model-v0-baseline" data-progress-baseline="${escaped(baseline.asOfCoordinate)}">\n`
+    + `        <div class="section-label">Progress model v0 baseline</div>\n`
+    + `        <h2>Separate evidence coverage from proof completion</h2>\n`
+    + `        <p><strong>As of <code>${escaped(baseline.asOfCoordinate)}</code>:</strong></p>\n`
+    + `        <ul><li>Formal artefact coverage: ${baseline.formalArtefactCoverage.earnedRows} / ${baseline.formalArtefactCoverage.totalRows}</li><li>Risk-weighted proof completion estimate: ${baseline.riskWeightedProofCompletionPercent}%</li><li>Uncertainty range: ${baseline.uncertaintyLowPercent}% to ${baseline.uncertaintyHighPercent}%</li><li>Global gates closed: ${baseline.globalGatesClosed} / ${baseline.globalGatesAvailable}</li></ul>\n`
+    + `        <p>${escaped(baseline.rationale)}</p>\n`
+    + `        <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>\n`
+    + `        <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>\n`
+    + `      </article>`;
+}
+
 function renderUpdatesHtml(model) {
-  const articles = model.entries.map((entry) => {
+  const articles = model.entries.map((entry, position) => {
     const paragraphs = entry.plainLanguage.map((paragraph) => `        <p>${escaped(paragraph)}</p>`).join("\n");
     const progress = entry.progressEstimatePercent === null
       ? ""
-      : `\n        <p class="update-progress"><strong>Editorial progress estimate at publication:</strong> ${entry.progressEstimatePercent}%.</p>`;
+      : `\n        <p class="update-progress"><strong>Superseded scoped-row/editorial estimate at publication:</strong> ${entry.progressEstimatePercent}%. This historical figure is not the current risk-weighted proof-completion estimate and is not a probability or confidence score.</p>`;
+    const currentMetrics = position === 0
+      ? `\n        <div class="update-current-metrics" aria-label="Current progress tracker snapshot"><strong>Current tracker at ${escaped(model.proofProgress.coordinate)}</strong><ul><li>Formal artefact coverage: ${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${model.proofProgress.percent}%</li><li>Uncertainty range: ${model.proofProgress.uncertaintyLowPercent}% to ${model.proofProgress.uncertaintyHighPercent}%</li><li>Global gates closed: ${model.proofProgress.globalGatesClosed} of ${model.proofProgress.globalGatesAvailable}</li></ul></div>`
+      : "";
     return `      <article class="card" id="${escaped(entry.id)}" data-milestone-id="${escaped(entry.milestoneId)}">\n`
       + `        <div class="section-label"><time datetime="${escaped(entry.publishedAt)}">${escaped(entry.publishedAt.slice(0, 10))}</time> · earned milestone ${entry.earnedOrdinal}</div>\n`
       + `        <h2>${escaped(entry.title)}</h2>\n`
-      + `${paragraphs}${progress}\n`
+      + `${paragraphs}${progress}${currentMetrics}\n`
       + `${renderTechnicalDetails(entry)}\n`
       + `      </article>`;
   }).join("\n\n");
@@ -299,13 +324,8 @@ function renderUpdatesHtml(model) {
     + `      <div class="feed-box" aria-labelledby="feed-heading"><div><strong id="feed-heading">Use an RSS or Atom reader</strong><p>Your reader checks this address for new milestones. No email address or PNP Labs account is needed.</p><code id="feed-url">https://pnplabs.com.au/updates.xml</code></div><button class="btn secondary" type="button" data-copy="#feed-url">Copy feed address</button></div>\n`
     + `      <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>\n`
     + `    </section>\n`
-    + `    <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading"><div class="proof-progress-card">\n`
-    + `      <div><span class="eyebrow">Best current estimate</span><h2 id="proof-progress-heading">About ${model.progressEstimatePercent}% of the known formalisation work</h2>\n`
-    + `        <p>This is an editorial planning estimate, updated at each milestone. It is not a probability that the project is correct, a confidence score, or a mathematical claim. It may go down when new work is discovered.</p>\n`
-    + `        <progress class="proof-progress-meter" max="100" value="${model.progressEstimatePercent}" aria-label="Estimated proof reconstruction progress: ${model.progressEstimatePercent} percent">${model.progressEstimatePercent}%</progress>\n`
-    + `      </div><img src="assets/proof-progress.svg" width="960" height="240" alt="Estimated proof reconstruction progress: ${model.progressEstimatePercent} percent">\n`
-    + `    </div></section>\n`
-    + `    <section class="section compact" aria-label="Published milestone updates"><div class="faq-list">\n${articles}\n    </div></section>\n`
+    + `    <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">\n${renderProofProgressDashboard(model.proofProgress)}\n    </section>\n`
+    + `    <section class="section compact" aria-label="Progress and milestone update history"><div class="faq-list">\n${renderProgressBaselineUpdate(model.proofProgress)}\n\n${articles}\n    </div></section>\n`
     + `  </main>\n`
     + `  <footer class="site-footer"><div class="footer-wrap"><div><a class="brand" href="index.html"><span class="brand-text"><strong>PNP Labs</strong><span>formal reconstruction in progress</span></span></a><p>The repository does not currently establish P = NP.</p></div><nav class="footer-links" aria-label="Footer"><a href="index.html">Overview</a><a href="updates.html">Updates</a><a href="faq.html">FAQ</a><a href="status.html">Formal status</a><a href="review.html">Technical review</a><a href="updates.xml" type="application/atom+xml">RSS/Atom feed</a><a href="review.html#contact">Contact</a></nav></div></footer>\n`
     + `  <script src="assets/main.js" defer></script>\n</body>\n</html>\n`;
@@ -313,16 +333,22 @@ function renderUpdatesHtml(model) {
 
 function renderAtomFeed(model) {
   const updated = model.entries[0].publishedAt;
-  const entries = model.entries.map((entry) => {
+  const entries = model.entries.map((entry, position) => {
     const url = `${BASE_URL}/updates.html#${entry.id}`;
     const progressText = entry.progressEstimatePercent === null
       ? ""
-      : ` Editorial progress estimate at publication: ${entry.progressEstimatePercent} percent; this is not a probability, confidence score, or theorem-correctness claim.`;
-    const summary = `${entry.plainLanguage.join(" ")}${progressText}`;
+      : ` Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent} percent; this historical figure is not current risk-weighted proof completion, a probability, or a confidence score.`;
+    const currentText = position === 0
+      ? ` Current tracker: formal artefact coverage ${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows}; risk-weighted proof completion estimate ${model.proofProgress.percent} percent; uncertainty range ${model.proofProgress.uncertaintyLowPercent} to ${model.proofProgress.uncertaintyHighPercent} percent; global gates closed ${model.proofProgress.globalGatesClosed} of ${model.proofProgress.globalGatesAvailable}.`
+      : "";
+    const summary = `${entry.plainLanguage.join(" ")}${progressText}${currentText}`;
     const progressContent = entry.progressEstimatePercent === null
       ? ""
-      : `<p data-progress-estimate-percent="${entry.progressEstimatePercent}">Editorial progress estimate at publication: ${entry.progressEstimatePercent}%. This estimate is revisable and is not a probability, confidence score, or statement of theorem correctness.</p>`;
-    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
+      : `<p data-superseded-progress-estimate-percent="${entry.progressEstimatePercent}">Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent}%. This historical figure is not current risk-weighted proof completion, a probability, or a confidence score.</p>`;
+    const currentContent = position === 0
+      ? `<p data-proof-progress-model="${escaped(model.proofProgress.modelId)}">Formal artefact coverage: ${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows} current scoped rows earned. Risk-weighted proof completion estimate: ${model.proofProgress.percent}%. Uncertainty range: ${model.proofProgress.uncertaintyLowPercent}% to ${model.proofProgress.uncertaintyHighPercent}%. Global gates closed: ${model.proofProgress.globalGatesClosed} of ${model.proofProgress.globalGatesAvailable}.</p>`
+      : "";
+    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}${currentContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
     return `  <entry>\n`
       + `    <id>${escaped(url)}</id>\n`
       + `    <title>${escaped(entry.title)}</title>\n`
@@ -354,12 +380,14 @@ async function readJson(root, relativePath) {
 }
 
 async function generateMilestoneUpdates({ root = repositoryRoot, write = false } = {}) {
-  const [data, status, index] = await Promise.all([
+  const [data, status, index, progress, inventory] = await Promise.all([
     readJson(root, DATA_PATH),
     readJson(root, STATUS_PATH),
-    readJson(root, INDEX_PATH)
+    readJson(root, INDEX_PATH),
+    readJson(root, PROGRESS_PATH),
+    readJson(root, INVENTORY_PATH)
   ]);
-  const model = validateUpdatesModel(data, status, index);
+  const model = validateUpdatesModel(data, status, index, progress, inventory);
   const outputs = new Map([
     [HTML_PATH, renderUpdatesHtml(model)],
     [FEED_PATH, renderAtomFeed(model)],

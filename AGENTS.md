@@ -50,12 +50,59 @@ Every milestone publication requires a full PNPLabs surface audit. This is a
 workflow invariant, not a milestone-specific cleanup. Before sealing a release,
 reconcile the newest result and its boundary across the homepage (including the
 current bottom line), formal status and complete milestone ledger, FAQ and
-editorial tracker explanation, updates page/feed/progress graphic, paper and
+progress-tracker explanation, updates page/feed/progress graphic, paper and
 architecture pages, README, reviewer and audit documentation, source links,
 download metadata, browser-rendered status, and negative tests. Preserve the
 original coordinates and progress estimates of historical milestone entries.
-The editorial progress estimate and the count of earned formal-publication rows
-are separate measures and must never be presented as interchangeable.
+Current formal artefact coverage and risk-weighted proof completion are separate
+measures and must never be presented as interchangeable.
+
+## Proof-progress tracking policy
+
+The authoritative fixed-weight tracker is the core PNP
+`status/PROOF_PROGRESS.json`; PNPLabs publishes its exact generated mirror at
+`public/pnp-proof-progress.json`. Maintain it under these rules:
+
+1. Call the earned publication-row ratio **formal artefact coverage**, never
+   proof completion. New publication rows may change coverage without changing
+   proof completion, and the coverage denominator may grow.
+2. Every current public proof-completion percentage must be generated from the
+   canonical fixed-weight ledger. Do not independently type percentages into
+   active pages, reports, tests, or graphics.
+3. Keep the checkpoint list and weights fixed. Do not expand or split them to
+   award credit for new local milestones.
+4. Change the score only when a named checkpoint changes state. Record the exact
+   compiled theorem, declaration, status field, or inventory evidence; the source
+   coordinate or commit; the load-bearing rationale; what remains open; the old
+   and new score; and the uncertainty decision.
+5. Finite, local, conditional, supplied-data, certificate-premised, or
+   fixed-instance theorems do not earn unconditional checkpoint credit.
+6. Award polynomial-runtime credit only for an encoded-input polynomial theorem
+   covering the complete construction, its output, and its certificates. Finite
+   termination or exhaustive enumeration is insufficient.
+7. The score may decrease when an assumption returns, hidden exponential work is
+   found, a dependency is invalidated or weakened, or a new load-bearing blocker
+   appears.
+8. Preserve historical entries and their original coordinates. Label old 98%
+   references as superseded scoped-row/editorial estimates, not current proof
+   completion, and do not rewrite immutable archives.
+9. Reconcile generated active pages, feeds, graphics, documentation, release
+   metadata, and tests from the canonical mirror. Keep independent literals only
+   for fixed checkpoint contracts and hostile mutations.
+10. Every current public update must report formal artefact coverage, the
+    risk-weighted estimate, its uncertainty range, and global gates closed as
+    separate fields.
+11. Never alter mathematical claims, theorem statements, proof code, or
+    publication rows merely to improve the score.
+12. External review may be reported as validation evidence, but it is not a
+    mathematical premise and cannot substitute for a formal checkpoint.
+13. The risk-weighted score is neither the probability that the route is correct
+    nor a delivery or time-remaining estimate.
+
+The current track table, all checkpoint definitions, evidence, limitations, and
+score-change record requirements live in the canonical ledger. Validate the
+mirror against the status and compiled inventory before generating any active
+surface.
 
 Core theorem compilation and formal-evidence generation belong to `pnp`.
 PNPLabs must not execute `lean`, `lake`, or `elan`; it verifies exact imported

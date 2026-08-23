@@ -44,13 +44,21 @@ fallback copy live in HTML. JavaScript may validate and enhance current formal
 payloads, but it must not inject or rewrite the page's substantive meaning. A
 reader with JavaScript disabled receives the same claim boundary.
 
-## Progress estimate
+## Progress metrics
 
-The percentage graphic is a revisable editorial estimate of the known formal
-reconstruction workload completed. It is never a probability that the proposed
-route is correct, a confidence score, a theorem-correctness measure, or a
-mathematical claim. It may decrease when new obligations are discovered. The
-qualifier must appear next to the percentage wherever the estimate is presented.
+Current pages keep two measures visibly separate. **Formal artefact coverage** is
+the earned-row ratio in the current scoped publication ledger. It is not proof
+completion, and its denominator can grow as dependencies are discovered or
+decomposed. **Risk-weighted proof completion** is generated only from the fixed
+100-point checkpoint ledger mirrored at `public/pnp-proof-progress.json`.
+
+The risk-weighted estimate is never the probability that the proposed route is
+correct, a confidence score, a theorem-correctness measure, or a time estimate.
+It may decrease when assumptions, hidden complexity, invalidated dependencies, or
+new blockers are found. The uncertainty range and non-claim must appear next to
+the estimate wherever it is presented. Historical editorial percentages remain
+labelled as superseded historical measures rather than rewritten as current
+proof-completion scores.
 
 ## Artefact identity
 
@@ -64,6 +72,6 @@ proof.
 
 The durable usability tests require consistent navigation and feed discovery on
 every public HTML route; static plain-language orientation; labelled, collapsed,
-keyboard-visible technical disclosures; the qualified progress estimate; and the
+keyboard-visible technical disclosures; the two separately qualified progress metrics; and the
 absence of runtime copy-rewrite helpers. Formal source-bound tests remain the
 authority for theorem identities and the fail-closed publication boundary.

@@ -3,9 +3,10 @@ import { createHash } from "node:crypto";
 import { lstatSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
-const CORE_COMMIT = "539040537eb91c62ca405c048f0be95067596f5e";
-const CORE_TREE = "5155f087f5243d0e4b44b3c9e34766dfbb420c9c";
+const CORE_COMMIT = "1061db268348734ecbf26306a76ef1cfb609672f";
+const CORE_TREE = "b25716fc93fa1efcc1888ad36977977c9f75d5d7";
 const PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -6272,9 +6273,15 @@ const EXPECTED_FILES = [
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
+    "path": "public/pnp-proof-progress.json",
+    "bytes": 32341,
+    "sha256": "8ebde653ce149a8ce7dd8161d01b68d816215b25656fe24506bf4a9bb72ee591",
+    "role": "exact current fixed-weight proof-progress ledger mirror"
+  },
+  {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 1043454,
-    "sha256": "e7bf397bf824355633f707acae2709d6d1a8d7b7fea29631b05c082d71676a2e",
+    "bytes": 1044102,
+    "sha256": "490d640c2a433303f06d6059aea4d6ffad0473d4b0f86f645b83877b39c4efe4",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -10851,7 +10858,7 @@ function assertInventory(inventory, status) {
   }
 }
 
-function assertCurrentManifest(manifest, status) {
+function assertCurrentManifest(manifest, status, progress) {
   if (manifest.kind !== "PNPFormalPublicationRelease0" || manifest.version !== 0) fail("current formal-publication manifest kind/version mismatch");
   if (manifest.coordinate !== "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-23-167") fail("current formal-publication coordinate mismatch");
   if (manifest.status !== "current-formal-reconstruction-publication-theorem-gate-closed" || manifest.authority !== "current") fail("current formal-publication authority mismatch");
@@ -10863,6 +10870,16 @@ function assertCurrentManifest(manifest, status) {
   if (!Number.isSafeInteger(manifest.artifacts?.report?.pageCount) || manifest.artifacts.report.pageCount <= 0) fail("current report must declare a positive integer page count");
   if (manifest.artifacts?.report?.pdf?.sha256 !== EXPECTED_FILES[0].sha256 || manifest.artifacts?.report?.tex?.sha256 !== EXPECTED_FILES[2].sha256) fail("current report manifest digest mismatch");
   if (manifest.artifacts?.status?.sha256 !== EXPECTED_FILES[4].sha256 || manifest.artifacts?.theoremInventory?.sha256 !== EXPECTED_FILES[5].sha256) fail("current JSON manifest digest mismatch");
+  const progressArtifact = manifest.artifacts?.proofProgress;
+  if (progressArtifact?.sha256 !== EXPECTED_FILES[6].sha256 || progressArtifact?.bytes !== EXPECTED_FILES[6].bytes
+      || progressArtifact?.coordinate !== progress.coordinate || progressArtifact?.modelId !== progress.modelId
+      || progressArtifact?.pointsEarned !== progress.pointsEarned || progressArtifact?.pointsAvailable !== progress.pointsAvailable
+      || progressArtifact?.uncertaintyLowPercent !== progress.uncertaintyLowPercent
+      || progressArtifact?.uncertaintyHighPercent !== progress.uncertaintyHighPercent
+      || progressArtifact?.formalArtefactCoverageEarnedRows !== progress.formalArtefactCoverage.earnedRows
+      || progressArtifact?.formalArtefactCoverageTotalRows !== progress.formalArtefactCoverage.totalRows
+      || progressArtifact?.globalGatesClosed !== progress.globalGatesClosed
+      || progressArtifact?.globalGatesAvailable !== progress.globalGatesAvailable) fail("current proof-progress manifest identity mismatch");
   const boundary = manifest.publicationBoundary || {};
   if (boundary.derivedOnlyFromConcreteGate !== true || boundary.concreteGatePassed !== false) fail("current manifest concrete gate boundary mismatch");
   if (boundary.mathematicalTheoremEstablished !== false || boundary.publicTheoremEmissionAllowed !== false || boundary.publicTheoremStatement !== null) fail("current manifest must fail closed");
@@ -13226,14 +13243,18 @@ export function verifyReleaseSeal(options = {}) {
   if (sha256(buffers.get(EXPECTED_FILES[0].path)) === OLD_PDF_SHA256 || sha256(buffers.get(EXPECTED_FILES[2].path)) === OLD_TEX_SHA256) fail("historical report bytes were restored into a current alias");
 
   const status = parseJson(buffers.get("public/pnp-status.json"), "public/pnp-status.json");
-  assertFailClosedStatus(status);
-  assertInventory(
-    parseJson(buffers.get("public/pnp-theorem-inventory.json"), "public/pnp-theorem-inventory.json"),
-    status
+  const inventory = parseJson(buffers.get("public/pnp-theorem-inventory.json"), "public/pnp-theorem-inventory.json");
+  const progress = validateProofProgressModel(
+    parseJson(buffers.get("public/pnp-proof-progress.json"), "public/pnp-proof-progress.json"),
+    status,
+    inventory
   );
+  assertFailClosedStatus(status);
+  assertInventory(inventory, status);
   assertCurrentManifest(
     parseJson(buffers.get("downloads/formal-publication-release.json"), "downloads/formal-publication-release.json"),
-    status
+    status,
+    progress
   );
   assertHistoricalManifest(parseJson(buffers.get("downloads/source-checker-release.json"), "downloads/source-checker-release.json"));
 

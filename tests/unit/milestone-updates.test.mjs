@@ -11,7 +11,7 @@ import {
   renderAtomFeed,
   renderProgressSvg,
   renderUpdatesHtml,
-  validateUpdatesModel
+  validateUpdatesModel as validateUpdatesModelRaw
 } from "../../tools/generate-milestone-updates.mjs";
 import { EXTENSIONLESS_REDIRECTS, PUBLIC_ROOT_PATHS, SECURITY_HEADERS } from "../../public-surface.mjs";
 
@@ -50,6 +50,13 @@ async function readJson(relativePath) {
   return JSON.parse(await readFile(path.join(repositoryRoot, relativePath), "utf8"));
 }
 
+const canonicalProgress = await readJson("public/pnp-proof-progress.json");
+const canonicalInventory = await readJson("public/pnp-theorem-inventory.json");
+
+function validateUpdatesModel(data, status, index, progress = canonicalProgress, inventory = canonicalInventory) {
+  return validateUpdatesModelRaw(data, status, index, progress, inventory);
+}
+
 async function fixtures() {
   return Promise.all([
     readJson("content/milestone-updates.json"),
@@ -77,11 +84,12 @@ test("current updates cover every milestone earned after the exact 39-milestone 
       (milestone) => milestone.id === entry.milestoneId
     ).requiredTheorems.length)
   );
-  assert.equal(model.progressEstimatePercent, data.entries[0].progressEstimatePercent);
+  assert.equal(model.historicalProgressEstimatePercent, data.entries[0].progressEstimatePercent);
+  assert.equal(model.proofProgress.percent, canonicalProgress.proofCompletion.percent);
   assert.equal(model.entries[0].id, data.entries[0].id);
   assert.equal(model.entries[0].milestone.id, data.entries[0].milestoneId);
-  assert.equal(model.entries[0].source.commit, index.sourceCommitRef);
-  assert.equal(model.entries[0].source.tree, index.sourceTree);
+  assert.equal(model.entries[0].source.commit, index.latestEarnedMilestoneSourceCommitRef);
+  assert.equal(model.entries[0].source.tree, index.latestEarnedMilestoneSourceTree);
 });
 
 test("HTML puts two plain-language paragraphs before one collapsed source-derived technical dropdown", async () => {
@@ -103,9 +111,12 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
   assert.ok(html.includes(escapeExpected(model.entries[0].milestone.scope)));
   assert.ok(html.includes(escapeExpected(model.entries[0].milestone.nonClaim)));
   assert.match(html, new RegExp(`Reviewed theorem pins:<\\/strong> ${model.entries[0].milestone.requiredTheorems.length}`, 'u'));
-  assert.match(html, new RegExp(`About ${model.progressEstimatePercent}% of the known formalisation work`, 'u'));
-  assert.match(html, new RegExp(`<progress[^>]+max="100"[^>]+value="${model.progressEstimatePercent}"`, 'u'));
-  assert.match(html, /not a probability that the project is correct, a confidence score, or a mathematical claim/u);
+  assert.match(html, /Risk-weighted proof completion estimate/u);
+  assert.match(html, new RegExp(`<progress[^>]+max="100"[^>]+value="${model.proofProgress.percent}"`, 'u'));
+  assert.match(html, /This is not confidence that P=NP is true, a probability of success, or a time estimate/u);
+  const coverageHeading = html.indexOf("Formal artefact coverage");
+  const coverageCount = html.indexOf(`${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows}`, coverageHeading);
+  assert.ok(coverageHeading > 0 && coverageCount > coverageHeading);
   assert.match(html, /assets\/proof-progress\.svg/u);
   assert.match(html, /release seal and deployment provenance record/u);
   assert.doesNotMatch(html, /<form\b|<script[^>]+https?:\/\//iu);
@@ -120,8 +131,9 @@ test("Atom output has stable IDs, canonical timestamps, escaped text, and no dup
   assert.ok(feed.includes(`<published>${data.entries[0].publishedAt}</published>`));
   assert.ok(feed.includes(`updates.html#${data.entries[0].id}`));
   assert.ok(feed.includes("Read the technical details on PNPLabs."));
-  assert.match(feed, new RegExp(`Editorial progress estimate at publication: ${model.progressEstimatePercent} percent`, 'u'));
-  assert.match(feed, /data-progress-estimate-percent=&quot;54&quot;/u);
+  assert.match(feed, new RegExp(`Superseded scoped-row\/editorial estimate at publication: ${model.historicalProgressEstimatePercent} percent`, 'u'));
+  assert.match(feed, /data-superseded-progress-estimate-percent=&quot;54&quot;/u);
+  assert.match(feed, new RegExp(`Risk-weighted proof completion estimate: ${model.proofProgress.percent}%`, 'u'));
   assert.ok(!feed.includes(model.entries[0].milestone.scope));
 
   const escapedModel = structuredClone(model);
@@ -133,10 +145,10 @@ test("progress SVG is deterministic, accessible, themed, and free of active cont
   const [data, status, index] = await fixtures();
   const svg = renderProgressSvg(validateUpdatesModel(data, status, index));
   assert.match(svg, /role="img" aria-labelledby="proof-progress-title proof-progress-desc"/u);
-  assert.match(svg, new RegExp(`Proof reconstruction progress estimate: ${data.entries[0].progressEstimatePercent} percent`, 'u'));
+  assert.match(svg, new RegExp(`Risk-weighted proof completion estimate: ${canonicalProgress.proofCompletion.percent} percent`, 'u'));
   assert.match(svg, /#6f193c/u);
   assert.match(svg, /#168b87/u);
-  assert.match(svg, new RegExp(`${data.entries[0].progressEstimatePercent}% ESTIMATED`, 'u'));
+  assert.match(svg, new RegExp(`${canonicalProgress.proofCompletion.percent}% ESTIMATE`, 'u'));
   assert.match(svg, /^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/u);
   assert.doesNotMatch(
     svg.replace('xmlns="http://www.w3.org/2000/svg"', ''),
@@ -171,7 +183,7 @@ test("progress validation rejects missing, hostile, out-of-range, and premature 
   assert.throws(() => validateUpdatesModel(historicalGap, status, index), /cannot appear after a historical null/u);
 });
 
-test("progress estimates are editorial and may decrease between tracked milestones", async () => {
+test("superseded historical estimates remain accurate and may decrease between milestones", async () => {
   const [data, status, index] = await fixtures();
   const olderTracked = structuredClone(data);
   olderTracked.entries[1].progressEstimatePercent = 35;
@@ -244,7 +256,9 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
   for (const relativePath of [
     "content/milestone-updates.json",
     "public/pnp-status.json",
-    "public/pnp-index.json"
+    "public/pnp-index.json",
+    "public/pnp-proof-progress.json",
+    "public/pnp-theorem-inventory.json"
   ]) {
     await writeFile(path.join(root, relativePath), await readFile(path.join(repositoryRoot, relativePath)));
   }
@@ -291,27 +305,30 @@ test("updates are discoverable from every public HTML page and the locked-down s
   assert.doesNotMatch(SECURITY_HEADERS["Content-Security-Policy"], /https?:\/\//u);
   assert.match(await readFile(path.join(repositoryRoot, "sitemap.xml"), "utf8"), /https:\/\/pnplabs\.com\.au\/updates\.html/u);
   const home = await readFile(path.join(repositoryRoot, "index.html"), "utf8");
-  assert.match(home, />Follow updates<\/a>/u);
+  assert.match(home, />Inspect the tracker<\/a>/u);
   assert.match(home, /class="proof-tape-graphic" role="img"/u);
   assert.doesNotMatch(home, /assets\/proof-progress\.svg/u);
-  const [data] = await fixtures();
   assert.match(
     await readFile(path.join(repositoryRoot, "assets/proof-progress.svg"), "utf8"),
-    new RegExp(`${data.entries[0].progressEstimatePercent}% ESTIMATED`, 'u')
+    new RegExp(`${canonicalProgress.proofCompletion.percent}% ESTIMATE`, 'u')
   );
 });
 
-test("FAQ states the current editorial percentage and latest conservative boundary", async () => {
+test("FAQ explains the superseded ratio and current fixed-weight boundary", async () => {
   const [data, status, index, inventory] = await fixtures();
-  const progress = data.entries[0].progressEstimatePercent;
+  const progress = canonicalProgress.proofCompletion;
+  const coverage = canonicalProgress.formalArtefactCoverage;
   const latestMilestone = status.formalPublicationMilestones.find(
     (milestone) => milestone.id === data.entries[0].milestoneId
   );
   const faq = await readFile(path.join(repositoryRoot, "faq.html"), "utf8");
-  assert.match(faq, new RegExp(`What does the ${progress}% tracker mean\\?`, 'u'));
-  assert.match(faq, new RegExp(`current editorial estimate that ${progress}% of the known formal reconstruction workload is complete`, 'u'));
-  assert.match(faq, new RegExp(`${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped rows are currently earned`, 'u'));
-  assert.match(faq, new RegExp(`${index.formalPublicationMilestoneCounts.earned} divided by ${index.formalPublicationMilestoneCounts.total} is not the project completion percentage`, 'u'));
+  assert.match(faq, new RegExp(`Why did the progress figure change from 98% to about ${progress.percent}%\\?`, 'u'));
+  assert.match(faq, /narrower scoped-row\/editorial measure/u);
+  assert.match(faq, new RegExp(`${coverage.earnedRows} of ${coverage.totalRows} scoped publication rows earned`, 'u'));
+  assert.match(faq, new RegExp(`uncertainty range of ${progress.uncertaintyLowPercent}% to ${progress.uncertaintyHighPercent}%`, 'u'));
+  assert.match(faq, /five large proof blockers/u);
+  assert.equal(index.formalPublicationMilestoneCounts.earned, coverage.earnedRows);
+  assert.equal(index.formalPublicationMilestoneCounts.total, coverage.totalRows);
   assert.equal(latestMilestone.earned, true);
   assert.ok(latestMilestone.requiredTheorems.length > 0);
   for (const theorem of latestMilestone.requiredTheorems) {

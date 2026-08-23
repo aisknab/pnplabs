@@ -947,13 +947,17 @@ try {
   siblingAvailable = false;
 }
 
-test('status and inventory are byte-identical to the pinned merged core publication', { skip: siblingAvailable ? false : 'sibling pnp checkout unavailable; upstream-consistency CI performs the remote comparison' }, async () => {
-  for (const path of ['public/pnp-status.json', 'public/pnp-theorem-inventory.json']) {
-    const site = await readText(path);
+test('status, inventory, and progress are byte-identical to the pinned merged core publication', { skip: siblingAvailable ? false : 'sibling pnp checkout unavailable; upstream-consistency CI performs the remote comparison' }, async () => {
+  for (const [sitePath, sourcePath] of [
+    ['public/pnp-status.json', 'public/pnp-status.json'],
+    ['public/pnp-theorem-inventory.json', 'public/pnp-theorem-inventory.json'],
+    ['public/pnp-proof-progress.json', 'status/PROOF_PROGRESS.json'],
+  ]) {
+    const site = await readText(sitePath);
     const { stdout: source } = await execFileAsync('git', [
-      '-C', fileURLToPath(siblingRepo), 'show', `${CORE_COMMIT}:${path}`,
+      '-C', fileURLToPath(siblingRepo), 'show', `${CORE_COMMIT}:${sourcePath}`,
     ], { encoding: 'utf8', maxBuffer: INVENTORY_BYTES + 1024 * 1024 });
-    assert.equal(site, source, `${path} must match pinned merged core commit`);
+    assert.equal(site, source, `${sitePath} must match pinned merged core commit`);
   }
 });
 
@@ -5805,6 +5809,7 @@ test('formal publication release pins the latest milestone from canonical update
   const release = await readJson('downloads/formal-publication-release.json');
   const inventory = await readJson('public/pnp-theorem-inventory.json');
   const status = await readJson('public/pnp-status.json');
+  const progress = await readJson('public/pnp-proof-progress.json');
   const updates = await readJson('content/milestone-updates.json');
   const parser = release.earnedBoundary;
   const latestMilestone = status.formalPublicationMilestones.find(
@@ -5817,6 +5822,12 @@ test('formal publication release pins the latest milestone from canonical update
   assert.equal(release.artifacts.theoremInventory.theoremCount, inventory.theoremCount);
   assert.equal(release.artifacts.theoremInventory.assumptionFreeTheoremCount, inventory.assumptionFreeTheoremCount);
   assert.equal(release.artifacts.theoremInventory.projectAxiomCount, inventory.axiomCount);
+  assert.equal(release.artifacts.proofProgress.coordinate, progress.asOfCoordinate);
+  assert.equal(release.artifacts.proofProgress.modelId, progress.modelId);
+  assert.equal(release.artifacts.proofProgress.pointsEarned, progress.proofCompletion.pointsEarned);
+  assert.equal(release.artifacts.proofProgress.pointsAvailable, progress.proofCompletion.pointsAvailable);
+  assert.equal(release.artifacts.proofProgress.formalArtefactCoverageEarnedRows, progress.formalArtefactCoverage.earnedRows);
+  assert.equal(release.artifacts.proofProgress.formalArtefactCoverageTotalRows, progress.formalArtefactCoverage.totalRows);
   assert.equal(parser.residualTerminalFourCornerArbitraryFamilyCoherenceFormalized, true);
   assert.equal(parser.residualTerminalFourCornerTightBasisFamilyComplete, true);
   assert.equal(parser.residualTerminalFourCornerSignedTightBasisMaximumFormalized, true);
@@ -6584,15 +6595,28 @@ test('payload index describes current inventory/report and quarantines legacy su
   const index = await readJson('public/pnp-index.json');
   const status = await readJson('public/pnp-status.json');
   const inventory = await readJson('public/pnp-theorem-inventory.json');
+  const progress = await readJson('public/pnp-proof-progress.json');
   const release = await readJson('downloads/formal-publication-release.json');
   assert.equal(Number.isSafeInteger(index.version) && index.version > 0, true);
   assert.equal(index.sourceCommitRef, CORE_COMMIT);
   assert.equal(index.sourceProofCommitRef, release.source.proofCommit);
   assert.equal(index.sourceTree, CORE_TREE);
+  assert.equal(index.latestEarnedMilestoneSourceCommitRef, (await readJson('content/milestone-updates.json')).entries[0].source.commit);
+  assert.equal(index.latestEarnedMilestoneSourceTree, (await readJson('content/milestone-updates.json')).entries[0].source.tree);
   assert.equal(index.statusCoordinate, STATUS_COORDINATE);
   assert.equal(index.publicSurfaceBaselineCoordinate, 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121');
   assert.equal(index.leanTheoremInventoryCoordinate, INVENTORY_COORDINATE);
   assert.equal(index.leanTheoremInventorySha256, INVENTORY_SHA256);
+  assert.equal(index.proofProgressCoordinate, progress.asOfCoordinate);
+  assert.equal(index.proofProgressModelId, progress.modelId);
+  assert.equal(index.proofProgressPointsEarned, progress.proofCompletion.pointsEarned);
+  assert.equal(index.proofProgressPointsAvailable, progress.proofCompletion.pointsAvailable);
+  assert.equal(index.proofProgressUncertaintyLowPercent, progress.proofCompletion.uncertaintyLowPercent);
+  assert.equal(index.proofProgressUncertaintyHighPercent, progress.proofCompletion.uncertaintyHighPercent);
+  assert.equal(index.formalArtefactCoverageEarnedRows, progress.formalArtefactCoverage.earnedRows);
+  assert.equal(index.formalArtefactCoverageTotalRows, progress.formalArtefactCoverage.totalRows);
+  assert.equal(index.globalProofGatesClosed, progress.globalGates.filter((gate) => gate.status === 'closed').length);
+  assert.equal(index.globalProofGatesAvailable, progress.globalGates.length);
   assert.equal(index.canonicalReportCoordinate, release.artifacts.report.coordinate);
   assert.equal(index.canonicalReportPages, release.artifacts.report.pageCount);
   assert.equal(index.formalPublicationRelease, '/downloads/formal-publication-release.json');
@@ -8009,6 +8033,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
+  assert.equal(index.payloads.find((entry) => entry.id === 'pnp-proof-progress').status, 'current');
   for (const id of ['pnp-one-command-upload', 'pnp-verification-runs', 'pnp-verifier-run-comparison-matrix', 'pnp-verifier-run-matrix-summary']) {
     assert.equal(index.payloads.find((entry) => entry.id === id).status, 'historical-frozen');
   }

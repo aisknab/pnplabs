@@ -34,6 +34,7 @@ download aliases.
 | --- | --- | --- | --- |
 | Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,108 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
 | Earned milestones | 3,108 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 160 of 162 scoped formal milestone rows. The newest row uses a checked bijection and exact list equality to identify the computed finite BCEL-ready nucleus with the exact grouped Packet carrier for the same candidate and model, transferring the inherited carrier-size and existing Packet/constant-activation exclusions to one coherent family. | Treating supplied terminal, Packet, map, or downstream data as derived; equating activation weights with projection excess; claiming constant activation follows from positive residual slack, a complete manuscript no-lower result, unconditional ZeroSlack, complete global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the fixed-weight risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
 | Public seal | SHA-256, byte counts, exact ledger agreement, and alias equality | File identity | Theorem correctness, checker soundness, or semantic equality |
@@ -61,7 +62,7 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `539040537eb91c62ca405c048f0be95067596f5e`.
+   `1061db268348734ecbf26306a76ef1cfb609672f`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
 3. Inspect every one of the 3,108 reviewed milestone declarations at its exact kernel type.

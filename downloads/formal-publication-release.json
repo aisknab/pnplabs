@@ -6,10 +6,10 @@
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "539040537eb91c62ca405c048f0be95067596f5e",
+    "commit": "1061db268348734ecbf26306a76ef1cfb609672f",
     "proofCommit": "23ea280885d0e341863d60c1df2f11fd0e816b77",
-    "tree": "5155f087f5243d0e4b44b3c9e34766dfbb420c9c",
-    "ref": "539040537eb91c62ca405c048f0be95067596f5e",
+    "tree": "b25716fc93fa1efcc1888ad36977977c9f75d5d7",
+    "ref": "1061db268348734ecbf26306a76ef1cfb609672f",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
     "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-184",
     "formalPublicationMapSha256": "d135c0114d74ba74788bd2b50f77747bf0b4f2886ecb254a5ea5b49bb3f3f9d5",
@@ -35,6 +35,22 @@
       "theoremCount": 15490,
       "assumptionFreeTheoremCount": 7617,
       "projectAxiomCount": 4
+    },
+    "proofProgress": {
+      "sourcePath": "status/PROOF_PROGRESS.json",
+      "publicPath": "public/pnp-proof-progress.json",
+      "bytes": 32341,
+      "sha256": "8ebde653ce149a8ce7dd8161d01b68d816215b25656fe24506bf4a9bb72ee591",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184",
+      "modelId": "fixed-risk-weighted-checkpoints-v0",
+      "pointsEarned": 30,
+      "pointsAvailable": 100,
+      "uncertaintyLowPercent": 20,
+      "uncertaintyHighPercent": 40,
+      "formalArtefactCoverageEarnedRows": 160,
+      "formalArtefactCoverageTotalRows": 162,
+      "globalGatesClosed": 0,
+      "globalGatesAvailable": 5
     },
     "report": {
       "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-23-184",
