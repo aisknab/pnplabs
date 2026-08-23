@@ -91,7 +91,10 @@ The authoritative fixed-weight tracker is the core PNP
    for fixed checkpoint contracts and hostile mutations.
 10. Every current public update must report formal artefact coverage, the
     risk-weighted estimate, its uncertainty range, and global gates closed as
-    separate fields.
+    separate fields. For every milestone after the tracker baseline, append a
+    versioned history review and bind the update to that snapshot even when no
+    checkpoint changes and the score stays fixed. Never rewrite the baseline to
+    make a later milestone look like the original scoring review.
 11. Never alter mathematical claims, theorem statements, proof code, or
     publication rows merely to improve the score.
 12. External review may be reported as validation evidence, but it is not a

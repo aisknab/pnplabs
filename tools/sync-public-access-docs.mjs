@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "1061db268348734ecbf26306a76ef1cfb609672f";
-const CORE_TREE = "b25716fc93fa1efcc1888ad36977977c9f75d5d7";
-const CORE_PUBLICATION_MAP_SHA256 = "d135c0114d74ba74788bd2b50f77747bf0b4f2886ecb254a5ea5b49bb3f3f9d5";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-184";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-184";
-const CORE_SOURCE_CLOSURE_SHA256 = "b489621c479ec08ed7dd260170df8b3811044f34a1e4e68cf76fd7db4c44ec83";
-const OLD_PDF_SHA256 = "a87e24ad9ff7d4e40a0a2a14c7c5a17e718020ef0dc4f968155013fa427e8f6b";
-const OLD_TEX_SHA256 = "45b210abc81d7ad190768b98f28c903603471a8c40a942dad06509d04b72664f";
+const CORE_COMMIT = "edcf84c74280b455ca656ee57653d6fb07cfcc30";
+const CORE_TREE = "d8187018fb200e9ad9b8877988c8584f86bbafe7";
+const CORE_PUBLICATION_MAP_SHA256 = "906aa80a473c5037df86baf06bd2d2d6c93632c6872981cfbc8d2bb2e641257e";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-185";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-185";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-185";
+const CORE_SOURCE_CLOSURE_SHA256 = "2a55fe2ee63fd24a78e25aa548f83778a96cc4f7f9b07af8f46ac72891070455";
+const OLD_PDF_SHA256 = "f24389f043878c7a2d533fc644d31a8647af23859884e0d6ab044a27ff18c609";
+const OLD_TEX_SHA256 = "e7c2306b9e443a9cf696167580dcbd2128c0b3b32a99d1612b7e369f38957b12";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1890,6 +1890,18 @@ const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_THEOREMS = {
 const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_SCOPE = "all-arbitrary-finite-proof-bearing-same-candidate-model-bcel-ready-nuclei-bijectively-mapped-to-the-exact-packet-family-carrier";
 const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_MILESTONE_SCOPE = "For every accepted finite Packet/budget no-lower certificate, Lean indexes a checked finite BCEL-ready problem by the same candidate and model, retains its computed ready nucleus, and uses a bijective anchor map with explicit injectivity and surjectivity proofs plus a Boolean-reflected exact list equality to identify that nucleus with the exact grouped Packet carrier. The inherited nontrivial-size bound, positive-Packet exclusion, and constant-activation exclusion therefore hold on one coherently bound family consumed by the report-facing ZeroSlack boundary.";
 const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_NON_CLAIM = "The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, Packet payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. The carrier identity does not identify Packet-family activation weights with proper-cut projection excess or derive constant activation from positive residual slack. It does not construct BN3--BN6 data from terminal data, complete the no-lower ledger, prove unconditional ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
+
+const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_THEOREMS = {
+  "PNP.checkTerminalFiniteBCELPacketActivationCoherence_eq_true_iff": { hash: "d1d9c0fce88b026c8bca38c875557775123ede99256086f99402bb30be62f2f5", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELPacketActivationObstruction" },
+  "PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.activation_coherent_mapped_cut_equation": { hash: "6f925ca58235168efc29966ece2fdf00e67e47f4436547d27bd9b44a3c54fbdd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELPacketActivationObstruction" },
+  "PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.not_activation_coherent": { hash: "c50aa223787a105a548bed04a930fa3747193c156a0ec418986c7ad497598f10", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELPacketActivationObstruction" },
+  "PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.activation_coherence_check_eq_false": { hash: "6d51a768a6af8ff8c8b72dbeb09b2ad04374658c36edf47610e47e715fb684d9", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELPacketActivationObstruction" },
+  "PNP.terminal_finite_bcel_packet_activation_obstruction_checked_complete": { hash: "e1121f82e5d955f69e29d28ce6b0819aec30268fe34e118632eb2e30f348b08d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalFiniteBCELPacketActivationObstruction" },
+  "PNP.zeroslack_bcel_packet_activation_obstruction_checked_complete": { hash: "6bfe3fda461aef5b96b6fbca726d8b3134b992b9c97b16bc365e5a410d4c0620", axioms: ["Quot.sound", "propext"], module: "PNP.ZeroSlack" }
+};
+const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_SCOPE = "all-arbitrary-finite-coherently-mapped-bcel-ready-and-packet-families-exhaustive-cut-value-and-proper-cut-activation-coherence-check-with-proof-bearing-first-obstruction";
+const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_MILESTONE_SCOPE = "For every arbitrary finite M184 carrier-coherence certificate, Lean computes the exact selected M183 nucleus defect and exhaustively checks the M180 Packet cut value plus every canonical nonempty proper Packet-cut activation weight. Acceptance reconstructs full finite activation coherence and identifies each mapped terminal cut's activation with its projection excess. The same-family Packet exclusion forces rejection, and a deterministic classifier returns either the declared cut-value mismatch or a proof-bearing proper-cut activation mismatch; the report-facing ZeroSlack record derives the same obstruction without duplicate family data or a caller flag.";
+const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_NON_CLAIM = "The checker proves that the numerical bridge fails on the current accepted finite family; it does not prove activation coherence. The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, activation cells and masses, payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. Exhaustive proper-cut enumeration may be exponential. This milestone does not derive the family or activation weights from positive residual slack, construct BN3--BN6 data from every valid input, complete the global route or no-lower systems, prove unconditional SaturatePositive, BCELReady, ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4202,32 +4214,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 565402,
-    sha256: "f24389f043878c7a2d533fc644d31a8647af23859884e0d6ab044a27ff18c609"
+    bytes: 566763,
+    sha256: "2efd2ef77c689d9341b557516235b3a8c170bb2ee3668309ea21247fd8aca2cc"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 340929,
-    sha256: "e7c2306b9e443a9cf696167580dcbd2128c0b3b32a99d1612b7e369f38957b12"
+    bytes: 343445,
+    sha256: "40ba52d00a4cc12413d2b6839a94e788eb873d9ba9de59b03e58a4747369905c"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2595885,
-    sha256: "cb1e60cc5854b72939d998bbc5e9a318e5f4ccdd42ec2dbb258398db64158881"
+    bytes: 2603129,
+    sha256: "867e2609f544f1aec18c0855cd921e4991d66f82450d955be9d39a7f4ceefa8d"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 32938756,
-    sha256: "1de7ba070a3b7e9e2faafce2639805ade6cd4508afcb9a17c94594885a897c46"
+    bytes: 33072487,
+    sha256: "d26de4965373fa55ee89c14e0884fb271efa3f6305b13fca429b316f5540ab78"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 32341,
-    sha256: "8ebde653ce149a8ce7dd8161d01b68d816215b25656fe24506bf4a9bb72ee591"
+    bytes: 33117,
+    sha256: "a0484c0fcfe186f012b595392d4ed90d271c4c090602ae67adabdd2612377c0e"
   }
 ];
 
@@ -5930,6 +5942,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map residual terminal finite BCEL/Packet carrier coherence boundary mismatch");
+  }
+
+  const residualTerminalFiniteBCELPacketActivationObstructionMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "residual-terminal-finite-bcel-packet-activation-obstruction"
+  );
+  const residualTerminalFiniteBCELPacketActivationObstructionNames =
+    Object.keys(RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_THEOREMS);
+  if (!residualTerminalFiniteBCELPacketActivationObstructionMilestone
+      || residualTerminalFiniteBCELPacketActivationObstructionMilestone.classification !== "formalized-residual-terminal-finite-bcel-packet-activation-obstruction"
+      || residualTerminalFiniteBCELPacketActivationObstructionMilestone.scope !== RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_MILESTONE_SCOPE
+      || residualTerminalFiniteBCELPacketActivationObstructionMilestone.nonClaim !== RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_NON_CLAIM
+      || JSON.stringify(residualTerminalFiniteBCELPacketActivationObstructionMilestone.requiredTheorems)
+        !== JSON.stringify(residualTerminalFiniteBCELPacketActivationObstructionNames)
+      || !Object.entries(RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map residual terminal finite BCEL/Packet activation-obstruction boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -9460,6 +9489,41 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status residual terminal finite BCEL/Packet carrier coherence boundary mismatch");
     }
 
+    const residualTerminalFiniteBCELPacketActivationObstructionMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "residual-terminal-finite-bcel-packet-activation-obstruction"
+    );
+    if (!residualTerminalFiniteBCELPacketActivationObstructionMilestone
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.earned !== true
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.allPresent !== true
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.allAssumptionFree !== false
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.allKernelTypesMatch !== true
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.sourceClosureFingerprintMatches !== true
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.classification !== "formalized-residual-terminal-finite-bcel-packet-activation-obstruction"
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.scope !== RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_MILESTONE_SCOPE
+        || residualTerminalFiniteBCELPacketActivationObstructionMilestone.nonClaim !== RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_NON_CLAIM
+        || JSON.stringify(residualTerminalFiniteBCELPacketActivationObstructionMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_THEOREMS))
+        || !Object.entries(RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_THEOREMS).every(([name, evidence]) => {
+          const row = residualTerminalFiniteBCELPacketActivationObstructionMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanResidualTerminalFiniteBCELPacketActivationObstructionFormalized !== true
+        || payload.leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed !== true
+        || payload.leanResidualTerminalFiniteBCELPacketActivationObstructionScope !== RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_SCOPE
+        || payload.leanSaturatePositiveFormalized !== false
+        || payload.leanBCELReadyFormalized !== false
+        || payload.leanResidualRoutesGlobalGainCompletenessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status residual terminal finite BCEL/Packet activation-obstruction boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -10028,6 +10092,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual terminal finite BCEL/Packet carrier coherence theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory residual terminal finite BCEL/Packet activation-obstruction theorem mismatch: " + name);
       }
     }
 

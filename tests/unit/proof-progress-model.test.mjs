@@ -44,6 +44,12 @@ test("canonical progress ledger validates against independent formal evidence", 
   });
   assert.equal(ledger.formalArtefactCoverage.isProofCompletionMetric, false);
   assert.equal(ledger.formalArtefactCoverage.denominatorCanGrow, true);
+  assert.equal(ledger.history[0].asOfCoordinate, "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184");
+  assert.equal(ledger.history.at(-1).asOfCoordinate, ledger.asOfCoordinate);
+  assert.deepEqual(ledger.history.at(-1).formalArtefactCoverage, {
+    earnedRows,
+    totalRows: status.formalPublicationMilestones.length
+  });
 
   assert.equal(model.globalGatesClosed, 0);
   assert.equal(model.globalGatesAvailable, 5);
@@ -98,6 +104,18 @@ test("progress validation rejects arithmetic, evidence, gate, axiom, and root dr
   const forgedRoot = structuredClone(ledger);
   forgedRoot.rootTheorem.present = true;
   assert.throws(() => validateProofProgressModel(forgedRoot, status, inventory), /Root\.Present/u);
+
+  const unknownAwardCoordinate = structuredClone(ledger);
+  unknownAwardCoordinate.tracks[0].checkpoints[0].awardedAtCoordinate = "PNP-UNKNOWN-COORDINATE";
+  assert.throws(() => validateProofProgressModel(unknownAwardCoordinate, status, inventory), /Checkpoint\.UnknownAwardCoordinate/u);
+
+  const duplicateHistory = structuredClone(ledger);
+  duplicateHistory.history.push(structuredClone(duplicateHistory.history.at(-1)));
+  assert.throws(() => validateProofProgressModel(duplicateHistory, status, inventory), /History\.DuplicateCoordinate/u);
+
+  const currentHistoryDrift = structuredClone(ledger);
+  currentHistoryDrift.history.at(-1).formalArtefactCoverage.earnedRows -= 1;
+  assert.throws(() => validateProofProgressModel(currentHistoryDrift, status, inventory), /History\.CurrentCoverage/u);
 });
 
 test("active progress surfaces keep coverage and proof completion separate", async () => {

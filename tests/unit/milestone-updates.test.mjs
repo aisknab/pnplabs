@@ -70,8 +70,8 @@ test("current updates cover every milestone earned after the exact 39-milestone 
   const [data, status, index] = await fixtures();
   const model = validateUpdatesModel(data, status, index);
   assert.equal(data.trackingBaseline.earnedCount, 39);
-  assert.equal(data.kind, "PNPLabsMilestoneUpdates2");
-  assert.equal(data.version, 2);
+  assert.equal(data.kind, "PNPLabsMilestoneUpdates3");
+  assert.equal(data.version, 3);
   assert.equal(model.earnedCount, index.formalPublicationMilestoneCounts.earned);
   assert.equal(model.entries.length, model.earnedCount - data.trackingBaseline.earnedCount);
   assert.deepEqual(
@@ -84,8 +84,8 @@ test("current updates cover every milestone earned after the exact 39-milestone 
       (milestone) => milestone.id === entry.milestoneId
     ).requiredTheorems.length)
   );
-  assert.equal(model.historicalProgressEstimatePercent, data.entries[0].progressEstimatePercent);
   assert.equal(model.proofProgress.percent, canonicalProgress.proofCompletion.percent);
+  assert.deepEqual(model.entries[0].progressSnapshot, data.entries[0].progressSnapshot);
   assert.equal(model.entries[0].id, data.entries[0].id);
   assert.equal(model.entries[0].milestone.id, data.entries[0].milestoneId);
   assert.equal(model.entries[0].source.commit, index.latestEarnedMilestoneSourceCommitRef);
@@ -131,7 +131,8 @@ test("Atom output has stable IDs, canonical timestamps, escaped text, and no dup
   assert.ok(feed.includes(`<published>${data.entries[0].publishedAt}</published>`));
   assert.ok(feed.includes(`updates.html#${data.entries[0].id}`));
   assert.ok(feed.includes("Read the technical details on PNPLabs."));
-  assert.match(feed, new RegExp(`Superseded scoped-row\/editorial estimate at publication: ${model.historicalProgressEstimatePercent} percent`, 'u'));
+  const firstLegacyEstimate = data.entries.find((entry) => Number.isSafeInteger(entry.progressEstimatePercent)).progressEstimatePercent;
+  assert.match(feed, new RegExp(`Superseded scoped-row\/editorial estimate at publication: ${firstLegacyEstimate} percent`, 'u'));
   assert.match(feed, /data-superseded-progress-estimate-percent=&quot;54&quot;/u);
   assert.match(feed, new RegExp(`Risk-weighted proof completion estimate: ${model.proofProgress.percent}%`, 'u'));
   assert.ok(!feed.includes(model.entries[0].milestone.scope));
@@ -156,31 +157,31 @@ test("progress SVG is deterministic, accessible, themed, and free of active cont
   );
 });
 
-test("progress validation rejects missing, hostile, out-of-range, and premature 100 percent values", async () => {
+test("progress validation rejects missing, hostile, out-of-range, and history-conflicting tracker snapshots", async () => {
   const [data, status, index] = await fixtures();
 
   const missing = structuredClone(data);
-  delete missing.entries[0].progressEstimatePercent;
+  delete missing.entries[0].progressSnapshot;
   assert.throws(() => validateUpdatesModel(missing, status, index), /expected exact keys/u);
 
   for (const value of [-1, 101, 30.5, "30", "<script>alert(1)<\/script>"]) {
     const invalid = structuredClone(data);
-    invalid.entries[0].progressEstimatePercent = value;
-    assert.throws(() => validateUpdatesModel(invalid, status, index), /integer from 0 to 100/u);
+    invalid.entries[0].progressSnapshot.riskWeightedProofCompletionPercent = value;
+    assert.throws(() => validateUpdatesModel(invalid, status, index), /non-negative integer|invalid estimate/u);
   }
 
-  const premature = structuredClone(data);
-  premature.entries[0].progressEstimatePercent = 100;
-  assert.throws(() => validateUpdatesModel(premature, status, index), /100 percent is forbidden/u);
+  const historyConflict = structuredClone(data);
+  historyConflict.entries[0].progressSnapshot.formalArtefactCoverageEarnedRows -= 1;
+  assert.throws(() => validateUpdatesModel(historyConflict, status, index), /conflicts with canonical progress history/u);
 
-  const latestNull = structuredClone(data);
-  for (const entry of latestNull.entries) entry.progressEstimatePercent = null;
-  assert.throws(() => validateUpdatesModel(latestNull, status, index), /latest entry.*required/u);
+  const missingHistory = structuredClone(canonicalProgress);
+  missingHistory.history = missingHistory.history.slice(0, -1);
+  assert.throws(() => validateUpdatesModel(data, status, index, missingHistory), /source coordinate is absent from canonical progress history/u);
 
-  const historicalGap = structuredClone(data);
-  historicalGap.entries[1].progressEstimatePercent = null;
-  historicalGap.entries[2].progressEstimatePercent = 29;
-  assert.throws(() => validateUpdatesModel(historicalGap, status, index), /cannot appear after a historical null/u);
+  const snapshotAfterLegacy = structuredClone(data);
+  snapshotAfterLegacy.entries[2].progressSnapshot = structuredClone(snapshotAfterLegacy.entries[0].progressSnapshot);
+  delete snapshotAfterLegacy.entries[2].progressEstimatePercent;
+  assert.throws(() => validateUpdatesModel(snapshotAfterLegacy, status, index), /tracker snapshots must precede legacy editorial entries/u);
 });
 
 test("superseded historical estimates remain accurate and may decrease between milestones", async () => {
@@ -188,7 +189,7 @@ test("superseded historical estimates remain accurate and may decrease between m
   const olderTracked = structuredClone(data);
   olderTracked.entries[1].progressEstimatePercent = 35;
   const model = validateUpdatesModel(olderTracked, status, index);
-  assert.equal(model.entries[0].progressEstimatePercent, data.entries[0].progressEstimatePercent);
+  assert.deepEqual(model.entries[0].progressSnapshot, data.entries[0].progressSnapshot);
   assert.equal(model.entries[1].progressEstimatePercent, 35);
 });
 
@@ -210,8 +211,7 @@ test("validation rejects duplicates, source drift, unsafe prose, and schema exte
   const [data, status, index] = await fixtures();
 
   const duplicate = structuredClone(data);
-  const duplicateEntry = structuredClone(duplicate.entries[0]);
-  duplicateEntry.progressEstimatePercent = null;
+  const duplicateEntry = structuredClone(duplicate.entries[1]);
   duplicate.entries.push(duplicateEntry);
   assert.throws(() => validateUpdatesModel(duplicate, status, index), /duplicate entry ID/u);
 

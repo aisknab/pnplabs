@@ -96,7 +96,7 @@ function milestoneIsEarned(milestone) {
 
 function validateUpdatesModel(data, status, index, progress, inventory) {
   assertExactKeys(data, ["kind", "version", "trackingBaseline", "entries"], "updates data");
-  if (data.kind !== "PNPLabsMilestoneUpdates2" || data.version !== 2) {
+  if (data.kind !== "PNPLabsMilestoneUpdates3" || data.version !== 3) {
     fail("updates data: unsupported kind or version");
   }
   assertExactKeys(data.trackingBaseline, ["earnedCount", "milestoneIds"], "tracking baseline");
@@ -127,10 +127,17 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
   const entryMilestoneIds = new Set();
   const timestamps = new Set();
   let previousTimestamp = null;
-  let historicalProgressReached = false;
+  let legacyProgressReached = false;
   const validatedEntries = data.entries.map((entry, position) => {
     const label = `entry ${position}`;
-    assertExactKeys(entry, ["id", "milestoneId", "publishedAt", "title", "plainLanguage", "progressEstimatePercent", "source"], label);
+    const hasProgressSnapshot = Object.hasOwn(entry, "progressSnapshot");
+    assertExactKeys(
+      entry,
+      hasProgressSnapshot
+        ? ["id", "milestoneId", "publishedAt", "title", "plainLanguage", "progressSnapshot", "source"]
+        : ["id", "milestoneId", "publishedAt", "title", "plainLanguage", "progressEstimatePercent", "source"],
+      label
+    );
     assertIdentifier(entry.id, `${label} id`);
     assertIdentifier(entry.milestoneId, `${label} milestoneId`);
     assertTimestamp(entry.publishedAt, `${label} publishedAt`);
@@ -141,16 +148,55 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
     entry.plainLanguage.forEach((paragraph, paragraphIndex) => {
       assertPlainLanguage(paragraph, `${label} plainLanguage ${paragraphIndex}`);
     });
-    if (entry.progressEstimatePercent === null) {
-      historicalProgressReached = true;
+    if (hasProgressSnapshot) {
+      if (legacyProgressReached) fail(`${label}: tracker snapshots must precede legacy editorial entries`);
+      assertExactKeys(entry.progressSnapshot, [
+        "modelId",
+        "formalArtefactCoverageEarnedRows",
+        "formalArtefactCoverageTotalRows",
+        "riskWeightedProofCompletionPercent",
+        "uncertaintyLowPercent",
+        "uncertaintyHighPercent",
+        "globalGatesClosed",
+        "globalGatesAvailable"
+      ], `${label} progressSnapshot`);
+      assertSafeToken(entry.progressSnapshot.modelId, `${label} progressSnapshot modelId`);
+      for (const field of [
+        "formalArtefactCoverageEarnedRows",
+        "formalArtefactCoverageTotalRows",
+        "riskWeightedProofCompletionPercent",
+        "uncertaintyLowPercent",
+        "uncertaintyHighPercent",
+        "globalGatesClosed",
+        "globalGatesAvailable"
+      ]) {
+        if (!Number.isSafeInteger(entry.progressSnapshot[field]) || entry.progressSnapshot[field] < 0) {
+          fail(`${label} progressSnapshot ${field}: expected a non-negative integer`);
+        }
+      }
+      if (entry.progressSnapshot.formalArtefactCoverageEarnedRows > entry.progressSnapshot.formalArtefactCoverageTotalRows) {
+        fail(`${label} progressSnapshot: earned rows exceed total rows`);
+      }
+      if (entry.progressSnapshot.riskWeightedProofCompletionPercent > 100
+          || entry.progressSnapshot.uncertaintyHighPercent > 100
+          || entry.progressSnapshot.uncertaintyLowPercent > entry.progressSnapshot.riskWeightedProofCompletionPercent
+          || entry.progressSnapshot.riskWeightedProofCompletionPercent > entry.progressSnapshot.uncertaintyHighPercent) {
+        fail(`${label} progressSnapshot: invalid estimate or uncertainty range`);
+      }
+      if (entry.progressSnapshot.globalGatesClosed > entry.progressSnapshot.globalGatesAvailable) {
+        fail(`${label} progressSnapshot: closed gates exceed available gates`);
+      }
     } else {
+      legacyProgressReached = true;
       if (!Number.isSafeInteger(entry.progressEstimatePercent)
-          || entry.progressEstimatePercent < 0
-          || entry.progressEstimatePercent > 100) {
+          && entry.progressEstimatePercent !== null) {
         fail(`${label}: progressEstimatePercent must be null or an integer from 0 to 100`);
       }
-      if (historicalProgressReached) {
-        fail(`${label}: a tracked progress estimate cannot appear after a historical null entry`);
+      if (entry.progressEstimatePercent !== null
+          && (!Number.isSafeInteger(entry.progressEstimatePercent)
+          || entry.progressEstimatePercent < 0
+          || entry.progressEstimatePercent > 100)) {
+        fail(`${label}: progressEstimatePercent must be null or an integer from 0 to 100`);
       }
       if (entry.progressEstimatePercent === 100
           && (status.concretePublicationGate?.passed !== true
@@ -189,6 +235,20 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
     if (!Array.isArray(milestone.requiredTheorems) || milestone.requiredTheorems.length === 0) {
       fail(`${label}: milestone theorem pins are missing`);
     }
+    if (hasProgressSnapshot) {
+      const history = progress.history?.find?.((row) => row?.asOfCoordinate === entry.source.statusCoordinate);
+      if (!history) fail(`${label}: progressSnapshot source coordinate is absent from canonical progress history`);
+      if (entry.progressSnapshot.modelId !== progress.modelId
+          || entry.progressSnapshot.formalArtefactCoverageEarnedRows !== history.formalArtefactCoverage?.earnedRows
+          || entry.progressSnapshot.formalArtefactCoverageTotalRows !== history.formalArtefactCoverage?.totalRows
+          || entry.progressSnapshot.riskWeightedProofCompletionPercent !== history.riskWeightedProofCompletionPercent
+          || entry.progressSnapshot.uncertaintyLowPercent !== history.uncertaintyLowPercent
+          || entry.progressSnapshot.uncertaintyHighPercent !== history.uncertaintyHighPercent
+          || entry.progressSnapshot.globalGatesClosed !== history.globalGatesClosed
+          || entry.progressSnapshot.globalGatesAvailable !== history.globalGatesAvailable) {
+        fail(`${label}: progressSnapshot conflicts with canonical progress history`);
+      }
+    }
     return { ...entry, milestone };
   });
 
@@ -204,9 +264,7 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
     earnedOrdinal: data.trackingBaseline.earnedCount + data.entries.length - position
   }));
   const latest = orderedEntries[0];
-  if (latest.progressEstimatePercent === null) {
-    fail("latest entry: progressEstimatePercent is required after progress tracking begins");
-  }
+  if (!latest.progressSnapshot) fail("latest entry: a canonical progressSnapshot is required");
   if (latest.source.commit !== index.latestEarnedMilestoneSourceCommitRef) fail("latest entry: source commit does not match the pinned latest earned milestone");
   if (latest.source.tree !== index.latestEarnedMilestoneSourceTree) fail("latest entry: source tree does not match the pinned latest earned milestone");
   if (latest.source.statusCoordinate !== index.statusCoordinate
@@ -216,11 +274,21 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
   if (latest.source.publicationCoordinate !== index.publicSurfaceBaselineCoordinate) {
     fail("latest entry: publication coordinate does not match pnp-index.json");
   }
+  const proofProgress = validateProofProgressModel(progress, status, inventory);
+  if (latest.progressSnapshot.modelId !== proofProgress.modelId
+      || latest.progressSnapshot.formalArtefactCoverageEarnedRows !== proofProgress.formalArtefactCoverage.earnedRows
+      || latest.progressSnapshot.formalArtefactCoverageTotalRows !== proofProgress.formalArtefactCoverage.totalRows
+      || latest.progressSnapshot.riskWeightedProofCompletionPercent !== proofProgress.percent
+      || latest.progressSnapshot.uncertaintyLowPercent !== proofProgress.uncertaintyLowPercent
+      || latest.progressSnapshot.uncertaintyHighPercent !== proofProgress.uncertaintyHighPercent
+      || latest.progressSnapshot.globalGatesClosed !== proofProgress.globalGatesClosed
+      || latest.progressSnapshot.globalGatesAvailable !== proofProgress.globalGatesAvailable) {
+    fail("latest entry: progressSnapshot does not match the current canonical tracker");
+  }
   return {
     entries: orderedEntries,
     earnedCount: earnedIds.size,
-    historicalProgressEstimatePercent: latest.progressEstimatePercent,
-    proofProgress: validateProofProgressModel(progress, status, inventory)
+    proofProgress
   };
 }
 
@@ -284,18 +352,17 @@ function renderProgressBaselineUpdate(progress) {
 }
 
 function renderUpdatesHtml(model) {
-  const articles = model.entries.map((entry, position) => {
+  const articles = model.entries.map((entry) => {
     const paragraphs = entry.plainLanguage.map((paragraph) => `        <p>${escaped(paragraph)}</p>`).join("\n");
-    const progress = entry.progressEstimatePercent === null
-      ? ""
-      : `\n        <p class="update-progress"><strong>Superseded scoped-row/editorial estimate at publication:</strong> ${entry.progressEstimatePercent}%. This historical figure is not the current risk-weighted proof-completion estimate and is not a probability or confidence score.</p>`;
-    const currentMetrics = position === 0
-      ? `\n        <div class="update-current-metrics" aria-label="Current progress tracker snapshot"><strong>Current tracker at ${escaped(model.proofProgress.coordinate)}</strong><ul><li>Formal artefact coverage: ${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${model.proofProgress.percent}%</li><li>Uncertainty range: ${model.proofProgress.uncertaintyLowPercent}% to ${model.proofProgress.uncertaintyHighPercent}%</li><li>Global gates closed: ${model.proofProgress.globalGatesClosed} of ${model.proofProgress.globalGatesAvailable}</li></ul></div>`
-      : "";
+    const progress = entry.progressSnapshot
+      ? `\n        <div class="update-current-metrics" aria-label="Progress tracker snapshot at publication"><strong>Tracker at ${escaped(entry.source.statusCoordinate)}</strong><ul><li>Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%</li><li>Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%</li><li>Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}</li></ul></div>`
+      : entry.progressEstimatePercent === null
+        ? ""
+        : `\n        <p class="update-progress"><strong>Superseded scoped-row/editorial estimate at publication:</strong> ${entry.progressEstimatePercent}%. This historical figure is not the current risk-weighted proof-completion estimate and is not a probability or confidence score.</p>`;
     return `      <article class="card" id="${escaped(entry.id)}" data-milestone-id="${escaped(entry.milestoneId)}">\n`
       + `        <div class="section-label"><time datetime="${escaped(entry.publishedAt)}">${escaped(entry.publishedAt.slice(0, 10))}</time> · earned milestone ${entry.earnedOrdinal}</div>\n`
       + `        <h2>${escaped(entry.title)}</h2>\n`
-      + `${paragraphs}${progress}${currentMetrics}\n`
+      + `${paragraphs}${progress}\n`
       + `${renderTechnicalDetails(entry)}\n`
       + `      </article>`;
   }).join("\n\n");
@@ -333,22 +400,20 @@ function renderUpdatesHtml(model) {
 
 function renderAtomFeed(model) {
   const updated = model.entries[0].publishedAt;
-  const entries = model.entries.map((entry, position) => {
+  const entries = model.entries.map((entry) => {
     const url = `${BASE_URL}/updates.html#${entry.id}`;
-    const progressText = entry.progressEstimatePercent === null
-      ? ""
-      : ` Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent} percent; this historical figure is not current risk-weighted proof completion, a probability, or a confidence score.`;
-    const currentText = position === 0
-      ? ` Current tracker: formal artefact coverage ${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows}; risk-weighted proof completion estimate ${model.proofProgress.percent} percent; uncertainty range ${model.proofProgress.uncertaintyLowPercent} to ${model.proofProgress.uncertaintyHighPercent} percent; global gates closed ${model.proofProgress.globalGatesClosed} of ${model.proofProgress.globalGatesAvailable}.`
-      : "";
-    const summary = `${entry.plainLanguage.join(" ")}${progressText}${currentText}`;
-    const progressContent = entry.progressEstimatePercent === null
-      ? ""
-      : `<p data-superseded-progress-estimate-percent="${entry.progressEstimatePercent}">Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent}%. This historical figure is not current risk-weighted proof completion, a probability, or a confidence score.</p>`;
-    const currentContent = position === 0
-      ? `<p data-proof-progress-model="${escaped(model.proofProgress.modelId)}">Formal artefact coverage: ${model.proofProgress.formalArtefactCoverage.earnedRows} of ${model.proofProgress.formalArtefactCoverage.totalRows} current scoped rows earned. Risk-weighted proof completion estimate: ${model.proofProgress.percent}%. Uncertainty range: ${model.proofProgress.uncertaintyLowPercent}% to ${model.proofProgress.uncertaintyHighPercent}%. Global gates closed: ${model.proofProgress.globalGatesClosed} of ${model.proofProgress.globalGatesAvailable}.</p>`
-      : "";
-    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}${currentContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
+    const progressText = entry.progressSnapshot
+      ? ` Tracker at publication: formal artefact coverage ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows}; risk-weighted proof completion estimate ${entry.progressSnapshot.riskWeightedProofCompletionPercent} percent; uncertainty range ${entry.progressSnapshot.uncertaintyLowPercent} to ${entry.progressSnapshot.uncertaintyHighPercent} percent; global gates closed ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}.`
+      : entry.progressEstimatePercent === null
+        ? ""
+        : ` Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent} percent; this historical figure is not current risk-weighted proof completion, a probability, or a confidence score.`;
+    const summary = `${entry.plainLanguage.join(" ")}${progressText}`;
+    const progressContent = entry.progressSnapshot
+      ? `<p data-proof-progress-model="${escaped(entry.progressSnapshot.modelId)}">Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned. Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%. Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%. Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}.</p>`
+      : entry.progressEstimatePercent === null
+        ? ""
+        : `<p data-superseded-progress-estimate-percent="${entry.progressEstimatePercent}">Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent}%. This historical figure is not current risk-weighted proof completion, a probability, or a confidence score.</p>`;
+    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
     return `  <entry>\n`
       + `    <id>${escaped(url)}</id>\n`
       + `    <title>${escaped(entry.title)}</title>\n`

@@ -21,6 +21,9 @@ const PATHS = Object.freeze({
   inventory: "public/pnp-theorem-inventory.json"
 });
 
+const BASELINE_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184";
+const BASELINE_COVERAGE = Object.freeze({ earnedRows: 160, totalRows: 162 });
+
 const EXPECTED_TRACKS = Object.freeze([
   {
     id: "formal-foundations",
@@ -285,6 +288,33 @@ function validateProofProgressModel(ledger, status, inventory) {
   requireValue(ledger.proofCompletion.isTimeEstimate, false, "ProofCompletion.TimeBoundary");
   requireValue(ledger.proofCompletion.mayDecrease, true, "ProofCompletion.MayDecrease");
 
+  requireArray(ledger.history, "History.Shape");
+  if (ledger.history.length === 0) fail("History.Empty", "progress history must include the M184 baseline");
+  const historyCoordinates = new Set();
+  for (let index = 0; index < ledger.history.length; index += 1) {
+    const entry = ledger.history[index];
+    requirePlain(entry, "History.EntryShape", { index });
+    requireString(entry.kind, "History.Kind", { index });
+    requireString(entry.asOfCoordinate, "History.Coordinate", { index });
+    if (historyCoordinates.has(entry.asOfCoordinate)) {
+      fail("History.DuplicateCoordinate", "progress history coordinates must be unique", { index, coordinate: entry.asOfCoordinate });
+    }
+    historyCoordinates.add(entry.asOfCoordinate);
+    requirePlain(entry.formalArtefactCoverage, "History.CoverageShape", { index });
+    requireValue(Number.isSafeInteger(entry.formalArtefactCoverage.earnedRows), true, "History.EarnedRowsInteger", { index });
+    requireValue(Number.isSafeInteger(entry.formalArtefactCoverage.totalRows), true, "History.TotalRowsInteger", { index });
+    if (entry.formalArtefactCoverage.earnedRows < 0
+        || entry.formalArtefactCoverage.earnedRows > entry.formalArtefactCoverage.totalRows) {
+      fail("History.CoverageRange", "historical earned rows must be between zero and total rows", { index });
+    }
+    requireValue(Number.isSafeInteger(entry.riskWeightedProofCompletionPercent), true, "History.ScoreInteger", { index });
+    requireValue(Number.isSafeInteger(entry.uncertaintyLowPercent), true, "History.UncertaintyLowInteger", { index });
+    requireValue(Number.isSafeInteger(entry.uncertaintyHighPercent), true, "History.UncertaintyHighInteger", { index });
+    requireValue(Number.isSafeInteger(entry.globalGatesClosed), true, "History.GatesClosedInteger", { index });
+    requireValue(Number.isSafeInteger(entry.globalGatesAvailable), true, "History.GatesAvailableInteger", { index });
+    requireString(entry.rationale, "History.Rationale", { index });
+  }
+
   requireArray(ledger.tracks, "Tracks.Shape");
   requireValue(ledger.tracks.length, EXPECTED_TRACKS.length, "Tracks.Count");
   let pointsAvailable = 0;
@@ -313,7 +343,10 @@ function validateProofProgressModel(ledger, status, inventory) {
       if (checkpoint.evidence.length === 0) fail("Checkpoint.EvidenceMissing", "checkpoint must retain evidence", { id });
       for (const evidence of checkpoint.evidence) validateEvidence(evidence, status, inventory, id);
       if (checkpoint.status === "earned") {
-        requireValue(checkpoint.awardedAtCoordinate, ledger.asOfCoordinate, "Checkpoint.AwardCoordinate", { id });
+        requireString(checkpoint.awardedAtCoordinate, "Checkpoint.AwardCoordinate", { id });
+        if (!historyCoordinates.has(checkpoint.awardedAtCoordinate)) {
+          fail("Checkpoint.UnknownAwardCoordinate", "earned checkpoint coordinate is absent from progress history", { id, coordinate: checkpoint.awardedAtCoordinate });
+        }
         trackEarned += points;
       } else {
         requireValue(checkpoint.awardedAtCoordinate, null, "Checkpoint.OpenAwardCoordinate", { id });
@@ -391,18 +424,23 @@ function validateProofProgressModel(ledger, status, inventory) {
   requireValue(ledger.scoreChangePolicy.externalReviewIsNotMathematicalPremise, true, "Policy.ExternalReview");
   requireJson(ledger.scoreChangePolicy.requiredChangeRecordFields, REQUIRED_CHANGE_FIELDS, "Policy.ChangeFields");
 
-  requireArray(ledger.history, "History.Shape");
-  if (ledger.history.length === 0) fail("History.Empty", "progress history must include the M184 baseline");
   const baseline = ledger.history[0];
   requireValue(baseline.kind, "baseline", "History.BaselineKind");
-  requireValue(baseline.asOfCoordinate, ledger.asOfCoordinate, "History.BaselineCoordinate");
-  requireJson(baseline.formalArtefactCoverage, { earnedRows, totalRows }, "History.BaselineCoverage");
-  requireValue(baseline.riskWeightedProofCompletionPercent, pointsEarned, "History.BaselineScore");
+  requireValue(baseline.asOfCoordinate, BASELINE_COORDINATE, "History.BaselineCoordinate");
+  requireJson(baseline.formalArtefactCoverage, BASELINE_COVERAGE, "History.BaselineCoverage");
+  requireValue(baseline.riskWeightedProofCompletionPercent, 30, "History.BaselineScore");
   requireValue(baseline.uncertaintyLowPercent, 20, "History.BaselineUncertaintyLow");
   requireValue(baseline.uncertaintyHighPercent, 40, "History.BaselineUncertaintyHigh");
   requireValue(baseline.globalGatesClosed, 0, "History.BaselineGatesClosed");
   requireValue(baseline.globalGatesAvailable, EXPECTED_GATES.length, "History.BaselineGatesAvailable");
-  requireString(baseline.rationale, "History.BaselineRationale");
+  const currentHistory = ledger.history.at(-1);
+  requireValue(currentHistory.asOfCoordinate, ledger.asOfCoordinate, "History.CurrentCoordinate");
+  requireJson(currentHistory.formalArtefactCoverage, { earnedRows, totalRows }, "History.CurrentCoverage");
+  requireValue(currentHistory.riskWeightedProofCompletionPercent, pointsEarned, "History.CurrentScore");
+  requireValue(currentHistory.uncertaintyLowPercent, ledger.proofCompletion.uncertaintyLowPercent, "History.CurrentUncertaintyLow");
+  requireValue(currentHistory.uncertaintyHighPercent, ledger.proofCompletion.uncertaintyHighPercent, "History.CurrentUncertaintyHigh");
+  requireValue(currentHistory.globalGatesClosed, ledger.globalGates.filter((gate) => gate.status === "closed").length, "History.CurrentGatesClosed");
+  requireValue(currentHistory.globalGatesAvailable, EXPECTED_GATES.length, "History.CurrentGatesAvailable");
 
   requireArray(ledger.nonClaims, "NonClaims.Shape");
   const nonClaims = ledger.nonClaims.join(" ");

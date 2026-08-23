@@ -4140,6 +4140,22 @@ test('saturated terminal support square requires exact pins, order laws, extract
   const erasedFiniteBCELPacketCarrierAudit = structuredClone(status);
   erasedFiniteBCELPacketCarrierAudit.leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed = false;
   assert.equal(validation.validateStatus(erasedFiniteBCELPacketCarrierAudit, inventory), false);
+
+  const widenedFiniteBCELPacketActivationBoundary = structuredClone(status);
+  widenedFiniteBCELPacketActivationBoundary.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-packet-activation-obstruction'
+  ).nonClaim = 'This constructs activation coherence and proves unconditional ZeroSlack.';
+  assert.equal(validation.validateStatus(widenedFiniteBCELPacketActivationBoundary, inventory), false);
+
+  const alteredFiniteBCELPacketActivationPin = structuredClone(status);
+  alteredFiniteBCELPacketActivationPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-packet-activation-obstruction'
+  ).theoremRows[0].actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(alteredFiniteBCELPacketActivationPin, inventory), false);
+
+  const erasedFiniteBCELPacketActivationAudit = structuredClone(status);
+  erasedFiniteBCELPacketActivationAudit.leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(erasedFiniteBCELPacketActivationAudit, inventory), false);
 });
 
 test('static pages remain conservative and distinguish current from historical reports', () => {
@@ -4175,7 +4191,10 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /residual-terminal-finite-bcel-packet-carrier-coherence/);
   assert.match(statusPage, /terminal_finite_bcel_packet_carrier_coherent_checked_complete/);
   assert.match(statusPage, /Same-candidate finite BCEL-ready and Packet carrier coherence/i);
-  assert.match(homepage, /data-current-milestone="residual-terminal-finite-bcel-packet-carrier-coherence"/);
+  assert.match(statusPage, /residual-terminal-finite-bcel-packet-activation-obstruction/);
+  assert.match(statusPage, /terminal_finite_bcel_packet_activation_obstruction_checked_complete/);
+  assert.match(statusPage, /Finite BCEL and Packet activation-coherence obstruction/i);
+  assert.match(homepage, /data-current-milestone="residual-terminal-finite-bcel-packet-activation-obstruction"/);
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
