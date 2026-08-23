@@ -8623,7 +8623,7 @@ function validateLocalArtifactHashes(root, release, failures) {
   }
 }
 
-function validateCurrentPayloads(contents, failures, releaseManifest) {
+function validateCurrentPayloads(contents, failures, progressFailures, releaseManifest) {
   const statusBuffer = contents.get("public.status");
   const inventoryBuffer = contents.get("public.inventory");
   let status = null;
@@ -13279,13 +13279,13 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
           || artifact?.formalArtefactCoverageTotalRows !== progress.formalArtefactCoverage.totalRows
           || artifact?.globalGatesClosed !== progress.globalGatesClosed
           || artifact?.globalGatesAvailable !== progress.globalGatesAvailable) {
-        failures.push("public proof-progress release metadata mismatch");
+        progressFailures.push("public proof-progress release metadata mismatch");
       }
     } catch (error) {
-      failures.push(`public proof-progress model mismatch: ${error.message}`);
+      progressFailures.push(`public proof-progress model mismatch: ${error.message}`);
     }
   } else {
-    failures.push("public proof-progress evidence is incomplete");
+    progressFailures.push("public proof-progress evidence is incomplete");
   }
 }
 
@@ -13299,6 +13299,7 @@ export function validateAuditTargets(options = {}) {
   const targetManifest = readJson(targetsPath);
   const releaseManifest = readJson(releaseManifestPath);
   const failures = [];
+  const progressFailures = [];
   const result = { skipped: false, sourceDir, checkedTargets: 0, mirroredTargets: 0, refs: {} };
   const contents = new Map();
 
@@ -13322,12 +13323,14 @@ export function validateAuditTargets(options = {}) {
     result.checkedTargets += 1;
   }
 
-  validateCurrentPayloads(contents, failures, releaseManifest);
+  validateCurrentPayloads(contents, failures, progressFailures, releaseManifest);
   if (failures.length > 0) throw new AuditTargetValidationError(failures, result);
 
   if (!existsSync(path.join(sourceDir, ".git"))) {
     const message = `cross-repo target check skipped: ${sourceDir} is not a git checkout`;
-    if (requireSource) throw new AuditTargetValidationError([message], result);
+    if (requireSource || progressFailures.length > 0) {
+      throw new AuditTargetValidationError([...progressFailures, ...(requireSource ? [message] : [])], result);
+    }
     return { ...result, skipped: true, skipReason: message };
   }
 
@@ -15782,6 +15785,7 @@ export function validateAuditTargets(options = {}) {
 
   }
 
+  failures.push(...progressFailures);
   if (failures.length > 0) throw new AuditTargetValidationError(failures, result);
   return result;
 }

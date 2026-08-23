@@ -3342,6 +3342,25 @@ function makeProject(t) {
   Object.assign(statusPayload, Object.fromEntries(
     Object.entries(publishedStatus).filter(([key]) => key.startsWith("leanTheoremInventory"))
   ));
+  const progressStatusRootFields = new Set([
+    ...publishedProgress.tracks
+      .flatMap((track) => track.checkpoints)
+      .flatMap((checkpoint) => checkpoint.evidence)
+      .filter((evidence) => evidence.kind === "status-field")
+      .map((evidence) => evidence.field.split(".")[0]),
+    "remainingBlockers",
+    "remainingFormalObligations",
+    "projectSpecificAxiomInventory",
+    "projectSpecificAxiomsRemaining",
+    "rootLeanTheorem",
+    "rootLeanTheoremPresent",
+    "rootLeanTheoremBuilt",
+    "rootLeanTheoremAxiomAuditPassed"
+  ]);
+  for (const field of progressStatusRootFields) {
+    assert.ok(Object.hasOwn(publishedStatus, field), `published status missing progress evidence root: ${field}`);
+    statusPayload[field] = structuredClone(publishedStatus[field]);
+  }
   const inventoryPayload = {
     kind: "PNPLeanTheoremInventory0",
     coordinate: publishedInventory.coordinate,
@@ -3350,6 +3369,7 @@ function makeProject(t) {
     assumptionFreeTheoremCount: publishedInventory.assumptionFreeTheoremCount,
     excludedPrivateDeclarationCount: publishedInventory.excludedPrivateDeclarationCount,
     sourceClosureModuleCount: publishedInventory.sourceClosureModuleCount,
+    compatibilityRootName: publishedInventory.compatibilityRootName,
     axiomCount: publishedInventory.axiomCount,
     declarationKindCounts: structuredClone(publishedInventory.declarationKindCounts),
     projectAxioms: structuredClone(publishedInventory.projectAxioms),
