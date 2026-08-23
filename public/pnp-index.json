@@ -1,29 +1,29 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 147,
+  "version": 148,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "63ba53d76da0878b0d3b2834b891afcc6ef0fe0e",
+  "sourceCommitRef": "7dc26600f55762bf7a65b3fc6512a76aba23d9d0",
   "sourceProofCommitRef": "23ea280885d0e341863d60c1df2f11fd0e816b77",
-  "sourceTree": "98103f568ccb68561094d5516ada08c099f770a7",
-  "latestEarnedMilestoneSourceCommitRef": "63ba53d76da0878b0d3b2834b891afcc6ef0fe0e",
-  "latestEarnedMilestoneSourceTree": "98103f568ccb68561094d5516ada08c099f770a7",
-  "syncedOn": "2026-08-23",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186",
+  "sourceTree": "e5d2dc08084b68b455b7249c4add156ef8e05651",
+  "latestEarnedMilestoneSourceCommitRef": "7dc26600f55762bf7a65b3fc6512a76aba23d9d0",
+  "latestEarnedMilestoneSourceTree": "e5d2dc08084b68b455b7249c4add156ef8e05651",
+  "syncedOn": "2026-08-24",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-186",
-  "leanTheoremInventorySha256": "a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07",
-  "leanSourceClosureSha256": "cfd4833f16ba9ee44b924950b4bd71d29f9ff6eea0a883feab087580de574975",
-  "proofProgressCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-187",
+  "leanTheoremInventorySha256": "3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f",
+  "leanSourceClosureSha256": "f9a989368632a834006b1f23e6b58b07b0a2656d8e9046beb3cab8497cfa9fa5",
+  "proofProgressCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187",
   "proofProgressModelId": "fixed-risk-weighted-checkpoints-v0",
-  "proofProgressPointsEarned": 32,
+  "proofProgressPointsEarned": 33,
   "proofProgressPointsAvailable": 100,
   "proofProgressUncertaintyLowPercent": 20,
   "proofProgressUncertaintyHighPercent": 40,
-  "formalArtefactCoverageEarnedRows": 162,
-  "formalArtefactCoverageTotalRows": 164,
+  "formalArtefactCoverageEarnedRows": 163,
+  "formalArtefactCoverageTotalRows": 165,
   "globalProofGatesClosed": 0,
   "globalProofGatesAvailable": 5,
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-23-186",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-24-187",
   "canonicalReportPages": 132,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
@@ -34,10 +34,10 @@
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
     "leanTheoremInventoryDeclarationCount": 29988,
-    "leanTheoremInventoryTheoremCount": 15497,
+    "leanTheoremInventoryTheoremCount": 15502,
     "leanTheoremInventoryAssumptionFreeTheoremCount": 7613,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15141,
-    "leanTheoremInventorySourceClosureModuleCount": 303,
+    "leanTheoremInventorySourceClosureModuleCount": 304,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -217,8 +217,7 @@
     "projectSpecificAxiomsRemaining": true,
     "projectSpecificAxiomInventory": [
       "PNP.CheckPCCPackexp",
-      "PNP.GeneratePCCPack",
-      "PNP.ResidualBandExactMinimization"
+      "PNP.GeneratePCCPack"
     ],
     "remainingBlockers": [
       "Formal.ConcreteSAT",
@@ -3819,7 +3818,7 @@
     "leanConcreteLockedNANDEncodedSemanticReductionProjectAxiomClosure": [],
     "leanConcreteLockedNANDEncodedSemanticReductionFormalized": true,
     "leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed": true,
-    "leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount": 48,
+    "leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount": 50,
     "leanConcreteLockedNANDEncodedSemanticReductionScope": "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction",
     "leanConcreteLockedNANDCanonicalEncodingFormalized": true,
     "leanConcreteLockedNANDCompleteCandidateCodecFormalized": true,
@@ -4397,12 +4396,18 @@
     "leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed": true,
     "leanConcreteLegacyLockedNANDCompatibilityAuditedDeclarationCount": 9,
     "leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree": true,
-    "leanConcreteLegacyLockedNANDCompatibilityScope": "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse"
+    "leanConcreteLegacyLockedNANDCompatibilityScope": "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse",
+    "leanConcreteResidualBandCompatibilityFormalized": true,
+    "leanConcreteResidualBandCompatibilityAxiomAuditPassed": true,
+    "leanConcreteResidualBandCompatibilityAuditedDeclarationCount": 10,
+    "leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree": true,
+    "leanConcreteResidualBandCompatibilityCallerReductionRemoved": true,
+    "leanConcreteResidualBandCompatibilityScope": "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 162,
+    "earned": 163,
     "unearned": 2,
-    "total": 164
+    "total": 165
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4566,7 +4571,8 @@
     "residual-terminal-bcel-packet-no-lower-zeroslack-sidecar",
     "residual-terminal-zeroslack-packet-selector-hb-coherence",
     "global-locked-nand-threshold",
-    "concrete-legacy-locked-nand-compatibility"
+    "concrete-legacy-locked-nand-compatibility",
+    "concrete-residual-band-compatibility"
   ],
   "unearnedMilestones": [
     "global-zeroslack-pccmin",
@@ -5266,7 +5272,7 @@
     "The global locked-NAND BaselineDistinct milestone proves every exposed baseline coordinate is nonconstant, is not a positive carrier-input projection, and computes a Boolean function distinct from every other exposed coordinate. Consequently its exhaustive reference minimum is exactly B. By itself it does not prove either final branch law, residual slack at most four for the global family, or a uniform polynomial bitstring builder.",
     "The global locked-NAND unsatisfiable-final-zero milestone proves that unsatisfiability makes the full final coordinate false on every carrier valuation and makes the full exhaustive reference minimum exactly B. By itself it does not prove the satisfiable final-output conditions, residual slack at most four for the global family, or a uniform polynomial bitstring builder.",
     "The global locked-NAND semantic-threshold milestone discharges the satisfiable final-output conditions, all six typed premises, the exact satisfiable/unsatisfiable minimum split, and residual slack at most four for one answer-independent candidate over every finite topological NAND circuit. It uses exhaustive finite satisfiability decision only to eliminate a proposition-level case split and makes no polynomial-runtime claim.",
-    "The encoded locked-NAND semantic boundary fixes a strict version-zero grammar, proves direct legacy output-normalization semantics, serializes the complete candidate and source-derived baseline, rejects malformed input, and proves the pure bitstring transformation correct. Its 48 audited declarations use only propext and Quot.sound. It is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, runtime bound, abstract PNP.LockedNANDThreshold discharge, CNFSAT-in-P theorem, or P = NP theorem.",
+    "The encoded locked-NAND semantic boundary fixes a strict version-zero grammar, proves direct legacy output-normalization semantics, serializes the complete candidate and source-derived baseline, rejects malformed input, and proves the pure bitstring transformation correct. Its 50 audited declarations use only propext and Quot.sound. It is not a parser/validator machine, emitter machine, RawRefinement, PolynomialReduction, runtime bound, abstract PNP.LockedNANDThreshold discharge, CNFSAT-in-P theorem, or P = NP theorem.",
     "The strict-v0 locked-NAND source parser is one literal 228-state, 2,052-rule machine with unconditional exact behavior on every bitstring: valid sources accept and are preserved byte-for-byte, invalid sources reject with empty output, and the compiled six-for-one machine cannot time out within its explicit cubic bound. Its polynomial-time function and leaf RawRefinement validate source bytes only. The downstream target emitter now composes with it, but this parser alone supplies no PolynomialReduction, abstract threshold-language discharge, CNFSAT-in-P theorem, NP-hardness transport, or P = NP theorem.",
     "The strict-v0 locked-NAND target emitter is one fixed 1,387,921-rule grammar-only controller. It emits the exact direct raw target on every grammar-decoded circuit, including intrinsically invalid references, rejects malformed grammar with empty output, and has all-input polynomial runtime and output-size bounds. Composition with the strict source parser clears intrinsically invalid inputs and computes buildLockedNANDInstance with recursively compiled RawRefinement.",
     "The strict parser/emitter composition is packaged as a concrete PolynomialReduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive RawRefinement. PNP.Main.locked_nand_threshold now consumes the composed CNFSAT reduction directly in the concrete charged-pipeline model.",
@@ -5322,6 +5328,7 @@
     "All five reviewed activation fingerprints remain intentionally unset, so target presence alone cannot open the concrete publication gate.",
     "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only.",
     "The checker proves that the numerical bridge fails on the current accepted finite family; it does not prove activation coherence. The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, activation cells and masses, payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. Exhaustive proper-cut enumeration may be exponential. This milestone does not derive the family or activation weights from positive residual slack, construct BN3--BN6 data from every valid input, complete the global route or no-lower systems, prove unconditional SaturatePositive, BCELReady, ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.",
-    "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP."
+    "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP.",
+    "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
   ]
 }

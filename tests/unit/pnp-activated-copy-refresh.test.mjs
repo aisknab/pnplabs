@@ -622,7 +622,7 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct',
     'status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true',
     'status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true',
-    'status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48',
+    'status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 50',
     'PNP.Concrete.LockedNAND.SourceParser.allInput_exact',
     'PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_accept_iff',
     'PNP.Concrete.LockedNAND.SourceParser.compiledBoundedDecide_ne_timeout',

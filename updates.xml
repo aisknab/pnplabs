@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-23T15:42:00Z</updated>
+  <updated>2026-08-23T22:18:40Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-24-concrete-residual-band-compatibility</id>
+    <title>Concrete residual-band compatibility</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-24-concrete-residual-band-compatibility"/>
+    <published>2026-08-23T22:18:40Z</published>
+    <updated>2026-08-23T22:18:40Z</updated>
+    <summary type="text">This milestone replaces the report-facing residual-band assumption with a concrete, fail-closed language over encoded direct-wire candidates and thresholds. For every intrinsically typed finite candidate, the compiled semantics identify that language with the exact exhaustive reference minimum, and the active locked-to-residual bridge is now an identity polynomial reduction instead of a caller-supplied witness. Exhaustive reference minimisation is still not a polynomial-time algorithm, the residual-band promise bounds remain open, and no unconditional ZeroSlack, deterministic SAT solver, or root theorem has been proved. Two project-specific axioms and all five global gates remain, so this does not establish P = NP. Tracker at publication: formal artefact coverage 163 of 165; risk-weighted proof completion estimate 33 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;This milestone replaces the report-facing residual-band assumption with a concrete, fail-closed language over encoded direct-wire candidates and thresholds. For every intrinsically typed finite candidate, the compiled semantics identify that language with the exact exhaustive reference minimum, and the active locked-to-residual bridge is now an identity polynomial reduction instead of a caller-supplied witness.&lt;/p&gt;&lt;p&gt;Exhaustive reference minimisation is still not a polynomial-time algorithm, the residual-band promise bounds remain open, and no unconditional ZeroSlack, deterministic SAT solver, or root theorem has been proved. Two project-specific axioms and all five global gates remain, so this does not establish P = NP.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 163 of 165 current scoped rows earned. Risk-weighted proof completion estimate: 33%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-24-concrete-residual-band-compatibility&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-23-concrete-legacy-locked-nand-compatibility</id>
     <title>Concrete report-facing locked-NAND compatibility</title>

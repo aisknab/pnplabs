@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "63ba53d76da0878b0d3b2834b891afcc6ef0fe0e";
-const CORE_TREE = "98103f568ccb68561094d5516ada08c099f770a7";
-const CORE_PUBLICATION_MAP_SHA256 = "bc4dc2e057bae94bef9331ba3e6497f1171cb906df7f738d807e49d3befb67de";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-186";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-186";
-const CORE_SOURCE_CLOSURE_SHA256 = "cfd4833f16ba9ee44b924950b4bd71d29f9ff6eea0a883feab087580de574975";
-const OLD_PDF_SHA256 = "2efd2ef77c689d9341b557516235b3a8c170bb2ee3668309ea21247fd8aca2cc";
-const OLD_TEX_SHA256 = "40ba52d00a4cc12413d2b6839a94e788eb873d9ba9de59b03e58a4747369905c";
+const CORE_COMMIT = "7dc26600f55762bf7a65b3fc6512a76aba23d9d0";
+const CORE_TREE = "e5d2dc08084b68b455b7249c4add156ef8e05651";
+const CORE_PUBLICATION_MAP_SHA256 = "8515aad0a0dc7a3b0d288172b2ef81a0823a247e1ef851e5b650df64ccc56c7c";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-187";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-187";
+const CORE_SOURCE_CLOSURE_SHA256 = "f9a989368632a834006b1f23e6b58b07b0a2656d8e9046beb3cab8497cfa9fa5";
+const OLD_PDF_SHA256 = "12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917";
+const OLD_TEX_SHA256 = "dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1914,6 +1914,19 @@ const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_THEOREMS = {
 const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_SCOPE = "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse";
 const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_MILESTONE_SCOPE = "The report-facing language, decider, verifier, reduction, P/NP class, and P-equals-NP interfaces are exact compatibility names for the concrete finite-pipeline model. SAT and LockedNANDThreshold are definitionally the concrete CNFSAT and EncodedLockedNANDThreshold languages, and the active bridge reuses the checked all-bitstring reduction without a caller-supplied trust field.";
 const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_NON_CLAIM = "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP.";
+
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS = {
+  "PNP.Concrete.LockedNAND.encodedDirectWireMinimumThreshold_ofCandidate_iff": { hash: "a3389cacce2ed9318204b1f683565d78a15690d860eec12a7bb6ac57970f6d62", axioms: ["propext"], module: "PNP.Concrete.LockedNANDReduction" },
+  "PNP.residual_band_encoded_candidate_iff_reference_minimum": { hash: "b8492328752d6674474909daf183d0097d28d794c65a0156cbd90494eae7882f", axioms: ["propext"], module: "PNP.ResidualBand" },
+  "PNP.locked_nand_reduces_to_residual_band_checked": { hash: "403079c3a44b17388b0c199e82adeac566f6125dc245f04a85dfa18e53c3c497", axioms: ["propext"], module: "PNP.ResidualBand" },
+  "PNP.locked_nand_in_p_from_residual_band_in_p": { hash: "687aee8e08c38b6be49dca31a051d7fd019adc9866c456712657fa5ee7606286", axioms: ["propext"], module: "PNP.ResidualBand" },
+  "PNP.report_residual_band_eq_concrete_minimum_threshold": { hash: "07dc72c6a93d72ab65435705ba99ea6b84f69c2d06930af90c07f6bd09b5fc8a", axioms: ["propext"], module: "PNP.ConcreteResidualBandCompatibility" },
+  "PNP.report_locked_nand_eq_residual_band": { hash: "14140f257b5e6ddf140cc9957a86248b1ed7defb691daf40c6080a859ce6e128", axioms: ["propext"], module: "PNP.ConcreteResidualBandCompatibility" },
+  "PNP.concrete_residual_band_compatibility_checked_complete": { hash: "c4d3ccd4bc92297fd50b22d1be51b80d3930a10ecebce2d3e6c3ee25d95d03db", axioms: ["propext"], module: "PNP.ConcreteResidualBandCompatibility" }
+};
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_SCOPE = "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport";
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE = "The report-facing residual-band endpoint is the concrete fail-closed direct-wire candidate/threshold language. Every intrinsically typed finite candidate has exact reference-minimum semantics after encoding, and the active locked-to-residual compatibility edge is the compiled identity polynomial reduction rather than caller-supplied trust.";
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM = "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4226,32 +4239,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 567472,
-    sha256: "12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917"
+    bytes: 568926,
+    sha256: "7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 344783,
-    sha256: "dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864"
+    bytes: 346137,
+    sha256: "9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2608962,
-    sha256: "a2bbf2c1ad05255291e0b7ba2422ae9ab196d6236a428d9b6d691e268f3e0687"
+    bytes: 2615734,
+    sha256: "2c39a94847c1fba4db668173878e930460b8752dd7161b54664fd662f9a72a8f"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 33070059,
-    sha256: "a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07"
+    bytes: 33082413,
+    sha256: "3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 37719,
-    sha256: "2529939036262ab94510c6866cbf1c4ec3253a14491b6ad98e33f5d1158d7748"
+    bytes: 40791,
+    sha256: "5a7d41ef653c9549ff4c9e09f97c53330fcf05fb02a26466a5b879f1950e9c84"
   }
 ];
 
@@ -5990,6 +6003,23 @@ function assertPinnedCore(sourceDir) {
     fail("pinned formal-publication map concrete legacy locked-NAND compatibility boundary mismatch");
   }
 
+  const concreteResidualBandCompatibilityMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "concrete-residual-band-compatibility"
+  );
+  const concreteResidualBandCompatibilityNames =
+    Object.keys(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS);
+  if (!concreteResidualBandCompatibilityMilestone
+      || concreteResidualBandCompatibilityMilestone.classification !== "formalized-concrete-residual-band-compatibility"
+      || concreteResidualBandCompatibilityMilestone.scope !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE
+      || concreteResidualBandCompatibilityMilestone.nonClaim !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM
+      || JSON.stringify(concreteResidualBandCompatibilityMilestone.requiredTheorems)
+        !== JSON.stringify(concreteResidualBandCompatibilityNames)
+      || !Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map concrete residual-band compatibility boundary mismatch");
+  }
+
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -6651,7 +6681,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || encodedSemanticReductionMilestone.requiredTheorems?.length !== 11
         || payload.leanConcreteLockedNANDEncodedSemanticReductionFormalized !== true
         || payload.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed !== true
-        || payload.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount !== 48
+        || payload.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount !== 50
         || payload.leanConcreteLockedNANDEncodedSemanticReductionScope !== "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction"
         || payload.leanConcreteLockedNANDCanonicalEncodingFormalized !== true
         || payload.leanConcreteLockedNANDCompleteCandidateCodecFormalized !== true
@@ -9589,6 +9619,43 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status concrete legacy locked-NAND compatibility boundary mismatch");
     }
 
+    const concreteResidualBandCompatibilityMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "concrete-residual-band-compatibility"
+    );
+    if (!concreteResidualBandCompatibilityMilestone
+        || concreteResidualBandCompatibilityMilestone.earned !== true
+        || concreteResidualBandCompatibilityMilestone.allPresent !== true
+        || concreteResidualBandCompatibilityMilestone.allAssumptionFree !== false
+        || concreteResidualBandCompatibilityMilestone.allKernelTypesMatch !== true
+        || concreteResidualBandCompatibilityMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || concreteResidualBandCompatibilityMilestone.sourceClosureFingerprintMatches !== true
+        || concreteResidualBandCompatibilityMilestone.classification !== "formalized-concrete-residual-band-compatibility"
+        || concreteResidualBandCompatibilityMilestone.scope !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE
+        || concreteResidualBandCompatibilityMilestone.nonClaim !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM
+        || JSON.stringify(concreteResidualBandCompatibilityMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS))
+        || !Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS).every(([name, evidence]) => {
+          const row = concreteResidualBandCompatibilityMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanConcreteResidualBandCompatibilityFormalized !== true
+        || payload.leanConcreteResidualBandCompatibilityAxiomAuditPassed !== true
+        || payload.leanConcreteResidualBandCompatibilityAuditedDeclarationCount !== 10
+        || payload.leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree !== true
+        || payload.leanConcreteResidualBandCompatibilityCallerReductionRemoved !== true
+        || payload.leanConcreteResidualBandCompatibilityScope !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_SCOPE
+        || payload.leanResidualBandMinimizerFormalized !== false
+        || payload.leanConcreteCNFSATInPFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status concrete residual-band compatibility boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -10177,6 +10244,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory concrete legacy locked-NAND compatibility theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory concrete residual-band compatibility theorem mismatch: " + name);
       }
     }
 

@@ -24,15 +24,15 @@ test("canonical progress ledger validates against independent formal evidence", 
   const [ledger, status, inventory] = await fixtures();
   const model = validateProofProgressModel(ledger, status, inventory);
   assert.equal(model.pointsAvailable, 100);
-  assert.equal(model.pointsEarned, 32);
-  assert.equal(model.percent, 32);
+  assert.equal(model.pointsEarned, 33);
+  assert.equal(model.percent, 33);
   assert.equal(model.uncertaintyLowPercent, 20);
   assert.equal(model.uncertaintyHighPercent, 40);
   assert.ok(model.uncertaintyLowPercent <= model.percent);
   assert.ok(model.percent <= model.uncertaintyHighPercent);
   assert.deepEqual(
     model.tracks.map((track) => [track.pointsEarned, track.pointsAvailable]),
-    [[13, 15], [15, 20], [2, 35], [1, 20], [1, 10]]
+    [[13, 15], [15, 20], [2, 35], [1, 20], [2, 10]]
   );
   assert.equal(model.checkpointCount, 35);
 
@@ -47,8 +47,7 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.equal(ledger.history[0].asOfCoordinate, "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184");
   assert.equal(ledger.history.at(-1).asOfCoordinate, ledger.asOfCoordinate);
   assert.deepEqual(ledger.history.at(-1).changedCheckpointIds, [
-    "reductions-final-target-compatibility",
-    "axiom-remove-locked-nand-threshold"
+    "axiom-remove-residual-band-minimum"
   ]);
   assert.deepEqual(ledger.history.at(-1).formalArtefactCoverage, {
     earnedRows,
@@ -60,8 +59,7 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.ok(model.globalGates.every((gate) => gate.status === "open"));
   assert.deepEqual(model.projectSpecificAxiomsRemaining, [
     "PNP.CheckPCCPackexp",
-    "PNP.GeneratePCCPack",
-    "PNP.ResidualBandExactMinimization"
+    "PNP.GeneratePCCPack"
   ]);
   assert.deepEqual(model.rootTheorem, {
     name: "PNP.Main.p_eq_np",
@@ -125,7 +123,7 @@ test("progress validation rejects arithmetic, evidence, gate, axiom, and root dr
   assert.throws(() => validateProofProgressModel(changeEvidenceDrift, status, inventory), /History\.ChangeRecordEvidenceMissing/u);
 
   const changeTotalDrift = structuredClone(ledger);
-  changeTotalDrift.history.at(-1).changeRecords[1].oldAndNewTotal.new = 33;
+  changeTotalDrift.history.at(-1).changeRecords[0].oldAndNewTotal.new = 34;
   assert.throws(() => validateProofProgressModel(changeTotalDrift, status, inventory), /History\.ChangeRecordTotal/u);
 });
 
