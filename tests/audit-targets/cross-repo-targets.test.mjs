@@ -55,17 +55,19 @@ const latestPublishedMilestoneReleasePrefix = latestTheoremFingerprintField[0]
   .slice(0, -theoremFingerprintSuffix.length);
 const latestPublishedMilestoneFieldStem =
   `${latestPublishedMilestoneReleasePrefix[0].toUpperCase()}${latestPublishedMilestoneReleasePrefix.slice(1)}`;
-const latestPublishedMilestoneStatusKeys = [
+const latestPublishedMilestoneRequiredStatusKeys = [
   `lean${latestPublishedMilestoneFieldStem}Formalized`,
   `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`,
   `lean${latestPublishedMilestoneFieldStem}Scope`
 ];
+for (const key of latestPublishedMilestoneRequiredStatusKeys) {
+  assert.notEqual(publishedStatus[key], undefined, "missing latest published status field: " + key);
+}
+const latestPublishedMilestoneStatusPrefix = `lean${latestPublishedMilestoneFieldStem}`;
 const latestPublishedMilestoneStatusFields = Object.fromEntries(
-  latestPublishedMilestoneStatusKeys.map((key) => {
-    assert.notEqual(publishedStatus[key], undefined, "missing latest published status field: " + key);
-    return [key, publishedStatus[key]];
-  })
+  Object.entries(publishedStatus).filter(([key]) => key.startsWith(latestPublishedMilestoneStatusPrefix))
 );
+assert.ok(Object.keys(latestPublishedMilestoneStatusFields).length >= latestPublishedMilestoneRequiredStatusKeys.length);
 const publishedMilestoneStatusFields = Object.fromEntries(
   Object.entries(publishedStatus).filter(([key]) =>
     key.startsWith("lean")

@@ -24,15 +24,15 @@ test("canonical progress ledger validates against independent formal evidence", 
   const [ledger, status, inventory] = await fixtures();
   const model = validateProofProgressModel(ledger, status, inventory);
   assert.equal(model.pointsAvailable, 100);
-  assert.equal(model.pointsEarned, 30);
-  assert.equal(model.percent, 30);
+  assert.equal(model.pointsEarned, 32);
+  assert.equal(model.percent, 32);
   assert.equal(model.uncertaintyLowPercent, 20);
   assert.equal(model.uncertaintyHighPercent, 40);
   assert.ok(model.uncertaintyLowPercent <= model.percent);
   assert.ok(model.percent <= model.uncertaintyHighPercent);
   assert.deepEqual(
     model.tracks.map((track) => [track.pointsEarned, track.pointsAvailable]),
-    [[13, 15], [14, 20], [2, 35], [1, 20], [0, 10]]
+    [[13, 15], [15, 20], [2, 35], [1, 20], [1, 10]]
   );
   assert.equal(model.checkpointCount, 35);
 
@@ -46,6 +46,10 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.equal(ledger.formalArtefactCoverage.denominatorCanGrow, true);
   assert.equal(ledger.history[0].asOfCoordinate, "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184");
   assert.equal(ledger.history.at(-1).asOfCoordinate, ledger.asOfCoordinate);
+  assert.deepEqual(ledger.history.at(-1).changedCheckpointIds, [
+    "reductions-final-target-compatibility",
+    "axiom-remove-locked-nand-threshold"
+  ]);
   assert.deepEqual(ledger.history.at(-1).formalArtefactCoverage, {
     earnedRows,
     totalRows: status.formalPublicationMilestones.length
@@ -57,7 +61,6 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.deepEqual(model.projectSpecificAxiomsRemaining, [
     "PNP.CheckPCCPackexp",
     "PNP.GeneratePCCPack",
-    "PNP.LockedNANDThreshold",
     "PNP.ResidualBandExactMinimization"
   ]);
   assert.deepEqual(model.rootTheorem, {
@@ -116,6 +119,14 @@ test("progress validation rejects arithmetic, evidence, gate, axiom, and root dr
   const currentHistoryDrift = structuredClone(ledger);
   currentHistoryDrift.history.at(-1).formalArtefactCoverage.earnedRows -= 1;
   assert.throws(() => validateProofProgressModel(currentHistoryDrift, status, inventory), /History\.CurrentCoverage/u);
+
+  const changeEvidenceDrift = structuredClone(ledger);
+  changeEvidenceDrift.history.at(-1).changeRecords[0].compiledEvidence = [];
+  assert.throws(() => validateProofProgressModel(changeEvidenceDrift, status, inventory), /History\.ChangeRecordEvidenceMissing/u);
+
+  const changeTotalDrift = structuredClone(ledger);
+  changeTotalDrift.history.at(-1).changeRecords[1].oldAndNewTotal.new = 33;
+  assert.throws(() => validateProofProgressModel(changeTotalDrift, status, inventory), /History\.ChangeRecordTotal/u);
 });
 
 test("active progress surfaces keep coverage and proof completion separate", async () => {
@@ -136,13 +147,13 @@ test("active progress surfaces keep coverage and proof completion separate", asy
     assert.match(surface, new RegExp(`${ledger.formalArtefactCoverage.earnedRows} of ${ledger.formalArtefactCoverage.totalRows}`, "u"), label);
     assert.doesNotMatch(surface, /98(?:\.8)?%[^<.]{0,100}(?:proof completion|towards proving|known formalisation work)/iu, label);
   }
-  assert.match(faq, /Why did the progress figure change from 98% to about 30%\?/u);
+  assert.match(faq, new RegExp(`Why did the progress figure change from 98% to about ${ledger.proofCompletion.percent}%\\?`, "u"));
   assert.match(faq, /superseded scoped-row\/editorial estimates/u);
   assert.match(updates, /Superseded scoped-row\/editorial estimate at publication:<\/strong> 98%/u);
   assert.match(updates, /id="proof-progress-model-v0-baseline"/u);
   assert.match(updates, /Formal artefact coverage: 160 \/ 162/u);
   assert.match(updates, /Risk-weighted proof completion estimate: 30%/u);
-  assert.match(svg, /Risk-weighted proof completion estimate: 30 percent/u);
+  assert.match(svg, new RegExp(`Risk-weighted proof completion estimate: ${ledger.proofCompletion.percent} percent`, "u"));
   assert.match(svg, /uncertainty range from 20 to 40 percent/u);
   assert.doesNotMatch(svg, /editorial/u);
 });

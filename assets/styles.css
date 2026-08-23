@@ -2063,7 +2063,7 @@ summary:focus-visible,
 }
 /* PROOF_PROGRESS:CSS:START */
 .proof-tape-graphic {
-  --proof-progress: 30%;
+  --proof-progress: 32%;
   --proof-progress-low: 20%;
   --proof-progress-high: 40%;
 }

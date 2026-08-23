@@ -56,6 +56,18 @@ function replaceCssRegion(source, model) {
   return `${source.slice(0, startIndex)}${start}\n${rendered}\n${end}${source.slice(endIndex + end.length)}`;
 }
 
+function replaceMinifiedCssVariables(source, model) {
+  const pattern = /\.proof-tape-graphic\{--proof-progress:[0-9]+%;--proof-progress-low:[0-9]+%;--proof-progress-high:[0-9]+%/gu;
+  const matches = source.match(pattern) ?? [];
+  if (matches.length !== 1) {
+    throw new Error("assets/styles.min.css: expected exactly one minified proof-progress variable block");
+  }
+  return source.replace(
+    pattern,
+    `.proof-tape-graphic{--proof-progress:${model.percent}%;--proof-progress-low:${model.uncertaintyLowPercent}%;--proof-progress-high:${model.uncertaintyHighPercent}%`
+  );
+}
+
 function renderHome(model) {
   const coverage = model.formalArtefactCoverage;
   const tracks = model.tracks.map((track) => `<li><span>${escaped(track.title)}</span><strong>${track.pointsEarned}/${track.pointsAvailable}</strong></li>`).join("");
@@ -127,6 +139,14 @@ async function generateProofProgressSurfaces({ root = repositoryRoot, write = fa
   } else if (cssExpected !== cssActual) {
     throw new Error("assets/styles.css: proof-progress variables are stale; run npm run progress:generate");
   }
+  const minCssPath = path.join(root, "assets/styles.min.css");
+  const minCssActual = await readFile(minCssPath, "utf8");
+  const minCssExpected = replaceMinifiedCssVariables(minCssActual, model);
+  if (write) {
+    if (minCssExpected !== minCssActual) await writeFile(minCssPath, minCssExpected);
+  } else if (minCssExpected !== minCssActual) {
+    throw new Error("assets/styles.min.css: proof-progress variables are stale; run npm run progress:generate");
+  }
   return model;
 }
 
@@ -153,5 +173,6 @@ export {
   renderHome,
   renderStatus,
   replaceCssRegion,
+  replaceMinifiedCssVariables,
   replaceRegion
 };

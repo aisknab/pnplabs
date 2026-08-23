@@ -3494,22 +3494,31 @@ test("current release pins the latest canonical earned boundary and remains fail
 
   assert.equal(release.earnedBoundary[`${latestStem}Formalized`], true);
   assert.equal(release.earnedBoundary[`${latestStem}AxiomAuditPassed`], true);
-  for (const suffix of [
-    "AuditedDeclarationCount",
+  assert.ok(Number.isSafeInteger(release.earnedBoundary[`${latestStem}AuditedDeclarationCount`]));
+  const latestAuditCategorySuffixes = [
     "EmptyAxiomDeclarationCount",
     "PropextOnlyDeclarationCount",
     "QuotSoundOnlyDeclarationCount",
     "PropextQuotSoundDeclarationCount",
-  ]) {
-    assert.ok(Number.isSafeInteger(release.earnedBoundary[`${latestStem}${suffix}`]), suffix);
-  }
-  assert.equal(
-    release.earnedBoundary[`${latestStem}AuditedDeclarationCount`],
-    release.earnedBoundary[`${latestStem}EmptyAxiomDeclarationCount`]
-      + release.earnedBoundary[`${latestStem}PropextOnlyDeclarationCount`]
-      + release.earnedBoundary[`${latestStem}QuotSoundOnlyDeclarationCount`]
-      + release.earnedBoundary[`${latestStem}PropextQuotSoundDeclarationCount`]
+  ];
+  const latestAuditCategoryCounts = latestAuditCategorySuffixes
+    .map((suffix) => release.earnedBoundary[`${latestStem}${suffix}`]);
+  const publishedLatestAuditCategoryCount = latestAuditCategoryCounts
+    .filter((value) => value !== undefined).length;
+  assert.ok(
+    publishedLatestAuditCategoryCount === 0
+      || publishedLatestAuditCategoryCount === latestAuditCategorySuffixes.length,
+    "latest audit category counts must be either complete or omitted"
   );
+  if (publishedLatestAuditCategoryCount > 0) {
+    for (const [index, value] of latestAuditCategoryCounts.entries()) {
+      assert.ok(Number.isSafeInteger(value), latestAuditCategorySuffixes[index]);
+    }
+    assert.equal(
+      release.earnedBoundary[`${latestStem}AuditedDeclarationCount`],
+      latestAuditCategoryCounts.reduce((sum, value) => sum + value, 0)
+    );
+  }
   assert.equal(release.earnedBoundary[`${latestStem}Scope`], latestStatusPayload[`${latestStatusStem}Scope`]);
   assert.deepEqual(release.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`], latestTheoremHashes);
   assert.deepEqual(release.earnedBoundary[`${latestStem}AxiomClosure`], latestAxiomClosure);

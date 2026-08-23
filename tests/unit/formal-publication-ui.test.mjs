@@ -1055,7 +1055,7 @@ test('null publication fingerprints never match null', () => {
   assert.equal(validation.validateStatus(forged, inventory), false);
 });
 
-test('abstract bridge and historical/checker fields cannot activate publication', () => {
+test('legacy eligibility and historical/checker fields cannot activate publication', () => {
   const forged = structuredClone(status);
   forged.abstractPEqualsNPPublicationEligible = true;
   forged.mathematicalTheoremEstablished = true;
@@ -4163,6 +4163,10 @@ test('static pages remain conservative and distinguish current from historical r
   const statusPage = readFileSync('status.html', 'utf8');
   const reportPage = readFileSync('paper.html', 'utf8');
   const verifyPage = readFileSync('verify.html', 'utf8');
+  const latestMilestone = status.formalPublicationMilestones.find(
+    (row) => row.id === updates.entries[0].milestoneId
+  );
+  assert.ok(latestMilestone, 'latest milestone must come from canonical update authority');
 
   for (const page of [homepage, statusPage, reportPage, verifyPage]) {
     assert.match(page, /does not currently establish P = NP|does not claim P = NP|target theorem is not established/i);
@@ -4194,8 +4198,11 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /residual-terminal-finite-bcel-packet-activation-obstruction/);
   assert.match(statusPage, /terminal_finite_bcel_packet_activation_obstruction_checked_complete/);
   assert.match(statusPage, /Finite BCEL and Packet activation-coherence obstruction/i);
-  assert.match(homepage, /data-current-milestone="residual-terminal-finite-bcel-packet-activation-obstruction"/);
-  assert.match(statusPage, /two global milestones/i);
+  assert.match(homepage, new RegExp(`data-current-milestone="${latestMilestone.id}"`, 'u'));
+  assert.match(
+    statusPage,
+    new RegExp(`${index.formalPublicationMilestoneCounts.earned} scoped milestones earned; two global milestones unearned`, 'u')
+  );
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
   assert.match(reportPage, new RegExp(`current ${release.artifacts.report.pageCount}-page report is generated from the compiled Lean inventory`, 'iu'));

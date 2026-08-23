@@ -179,18 +179,28 @@ test("progress validation rejects missing, hostile, out-of-range, and history-co
   assert.throws(() => validateUpdatesModel(data, status, index, missingHistory), /source coordinate is absent from canonical progress history/u);
 
   const snapshotAfterLegacy = structuredClone(data);
-  snapshotAfterLegacy.entries[2].progressSnapshot = structuredClone(snapshotAfterLegacy.entries[0].progressSnapshot);
-  delete snapshotAfterLegacy.entries[2].progressEstimatePercent;
+  const firstLegacyIndex = snapshotAfterLegacy.entries.findIndex(
+    (entry) => Object.hasOwn(entry, "progressEstimatePercent")
+  );
+  assert.ok(firstLegacyIndex >= 0 && firstLegacyIndex + 1 < snapshotAfterLegacy.entries.length);
+  snapshotAfterLegacy.entries[firstLegacyIndex + 1].progressSnapshot = structuredClone(
+    snapshotAfterLegacy.entries[0].progressSnapshot
+  );
+  delete snapshotAfterLegacy.entries[firstLegacyIndex + 1].progressEstimatePercent;
   assert.throws(() => validateUpdatesModel(snapshotAfterLegacy, status, index), /tracker snapshots must precede legacy editorial entries/u);
 });
 
 test("superseded historical estimates remain accurate and may decrease between milestones", async () => {
   const [data, status, index] = await fixtures();
   const olderTracked = structuredClone(data);
-  olderTracked.entries[1].progressEstimatePercent = 35;
+  const legacyIndex = olderTracked.entries.findIndex(
+    (entry) => Object.hasOwn(entry, "progressEstimatePercent")
+  );
+  assert.ok(legacyIndex >= 0);
+  olderTracked.entries[legacyIndex].progressEstimatePercent = 35;
   const model = validateUpdatesModel(olderTracked, status, index);
   assert.deepEqual(model.entries[0].progressSnapshot, data.entries[0].progressSnapshot);
-  assert.equal(model.entries[1].progressEstimatePercent, 35);
+  assert.equal(model.entries[legacyIndex].progressEstimatePercent, 35);
 });
 
 test("validation fails closed when an earned milestone has no update", async () => {
@@ -211,8 +221,7 @@ test("validation rejects duplicates, source drift, unsafe prose, and schema exte
   const [data, status, index] = await fixtures();
 
   const duplicate = structuredClone(data);
-  const duplicateEntry = structuredClone(duplicate.entries[1]);
-  duplicate.entries.push(duplicateEntry);
+  duplicate.entries[1].id = duplicate.entries[0].id;
   assert.throws(() => validateUpdatesModel(duplicate, status, index), /duplicate entry ID/u);
 
   const sourceDrift = structuredClone(data);
