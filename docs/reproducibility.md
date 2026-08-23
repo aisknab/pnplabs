@@ -26,14 +26,14 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 562,275 | `a87e24ad9ff7d4e40a0a2a14c7c5a17e718020ef0dc4f968155013fa427e8f6b` |
-| `downloads/canonical-proof-report.pdf` | 562,275 | `a87e24ad9ff7d4e40a0a2a14c7c5a17e718020ef0dc4f968155013fa427e8f6b` |
-| `downloads/canonical_proof_report.tex` | 338,671 | `45b210abc81d7ad190768b98f28c903603471a8c40a942dad06509d04b72664f` |
-| `downloads/canonical-proof-report.tex` | 338,671 | `45b210abc81d7ad190768b98f28c903603471a8c40a942dad06509d04b72664f` |
-| `public/pnp-status.json` | 2,589,631 | `a33cb324d7cf64ee4a1a99dd2aa0e7d6618c6c77d69d897b367cb4d73372aa89` |
-| `public/pnp-theorem-inventory.json` | 32,815,875 | `8bb4f8bb4ce2bfdcfd3709d19c971b5c178bf1c2f437ec37d4360f80b6c49efc` |
+| `downloads/canonical_proof_report.pdf` | 565,402 | `f24389f043878c7a2d533fc644d31a8647af23859884e0d6ab044a27ff18c609` |
+| `downloads/canonical-proof-report.pdf` | 565,402 | `f24389f043878c7a2d533fc644d31a8647af23859884e0d6ab044a27ff18c609` |
+| `downloads/canonical_proof_report.tex` | 340,929 | `e7c2306b9e443a9cf696167580dcbd2128c0b3b32a99d1612b7e369f38957b12` |
+| `downloads/canonical-proof-report.tex` | 340,929 | `e7c2306b9e443a9cf696167580dcbd2128c0b3b32a99d1612b7e369f38957b12` |
+| `public/pnp-status.json` | 2,595,885 | `cb1e60cc5854b72939d998bbc5e9a318e5f4ccdd42ec2dbb258398db64158881` |
+| `public/pnp-theorem-inventory.json` | 32,938,756 | `1de7ba070a3b7e9e2faafce2639805ade6cd4508afcb9a17c94594885a897c46` |
 
-The PDF must have 130 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 132 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -42,7 +42,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 74d7f531bebe302cba08ad992fd4d48d46a8b29e
+git -C ../pnp checkout 539040537eb91c62ca405c048f0be95067596f5e
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -66,8 +66,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,989 public declarations, 15,480 theorem-kind declarations,
-7,617 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 300 modules, and
+Expected compiled inventory counts are 30,015 public declarations, 15,490 theorem-kind declarations,
+7,617 assumption-free theorem-kind declarations, 15,135 excluded private auxiliaries, 301 modules, and
 four project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -80,16 +80,16 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest finite SaturatePositive-to-BCEL-ready composition has 4 reviewed theorem pins. Its focused
-6-declaration audit uses only `Quot.sound` and `propext`, with no project axiom or
-`Classical.choice`. For every explicit finite direct-wire candidate, terminal saturation model,
-candidate-derived anchor problem, and positive full-slack premise, the theorem rows rerun the finite
-classifier and retain only its positive-projection branch with a computed BCEL-ready anchor nucleus.
-They preserve the exact classifier equality, complete safe trace, positive final quantities, anchor
-bound, constant-cut equation, and every local proper-cut BN2 conclusion. This does not derive positivity
-from residual slack, construct BN3 through BN6 data or a grouped family, derive constant activation,
-establish manuscript-wide SaturatePositive or BCELReady, complete global routing, establish ZeroSlack,
-or prove polynomial PCCMin.
+The latest same-candidate finite BCEL-ready and Packet carrier coherence milestone has 5 reviewed
+theorem pins. Its focused 6-declaration audit uses only `Quot.sound` and `propext`, with no project
+axiom or `Classical.choice`. For every accepted finite Packet/budget no-lower certificate, the theorem
+rows index a checked finite BCEL-ready problem by the same candidate and model and use a checked
+bijective anchor map plus exact list equality to identify its computed nucleus with the exact grouped
+Packet carrier. They transfer the inherited carrier-size bound and existing positive-Packet and
+constant-activation exclusions to one coherent family. The terminal problem, positive full-slack
+premise, Packet family, map, and downstream data remain supplied. This does not equate activation
+weights with projection excess, derive constant activation from positive residual slack, complete the
+no-lower ledger or global routing, establish unconditional ZeroSlack, or prove polynomial PCCMin.
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
 

@@ -4124,6 +4124,22 @@ test('saturated terminal support square requires exact pins, order laws, extract
   const erasedFiniteBCELReadyAudit = structuredClone(status);
   erasedFiniteBCELReadyAudit.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed = false;
   assert.equal(validation.validateStatus(erasedFiniteBCELReadyAudit, inventory), false);
+
+  const widenedFiniteBCELPacketCarrierBoundary = structuredClone(status);
+  widenedFiniteBCELPacketCarrierBoundary.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-packet-carrier-coherence'
+  ).nonClaim = 'This derives constant activation and proves unconditional ZeroSlack.';
+  assert.equal(validation.validateStatus(widenedFiniteBCELPacketCarrierBoundary, inventory), false);
+
+  const alteredFiniteBCELPacketCarrierPin = structuredClone(status);
+  alteredFiniteBCELPacketCarrierPin.formalPublicationMilestones.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-packet-carrier-coherence'
+  ).theoremRows[0].actualKernelTypeSha256 = '0'.repeat(64);
+  assert.equal(validation.validateStatus(alteredFiniteBCELPacketCarrierPin, inventory), false);
+
+  const erasedFiniteBCELPacketCarrierAudit = structuredClone(status);
+  erasedFiniteBCELPacketCarrierAudit.leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed = false;
+  assert.equal(validation.validateStatus(erasedFiniteBCELPacketCarrierAudit, inventory), false);
 });
 
 test('static pages remain conservative and distinguish current from historical reports', () => {
@@ -4156,6 +4172,10 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /residual-terminal-finite-bcel-ready-composition/);
   assert.match(statusPage, /terminal_finite_saturate_positive_bcel_ready_checked_complete/);
   assert.match(statusPage, /Checked finite SaturatePositive-to-BCEL-ready composition/i);
+  assert.match(statusPage, /residual-terminal-finite-bcel-packet-carrier-coherence/);
+  assert.match(statusPage, /terminal_finite_bcel_packet_carrier_coherent_checked_complete/);
+  assert.match(statusPage, /Same-candidate finite BCEL-ready and Packet carrier coherence/i);
+  assert.match(homepage, /data-current-milestone="residual-terminal-finite-bcel-packet-carrier-coherence"/);
   assert.match(statusPage, /two global milestones/i);
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);

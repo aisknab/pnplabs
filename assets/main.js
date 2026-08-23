@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-183";
-const STATUS_SHA256 = 'a33cb324d7cf64ee4a1a99dd2aa0e7d6618c6c77d69d897b367cb4d73372aa89';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-183";
-const FORMAL_PUBLICATION_MAP_SHA256 = "1738658fc96d7fad290060709af38d8791038e951e3a290457ff34b668e4f3a1";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184";
+const STATUS_SHA256 = 'cb1e60cc5854b72939d998bbc5e9a318e5f4ccdd42ec2dbb258398db64158881';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-184";
+const FORMAL_PUBLICATION_MAP_SHA256 = "d135c0114d74ba74788bd2b50f77747bf0b4f2886ecb254a5ea5b49bb3f3f9d5";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-183";
-const INVENTORY_SHA256 = "8bb4f8bb4ce2bfdcfd3709d19c971b5c178bf1c2f437ec37d4360f80b6c49efc";
-const SOURCE_CLOSURE_SHA256 = "3e91cc99bedfdac25795f923914ee765ce0f55200c7d1e6d05fcad58940c73ee";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-184";
+const INVENTORY_SHA256 = "1de7ba070a3b7e9e2faafce2639805ade6cd4508afcb9a17c94594885a897c46";
+const SOURCE_CLOSURE_SHA256 = "b489621c479ec08ed7dd260170df8b3811044f34a1e4e68cf76fd7db4c44ec83";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29989,
-  theorems: 15480,
+  declarations: 30015,
+  theorems: 15490,
   assumptionFreeTheorems: 7617,
   excludedPrivateDeclarations: 15135,
-  modules: 300,
+  modules: 301,
   axioms: 4,
 });
 
@@ -4661,6 +4661,13 @@ const RESIDUAL_TERMINAL_FINITE_BCEL_READY_COMPOSITION_DECLARATIONS = Object.free
   ["PNP.DirectWire.TerminalFiniteBCELReadyCertificate.properCutConstantEquation",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELReady","4635f3630a32626934ee048659823d116bcde9688f091ad79b56b72a27ca5fba"],
   ["PNP.DirectWire.TerminalFiniteBCELReadyCertificate.properCutLocalConclusion",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELReady","7a2596b6be371cfa7a484ead0d195c485ad9e384126662a37f3e91c2ba751167"],
 ]);
+const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_DECLARATIONS = Object.freeze([
+  ["PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.family_carrier_eq",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELPacketCarrierCoherence","0a2af4eca087841ff04b5eca08e4b1847f55b16f372784fd045de455bcad2561"],
+  ["PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.carrier_at_least_two",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELPacketCarrierCoherence","f5581ef1cdc43ba0b956571157e987f924002f01684be03f149986f285745d4f"],
+  ["PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.no_positive_packet",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELPacketCarrierCoherence","6a41b5d36979d1af2913eda0d3a85588a0c01b21db58f43f228f50397bbb5afa"],
+  ["PNP.TerminalFiniteBCELPacketCarrierCoherenceCertificate.not_constant_activation",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELPacketCarrierCoherence","64e3518d1af10892841b77d5d6c9dd4f654b97c6a9e9c7eac048cf1a4fd36f4b"],
+  ["PNP.terminal_finite_bcel_packet_carrier_coherent_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELPacketCarrierCoherence","1f2651016dabc74efe65d54a861f5508ca2477c5b3d677d453eba3720261479c"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5538,6 +5545,9 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFiniteBCELReadyCompositionFormalized: false,
   leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed: false,
   leanResidualTerminalFiniteBCELReadyCompositionScope: null,
+  leanResidualTerminalFiniteBCELPacketCarrierCoherenceFormalized: false,
+  leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed: false,
+  leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6145,6 +6155,9 @@ leanResidualTerminalFiniteSaturatePositiveCompositionScope = ${payload.leanResid
 leanResidualTerminalFiniteBCELReadyCompositionFormalized = ${payload.leanResidualTerminalFiniteBCELReadyCompositionFormalized ?? false}
 leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed = ${payload.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed ?? false}
 leanResidualTerminalFiniteBCELReadyCompositionScope = ${payload.leanResidualTerminalFiniteBCELReadyCompositionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFiniteBCELReadyCompositionScope)}
+leanResidualTerminalFiniteBCELPacketCarrierCoherenceFormalized = ${payload.leanResidualTerminalFiniteBCELPacketCarrierCoherenceFormalized ?? false}
+leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed = ${payload.leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed ?? false}
+leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope = ${payload.leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7199,6 +7212,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const residualTerminalFiniteBCELPacketCarrierCoherence =
+    RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7784,6 +7804,9 @@ function validateInventory(inventory) {
     && residualTerminalFiniteBCELReadyComposition.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && residualTerminalFiniteBCELPacketCarrierCoherence.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8215,6 +8238,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalFiniteBCELReadyCompositionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-finite-bcel-ready-composition'
+  );
+  const residualTerminalFiniteBCELPacketCarrierCoherenceMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'residual-terminal-finite-bcel-packet-carrier-coherence'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9849,6 +9875,28 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFiniteBCELReadyCompositionFormalized === true
     && status.leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed === true
     && status.leanResidualTerminalFiniteBCELReadyCompositionScope === "all-finite-direct-wire-candidates-executable-models-proof-bearing-positive-full-slack-anchor-problems-recomputed-finite-saturate-positive-to-computed-bcel-ready-branch"
+
+    && residualTerminalFiniteBCELPacketCarrierCoherenceMilestone?.classification === "formalized-residual-terminal-finite-bcel-packet-carrier-coherence"
+    && residualTerminalFiniteBCELPacketCarrierCoherenceMilestone.status === "formalized-residual-terminal-finite-bcel-packet-carrier-coherence"
+    && residualTerminalFiniteBCELPacketCarrierCoherenceMilestone.scope === "For every accepted finite Packet/budget no-lower certificate, Lean indexes a checked finite BCEL-ready problem by the same candidate and model, retains its computed ready nucleus, and uses a bijective anchor map with explicit injectivity and surjectivity proofs plus a Boolean-reflected exact list equality to identify that nucleus with the exact grouped Packet carrier. The inherited nontrivial-size bound, positive-Packet exclusion, and constant-activation exclusion therefore hold on one coherently bound family consumed by the report-facing ZeroSlack boundary."
+    && residualTerminalFiniteBCELPacketCarrierCoherenceMilestone.nonClaim === "The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, Packet payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. The carrier identity does not identify Packet-family activation weights with proper-cut projection excess or derive constant activation from positive residual slack. It does not construct BN3--BN6 data from terminal data, complete the no-lower ledger, prove unconditional ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
+    && sameJson(
+      residualTerminalFiniteBCELPacketCarrierCoherenceMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalFiniteBCELPacketCarrierCoherenceMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_CARRIER_COHERENCE_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalFiniteBCELPacketCarrierCoherenceFormalized === true
+    && status.leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed === true
+    && status.leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope === "all-arbitrary-finite-proof-bearing-same-candidate-model-bcel-ready-nuclei-bijectively-mapped-to-the-exact-packet-family-carrier"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

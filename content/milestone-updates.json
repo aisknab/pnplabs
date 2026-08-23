@@ -47,6 +47,23 @@
   },
   "entries": [
     {
+      "id": "2026-08-23-residual-terminal-finite-bcel-packet-carrier-coherence",
+      "milestoneId": "residual-terminal-finite-bcel-packet-carrier-coherence",
+      "publishedAt": "2026-08-23T01:48:42Z",
+      "title": "Same-candidate finite BCEL-ready and Packet carrier coherence",
+      "plainLanguage": [
+        "This milestone starts from an accepted finite Packet/budget no-lower certificate and verifies that its computed BCEL-ready nucleus and grouped Packet carrier belong to the same candidate, model, and family. A supplied bijective anchor correspondence carries explicit injectivity and surjectivity proofs, while an exact Boolean-reflected list equality is used to identify the two carriers. The inherited nontrivial size bound, positive-Packet exclusion, and non-constant-activation conclusion therefore apply coherently to the family used by the report-facing ZeroSlack boundary.",
+        "The result still starts from a supplied terminal problem, positive full-slack premise, Packet family, anchor correspondence, payloads, budget, realizer and dependency tables, and rank data. It does not equate activation weights with projection excess, derive constant activation from positive residual slack, construct the remaining global data, close ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, or prove P = NP. The 98 percent figure remains a revisable editorial estimate. It is separate from the 160 of 162 formally earned publication rows."
+      ],
+      "progressEstimatePercent": 98,
+      "source": {
+        "commit": "539040537eb91c62ca405c048f0be95067596f5e",
+        "tree": "5155f087f5243d0e4b44b3c9e34766dfbb420c9c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-23-residual-terminal-finite-bcel-ready-composition",
       "milestoneId": "residual-terminal-finite-bcel-ready-composition",
       "publishedAt": "2026-08-22T22:22:32Z",

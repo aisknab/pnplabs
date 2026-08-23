@@ -113,6 +113,9 @@ leanResidualTerminalZeroSlackPacketSelectorHBCoherenceScope = "all-arbitrary-fin
 leanResidualTerminalFiniteBCELReadyCompositionFormalized = true
 leanResidualTerminalFiniteBCELReadyCompositionAxiomAuditPassed = true
 leanResidualTerminalFiniteBCELReadyCompositionScope = "all-finite-direct-wire-candidates-executable-models-proof-bearing-positive-full-slack-anchor-problems-recomputed-finite-saturate-positive-to-computed-bcel-ready-branch"
+leanResidualTerminalFiniteBCELPacketCarrierCoherenceFormalized = true
+leanResidualTerminalFiniteBCELPacketCarrierCoherenceAxiomAuditPassed = true
+leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope = "all-arbitrary-finite-proof-bearing-same-candidate-model-bcel-ready-nuclei-bijectively-mapped-to-the-exact-packet-family-carrier"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -122,7 +125,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 159 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone is Checked finite SaturatePositive-to-BCEL-ready composition. For every finite direct-wire candidate, executable terminal saturation model, and proof-bearing candidate BCEL anchor problem with explicit initial positive full slack, Lean reruns the finite SaturatePositive classifier and accepts only its positive-projection branch with a computed BCEL-ready anchor nucleus. The certificate retains the exact classifier equality, complete safe trace, positive final slack and whole-support defect, an at-least-two-anchor bound, the exact constant-cut equation, and the local full/quotient BN2 conclusion for every proper cut. The terminal candidate, executable model, candidate-derived anchor problem, and initial positive full-slack premise remain explicit. Rejection of another finite branch is not a mapping into the complete global route system. This does not derive positivity from residual slack, construct BN3 through BN6 data or a grouped family, derive constant activation, establish manuscript-wide SaturatePositive or BCELReady, prove ZeroSlack, PCCMin, polynomial runtime, SAT in P, remove a project assumption, or prove P = NP. The 98 percent figure remains a revisable editorial estimate, separate from the 159 of 161 scoped publication rows. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 160 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. The newest milestone is Same-candidate finite BCEL-ready and Packet carrier coherence. This milestone starts from an accepted finite Packet/budget no-lower certificate and verifies that its computed BCEL-ready nucleus and grouped Packet carrier belong to the same candidate, model, and family. A supplied bijective anchor correspondence carries explicit injectivity and surjectivity proofs, while an exact Boolean-reflected list equality is used to identify the two carriers. The inherited nontrivial size bound, positive-Packet exclusion, and non-constant-activation conclusion therefore apply coherently to the family used by the report-facing ZeroSlack boundary. The result still starts from a supplied terminal problem, positive full-slack premise, Packet family, anchor correspondence, payloads, budget, realizer and dependency tables, and rank data. It does not equate activation weights with projection excess, derive constant activation from positive residual slack, construct the remaining global data, close ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, or prove P = NP. The 98 percent figure remains a revisable editorial estimate. It is separate from the 160 of 162 formally earned publication rows. Four project-specific axioms and five formal blockers remain. The concrete target is present but inactive, the publication gate is false, and the abstract string-handle `PNP.PEqualsNP` bridge is publication-ineligible.
 
 ## Checker wording
 
@@ -141,7 +144,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 130-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 132-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
