@@ -184,8 +184,8 @@ test('site validator pins the latest canonical publication milestone and rejects
     milestone.requiredTheorems,
     milestone.theoremRows.map((row) => row.name),
   );
-  assert.equal(latestUpdate.source.commit, release.source.commit);
-  assert.equal(latestUpdate.source.tree, release.source.tree);
+  assert.equal(latestUpdate.source.commit, index.latestEarnedMilestoneSourceCommitRef);
+  assert.equal(latestUpdate.source.tree, index.latestEarnedMilestoneSourceTree);
   assert.equal(validation.validateStatus(status, inventory), true);
 
   const missing = structuredClone(inventory);

@@ -10,6 +10,7 @@ import { writeMirrorFileAtomically } from "../../tools/sync-public-access-docs.m
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const canonicalRelease = JSON.parse(readFileSync(path.join(root, "downloads/formal-publication-release.json"), "utf8"));
+const canonicalSeal = JSON.parse(readFileSync(path.join(root, "downloads/release-seal.json"), "utf8"));
 const SEALED_PATHS = [
   "downloads/release-seal.json",
   "downloads/SHA256SUMS",
@@ -20,7 +21,8 @@ const SEALED_PATHS = [
   "downloads/formal-publication-release.json",
   "downloads/source-checker-release.json",
   "public/pnp-status.json",
-  "public/pnp-theorem-inventory.json"
+  "public/pnp-theorem-inventory.json",
+  "public/pnp-proof-progress.json"
 ];
 
 const LOCKED_NAND_SOURCE_PARSER_HASHES = {
@@ -1120,9 +1122,9 @@ function copySealFixture(t) {
   return fixture;
 }
 
-test("exact current artifact seal verifies eight reviewed files", () => {
+test("exact current artifact seal verifies every reviewed file", () => {
   const result = verifyReleaseSeal({ root });
-  assert.equal(result.checked, 8);
+  assert.equal(result.checked, canonicalSeal.files.length);
   assert.equal(result.coreCommit, canonicalRelease.source.commit);
 });
 

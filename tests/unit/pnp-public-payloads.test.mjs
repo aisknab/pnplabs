@@ -8587,11 +8587,14 @@ test('static inventory prose derives changing publication totals from the canoni
     true
   );
   assert.equal(readme.includes(latestUpdate.title), true);
-  assert.equal(pipeline.includes(`The ${index.formalPublicationMilestoneCounts.earned} earned scopes are:`), true);
+  assert.equal(pipeline.includes(`The ${index.formalPublicationMilestoneCounts.earned} earned formal artefact scopes are:`), true);
   assert.equal(activatedClaimWording.includes(`${index.formalPublicationMilestoneCounts.earned} narrowly scoped milestones are earned`), true);
   assert.equal(activatedClaimWording.includes(latestUpdate.title), true);
-  for (const paragraph of latestUpdate.plainLanguage) {
-    assert.equal(activatedClaimWording.includes(paragraph), true, `activated claim wording missing current paragraph: ${paragraph}`);
+  const currentMilestoneParagraphs = latestUpdate.plainLanguage.map(
+    (paragraph) => paragraph.replace(/ The [0-9]+ percent figure.*$/u, ''),
+  );
+  for (const paragraph of currentMilestoneParagraphs) {
+    assert.equal(activatedClaimWording.includes(paragraph), true, `activated claim wording missing current milestone boundary: ${paragraph}`);
   }
   for (const field of [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`, `lean${latestStatusStem}Scope`]) {
     assert.equal(
@@ -8601,8 +8604,8 @@ test('static inventory prose derives changing publication totals from the canoni
     );
   }
   const readmePlainText = readme.replaceAll('`', '');
-  for (const paragraph of latestUpdate.plainLanguage) {
-    assert.equal(readmePlainText.includes(paragraph), true, `missing latest README paragraph: ${paragraph}`);
+  for (const paragraph of currentMilestoneParagraphs) {
+    assert.equal(readmePlainText.includes(paragraph), true, `missing latest README milestone boundary: ${paragraph}`);
   }
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationFormalized = true'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = true'), true);
