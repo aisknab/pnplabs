@@ -29,7 +29,7 @@ async function currentPublication() {
     readJson('public/pnp-proof-progress.json'),
   ]);
   return {
-    historicalProgress: updates.entries[0].progressEstimatePercent,
+    historicalProgress: updates.entries.find((entry) => Number.isSafeInteger(entry.progressEstimatePercent)).progressEstimatePercent,
     proofProgress,
     counts: index.formalPublicationMilestoneCounts,
     milestoneRecordCount: status.formalPublicationMilestones.length,

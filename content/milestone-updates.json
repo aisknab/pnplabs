@@ -1,6 +1,6 @@
 {
-  "kind": "PNPLabsMilestoneUpdates2",
-  "version": 2,
+  "kind": "PNPLabsMilestoneUpdates3",
+  "version": 3,
   "trackingBaseline": {
     "earnedCount": 39,
     "milestoneIds": [
@@ -46,6 +46,32 @@
     ]
   },
   "entries": [
+    {
+      "id": "2026-08-23-residual-terminal-finite-bcel-packet-activation-obstruction",
+      "milestoneId": "residual-terminal-finite-bcel-packet-activation-obstruction",
+      "publishedAt": "2026-08-23T10:12:42Z",
+      "title": "Finite BCEL and Packet activation-coherence obstruction",
+      "plainLanguage": [
+        "This milestone asks whether the already matched finite anchor set and Packet family also assign the same numbers to every relevant cut. The checker compares the selected anchor defect with the declared Packet cut value and then exhaustively checks each nonempty proper cut. The existing same-family exclusion proves that full numerical agreement cannot hold, and the classifier returns either the declared total mismatch or the first cut whose activation number disagrees.",
+        "This is a diagnostic, not a repair. The terminal problem, positive-slack premise, family, map, activation data, payloads, budget, realizer and dependency tables, and rank data are still supplied. Exhaustive cut enumeration may be exponential. The result does not construct this data from every input, derive constant activation, complete global routing or the no-lower system, prove unconditional ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove an axiom, or prove P = NP."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 161,
+        "formalArtefactCoverageTotalRows": 163,
+        "riskWeightedProofCompletionPercent": 30,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "edcf84c74280b455ca656ee57653d6fb07cfcc30",
+        "tree": "d8187018fb200e9ad9b8877988c8584f86bbafe7",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-185",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
     {
       "id": "2026-08-23-residual-terminal-finite-bcel-packet-carrier-coherence",
       "milestoneId": "residual-terminal-finite-bcel-packet-carrier-coherence",
