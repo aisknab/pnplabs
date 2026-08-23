@@ -103,6 +103,34 @@ sudo -n /usr/bin/env -i PNPLABS_COMMIT=<exact-merged-main-commit> /usr/local/bin
 The script deliberately does not delete older releases. Retention is a separate operator decision;
 the previous release must remain available for rollback.
 
+## Best-effort progress notification
+
+The active phone-notification transport is a direct UnifiedPush request. Supply the complete
+capability URL only through `UNIFIEDPUSH_ENDPOINT`; never place it in repository files, command
+output, CI logs, or notification text. The sender preserves the configured URL exactly and posts a
+URL-encoded body with only `title` and `message`. It sets
+`Content-Type: application/x-www-form-urlencoded; charset=UTF-8`,
+`Content-Encoding: aes128gcm`, and `Accept: application/json`.
+
+After the exact PNPLabs merge has passed every release gate, inspect the message without delivery,
+then invoke the notifier once with the capability supplied only to that process:
+
+```bash
+npm run notify:deployment-ready -- --commit <exact-merged-main-commit> --dry-run
+UNIFIEDPUSH_ENDPOINT=... npm run notify:deployment-ready -- --commit <exact-merged-main-commit>
+```
+
+The notification derives the risk-weighted proof estimate, formal artefact coverage, and global
+gate count from the canonical progress mirror. It reports those measures separately. Delivery uses
+an approximately ten-second timeout and at most three total attempts, retrying network failures,
+HTTP 429, and HTTP 5xx only. A missing or unavailable endpoint is reported without revealing the
+destination and does not invalidate the verified release.
+
+`npm run notify:test:live` is the separate explicit transport integration command. It sends one
+real test message only when `UNIFIEDPUSH_ENDPOINT` is configured and is deliberately absent from
+the normal test suite. Do not use it as a routine health check or retry it to diagnose client-side
+display.
+
 ## Nginx boundary
 
 Replace the existing PNPLabs `location` directives inside the TLS `server {}` block with

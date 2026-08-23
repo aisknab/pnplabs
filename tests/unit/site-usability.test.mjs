@@ -86,7 +86,13 @@ test('plain-language orientation is static and available before technical depth'
   assert.match(faq, /narrower scoped-row\/editorial measure/u);
   assert.match(faq, new RegExp(`${counts.earned} of ${counts.total} scoped publication rows earned`, 'u'));
   assert.match(faq, new RegExp(`risk-weighted proof completion estimate is ${proofProgress.proofCompletion.percent}%`, 'u'));
-  assert.match(faq, /Neither 30% nor 98\.8% is confidence that P=NP is true/u);
+  assert.match(
+    faq,
+    new RegExp(
+      `Neither ${proofProgress.proofCompletion.percent}% nor ${escapeRegExp(String(proofProgress.formalArtefactCoverage.percentRoundedOneDecimal))}% is confidence that P=NP is true`,
+      'u'
+    )
+  );
 
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);

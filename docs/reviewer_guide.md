@@ -6,8 +6,8 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 132-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 30,056 public declarations across 302 modules,
-including 15,507 theorem-kind declarations, 7,617 assumption-free theorem-kind declarations, and four
+Lean theorem inventory. The inventory contains 29,988 public declarations across 303 modules,
+including 15,497 theorem-kind declarations, 7,613 assumption-free theorem-kind declarations, and three
 disclosed project axioms. Exactly 15,141 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,114 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,114 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 161 of 163 scoped formal milestone rows. The newest row checks the selected nucleus defect, Packet cut value, and every canonical nonempty proper-cut activation, then returns a proof-bearing mismatch because full activation coherence conflicts with the existing same-family Packet exclusion. | Treating this diagnostic as a construction or proof of activation coherence; treating supplied terminal, Packet, map, activation, or downstream data as derived; claiming constant activation follows from positive residual slack, a complete manuscript no-lower result, unconditional ZeroSlack, complete global routing, polynomial PCCMin, a target decider, assumption discharge, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,120 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,120 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 162 of 164 scoped formal milestone rows. The newest row makes the report-facing SAT and locked-NAND interfaces exact compatibility names for the concrete finite-pipeline model and directly reuses its checked all-input reduction. | Treating interface compatibility as a target decider, SAT hardness transport, unconditional residual minimisation, ZeroSlack, exact polynomial PCCMin, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,10 +62,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `edcf84c74280b455ca656ee57653d6fb07cfcc30`.
+   `63ba53d76da0878b0d3b2834b891afcc6ef0fe0e`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,114 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,120 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -232,8 +232,9 @@ Review the gaps between those scopes and the target theorem:
    now packaged as a concrete `PolynomialReduction` from `EncodedNANDSAT` to
    `EncodedLockedNANDThreshold`, with recursive raw-machine refinement. The fixed all-input CNF compiler
    now packages a direct `PolynomialReduction` from `CNFSAT` to `EncodedNANDSAT` and composes the two
-   reductions. This does not decide CNF-SAT, prove SAT NP-hardness or CNF-SAT NP-completeness, discharge
-   the separate abstract locked-NAND threshold axiom, put CNF-SAT in P, or prove `P = NP`.
+   reductions. M186 subsequently removes the duplicate report-facing locked-NAND axiom and reuses
+   that concrete reduction directly. The route still does not decide CNF-SAT, prove SAT NP-hardness
+   or CNF-SAT NP-completeness, put CNF-SAT in P, or prove `P = NP`.
 4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
    unlisted gain and cannot imply `ZeroSlack`.
 5. PCCMin exactness, the residual-band minimizer, and polynomial runtime/certificate bounds remain
@@ -272,7 +273,7 @@ current publication gate.
 - Replace a milestone theorem with a same-name theorem of weaker type and confirm it is unearned.
 - Add a project or unknown axiom to a milestone/root closure and confirm rejection.
 - Set an expected gate fingerprint to null and confirm that it remains unconfigured and nonmatching.
-- Insert the abstract string-handle `PNP.PEqualsNP` type and confirm that it is publication-ineligible.
+- Remove or forge the exact `PNP.Main.p_eq_np` root while leaving the `PNP.PEqualsNP` compatibility alias present, and confirm that publication remains closed.
 - Forge a historical accepted flag or checker Boolean and confirm that theorem output remains false.
 - Remove one blocker or project axiom from public status and confirm rejection.
 - Serve a stale or missing inventory and confirm that the browser remains fail-closed.

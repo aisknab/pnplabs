@@ -1,23 +1,17 @@
 #!/usr/bin/env node
 import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
 import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mjs";
+import { sendUnifiedPushNotification } from "./unifiedpush-notification.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
 const SHA_PATTERN = /^[0-9a-f]{40}$/u;
-const TOPIC_PATTERN = /^[A-Za-z0-9_-]{1,128}$/u;
 
 function fail(message) {
   throw new Error(message);
-}
-
-export function validateTopic(topic) {
-  if (typeof topic !== "string" || !TOPIC_PATTERN.test(topic)) {
-    fail("PNPLABS_NTFY_TOPIC must contain 1 to 128 letters, digits, underscores, or hyphens");
-  }
-  return topic;
 }
 
 function validateSha(value, label) {
@@ -38,19 +32,64 @@ export function assertCheckoutIdentity({ expectedCommit, head, originMain, tree,
   return { commit: head, tree };
 }
 
-export function buildNotification({ commit, tree }) {
+export function readProgressSummary(root) {
+  const source = JSON.parse(readFileSync(path.join(root, "public", "pnp-proof-progress.json"), "utf8"));
+  const proofPercent = source?.proofCompletion?.percent;
+  const earnedRows = source?.formalArtefactCoverage?.earnedRows;
+  const totalRows = source?.formalArtefactCoverage?.totalRows;
+  const gates = source?.globalGates;
+  const history = source?.history;
+  if (!Number.isInteger(proofPercent) || proofPercent < 0 || proofPercent > 100) {
+    fail("canonical proof progress has an invalid risk-weighted estimate");
+  }
+  if (!Number.isInteger(earnedRows) || !Number.isInteger(totalRows) || earnedRows < 0 || earnedRows > totalRows) {
+    fail("canonical proof progress has invalid formal artefact coverage");
+  }
+  if (!Array.isArray(gates) || gates.some((gate) => !["open", "closed"].includes(gate?.status))) {
+    fail("canonical proof progress has invalid global gate states");
+  }
+  if (!Array.isArray(history) || history.length === 0
+      || history.at(-1)?.riskWeightedProofCompletionPercent !== proofPercent) {
+    fail("canonical proof progress history does not end at the current estimate");
+  }
+  const previousProofPercent = history.at(-2)?.riskWeightedProofCompletionPercent ?? proofPercent;
+  if (!Number.isInteger(previousProofPercent) || previousProofPercent < 0 || previousProofPercent > 100) {
+    fail("canonical proof progress history has an invalid previous estimate");
+  }
+  return {
+    proofPercent,
+    previousProofPercent,
+    scoreChanged: previousProofPercent !== proofPercent,
+    earnedRows,
+    totalRows,
+    closedGates: gates.filter((gate) => gate.status === "closed").length,
+    totalGates: gates.length
+  };
+}
+
+export function buildNotification({ commit, tree, progress }) {
   validateSha(commit, "commit");
   validateSha(tree, "tree");
+  if (!progress || !Number.isInteger(progress.proofPercent) || !Number.isInteger(progress.earnedRows)
+      || !Number.isInteger(progress.totalRows) || !Number.isInteger(progress.closedGates)
+      || !Number.isInteger(progress.totalGates) || !Number.isInteger(progress.previousProofPercent)
+      || typeof progress.scoreChanged !== "boolean") {
+    fail("deployment notification requires canonical progress fields");
+  }
+  const proofLine = progress.scoreChanged
+    ? `Proof estimate: ${progress.previousProofPercent}% → ${progress.proofPercent}%.`
+    : `Proof estimate: ${progress.proofPercent}%, unchanged.`;
   const deployCommand = `sudo -n /usr/bin/env -i PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`;
   return {
     title: "PNPLabs deployment ready",
-    priority: "high",
-    tags: "white_check_mark,rocket",
-    body: [
+    message: [
       "PNPLabs has passed its release checks and is ready for your pinned deployment.",
+      proofLine,
+      `Formal artefact coverage: ${progress.earnedRows}/${progress.totalRows}.`,
+      `Global gates: ${progress.closedGates}/${progress.totalGates} closed.`,
       `Commit: ${commit}`,
       `Tree: ${tree}`,
-      "Run on the deployment host:",
+      "Pinned deployment command:",
       deployCommand
     ].join("\n"),
     deployCommand
@@ -81,7 +120,6 @@ function parseArguments(argv) {
 
 async function main() {
   const { expectedCommit, dryRun } = parseArguments(process.argv.slice(2));
-  const topic = validateTopic(process.env.PNPLABS_NTFY_TOPIC);
   const root = path.resolve(process.cwd());
   const identity = assertCheckoutIdentity({
     expectedCommit,
@@ -92,28 +130,28 @@ async function main() {
   });
   verifyReleaseSeal({ root });
   checkBrowserReportIntegrity({ root });
-  const notification = buildNotification(identity);
+  const progress = readProgressSummary(root);
+  const notification = buildNotification({ ...identity, progress });
   if (dryRun) {
-    console.log(notification.body);
+    console.log(notification.message);
     return;
   }
-  const response = await fetch(`https://ntfy.sh/${encodeURIComponent(topic)}`, {
-    method: "POST",
-    headers: {
-      "Priority": notification.priority,
-      "Tags": notification.tags,
-      "Title": notification.title
-    },
-    body: notification.body
+  const result = await sendUnifiedPushNotification({
+    title: notification.title,
+    message: notification.message,
+    dedupeKey: `deployment-ready:${identity.commit}:${identity.tree}`
   });
-  if (!response.ok) fail(`ntfy publication failed with HTTP ${response.status}`);
-  console.log(`deployment-ready notification sent for ${identity.commit} tree ${identity.tree}`);
+  if (result.status === "sent") {
+    console.log(`deployment-ready UnifiedPush notification sent for ${identity.commit} tree ${identity.tree} HTTP ${result.httpStatus}`);
+  } else {
+    console.log(`deployment-ready UnifiedPush notification not sent for ${identity.commit} tree ${identity.tree}: ${result.reason}`);
+  }
 }
 
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 if (isMain) {
   main().catch((error) => {
-    console.error(error.stack || String(error));
+    console.error(error instanceof Error ? error.message : "deployment-ready notification failed");
     process.exitCode = 1;
   });
 }

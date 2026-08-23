@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 566,763 | `2efd2ef77c689d9341b557516235b3a8c170bb2ee3668309ea21247fd8aca2cc` |
-| `downloads/canonical-proof-report.pdf` | 566,763 | `2efd2ef77c689d9341b557516235b3a8c170bb2ee3668309ea21247fd8aca2cc` |
-| `downloads/canonical_proof_report.tex` | 343,445 | `40ba52d00a4cc12413d2b6839a94e788eb873d9ba9de59b03e58a4747369905c` |
-| `downloads/canonical-proof-report.tex` | 343,445 | `40ba52d00a4cc12413d2b6839a94e788eb873d9ba9de59b03e58a4747369905c` |
-| `public/pnp-status.json` | 2,603,129 | `867e2609f544f1aec18c0855cd921e4991d66f82450d955be9d39a7f4ceefa8d` |
-| `public/pnp-theorem-inventory.json` | 33,072,487 | `d26de4965373fa55ee89c14e0884fb271efa3f6305b13fca429b316f5540ab78` |
-| `public/pnp-proof-progress.json` | 33,117 | `a0484c0fcfe186f012b595392d4ed90d271c4c090602ae67adabdd2612377c0e` |
+| `downloads/canonical_proof_report.pdf` | 567,472 | `12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917` |
+| `downloads/canonical-proof-report.pdf` | 567,472 | `12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917` |
+| `downloads/canonical_proof_report.tex` | 344,783 | `dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864` |
+| `downloads/canonical-proof-report.tex` | 344,783 | `dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864` |
+| `public/pnp-status.json` | 2,608,962 | `a2bbf2c1ad05255291e0b7ba2422ae9ab196d6236a428d9b6d691e268f3e0687` |
+| `public/pnp-theorem-inventory.json` | 33,070,059 | `a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07` |
+| `public/pnp-proof-progress.json` | 37,719 | `2529939036262ab94510c6866cbf1c4ec3253a14491b6ad98e33f5d1158d7748` |
 
 The PDF must have 132 A4 pages. Both filename styles must be byte-identical.
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout edcf84c74280b455ca656ee57653d6fb07cfcc30
+git -C ../pnp checkout 63ba53d76da0878b0d3b2834b891afcc6ef0fe0e
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,9 +68,9 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 30,056 public declarations, 15,507 theorem-kind declarations,
-7,617 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 302 modules, and
-four project axioms. The publication gate must remain false with five blockers. The concrete
+Expected compiled inventory counts are 29,988 public declarations, 15,497 theorem-kind declarations,
+7,613 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 303 modules, and
+three project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
@@ -82,17 +82,16 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest finite BCEL and Packet activation-coherence obstruction milestone has 6 reviewed theorem
-pins. Its focused 12-declaration audit uses only `Quot.sound` and `propext`, with no project axiom or
-`Classical.choice`. For every accepted M184 carrier-coherence certificate, the theorem rows compute
-the selected nucleus defect and exhaustively check the Packet cut value plus every canonical nonempty
-proper-cut activation. Acceptance reconstructs full finite activation coherence, while the existing
-same-family Packet exclusion proves acceptance impossible. A deterministic classifier returns either
-the total cut-value mismatch or a proof-bearing proper-cut mismatch. The terminal problem, positive
-full-slack premise, family, map, activation data, and downstream data remain supplied, and exhaustive
-cut enumeration may be exponential. This diagnostic does not construct or repair activation
-coherence, complete the no-lower ledger or global routing, establish unconditional ZeroSlack, or prove
-polynomial PCCMin.
+The latest concrete report-facing locked-NAND compatibility milestone has 6 reviewed theorem pins.
+It identifies the report-facing SAT and locked-NAND languages, verifier, decider, reduction, P/NP-class,
+and P-equals-NP interfaces with the concrete finite-pipeline definitions and directly reuses the
+checked all-bitstring polynomial reduction. Its focused 9-declaration audit records the wider compatibility
+surface, while the six pinned milestone theorems close under the Lean-standard allowlist and its checked
+endpoint has no project-specific axiom. This
+removes the duplicate `PNP.LockedNANDThreshold` axiom and caller-supplied reduction edge; it does not
+supply a target decider, prove SAT NP-hardness or CNFSAT NP-completeness transport, construct the
+unconditional residual minimiser, prove ZeroSlack or exact polynomial PCCMin, create the eligible root
+theorem, or open a global gate.
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
 
@@ -110,8 +109,9 @@ execution under one external polynomial, `PolynomialTimeFunction`, literal `RawR
 `Classical.choice`.
 
 This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hardness or CNF-SAT
-NP-completeness. The abstract locked-NAND threshold axiom, remaining Cook-Levin formula body,
-complete raw builder, CNF-SAT in P, and `P = NP` must remain absent.
+NP-completeness. M186 now connects it to the exact report-facing concrete target and removes the
+duplicate locked-NAND project axiom. The remaining Cook-Levin formula body, complete raw builder,
+target decider, CNF-SAT in P, eligible root theorem, and `P = NP` must remain absent.
 
 The earlier typed-budget reflection milestone adds 30 reviewed theorem pins. For every arbitrary finite grouped BN6 family,
 selector-rank carrier, and domain of typed budget values with decidable equality, Lean computes

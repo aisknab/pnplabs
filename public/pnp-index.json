@@ -1,29 +1,29 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 146,
+  "version": 147,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "edcf84c74280b455ca656ee57653d6fb07cfcc30",
+  "sourceCommitRef": "63ba53d76da0878b0d3b2834b891afcc6ef0fe0e",
   "sourceProofCommitRef": "23ea280885d0e341863d60c1df2f11fd0e816b77",
-  "sourceTree": "d8187018fb200e9ad9b8877988c8584f86bbafe7",
-  "latestEarnedMilestoneSourceCommitRef": "edcf84c74280b455ca656ee57653d6fb07cfcc30",
-  "latestEarnedMilestoneSourceTree": "d8187018fb200e9ad9b8877988c8584f86bbafe7",
+  "sourceTree": "98103f568ccb68561094d5516ada08c099f770a7",
+  "latestEarnedMilestoneSourceCommitRef": "63ba53d76da0878b0d3b2834b891afcc6ef0fe0e",
+  "latestEarnedMilestoneSourceTree": "98103f568ccb68561094d5516ada08c099f770a7",
   "syncedOn": "2026-08-23",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-185",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-185",
-  "leanTheoremInventorySha256": "d26de4965373fa55ee89c14e0884fb271efa3f6305b13fca429b316f5540ab78",
-  "leanSourceClosureSha256": "2a55fe2ee63fd24a78e25aa548f83778a96cc4f7f9b07af8f46ac72891070455",
-  "proofProgressCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-185",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-186",
+  "leanTheoremInventorySha256": "a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07",
+  "leanSourceClosureSha256": "cfd4833f16ba9ee44b924950b4bd71d29f9ff6eea0a883feab087580de574975",
+  "proofProgressCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186",
   "proofProgressModelId": "fixed-risk-weighted-checkpoints-v0",
-  "proofProgressPointsEarned": 30,
+  "proofProgressPointsEarned": 32,
   "proofProgressPointsAvailable": 100,
   "proofProgressUncertaintyLowPercent": 20,
   "proofProgressUncertaintyHighPercent": 40,
-  "formalArtefactCoverageEarnedRows": 161,
-  "formalArtefactCoverageTotalRows": 163,
+  "formalArtefactCoverageEarnedRows": 162,
+  "formalArtefactCoverageTotalRows": 164,
   "globalProofGatesClosed": 0,
   "globalProofGatesAvailable": 5,
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-23-185",
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-23-186",
   "canonicalReportPages": 132,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
@@ -33,11 +33,11 @@
     "abstractPEqualsNPPublicationEligible": false,
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
-    "leanTheoremInventoryDeclarationCount": 30056,
-    "leanTheoremInventoryTheoremCount": 15507,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 7617,
+    "leanTheoremInventoryDeclarationCount": 29988,
+    "leanTheoremInventoryTheoremCount": 15497,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 7613,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15141,
-    "leanTheoremInventorySourceClosureModuleCount": 302,
+    "leanTheoremInventorySourceClosureModuleCount": 303,
     "mathematicalTheoremEstablished": false,
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
@@ -218,7 +218,6 @@
     "projectSpecificAxiomInventory": [
       "PNP.CheckPCCPackexp",
       "PNP.GeneratePCCPack",
-      "PNP.LockedNANDThreshold",
       "PNP.ResidualBandExactMinimization"
     ],
     "remainingBlockers": [
@@ -4393,12 +4392,17 @@
     "leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope": "all-arbitrary-finite-proof-bearing-same-candidate-model-bcel-ready-nuclei-bijectively-mapped-to-the-exact-packet-family-carrier",
     "leanResidualTerminalFiniteBCELPacketActivationObstructionFormalized": true,
     "leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed": true,
-    "leanResidualTerminalFiniteBCELPacketActivationObstructionScope": "all-arbitrary-finite-coherently-mapped-bcel-ready-and-packet-families-exhaustive-cut-value-and-proper-cut-activation-coherence-check-with-proof-bearing-first-obstruction"
+    "leanResidualTerminalFiniteBCELPacketActivationObstructionScope": "all-arbitrary-finite-coherently-mapped-bcel-ready-and-packet-families-exhaustive-cut-value-and-proper-cut-activation-coherence-check-with-proof-bearing-first-obstruction",
+    "leanConcreteLegacyLockedNANDCompatibilityFormalized": true,
+    "leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed": true,
+    "leanConcreteLegacyLockedNANDCompatibilityAuditedDeclarationCount": 9,
+    "leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree": true,
+    "leanConcreteLegacyLockedNANDCompatibilityScope": "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 161,
+    "earned": 162,
     "unearned": 2,
-    "total": 163
+    "total": 164
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4561,7 +4565,8 @@
     "residual-terminal-packet-budget-no-lower-zeroslack-sidecar",
     "residual-terminal-bcel-packet-no-lower-zeroslack-sidecar",
     "residual-terminal-zeroslack-packet-selector-hb-coherence",
-    "global-locked-nand-threshold"
+    "global-locked-nand-threshold",
+    "concrete-legacy-locked-nand-compatibility"
   ],
   "unearnedMilestones": [
     "global-zeroslack-pccmin",
@@ -5266,8 +5271,8 @@
     "The strict-v0 locked-NAND target emitter is one fixed 1,387,921-rule grammar-only controller. It emits the exact direct raw target on every grammar-decoded circuit, including intrinsically invalid references, rejects malformed grammar with empty output, and has all-input polynomial runtime and output-size bounds. Composition with the strict source parser clears intrinsically invalid inputs and computes buildLockedNANDInstance with recursively compiled RawRefinement.",
     "The strict parser/emitter composition is packaged as a concrete PolynomialReduction from EncodedNANDSAT to EncodedLockedNANDThreshold, with exact output, all-bitstring language equivalence, a ReducesTo witness, and recursive RawRefinement. PNP.Main.locked_nand_threshold now consumes the composed CNFSAT reduction directly in the concrete charged-pipeline model.",
     "Against the hostile-review inventory, DirectWireOutputLowerBound, global MacroDistinct, semantic-carrier TraceEquivalence, whole-carrier ZeroOutputConvention, FinalLockSeparation, the encoded uniform polynomial builder, and its report-facing linkage are discharged.",
-    "PNP.Main.locked_nand_threshold has exact type ReducesTo CNFSAT EncodedLockedNANDThreshold and depends only on Lean standard axioms propext and Quot.sound. It does not put the target in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP.",
-    "The generic conditional module still quantifies an arbitrary satisfiable proposition and baseline natural number. The authoritative report-facing threshold theorem bypasses that legacy string-handle layer and links the concrete encoded CNFSAT builder directly to the concrete threshold language.",
+    "PNP.Main.locked_nand_threshold has exact type ReducesTo CNFSAT EncodedLockedNANDThreshold and depends only on Lean standard axioms propext and Quot.sound. It does not put the target in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, or prove P = NP.",
+    "The generic conditional module still quantifies an arbitrary satisfiable proposition and baseline natural number. The active report-facing SAT and locked-NAND names now alias the concrete finite-pipeline languages and consume the checked all-bitstring reduction directly; no deterministic locked-NAND decider, residual-band reduction, or concrete NP-hardness transport follows.",
     "The executable residual-route scan is complete only for the explicit finite implementation list supplied by its caller; unresolved excludes no unlisted gain and does not imply global minimality or ZeroSlack.",
     "An empty-list scan is formally shown to remain unresolved on a positive-slack implementation, so search failure cannot be promoted to zero residual slack.",
     "Exact and ZeroSlack route results require Lean proofs of semantic minimality and are never manufactured by the executable gain scanner; no BCEL, HN/BUD, selector, PCCMin-loop, or residual-band completeness follows.",
@@ -5312,10 +5317,11 @@
     "Historical releases and coordinates are preserved for auditability but are not current theorem-status authority.",
     "The designated legacy-v0 command replays pinned assertion-checker behavior only; it is neither current theorem authority nor a mathematical proof.",
     "The compiled Lean theorem inventory is declaration and axiom-dependency evidence; it does not widen any theorem beyond its exact type and stated scope.",
-    "PNP.PEqualsNP uses abstract string-handle witnesses rather than a concrete standard complexity model and is categorically ineligible for public theorem activation.",
+    "PNP.PEqualsNP is now a compatibility name for the concrete finite charged-pipeline target. The target remains inactive because deterministic CNFSAT membership in P, concrete NP-hardness transport, the eligible root theorem, and the exact publication fingerprints remain absent.",
     "PNP.Main.ConcretePEqualsNP now names the inactive finite charged-pipeline target, while PNP.Main.p_eq_np remains absent.",
     "All five reviewed activation fingerprints remain intentionally unset, so target presence alone cannot open the concrete publication gate.",
     "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only.",
-    "The checker proves that the numerical bridge fails on the current accepted finite family; it does not prove activation coherence. The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, activation cells and masses, payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. Exhaustive proper-cut enumeration may be exponential. This milestone does not derive the family or activation weights from positive residual slack, construct BN3--BN6 data from every valid input, complete the global route or no-lower systems, prove unconditional SaturatePositive, BCELReady, ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP."
+    "The checker proves that the numerical bridge fails on the current accepted finite family; it does not prove activation coherence. The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, activation cells and masses, payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. Exhaustive proper-cut enumeration may be exponential. This milestone does not derive the family or activation weights from positive residual slack, construct BN3--BN6 data from every valid input, complete the global route or no-lower systems, prove unconditional SaturatePositive, BCELReady, ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.",
+    "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP."
   ]
 }

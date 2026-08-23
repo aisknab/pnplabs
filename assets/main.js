@@ -7,28 +7,27 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-185";
-const STATUS_SHA256 = '867e2609f544f1aec18c0855cd921e4991d66f82450d955be9d39a7f4ceefa8d';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-185";
-const FORMAL_PUBLICATION_MAP_SHA256 = "906aa80a473c5037df86baf06bd2d2d6c93632c6872981cfbc8d2bb2e641257e";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186";
+const STATUS_SHA256 = 'a2bbf2c1ad05255291e0b7ba2422ae9ab196d6236a428d9b6d691e268f3e0687';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-186";
+const FORMAL_PUBLICATION_MAP_SHA256 = "bc4dc2e057bae94bef9331ba3e6497f1171cb906df7f738d807e49d3befb67de";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-185";
-const INVENTORY_SHA256 = "d26de4965373fa55ee89c14e0884fb271efa3f6305b13fca429b316f5540ab78";
-const SOURCE_CLOSURE_SHA256 = "2a55fe2ee63fd24a78e25aa548f83778a96cc4f7f9b07af8f46ac72891070455";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-186";
+const INVENTORY_SHA256 = "a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07";
+const SOURCE_CLOSURE_SHA256 = "cfd4833f16ba9ee44b924950b4bd71d29f9ff6eea0a883feab087580de574975";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 30056,
-  theorems: 15507,
-  assumptionFreeTheorems: 7617,
+  declarations: 29988,
+  theorems: 15497,
+  assumptionFreeTheorems: 7613,
   excludedPrivateDeclarations: 15141,
-  modules: 302,
-  axioms: 4,
+  modules: 303,
+  axioms: 3,
 });
 
 const PROJECT_AXIOMS = Object.freeze([
   'PNP.CheckPCCPackexp',
   'PNP.GeneratePCCPack',
-  'PNP.LockedNANDThreshold',
   'PNP.ResidualBandExactMinimization',
 ]);
 
@@ -4677,6 +4676,14 @@ const RESIDUAL_TERMINAL_FINITE_BCEL_PACKET_ACTIVATION_OBSTRUCTION_DECLARATIONS =
   ["PNP.terminal_finite_bcel_packet_activation_obstruction_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalFiniteBCELPacketActivationObstruction","e1121f82e5d955f69e29d28ce6b0819aec30268fe34e118632eb2e30f348b08d"],
   ["PNP.zeroslack_bcel_packet_activation_obstruction_checked_complete",["Quot.sound","propext"],"PNP.ZeroSlack","6bfe3fda461aef5b96b6fbca726d8b3134b992b9c97b16bc365e5a410d4c0620"],
 ]);
+const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_DECLARATIONS = Object.freeze([
+  ["PNP.concrete_legacy_locked_nand_compatibility_checked_complete",["Quot.sound","propext"],"PNP.ConcreteLegacyLockedNANDCompatibility","15d121170c80cd88001bd80d49494382371880b070abf03d09eaaa2f1e0d820b"],
+  ["PNP.report_locked_nand_eq_concrete_threshold",["propext"],"PNP.ConcreteLegacyLockedNANDCompatibility","41a348f9f171f860acba8e4d17e1c0a6940b9e34de91537875dbc62b6fb5c7da"],
+  ["PNP.report_sat_eq_concrete_cnfsat",[],"PNP.ConcreteLegacyLockedNANDCompatibility","18cbb8bcc68cf962a66f0307830376ce0235dbdf1dd65645ed7ea0d8e9c77812"],
+  ["PNP.sat_in_np_witness_model",[],"PNP.SAT","eec50f3efac192412d13bb3af0bee47edbdb39a0696177877e9bb1ee7ebbeb71"],
+  ["PNP.sat_in_p_from_locked_nand_in_p",["Quot.sound","propext"],"PNP.LockedNAND","22e89ea9c9bb5a637be9b676789bd28c793be5cbb0b6cf6c4bc861f8c0a2a172"],
+  ["PNP.sat_reduces_to_locked_nand_checked",["Quot.sound","propext"],"PNP.LockedNAND","bafb9a9729b6e8ee9f653f60e8d2dc10691e670d275481a9c8ae62880935d44b"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5560,6 +5567,11 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalFiniteBCELPacketActivationObstructionFormalized: false,
   leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed: false,
   leanResidualTerminalFiniteBCELPacketActivationObstructionScope: null,
+  leanConcreteLegacyLockedNANDCompatibilityFormalized: false,
+  leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed: false,
+  leanConcreteLegacyLockedNANDCompatibilityAuditedDeclarationCount: 0,
+  leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree: false,
+  leanConcreteLegacyLockedNANDCompatibilityScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6173,6 +6185,10 @@ leanResidualTerminalFiniteBCELPacketCarrierCoherenceScope = ${payload.leanResidu
 leanResidualTerminalFiniteBCELPacketActivationObstructionFormalized = ${payload.leanResidualTerminalFiniteBCELPacketActivationObstructionFormalized ?? false}
 leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed = ${payload.leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed ?? false}
 leanResidualTerminalFiniteBCELPacketActivationObstructionScope = ${payload.leanResidualTerminalFiniteBCELPacketActivationObstructionScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalFiniteBCELPacketActivationObstructionScope)}
+leanConcreteLegacyLockedNANDCompatibilityFormalized = ${payload.leanConcreteLegacyLockedNANDCompatibilityFormalized ?? false}
+leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed = ${payload.leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed ?? false}
+leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree = ${payload.leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree ?? false}
+leanConcreteLegacyLockedNANDCompatibilityScope = ${payload.leanConcreteLegacyLockedNANDCompatibilityScope === null ? 'null' : JSON.stringify(payload.leanConcreteLegacyLockedNANDCompatibilityScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7241,6 +7257,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const concreteLegacyLockedNANDCompatibility =
+    CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7832,6 +7855,9 @@ function validateInventory(inventory) {
     && residualTerminalFiniteBCELPacketActivationObstruction.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && concreteLegacyLockedNANDCompatibility.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8269,6 +8295,9 @@ function validateStatus(status, inventory) {
   );
   const residualTerminalFiniteBCELPacketActivationObstructionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'residual-terminal-finite-bcel-packet-activation-obstruction'
+  );
+  const concreteLegacyLockedNANDCompatibilityMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'concrete-legacy-locked-nand-compatibility'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -9948,10 +9977,34 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalFiniteBCELPacketActivationObstructionAxiomAuditPassed === true
     && status.leanResidualTerminalFiniteBCELPacketActivationObstructionScope === "all-arbitrary-finite-coherently-mapped-bcel-ready-and-packet-families-exhaustive-cut-value-and-proper-cut-activation-coherence-check-with-proof-bearing-first-obstruction"
 
+    && concreteLegacyLockedNANDCompatibilityMilestone?.classification === "formalized-concrete-legacy-locked-nand-compatibility"
+    && concreteLegacyLockedNANDCompatibilityMilestone.status === "formalized-concrete-legacy-locked-nand-compatibility"
+    && concreteLegacyLockedNANDCompatibilityMilestone.scope === "The report-facing language, decider, verifier, reduction, P/NP class, and P-equals-NP interfaces are exact compatibility names for the concrete finite-pipeline model. SAT and LockedNANDThreshold are definitionally the concrete CNFSAT and EncodedLockedNANDThreshold languages, and the active bridge reuses the checked all-bitstring reduction without a caller-supplied trust field."
+    && concreteLegacyLockedNANDCompatibilityMilestone.nonClaim === "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP."
+    && sameJson(
+      concreteLegacyLockedNANDCompatibilityMilestone.requiredTheorems,
+      CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_DECLARATIONS.map(([name]) => name)
+    )
+    && concreteLegacyLockedNANDCompatibilityMilestone.theoremRows?.every((row) => {
+      const expected = CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteLegacyLockedNANDCompatibilityFormalized === true
+    && status.leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed === true
+    && status.leanConcreteLegacyLockedNANDCompatibilityAuditedDeclarationCount === 9
+    && status.leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree === true
+    && status.leanConcreteLegacyLockedNANDCompatibilityScope === "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse"
+
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
-    && lockedNANDThresholdPublicationMilestone.nonClaim === "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder and report-facing linkage in the finite charged-pipeline model. It does not put the concrete locked threshold language in P, discharge residual-band minimization, ZeroSlack or PCCMin, prove concrete CNFSAT NP-hardness, activate the legacy string-handle bridge, or prove P = NP."
+    && lockedNANDThresholdPublicationMilestone.nonClaim === "This closes the uniform all-bitstring CNFSAT-to-concrete-locked-threshold builder in the finite charged-pipeline model. The downstream M186 compatibility milestone now activates that exact reduction in the report-facing bridge. Neither milestone puts the concrete locked threshold language in P, discharges residual-band minimization, ZeroSlack or PCCMin, proves concrete CNFSAT NP-hardness, or proves P = NP."
     && sameJson(
       lockedNANDThresholdPublicationMilestone.requiredTheorems,
       LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name]) => name)

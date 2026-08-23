@@ -3598,7 +3598,6 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
     'PNP.GeneratePCCPack',
-    'PNP.LockedNANDThreshold',
     'PNP.ResidualBandExactMinimization',
   ]);
 
@@ -5819,7 +5818,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(fourthClauseSecondLiteralPrefixMilestone.earned, true);
   assert.equal(fourthClausePaddingRunMilestone.earned, true);
   assert.equal(secondConstraintFirstLiteralSignMilestone.earned, true);
-  assert.equal(status.formalPublicationMilestones.at(-1).nonClaim.includes('ineligible'), true);
+  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /PNP\.Main\.p_eq_np remain absent/u);
 
   for (const command of [
     'lake build PNP',

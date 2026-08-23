@@ -23,12 +23,15 @@ const PATHS = Object.freeze({
 
 const BASELINE_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184";
 const BASELINE_COVERAGE = Object.freeze({ earnedRows: 160, totalRows: 162 });
+const BASELINE_SCORE = 30;
+const CURRENT_SCORE = 32;
 
 const EXPECTED_TRACKS = Object.freeze([
   {
     id: "formal-foundations",
     title: "Formal foundations and proof infrastructure",
     pointsAvailable: 15,
+    pointsEarned: 13,
     checkpoints: [
       ["foundations-concrete-kernel-interfaces", 4, "earned"],
       ["foundations-recursive-pipeline", 4, "earned"],
@@ -41,6 +44,7 @@ const EXPECTED_TRACKS = Object.freeze([
     id: "concrete-reductions",
     title: "Concrete reductions and locked-NAND route",
     pointsAvailable: 20,
+    pointsEarned: 15,
     checkpoints: [
       ["reductions-cook-levin-semantics", 3, "earned"],
       ["reductions-cnf-to-nand", 3, "earned"],
@@ -49,13 +53,14 @@ const EXPECTED_TRACKS = Object.freeze([
       ["reductions-report-locked-nand-linkage", 2, "earned"],
       ["reductions-complete-cook-levin-builder", 3, "open"],
       ["reductions-concrete-np-hardness", 2, "open"],
-      ["reductions-final-target-compatibility", 1, "open"]
+      ["reductions-final-target-compatibility", 1, "earned"]
     ]
   },
   {
     id: "unconditional-residual-core",
     title: "Unconditional residual core and ZeroSlack",
     pointsAvailable: 35,
+    pointsEarned: 2,
     checkpoints: [
       ["residual-finite-stopping-foundations", 2, "earned"],
       ["residual-derive-terminal-objects", 5, "open"],
@@ -71,6 +76,7 @@ const EXPECTED_TRACKS = Object.freeze([
     id: "exact-pccmin",
     title: "Exact PCCMin algorithm, complexity and bounds",
     pointsAvailable: 20,
+    pointsEarned: 1,
     checkpoints: [
       ["pccmin-strict-gain-scaffold", 1, "earned"],
       ["pccmin-executable-loop", 3, "open"],
@@ -84,10 +90,11 @@ const EXPECTED_TRACKS = Object.freeze([
     id: "root-and-axioms",
     title: "Root theorem and project-axiom elimination",
     pointsAvailable: 10,
+    pointsEarned: 1,
     checkpoints: [
       ["axiom-remove-generate-pccpack", 1, "open"],
       ["axiom-remove-check-pccpackexp", 1, "open"],
-      ["axiom-remove-locked-nand-threshold", 1, "open"],
+      ["axiom-remove-locked-nand-threshold", 1, "earned"],
       ["axiom-remove-residual-band-minimum", 1, "open"],
       ["root-deterministic-cnfsat-in-p", 2, "open"],
       ["root-complexity-transport", 1, "open"],
@@ -108,7 +115,6 @@ const EXPECTED_GATES = Object.freeze([
 const EXPECTED_AXIOMS = Object.freeze([
   "PNP.CheckPCCPackexp",
   "PNP.GeneratePCCPack",
-  "PNP.LockedNANDThreshold",
   "PNP.ResidualBandExactMinimization"
 ]);
 
@@ -358,12 +364,13 @@ function validateProofProgressModel(ledger, status, inventory) {
       checkpointCount += 1;
     }
     requireValue(trackAvailable, track.pointsAvailable, "Track.CheckpointTotal", { id: expected.id });
+    requireValue(trackEarned, expected.pointsEarned, "Track.ExpectedEarned", { id: expected.id });
     requireValue(track.pointsEarned, trackEarned, "Track.StoredEarned", { id: expected.id });
     pointsAvailable += trackAvailable;
     pointsEarned += trackEarned;
   }
   requireValue(pointsAvailable, 100, "ProofCompletion.TrackMaximumTotal");
-  requireValue(pointsEarned, 30, "ProofCompletion.M184Baseline");
+  requireValue(pointsEarned, CURRENT_SCORE, "ProofCompletion.CurrentEarned");
   requireValue(ledger.proofCompletion.pointsEarned, pointsEarned, "ProofCompletion.StoredEarned");
   requireValue(ledger.proofCompletion.percent, 100 * pointsEarned / pointsAvailable, "ProofCompletion.StoredPercent");
   if (!(ledger.proofCompletion.uncertaintyLowPercent <= ledger.proofCompletion.percent
@@ -416,7 +423,7 @@ function validateProofProgressModel(ledger, status, inventory) {
 
   requirePlain(ledger.publicationGate, "PublicationGate.Shape");
   requireValue(ledger.publicationGate.passed, status.concretePublicationGate?.passed, "PublicationGate.Status");
-  requireValue(ledger.publicationGate.passed, false, "PublicationGate.M184Baseline");
+  requireValue(ledger.publicationGate.passed, false, "PublicationGate.Current");
 
   requirePlain(ledger.scoreChangePolicy, "Policy.Shape");
   requireValue(ledger.scoreChangePolicy.fixedCheckpointWeights, true, "Policy.FixedWeights");
@@ -428,7 +435,7 @@ function validateProofProgressModel(ledger, status, inventory) {
   requireValue(baseline.kind, "baseline", "History.BaselineKind");
   requireValue(baseline.asOfCoordinate, BASELINE_COORDINATE, "History.BaselineCoordinate");
   requireJson(baseline.formalArtefactCoverage, BASELINE_COVERAGE, "History.BaselineCoverage");
-  requireValue(baseline.riskWeightedProofCompletionPercent, 30, "History.BaselineScore");
+  requireValue(baseline.riskWeightedProofCompletionPercent, BASELINE_SCORE, "History.BaselineScore");
   requireValue(baseline.uncertaintyLowPercent, 20, "History.BaselineUncertaintyLow");
   requireValue(baseline.uncertaintyHighPercent, 40, "History.BaselineUncertaintyHigh");
   requireValue(baseline.globalGatesClosed, 0, "History.BaselineGatesClosed");
@@ -441,6 +448,24 @@ function validateProofProgressModel(ledger, status, inventory) {
   requireValue(currentHistory.uncertaintyHighPercent, ledger.proofCompletion.uncertaintyHighPercent, "History.CurrentUncertaintyHigh");
   requireValue(currentHistory.globalGatesClosed, ledger.globalGates.filter((gate) => gate.status === "closed").length, "History.CurrentGatesClosed");
   requireValue(currentHistory.globalGatesAvailable, EXPECTED_GATES.length, "History.CurrentGatesAvailable");
+  requireString(currentHistory.rationale, "History.CurrentRationale");
+  if (currentHistory !== baseline) {
+    const currentHistoryIndex = ledger.history.length - 1;
+    const previousHistory = ledger.history[currentHistoryIndex - 1];
+    requirePlain(previousHistory, "History.PreviousShape");
+    requireValue(currentHistory.kind, "milestone-review", "History.CurrentKind");
+    requireValue(currentHistory.scoreChanged,
+      pointsEarned !== previousHistory.riskWeightedProofCompletionPercent,
+      "History.CurrentScoreChanged");
+    requireArray(currentHistory.changedCheckpointIds, "History.CurrentCheckpointChanges");
+    if (currentHistory.scoreChanged === false) {
+      requireValue(currentHistory.changedCheckpointIds.length, 0, "History.CurrentUnexpectedCheckpointChange");
+      requireJson(currentHistory.changeRecords ?? [], [], "History.CurrentUnexpectedChangeRecords");
+    } else {
+      validateChangeRecords(currentHistory, ledger, status, inventory,
+        previousHistory.riskWeightedProofCompletionPercent, pointsEarned);
+    }
+  }
 
   requireArray(ledger.nonClaims, "NonClaims.Shape");
   const nonClaims = ledger.nonClaims.join(" ");
@@ -481,6 +506,68 @@ function validateProofProgressModel(ledger, status, inventory) {
     history: ledger.history.map((entry) => structuredClone(entry)),
     checkpointCount
   };
+}
+
+function validateChangeRecords(review, ledger, status, inventory, previousScore, currentScore) {
+  requireArray(review.changeRecords, "History.ChangeRecordsShape");
+  requireValue(review.changeRecords.length, review.changedCheckpointIds.length, "History.ChangeRecordCount");
+  const seenCheckpointIds = new Set();
+  let runningTotal = previousScore;
+  for (let index = 0; index < review.changeRecords.length; index += 1) {
+    const record = review.changeRecords[index];
+    const checkpointId = review.changedCheckpointIds[index];
+    requirePlain(record, "History.ChangeRecordShape", { index, checkpointId });
+    requireJson(Object.keys(record).sort(), [...REQUIRED_CHANGE_FIELDS].sort(),
+      "History.ChangeRecordFields", { index, checkpointId });
+    requireValue(record.checkpointId, checkpointId, "History.ChangeRecordCheckpoint", { index });
+    if (seenCheckpointIds.has(checkpointId)) {
+      fail("History.ChangeRecordDuplicateCheckpoint", "score-changing review must not repeat a checkpoint", { checkpointId });
+    }
+    seenCheckpointIds.add(checkpointId);
+    const checkpoint = ledger.tracks.flatMap((track) => track.checkpoints)
+      .find((candidate) => candidate.id === checkpointId);
+    requirePlain(checkpoint, "History.ChangeRecordKnownCheckpoint", { checkpointId });
+    if (!["open", "earned"].includes(record.oldStatus)
+        || !["open", "earned"].includes(record.newStatus)
+        || record.oldStatus === record.newStatus) {
+      fail("History.ChangeRecordTransition", "score change must transition one checkpoint between open and earned", {
+        checkpointId,
+        oldStatus: record.oldStatus,
+        newStatus: record.newStatus
+      });
+    }
+    requireValue(record.newStatus, checkpoint.status, "History.ChangeRecordNewStatus", { checkpointId });
+    requireArray(record.compiledEvidence, "History.ChangeRecordEvidenceShape", { checkpointId });
+    if (record.compiledEvidence.length === 0) {
+      fail("History.ChangeRecordEvidenceMissing", "score change record must include compiled evidence", { checkpointId });
+    }
+    for (const evidence of record.compiledEvidence) {
+      validateEvidence(evidence, status, inventory, checkpointId);
+    }
+    if (record.sourceCoordinateOrCommit !== ledger.asOfCoordinate
+        && !/^[0-9a-f]{40}$/u.test(record.sourceCoordinateOrCommit)) {
+      fail("History.ChangeRecordCoordinate", "score change evidence must name the current status coordinate or a full commit", { checkpointId });
+    }
+    requireString(record.loadBearingRationale, "History.ChangeRecordRationale", { checkpointId });
+    requireString(record.remainingTrackLimitations, "History.ChangeRecordLimitations", { checkpointId });
+    requirePlain(record.oldAndNewTotal, "History.ChangeRecordTotalShape", { checkpointId });
+    const delta = record.newStatus === "earned" ? checkpoint.points : -checkpoint.points;
+    requireJson(record.oldAndNewTotal, { old: runningTotal, new: runningTotal + delta },
+      "History.ChangeRecordTotal", { checkpointId });
+    runningTotal += delta;
+    requirePlain(record.uncertaintyRangeDecision, "History.ChangeRecordUncertaintyShape", { checkpointId });
+    requireValue(record.uncertaintyRangeDecision.lowPercent,
+      ledger.proofCompletion.uncertaintyLowPercent,
+      "History.ChangeRecordUncertaintyLow", { checkpointId });
+    requireValue(record.uncertaintyRangeDecision.highPercent,
+      ledger.proofCompletion.uncertaintyHighPercent,
+      "History.ChangeRecordUncertaintyHigh", { checkpointId });
+    requireValue(typeof record.uncertaintyRangeDecision.changed, "boolean",
+      "History.ChangeRecordUncertaintyChangedShape", { checkpointId });
+    requireString(record.uncertaintyRangeDecision.rationale,
+      "History.ChangeRecordUncertaintyRationale", { checkpointId });
+  }
+  requireValue(runningTotal, currentScore, "History.ChangeRecordFinalTotal");
 }
 
 async function readJson(root, relativePath) {

@@ -163,18 +163,40 @@ core bytes and the publication, site, provenance, and deployment contracts.
    documented one-time installation; never request, retain, or transmit a sudo
    password.
 
-### Deployment-ready phone notification
+### Progress notifications
 
-- Send the ntfy alert only after the PNPLabs PR is merged, every durable check is
-  green, the exact merge commit has passed source-bound and clean-clone
-  verification, and `origin/main` resolves to that same commit.
-- Run `npm run notify:deployment-ready -- --commit <exact-merge-commit>` from a
-  clean checkout with `PNPLABS_NTFY_TOPIC` supplied in the environment. Never
-  hardcode the topic or include credentials, private paths, or other secrets in
-  the notification.
-- The message must include the exact PNPLabs merge commit, tree, and pinned narrow
-  noninteractive deployment command. A dry run is evidence only for message shape;
-  it does not count as a delivered alert.
+- The active notification transport is UnifiedPush. Read its capability URL only
+  from `UNIFIEDPUSH_ENDPOINT`; never commit, print, publish, or log that value.
+- Send a direct HTTP `POST` to the unchanged configured URL. Encode exactly the
+  fields `title` and `message` with `URLSearchParams`, set `Content-Type` to
+  `application/x-www-form-urlencoded; charset=UTF-8`, set `Content-Encoding` to
+  `aes128gcm`, and accept JSON. Do not use ntfy topic paths, ntfy headers, ntfy
+  JSON payloads, credentials, or ntfy fallback delivery.
+- Delivery is bounded and best effort. Use an approximately ten-second request
+  timeout and at most three total attempts, retrying only network failures, HTTP
+  429, and HTTP 5xx with short jittered backoff. A notification failure must not
+  invalidate formal work, publication evidence, or a verified release.
+- Send only for a fully earned and merged milestone, a fixed checkpoint or global
+  gate state change, a revoked result, an actionable blocker, a meaningful long
+  validation or release outcome, or exact root-theorem publication. Coalesce
+  related work and deduplicate in the sending workflow.
+- Notification wording must obtain the risk-weighted proof estimate from the
+  canonical fixed-checkpoint ledger and report formal artefact coverage separately.
+  Never claim a score increase unless a named checkpoint changed state. The root
+  theorem title is reserved for the exact eligible theorem and passing publication
+  gate.
+- Sanitise title and message, omit secrets and large diagnostics, and keep the
+  final URL-encoded UTF-8 body below 3,900 bytes.
+- Send the deployment-ready notification only after the PNPLabs PR is merged,
+  every durable check is green, the exact merge has passed source-bound and
+  clean-clone verification, and `origin/main` resolves to the same commit. Run
+  `npm run notify:deployment-ready -- --commit <exact-merge-commit>` from that
+  clean checkout with `UNIFIEDPUSH_ENDPOINT` supplied only to the process.
+- The deployment-ready message includes the canonical proof estimate, formal
+  artefact coverage, global-gate count, exact merge commit and tree, and pinned
+  narrow deployment command. A dry run checks message shape only. The separate
+  `npm run notify:test:live` command is the only live transport integration test
+  and must never run in the normal test suite.
 
 ### Cheap-failure-first publication preflight
 
