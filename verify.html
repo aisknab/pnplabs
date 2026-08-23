@@ -116,7 +116,7 @@
           <tr><td><strong>Checksum ledger</strong></td><td><code>proof-artifacts/final-pnp-proof-report-hardened-7072f8d/SHA256SUMS</code></td></tr>
           <tr><td><strong>Bundled site manifest</strong></td><td><a href="downloads/release-seal.json"><code>downloads/release-seal.json</code></a></td></tr>
           <tr><td><strong>Bundled site checksum ledger</strong></td><td><a href="downloads/SHA256SUMS"><code>downloads/SHA256SUMS</code></a></td></tr>
-          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/539040537eb91c62ca405c048f0be95067596f5e"><code>539040537eb91c62ca405c048f0be95067596f5e</code></a></td></tr>
+          <tr><td><strong>Current public source</strong></td><td><a href="https://github.com/aisknab/pnp/tree/1061db268348734ecbf26306a76ef1cfb609672f"><code>1061db268348734ecbf26306a76ef1cfb609672f</code></a></td></tr>
         </tbody>
       </table>
     </div>
@@ -125,6 +125,7 @@
       <a class="pill" href="downloads/SHA256SUMS">SHA256SUMS</a>
       <a class="pill" href="downloads/canonical_proof_report.pdf">canonical PDF</a>
       <a class="pill" href="downloads/canonical_proof_report.tex">canonical TeX</a>
+      <a class="pill" href="public/pnp-proof-progress.json">proof-progress ledger</a>
       <a class="pill" href="downloads/source-checker-release.json">historical source/checker reference</a>
     </div>
   </section>
@@ -134,8 +135,9 @@
       <button class="btn secondary small copy-btn" type="button" data-copy="#regen-code">Copy</button>
       <pre id="regen-code">git clone https://github.com/aisknab/pnp.git pnp-review
 cd pnp-review
-git checkout 539040537eb91c62ca405c048f0be95067596f5e
+git checkout 1061db268348734ecbf26306a76ef1cfb609672f
 npm ci
+npm run formal:progress
 npm run formal:inventory:check
 npm run validate
 npm run report:check</pre>

@@ -4,12 +4,13 @@ import { existsSync, lstatSync, readFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "539040537eb91c62ca405c048f0be95067596f5e";
-const REVIEWED_CORE_TREE = "5155f087f5243d0e4b44b3c9e34766dfbb420c9c";
+const REVIEWED_CORE_COMMIT = "1061db268348734ecbf26306a76ef1cfb609672f";
+const REVIEWED_CORE_TREE = "b25716fc93fa1efcc1888ad36977977c9f75d5d7";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -8600,6 +8601,7 @@ function validateLocalArtifactHashes(root, release, failures) {
   const artifacts = release.artifacts || {};
   if (artifacts.status) expected.push({ path: artifacts.status.publicPath, ...artifacts.status });
   if (artifacts.theoremInventory) expected.push({ path: artifacts.theoremInventory.publicPath, ...artifacts.theoremInventory });
+  if (artifacts.proofProgress) expected.push({ path: artifacts.proofProgress.publicPath, ...artifacts.proofProgress });
   for (const type of ["pdf", "tex"]) {
     const report = artifacts.report?.[type];
     for (const publicPath of report?.publicPaths || []) expected.push({ path: publicPath, bytes: report.bytes, sha256: report.sha256 });
@@ -8621,7 +8623,7 @@ function validateLocalArtifactHashes(root, release, failures) {
   }
 }
 
-function validateCurrentPayloads(contents, failures, releaseManifest) {
+function validateCurrentPayloads(contents, failures, progressFailures, releaseManifest) {
   const statusBuffer = contents.get("public.status");
   const inventoryBuffer = contents.get("public.inventory");
   let status = null;
@@ -13262,6 +13264,29 @@ function validateCurrentPayloads(contents, failures, releaseManifest) {
       }
     }
   }
+  const progressBuffer = contents.get("public.proof_progress");
+  if (statusBuffer && inventoryBuffer && progressBuffer) {
+    try {
+      const progress = validateProofProgressModel(
+        JSON.parse(progressBuffer.toString("utf8")),
+        JSON.parse(statusBuffer.toString("utf8")),
+        JSON.parse(inventoryBuffer.toString("utf8"))
+      );
+      const artifact = releaseManifest.artifacts?.proofProgress;
+      if (artifact?.coordinate !== progress.coordinate || artifact?.modelId !== progress.modelId
+          || artifact?.pointsEarned !== progress.pointsEarned || artifact?.pointsAvailable !== progress.pointsAvailable
+          || artifact?.formalArtefactCoverageEarnedRows !== progress.formalArtefactCoverage.earnedRows
+          || artifact?.formalArtefactCoverageTotalRows !== progress.formalArtefactCoverage.totalRows
+          || artifact?.globalGatesClosed !== progress.globalGatesClosed
+          || artifact?.globalGatesAvailable !== progress.globalGatesAvailable) {
+        progressFailures.push("public proof-progress release metadata mismatch");
+      }
+    } catch (error) {
+      progressFailures.push(`public proof-progress model mismatch: ${error.message}`);
+    }
+  } else {
+    progressFailures.push("public proof-progress evidence is incomplete");
+  }
 }
 
 export function validateAuditTargets(options = {}) {
@@ -13274,6 +13299,7 @@ export function validateAuditTargets(options = {}) {
   const targetManifest = readJson(targetsPath);
   const releaseManifest = readJson(releaseManifestPath);
   const failures = [];
+  const progressFailures = [];
   const result = { skipped: false, sourceDir, checkedTargets: 0, mirroredTargets: 0, refs: {} };
   const contents = new Map();
 
@@ -13297,12 +13323,14 @@ export function validateAuditTargets(options = {}) {
     result.checkedTargets += 1;
   }
 
-  validateCurrentPayloads(contents, failures, releaseManifest);
+  validateCurrentPayloads(contents, failures, progressFailures, releaseManifest);
   if (failures.length > 0) throw new AuditTargetValidationError(failures, result);
 
   if (!existsSync(path.join(sourceDir, ".git"))) {
     const message = `cross-repo target check skipped: ${sourceDir} is not a git checkout`;
-    if (requireSource) throw new AuditTargetValidationError([message], result);
+    if (requireSource || progressFailures.length > 0) {
+      throw new AuditTargetValidationError([...progressFailures, ...(requireSource ? [message] : [])], result);
+    }
     return { ...result, skipped: true, skipReason: message };
   }
 
@@ -15757,6 +15785,7 @@ export function validateAuditTargets(options = {}) {
 
   }
 
+  failures.push(...progressFailures);
   if (failures.length > 0) throw new AuditTargetValidationError(failures, result);
   return result;
 }

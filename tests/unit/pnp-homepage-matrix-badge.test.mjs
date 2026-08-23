@@ -70,18 +70,20 @@ function latestMilestoneStatusFields(release, milestone) {
 }
 
 test('homepage leads with a plain, conservative result and the latest milestone', async () => {
-  const [status, inventory, updates, release] = await Promise.all([
+  const [status, inventory, updates, release, proofProgress] = await Promise.all([
     readJson('public/pnp-status.json'),
     readJson('public/pnp-theorem-inventory.json'),
     readJson('content/milestone-updates.json'),
     readJson('downloads/formal-publication-release.json'),
+    readJson('public/pnp-proof-progress.json'),
   ]);
   const latest = updates.entries[0];
   const latestMilestoneRecord = status.formalPublicationMilestones.find(
     (row) => row.id === latest.milestoneId
   );
   assert.ok(latestMilestoneRecord, 'latest update must name a current formal-publication milestone');
-  const progress = latest.progressEstimatePercent;
+  const progress = proofProgress.proofCompletion;
+  const coverage = proofProgress.formalArtefactCoverage;
   const html = await readText('index.html');
   const currentStatusFields = latestMilestoneStatusFields(release, latestMilestoneRecord);
   for (const field of currentStatusFields) {
@@ -324,9 +326,14 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     inventory.coordinate,
     `updates.html#${latest.id}`,
     `Technical theorem boundary · gate closed · ${status.remainingBlockers.length} blockers`,
-    `The ${progress}% figure is a revisable editorial estimate`,
-    `About ${progress}% of the known formalisation work`,
-    'not a probability that the claim is correct, a confidence score, or a mathematical result',
+    'Risk-weighted proof completion estimate',
+    `${progress.percent}% risk-weighted estimate`,
+    `uncertainty ${progress.uncertaintyLowPercent}% to ${progress.uncertaintyHighPercent}%`,
+    'A conservative estimate of how much of the complete formal proof burden has been retired.',
+    `${coverage.earnedRows} of ${coverage.totalRows}`,
+    'This is evidence-ledger coverage, not proof completion',
+    `${proofProgress.globalGates.filter((gate) => gate.status === 'closed').length} of ${proofProgress.globalGates.length} closed`,
+    `Root theorem <code>${proofProgress.rootTheorem.name}</code>: <strong>absent</strong>`,
     'P: problems we can solve efficiently',
     'NP: answers we can check efficiently',
     'Read the plain-language and technical update',

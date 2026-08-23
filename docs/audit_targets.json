@@ -5,9 +5,9 @@
   "refs": {
     "currentCoreRef": {
       "repo": "aisknab/pnp",
-      "ref": "539040537eb91c62ca405c048f0be95067596f5e",
-      "expectedCommit": "539040537eb91c62ca405c048f0be95067596f5e",
-      "expectedTree": "5155f087f5243d0e4b44b3c9e34766dfbb420c9c",
+      "ref": "1061db268348734ecbf26306a76ef1cfb609672f",
+      "expectedCommit": "1061db268348734ecbf26306a76ef1cfb609672f",
+      "expectedTree": "b25716fc93fa1efcc1888ad36977977c9f75d5d7",
       "class": "current formal-reconstruction publication",
       "status": "current-authority-theorem-gate-closed"
     },
@@ -55,6 +55,12 @@
       "path": "public/pnp-theorem-inventory.json"
     },
     {
+      "id": "core.proof_progress",
+      "kind": "current core publication file",
+      "refClass": "currentCoreRef",
+      "path": "status/PROOF_PROGRESS.json"
+    },
+    {
       "id": "core.report_pdf",
       "kind": "current core publication file",
       "refClass": "currentCoreRef",
@@ -97,6 +103,13 @@
       "refClass": "publicCheckout",
       "path": "public/pnp-theorem-inventory.json",
       "mirrorOf": "core.inventory"
+    },
+    {
+      "id": "public.proof_progress",
+      "kind": "pnplabs current core mirror",
+      "refClass": "publicCheckout",
+      "path": "public/pnp-proof-progress.json",
+      "mirrorOf": "core.proof_progress"
     },
     {
       "id": "public.report_pdf_underscore",

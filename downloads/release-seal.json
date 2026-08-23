@@ -3,10 +3,10 @@
   "version": 0,
   "scope": "bundled current formal-publication artifacts plus quarantined historical metadata",
   "status": "file identity only; not theorem validation",
-  "generated_utc": "2026-08-23T02:49:42.069Z",
+  "generated_utc": "2026-08-23T05:47:39Z",
   "current_publication_coordinate": "PNP-FORMAL-PUBLICATION-RELEASE-2026-08-23-167",
-  "current_core_commit": "539040537eb91c62ca405c048f0be95067596f5e",
-  "current_core_tree": "5155f087f5243d0e4b44b3c9e34766dfbb420c9c",
+  "current_core_commit": "1061db268348734ecbf26306a76ef1cfb609672f",
+  "current_core_tree": "b25716fc93fa1efcc1888ad36977977c9f75d5d7",
   "theorem_gate_passed": false,
   "public_theorem_emission_allowed": false,
   "historical_metadata_status": "historical-quarantined-not-current-authority",
@@ -48,9 +48,15 @@
       "role": "exact current compiled Lean theorem inventory mirror"
     },
     {
+      "path": "public/pnp-proof-progress.json",
+      "bytes": 32341,
+      "sha256": "8ebde653ce149a8ce7dd8161d01b68d816215b25656fe24506bf4a9bb72ee591",
+      "role": "exact current fixed-weight proof-progress ledger mirror"
+    },
+    {
       "path": "downloads/formal-publication-release.json",
-      "bytes": 1043454,
-      "sha256": "e7bf397bf824355633f707acae2709d6d1a8d7b7fea29631b05c082d71676a2e",
+      "bytes": 1044102,
+      "sha256": "490d640c2a433303f06d6059aea4d6ffad0473d4b0f86f645b83877b39c4efe4",
       "role": "current formal-publication release identity and fail-closed boundary"
     },
     {

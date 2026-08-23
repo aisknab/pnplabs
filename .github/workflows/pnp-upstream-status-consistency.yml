@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 env:
-  PNP_CORE_COMMIT: 539040537eb91c62ca405c048f0be95067596f5e
+  PNP_CORE_COMMIT: 1061db268348734ecbf26306a76ef1cfb609672f
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
@@ -37,11 +37,12 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Compare current status and inventory with exact core bytes
+      - name: Compare current status, inventory, and progress with exact core bytes
         shell: bash
         run: |
           set -euo pipefail
           cmp public/pnp-status.json "$PNP_SOURCE_DIR/public/pnp-status.json"
           cmp public/pnp-theorem-inventory.json "$PNP_SOURCE_DIR/public/pnp-theorem-inventory.json"
+          cmp public/pnp-proof-progress.json "$PNP_SOURCE_DIR/status/PROOF_PROGRESS.json"
           node tools/verify-release-seal.mjs
           node tools/check-cross-repo-targets.mjs --require-source

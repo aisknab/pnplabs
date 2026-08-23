@@ -32,6 +32,7 @@ Current canonical identities:
 | `downloads/canonical-proof-report.tex` | 340,929 | `e7c2306b9e443a9cf696167580dcbd2128c0b3b32a99d1612b7e369f38957b12` |
 | `public/pnp-status.json` | 2,595,885 | `cb1e60cc5854b72939d998bbc5e9a318e5f4ccdd42ec2dbb258398db64158881` |
 | `public/pnp-theorem-inventory.json` | 32,938,756 | `1de7ba070a3b7e9e2faafce2639805ade6cd4508afcb9a17c94594885a897c46` |
+| `public/pnp-proof-progress.json` | 32,341 | `8ebde653ce149a8ce7dd8161d01b68d816215b25656fe24506bf4a9bb72ee591` |
 
 The PDF must have 132 A4 pages. Both filename styles must be byte-identical.
 
@@ -42,14 +43,15 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 539040537eb91c62ca405c048f0be95067596f5e
+git -C ../pnp checkout 1061db268348734ecbf26306a76ef1cfb609672f
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
 
 The sync command is read-only by default. A deliberate local refresh requires explicit `--write`;
 the GitHub workflow never writes, commits, or pushes. The checker compares current status,
-inventory, TeX, PDF, all aliases, source/report coordinates, page count, forbidden historical
+inventory, the fixed-weight proof-progress ledger, TeX, PDF, all aliases, source/report coordinates,
+page count, forbidden historical
 hashes, and companion release metadata. PNPLabs consumes the exact proof artifacts already verified
 at the pinned core commit; this publication check does not invoke Lean, Lake, or Elan.
 
@@ -144,7 +146,8 @@ npm run verify:seal
 sha256sum downloads/canonical_proof_report.pdf \
   downloads/canonical_proof_report.tex \
   public/pnp-status.json \
-  public/pnp-theorem-inventory.json
+  public/pnp-theorem-inventory.json \
+  public/pnp-proof-progress.json
 pdfinfo downloads/canonical_proof_report.pdf
 ```
 
