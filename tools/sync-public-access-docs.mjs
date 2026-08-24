@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "37bbbd1d978df770087a0cd675b90eba2cfc50ad";
-const CORE_TREE = "3e21dbdb8b3c15c11121901d5cbf55ac0d6999c4";
-const CORE_PUBLICATION_MAP_SHA256 = "959aa77d99200d015b8c4a3893bbb4eeccfc9500f35f101e8d1c459e73ffefa6";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-188";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-188";
-const CORE_SOURCE_CLOSURE_SHA256 = "854c3f5e47f1ae13c4678976c90c5ad5107d30795ee354c5f8629f5df31a02ca";
-const OLD_PDF_SHA256 = "7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87";
-const OLD_TEX_SHA256 = "9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084";
+const CORE_COMMIT = "6e7124f7edf19b2ab077b9b52ed267cb6ecb00e3";
+const CORE_TREE = "ca4fab1d10d275a6639c980140f4c6c62fdec040";
+const CORE_PUBLICATION_MAP_SHA256 = "6195acfa499d3fd2898b24a2f07befe6060bebf857e1ad8deb8b5025bea00b83";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-189";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-189";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-189";
+const CORE_SOURCE_CLOSURE_SHA256 = "dc0ccc9ef945b6a4c9c1a481812c37f656fe814cb85a8bfb3a6714e90cda2cbf";
+const OLD_PDF_SHA256 = "73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a";
+const OLD_TEX_SHA256 = "ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1934,6 +1934,13 @@ const TYPED_PCCPACK_REFLECTION_THEOREMS = {
 const TYPED_PCCPACK_REFLECTION_SCOPE = "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection";
 const TYPED_PCCPACK_REFLECTION_MILESTONE_SCOPE = "For every explicit proof-bearing PCCMin loop certificate, transparent Lean generation preserves that exact certificate, the canonical generated identifier is accepted by structural computation, every mismatched identifier is rejected, and the active bridge projects the supplied certificate directly rather than relying on package or checker axioms.";
 const TYPED_PCCPACK_REFLECTION_NON_CLAIM = "This removes the two opaque package/checker declarations and the caller-supplied reflection field from the active Lean bridge. It does not construct a PCCMinLoopCertificate, verify historical JavaScript package bytes, prove the semantic string fields, implement PCCMin, establish unconditional ZeroSlack or polynomial bounds, prove concrete SAT hardness, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS = {
+  "PNP.DirectWire.pccmin_total_oracle_loop_checked_complete": { hash: "c4ef37cd1b66ccbc8cd49384abcc8f93610aa02fdb5aa78fc951c60960371c75", axioms: [], module: "PNP.PCCMinTotalOracleLoop" }
+};
+const PCCMIN_TOTAL_ORACLE_LOOP_SCOPE = "all-finite-direct-wire-implementations-under-an-explicit-proof-bearing-total-oracle-with-strict-slack-descent-exact-terminal-evidence-and-gain-iteration-bound";
+const PCCMIN_TOTAL_ORACLE_LOOP_MILESTONE_SCOPE = "For every finite direct-wire implementation and every explicit proof-bearing total oracle, transparent well-founded recursion follows strict equivalent gains until exact-minimum or ZeroSlack evidence is returned, preserves semantics, returns a global minimum with zero residual slack, and bounds strict-gain iterations by the starting residual slack.";
+const PCCMIN_TOTAL_ORACLE_LOOP_NON_CLAIM = "The total oracle remains an explicit proof-bearing argument, and the regression fixture uses exhaustive reference minimization. This milestone does not construct an executable PCCMin oracle, derive terminal families or routes, establish unconditional ZeroSlack, encode the loop as a raw machine, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4246,32 +4253,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 570497,
-    sha256: "73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a"
+    bytes: 571710,
+    sha256: "45ae376350a91cfc0198deeeebd745e1219ec8999eeeadc805f14b5004ea923e"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 347642,
-    sha256: "ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f"
+    bytes: 349271,
+    sha256: "95c82a044d580f8720a1e9a7ca12a53bca4cdb7b56c45ad7a27c965eebb7f2b7"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2618852,
-    sha256: "f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907"
+    bytes: 2622507,
+    sha256: "bd11538d66a1d11218a63f2d0ceca15288bea6cb68e13050787cb4a20e827f27"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 33083899,
-    sha256: "7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319"
+    bytes: 33108303,
+    sha256: "1a99e496648154baa0a2aca62bda622c3e54f9e745e94d3c92719866247ce5b4"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 45729,
-    sha256: "88806ee43a6a45590e3f0286770880e37a0d2215b56537a4f0a6e6b9432b6518"
+    bytes: 47937,
+    sha256: "7e2865f3ca0aece5c41d1309d9de005cbce98848a578c2311d0b84b438bba732"
   }
 ];
 
@@ -6041,6 +6048,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map typed PCCPack reflection boundary mismatch");
+  }
+
+  const pccminTotalOracleLoopMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-total-oracle-loop"
+  );
+  const pccminTotalOracleLoopNames = Object.keys(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS);
+  if (!pccminTotalOracleLoopMilestone
+      || pccminTotalOracleLoopMilestone.classification !== "formalized-pccmin-total-oracle-loop"
+      || pccminTotalOracleLoopMilestone.scope !== PCCMIN_TOTAL_ORACLE_LOOP_MILESTONE_SCOPE
+      || pccminTotalOracleLoopMilestone.nonClaim !== PCCMIN_TOTAL_ORACLE_LOOP_NON_CLAIM
+      || JSON.stringify(pccminTotalOracleLoopMilestone.requiredTheorems)
+        !== JSON.stringify(pccminTotalOracleLoopNames)
+      || !Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map PCCMin total-oracle loop boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -9715,6 +9738,46 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status typed PCCPack reflection boundary mismatch");
     }
 
+    const pccminTotalOracleLoopMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "pccmin-total-oracle-loop"
+    );
+    if (!pccminTotalOracleLoopMilestone
+        || pccminTotalOracleLoopMilestone.earned !== true
+        || pccminTotalOracleLoopMilestone.allPresent !== true
+        || pccminTotalOracleLoopMilestone.allAssumptionFree !== true
+        || pccminTotalOracleLoopMilestone.allKernelTypesMatch !== true
+        || pccminTotalOracleLoopMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || pccminTotalOracleLoopMilestone.sourceClosureFingerprintMatches !== true
+        || pccminTotalOracleLoopMilestone.classification !== "formalized-pccmin-total-oracle-loop"
+        || pccminTotalOracleLoopMilestone.scope !== PCCMIN_TOTAL_ORACLE_LOOP_MILESTONE_SCOPE
+        || pccminTotalOracleLoopMilestone.nonClaim !== PCCMIN_TOTAL_ORACLE_LOOP_NON_CLAIM
+        || JSON.stringify(pccminTotalOracleLoopMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS))
+        || !Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS).every(([name, evidence]) => {
+          const row = pccminTotalOracleLoopMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanPCCMinTotalOracleLoopFormalized !== true
+        || payload.leanPCCMinTotalOracleLoopAxiomAuditPassed !== true
+        || payload.leanPCCMinTotalOracleLoopAuditedDeclarationCount !== 8
+        || payload.leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree !== true
+        || payload.leanPCCMinTotalOracleLoopHasUnresolvedOutcome !== false
+        || payload.leanPCCMinTotalOracleLoopConstructsOracle !== false
+        || payload.leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized !== true
+        || payload.leanPCCMinTotalOracleLoopGainIterationBoundFormalized !== true
+        || payload.leanPCCMinTotalOracleLoopPolynomialRuntimeProved !== false
+        || payload.leanPCCMinTotalOracleLoopScope !== PCCMIN_TOTAL_ORACLE_LOOP_SCOPE
+        || payload.leanPCCMinLoopExactnessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status PCCMin total-oracle loop boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -10323,6 +10386,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory typed PCCPack reflection theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory PCCMin total-oracle loop theorem mismatch: " + name);
       }
     }
 

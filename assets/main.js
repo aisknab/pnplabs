@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188";
-const STATUS_SHA256 = 'f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-188";
-const FORMAL_PUBLICATION_MAP_SHA256 = "959aa77d99200d015b8c4a3893bbb4eeccfc9500f35f101e8d1c459e73ffefa6";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-189";
+const STATUS_SHA256 = 'bd11538d66a1d11218a63f2d0ceca15288bea6cb68e13050787cb4a20e827f27';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-189";
+const FORMAL_PUBLICATION_MAP_SHA256 = "6195acfa499d3fd2898b24a2f07befe6060bebf857e1ad8deb8b5025bea00b83";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-188";
-const INVENTORY_SHA256 = "7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319";
-const SOURCE_CLOSURE_SHA256 = "854c3f5e47f1ae13c4678976c90c5ad5107d30795ee354c5f8629f5df31a02ca";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-189";
+const INVENTORY_SHA256 = "1a99e496648154baa0a2aca62bda622c3e54f9e745e94d3c92719866247ce5b4";
+const SOURCE_CLOSURE_SHA256 = "dc0ccc9ef945b6a4c9c1a481812c37f656fe814cb85a8bfb3a6714e90cda2cbf";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 29988,
-  theorems: 15507,
-  assumptionFreeTheorems: 7611,
-  excludedPrivateDeclarations: 15141,
-  modules: 304,
+  declarations: 30075,
+  theorems: 15543,
+  assumptionFreeTheorems: 7642,
+  excludedPrivateDeclarations: 15145,
+  modules: 305,
   axioms: 0,
 });
 
@@ -4692,6 +4692,9 @@ const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_DECLARATIONS = Object.freeze([
 const TYPED_PCCPACK_REFLECTION_DECLARATIONS = Object.freeze([
   ["PNP.typed_pccpack_reflection_checked_complete",["Quot.sound","propext"],"PNP.Bridge","ac6c0a5045437ffb1df36a971ad4924f5e2cc785c97132e720c91f9461b16659"],
 ]);
+const PCCMIN_TOTAL_ORACLE_LOOP_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.pccmin_total_oracle_loop_checked_complete",[],"PNP.PCCMinTotalOracleLoop","c4ef37cd1b66ccbc8cd49384abcc8f93610aa02fdb5aa78fc951c60960371c75"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5592,6 +5595,16 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanTypedPCCPackReflectionEndpointProjectAssumptionFree: false,
   leanTypedPCCPackReflectionOpaqueDeclarationsRemoved: false,
   leanTypedPCCPackReflectionScope: null,
+  leanPCCMinTotalOracleLoopFormalized: false,
+  leanPCCMinTotalOracleLoopAxiomAuditPassed: false,
+  leanPCCMinTotalOracleLoopAuditedDeclarationCount: 0,
+  leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree: false,
+  leanPCCMinTotalOracleLoopHasUnresolvedOutcome: false,
+  leanPCCMinTotalOracleLoopConstructsOracle: false,
+  leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized: false,
+  leanPCCMinTotalOracleLoopGainIterationBoundFormalized: false,
+  leanPCCMinTotalOracleLoopPolynomialRuntimeProved: false,
+  leanPCCMinTotalOracleLoopScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6221,6 +6234,16 @@ leanTypedPCCPackReflectionAuditedDeclarationCount = ${payload.leanTypedPCCPackRe
 leanTypedPCCPackReflectionEndpointProjectAssumptionFree = ${payload.leanTypedPCCPackReflectionEndpointProjectAssumptionFree ?? false}
 leanTypedPCCPackReflectionOpaqueDeclarationsRemoved = ${payload.leanTypedPCCPackReflectionOpaqueDeclarationsRemoved ?? false}
 leanTypedPCCPackReflectionScope = ${payload.leanTypedPCCPackReflectionScope === null ? 'null' : JSON.stringify(payload.leanTypedPCCPackReflectionScope)}
+leanPCCMinTotalOracleLoopFormalized = ${payload.leanPCCMinTotalOracleLoopFormalized ?? false}
+leanPCCMinTotalOracleLoopAxiomAuditPassed = ${payload.leanPCCMinTotalOracleLoopAxiomAuditPassed ?? false}
+leanPCCMinTotalOracleLoopAuditedDeclarationCount = ${payload.leanPCCMinTotalOracleLoopAuditedDeclarationCount ?? 0}
+leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree = ${payload.leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree ?? false}
+leanPCCMinTotalOracleLoopHasUnresolvedOutcome = ${payload.leanPCCMinTotalOracleLoopHasUnresolvedOutcome ?? false}
+leanPCCMinTotalOracleLoopConstructsOracle = ${payload.leanPCCMinTotalOracleLoopConstructsOracle ?? false}
+leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized = ${payload.leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized ?? false}
+leanPCCMinTotalOracleLoopGainIterationBoundFormalized = ${payload.leanPCCMinTotalOracleLoopGainIterationBoundFormalized ?? false}
+leanPCCMinTotalOracleLoopPolynomialRuntimeProved = ${payload.leanPCCMinTotalOracleLoopPolynomialRuntimeProved ?? false}
+leanPCCMinTotalOracleLoopScope = ${payload.leanPCCMinTotalOracleLoopScope === null ? 'null' : JSON.stringify(payload.leanPCCMinTotalOracleLoopScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7310,6 +7333,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const pccMinTotalOracleLoop =
+    PCCMIN_TOTAL_ORACLE_LOOP_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7910,6 +7940,9 @@ function validateInventory(inventory) {
     && typedPCCPackReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && pccMinTotalOracleLoop.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8356,6 +8389,9 @@ function validateStatus(status, inventory) {
   );
   const typedPCCPackReflectionMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'typed-pccpack-reflection'
+  );
+  const pccMinTotalOracleLoopMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'pccmin-total-oracle-loop'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -10110,6 +10146,35 @@ function validateStatus(status, inventory) {
     && status.leanTypedPCCPackReflectionOpaqueDeclarationsRemoved === true
     && status.leanTypedPCCPackReflectionScope === "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection"
     && status.leanPCCMinLoopExactnessFormalized === false
+
+    && pccMinTotalOracleLoopMilestone?.classification === "formalized-pccmin-total-oracle-loop"
+    && pccMinTotalOracleLoopMilestone.status === "formalized-pccmin-total-oracle-loop"
+    && pccMinTotalOracleLoopMilestone.scope === "For every finite direct-wire implementation and every explicit proof-bearing total oracle, transparent well-founded recursion follows strict equivalent gains until exact-minimum or ZeroSlack evidence is returned, preserves semantics, returns a global minimum with zero residual slack, and bounds strict-gain iterations by the starting residual slack."
+    && pccMinTotalOracleLoopMilestone.nonClaim === "The total oracle remains an explicit proof-bearing argument, and the regression fixture uses exhaustive reference minimization. This milestone does not construct an executable PCCMin oracle, derive terminal families or routes, establish unconditional ZeroSlack, encode the loop as a raw machine, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      pccMinTotalOracleLoopMilestone.requiredTheorems,
+      PCCMIN_TOTAL_ORACLE_LOOP_DECLARATIONS.map(([name]) => name)
+    )
+    && pccMinTotalOracleLoopMilestone.theoremRows?.every((row) => {
+      const expected = PCCMIN_TOTAL_ORACLE_LOOP_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanPCCMinTotalOracleLoopFormalized === true
+    && status.leanPCCMinTotalOracleLoopAxiomAuditPassed === true
+    && status.leanPCCMinTotalOracleLoopAuditedDeclarationCount === 8
+    && status.leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree === true
+    && status.leanPCCMinTotalOracleLoopHasUnresolvedOutcome === false
+    && status.leanPCCMinTotalOracleLoopConstructsOracle === false
+    && status.leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized === true
+    && status.leanPCCMinTotalOracleLoopGainIterationBoundFormalized === true
+    && status.leanPCCMinTotalOracleLoopPolynomialRuntimeProved === false
+    && status.leanPCCMinTotalOracleLoopScope === "all-finite-direct-wire-implementations-under-an-explicit-proof-bearing-total-oracle-with-strict-slack-descent-exact-terminal-evidence-and-gain-iteration-bound"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

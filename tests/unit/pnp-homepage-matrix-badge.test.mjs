@@ -39,7 +39,7 @@ function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
   );
 }
 
-function latestMilestoneStatusFields(release, milestone) {
+function latestMilestoneStatusFields(status, release, milestone) {
   const suffix = 'TheoremKernelTypeSha256';
   const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
@@ -52,7 +52,12 @@ function latestMilestoneStatusFields(release, milestone) {
   );
   assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   const releasePrefix = matchingField[0].slice(0, -suffix.length);
-  const stem = `lean${releasePrefix[0].toUpperCase()}${releasePrefix.slice(1)}`;
+  const scope = release.earnedBoundary[`${releasePrefix}Scope`];
+  const scopeKeys = Object.keys(status).filter(
+    (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
+  );
+  assert.equal(scopeKeys.length, 1, `expected one status scope field for ${milestone.id}`);
+  const stem = scopeKeys[0].slice(0, -'Scope'.length);
   return [`${stem}Formalized`, `${stem}AxiomAuditPassed`, `${stem}Scope`];
 }
 
@@ -72,7 +77,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
   const progress = proofProgress.proofCompletion;
   const coverage = proofProgress.formalArtefactCoverage;
   const html = await readText('index.html');
-  const currentStatusFields = latestMilestoneStatusFields(release, latestMilestoneRecord);
+  const currentStatusFields = latestMilestoneStatusFields(status, release, latestMilestoneRecord);
   for (const field of currentStatusFields) {
     assert.ok(Object.hasOwn(status, field), `canonical status missing derived latest-milestone field: ${field}`);
     assert.ok(

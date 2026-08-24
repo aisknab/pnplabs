@@ -1111,6 +1111,15 @@ function releaseBoundaryPrefixForMilestone(release, milestone) {
   return matchingField[0].slice(0, -suffix.length);
 }
 
+function statusStemForReleaseBoundary(status, release, prefix) {
+  const scope = release.earnedBoundary[`${prefix}Scope`];
+  const scopeKeys = Object.keys(status).filter(
+    (key) => key.startsWith("lean") && key.endsWith("Scope") && status[key] === scope
+  );
+  assert.equal(scopeKeys.length, 1, `expected one status scope field for ${prefix}`);
+  return scopeKeys[0].slice("lean".length, -"Scope".length);
+}
+
 function copySealFixture(t) {
   const fixture = mkdtempSync(path.join(tmpdir(), "pnplabs-formal-seal-"));
   t.after(() => rmSync(fixture, { recursive: true, force: true }));
@@ -1137,7 +1146,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   );
   assert.ok(latestMilestone, "latest milestone must come from the canonical status payload");
   const latestStem = releaseBoundaryPrefixForMilestone(release, latestMilestone);
-  const latestStatusStem = `lean${latestStem[0].toUpperCase()}${latestStem.slice(1)}`;
+  const latestStatusStem = `lean${statusStemForReleaseBoundary(latestStatusPayload, release, latestStem)}`;
   const latestTheoremHashes = Object.fromEntries(
     latestMilestone.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
   );
@@ -3588,7 +3597,7 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   );
   assert.ok(latestPublicationMilestone, `missing latest milestone ${latestUpdate.milestoneId}`);
   const latestStem = releaseBoundaryPrefixForMilestone(canonicalRelease, latestPublicationMilestone);
-  const latestStatusStem = `lean${latestStem[0].toUpperCase()}${latestStem.slice(1)}`;
+  const latestStatusStem = `lean${statusStemForReleaseBoundary(status, canonicalRelease, latestStem)}`;
   const latestReleaseHashes = canonicalRelease.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`];
   assert.equal(milestones.length, index.formalPublicationMilestoneCounts.total);
   assert.equal(milestones.filter((row) => row.earned === true).length, index.formalPublicationMilestoneCounts.earned);
@@ -5230,7 +5239,10 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   assert.equal(latestPublicationMilestone.status, latestPublicationMilestone.classification);
   assert.equal(latestPublicationMilestone.earned, true);
   assert.equal(latestPublicationMilestone.allPresent, true);
-  assert.equal(latestPublicationMilestone.allAssumptionFree, false);
+  assert.equal(
+    latestPublicationMilestone.allAssumptionFree,
+    latestPublicationMilestone.theoremRows.every((row) => row.axioms.length === 0)
+  );
   assert.equal(latestPublicationMilestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
   assert.equal(latestPublicationMilestone.allKernelTypesMatch, true);
   assert.equal(latestPublicationMilestone.sourceClosureFingerprintMatches, true);

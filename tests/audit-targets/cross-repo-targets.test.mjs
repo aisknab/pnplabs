@@ -53,8 +53,21 @@ const latestTheoremFingerprintField = Object.entries(publishedRelease.earnedBoun
 assert.ok(latestTheoremFingerprintField, `missing earned-boundary fingerprint map for ${latestPublishedMilestoneId}`);
 const latestPublishedMilestoneReleasePrefix = latestTheoremFingerprintField[0]
   .slice(0, -theoremFingerprintSuffix.length);
-const latestPublishedMilestoneFieldStem =
-  `${latestPublishedMilestoneReleasePrefix[0].toUpperCase()}${latestPublishedMilestoneReleasePrefix.slice(1)}`;
+const latestPublishedMilestoneScope = publishedRelease.earnedBoundary[
+  `${latestPublishedMilestoneReleasePrefix}Scope`
+];
+const latestPublishedMilestoneScopeKeys = Object.keys(publishedStatus).filter(
+  (key) => key.startsWith("lean")
+    && key.endsWith("Scope")
+    && publishedStatus[key] === latestPublishedMilestoneScope
+);
+assert.equal(
+  latestPublishedMilestoneScopeKeys.length,
+  1,
+  `expected one latest published status scope field: ${latestPublishedMilestoneId}`
+);
+const latestPublishedMilestoneFieldStem = latestPublishedMilestoneScopeKeys[0]
+  .slice("lean".length, -"Scope".length);
 const latestPublishedMilestoneRequiredStatusKeys = [
   `lean${latestPublishedMilestoneFieldStem}Formalized`,
   `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`,
@@ -68,13 +81,8 @@ const latestPublishedMilestoneStatusFields = Object.fromEntries(
   Object.entries(publishedStatus).filter(([key]) => key.startsWith(latestPublishedMilestoneStatusPrefix))
 );
 assert.ok(Object.keys(latestPublishedMilestoneStatusFields).length >= latestPublishedMilestoneRequiredStatusKeys.length);
-const publishedMilestoneStatusFields = Object.fromEntries(
-  Object.entries(publishedStatus).filter(([key]) =>
-    key.startsWith("lean")
-      && (key.endsWith("Formalized")
-        || key.endsWith("AxiomAuditPassed")
-        || key.endsWith("Scope"))
-  )
+const publishedLeanStatusFields = Object.fromEntries(
+  Object.entries(publishedStatus).filter(([key]) => key.startsWith("lean"))
 );
 const publishedConcreteCompatibilityStatusFields = Object.fromEntries(
   Object.entries(publishedStatus).filter(([key]) =>
@@ -2637,10 +2645,11 @@ function makeProject(t) {
     ...RESIDUAL_TERMINAL_V53_CONSTANT_CUT_HYPERGRAPH_RIGIDITY_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_BN6_HYPERGRAPH_PACKET_STATUS_FIELDS,
     ...RESIDUAL_TERMINAL_PACKET_SELECTOR_SEEDS_STATUS_FIELDS,
-    // Derive every milestone's stable status triplet from the checked-in
-    // authority so advancing the latest row cannot make the former latest row
-    // disappear from this baseline fixture.
-    ...publishedMilestoneStatusFields,
+    // Derive the complete Lean evidence boundary from the checked-in authority
+    // so advancing the latest row cannot make the former latest row's auxiliary
+    // audit, closure, count, or theorem-identity fields disappear from this
+    // baseline fixture.
+    ...publishedLeanStatusFields,
     ...latestPublishedMilestoneStatusFields,
     ...publishedConcreteCompatibilityStatusFields,
     concretePublicationGate: { passed: false },
@@ -4024,6 +4033,11 @@ function makeProject(t) {
     },
     earnedBoundary: {
       scope: publishedRelease.earnedBoundary.scope,
+      // Begin with the complete canonical boundary. The explicit fields below
+      // retain focused fixture readability and may override canonical values in
+      // mutation tests, while a new latest milestone cannot displace the former
+      // latest milestone's auxiliary evidence.
+      ...structuredClone(publishedRelease.earnedBoundary),
       ...structuredClone(Object.fromEntries(Object.entries(publishedRelease.earnedBoundary).filter(
         ([name]) => name.startsWith("lockedNAND") || name.startsWith("cnfToNAND")
       ))),

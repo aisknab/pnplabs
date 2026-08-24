@@ -68,6 +68,14 @@ const releaseBoundaryPrefixForMilestone = (release, milestone) => {
   assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   return matchingField[0].slice(0, -suffix.length);
 };
+const statusStemForReleaseBoundary = (status, release, prefix) => {
+  const scope = release.earnedBoundary[`${prefix}Scope`];
+  const scopeKeys = Object.keys(status).filter(
+    (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
+  );
+  assert.equal(scopeKeys.length, 1, `expected one status scope field for ${prefix}`);
+  return scopeKeys[0].slice('lean'.length, -'Scope'.length);
+};
 const HB_BLOCKER_GRAPH_ACYCLICITY_THEOREM_SHA256 = Object.freeze({
   'PNP.DirectWire.TerminalPacketHBDependencyGraph.checkRankEmbedding_eq_true_iff': 'a32276f0c8b799900766c0a752e8e5d1de4f6ff226622e5a16d307d763975115',
   'PNP.DirectWire.TerminalPacketHBDependencyGraph.check_eq_true_iff': '2c9f567d1209679bac5cc47bfb8f6bb1845136bd6332b21a59309322aee11b43',
@@ -3654,6 +3662,35 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     'PNP.typed_pccpack_reflection_checked_complete');
   assert.deepEqual(release.earnedBoundary.typedPCCPackReflectionProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(typedPCCPackReflection.id));
+  const pccMinTotalOracleLoop = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-total-oracle-loop');
+  assert.ok(pccMinTotalOracleLoop);
+  assert.equal(pccMinTotalOracleLoop.earned, true);
+  assert.equal(pccMinTotalOracleLoop.allPresent, true);
+  assert.equal(pccMinTotalOracleLoop.allAssumptionFree, true);
+  assert.equal(pccMinTotalOracleLoop.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinTotalOracleLoop.allKernelTypesMatch, true);
+  assert.equal(pccMinTotalOracleLoop.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinTotalOracleLoop.requiredTheorems, [
+    'PNP.DirectWire.pccmin_total_oracle_loop_checked_complete',
+  ]);
+  assert.equal(pccMinTotalOracleLoop.theoremRows[0].actualKernelTypeSha256,
+    'c4ef37cd1b66ccbc8cd49384abcc8f93610aa02fdb5aa78fc951c60960371c75');
+  assert.deepEqual(pccMinTotalOracleLoop.theoremRows[0].axioms, []);
+  assert.equal(status.leanPCCMinTotalOracleLoopFormalized, true);
+  assert.equal(status.leanPCCMinTotalOracleLoopAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinTotalOracleLoopAuditedDeclarationCount, 8);
+  assert.equal(status.leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinTotalOracleLoopHasUnresolvedOutcome, false);
+  assert.equal(status.leanPCCMinTotalOracleLoopConstructsOracle, false);
+  assert.equal(status.leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized, true);
+  assert.equal(status.leanPCCMinTotalOracleLoopGainIterationBoundFormalized, true);
+  assert.equal(status.leanPCCMinTotalOracleLoopPolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinTotalOracleLoopCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_total_oracle_loop_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinTotalOracleLoopAxiomClosure, []);
+  assert.deepEqual(release.earnedBoundary.pccMinTotalOracleLoopProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(pccMinTotalOracleLoop.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8074,6 +8111,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-second-literal-prefix'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-prefix'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-padding-run'));
+  assert.ok(index.earnedMilestones.includes('pccmin-total-oracle-loop'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
@@ -8195,7 +8233,7 @@ test('status page has a conservative complete static fallback', async () => {
   );
   assert.ok(latestMilestone, `missing latest milestone ${updates.entries[0].milestoneId}`);
   const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestMilestone);
-  const latestStatusStem = `${latestReleasePrefix[0].toUpperCase()}${latestReleasePrefix.slice(1)}`;
+  const latestStatusStem = statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
   const html = await readText('status.html');
   for (const fragment of [
     `Formal status · ${index.syncedOn}`,
@@ -8627,7 +8665,7 @@ test('static inventory prose derives changing publication totals from the canoni
   assert.ok(latestEarnedMilestone, 'latest earned milestone');
   const latestUpdate = updates.entries[0];
   const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone);
-  const latestStatusStem = `${latestReleasePrefix[0].toUpperCase()}${latestReleasePrefix.slice(1)}`;
+  const latestStatusStem = statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
   const latestFocusedAuditCount = latestRelease.earnedBoundary[
     `${latestReleasePrefix}AuditedDeclarationCount`
   ];

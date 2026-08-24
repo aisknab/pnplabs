@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 570,497 | `73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a` |
-| `downloads/canonical-proof-report.pdf` | 570,497 | `73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a` |
-| `downloads/canonical_proof_report.tex` | 347,642 | `ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f` |
-| `downloads/canonical-proof-report.tex` | 347,642 | `ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f` |
-| `public/pnp-status.json` | 2,618,852 | `f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907` |
-| `public/pnp-theorem-inventory.json` | 33,083,899 | `7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319` |
-| `public/pnp-proof-progress.json` | 45,729 | `88806ee43a6a45590e3f0286770880e37a0d2215b56537a4f0a6e6b9432b6518` |
+| `downloads/canonical_proof_report.pdf` | 571,710 | `45ae376350a91cfc0198deeeebd745e1219ec8999eeeadc805f14b5004ea923e` |
+| `downloads/canonical-proof-report.pdf` | 571,710 | `45ae376350a91cfc0198deeeebd745e1219ec8999eeeadc805f14b5004ea923e` |
+| `downloads/canonical_proof_report.tex` | 349,271 | `95c82a044d580f8720a1e9a7ca12a53bca4cdb7b56c45ad7a27c965eebb7f2b7` |
+| `downloads/canonical-proof-report.tex` | 349,271 | `95c82a044d580f8720a1e9a7ca12a53bca4cdb7b56c45ad7a27c965eebb7f2b7` |
+| `public/pnp-status.json` | 2,622,507 | `bd11538d66a1d11218a63f2d0ceca15288bea6cb68e13050787cb4a20e827f27` |
+| `public/pnp-theorem-inventory.json` | 33,108,303 | `1a99e496648154baa0a2aca62bda622c3e54f9e745e94d3c92719866247ce5b4` |
+| `public/pnp-proof-progress.json` | 47,937 | `7e2865f3ca0aece5c41d1309d9de005cbce98848a578c2311d0b84b438bba732` |
 
 The PDF must have 133 A4 pages. Both filename styles must be byte-identical.
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 37bbbd1d978df770087a0cd675b90eba2cfc50ad
+git -C ../pnp checkout 6e7124f7edf19b2ab077b9b52ed267cb6ecb00e3
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,988 public declarations, 15,507 theorem-kind declarations,
-7,611 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 304 modules, and
+Expected compiled inventory counts are 30,075 public declarations, 15,543 theorem-kind declarations,
+7,642 assumption-free theorem-kind declarations, 15,145 excluded private auxiliaries, 305 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -103,15 +103,15 @@ active route. Exhaustive reference minimisation is not a polynomial-time PCCMin 
 milestone does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT
 in P, SAT hardness transport, the eligible root theorem, or a global-gate closure.
 
-The latest typed PCCPack reflection milestone has 1 reviewed theorem pin. It replaces the
-two remaining opaque package/checker declarations with a typed record, transparent canonical generation,
-structural identifier checking, mismatch rejection, and exact projection of an explicitly supplied
-proof-bearing `PCCMinLoopCertificate`. Its focused 15-declaration audit uses only `Quot.sound` and
-`propext`, with no project-specific axiom. This removes `PNP.GeneratePCCPack`,
-`PNP.CheckPCCPackexp`, and the caller-supplied reflection field from the active route. The certificate
-remains supplied: the milestone does not implement PCCMin, prove unconditional ZeroSlack or polynomial
-runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or close
-a global gate.
+The latest proof-bearing PCCMin total-oracle milestone has 1 reviewed theorem pin. For every finite
+direct-wire implementation and explicit proof-bearing total oracle, transparent well-founded recursion
+follows strict equivalent gains to exact-minimum or ZeroSlack evidence, preserves semantics, returns zero
+residual slack, and bounds strict-gain iterations by the starting slack. Its focused 8-declaration audit
+is axiom-free. The oracle remains supplied, and the regression fixture constructs it with exhaustive
+reference minimisation: the milestone does not construct an executable terminal-derived oracle, establish
+unconditional ZeroSlack, encode the loop as a raw machine, prove encoded-size polynomial construction or
+runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or close a
+global gate. The fixed-weight score therefore remains 35%.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

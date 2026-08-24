@@ -34,7 +34,12 @@ function statusFieldStem(milestone) {
   );
   assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   const releasePrefix = matchingField[0].slice(0, -suffix.length);
-  return `${releasePrefix[0].toUpperCase()}${releasePrefix.slice(1)}`;
+  const scope = release.earnedBoundary[`${releasePrefix}Scope`];
+  const scopeKeys = Object.keys(status).filter(
+    (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
+  );
+  assert.equal(scopeKeys.length, 1, `expected one status scope field for ${milestone.id}`);
+  return scopeKeys[0].slice('lean'.length, -'Scope'.length);
 }
 
 test('site validator accepts only the exact current inventory/status boundary', () => {

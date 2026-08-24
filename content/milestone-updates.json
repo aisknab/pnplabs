@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-24-pccmin-total-oracle-loop",
+      "milestoneId": "pccmin-total-oracle-loop",
+      "publishedAt": "2026-08-24T12:15:47Z",
+      "title": "Proof-bearing PCCMin total-oracle loop",
+      "plainLanguage": [
+        "Lean now runs a total, terminating minimisation loop for every finite direct-wire implementation when it is given a proof-bearing oracle that always returns either an exact result, a zero-slack result, or a strict semantics-preserving gain. The loop preserves behaviour, reaches an exact minimum with zero residual slack, and bounds the number of strict-gain steps by the starting slack.",
+        "The oracle is still an explicit input, and the regression fixture obtains it by exhaustive reference minimisation. This milestone does not construct a uniform executable oracle, derive terminal families or routes, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 165 of 167."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 165,
+        "formalArtefactCoverageTotalRows": 167,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "6e7124f7edf19b2ab077b9b52ed267cb6ecb00e3",
+        "tree": "ca4fab1d10d275a6639c980140f4c6c62fdec040",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-189",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-24-typed-pccpack-reflection",
       "milestoneId": "typed-pccpack-reflection",
       "publishedAt": "2026-08-24T02:29:11Z",
