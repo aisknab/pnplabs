@@ -7,28 +7,27 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186";
-const STATUS_SHA256 = 'a2bbf2c1ad05255291e0b7ba2422ae9ab196d6236a428d9b6d691e268f3e0687';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-23-186";
-const FORMAL_PUBLICATION_MAP_SHA256 = "bc4dc2e057bae94bef9331ba3e6497f1171cb906df7f738d807e49d3befb67de";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187";
+const STATUS_SHA256 = '2c39a94847c1fba4db668173878e930460b8752dd7161b54664fd662f9a72a8f';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-187";
+const FORMAL_PUBLICATION_MAP_SHA256 = "8515aad0a0dc7a3b0d288172b2ef81a0823a247e1ef851e5b650df64ccc56c7c";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-23-186";
-const INVENTORY_SHA256 = "a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07";
-const SOURCE_CLOSURE_SHA256 = "cfd4833f16ba9ee44b924950b4bd71d29f9ff6eea0a883feab087580de574975";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-187";
+const INVENTORY_SHA256 = "3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f";
+const SOURCE_CLOSURE_SHA256 = "f9a989368632a834006b1f23e6b58b07b0a2656d8e9046beb3cab8497cfa9fa5";
 
 const INVENTORY_COUNTS = Object.freeze({
   declarations: 29988,
-  theorems: 15497,
+  theorems: 15502,
   assumptionFreeTheorems: 7613,
   excludedPrivateDeclarations: 15141,
-  modules: 303,
-  axioms: 3,
+  modules: 304,
+  axioms: 2,
 });
 
 const PROJECT_AXIOMS = Object.freeze([
   'PNP.CheckPCCPackexp',
   'PNP.GeneratePCCPack',
-  'PNP.ResidualBandExactMinimization',
 ]);
 
 const LEAN_STANDARD_AXIOMS = Object.freeze([
@@ -4684,6 +4683,15 @@ const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_DECLARATIONS = Object.freeze([
   ["PNP.sat_in_p_from_locked_nand_in_p",["Quot.sound","propext"],"PNP.LockedNAND","22e89ea9c9bb5a637be9b676789bd28c793be5cbb0b6cf6c4bc861f8c0a2a172"],
   ["PNP.sat_reduces_to_locked_nand_checked",["Quot.sound","propext"],"PNP.LockedNAND","bafb9a9729b6e8ee9f653f60e8d2dc10691e670d275481a9c8ae62880935d44b"],
 ]);
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.LockedNAND.encodedDirectWireMinimumThreshold_ofCandidate_iff",["propext"],"PNP.Concrete.LockedNANDReduction","a3389cacce2ed9318204b1f683565d78a15690d860eec12a7bb6ac57970f6d62"],
+  ["PNP.residual_band_encoded_candidate_iff_reference_minimum",["propext"],"PNP.ResidualBand","b8492328752d6674474909daf183d0097d28d794c65a0156cbd90494eae7882f"],
+  ["PNP.locked_nand_reduces_to_residual_band_checked",["propext"],"PNP.ResidualBand","403079c3a44b17388b0c199e82adeac566f6125dc245f04a85dfa18e53c3c497"],
+  ["PNP.locked_nand_in_p_from_residual_band_in_p",["propext"],"PNP.ResidualBand","687aee8e08c38b6be49dca31a051d7fd019adc9866c456712657fa5ee7606286"],
+  ["PNP.report_residual_band_eq_concrete_minimum_threshold",["propext"],"PNP.ConcreteResidualBandCompatibility","07dc72c6a93d72ab65435705ba99ea6b84f69c2d06930af90c07f6bd09b5fc8a"],
+  ["PNP.report_locked_nand_eq_residual_band",["propext"],"PNP.ConcreteResidualBandCompatibility","14140f257b5e6ddf140cc9957a86248b1ed7defb691daf40c6080a859ce6e128"],
+  ["PNP.concrete_residual_band_compatibility_checked_complete",["propext"],"PNP.ConcreteResidualBandCompatibility","c4d3ccd4bc92297fd50b22d1be51b80d3930a10ecebce2d3e6c3ee25d95d03db"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5572,6 +5580,12 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteLegacyLockedNANDCompatibilityAuditedDeclarationCount: 0,
   leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree: false,
   leanConcreteLegacyLockedNANDCompatibilityScope: null,
+  leanConcreteResidualBandCompatibilityFormalized: false,
+  leanConcreteResidualBandCompatibilityAxiomAuditPassed: false,
+  leanConcreteResidualBandCompatibilityAuditedDeclarationCount: 0,
+  leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree: false,
+  leanConcreteResidualBandCompatibilityCallerReductionRemoved: false,
+  leanConcreteResidualBandCompatibilityScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6189,6 +6203,12 @@ leanConcreteLegacyLockedNANDCompatibilityFormalized = ${payload.leanConcreteLega
 leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed = ${payload.leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed ?? false}
 leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree = ${payload.leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree ?? false}
 leanConcreteLegacyLockedNANDCompatibilityScope = ${payload.leanConcreteLegacyLockedNANDCompatibilityScope === null ? 'null' : JSON.stringify(payload.leanConcreteLegacyLockedNANDCompatibilityScope)}
+leanConcreteResidualBandCompatibilityFormalized = ${payload.leanConcreteResidualBandCompatibilityFormalized ?? false}
+leanConcreteResidualBandCompatibilityAxiomAuditPassed = ${payload.leanConcreteResidualBandCompatibilityAxiomAuditPassed ?? false}
+leanConcreteResidualBandCompatibilityAuditedDeclarationCount = ${payload.leanConcreteResidualBandCompatibilityAuditedDeclarationCount ?? 0}
+leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree = ${payload.leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree ?? false}
+leanConcreteResidualBandCompatibilityCallerReductionRemoved = ${payload.leanConcreteResidualBandCompatibilityCallerReductionRemoved ?? false}
+leanConcreteResidualBandCompatibilityScope = ${payload.leanConcreteResidualBandCompatibilityScope === null ? 'null' : JSON.stringify(payload.leanConcreteResidualBandCompatibilityScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7264,6 +7284,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const concreteResidualBandCompatibility =
+    CONCRETE_RESIDUAL_BAND_COMPATIBILITY_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7858,6 +7885,9 @@ function validateInventory(inventory) {
     && concreteLegacyLockedNANDCompatibility.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && concreteResidualBandCompatibility.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8298,6 +8328,9 @@ function validateStatus(status, inventory) {
   );
   const concreteLegacyLockedNANDCompatibilityMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'concrete-legacy-locked-nand-compatibility'
+  );
+  const concreteResidualBandCompatibilityMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'concrete-residual-band-compatibility'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -10001,6 +10034,32 @@ function validateStatus(status, inventory) {
     && status.leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree === true
     && status.leanConcreteLegacyLockedNANDCompatibilityScope === "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse"
 
+    && concreteResidualBandCompatibilityMilestone?.classification === "formalized-concrete-residual-band-compatibility"
+    && concreteResidualBandCompatibilityMilestone.status === "formalized-concrete-residual-band-compatibility"
+    && concreteResidualBandCompatibilityMilestone.scope === "The report-facing residual-band endpoint is the concrete fail-closed direct-wire candidate/threshold language. Every intrinsically typed finite candidate has exact reference-minimum semantics after encoding, and the active locked-to-residual compatibility edge is the compiled identity polynomial reduction rather than caller-supplied trust."
+    && concreteResidualBandCompatibilityMilestone.nonClaim === "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      concreteResidualBandCompatibilityMilestone.requiredTheorems,
+      CONCRETE_RESIDUAL_BAND_COMPATIBILITY_DECLARATIONS.map(([name]) => name)
+    )
+    && concreteResidualBandCompatibilityMilestone.theoremRows?.every((row) => {
+      const expected = CONCRETE_RESIDUAL_BAND_COMPATIBILITY_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteResidualBandCompatibilityFormalized === true
+    && status.leanConcreteResidualBandCompatibilityAxiomAuditPassed === true
+    && status.leanConcreteResidualBandCompatibilityAuditedDeclarationCount === 10
+    && status.leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree === true
+    && status.leanConcreteResidualBandCompatibilityCallerReductionRemoved === true
+    && status.leanConcreteResidualBandCompatibilityScope === "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport"
+    && status.leanResidualBandMinimizerFormalized === false
+
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -10543,7 +10602,7 @@ function validateStatus(status, inventory) {
     && sameJson(status.leanLockedNANDThresholdMissingInstantiationInventory, [])
     && status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true
     && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true
-    && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48
+    && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 50
     && status.leanConcreteLockedNANDEncodedSemanticReductionScope === 'strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction'
     && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true
     && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true

@@ -2517,7 +2517,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.deepEqual(release.earnedBoundary.lockedNANDGlobalSemanticThresholdProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionAxiomAuditPassed, true);
-  assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionAuditedDeclarationCount, 48);
+  assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionAuditedDeclarationCount, 50);
   assert.equal(release.earnedBoundary.lockedNANDEncodedSemanticReductionScope, "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction");
   assert.equal(Object.keys(release.earnedBoundary.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256).length, 11);
   assert.deepEqual(release.earnedBoundary.lockedNANDEncodedSemanticReductionAxiomClosure, ["Quot.sound", "propext"]);

@@ -76,6 +76,18 @@ const publishedMilestoneStatusFields = Object.fromEntries(
         || key.endsWith("Scope"))
   )
 );
+const publishedConcreteCompatibilityStatusFields = Object.fromEntries(
+  Object.entries(publishedStatus).filter(([key]) =>
+    key.startsWith("leanConcreteLegacyLockedNANDCompatibility")
+      || key.startsWith("leanConcreteResidualBandCompatibility")
+  )
+);
+const publishedConcreteCompatibilityReleaseFields = Object.fromEntries(
+  Object.entries(publishedRelease.earnedBoundary).filter(([key]) =>
+    key.startsWith("concreteLegacyLockedNANDCompatibility")
+      || key.startsWith("concreteResidualBandCompatibility")
+  )
+);
 
 function earnedTheoremNamesBefore(milestoneId) {
   const milestoneIndex = publishedStatus.formalPublicationMilestones.findIndex(
@@ -2630,6 +2642,7 @@ function makeProject(t) {
     // disappear from this baseline fixture.
     ...publishedMilestoneStatusFields,
     ...latestPublishedMilestoneStatusFields,
+    ...publishedConcreteCompatibilityStatusFields,
     concretePublicationGate: { passed: false },
     publicationStatusDerivedOnlyFromConcreteGate: true,
     mathematicalTheoremEstablished: false,
@@ -4014,6 +4027,7 @@ function makeProject(t) {
       ...structuredClone(Object.fromEntries(Object.entries(publishedRelease.earnedBoundary).filter(
         ([name]) => name.startsWith("lockedNAND") || name.startsWith("cnfToNAND")
       ))),
+      ...structuredClone(publishedConcreteCompatibilityReleaseFields),
       pipelineStateNamespacesFormalized: true,
       pipelineStateNamespaceAxiomAuditPassed: true,
       pipelineStateNamespaceAuditedDeclarationCount: 39,

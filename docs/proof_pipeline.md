@@ -25,16 +25,16 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,120 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,127 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
 - 29,988 public declarations;
-- 15,497 theorem-kind declarations;
+- 15,502 theorem-kind declarations;
 - 7,613 assumption-free theorem-kind declarations;
-- 303 source-closure modules;
+- 304 source-closure modules;
 - 15,141 excluded private compiler auxiliaries;
-- 3 project axioms.
+- 2 project axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
 configuration. Symlinked sources, malformed probe output, private-row forgery, unsorted declarations,
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 162 earned formal artefact scopes are:
+The 163 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -212,6 +212,7 @@ The 162 earned formal artefact scopes are:
 | Same-candidate finite BCEL-ready and Packet carrier coherence | For every accepted finite Packet/budget no-lower certificate, Lean indexes a checked finite BCEL-ready problem by the same candidate and model and uses a bijective anchor map with explicit injectivity and surjectivity proofs plus an exact Boolean-reflected list equality to identify the computed ready nucleus with the exact grouped Packet carrier. Five reviewed theorem pins transfer the inherited nontrivial-size bound and existing positive-Packet and constant-activation exclusions to one coherent family. All six focused declarations use only `Quot.sound` and `propext`. | The terminal problem, positive full-slack premise, grouped Packet family, bijective map, Packet payloads, budget, realizer and dependency tables, and rank maps remain supplied proof-bearing inputs. The carrier identity does not equate activation weights with projection excess, derive constant activation from positive residual slack, construct BN3 through BN6 data from terminal data, complete the no-lower ledger, prove unconditional `ZeroSlack` or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Finite BCEL and Packet activation-coherence obstruction | For every accepted same-candidate carrier-coherence certificate, Lean recomputes the selected nucleus defect, the Packet cut value, and every canonical nonempty proper-cut activation. Acceptance reconstructs the complete finite activation-coherence equations and identifies mapped activation with projection excess. The existing same-family Packet exclusion proves acceptance impossible, and a deterministic classifier returns either the cut-value mismatch or the first proof-bearing proper-cut mismatch. All six reviewed theorem pins, and all twelve declarations in the focused audit, use only `Quot.sound` and `propext`. | This is a diagnostic obstruction, not a proof or construction of activation coherence. The terminal problem, positive full-slack premise, family, map, activation cells and masses, payloads, budget, realizer and dependency tables, and rank maps remain supplied. Exhaustive cut enumeration may be exponential. This does not construct the inputs, complete global routing or the no-lower system, prove unconditional SaturatePositive, BCELReady, ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove `P = NP`. |
 | Concrete report-facing locked-NAND compatibility | Six reviewed theorem pins identify report-facing SAT and locked-NAND languages, verifier, decider, reduction, P/NP-class, and P-equals-NP interfaces with the concrete finite-pipeline definitions. The report bridge directly reuses the checked all-bitstring polynomial reduction, and its endpoint has no project-specific axiom. | This removes duplicate interface trust and `PNP.LockedNANDThreshold` as an active project axiom. It does not supply a target decider, SAT NP-hardness or CNFSAT NP-completeness transport, construct the residual minimiser, prove unconditional ZeroSlack or exact polynomial PCCMin, create the eligible root theorem, open a global gate, or prove `P = NP`. |
+| Concrete residual-band compatibility | Seven reviewed theorem pins identify the report-facing residual-band endpoint with the concrete fail-closed encoded exact-minimum threshold language, prove its exact reference-minimum semantics for every intrinsically typed finite candidate, and make the active locked-to-residual bridge a compiled identity polynomial reduction. All ten declarations in the focused audit use only `propext`. | This removes `PNP.ResidualBandExactMinimization` and the caller-supplied compatibility edge from the active route. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm. The result does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT in P, SAT hardness transport, the eligible root theorem, a global-gate closure, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -231,7 +232,7 @@ This pass is intentionally non-activating:
 - the expected activation fingerprints are unset;
 - unset fingerprints are unconfigured and never match null actual values;
 - `PNP.PEqualsNP` is a concrete compatibility alias, not the absent eligible root theorem;
-- 3 project axioms and five blockers remain.
+- 2 project axioms and five blockers remain.
 
 Every theorem-emission field is derived from `concretePublicationGate.passed`. Historical accepted
 records, JSON values, checker results, or report wording cannot override it.

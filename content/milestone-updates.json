@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-24-concrete-residual-band-compatibility",
+      "milestoneId": "concrete-residual-band-compatibility",
+      "publishedAt": "2026-08-23T22:18:40Z",
+      "title": "Concrete residual-band compatibility",
+      "plainLanguage": [
+        "This milestone replaces the report-facing residual-band assumption with a concrete, fail-closed language over encoded direct-wire candidates and thresholds. For every intrinsically typed finite candidate, the compiled semantics identify that language with the exact exhaustive reference minimum, and the active locked-to-residual bridge is now an identity polynomial reduction instead of a caller-supplied witness.",
+        "Exhaustive reference minimisation is still not a polynomial-time algorithm, the residual-band promise bounds remain open, and no unconditional ZeroSlack, deterministic SAT solver, or root theorem has been proved. Two project-specific axioms and all five global gates remain, so this does not establish P = NP."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 163,
+        "formalArtefactCoverageTotalRows": 165,
+        "riskWeightedProofCompletionPercent": 33,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "7dc26600f55762bf7a65b3fc6512a76aba23d9d0",
+        "tree": "e5d2dc08084b68b455b7249c4add156ef8e05651",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-23-concrete-legacy-locked-nand-compatibility",
       "milestoneId": "concrete-legacy-locked-nand-compatibility",
       "publishedAt": "2026-08-23T15:42:00Z",

@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 567,472 | `12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917` |
-| `downloads/canonical-proof-report.pdf` | 567,472 | `12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917` |
-| `downloads/canonical_proof_report.tex` | 344,783 | `dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864` |
-| `downloads/canonical-proof-report.tex` | 344,783 | `dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864` |
-| `public/pnp-status.json` | 2,608,962 | `a2bbf2c1ad05255291e0b7ba2422ae9ab196d6236a428d9b6d691e268f3e0687` |
-| `public/pnp-theorem-inventory.json` | 33,070,059 | `a5a8d78c4fd7bf90b2fb5b82fdc77087a6701981f8c06722aef8d2c696ae4c07` |
-| `public/pnp-proof-progress.json` | 37,719 | `2529939036262ab94510c6866cbf1c4ec3253a14491b6ad98e33f5d1158d7748` |
+| `downloads/canonical_proof_report.pdf` | 568,926 | `7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87` |
+| `downloads/canonical-proof-report.pdf` | 568,926 | `7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87` |
+| `downloads/canonical_proof_report.tex` | 346,137 | `9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084` |
+| `downloads/canonical-proof-report.tex` | 346,137 | `9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084` |
+| `public/pnp-status.json` | 2,615,734 | `2c39a94847c1fba4db668173878e930460b8752dd7161b54664fd662f9a72a8f` |
+| `public/pnp-theorem-inventory.json` | 33,082,413 | `3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f` |
+| `public/pnp-proof-progress.json` | 40,791 | `5a7d41ef653c9549ff4c9e09f97c53330fcf05fb02a26466a5b879f1950e9c84` |
 
 The PDF must have 132 A4 pages. Both filename styles must be byte-identical.
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 63ba53d76da0878b0d3b2834b891afcc6ef0fe0e
+git -C ../pnp checkout 7dc26600f55762bf7a65b3fc6512a76aba23d9d0
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,9 +68,9 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,988 public declarations, 15,497 theorem-kind declarations,
-7,613 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 303 modules, and
-three project axioms. The publication gate must remain false with five blockers. The concrete
+Expected compiled inventory counts are 29,988 public declarations, 15,502 theorem-kind declarations,
+7,613 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 304 modules, and
+two project axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
@@ -82,7 +82,7 @@ bound, malformed-input failure, all-bitstring language equivalence, and semantic
 `buildLockedNANDInstance`. The expanded 68-declaration semantic audit has 28 empty, 19 `propext`-only,
 and 21 `propext` plus `Quot.sound` closures, with no project axiom or `Classical.choice`.
 
-The latest concrete report-facing locked-NAND compatibility milestone has 6 reviewed theorem pins.
+The concrete report-facing locked-NAND compatibility milestone has 6 reviewed theorem pins.
 It identifies the report-facing SAT and locked-NAND languages, verifier, decider, reduction, P/NP-class,
 and P-equals-NP interfaces with the concrete finite-pipeline definitions and directly reuses the
 checked all-bitstring polynomial reduction. Its focused 9-declaration audit records the wider compatibility
@@ -92,6 +92,17 @@ removes the duplicate `PNP.LockedNANDThreshold` axiom and caller-supplied reduct
 supply a target decider, prove SAT NP-hardness or CNFSAT NP-completeness transport, construct the
 unconditional residual minimiser, prove ZeroSlack or exact polynomial PCCMin, create the eligible root
 theorem, or open a global gate.
+
+The latest concrete residual-band compatibility milestone has 7 reviewed theorem pins. It identifies
+the report-facing residual-band endpoint with the concrete fail-closed encoded exact-minimum threshold
+language, proves exact reference-minimum semantics for every intrinsically typed finite candidate, and
+uses a compiled identity polynomial reduction for the active locked-to-residual edge. Its focused
+10-declaration audit and the seven pinned theorems use only `propext`, with no project-specific axiom.
+This removes `PNP.ResidualBandExactMinimization` and the caller-supplied compatibility edge from the
+active route. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm, and this
+milestone does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT
+in P, SAT hardness transport, the eligible root theorem, or a global-gate closure.
+
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
 

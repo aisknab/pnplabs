@@ -3598,7 +3598,6 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(inventory.projectAxioms, [
     'PNP.CheckPCCPackexp',
     'PNP.GeneratePCCPack',
-    'PNP.ResidualBandExactMinimization',
   ]);
 
   const gate = status.concretePublicationGate;
@@ -4834,7 +4833,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   }
   assert.equal(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized, true);
   assert.equal(status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed, true);
-  assert.equal(status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount, 48);
+  assert.equal(status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount, 50);
   assert.equal(status.leanConcreteLockedNANDCanonicalEncodingFormalized, true);
   assert.equal(status.leanConcreteLockedNANDCompleteCandidateCodecFormalized, true);
   assert.equal(status.leanConcreteLockedNANDNormalizationSemanticsFormalized, true);
@@ -7694,7 +7693,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.deepEqual(index.claimBoundary.leanLockedNANDThresholdMissingInstantiationInventory, []);
   assert.equal(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount, 48);
+  assert.equal(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount, 50);
   assert.equal(Object.keys(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionTheoremKernelTypeSha256).length, 11);
   assert.deepEqual(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(index.claimBoundary.leanConcreteLockedNANDEncodedSemanticReductionProjectAxiomClosure, []);

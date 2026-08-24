@@ -9,8 +9,8 @@ import { validateProofProgressModel } from "./proof-progress-model.mjs";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "63ba53d76da0878b0d3b2834b891afcc6ef0fe0e";
-const REVIEWED_CORE_TREE = "98103f568ccb68561094d5516ada08c099f770a7";
+const REVIEWED_CORE_COMMIT = "7dc26600f55762bf7a65b3fc6512a76aba23d9d0";
+const REVIEWED_CORE_TREE = "e5d2dc08084b68b455b7249c4add156ef8e05651";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -4216,6 +4216,16 @@ const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_RELEASE_IDENTITIES = {
   concreteLegacyLockedNANDCompatibilityCheckedCompleteTheorem: "PNP.concrete_legacy_locked_nand_compatibility_checked_complete"
 };
 
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_RELEASE_IDENTITIES = {
+  concreteResidualBandCompatibilityCandidateSemanticsTheorem: "PNP.Concrete.LockedNAND.encodedDirectWireMinimumThreshold_ofCandidate_iff",
+  concreteResidualBandCompatibilityEncodedSemanticsTheorem: "PNP.residual_band_encoded_candidate_iff_reference_minimum",
+  concreteResidualBandCompatibilityReductionTheorem: "PNP.locked_nand_reduces_to_residual_band_checked",
+  concreteResidualBandCompatibilityTransportTheorem: "PNP.locked_nand_in_p_from_residual_band_in_p",
+  concreteResidualBandCompatibilityReportIdentityTheorem: "PNP.report_residual_band_eq_concrete_minimum_threshold",
+  concreteResidualBandCompatibilityLockedIdentityTheorem: "PNP.report_locked_nand_eq_residual_band",
+  concreteResidualBandCompatibilityCheckedCompleteTheorem: "PNP.concrete_residual_band_compatibility_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -5962,6 +5972,19 @@ const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_SCOPE = "all-bitstring-report-fa
 const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_MILESTONE_SCOPE = "The report-facing language, decider, verifier, reduction, P/NP class, and P-equals-NP interfaces are exact compatibility names for the concrete finite-pipeline model. SAT and LockedNANDThreshold are definitionally the concrete CNFSAT and EncodedLockedNANDThreshold languages, and the active bridge reuses the checked all-bitstring reduction without a caller-supplied trust field.";
 const CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_NON_CLAIM = "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP.";
 
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS = {
+  "PNP.Concrete.LockedNAND.encodedDirectWireMinimumThreshold_ofCandidate_iff": { hash: "a3389cacce2ed9318204b1f683565d78a15690d860eec12a7bb6ac57970f6d62", axioms: ["propext"], module: "PNP.Concrete.LockedNANDReduction" },
+  "PNP.residual_band_encoded_candidate_iff_reference_minimum": { hash: "b8492328752d6674474909daf183d0097d28d794c65a0156cbd90494eae7882f", axioms: ["propext"], module: "PNP.ResidualBand" },
+  "PNP.locked_nand_reduces_to_residual_band_checked": { hash: "403079c3a44b17388b0c199e82adeac566f6125dc245f04a85dfa18e53c3c497", axioms: ["propext"], module: "PNP.ResidualBand" },
+  "PNP.locked_nand_in_p_from_residual_band_in_p": { hash: "687aee8e08c38b6be49dca31a051d7fd019adc9866c456712657fa5ee7606286", axioms: ["propext"], module: "PNP.ResidualBand" },
+  "PNP.report_residual_band_eq_concrete_minimum_threshold": { hash: "07dc72c6a93d72ab65435705ba99ea6b84f69c2d06930af90c07f6bd09b5fc8a", axioms: ["propext"], module: "PNP.ConcreteResidualBandCompatibility" },
+  "PNP.report_locked_nand_eq_residual_band": { hash: "14140f257b5e6ddf140cc9957a86248b1ed7defb691daf40c6080a859ce6e128", axioms: ["propext"], module: "PNP.ConcreteResidualBandCompatibility" },
+  "PNP.concrete_residual_band_compatibility_checked_complete": { hash: "c4d3ccd4bc92297fd50b22d1be51b80d3930a10ecebce2d3e6c3ee25d95d03db", axioms: ["propext"], module: "PNP.ConcreteResidualBandCompatibility" }
+};
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_SCOPE = "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport";
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE = "The report-facing residual-band endpoint is the concrete fail-closed direct-wire candidate/threshold language. Every intrinsically typed finite candidate has exact reference-minimum semantics after encoding, and the active locked-to-residual compatibility edge is the compiled identity polynomial reduction rather than caller-supplied trust.";
+const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM = "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -6632,7 +6655,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   const lockedNANDGlobalSemanticThresholdHashes = earned.lockedNANDGlobalSemanticThresholdTheoremKernelTypeSha256;
   if (!lockedNANDGlobalSemanticThresholdHashes || Object.keys(lockedNANDGlobalSemanticThresholdHashes).length !== 8 || !Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_THEOREMS).every(([name, row]) => lockedNANDGlobalSemanticThresholdHashes[name] === row.hash)) failures.push("formal-publication locked-NAND global semantic-threshold fingerprint mismatch");
   if (!Object.entries(LOCKED_NAND_GLOBAL_SEMANTIC_THRESHOLD_RELEASE_IDENTITIES).every(([suffix, theorem]) => earned[`lockedNAND${suffix}`] === theorem)) failures.push("formal-publication locked-NAND global semantic-threshold theorem identity mismatch");
-  if (!(earned.lockedNANDEncodedSemanticReductionFormalized === true && earned.lockedNANDEncodedSemanticReductionAxiomAuditPassed === true && earned.lockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && earned.lockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && earned.lockedNANDCanonicalEncodingFormalized === true && earned.lockedNANDCompleteCandidateCodecFormalized === true && earned.lockedNANDNormalizationSemanticsFormalized === true && earned.lockedNANDParserMachineFormalized === true && earned.lockedNANDEmitterMachineFormalized === true && earned.lockedNANDPolynomialReductionFormalized === true)) failures.push("formal-publication locked-NAND encoded semantic-reduction boundary mismatch");
+  if (!(earned.lockedNANDEncodedSemanticReductionFormalized === true && earned.lockedNANDEncodedSemanticReductionAxiomAuditPassed === true && earned.lockedNANDEncodedSemanticReductionAuditedDeclarationCount === 50 && earned.lockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && earned.lockedNANDCanonicalEncodingFormalized === true && earned.lockedNANDCompleteCandidateCodecFormalized === true && earned.lockedNANDNormalizationSemanticsFormalized === true && earned.lockedNANDParserMachineFormalized === true && earned.lockedNANDEmitterMachineFormalized === true && earned.lockedNANDPolynomialReductionFormalized === true)) failures.push("formal-publication locked-NAND encoded semantic-reduction boundary mismatch");
   if (JSON.stringify(earned.lockedNANDEncodedSemanticReductionAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.lockedNANDEncodedSemanticReductionProjectAxiomClosure) || earned.lockedNANDEncodedSemanticReductionProjectAxiomClosure.length !== 0) failures.push("formal-publication locked-NAND encoded semantic-reduction axiom closure mismatch");
   const lockedNANDEncodedSemanticReductionHashes = earned.lockedNANDEncodedSemanticReductionTheoremKernelTypeSha256;
   if (!lockedNANDEncodedSemanticReductionHashes || Object.keys(lockedNANDEncodedSemanticReductionHashes).length !== 11 || !Object.entries(LOCKED_NAND_ENCODED_SEMANTIC_REDUCTION_THEOREMS).every(([name, row]) => lockedNANDEncodedSemanticReductionHashes[name] === row.hash)) failures.push("formal-publication locked-NAND encoded semantic-reduction fingerprint mismatch");
@@ -8649,6 +8672,23 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_THEOREMS).every(([name, row]) => concreteLegacyLockedNANDCompatibilityHashes[name] === row.hash)) failures.push("current manifest concrete report-facing locked-NAND compatibility fingerprint mismatch");
   if (!Object.entries(CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest concrete report-facing locked-NAND compatibility theorem identity mismatch");
 
+  if (!(earned.concreteResidualBandCompatibilityFormalized === true
+      && earned.concreteResidualBandCompatibilityAxiomAuditPassed === true
+      && earned.concreteResidualBandCompatibilityAuditedDeclarationCount === 10
+      && earned.concreteResidualBandCompatibilityEndpointProjectAssumptionFree === true
+      && earned.concreteResidualBandCompatibilityCallerReductionRemoved === true
+      && earned.concreteResidualBandCompatibilityScope === CONCRETE_RESIDUAL_BAND_COMPATIBILITY_SCOPE
+      && earned.cnfSATInPFormalized === false
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) failures.push("current manifest concrete residual-band compatibility boundary mismatch");
+  if (JSON.stringify(earned.concreteResidualBandCompatibilityAxiomClosure) !== JSON.stringify(["propext"])
+      || !Array.isArray(earned.concreteResidualBandCompatibilityProjectAxiomClosure)
+      || earned.concreteResidualBandCompatibilityProjectAxiomClosure.length !== 0) failures.push("current manifest concrete residual-band compatibility axiom closure mismatch");
+  const concreteResidualBandCompatibilityHashes = earned.concreteResidualBandCompatibilityTheoremKernelTypeSha256;
+  if (!concreteResidualBandCompatibilityHashes || Object.keys(concreteResidualBandCompatibilityHashes).length !== 7
+      || !Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS).every(([name, row]) => concreteResidualBandCompatibilityHashes[name] === row.hash)) failures.push("current manifest concrete residual-band compatibility fingerprint mismatch");
+  if (!Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest concrete residual-band compatibility theorem identity mismatch");
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -8665,7 +8705,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility")) failures.push("current manifest earned scope omits the M186 concrete compatibility milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility")) failures.push("current manifest earned scope omits the M187 concrete residual-band compatibility milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -8877,7 +8917,7 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
     if (!(status.leanLockedNANDDerivedFinalOutputLawsFormalized === true && status.leanLockedNANDResidualSlackAtMostFourFormalized === true && status.leanLockedNANDSatisfiableFinalConditionsFormalized === true && status.leanLockedNANDGlobalSemanticThresholdFormalized === true && status.leanLockedNANDGlobalSemanticThresholdAxiomAuditPassed === true && status.leanLockedNANDGlobalSemanticThresholdAuditedDeclarationCount === 8 && status.leanLockedNANDGlobalSemanticThresholdScope === "arbitrary-finite-topological-nand-circuits-complete-six-field-premises-and-typed-semantic-threshold")) failures.push("public status locked-NAND global semantic-threshold evidence mismatch");
     const lockedNANDEncodedSemanticReductionMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-encoded-semantic-boundary");
     if (!lockedNANDEncodedSemanticReductionMilestone || lockedNANDEncodedSemanticReductionMilestone.earned !== true || lockedNANDEncodedSemanticReductionMilestone.allPresent !== true || lockedNANDEncodedSemanticReductionMilestone.allKernelTypesMatch !== true || lockedNANDEncodedSemanticReductionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || lockedNANDEncodedSemanticReductionMilestone.requiredTheorems?.length !== 11) failures.push("public status locked-NAND encoded semantic-reduction milestone mismatch");
-    if (!(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 48 && status.leanConcreteLockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true && status.leanConcreteLockedNANDParserMachineFormalized === true && status.leanConcreteLockedNANDEmitterMachineFormalized === true && status.leanConcreteLockedNANDPolynomialReductionFormalized === true)) failures.push("public status locked-NAND encoded semantic-reduction evidence mismatch");
+    if (!(status.leanConcreteLockedNANDEncodedSemanticReductionFormalized === true && status.leanConcreteLockedNANDEncodedSemanticReductionAxiomAuditPassed === true && status.leanConcreteLockedNANDEncodedSemanticReductionAuditedDeclarationCount === 50 && status.leanConcreteLockedNANDEncodedSemanticReductionScope === "strict-version-zero-codec-direct-normalization-semantics-complete-candidate-bytes-and-fail-closed-semantic-reduction" && status.leanConcreteLockedNANDCanonicalEncodingFormalized === true && status.leanConcreteLockedNANDCompleteCandidateCodecFormalized === true && status.leanConcreteLockedNANDNormalizationSemanticsFormalized === true && status.leanConcreteLockedNANDParserMachineFormalized === true && status.leanConcreteLockedNANDEmitterMachineFormalized === true && status.leanConcreteLockedNANDPolynomialReductionFormalized === true)) failures.push("public status locked-NAND encoded semantic-reduction evidence mismatch");
     const lockedNANDSourceParserMilestone = status.formalPublicationMilestones?.find((row) => row.id === "concrete-locked-nand-source-parser");
     if (!lockedNANDSourceParserMilestone
         || lockedNANDSourceParserMilestone.earned !== true
@@ -12146,6 +12186,41 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       && status.leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree === true
       && status.leanConcreteLegacyLockedNANDCompatibilityScope === CONCRETE_LEGACY_LOCKED_NAND_COMPATIBILITY_SCOPE)) failures.push("status concrete report-facing locked-NAND compatibility evidence mismatch");
 
+  const concreteResidualBandCompatibilityMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-residual-band-compatibility"
+  );
+  const concreteResidualBandCompatibilityNames = Object.keys(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS);
+  if (!concreteResidualBandCompatibilityMilestone
+      || concreteResidualBandCompatibilityMilestone.classification !== "formalized-concrete-residual-band-compatibility"
+      || concreteResidualBandCompatibilityMilestone.status !== "formalized-concrete-residual-band-compatibility"
+      || concreteResidualBandCompatibilityMilestone.scope !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE
+      || concreteResidualBandCompatibilityMilestone.nonClaim !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM
+      || JSON.stringify(concreteResidualBandCompatibilityMilestone.requiredTheorems) !== JSON.stringify(concreteResidualBandCompatibilityNames)
+      || concreteResidualBandCompatibilityMilestone.earned !== true
+      || concreteResidualBandCompatibilityMilestone.allPresent !== true
+      || concreteResidualBandCompatibilityMilestone.allAssumptionFree !== false
+      || concreteResidualBandCompatibilityMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || concreteResidualBandCompatibilityMilestone.allKernelTypesMatch !== true
+      || concreteResidualBandCompatibilityMilestone.sourceClosureFingerprintMatches !== true) failures.push("status concrete residual-band compatibility publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS)) {
+    const row = concreteResidualBandCompatibilityMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) failures.push(`status concrete residual-band compatibility theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanConcreteResidualBandCompatibilityFormalized === true
+      && status.leanConcreteResidualBandCompatibilityAxiomAuditPassed === true
+      && status.leanConcreteResidualBandCompatibilityAuditedDeclarationCount === 10
+      && status.leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree === true
+      && status.leanConcreteResidualBandCompatibilityCallerReductionRemoved === true
+      && status.leanConcreteResidualBandCompatibilityScope === CONCRETE_RESIDUAL_BAND_COMPATIBILITY_SCOPE
+      && status.leanResidualBandMinimizerFormalized === false
+      && status.leanConcreteCNFSATInPFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status concrete residual-band compatibility evidence mismatch");
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -13382,6 +13457,13 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory concrete report-facing locked-NAND compatibility theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory concrete report-facing locked-NAND compatibility fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory concrete residual-band compatibility theorem mismatch: ${name}`);
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory concrete residual-band compatibility fingerprint mismatch: ${name}`);
     }
 
     for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -15939,6 +16021,28 @@ export function validateAuditTargets(options = {}) {
     if (!concreteLegacyLockedNANDCompatibilityMilestone?.requiredTheorems?.includes(name)
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash) {
       failures.push(`core publication map concrete report-facing locked-NAND compatibility fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const concreteResidualBandCompatibilityMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "concrete-residual-band-compatibility"
+  );
+  const concreteResidualBandCompatibilityNames = Object.keys(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS);
+  if (!concreteResidualBandCompatibilityMilestone
+      || concreteResidualBandCompatibilityMilestone.classification !== "formalized-concrete-residual-band-compatibility"
+      || concreteResidualBandCompatibilityMilestone.scope !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE
+      || concreteResidualBandCompatibilityMilestone.nonClaim !== CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM
+      || JSON.stringify(concreteResidualBandCompatibilityMilestone.requiredTheorems)
+        !== JSON.stringify(concreteResidualBandCompatibilityNames)) {
+    failures.push("core publication map concrete residual-band compatibility boundary mismatch");
+  }
+  const concreteResidualBandCompatibilityPins =
+    releaseManifest.earnedBoundary?.concreteResidualBandCompatibilityTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS)) {
+    if (!concreteResidualBandCompatibilityMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || concreteResidualBandCompatibilityPins[name] !== row.hash) {
+      failures.push(`core publication map concrete residual-band compatibility fingerprint mismatch: ${name}`);
     }
   }
 

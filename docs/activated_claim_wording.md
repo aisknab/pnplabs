@@ -124,6 +124,12 @@ leanConcreteLegacyLockedNANDCompatibilityAxiomAuditPassed = true
 leanConcreteLegacyLockedNANDCompatibilityAuditedDeclarationCount = 9
 leanConcreteLegacyLockedNANDCompatibilityEndpointProjectAssumptionFree = true
 leanConcreteLegacyLockedNANDCompatibilityScope = "all-bitstring-report-facing-sat-and-locked-nand-identities-with-concrete-finite-pipeline-complexity-witnesses-and-direct-checked-reduction-reuse"
+leanConcreteResidualBandCompatibilityFormalized = true
+leanConcreteResidualBandCompatibilityAxiomAuditPassed = true
+leanConcreteResidualBandCompatibilityAuditedDeclarationCount = 10
+leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree = true
+leanConcreteResidualBandCompatibilityCallerReductionRemoved = true
+leanConcreteResidualBandCompatibilityScope = "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -133,7 +139,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 162 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 162 of 164 current scoped rows, not proof completion. The risk-weighted proof-completion estimate is 32%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Concrete report-facing locked-NAND compatibility**, identifies the report-facing SAT and locked-NAND interfaces with the concrete finite-pipeline definitions and directly reuses the checked all-bitstring polynomial reduction. This removes the duplicate `PNP.LockedNANDThreshold` project axiom and caller-supplied reduction edge. It does not supply a target decider, prove SAT NP-hardness or CNFSAT NP-completeness transport, construct the unconditional residual minimiser, prove ZeroSlack or exact polynomial PCCMin, create the eligible root theorem, or open a global gate. Three project-specific axioms and all five global proof gates remain open. `PNP.PEqualsNP` now aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 163 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 163 of 165 current scoped rows, not proof completion. The risk-weighted proof-completion estimate is 33%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Concrete residual-band compatibility**, gives the report-facing residual-band endpoint concrete fail-closed encoded exact-minimum semantics for every intrinsically typed finite candidate and replaces its caller-supplied compatibility edge with a compiled identity reduction. This removes `PNP.ResidualBandExactMinimization` from project-specific proof authority. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm, and the milestone does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT in P, SAT hardness transport, the eligible root theorem, or a global-gate closure. Two project-specific axioms and all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
