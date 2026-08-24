@@ -3691,6 +3691,36 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(release.earnedBoundary.pccMinTotalOracleLoopAxiomClosure, []);
   assert.deepEqual(release.earnedBoundary.pccMinTotalOracleLoopProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(pccMinTotalOracleLoop.id));
+  const pccMinNormalizeOracleComposition = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-normalize-oracle-composition');
+  assert.ok(pccMinNormalizeOracleComposition);
+  assert.equal(pccMinNormalizeOracleComposition.earned, true);
+  assert.equal(pccMinNormalizeOracleComposition.allPresent, true);
+  assert.equal(pccMinNormalizeOracleComposition.allAssumptionFree, true);
+  assert.equal(pccMinNormalizeOracleComposition.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinNormalizeOracleComposition.allKernelTypesMatch, true);
+  assert.equal(pccMinNormalizeOracleComposition.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinNormalizeOracleComposition.requiredTheorems, [
+    'PNP.DirectWire.pccmin_normalize_oracle_loop_checked_complete',
+  ]);
+  assert.equal(pccMinNormalizeOracleComposition.theoremRows[0].actualKernelTypeSha256,
+    'aab40681d92f9e3bdf97f667660943103c90886a3fec08d9d7063ae5a72f6fb9');
+  assert.deepEqual(pccMinNormalizeOracleComposition.theoremRows[0].axioms, []);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionFormalized, true);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionAuditedDeclarationCount, 10);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionHasUnresolvedOutcome, false);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionConstructsNormalizer, false);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionConstructsOracle, false);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionLiftedGainFormalized, true);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionExactEndpointTransportFormalized, true);
+  assert.equal(status.leanPCCMinNormalizeOracleCompositionPolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinNormalizeOracleCompositionCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_normalize_oracle_loop_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinNormalizeOracleCompositionAxiomClosure, []);
+  assert.deepEqual(release.earnedBoundary.pccMinNormalizeOracleCompositionProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(pccMinNormalizeOracleComposition.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8112,6 +8142,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-prefix'));
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-padding-run'));
   assert.ok(index.earnedMilestones.includes('pccmin-total-oracle-loop'));
+  assert.ok(index.earnedMilestones.includes('pccmin-normalize-oracle-composition'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');

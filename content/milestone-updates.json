@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-25-pccmin-normalize-oracle-composition",
+      "milestoneId": "pccmin-normalize-oracle-composition",
+      "publishedAt": "2026-08-24T18:19:57Z",
+      "title": "Proof-bearing PCCMin normalization and oracle composition",
+      "plainLanguage": [
+        "Lean now composes the manuscript's two proof-bearing PCCMin stages for every finite direct-wire implementation. A supplied normalizer preserves semantics without increasing gate count, later supplied oracle gains lift to strict gains from the original implementation, and exact-minimum or ZeroSlack endpoints transport back through normalization into the already checked terminating loop.",
+        "The total normalizer and total oracle are still explicit inputs, and the regression fixtures use exhaustive reference minimisation. This milestone does not construct either executable stage, derive terminal families or routes, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 166 of 168."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 166,
+        "formalArtefactCoverageTotalRows": 168,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c912b110f14386d335d58bb89b1bb9bb643bffb4",
+        "tree": "42d5414571038517da97b3ba59a334790144b928",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-190",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-24-pccmin-total-oracle-loop",
       "milestoneId": "pccmin-total-oracle-loop",
       "publishedAt": "2026-08-24T12:15:47Z",
