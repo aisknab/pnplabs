@@ -58,7 +58,7 @@ export function BuildPNPVerifierRunMatrixSummary0(matrix, options = {}) {
       publicTheoremEmissionAllowed: false,
       publicTheoremStatement: null,
       finalTheoremReady: false,
-      projectSpecificAxiomsRemaining: true,
+      projectSpecificAxiomsRemaining: false,
       externalReviewIsMathematicalPremise: false,
     },
     nonClaims: [

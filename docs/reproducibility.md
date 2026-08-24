@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 568,926 | `7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87` |
-| `downloads/canonical-proof-report.pdf` | 568,926 | `7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87` |
-| `downloads/canonical_proof_report.tex` | 346,137 | `9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084` |
-| `downloads/canonical-proof-report.tex` | 346,137 | `9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084` |
-| `public/pnp-status.json` | 2,615,734 | `2c39a94847c1fba4db668173878e930460b8752dd7161b54664fd662f9a72a8f` |
-| `public/pnp-theorem-inventory.json` | 33,082,413 | `3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f` |
-| `public/pnp-proof-progress.json` | 40,791 | `5a7d41ef653c9549ff4c9e09f97c53330fcf05fb02a26466a5b879f1950e9c84` |
+| `downloads/canonical_proof_report.pdf` | 570,497 | `73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a` |
+| `downloads/canonical-proof-report.pdf` | 570,497 | `73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a` |
+| `downloads/canonical_proof_report.tex` | 347,642 | `ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f` |
+| `downloads/canonical-proof-report.tex` | 347,642 | `ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f` |
+| `public/pnp-status.json` | 2,618,852 | `f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907` |
+| `public/pnp-theorem-inventory.json` | 33,083,899 | `7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319` |
+| `public/pnp-proof-progress.json` | 45,729 | `88806ee43a6a45590e3f0286770880e37a0d2215b56537a4f0a6e6b9432b6518` |
 
-The PDF must have 132 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 133 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 7dc26600f55762bf7a65b3fc6512a76aba23d9d0
+git -C ../pnp checkout 37bbbd1d978df770087a0cd675b90eba2cfc50ad
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,9 +68,9 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 29,988 public declarations, 15,502 theorem-kind declarations,
-7,613 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 304 modules, and
-two project axioms. The publication gate must remain false with five blockers. The concrete
+Expected compiled inventory counts are 29,988 public declarations, 15,507 theorem-kind declarations,
+7,611 assumption-free theorem-kind declarations, 15,141 excluded private auxiliaries, 304 modules, and
+no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
@@ -93,7 +93,7 @@ supply a target decider, prove SAT NP-hardness or CNFSAT NP-completeness transpo
 unconditional residual minimiser, prove ZeroSlack or exact polynomial PCCMin, create the eligible root
 theorem, or open a global gate.
 
-The latest concrete residual-band compatibility milestone has 7 reviewed theorem pins. It identifies
+The concrete residual-band compatibility milestone has 7 reviewed theorem pins. It identifies
 the report-facing residual-band endpoint with the concrete fail-closed encoded exact-minimum threshold
 language, proves exact reference-minimum semantics for every intrinsically typed finite candidate, and
 uses a compiled identity polynomial reduction for the active locked-to-residual edge. Its focused
@@ -102,6 +102,16 @@ This removes `PNP.ResidualBandExactMinimization` and the caller-supplied compati
 active route. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm, and this
 milestone does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT
 in P, SAT hardness transport, the eligible root theorem, or a global-gate closure.
+
+The latest typed PCCPack reflection milestone has 1 reviewed theorem pin. It replaces the
+two remaining opaque package/checker declarations with a typed record, transparent canonical generation,
+structural identifier checking, mismatch rejection, and exact projection of an explicitly supplied
+proof-bearing `PCCMinLoopCertificate`. Its focused 15-declaration audit uses only `Quot.sound` and
+`propext`, with no project-specific axiom. This removes `PNP.GeneratePCCPack`,
+`PNP.CheckPCCPackexp`, and the caller-supplied reflection field from the active route. The certificate
+remains supplied: the milestone does not implement PCCMin, prove unconditional ZeroSlack or polynomial
+runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or close
+a global gate.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

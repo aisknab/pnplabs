@@ -81,8 +81,8 @@ export function buildNotification({ commit, tree, progress }) {
     : `Proof estimate: ${progress.proofPercent}%, unchanged.`;
   const deployCommand = `sudo -n /usr/bin/env -i PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`;
   return {
-    title: "PNPLabs deployment ready",
-    message: [
+    text: [
+      "PNPLabs deployment ready",
       "PNPLabs has passed its release checks and is ready for your pinned deployment.",
       proofLine,
       `Formal artefact coverage: ${progress.earnedRows}/${progress.totalRows}.`,
@@ -133,12 +133,11 @@ async function main() {
   const progress = readProgressSummary(root);
   const notification = buildNotification({ ...identity, progress });
   if (dryRun) {
-    console.log(notification.message);
+    console.log(notification.text);
     return;
   }
   const result = await sendUnifiedPushNotification({
-    title: notification.title,
-    message: notification.message,
+    text: notification.text,
     dedupeKey: `deployment-ready:${identity.commit}:${identity.tree}`
   });
   if (result.status === "sent") {

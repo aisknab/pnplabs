@@ -36,7 +36,7 @@ test("deployment notification is pinned to a clean origin/main checkout", () => 
 
 test("deployment notification contains the exact pinned command and no credentials", () => {
   const notification = buildNotification({ commit, tree, progress });
-  assert.equal(notification.title, "PNPLabs deployment ready");
+  assert.match(notification.text, /^PNPLabs deployment ready\n/u);
   assert.equal(
     notification.deployCommand,
     `sudo -n /usr/bin/env -i PNPLABS_COMMIT=${commit} /usr/local/bin/deploy-pnp`
@@ -44,15 +44,14 @@ test("deployment notification contains the exact pinned command and no credentia
   const proofLine = progress.scoreChanged
     ? `Proof estimate: ${progress.previousProofPercent}% → ${progress.proofPercent}%.`
     : `Proof estimate: ${progress.proofPercent}%, unchanged.`;
-  assert.match(notification.message, new RegExp(proofLine.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&"), "u"));
-  assert.match(notification.message, new RegExp(`Formal artefact coverage: ${progress.earnedRows}/${progress.totalRows}`, "u"));
-  assert.match(notification.message, new RegExp(`Global gates: ${progress.closedGates}/${progress.totalGates} closed`, "u"));
-  assert.match(notification.message, new RegExp(`Commit: ${commit}`, "u"));
-  assert.match(notification.message, new RegExp(`Tree: ${tree}`, "u"));
-  assert.match(notification.message, new RegExp(notification.deployCommand, "u"));
-  assert.doesNotMatch(notification.message, /password|passphrase|private key|token/iu);
-  assert.doesNotMatch(notification.message, /proof completion:\s*\d+\s*\/\s*\d+/iu);
-  assert.equal(notification.message.includes("\u2014"), false);
-  assert.equal("priority" in notification, false);
-  assert.equal("tags" in notification, false);
+  assert.match(notification.text, new RegExp(proofLine.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&"), "u"));
+  assert.match(notification.text, new RegExp(`Formal artefact coverage: ${progress.earnedRows}/${progress.totalRows}`, "u"));
+  assert.match(notification.text, new RegExp(`Global gates: ${progress.closedGates}/${progress.totalGates} closed`, "u"));
+  assert.match(notification.text, new RegExp(`Commit: ${commit}`, "u"));
+  assert.match(notification.text, new RegExp(`Tree: ${tree}`, "u"));
+  assert.match(notification.text, new RegExp(notification.deployCommand, "u"));
+  assert.doesNotMatch(notification.text, /password|passphrase|private key|token/iu);
+  assert.doesNotMatch(notification.text, /proof completion:\s*\d+\s*\/\s*\d+/iu);
+  assert.equal(notification.text.includes("\u2014"), false);
+  assert.deepEqual(Object.keys(notification).sort(), ["deployCommand", "text"]);
 });

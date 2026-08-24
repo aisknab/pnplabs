@@ -4019,7 +4019,7 @@ function makeProject(t) {
       publicTheoremStatement: null,
       compatibilityRootPresent: false,
       concreteTargetPresent: true,
-      projectSpecificAxiomsRemaining: true,
+      projectSpecificAxiomsRemaining: false,
       remainingBlockerCount: 5
     },
     earnedBoundary: {

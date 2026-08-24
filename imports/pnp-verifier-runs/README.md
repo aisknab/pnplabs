@@ -9,7 +9,7 @@ mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
 publicTheoremStatement = null
 finalTheoremReady = false
-projectSpecificAxiomsRemaining = true
+projectSpecificAxiomsRemaining = false
 ```
 
 The normalization and comparison utilities may still inspect archived records. Import into `public/pnp-verification-runs.json` fails with `ImportRun.IntakeFrozen`, and the issue-ingest workflow cannot open registry-update pull requests.

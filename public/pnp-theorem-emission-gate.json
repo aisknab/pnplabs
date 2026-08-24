@@ -14,7 +14,7 @@
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
     "finalTheoremReady": false,
-    "projectSpecificAxiomsRemaining": true
+    "projectSpecificAxiomsRemaining": false
   },
   "historicalClaimBoundary": {
     "publicTheoremEmissionAllowed": false,

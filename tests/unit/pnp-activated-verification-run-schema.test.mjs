@@ -173,7 +173,7 @@ test('current status supersedes every historical activated coordinate', async ()
   assert.equal(status.remainingBlockers.length, 5);
   assert.deepEqual(status.projectSpecificAxiomInventory, inventory.projectAxioms);
   assert.equal(status.projectSpecificAxiomInventory.length, inventory.axiomCount);
-  assert.equal(status.projectSpecificAxiomsRemaining, true);
+  assert.equal(status.projectSpecificAxiomsRemaining, false);
   assert.equal(status.publicTheoremEmissionAllowed, false);
   assert.equal(status.mathematicalTheoremEstablished, false);
   assert.equal(status.rootLeanTheoremPresent, false);

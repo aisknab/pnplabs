@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "7dc26600f55762bf7a65b3fc6512a76aba23d9d0";
-const CORE_TREE = "e5d2dc08084b68b455b7249c4add156ef8e05651";
-const CORE_PUBLICATION_MAP_SHA256 = "8515aad0a0dc7a3b0d288172b2ef81a0823a247e1ef851e5b650df64ccc56c7c";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-187";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-187";
-const CORE_SOURCE_CLOSURE_SHA256 = "f9a989368632a834006b1f23e6b58b07b0a2656d8e9046beb3cab8497cfa9fa5";
-const OLD_PDF_SHA256 = "12684f6d28e70d015b7ba7fa641194cdbe7672096a97d08c95150a93844bc917";
-const OLD_TEX_SHA256 = "dcf3476589016cf75dd733e55c4191c232e6c3ac7a82d40b15625a7f95122864";
+const CORE_COMMIT = "37bbbd1d978df770087a0cd675b90eba2cfc50ad";
+const CORE_TREE = "3e21dbdb8b3c15c11121901d5cbf55ac0d6999c4";
+const CORE_PUBLICATION_MAP_SHA256 = "959aa77d99200d015b8c4a3893bbb4eeccfc9500f35f101e8d1c459e73ffefa6";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-188";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-188";
+const CORE_SOURCE_CLOSURE_SHA256 = "854c3f5e47f1ae13c4678976c90c5ad5107d30795ee354c5f8629f5df31a02ca";
+const OLD_PDF_SHA256 = "7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87";
+const OLD_TEX_SHA256 = "9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1927,6 +1927,13 @@ const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_THEOREMS = {
 const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_SCOPE = "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport";
 const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_MILESTONE_SCOPE = "The report-facing residual-band endpoint is the concrete fail-closed direct-wire candidate/threshold language. Every intrinsically typed finite candidate has exact reference-minimum semantics after encoding, and the active locked-to-residual compatibility edge is the compiled identity polynomial reduction rather than caller-supplied trust.";
 const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_NON_CLAIM = "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const TYPED_PCCPACK_REFLECTION_THEOREMS = {
+  "PNP.typed_pccpack_reflection_checked_complete": { hash: "ac6c0a5045437ffb1df36a971ad4924f5e2cc785c97132e720c91f9461b16659", axioms: ["Quot.sound", "propext"], module: "PNP.Bridge" }
+};
+const TYPED_PCCPACK_REFLECTION_SCOPE = "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection";
+const TYPED_PCCPACK_REFLECTION_MILESTONE_SCOPE = "For every explicit proof-bearing PCCMin loop certificate, transparent Lean generation preserves that exact certificate, the canonical generated identifier is accepted by structural computation, every mismatched identifier is rejected, and the active bridge projects the supplied certificate directly rather than relying on package or checker axioms.";
+const TYPED_PCCPACK_REFLECTION_NON_CLAIM = "This removes the two opaque package/checker declarations and the caller-supplied reflection field from the active Lean bridge. It does not construct a PCCMinLoopCertificate, verify historical JavaScript package bytes, prove the semantic string fields, implement PCCMin, establish unconditional ZeroSlack or polynomial bounds, prove concrete SAT hardness, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4239,32 +4246,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 568926,
-    sha256: "7a7d348f916e80aa0d445f0efed6b4e1fc548a3bb52953283566727f2b8cba87"
+    bytes: 570497,
+    sha256: "73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 346137,
-    sha256: "9475f90b94145e4a3e6392875b7c62cf063552aca4a5e0aa5879055e114f3084"
+    bytes: 347642,
+    sha256: "ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2615734,
-    sha256: "2c39a94847c1fba4db668173878e930460b8752dd7161b54664fd662f9a72a8f"
+    bytes: 2618852,
+    sha256: "f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 33082413,
-    sha256: "3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f"
+    bytes: 33083899,
+    sha256: "7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 40791,
-    sha256: "5a7d41ef653c9549ff4c9e09f97c53330fcf05fb02a26466a5b879f1950e9c84"
+    bytes: 45729,
+    sha256: "88806ee43a6a45590e3f0286770880e37a0d2215b56537a4f0a6e6b9432b6518"
   }
 ];
 
@@ -6018,6 +6025,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map concrete residual-band compatibility boundary mismatch");
+  }
+
+  const typedPCCPackReflectionMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "typed-pccpack-reflection"
+  );
+  const typedPCCPackReflectionNames = Object.keys(TYPED_PCCPACK_REFLECTION_THEOREMS);
+  if (!typedPCCPackReflectionMilestone
+      || typedPCCPackReflectionMilestone.classification !== "formalized-typed-pccpack-reflection"
+      || typedPCCPackReflectionMilestone.scope !== TYPED_PCCPACK_REFLECTION_MILESTONE_SCOPE
+      || typedPCCPackReflectionMilestone.nonClaim !== TYPED_PCCPACK_REFLECTION_NON_CLAIM
+      || JSON.stringify(typedPCCPackReflectionMilestone.requiredTheorems)
+        !== JSON.stringify(typedPCCPackReflectionNames)
+      || !Object.entries(TYPED_PCCPACK_REFLECTION_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map typed PCCPack reflection boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -9656,9 +9679,45 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status concrete residual-band compatibility boundary mismatch");
     }
 
+    const typedPCCPackReflectionMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "typed-pccpack-reflection"
+    );
+    if (!typedPCCPackReflectionMilestone
+        || typedPCCPackReflectionMilestone.earned !== true
+        || typedPCCPackReflectionMilestone.allPresent !== true
+        || typedPCCPackReflectionMilestone.allAssumptionFree !== false
+        || typedPCCPackReflectionMilestone.allKernelTypesMatch !== true
+        || typedPCCPackReflectionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || typedPCCPackReflectionMilestone.sourceClosureFingerprintMatches !== true
+        || typedPCCPackReflectionMilestone.classification !== "formalized-typed-pccpack-reflection"
+        || typedPCCPackReflectionMilestone.scope !== TYPED_PCCPACK_REFLECTION_MILESTONE_SCOPE
+        || typedPCCPackReflectionMilestone.nonClaim !== TYPED_PCCPACK_REFLECTION_NON_CLAIM
+        || JSON.stringify(typedPCCPackReflectionMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(TYPED_PCCPACK_REFLECTION_THEOREMS))
+        || !Object.entries(TYPED_PCCPACK_REFLECTION_THEOREMS).every(([name, evidence]) => {
+          const row = typedPCCPackReflectionMilestone.theoremRows?.find((candidate) => candidate.name === name);
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanTypedPCCPackReflectionFormalized !== true
+        || payload.leanTypedPCCPackReflectionAxiomAuditPassed !== true
+        || payload.leanTypedPCCPackReflectionAuditedDeclarationCount !== 15
+        || payload.leanTypedPCCPackReflectionEndpointProjectAssumptionFree !== true
+        || payload.leanTypedPCCPackReflectionOpaqueDeclarationsRemoved !== true
+        || payload.leanTypedPCCPackReflectionScope !== TYPED_PCCPACK_REFLECTION_SCOPE
+        || payload.leanPCCMinLoopExactnessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status typed PCCPack reflection boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
-    if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== true || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
+    if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
     if (payload.leanConcreteCNFSATMembershipFormalized !== true || payload.leanConcreteCNFSATMembershipTheorem !== "PNP.Concrete.FinalUniversalDesign.cnfSATInNP") fail("core status CNF-SAT NP-membership boundary mismatch");
     if (payload.leanConcreteCNFWorkAxiomAuditPassed !== true || payload.leanConcreteCNFWorkAuditedDeclarationCount !== 766) fail("core status CNF work audit boundary mismatch");
     if (payload.leanConcretePipelineStateNamespaceFormalized !== true || payload.leanConcretePipelineStateNamespaceAxiomAuditPassed !== true || payload.leanConcretePipelineStateNamespaceAuditedDeclarationCount !== 39) fail("core status pipeline namespace boundary mismatch");
@@ -10254,6 +10313,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory concrete residual-band compatibility theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(TYPED_PCCPACK_REFLECTION_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory typed PCCPack reflection theorem mismatch: " + name);
       }
     }
 

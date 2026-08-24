@@ -22,7 +22,7 @@
     "rootLeanTheoremPresent": false,
     "rootLeanTheoremBuilt": false,
     "rootLeanTheoremAxiomAuditPassed": false,
-    "projectSpecificAxiomsRemaining": true
+    "projectSpecificAxiomsRemaining": false
   },
   "historicalUploadFlow": {
     "status": "preserved-for-audit-only",

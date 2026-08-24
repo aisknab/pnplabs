@@ -89,7 +89,7 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'rootLeanTheoremPresent = false',
-    'projectSpecificAxiomsRemaining = true',
+    'projectSpecificAxiomsRemaining = false',
     'leanResidualTerminalFourCornerOptimumCoherenceClassifierFormalized = true',
     'leanResidualTerminalFourCornerOptimumFirstFailureFormalized = true',
     'leanResidualTerminalFourCornerOptimumRetainedSemanticsFormalized = true',

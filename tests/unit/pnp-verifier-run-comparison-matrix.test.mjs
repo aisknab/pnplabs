@@ -19,7 +19,7 @@ test('comparison matrix is frozen historical metadata', async () => {
   assert.equal(matrix.currentBoundary.publicTheoremEmissionAllowed, false);
   assert.equal(matrix.currentBoundary.publicTheoremStatement, null);
   assert.equal(matrix.currentBoundary.finalTheoremReady, false);
-  assert.equal(matrix.currentBoundary.projectSpecificAxiomsRemaining, true);
+  assert.equal(matrix.currentBoundary.projectSpecificAxiomsRemaining, false);
   assert.match(matrix.nonClaims.join('\n'), /No current green status badge/);
   assert.match(matrix.matrixSha256, /^[0-9a-f]{64}$/);
 });

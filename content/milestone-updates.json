@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-24-typed-pccpack-reflection",
+      "milestoneId": "typed-pccpack-reflection",
+      "publishedAt": "2026-08-24T02:29:11Z",
+      "title": "Typed PCCPack generation and structural reflection",
+      "plainLanguage": [
+        "This milestone replaces two opaque package and checker declarations with a typed PCCPack record. Given an explicit proof-bearing PCCMin loop certificate, Lean's transparent generator stores that exact certificate, structural checking accepts the canonical identifier and rejects every mismatched identifier, and the active bridge projects the certificate directly without caller-supplied checker-reflection trust.",
+        "The PCCMin loop certificate itself remains an explicit input. This does not implement PCCMin, verify historical JavaScript package bytes or semantic strings, prove unconditional ZeroSlack or polynomial bounds, establish concrete SAT hardness or CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The final two project-specific axioms are removed from the active source closure, while all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 164,
+        "formalArtefactCoverageTotalRows": 166,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "37bbbd1d978df770087a0cd675b90eba2cfc50ad",
+        "tree": "3e21dbdb8b3c15c11121901d5cbf55ac0d6999c4",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-24-concrete-residual-band-compatibility",
       "milestoneId": "concrete-residual-band-compatibility",
       "publishedAt": "2026-08-23T22:18:40Z",
