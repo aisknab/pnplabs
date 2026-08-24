@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,128 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,129 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 29,988 public declarations;
-- 15,507 theorem-kind declarations;
-- 7,611 assumption-free theorem-kind declarations;
-- 304 source-closure modules;
-- 15,141 excluded private compiler auxiliaries;
+- 30,075 public declarations;
+- 15,543 theorem-kind declarations;
+- 7,642 assumption-free theorem-kind declarations;
+- 305 source-closure modules;
+- 15,145 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 164 earned formal artefact scopes are:
+The 165 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -214,6 +214,7 @@ The 164 earned formal artefact scopes are:
 | Concrete report-facing locked-NAND compatibility | Six reviewed theorem pins identify report-facing SAT and locked-NAND languages, verifier, decider, reduction, P/NP-class, and P-equals-NP interfaces with the concrete finite-pipeline definitions. The report bridge directly reuses the checked all-bitstring polynomial reduction, and its endpoint has no project-specific axiom. | This removes duplicate interface trust and `PNP.LockedNANDThreshold` as an active project axiom. It does not supply a target decider, SAT NP-hardness or CNFSAT NP-completeness transport, construct the residual minimiser, prove unconditional ZeroSlack or exact polynomial PCCMin, create the eligible root theorem, open a global gate, or prove `P = NP`. |
 | Concrete residual-band compatibility | Seven reviewed theorem pins identify the report-facing residual-band endpoint with the concrete fail-closed encoded exact-minimum threshold language, prove its exact reference-minimum semantics for every intrinsically typed finite candidate, and make the active locked-to-residual bridge a compiled identity polynomial reduction. All ten declarations in the focused audit use only `propext`. | This removes `PNP.ResidualBandExactMinimization` and the caller-supplied compatibility edge from the active route. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm. The result does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT in P, SAT hardness transport, the eligible root theorem, a global-gate closure, or `P = NP`. |
 | Typed PCCPack generation and structural reflection | One reviewed completion-theorem pin verifies transparent canonical packaging of every explicitly supplied proof-bearing `PCCMinLoopCertificate`, structural identifier acceptance, mismatch rejection, and exact certificate projection. All 15 declarations in the focused audit use only `Quot.sound` and `propext`. | This removes `PNP.GeneratePCCPack`, `PNP.CheckPCCPackexp`, and the caller-supplied reflection field from the active route. It does not construct the loop certificate, verify historical JavaScript package bytes or semantic string fields, implement PCCMin, prove unconditional ZeroSlack or polynomial runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
+| Proof-bearing PCCMin total-oracle loop | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation and explicit proof-bearing total oracle, transparent well-founded recursion follows strict semantics-preserving gains until it returns exact-minimum or ZeroSlack evidence. The result is a global minimum with zero residual slack, and the number of strict-gain iterations is bounded by the starting residual slack. The endpoint has an empty axiom closure. | The oracle remains an explicit supplied argument, and the regression fixture obtains it through exhaustive reference minimisation. This does not construct an executable PCCMin oracle, derive terminal candidates or routes, prove unconditional ZeroSlack, encode the loop as a raw machine, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

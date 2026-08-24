@@ -46,7 +46,11 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.equal(ledger.formalArtefactCoverage.denominatorCanGrow, true);
   assert.equal(ledger.history[0].asOfCoordinate, "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184");
   assert.equal(ledger.history.at(-1).asOfCoordinate, ledger.asOfCoordinate);
-  assert.deepEqual(ledger.history.at(-1).changedCheckpointIds, [
+  assert.deepEqual(ledger.history.at(-1).changedCheckpointIds, []);
+  const latestCheckpointChange = [...ledger.history].reverse()
+    .find((entry) => entry.changeRecords.length > 0);
+  assert.ok(latestCheckpointChange);
+  assert.deepEqual(latestCheckpointChange.changedCheckpointIds, [
     "axiom-remove-generate-pccpack",
     "axiom-remove-check-pccpackexp"
   ]);
@@ -123,13 +127,25 @@ test("progress validation rejects arithmetic, evidence, gate, axiom, and root dr
   currentHistoryDrift.history.at(-1).formalArtefactCoverage.earnedRows -= 1;
   assert.throws(() => validateProofProgressModel(currentHistoryDrift, status, inventory), /History\.CurrentCoverage/u);
 
-  const changeEvidenceDrift = structuredClone(ledger);
-  changeEvidenceDrift.history.at(-1).changeRecords[0].compiledEvidence = [];
-  assert.throws(() => validateProofProgressModel(changeEvidenceDrift, status, inventory), /History\.ChangeRecordEvidenceMissing/u);
+  const latestChange = [...ledger.history].reverse().find((entry) => entry.changeRecords.length > 0);
+  assert.ok(latestChange);
+  if (ledger.history.at(-1).scoreChanged === true) {
+    const changeEvidenceDrift = structuredClone(ledger);
+    changeEvidenceDrift.history.at(-1).changeRecords[0].compiledEvidence = [];
+    assert.throws(() => validateProofProgressModel(changeEvidenceDrift, status, inventory), /History\.ChangeRecordEvidenceMissing/u);
 
-  const changeTotalDrift = structuredClone(ledger);
-  changeTotalDrift.history.at(-1).changeRecords[0].oldAndNewTotal.new += 1;
-  assert.throws(() => validateProofProgressModel(changeTotalDrift, status, inventory), /History\.ChangeRecordTotal/u);
+    const changeTotalDrift = structuredClone(ledger);
+    changeTotalDrift.history.at(-1).changeRecords[0].oldAndNewTotal.new += 1;
+    assert.throws(() => validateProofProgressModel(changeTotalDrift, status, inventory), /History\.ChangeRecordTotal/u);
+  } else {
+    const unexpectedChangeRecord = structuredClone(ledger);
+    unexpectedChangeRecord.history.at(-1).changeRecords = [structuredClone(latestChange.changeRecords[0])];
+    assert.throws(() => validateProofProgressModel(unexpectedChangeRecord, status, inventory), /History\.CurrentUnexpectedChangeRecords/u);
+
+    const unexpectedCheckpointChange = structuredClone(ledger);
+    unexpectedCheckpointChange.history.at(-1).changedCheckpointIds = [latestChange.changedCheckpointIds[0]];
+    assert.throws(() => validateProofProgressModel(unexpectedCheckpointChange, status, inventory), /History\.CurrentUnexpectedCheckpointChange/u);
+  }
 });
 
 test("active progress surfaces keep coverage and proof completion separate", async () => {

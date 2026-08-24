@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Typed PCCPack generation and structural reflection</h2>
-          <p>This milestone replaces the final two opaque package/checker declarations with a typed <code>PCCPack</code> record. For every explicitly supplied proof-bearing <code>PCCMinLoopCertificate</code>, transparent generation preserves that exact certificate, structural checking accepts the canonical identifier and rejects mismatches, and the active bridge projects the certificate without a caller-supplied reflection field.</p>
-          <p>The loop certificate remains supplied. This removes the two opaque package/checker declarations and caller-supplied reflection field from the active bridge, but it does not construct a <code>PCCMinLoopCertificate</code>, verify historical JavaScript package bytes or semantic string fields, implement PCCMin, prove unconditional ZeroSlack or polynomial bounds, establish concrete SAT hardness or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No project-specific axioms remain, while all five global gates remain open. The two named axiom-removal checkpoints move the risk-weighted estimate from 33% to 35%; formal artefact coverage is separately 164 of 166 rows.</p>
-          <a href="updates.html#2026-08-24-typed-pccpack-reflection">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Proof-bearing PCCMin total-oracle loop</h2>
+          <p>For every finite direct-wire implementation and explicit proof-bearing total oracle, Lean now follows strict semantics-preserving gains with transparent well-founded recursion until the oracle returns exact-minimum or ZeroSlack evidence. The result is a global minimum with zero residual slack, and the number of strict-gain steps is bounded by the starting slack.</p>
+          <p>The oracle remains an explicit input, and the regression fixture constructs it by exhaustive reference minimisation. This does not construct a uniform executable oracle, derive terminal families or routes, prove unconditional ZeroSlack or encoded-size polynomial bounds, establish concrete SAT hardness or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No project-specific axioms remain, while all five global gates remain open. The risk-weighted estimate stays 35%; formal artefact coverage is separately 165 of 167 rows.</p>
+          <a href="updates.html#2026-08-24-pccmin-total-oracle-loop">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> the active PCCPack boundary now uses transparent typed generation and structural identifier checking over an explicitly supplied proof-bearing loop certificate. This removes the final two project-specific axioms and caller-supplied reflection field, but it does not construct the certificate or retire any global gate. The report-facing target remains <code>EncodedLockedNANDThreshold</code>; there is still no polynomial-time residual minimiser or target decider, SAT NP-hardness transport, unconditional ZeroSlack, exact polynomial PCCMin, eligible root theorem, or passing publication gate.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> a proof-bearing total oracle now drives a terminating strict-gain loop to an exact minimum with zero residual slack and a starting-slack iteration bound. The oracle is still supplied, so this does not provide the executable polynomial PCCMin construction or retire a global gate. The report-facing target remains <code>EncodedLockedNANDThreshold</code>; there is still no terminal-derived complete oracle, polynomial-time residual minimiser or target decider, SAT NP-hardness transport, unconditional ZeroSlack, eligible root theorem, or passing publication gate.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -87,6 +87,13 @@ projectSpecificAxiomsRemaining = false
 leanTypedPCCPackReflectionFormalized = true
 leanTypedPCCPackReflectionAxiomAuditPassed = true
 leanTypedPCCPackReflectionScope = "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection"
+leanPCCMinTotalOracleLoopFormalized = true
+leanPCCMinTotalOracleLoopAxiomAuditPassed = true
+leanPCCMinTotalOracleLoopConstructsOracle = false
+leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized = true
+leanPCCMinTotalOracleLoopGainIterationBoundFormalized = true
+leanPCCMinTotalOracleLoopPolynomialRuntimeProved = false
+leanPCCMinTotalOracleLoopScope = "all-finite-direct-wire-implementations-under-an-explicit-proof-bearing-total-oracle-with-strict-slack-descent-exact-terminal-evidence-and-gain-iteration-bound"
 leanLockedNANDCarrierLayoutFormalized = true
 leanLockedNANDCarrierTraceAxiomAuditPassed = true
 leanLockedNANDCarrierTraceAuditedDeclarationCount = 71
@@ -526,15 +533,15 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-24-188</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-24-189</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319</code></div>
+            <div><span>Inventory SHA-256</span><code>1a99e496648154baa0a2aca62bda622c3e54f9e745e94d3c92719866247ce5b4</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
       </div>
 <!-- PROOF_PROGRESS:HOME:START -->
-      <aside class="home-progress-rail" aria-labelledby="home-progress-title" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188">
+      <aside class="home-progress-rail" aria-labelledby="home-progress-title" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-189">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Risk-weighted proof completion estimate</span>
           <p class="home-progress-number" aria-label="35 percent risk-weighted proof completion estimate"><strong>35</strong><span>%</span></p>
@@ -549,7 +556,7 @@ concretePublicationGate.passed = false</pre>
           <h2 id="home-progress-title">35% risk-weighted estimate</h2>
           <p>A conservative estimate of how much of the complete formal proof burden has been retired. It is not confidence that P=NP is true, a probability of success, or a time estimate. It may decrease.</p>
           <h3>Formal artefact coverage</h3>
-          <p class="home-coverage"><strong>164 of 166</strong> current scoped publication rows earned (98.8%). This is evidence-ledger coverage, not proof completion, and its denominator can grow.</p>
+          <p class="home-coverage"><strong>165 of 167</strong> current scoped publication rows earned (98.8%). This is evidence-ledger coverage, not proof completion, and its denominator can grow.</p>
           <h3>Five-track score</h3><ul class="home-progress-breakdown" aria-label="Risk-weighted track scores"><li><span>Formal foundations and proof infrastructure</span><strong>13/15</strong></li><li><span>Concrete reductions and locked-NAND route</span><strong>15/20</strong></li><li><span>Unconditional residual core and ZeroSlack</span><strong>2/35</strong></li><li><span>Exact PCCMin algorithm, complexity and bounds</span><strong>1/20</strong></li><li><span>Root theorem and project-axiom elimination</span><strong>4/10</strong></li></ul>
           <h3>Global gates</h3><p><strong>0 of 5 closed</strong></p><ul class="home-progress-gates" aria-label="Current global proof gate states"><li><span>Concrete SAT</span><strong>Open</strong></li><li><span>Residual-band minimiser</span><strong>Open</strong></li><li><span>Unconditional ZeroSlack</span><strong>Open</strong></li><li><span>Polynomial runtime and certificate bounds</span><strong>Open</strong></li><li><span>Root theorem and axiom audit</span><strong>Open</strong></li></ul>
           <p class="home-progress-caveat">Project-specific axioms remaining: <strong>0</strong><br>Root theorem <code>PNP.Main.p_eq_np</code>: <strong>absent</strong><br>Publication gate: <strong>false</strong></p>
@@ -579,7 +586,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact" data-current-milestone="typed-pccpack-reflection"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>The active PCCPack boundary is now typed, transparent, and free of project-specific axioms.</h2><p>Generation preserves an explicitly supplied proof-bearing loop certificate, structural checking accepts the canonical identifier and rejects mismatches, and the bridge projects that certificate without caller-supplied reflection trust.</p><p>This removes the final two opaque package/checker declarations and caller-supplied reflection field, but it does not construct a <code>PCCMinLoopCertificate</code>, verify historical JavaScript package bytes or semantic string fields, implement PCCMin, establish unconditional ZeroSlack or polynomial bounds, prove concrete SAT hardness or put CNFSAT in P, create the eligible root theorem, or prove P = NP. Formal artefact coverage is 164 of 166 rows; the separate risk-weighted estimate is 35% with a 20% to 40% uncertainty range. All five global gates remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact" data-current-milestone="pccmin-total-oracle-loop"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>The PCCMin loop is now total and exact under an explicit proof-bearing oracle.</h2><p>Transparent well-founded recursion preserves semantics through every strict gain, terminates with exact-minimum or ZeroSlack evidence, returns zero residual slack, and bounds strict-gain iterations by the starting slack.</p><p>The oracle remains supplied and the regression fixture uses exhaustive reference minimisation. This does not construct the terminal-derived executable oracle, prove unconditional ZeroSlack or encoded-size polynomial construction and runtime, prove concrete SAT hardness or put CNFSAT in P, create the eligible root theorem, or prove P = NP. Formal artefact coverage is 165 of 167 rows; the separate risk-weighted estimate remains 35% with a 20% to 40% uncertainty range. All five global gates remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

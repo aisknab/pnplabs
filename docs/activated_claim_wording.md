@@ -136,6 +136,16 @@ leanTypedPCCPackReflectionAuditedDeclarationCount = 15
 leanTypedPCCPackReflectionEndpointProjectAssumptionFree = true
 leanTypedPCCPackReflectionOpaqueDeclarationsRemoved = true
 leanTypedPCCPackReflectionScope = "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection"
+leanPCCMinTotalOracleLoopFormalized = true
+leanPCCMinTotalOracleLoopAxiomAuditPassed = true
+leanPCCMinTotalOracleLoopAuditedDeclarationCount = 8
+leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree = true
+leanPCCMinTotalOracleLoopHasUnresolvedOutcome = false
+leanPCCMinTotalOracleLoopConstructsOracle = false
+leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized = true
+leanPCCMinTotalOracleLoopGainIterationBoundFormalized = true
+leanPCCMinTotalOracleLoopPolynomialRuntimeProved = false
+leanPCCMinTotalOracleLoopScope = "all-finite-direct-wire-implementations-under-an-explicit-proof-bearing-total-oracle-with-strict-slack-descent-exact-terminal-evidence-and-gain-iteration-bound"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -145,7 +155,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 164 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 164 of 166 current scoped rows, not proof completion. The risk-weighted proof-completion estimate is 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Typed PCCPack generation and structural reflection**, replaces the final two opaque package/checker declarations and caller-supplied reflection field with transparent typed generation and structural checking over an explicit proof-bearing PCCMin loop certificate. This removes `PNP.GeneratePCCPack` and `PNP.CheckPCCPackexp` from project-specific proof authority. The certificate remains supplied: the milestone does not implement PCCMin, prove unconditional ZeroSlack or polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 165 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 165 of 167 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Proof-bearing PCCMin total-oracle loop**, proves terminating strict-gain recursion for every finite direct-wire implementation under an explicit proof-bearing total oracle, including semantics preservation, exact-minimum output, zero residual slack, and an iteration bound. The oracle remains supplied and the regression fixture uses exhaustive reference minimisation: the milestone does not construct an executable oracle, derive terminal routes, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 

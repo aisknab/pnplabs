@@ -5,8 +5,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
-const CORE_COMMIT = "37bbbd1d978df770087a0cd675b90eba2cfc50ad";
-const CORE_TREE = "3e21dbdb8b3c15c11121901d5cbf55ac0d6999c4";
+const CORE_COMMIT = "6e7124f7edf19b2ab077b9b52ed267cb6ecb00e3";
+const CORE_TREE = "ca4fab1d10d275a6639c980140f4c6c62fdec040";
 const PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -4945,6 +4945,13 @@ const TYPED_PCCPACK_REFLECTION_SCOPE = "all-explicit-proof-bearing-pccmin-loop-c
 const TYPED_PCCPACK_REFLECTION_MILESTONE_SCOPE = "For every explicit proof-bearing PCCMin loop certificate, transparent Lean generation preserves that exact certificate, the canonical generated identifier is accepted by structural computation, every mismatched identifier is rejected, and the active bridge projects the supplied certificate directly rather than relying on package or checker axioms.";
 const TYPED_PCCPACK_REFLECTION_NON_CLAIM = "This removes the two opaque package/checker declarations and the caller-supplied reflection field from the active Lean bridge. It does not construct a PCCMinLoopCertificate, verify historical JavaScript package bytes, prove the semantic string fields, implement PCCMin, establish unconditional ZeroSlack or polynomial bounds, prove concrete SAT hardness, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
+const PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS = {
+  "PNP.DirectWire.pccmin_total_oracle_loop_checked_complete": { hash: "c4ef37cd1b66ccbc8cd49384abcc8f93610aa02fdb5aa78fc951c60960371c75", axioms: [], module: "PNP.PCCMinTotalOracleLoop" }
+};
+const PCCMIN_TOTAL_ORACLE_LOOP_SCOPE = "all-finite-direct-wire-implementations-under-an-explicit-proof-bearing-total-oracle-with-strict-slack-descent-exact-terminal-evidence-and-gain-iteration-bound";
+const PCCMIN_TOTAL_ORACLE_LOOP_MILESTONE_SCOPE = "For every finite direct-wire implementation and every explicit proof-bearing total oracle, transparent well-founded recursion follows strict equivalent gains until exact-minimum or ZeroSlack evidence is returned, preserves semantics, returns a global minimum with zero residual slack, and bounds strict-gain iterations by the starting residual slack.";
+const PCCMIN_TOTAL_ORACLE_LOOP_NON_CLAIM = "The total oracle remains an explicit proof-bearing argument, and the regression fixture uses exhaustive reference minimization. This milestone does not construct an executable PCCMin oracle, derive terminal families or routes, establish unconditional ZeroSlack, encode the loop as a raw machine, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -6125,6 +6132,10 @@ const TYPED_PCCPACK_REFLECTION_RELEASE_IDENTITIES = {
   typedPCCPackReflectionCheckedCompleteTheorem: "PNP.typed_pccpack_reflection_checked_complete"
 };
 
+const PCCMIN_TOTAL_ORACLE_LOOP_RELEASE_IDENTITIES = {
+  pccMinTotalOracleLoopCheckedCompleteTheorem: "PNP.DirectWire.pccmin_total_oracle_loop_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -6313,50 +6324,50 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 570497,
-    "sha256": "73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a",
+    "bytes": 571710,
+    "sha256": "45ae376350a91cfc0198deeeebd745e1219ec8999eeeadc805f14b5004ea923e",
     "role": "current inventory-derived 133-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 570497,
-    "sha256": "73c55fe77e525a14d9379c4467a3ca7c7fb2c09a94e065fab2236eb403939a6a",
+    "bytes": 571710,
+    "sha256": "45ae376350a91cfc0198deeeebd745e1219ec8999eeeadc805f14b5004ea923e",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 347642,
-    "sha256": "ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f",
+    "bytes": 349271,
+    "sha256": "95c82a044d580f8720a1e9a7ca12a53bca4cdb7b56c45ad7a27c965eebb7f2b7",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 347642,
-    "sha256": "ea86c7cca4dd0a2acee425f2449d404678991c8edab89c5538899a6194da724f",
+    "bytes": 349271,
+    "sha256": "95c82a044d580f8720a1e9a7ca12a53bca4cdb7b56c45ad7a27c965eebb7f2b7",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2618852,
-    "sha256": "f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907",
+    "bytes": 2622507,
+    "sha256": "bd11538d66a1d11218a63f2d0ceca15288bea6cb68e13050787cb4a20e827f27",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 33083899,
-    "sha256": "7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319",
+    "bytes": 33108303,
+    "sha256": "1a99e496648154baa0a2aca62bda622c3e54f9e745e94d3c92719866247ce5b4",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "public/pnp-proof-progress.json",
-    "bytes": 45729,
-    "sha256": "88806ee43a6a45590e3f0286770880e37a0d2215b56537a4f0a6e6b9432b6518",
+    "bytes": 47937,
+    "sha256": "7e2865f3ca0aece5c41d1309d9de005cbce98848a578c2311d0b84b438bba732",
     "role": "exact current fixed-weight proof-progress ledger mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 1052843,
-    "sha256": "65715838810d78f65317ddc921fb315d47b3c9fbb8fe3c0a0d2f58062292622b",
+    "bytes": 1053981,
+    "sha256": "4f3d8b3932f5c85bc730dcbe67852f8c5015459a4dcce6e870a004ad11beb408",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -6429,9 +6440,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-189") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-188" || status.formalPublicationMapSha256 !== "959aa77d99200d015b8c4a3893bbb4eeccfc9500f35f101e8d1c459e73ffefa6" || status.leanSourceClosureSha256 !== "854c3f5e47f1ae13c4678976c90c5ad5107d30795ee354c5f8629f5df31a02ca") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-189" || status.formalPublicationMapSha256 !== "6195acfa499d3fd2898b24a2f07befe6060bebf857e1ad8deb8b5025bea00b83" || status.leanSourceClosureSha256 !== "dc0ccc9ef945b6a4c9c1a481812c37f656fe814cb85a8bfb3a6714e90cda2cbf") fail("status source identity mismatch");
   const milestones = status.formalPublicationMilestones;
   if (!Array.isArray(milestones) || milestones.length < 3
       || new Set(milestones.map((row) => row.id)).size !== milestones.length
@@ -9926,6 +9937,44 @@ function assertFailClosedStatus(status) {
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status typed PCCPack reflection evidence mismatch");
 
+  const pccminTotalOracleLoopMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-total-oracle-loop"
+  );
+  const pccminTotalOracleLoopNames = Object.keys(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS);
+  if (!pccminTotalOracleLoopMilestone
+      || pccminTotalOracleLoopMilestone.classification !== "formalized-pccmin-total-oracle-loop"
+      || pccminTotalOracleLoopMilestone.status !== "formalized-pccmin-total-oracle-loop"
+      || pccminTotalOracleLoopMilestone.scope !== PCCMIN_TOTAL_ORACLE_LOOP_MILESTONE_SCOPE
+      || pccminTotalOracleLoopMilestone.nonClaim !== PCCMIN_TOTAL_ORACLE_LOOP_NON_CLAIM
+      || JSON.stringify(pccminTotalOracleLoopMilestone.requiredTheorems) !== JSON.stringify(pccminTotalOracleLoopNames)
+      || pccminTotalOracleLoopMilestone.earned !== true
+      || pccminTotalOracleLoopMilestone.allPresent !== true
+      || pccminTotalOracleLoopMilestone.allAssumptionFree !== true
+      || pccminTotalOracleLoopMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminTotalOracleLoopMilestone.allKernelTypesMatch !== true
+      || pccminTotalOracleLoopMilestone.sourceClosureFingerprintMatches !== true) fail("status PCCMin total-oracle loop publication boundary mismatch");
+  for (const [name, evidence] of Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS)) {
+    const row = pccminTotalOracleLoopMilestone?.theoremRows?.find((candidate) => candidate.name === name);
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) fail(`status PCCMin total-oracle loop theorem evidence mismatch: ${name}`);
+  }
+  if (!(status.leanPCCMinTotalOracleLoopFormalized === true
+      && status.leanPCCMinTotalOracleLoopAxiomAuditPassed === true
+      && status.leanPCCMinTotalOracleLoopAuditedDeclarationCount === 8
+      && status.leanPCCMinTotalOracleLoopEndpointProjectAssumptionFree === true
+      && status.leanPCCMinTotalOracleLoopHasUnresolvedOutcome === false
+      && status.leanPCCMinTotalOracleLoopConstructsOracle === false
+      && status.leanPCCMinTotalOracleLoopExactnessUnderOracleFormalized === true
+      && status.leanPCCMinTotalOracleLoopGainIterationBoundFormalized === true
+      && status.leanPCCMinTotalOracleLoopPolynomialRuntimeProved === false
+      && status.leanPCCMinTotalOracleLoopScope === PCCMIN_TOTAL_ORACLE_LOOP_SCOPE
+      && status.leanPCCMinLoopExactnessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) fail("status PCCMin total-oracle loop evidence mismatch");
+
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -11058,6 +11107,13 @@ function assertInventory(inventory, status) {
     if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory typed PCCPack reflection theorem mismatch: ${name}`);
     if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory typed PCCPack reflection fingerprint mismatch: ${name}`);
+  }
+
+  for (const [name, evidence] of Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) fail(`inventory PCCMin total-oracle loop theorem mismatch: ${name}`);
+    if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) fail(`inventory PCCMin total-oracle loop fingerprint mismatch: ${name}`);
   }
 
   for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -13472,6 +13528,27 @@ function assertCurrentManifest(manifest, status, progress) {
       || !Object.entries(TYPED_PCCPACK_REFLECTION_THEOREMS).every(([name, row]) => typedPCCPackReflectionHashes[name] === row.hash)) fail("current manifest typed PCCPack reflection fingerprint mismatch");
   if (!Object.entries(TYPED_PCCPACK_REFLECTION_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest typed PCCPack reflection theorem identity mismatch");
 
+  if (!(earned.pccMinTotalOracleLoopFormalized === true
+      && earned.pccMinTotalOracleLoopAxiomAuditPassed === true
+      && earned.pccMinTotalOracleLoopAuditedDeclarationCount === 8
+      && earned.pccMinTotalOracleLoopEndpointProjectAssumptionFree === true
+      && earned.pccMinTotalOracleLoopHasUnresolvedOutcome === false
+      && earned.pccMinTotalOracleLoopConstructsOracle === false
+      && earned.pccMinTotalOracleLoopExactnessUnderOracleFormalized === true
+      && earned.pccMinTotalOracleLoopGainIterationBoundFormalized === true
+      && earned.pccMinTotalOracleLoopPolynomialRuntimeProved === false
+      && earned.pccMinTotalOracleLoopScope === PCCMIN_TOTAL_ORACLE_LOOP_SCOPE
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) fail("current manifest PCCMin total-oracle loop boundary mismatch");
+  if (!Array.isArray(earned.pccMinTotalOracleLoopAxiomClosure)
+      || earned.pccMinTotalOracleLoopAxiomClosure.length !== 0
+      || !Array.isArray(earned.pccMinTotalOracleLoopProjectAxiomClosure)
+      || earned.pccMinTotalOracleLoopProjectAxiomClosure.length !== 0) fail("current manifest PCCMin total-oracle loop axiom closure mismatch");
+  const pccMinTotalOracleLoopHashes = earned.pccMinTotalOracleLoopTheoremKernelTypeSha256;
+  if (!pccMinTotalOracleLoopHashes || Object.keys(pccMinTotalOracleLoopHashes).length !== 1
+      || !Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS).every(([name, row]) => pccMinTotalOracleLoopHashes[name] === row.hash)) fail("current manifest PCCMin total-oracle loop fingerprint mismatch");
+  if (!Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) fail("current manifest PCCMin total-oracle loop theorem identity mismatch");
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -13487,7 +13564,7 @@ function assertCurrentManifest(manifest, status, progress) {
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) fail("current manifest earned scope omits a published residual-terminal bridge");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection")) fail("current manifest earned scope omits the M188 typed PCCPack reflection milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop")) fail("current manifest earned scope omits the M189 PCCMin total-oracle loop milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");
