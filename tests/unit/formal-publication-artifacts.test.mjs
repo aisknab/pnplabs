@@ -3573,7 +3573,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.equal(release.publicationBoundary.publicTheoremStatement, null);
   assert.equal(release.publicationBoundary.compatibilityRootPresent, false);
   assert.equal(release.publicationBoundary.concreteTargetPresent, true);
-  assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, true);
+  assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, false);
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 });
 

@@ -1,30 +1,30 @@
 {
   "kind": "PNPLabsPNPPayloadIndex0",
-  "version": 148,
+  "version": 149,
   "sourceRepository": "https://github.com/aisknab/pnp",
-  "sourceCommitRef": "7dc26600f55762bf7a65b3fc6512a76aba23d9d0",
+  "sourceCommitRef": "37bbbd1d978df770087a0cd675b90eba2cfc50ad",
   "sourceProofCommitRef": "23ea280885d0e341863d60c1df2f11fd0e816b77",
-  "sourceTree": "e5d2dc08084b68b455b7249c4add156ef8e05651",
-  "latestEarnedMilestoneSourceCommitRef": "7dc26600f55762bf7a65b3fc6512a76aba23d9d0",
-  "latestEarnedMilestoneSourceTree": "e5d2dc08084b68b455b7249c4add156ef8e05651",
+  "sourceTree": "3e21dbdb8b3c15c11121901d5cbf55ac0d6999c4",
+  "latestEarnedMilestoneSourceCommitRef": "37bbbd1d978df770087a0cd675b90eba2cfc50ad",
+  "latestEarnedMilestoneSourceTree": "3e21dbdb8b3c15c11121901d5cbf55ac0d6999c4",
   "syncedOn": "2026-08-24",
-  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187",
+  "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188",
   "publicSurfaceBaselineCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121",
-  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-187",
-  "leanTheoremInventorySha256": "3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f",
-  "leanSourceClosureSha256": "f9a989368632a834006b1f23e6b58b07b0a2656d8e9046beb3cab8497cfa9fa5",
-  "proofProgressCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187",
+  "leanTheoremInventoryCoordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-188",
+  "leanTheoremInventorySha256": "7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319",
+  "leanSourceClosureSha256": "854c3f5e47f1ae13c4678976c90c5ad5107d30795ee354c5f8629f5df31a02ca",
+  "proofProgressCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188",
   "proofProgressModelId": "fixed-risk-weighted-checkpoints-v0",
-  "proofProgressPointsEarned": 33,
+  "proofProgressPointsEarned": 35,
   "proofProgressPointsAvailable": 100,
   "proofProgressUncertaintyLowPercent": 20,
   "proofProgressUncertaintyHighPercent": 40,
-  "formalArtefactCoverageEarnedRows": 163,
-  "formalArtefactCoverageTotalRows": 165,
+  "formalArtefactCoverageEarnedRows": 164,
+  "formalArtefactCoverageTotalRows": 166,
   "globalProofGatesClosed": 0,
   "globalProofGatesAvailable": 5,
-  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-24-187",
-  "canonicalReportPages": 132,
+  "canonicalReportCoordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-08-24-188",
+  "canonicalReportPages": 133,
   "formalPublicationRelease": "/downloads/formal-publication-release.json",
   "status": "formal-reconstruction-current-gate-closed",
   "claimBoundary": {
@@ -34,8 +34,8 @@
     "publicationStatusDerivedOnlyFromConcreteGate": true,
     "concretePublicationGatePassed": false,
     "leanTheoremInventoryDeclarationCount": 29988,
-    "leanTheoremInventoryTheoremCount": 15502,
-    "leanTheoremInventoryAssumptionFreeTheoremCount": 7613,
+    "leanTheoremInventoryTheoremCount": 15507,
+    "leanTheoremInventoryAssumptionFreeTheoremCount": 7611,
     "leanTheoremInventoryExcludedPrivateDeclarationCount": 15141,
     "leanTheoremInventorySourceClosureModuleCount": 304,
     "mathematicalTheoremEstablished": false,
@@ -214,11 +214,8 @@
     "rootLeanTheoremPresent": false,
     "rootLeanTheoremBuilt": false,
     "rootLeanTheoremAxiomAuditPassed": false,
-    "projectSpecificAxiomsRemaining": true,
-    "projectSpecificAxiomInventory": [
-      "PNP.CheckPCCPackexp",
-      "PNP.GeneratePCCPack"
-    ],
+    "projectSpecificAxiomsRemaining": false,
+    "projectSpecificAxiomInventory": [],
     "remainingBlockers": [
       "Formal.ConcreteSAT",
       "Formal.ResidualBandMinimizer",
@@ -4402,12 +4399,18 @@
     "leanConcreteResidualBandCompatibilityAuditedDeclarationCount": 10,
     "leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree": true,
     "leanConcreteResidualBandCompatibilityCallerReductionRemoved": true,
-    "leanConcreteResidualBandCompatibilityScope": "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport"
+    "leanConcreteResidualBandCompatibilityScope": "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport",
+    "leanTypedPCCPackReflectionFormalized": true,
+    "leanTypedPCCPackReflectionAxiomAuditPassed": true,
+    "leanTypedPCCPackReflectionAuditedDeclarationCount": 15,
+    "leanTypedPCCPackReflectionEndpointProjectAssumptionFree": true,
+    "leanTypedPCCPackReflectionOpaqueDeclarationsRemoved": true,
+    "leanTypedPCCPackReflectionScope": "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection"
   },
   "formalPublicationMilestoneCounts": {
-    "earned": 163,
+    "earned": 164,
     "unearned": 2,
-    "total": 165
+    "total": 166
   },
   "earnedMilestones": [
     "concrete-machine-cost-kernel",
@@ -4572,7 +4575,8 @@
     "residual-terminal-zeroslack-packet-selector-hb-coherence",
     "global-locked-nand-threshold",
     "concrete-legacy-locked-nand-compatibility",
-    "concrete-residual-band-compatibility"
+    "concrete-residual-band-compatibility",
+    "typed-pccpack-reflection"
   ],
   "unearnedMilestones": [
     "global-zeroslack-pccmin",
@@ -5329,6 +5333,7 @@
     "The current canonical TeX and PDF are generated non-claiming reconstruction reports; the historical 56-page direct-claim report remains historical audit material only.",
     "The checker proves that the numerical bridge fails on the current accepted finite family; it does not prove activation coherence. The terminal problem, initial positive full-slack premise, grouped Packet family, bijective anchor map, activation cells and masses, payloads, budget, typed realizer table, dependency table, and rank maps remain supplied proof-bearing inputs. Exhaustive proper-cut enumeration may be exponential. This milestone does not derive the family or activation weights from positive residual slack, construct BN3--BN6 data from every valid input, complete the global route or no-lower systems, prove unconditional SaturatePositive, BCELReady, ZeroSlack or PCCMin, establish polynomial runtime, put SAT in P, remove a project assumption, or prove P = NP.",
     "This removes the duplicate locked-NAND project axiom and caller-supplied reduction edge, but it does not put the concrete locked target in P, construct the residual-band reduction, prove PCCMin or ZeroSlack soundness, prove concrete CNFSAT NP-hardness, create the eligible root theorem, open any global gate, or prove P = NP.",
-    "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    "This removes the residual-band language axiom and caller-supplied locked-to-residual reduction edge by identifying both endpoints with one concrete encoded exact-minimum threshold predicate. It does not construct an executable PCCMin algorithm, prove that exhaustive reference minimization is polynomial, establish residual-band promise bounds, prove unconditional ZeroSlack, put SAT in P, open a global gate, create the eligible root theorem, or prove P = NP.",
+    "This removes the two opaque package/checker declarations and the caller-supplied reflection field from the active Lean bridge. It does not construct a PCCMinLoopCertificate, verify historical JavaScript package bytes, prove the semantic string fields, implement PCCMin, establish unconditional ZeroSlack or polynomial bounds, prove concrete SAT hardness, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
   ]
 }

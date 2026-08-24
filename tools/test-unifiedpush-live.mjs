@@ -2,9 +2,8 @@
 import { sendUnifiedPushNotification } from "./unifiedpush-notification.mjs";
 
 const result = await sendUnifiedPushNotification({
-  title: "PNP Labs UnifiedPush test",
-  message: "UnifiedPush progress notifications are configured. ntfy has been replaced.",
-  dedupeKey: "pnplabs-unifiedpush-live-test-v1"
+  text: "Agent notifications enabled for the current goal.",
+  dedupeKey: "pnplabs-unifiedpush-live-test-v3"
 });
 
 if (result.status === "sent") {

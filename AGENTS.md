@@ -167,15 +167,15 @@ core bytes and the publication, site, provenance, and deployment contracts.
 
 - The active notification transport is UnifiedPush. Read its capability URL only
   from `UNIFIEDPUSH_ENDPOINT`; never commit, print, publish, or log that value.
-- Send a direct HTTP `POST` to the unchanged configured URL. Encode exactly the
-  fields `title` and `message` with `URLSearchParams`, set `Content-Type` to
-  `application/x-www-form-urlencoded; charset=UTF-8`, set `Content-Encoding` to
-  `aes128gcm`, and accept JSON. Do not use ntfy topic paths, ntfy headers, ntfy
-  JSON payloads, credentials, or ntfy fallback delivery.
+- Send a direct HTTP `POST` to the unchanged configured URL. Put the complete
+  notification text in the raw request body and set `Content-Type` to
+  `text/plain; charset=utf-8`. Do not send `Content-Encoding`, title/message form
+  fields, JSON, ntfy topic paths, ntfy headers, credentials, or fallback delivery.
+- A send succeeds only when the receiver returns HTTP 201.
 - Delivery is bounded and best effort. Use an approximately ten-second request
-  timeout and at most three total attempts, retrying only network failures, HTTP
-  429, and HTTP 5xx with short jittered backoff. A notification failure must not
-  invalidate formal work, publication evidence, or a verified release.
+  timeout and at most two total attempts, retrying a transient network failure,
+  HTTP 429, or HTTP 5xx once with short jittered backoff. A notification failure
+  must not invalidate formal work, publication evidence, or a verified release.
 - Send only for a fully earned and merged milestone, a fixed checkpoint or global
   gate state change, a revoked result, an actionable blocker, a meaningful long
   validation or release outcome, or exact root-theorem publication. Coalesce
@@ -185,8 +185,8 @@ core bytes and the publication, site, provenance, and deployment contracts.
   Never claim a score increase unless a named checkpoint changed state. The root
   theorem title is reserved for the exact eligible theorem and passing publication
   gate.
-- Sanitise title and message, omit secrets and large diagnostics, and keep the
-  final URL-encoded UTF-8 body below 3,900 bytes.
+- Sanitise notification text, omit secrets and large diagnostics, and keep the
+  final raw UTF-8 body below 3,900 bytes.
 - Send the deployment-ready notification only after the PNPLabs PR is merged,
   every durable check is green, the exact merge has passed source-bound and
   clean-clone verification, and `origin/main` resolves to the same commit. Run

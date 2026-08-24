@@ -107,10 +107,10 @@ the previous release must remain available for rollback.
 
 The active phone-notification transport is a direct UnifiedPush request. Supply the complete
 capability URL only through `UNIFIEDPUSH_ENDPOINT`; never place it in repository files, command
-output, CI logs, or notification text. The sender preserves the configured URL exactly and posts a
-URL-encoded body with only `title` and `message`. It sets
-`Content-Type: application/x-www-form-urlencoded; charset=UTF-8`,
-`Content-Encoding: aes128gcm`, and `Accept: application/json`.
+output, CI logs, or notification text. The sender preserves the configured URL exactly, posts the
+complete notification as the raw request body, and sets
+`Content-Type: text/plain; charset=utf-8`. It sends no `Content-Encoding`, title/message form
+fields, JSON payload, credentials, or fallback delivery. Only HTTP 201 counts as a successful send.
 
 After the exact PNPLabs merge has passed every release gate, inspect the message without delivery,
 then invoke the notifier once with the capability supplied only to that process:
@@ -122,9 +122,9 @@ UNIFIEDPUSH_ENDPOINT=... npm run notify:deployment-ready -- --commit <exact-merg
 
 The notification derives the risk-weighted proof estimate, formal artefact coverage, and global
 gate count from the canonical progress mirror. It reports those measures separately. Delivery uses
-an approximately ten-second timeout and at most three total attempts, retrying network failures,
-HTTP 429, and HTTP 5xx only. A missing or unavailable endpoint is reported without revealing the
-destination and does not invalidate the verified release.
+an approximately ten-second timeout and at most two total attempts, retrying a transient network
+failure, HTTP 429, or HTTP 5xx once. A missing or unavailable endpoint is reported without revealing
+the destination and does not invalidate the verified release.
 
 `npm run notify:test:live` is the separate explicit transport integration command. It sends one
 real test message only when `UNIFIEDPUSH_ENDPOINT` is configured and is deliberately absent from

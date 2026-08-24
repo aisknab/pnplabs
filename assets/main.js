@@ -7,28 +7,25 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-187";
-const STATUS_SHA256 = '2c39a94847c1fba4db668173878e930460b8752dd7161b54664fd662f9a72a8f';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-187";
-const FORMAL_PUBLICATION_MAP_SHA256 = "8515aad0a0dc7a3b0d288172b2ef81a0823a247e1ef851e5b650df64ccc56c7c";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-24-188";
+const STATUS_SHA256 = 'f7a5e89fbcf72501e58522db79bea11eab26d4e5c50923d10fecde3aed554907';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-24-188";
+const FORMAL_PUBLICATION_MAP_SHA256 = "959aa77d99200d015b8c4a3893bbb4eeccfc9500f35f101e8d1c459e73ffefa6";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-187";
-const INVENTORY_SHA256 = "3715decf896168b24b981d41f558b08206ceae72ae774438c44599776d58a66f";
-const SOURCE_CLOSURE_SHA256 = "f9a989368632a834006b1f23e6b58b07b0a2656d8e9046beb3cab8497cfa9fa5";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-24-188";
+const INVENTORY_SHA256 = "7663b2f9f27840c090a1511001a67ecd4840ed38a00a6a0e6213958c6baa2319";
+const SOURCE_CLOSURE_SHA256 = "854c3f5e47f1ae13c4678976c90c5ad5107d30795ee354c5f8629f5df31a02ca";
 
 const INVENTORY_COUNTS = Object.freeze({
   declarations: 29988,
-  theorems: 15502,
-  assumptionFreeTheorems: 7613,
+  theorems: 15507,
+  assumptionFreeTheorems: 7611,
   excludedPrivateDeclarations: 15141,
   modules: 304,
-  axioms: 2,
+  axioms: 0,
 });
 
-const PROJECT_AXIOMS = Object.freeze([
-  'PNP.CheckPCCPackexp',
-  'PNP.GeneratePCCPack',
-]);
+const PROJECT_AXIOMS = Object.freeze([]);
 
 const LEAN_STANDARD_AXIOMS = Object.freeze([
   'Classical.choice',
@@ -4692,6 +4689,9 @@ const CONCRETE_RESIDUAL_BAND_COMPATIBILITY_DECLARATIONS = Object.freeze([
   ["PNP.report_locked_nand_eq_residual_band",["propext"],"PNP.ConcreteResidualBandCompatibility","14140f257b5e6ddf140cc9957a86248b1ed7defb691daf40c6080a859ce6e128"],
   ["PNP.concrete_residual_band_compatibility_checked_complete",["propext"],"PNP.ConcreteResidualBandCompatibility","c4d3ccd4bc92297fd50b22d1be51b80d3930a10ecebce2d3e6c3ee25d95d03db"],
 ]);
+const TYPED_PCCPACK_REFLECTION_DECLARATIONS = Object.freeze([
+  ["PNP.typed_pccpack_reflection_checked_complete",["Quot.sound","propext"],"PNP.Bridge","ac6c0a5045437ffb1df36a971ad4924f5e2cc785c97132e720c91f9461b16659"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5586,6 +5586,12 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree: false,
   leanConcreteResidualBandCompatibilityCallerReductionRemoved: false,
   leanConcreteResidualBandCompatibilityScope: null,
+  leanTypedPCCPackReflectionFormalized: false,
+  leanTypedPCCPackReflectionAxiomAuditPassed: false,
+  leanTypedPCCPackReflectionAuditedDeclarationCount: 0,
+  leanTypedPCCPackReflectionEndpointProjectAssumptionFree: false,
+  leanTypedPCCPackReflectionOpaqueDeclarationsRemoved: false,
+  leanTypedPCCPackReflectionScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6209,6 +6215,12 @@ leanConcreteResidualBandCompatibilityAuditedDeclarationCount = ${payload.leanCon
 leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree = ${payload.leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree ?? false}
 leanConcreteResidualBandCompatibilityCallerReductionRemoved = ${payload.leanConcreteResidualBandCompatibilityCallerReductionRemoved ?? false}
 leanConcreteResidualBandCompatibilityScope = ${payload.leanConcreteResidualBandCompatibilityScope === null ? 'null' : JSON.stringify(payload.leanConcreteResidualBandCompatibilityScope)}
+leanTypedPCCPackReflectionFormalized = ${payload.leanTypedPCCPackReflectionFormalized ?? false}
+leanTypedPCCPackReflectionAxiomAuditPassed = ${payload.leanTypedPCCPackReflectionAxiomAuditPassed ?? false}
+leanTypedPCCPackReflectionAuditedDeclarationCount = ${payload.leanTypedPCCPackReflectionAuditedDeclarationCount ?? 0}
+leanTypedPCCPackReflectionEndpointProjectAssumptionFree = ${payload.leanTypedPCCPackReflectionEndpointProjectAssumptionFree ?? false}
+leanTypedPCCPackReflectionOpaqueDeclarationsRemoved = ${payload.leanTypedPCCPackReflectionOpaqueDeclarationsRemoved ?? false}
+leanTypedPCCPackReflectionScope = ${payload.leanTypedPCCPackReflectionScope === null ? 'null' : JSON.stringify(payload.leanTypedPCCPackReflectionScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7291,6 +7303,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const typedPCCPackReflection =
+    TYPED_PCCPACK_REFLECTION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -7888,6 +7907,9 @@ function validateInventory(inventory) {
     && concreteResidualBandCompatibility.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && typedPCCPackReflection.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8331,6 +8353,9 @@ function validateStatus(status, inventory) {
   );
   const concreteResidualBandCompatibilityMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'concrete-residual-band-compatibility'
+  );
+  const typedPCCPackReflectionMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'typed-pccpack-reflection'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -10060,6 +10085,32 @@ function validateStatus(status, inventory) {
     && status.leanConcreteResidualBandCompatibilityScope === "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport"
     && status.leanResidualBandMinimizerFormalized === false
 
+    && typedPCCPackReflectionMilestone?.classification === "formalized-typed-pccpack-reflection"
+    && typedPCCPackReflectionMilestone.status === "formalized-typed-pccpack-reflection"
+    && typedPCCPackReflectionMilestone.scope === "For every explicit proof-bearing PCCMin loop certificate, transparent Lean generation preserves that exact certificate, the canonical generated identifier is accepted by structural computation, every mismatched identifier is rejected, and the active bridge projects the supplied certificate directly rather than relying on package or checker axioms."
+    && typedPCCPackReflectionMilestone.nonClaim === "This removes the two opaque package/checker declarations and the caller-supplied reflection field from the active Lean bridge. It does not construct a PCCMinLoopCertificate, verify historical JavaScript package bytes, prove the semantic string fields, implement PCCMin, establish unconditional ZeroSlack or polynomial bounds, prove concrete SAT hardness, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      typedPCCPackReflectionMilestone.requiredTheorems,
+      TYPED_PCCPACK_REFLECTION_DECLARATIONS.map(([name]) => name)
+    )
+    && typedPCCPackReflectionMilestone.theoremRows?.every((row) => {
+      const expected = TYPED_PCCPACK_REFLECTION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanTypedPCCPackReflectionFormalized === true
+    && status.leanTypedPCCPackReflectionAxiomAuditPassed === true
+    && status.leanTypedPCCPackReflectionAuditedDeclarationCount === 15
+    && status.leanTypedPCCPackReflectionEndpointProjectAssumptionFree === true
+    && status.leanTypedPCCPackReflectionOpaqueDeclarationsRemoved === true
+    && status.leanTypedPCCPackReflectionScope === "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection"
+    && status.leanPCCMinLoopExactnessFormalized === false
+
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -10124,7 +10175,7 @@ function validateStatus(status, inventory) {
     && status.rootLeanTheoremPresent === status.concretePublicationGate.subchecks.compatibilityRootPresent
     && status.rootLeanTheoremBuilt === gatePassed
     && status.rootLeanTheoremAxiomAuditPassed === gatePassed
-    && status.projectSpecificAxiomsRemaining === true
+    && status.projectSpecificAxiomsRemaining === false
     && sameJson(status.projectSpecificAxiomInventory, PROJECT_AXIOMS)
     && status.leanConcreteCNFVerifierCorrectnessFormalized === true
     && status.leanConcreteCNFVerifierNoTimeoutFormalized === true

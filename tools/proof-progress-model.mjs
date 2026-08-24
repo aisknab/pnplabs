@@ -24,7 +24,7 @@ const PATHS = Object.freeze({
 const BASELINE_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184";
 const BASELINE_COVERAGE = Object.freeze({ earnedRows: 160, totalRows: 162 });
 const BASELINE_SCORE = 30;
-const CURRENT_SCORE = 33;
+const CURRENT_SCORE = 35;
 
 const EXPECTED_TRACKS = Object.freeze([
   {
@@ -90,10 +90,10 @@ const EXPECTED_TRACKS = Object.freeze([
     id: "root-and-axioms",
     title: "Root theorem and project-axiom elimination",
     pointsAvailable: 10,
-    pointsEarned: 2,
+    pointsEarned: 4,
     checkpoints: [
-      ["axiom-remove-generate-pccpack", 1, "open"],
-      ["axiom-remove-check-pccpackexp", 1, "open"],
+      ["axiom-remove-generate-pccpack", 1, "earned"],
+      ["axiom-remove-check-pccpackexp", 1, "earned"],
       ["axiom-remove-locked-nand-threshold", 1, "earned"],
       ["axiom-remove-residual-band-minimum", 1, "earned"],
       ["root-deterministic-cnfsat-in-p", 2, "open"],
@@ -112,10 +112,7 @@ const EXPECTED_GATES = Object.freeze([
   ["root-theorem-axiom-audit", "Root theorem and axiom audit", "Formal.RootTheoremAndAxiomAudit"]
 ]);
 
-const EXPECTED_AXIOMS = Object.freeze([
-  "PNP.CheckPCCPackexp",
-  "PNP.GeneratePCCPack"
-]);
+const EXPECTED_AXIOMS = Object.freeze([]);
 
 const REQUIRED_CHANGE_FIELDS = Object.freeze([
   "checkpointId",
@@ -410,7 +407,7 @@ function validateProofProgressModel(ledger, status, inventory) {
   requireJson(ledger.projectSpecificAxiomsRemaining, EXPECTED_AXIOMS, "Axioms.Ledger");
   requireJson(status.projectSpecificAxiomInventory, EXPECTED_AXIOMS, "Axioms.Status");
   requireJson(inventory.projectAxioms, EXPECTED_AXIOMS, "Axioms.Inventory");
-  requireValue(status.projectSpecificAxiomsRemaining, true, "Axioms.StatusFlag");
+  requireValue(status.projectSpecificAxiomsRemaining, EXPECTED_AXIOMS.length > 0, "Axioms.StatusFlag");
 
   requirePlain(ledger.rootTheorem, "Root.Shape");
   requireValue(ledger.rootTheorem.name, status.rootLeanTheorem, "Root.Name");

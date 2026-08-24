@@ -1,8 +1,7 @@
-const MAX_TOTAL_ATTEMPTS = 3;
+const MAX_TOTAL_ATTEMPTS = 2;
 const DEFAULT_TIMEOUT_MS = 10_000;
 const DEFAULT_BACKOFF_MS = 150;
-const MAX_ENCODED_BODY_BYTES = 3_900;
-const MAX_TITLE_CODE_POINTS = 160;
+const MAX_BODY_BYTES = 3_900;
 
 const inProcessDedupe = new Set();
 
@@ -21,70 +20,51 @@ function redactSensitiveText(value) {
     .replace(/\b[A-Z][A-Z0-9_]*(?:TOKEN|PASSWORD|SECRET|ENDPOINT|KEY)=[^\s]+/gu, "[redacted secret]");
 }
 
-export function sanitizeNotificationText(value, { title = false } = {}) {
-  let text = String(value ?? "")
+export function sanitizeNotificationText(value) {
+  return redactSensitiveText(String(value ?? "")
     .replace(/\r\n?/gu, "\n")
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/gu, "")
-    .replace(/\t/gu, " ");
-  text = redactSensitiveText(text);
-  if (title) text = text.replace(/\s*\n\s*/gu, " ");
-  return text.trim();
-}
-
-function encodeBody(title, message) {
-  return new URLSearchParams({ title, message }).toString();
+    .replace(/\t/gu, " "))
+    .trim();
 }
 
 export function buildUnifiedPushPayload({
-  title,
-  message,
-  maxEncodedBytes = MAX_ENCODED_BODY_BYTES
+  text,
+  maxBytes = MAX_BODY_BYTES
 }) {
-  if (!Number.isInteger(maxEncodedBytes) || maxEncodedBytes < 256 || maxEncodedBytes > MAX_ENCODED_BODY_BYTES) {
-    throw new Error(`UnifiedPush payload limit must be an integer between 256 and ${MAX_ENCODED_BODY_BYTES}`);
+  if (!Number.isInteger(maxBytes) || maxBytes < 256 || maxBytes > MAX_BODY_BYTES) {
+    throw new Error(`UnifiedPush payload limit must be an integer between 256 and ${MAX_BODY_BYTES}`);
   }
 
-  const cleanTitle = sanitizeNotificationText(title, { title: true }) || "PNP Labs update";
-  const titlePoints = Array.from(cleanTitle);
-  const boundedTitle = titlePoints.slice(0, MAX_TITLE_CODE_POINTS).join("");
-  const cleanMessage = sanitizeNotificationText(message);
-  let body = encodeBody(boundedTitle, cleanMessage);
-  let finalMessage = cleanMessage;
-  let truncated = titlePoints.length > MAX_TITLE_CODE_POINTS;
+  const cleanText = sanitizeNotificationText(text) || "PNP Labs update";
+  let body = cleanText;
+  let truncated = false;
 
-  if (Buffer.byteLength(body, "utf8") > maxEncodedBytes) {
-    const points = Array.from(cleanMessage);
+  if (Buffer.byteLength(body, "utf8") > maxBytes) {
+    const points = Array.from(cleanText);
     let low = 0;
     let high = points.length;
     let best = "";
     while (low <= high) {
       const middle = Math.floor((low + high) / 2);
       const candidate = `${points.slice(0, middle).join("")}…`;
-      const candidateBody = encodeBody(boundedTitle, candidate);
-      if (Buffer.byteLength(candidateBody, "utf8") <= maxEncodedBytes) {
+      if (Buffer.byteLength(candidate, "utf8") <= maxBytes) {
         best = candidate;
         low = middle + 1;
       } else {
         high = middle - 1;
       }
     }
-    finalMessage = best;
-    body = encodeBody(boundedTitle, finalMessage);
+    body = best;
     truncated = true;
   }
 
   const byteLength = Buffer.byteLength(body, "utf8");
-  if (byteLength > maxEncodedBytes) {
+  if (byteLength > maxBytes) {
     throw new Error("UnifiedPush payload cannot be represented within the configured byte limit");
   }
 
-  return {
-    title: boundedTitle,
-    message: finalMessage,
-    body,
-    byteLength,
-    truncated
-  };
+  return { body, byteLength, truncated };
 }
 
 export function resolveUnifiedPushEndpoint(environment = process.env) {
@@ -108,16 +88,15 @@ export function validateUnifiedPushEndpoint(endpoint) {
   return endpoint;
 }
 
-function retryDelay(attempt, backoffMs, random) {
+function retryDelay(backoffMs, random) {
   const jitter = Math.floor(Math.max(0, Math.min(0.999999, Number(random()))) * backoffMs);
-  return (backoffMs * (2 ** (attempt - 1))) + jitter;
+  return backoffMs + jitter;
 }
 
 export async function sendUnifiedPushNotification({
   endpoint,
   environment = process.env,
-  title,
-  message,
+  text,
   fetchImpl = globalThis.fetch,
   timeoutMs = DEFAULT_TIMEOUT_MS,
   maxAttempts = MAX_TOTAL_ATTEMPTS,
@@ -146,7 +125,7 @@ export async function sendUnifiedPushNotification({
     return { status: "failed", reason: "missing_fetch", attempts: 0 };
   }
 
-  const payload = buildUnifiedPushPayload({ title, message });
+  const payload = buildUnifiedPushPayload({ text });
   const boundedAttempts = Math.max(1, Math.min(MAX_TOTAL_ATTEMPTS, Number(maxAttempts) || 1));
   const key = dedupeKey === null ? null : String(dedupeKey);
   if (key && inProcessDedupe.has(key)) {
@@ -159,16 +138,14 @@ export async function sendUnifiedPushNotification({
       response = await fetchImpl(destination, {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-          "Content-Encoding": "aes128gcm",
-          Accept: "application/json"
+          "Content-Type": "text/plain; charset=utf-8"
         },
         body: payload.body,
         signal: AbortSignal.timeout(timeoutMs)
       });
     } catch {
       if (attempt < boundedAttempts) {
-        await sleepImpl(retryDelay(attempt, backoffMs, random));
+        await sleepImpl(retryDelay(backoffMs, random));
         continue;
       }
       warn(logger, `UnifiedPush notification failed after ${attempt} attempts: network or timeout error.`);
@@ -176,7 +153,7 @@ export async function sendUnifiedPushNotification({
     }
 
     const httpStatus = Number(response?.status);
-    if (httpStatus >= 200 && httpStatus < 300) {
+    if (httpStatus === 201) {
       if (key) inProcessDedupe.add(key);
       return {
         status: "sent",
@@ -194,13 +171,13 @@ export async function sendUnifiedPushNotification({
 
     const retryable = httpStatus === 429 || (httpStatus >= 500 && httpStatus <= 599);
     if (retryable && attempt < boundedAttempts) {
-      await sleepImpl(retryDelay(attempt, backoffMs, random));
+      await sleepImpl(retryDelay(backoffMs, random));
       continue;
     }
 
     if (Number.isInteger(httpStatus)) {
-      warn(logger, `UnifiedPush notification failed with HTTP ${httpStatus}.`);
-      return { status: "failed", reason: retryable ? "retry_exhausted" : "non_retryable_http", httpStatus, attempts: attempt };
+      warn(logger, `UnifiedPush notification failed with HTTP ${httpStatus}; HTTP 201 is required.`);
+      return { status: "failed", reason: retryable ? "retry_exhausted" : "unexpected_http_status", httpStatus, attempts: attempt };
     }
 
     warn(logger, "UnifiedPush notification failed: the receiver returned an invalid HTTP response.");
@@ -217,5 +194,5 @@ export function resetUnifiedPushDedupeForTests() {
 export const UNIFIEDPUSH_LIMITS = Object.freeze({
   maxTotalAttempts: MAX_TOTAL_ATTEMPTS,
   defaultTimeoutMs: DEFAULT_TIMEOUT_MS,
-  maxEncodedBodyBytes: MAX_ENCODED_BODY_BYTES
+  maxBodyBytes: MAX_BODY_BYTES
 });

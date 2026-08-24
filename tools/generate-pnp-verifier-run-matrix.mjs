@@ -76,7 +76,7 @@ export function BuildPNPVerifierRunComparisonMatrix0(registry, options = {}) {
       publicTheoremEmissionAllowed: false,
       publicTheoremStatement: null,
       finalTheoremReady: false,
-      projectSpecificAxiomsRemaining: true,
+      projectSpecificAxiomsRemaining: false,
     },
     nonClaims: [
       'The repository does not currently establish P = NP.',

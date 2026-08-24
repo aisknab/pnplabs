@@ -24,15 +24,15 @@ test("canonical progress ledger validates against independent formal evidence", 
   const [ledger, status, inventory] = await fixtures();
   const model = validateProofProgressModel(ledger, status, inventory);
   assert.equal(model.pointsAvailable, 100);
-  assert.equal(model.pointsEarned, 33);
-  assert.equal(model.percent, 33);
+  assert.equal(model.pointsEarned, 35);
+  assert.equal(model.percent, 35);
   assert.equal(model.uncertaintyLowPercent, 20);
   assert.equal(model.uncertaintyHighPercent, 40);
   assert.ok(model.uncertaintyLowPercent <= model.percent);
   assert.ok(model.percent <= model.uncertaintyHighPercent);
   assert.deepEqual(
     model.tracks.map((track) => [track.pointsEarned, track.pointsAvailable]),
-    [[13, 15], [15, 20], [2, 35], [1, 20], [2, 10]]
+    [[13, 15], [15, 20], [2, 35], [1, 20], [4, 10]]
   );
   assert.equal(model.checkpointCount, 35);
 
@@ -47,7 +47,8 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.equal(ledger.history[0].asOfCoordinate, "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184");
   assert.equal(ledger.history.at(-1).asOfCoordinate, ledger.asOfCoordinate);
   assert.deepEqual(ledger.history.at(-1).changedCheckpointIds, [
-    "axiom-remove-residual-band-minimum"
+    "axiom-remove-generate-pccpack",
+    "axiom-remove-check-pccpackexp"
   ]);
   assert.deepEqual(ledger.history.at(-1).formalArtefactCoverage, {
     earnedRows,
@@ -57,10 +58,7 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.equal(model.globalGatesClosed, 0);
   assert.equal(model.globalGatesAvailable, 5);
   assert.ok(model.globalGates.every((gate) => gate.status === "open"));
-  assert.deepEqual(model.projectSpecificAxiomsRemaining, [
-    "PNP.CheckPCCPackexp",
-    "PNP.GeneratePCCPack"
-  ]);
+  assert.deepEqual(model.projectSpecificAxiomsRemaining, []);
   assert.deepEqual(model.rootTheorem, {
     name: "PNP.Main.p_eq_np",
     present: false,
@@ -98,9 +96,16 @@ test("progress validation rejects arithmetic, evidence, gate, axiom, and root dr
   gateDrift.globalGates[0].status = "closed";
   assert.throws(() => validateProofProgressModel(gateDrift, status, inventory), /Gate\.Status/u);
 
-  const axiomDrift = structuredClone(inventory);
-  axiomDrift.projectAxioms = axiomDrift.projectAxioms.slice(1);
-  assert.throws(() => validateProofProgressModel(ledger, status, axiomDrift), /Evidence\.AxiomPresence/u);
+  const axiomInventoryDrift = structuredClone(inventory);
+  axiomInventoryDrift.projectAxioms = ["PNP.UnexpectedProjectAxiom"];
+  assert.throws(() => validateProofProgressModel(ledger, status, axiomInventoryDrift), /Axioms\.Inventory/u);
+
+  const axiomEvidenceDrift = structuredClone(ledger);
+  const axiomRemoval = axiomEvidenceDrift.tracks
+    .flatMap((track) => track.checkpoints)
+    .find((checkpoint) => checkpoint.id === "axiom-remove-generate-pccpack");
+  axiomRemoval.evidence.find((evidence) => evidence.kind === "inventory-project-axiom").expectedPresent = true;
+  assert.throws(() => validateProofProgressModel(axiomEvidenceDrift, status, inventory), /Evidence\.AxiomPresence/u);
 
   const forgedRoot = structuredClone(ledger);
   forgedRoot.rootTheorem.present = true;
@@ -123,7 +128,7 @@ test("progress validation rejects arithmetic, evidence, gate, axiom, and root dr
   assert.throws(() => validateProofProgressModel(changeEvidenceDrift, status, inventory), /History\.ChangeRecordEvidenceMissing/u);
 
   const changeTotalDrift = structuredClone(ledger);
-  changeTotalDrift.history.at(-1).changeRecords[0].oldAndNewTotal.new = 34;
+  changeTotalDrift.history.at(-1).changeRecords[0].oldAndNewTotal.new += 1;
   assert.throws(() => validateProofProgressModel(changeTotalDrift, status, inventory), /History\.ChangeRecordTotal/u);
 });
 

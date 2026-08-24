@@ -68,7 +68,7 @@
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
     "finalTheoremReady": false,
-    "projectSpecificAxiomsRemaining": true
+    "projectSpecificAxiomsRemaining": false
   },
   "nonClaims": [
     "The repository does not currently establish P = NP.",
@@ -76,5 +76,5 @@
     "An accept cell is historical reproducibility metadata, not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance.",
     "No current green status badge may be derived from this matrix."
   ],
-  "matrixSha256": "b485c42c0df8bfd9472f7fae0009fd2e9aa1666e1a1d8f3cf3bc3309ba823874"
+  "matrixSha256": "360af4e110c09490af2b9f6929e48e71929951458c0f4cebfd9cee05b6a7e304"
 }

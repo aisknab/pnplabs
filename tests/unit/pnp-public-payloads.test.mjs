@@ -48,6 +48,7 @@ const MILESTONE_FIELD_PARTS = Object.freeze({
   hb: 'HB',
   hn: 'HN',
   hresolve: 'HResolve',
+  pccpack: 'PCCPack',
 });
 const milestoneFieldStem = (milestoneId) => milestoneId
   .split('-')
@@ -3595,10 +3596,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(inventory.excludedPrivateDeclarationCount, status.leanTheoremInventoryExcludedPrivateDeclarationCount);
   assert.equal(inventory.sourceClosureModuleCount, status.leanTheoremInventorySourceClosureModuleCount);
   assert.equal(inventory.axiomCount, release.artifacts.theoremInventory.projectAxiomCount);
-  assert.deepEqual(inventory.projectAxioms, [
-    'PNP.CheckPCCPackexp',
-    'PNP.GeneratePCCPack',
-  ]);
+  assert.deepEqual(inventory.projectAxioms, []);
 
   const gate = status.concretePublicationGate;
   assert.equal(status.abstractPEqualsNPPublicationEligible, false);
@@ -3630,8 +3628,32 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   ]) assert.equal(status[key], false, key);
   assert.equal(status.publicTheoremStatement, null);
   assert.equal(status.publicTheoremConclusion, null);
-  assert.equal(status.projectSpecificAxiomsRemaining, true);
+  assert.equal(status.projectSpecificAxiomsRemaining, false);
   assert.deepEqual(status.projectSpecificAxiomInventory, inventory.projectAxioms);
+  const typedPCCPackReflection = status.formalPublicationMilestones
+    .find((row) => row.id === 'typed-pccpack-reflection');
+  assert.ok(typedPCCPackReflection);
+  assert.equal(typedPCCPackReflection.earned, true);
+  assert.equal(typedPCCPackReflection.allPresent, true);
+  assert.equal(typedPCCPackReflection.allAssumptionFree, false);
+  assert.equal(typedPCCPackReflection.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(typedPCCPackReflection.allKernelTypesMatch, true);
+  assert.equal(typedPCCPackReflection.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(typedPCCPackReflection.requiredTheorems, [
+    'PNP.typed_pccpack_reflection_checked_complete',
+  ]);
+  assert.equal(typedPCCPackReflection.theoremRows[0].actualKernelTypeSha256,
+    'ac6c0a5045437ffb1df36a971ad4924f5e2cc785c97132e720c91f9461b16659');
+  assert.deepEqual(typedPCCPackReflection.theoremRows[0].axioms, ['Quot.sound', 'propext']);
+  assert.equal(status.leanTypedPCCPackReflectionFormalized, true);
+  assert.equal(status.leanTypedPCCPackReflectionAxiomAuditPassed, true);
+  assert.equal(status.leanTypedPCCPackReflectionAuditedDeclarationCount, 15);
+  assert.equal(status.leanTypedPCCPackReflectionEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanTypedPCCPackReflectionOpaqueDeclarationsRemoved, true);
+  assert.equal(release.earnedBoundary.typedPCCPackReflectionCheckedCompleteTheorem,
+    'PNP.typed_pccpack_reflection_checked_complete');
+  assert.deepEqual(release.earnedBoundary.typedPCCPackReflectionProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(typedPCCPackReflection.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -6519,7 +6541,7 @@ test('formal publication release pins the latest milestone from canonical update
   assert.equal(release.publicationBoundary.concreteGatePassed, false);
   assert.equal(release.publicationBoundary.mathematicalTheoremEstablished, false);
   assert.equal(release.publicationBoundary.publicTheoremEmissionAllowed, false);
-  assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, true);
+  assert.equal(release.publicationBoundary.projectSpecificAxiomsRemaining, false);
   assert.equal(release.publicationBoundary.remainingBlockerCount, 5);
 
   assert.equal(parser.lockedNANDParserMachineFormalized, true);
@@ -8611,11 +8633,12 @@ test('static inventory prose derives changing publication totals from the canoni
   ];
   assert.ok(Number.isSafeInteger(latestFocusedAuditCount));
   assert.ok(latestFocusedAuditCount > 0);
-  assert.equal(
-    readme.includes(`Its ${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`),
-    true
-  );
+  const latestTheoremPinLabel = latestEarnedMilestone.requiredTheorems.length === 1
+    ? "1 reviewed theorem pin"
+    : `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`;
+  assert.equal(readme.includes(`Its ${latestTheoremPinLabel}`), true);
   assert.equal(readme.includes(latestUpdate.title), true);
+  assert.equal(paper.includes(latestUpdate.title), true, 'paper page must name the current milestone');
   assert.equal(pipeline.includes(`The ${index.formalPublicationMilestoneCounts.earned} earned formal artefact scopes are:`), true);
   assert.equal(activatedClaimWording.includes(`${index.formalPublicationMilestoneCounts.earned} narrowly scoped milestones are earned`), true);
   assert.equal(activatedClaimWording.toLowerCase().includes(latestUpdate.title.toLowerCase()), true);
@@ -8645,14 +8668,17 @@ test('static inventory prose derives changing publication totals from the canoni
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationFormalized = true'), true);
   assert.equal(readme.includes('leanResidualTerminalPkgCSameKeyCancellationAxiomAuditPassed = true'), true);
   assert.equal(readme.includes('23,601** exported public declarations across **109** modules'), false);
-  assert.equal(paper.includes(`Exactly ${excludedPrivate} private compiler auxiliaries are excluded.`), true);
+  assert.equal(paper.includes(`Exactly ${excludedPrivate} private compiler auxiliaries are excluded`), true);
   assert.equal(guide.includes(`Exactly ${excludedPrivate} private compiler auxiliaries are excluded explicitly.`), true);
-  for (const fragment of [`${declarations} public declarations`, `${theorems} theorem-kind declarations`, `${assumptionFreeTheorems} assumption-free theorem-kind declarations`, `${sourceModules} source-closure modules`, `${excludedPrivate} excluded private compiler auxiliaries`, `${projectAxioms === 4 ? 'four' : projectAxioms} project axioms`]) {
+  const projectAxiomFragment = projectAxioms === 0
+    ? "no project-specific axioms"
+    : `${projectAxioms} project axioms`;
+  for (const fragment of [`${declarations} public declarations`, `${theorems} theorem-kind declarations`, `${assumptionFreeTheorems} assumption-free theorem-kind declarations`, `${sourceModules} source-closure modules`, `${excludedPrivate} excluded private compiler auxiliaries`, projectAxiomFragment]) {
     assert.equal(pipeline.includes(fragment), true, `missing proof-pipeline fragment: ${fragment}`);
   }
   assert.equal(pipeline.includes('245 source-closure modules'), false);
   const reproducibilityCollapsed = reproducibility.replace(/\s+/gu, ' ');
-  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), `${reportPages} A4 pages`, 'fixed 135,070-rule', `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`, `focused ${latestFocusedAuditCount}-declaration audit`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), `${reportPages} A4 pages`, 'fixed 135,070-rule', latestTheoremPinLabel, `focused ${latestFocusedAuditCount}-declaration audit`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibilityCollapsed.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

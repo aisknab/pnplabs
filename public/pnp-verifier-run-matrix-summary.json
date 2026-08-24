@@ -43,7 +43,7 @@
     "publicTheoremEmissionAllowed": false,
     "publicTheoremStatement": null,
     "finalTheoremReady": false,
-    "projectSpecificAxiomsRemaining": true,
+    "projectSpecificAxiomsRemaining": false,
     "externalReviewIsMathematicalPremise": false
   },
   "nonClaims": [
@@ -51,5 +51,5 @@
     "This is neutral historical metadata, not a current green status badge.",
     "Historical matrix agreement is not current theorem-status evidence, mathematical proof, external consensus, or peer-review acceptance."
   ],
-  "summarySha256": "9461c8f46c4b2a6b9483c9abe5670de2361697090dedaa22189bd8fb4dc78ab6"
+  "summarySha256": "e04c6afa6647ca601ba7bca2c01546bcc60888a16f730294664d6aa488774d3a"
 }

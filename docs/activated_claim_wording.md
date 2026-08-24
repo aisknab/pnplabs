@@ -15,7 +15,7 @@ finalTheoremReady = false
 rootLeanTheoremPresent = false
 rootLeanTheoremBuilt = false
 rootLeanTheoremAxiomAuditPassed = false
-projectSpecificAxiomsRemaining = true
+projectSpecificAxiomsRemaining = false
 leanConcreteCNFSATMembershipFormalized = true
 leanConcretePipelineCanonicalPairCompilationFormalized = true
 leanConcretePipelineExternalInputSizePolynomialFormalized = true
@@ -130,6 +130,12 @@ leanConcreteResidualBandCompatibilityAuditedDeclarationCount = 10
 leanConcreteResidualBandCompatibilityEndpointProjectAssumptionFree = true
 leanConcreteResidualBandCompatibilityCallerReductionRemoved = true
 leanConcreteResidualBandCompatibilityScope = "all-bitstring-and-arbitrary-typed-candidate-exact-reference-minimum-threshold-semantics-with-fail-closed-decoding-and-identity-locked-to-residual-transport"
+leanTypedPCCPackReflectionFormalized = true
+leanTypedPCCPackReflectionAxiomAuditPassed = true
+leanTypedPCCPackReflectionAuditedDeclarationCount = 15
+leanTypedPCCPackReflectionEndpointProjectAssumptionFree = true
+leanTypedPCCPackReflectionOpaqueDeclarationsRemoved = true
+leanTypedPCCPackReflectionScope = "all-explicit-proof-bearing-pccmin-loop-certificates-with-transparent-canonical-packaging-structural-identifier-checking-exact-projection-and-mismatch-rejection"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -139,7 +145,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 163 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 163 of 165 current scoped rows, not proof completion. The risk-weighted proof-completion estimate is 33%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Concrete residual-band compatibility**, gives the report-facing residual-band endpoint concrete fail-closed encoded exact-minimum semantics for every intrinsically typed finite candidate and replaces its caller-supplied compatibility edge with a compiled identity reduction. This removes `PNP.ResidualBandExactMinimization` from project-specific proof authority. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm, and the milestone does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT in P, SAT hardness transport, the eligible root theorem, or a global-gate closure. Two project-specific axioms and all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 164 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 164 of 166 current scoped rows, not proof completion. The risk-weighted proof-completion estimate is 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Typed PCCPack generation and structural reflection**, replaces the final two opaque package/checker declarations and caller-supplied reflection field with transparent typed generation and structural checking over an explicit proof-bearing PCCMin loop certificate. This removes `PNP.GeneratePCCPack` and `PNP.CheckPCCPackexp` from project-specific proof authority. The certificate remains supplied: the milestone does not implement PCCMin, prove unconditional ZeroSlack or polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -158,7 +164,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 132-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 133-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

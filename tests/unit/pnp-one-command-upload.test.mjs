@@ -58,7 +58,7 @@ test('former one-command activated-run upload is frozen', async () => {
   assert.equal(payload.currentClaimBoundary.publicTheoremEmissionAllowed, false);
   assert.equal(payload.currentClaimBoundary.publicTheoremStatement, null);
   assert.equal(payload.currentClaimBoundary.finalTheoremReady, false);
-  assert.equal(payload.currentClaimBoundary.projectSpecificAxiomsRemaining, true);
+  assert.equal(payload.currentClaimBoundary.projectSpecificAxiomsRemaining, false);
 });
 
 test('activated verification-run issue template has been removed', async () => {

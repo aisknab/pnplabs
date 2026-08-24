@@ -24,14 +24,12 @@ function loggerCapture() {
   };
 }
 
-test("UnifiedPush uses the exact configured endpoint and URL-encoded POST contract", async () => {
+test("UnifiedPush uses the exact configured endpoint and raw text POST contract", async () => {
   const requests = [];
-  const title = "Spaces & equals= π";
-  const message = "Line one\nLine two & x=y 👋";
+  const notification = "Spaces & equals= π\nLine two 👋";
   const result = await sendUnifiedPushNotification({
     environment: { UNIFIEDPUSH_ENDPOINT: endpoint },
-    title,
-    message,
+    text: notification,
     fetchImpl: async (url, options) => {
       requests.push({ url, options });
       return response(201);
@@ -44,30 +42,28 @@ test("UnifiedPush uses the exact configured endpoint and URL-encoded POST contra
   assert.equal(requests[0].url, endpoint);
   assert.equal(requests[0].options.method, "POST");
   assert.deepEqual(requests[0].options.headers, {
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-    "Content-Encoding": "aes128gcm",
-    Accept: "application/json"
+    "Content-Type": "text/plain; charset=utf-8"
   });
   assert.ok(requests[0].options.signal instanceof AbortSignal);
-  const decoded = new URLSearchParams(requests[0].options.body);
-  assert.deepEqual([...decoded.keys()], ["title", "message"]);
-  assert.equal(decoded.get("title"), title);
-  assert.equal(decoded.get("message"), message);
+  assert.equal(requests[0].options.body, notification);
+  assert.doesNotMatch(requests[0].options.body, /(?:^|&)title=|(?:^|&)message=/u);
+  assert.equal(requests[0].options.headers["Content-Encoding"], undefined);
+  assert.equal(requests[0].options.headers.Accept, undefined);
   assert.equal(requests[0].options.headers.Title, undefined);
   assert.equal(requests[0].options.headers.Tags, undefined);
   assert.equal(requests[0].options.headers.Priority, undefined);
-  assert.doesNotMatch(requests[0].options.body, /^\s*\{/u);
 });
 
-test("every 2xx response is successful", async () => {
-  for (const status of [200, 201, 202, 204, 299]) {
+test("only HTTP 201 is successful", async () => {
+  for (const status of [200, 202, 204, 299]) {
     const result = await sendUnifiedPushNotification({
       endpoint,
-      title: "PNP Labs test",
-      message: "Success response",
+      text: "PNP Labs test",
+      logger: { warn() {} },
       fetchImpl: async () => response(status)
     });
-    assert.equal(result.status, "sent");
+    assert.equal(result.status, "failed");
+    assert.equal(result.reason, "unexpected_http_status");
     assert.equal(result.httpStatus, status);
   }
 });
@@ -77,8 +73,7 @@ test("HTTP 404 is a redacted non-retryable invalid-endpoint failure", async () =
   let calls = 0;
   const result = await sendUnifiedPushNotification({
     endpoint,
-    title: "PNP Labs test",
-    message: "Invalid endpoint response",
+    text: "Invalid endpoint response",
     fetchImpl: async () => {
       calls += 1;
       return response(404);
@@ -95,31 +90,31 @@ test("HTTP 404 is a redacted non-retryable invalid-endpoint failure", async () =
   assert.doesNotMatch(capture.messages.join("\n"), /push\.example/u);
 });
 
-test("HTTP 429 and 5xx responses retry at most three total attempts", async () => {
-  const statuses = [429, 503, 201];
-  const delays = [];
-  const result = await sendUnifiedPushNotification({
-    endpoint,
-    title: "PNP Labs test",
-    message: "Retry response",
-    maxAttempts: 99,
-    random: () => 0.5,
-    sleepImpl: async (delay) => delays.push(delay),
-    fetchImpl: async () => response(statuses.shift())
-  });
+test("HTTP 429 and 5xx responses receive one bounded retry", async () => {
+  for (const transientStatus of [429, 503]) {
+    const statuses = [transientStatus, 201];
+    const delays = [];
+    const result = await sendUnifiedPushNotification({
+      endpoint,
+      text: "Retry response",
+      maxAttempts: 99,
+      random: () => 0.5,
+      sleepImpl: async (delay) => delays.push(delay),
+      fetchImpl: async () => response(statuses.shift())
+    });
 
-  assert.equal(result.status, "sent");
-  assert.equal(result.attempts, 3);
-  assert.deepEqual(delays, [225, 375]);
+    assert.equal(result.status, "sent");
+    assert.equal(result.attempts, 2);
+    assert.deepEqual(delays, [225]);
+  }
 });
 
-test("network and timeout failures receive bounded retries without leaking errors", async () => {
+test("network and timeout failures receive one retry without leaking errors", async () => {
   const capture = loggerCapture();
   let calls = 0;
   const result = await sendUnifiedPushNotification({
     endpoint,
-    title: "PNP Labs test",
-    message: "Timeout response",
+    text: "Timeout response",
     random: () => 0,
     sleepImpl: async () => {},
     logger: capture.logger,
@@ -134,15 +129,15 @@ test("network and timeout failures receive bounded retries without leaking error
   assert.equal(result.status, "failed");
   assert.equal(result.reason, "network_or_timeout");
   assert.equal(calls, UNIFIEDPUSH_LIMITS.maxTotalAttempts);
+  assert.equal(calls, 2);
   assert.doesNotMatch(capture.messages.join("\n"), /capability-fragment|push\.example/u);
 });
 
-test("ordinary 4xx responses do not retry and do not throw", async () => {
+test("ordinary 4xx responses do not retry", async () => {
   let calls = 0;
   const result = await sendUnifiedPushNotification({
     endpoint,
-    title: "PNP Labs test",
-    message: "Bad request response",
+    text: "Bad request response",
     logger: { warn() {} },
     fetchImpl: async () => {
       calls += 1;
@@ -150,7 +145,8 @@ test("ordinary 4xx responses do not retry and do not throw", async () => {
     }
   });
   assert.equal(result.status, "failed");
-  assert.equal(result.reason, "non_retryable_http");
+  assert.equal(result.reason, "unexpected_http_status");
+  assert.equal(result.httpStatus, 400);
   assert.equal(calls, 1);
 });
 
@@ -158,8 +154,7 @@ test("a missing endpoint skips safely without calling fetch", async () => {
   const capture = loggerCapture();
   const result = await sendUnifiedPushNotification({
     environment: {},
-    title: "PNP Labs test",
-    message: "Missing endpoint",
+    text: "Missing endpoint",
     logger: capture.logger,
     fetchImpl: async () => assert.fail("missing configuration must not call fetch")
   });
@@ -167,18 +162,15 @@ test("a missing endpoint skips safely without calling fetch", async () => {
   assert.deepEqual(capture.messages, ["UnifiedPush notification skipped: UNIFIEDPUSH_ENDPOINT is not configured."]);
 });
 
-test("oversized messages are sanitised and truncated below the encoded-body limit", () => {
+test("oversized messages are sanitised and truncated below the raw-body limit", () => {
   const payload = buildUnifiedPushPayload({
-    title: "PNP Labs status\nwith controls\u0000",
-    message: `${"Formal progress 👋 & value=checked\n".repeat(400)} https://secret.example.invalid/capability`
+    text: `${"Formal progress 👋 & value=checked\n".repeat(400)} https://secret.example.invalid/capability`
   });
   assert.equal(payload.truncated, true);
-  assert.ok(payload.byteLength <= UNIFIEDPUSH_LIMITS.maxEncodedBodyBytes);
+  assert.ok(payload.byteLength <= UNIFIEDPUSH_LIMITS.maxBodyBytes);
   assert.equal(Buffer.byteLength(payload.body, "utf8"), payload.byteLength);
-  const decoded = new URLSearchParams(payload.body);
-  assert.equal(decoded.get("title"), "PNP Labs status with controls");
-  assert.match(decoded.get("message"), /…$/u);
-  assert.doesNotMatch(decoded.get("message"), /secret\.example|capability/u);
+  assert.match(payload.body, /…$/u);
+  assert.doesNotMatch(payload.body, /secret\.example|capability/u);
 });
 
 test("sanitisation removes controls and redacts URLs, private paths, and secret assignments", () => {
@@ -201,8 +193,7 @@ test("an in-process dedupe key suppresses duplicate workflow sends", async () =>
   let calls = 0;
   const options = {
     endpoint,
-    title: "PNP Labs milestone earned",
-    message: "One milestone transition",
+    text: "PNP Labs milestone earned\nOne milestone transition",
     dedupeKey: "milestone:example",
     fetchImpl: async () => {
       calls += 1;
