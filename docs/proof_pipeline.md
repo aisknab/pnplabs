@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,129 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,130 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 30,075 public declarations;
-- 15,543 theorem-kind declarations;
-- 7,642 assumption-free theorem-kind declarations;
-- 305 source-closure modules;
+- 30,144 public declarations;
+- 15,562 theorem-kind declarations;
+- 7,657 assumption-free theorem-kind declarations;
+- 306 source-closure modules;
 - 15,145 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 165 earned formal artefact scopes are:
+The 166 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -215,6 +215,7 @@ The 165 earned formal artefact scopes are:
 | Concrete residual-band compatibility | Seven reviewed theorem pins identify the report-facing residual-band endpoint with the concrete fail-closed encoded exact-minimum threshold language, prove its exact reference-minimum semantics for every intrinsically typed finite candidate, and make the active locked-to-residual bridge a compiled identity polynomial reduction. All ten declarations in the focused audit use only `propext`. | This removes `PNP.ResidualBandExactMinimization` and the caller-supplied compatibility edge from the active route. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm. The result does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT in P, SAT hardness transport, the eligible root theorem, a global-gate closure, or `P = NP`. |
 | Typed PCCPack generation and structural reflection | One reviewed completion-theorem pin verifies transparent canonical packaging of every explicitly supplied proof-bearing `PCCMinLoopCertificate`, structural identifier acceptance, mismatch rejection, and exact certificate projection. All 15 declarations in the focused audit use only `Quot.sound` and `propext`. | This removes `PNP.GeneratePCCPack`, `PNP.CheckPCCPackexp`, and the caller-supplied reflection field from the active route. It does not construct the loop certificate, verify historical JavaScript package bytes or semantic string fields, implement PCCMin, prove unconditional ZeroSlack or polynomial runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Proof-bearing PCCMin total-oracle loop | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation and explicit proof-bearing total oracle, transparent well-founded recursion follows strict semantics-preserving gains until it returns exact-minimum or ZeroSlack evidence. The result is a global minimum with zero residual slack, and the number of strict-gain iterations is bounded by the starting residual slack. The endpoint has an empty axiom closure. | The oracle remains an explicit supplied argument, and the regression fixture obtains it through exhaustive reference minimisation. This does not construct an executable PCCMin oracle, derive terminal candidates or routes, prove unconditional ZeroSlack, encode the loop as a raw machine, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
+| Proof-bearing PCCMin normalization and oracle composition | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation, explicit proof-bearing total normalizer, and explicit proof-bearing total oracle, non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation and transports exact-minimum and ZeroSlack endpoints into the checked terminating loop. The endpoint and all ten declarations in the focused audit have empty axiom closure. | The total normalizer and total oracle remain explicit supplied arguments, and the regression fixtures use exhaustive reference minimisation. This does not construct either executable stage, derive terminal candidates or routes, prove unconditional ZeroSlack, encode the stages as raw machines, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -246,7 +247,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 133-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 134-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

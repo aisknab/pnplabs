@@ -9,8 +9,8 @@ import { validateProofProgressModel } from "./proof-progress-model.mjs";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "6e7124f7edf19b2ab077b9b52ed267cb6ecb00e3";
-const REVIEWED_CORE_TREE = "ca4fab1d10d275a6639c980140f4c6c62fdec040";
+const REVIEWED_CORE_COMMIT = "c912b110f14386d335d58bb89b1bb9bb643bffb4";
+const REVIEWED_CORE_TREE = "42d5414571038517da97b3ba59a334790144b928";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -4234,6 +4234,10 @@ const PCCMIN_TOTAL_ORACLE_LOOP_RELEASE_IDENTITIES = {
   pccMinTotalOracleLoopCheckedCompleteTheorem: "PNP.DirectWire.pccmin_total_oracle_loop_checked_complete"
 };
 
+const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_RELEASE_IDENTITIES = {
+  pccMinNormalizeOracleCompositionCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_oracle_loop_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -6006,6 +6010,13 @@ const PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS = {
 const PCCMIN_TOTAL_ORACLE_LOOP_SCOPE = "all-finite-direct-wire-implementations-under-an-explicit-proof-bearing-total-oracle-with-strict-slack-descent-exact-terminal-evidence-and-gain-iteration-bound";
 const PCCMIN_TOTAL_ORACLE_LOOP_MILESTONE_SCOPE = "For every finite direct-wire implementation and every explicit proof-bearing total oracle, transparent well-founded recursion follows strict equivalent gains until exact-minimum or ZeroSlack evidence is returned, preserves semantics, returns a global minimum with zero residual slack, and bounds strict-gain iterations by the starting residual slack.";
 const PCCMIN_TOTAL_ORACLE_LOOP_NON_CLAIM = "The total oracle remains an explicit proof-bearing argument, and the regression fixture uses exhaustive reference minimization. This milestone does not construct an executable PCCMin oracle, derive terminal families or routes, establish unconditional ZeroSlack, encode the loop as a raw machine, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS = {
+  "PNP.DirectWire.pccmin_normalize_oracle_loop_checked_complete": { hash: "aab40681d92f9e3bdf97f667660943103c90886a3fec08d9d7063ae5a72f6fb9", axioms: [], module: "PNP.PCCMinNormalizeOracleComposition" }
+};
+const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_SCOPE = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-and-oracle-stages-with-nonincreasing-semantic-normalization-lifted-strict-gains-exact-endpoint-transport-and-the-checked-well-founded-loop";
+const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire implementation, explicit proof-bearing total normalizer, and explicit proof-bearing total oracle, non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation, transports exact-minimum and ZeroSlack endpoints, and reuses the checked well-founded loop with its exact result and gain-iteration bound.";
+const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_NON_CLAIM = "The total normalizer and total oracle remain explicit proof-bearing arguments, and the regression fixtures use exhaustive reference minimization. This milestone does not construct either executable stage, derive terminal families or routes, establish unconditional ZeroSlack, encode the stages as raw machines, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -8748,6 +8759,42 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_THEOREMS).every(([name, row]) => pccMinTotalOracleLoopHashes[name] === row.hash)) failures.push("current manifest PCCMin total-oracle loop fingerprint mismatch");
   if (!Object.entries(PCCMIN_TOTAL_ORACLE_LOOP_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest PCCMin total-oracle loop theorem identity mismatch");
 
+  if (!(earned.pccMinNormalizeOracleCompositionFormalized === true
+      && earned.pccMinNormalizeOracleCompositionAxiomAuditPassed === true
+      && earned.pccMinNormalizeOracleCompositionAuditedDeclarationCount === 10
+      && earned.pccMinNormalizeOracleCompositionEndpointProjectAssumptionFree === true
+      && earned.pccMinNormalizeOracleCompositionHasUnresolvedOutcome === false
+      && earned.pccMinNormalizeOracleCompositionConstructsNormalizer === false
+      && earned.pccMinNormalizeOracleCompositionConstructsOracle === false
+      && earned.pccMinNormalizeOracleCompositionLiftedGainFormalized === true
+      && earned.pccMinNormalizeOracleCompositionExactEndpointTransportFormalized === true
+      && earned.pccMinNormalizeOracleCompositionPolynomialRuntimeProved === false
+      && earned.pccMinNormalizeOracleCompositionScope === PCCMIN_NORMALIZE_ORACLE_COMPOSITION_SCOPE
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) {
+    failures.push("current manifest PCCMin normalization/oracle composition boundary mismatch");
+  }
+  if (!Array.isArray(earned.pccMinNormalizeOracleCompositionAxiomClosure)
+      || earned.pccMinNormalizeOracleCompositionAxiomClosure.length !== 0
+      || !Array.isArray(earned.pccMinNormalizeOracleCompositionProjectAxiomClosure)
+      || earned.pccMinNormalizeOracleCompositionProjectAxiomClosure.length !== 0) {
+    failures.push("current manifest PCCMin normalization/oracle composition axiom closure mismatch");
+  }
+  const pccMinNormalizeOracleCompositionHashes =
+    earned.pccMinNormalizeOracleCompositionTheoremKernelTypeSha256;
+  if (!pccMinNormalizeOracleCompositionHashes
+      || Object.keys(pccMinNormalizeOracleCompositionHashes).length !== 1
+      || !Object.entries(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS).every(
+        ([name, row]) => pccMinNormalizeOracleCompositionHashes[name] === row.hash
+      )) {
+    failures.push("current manifest PCCMin normalization/oracle composition fingerprint mismatch");
+  }
+  if (!Object.entries(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_RELEASE_IDENTITIES).every(
+    ([field, theorem]) => earned[field] === theorem
+  )) {
+    failures.push("current manifest PCCMin normalization/oracle composition theorem identity mismatch");
+  }
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -8764,7 +8811,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop")) failures.push("current manifest earned scope omits the M189 PCCMin total-oracle loop milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition")) failures.push("current manifest earned scope omits the M190 PCCMin normalization/oracle composition milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -12352,6 +12399,55 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       && status.leanZeroSlackCompletenessFormalized === false
       && status.leanPCCMinPolynomialRuntimeFormalized === false)) failures.push("status PCCMin total-oracle loop evidence mismatch");
 
+  const pccminNormalizeOracleCompositionMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-normalize-oracle-composition"
+  );
+  const pccminNormalizeOracleCompositionNames =
+    Object.keys(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS);
+  if (!pccminNormalizeOracleCompositionMilestone
+      || pccminNormalizeOracleCompositionMilestone.classification !== "formalized-pccmin-normalize-oracle-composition"
+      || pccminNormalizeOracleCompositionMilestone.status !== "formalized-pccmin-normalize-oracle-composition"
+      || pccminNormalizeOracleCompositionMilestone.scope !== PCCMIN_NORMALIZE_ORACLE_COMPOSITION_MILESTONE_SCOPE
+      || pccminNormalizeOracleCompositionMilestone.nonClaim !== PCCMIN_NORMALIZE_ORACLE_COMPOSITION_NON_CLAIM
+      || JSON.stringify(pccminNormalizeOracleCompositionMilestone.requiredTheorems)
+        !== JSON.stringify(pccminNormalizeOracleCompositionNames)
+      || pccminNormalizeOracleCompositionMilestone.earned !== true
+      || pccminNormalizeOracleCompositionMilestone.allPresent !== true
+      || pccminNormalizeOracleCompositionMilestone.allAssumptionFree !== true
+      || pccminNormalizeOracleCompositionMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminNormalizeOracleCompositionMilestone.allKernelTypesMatch !== true
+      || pccminNormalizeOracleCompositionMilestone.sourceClosureFingerprintMatches !== true) {
+    failures.push("status PCCMin normalization/oracle composition publication boundary mismatch");
+  }
+  for (const [name, evidence] of Object.entries(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS)) {
+    const row = pccminNormalizeOracleCompositionMilestone?.theoremRows?.find(
+      (candidate) => candidate.name === name
+    );
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) {
+      failures.push(`status PCCMin normalization/oracle composition theorem evidence mismatch: ${name}`);
+    }
+  }
+  if (!(status.leanPCCMinNormalizeOracleCompositionFormalized === true
+      && status.leanPCCMinNormalizeOracleCompositionAxiomAuditPassed === true
+      && status.leanPCCMinNormalizeOracleCompositionAuditedDeclarationCount === 10
+      && status.leanPCCMinNormalizeOracleCompositionEndpointProjectAssumptionFree === true
+      && status.leanPCCMinNormalizeOracleCompositionHasUnresolvedOutcome === false
+      && status.leanPCCMinNormalizeOracleCompositionConstructsNormalizer === false
+      && status.leanPCCMinNormalizeOracleCompositionConstructsOracle === false
+      && status.leanPCCMinNormalizeOracleCompositionLiftedGainFormalized === true
+      && status.leanPCCMinNormalizeOracleCompositionExactEndpointTransportFormalized === true
+      && status.leanPCCMinNormalizeOracleCompositionPolynomialRuntimeProved === false
+      && status.leanPCCMinNormalizeOracleCompositionScope === PCCMIN_NORMALIZE_ORACLE_COMPOSITION_SCOPE
+      && status.leanPCCMinLoopExactnessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) {
+    failures.push("status PCCMin normalization/oracle composition evidence mismatch");
+  }
+
 
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -13609,6 +13705,17 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
           || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) failures.push(`inventory PCCMin total-oracle loop theorem mismatch: ${name}`);
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) failures.push(`inventory PCCMin total-oracle loop fingerprint mismatch: ${name}`);
+    }
+
+    for (const [name, evidence] of Object.entries(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) {
+        failures.push(`inventory PCCMin normalization/oracle composition theorem mismatch: ${name}`);
+      }
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
+        failures.push(`inventory PCCMin normalization/oracle composition fingerprint mismatch: ${name}`);
+      }
     }
 
     for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -16232,6 +16339,29 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || pccminTotalOracleLoopPins[name] !== row.hash) {
       failures.push(`core publication map PCCMin total-oracle loop fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const pccminNormalizeOracleCompositionMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-normalize-oracle-composition"
+  );
+  const pccminNormalizeOracleCompositionNames =
+    Object.keys(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS);
+  if (!pccminNormalizeOracleCompositionMilestone
+      || pccminNormalizeOracleCompositionMilestone.classification !== "formalized-pccmin-normalize-oracle-composition"
+      || pccminNormalizeOracleCompositionMilestone.scope !== PCCMIN_NORMALIZE_ORACLE_COMPOSITION_MILESTONE_SCOPE
+      || pccminNormalizeOracleCompositionMilestone.nonClaim !== PCCMIN_NORMALIZE_ORACLE_COMPOSITION_NON_CLAIM
+      || JSON.stringify(pccminNormalizeOracleCompositionMilestone.requiredTheorems)
+        !== JSON.stringify(pccminNormalizeOracleCompositionNames)) {
+    failures.push("core publication map PCCMin normalization/oracle composition boundary mismatch");
+  }
+  const pccminNormalizeOracleCompositionPins =
+    releaseManifest.earnedBoundary?.pccMinNormalizeOracleCompositionTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS)) {
+    if (!pccminNormalizeOracleCompositionMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || pccminNormalizeOracleCompositionPins[name] !== row.hash) {
+      failures.push(`core publication map PCCMin normalization/oracle composition fingerprint mismatch: ${name}`);
     }
   }
 
