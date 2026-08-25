@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-25-pccmin-rank-ordered-oracle",
+      "milestoneId": "pccmin-rank-ordered-oracle",
+      "publishedAt": "2026-08-24T23:08:00Z",
+      "title": "Rank-ordered proof-bearing PCCOracle orchestration",
+      "plainLanguage": [
+        "Lean now formalises the manuscript's complete finite PCCOracle stage order for every supplied proof-bearing rank-ordered oracle builder. HResolve runs before BudgetResolve, every selector in every canonical finite rank row is scanned, the first gain returns immediately, and complete typed silence is required before the supplied ZeroSlack closure. The resulting total oracle reuses the checked normalization and well-founded exact loop.",
+        "The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain explicit inputs, and the exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 167 of 169."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 167,
+        "formalArtefactCoverageTotalRows": 169,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "0dbad6e14d82bf1f6f1d7b315dc896bdceb325a6",
+        "tree": "8f3893c6ff351315be7a4ca8b7fff8c5d5f3cd0a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-25-pccmin-normalize-oracle-composition",
       "milestoneId": "pccmin-normalize-oracle-composition",
       "publishedAt": "2026-08-24T18:19:57Z",

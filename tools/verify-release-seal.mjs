@@ -5,8 +5,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
-const CORE_COMMIT = "c912b110f14386d335d58bb89b1bb9bb643bffb4";
-const CORE_TREE = "42d5414571038517da97b3ba59a334790144b928";
+const CORE_COMMIT = "0dbad6e14d82bf1f6f1d7b315dc896bdceb325a6";
+const CORE_TREE = "8f3893c6ff351315be7a4ca8b7fff8c5d5f3cd0a";
 const PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -4959,6 +4959,13 @@ const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_SCOPE = "all-finite-direct-wire-implem
 const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire implementation, explicit proof-bearing total normalizer, and explicit proof-bearing total oracle, non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation, transports exact-minimum and ZeroSlack endpoints, and reuses the checked well-founded loop with its exact result and gain-iteration bound.";
 const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_NON_CLAIM = "The total normalizer and total oracle remain explicit proof-bearing arguments, and the regression fixtures use exhaustive reference minimization. This milestone does not construct either executable stage, derive terminal families or routes, establish unconditional ZeroSlack, encode the stages as raw machines, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
+const PCCMIN_RANK_ORDERED_ORACLE_THEOREMS = {
+  "PNP.DirectWire.pccmin_normalize_rank_ordered_oracle_loop_checked_complete": { hash: "943d3c75e57843ac72b3760b6292c96c27f045a714cb7a1225bddf2e8866dc81", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinRankOrderedOracle" }
+};
+const PCCMIN_RANK_ORDERED_ORACLE_SCOPE = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-hresolve-budgetresolve-arbitrary-finite-rank-selector-rows-typed-blocker-silence-and-zeroslack-closure-with-canonical-all-rank-scanning-and-the-checked-well-founded-loop";
+const PCCMIN_RANK_ORDERED_ORACLE_MILESTONE_SCOPE = "For every finite direct-wire implementation, explicit proof-bearing normalizer, and explicit rank-ordered oracle builder, HResolve precedes BudgetResolve, every selector in every canonical finite rank row is scanned, gains return immediately, complete typed silence is required before ZeroSlack, and the resulting total oracle reuses the checked well-founded exact loop and gain-iteration bound.";
+const PCCMIN_RANK_ORDERED_ORACLE_NON_CLAIM = "The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and final ZeroSlack closure remain explicit proof-bearing inputs. The exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -6147,6 +6154,10 @@ const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_RELEASE_IDENTITIES = {
   pccMinNormalizeOracleCompositionCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_oracle_loop_checked_complete"
 };
 
+const PCCMIN_RANK_ORDERED_ORACLE_RELEASE_IDENTITIES = {
+  pccMinRankOrderedOracleCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_rank_ordered_oracle_loop_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -6335,50 +6346,50 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 572919,
-    "sha256": "bc6319cdc6fb61d46b05c9417cae642512f8c99858ff5db85b78a7b9b515bfce",
+    "bytes": 573801,
+    "sha256": "484d654f65f44eea42eed2753dd9ecf495f9fe130c34ee7f64485ba4fd277560",
     "role": "current inventory-derived 134-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 572919,
-    "sha256": "bc6319cdc6fb61d46b05c9417cae642512f8c99858ff5db85b78a7b9b515bfce",
+    "bytes": 573801,
+    "sha256": "484d654f65f44eea42eed2753dd9ecf495f9fe130c34ee7f64485ba4fd277560",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 350724,
-    "sha256": "169c3b9a8d893e17e35c825222bd11d62a15a808537581c9bb7a8c9927985a87",
+    "bytes": 352527,
+    "sha256": "1e721889b6476969676d41eded0e56d8666ec41c496c6d2494ba7f98ad23a817",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 350724,
-    "sha256": "169c3b9a8d893e17e35c825222bd11d62a15a808537581c9bb7a8c9927985a87",
+    "bytes": 352527,
+    "sha256": "1e721889b6476969676d41eded0e56d8666ec41c496c6d2494ba7f98ad23a817",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2626582,
-    "sha256": "a176bb3e2a29f39d8e37dc44422aee3203f74da1f5b2cc527c42d462c83813d2",
+    "bytes": 2630646,
+    "sha256": "a711726030b1d59e6f951401ad5e66f0c64a597a8cde4cf775eeeb30dc7b72a5",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 33132265,
-    "sha256": "9fa7e4f095789c7e91904c83ba7b93475428f10bec597de4c45a2d0ea4d5c8f2",
+    "bytes": 33174205,
+    "sha256": "22e70b47ef54ff3fe674087d429f1093491d4ba3b5d0fd167b1430e858e74557",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "public/pnp-proof-progress.json",
-    "bytes": 50378,
-    "sha256": "e53f1a4e10276f5c7aaec0f053cda857de314ade98a66feba28b08c034ba2270",
+    "bytes": 52620,
+    "sha256": "4f43376e27272879f65416c491b5a73e80e4f1021b9dff8dcbd17514eef69ace",
     "role": "exact current fixed-weight proof-progress ledger mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 1055413,
-    "sha256": "e9e31cd8ea0affac1190579cb064cf17d89f6b769a5d3ffa949abc72cbef9bc6",
+    "bytes": 1056862,
+    "sha256": "e2314181992bb703886056015254cf4421492bd1fa143e1b9259b250da9b35c4",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -6451,9 +6462,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-190") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-190" || status.formalPublicationMapSha256 !== "7e865fcfeb23052934e96dfff74161efefda3cc927b72b8b250f51ad0fdacf04" || status.leanSourceClosureSha256 !== "92eec88ba8b75f4d3a342ab7a375d48bb53b4da72ed8d8926be423b336fa3c98") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-191" || status.formalPublicationMapSha256 !== "14f7e563308f51c7495c47123e7227cc4e97829bb672b7ee21980df655e795be" || status.leanSourceClosureSha256 !== "ce1f589280d1eb207dfc07b795960cb02b3686097355cec919ed23bff5149f3e") fail("status source identity mismatch");
   const milestones = status.formalPublicationMilestones;
   if (!Array.isArray(milestones) || milestones.length < 3
       || new Set(milestones.map((row) => row.id)).size !== milestones.length
@@ -10035,6 +10046,55 @@ function assertFailClosedStatus(status) {
     fail("status PCCMin normalization/oracle composition evidence mismatch");
   }
 
+  const pccminRankOrderedOracleMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-rank-ordered-oracle"
+  );
+  const pccminRankOrderedOracleNames = Object.keys(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS);
+  if (!pccminRankOrderedOracleMilestone
+      || pccminRankOrderedOracleMilestone.classification !== "formalized-pccmin-rank-ordered-oracle"
+      || pccminRankOrderedOracleMilestone.status !== "formalized-pccmin-rank-ordered-oracle"
+      || pccminRankOrderedOracleMilestone.scope !== PCCMIN_RANK_ORDERED_ORACLE_MILESTONE_SCOPE
+      || pccminRankOrderedOracleMilestone.nonClaim !== PCCMIN_RANK_ORDERED_ORACLE_NON_CLAIM
+      || JSON.stringify(pccminRankOrderedOracleMilestone.requiredTheorems)
+        !== JSON.stringify(pccminRankOrderedOracleNames)
+      || pccminRankOrderedOracleMilestone.earned !== true
+      || pccminRankOrderedOracleMilestone.allPresent !== true
+      || pccminRankOrderedOracleMilestone.allAssumptionFree !== false
+      || pccminRankOrderedOracleMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminRankOrderedOracleMilestone.allKernelTypesMatch !== true
+      || pccminRankOrderedOracleMilestone.sourceClosureFingerprintMatches !== true) {
+    fail("status PCCMin rank-ordered oracle publication boundary mismatch");
+  }
+  for (const [name, evidence] of Object.entries(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS)) {
+    const row = pccminRankOrderedOracleMilestone?.theoremRows?.find(
+      (candidate) => candidate.name === name
+    );
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) {
+      fail(`status PCCMin rank-ordered oracle theorem evidence mismatch: ${name}`);
+    }
+  }
+  if (!(status.leanPCCMinRankOrderedOracleFormalized === true
+      && status.leanPCCMinRankOrderedOracleAxiomAuditPassed === true
+      && status.leanPCCMinRankOrderedOracleAuditedDeclarationCount === 15
+      && status.leanPCCMinRankOrderedOracleEndpointProjectAssumptionFree === true
+      && status.leanPCCMinRankOrderedOracleHasUnresolvedOutcome === false
+      && status.leanPCCMinRankOrderedOracleCanonicalAllRanksFormalized === true
+      && status.leanPCCMinRankOrderedOracleCompleteSilenceRequired === true
+      && status.leanPCCMinRankOrderedOracleConstructsResolvers === false
+      && status.leanPCCMinRankOrderedOracleConstructsSelectorRows === false
+      && status.leanPCCMinRankOrderedOracleProvesZeroSlackClosure === false
+      && status.leanPCCMinRankOrderedOraclePolynomialRuntimeProved === false
+      && status.leanPCCMinRankOrderedOracleScope === PCCMIN_RANK_ORDERED_ORACLE_SCOPE
+      && status.leanPCCMinLoopExactnessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) {
+    fail("status PCCMin rank-ordered oracle evidence mismatch");
+  }
+
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -11184,6 +11244,17 @@ function assertInventory(inventory, status) {
     }
     if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
       fail(`inventory PCCMin normalization/oracle composition fingerprint mismatch: ${name}`);
+    }
+  }
+
+  for (const [name, evidence] of Object.entries(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) {
+      fail(`inventory PCCMin rank-ordered oracle theorem mismatch: ${name}`);
+    }
+    if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
+      fail(`inventory PCCMin rank-ordered oracle fingerprint mismatch: ${name}`);
     }
   }
 
@@ -13656,6 +13727,42 @@ function assertCurrentManifest(manifest, status, progress) {
     fail("current manifest PCCMin normalization/oracle composition theorem identity mismatch");
   }
 
+  if (!(earned.pccMinRankOrderedOracleFormalized === true
+      && earned.pccMinRankOrderedOracleAxiomAuditPassed === true
+      && earned.pccMinRankOrderedOracleAuditedDeclarationCount === 15
+      && earned.pccMinRankOrderedOracleEndpointProjectAssumptionFree === true
+      && earned.pccMinRankOrderedOracleHasUnresolvedOutcome === false
+      && earned.pccMinRankOrderedOracleCanonicalAllRanksFormalized === true
+      && earned.pccMinRankOrderedOracleCompleteSilenceRequired === true
+      && earned.pccMinRankOrderedOracleConstructsResolvers === false
+      && earned.pccMinRankOrderedOracleConstructsSelectorRows === false
+      && earned.pccMinRankOrderedOracleProvesZeroSlackClosure === false
+      && earned.pccMinRankOrderedOraclePolynomialRuntimeProved === false
+      && earned.pccMinRankOrderedOracleScope === PCCMIN_RANK_ORDERED_ORACLE_SCOPE
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) {
+    fail("current manifest PCCMin rank-ordered oracle boundary mismatch");
+  }
+  if (JSON.stringify(earned.pccMinRankOrderedOracleAxiomClosure)
+        !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.pccMinRankOrderedOracleProjectAxiomClosure)
+      || earned.pccMinRankOrderedOracleProjectAxiomClosure.length !== 0) {
+    fail("current manifest PCCMin rank-ordered oracle axiom closure mismatch");
+  }
+  const pccMinRankOrderedOracleHashes = earned.pccMinRankOrderedOracleTheoremKernelTypeSha256;
+  if (!pccMinRankOrderedOracleHashes
+      || Object.keys(pccMinRankOrderedOracleHashes).length !== 1
+      || !Object.entries(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS).every(
+        ([name, row]) => pccMinRankOrderedOracleHashes[name] === row.hash
+      )) {
+    fail("current manifest PCCMin rank-ordered oracle fingerprint mismatch");
+  }
+  if (!Object.entries(PCCMIN_RANK_ORDERED_ORACLE_RELEASE_IDENTITIES).every(
+    ([field, theorem]) => earned[field] === theorem
+  )) {
+    fail("current manifest PCCMin rank-ordered oracle theorem identity mismatch");
+  }
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -13671,7 +13778,7 @@ function assertCurrentManifest(manifest, status, progress) {
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) fail("current manifest earned scope omits a published residual-terminal bridge");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition")) fail("current manifest earned scope omits the M190 PCCMin normalization/oracle composition milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle")) fail("current manifest earned scope omits the M191 PCCMin rank-ordered oracle milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");

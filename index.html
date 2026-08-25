@@ -64,10 +64,10 @@
 
         <article class="latest-milestone" aria-labelledby="latest-milestone-title">
           <div class="section-label">Latest machine-checked milestone</div>
-          <h2 id="latest-milestone-title">Proof-bearing PCCMin normalization and oracle composition</h2>
-          <p>For every finite direct-wire implementation, Lean now composes an explicit proof-bearing non-increasing semantic normalizer with an explicit proof-bearing total oracle. Later oracle gains lift to strict gains from the original implementation, and exact-minimum or ZeroSlack endpoints transport through normalization into the checked terminating loop.</p>
-          <p>Both stages remain explicit inputs, and the regression fixtures use exhaustive reference minimisation. This does not construct either executable stage, derive terminal families or routes, prove unconditional ZeroSlack or encoded-size polynomial bounds, establish concrete SAT hardness or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No project-specific axioms remain, while all five global gates remain open. The risk-weighted estimate stays 35%; formal artefact coverage is separately 166 of 168 rows.</p>
-          <a href="updates.html#2026-08-25-pccmin-normalize-oracle-composition">Read the plain-language and technical update →</a>
+          <h2 id="latest-milestone-title">Rank-ordered proof-bearing PCCOracle orchestration</h2>
+          <p>For every finite direct-wire implementation and explicit proof-bearing rank-ordered oracle builder, Lean now enforces HResolve before BudgetResolve, scans every selector in every canonical finite rank row, returns gains immediately, and requires complete typed silence before the supplied ZeroSlack closure.</p>
+          <p>The normalizer, resolvers, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain explicit inputs, while the exhaustive reference fixture is not polynomial. This does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial bounds, establish concrete SAT hardness or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No project-specific axioms remain, while all five global gates remain open. The risk-weighted estimate stays 35%; formal artefact coverage is separately 167 of 169 rows.</p>
+          <a href="updates.html#2026-08-25-pccmin-rank-ordered-oracle">Read the plain-language and technical update →</a>
         </article>
 
         <details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">
@@ -75,7 +75,7 @@
             <span class="boundary-summary-main"><span>Technical theorem boundary · gate closed · 5 blockers</span><strong data-formal-status-label>not established</strong></span>
             <span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show technical boundary</span><span class="disclosure-open">Hide technical boundary</span><span class="disclosure-chevron">⌄</span></span>
           </summary>
-          <p class="boundary-copy"><strong>Latest earned step:</strong> an explicit proof-bearing normalizer now composes with the proof-bearing total oracle. Non-increasing semantic normalization lifts later gains to strict gains from the original implementation and transports exact-minimum or ZeroSlack endpoints into the checked terminating loop. Both stages remain supplied, so this does not provide the executable polynomial PCCMin construction or retire a global gate. The report-facing target remains <code>EncodedLockedNANDThreshold</code>; there is still no terminal-derived complete normalizer and oracle, polynomial-time residual minimiser or target decider, SAT NP-hardness transport, unconditional ZeroSlack, eligible root theorem, or passing publication gate.</p>
+          <p class="boundary-copy"><strong>Latest earned step:</strong> a proof-bearing rank-ordered oracle now fixes the manuscript stage order: HResolve, BudgetResolve, then every canonical selector row, with immediate gain return and complete typed silence before ZeroSlack. The normalizer, resolvers, rows, realizer, blocker semantics, and ZeroSlack closure remain supplied, so this does not provide executable polynomial PCCMin or retire a global gate. The report-facing target remains <code>EncodedLockedNANDThreshold</code>; there is still no terminal-derived complete construction, polynomial-time residual minimiser or target decider, SAT NP-hardness transport, unconditional ZeroSlack, eligible root theorem, or passing publication gate.</p>
           <pre data-formal-status-fields>status = "formal-reconstruction-in-progress"
 mathematicalTheoremEstablished = false
 publicTheoremEmissionAllowed = false
@@ -105,6 +105,18 @@ leanPCCMinNormalizeOracleCompositionLiftedGainFormalized = true
 leanPCCMinNormalizeOracleCompositionExactEndpointTransportFormalized = true
 leanPCCMinNormalizeOracleCompositionPolynomialRuntimeProved = false
 leanPCCMinNormalizeOracleCompositionScope = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-and-oracle-stages-with-nonincreasing-semantic-normalization-lifted-strict-gains-exact-endpoint-transport-and-the-checked-well-founded-loop"
+leanPCCMinRankOrderedOracleFormalized = true
+leanPCCMinRankOrderedOracleAxiomAuditPassed = true
+leanPCCMinRankOrderedOracleAuditedDeclarationCount = 15
+leanPCCMinRankOrderedOracleEndpointProjectAssumptionFree = true
+leanPCCMinRankOrderedOracleHasUnresolvedOutcome = false
+leanPCCMinRankOrderedOracleCanonicalAllRanksFormalized = true
+leanPCCMinRankOrderedOracleCompleteSilenceRequired = true
+leanPCCMinRankOrderedOracleConstructsResolvers = false
+leanPCCMinRankOrderedOracleConstructsSelectorRows = false
+leanPCCMinRankOrderedOracleProvesZeroSlackClosure = false
+leanPCCMinRankOrderedOraclePolynomialRuntimeProved = false
+leanPCCMinRankOrderedOracleScope = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-hresolve-budgetresolve-arbitrary-finite-rank-selector-rows-typed-blocker-silence-and-zeroslack-closure-with-canonical-all-rank-scanning-and-the-checked-well-founded-loop"
 leanLockedNANDCarrierLayoutFormalized = true
 leanLockedNANDCarrierTraceAxiomAuditPassed = true
 leanLockedNANDCarrierTraceAuditedDeclarationCount = 71
@@ -544,15 +556,15 @@ concretePublicationGate.passed = false</pre>
         <details class="release-details">
           <summary class="disclosure-summary"><span>Source and release identifiers</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
           <div class="release-strip">
-            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-25-190</strong></div>
+            <div><span>Current inventory</span><strong>PNP-LEAN-THEOREM-INVENTORY-2026-08-25-191</strong></div>
             <div><span>Current status</span><strong>formal reconstruction</strong></div>
-            <div><span>Inventory SHA-256</span><code>9fa7e4f095789c7e91904c83ba7b93475428f10bec597de4c45a2d0ea4d5c8f2</code></div>
+            <div><span>Inventory SHA-256</span><code>22e70b47ef54ff3fe674087d429f1093491d4ba3b5d0fd167b1430e858e74557</code></div>
           </div>
           <p>Coordinates and hashes make the published files identifiable and reproducible. They do not, by themselves, show that a mathematical statement is true.</p>
         </details>
       </div>
 <!-- PROOF_PROGRESS:HOME:START -->
-      <aside class="home-progress-rail" aria-labelledby="home-progress-title" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-190">
+      <aside class="home-progress-rail" aria-labelledby="home-progress-title" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191">
         <div class="home-progress-heading">
           <span class="home-progress-kicker">Risk-weighted proof completion estimate</span>
           <p class="home-progress-number" aria-label="35 percent risk-weighted proof completion estimate"><strong>35</strong><span>%</span></p>
@@ -567,7 +579,7 @@ concretePublicationGate.passed = false</pre>
           <h2 id="home-progress-title">35% risk-weighted estimate</h2>
           <p>A conservative estimate of how much of the complete formal proof burden has been retired. It is not confidence that P=NP is true, a probability of success, or a time estimate. It may decrease.</p>
           <h3>Formal artefact coverage</h3>
-          <p class="home-coverage"><strong>166 of 168</strong> current scoped publication rows earned (98.8%). This is evidence-ledger coverage, not proof completion, and its denominator can grow.</p>
+          <p class="home-coverage"><strong>167 of 169</strong> current scoped publication rows earned (98.8%). This is evidence-ledger coverage, not proof completion, and its denominator can grow.</p>
           <h3>Five-track score</h3><ul class="home-progress-breakdown" aria-label="Risk-weighted track scores"><li><span>Formal foundations and proof infrastructure</span><strong>13/15</strong></li><li><span>Concrete reductions and locked-NAND route</span><strong>15/20</strong></li><li><span>Unconditional residual core and ZeroSlack</span><strong>2/35</strong></li><li><span>Exact PCCMin algorithm, complexity and bounds</span><strong>1/20</strong></li><li><span>Root theorem and project-axiom elimination</span><strong>4/10</strong></li></ul>
           <h3>Global gates</h3><p><strong>0 of 5 closed</strong></p><ul class="home-progress-gates" aria-label="Current global proof gate states"><li><span>Concrete SAT</span><strong>Open</strong></li><li><span>Residual-band minimiser</span><strong>Open</strong></li><li><span>Unconditional ZeroSlack</span><strong>Open</strong></li><li><span>Polynomial runtime and certificate bounds</span><strong>Open</strong></li><li><span>Root theorem and axiom audit</span><strong>Open</strong></li></ul>
           <p class="home-progress-caveat">Project-specific axioms remaining: <strong>0</strong><br>Root theorem <code>PNP.Main.p_eq_np</code>: <strong>absent</strong><br>Publication gate: <strong>false</strong></p>
@@ -597,7 +609,7 @@ concretePublicationGate.passed = false</pre>
     </div>
   </section>
 
-  <section class="section compact" data-current-milestone="pccmin-normalize-oracle-composition"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>The proof-bearing PCCMin normalizer and oracle stages now compose.</h2><p>Non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation, while exact-minimum and ZeroSlack endpoints transport through normalization into the checked terminating loop.</p><p>The total normalizer and total oracle remain supplied, and the regression fixtures use exhaustive reference minimisation. This does not construct either terminal-derived executable stage, prove unconditional ZeroSlack or encoded-size polynomial construction and runtime, prove concrete SAT hardness or put CNFSAT in P, create the eligible root theorem, or prove P = NP. Formal artefact coverage is 166 of 168 rows; the separate risk-weighted estimate remains 35% with a 20% to 40% uncertainty range. All five global gates remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
+  <section class="section compact" data-current-milestone="pccmin-rank-ordered-oracle"><div class="callout"><div><div class="section-label">Current bottom line</div><h2>The proof-bearing PCCOracle now follows the manuscript's full finite rank order.</h2><p>HResolve runs before BudgetResolve, every selector in every canonical finite rank row is scanned, gains return immediately, and complete typed silence is required before the supplied ZeroSlack closure.</p><p>The normalizer, resolvers, selector rows, realizer, blocker semantics, and ZeroSlack proof remain supplied, and the exhaustive reference fixture is not polynomial. This does not construct terminal-derived executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial construction and runtime, prove concrete SAT hardness or put CNFSAT in P, create the eligible root theorem, or prove P = NP. Formal artefact coverage is 167 of 169 rows; the separate risk-weighted estimate remains 35% with a 20% to 40% uncertainty range. All five global gates remain open.</p></div><a class="btn primary" href="status.html">See verified and missing work</a></div></section>
 </div>
 
   </main>

@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-24T18:19:57Z</updated>
+  <updated>2026-08-24T23:08:00Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-25-pccmin-rank-ordered-oracle</id>
+    <title>Rank-ordered proof-bearing PCCOracle orchestration</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-25-pccmin-rank-ordered-oracle"/>
+    <published>2026-08-24T23:08:00Z</published>
+    <updated>2026-08-24T23:08:00Z</updated>
+    <summary type="text">Lean now formalises the manuscript&#39;s complete finite PCCOracle stage order for every supplied proof-bearing rank-ordered oracle builder. HResolve runs before BudgetResolve, every selector in every canonical finite rank row is scanned, the first gain returns immediately, and complete typed silence is required before the supplied ZeroSlack closure. The resulting total oracle reuses the checked normalization and well-founded exact loop. The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain explicit inputs, and the exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 167 of 169. Tracker at publication: formal artefact coverage 167 of 169; risk-weighted proof completion estimate 35 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;Lean now formalises the manuscript&amp;#39;s complete finite PCCOracle stage order for every supplied proof-bearing rank-ordered oracle builder. HResolve runs before BudgetResolve, every selector in every canonical finite rank row is scanned, the first gain returns immediately, and complete typed silence is required before the supplied ZeroSlack closure. The resulting total oracle reuses the checked normalization and well-founded exact loop.&lt;/p&gt;&lt;p&gt;The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain explicit inputs, and the exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 167 of 169.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 167 of 169 current scoped rows earned. Risk-weighted proof completion estimate: 35%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-25-pccmin-rank-ordered-oracle&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-25-pccmin-normalize-oracle-composition</id>
     <title>Proof-bearing PCCMin normalization and oracle composition</title>
