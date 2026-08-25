@@ -3754,6 +3754,39 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     ['Quot.sound', 'propext']);
   assert.deepEqual(release.earnedBoundary.pccMinRankOrderedOracleProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(pccMinRankOrderedOracle.id));
+  const pccMinCheckedPacketRankedSelector = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-checked-packet-ranked-selector');
+  assert.ok(pccMinCheckedPacketRankedSelector);
+  assert.equal(pccMinCheckedPacketRankedSelector.earned, true);
+  assert.equal(pccMinCheckedPacketRankedSelector.allPresent, true);
+  assert.equal(pccMinCheckedPacketRankedSelector.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketRankedSelector.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketRankedSelector.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketRankedSelector.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketRankedSelector.requiredTheorems, [
+    'PNP.DirectWire.pccmin_normalize_checked_packet_rank_ordered_oracle_loop_checked_complete',
+  ]);
+  assert.equal(pccMinCheckedPacketRankedSelector.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketRankedSelector.theoremRows[0].actualKernelTypeSha256,
+    '5cc809cf616f667af21b848b8dd894d0e27483c96adab0369936e663d7856d64');
+  assert.deepEqual(pccMinCheckedPacketRankedSelector.theoremRows[0].axioms,
+    ['Quot.sound', 'propext']);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorAuditedDeclarationCount, 15);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorChecksEveryCanonicalHandle, true);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorDerivesExactRankRows, true);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorConstructsTerminalFamily, false);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorConstructsResolvers, false);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorProvesZeroSlackClosure, false);
+  assert.equal(status.leanPCCMinCheckedPacketRankedSelectorPolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketRankedSelectorCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_normalize_checked_packet_rank_ordered_oracle_loop_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketRankedSelectorAxiomClosure,
+    ['Quot.sound', 'propext']);
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketRankedSelectorProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketRankedSelector.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8177,6 +8210,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('pccmin-total-oracle-loop'));
   assert.ok(index.earnedMilestones.includes('pccmin-normalize-oracle-composition'));
   assert.ok(index.earnedMilestones.includes('pccmin-rank-ordered-oracle'));
+  assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-ranked-selector'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');

@@ -169,6 +169,17 @@ leanPCCMinRankOrderedOracleConstructsSelectorRows = false
 leanPCCMinRankOrderedOracleProvesZeroSlackClosure = false
 leanPCCMinRankOrderedOraclePolynomialRuntimeProved = false
 leanPCCMinRankOrderedOracleScope = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-hresolve-budgetresolve-arbitrary-finite-rank-selector-rows-typed-blocker-silence-and-zeroslack-closure-with-canonical-all-rank-scanning-and-the-checked-well-founded-loop"
+leanPCCMinCheckedPacketRankedSelectorFormalized = true
+leanPCCMinCheckedPacketRankedSelectorAxiomAuditPassed = true
+leanPCCMinCheckedPacketRankedSelectorAuditedDeclarationCount = 15
+leanPCCMinCheckedPacketRankedSelectorEndpointProjectAssumptionFree = true
+leanPCCMinCheckedPacketRankedSelectorChecksEveryCanonicalHandle = true
+leanPCCMinCheckedPacketRankedSelectorDerivesExactRankRows = true
+leanPCCMinCheckedPacketRankedSelectorConstructsTerminalFamily = false
+leanPCCMinCheckedPacketRankedSelectorConstructsResolvers = false
+leanPCCMinCheckedPacketRankedSelectorProvesZeroSlackClosure = false
+leanPCCMinCheckedPacketRankedSelectorPolynomialRuntimeProved = false
+leanPCCMinCheckedPacketRankedSelectorScope = "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-packet-family-rank-map-data-only-claim-table-complete-checker-acceptance-and-zeroslack-silence-closure-with-canonical-exact-rank-row-derivation-and-the-checked-well-founded-loop"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -178,7 +189,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 167 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 167 of 169 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Rank-ordered proof-bearing PCCOracle orchestration**, enforces HResolve before BudgetResolve, scans every selector in every canonical finite rank row, returns gains immediately, and requires complete typed silence before the supplied ZeroSlack closure. The normalizer, resolvers, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain supplied, and the exhaustive reference fixture is not polynomial: the milestone does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 168 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 168 of 170 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Checked Packet-backed PCCMin rank-selector construction**, validates one data-only gain or typed-blocker claim at every canonical handle and derives exact-rank rows by filtering the exhaustive canonical handle list with a supplied table-owned rank map before reusing the M191 oracle and loop. The grouped terminal family, rank assignment, claim table, resolvers, normalizer, blocker semantics, and ZeroSlack closure remain supplied, and the exhaustive reference fixture is not polynomial: the milestone does not derive terminal objects or claims from arbitrary input, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -197,7 +208,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 134-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 135-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 573,801 | `484d654f65f44eea42eed2753dd9ecf495f9fe130c34ee7f64485ba4fd277560` |
-| `downloads/canonical-proof-report.pdf` | 573,801 | `484d654f65f44eea42eed2753dd9ecf495f9fe130c34ee7f64485ba4fd277560` |
-| `downloads/canonical_proof_report.tex` | 352,527 | `1e721889b6476969676d41eded0e56d8666ec41c496c6d2494ba7f98ad23a817` |
-| `downloads/canonical-proof-report.tex` | 352,527 | `1e721889b6476969676d41eded0e56d8666ec41c496c6d2494ba7f98ad23a817` |
-| `public/pnp-status.json` | 2,630,646 | `a711726030b1d59e6f951401ad5e66f0c64a597a8cde4cf775eeeb30dc7b72a5` |
-| `public/pnp-theorem-inventory.json` | 33,174,205 | `22e70b47ef54ff3fe674087d429f1093491d4ba3b5d0fd167b1430e858e74557` |
-| `public/pnp-proof-progress.json` | 52,620 | `4f43376e27272879f65416c491b5a73e80e4f1021b9dff8dcbd17514eef69ace` |
+| `downloads/canonical_proof_report.pdf` | 575,725 | `c76ec727cc22b2491a8adc613120fa124d8bbbb01cbfe59726c01c9fd0656b88` |
+| `downloads/canonical-proof-report.pdf` | 575,725 | `c76ec727cc22b2491a8adc613120fa124d8bbbb01cbfe59726c01c9fd0656b88` |
+| `downloads/canonical_proof_report.tex` | 354,496 | `6738955f502c79d74901d386f4f5e433cf070b7055e01e14a42506faa8a9ec68` |
+| `downloads/canonical-proof-report.tex` | 354,496 | `6738955f502c79d74901d386f4f5e433cf070b7055e01e14a42506faa8a9ec68` |
+| `public/pnp-status.json` | 2,635,079 | `f91cb911457f15ffeadf9ea27fc26bbc01d04d9bf959721742ef23e8dc98fb08` |
+| `public/pnp-theorem-inventory.json` | 33,202,040 | `12709450ac9cee74a109a8fc30dadbc02ac21328dd22459b1192dc596c82e7da` |
+| `public/pnp-proof-progress.json` | 53,727 | `572edbd3174bde7e0cbfdbe5970d05729356d5b44d60d393c04c4bc2bfdece25` |
 
-The PDF must have 134 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 135 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 0dbad6e14d82bf1f6f1d7b315dc896bdceb325a6
+git -C ../pnp checkout 15bd5d38829657bd0fd50954ec32df485f07f196
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 30,348 public declarations, 15,609 theorem-kind declarations,
-7,688 assumption-free theorem-kind declarations, 15,145 excluded private auxiliaries, 307 modules, and
+Expected compiled inventory counts are 30,424 public declarations, 15,629 theorem-kind declarations,
+7,690 assumption-free theorem-kind declarations, 15,148 excluded private auxiliaries, 308 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -124,7 +124,7 @@ the stages as raw machines, prove encoded-size polynomial construction or runtim
 establish SAT hardness transport, create the eligible root theorem, or close a global gate. The
 fixed-weight score therefore remains 35%.
 
-The latest M191 rank-ordered proof-bearing PCCOracle orchestration milestone has 1 reviewed theorem pin.
+The M191 rank-ordered proof-bearing PCCOracle orchestration milestone has 1 reviewed theorem pin.
 For every finite direct-wire implementation, explicit proof-bearing normalizer, and explicit rank-ordered
 oracle builder, HResolve precedes BudgetResolve, every selector in every canonical finite rank row is
 scanned, gains return immediately, and complete typed silence is required before the supplied ZeroSlack
@@ -134,6 +134,19 @@ semantics, ZeroSlack proof, and exhaustive reference fixture remain supplied: th
 construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack, establish encoded-size
 polynomial construction or runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible
 root theorem, or close a global gate. The fixed-weight score therefore remains 35%.
+
+The latest M192 checked Packet-backed PCCMin rank-selector milestone has 1 reviewed theorem pin.
+For every finite direct-wire implementation and supplied checked Packet table, the executable checker
+validates a data-only unit-charge gain or typed HN, budget, or lower-seed blocker at every canonical
+handle, then derives exact-rank rows by filtering the exhaustive canonical handle list with the
+table-owned rank map and reuses the M191 oracle and loop. The endpoint uses only Lean-standard
+`Quot.sound` and `propext`; its focused 15-declaration audit is free of project-specific axioms. The
+grouped terminal family, rank assignment, claim table, resolvers, normalizer, blocker semantics,
+ZeroSlack closure, and exhaustive reference fixture remain supplied: the milestone does not derive
+terminal objects or claims from arbitrary input, construct executable PCCMin, prove unconditional
+ZeroSlack, establish encoded-size polynomial construction or runtime, put CNFSAT in P, establish SAT
+hardness transport, create the eligible root theorem, or close a global gate. The fixed-weight score
+therefore remains 35%.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
