@@ -5,8 +5,8 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
-const CORE_COMMIT = "9f2e7f022d1483702a1ead06392ac2dafe86120b";
-const CORE_TREE = "97749e342254a6ab3d798a73c6282ad3902f1c97";
+const CORE_COMMIT = "821f05facdda1d41e6c1fb7b2e5206b2e2703715";
+const CORE_TREE = "9c6ac637e739ca23fcd30ae31d6d414475e406a3";
 const PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
@@ -4980,6 +4980,13 @@ const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_SCOPE = "all-finite-direct-wire-
 const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE = "For every finite direct-wire implementation and supplied checked Packet/HB data, complete checked rank-row silence and checked HB no-outcome closure derive that every canonical handle is nonfaithful; one explicit positive-slack-to-faithful-selector bridge then yields conditional ZeroSlack, and the resulting adapter reuses the M192 selector construction and checked well-founded loop.";
 const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_NON_CLAIM = "The positive-residual-slack-to-faithful-selector implication, grouped terminal family, rank assignment, data-only claim table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or the positive-slack bridge from an arbitrary implementation, construct executable polynomial PCCMin, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS = {
+  "PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete": { hash: "6c0c7f23d66a1bb4560c99d84c7d21c846052d544669da051047db429e9a2c62", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinCheckedPacketBN6HBZeroSlackBridge" }
+};
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_SCOPE = "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-bn6-family-carrier-lower-bound-rank-map-route-clear-computed-payload-faithfulness-data-only-claim-table-positive-slack-to-constant-activation-bridge-and-checked-hb-no-outcome-closure-with-derived-conditional-zeroslack-and-the-checked-well-founded-loop";
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE = "For every finite direct-wire implementation and supplied checked Packet/BN6/HB data, positive residual slack reaches a general BN6 Packet through the explicit constant-activation boundary; route-clear payload checks construct a faithful selector in the canonicalized table; checked rank-row silence and checked HB closure then derive conditional ZeroSlack; and the resulting adapter reuses the M193 contradiction and checked well-founded loop.";
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_NON_CLAIM = "The positive-residual-slack-to-constant-activation implication, grouped terminal family, carrier lower bound, rank assignment, route-clear payload checks, data-only claim table, HB dependency table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or constant activation from an arbitrary implementation, prove manuscript-wide SaturatePositive or BCELReady, construct executable polynomial PCCMin, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -6180,6 +6187,10 @@ const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_RELEASE_IDENTITIES = {
   pccMinCheckedPacketHBZeroSlackBridgeCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_checked_packet_hb_zeroslack_loop_checked_complete"
 };
 
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_RELEASE_IDENTITIES = {
+  pccMinCheckedPacketBN6HBZeroSlackBridgeCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -6368,50 +6379,50 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 576843,
-    "sha256": "00b4335c144bd9aa5300c3f327afa7d3506264d6592981483e8313c05d151632",
-    "role": "current inventory-derived 135-page formal-reconstruction report PDF"
+    "bytes": 578779,
+    "sha256": "5dbc7b9f70ca86c1425a50af7f6adf72d7be76472f5645dea8e64b483344f342",
+    "role": "current inventory-derived 136-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 576843,
-    "sha256": "00b4335c144bd9aa5300c3f327afa7d3506264d6592981483e8313c05d151632",
+    "bytes": 578779,
+    "sha256": "5dbc7b9f70ca86c1425a50af7f6adf72d7be76472f5645dea8e64b483344f342",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 356528,
-    "sha256": "028ab37bf2701f37f3bf549bd2439ffeb2bfdc2f969b4def6fcf11bfc2bded49",
+    "bytes": 358040,
+    "sha256": "dc8efcc0f8a1abe7994c443cce9b96d8279ae41d49ed02f8008c91fcdc80c0bc",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 356528,
-    "sha256": "028ab37bf2701f37f3bf549bd2439ffeb2bfdc2f969b4def6fcf11bfc2bded49",
+    "bytes": 358040,
+    "sha256": "dc8efcc0f8a1abe7994c443cce9b96d8279ae41d49ed02f8008c91fcdc80c0bc",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2639574,
-    "sha256": "5f305e0786a17203df0ba5b9fe7fc395c30017c48133d7def530aae10ab79a10",
+    "bytes": 2644483,
+    "sha256": "f0324482af4085cbcc9586c2f59e0b5984047dc21352020144b89e5fa61a4115",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 33229182,
-    "sha256": "d154eb56fddb5f66f954003f8f2c7eddc63cde0e7bf3ba7b362bc8e24f5b7cda",
+    "bytes": 33256212,
+    "sha256": "f78ea2174cc1303598c9df1c3105c8ada7daa1db24a35eff2727796d4829c97a",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "public/pnp-proof-progress.json",
-    "bytes": 54943,
-    "sha256": "97456e198b6bbe41ea736231cc6f05dfc2dc5abe743c4da5c8df14ced39158e0",
+    "bytes": 56269,
+    "sha256": "37de639455b611d6e9101ed58c02b0984714d6a77d72fdfa352e82cb0a8ed08c",
     "role": "exact current fixed-weight proof-progress ledger mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 1060158,
-    "sha256": "98534aa07292a18a4d028f307920ac827309afcd8b01df259e57d60e4746d117",
+    "bytes": 1062032,
+    "sha256": "ac898358bccd79892e421a85a72d54d716fef6423555d5b7d7eec9c27d7270bc",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -6484,9 +6495,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-193") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-194") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-193" || status.formalPublicationMapSha256 !== "ef5501e815b33a04b8aeeb8f6b40823da03b070476d3a9d448bc132af14385fa" || status.leanSourceClosureSha256 !== "95c5c1bf33d6a1c840a6388b5c446ee666b1cc3a82187212aed867cfde67ebb7") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-194" || status.formalPublicationMapSha256 !== "083a94de64d62997e831ec68862b43798c6c173ff4ef57cf2810c70d286ca7ce" || status.leanSourceClosureSha256 !== "dfd94559cc6df972ea0890e0c2ed09f176e9934376463a968616615ccc800669") fail("status source identity mismatch");
   const milestones = status.formalPublicationMilestones;
   if (!Array.isArray(milestones) || milestones.length < 3
       || new Set(milestones.map((row) => row.id)).size !== milestones.length
@@ -10217,6 +10228,58 @@ function assertFailClosedStatus(status) {
     fail("status PCCMin checked Packet/HB ZeroSlack bridge evidence mismatch");
   }
 
+  const pccminCheckedPacketBN6HBZeroSlackBridgeMilestone =
+    status.formalPublicationMilestones?.find(
+      (row) => row.id === "pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+    );
+  const pccminCheckedPacketBN6HBZeroSlackBridgeNames =
+    Object.keys(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS);
+  if (!pccminCheckedPacketBN6HBZeroSlackBridgeMilestone
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.classification !== "formalized-pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.status !== "formalized-pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.scope !== PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.requiredTheorems)
+        !== JSON.stringify(pccminCheckedPacketBN6HBZeroSlackBridgeNames)
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.earned !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.allPresent !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.allAssumptionFree !== false
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.allKernelTypesMatch !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.sourceClosureFingerprintMatches !== true) {
+    fail("status PCCMin checked Packet/BN6/HB ZeroSlack bridge publication boundary mismatch");
+  }
+  for (const [name, evidence] of Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS)) {
+    const row = pccminCheckedPacketBN6HBZeroSlackBridgeMilestone?.theoremRows?.find(
+      (candidate) => candidate.name === name
+    );
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) {
+      fail(`status PCCMin checked Packet/BN6/HB ZeroSlack bridge theorem evidence mismatch: ${name}`);
+    }
+  }
+  if (!(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeFormalized === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAxiomAuditPassed === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAuditedDeclarationCount === 12
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeEndpointProjectAssumptionFree === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeDerivesGeneralBN6Packet === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeComputesSelectorFaithfulness === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeIndependentBindingRemoved === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeDerivesConditionalZeroSlack === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation === false
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack === false
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved === false
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope
+        === PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_SCOPE
+      && status.leanPCCMinLoopExactnessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) {
+    fail("status PCCMin checked Packet/BN6/HB ZeroSlack bridge evidence mismatch");
+  }
+
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -11398,6 +11461,16 @@ function assertInventory(inventory, status) {
     }
     if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
       fail(`inventory PCCMin checked Packet/HB ZeroSlack bridge fingerprint mismatch: ${name}`);
+    }
+  }
+  for (const [name, evidence] of Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS)) {
+    const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) {
+      fail(`inventory PCCMin checked Packet/BN6/HB ZeroSlack bridge theorem mismatch: ${name}`);
+    }
+    if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
+      fail(`inventory PCCMin checked Packet/BN6/HB ZeroSlack bridge fingerprint mismatch: ${name}`);
     }
   }
 
@@ -13979,6 +14052,44 @@ function assertCurrentManifest(manifest, status, progress) {
     fail("current manifest PCCMin checked Packet/HB ZeroSlack bridge theorem identity mismatch");
   }
 
+  if (!(earned.pccMinCheckedPacketBN6HBZeroSlackBridgeFormalized === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeAxiomAuditPassed === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeAuditedDeclarationCount === 12
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeEndpointProjectAssumptionFree === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeDerivesGeneralBN6Packet === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeComputesSelectorFaithfulness === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeIndependentBindingRemoved === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeDerivesConditionalZeroSlack === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation === false
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack === false
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved === false
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeScope
+        === PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_SCOPE
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) {
+    fail("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge boundary mismatch");
+  }
+  if (JSON.stringify(earned.pccMinCheckedPacketBN6HBZeroSlackBridgeAxiomClosure)
+        !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.pccMinCheckedPacketBN6HBZeroSlackBridgeProjectAxiomClosure)
+      || earned.pccMinCheckedPacketBN6HBZeroSlackBridgeProjectAxiomClosure.length !== 0) {
+    fail("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge axiom closure mismatch");
+  }
+  const pccMinCheckedPacketBN6HBZeroSlackBridgeHashes =
+    earned.pccMinCheckedPacketBN6HBZeroSlackBridgeTheoremKernelTypeSha256;
+  if (!pccMinCheckedPacketBN6HBZeroSlackBridgeHashes
+      || Object.keys(pccMinCheckedPacketBN6HBZeroSlackBridgeHashes).length !== 1
+      || !Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS).every(
+        ([name, row]) => pccMinCheckedPacketBN6HBZeroSlackBridgeHashes[name] === row.hash
+      )) {
+    fail("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge fingerprint mismatch");
+  }
+  if (!Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_RELEASE_IDENTITIES).every(
+    ([field, theorem]) => earned[field] === theorem
+  )) {
+    fail("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge theorem identity mismatch");
+  }
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -13994,7 +14105,7 @@ function assertCurrentManifest(manifest, status, progress) {
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) fail("current manifest earned scope omits a published residual-terminal bridge");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge")) fail("current manifest earned scope omits the M193 checked Packet/HB ZeroSlack bridge milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge")) fail("current manifest earned scope omits the M194 checked Packet/BN6/HB ZeroSlack bridge milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");

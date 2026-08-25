@@ -183,6 +183,13 @@ leanPCCMinCheckedPacketRankedSelectorScope = "all-finite-direct-wire-implementat
 leanPCCMinCheckedPacketHBZeroSlackBridgeFormalized = true
 leanPCCMinCheckedPacketHBZeroSlackBridgeAxiomAuditPassed = true
 leanPCCMinCheckedPacketHBZeroSlackBridgeScope = "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-packet-family-rank-map-data-only-claim-table-positive-slack-to-faithful-selector-bridge-and-checked-hb-no-outcome-closure-with-derived-selector-silence-conditional-zeroslack-and-the-checked-well-founded-loop"
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgeFormalized = true
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAxiomAuditPassed = true
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgeComputesSelectorFaithfulness = true
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation = false
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack = false
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved = false
+leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope = "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-bn6-family-carrier-lower-bound-rank-map-route-clear-computed-payload-faithfulness-data-only-claim-table-positive-slack-to-constant-activation-bridge-and-checked-hb-no-outcome-closure-with-derived-conditional-zeroslack-and-the-checked-well-founded-loop"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -192,7 +199,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 169 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 169 of 171 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Checked Packet/HB conditional ZeroSlack bridge**, replaces the opaque complete-silence callback with a checked derivation from complete Packet claims, exact-rank silence, executable selector-silence induction, and checked HB no-outcome closure. One explicit positive-residual-slack-to-faithful-selector premise then yields conditional ZeroSlack before the M192 selector construction and checked loop are reused. The positive-slack bridge, grouped terminal family, rank assignment, claim table, resolvers, normalizer, blocker semantics, and encoded-size bounds remain supplied, and the exhaustive reference fixture is not polynomial: the milestone does not derive terminal objects or the positive-slack bridge from arbitrary input, construct executable polynomial PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 170 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 170 of 172 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **BN6 computed-faithfulness checked Packet/HB bridge**, removes M193's arbitrary positive-slack-to-faithful-selector callback. Under one explicit constant-activation premise, positive residual slack reaches the general BN6 Packet theorem; checked route-clear payload data computes a faithful selector in the canonicalized table; and the M193 checked HB contradiction yields conditional ZeroSlack before the checked loop is reused. Constant activation, the grouped terminal family, carrier lower bound, payload and rank construction, route-clear proof, claim and HB tables, resolvers, normalizer, blocker semantics, and encoded-size bounds remain supplied, and the exhaustive reference fixture is not polynomial. The milestone does not prove manuscript-wide SaturatePositive or BCELReady, derive the supplied data from arbitrary input, construct executable polynomial PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -211,7 +218,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 135-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 136-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

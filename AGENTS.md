@@ -111,6 +111,29 @@ Core theorem compilation and formal-evidence generation belong to `pnp`.
 PNPLabs must not execute `lean`, `lake`, or `elan`; it verifies exact imported
 core bytes and the publication, site, provenance, and deployment contracts.
 
+### Verification economy and evidence reuse
+
+- Treat a green, exact core merge commit and its sealed generated artefacts as
+  the proof-verification evidence for PNPLabs. Do not rebuild Lean or rerun the
+  core PNP proof, regression, axiom-audit, or npm suites merely because the
+  already-verified result is being published on the website.
+- Limit PNPLabs checks to the layer this repository adds: exact source binding,
+  generated-surface consistency, conservative wording, links, browser/report
+  integrity, release provenance, notification transport, and production
+  deployment behaviour.
+- Match each rerun to the files or generated boundary that changed. Use focused
+  syntax and targeted checks while editing, run the complete PNPLabs suite only
+  after the publication surface stabilizes, and perform clean-clone reproduction
+  once for the exact candidate commit. Do not repeat an unchanged successful
+  layer simply as a ritual.
+- If orchestration, stale expectations, or environment setup causes a failure,
+  correct that boundary and rerun the smallest check that can establish it before
+  returning to any broader required gate. A setup failure is not a reason to
+  repeat already-green mathematical verification.
+- Reopen core verification only when the pinned core commit or relevant core
+  artefact bytes changed, the prior evidence is missing, or an identity or
+  integrity check exposes a genuine conflict.
+
 1. Merge the corresponding core `pnp` PR first. Fetch its `origin/main`, then
    synchronize from a clean checkout of the exact core merge commit and tree, not
    from the feature-branch tip.

@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 576,843 | `00b4335c144bd9aa5300c3f327afa7d3506264d6592981483e8313c05d151632` |
-| `downloads/canonical-proof-report.pdf` | 576,843 | `00b4335c144bd9aa5300c3f327afa7d3506264d6592981483e8313c05d151632` |
-| `downloads/canonical_proof_report.tex` | 356,528 | `028ab37bf2701f37f3bf549bd2439ffeb2bfdc2f969b4def6fcf11bfc2bded49` |
-| `downloads/canonical-proof-report.tex` | 356,528 | `028ab37bf2701f37f3bf549bd2439ffeb2bfdc2f969b4def6fcf11bfc2bded49` |
-| `public/pnp-status.json` | 2,639,574 | `5f305e0786a17203df0ba5b9fe7fc395c30017c48133d7def530aae10ab79a10` |
-| `public/pnp-theorem-inventory.json` | 33,229,182 | `d154eb56fddb5f66f954003f8f2c7eddc63cde0e7bf3ba7b362bc8e24f5b7cda` |
-| `public/pnp-proof-progress.json` | 54,943 | `97456e198b6bbe41ea736231cc6f05dfc2dc5abe743c4da5c8df14ced39158e0` |
+| `downloads/canonical_proof_report.pdf` | 578,779 | `5dbc7b9f70ca86c1425a50af7f6adf72d7be76472f5645dea8e64b483344f342` |
+| `downloads/canonical-proof-report.pdf` | 578,779 | `5dbc7b9f70ca86c1425a50af7f6adf72d7be76472f5645dea8e64b483344f342` |
+| `downloads/canonical_proof_report.tex` | 358,040 | `dc8efcc0f8a1abe7994c443cce9b96d8279ae41d49ed02f8008c91fcdc80c0bc` |
+| `downloads/canonical-proof-report.tex` | 358,040 | `dc8efcc0f8a1abe7994c443cce9b96d8279ae41d49ed02f8008c91fcdc80c0bc` |
+| `public/pnp-status.json` | 2,644,483 | `f0324482af4085cbcc9586c2f59e0b5984047dc21352020144b89e5fa61a4115` |
+| `public/pnp-theorem-inventory.json` | 33,256,212 | `f78ea2174cc1303598c9df1c3105c8ada7daa1db24a35eff2727796d4829c97a` |
+| `public/pnp-proof-progress.json` | 56,269 | `37de639455b611d6e9101ed58c02b0984714d6a77d72fdfa352e82cb0a8ed08c` |
 
-The PDF must have 135 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 136 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 9f2e7f022d1483702a1ead06392ac2dafe86120b
+git -C ../pnp checkout 821f05facdda1d41e6c1fb7b2e5206b2e2703715
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 30,498 public declarations, 15,649 theorem-kind declarations,
-7,690 assumption-free theorem-kind declarations, 15,151 excluded private auxiliaries, 309 modules, and
+Expected compiled inventory counts are 30,569 public declarations, 15,667 theorem-kind declarations,
+7,690 assumption-free theorem-kind declarations, 15,151 excluded private auxiliaries, 310 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -148,7 +148,7 @@ ZeroSlack, establish encoded-size polynomial construction or runtime, put CNFSAT
 hardness transport, create the eligible root theorem, or close a global gate. The fixed-weight score
 therefore remains 35%.
 
-The latest M193 checked Packet/HB conditional ZeroSlack bridge has 1 reviewed theorem pin. For every
+The M193 checked Packet/HB conditional ZeroSlack bridge has 1 reviewed theorem pin. For every
 finite direct-wire implementation and supplied checked Packet/HB data, complete checked claims and
 exact-rank silence feed the executable selector-silence induction, while checked HB no-outcome closure
 eliminates every canonical faithful handle. One explicit positive-residual-slack-to-faithful-selector
@@ -160,6 +160,20 @@ fixture remain supplied: the milestone does not derive terminal objects or the p
 from arbitrary input, construct executable PCCMin, prove unconditional ZeroSlack, establish encoded-size
 polynomial construction or runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible
 root theorem, or close a global gate. The fixed-weight score therefore remains 35%.
+
+The latest M194 BN6 computed-faithfulness checked Packet/HB bridge has 1 reviewed theorem pin. For
+every finite direct-wire implementation and supplied checked Packet/BN6/HB data, one explicit
+constant-activation premise carries positive residual slack into the general BN6 Packet theorem.
+Checked route-clear payload data computes a faithful selector in the canonicalized table, and the
+M193 checked HB contradiction derives conditional ZeroSlack before the checked loop is reused. The
+endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 12-declaration audit is free
+of project-specific axioms. Constant activation, the terminal family, carrier lower bound, payload
+and rank construction, route-clear proof, claim and HB tables, resolvers, normalizer, blocker
+semantics, encoded-size bounds, and the exhaustive reference fixture remain supplied. The milestone
+does not prove manuscript-wide SaturatePositive or BCELReady, derive the supplied data from arbitrary
+input, construct executable PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial
+construction or runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root
+theorem, or close a global gate. The fixed-weight score therefore remains 35%.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
