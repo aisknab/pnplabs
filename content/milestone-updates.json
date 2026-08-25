@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-25-pccmin-checked-packet-hb-zeroslack-bridge",
+      "milestoneId": "pccmin-checked-packet-hb-zeroslack-bridge",
+      "publishedAt": "2026-08-25T09:40:52Z",
+      "title": "Checked Packet/HB conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now replaces M192's opaque complete-silence-to-ZeroSlack callback with a checked derivation. Complete checked Packet claims and exact-rank silence feed the executable selector-silence induction, while checked HB no-outcome closure eliminates every canonical faithful handle. One explicit positive-residual-slack-to-faithful-selector premise then supplies the contradiction needed for conditional ZeroSlack, and the adapter reuses the M192 selector construction and checked loop.",
+        "The positive-slack bridge, grouped terminal family, rank assignment, claim table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied, and the exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or the positive-slack bridge from arbitrary input, construct executable polynomial PCCMin, prove unconditional ZeroSlack or polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 169 of 171."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 169,
+        "formalArtefactCoverageTotalRows": 171,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "9f2e7f022d1483702a1ead06392ac2dafe86120b",
+        "tree": "97749e342254a6ab3d798a73c6282ad3902f1c97",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-193",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-25-pccmin-checked-packet-ranked-selector",
       "milestoneId": "pccmin-checked-packet-ranked-selector",
       "publishedAt": "2026-08-25T04:34:00Z",
