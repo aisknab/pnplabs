@@ -157,6 +157,18 @@ leanPCCMinNormalizeOracleCompositionLiftedGainFormalized = true
 leanPCCMinNormalizeOracleCompositionExactEndpointTransportFormalized = true
 leanPCCMinNormalizeOracleCompositionPolynomialRuntimeProved = false
 leanPCCMinNormalizeOracleCompositionScope = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-and-oracle-stages-with-nonincreasing-semantic-normalization-lifted-strict-gains-exact-endpoint-transport-and-the-checked-well-founded-loop"
+leanPCCMinRankOrderedOracleFormalized = true
+leanPCCMinRankOrderedOracleAxiomAuditPassed = true
+leanPCCMinRankOrderedOracleAuditedDeclarationCount = 15
+leanPCCMinRankOrderedOracleEndpointProjectAssumptionFree = true
+leanPCCMinRankOrderedOracleHasUnresolvedOutcome = false
+leanPCCMinRankOrderedOracleCanonicalAllRanksFormalized = true
+leanPCCMinRankOrderedOracleCompleteSilenceRequired = true
+leanPCCMinRankOrderedOracleConstructsResolvers = false
+leanPCCMinRankOrderedOracleConstructsSelectorRows = false
+leanPCCMinRankOrderedOracleProvesZeroSlackClosure = false
+leanPCCMinRankOrderedOraclePolynomialRuntimeProved = false
+leanPCCMinRankOrderedOracleScope = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-hresolve-budgetresolve-arbitrary-finite-rank-selector-rows-typed-blocker-silence-and-zeroslack-closure-with-canonical-all-rank-scanning-and-the-checked-well-founded-loop"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -166,7 +178,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 166 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 166 of 168 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Proof-bearing PCCMin normalization and oracle composition**, composes an explicit proof-bearing total normalizer with the explicit proof-bearing total oracle for every finite direct-wire implementation. Non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation and transports exact-minimum and ZeroSlack endpoints into the checked terminating loop. Both stages remain supplied and the regression fixtures use exhaustive reference minimisation: the milestone does not construct either executable stage, derive terminal routes, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 167 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 167 of 169 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Rank-ordered proof-bearing PCCOracle orchestration**, enforces HResolve before BudgetResolve, scans every selector in every canonical finite rank row, returns gains immediately, and requires complete typed silence before the supplied ZeroSlack closure. The normalizer, resolvers, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain supplied, and the exhaustive reference fixture is not polynomial: the milestone does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 

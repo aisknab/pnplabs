@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "c912b110f14386d335d58bb89b1bb9bb643bffb4";
-const CORE_TREE = "42d5414571038517da97b3ba59a334790144b928";
-const CORE_PUBLICATION_MAP_SHA256 = "7e865fcfeb23052934e96dfff74161efefda3cc927b72b8b250f51ad0fdacf04";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-190";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-190";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-25-190";
-const CORE_SOURCE_CLOSURE_SHA256 = "92eec88ba8b75f4d3a342ab7a375d48bb53b4da72ed8d8926be423b336fa3c98";
-const OLD_PDF_SHA256 = "45ae376350a91cfc0198deeeebd745e1219ec8999eeeadc805f14b5004ea923e";
-const OLD_TEX_SHA256 = "95c82a044d580f8720a1e9a7ca12a53bca4cdb7b56c45ad7a27c965eebb7f2b7";
+const CORE_COMMIT = "0dbad6e14d82bf1f6f1d7b315dc896bdceb325a6";
+const CORE_TREE = "8f3893c6ff351315be7a4ca8b7fff8c5d5f3cd0a";
+const CORE_PUBLICATION_MAP_SHA256 = "14f7e563308f51c7495c47123e7227cc4e97829bb672b7ee21980df655e795be";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-191";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-25-191";
+const CORE_SOURCE_CLOSURE_SHA256 = "ce1f589280d1eb207dfc07b795960cb02b3686097355cec919ed23bff5149f3e";
+const OLD_PDF_SHA256 = "bc6319cdc6fb61d46b05c9417cae642512f8c99858ff5db85b78a7b9b515bfce";
+const OLD_TEX_SHA256 = "169c3b9a8d893e17e35c825222bd11d62a15a808537581c9bb7a8c9927985a87";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1948,6 +1948,13 @@ const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_THEOREMS = {
 const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_SCOPE = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-and-oracle-stages-with-nonincreasing-semantic-normalization-lifted-strict-gains-exact-endpoint-transport-and-the-checked-well-founded-loop";
 const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_MILESTONE_SCOPE = "For every finite direct-wire implementation, explicit proof-bearing total normalizer, and explicit proof-bearing total oracle, non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation, transports exact-minimum and ZeroSlack endpoints, and reuses the checked well-founded loop with its exact result and gain-iteration bound.";
 const PCCMIN_NORMALIZE_ORACLE_COMPOSITION_NON_CLAIM = "The total normalizer and total oracle remain explicit proof-bearing arguments, and the regression fixtures use exhaustive reference minimization. This milestone does not construct either executable stage, derive terminal families or routes, establish unconditional ZeroSlack, encode the stages as raw machines, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_RANK_ORDERED_ORACLE_THEOREMS = {
+  "PNP.DirectWire.pccmin_normalize_rank_ordered_oracle_loop_checked_complete": { hash: "943d3c75e57843ac72b3760b6292c96c27f045a714cb7a1225bddf2e8866dc81", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinRankOrderedOracle" }
+};
+const PCCMIN_RANK_ORDERED_ORACLE_SCOPE = "all-finite-direct-wire-implementations-under-explicit-proof-bearing-normalizer-hresolve-budgetresolve-arbitrary-finite-rank-selector-rows-typed-blocker-silence-and-zeroslack-closure-with-canonical-all-rank-scanning-and-the-checked-well-founded-loop";
+const PCCMIN_RANK_ORDERED_ORACLE_MILESTONE_SCOPE = "For every finite direct-wire implementation, explicit proof-bearing normalizer, and explicit rank-ordered oracle builder, HResolve precedes BudgetResolve, every selector in every canonical finite rank row is scanned, gains return immediately, complete typed silence is required before ZeroSlack, and the resulting total oracle reuses the checked well-founded exact loop and gain-iteration bound.";
+const PCCMIN_RANK_ORDERED_ORACLE_NON_CLAIM = "The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and final ZeroSlack closure remain explicit proof-bearing inputs. The exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
@@ -4260,32 +4267,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 572919,
-    sha256: "bc6319cdc6fb61d46b05c9417cae642512f8c99858ff5db85b78a7b9b515bfce"
+    bytes: 573801,
+    sha256: "484d654f65f44eea42eed2753dd9ecf495f9fe130c34ee7f64485ba4fd277560"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 350724,
-    sha256: "169c3b9a8d893e17e35c825222bd11d62a15a808537581c9bb7a8c9927985a87"
+    bytes: 352527,
+    sha256: "1e721889b6476969676d41eded0e56d8666ec41c496c6d2494ba7f98ad23a817"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2626582,
-    sha256: "a176bb3e2a29f39d8e37dc44422aee3203f74da1f5b2cc527c42d462c83813d2"
+    bytes: 2630646,
+    sha256: "a711726030b1d59e6f951401ad5e66f0c64a597a8cde4cf775eeeb30dc7b72a5"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 33132265,
-    sha256: "9fa7e4f095789c7e91904c83ba7b93475428f10bec597de4c45a2d0ea4d5c8f2"
+    bytes: 33174205,
+    sha256: "22e70b47ef54ff3fe674087d429f1093491d4ba3b5d0fd167b1430e858e74557"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 50378,
-    sha256: "e53f1a4e10276f5c7aaec0f053cda857de314ade98a66feba28b08c034ba2270"
+    bytes: 52620,
+    sha256: "4f43376e27272879f65416c491b5a73e80e4f1021b9dff8dcbd17514eef69ace"
   }
 ];
 
@@ -6088,6 +6095,22 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map PCCMin normalization/oracle composition boundary mismatch");
+  }
+
+  const pccminRankOrderedOracleMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-rank-ordered-oracle"
+  );
+  const pccminRankOrderedOracleNames = Object.keys(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS);
+  if (!pccminRankOrderedOracleMilestone
+      || pccminRankOrderedOracleMilestone.classification !== "formalized-pccmin-rank-ordered-oracle"
+      || pccminRankOrderedOracleMilestone.scope !== PCCMIN_RANK_ORDERED_ORACLE_MILESTONE_SCOPE
+      || pccminRankOrderedOracleMilestone.nonClaim !== PCCMIN_RANK_ORDERED_ORACLE_NON_CLAIM
+      || JSON.stringify(pccminRankOrderedOracleMilestone.requiredTheorems)
+        !== JSON.stringify(pccminRankOrderedOracleNames)
+      || !Object.entries(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map PCCMin rank-ordered oracle boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -9845,6 +9868,50 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status PCCMin normalization/oracle composition boundary mismatch");
     }
 
+    const pccminRankOrderedOracleMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "pccmin-rank-ordered-oracle"
+    );
+    if (!pccminRankOrderedOracleMilestone
+        || pccminRankOrderedOracleMilestone.earned !== true
+        || pccminRankOrderedOracleMilestone.allPresent !== true
+        || pccminRankOrderedOracleMilestone.allAssumptionFree !== false
+        || pccminRankOrderedOracleMilestone.allKernelTypesMatch !== true
+        || pccminRankOrderedOracleMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || pccminRankOrderedOracleMilestone.sourceClosureFingerprintMatches !== true
+        || pccminRankOrderedOracleMilestone.classification !== "formalized-pccmin-rank-ordered-oracle"
+        || pccminRankOrderedOracleMilestone.scope !== PCCMIN_RANK_ORDERED_ORACLE_MILESTONE_SCOPE
+        || pccminRankOrderedOracleMilestone.nonClaim !== PCCMIN_RANK_ORDERED_ORACLE_NON_CLAIM
+        || JSON.stringify(pccminRankOrderedOracleMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS))
+        || !Object.entries(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS).every(([name, evidence]) => {
+          const row = pccminRankOrderedOracleMilestone.theoremRows?.find(
+            (candidate) => candidate.name === name
+          );
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanPCCMinRankOrderedOracleFormalized !== true
+        || payload.leanPCCMinRankOrderedOracleAxiomAuditPassed !== true
+        || payload.leanPCCMinRankOrderedOracleAuditedDeclarationCount !== 15
+        || payload.leanPCCMinRankOrderedOracleEndpointProjectAssumptionFree !== true
+        || payload.leanPCCMinRankOrderedOracleHasUnresolvedOutcome !== false
+        || payload.leanPCCMinRankOrderedOracleCanonicalAllRanksFormalized !== true
+        || payload.leanPCCMinRankOrderedOracleCompleteSilenceRequired !== true
+        || payload.leanPCCMinRankOrderedOracleConstructsResolvers !== false
+        || payload.leanPCCMinRankOrderedOracleConstructsSelectorRows !== false
+        || payload.leanPCCMinRankOrderedOracleProvesZeroSlackClosure !== false
+        || payload.leanPCCMinRankOrderedOraclePolynomialRuntimeProved !== false
+        || payload.leanPCCMinRankOrderedOracleScope !== PCCMIN_RANK_ORDERED_ORACLE_SCOPE
+        || payload.leanPCCMinLoopExactnessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status PCCMin rank-ordered oracle boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -10473,6 +10540,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory PCCMin normalization/oracle composition theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(PCCMIN_RANK_ORDERED_ORACLE_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory PCCMin rank-ordered oracle theorem mismatch: " + name);
       }
     }
 

@@ -3721,6 +3721,39 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(release.earnedBoundary.pccMinNormalizeOracleCompositionAxiomClosure, []);
   assert.deepEqual(release.earnedBoundary.pccMinNormalizeOracleCompositionProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(pccMinNormalizeOracleComposition.id));
+  const pccMinRankOrderedOracle = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-rank-ordered-oracle');
+  assert.ok(pccMinRankOrderedOracle);
+  assert.equal(pccMinRankOrderedOracle.earned, true);
+  assert.equal(pccMinRankOrderedOracle.allPresent, true);
+  assert.equal(pccMinRankOrderedOracle.allAssumptionFree, false);
+  assert.equal(pccMinRankOrderedOracle.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinRankOrderedOracle.allKernelTypesMatch, true);
+  assert.equal(pccMinRankOrderedOracle.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinRankOrderedOracle.requiredTheorems, [
+    'PNP.DirectWire.pccmin_normalize_rank_ordered_oracle_loop_checked_complete',
+  ]);
+  assert.equal(pccMinRankOrderedOracle.theoremRows.length, 1);
+  assert.equal(pccMinRankOrderedOracle.theoremRows[0].actualKernelTypeSha256,
+    '943d3c75e57843ac72b3760b6292c96c27f045a714cb7a1225bddf2e8866dc81');
+  assert.deepEqual(pccMinRankOrderedOracle.theoremRows[0].axioms, ['Quot.sound', 'propext']);
+  assert.equal(status.leanPCCMinRankOrderedOracleFormalized, true);
+  assert.equal(status.leanPCCMinRankOrderedOracleAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinRankOrderedOracleAuditedDeclarationCount, 15);
+  assert.equal(status.leanPCCMinRankOrderedOracleEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinRankOrderedOracleHasUnresolvedOutcome, false);
+  assert.equal(status.leanPCCMinRankOrderedOracleCanonicalAllRanksFormalized, true);
+  assert.equal(status.leanPCCMinRankOrderedOracleCompleteSilenceRequired, true);
+  assert.equal(status.leanPCCMinRankOrderedOracleConstructsResolvers, false);
+  assert.equal(status.leanPCCMinRankOrderedOracleConstructsSelectorRows, false);
+  assert.equal(status.leanPCCMinRankOrderedOracleProvesZeroSlackClosure, false);
+  assert.equal(status.leanPCCMinRankOrderedOraclePolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinRankOrderedOracleCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_normalize_rank_ordered_oracle_loop_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinRankOrderedOracleAxiomClosure,
+    ['Quot.sound', 'propext']);
+  assert.deepEqual(release.earnedBoundary.pccMinRankOrderedOracleProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(pccMinRankOrderedOracle.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8143,6 +8176,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('concrete-cook-levin-builder-second-clause-padding-run'));
   assert.ok(index.earnedMilestones.includes('pccmin-total-oracle-loop'));
   assert.ok(index.earnedMilestones.includes('pccmin-normalize-oracle-composition'));
+  assert.ok(index.earnedMilestones.includes('pccmin-rank-ordered-oracle'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');

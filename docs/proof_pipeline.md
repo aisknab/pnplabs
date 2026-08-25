@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,130 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,131 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 30,144 public declarations;
-- 15,562 theorem-kind declarations;
-- 7,657 assumption-free theorem-kind declarations;
-- 306 source-closure modules;
+- 30,348 public declarations;
+- 15,609 theorem-kind declarations;
+- 7,688 assumption-free theorem-kind declarations;
+- 307 source-closure modules;
 - 15,145 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 166 earned formal artefact scopes are:
+The 167 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -216,6 +216,7 @@ The 166 earned formal artefact scopes are:
 | Typed PCCPack generation and structural reflection | One reviewed completion-theorem pin verifies transparent canonical packaging of every explicitly supplied proof-bearing `PCCMinLoopCertificate`, structural identifier acceptance, mismatch rejection, and exact certificate projection. All 15 declarations in the focused audit use only `Quot.sound` and `propext`. | This removes `PNP.GeneratePCCPack`, `PNP.CheckPCCPackexp`, and the caller-supplied reflection field from the active route. It does not construct the loop certificate, verify historical JavaScript package bytes or semantic string fields, implement PCCMin, prove unconditional ZeroSlack or polynomial runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Proof-bearing PCCMin total-oracle loop | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation and explicit proof-bearing total oracle, transparent well-founded recursion follows strict semantics-preserving gains until it returns exact-minimum or ZeroSlack evidence. The result is a global minimum with zero residual slack, and the number of strict-gain iterations is bounded by the starting residual slack. The endpoint has an empty axiom closure. | The oracle remains an explicit supplied argument, and the regression fixture obtains it through exhaustive reference minimisation. This does not construct an executable PCCMin oracle, derive terminal candidates or routes, prove unconditional ZeroSlack, encode the loop as a raw machine, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Proof-bearing PCCMin normalization and oracle composition | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation, explicit proof-bearing total normalizer, and explicit proof-bearing total oracle, non-increasing semantic normalization lifts later oracle gains to strict gains from the original implementation and transports exact-minimum and ZeroSlack endpoints into the checked terminating loop. The endpoint and all ten declarations in the focused audit have empty axiom closure. | The total normalizer and total oracle remain explicit supplied arguments, and the regression fixtures use exhaustive reference minimisation. This does not construct either executable stage, derive terminal candidates or routes, prove unconditional ZeroSlack, encode the stages as raw machines, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
+| Rank-ordered proof-bearing PCCOracle orchestration | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation, explicit proof-bearing normalizer, and explicit rank-ordered oracle builder, HResolve precedes BudgetResolve, every selector in every canonical finite rank row is scanned, gains return immediately, complete typed silence is required before ZeroSlack, and the resulting total oracle reuses the checked normalization and well-founded exact loop. The endpoint uses only `Quot.sound` and `propext`; all 15 declarations in the focused audit are free of project-specific axioms. | The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and final ZeroSlack closure remain explicit proof-bearing inputs. The exhaustive reference fixture is not polynomial. This does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

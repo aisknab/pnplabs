@@ -28,7 +28,7 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">
-      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-190">
+      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191">
         <article class="card proof-progress-primary">
           <span class="eyebrow">Fixed-weight model v0</span>
           <h2 id="proof-progress-heading">Risk-weighted proof completion estimate</h2>
@@ -49,7 +49,7 @@
         <article class="card proof-progress-secondary">
           <span class="section-label">Separate evidence metric</span>
           <h2>Formal artefact coverage</h2>
-          <p class="coverage-number">166 of 168</p>
+          <p class="coverage-number">167 of 169</p>
           <p><strong>98.8% of the current evidence ledger.</strong></p>
           <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>
         </article>
@@ -77,6 +77,26 @@
         <p>The M184 authoritative ledger contains 160 earned rows out of 162, superseding the earlier 152 of 154 example. No named load-bearing checkpoint closed merely because additional local or supplied-data milestones were earned, so the fixed-weight baseline remains 30 percent.</p>
         <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>
         <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>
+      </article>
+
+      <article class="card" id="2026-08-25-pccmin-rank-ordered-oracle" data-milestone-id="pccmin-rank-ordered-oracle">
+        <div class="section-label"><time datetime="2026-08-24T23:08:00Z">2026-08-24</time> · earned milestone 167</div>
+        <h2>Rank-ordered proof-bearing PCCOracle orchestration</h2>
+        <p>Lean now formalises the manuscript&#39;s complete finite PCCOracle stage order for every supplied proof-bearing rank-ordered oracle builder. HResolve runs before BudgetResolve, every selector in every canonical finite rank row is scanned, the first gain returns immediately, and complete typed silence is required before the supplied ZeroSlack closure. The resulting total oracle reuses the checked normalization and well-founded exact loop.</p>
+        <p>The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and ZeroSlack proof remain explicit inputs, and the exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 167 of 169.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at publication"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191</strong><ul><li>Formal artefact coverage: 167 of 169 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 35%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>pccmin-rank-ordered-oracle</code></p>
+          <p><strong>Classification:</strong> formalized-pccmin-rank-ordered-oracle</p>
+          <p><strong>Verified scope:</strong> For every finite direct-wire implementation, explicit proof-bearing normalizer, and explicit rank-ordered oracle builder, HResolve precedes BudgetResolve, every selector in every canonical finite rank row is scanned, gains return immediately, complete typed silence is required before ZeroSlack, and the resulting total oracle reuses the checked well-founded exact loop and gain-iteration bound.</p>
+          <p><strong>Boundary:</strong> The normalizer, HResolve and BudgetResolve algorithms, rank rows, selector universe, realizer, typed blocker semantics, and final ZeroSlack closure remain explicit proof-bearing inputs. The exhaustive reference fixture is not polynomial. This milestone does not construct executable PCCMin, derive terminal objects, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.</p>
+          <p><strong>Reviewed theorem pins:</strong> 1</p>
+          <p><strong>Core source:</strong> commit <code>0dbad6e14d82bf1f6f1d7b315dc896bdceb325a6</code>, tree <code>8f3893c6ff351315be7a4ca8b7fff8c5d5f3cd0a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-191</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
       </article>
 
       <article class="card" id="2026-08-25-pccmin-normalize-oracle-composition" data-milestone-id="pccmin-normalize-oracle-composition">
