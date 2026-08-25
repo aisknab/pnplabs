@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-25-pccmin-checked-packet-ranked-selector",
+      "milestoneId": "pccmin-checked-packet-ranked-selector",
+      "publishedAt": "2026-08-25T04:34:00Z",
+      "title": "Checked Packet-backed PCCMin rank-selector construction",
+      "plainLanguage": [
+        "Lean now accepts a supplied checked Packet table instead of arbitrary proof-bearing selector rows. For every canonical handle, the executable checker validates a data-only unit-charge gain or a typed HN, budget, or lower-seed blocker, then derives each exact-rank row by filtering the exhaustive canonical handle list with the table-owned rank map. The resulting plan reuses the M191 rank-ordered oracle and checked well-founded loop.",
+        "The grouped terminal family, rank assignment, claim table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and complete-silence-to-ZeroSlack implication remain supplied, and the exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or claims from arbitrary input, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial bounds, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 168 of 170."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 168,
+        "formalArtefactCoverageTotalRows": 170,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "15bd5d38829657bd0fd50954ec32df485f07f196",
+        "tree": "d1fb6974132d90ccc9717385a9377fe4f4ff92d1",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-192",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-25-pccmin-rank-ordered-oracle",
       "milestoneId": "pccmin-rank-ordered-oracle",
       "publishedAt": "2026-08-24T23:08:00Z",
