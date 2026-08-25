@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-192";
-const STATUS_SHA256 = 'f91cb911457f15ffeadf9ea27fc26bbc01d04d9bf959721742ef23e8dc98fb08';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-192";
-const FORMAL_PUBLICATION_MAP_SHA256 = "09f93bbb3e463fef88352ac9614250bfeca88f8007f01cc04310a49cdee4d41f";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-193";
+const STATUS_SHA256 = '5f305e0786a17203df0ba5b9fe7fc395c30017c48133d7def530aae10ab79a10';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-193";
+const FORMAL_PUBLICATION_MAP_SHA256 = "ef5501e815b33a04b8aeeb8f6b40823da03b070476d3a9d448bc132af14385fa";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-25-192";
-const INVENTORY_SHA256 = "12709450ac9cee74a109a8fc30dadbc02ac21328dd22459b1192dc596c82e7da";
-const SOURCE_CLOSURE_SHA256 = "8e6e037ba74c01d6a5ed2b7f02b9a951f55697ddd79fc9a7722b796d5899d8ae";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-25-193";
+const INVENTORY_SHA256 = "d154eb56fddb5f66f954003f8f2c7eddc63cde0e7bf3ba7b362bc8e24f5b7cda";
+const SOURCE_CLOSURE_SHA256 = "95c5c1bf33d6a1c840a6388b5c446ee666b1cc3a82187212aed867cfde67ebb7";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 30424,
-  theorems: 15629,
+  declarations: 30498,
+  theorems: 15649,
   assumptionFreeTheorems: 7690,
-  excludedPrivateDeclarations: 15148,
-  modules: 308,
+  excludedPrivateDeclarations: 15151,
+  modules: 309,
   axioms: 0,
 });
 
@@ -4704,6 +4704,9 @@ const PCCMIN_RANK_ORDERED_ORACLE_DECLARATIONS = Object.freeze([
 const PCCMIN_CHECKED_PACKET_RANKED_SELECTOR_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.pccmin_normalize_checked_packet_rank_ordered_oracle_loop_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketRankedSelector","5cc809cf616f667af21b848b8dd894d0e27483c96adab0369936e663d7856d64"],
 ]);
+const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.pccmin_normalize_checked_packet_hb_zeroslack_loop_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketHBZeroSlackBridge","7ba2f69a353b7c3a7b3aca107791c07f906c326b679c0a8580e59dbce5b4b29c"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5648,6 +5651,17 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanPCCMinCheckedPacketRankedSelectorProvesZeroSlackClosure: false,
   leanPCCMinCheckedPacketRankedSelectorPolynomialRuntimeProved: false,
   leanPCCMinCheckedPacketRankedSelectorScope: null,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeFormalized: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeAxiomAuditPassed: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeAuditedDeclarationCount: 0,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeEndpointProjectAssumptionFree: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeChecksHBClosure: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesSelectorSilence: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesConditionalZeroSlack: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeConstructsPositiveSlackBridge: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeUnconditionalZeroSlack: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgePolynomialRuntimeProved: false,
+  leanPCCMinCheckedPacketHBZeroSlackBridgeScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6321,6 +6335,17 @@ leanPCCMinCheckedPacketRankedSelectorConstructsResolvers = ${payload.leanPCCMinC
 leanPCCMinCheckedPacketRankedSelectorProvesZeroSlackClosure = ${payload.leanPCCMinCheckedPacketRankedSelectorProvesZeroSlackClosure ?? false}
 leanPCCMinCheckedPacketRankedSelectorPolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketRankedSelectorPolynomialRuntimeProved ?? false}
 leanPCCMinCheckedPacketRankedSelectorScope = ${payload.leanPCCMinCheckedPacketRankedSelectorScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketRankedSelectorScope)}
+leanPCCMinCheckedPacketHBZeroSlackBridgeFormalized = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeFormalized ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeAxiomAuditPassed = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeAxiomAuditPassed ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeAuditedDeclarationCount = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeAuditedDeclarationCount ?? 0}
+leanPCCMinCheckedPacketHBZeroSlackBridgeEndpointProjectAssumptionFree = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeEndpointProjectAssumptionFree ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeChecksHBClosure = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeChecksHBClosure ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesSelectorSilence = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesSelectorSilence ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesConditionalZeroSlack = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesConditionalZeroSlack ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeConstructsPositiveSlackBridge = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeConstructsPositiveSlackBridge ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeUnconditionalZeroSlack ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgePolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgePolynomialRuntimeProved ?? false}
+leanPCCMinCheckedPacketHBZeroSlackBridgeScope = ${payload.leanPCCMinCheckedPacketHBZeroSlackBridgeScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketHBZeroSlackBridgeScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7438,6 +7463,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const pccMinCheckedPacketHBZeroSlackBridge =
+    PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -8050,6 +8082,9 @@ function validateInventory(inventory) {
     && pccMinCheckedPacketRankedSelector.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && pccMinCheckedPacketHBZeroSlackBridge.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8508,6 +8543,9 @@ function validateStatus(status, inventory) {
   );
   const pccMinCheckedPacketRankedSelectorMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'pccmin-checked-packet-ranked-selector'
+  );
+  const pccMinCheckedPacketHBZeroSlackBridgeMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'pccmin-checked-packet-hb-zeroslack-bridge'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -10386,6 +10424,39 @@ function validateStatus(status, inventory) {
     && status.leanPCCMinCheckedPacketRankedSelectorProvesZeroSlackClosure === false
     && status.leanPCCMinCheckedPacketRankedSelectorPolynomialRuntimeProved === false
     && status.leanPCCMinCheckedPacketRankedSelectorScope === "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-packet-family-rank-map-data-only-claim-table-complete-checker-acceptance-and-zeroslack-silence-closure-with-canonical-exact-rank-row-derivation-and-the-checked-well-founded-loop"
+
+    && pccMinCheckedPacketHBZeroSlackBridgeMilestone?.classification === "formalized-pccmin-checked-packet-hb-zeroslack-bridge"
+    && pccMinCheckedPacketHBZeroSlackBridgeMilestone.status === "formalized-pccmin-checked-packet-hb-zeroslack-bridge"
+    && pccMinCheckedPacketHBZeroSlackBridgeMilestone.scope === "For every finite direct-wire implementation and supplied checked Packet/HB data, complete checked rank-row silence and checked HB no-outcome closure derive that every canonical handle is nonfaithful; one explicit positive-slack-to-faithful-selector bridge then yields conditional ZeroSlack, and the resulting adapter reuses the M192 selector construction and checked well-founded loop."
+    && pccMinCheckedPacketHBZeroSlackBridgeMilestone.nonClaim === "The positive-residual-slack-to-faithful-selector implication, grouped terminal family, rank assignment, data-only claim table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or the positive-slack bridge from an arbitrary implementation, construct executable polynomial PCCMin, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      pccMinCheckedPacketHBZeroSlackBridgeMilestone.requiredTheorems,
+      PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_DECLARATIONS.map(([name]) => name)
+    )
+    && pccMinCheckedPacketHBZeroSlackBridgeMilestone.theoremRows?.length
+      === PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_DECLARATIONS.length
+    && pccMinCheckedPacketHBZeroSlackBridgeMilestone.theoremRows?.every((row) => {
+      const expected = PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_DECLARATIONS
+        .find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeFormalized === true
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeAxiomAuditPassed === true
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeAuditedDeclarationCount === 15
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeEndpointProjectAssumptionFree === true
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeChecksHBClosure === true
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesSelectorSilence === true
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesConditionalZeroSlack === true
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeConstructsPositiveSlackBridge === false
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeUnconditionalZeroSlack === false
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgePolynomialRuntimeProved === false
+    && status.leanPCCMinCheckedPacketHBZeroSlackBridgeScope === "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-packet-family-rank-map-data-only-claim-table-positive-slack-to-faithful-selector-bridge-and-checked-hb-no-outcome-closure-with-derived-selector-silence-conditional-zeroslack-and-the-checked-well-founded-loop"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

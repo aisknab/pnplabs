@@ -3787,6 +3787,42 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     ['Quot.sound', 'propext']);
   assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketRankedSelectorProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketRankedSelector.id));
+  const pccMinCheckedPacketHBZeroSlackBridge = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-checked-packet-hb-zeroslack-bridge');
+  assert.ok(pccMinCheckedPacketHBZeroSlackBridge);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.earned, true);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.allPresent, true);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketHBZeroSlackBridge.requiredTheorems, [
+    'PNP.DirectWire.pccmin_normalize_checked_packet_hb_zeroslack_loop_checked_complete',
+  ]);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketHBZeroSlackBridge.theoremRows[0].actualKernelTypeSha256,
+    '7ba2f69a353b7c3a7b3aca107791c07f906c326b679c0a8580e59dbce5b4b29c');
+  assert.deepEqual(pccMinCheckedPacketHBZeroSlackBridge.theoremRows[0].axioms,
+    ['Quot.sound', 'propext']);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeAuditedDeclarationCount, 15);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeChecksHBClosure, true);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesSelectorSilence, true);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeConstructsPositiveSlackBridge, false);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgeUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketHBZeroSlackBridgePolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketHBZeroSlackBridgeCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_normalize_checked_packet_hb_zeroslack_loop_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketHBZeroSlackBridgeAxiomClosure,
+    ['Quot.sound', 'propext']);
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketHBZeroSlackBridgeProjectAxiomClosure,
+    []
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketHBZeroSlackBridge.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8211,6 +8247,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('pccmin-normalize-oracle-composition'));
   assert.ok(index.earnedMilestones.includes('pccmin-rank-ordered-oracle'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-ranked-selector'));
+  assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-hb-zeroslack-bridge'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
