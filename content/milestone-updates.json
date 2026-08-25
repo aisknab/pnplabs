@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-25-pccmin-checked-packet-bn6-hb-zeroslack-bridge",
+      "milestoneId": "pccmin-checked-packet-bn6-hb-zeroslack-bridge",
+      "publishedAt": "2026-08-25T15:20:37Z",
+      "title": "BN6 computed-faithfulness checked Packet/HB bridge",
+      "plainLanguage": [
+        "Lean now removes M193's arbitrary positive-slack-to-faithful-selector callback. Under one earlier explicit constant-activation premise, positive slack reaches the general BN6 Packet theorem; route-clear payload checks then construct a faithful selector in the canonicalized table, and the checked HB contradiction derives conditional ZeroSlack before reusing the checked well-founded loop.",
+        "Constant activation, the grouped terminal family, payload and rank construction, route-clear proof, HResolve and BudgetResolve algorithms, normalizer, and encoded-size polynomial bounds remain supplied. This milestone does not prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate therefore remains 35%, while formal artefact coverage increases to 170 of 172."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 170,
+        "formalArtefactCoverageTotalRows": 172,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "821f05facdda1d41e6c1fb7b2e5206b2e2703715",
+        "tree": "9c6ac637e739ca23fcd30ae31d6d414475e406a3",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-194",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-25-pccmin-checked-packet-hb-zeroslack-bridge",
       "milestoneId": "pccmin-checked-packet-hb-zeroslack-bridge",
       "publishedAt": "2026-08-25T09:40:52Z",

@@ -3823,6 +3823,43 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     []
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketHBZeroSlackBridge.id));
+  const pccMinCheckedPacketBN6HBZeroSlackBridge = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-checked-packet-bn6-hb-zeroslack-bridge');
+  assert.ok(pccMinCheckedPacketBN6HBZeroSlackBridge);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.earned, true);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.allPresent, true);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketBN6HBZeroSlackBridge.requiredTheorems, [
+    'PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete',
+  ]);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketBN6HBZeroSlackBridge.theoremRows[0].actualKernelTypeSha256,
+    '6c0c7f23d66a1bb4560c99d84c7d21c846052d544669da051047db429e9a2c62');
+  assert.deepEqual(pccMinCheckedPacketBN6HBZeroSlackBridge.theoremRows[0].axioms,
+    ['Quot.sound', 'propext']);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAuditedDeclarationCount, 12);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeDerivesGeneralBN6Packet, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeComputesSelectorFaithfulness, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeIndependentBindingRemoved, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketBN6HBZeroSlackBridgeCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketBN6HBZeroSlackBridgeAxiomClosure,
+    ['Quot.sound', 'propext']);
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6HBZeroSlackBridgeProjectAxiomClosure,
+    []
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6HBZeroSlackBridge.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8248,6 +8285,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('pccmin-rank-ordered-oracle'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-ranked-selector'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-hb-zeroslack-bridge'));
+  assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-bn6-hb-zeroslack-bridge'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');

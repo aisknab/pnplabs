@@ -9,8 +9,8 @@ import { validateProofProgressModel } from "./proof-progress-model.mjs";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "9f2e7f022d1483702a1ead06392ac2dafe86120b";
-const REVIEWED_CORE_TREE = "97749e342254a6ab3d798a73c6282ad3902f1c97";
+const REVIEWED_CORE_COMMIT = "821f05facdda1d41e6c1fb7b2e5206b2e2703715";
+const REVIEWED_CORE_TREE = "9c6ac637e739ca23fcd30ae31d6d414475e406a3";
 const REVIEWED_PROOF_COMMIT = "23ea280885d0e341863d60c1df2f11fd0e816b77";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -4250,6 +4250,10 @@ const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_RELEASE_IDENTITIES = {
   pccMinCheckedPacketHBZeroSlackBridgeCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_checked_packet_hb_zeroslack_loop_checked_complete"
 };
 
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_RELEASE_IDENTITIES = {
+  pccMinCheckedPacketBN6HBZeroSlackBridgeCheckedCompleteTheorem: "PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -6050,6 +6054,13 @@ const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_THEOREMS = {
 const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_SCOPE = "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-packet-family-rank-map-data-only-claim-table-positive-slack-to-faithful-selector-bridge-and-checked-hb-no-outcome-closure-with-derived-selector-silence-conditional-zeroslack-and-the-checked-well-founded-loop";
 const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE = "For every finite direct-wire implementation and supplied checked Packet/HB data, complete checked rank-row silence and checked HB no-outcome closure derive that every canonical handle is nonfaithful; one explicit positive-slack-to-faithful-selector bridge then yields conditional ZeroSlack, and the resulting adapter reuses the M192 selector construction and checked well-founded loop.";
 const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_NON_CLAIM = "The positive-residual-slack-to-faithful-selector implication, grouped terminal family, rank assignment, data-only claim table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or the positive-slack bridge from an arbitrary implementation, construct executable polynomial PCCMin, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS = {
+  "PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete": { hash: "6c0c7f23d66a1bb4560c99d84c7d21c846052d544669da051047db429e9a2c62", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinCheckedPacketBN6HBZeroSlackBridge" }
+};
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_SCOPE = "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-bn6-family-carrier-lower-bound-rank-map-route-clear-computed-payload-faithfulness-data-only-claim-table-positive-slack-to-constant-activation-bridge-and-checked-hb-no-outcome-closure-with-derived-conditional-zeroslack-and-the-checked-well-founded-loop";
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE = "For every finite direct-wire implementation and supplied checked Packet/BN6/HB data, positive residual slack reaches a general BN6 Packet through the explicit constant-activation boundary; route-clear payload checks construct a faithful selector in the canonicalized table; checked rank-row silence and checked HB closure then derive conditional ZeroSlack; and the resulting adapter reuses the M193 contradiction and checked well-founded loop.";
+const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_NON_CLAIM = "The positive-residual-slack-to-constant-activation implication, grouped terminal family, carrier lower bound, rank assignment, route-clear payload checks, data-only claim table, HB dependency table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The exhaustive reference fixture is not polynomial. This milestone does not derive terminal objects or constant activation from an arbitrary implementation, prove manuscript-wide SaturatePositive or BCELReady, construct executable polynomial PCCMin, establish unconditional ZeroSlack, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -8937,6 +8948,44 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
     failures.push("current manifest PCCMin checked Packet/HB ZeroSlack bridge theorem identity mismatch");
   }
 
+  if (!(earned.pccMinCheckedPacketBN6HBZeroSlackBridgeFormalized === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeAxiomAuditPassed === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeAuditedDeclarationCount === 12
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeEndpointProjectAssumptionFree === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeDerivesGeneralBN6Packet === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeComputesSelectorFaithfulness === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeIndependentBindingRemoved === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeDerivesConditionalZeroSlack === true
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation === false
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack === false
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved === false
+      && earned.pccMinCheckedPacketBN6HBZeroSlackBridgeScope
+        === PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_SCOPE
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) {
+    failures.push("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge boundary mismatch");
+  }
+  if (JSON.stringify(earned.pccMinCheckedPacketBN6HBZeroSlackBridgeAxiomClosure)
+        !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.pccMinCheckedPacketBN6HBZeroSlackBridgeProjectAxiomClosure)
+      || earned.pccMinCheckedPacketBN6HBZeroSlackBridgeProjectAxiomClosure.length !== 0) {
+    failures.push("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge axiom closure mismatch");
+  }
+  const pccMinCheckedPacketBN6HBZeroSlackBridgeHashes =
+    earned.pccMinCheckedPacketBN6HBZeroSlackBridgeTheoremKernelTypeSha256;
+  if (!pccMinCheckedPacketBN6HBZeroSlackBridgeHashes
+      || Object.keys(pccMinCheckedPacketBN6HBZeroSlackBridgeHashes).length !== 1
+      || !Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS).every(
+        ([name, row]) => pccMinCheckedPacketBN6HBZeroSlackBridgeHashes[name] === row.hash
+      )) {
+    failures.push("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge fingerprint mismatch");
+  }
+  if (!Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_RELEASE_IDENTITIES).every(
+    ([field, theorem]) => earned[field] === theorem
+  )) {
+    failures.push("current manifest PCCMin checked Packet/BN6/HB ZeroSlack bridge theorem identity mismatch");
+  }
+
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -8953,7 +9002,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge")) failures.push("current manifest earned scope omits the M193 checked Packet/HB ZeroSlack bridge milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge")) failures.push("current manifest earned scope omits the M194 checked Packet/BN6/HB ZeroSlack bridge milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -12739,6 +12788,58 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
     failures.push("status PCCMin checked Packet/HB ZeroSlack bridge evidence mismatch");
   }
 
+  const pccminCheckedPacketBN6HBZeroSlackBridgeMilestone =
+    status.formalPublicationMilestones?.find(
+      (row) => row.id === "pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+    );
+  const pccminCheckedPacketBN6HBZeroSlackBridgeNames =
+    Object.keys(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS);
+  if (!pccminCheckedPacketBN6HBZeroSlackBridgeMilestone
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.classification !== "formalized-pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.status !== "formalized-pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.scope !== PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.requiredTheorems)
+        !== JSON.stringify(pccminCheckedPacketBN6HBZeroSlackBridgeNames)
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.earned !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.allPresent !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.allAssumptionFree !== false
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.allKernelTypesMatch !== true
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.sourceClosureFingerprintMatches !== true) {
+    failures.push("status PCCMin checked Packet/BN6/HB ZeroSlack bridge publication boundary mismatch");
+  }
+  for (const [name, evidence] of Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS)) {
+    const row = pccminCheckedPacketBN6HBZeroSlackBridgeMilestone?.theoremRows?.find(
+      (candidate) => candidate.name === name
+    );
+    if (!row || row.present !== true || row.kind !== "theorem"
+        || JSON.stringify(row.axioms) !== JSON.stringify(evidence.axioms)
+        || row.actualKernelTypeSha256 !== evidence.hash
+        || row.expectedKernelTypeSha256 !== evidence.hash
+        || row.kernelTypeFingerprintMatches !== true) {
+      failures.push(`status PCCMin checked Packet/BN6/HB ZeroSlack bridge theorem evidence mismatch: ${name}`);
+    }
+  }
+  if (!(status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeFormalized === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAxiomAuditPassed === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeAuditedDeclarationCount === 12
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeEndpointProjectAssumptionFree === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeDerivesGeneralBN6Packet === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeComputesSelectorFaithfulness === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeIndependentBindingRemoved === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeDerivesConditionalZeroSlack === true
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation === false
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack === false
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved === false
+      && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope
+        === PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_SCOPE
+      && status.leanPCCMinLoopExactnessFormalized === false
+      && status.leanZeroSlackCompletenessFormalized === false
+      && status.leanPCCMinPolynomialRuntimeFormalized === false)) {
+    failures.push("status PCCMin checked Packet/BN6/HB ZeroSlack bridge evidence mismatch");
+  }
+
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -14037,6 +14138,16 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       }
       if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
         failures.push(`inventory PCCMin checked Packet/HB ZeroSlack bridge fingerprint mismatch: ${name}`);
+      }
+    }
+    for (const [name, evidence] of Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem || theorem.kind !== "theorem" || theorem.module !== evidence.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)) {
+        failures.push(`inventory PCCMin checked Packet/BN6/HB ZeroSlack bridge theorem mismatch: ${name}`);
+      }
+      if (theorem && milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
+        failures.push(`inventory PCCMin checked Packet/BN6/HB ZeroSlack bridge fingerprint mismatch: ${name}`);
       }
     }
 
@@ -16752,6 +16863,29 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || pccminCheckedPacketHBZeroSlackBridgePins[name] !== row.hash) {
       failures.push(`core publication map PCCMin checked Packet/HB ZeroSlack bridge fingerprint mismatch: ${name}`);
+    }
+  }
+
+  const pccminCheckedPacketBN6HBZeroSlackBridgeMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+  );
+  const pccminCheckedPacketBN6HBZeroSlackBridgeNames =
+    Object.keys(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS);
+  if (!pccminCheckedPacketBN6HBZeroSlackBridgeMilestone
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.classification !== "formalized-pccmin-checked-packet-bn6-hb-zeroslack-bridge"
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.scope !== PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_MILESTONE_SCOPE
+      || pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketBN6HBZeroSlackBridgeMilestone.requiredTheorems)
+        !== JSON.stringify(pccminCheckedPacketBN6HBZeroSlackBridgeNames)) {
+    failures.push("core publication map PCCMin checked Packet/BN6/HB ZeroSlack bridge boundary mismatch");
+  }
+  const pccminCheckedPacketBN6HBZeroSlackBridgePins =
+    releaseManifest.earnedBoundary?.pccMinCheckedPacketBN6HBZeroSlackBridgeTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_THEOREMS)) {
+    if (!pccminCheckedPacketBN6HBZeroSlackBridgeMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || pccminCheckedPacketBN6HBZeroSlackBridgePins[name] !== row.hash) {
+      failures.push(`core publication map PCCMin checked Packet/BN6/HB ZeroSlack bridge fingerprint mismatch: ${name}`);
     }
   }
 
