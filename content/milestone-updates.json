@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-26-pccmin-checked-packet-bn6-bcel-canonical-grouping",
+      "milestoneId": "pccmin-checked-packet-bn6-bcel-canonical-grouping",
+      "publishedAt": "2026-08-26T11:12:02Z",
+      "title": "Canonical BN6 positive-cell grouping and conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now turns a supplied raw positive support-and-payload ledger into the canonical grouped BN6 family required by M196: it normalizes supports inside the computed carrier, constructs singleton consumer systems, coalesces duplicate footprints, and proves that every positive payload atom survives the grouping.",
+        "The terminal problem, positive premise, checked finite BCEL-ready certificate, raw positive supports and payload atoms, claim and dependency tables, ranks, route-clear proof, resolver algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The inherited proper-cut classifier enumerates a powerset and is not proved polynomial, and its remaining activation mismatch is diagnostic rather than a constructed gain. This milestone does not establish unconditional ZeroSlack or executable polynomial PCCMin, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 173 of 175."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 173,
+        "formalArtefactCoverageTotalRows": 175,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "54aa7d8c2fa0a728e6e0af9349c78f27f510d989",
+        "tree": "bf5ebec44a12204145478b17397048b94594a725",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-26-197",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-26-pccmin-checked-packet-bn6-bcel-derived-family",
       "milestoneId": "pccmin-checked-packet-bn6-bcel-derived-family",
       "publishedAt": "2026-08-26T07:08:45Z",
