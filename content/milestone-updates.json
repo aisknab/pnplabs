@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-27-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger",
+      "milestoneId": "pccmin-checked-packet-bn6-bcel-canonical-cut-ledger",
+      "publishedAt": "2026-08-26T18:14:23Z",
+      "title": "Canonical BN6 raw cut-ledger conservation and conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now proves that canonical duplicate-footprint coalescing preserves the exact crossing mass of the supplied raw positive-cell ledger on every cut. The remaining M197 activation mismatch is therefore exposed directly against that raw ledger, rather than only through the grouped-family sum.",
+        "The terminal problem, positive premise, checked finite BCEL-ready certificate, raw positive cells and payloads, claim and dependency tables, ranks, route-clear proof, resolver algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The inherited proper-cut classifier enumerates a powerset and is not proved polynomial. The direct raw-ledger mismatch is diagnostic rather than a constructed gain or globally decreasing transition, and constant activation is not derived. This milestone does not establish unconditional ZeroSlack or executable polynomial PCCMin, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 174 of 176."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 174,
+        "formalArtefactCoverageTotalRows": 176,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "ebebf9356116e3b8dca9fbae6999826c026fa18b",
+        "tree": "d76d40eea44b8b38c07080f0159d5d157acd3b67",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-27-198",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-26-pccmin-checked-packet-bn6-bcel-canonical-grouping",
       "milestoneId": "pccmin-checked-packet-bn6-bcel-canonical-grouping",
       "publishedAt": "2026-08-26T11:12:02Z",

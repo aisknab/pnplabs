@@ -357,8 +357,18 @@ test('homepage leads with a plain, conservative result and the latest milestone'
 });
 
 test('homepage technical boundary and release identifiers are visibly discoverable but collapsed by default', async () => {
-  const html = await readText('index.html');
-  assert.match(html, /<details class="boundary-panel" data-formal-status-root data-status-state="fail-closed">/u);
+  const [html, status, updates] = await Promise.all([
+    readText('index.html'),
+    readJson('public/pnp-status.json'),
+    readJson('content/milestone-updates.json'),
+  ]);
+  const latest = updates.entries[0];
+  const latestMilestone = status.formalPublicationMilestones.find((row) => row.id === latest.milestoneId);
+  assert.ok(latestMilestone, `missing latest milestone ${latest.milestoneId}`);
+  assert.match(
+    html,
+    new RegExp(`<details class="boundary-panel" data-formal-status-root data-status-state="fail-closed" data-current-milestone="${latest.milestoneId}">`, 'u')
+  );
   assert.match(html, /Show technical boundary/u);
   assert.match(html, /Hide technical boundary/u);
   assert.match(html, /class="disclosure-chevron"/u);
@@ -366,6 +376,9 @@ test('homepage technical boundary and release identifiers are visibly discoverab
   assert.match(html, /Source and release identifiers/u);
   assert.doesNotMatch(html, /<details class="(?:boundary-panel|release-details)"[^>]*\sopen(?:\s|=|>)/u);
   assert.match(html, /data-formal-status-fields[\s\S]*data-formal-status-note[\s\S]*<\/details>/u);
+  const boundaryCopy = html.match(/<p class="boundary-copy"><strong>Latest earned step:<\/strong>[\s\S]*?<\/p>/u)?.[0] ?? '';
+  assertCanonicalConceptCoverage(boundaryCopy, latestMilestone.scope, 0.35, 'homepage technical-boundary scope');
+  assertCanonicalConceptCoverage(boundaryCopy, latestMilestone.nonClaim, 0.55, 'homepage technical-boundary non-claim');
 });
 
 test('homepage content is authoritative without JavaScript copy rewriting', async () => {
