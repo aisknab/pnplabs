@@ -25,14 +25,14 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,135 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,136 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 30,689 public declarations;
-- 15,702 theorem-kind declarations;
+- 30,783 public declarations;
+- 15,730 theorem-kind declarations;
 - 7,690 assumption-free theorem-kind declarations;
-- 311 source-closure modules;
+- 312 source-closure modules;
 - 15,157 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 171 earned formal artefact scopes are:
+The 172 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -221,6 +221,7 @@ The 171 earned formal artefact scopes are:
 | Checked Packet/HB conditional ZeroSlack bridge | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation and supplied checked Packet/HB data, complete checked claims and exact-rank silence feed executable selector-silence induction; checked HB no-outcome closure then eliminates every canonical faithful handle; and one explicit positive-residual-slack-to-faithful-selector premise yields conditional ZeroSlack before the M192 selector construction and checked well-founded loop are reused. The endpoint uses only `Quot.sound` and `propext`; all 15 declarations in the focused audit are free of project-specific axioms. | The positive-slack bridge, grouped terminal family, rank assignment, data-only claim table, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The exhaustive reference fixture is not polynomial. This does not derive terminal objects or the positive-slack bridge from arbitrary input, construct executable PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | BN6 computed-faithfulness checked Packet/HB bridge | One reviewed completion-theorem pin proves that, for every finite direct-wire implementation and supplied checked Packet/BN6/HB data, one explicit constant-activation premise carries positive residual slack into the general BN6 Packet theorem; checked route-clear payload data computes a faithful selector in the canonicalized table; and the M193 checked HB contradiction derives conditional ZeroSlack before the checked loop is reused. The endpoint uses only `Quot.sound` and `propext`; all 12 declarations in the focused audit are free of project-specific axioms. | Constant activation, the grouped terminal family, carrier lower bound, payload and rank construction, route-clear proof, data-only claim and HB tables, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The exhaustive reference fixture is not polynomial. This does not prove manuscript-wide SaturatePositive or BCELReady, derive the supplied data from arbitrary input, construct executable PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Same-candidate BCEL activation-route classifier and conditional ZeroSlack bridge | One reviewed completion-theorem pin proves that, for every finite same-candidate checked BCEL nucleus and supplied grouped BN6 Packet family, a total classifier compares the exact carrier, cut value, and every canonical nonempty proper-cut activation weight. It returns a proof-bearing carrier, cut-value, or activation mismatch route, or derives coherent constant activation, identifies it with the BCEL projection excess, and reuses M194 for conditional ZeroSlack under checked selector silence. The endpoint uses only `Quot.sound` and `propext`; all 15 declarations in the focused audit are free of project-specific axioms. | The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped Packet family, payloads, claim table, rank map, route-clear equation, dependency table, checked HB closure, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The proper-cut classifier enumerates a finite powerset and is not proved polynomial. Its mismatch results are diagnostic routes, not constructed gains or globally decreasing transitions. This does not derive the family or supporting data from every source input, prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
+| BCEL-derived BN6 family skeleton and conditional ZeroSlack bridge | One reviewed completion-theorem pin proves that, for every finite same-candidate checked BCEL nucleus and supplied grouped-cell ledger, Lean constructs the BN6 family carrier from the nucleus, proves it duplicate-free, takes the cut value from the nucleus projection defect, and inherits strict positivity. M195's carrier and cut-value mismatch routes are impossible by construction. Checked selector silence leaves either an exact nonempty proper-cut activation mismatch or conditional ZeroSlack. The endpoint uses only `Quot.sound` and `propext`; all 14 declarations in the focused audit are free of project-specific axioms. | The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped cells and payloads, exact grouping proofs, claim table, rank map, route-clear equation, dependency table, checked HB closure, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The inherited proper-cut classifier enumerates a finite powerset and is not proved polynomial. Its remaining activation mismatch is a diagnostic route, not a constructed gain or globally decreasing transition. This does not derive the grouped cells or supporting data from every source input, complete PkgC/BN3 through BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -252,7 +253,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 137-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 138-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

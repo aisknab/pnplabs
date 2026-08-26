@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-26-pccmin-checked-packet-bn6-bcel-derived-family",
+      "milestoneId": "pccmin-checked-packet-bn6-bcel-derived-family",
+      "publishedAt": "2026-08-26T07:08:45Z",
+      "title": "BCEL-derived BN6 family skeleton and conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now constructs the BN6 family carrier, duplicate-freedom, cut value, and cut-value positivity from the checked finite BCEL nucleus and a supplied grouped-cell ledger. M195's carrier and cut-value mismatch branches are impossible by construction, so checked selector silence leaves either an exact proper-cut activation mismatch or conditional ZeroSlack.",
+        "The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped cells and payloads, exact grouping proofs, tables, ranks, route-clear proof, resolver algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The inherited proper-cut classifier enumerates a powerset and is not proved polynomial, and its remaining mismatch is a diagnostic rather than a constructed gain. This milestone does not establish unconditional ZeroSlack or executable polynomial PCCMin, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 172 of 174."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 172,
+        "formalArtefactCoverageTotalRows": 174,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "eb631703727b4121447eab01060712343b5e22f1",
+        "tree": "7ef662f771f3bbe5c2940fe0a5e630a53ddd597b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-26-196",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-26-pccmin-checked-packet-bn6-bcel-activation-route",
       "milestoneId": "pccmin-checked-packet-bn6-bcel-activation-route",
       "publishedAt": "2026-08-26T01:20:16Z",

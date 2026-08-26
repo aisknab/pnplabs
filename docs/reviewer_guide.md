@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 137-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 30,689 public declarations across 311 modules,
-including 15,702 theorem-kind declarations, 7,690 assumption-free theorem-kind declarations, and no
+The canonical report downloads are now a 138-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 30,783 public declarations across 312 modules,
+including 15,730 theorem-kind declarations, 7,690 assumption-free theorem-kind declarations, and no
 project-specific axioms. Exactly 15,157 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 137-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 138-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,135 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,135 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 171 of 173 scoped formal milestone rows. The newest row returns a proof-bearing carrier, cut-value, or proper-cut activation mismatch, or derives coherent constant activation, identifies it with the BCEL projection excess, and reuses M194 for conditional ZeroSlack. | Treating the supplied same-candidate BCEL/Packet boundary, exhaustive powerset classifier, mismatch diagnostics, route-clear or terminal data, or other supplied stages as manuscript-wide SaturatePositive, BCELReady, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,136 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,136 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 172 of 174 scoped formal milestone rows. The newest row constructs the BN6 family carrier, duplicate-freedom, cut value, and positivity from the checked BCEL nucleus, makes M195's carrier and cut-value mismatch routes impossible, and leaves either an exact activation mismatch or conditional ZeroSlack. | Treating the supplied grouped-cell, certificate, table, rank, route-clear, or terminal data, exhaustive powerset classifier, remaining mismatch diagnostic, or other supplied stages as complete PkgC/BN3 through BN6 integration, manuscript-wide SaturatePositive, BCELReady, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,10 +62,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `b9523fe7ea939cd90dba5671aa627986e1f22f18`.
+   `eb631703727b4121447eab01060712343b5e22f1`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,135 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,136 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -250,12 +250,14 @@ Review the gaps between those scopes and the target theorem:
    faithful selector consumed by the M193 contradiction. M195 removes that explicit constant-activation
    premise inside one supplied same-candidate checked BCEL and Packet boundary: it exhaustively compares
    the carrier, cut value, and every proper-cut activation weight, returning a proof-bearing mismatch or
-   deriving coherent constant activation before reusing M194. The terminal problem, positive premise,
-   checked finite BCEL-ready certificate, grouped family, payloads, tables, ranks, route-clear proof,
-   normalizer, resolvers, blocker semantics, encoded-size bounds, and exhaustive powerset classifier remain
-   supplied. Mismatch diagnostics are not constructed gains or globally decreasing transitions, so the route
-   still does not prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove
-   unconditional ZeroSlack, decide
+   deriving coherent constant activation before reusing M194. M196 removes the independently supplied
+   family carrier and cut value: it constructs both from the checked BCEL nucleus, proves duplicate-freedom
+   and positivity, and makes those two M195 mismatch routes impossible. The terminal problem, positive
+   premise, checked finite BCEL-ready certificate, grouped cells and payloads, exact grouping proofs, tables,
+   ranks, route-clear proof, normalizer, resolvers, blocker semantics, encoded-size bounds, and exhaustive
+   powerset classifier remain supplied. The remaining activation mismatch is not a constructed gain or
+   globally decreasing transition, so the route still does not complete PkgC/BN3 through BN6 integration,
+   prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack, decide
    CNF-SAT, prove SAT NP-hardness or CNF-SAT NP-completeness, put CNF-SAT in P, or prove `P = NP`.
 4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
    unlisted gain and cannot imply `ZeroSlack`.
@@ -283,7 +285,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 137-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 138-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the
