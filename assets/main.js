@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-25-194";
-const STATUS_SHA256 = 'f0324482af4085cbcc9586c2f59e0b5984047dc21352020144b89e5fa61a4115';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-25-194";
-const FORMAL_PUBLICATION_MAP_SHA256 = "083a94de64d62997e831ec68862b43798c6c173ff4ef57cf2810c70d286ca7ce";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-26-195";
+const STATUS_SHA256 = '3735b1d6071ae5d007e1b0faa8b8663b8e46bf288d98f3745d3bff5b16a67b16';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-26-195";
+const FORMAL_PUBLICATION_MAP_SHA256 = "eadd5a11e032468bd5a4bec22d7ec6d9efbaa68e69188c6306a0f381e75d1808";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-25-194";
-const INVENTORY_SHA256 = "f78ea2174cc1303598c9df1c3105c8ada7daa1db24a35eff2727796d4829c97a";
-const SOURCE_CLOSURE_SHA256 = "dfd94559cc6df972ea0890e0c2ed09f176e9934376463a968616615ccc800669";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-26-195";
+const INVENTORY_SHA256 = "5915d0fc9e7540281c18f7bea76778d50c80abfbfc2a000bb31cac232c55b88e";
+const SOURCE_CLOSURE_SHA256 = "bf4ceffec9df35f688f40161376a113ccdd3cffc81cec6e3eb5236da8a9959a5";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 30569,
-  theorems: 15667,
+  declarations: 30689,
+  theorems: 15702,
   assumptionFreeTheorems: 7690,
-  excludedPrivateDeclarations: 15151,
-  modules: 310,
+  excludedPrivateDeclarations: 15157,
+  modules: 311,
   axioms: 0,
 });
 
@@ -4710,6 +4710,9 @@ const PCCMIN_CHECKED_PACKET_HB_ZEROSLACK_BRIDGE_DECLARATIONS = Object.freeze([
 const PCCMIN_CHECKED_PACKET_BN6_HB_ZEROSLACK_BRIDGE_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.pccmin_normalize_checked_packet_bn6_hb_zeroslack_loop_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketBN6HBZeroSlackBridge","6c0c7f23d66a1bb4560c99d84c7d21c846052d544669da051047db429e9a2c62"],
 ]);
+const PCCMIN_CHECKED_PACKET_BN6_BCEL_ACTIVATION_ROUTE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.pccmin_checked_packet_bn6_bcel_activation_route_or_zeroslack_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketBN6BCELActivationRoute","d8f06c12a7a22514231020f3b257ba78372c532dfc39f019f66701d1b58af24f"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5677,6 +5680,17 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack: false,
   leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved: false,
   leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope: null,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteFormalized: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteAxiomAuditPassed: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteAuditedDeclarationCount: 0,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteEndpointProjectAssumptionFree: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteTotalClassifier: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConstantActivation: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteRetainsMismatchRoutes: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConditionalZeroSlack: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteUnconditionalZeroSlack: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRoutePolynomialRuntimeProved: false,
+  leanPCCMinCheckedPacketBN6BCELActivationRouteScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6373,6 +6387,17 @@ leanPCCMinCheckedPacketBN6HBZeroSlackBridgeConstructsConstantActivation = ${payl
 leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack ?? false}
 leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved ?? false}
 leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope = ${payload.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope)}
+leanPCCMinCheckedPacketBN6BCELActivationRouteFormalized = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteFormalized ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteAxiomAuditPassed = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteAxiomAuditPassed ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteAuditedDeclarationCount = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteAuditedDeclarationCount ?? 0}
+leanPCCMinCheckedPacketBN6BCELActivationRouteEndpointProjectAssumptionFree = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteEndpointProjectAssumptionFree ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteTotalClassifier = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteTotalClassifier ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConstantActivation = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConstantActivation ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteRetainsMismatchRoutes = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteRetainsMismatchRoutes ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConditionalZeroSlack = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConditionalZeroSlack ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteUnconditionalZeroSlack ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRoutePolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRoutePolynomialRuntimeProved ?? false}
+leanPCCMinCheckedPacketBN6BCELActivationRouteScope = ${payload.leanPCCMinCheckedPacketBN6BCELActivationRouteScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketBN6BCELActivationRouteScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7504,6 +7529,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const pccMinCheckedPacketBN6BCELActivationRoute =
+    PCCMIN_CHECKED_PACKET_BN6_BCEL_ACTIVATION_ROUTE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
 
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
@@ -8122,6 +8154,9 @@ function validateInventory(inventory) {
     && pccMinCheckedPacketBN6HBZeroSlackBridge.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && pccMinCheckedPacketBN6BCELActivationRoute.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
 
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
@@ -8586,6 +8621,9 @@ function validateStatus(status, inventory) {
   );
   const pccMinCheckedPacketBN6HBZeroSlackBridgeMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'pccmin-checked-packet-bn6-hb-zeroslack-bridge'
+  );
+  const pccMinCheckedPacketBN6BCELActivationRouteMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === 'pccmin-checked-packet-bn6-bcel-activation-route'
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -10531,6 +10569,39 @@ function validateStatus(status, inventory) {
     && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeUnconditionalZeroSlack === false
     && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgePolynomialRuntimeProved === false
     && status.leanPCCMinCheckedPacketBN6HBZeroSlackBridgeScope === "all-finite-direct-wire-implementations-under-explicit-normalizer-hresolve-budgetresolve-supplied-grouped-bn6-family-carrier-lower-bound-rank-map-route-clear-computed-payload-faithfulness-data-only-claim-table-positive-slack-to-constant-activation-bridge-and-checked-hb-no-outcome-closure-with-derived-conditional-zeroslack-and-the-checked-well-founded-loop"
+
+    && pccMinCheckedPacketBN6BCELActivationRouteMilestone?.classification === "formalized-pccmin-checked-packet-bn6-bcel-activation-route"
+    && pccMinCheckedPacketBN6BCELActivationRouteMilestone.status === "formalized-pccmin-checked-packet-bn6-bcel-activation-route"
+    && pccMinCheckedPacketBN6BCELActivationRouteMilestone.scope === "For every finite same-candidate checked BCEL nucleus and supplied grouped BN6 Packet family, a total classifier compares the exact carrier, cut value, and every canonical nonempty proper-cut activation weight. It returns one proof-bearing carrier, cut-value, or activation mismatch route, or derives coherent constant activation, identifies it with the BCEL projection excess, and reuses M194 to derive conditional ZeroSlack under checked selector silence."
+    && pccMinCheckedPacketBN6BCELActivationRouteMilestone.nonClaim === "The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped Packet family, payloads, claim table, rank map, route-clear equation, dependency table, checked HB closure, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The proper-cut classifier enumerates a finite powerset and is not proved polynomial. Its mismatch results are typed diagnostic routes, not constructed gains or globally decreasing transitions. This milestone does not derive the family or supporting data from every source input, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      pccMinCheckedPacketBN6BCELActivationRouteMilestone.requiredTheorems,
+      PCCMIN_CHECKED_PACKET_BN6_BCEL_ACTIVATION_ROUTE_DECLARATIONS.map(([name]) => name)
+    )
+    && pccMinCheckedPacketBN6BCELActivationRouteMilestone.theoremRows?.length
+      === PCCMIN_CHECKED_PACKET_BN6_BCEL_ACTIVATION_ROUTE_DECLARATIONS.length
+    && pccMinCheckedPacketBN6BCELActivationRouteMilestone.theoremRows?.every((row) => {
+      const expected = PCCMIN_CHECKED_PACKET_BN6_BCEL_ACTIVATION_ROUTE_DECLARATIONS
+        .find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteFormalized === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteAxiomAuditPassed === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteAuditedDeclarationCount === 15
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteEndpointProjectAssumptionFree === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteTotalClassifier === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConstantActivation === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteRetainsMismatchRoutes === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConditionalZeroSlack === true
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteUnconditionalZeroSlack === false
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRoutePolynomialRuntimeProved === false
+    && status.leanPCCMinCheckedPacketBN6BCELActivationRouteScope === "arbitrary-finite-same-candidate-checked-bcel-nucleus-and-supplied-grouped-bn6-packet-family-with-total-carrier-cut-value-and-all-proper-cut-activation-classification-proof-bearing-mismatch-routes-derived-coherent-constant-activation-and-conditional-zeroslack"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

@@ -3860,6 +3860,42 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     []
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6HBZeroSlackBridge.id));
+  const pccMinCheckedPacketBN6BCELActivationRoute = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-checked-packet-bn6-bcel-activation-route');
+  assert.ok(pccMinCheckedPacketBN6BCELActivationRoute);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.earned, true);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.allPresent, true);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketBN6BCELActivationRoute.requiredTheorems, [
+    'PNP.DirectWire.pccmin_checked_packet_bn6_bcel_activation_route_or_zeroslack_checked_complete',
+  ]);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketBN6BCELActivationRoute.theoremRows[0].actualKernelTypeSha256,
+    'd8f06c12a7a22514231020f3b257ba78372c532dfc39f019f66701d1b58af24f');
+  assert.deepEqual(pccMinCheckedPacketBN6BCELActivationRoute.theoremRows[0].axioms,
+    ['Quot.sound', 'propext']);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteAuditedDeclarationCount, 15);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteTotalClassifier, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConstantActivation, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteRetainsMismatchRoutes, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRouteUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELActivationRoutePolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketBN6BCELActivationRouteCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_checked_packet_bn6_bcel_activation_route_or_zeroslack_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketBN6BCELActivationRouteAxiomClosure,
+    ['Quot.sound', 'propext']);
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELActivationRouteProjectAxiomClosure,
+    []
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELActivationRoute.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8286,6 +8322,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-ranked-selector'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-hb-zeroslack-bridge'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-bn6-hb-zeroslack-bridge'));
+  assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-bn6-bcel-activation-route'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
@@ -8809,9 +8846,10 @@ test('status page has a conservative complete static fallback', async () => {
 });
 
 test('static inventory prose derives changing publication totals from the canonical payloads', async () => {
-  const [readme, paper, guide, pipeline, reproducibility, activatedClaimWording, status, index, inventory, updates, latestRelease] = await Promise.all([
+  const [readme, paper, faq, guide, pipeline, reproducibility, activatedClaimWording, status, index, inventory, updates, latestRelease] = await Promise.all([
     readText('README.md'),
     readText('paper.html'),
+    readText('faq.html'),
     readText('docs/reviewer_guide.md'),
     readText('docs/proof_pipeline.md'),
     readText('docs/reproducibility.md'),
@@ -8851,6 +8889,19 @@ test('static inventory prose derives changing publication totals from the canoni
   assert.equal(readme.includes(`Its ${latestTheoremPinLabel}`), true);
   assert.equal(readme.includes(latestUpdate.title), true);
   assert.equal(paper.includes(latestUpdate.title), true, 'paper page must name the current milestone');
+  assert.equal(
+    paper.includes(`${index.formalPublicationMilestoneCounts.earned} earned scoped milestones; ${index.formalPublicationMilestoneCounts.unearned} missing global milestones`),
+    true,
+    'paper page must derive the current formal artefact row counts',
+  );
+  const coveragePercent = (
+    100 * index.formalPublicationMilestoneCounts.earned / index.formalPublicationMilestoneCounts.total
+  ).toFixed(1);
+  assert.equal(
+    faq.includes(`current formal artefact coverage is ${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped publication rows earned, or ${coveragePercent}%`),
+    true,
+    'FAQ must derive the current formal artefact coverage and percentage',
+  );
   assert.equal(pipeline.includes(`The ${index.formalPublicationMilestoneCounts.earned} earned formal artefact scopes are:`), true);
   assert.equal(activatedClaimWording.includes(`${index.formalPublicationMilestoneCounts.earned} narrowly scoped milestones are earned`), true);
   assert.equal(activatedClaimWording.toLowerCase().includes(latestUpdate.title.toLowerCase()), true);

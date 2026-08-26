@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-26-pccmin-checked-packet-bn6-bcel-activation-route",
+      "milestoneId": "pccmin-checked-packet-bn6-bcel-activation-route",
+      "publishedAt": "2026-08-26T01:20:16Z",
+      "title": "BCEL activation-route classifier and conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now removes M194's earlier explicit constant-activation premise at the same-candidate BCEL and Packet boundary. A total finite classifier checks carrier identity, cut value, and every canonical nonempty proper-cut activation weight; it returns proof-bearing mismatch diagnostics or derives coherent constant activation from the checked data and reuses the existing checked Packet and HB contradiction to obtain conditional ZeroSlack.",
+        "The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped family, payloads, tables, ranks, route-clear proof, resolver algorithms, normalizer, blocker semantics, and encoded-size bounds remain supplied. The finite classifier enumerates a powerset and is not proved polynomial; its mismatch results are diagnostics rather than strict gains. This milestone does not establish unconditional ZeroSlack or executable polynomial PCCMin, place CNFSAT in P, close a global gate, create the eligible root theorem, or establish P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 171 of 173."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 171,
+        "formalArtefactCoverageTotalRows": 173,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "b9523fe7ea939cd90dba5671aa627986e1f22f18",
+        "tree": "d17e62bdcfc1b2e8aadbb48a1e27771f0c2f82cc",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-26-195",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-25-pccmin-checked-packet-bn6-hb-zeroslack-bridge",
       "milestoneId": "pccmin-checked-packet-bn6-hb-zeroslack-bridge",
       "publishedAt": "2026-08-25T15:20:37Z",
