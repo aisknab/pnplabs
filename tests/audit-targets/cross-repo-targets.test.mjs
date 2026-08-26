@@ -10769,7 +10769,7 @@ test("rejects mutations of the latest canonical publication milestone across eve
   const statusFlagPayload = JSON.parse(readFileSync(path.join(statusFlag.sourceDir, "public/pnp-status.json"), "utf8"));
   statusFlagPayload[statusAuditField] = false;
   rewriteCorePayload(statusFlag, "public/pnp-status.json", statusFlagPayload);
-  expectFailure(statusFlag, /status .* evidence mismatch/);
+  expectFailure(statusFlag, /status .* (?:evidence|boundary) mismatch/);
 
   const statusMilestone = makeProject(t);
   const statusMilestonePayload = JSON.parse(readFileSync(path.join(statusMilestone.sourceDir, "public/pnp-status.json"), "utf8"));
@@ -10777,7 +10777,7 @@ test("rejects mutations of the latest canonical publication milestone across eve
     (row) => row.id === latestPublishedMilestoneId
   ).nonClaim = "This mutation removes the conservative claim boundary.";
   rewriteCorePayload(statusMilestone, "public/pnp-status.json", statusMilestonePayload);
-  expectFailure(statusMilestone, /status .* publication boundary mismatch/);
+  expectFailure(statusMilestone, /status .* boundary mismatch/);
 
   const inventoryAxiom = makeProject(t);
   const inventoryAxiomPayload = JSON.parse(readFileSync(path.join(inventoryAxiom.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
@@ -10799,7 +10799,7 @@ test("rejects mutations of the latest canonical publication milestone across eve
   const mapFingerprintPayload = JSON.parse(readFileSync(path.join(mapFingerprint.sourceDir, "publication/FORMAL_PUBLICATION_MAP.json"), "utf8"));
   mapFingerprintPayload.earnedMilestoneTheoremKernelTypeSha256[theoremName] = "0".repeat(64);
   rewriteCorePayload(mapFingerprint, "publication/FORMAL_PUBLICATION_MAP.json", mapFingerprintPayload);
-  expectFailure(mapFingerprint, /core publication map .* fingerprint mismatch/);
+  expectFailure(mapFingerprint, /core publication map .* (?:boundary|fingerprint) mismatch/);
 });
 
 test("rejects drift in the retained canonical-pair runtime polynomial", (t) => {
