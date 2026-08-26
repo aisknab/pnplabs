@@ -79,11 +79,12 @@ test('issue-ingest workflow has no issue trigger and only confirms the freeze', 
 });
 
 test('current reviewer commands cover each core trust boundary without duplicate subtests', async () => {
-  const [readme, currentCommands, reproducibility, packageJson] = await Promise.all([
+  const [readme, currentCommands, reproducibility, packageJson, updates] = await Promise.all([
     readText('README.md'),
     readText('docs/one_command_verify_upload.md'),
     readText('docs/reproducibility.md'),
     readJson('package.json'),
+    readJson('content/milestone-updates.json'),
   ]);
   assertNonduplicatingCoreCommands(section(readme, '## Authoritative verification'), 'README');
   assertNonduplicatingCoreCommands(section(currentCommands, '## Current commands'), 'current commands');
@@ -91,6 +92,7 @@ test('current reviewer commands cover each core trust boundary without duplicate
     section(reproducibility, '## Core Lean Inventory Reproduction'),
     'reproducibility',
   );
+  assert.ok(currentCommands.includes(updates.entries[0].title), 'current commands must name the latest canonical milestone');
   assert.equal(packageJson.scripts.test.includes('npm run verify:seal'), false);
   assert.equal(packageJson.scripts.test.includes('npm run examples:minimal'), false);
   assert.equal(packageJson.scripts.test.includes('test:audit-targets'), false);

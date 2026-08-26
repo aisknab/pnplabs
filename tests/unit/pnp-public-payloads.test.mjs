@@ -3972,6 +3972,44 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     []
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELCanonicalGrouping.id));
+  const pccMinCheckedPacketBN6BCELCanonicalCutLedger = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-bn6-bcel-canonical-cut-ledger");
+  assert.ok(pccMinCheckedPacketBN6BCELCanonicalCutLedger);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.earned, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.allPresent, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketBN6BCELCanonicalCutLedger.requiredTheorems, [
+    "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_canonical_cut_ledger_route_or_zeroslack_checked_complete",
+  ]);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalCutLedger.theoremRows[0].actualKernelTypeSha256,
+    "95f8a4d49ae159d8d3df6fd868ec11d03dfc1179df65d54c8c1f7745cad20891");
+  assert.deepEqual(pccMinCheckedPacketBN6BCELCanonicalCutLedger.theoremRows[0].axioms,
+    ["Quot.sound", "propext"]);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerAuditedDeclarationCount, 9);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerRawMassConserved, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerUsesDirectRawCutLedger, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerDerivesCellsFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerDerivesConstantActivation, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerMismatchIsGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalCutLedgerPolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketBN6BCELCanonicalCutLedgerCheckedCompleteTheorem,
+    "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_canonical_cut_ledger_route_or_zeroslack_checked_complete");
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketBN6BCELCanonicalCutLedgerAxiomClosure,
+    ["Quot.sound", "propext"]);
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELCanonicalCutLedgerProjectAxiomClosure,
+    []
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELCanonicalCutLedger.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8536,6 +8574,7 @@ test('status page has a conservative complete static fallback', async () => {
     `<strong>${formatNumber(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount)}</strong> private compiler auxiliaries excluded`,
     `<strong>${formatNumber(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount)}</strong> modules`,
     `${index.formalPublicationMilestoneCounts.earned} of ${index.formalPublicationMilestoneCounts.total} scoped milestone rows`,
+    `${index.formalPublicationMilestoneCounts.earned} scoped milestones earned; ${index.formalPublicationMilestoneCounts.total - index.formalPublicationMilestoneCounts.earned} global milestones unearned`,
     `Show all ${index.formalPublicationMilestoneCounts.total} formal milestone records`,
     'residual-terminal-bn3-request-envelope',
     'residual-terminal-bn4-activation-cancellation',
@@ -8715,7 +8754,6 @@ test('status page has a conservative complete static fallback', async () => {
     'T^FormulaWidth F Sep T F T T F T T T F Finish Sep F F F T F',
     'T^FormulaWidth F Sep T F T T F T T T F Finish Sep F F F T F Finish',
     'formulaVariableSlotBound + 12',
-    'two global milestones',
     'PNP.Main.ConcretePEqualsNP',
     'PNP.Main.p_eq_np',
     'null never matches null',

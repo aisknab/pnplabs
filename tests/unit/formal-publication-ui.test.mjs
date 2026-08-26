@@ -4206,7 +4206,7 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(homepage, new RegExp(`data-current-milestone="${latestMilestone.id}"`, 'u'));
   assert.match(
     statusPage,
-    new RegExp(`${index.formalPublicationMilestoneCounts.earned} scoped milestones earned; two global milestones unearned`, 'u')
+    new RegExp(`${index.formalPublicationMilestoneCounts.earned} scoped milestones earned; ${index.formalPublicationMilestoneCounts.total - index.formalPublicationMilestoneCounts.earned} global milestones unearned`, 'u')
   );
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
