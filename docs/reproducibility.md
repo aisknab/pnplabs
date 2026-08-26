@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 581,484 | `07062d279a15e2ba323ce0d6edbd396c70a4d2c09cbd495e0920cb2b338961c4` |
-| `downloads/canonical-proof-report.pdf` | 581,484 | `07062d279a15e2ba323ce0d6edbd396c70a4d2c09cbd495e0920cb2b338961c4` |
-| `downloads/canonical_proof_report.tex` | 361,456 | `e45eb8c750f96daa36d65be646cc0f2aba3c9c29837c5c64be6e1dd252892a46` |
-| `downloads/canonical-proof-report.tex` | 361,456 | `e45eb8c750f96daa36d65be646cc0f2aba3c9c29837c5c64be6e1dd252892a46` |
-| `public/pnp-status.json` | 2,654,897 | `747b204c20194a4351170b5405bf6c2754287498920a005bcfcb87931ef45e38` |
-| `public/pnp-theorem-inventory.json` | 33,522,374 | `d6f9727e9c33add811cb385d4b5111088c9d0292f883d6704651055b5cb8f9e4` |
-| `public/pnp-proof-progress.json` | 59,664 | `8e761ae16be2b056ccbd42a83a438a6ada88a3033507c28efc896d4c40cd7e7a` |
+| `downloads/canonical_proof_report.pdf` | 583,531 | `0e903dd8f03bbe584b6f5d32affc67f0639ab776f32bdd1801f58717df07fc47` |
+| `downloads/canonical-proof-report.pdf` | 583,531 | `0e903dd8f03bbe584b6f5d32affc67f0639ab776f32bdd1801f58717df07fc47` |
+| `downloads/canonical_proof_report.tex` | 363,423 | `34f6d695636e468cde8e1036ef79107562ffce5ad381029a4bab6430617c76ee` |
+| `downloads/canonical-proof-report.tex` | 363,423 | `34f6d695636e468cde8e1036ef79107562ffce5ad381029a4bab6430617c76ee` |
+| `public/pnp-status.json` | 2,660,461 | `a9aa5b382eece28959df38d9cd9d9ad978be64f34a2ec8a4fd68fdfb8b27917a` |
+| `public/pnp-theorem-inventory.json` | 33,769,342 | `c819b22d70476a62bce084a99ebbad6ab8fd659dfe422de5ae46215bcbc01430` |
+| `public/pnp-proof-progress.json` | 61,343 | `14e726fb8ecc7fd394aff21bd94a46af621618906f5e949191e06abaa9c36fb8` |
 
-The PDF must have 138 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 139 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout eb631703727b4121447eab01060712343b5e22f1
+git -C ../pnp checkout 54aa7d8c2fa0a728e6e0af9349c78f27f510d989
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 30,783 public declarations, 15,730 theorem-kind declarations,
-7,690 assumption-free theorem-kind declarations, 15,157 excluded private auxiliaries, 312 modules, and
+Expected compiled inventory counts are 30,900 public declarations, 15,787 theorem-kind declarations,
+7,690 assumption-free theorem-kind declarations, 15,163 excluded private auxiliaries, 314 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -191,7 +191,7 @@ PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial constru
 CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or close a global gate.
 The fixed-weight score therefore remains 35%.
 
-The latest M196 BCEL-derived BN6 family skeleton has 1 reviewed theorem pin. For every finite
+The M196 BCEL-derived BN6 family skeleton has 1 reviewed theorem pin. For every finite
 same-candidate checked BCEL nucleus and supplied grouped-cell ledger, it constructs the family carrier,
 proves duplicate-freedom, takes the cut value from the nucleus projection defect, and inherits its
 strict positivity. M195's carrier and cut-value mismatch routes are impossible by construction;
@@ -207,6 +207,23 @@ derive the supplied data from arbitrary input, construct executable PCCMin, prov
 ZeroSlack, establish encoded-size polynomial construction or runtime, put CNFSAT in P, establish SAT
 hardness transport, create the eligible root theorem, or close a global gate. The fixed-weight score
 therefore remains 35%.
+
+The latest M197 canonical BN6 positive-cell grouping milestone has 1 reviewed theorem pin. For every
+finite same-candidate checked BCEL nucleus and supplied raw positive support-and-payload ledger, it
+normalizes supports inside the computed carrier, constructs singleton V54 consumer systems,
+coalesces duplicate footprints, and preserves every positive payload atom. The resulting grouped
+family reuses M196, so checked selector silence leaves an exact activation mismatch or conditional
+ZeroSlack. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused
+34-declaration audit is free of project-specific axioms. The terminal problem, positive premise,
+checked finite BCEL-ready certificate, raw positive supports and payload atoms, tables, ranks,
+route-clear proof, resolvers, normalizer, blocker semantics, and encoded-size bounds remain supplied.
+The inherited proper-cut classifier enumerates a finite powerset and is not proved polynomial, and
+its remaining mismatch diagnostic is not a constructed gain or globally decreasing transition. The
+milestone does not derive the raw cells from BN3, BN4, BN5, PkgC, or every terminal input, complete
+PkgC/BN3 through BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, construct
+executable PCCMin, prove unconditional ZeroSlack, establish encoded-size polynomial construction or
+runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or
+close a global gate. The fixed-weight score therefore remains 35%.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

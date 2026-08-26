@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "eb631703727b4121447eab01060712343b5e22f1";
-const CORE_TREE = "7ef662f771f3bbe5c2940fe0a5e630a53ddd597b";
-const CORE_PUBLICATION_MAP_SHA256 = "659bf44f16bea2475064ffa2321d725b46ae4f9248dd94693285b4a7e56c0bf2";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-26-196";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-26-196";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-26-196";
-const CORE_SOURCE_CLOSURE_SHA256 = "b56500a09e72988adc55edcee60f31250d4e4570b60b6dc51ad9a74694e1743b";
-const OLD_PDF_SHA256 = "26fd8c82b76594707c21373f402c593f8aab54173f47bd763caa7bdf78c2f1c2";
-const OLD_TEX_SHA256 = "f82eda8a942c85937edc4c4388640ff78be9c1c76d40769214ba60e640db614c";
+const CORE_COMMIT = "54aa7d8c2fa0a728e6e0af9349c78f27f510d989";
+const CORE_TREE = "bf5ebec44a12204145478b17397048b94594a725";
+const CORE_PUBLICATION_MAP_SHA256 = "f16fd864851a9dba72623c61ee9334047affe908031fa0a07397fa90dfa78523";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-26-197";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-26-197";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-26-197";
+const CORE_SOURCE_CLOSURE_SHA256 = "9cf1c378742d7dcdb619daac4da9bbd7e942f1515410beb323a1026919716ce5";
+const OLD_PDF_SHA256 = "07062d279a15e2ba323ce0d6edbd396c70a4d2c09cbd495e0920cb2b338961c4";
+const OLD_TEX_SHA256 = "e45eb8c750f96daa36d65be646cc0f2aba3c9c29837c5c64be6e1dd252892a46";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -1991,6 +1991,13 @@ const PCCMIN_CHECKED_PACKET_BN6_BCEL_DERIVED_FAMILY_SCOPE = "arbitrary-finite-sa
 const PCCMIN_CHECKED_PACKET_BN6_BCEL_DERIVED_FAMILY_MILESTONE_SCOPE = "For every finite same-candidate checked BCEL nucleus and supplied grouped-cell ledger, the BN6 family carrier, duplicate-freedom, cut value, and cut-value positivity are constructed from the computed nucleus. M195's carrier and cut-value mismatch routes are impossible by construction; checked selector silence yields either an exact proper-cut activation mismatch or conditional ZeroSlack.";
 const PCCMIN_CHECKED_PACKET_BN6_BCEL_DERIVED_FAMILY_NON_CLAIM = "The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped cells and payloads, exact grouping proofs, claim table, rank map, route-clear equation, dependency table, checked HB closure, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The inherited proper-cut classifier enumerates a finite powerset and is not proved polynomial. Its remaining activation mismatch is a typed diagnostic route, not a constructed gain or globally decreasing transition. This milestone does not derive the grouped cells or supporting data from every source input, complete PkgC/BN3--BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
+
+const PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_THEOREMS = {
+  "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_canonical_grouping_route_or_zeroslack_checked_complete": { hash: "2627394268f34bc51ed578bcc12fac9dd82223592387848816cd3af507a9137f", axioms: ["Quot.sound","propext"], module: "PNP.PCCMinCheckedPacketBN6BCELCanonicalGrouping" }
+};
+const PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_SCOPE = "arbitrary-finite-same-candidate-checked-bcel-nucleus-and-supplied-raw-positive-support-payload-ledger-with-carrier-normalized-supports-canonical-singleton-consumer-systems-duplicate-footprint-coalescing-payload-preservation-and-exact-activation-mismatch-or-conditional-zeroslack";
+const PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_MILESTONE_SCOPE = "For every finite same-candidate checked BCEL nucleus and supplied raw positive support/payload ledger, supports are normalized inside the computed carrier, singleton consumer systems are constructed, duplicate footprints are coalesced, and every positive payload atom is preserved. The resulting canonical grouped family reuses M196, so checked selector silence yields either an exact proper-cut activation mismatch or conditional ZeroSlack.";
+const PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_NON_CLAIM = "The terminal problem, positive premise, checked finite BCEL-ready certificate, raw positive supports and payload atoms, claim table, rank map, route-clear equation, dependency table, checked HB closure, HResolve and BudgetResolve algorithms, normalizer, blocker semantics, and encoded-size bounds remain explicit supplied inputs. The inherited proper-cut classifier enumerates a finite powerset and is not proved polynomial. Its remaining activation mismatch is a typed diagnostic route, not a constructed gain or globally decreasing transition. This milestone does not derive the raw cells from BN3, BN4, BN5, PkgC, or every terminal input, complete PkgC/BN3--BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4302,32 +4309,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 581484,
-    sha256: "07062d279a15e2ba323ce0d6edbd396c70a4d2c09cbd495e0920cb2b338961c4"
+    bytes: 583531,
+    sha256: "0e903dd8f03bbe584b6f5d32affc67f0639ab776f32bdd1801f58717df07fc47"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 361456,
-    sha256: "e45eb8c750f96daa36d65be646cc0f2aba3c9c29837c5c64be6e1dd252892a46"
+    bytes: 363423,
+    sha256: "34f6d695636e468cde8e1036ef79107562ffce5ad381029a4bab6430617c76ee"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2654897,
-    sha256: "747b204c20194a4351170b5405bf6c2754287498920a005bcfcb87931ef45e38"
+    bytes: 2660461,
+    sha256: "a9aa5b382eece28959df38d9cd9d9ad978be64f34a2ec8a4fd68fdfb8b27917a"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 33522374,
-    sha256: "d6f9727e9c33add811cb385d4b5111088c9d0292f883d6704651055b5cb8f9e4"
+    bytes: 33769342,
+    sha256: "c819b22d70476a62bce084a99ebbad6ab8fd659dfe422de5ae46215bcbc01430"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 59664,
-    sha256: "8e761ae16be2b056ccbd42a83a438a6ada88a3033507c28efc896d4c40cd7e7a"
+    bytes: 61343,
+    sha256: "14e726fb8ecc7fd394aff21bd94a46af621618906f5e949191e06abaa9c36fb8"
   }
 ];
 
@@ -6231,6 +6238,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map PCCMin checked Packet/BN6/BCEL-derived-family boundary mismatch");
+  }
+
+  const pccminCheckedPacketBN6BCELCanonicalGroupingMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-checked-packet-bn6-bcel-canonical-grouping"
+  );
+  const pccminCheckedPacketBN6BCELCanonicalGroupingNames =
+    Object.keys(PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_THEOREMS);
+  if (!pccminCheckedPacketBN6BCELCanonicalGroupingMilestone
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.classification !== "formalized-pccmin-checked-packet-bn6-bcel-canonical-grouping"
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.scope !== PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_MILESTONE_SCOPE
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.requiredTheorems)
+        !== JSON.stringify(pccminCheckedPacketBN6BCELCanonicalGroupingNames)
+      || !Object.entries(PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map PCCMin checked Packet/BN6/BCEL canonical-grouping boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -10266,6 +10290,54 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status PCCMin checked Packet/BN6/BCEL-derived-family boundary mismatch");
     }
 
+    const pccminCheckedPacketBN6BCELCanonicalGroupingMilestone =
+      payload.formalPublicationMilestones?.find(
+        (row) => row.id === "pccmin-checked-packet-bn6-bcel-canonical-grouping"
+      );
+    if (!pccminCheckedPacketBN6BCELCanonicalGroupingMilestone
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.earned !== true
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.allPresent !== true
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.allAssumptionFree !== false
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.allKernelTypesMatch !== true
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.sourceClosureFingerprintMatches !== true
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.classification !== "formalized-pccmin-checked-packet-bn6-bcel-canonical-grouping"
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.scope !== PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_MILESTONE_SCOPE
+      || pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.requiredTheorems)
+        !== JSON.stringify(Object.keys(PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_THEOREMS))
+      || !Object.entries(PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_THEOREMS).every(
+        ([name, evidence]) => {
+          const row = pccminCheckedPacketBN6BCELCanonicalGroupingMilestone.theoremRows?.find(
+            (candidate) => candidate.name === name
+          );
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        }
+      )
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingFormalized !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingAxiomAuditPassed !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingAuditedDeclarationCount !== 34
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingEndpointProjectAssumptionFree !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingNormalizesSupportsInCarrier !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingConstructsSingletonConsumerSystems !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingCoalescesDuplicateFootprints !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingPreservesPayloadAtoms !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingDerivesConditionalZeroSlack !== true
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingDerivesCellsFromTerminalInput !== false
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingUnconditionalZeroSlack !== false
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingPolynomialRuntimeProved !== false
+      || payload.leanPCCMinCheckedPacketBN6BCELCanonicalGroupingScope !== PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_SCOPE
+      || payload.leanPCCMinLoopExactnessFormalized !== false
+      || payload.leanZeroSlackCompletenessFormalized !== false
+      || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status PCCMin checked Packet/BN6/BCEL canonical-grouping boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -10954,6 +11026,17 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory PCCMin checked Packet/BN6/BCEL-derived-family theorem mismatch: " + name);
+      }
+    }
+
+    for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_BN6_BCEL_CANONICAL_GROUPING_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory PCCMin checked Packet/BN6/BCEL canonical-grouping theorem mismatch: " + name);
       }
     }
 

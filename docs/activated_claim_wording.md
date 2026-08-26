@@ -212,6 +212,19 @@ leanPCCMinCheckedPacketBN6BCELDerivedFamilyDerivesConditionalZeroSlack = true
 leanPCCMinCheckedPacketBN6BCELDerivedFamilyUnconditionalZeroSlack = false
 leanPCCMinCheckedPacketBN6BCELDerivedFamilyPolynomialRuntimeProved = false
 leanPCCMinCheckedPacketBN6BCELDerivedFamilyScope = "arbitrary-finite-same-candidate-checked-bcel-nucleus-and-supplied-grouped-cell-ledger-with-bcel-derived-family-carrier-cut-value-positivity-impossible-duplicate-data-routes-exact-proper-cut-activation-mismatch-or-conditional-zeroslack"
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingFormalized = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingAxiomAuditPassed = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingAuditedDeclarationCount = 34
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingEndpointProjectAssumptionFree = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingNormalizesSupportsInCarrier = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingConstructsSingletonConsumerSystems = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingCoalescesDuplicateFootprints = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingPreservesPayloadAtoms = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingDerivesConditionalZeroSlack = true
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingDerivesCellsFromTerminalInput = false
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingUnconditionalZeroSlack = false
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingPolynomialRuntimeProved = false
+leanPCCMinCheckedPacketBN6BCELCanonicalGroupingScope = "arbitrary-finite-same-candidate-checked-bcel-nucleus-and-supplied-raw-positive-support-payload-ledger-with-carrier-normalized-supports-canonical-singleton-consumer-systems-duplicate-footprint-coalescing-payload-preservation-and-exact-activation-mismatch-or-conditional-zeroslack"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -221,7 +234,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 172 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 172 of 174 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **BCEL-derived BN6 family skeleton and conditional ZeroSlack bridge**, constructs the BN6 family carrier, duplicate-freedom, cut value, and cut-value positivity from the checked finite BCEL nucleus and a supplied grouped-cell ledger. M195's carrier and cut-value mismatch branches are impossible by construction, while checked selector silence leaves either an exact proper-cut activation mismatch or conditional ZeroSlack. The terminal problem, positive premise, checked finite BCEL-ready certificate, grouped cells and payloads, exact grouping proofs, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, and encoded-size bounds remain supplied. The inherited classifier enumerates a finite powerset and is not proved polynomial, and its remaining mismatch diagnostic is not a constructed gain or globally decreasing transition. The milestone does not complete PkgC/BN3 through BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, derive the supplied data from arbitrary input, construct executable polynomial PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 173 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 173 of 175 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Canonical BN6 positive-cell grouping and conditional ZeroSlack bridge**, normalizes supplied raw supports into the computed carrier, constructs singleton consumer systems, coalesces duplicate footprints, preserves every positive payload atom, and reuses M196 to leave either an exact activation mismatch or conditional ZeroSlack. The terminal problem, positive premise, checked finite BCEL-ready certificate, raw positive supports and payload atoms, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, and encoded-size bounds remain supplied. The inherited classifier enumerates a finite powerset and is not proved polynomial, and its remaining mismatch diagnostic is not a constructed gain or globally decreasing transition. The milestone does not derive the raw cells from BN3, BN4, BN5, PkgC, or every terminal input, complete PkgC/BN3 through BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, construct executable polynomial PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -240,7 +253,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 138-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 139-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
