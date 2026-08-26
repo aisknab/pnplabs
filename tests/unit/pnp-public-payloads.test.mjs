@@ -3896,6 +3896,44 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     []
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELActivationRoute.id));
+  const pccMinCheckedPacketBN6BCELDerivedFamily = status.formalPublicationMilestones
+    .find((row) => row.id === 'pccmin-checked-packet-bn6-bcel-derived-family');
+  assert.ok(pccMinCheckedPacketBN6BCELDerivedFamily);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.earned, true);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.allPresent, true);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketBN6BCELDerivedFamily.requiredTheorems, [
+    'PNP.DirectWire.pccmin_checked_packet_bn6_bcel_derived_family_route_or_zeroslack_checked_complete',
+  ]);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketBN6BCELDerivedFamily.theoremRows[0].actualKernelTypeSha256,
+    '2d50a967736e342be58071bd6c39783abf0cc18d67ef398fdf22803e6d4bd76a');
+  assert.deepEqual(pccMinCheckedPacketBN6BCELDerivedFamily.theoremRows[0].axioms,
+    ['Quot.sound', 'propext']);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyAuditedDeclarationCount, 14);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyConstructsFamilyFromBCEL, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyDerivesCarrier, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyDerivesCutValue, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyEliminatesDuplicateMismatchRoutes, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyRetainsActivationMismatchRoute, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELDerivedFamilyPolynomialRuntimeProved, false);
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketBN6BCELDerivedFamilyCheckedCompleteTheorem,
+    'PNP.DirectWire.pccmin_checked_packet_bn6_bcel_derived_family_route_or_zeroslack_checked_complete');
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketBN6BCELDerivedFamilyAxiomClosure,
+    ['Quot.sound', 'propext']);
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELDerivedFamilyProjectAxiomClosure,
+    []
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELDerivedFamily.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8323,6 +8361,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-hb-zeroslack-bridge'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-bn6-hb-zeroslack-bridge'));
   assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-bn6-bcel-activation-route'));
+  assert.ok(index.earnedMilestones.includes('pccmin-checked-packet-bn6-bcel-derived-family'));
   assert.deepEqual(index.unearnedMilestones, ['global-zeroslack-pccmin', 'concrete-publication-root']);
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-status').status, 'current');
   assert.equal(index.payloads.find((entry) => entry.id === 'pnp-theorem-inventory').status, 'current');
