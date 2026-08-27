@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 585,692 | `861a6cee9db0397fbb78df975801019382461fd3671d747039d550931c6eaa2b` |
-| `downloads/canonical-proof-report.pdf` | 585,692 | `861a6cee9db0397fbb78df975801019382461fd3671d747039d550931c6eaa2b` |
-| `downloads/canonical_proof_report.tex` | 365,442 | `3df99f3d4b53ab6d5d501ca892fd754983e9fc301a65d647ab3f21c866c98fd1` |
-| `downloads/canonical-proof-report.tex` | 365,442 | `3df99f3d4b53ab6d5d501ca892fd754983e9fc301a65d647ab3f21c866c98fd1` |
-| `public/pnp-status.json` | 2,666,014 | `a08ece56e5a19a62c9af7d5f8e1816417669208f08cf12909645049930187efe` |
-| `public/pnp-theorem-inventory.json` | 34,008,862 | `eca0faab251c27e188b1ad11f8562d371afc70547b017a6c56f8eeb0cea5353f` |
-| `public/pnp-proof-progress.json` | 63,093 | `6afdb35331c4b95afdb0c853d28e4597f56440192438a038a9c49b40052df308` |
+| `downloads/canonical_proof_report.pdf` | 587,803 | `ab244c4432c1410dc34f0d33f46fa5cee274a076d4f1d3db6b76edc10d97e2f9` |
+| `downloads/canonical-proof-report.pdf` | 587,803 | `ab244c4432c1410dc34f0d33f46fa5cee274a076d4f1d3db6b76edc10d97e2f9` |
+| `downloads/canonical_proof_report.tex` | 367,659 | `844479ab991b0bd7aa7e9b890acbb7a06c2636c630cb9dbb83bd5c8480289704` |
+| `downloads/canonical-proof-report.tex` | 367,659 | `844479ab991b0bd7aa7e9b890acbb7a06c2636c630cb9dbb83bd5c8480289704` |
+| `public/pnp-status.json` | 2,672,261 | `f2119f9b300fd63e3ab6e8dd9ac92e86376925ad1a36656e8117531f6d8a2bf5` |
+| `public/pnp-theorem-inventory.json` | 34,202,264 | `35cba1467da8d977927d3e783930ac45345bc0c2ff480032067405007e1aa069` |
+| `public/pnp-proof-progress.json` | 64,938 | `36e823be823f47f28066a6c4522121ab187c749b57a06bc8c9f8657b24507f93` |
 
-The PDF must have 140 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 141 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout ebebf9356116e3b8dca9fbae6999826c026fa18b
+git -C ../pnp checkout 02a8fc9ea8fb7c338b9c6a484020fe6dfc754872
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 30,909 public declarations, 15,792 theorem-kind declarations,
-7,690 assumption-free theorem-kind declarations, 15,171 excluded private auxiliaries, 316 modules, and
+Expected compiled inventory counts are 31,035 public declarations, 15,849 theorem-kind declarations,
+7,699 assumption-free theorem-kind declarations, 15,175 excluded private auxiliaries, 318 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -241,6 +241,21 @@ BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, construct 
 prove unconditional ZeroSlack, establish encoded-size polynomial construction or runtime, put CNFSAT
 in P, establish SAT hardness transport, create the eligible root theorem, or close a global gate. The
 fixed-weight score therefore remains 35%.
+
+The latest M199 sparse V53 constant-cut-basis milestone has 1 reviewed theorem pin. For every finite
+sparse V53 hypergraph with at least two anchors, it proves that a shape-specific basis is equivalent
+to the complete constant equation on every nonempty proper cut. Its total classifier checks the
+two-anchor full weight, three singleton cuts, or four-plus full-span support and weight without
+enumerating carrier subsets. Accepted evidence derives constant activation and conditional ZeroSlack
+at the checked BN6/BCEL/HB boundary. The endpoint uses only Lean-standard `Quot.sound` and `propext`;
+its focused 22-declaration audit is free of project-specific axioms. Terminal data, raw cells and
+payloads, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, upstream
+construction, and complete encoded-size bounds remain supplied. Rejection is a typed structural
+diagnostic rather than a constructed gain or globally decreasing transition. The milestone does not
+force basis acceptance or route rejection to a gain, prove manuscript-wide SaturatePositive or
+BCELReady, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial
+runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or close
+a global gate. The fixed-weight score therefore remains 35%.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

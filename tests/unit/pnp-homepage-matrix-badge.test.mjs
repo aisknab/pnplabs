@@ -52,7 +52,12 @@ function latestMilestoneStatusFields(status, release, milestone) {
   );
   assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   const releasePrefix = matchingField[0].slice(0, -suffix.length);
-  const scope = release.earnedBoundary[`${releasePrefix}Scope`];
+  const matchingScopeFields = Object.entries(release.earnedBoundary).filter(
+    ([key]) => key.endsWith('Scope')
+      && key.slice(0, -'Scope'.length).toLowerCase() === releasePrefix.toLowerCase(),
+  );
+  assert.equal(matchingScopeFields.length, 1, `expected one release scope field for ${milestone.id}`);
+  const scope = matchingScopeFields[0][1];
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
   );
