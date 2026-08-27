@@ -5,9 +5,9 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 143-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 31,278 public declarations across 321 modules,
-including 15,972 theorem-kind declarations, 7,705 assumption-free theorem-kind declarations, and no
+The canonical report downloads are now a 144-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 31,356 public declarations across 322 modules,
+including 15,993 theorem-kind declarations, 7,705 assumption-free theorem-kind declarations, and no
 project-specific axioms. Exactly 15,185 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 143-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 144-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,141 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,141 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 177 of 179 scoped formal milestone rows. The newest row classifies every finite supplied active V54 consumer family into the first exact same-key PkgC cancellation or an all-singletonized branch that derives raw BN6 positive cells, support-size facts, payload order, and exact all-cut activation conservation. | Treating supplied source systems, active cuts, payloads, the typed restorer, terminal data, upstream construction, or other supplied stages as a terminal-derived construction; treating local cancellation as a verified global gain or rank decrease; or treating the row as complete PkgC through BN6 integration, manuscript-wide SaturatePositive, BCELReady, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,142 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,142 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 178 of 180 scoped formal milestone rows. The newest row composes the source-derived PkgC/BN6 ledger with the checked sparse BCEL/Packet classifier, retaining exact source-member cancellation, reflecting a nonempty proper singleton/pair activation mismatch to the source ledger, or reaching conditional ZeroSlack under supplied checked selector silence. | Treating supplied terminal, source, cut, payload, restorer, downstream-table, HB, route-clear, or silence data as terminal-derived construction; treating local cancellation or mismatch as a verified global gain or rank decrease; or treating the row as complete PkgC through BN6 integration, manuscript-wide SaturatePositive, BCELReady, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,10 +62,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `e0d08b9d0f294b64d41035125ce0dab1ee6188d8`.
+   `a3115c0e42924db4e9c400268d63b942360e71a0`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,141 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,142 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -190,9 +190,11 @@ equation and makes rejection retain the first exact small-cut raw activation mis
 diagnoses rather than repairs the missing numerical bridge. The local list bound is not a complete runtime
 theorem. M201 separately classifies arbitrary finite supplied active V54 consumer systems into exact same-key
 PkgC cancellation or singletonization, then derives raw BN6 positive cells, support sizes, payload order, and
-exact all-cut activation conservation in the singleton branch. The route does not derive those systems,
-active cuts, payloads, or typed restorer from terminal input, turn local cancellation into a verified global
-gain, integrate the result with the checked BCEL/Packet family, map the M200 mismatch into a
+exact all-cut activation conservation in the singleton branch. M202 feeds that derived ledger into the checked
+sparse BCEL/Packet classifier and reflects its first singleton/pair activation mismatch back to the supplied
+source ledger. The route does not derive the source systems, cuts, payloads, restorer, downstream tables, HB
+evidence, route-clear result, or selector silence from terminal input, turn either diagnostic into a verified
+global gain, or map the M200 mismatch into a
 constructed decreasing gain, establish manuscript-wide
 SaturatePositive or BCELReady, complete the global route system, prove unconditional ZeroSlack, or prove
 polynomial PCCMin.
@@ -274,7 +276,9 @@ Review the gaps between those scopes and the target theorem:
    quadratic-size family equivalent to all proper-cut equations, then returns the first exact small-cut raw
    activation mismatch or reaches the existing conditional ZeroSlack branch. M201 classifies finite supplied
    active V54 consumers into the first exact same-key PkgC cancellation or singletonization and, in the latter
-   case, derives the raw BN6 positive cells and exact all-cut activation ledger. The terminal problem, source
+   case, derives the raw BN6 positive cells and exact all-cut activation ledger. M202 feeds that ledger into the
+   checked sparse BCEL/Packet classifier, retaining cancellation, reflecting a singleton/pair mismatch back to
+   the source ledger, or reaching conditional ZeroSlack under supplied checked selector silence. The terminal problem, source
    systems, active cuts, positive payloads, typed restorer, checked finite BCEL-ready and Packet data, tables,
    ranks, route-clear proof, normalizer, resolvers, blocker semantics, upstream construction, and complete
    encoded-size bounds remain supplied. The local quadratic list bound is not a complete polynomial runtime
@@ -308,7 +312,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 143-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 144-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

@@ -13,21 +13,27 @@ This repository concerns an extraordinary theoretical computer science claim. Al
 
 ## Remote builder policy
 
-The local workstation is memory-constrained. Treat it as an edit-and-inspection
-host, not as a build host.
+Treat the local workstation as an orchestration and source-editing harness, not
+as a build or test machine.
 
-- Run full or clean builds, test suites, broad audits, report/PDF generation,
-  deployment verification, and clean-clone reproduction on the configured
-  remote builder.
+- Run all repository processing on the configured remote builder, including
+  every Node command, syntax check, test, validator, generator, dependency
+  installation, report/PDF build, browser or server operation, deployment
+  verification, and clean-clone reproduction. This applies even when a targeted
+  command appears small. If a command's resource behaviour is uncertain, run it
+  remotely.
 - Run heavy remote jobs in a user-level `systemd-run` scope under the configured
   resource limits.
-- Never silently fall back to a heavyweight local command when the remote builder
-  is unavailable. Stop and report the connection problem instead.
+- Never silently fall back to local processing when the remote builder is
+  unavailable. Diagnose the connection, notify the user when the stall is
+  actionable, and wait or pursue only lightweight source work.
 - Limit local commands to source edits and lightweight inspection, such as `rg`,
   `sed`, `git diff`, and `git status`. Do not execute repository source or run
   syntax checks, tests, generators, validators, builds, package-manager commands,
   renderers, or servers locally. Dispatch even targeted execution to the remote
   builder.
+- Before starting or resuming a remote phase, confirm that no task-created local
+  build, test, generator, renderer, server, or validator process remains active.
 - Keep host, proxy, key, and network details in the user's SSH configuration; do
   not copy private connection data into this repository.
 
