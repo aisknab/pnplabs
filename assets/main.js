@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-27-201";
-const STATUS_SHA256 = '38e59fd7a32c7d538039d6c75fc1fd0b9d2e8f6d16dacdf3adb50e5f1aab8667';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-27-201";
-const FORMAL_PUBLICATION_MAP_SHA256 = "1d9a9c34a952dffcbc14ccb14a29b8c97260ce4f66cc1baccf7f87317e442ff6";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-202";
+const STATUS_SHA256 = '183cb789f3863081d35e57d06c1720d2ce73fc4e6d15c628abdf46f577a1ddd7';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-28-202";
+const FORMAL_PUBLICATION_MAP_SHA256 = "d044069cdeaa35e57be2cbd5c31f904cb354fe7826a1218af578f4064e4d5650";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-27-201";
-const INVENTORY_SHA256 = "89c60a2ff8bdc2963ba0013268fc926d7de427cee67b0b6bfac6fc94072f8b41";
-const SOURCE_CLOSURE_SHA256 = "6109add4a0a5cf750b2b53640b72b9362986d9da19a5f16aee8e3108200415a4";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-28-202";
+const INVENTORY_SHA256 = "edcceaa5c599140f3d3c6bee02bf6cf03ced3a65e389c64e3961857ac6ecb92e";
+const SOURCE_CLOSURE_SHA256 = "e5a31f1c0b5f76980480e17c49827c6f594df32dfc228792196e53dc7ccd7d6c";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 31278,
-  theorems: 15972,
+  declarations: 31356,
+  theorems: 15993,
   assumptionFreeTheorems: 7705,
   excludedPrivateDeclarations: 15185,
-  modules: 321,
+  modules: 322,
   axioms: 0,
 });
 
@@ -4731,6 +4731,9 @@ const PCCMIN_CHECKED_PACKET_BN6_BCEL_SPARSE_ACTIVATION_ROUTE_DECLARATIONS = Obje
 const RESIDUAL_TERMINAL_PKGC_BN6_POSITIVE_CELLIZATION_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.terminalPkgC_bn6_positive_cellization_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalPkgCBN6PositiveCellization","0715d92380dace6d7dd5f04311a9c7dc2e5172ae1464a09e2524246ac0897f86"],
 ]);
+const PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.pccmin_checked_packet_pkgc_bn6_bcel_source_route_or_zeroslack_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketPkgCBN6BCELSourceRoute","93e5eba6868b241e355f7ce76248ee5da358e64424c7138ee0b4b231051f12ea"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5798,6 +5801,24 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanResidualTerminalPkgCBN6PositiveCellizationCompleteEncodedPolynomialRuntimeProved: false,
   leanResidualTerminalPkgCBN6PositiveCellizationUnconditionalZeroSlack: false,
   leanResidualTerminalPkgCBN6PositiveCellizationScope: null,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteFormalized: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAxiomAuditPassed: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAuditedDeclarationCount: 0,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteEndpointProjectAssumptionFree: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSourceCellsArbitraryFinite: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteRawCellsDerivedFromPkgCSource: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationWeightConservedAllCuts: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRoutePkgCCancellationProofBearing: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSparseCutLengthAtMostTwo: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationMismatchReflectedToSourceLedger: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConditionalZeroSlackOnly: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteDerivesSourcesFromTerminalInput: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConstructsDownstreamTables: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCancellationOrMismatchIsGlobalGain: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompletePkgCBN6Integration: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompleteEncodedPolynomialRuntimeProved: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteUnconditionalZeroSlack: false,
+  leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6594,6 +6615,24 @@ leanResidualTerminalPkgCBN6PositiveCellizationCompletePkgCBN6Integration = ${pay
 leanResidualTerminalPkgCBN6PositiveCellizationCompleteEncodedPolynomialRuntimeProved = ${payload.leanResidualTerminalPkgCBN6PositiveCellizationCompleteEncodedPolynomialRuntimeProved ?? false}
 leanResidualTerminalPkgCBN6PositiveCellizationUnconditionalZeroSlack = ${payload.leanResidualTerminalPkgCBN6PositiveCellizationUnconditionalZeroSlack ?? false}
 leanResidualTerminalPkgCBN6PositiveCellizationScope = ${payload.leanResidualTerminalPkgCBN6PositiveCellizationScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCBN6PositiveCellizationScope)}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteFormalized = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteFormalized ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAxiomAuditPassed = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAxiomAuditPassed ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAuditedDeclarationCount = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAuditedDeclarationCount ?? 0}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteEndpointProjectAssumptionFree = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteEndpointProjectAssumptionFree ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSourceCellsArbitraryFinite = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSourceCellsArbitraryFinite ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteRawCellsDerivedFromPkgCSource = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteRawCellsDerivedFromPkgCSource ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationWeightConservedAllCuts = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationWeightConservedAllCuts ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRoutePkgCCancellationProofBearing = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRoutePkgCCancellationProofBearing ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSparseCutLengthAtMostTwo = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSparseCutLengthAtMostTwo ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationMismatchReflectedToSourceLedger = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationMismatchReflectedToSourceLedger ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConditionalZeroSlackOnly = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConditionalZeroSlackOnly ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteDerivesSourcesFromTerminalInput = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteDerivesSourcesFromTerminalInput ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConstructsDownstreamTables = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConstructsDownstreamTables ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCancellationOrMismatchIsGlobalGain = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCancellationOrMismatchIsGlobalGain ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompletePkgCBN6Integration = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompletePkgCBN6Integration ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompleteEncodedPolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompleteEncodedPolynomialRuntimeProved ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteUnconditionalZeroSlack ?? false}
+leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteScope = ${payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7780,6 +7819,14 @@ function validateInventory(inventory) {
       hash,
     }));
 
+  const pccMinCheckedPacketPkgCBN6BCELSourceRoute =
+    PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
+
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8424,6 +8471,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && pccMinCheckedPacketPkgCBN6BCELSourceRoute.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -8913,6 +8964,10 @@ function validateStatus(status, inventory) {
 
   const residualTerminalPkgCBN6PositiveCellizationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "residual-terminal-pkgc-bn6-positive-cellization"
+  );
+
+  const pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-bn6-bcel-source-route"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11112,6 +11167,46 @@ function validateStatus(status, inventory) {
     && status.leanResidualTerminalPkgCBN6PositiveCellizationCompleteEncodedPolynomialRuntimeProved === false
     && status.leanResidualTerminalPkgCBN6PositiveCellizationUnconditionalZeroSlack === false
     && status.leanResidualTerminalPkgCBN6PositiveCellizationScope === "arbitrary-finite-supplied-active-v54-consumer-systems-over-one-carrier-classified-by-exact-pkgc-same-key-cancellation-or-derived-raw-bn6-positive-cells-with-payload-order-and-all-cut-activation-conservation-over-a-supplied-restorer"
+
+    && pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone?.classification === "formalized-pccmin-checked-packet-pkgc-bn6-bcel-source-route"
+    && pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone.status === "formalized-pccmin-checked-packet-pkgc-bn6-bcel-source-route"
+    && pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone.scope === "For every arbitrary finite supplied active PkgC source ledger over the exact checked BCEL nucleus, M201's total classifier either retains an exact source-member same-key cancellation or constructs the only raw BN6 positive-cell ledger admitted downstream. That derived ledger enters M200's canonical checked Packet/HB classifier, whose small-cut mismatch is reflected back through all-cut activation conservation to the original PkgC source ledger; the coherent branch yields genuine conditional ZeroSlack under supplied checked selector silence."
+    && pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone.nonClaim === "The terminal problem, checked finite BCEL-ready certificate, active V54 source systems and cuts, positive payload atoms, typed restorer, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. A returned PkgC cancellation or source-ledger activation mismatch is exact proof-bearing evidence, not a verified gain or globally rank-decreasing transition. This milestone does not construct the sources or downstream tables from every valid terminal input, construct upstream BN3--BN5 data, prove complete PkgC/BN3--BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone.requiredTheorems,
+      PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_DECLARATIONS.map(([name]) => name)
+    )
+    && pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone.theoremRows?.length
+      === PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_DECLARATIONS.length
+    && pccMinCheckedPacketPkgCBN6BCELSourceRouteMilestone.theoremRows?.every((row) => {
+      const expected = PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_DECLARATIONS
+        .find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteFormalized === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAxiomAuditPassed === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAuditedDeclarationCount === 7
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteEndpointProjectAssumptionFree === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSourceCellsArbitraryFinite === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteRawCellsDerivedFromPkgCSource === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationWeightConservedAllCuts === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRoutePkgCCancellationProofBearing === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSparseCutLengthAtMostTwo === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationMismatchReflectedToSourceLedger === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConditionalZeroSlackOnly === true
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteDerivesSourcesFromTerminalInput === false
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConstructsDownstreamTables === false
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCancellationOrMismatchIsGlobalGain === false
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompletePkgCBN6Integration === false
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompleteEncodedPolynomialRuntimeProved === false
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteUnconditionalZeroSlack === false
+    && status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteScope === "arbitrary-finite-supplied-active-pkgc-source-ledger-over-the-exact-checked-bcel-nucleus-with-source-derived-raw-bn6-cells-exact-pkgc-cancellation-or-source-ledger-singleton-pair-activation-mismatch-and-conditional-zeroslack-under-supplied-checked-downstream-data"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"

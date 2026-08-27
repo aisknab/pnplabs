@@ -4176,6 +4176,57 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(residualTerminalPkgCBN6PositiveCellization.id));
+  const pccMinCheckedPacketPkgCBN6BCELSourceRoute = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-pkgc-bn6-bcel-source-route");
+  assert.ok(pccMinCheckedPacketPkgCBN6BCELSourceRoute);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.earned, true);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.allPresent, true);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketPkgCBN6BCELSourceRoute.requiredTheorems, [
+    "PNP.DirectWire.pccmin_checked_packet_pkgc_bn6_bcel_source_route_or_zeroslack_checked_complete",
+  ]);
+  assert.equal(pccMinCheckedPacketPkgCBN6BCELSourceRoute.theoremRows.length, 1);
+  assert.equal(
+    pccMinCheckedPacketPkgCBN6BCELSourceRoute.theoremRows[0].actualKernelTypeSha256,
+    "93e5eba6868b241e355f7ce76248ee5da358e64424c7138ee0b4b231051f12ea",
+  );
+  assert.deepEqual(
+    pccMinCheckedPacketPkgCBN6BCELSourceRoute.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteAuditedDeclarationCount, 7);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSourceCellsArbitraryFinite, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteRawCellsDerivedFromPkgCSource, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationWeightConservedAllCuts, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRoutePkgCCancellationProofBearing, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteSparseCutLengthAtMostTwo, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteActivationMismatchReflectedToSourceLedger, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConditionalZeroSlackOnly, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteDerivesSourcesFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteConstructsDownstreamTables, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCancellationOrMismatchIsGlobalGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompletePkgCBN6Integration, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteUnconditionalZeroSlack, false);
+  assert.equal(
+    release.earnedBoundary.pccMinCheckedPacketPkgCBN6BCELSourceRouteCheckedCompleteTheorem,
+    "PNP.DirectWire.pccmin_checked_packet_pkgc_bn6_bcel_source_route_or_zeroslack_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketPkgCBN6BCELSourceRouteAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketPkgCBN6BCELSourceRouteProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCBN6BCELSourceRoute.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -9127,8 +9178,45 @@ test('status page has a conservative complete static fallback', async () => {
   assert.equal(status.formalPublicationMilestones.length, index.formalPublicationMilestoneCounts.total);
 });
 
+test('browser runtime constants derive from the canonical current payloads', async () => {
+  const [runtime, release, inventory] = await Promise.all([
+    readText('assets/main.js'),
+    readJson('downloads/formal-publication-release.json'),
+    readJson('public/pnp-theorem-inventory.json'),
+  ]);
+  const stringConstant = (name) => {
+    const match = runtime.match(new RegExp("const\\s+" + name + "\\s*=\\s*[\"']([^\"']+)[\"'];"));
+    assert.ok(match, `missing browser runtime constant: ${name}`);
+    return match[1];
+  };
+  assert.equal(stringConstant('STATUS_COORDINATE'), release.artifacts.status.coordinate);
+  assert.equal(stringConstant('STATUS_SHA256'), release.artifacts.status.sha256);
+  assert.equal(stringConstant('FORMAL_PUBLICATION_MAP_COORDINATE'), release.source.formalPublicationMapCoordinate);
+  assert.equal(stringConstant('FORMAL_PUBLICATION_MAP_SHA256'), release.source.formalPublicationMapSha256);
+  assert.equal(stringConstant('INVENTORY_COORDINATE'), release.artifacts.theoremInventory.coordinate);
+  assert.equal(stringConstant('INVENTORY_SHA256'), release.artifacts.theoremInventory.sha256);
+  assert.equal(stringConstant('SOURCE_CLOSURE_SHA256'), release.source.leanSourceClosureSha256);
+
+  const countsStart = runtime.indexOf('const INVENTORY_COUNTS = Object.freeze({');
+  const countsEnd = runtime.indexOf('\n});', countsStart);
+  assert.notEqual(countsStart, -1, 'browser runtime inventory counts start');
+  assert.notEqual(countsEnd, -1, 'browser runtime inventory counts end');
+  const countsBlock = runtime.slice(countsStart, countsEnd);
+  const numberField = (name) => {
+    const match = countsBlock.match(new RegExp(name + ":\\s*(\\d+),"));
+    assert.ok(match, `missing browser runtime inventory count: ${name}`);
+    return Number(match[1]);
+  };
+  assert.equal(numberField('declarations'), inventory.declarationCount);
+  assert.equal(numberField('theorems'), inventory.theoremCount);
+  assert.equal(numberField('assumptionFreeTheorems'), inventory.assumptionFreeTheoremCount);
+  assert.equal(numberField('excludedPrivateDeclarations'), inventory.excludedPrivateDeclarationCount);
+  assert.equal(numberField('modules'), inventory.sourceClosureModuleCount);
+  assert.equal(numberField('axioms'), inventory.axiomCount);
+});
+
 test('static inventory prose derives changing publication totals from the canonical payloads', async () => {
-  const [readme, paper, faq, guide, pipeline, reproducibility, activatedClaimWording, status, index, inventory, updates, latestRelease] = await Promise.all([
+  const [readme, paper, faq, guide, pipeline, reproducibility, activatedClaimWording, status, index, inventory, updates, latestRelease, homePage, statusPage] = await Promise.all([
     readText('README.md'),
     readText('paper.html'),
     readText('faq.html'),
@@ -9141,6 +9229,8 @@ test('static inventory prose derives changing publication totals from the canoni
     readJson('public/pnp-theorem-inventory.json'),
     readJson('content/milestone-updates.json'),
     readJson('downloads/formal-publication-release.json'),
+    readText('index.html'),
+    readText('status.html'),
   ]);
   const declarations = formatNumber(inventory.declarationCount);
   const theorems = formatNumber(inventory.theoremCount);
@@ -9149,6 +9239,8 @@ test('static inventory prose derives changing publication totals from the canoni
   const sourceModules = formatNumber(status.leanTheoremInventorySourceClosureModuleCount);
   const projectAxioms = status.projectSpecificAxiomInventory.length;
   const reportPages = latestRelease.artifacts.report.pageCount;
+  assert.equal(homePage.includes(INVENTORY_SHA256), true, 'homepage must display the canonical inventory hash');
+  assert.equal(statusPage.includes(INVENTORY_SHA256), true, 'status page must display the canonical inventory hash');
   assert.equal(
     readme.includes(`${declarations}** exported public declarations across **${sourceModules}** modules`),
     true,
