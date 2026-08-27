@@ -4123,6 +4123,59 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELSparseActivationRoute.id));
+  const residualTerminalPkgCBN6PositiveCellization = status.formalPublicationMilestones
+    .find((row) => row.id === "residual-terminal-pkgc-bn6-positive-cellization");
+  assert.ok(residualTerminalPkgCBN6PositiveCellization);
+  assert.equal(residualTerminalPkgCBN6PositiveCellization.earned, true);
+  assert.equal(residualTerminalPkgCBN6PositiveCellization.allPresent, true);
+  assert.equal(residualTerminalPkgCBN6PositiveCellization.allAssumptionFree, false);
+  assert.equal(
+    residualTerminalPkgCBN6PositiveCellization.axiomClosureUsesOnlyLeanStandardAllowlist,
+    true,
+  );
+  assert.equal(residualTerminalPkgCBN6PositiveCellization.allKernelTypesMatch, true);
+  assert.equal(residualTerminalPkgCBN6PositiveCellization.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualTerminalPkgCBN6PositiveCellization.requiredTheorems, [
+    "PNP.DirectWire.terminalPkgC_bn6_positive_cellization_checked_complete",
+  ]);
+  assert.equal(residualTerminalPkgCBN6PositiveCellization.theoremRows.length, 1);
+  assert.equal(
+    residualTerminalPkgCBN6PositiveCellization.theoremRows[0].actualKernelTypeSha256,
+    "0715d92380dace6d7dd5f04311a9c7dc2e5172ae1464a09e2524246ac0897f86",
+  );
+  assert.deepEqual(
+    residualTerminalPkgCBN6PositiveCellization.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationFormalized, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationAuditedDeclarationCount, 19);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationSourceCellsArbitraryFinite, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationRawSupportsDerived, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationFootprintSizeDerivedFromActiveCut, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationPkgCCancellationProofBearing, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationActivationWeightConservedAllCuts, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationPayloadOrderPreserved, true);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationDerivesCellsFromTerminalInput, false);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationRestorerConstructedFromTerminalInput, false);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationCancellationIsGlobalGain, false);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationCompletePkgCBN6Integration, false);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanResidualTerminalPkgCBN6PositiveCellizationUnconditionalZeroSlack, false);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPkgCBN6PositiveCellizationCheckedCompleteTheorem,
+    "PNP.DirectWire.terminalPkgC_bn6_positive_cellization_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPkgCBN6PositiveCellizationAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPkgCBN6PositiveCellizationProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(residualTerminalPkgCBN6PositiveCellization.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');

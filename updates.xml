@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-27T08:23:34Z</updated>
+  <updated>2026-08-27T14:24:17Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-27-residual-terminal-pkgc-bn6-positive-cellization</id>
+    <title>PkgC same-key cancellation or derived BN6 positive cellization</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-27-residual-terminal-pkgc-bn6-positive-cellization"/>
+    <published>2026-08-27T14:24:17Z</published>
+    <updated>2026-08-27T14:24:17Z</updated>
+    <summary type="text">Lean now classifies every finite list of supplied active consumer systems over one common carrier. It returns the first exact same-key PkgC cancellation realization, or proves every supplied system is singletonized and derives the raw BN6 positive-cell supports, their size facts, payload order, and exact activation-weight conservation on every cut. Source consumer systems, active cuts, positive payload atoms, the typed restorer, and upstream BN3 through BN5 construction remain supplied. A cancellation is proof-bearing PkgC evidence, not a verified global gain or rank-decreasing transition. This does not derive those objects from every terminal input, complete PkgC through BN6 integration, establish unconditional ZeroSlack or polynomial PCCMin, put CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 177 of 179. Tracker at publication: formal artefact coverage 177 of 179; risk-weighted proof completion estimate 35 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;Lean now classifies every finite list of supplied active consumer systems over one common carrier. It returns the first exact same-key PkgC cancellation realization, or proves every supplied system is singletonized and derives the raw BN6 positive-cell supports, their size facts, payload order, and exact activation-weight conservation on every cut.&lt;/p&gt;&lt;p&gt;Source consumer systems, active cuts, positive payload atoms, the typed restorer, and upstream BN3 through BN5 construction remain supplied. A cancellation is proof-bearing PkgC evidence, not a verified global gain or rank-decreasing transition. This does not derive those objects from every terminal input, complete PkgC through BN6 integration, establish unconditional ZeroSlack or polynomial PCCMin, put CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 177 of 179.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 177 of 179 current scoped rows earned. Risk-weighted proof completion estimate: 35%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-27-residual-terminal-pkgc-bn6-positive-cellization&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-27-pccmin-checked-packet-bn6-bcel-sparse-activation-route</id>
     <title>Sparse V53 proper-cut activation route and checked conditional ZeroSlack bridge</title>
