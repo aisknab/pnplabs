@@ -11,14 +11,14 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout e355f1c93ef17f7d8069cc128b204a351b4792b7
+git checkout e0d08b9d0f294b64d41035125ce0dab1ee6188d8
 npm ci
 npm run formal:inventory:check
 npm run validate
 npm run report:check
 ```
 
-`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. PNPLabs imports those exact artifacts and does not rerun Lean. The newest row, **Sparse V53 proper-cut activation route and checked conditional ZeroSlack bridge**, proves that the duplicate-free singleton and order-preserving pair proper cuts form a quadratic-size family equivalent to every nonempty proper-cut equation. A total classifier returns the first exact small-cut mismatch or derives the complete equation; the checked adapter reflects a mismatch through the direct raw ledger or reaches conditional ZeroSlack. Terminal data, the positive premise, checked finite BCEL-ready certificate, raw positive cells and payloads, route-clear proof, tables, ranks, normalizer, resolvers, blocker semantics, upstream construction, and complete encoded-size bounds remain supplied. The local list bound is not a complete polynomial construction or runtime theorem, and a mismatch is not a verified gain or globally decreasing transition. This does not prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, supply a target decider or SAT NP-hardness transport, or create the root theorem. `PNP.Main.p_eq_np` is absent; no project-specific axioms remain and five blockers remain.
+`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. PNPLabs imports those exact artifacts and does not rerun Lean. The newest row, **PkgC same-key cancellation or derived BN6 positive cellization**, classifies every finite list of supplied active V54 consumer systems over one carrier into the first exact same-key PkgC cancellation realization or an all-singletonized branch. That branch derives the raw BN6 supports and support-size facts from the active consumer data, preserves payload order, and proves exact activation-weight conservation on every cut. The terminal problem, source systems, active cuts, positive payload atoms, typed restorer, upstream BN3 through BN5 construction, checked BCEL/Packet integration, and complete encoded-size bounds remain supplied or open. A returned cancellation is proof-bearing local PkgC evidence, not a verified gain or globally decreasing transition. This does not prove manuscript-wide SaturatePositive or BCELReady, complete PkgC through BN6 integration, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, supply a target decider or SAT NP-hardness transport, or create the root theorem. `PNP.Main.p_eq_np` is absent; no project-specific axioms remain and five blockers remain.
 
 ## Freeze controls
 

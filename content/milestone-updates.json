@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-27-residual-terminal-pkgc-bn6-positive-cellization",
+      "milestoneId": "residual-terminal-pkgc-bn6-positive-cellization",
+      "publishedAt": "2026-08-27T14:24:17Z",
+      "title": "PkgC same-key cancellation or derived BN6 positive cellization",
+      "plainLanguage": [
+        "Lean now classifies every finite list of supplied active consumer systems over one common carrier. It returns the first exact same-key PkgC cancellation realization, or proves every supplied system is singletonized and derives the raw BN6 positive-cell supports, their size facts, payload order, and exact activation-weight conservation on every cut.",
+        "Source consumer systems, active cuts, positive payload atoms, the typed restorer, and upstream BN3 through BN5 construction remain supplied. A cancellation is proof-bearing PkgC evidence, not a verified global gain or rank-decreasing transition. This does not derive those objects from every terminal input, complete PkgC through BN6 integration, establish unconditional ZeroSlack or polynomial PCCMin, put CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 177 of 179."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 177,
+        "formalArtefactCoverageTotalRows": 179,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "e0d08b9d0f294b64d41035125ce0dab1ee6188d8",
+        "tree": "b835319af691a07d8770f19cf6e5d0cba4c26c56",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-27-201",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-27-pccmin-checked-packet-bn6-bcel-sparse-activation-route",
       "milestoneId": "pccmin-checked-packet-bn6-bcel-sparse-activation-route",
       "publishedAt": "2026-08-27T08:23:34Z",

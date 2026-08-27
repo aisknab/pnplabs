@@ -3,12 +3,12 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/e355f1c93ef17f7d8069cc128b204a351b4792b7/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/e355f1c93ef17f7d8069cc128b204a351b4792b7/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/e0d08b9d0f294b64d41035125ce0dab1ee6188d8/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/e0d08b9d0f294b64d41035125ce0dab1ee6188d8/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
-canonical download is the 142-page inventory-derived report. Every bare `Report` citation in the
+canonical download is the 143-page inventory-derived report. Every bare `Report` citation in the
 historical tables below refers only to the 57-page manuscript at source tag
 `final-pnp-proof-report-hardened-7072f8d`, commit
 `7072f8d0bda6d44d240f9bb3fad624fd357e1278`; it never refers to the current canonical aliases.
@@ -36,8 +36,8 @@ Checker paths have two different statuses:
 
 | Term | Meaning | Current status |
 | --- | --- | --- |
-| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 3,140 reviewed milestone candidates | 31,198 declarations, 15,936 theorem-kind, 7,703 assumption-free theorem-kind, 320 modules, no project-specific axioms; 15,181 private compiler auxiliaries are excluded |
-| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | 3,140 theorem candidates support 176 of 178 scoped milestone rows through the established concrete, reduction, residual, Packet/HB, sidecar, compatibility, PCCPack, proof-bearing PCCMin, same-candidate BCEL, canonical grouping, raw cut-ledger, sparse V53 constant-cut-basis, and sparse activation-route results. No earned closure contains a project axiom. |
+| Compiled theorem inventory | Canonical list of public Lean declaration names, modules, kinds, and collected axiom closures, plus raw kernel types for 3,141 reviewed milestone candidates | 31,278 declarations, 15,972 theorem-kind, 7,705 assumption-free theorem-kind, 321 modules, no project-specific axioms; 15,185 private compiler auxiliaries are excluded |
+| Reviewed milestone fingerprint | Domain-separated SHA-256 of an exact theorem name and raw kernel type, combined with approved axiom closure and complete source-closure identity | 3,141 theorem candidates support 177 of 179 scoped milestone rows through the established concrete, reduction, residual, Packet/HB, sidecar, compatibility, PCCPack, proof-bearing PCCMin, same-candidate BCEL, canonical grouping, raw cut-ledger, sparse V53 cut-basis and activation-route, and PkgC/BN6 positive-cellization results. No earned closure contains a project axiom. |
 | Strict-v0 locked-NAND encoded semantic boundary | Canonical token, normalized-circuit, and complete-instance codecs plus a pure all-bitstring construction | Valid normalized circuits and complete instances round-trip exactly; malformed source bytes fail closed and valid source bytes preserve the locked-NAND semantic threshold. This is not itself a machine; the following source-parser milestone validates source bytes only. |
 | Strict-v0 locked-NAND source parser | One literal 228-state, 2,052-rule, nine-symbol finite machine with a compiled cubic bound | Accepts exactly valid source circuits, preserves valid bytes, rejects invalid bytes with empty output, cannot time out within the bound, and supplies polynomial-time witnesses plus leaf `RawRefinement`. Downstream milestones emit and expose the target reduction; this parser alone does not solve the target or prove P = NP. |
 | Strict-v0 locked-NAND target emitter | One literal 1,387,921-rule, nine-symbol grammar-only controller with explicit all-input runtime and output-size bounds | Emits the exact direct target for grammar-decoded circuits, rejects malformed grammar with empty output, supplies compiled polynomial-time machine/function witnesses and exact leaf `RawRefinement`, and composes with the strict parser to compute `buildLockedNANDInstance`. The downstream reduction and M186 compatibility layer package and expose that composition; the emitter alone does not solve the target or prove P = NP. |
@@ -123,7 +123,7 @@ Checker paths have two different statuses:
 | Concrete publication gate | Strict conjunction requiring an eligible concrete standard complexity target, exact compatibility-root theorem, reviewed non-null fingerprints, source closure, and fixed Lean-standard axiom closure | False; the eligible charged-pipeline target definition is present but inactive, while the root and activation fingerprints are absent |
 | `PNP.PEqualsNP` compatibility alias | Exact alias of the concrete finite charged-pipeline mutual-inclusion proposition | A proposition definition, not a proof; it cannot substitute for the absent eligible root theorem `PNP.Main.p_eq_np` |
 | `unresolved` | Executable explicit-list scan found no strict equivalent gain in the supplied finite list | Does not exclude unlisted gains and does not imply global minimality or `ZeroSlack` |
-| Current canonical report | 142-page status report generated from the inventory and publication map | Non-claiming; current aliases point here |
+| Current canonical report | 143-page status report generated from the inventory and publication map | Non-claiming; current aliases point here |
 | Historical manuscript | Former 57-page direct-claim report at the pinned 7072f8d source tag | Audit material only; not current authority or a canonical download |
 
 ## Core Claim Terms
