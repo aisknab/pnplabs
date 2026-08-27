@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-27-pccmin-checked-packet-bn6-bcel-sparse-activation-route",
+      "milestoneId": "pccmin-checked-packet-bn6-bcel-sparse-activation-route",
+      "publishedAt": "2026-08-27T08:23:34Z",
+      "title": "Sparse V53 proper-cut activation route and checked conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now proves that every singleton and order-preserving pair proper cut forms a complete quadratic-size test family for the sparse V53 constant-cut equation. A total classifier either derives the full proper-cut equation or returns the first exact small proper-cut mismatch, avoiding the inherited powerset scan at this checked endpoint.",
+        "At the checked BN6/BCEL/HB boundary, a returned mismatch is reflected through the direct raw positive-cell activation ledger, while coherence reaches the existing conditional ZeroSlack branch under checked selector silence. The terminal problem, ready certificate, raw cells and payloads, claims, ranks, route and HB data, resolvers, normalizer, blocker semantics, and complete encoded-input bounds remain supplied. The local quadratic list bound is not a complete polynomial runtime theorem, and the mismatch is not a gain or globally decreasing transition. This does not establish unconditional ZeroSlack, polynomial PCCMin, CNFSAT in P, a global gate, the eligible root theorem, or P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 176 of 178."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 176,
+        "formalArtefactCoverageTotalRows": 178,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "e355f1c93ef17f7d8069cc128b204a351b4792b7",
+        "tree": "2c1d5db7d1cb9da674411ae48016ec110c3510ea",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-27-200",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-27-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis",
       "milestoneId": "pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis",
       "publishedAt": "2026-08-27T00:30:35Z",

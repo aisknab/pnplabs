@@ -24,7 +24,10 @@ host, not as a build host.
 - Never silently fall back to a heavyweight local command when the remote builder
   is unavailable. Stop and report the connection problem instead.
 - Limit local commands to source edits and lightweight inspection, such as `rg`,
-  `sed`, `git diff`, `git status`, and targeted syntax checks.
+  `sed`, `git diff`, and `git status`. Do not execute repository source or run
+  syntax checks, tests, generators, validators, builds, package-manager commands,
+  renderers, or servers locally. Dispatch even targeted execution to the remote
+  builder.
 - Keep host, proxy, key, and network details in the user's SSH configuration; do
   not copy private connection data into this repository.
 

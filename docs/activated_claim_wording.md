@@ -253,6 +253,24 @@ leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisRejectedRouteIsGain = fal
 leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisUnconditionalZeroSlack = false
 leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisPolynomialRuntimeProved = false
 leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisScope = "arbitrary-finite-sparse-v53-shape-specific-constant-cut-basis-equivalent-to-all-proper-cuts-with-total-typed-classifier-and-direct-checked-bn6-bcel-hb-conditional-zeroslack-adapter-over-supplied-terminal-data"
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteFormalized = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteAxiomAuditPassed = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteAuditedDeclarationCount = 30
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteEndpointProjectAssumptionFree = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteSingletonPairFamilyComplete = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteSingletonPairFamilyNodup = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteQuadraticListBound = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteEquivalentToAllProperCuts = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteClassifierTotal = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteReturnsExactRawMismatch = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteAvoidsProperCutPowerset = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteDerivesConditionalZeroSlack = true
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteDerivesCellsFromTerminalInput = false
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteMismatchIsGain = false
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteGlobalRankDecreaseProved = false
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteCompleteEncodedPolynomialRuntimeProved = false
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteUnconditionalZeroSlack = false
+leanPCCMinCheckedPacketBN6BCELSparseActivationRouteScope = "arbitrary-finite-sparse-positive-v53-singleton-pair-proper-cut-equation-equivalent-to-all-proper-cuts-with-quadratic-list-bound-total-first-mismatch-classifier-and-direct-checked-raw-activation-mismatch-or-conditional-zeroslack-over-supplied-terminal-data"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -262,7 +280,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 175 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 175 of 177 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Canonical sparse V53 constant-cut basis and checked conditional ZeroSlack bridge**, proves a shape-specific basis equivalent to the complete equation on every nonempty proper cut and gives a total classifier that avoids enumerating carrier subsets. Accepted evidence derives constant activation and conditional ZeroSlack; a rejected basis remains a typed structural diagnostic rather than a constructed gain or globally decreasing transition. The terminal problem, positive premise, checked finite BCEL-ready certificate, raw positive cells and payloads, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, upstream construction, and complete encoded-size bounds remain supplied. The milestone does not derive the raw cells from every terminal input, force basis acceptance or route rejection to a gain, complete PkgC/BN3 through BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, construct executable polynomial PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 176 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 176 of 178 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Sparse V53 proper-cut activation route and checked conditional ZeroSlack bridge**, proves that the duplicate-free singleton and order-preserving pair proper cuts form a quadratic-size test family equivalent to the complete constant equation on every nonempty proper cut. A total first-mismatch classifier either derives that equation or retains one exact small-cut mismatch. At the checked BN6/BCEL/HB boundary, a mismatch is reflected through the direct raw positive-cell activation ledger, while coherence yields conditional ZeroSlack under checked selector silence. The terminal problem, positive premise, checked finite BCEL-ready certificate, raw positive cells and payloads, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, upstream construction, and complete encoded-size bounds remain supplied. The local quadratic list bound is not a complete polynomial construction or runtime theorem, and a mismatch is not a verified gain or globally decreasing transition. The milestone does not derive the raw cells from every terminal input, map the mismatch into a decreasing route, complete PkgC/BN3 through BN6 integration, prove manuscript-wide SaturatePositive or BCELReady, construct executable polynomial PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, establish deterministic CNFSAT in P or SAT hardness transport, create the eligible root theorem, or close a global gate. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -281,7 +299,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 141-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 142-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 587,803 | `ab244c4432c1410dc34f0d33f46fa5cee274a076d4f1d3db6b76edc10d97e2f9` |
-| `downloads/canonical-proof-report.pdf` | 587,803 | `ab244c4432c1410dc34f0d33f46fa5cee274a076d4f1d3db6b76edc10d97e2f9` |
-| `downloads/canonical_proof_report.tex` | 367,659 | `844479ab991b0bd7aa7e9b890acbb7a06c2636c630cb9dbb83bd5c8480289704` |
-| `downloads/canonical-proof-report.tex` | 367,659 | `844479ab991b0bd7aa7e9b890acbb7a06c2636c630cb9dbb83bd5c8480289704` |
-| `public/pnp-status.json` | 2,672,261 | `f2119f9b300fd63e3ab6e8dd9ac92e86376925ad1a36656e8117531f6d8a2bf5` |
-| `public/pnp-theorem-inventory.json` | 34,202,264 | `35cba1467da8d977927d3e783930ac45345bc0c2ff480032067405007e1aa069` |
-| `public/pnp-proof-progress.json` | 64,938 | `36e823be823f47f28066a6c4522121ab187c749b57a06bc8c9f8657b24507f93` |
+| `downloads/canonical_proof_report.pdf` | 589,422 | `debed5258226a110a5c25697369b11cab4617cdb519a12262bec963543f5050d` |
+| `downloads/canonical-proof-report.pdf` | 589,422 | `debed5258226a110a5c25697369b11cab4617cdb519a12262bec963543f5050d` |
+| `downloads/canonical_proof_report.tex` | 369,765 | `780bf897b4a8362a7eb26bf136fdc1f4c287ca47efd28bc21f069ebdad62a8e3` |
+| `downloads/canonical-proof-report.tex` | 369,765 | `780bf897b4a8362a7eb26bf136fdc1f4c287ca47efd28bc21f069ebdad62a8e3` |
+| `public/pnp-status.json` | 2,678,457 | `31aa977d79cf717bc36d46414734a3aa1ea3edaf6817ecdf52dcd9a4001668de` |
+| `public/pnp-theorem-inventory.json` | 34,474,708 | `782f55dc48bf4108832712a3b811c520cdcc63d80e87fc7a13aad8842af0a68a` |
+| `public/pnp-proof-progress.json` | 66,731 | `a8ed6997273d0576090575bdc22bbae31758da907008f52490842f74104c2dc9` |
 
-The PDF must have 141 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 142 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 02a8fc9ea8fb7c338b9c6a484020fe6dfc754872
+git -C ../pnp checkout e355f1c93ef17f7d8069cc128b204a351b4792b7
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 31,035 public declarations, 15,849 theorem-kind declarations,
-7,699 assumption-free theorem-kind declarations, 15,175 excluded private auxiliaries, 318 modules, and
+Expected compiled inventory counts are 31,198 public declarations, 15,936 theorem-kind declarations,
+7,703 assumption-free theorem-kind declarations, 15,181 excluded private auxiliaries, 320 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -242,7 +242,7 @@ prove unconditional ZeroSlack, establish encoded-size polynomial construction or
 in P, establish SAT hardness transport, create the eligible root theorem, or close a global gate. The
 fixed-weight score therefore remains 35%.
 
-The latest M199 sparse V53 constant-cut-basis milestone has 1 reviewed theorem pin. For every finite
+The M199 sparse V53 constant-cut-basis milestone has 1 reviewed theorem pin. For every finite
 sparse V53 hypergraph with at least two anchors, it proves that a shape-specific basis is equivalent
 to the complete constant equation on every nonempty proper cut. Its total classifier checks the
 two-anchor full weight, three singleton cuts, or four-plus full-span support and weight without
@@ -256,6 +256,26 @@ force basis acceptance or route rejection to a gain, prove manuscript-wide Satur
 BCELReady, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial
 runtime, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, or close
 a global gate. The fixed-weight score therefore remains 35%.
+
+The latest M200 sparse V53 proper-cut activation-route milestone has 1 reviewed theorem pin. For
+every finite sparse positive V53 hypergraph with at least two anchors, it proves that the
+duplicate-free singleton and order-preserving pair proper cuts form a quadratic-size test family
+equivalent to the complete constant equation on every nonempty proper cut. A total classifier either
+derives that equation or retains the first exact small-cut mismatch. At the checked BN6/BCEL/HB
+boundary, a mismatch is reflected through the direct raw positive-cell activation ledger, while
+coherence yields conditional ZeroSlack under checked selector silence. The endpoint uses only
+Lean-standard `Quot.sound` and `propext`; its focused 30-declaration audit is free of project-specific
+axioms. The terminal problem, positive premise, checked finite BCEL-ready certificate, raw cells and
+payloads, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, upstream
+construction, and complete encoded-input bounds remain supplied. The singleton/pair family has a
+direct quadratic list-length bound, but this is not a complete polynomial construction or runtime
+theorem. A returned raw activation mismatch is an exact diagnostic route, not a verified gain or
+globally decreasing transition. The milestone does not derive raw cells from every terminal input,
+map the mismatch into a decreasing route, complete PkgC/BN3 through BN6 integration, prove
+manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional
+ZeroSlack or complete encoded-size polynomial runtime, put CNFSAT in P, establish SAT hardness
+transport, create the eligible root theorem, or close a global gate. The fixed-weight score therefore
+remains 35%.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
