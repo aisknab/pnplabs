@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 141-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 31,035 public declarations across 318 modules,
-including 15,849 theorem-kind declarations, 7,699 assumption-free theorem-kind declarations, and no
-project-specific axioms. Exactly 15,175 private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a 142-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 31,198 public declarations across 320 modules,
+including 15,936 theorem-kind declarations, 7,703 assumption-free theorem-kind declarations, and no
+project-specific axioms. Exactly 15,181 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 141-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 142-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,139 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,139 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 175 of 177 scoped formal milestone rows. The newest row proves a sparse V53 constant-cut basis equivalent to every nonempty proper-cut equation and uses it in a total classifier without enumerating carrier subsets; basis acceptance derives constant activation and conditional ZeroSlack. | Treating a rejected basis as a constructed gain, or treating supplied raw cells, certificates, tables, ranks, route data, terminal data, upstream construction, or other supplied stages as complete PkgC/BN3 through BN6 integration, manuscript-wide SaturatePositive, BCELReady, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,140 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,140 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 176 of 178 scoped formal milestone rows. The newest row proves that singleton and order-preserving pair proper cuts form a duplicate-free quadratic-size family equivalent to every sparse V53 proper-cut equation. A total classifier returns the first exact small-cut mismatch or derives the equation, and the checked adapter reflects a mismatch through the direct raw ledger or reaches conditional ZeroSlack. | Treating the local list bound as a complete runtime theorem; treating a returned mismatch as a constructed gain or global rank decrease; or treating supplied raw cells, certificates, tables, ranks, route data, terminal data, upstream construction, or other supplied stages as complete PkgC/BN3 through BN6 integration, manuscript-wide SaturatePositive, BCELReady, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,10 +62,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `02a8fc9ea8fb7c338b9c6a484020fe6dfc754872`.
+   `e355f1c93ef17f7d8069cc128b204a351b4792b7`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,139 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,140 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -184,9 +184,12 @@ checked nucleus and a supplied grouped-cell ledger. M197 normalizes supplied raw
 carrier, constructs singleton consumer systems, coalesces duplicate footprints, and preserves every positive
 payload atom. M198 proves that this coalescing preserves the exact direct raw crossing-mass sum on every cut.
 M199 replaces the endpoint's exhaustive proper-cut check with a sparse V53 basis equivalent to all proper-cut
-equations; basis acceptance derives constant activation and conditional ZeroSlack. Rejection still diagnoses
-rather than repairs the missing numerical bridge. It does not derive the raw cells or payloads from terminal
-input, force basis acceptance, turn rejection into a constructed gain, establish manuscript-wide
+equations; basis acceptance derives constant activation and conditional ZeroSlack. M200 proves that the
+singleton and order-preserving pair cuts form a duplicate-free quadratic-size family equivalent to the full
+equation and makes rejection retain the first exact small-cut raw activation mismatch. That mismatch still
+diagnoses rather than repairs the missing numerical bridge. The local list bound is not a complete runtime
+theorem. The route does not derive the raw cells or payloads from terminal input, map the mismatch into a
+constructed decreasing gain, establish manuscript-wide
 SaturatePositive or BCELReady, complete the global route system, prove unconditional ZeroSlack, or prove
 polynomial PCCMin.
 
@@ -263,10 +266,14 @@ Review the gaps between those scopes and the target theorem:
    supports into that carrier, constructs singleton consumer systems, coalesces duplicate footprints, and
    preserves every positive payload atom, producing M196's grouped-family input canonically. M198 preserves
    the exact raw cut ledger, and M199 replaces the endpoint's powerset classifier with an equivalent sparse
-   constant-cut basis. The terminal problem, positive premise, checked finite BCEL-ready certificate, raw
+   constant-cut basis. M200 proves that singleton and order-preserving pair proper cuts form a duplicate-free
+   quadratic-size family equivalent to all proper-cut equations, then returns the first exact small-cut raw
+   activation mismatch or reaches the existing conditional ZeroSlack branch. The terminal problem, positive
+   premise, checked finite BCEL-ready certificate, raw
    positive supports and payloads, tables, ranks, route-clear proof, normalizer, resolvers, blocker semantics,
-   upstream construction, and complete encoded-size bounds remain supplied. Basis rejection is not a
-   constructed gain or globally decreasing transition, so the route still does not complete PkgC/BN3 through BN6 integration,
+   upstream construction, and complete encoded-size bounds remain supplied. The local quadratic list bound
+   is not a complete polynomial runtime theorem, and the returned mismatch is not a constructed gain or
+   globally decreasing transition, so the route still does not complete PkgC/BN3 through BN6 integration,
    prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack, decide
    CNF-SAT, prove SAT NP-hardness or CNF-SAT NP-completeness, put CNF-SAT in P, or prove `P = NP`.
 4. The residual scanner searches only a caller-supplied finite list. `unresolved` excludes no
@@ -295,7 +302,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 141-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 142-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

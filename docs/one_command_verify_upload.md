@@ -11,14 +11,14 @@ Use the source repository to inspect formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout 02a8fc9ea8fb7c338b9c6a484020fe6dfc754872
+git checkout e355f1c93ef17f7d8069cc128b204a351b4792b7
 npm ci
 npm run formal:inventory:check
 npm run validate
 npm run report:check
 ```
 
-`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. PNPLabs imports those exact artifacts and does not rerun Lean. The newest row, **Canonical sparse V53 constant-cut basis and checked conditional ZeroSlack bridge**, proves a shape-specific basis equivalent to every nonempty proper-cut equation and uses it in a total classifier without enumerating carrier subsets. Basis acceptance derives constant activation and conditional ZeroSlack. Terminal data, the positive premise, checked finite BCEL-ready certificate, raw positive cells and payloads, route-clear proof, tables, ranks, normalizer, resolvers, blocker semantics, upstream construction, and complete encoded-size bounds remain supplied. Basis rejection is not a constructed gain or globally decreasing transition. This does not prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, supply a target decider or SAT NP-hardness transport, or create the root theorem. `PNP.Main.p_eq_np` is absent; no project-specific axioms remain and five blockers remain.
+`formal:inventory:check` owns the Lean build and compiled inventory. `validate` then checks distinct verifier, regression, axiom, status, public-surface, and archive contracts without another standalone `lake build`; `report:check` verifies the derived publication. PNPLabs imports those exact artifacts and does not rerun Lean. The newest row, **Sparse V53 proper-cut activation route and checked conditional ZeroSlack bridge**, proves that the duplicate-free singleton and order-preserving pair proper cuts form a quadratic-size family equivalent to every nonempty proper-cut equation. A total classifier returns the first exact small-cut mismatch or derives the complete equation; the checked adapter reflects a mismatch through the direct raw ledger or reaches conditional ZeroSlack. Terminal data, the positive premise, checked finite BCEL-ready certificate, raw positive cells and payloads, route-clear proof, tables, ranks, normalizer, resolvers, blocker semantics, upstream construction, and complete encoded-size bounds remain supplied. The local list bound is not a complete polynomial construction or runtime theorem, and a mismatch is not a verified gain or globally decreasing transition. This does not prove manuscript-wide SaturatePositive or BCELReady, construct executable PCCMin, prove unconditional ZeroSlack or encoded-size polynomial runtime, supply a target decider or SAT NP-hardness transport, or create the root theorem. `PNP.Main.p_eq_np` is absent; no project-specific axioms remain and five blockers remain.
 
 ## Freeze controls
 

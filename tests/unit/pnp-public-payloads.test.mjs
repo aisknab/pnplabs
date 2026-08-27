@@ -4069,6 +4069,60 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.id));
+  const pccMinCheckedPacketBN6BCELSparseActivationRoute = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-bn6-bcel-sparse-activation-route");
+  assert.ok(pccMinCheckedPacketBN6BCELSparseActivationRoute);
+  assert.equal(pccMinCheckedPacketBN6BCELSparseActivationRoute.earned, true);
+  assert.equal(pccMinCheckedPacketBN6BCELSparseActivationRoute.allPresent, true);
+  assert.equal(pccMinCheckedPacketBN6BCELSparseActivationRoute.allAssumptionFree, false);
+  assert.equal(
+    pccMinCheckedPacketBN6BCELSparseActivationRoute.axiomClosureUsesOnlyLeanStandardAllowlist,
+    true,
+  );
+  assert.equal(pccMinCheckedPacketBN6BCELSparseActivationRoute.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketBN6BCELSparseActivationRoute.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketBN6BCELSparseActivationRoute.requiredTheorems, [
+    "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_sparse_activation_route_or_zeroslack_checked_complete",
+  ]);
+  assert.equal(pccMinCheckedPacketBN6BCELSparseActivationRoute.theoremRows.length, 1);
+  assert.equal(
+    pccMinCheckedPacketBN6BCELSparseActivationRoute.theoremRows[0].actualKernelTypeSha256,
+    "ec85750acf0658c02ee2c8bcfc0b48c71e483796ddae699fd5fc62114168e2a0",
+  );
+  assert.deepEqual(
+    pccMinCheckedPacketBN6BCELSparseActivationRoute.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteAuditedDeclarationCount, 30);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteSingletonPairFamilyComplete, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteSingletonPairFamilyNodup, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteQuadraticListBound, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteEquivalentToAllProperCuts, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteClassifierTotal, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteReturnsExactRawMismatch, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteAvoidsProperCutPowerset, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteDerivesCellsFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteMismatchIsGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteGlobalRankDecreaseProved, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELSparseActivationRouteUnconditionalZeroSlack, false);
+  assert.equal(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELSparseActivationRouteCheckedCompleteTheorem,
+    "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_sparse_activation_route_or_zeroslack_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELSparseActivationRouteAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELSparseActivationRouteProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELSparseActivationRoute.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
