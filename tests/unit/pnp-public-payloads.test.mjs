@@ -68,8 +68,16 @@ const releaseBoundaryPrefixForMilestone = (release, milestone) => {
   assert.ok(matchingField, `missing earned-boundary fingerprint map for ${milestone.id}`);
   return matchingField[0].slice(0, -suffix.length);
 };
+const releaseBoundaryField = (release, prefix, suffix) => {
+  const expectedKey = `${prefix}${suffix}`.toLowerCase();
+  const matchingFields = Object.entries(release.earnedBoundary).filter(
+    ([key]) => key.toLowerCase() === expectedKey,
+  );
+  assert.equal(matchingFields.length, 1, `expected one release ${suffix} field for ${prefix}`);
+  return matchingFields[0][1];
+};
 const statusStemForReleaseBoundary = (status, release, prefix) => {
-  const scope = release.earnedBoundary[`${prefix}Scope`];
+  const scope = releaseBoundaryField(release, prefix, 'Scope');
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
   );
@@ -4010,6 +4018,57 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     []
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELCanonicalCutLedger.id));
+  const pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis");
+  assert.ok(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.earned, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.allPresent, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.allAssumptionFree, false);
+  assert.equal(
+    pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.axiomClosureUsesOnlyLeanStandardAllowlist,
+    true,
+  );
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.requiredTheorems, [
+    "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_canonical_cut_basis_route_or_zeroslack_checked_complete",
+  ]);
+  assert.equal(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.theoremRows.length, 1);
+  assert.equal(
+    pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.theoremRows[0].actualKernelTypeSha256,
+    "0d72ea90cc0f14ce2dbd5baa16a2f0fd925dbef2d471236cfeff12cb7fbcdea9",
+  );
+  assert.deepEqual(
+    pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisAuditedDeclarationCount, 22);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisEquivalentToAllProperCuts, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisClassifierTotal, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisAvoidsProperCutPowerset, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisUsesDirectRawCutLedger, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisDerivesConstantActivation, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisDerivesConditionalZeroSlack, true);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisDerivesCellsFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisRejectedRouteIsGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketBN6BCELCanonicalConstantCutBasisPolynomialRuntimeProved, false);
+  assert.equal(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELCanonicalConstantCutBasisCheckedCompleteTheorem,
+    "PNP.DirectWire.pccmin_checked_packet_bn6_bcel_canonical_cut_basis_route_or_zeroslack_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELCanonicalConstantCutBasisAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketBN6BCELCanonicalConstantCutBasisProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketBN6BCELCanonicalConstantCutBasis.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -8994,9 +9053,11 @@ test('static inventory prose derives changing publication totals from the canoni
   const latestUpdate = updates.entries[0];
   const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone);
   const latestStatusStem = statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
-  const latestFocusedAuditCount = latestRelease.earnedBoundary[
-    `${latestReleasePrefix}AuditedDeclarationCount`
-  ];
+  const latestFocusedAuditCount = releaseBoundaryField(
+    latestRelease,
+    latestReleasePrefix,
+    'AuditedDeclarationCount',
+  );
   assert.ok(Number.isSafeInteger(latestFocusedAuditCount));
   assert.ok(latestFocusedAuditCount > 0);
   const latestTheoremPinLabel = latestEarnedMilestone.requiredTheorems.length === 1

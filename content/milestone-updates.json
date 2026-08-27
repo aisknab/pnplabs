@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-27-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis",
+      "milestoneId": "pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis",
+      "publishedAt": "2026-08-27T00:30:35Z",
+      "title": "Canonical sparse V53 constant-cut basis and checked conditional ZeroSlack bridge",
+      "plainLanguage": [
+        "Lean now replaces the inherited all-proper-cut powerset scan at this checked endpoint with a shape-specific sparse basis. For two anchors it checks the full-span weight, for three it checks the three singleton cuts, and for four or more it checks full-span support and weight. The basis is formally equivalent to the complete constant equation on every nonempty proper cut.",
+        "Accepted basis evidence derives constant activation and the existing conditional ZeroSlack result. A rejected basis remains a structural diagnosis, not a constructed gain or globally decreasing transition. The terminal problem, checked ready certificate, raw positive cells and payloads, claims, ranks, route data, resolver algorithms, blocker semantics, and encoded-size bounds remain supplied, and upstream construction may still enumerate subsets. This does not establish unconditional ZeroSlack, polynomial PCCMin, CNFSAT in P, a global gate, the eligible root theorem, or P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 175 of 177."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 175,
+        "formalArtefactCoverageTotalRows": 177,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "02a8fc9ea8fb7c338b9c6a484020fe6dfc754872",
+        "tree": "cbb00cdfdd0e002dfd0db55594dc5f0e997f0866",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-27-199",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-27-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger",
       "milestoneId": "pccmin-checked-packet-bn6-bcel-canonical-cut-ledger",
       "publishedAt": "2026-08-26T18:14:23Z",

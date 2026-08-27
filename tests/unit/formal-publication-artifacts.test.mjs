@@ -1111,8 +1111,20 @@ function releaseBoundaryPrefixForMilestone(release, milestone) {
   return matchingField[0].slice(0, -suffix.length);
 }
 
+function releaseBoundaryValue(release, prefix, suffix, required = true) {
+  const expectedKey = `${prefix}${suffix}`.toLowerCase();
+  const matchingFields = Object.entries(release.earnedBoundary).filter(
+    ([key]) => key.toLowerCase() === expectedKey
+  );
+  assert.ok(matchingFields.length <= 1, `expected at most one release field for ${prefix}${suffix}`);
+  if (required) {
+    assert.equal(matchingFields.length, 1, `expected one release field for ${prefix}${suffix}`);
+  }
+  return matchingFields[0]?.[1];
+}
+
 function statusStemForReleaseBoundary(status, release, prefix) {
-  const scope = release.earnedBoundary[`${prefix}Scope`];
+  const scope = releaseBoundaryValue(release, prefix, "Scope");
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith("lean") && key.endsWith("Scope") && status[key] === scope
   );
@@ -3501,9 +3513,9 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanPacketConclusionTheorem, "PNP.DirectWire.TerminalBN6PacketConclusion.gainScans");
   assert.equal(release.earnedBoundary.residualTerminalPacketSelectorGainScanTheorem, "PNP.DirectWire.terminalBN6_packet_selector_gain_scans");
 
-  assert.equal(release.earnedBoundary[`${latestStem}Formalized`], true);
-  assert.equal(release.earnedBoundary[`${latestStem}AxiomAuditPassed`], true);
-  assert.ok(Number.isSafeInteger(release.earnedBoundary[`${latestStem}AuditedDeclarationCount`]));
+  assert.equal(releaseBoundaryValue(release, latestStem, "Formalized"), true);
+  assert.equal(releaseBoundaryValue(release, latestStem, "AxiomAuditPassed"), true);
+  assert.ok(Number.isSafeInteger(releaseBoundaryValue(release, latestStem, "AuditedDeclarationCount")));
   const latestAuditCategorySuffixes = [
     "EmptyAxiomDeclarationCount",
     "PropextOnlyDeclarationCount",
@@ -3511,7 +3523,7 @@ test("current release pins the latest canonical earned boundary and remains fail
     "PropextQuotSoundDeclarationCount",
   ];
   const latestAuditCategoryCounts = latestAuditCategorySuffixes
-    .map((suffix) => release.earnedBoundary[`${latestStem}${suffix}`]);
+    .map((suffix) => releaseBoundaryValue(release, latestStem, suffix, false));
   const publishedLatestAuditCategoryCount = latestAuditCategoryCounts
     .filter((value) => value !== undefined).length;
   assert.ok(
@@ -3524,14 +3536,14 @@ test("current release pins the latest canonical earned boundary and remains fail
       assert.ok(Number.isSafeInteger(value), latestAuditCategorySuffixes[index]);
     }
     assert.equal(
-      release.earnedBoundary[`${latestStem}AuditedDeclarationCount`],
+      releaseBoundaryValue(release, latestStem, "AuditedDeclarationCount"),
       latestAuditCategoryCounts.reduce((sum, value) => sum + value, 0)
     );
   }
-  assert.equal(release.earnedBoundary[`${latestStem}Scope`], latestStatusPayload[`${latestStatusStem}Scope`]);
-  assert.deepEqual(release.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`], latestTheoremHashes);
-  assert.deepEqual(release.earnedBoundary[`${latestStem}AxiomClosure`], latestAxiomClosure);
-  assert.deepEqual(release.earnedBoundary[`${latestStem}ProjectAxiomClosure`], []);
+  assert.equal(releaseBoundaryValue(release, latestStem, "Scope"), latestStatusPayload[`${latestStatusStem}Scope`]);
+  assert.deepEqual(releaseBoundaryValue(release, latestStem, "TheoremKernelTypeSha256"), latestTheoremHashes);
+  assert.deepEqual(releaseBoundaryValue(release, latestStem, "AxiomClosure"), latestAxiomClosure);
+  assert.deepEqual(releaseBoundaryValue(release, latestStem, "ProjectAxiomClosure"), []);
   const latestReleaseTheorems = Object.entries(release.earnedBoundary)
     .filter(([key, value]) => key.endsWith("Theorem")
       && typeof value === "string"
@@ -3598,7 +3610,11 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   assert.ok(latestPublicationMilestone, `missing latest milestone ${latestUpdate.milestoneId}`);
   const latestStem = releaseBoundaryPrefixForMilestone(canonicalRelease, latestPublicationMilestone);
   const latestStatusStem = `lean${statusStemForReleaseBoundary(status, canonicalRelease, latestStem)}`;
-  const latestReleaseHashes = canonicalRelease.earnedBoundary[`${latestStem}TheoremKernelTypeSha256`];
+  const latestReleaseHashes = releaseBoundaryValue(
+    canonicalRelease,
+    latestStem,
+    "TheoremKernelTypeSha256"
+  );
   assert.equal(milestones.length, index.formalPublicationMilestoneCounts.total);
   assert.equal(milestones.filter((row) => row.earned === true).length, index.formalPublicationMilestoneCounts.earned);
   assert.equal(milestones.filter((row) => row.status === "not-formalized").length, index.formalPublicationMilestoneCounts.unearned);
@@ -5269,7 +5285,7 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   assert.equal(status[`${latestStatusStem}Formalized`], true);
   assert.equal(status[`${latestStatusStem}AxiomAuditPassed`], true);
   assert.equal(latestPublicationMilestone.scope.length > 0, true);
-  assert.equal(canonicalRelease.earnedBoundary[`${latestStem}Scope`], status[`${latestStatusStem}Scope`]);
+  assert.equal(releaseBoundaryValue(canonicalRelease, latestStem, "Scope"), status[`${latestStatusStem}Scope`]);
   assert.equal(index.claimBoundary[`${latestStatusStem}Formalized`], status[`${latestStatusStem}Formalized`]);
   assert.equal(index.claimBoundary[`${latestStatusStem}AxiomAuditPassed`], status[`${latestStatusStem}AxiomAuditPassed`]);
   assert.equal(index.claimBoundary[`${latestStatusStem}Scope`], status[`${latestStatusStem}Scope`]);

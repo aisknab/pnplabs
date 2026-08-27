@@ -53,8 +53,20 @@ const latestTheoremFingerprintField = Object.entries(publishedRelease.earnedBoun
 assert.ok(latestTheoremFingerprintField, `missing earned-boundary fingerprint map for ${latestPublishedMilestoneId}`);
 const latestPublishedMilestoneReleasePrefix = latestTheoremFingerprintField[0]
   .slice(0, -theoremFingerprintSuffix.length);
+function latestPublishedMilestoneReleaseField(suffix) {
+  const expectedKey = `${latestPublishedMilestoneReleasePrefix}${suffix}`.toLowerCase();
+  const matchingFields = Object.keys(publishedRelease.earnedBoundary).filter(
+    (key) => key.toLowerCase() === expectedKey
+  );
+  assert.equal(
+    matchingFields.length,
+    1,
+    `expected one latest published release ${suffix} field: ${latestPublishedMilestoneId}`
+  );
+  return matchingFields[0];
+}
 const latestPublishedMilestoneScope = publishedRelease.earnedBoundary[
-  `${latestPublishedMilestoneReleasePrefix}Scope`
+  latestPublishedMilestoneReleaseField("Scope")
 ];
 const latestPublishedMilestoneScopeKeys = Object.keys(publishedStatus).filter(
   (key) => key.startsWith("lean")
@@ -10751,8 +10763,8 @@ test("rejects mutations of the latest canonical publication milestone across eve
   assert.equal(latestMilestone.earned, true);
   assert.ok(latestMilestone.requiredTheorems.length > 0);
   const theoremName = latestMilestone.requiredTheorems[0];
-  const releaseFormalizedField = `${latestPublishedMilestoneReleasePrefix}Formalized`;
-  const releaseFingerprintField = `${latestPublishedMilestoneReleasePrefix}TheoremKernelTypeSha256`;
+  const releaseFormalizedField = latestPublishedMilestoneReleaseField("Formalized");
+  const releaseFingerprintField = latestPublishedMilestoneReleaseField("TheoremKernelTypeSha256");
   const statusAuditField = `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`;
 
   const releaseFlag = makeProject(t);
