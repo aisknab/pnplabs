@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "a3115c0e42924db4e9c400268d63b942360e71a0";
-const CORE_TREE = "e91e8f657ba7b13504350521b32db32cccb03533";
-const CORE_PUBLICATION_MAP_SHA256 = "d044069cdeaa35e57be2cbd5c31f904cb354fe7826a1218af578f4064e4d5650";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-28-202";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-202";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-28-202";
-const CORE_SOURCE_CLOSURE_SHA256 = "e5a31f1c0b5f76980480e17c49827c6f594df32dfc228792196e53dc7ccd7d6c";
-const OLD_PDF_SHA256 = "fbdcf8b01c6d81b3896636dc8140a04a30252c1c260163cb8213e8eaac8fa0e1";
-const OLD_TEX_SHA256 = "175fd1f2a01b0a5e435877c71b5978ae8db88870432faa61ebbb932ed54a622e";
+const CORE_COMMIT = "171a90983820e1c6bba2fcf85203843b4bd3f5da";
+const CORE_TREE = "513bbcf670bdfb02ae2640949aa8ba37c372fbcd";
+const CORE_PUBLICATION_MAP_SHA256 = "38edf8df0e58c1818c8324d027a0a3f052eb3e648ccc6404f409878c1693c048";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-28-203";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-203";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-28-203";
+const CORE_SOURCE_CLOSURE_SHA256 = "dac727341b484976bce0341665c92de31e6d2a53e46400599254cb865a39870b";
+const OLD_PDF_SHA256 = "acbea07aa23078dd8509547f74ddf96cc633f629ff12f64074b3081d8c0baa9e";
+const OLD_TEX_SHA256 = "05d0645f1a2d937456671c32cca4db16b51f9c92365973f3fdab0133de35b42d";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -2033,6 +2033,13 @@ const PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_THEOREMS = {
 const PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_SCOPE = "arbitrary-finite-supplied-active-pkgc-source-ledger-over-the-exact-checked-bcel-nucleus-with-source-derived-raw-bn6-cells-exact-pkgc-cancellation-or-source-ledger-singleton-pair-activation-mismatch-and-conditional-zeroslack-under-supplied-checked-downstream-data";
 const PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_MILESTONE_SCOPE = "For every arbitrary finite supplied active PkgC source ledger over the exact checked BCEL nucleus, M201's total classifier either retains an exact source-member same-key cancellation or constructs the only raw BN6 positive-cell ledger admitted downstream. That derived ledger enters M200's canonical checked Packet/HB classifier, whose small-cut mismatch is reflected back through all-cut activation conservation to the original PkgC source ledger; the coherent branch yields genuine conditional ZeroSlack under supplied checked selector silence.";
 const PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_NON_CLAIM = "The terminal problem, checked finite BCEL-ready certificate, active V54 source systems and cuts, positive payload atoms, typed restorer, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. A returned PkgC cancellation or source-ledger activation mismatch is exact proof-bearing evidence, not a verified gain or globally rank-decreasing transition. This milestone does not construct the sources or downstream tables from every valid terminal input, construct upstream BN3--BN5 data, prove complete PkgC/BN3--BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_THEOREMS = {
+  "PNP.DirectWire.pccmin_checked_packet_pkgc_ambient_bn4_extraction_route_or_zeroslack_checked_complete": { hash: "54025d7d0c4eb695f282dab133e4de9c51639783ebb5cbb1ab62d7c7e4cef276", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinCheckedPacketPkgCAmbientBN4ExtractionRoute" }
+};
+const PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_SCOPE = "arbitrary-finite-multiplicity-preserving-order-independent-extraction-of-generated-pkgc-cancellation-cells-from-a-supplied-candidate-bound-ambient-bn4-ledger-with-computed-remainder-exact-residual-reduction-or-proof-of-no-exact-embedding-composed-with-m202-conditional-zeroslack-and-source-activation-routing";
+const PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_MILESTONE_SCOPE = "For every arbitrary finite supplied active PkgC source ledger and arbitrary finite ambient BN4 ledger tied to the same checked BCEL nucleus, constructive remove-first recursion preserves multiplicity and ambient order independence while computing the exact remainder, multiset embedding, and complete residual-ledger reduction, or proving that no exact remainder embedding exists. The four-way composition preserves M202's conditional ZeroSlack and source activation mismatch branches.";
+const PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_NON_CLAIM = "The terminal problem, checked finite BCEL-ready certificate, active V54 source systems and cuts, positive payload atoms, typed restorer, ambient BN4 ledger, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The computed ambient residual reduction does not prove that its remainder is empty or contradict a surviving residual, and an exact no-embedding result is a compatibility failure rather than a verified gain or globally rank-decreasing transition. This milestone does not construct the ambient ledger, sources, payloads, restorer, or downstream tables from every valid terminal input, construct upstream BN3--BN5 data, prove complete PkgC/BN3--BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4344,32 +4351,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 592474,
-    sha256: "acbea07aa23078dd8509547f74ddf96cc633f629ff12f64074b3081d8c0baa9e"
+    bytes: 594716,
+    sha256: "e8f5abf774c92278fead4182ab23ef69d3b5d90f712f43ae7c9b53a3c8fd9408"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 373093,
-    sha256: "05d0645f1a2d937456671c32cca4db16b51f9c92365973f3fdab0133de35b42d"
+    bytes: 375057,
+    sha256: "5833ebc29083c5cbca14481310e143578da6ae4ea4ec845b37c8ad29a138cb4e"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2689915,
-    sha256: "183cb789f3863081d35e57d06c1720d2ce73fc4e6d15c628abdf46f577a1ddd7"
+    bytes: 2696355,
+    sha256: "4425660232b1ec5b2de6ee8e61d72ef1e7a138e5e3f3442e102c249a419c3161"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 35257909,
-    sha256: "edcceaa5c599140f3d3c6bee02bf6cf03ced3a65e389c64e3961857ac6ecb92e"
+    bytes: 37488835,
+    sha256: "07ce3c741812d98c8f99d896e9bbdcc5b49ae38fb974977e93dfa16fd6dcf215"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 70099,
-    sha256: "d5659aa788f00544731ebdeebaedf6fd6f03977c1f72580522169f77e3ef8222"
+    bytes: 72137,
+    sha256: "2e051ff013ff467722103985cf59a8d061084c473d50317dae2c8e0b5895e2b2"
   }
 ];
 
@@ -6375,6 +6382,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map PCCMin checked Packet/PkgC/BN6/BCEL source-route boundary mismatch");
+  }
+
+  const pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-ambient-bn4-extraction-route"
+  );
+  const pccminCheckedPacketPkgCAmbientBN4ExtractionRouteNames =
+    Object.keys(PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_THEOREMS);
+  if (!pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route"
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_MILESTONE_SCOPE
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.requiredTheorems)
+        !== JSON.stringify(pccminCheckedPacketPkgCAmbientBN4ExtractionRouteNames)
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map PCCMin checked Packet/PkgC ambient-BN4 extraction-route boundary mismatch");
   }
 
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
@@ -10714,6 +10738,60 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core status PCCMin checked Packet/PkgC/BN6/BCEL source-route boundary mismatch");
     }
 
+    const pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone =
+      payload.formalPublicationMilestones?.find(
+        (row) => row.id === "pccmin-checked-packet-pkgc-ambient-bn4-extraction-route"
+      );
+    if (!pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.earned !== true
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.allPresent !== true
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.allAssumptionFree !== false
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.allKernelTypesMatch !== true
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.sourceClosureFingerprintMatches !== true
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route"
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_MILESTONE_SCOPE
+      || pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_NON_CLAIM
+      || JSON.stringify(pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.requiredTheorems)
+        !== JSON.stringify(Object.keys(PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_THEOREMS))
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_THEOREMS).every(
+        ([name, evidence]) => {
+          const row = pccminCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone.theoremRows?.find(
+            (candidate) => candidate.name === name
+          );
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        }
+      )
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteFormalized !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAxiomAuditPassed !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAuditedDeclarationCount !== 10
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteEndpointProjectAssumptionFree !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAmbientLedgerArbitraryFinite !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAmbientOrderIndependent !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteMultiplicityPreserved !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteRemainderComputed !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteNoEmbeddingProofBearing !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCandidateBN4KernelConstructed !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteResidualReductionExact !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteConditionalZeroSlackOnly !== true
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteDerivesAmbientLedgerFromTerminalInput !== false
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteDerivesSourcesFromTerminalInput !== false
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCancellationReductionIsGlobalGain !== false
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompletePkgCBN6Integration !== false
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved !== false
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack !== false
+      || payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope !== PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_SCOPE
+      || payload.leanPCCMinLoopExactnessFormalized !== false
+      || payload.leanZeroSlackCompletenessFormalized !== false
+      || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status PCCMin checked Packet/PkgC ambient-BN4 extraction-route boundary mismatch");
+    }
+
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -11468,6 +11546,17 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory PCCMin checked Packet/PkgC/BN6/BCEL source-route theorem mismatch: " + name);
+      }
+    }
+
+    for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory PCCMin checked Packet/PkgC ambient-BN4 extraction-route theorem mismatch: " + name);
       }
     }
 

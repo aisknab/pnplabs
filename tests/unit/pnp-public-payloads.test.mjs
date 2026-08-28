@@ -4227,6 +4227,58 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCBN6BCELSourceRoute.id));
+  const pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-pkgc-ambient-bn4-extraction-route");
+  assert.ok(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.earned, true);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.allPresent, true);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.requiredTheorems, [
+    "PNP.DirectWire.pccmin_checked_packet_pkgc_ambient_bn4_extraction_route_or_zeroslack_checked_complete",
+  ]);
+  assert.equal(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.theoremRows.length, 1);
+  assert.equal(
+    pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.theoremRows[0].actualKernelTypeSha256,
+    "54025d7d0c4eb695f282dab133e4de9c51639783ebb5cbb1ab62d7c7e4cef276",
+  );
+  assert.deepEqual(
+    pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAuditedDeclarationCount, 10);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAmbientLedgerArbitraryFinite, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAmbientOrderIndependent, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteMultiplicityPreserved, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteRemainderComputed, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteNoEmbeddingProofBearing, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCandidateBN4KernelConstructed, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteResidualReductionExact, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteConditionalZeroSlackOnly, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteDerivesAmbientLedgerFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteDerivesSourcesFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCancellationReductionIsGlobalGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompletePkgCBN6Integration, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack, false);
+  assert.equal(
+    release.earnedBoundary.pccMinCheckedPacketPkgCAmbientBN4ExtractionRouteCheckedCompleteTheorem,
+    "PNP.DirectWire.pccmin_checked_packet_pkgc_ambient_bn4_extraction_route_or_zeroslack_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketPkgCAmbientBN4ExtractionRouteAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.pccMinCheckedPacketPkgCAmbientBN4ExtractionRouteProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
