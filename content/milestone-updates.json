@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-29-residual-terminal-pkgc-restoration-coverage-bn6-ledger",
+      "milestoneId": "residual-terminal-pkgc-restoration-coverage-bn6-ledger",
+      "publishedAt": "2026-08-28T16:05:51.831Z",
+      "title": "Family-level PkgC restoration coverage and exact BN6 ledger cellization",
+      "plainLanguage": [
+        "Lean now lifts M204's per-system restoration classifier over every arbitrary finite supplied active PkgC source ledger. Scanning in source-list order, it preserves the first exact source-member Hall deficit, computed ambient reduction, or no-embedding witness. Only when every source system is singletonized does it construct the complete BN6 positive-cell ledger, with exact source count, source-order payload preservation, and activation-weight conservation on every cut.",
+        "The active PkgC source cells and cuts, positive payload atoms, per-source restoration-coordinate universes and maps, full-restoration coordinate lists, and ambient BN4 ledgers remain explicit supplied inputs. Complete coordinate coverage does not materialize semantic full candidates or derive restoration adequacy. A Hall deficit is not a verified gain or globally rank-decreasing transition, the computed remainder is not proved empty, and no-embedding is not a complete global route. This milestone does not derive the source ledger or restoration and ambient data from every valid terminal input, complete PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 181 of 183. All five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 181,
+        "formalArtefactCoverageTotalRows": 183,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "385df6cc15cf963a19c2ec5ea96b2e22fcbe76b9",
+        "tree": "9dc5f189d244ccc08181963a3c94d99d53b7a094",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-205",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-28-residual-terminal-pkgc-restoration-coverage-ambient-route",
       "milestoneId": "residual-terminal-pkgc-restoration-coverage-ambient-route",
       "publishedAt": "2026-08-28T10:57:17Z",
