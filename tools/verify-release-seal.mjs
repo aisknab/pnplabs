@@ -11035,7 +11035,7 @@ function assertFailClosedStatus(status) {
       || status.leanPCCMinLoopExactnessFormalized !== false
       || status.leanZeroSlackCompletenessFormalized !== false
       || status.leanPCCMinPolynomialRuntimeFormalized !== false) {
-    fail("core status candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+    fail("core status candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -15439,7 +15439,7 @@ function assertCurrentManifest(manifest, status, progress) {
       && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope === "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
       && earned.zeroSlackCompletenessFormalized === false
       && earned.pccMinPolynomialRuntimeFormalized === false)) {
-    fail("current manifest candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+    fail("current manifest candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
   }
   if (JSON.stringify(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure)

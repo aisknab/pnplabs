@@ -9580,7 +9580,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope === "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
       && earned.zeroSlackCompletenessFormalized === false
       && earned.pccMinPolynomialRuntimeFormalized === false)) {
-    failures.push("current manifest candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+    failures.push("current manifest candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
   }
   if (JSON.stringify(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
       || !Array.isArray(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure)
@@ -14069,7 +14069,7 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       || status.leanPCCMinLoopExactnessFormalized !== false
       || status.leanZeroSlackCompletenessFormalized !== false
       || status.leanPCCMinPolynomialRuntimeFormalized !== false) {
-    failures.push("core status candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+    failures.push("core status candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -18511,7 +18511,7 @@ export function validateAuditTargets(options = {}) {
       || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
-    failures.push("core publication map candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+    failures.push("core publication map candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
   }
   const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoutePins = releaseManifest.earnedBoundary?.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTheoremKernelTypeSha256 || {};
   for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS)) {

@@ -6469,7 +6469,7 @@ function assertPinnedCore(sourceDir) {
       || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
-    fail("pinned formal-publication map candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+    fail("pinned formal-publication map candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -11019,7 +11019,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinLoopExactnessFormalized !== false
         || payload.leanZeroSlackCompletenessFormalized !== false
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
-      fail("core status candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+      fail("core status candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
     }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
