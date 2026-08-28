@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-203";
-const STATUS_SHA256 = '4425660232b1ec5b2de6ee8e61d72ef1e7a138e5e3f3442e102c249a419c3161';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-28-203";
-const FORMAL_PUBLICATION_MAP_SHA256 = "38edf8df0e58c1818c8324d027a0a3f052eb3e648ccc6404f409878c1693c048";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-204";
+const STATUS_SHA256 = 'c29184b64a35462803cea1eceabc4550806673fbaebc4ff4102fe8a6a7df221a';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-28-204";
+const FORMAL_PUBLICATION_MAP_SHA256 = "dba1fcb54bcd51a60bed79e53ef2d5e32f014bbe942c41871550fb3b352ccb39";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-28-203";
-const INVENTORY_SHA256 = "07ce3c741812d98c8f99d896e9bbdcc5b49ae38fb974977e93dfa16fd6dcf215";
-const SOURCE_CLOSURE_SHA256 = "dac727341b484976bce0341665c92de31e6d2a53e46400599254cb865a39870b";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-28-204";
+const INVENTORY_SHA256 = "7a260118297fea31d3e5158aad80a4e2a57cc320532a0d7142d0536083fb5e19";
+const SOURCE_CLOSURE_SHA256 = "c4e88a306abb38bc5ba35f87a82590d11dca55f348663b847601cad344f4aef8";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 31465,
-  theorems: 16023,
-  assumptionFreeTheorems: 7706,
-  excludedPrivateDeclarations: 15221,
-  modules: 323,
+  declarations: 31622,
+  theorems: 16081,
+  assumptionFreeTheorems: 7715,
+  excludedPrivateDeclarations: 15189,
+  modules: 324,
   axioms: 0,
 });
 
@@ -4737,6 +4737,9 @@ const PCCMIN_CHECKED_PACKET_PKGC_BN6_BCEL_SOURCE_ROUTE_DECLARATIONS = Object.fre
 const PCCMIN_CHECKED_PACKET_PKGC_AMBIENT_BN4_EXTRACTION_ROUTE_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.pccmin_checked_packet_pkgc_ambient_bn4_extraction_route_or_zeroslack_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketPkgCAmbientBN4ExtractionRoute","54025d7d0c4eb695f282dab133e4de9c51639783ebb5cbb1ab62d7c7e4cef276"],
 ]);
+const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_AMBIENT_ROUTE_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.terminalPkgC_restorationCoverage_ambientBN4_route_checked_complete",["Quot.sound","propext"],"PNP.ResidualTerminalPkgCRestorationCoverageAmbientRoute","ae5f113cf4640de616197206f04fbcb6db1fd6b37c0f3e5007a5d83cb81d977c"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5841,6 +5844,27 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved: false,
   leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack: false,
   leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope: null,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteFormalized: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteAxiomAuditPassed: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteAuditedDeclarationCount: 0,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteEndpointProjectAssumptionFree: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteConsumerSystemArbitraryFinite: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteRestorationUniverseArbitraryFinite: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteAmbientLedgerArbitraryFinite: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteTypedRestorerRequired: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallDeficitProofBearing: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteCoverageCancellationConstructed: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteRemainderComputed: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteNoEmbeddingProofBearing: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteResidualReductionExact: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteMaterializesSemanticFullCandidates: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesRestorationUniverseFromTerminalInput: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesAmbientLedgerFromTerminalInput: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallRouteIsGlobalGain: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompletePkgCBN6Integration: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompleteEncodedPolynomialRuntimeProved: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteUnconditionalZeroSlack: false,
+  leanResidualTerminalPkgCRestorationCoverageAmbientRouteScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6674,6 +6698,27 @@ leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompletePkgCBN6Integration =
 leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved ?? false}
 leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack ?? false}
 leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope = ${payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope)}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteFormalized = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteFormalized ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteAxiomAuditPassed = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAxiomAuditPassed ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteAuditedDeclarationCount = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAuditedDeclarationCount ?? 0}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteEndpointProjectAssumptionFree = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteEndpointProjectAssumptionFree ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteConsumerSystemArbitraryFinite = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteConsumerSystemArbitraryFinite ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteRestorationUniverseArbitraryFinite = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteRestorationUniverseArbitraryFinite ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteAmbientLedgerArbitraryFinite = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAmbientLedgerArbitraryFinite ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteTypedRestorerRequired = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteTypedRestorerRequired ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallDeficitProofBearing = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallDeficitProofBearing ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteCoverageCancellationConstructed = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCoverageCancellationConstructed ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteRemainderComputed = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteRemainderComputed ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteNoEmbeddingProofBearing = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteNoEmbeddingProofBearing ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteResidualReductionExact = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteResidualReductionExact ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteMaterializesSemanticFullCandidates = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteMaterializesSemanticFullCandidates ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesRestorationUniverseFromTerminalInput = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesRestorationUniverseFromTerminalInput ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesAmbientLedgerFromTerminalInput = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesAmbientLedgerFromTerminalInput ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallRouteIsGlobalGain = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallRouteIsGlobalGain ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompletePkgCBN6Integration = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompletePkgCBN6Integration ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompleteEncodedPolynomialRuntimeProved = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompleteEncodedPolynomialRuntimeProved ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteUnconditionalZeroSlack = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteUnconditionalZeroSlack ?? false}
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteScope = ${payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalPkgCRestorationCoverageAmbientRouteScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -7876,6 +7921,14 @@ function validateInventory(inventory) {
       hash,
     }));
 
+  const residualTerminalPkgCRestorationCoverageAmbientRoute =
+    RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_AMBIENT_ROUTE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
+
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8528,6 +8581,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && residualTerminalPkgCRestorationCoverageAmbientRoute.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9025,6 +9082,10 @@ function validateStatus(status, inventory) {
 
   const pccMinCheckedPacketPkgCAmbientBN4ExtractionRouteMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "pccmin-checked-packet-pkgc-ambient-bn4-extraction-route"
+  );
+
+  const residualTerminalPkgCRestorationCoverageAmbientRouteMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "residual-terminal-pkgc-restoration-coverage-ambient-route"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11306,6 +11367,49 @@ function validateStatus(status, inventory) {
     && status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved === false
     && status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack === false
     && status.leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope === "arbitrary-finite-multiplicity-preserving-order-independent-extraction-of-generated-pkgc-cancellation-cells-from-a-supplied-candidate-bound-ambient-bn4-ledger-with-computed-remainder-exact-residual-reduction-or-proof-of-no-exact-embedding-composed-with-m202-conditional-zeroslack-and-source-activation-routing"
+
+    && residualTerminalPkgCRestorationCoverageAmbientRouteMilestone?.classification === "formalized-residual-terminal-pkgc-restoration-coverage-ambient-route"
+    && residualTerminalPkgCRestorationCoverageAmbientRouteMilestone.status === "formalized-residual-terminal-pkgc-restoration-coverage-ambient-route"
+    && residualTerminalPkgCRestorationCoverageAmbientRouteMilestone.scope === "For every arbitrary finite supplied consumer system, restoration-coordinate universe and ambient BN4 ledger, the finite exact-coordinate classifier returns singletonization, the first proof-bearing Hall deficit with its qRestorationHall route, or complete coordinate coverage. Coverage constructs one balanced opposite-sign BN4 unit pair for every canonical quotient unit and exact arbitrary-order extraction computes the ambient remainder with complete residual-ledger equality or proves that no exact embedding exists."
+    && residualTerminalPkgCRestorationCoverageAmbientRouteMilestone.nonClaim === "The consumer system, finite restoration-coordinate universe, quotient coordinate map, full-restoration coordinate lists, and ambient BN4 ledger remain explicit supplied inputs. Complete coordinate coverage is equality-fibre multiplicity evidence and does not materialize semantic full candidates or prove restoration adequacy. A Hall deficit is an exact local qRestorationHall route, not a verified gain or globally rank-decreasing transition. The computed residual reduction does not prove that the remainder is empty, and no-embedding is a compatibility failure rather than a complete global route. This milestone does not derive the restoration universe or ambient ledger from every valid terminal input, complete PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(
+      residualTerminalPkgCRestorationCoverageAmbientRouteMilestone.requiredTheorems,
+      RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_AMBIENT_ROUTE_DECLARATIONS.map(([name]) => name)
+    )
+    && residualTerminalPkgCRestorationCoverageAmbientRouteMilestone.theoremRows?.length
+      === RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_AMBIENT_ROUTE_DECLARATIONS.length
+    && residualTerminalPkgCRestorationCoverageAmbientRouteMilestone.theoremRows?.every((row) => {
+      const expected = RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_AMBIENT_ROUTE_DECLARATIONS
+        .find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteFormalized === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAxiomAuditPassed === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAuditedDeclarationCount === 17
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteEndpointProjectAssumptionFree === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteConsumerSystemArbitraryFinite === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteRestorationUniverseArbitraryFinite === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAmbientLedgerArbitraryFinite === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteTypedRestorerRequired === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallDeficitProofBearing === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCoverageCancellationConstructed === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteRemainderComputed === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteNoEmbeddingProofBearing === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteResidualReductionExact === true
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteMaterializesSemanticFullCandidates === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesRestorationUniverseFromTerminalInput === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesAmbientLedgerFromTerminalInput === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallRouteIsGlobalGain === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompletePkgCBN6Integration === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompleteEncodedPolynomialRuntimeProved === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteUnconditionalZeroSlack === false
+    && status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteScope === "arbitrary-finite-restoration-coordinate-coverage-classified-as-an-exact-q-restoration-hall-deficit-or-a-constructed-balanced-bn4-unit-cancellation-subledger-with-computed-arbitrary-order-ambient-remainder-exact-residual-reduction-or-proof-of-no-exact-embedding"
 
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
