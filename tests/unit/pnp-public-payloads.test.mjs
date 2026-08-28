@@ -4279,6 +4279,60 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCAmbientBN4ExtractionRoute.id));
+  const residualTerminalPkgCRestorationCoverageAmbientRoute = status.formalPublicationMilestones
+    .find((row) => row.id === "residual-terminal-pkgc-restoration-coverage-ambient-route");
+  assert.ok(residualTerminalPkgCRestorationCoverageAmbientRoute);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.earned, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.allPresent, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.allAssumptionFree, false);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.allKernelTypesMatch, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualTerminalPkgCRestorationCoverageAmbientRoute.requiredTheorems, [
+    "PNP.DirectWire.terminalPkgC_restorationCoverage_ambientBN4_route_checked_complete",
+  ]);
+  assert.equal(residualTerminalPkgCRestorationCoverageAmbientRoute.theoremRows.length, 1);
+  assert.equal(
+    residualTerminalPkgCRestorationCoverageAmbientRoute.theoremRows[0].actualKernelTypeSha256,
+    "ae5f113cf4640de616197206f04fbcb6db1fd6b37c0f3e5007a5d83cb81d977c",
+  );
+  assert.deepEqual(
+    residualTerminalPkgCRestorationCoverageAmbientRoute.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteFormalized, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAuditedDeclarationCount, 17);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteConsumerSystemArbitraryFinite, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteRestorationUniverseArbitraryFinite, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteAmbientLedgerArbitraryFinite, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteTypedRestorerRequired, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallDeficitProofBearing, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCoverageCancellationConstructed, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteRemainderComputed, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteNoEmbeddingProofBearing, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteResidualReductionExact, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteMaterializesSemanticFullCandidates, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesRestorationUniverseFromTerminalInput, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesAmbientLedgerFromTerminalInput, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallRouteIsGlobalGain, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompletePkgCBN6Integration, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageAmbientRouteUnconditionalZeroSlack, false);
+  assert.equal(
+    release.earnedBoundary.residualTerminalPkgCRestorationCoverageAmbientRouteCheckedCompleteTheorem,
+    "PNP.DirectWire.terminalPkgC_restorationCoverage_ambientBN4_route_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPkgCRestorationCoverageAmbientRouteAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPkgCRestorationCoverageAmbientRouteProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(residualTerminalPkgCRestorationCoverageAmbientRoute.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');

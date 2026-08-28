@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 594,716 | `e8f5abf774c92278fead4182ab23ef69d3b5d90f712f43ae7c9b53a3c8fd9408` |
-| `downloads/canonical-proof-report.pdf` | 594,716 | `e8f5abf774c92278fead4182ab23ef69d3b5d90f712f43ae7c9b53a3c8fd9408` |
-| `downloads/canonical_proof_report.tex` | 375,057 | `5833ebc29083c5cbca14481310e143578da6ae4ea4ec845b37c8ad29a138cb4e` |
-| `downloads/canonical-proof-report.tex` | 375,057 | `5833ebc29083c5cbca14481310e143578da6ae4ea4ec845b37c8ad29a138cb4e` |
-| `public/pnp-status.json` | 2,696,355 | `4425660232b1ec5b2de6ee8e61d72ef1e7a138e5e3f3442e102c249a419c3161` |
-| `public/pnp-theorem-inventory.json` | 37,488,835 | `07ce3c741812d98c8f99d896e9bbdcc5b49ae38fb974977e93dfa16fd6dcf215` |
-| `public/pnp-proof-progress.json` | 72,137 | `2e051ff013ff467722103985cf59a8d061084c473d50317dae2c8e0b5895e2b2` |
+| `downloads/canonical_proof_report.pdf` | 596,859 | `cd3fe8711a188bad6e0352ab9da93a5b21e4d3f4db0ccda6cc93534e02e71f96` |
+| `downloads/canonical-proof-report.pdf` | 596,859 | `cd3fe8711a188bad6e0352ab9da93a5b21e4d3f4db0ccda6cc93534e02e71f96` |
+| `downloads/canonical_proof_report.tex` | 376,966 | `bd87edc28f10bf7dc3eab2b9827166ad7450d3ed124123e0a7b016117f255dcd` |
+| `downloads/canonical-proof-report.tex` | 376,966 | `bd87edc28f10bf7dc3eab2b9827166ad7450d3ed124123e0a7b016117f255dcd` |
+| `public/pnp-status.json` | 2,702,852 | `c29184b64a35462803cea1eceabc4550806673fbaebc4ff4102fe8a6a7df221a` |
+| `public/pnp-theorem-inventory.json` | 37,659,520 | `7a260118297fea31d3e5158aad80a4e2a57cc320532a0d7142d0536083fb5e19` |
+| `public/pnp-proof-progress.json` | 74,237 | `e3fa35598eee5d7f2f24abeafefb8313acfa888815715199bd7bd451943f34a0` |
 
-The PDF must have 145 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 146 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 171a90983820e1c6bba2fcf85203843b4bd3f5da
+git -C ../pnp checkout a08ab544b3d609ffd1793227635a9ac7a18394a4
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 31,465 public declarations, 16,023 theorem-kind declarations,
-7,706 assumption-free theorem-kind declarations, 15,221 excluded private auxiliaries, 323 modules, and
+Expected compiled inventory counts are 31,622 public declarations, 16,081 theorem-kind declarations,
+7,715 assumption-free theorem-kind declarations, 15,189 excluded private auxiliaries, 324 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`, and the current bounded
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -295,7 +295,7 @@ therefore remains 35%, while formal artefact coverage becomes 177 of 179.
 
 The M202 source-derived PkgC/BN6 checked-route milestone has 1 reviewed theorem pin. For every arbitrary finite supplied active PkgC source ledger over the exact checked BCEL nucleus, M201's total classifier either retains an exact source-member same-key cancellation or constructs the only raw BN6 positive-cell ledger admitted downstream. That derived ledger enters M200's canonical checked Packet/HB classifier. Its first nonempty proper singleton/pair activation mismatch is reflected back through all-cut activation conservation to the original PkgC source ledger, while the coherent branch yields conditional ZeroSlack under supplied checked selector silence. The returned mismatch cut is always nonempty, proper, and of length at most two. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 7-declaration audit is free of project-specific axioms. The terminal problem, checked finite BCEL-ready certificate, active source systems and cuts, positive payload atoms, typed restorer, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. A returned PkgC cancellation or source-ledger activation mismatch is exact proof-bearing evidence, not a verified gain or globally rank-decreasing transition. This does not construct the sources or downstream tables from every valid terminal input, construct upstream BN3 through BN5 data, prove complete PkgC through BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 178 of 180.
 
-The latest M203 ambient-BN4 extraction milestone has 1 reviewed theorem pin. For every arbitrary finite supplied active PkgC source ledger and arbitrary finite ambient BN4 ledger tied to the same checked BCEL nucleus, Lean now computes the exact ambient remainder rather than accepting a remainder and permutation from the caller. Constructive remove-first recursion preserves duplicate occurrences and works in arbitrary ambient order. It either returns the computed remainder with an exact multiset embedding and complete residual-ledger reduction, or retains a required generated cancellation cell with proof that no exact remainder embedding exists. The candidate-bound bridge constructs the BN4 activation-cancellation kernel internally and preserves M202's conditional ZeroSlack and source activation mismatch branches. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 10-declaration audit is free of project-specific axioms. The terminal problem, checked finite BCEL-ready certificate, active V54 source systems and cuts, positive payload atoms, typed restorer, ambient BN4 ledger, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The computed ambient residual reduction does not prove that its remainder is empty or contradict a surviving residual, and an exact no-embedding result is a compatibility failure rather than a verified gain or globally rank-decreasing transition. This milestone does not construct the ambient ledger, sources, payloads, restorer, or downstream tables from every valid terminal input, construct upstream BN3 through BN5 data, prove complete PkgC through BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 179 of 181.
+The latest M204 restoration-coverage and ambient-route milestone has 1 reviewed theorem pin. For every arbitrary finite supplied consumer system, restoration-coordinate universe and ambient BN4 ledger, the finite exact-coordinate classifier returns singletonization, the first proof-bearing Hall deficit with its qRestorationHall route, or complete coordinate coverage. Coverage constructs one balanced opposite-sign BN4 unit pair for every canonical quotient unit and exact arbitrary-order extraction computes the ambient remainder with complete residual-ledger equality or proves that no exact embedding exists. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 17-declaration audit is free of project-specific axioms. The consumer system, finite restoration-coordinate universe, quotient coordinate map, full-restoration coordinate lists, and ambient BN4 ledger remain explicit supplied inputs. Complete coordinate coverage is equality-fibre multiplicity evidence and does not materialize semantic full candidates or prove restoration adequacy. A Hall deficit is an exact local qRestorationHall route, not a verified gain or globally rank-decreasing transition. The computed residual reduction does not prove that the remainder is empty, and no-embedding is a compatibility failure rather than a complete global route. This milestone does not derive the restoration universe or ambient ledger from every valid terminal input, complete PkgC/BN3 through BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 180 of 182.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

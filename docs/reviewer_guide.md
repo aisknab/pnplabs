@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 145-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 31,465 public declarations across 323 modules,
-including 16,023 theorem-kind declarations, 7,706 assumption-free theorem-kind declarations, and no
-project-specific axioms. Exactly 15,221 private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a 146-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 31,622 public declarations across 324 modules,
+including 16,081 theorem-kind declarations, 7,715 assumption-free theorem-kind declarations, and no
+project-specific axioms. Exactly 15,189 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 145-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 146-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,143 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,143 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 179 of 181 scoped formal milestone rows. The newest row computes multiplicity-preserving, order-independent extraction of generated PkgC cancellation cells from a supplied ambient BN4 ledger and returns the exact remainder and residual reduction or an exact no-embedding proof, while preserving M202's conditional source route. | Treating the supplied ambient ledger, terminal data, source systems, payloads, restorer, downstream tables, HB data, route-clear result, or silence as terminal-derived; treating a remainder or no-embedding result as a verified global gain or rank decrease; or treating the row as complete PkgC through BN6 integration, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,144 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,144 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 180 of 182 scoped formal milestone rows. The newest row removes the typed-restorer premise at one local boundary and classifies a supplied finite restoration-coordinate universe as singletonization, the first proof-bearing Hall route, or complete coordinate coverage. Its coverage branch constructs balanced opposite-sign BN4 units and computes the arbitrary-order ambient remainder. | Treating the supplied restoration universe, quotient map, full-restoration coordinate lists, ambient BN4 ledger, terminal data, or downstream data as terminal-derived; treating coverage as semantic restoration adequacy; treating a Hall route, remainder, or no-embedding result as a verified global gain or rank decrease; or treating the row as complete PkgC/BN3 through BN6 integration, executable PCCMin, unconditional ZeroSlack, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,10 +62,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `171a90983820e1c6bba2fcf85203843b4bd3f5da`.
+   `a08ab544b3d609ffd1793227635a9ac7a18394a4`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,143 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,144 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -192,7 +192,7 @@ theorem. M201 separately classifies arbitrary finite supplied active V54 consume
 PkgC cancellation or singletonization, then derives raw BN6 positive cells, support sizes, payload order, and
 exact all-cut activation conservation in the singleton branch. M202 feeds that derived ledger into the checked
 sparse BCEL/Packet classifier and reflects its first singleton/pair activation mismatch back to the supplied
-source ledger. M203 then computes multiplicity-preserving extraction of the generated cancellation cells from an arbitrary supplied ambient BN4 ledger, giving the exact remainder and residual-ledger reduction or an exact no-embedding proof. The route does not derive the ambient ledger, source systems, cuts, payloads, restorer, downstream tables, HB
+source ledger. M203 then computes multiplicity-preserving extraction of the generated cancellation cells from an arbitrary supplied ambient BN4 ledger, giving the exact remainder and residual-ledger reduction or an exact no-embedding proof. M204 removes the typed-restorer premise at one local boundary and classifies a supplied restoration-coordinate universe as a proof-bearing Hall route or complete coverage with a constructed balanced BN4 cancellation subledger and computed ambient remainder. The route does not derive the ambient ledger, source systems, cuts, payloads, restorer, downstream tables, HB
 evidence, route-clear result, or selector silence from terminal input, turn either diagnostic into a verified
 global gain, or map the M200 mismatch into a
 constructed decreasing gain, establish manuscript-wide
@@ -278,7 +278,7 @@ Review the gaps between those scopes and the target theorem:
    active V54 consumers into the first exact same-key PkgC cancellation or singletonization and, in the latter
    case, derives the raw BN6 positive cells and exact all-cut activation ledger. M202 feeds that ledger into the
    checked sparse BCEL/Packet classifier, retaining cancellation, reflecting a singleton/pair mismatch back to
-   the source ledger, or reaching conditional ZeroSlack under supplied checked selector silence. M203 computes the exact multiplicity-preserving extraction of those generated cancellation cells from a supplied ambient BN4 ledger, with a computed remainder and residual reduction or an exact no-embedding proof. The terminal problem, ambient ledger, source
+   the source ledger, or reaching conditional ZeroSlack under supplied checked selector silence. M203 computes the exact multiplicity-preserving extraction of those generated cancellation cells from a supplied ambient BN4 ledger, with a computed remainder and residual reduction or an exact no-embedding proof. M204 classifies supplied exact restoration-coordinate coverage and constructs the balanced cancellation subledger and computed ambient remainder in its coverage branch. The terminal problem, ambient ledger, source
    systems, active cuts, positive payloads, typed restorer, checked finite BCEL-ready and Packet data, tables,
    ranks, route-clear proof, normalizer, resolvers, blocker semantics, upstream construction, and complete
    encoded-size bounds remain supplied. The local quadratic list bound is not a complete polynomial runtime
@@ -312,7 +312,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 145-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 146-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

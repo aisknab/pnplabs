@@ -325,6 +325,27 @@ leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompletePkgCBN6Integration =
 leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved = false
 leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack = false
 leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope = "arbitrary-finite-multiplicity-preserving-order-independent-extraction-of-generated-pkgc-cancellation-cells-from-a-supplied-candidate-bound-ambient-bn4-ledger-with-computed-remainder-exact-residual-reduction-or-proof-of-no-exact-embedding-composed-with-m202-conditional-zeroslack-and-source-activation-routing"
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteFormalized = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteAxiomAuditPassed = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteAuditedDeclarationCount = 17
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteEndpointProjectAssumptionFree = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteConsumerSystemArbitraryFinite = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteRestorationUniverseArbitraryFinite = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteAmbientLedgerArbitraryFinite = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteTypedRestorerRequired = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallDeficitProofBearing = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteCoverageCancellationConstructed = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteRemainderComputed = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteNoEmbeddingProofBearing = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteResidualReductionExact = true
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteMaterializesSemanticFullCandidates = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesRestorationUniverseFromTerminalInput = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteDerivesAmbientLedgerFromTerminalInput = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteHallRouteIsGlobalGain = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompletePkgCBN6Integration = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteCompleteEncodedPolynomialRuntimeProved = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteUnconditionalZeroSlack = false
+leanResidualTerminalPkgCRestorationCoverageAmbientRouteScope = "arbitrary-finite-restoration-coordinate-coverage-classified-as-an-exact-q-restoration-hall-deficit-or-a-constructed-balanced-bn4-unit-cancellation-subledger-with-computed-arbitrary-order-ambient-remainder-exact-residual-reduction-or-proof-of-no-exact-embedding"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -334,7 +355,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 179 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 179 of 181 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Computed PkgC ambient-BN4 extraction and checked source-route composition**, computes the exact multiplicity-preserving ambient remainder rather than accepting one from the caller, proves the complete residual-ledger reduction or exact no-embedding alternative, constructs the candidate BN4 cancellation kernel internally, and preserves M202's conditional source-routing branches. The terminal problem, checked finite BCEL-ready certificate, active V54 source systems and cuts, positive payload atoms, typed restorer, ambient BN4 ledger, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The computed ambient residual reduction does not prove that its remainder is empty or contradict a surviving residual, and an exact no-embedding result is a compatibility failure rather than a verified gain or globally rank-decreasing transition. This milestone does not construct the ambient ledger, sources, payloads, restorer, or downstream tables from every valid terminal input, construct upstream BN3 through BN5 data, prove complete PkgC through BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 180 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 180 of 182 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **PkgC restoration coverage, exact Hall route, and computed ambient BN4 reduction**, has this scope: For every arbitrary finite supplied consumer system, restoration-coordinate universe and ambient BN4 ledger, the finite exact-coordinate classifier returns singletonization, the first proof-bearing Hall deficit with its qRestorationHall route, or complete coordinate coverage. Coverage constructs one balanced opposite-sign BN4 unit pair for every canonical quotient unit and exact arbitrary-order extraction computes the ambient remainder with complete residual-ledger equality or proves that no exact embedding exists. The consumer system, finite restoration-coordinate universe, quotient coordinate map, full-restoration coordinate lists, and ambient BN4 ledger remain explicit supplied inputs. Complete coordinate coverage is equality-fibre multiplicity evidence and does not materialize semantic full candidates or prove restoration adequacy. A Hall deficit is an exact local qRestorationHall route, not a verified gain or globally rank-decreasing transition. The computed residual reduction does not prove that the remainder is empty, and no-embedding is a compatibility failure rather than a complete global route. This milestone does not derive the restoration universe or ambient ledger from every valid terminal input, complete PkgC/BN3 through BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -353,7 +374,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 145-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 146-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,143 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,144 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 31,465 public declarations;
-- 16,023 theorem-kind declarations;
-- 7,706 assumption-free theorem-kind declarations;
-- 323 source-closure modules;
-- 15,221 excluded private compiler auxiliaries;
+- 31,622 public declarations;
+- 16,081 theorem-kind declarations;
+- 7,715 assumption-free theorem-kind declarations;
+- 324 source-closure modules;
+- 15,189 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 179 earned formal artefact scopes are:
+The 180 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -260,7 +260,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 145-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 146-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
