@@ -4387,6 +4387,43 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(residualTerminalPkgCRestorationCoverageBN6Ledger.id));
+
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route");
+  assert.ok(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.earned, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.allPresent, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.requiredTheorems, ["PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete"]);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.theoremRows[0].actualKernelTypeSha256, "122d0276d734cc4012cf8ab58127d9a60a7d146f9ff4f7018bd9b40d96123ce4");
+  assert.deepEqual(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.theoremRows[0].axioms, ["Quot.sound", "propext"]);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAuditedDeclarationCount, 4);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteSourceLedgerArbitraryFinite, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCandidateBoundAmbientLedgers, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTypedRestorerRequired, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteRawBN6CellsDerived, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFirstObstructionPreserved, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConditionalZeroSlackOnly, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteActivationMismatchReflectedToSourceLedger, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteDerivesSourcesFromTerminalInput, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConstructsDownstreamTables, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHallRouteIsGlobalGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteComputedRemainderProvedEmpty, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompletePkgCBN6Integration, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope, "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack");
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCheckedCompleteTheorem, "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete");
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');

@@ -5,9 +5,9 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
-const CORE_COMMIT = "385df6cc15cf963a19c2ec5ea96b2e22fcbe76b9";
-const CORE_TREE = "9dc5f189d244ccc08181963a3c94d99d53b7a094";
-const PROOF_COMMIT = "88e574a561128ea7bd430cccec89e4e03bbf5453";
+const CORE_COMMIT = "2a2c3bdab876d430f462bd357b76d0f2e21fc023";
+const CORE_TREE = "7df5204b9a591e1f4edd88b9644e2cc028b4acc5";
+const PROOF_COMMIT = "0da90f12fb91c7bf1a264af78127cbec88870a01";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -5064,6 +5064,13 @@ const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_SCOPE = "arbitrary-
 const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_MILESTONE_SCOPE = "For every arbitrary finite supplied active PkgC source ledger with per-source restoration and ambient BN4 data, the list-order classifier either proves all source systems singletonized and constructs the complete BN6 positive-cell ledger with exact length, payload order and all-cut activation conservation, or retains the first exact source-member Hall deficit, computed ambient reduction, or no-embedding witness.";
 const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_NON_CLAIM = "The active PkgC source cells and cuts, positive payload atoms, per-source restoration-coordinate universes and maps, full-restoration coordinate lists, and ambient BN4 ledgers remain explicit supplied inputs. Complete coordinate coverage does not materialize semantic full candidates or derive restoration adequacy. A Hall deficit is not a verified gain or globally rank-decreasing transition, the computed remainder is not proved empty, and no-embedding is not a complete global route. This milestone does not derive the source ledger or restoration and ambient data from every valid terminal input, complete PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS = {
+  "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete": { hash: "122d0276d734cc4012cf8ab58127d9a60a7d146f9ff4f7018bd9b40d96123ce4", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute" }
+};
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_SCOPE = "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack";
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_MILESTONE_SCOPE = "For every arbitrary finite M205 restoration-coverage source ledger tied to one computed BCEL nucleus, the total classifier preserves the first exact Hall deficit, ambient residual reduction, or no-embedding witness. Only the all-singletonized branch constructs the source-derived BN6 ledger and enters the checked sparse BN6/BCEL Packet/HB classifier, yielding conditional ZeroSlack or one exact small-cut mismatch reflected to the original enriched source activation ledger.";
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_NON_CLAIM = "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, ranks, claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The candidate binding does not materialize semantically adequate full candidates or derive these objects from every valid terminal input. A Hall deficit is not a verified global gain or rank-decreasing transition, the computed ambient remainder is not proved empty, and ambient incompatibility or source activation mismatch is not a complete global route. This milestone does not finish PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -6316,6 +6323,10 @@ const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_RELEASE_IDENTITIES 
   residualTerminalPkgCRestorationCoverageBN6LedgerCheckedCompleteTheorem: "PNP.DirectWire.terminalPkgC_restorationCoverage_bn6_cellization_checked_complete"
 };
 
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_RELEASE_IDENTITIES = {
+  pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCheckedCompleteTheorem: "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE = "literal-228-state-2052-rule-strict-version-zero-all-input-parser-byte-preserving-or-empty-with-compiled-cubic-bound";
 const LOCKED_NAND_SOURCE_PARSER_MILESTONE_SCOPE = "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM = "This source parser alone does not emit the locked-NAND target or establish the source-to-target PolynomialReduction. The downstream emitter now supplies its own runtime/output bounds and strict composition, but the abstract locked-NAND threshold assumption, CNFSAT-in-P result, NP-hardness or NP-completeness transport, and P = NP remain absent.";
@@ -6504,50 +6515,50 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 598358,
-    "sha256": "c4f2de65642944bec4fee7de9c389c460109aa71b6ab54fcf934813ea53b3d59",
-    "role": "current inventory-derived 147-page formal-reconstruction report PDF"
+    "bytes": 600073,
+    "sha256": "2cd5c49d1dc142897333dac1b15a48328713852f863c4103e6618924c7a78a92",
+    "role": "current inventory-derived 148-page formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 598358,
-    "sha256": "c4f2de65642944bec4fee7de9c389c460109aa71b6ab54fcf934813ea53b3d59",
+    "bytes": 600073,
+    "sha256": "2cd5c49d1dc142897333dac1b15a48328713852f863c4103e6618924c7a78a92",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 378648,
-    "sha256": "5b02447ccadb0cf1058012e3fddfcef299e9da2b58ebd6b1804ce2bba592f175",
+    "bytes": 380471,
+    "sha256": "1eb4417eb909178f39d15afe0b38e67ce5f50b84b41c1a5e5588e7f06371c206",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 378648,
-    "sha256": "5b02447ccadb0cf1058012e3fddfcef299e9da2b58ebd6b1804ce2bba592f175",
+    "bytes": 380471,
+    "sha256": "1eb4417eb909178f39d15afe0b38e67ce5f50b84b41c1a5e5588e7f06371c206",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
-    "bytes": 2708752,
-    "sha256": "fc13f39758beec785547f8835d2c09ea7949ac908a9450c250dff1d78e3ff04a",
+    "bytes": 2715311,
+    "sha256": "e4ed404086b1511186909f1ef07747af7028d14cfd65cfe1bbba5052f6c8f95a",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 38206736,
-    "sha256": "d3540343ffb7901f6d3a095069d489c08a27a3789ba59c87002f9867c81f2924",
+    "bytes": 42754915,
+    "sha256": "8c5968697bbc663214dc0cbe5c290aa3f3bf770bd5d171b2e3624cab165b7996",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
     "path": "public/pnp-proof-progress.json",
-    "bytes": 76247,
-    "sha256": "f7eb403319adcc442c55fb050c76f2e0d8c0271b50d39917040f9c34ec045628",
+    "bytes": 78199,
+    "sha256": "cf6deeda688de51f960c155cdca2fe9ce02de61a70ae0504b7b153a339a28ad3",
     "role": "exact current fixed-weight proof-progress ledger mirror"
   },
   {
     "path": "downloads/formal-publication-release.json",
-    "bytes": 1086765,
-    "sha256": "750a28b2446164ca47a73ec60b12365323d8d80b1c2d23c396cd87a443248c5b",
+    "bytes": 1089534,
+    "sha256": "ca084150a93f3874ece416cdb131a4d5760e6bd777e23e83c8fb3cf36a6df2de",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -6620,9 +6631,9 @@ function parseLedger(buffer) {
 
 function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
-  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-205") fail("status coordinate mismatch");
+  if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-206") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-28-205" || status.formalPublicationMapSha256 !== "9aa7d2fb43491c7bb24af6965c61fa1b39329c5b4f7f43c3f896599f07a7960f" || status.leanSourceClosureSha256 !== "661d6abce1e5d1e6fcaf30c233344467a0bf15f15efc1195f5a06ed114d22067") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-206" || status.formalPublicationMapSha256 !== "8c5a2a14bd3199c27ff8e78619e55f58e03729d2ac4b7e7d3b8b34ceb4535bdc" || status.leanSourceClosureSha256 !== "a2458a11f7babd8cb4d5996dbd6623188db2fd98fad6e2dcf8d9fc9ca2b18aba") fail("status source identity mismatch");
   const milestones = status.formalPublicationMilestones;
   if (!Array.isArray(milestones) || milestones.length < 3
       || new Set(milestones.map((row) => row.id)).size !== milestones.length
@@ -10977,6 +10988,55 @@ function assertFailClosedStatus(status) {
     fail("core status residual-terminal PkgC restoration-coverage BN6-ledger boundary mismatch");
   }
 
+
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+  );
+  if (!pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.earned !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.allPresent !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.allAssumptionFree !== false
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.allKernelTypesMatch !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.sourceClosureFingerprintMatches !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.status !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_MILESTONE_SCOPE
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_NON_CLAIM
+      || JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.requiredTheorems) !== JSON.stringify(Object.keys(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS))
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(([name, evidence]) => {
+        const row = pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.theoremRows?.find((candidate) => candidate.name === name);
+        return row?.present === true
+          && row.kind === "theorem"
+          && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+          && row.actualKernelTypeSha256 === evidence.hash
+          && row.expectedKernelTypeSha256 === evidence.hash
+          && row.kernelTypeFingerprintMatches === true;
+      })
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFormalized !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomAuditPassed !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAuditedDeclarationCount !== 4
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteEndpointProjectAssumptionFree !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteSourceLedgerArbitraryFinite !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCandidateBoundAmbientLedgers !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTypedRestorerRequired !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteRawBN6CellsDerived !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFirstObstructionPreserved !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConditionalZeroSlackOnly !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteActivationMismatchReflectedToSourceLedger !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteDerivesSourcesFromTerminalInput !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConstructsDownstreamTables !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHallRouteIsGlobalGain !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteComputedRemainderProvedEmpty !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompletePkgCBN6Integration !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope !== "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
+      || status.leanPCCMinLoopExactnessFormalized !== false
+      || status.leanZeroSlackCompletenessFormalized !== false
+      || status.leanPCCMinPolynomialRuntimeFormalized !== false) {
+    fail("core status candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
+  }
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -12287,6 +12347,17 @@ function assertInventory(inventory, status) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory residual-terminal PkgC restoration-coverage BN6-ledger theorem mismatch: " + name);
+      }
+    }
+
+    for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory candidate-bound PkgC restoration/BN6/BCEL theorem mismatch: " + name);
       }
     }
 
@@ -15346,6 +15417,44 @@ function assertCurrentManifest(manifest, status, progress) {
     fail("current manifest residual-terminal PkgC restoration-coverage BN6-ledger theorem identity mismatch");
   }
 
+
+  if (!(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFormalized === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomAuditPassed === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAuditedDeclarationCount === 4
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteEndpointProjectAssumptionFree === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteSourceLedgerArbitraryFinite === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCandidateBoundAmbientLedgers === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTypedRestorerRequired === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteRawBN6CellsDerived === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFirstObstructionPreserved === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConditionalZeroSlackOnly === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteActivationMismatchReflectedToSourceLedger === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteDerivesSourcesFromTerminalInput === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConstructsDownstreamTables === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHallRouteIsGlobalGain === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteComputedRemainderProvedEmpty === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompletePkgCBN6Integration === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope === "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) {
+    fail("current manifest candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
+  }
+  if (JSON.stringify(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure)
+      || earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure.length !== 0) {
+    fail("current manifest candidate-bound PkgC restoration/BN6/BCEL axiom closure mismatch");
+  }
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes = earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTheoremKernelTypeSha256;
+  if (!pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes
+      || Object.keys(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes).length !== 1
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(([name, row]) => pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes[name] === row.hash)) {
+    fail("current manifest candidate-bound PkgC restoration/BN6/BCEL fingerprint mismatch");
+  }
+  if (earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCheckedCompleteTheorem !== "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete") {
+    fail("current manifest candidate-bound PkgC restoration/BN6/BCEL theorem identity mismatch");
+  }
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -15361,7 +15470,7 @@ function assertCurrentManifest(manifest, status, progress) {
   if (!lockedNANDThresholdPublicationHashes || Object.keys(lockedNANDThresholdPublicationHashes).length !== 1
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) fail("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) fail("current manifest earned scope omits a published residual-terminal bridge");
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger")) fail("current manifest earned scope omits the M205 residual-terminal PkgC restoration-coverage BN6-ledger milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route")) fail("current manifest earned scope omits the M206 candidate-bound PkgC restoration/BN6/BCEL route milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) fail("current manifest overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) fail("current manifest overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) fail("historical archive is not quarantined");

@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-29-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route",
+      "milestoneId": "pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route",
+      "publishedAt": "2026-08-28T20:47:44.777Z",
+      "title": "Candidate-bound PkgC restoration coverage and checked BN6/BCEL route",
+      "plainLanguage": [
+        "Lean now binds M205's complete restoration-coverage source ledger to one supplied computed BCEL nucleus. It preserves the first exact Hall deficit, ambient residual reduction, or no-embedding witness. Only the all-singletonized branch derives the BN6 ledger and enters the checked sparse BN6/BCEL Packet/HB classifier, returning conditional ZeroSlack or the first exact small-cut activation mismatch reflected to the original source ledger.",
+        "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, ranks, claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The candidate binding does not materialize semantically adequate full candidates or derive these objects from every valid terminal input. A Hall deficit is not a verified global gain or rank-decreasing transition, the computed ambient remainder is not proved empty, and ambient incompatibility or source activation mismatch is not a complete global route. This milestone does not finish PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 182 of 184. All five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 182,
+        "formalArtefactCoverageTotalRows": 184,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "2a2c3bdab876d430f462bd357b76d0f2e21fc023",
+        "tree": "7df5204b9a591e1f4edd88b9644e2cc028b4acc5",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-206",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-29-residual-terminal-pkgc-restoration-coverage-bn6-ledger",
       "milestoneId": "residual-terminal-pkgc-restoration-coverage-bn6-ledger",
       "publishedAt": "2026-08-28T16:05:51.831Z",
