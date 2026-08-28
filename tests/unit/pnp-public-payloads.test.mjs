@@ -4333,6 +4333,60 @@ test('current status binds the compiled inventory and fails the concrete gate cl
     [],
   );
   assert.ok(index.earnedMilestones.includes(residualTerminalPkgCRestorationCoverageAmbientRoute.id));
+
+  const residualTerminalPkgCRestorationCoverageBN6Ledger = status.formalPublicationMilestones
+    .find((row) => row.id === "residual-terminal-pkgc-restoration-coverage-bn6-ledger");
+  assert.ok(residualTerminalPkgCRestorationCoverageBN6Ledger);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.earned, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.allPresent, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.allAssumptionFree, false);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.allKernelTypesMatch, true);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(residualTerminalPkgCRestorationCoverageBN6Ledger.requiredTheorems, [
+    "PNP.DirectWire.terminalPkgC_restorationCoverage_bn6_cellization_checked_complete",
+  ]);
+  assert.equal(residualTerminalPkgCRestorationCoverageBN6Ledger.theoremRows.length, 1);
+  assert.equal(
+    residualTerminalPkgCRestorationCoverageBN6Ledger.theoremRows[0].actualKernelTypeSha256,
+    "17d75201994721d64f24d4ee95a20a13dfd3b3b25eef4e5b8093481c81055737",
+  );
+  assert.deepEqual(
+    residualTerminalPkgCRestorationCoverageBN6Ledger.theoremRows[0].axioms,
+    ["Quot.sound", "propext"],
+  );
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerFormalized, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerAxiomAuditPassed, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerAuditedDeclarationCount, 11);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerSourceLedgerArbitraryFinite, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerTypedRestorerRequired, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerAllSourceSingletonizationRequiredForCellization, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerFirstObstructionPreserved, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerBN6CellsConstructed, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerPayloadOrderPreserved, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerAllCutActivationConserved, true);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerDerivesRestorationUniverseFromTerminalInput, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerDerivesAmbientLedgerFromTerminalInput, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerHallRouteIsGlobalGain, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerComputedRemainderProvedEmpty, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerCompletePkgCBN6Integration, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerUnconditionalZeroSlack, false);
+  assert.equal(status.leanResidualTerminalPkgCRestorationCoverageBN6LedgerScope, "arbitrary-finite-supplied-active-pkgc-source-ledger-scanned-in-list-order-for-the-first-exact-restoration-hall-ambient-reduction-or-no-embedding-outcome-or-complete-derived-bn6-cellization-with-payload-order-and-all-cut-activation-conservation");
+  assert.equal(
+    release.earnedBoundary.residualTerminalPkgCRestorationCoverageBN6LedgerCheckedCompleteTheorem,
+    "PNP.DirectWire.terminalPkgC_restorationCoverage_bn6_cellization_checked_complete",
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPkgCRestorationCoverageBN6LedgerAxiomClosure,
+    ["Quot.sound", "propext"],
+  );
+  assert.deepEqual(
+    release.earnedBoundary.residualTerminalPkgCRestorationCoverageBN6LedgerProjectAxiomClosure,
+    [],
+  );
+  assert.ok(index.earnedMilestones.includes(residualTerminalPkgCRestorationCoverageBN6Ledger.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
