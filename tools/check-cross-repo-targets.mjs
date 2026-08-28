@@ -9,9 +9,9 @@ import { validateProofProgressModel } from "./proof-progress-model.mjs";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "385df6cc15cf963a19c2ec5ea96b2e22fcbe76b9";
-const REVIEWED_CORE_TREE = "9dc5f189d244ccc08181963a3c94d99d53b7a094";
-const REVIEWED_PROOF_COMMIT = "88e574a561128ea7bd430cccec89e4e03bbf5453";
+const REVIEWED_CORE_COMMIT = "2a2c3bdab876d430f462bd357b76d0f2e21fc023";
+const REVIEWED_CORE_TREE = "7df5204b9a591e1f4edd88b9644e2cc028b4acc5";
+const REVIEWED_PROOF_COMMIT = "0da90f12fb91c7bf1a264af78127cbec88870a01";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4298,6 +4298,10 @@ const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_RELEASE_IDENTITIES 
   residualTerminalPkgCRestorationCoverageBN6LedgerCheckedCompleteTheorem: "PNP.DirectWire.terminalPkgC_restorationCoverage_bn6_cellization_checked_complete"
 };
 
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_RELEASE_IDENTITIES = {
+  pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCheckedCompleteTheorem: "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -6182,6 +6186,13 @@ const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_THEOREMS = {
 const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_SCOPE = "arbitrary-finite-supplied-active-pkgc-source-ledger-scanned-in-list-order-for-the-first-exact-restoration-hall-ambient-reduction-or-no-embedding-outcome-or-complete-derived-bn6-cellization-with-payload-order-and-all-cut-activation-conservation";
 const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_MILESTONE_SCOPE = "For every arbitrary finite supplied active PkgC source ledger with per-source restoration and ambient BN4 data, the list-order classifier either proves all source systems singletonized and constructs the complete BN6 positive-cell ledger with exact length, payload order and all-cut activation conservation, or retains the first exact source-member Hall deficit, computed ambient reduction, or no-embedding witness.";
 const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_NON_CLAIM = "The active PkgC source cells and cuts, positive payload atoms, per-source restoration-coordinate universes and maps, full-restoration coordinate lists, and ambient BN4 ledgers remain explicit supplied inputs. Complete coordinate coverage does not materialize semantic full candidates or derive restoration adequacy. A Hall deficit is not a verified gain or globally rank-decreasing transition, the computed remainder is not proved empty, and no-embedding is not a complete global route. This milestone does not derive the source ledger or restoration and ambient data from every valid terminal input, complete PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS = {
+  "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete": { hash: "122d0276d734cc4012cf8ab58127d9a60a7d146f9ff4f7018bd9b40d96123ce4", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute" }
+};
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_SCOPE = "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack";
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_MILESTONE_SCOPE = "For every arbitrary finite M205 restoration-coverage source ledger tied to one computed BCEL nucleus, the total classifier preserves the first exact Hall deficit, ambient residual reduction, or no-embedding witness. Only the all-singletonized branch constructs the source-derived BN6 ledger and enters the checked sparse BN6/BCEL Packet/HB classifier, yielding conditional ZeroSlack or one exact small-cut mismatch reflected to the original enriched source activation ledger.";
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_NON_CLAIM = "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, ranks, claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The candidate binding does not materialize semantically adequate full candidates or derive these objects from every valid terminal input. A Hall deficit is not a verified global gain or rank-decreasing transition, the computed ambient remainder is not proved empty, and ambient incompatibility or source activation mismatch is not a complete global route. This milestone does not finish PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -9547,6 +9558,44 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
     failures.push("current manifest residual-terminal PkgC restoration-coverage BN6-ledger theorem identity mismatch");
   }
 
+
+  if (!(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFormalized === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomAuditPassed === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAuditedDeclarationCount === 4
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteEndpointProjectAssumptionFree === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteSourceLedgerArbitraryFinite === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCandidateBoundAmbientLedgers === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTypedRestorerRequired === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteRawBN6CellsDerived === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFirstObstructionPreserved === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConditionalZeroSlackOnly === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteActivationMismatchReflectedToSourceLedger === true
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteDerivesSourcesFromTerminalInput === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConstructsDownstreamTables === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHallRouteIsGlobalGain === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteComputedRemainderProvedEmpty === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompletePkgCBN6Integration === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack === false
+      && earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope === "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
+      && earned.zeroSlackCompletenessFormalized === false
+      && earned.pccMinPolynomialRuntimeFormalized === false)) {
+    failures.push("current manifest candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+  }
+  if (JSON.stringify(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure)
+      || earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure.length !== 0) {
+    failures.push("current manifest candidate-bound PkgC restoration/BN6/BCEL axiom closure mismatch");
+  }
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes = earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTheoremKernelTypeSha256;
+  if (!pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes
+      || Object.keys(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes).length !== 1
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(([name, row]) => pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHashes[name] === row.hash)) {
+    failures.push("current manifest candidate-bound PkgC restoration/BN6/BCEL fingerprint mismatch");
+  }
+  if (earned.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCheckedCompleteTheorem !== "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete") {
+    failures.push("current manifest candidate-bound PkgC restoration/BN6/BCEL theorem identity mismatch");
+  }
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -9563,7 +9612,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger")) failures.push("current manifest earned scope omits the M205 residual-terminal PkgC restoration-coverage BN6-ledger milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route")) failures.push("current manifest earned scope omits the M206 candidate-bound PkgC restoration/BN6/BCEL route milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -13973,6 +14022,55 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
     failures.push("core status residual-terminal PkgC restoration-coverage BN6-ledger boundary mismatch");
   }
 
+
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+  );
+  if (!pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.earned !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.allPresent !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.allAssumptionFree !== false
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.allKernelTypesMatch !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.sourceClosureFingerprintMatches !== true
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.status !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_MILESTONE_SCOPE
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_NON_CLAIM
+      || JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.requiredTheorems) !== JSON.stringify(Object.keys(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS))
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(([name, evidence]) => {
+        const row = pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.theoremRows?.find((candidate) => candidate.name === name);
+        return row?.present === true
+          && row.kind === "theorem"
+          && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+          && row.actualKernelTypeSha256 === evidence.hash
+          && row.expectedKernelTypeSha256 === evidence.hash
+          && row.kernelTypeFingerprintMatches === true;
+      })
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFormalized !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomAuditPassed !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAuditedDeclarationCount !== 4
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteEndpointProjectAssumptionFree !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteSourceLedgerArbitraryFinite !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCandidateBoundAmbientLedgers !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTypedRestorerRequired !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteRawBN6CellsDerived !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteFirstObstructionPreserved !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConditionalZeroSlackOnly !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteActivationMismatchReflectedToSourceLedger !== true
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteDerivesSourcesFromTerminalInput !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteConstructsDownstreamTables !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteHallRouteIsGlobalGain !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteComputedRemainderProvedEmpty !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompletePkgCBN6Integration !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack !== false
+      || status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope !== "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
+      || status.leanPCCMinLoopExactnessFormalized !== false
+      || status.leanZeroSlackCompletenessFormalized !== false
+      || status.leanPCCMinPolynomialRuntimeFormalized !== false) {
+    failures.push("core status candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+  }
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -15400,6 +15498,17 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         failures.push("core inventory residual-terminal PkgC restoration-coverage BN6-ledger theorem mismatch: " + name);
+      }
+    }
+
+    for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        failures.push("core inventory candidate-bound PkgC restoration/BN6/BCEL theorem mismatch: " + name);
       }
     }
 
@@ -18389,6 +18498,29 @@ export function validateAuditTargets(options = {}) {
     }
   }
 
+
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+  );
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteNames = Object.keys(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS);
+  if (!pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_MILESTONE_SCOPE
+      || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_NON_CLAIM
+      || JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone.requiredTheorems) !== JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteNames)
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    failures.push("core publication map candidate-bound PkgC restoration/BN6/BCEL route mismatch");
+  }
+  const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoutePins = releaseManifest.earnedBoundary?.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS)) {
+    if (!pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoutePins[name] !== row.hash) {
+      failures.push("core publication map M206 theorem fingerprint mismatch: " + name);
+    }
+  }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
