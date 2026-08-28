@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-28-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route",
+      "milestoneId": "pccmin-checked-packet-pkgc-ambient-bn4-extraction-route",
+      "publishedAt": "2026-08-28T02:00:30Z",
+      "title": "Computed PkgC ambient-BN4 extraction and checked source-route composition",
+      "plainLanguage": [
+        "For every arbitrary finite supplied active PkgC source ledger and arbitrary finite ambient BN4 ledger tied to the same checked BCEL nucleus, Lean now computes the exact ambient remainder rather than accepting a remainder and permutation from the caller. Constructive remove-first recursion preserves duplicate occurrences and works in arbitrary ambient order. It either returns the computed remainder with an exact multiset embedding and complete residual-ledger reduction, or retains a required generated cancellation cell with proof that no exact remainder embedding exists. The candidate-bound bridge constructs the BN4 activation-cancellation kernel internally and preserves M202's conditional ZeroSlack and source activation mismatch branches.",
+        "The terminal problem, checked finite BCEL-ready certificate, active source systems and cuts, positive payload atoms, typed restorer, ambient ledger, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain supplied. The computed reduction does not prove that its remainder is empty, and a no-embedding result is a compatibility failure rather than a verified gain or globally rank-decreasing transition. This milestone does not construct the ambient ledger or source data from every terminal input, construct upstream BN3 through BN5 data, prove complete PkgC through BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size bounds, put CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. The fixed-weight estimate remains 35%, while formal artefact coverage rises to 179 of 181."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 179,
+        "formalArtefactCoverageTotalRows": 181,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "171a90983820e1c6bba2fcf85203843b4bd3f5da",
+        "tree": "513bbcf670bdfb02ae2640949aa8ba37c372fbcd",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-28-203",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-28-pccmin-checked-packet-pkgc-bn6-bcel-source-route",
       "milestoneId": "pccmin-checked-packet-pkgc-bn6-bcel-source-route",
       "publishedAt": "2026-08-27T20:28:28Z",

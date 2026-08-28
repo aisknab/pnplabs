@@ -306,6 +306,25 @@ leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompletePkgCBN6Integration = false
 leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteCompleteEncodedPolynomialRuntimeProved = false
 leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteUnconditionalZeroSlack = false
 leanPCCMinCheckedPacketPkgCBN6BCELSourceRouteScope = "arbitrary-finite-supplied-active-pkgc-source-ledger-over-the-exact-checked-bcel-nucleus-with-source-derived-raw-bn6-cells-exact-pkgc-cancellation-or-source-ledger-singleton-pair-activation-mismatch-and-conditional-zeroslack-under-supplied-checked-downstream-data"
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteFormalized = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAxiomAuditPassed = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAuditedDeclarationCount = 10
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteEndpointProjectAssumptionFree = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAmbientLedgerArbitraryFinite = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteAmbientOrderIndependent = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteMultiplicityPreserved = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteRemainderComputed = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteNoEmbeddingProofBearing = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCandidateBN4KernelConstructed = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteResidualReductionExact = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteConditionalZeroSlackOnly = true
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteDerivesAmbientLedgerFromTerminalInput = false
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteDerivesSourcesFromTerminalInput = false
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCancellationReductionIsGlobalGain = false
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompletePkgCBN6Integration = false
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteCompleteEncodedPolynomialRuntimeProved = false
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteUnconditionalZeroSlack = false
+leanPCCMinCheckedPacketPkgCAmbientBN4ExtractionRouteScope = "arbitrary-finite-multiplicity-preserving-order-independent-extraction-of-generated-pkgc-cancellation-cells-from-a-supplied-candidate-bound-ambient-bn4-ledger-with-computed-remainder-exact-residual-reduction-or-proof-of-no-exact-embedding-composed-with-m202-conditional-zeroslack-and-source-activation-routing"
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -315,7 +334,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 178 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 178 of 180 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Source-derived PkgC/BN6 sparse BCEL route and checked conditional ZeroSlack**, composes M201's source-derived raw BN6 ledger with M200's checked sparse BCEL/Packet classifier. It retains an exact source-member PkgC cancellation, reflects the first nonempty proper singleton/pair activation mismatch back to the original PkgC source ledger, or reaches conditional ZeroSlack under supplied checked selector silence. The terminal problem, checked finite BCEL-ready certificate, active source systems and cuts, positive payload atoms, typed restorer, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. A returned PkgC cancellation or source-ledger activation mismatch is exact proof-bearing evidence, not a verified gain or globally rank-decreasing transition. This does not construct the sources or downstream tables from every valid terminal input, construct upstream BN3 through BN5 data, prove complete PkgC through BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, establish SAT hardness transport, create the eligible root theorem, close a global gate, or prove `P = NP`. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 179 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 179 of 181 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Computed PkgC ambient-BN4 extraction and checked source-route composition**, computes the exact multiplicity-preserving ambient remainder rather than accepting one from the caller, proves the complete residual-ledger reduction or exact no-embedding alternative, constructs the candidate BN4 cancellation kernel internally, and preserves M202's conditional source-routing branches. The terminal problem, checked finite BCEL-ready certificate, active V54 source systems and cuts, positive payload atoms, typed restorer, ambient BN4 ledger, realizer table, accepted claims, rank assignment, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The computed ambient residual reduction does not prove that its remainder is empty or contradict a surviving residual, and an exact no-embedding result is a compatibility failure rather than a verified gain or globally rank-decreasing transition. This milestone does not construct the ambient ledger, sources, payloads, restorer, or downstream tables from every valid terminal input, construct upstream BN3 through BN5 data, prove complete PkgC through BN6 route integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove encoded-size polynomial construction, runtime, output-size, or certificate-size bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -334,7 +353,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 144-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 145-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
