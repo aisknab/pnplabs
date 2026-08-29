@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "2a2c3bdab876d430f462bd357b76d0f2e21fc023";
-const CORE_TREE = "7df5204b9a591e1f4edd88b9644e2cc028b4acc5";
-const CORE_PUBLICATION_MAP_SHA256 = "8c5a2a14bd3199c27ff8e78619e55f58e03729d2ac4b7e7d3b8b34ceb4535bdc";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-206";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-206";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-206";
-const CORE_SOURCE_CLOSURE_SHA256 = "a2458a11f7babd8cb4d5996dbd6623188db2fd98fad6e2dcf8d9fc9ca2b18aba";
-const OLD_PDF_SHA256 = "c4f2de65642944bec4fee7de9c389c460109aa71b6ab54fcf934813ea53b3d59";
-const OLD_TEX_SHA256 = "5b02447ccadb0cf1058012e3fddfcef299e9da2b58ebd6b1804ce2bba592f175";
+const CORE_COMMIT = "ab5ed194e1420eb801dfdbf98b27a5fcc4fd4b98";
+const CORE_TREE = "edbd5b558f778238abb46b5d7d54ce662a06b9fa";
+const CORE_PUBLICATION_MAP_SHA256 = "b6bcf112fc85d6e18e676987a375f8642057ffb83291d2a0a478a4490e0a7de7";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-207";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-207";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-207";
+const CORE_SOURCE_CLOSURE_SHA256 = "00219f5c58c6490abf6c83a8b4b826d11cb4380b55627afa6f41a96d5f3d4265";
+const OLD_PDF_SHA256 = "2cd5c49d1dc142897333dac1b15a48328713852f863c4103e6618924c7a78a92";
+const OLD_TEX_SHA256 = "1eb4417eb909178f39d15afe0b38e67ce5f50b84b41c1a5e5588e7f06371c206";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -2061,6 +2061,13 @@ const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_THEOREMS = 
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_SCOPE = "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack";
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_MILESTONE_SCOPE = "For every arbitrary finite M205 restoration-coverage source ledger tied to one computed BCEL nucleus, the total classifier preserves the first exact Hall deficit, ambient residual reduction, or no-embedding witness. Only the all-singletonized branch constructs the source-derived BN6 ledger and enters the checked sparse BN6/BCEL Packet/HB classifier, yielding conditional ZeroSlack or one exact small-cut mismatch reflected to the original enriched source activation ledger.";
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_NON_CLAIM = "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, ranks, claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. The candidate binding does not materialize semantically adequate full candidates or derive these objects from every valid terminal input. A Hall deficit is not a verified global gain or rank-decreasing transition, the computed ambient remainder is not proved empty, and ambient incompatibility or source activation mismatch is not a complete global route. This milestone does not finish PkgC/BN3--BN6 integration, derive blocker semantics or semantic dependency completeness, prove manuscript-wide SaturatePositive or BCELReady, establish unconditional ZeroSlack, construct executable polynomial PCCMin, prove complete encoded-size polynomial bounds, put CNFSAT in P, open a global gate, create the eligible root theorem, or prove P = NP.";
+
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS = {
+  "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_charge_route_or_zeroslack_checked_complete": { hash: "2205a2a1ef56e31519ab2320d6ed83004a252026e1d92731de4fba539c4a9d7e", axioms: ["Quot.sound", "propext"], module: "PNP.PCCMinCheckedPacketPkgCRestorationCoverageChargeDescent" }
+};
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_SCOPE = "arbitrary-finite-m206-restoration-coverage-ambient-embedding-with-mass-sensitive-unsigned-charge-decomposition-strict-remainder-charge-decrease-and-context-parametric-exact-terminal-residual-rank-charge-coordinate-descent-while-all-other-m206-outcomes-remain-explicit";
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_MILESTONE_SCOPE = "For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit.";
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_NON_CLAIM = "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4372,32 +4379,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 600073,
-    sha256: "2cd5c49d1dc142897333dac1b15a48328713852f863c4103e6618924c7a78a92"
+    bytes: 601770,
+    sha256: "21bbe8a6597183e68b8c7a75d0456a33a69442a169e30f680c203e8351a01e62"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 380471,
-    sha256: "1eb4417eb909178f39d15afe0b38e67ce5f50b84b41c1a5e5588e7f06371c206"
+    bytes: 382211,
+    sha256: "88ebe65fc9a02771aa7767885e6959f72defae7bf8ee256e09b6611d09c1246d"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2715311,
-    sha256: "e4ed404086b1511186909f1ef07747af7028d14cfd65cfe1bbba5052f6c8f95a"
+    bytes: 2722073,
+    sha256: "438f521f226f95ecfbe63d96a24063261faa84f7e903de7de44460b4f6fba140"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 42754915,
-    sha256: "8c5968697bbc663214dc0cbe5c290aa3f3bf770bd5d171b2e3624cab165b7996"
+    bytes: 47306985,
+    sha256: "ba862daa1574eb21bd3f8b938c2ad0c2c476521be151e5b110abbb6d81c51b30"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 78199,
-    sha256: "cf6deeda688de51f960c155cdca2fe9ce02de61a70ae0504b7b153a339a28ad3"
+    bytes: 80290,
+    sha256: "44ba2647b0c9b622b76917603656a1917087834c067a32ae085fd286cd7f3efa"
   }
 ];
 
@@ -6470,6 +6477,23 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
+  }
+
+  const pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+  );
+  const pccMinCheckedPacketPkgCRestorationCoverageChargeDescentNames =
+    Object.keys(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS);
+  if (!pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone
+      || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+      || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_MILESTONE_SCOPE
+      || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_NON_CLAIM
+      || JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.requiredTheorems)
+        !== JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageChargeDescentNames)
+      || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map PkgC restoration-coverage charge-descent boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -11021,6 +11045,62 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status candidate-bound PkgC restoration/BN6/BCEL route boundary mismatch");
     }
+
+    const pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+    );
+    if (!pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.earned !== true
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.allPresent !== true
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.allAssumptionFree !== false
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.allKernelTypesMatch !== true
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.sourceClosureFingerprintMatches !== true
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.classification !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.status !== "formalized-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.scope !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_MILESTONE_SCOPE
+        || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.nonClaim !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_NON_CLAIM
+        || JSON.stringify(pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS))
+        || !Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS).every(([name, evidence]) => {
+          const row = pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.theoremRows?.find(
+            (candidate) => candidate.name === name
+          );
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentFormalized !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomAuditPassed !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAuditedDeclarationCount !== 16
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentEndpointProjectAssumptionFree !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentArbitraryFinite !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnsignedChargeMassDerived !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentExactPermutationRequired !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRemovedChargeStrictlyPositive !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualLedgerPreserved !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentChargeSizeStrictlyDecreases !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualRankChargeCoordinateDecreases !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRankContextParametric !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCallerSuppliedRankProofRequired !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentM206BranchesPreserved !== true
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentHallRouteIsGlobalGain !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAmbientMismatchIsGlobalRoute !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentActivationMismatchIsGlobalRoute !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentComputedRemainderProvedEmpty !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteGlobalRouteCoverage !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integration !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack !== false
+        || payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope !== PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_SCOPE
+        || payload.leanPCCMinLoopExactnessFormalized !== false
+        || payload.leanZeroSlackCompletenessFormalized !== false
+        || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
+      fail("core status PkgC restoration-coverage charge-descent boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -11820,6 +11900,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory candidate-bound PkgC restoration/BN6/BCEL theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory PkgC restoration-coverage charge-descent theorem mismatch: " + name);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {
