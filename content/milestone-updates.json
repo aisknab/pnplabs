@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-29-concrete-cook-levin-builder-arbitrary-slot-header-router",
+      "milestoneId": "concrete-cook-levin-builder-arbitrary-slot-header-router",
+      "publishedAt": "2026-08-29T14:10:53Z",
+      "title": "Uniform Cook-Levin arbitrary-slot header router",
+      "plainLanguage": [
+        "For every concrete polynomial-time verifier and each coordinate in its complete token schedule, Lean now verifies a fixed 54-rule finite controller that compares that coordinate with the exact first-body boundary. The machine accepts exactly coordinates in the padded header, rejects the boundary and later coordinates, runs within an explicit polynomial bound derived from the verifier, and times out on malformed symbols or one-step-short fuel.",
+        "This is the first uniform raw routing layer for an arbitrary token coordinate. It does not yet decode the post-header quotient and remainder into a clause and within-clause slot, emit a body token, or complete the raw formula builder and reduction. M209 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 185 of 187, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 185,
+        "formalArtefactCoverageTotalRows": 187,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "8529753cac12243c0a618facfca31e2287368469",
+        "tree": "e55427ff8450582ca1ec781084082896d40121e6",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-209",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-29-concrete-cook-levin-builder-full-schedule-cursor-controller",
       "milestoneId": "concrete-cook-levin-builder-full-schedule-cursor-controller",
       "publishedAt": "2026-08-29T08:35:49Z",

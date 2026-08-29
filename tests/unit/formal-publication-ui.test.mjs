@@ -24,6 +24,8 @@ const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'
 const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
   'concrete-cook-levin-builder-full-schedule-cursor-controller':
     'ConcreteCookLevinBuilderFullScheduleCursorController',
+  'concrete-cook-levin-builder-arbitrary-slot-header-router':
+    'ConcreteCookLevinBuilderArbitrarySlotHeaderRouter',
 });
 
 function statusFieldStem(milestone) {

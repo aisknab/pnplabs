@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 603,632 | `71b8979e15d4063d572d7fd71f355b205b2ee0eca2fbbe0c0df072bbb73da03e` |
-| `downloads/canonical-proof-report.pdf` | 603,632 | `71b8979e15d4063d572d7fd71f355b205b2ee0eca2fbbe0c0df072bbb73da03e` |
-| `downloads/canonical_proof_report.tex` | 383,598 | `958d6a8b5ae829e19d01592da11618d6d1176c4a3c9c865280f3b6c41bb71e4f` |
-| `downloads/canonical-proof-report.tex` | 383,598 | `958d6a8b5ae829e19d01592da11618d6d1176c4a3c9c865280f3b6c41bb71e4f` |
-| `public/pnp-status.json` | 2,726,315 | `300aefb754dd66f948ad8f0d2e1f1519d729b74ccf4f41ef95a91eab59cd99e1` |
-| `public/pnp-theorem-inventory.json` | 47,348,580 | `54a3474f3c0c2a6c66c6d890ffa9836f67989a989e3ce18334a4be97c313ab06` |
-| `public/pnp-proof-progress.json` | 82,534 | `b8f4c7188c9cc7ec51192d8f29437d353841521a1b45f433e46f5319a9f114ff` |
+| `downloads/canonical_proof_report.pdf` | 605,255 | `f904b6ca67bc9d7bdeca49779db5c6a4c3c9b9768ec48e601890935bbf1c6d38` |
+| `downloads/canonical-proof-report.pdf` | 605,255 | `f904b6ca67bc9d7bdeca49779db5c6a4c3c9b9768ec48e601890935bbf1c6d38` |
+| `downloads/canonical_proof_report.tex` | 385,011 | `bee62bf7eddfd29815596b722c923a20349fa793cfea9908ef0805127b42c5f8` |
+| `downloads/canonical-proof-report.tex` | 385,011 | `bee62bf7eddfd29815596b722c923a20349fa793cfea9908ef0805127b42c5f8` |
+| `public/pnp-status.json` | 2,730,691 | `e1d76e36308ef97735a7afcbaa0cd6ca82ccc6cecd94b8c05df3fb118a9f7f70` |
+| `public/pnp-theorem-inventory.json` | 47,417,083 | `697befa21cf6f566182a14a36a17c515d65a863ad81c785d6f22b7d47182398a` |
+| `public/pnp-proof-progress.json` | 84,732 | `9b453019bc0ff106a7b4d2abd23bffcb6c905303358f4f8c166f19af14811542` |
 
-The PDF must have 150 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 151 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 1d4e562bef4d03c54f22a01983a3842198aef0ae
+git -C ../pnp checkout 8529753cac12243c0a618facfca31e2287368469
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,13 +68,14 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 31,976 public declarations, 16,246 theorem-kind declarations,
-7,740 assumption-free theorem-kind declarations, 15,219 excluded private auxiliaries, 328 modules, and
+Expected compiled inventory counts are 32,158 public declarations, 16,350 theorem-kind declarations,
+7,799 assumption-free theorem-kind declarations, 15,311 excluded private auxiliaries, 329 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. The current formula-emitting
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint; M208's separate uniform controller traverses the complete schedule without decoding or
-emitting its body tokens. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
+emitting its body tokens, while M209's fixed 54-rule arbitrary-slot router classifies only the top-level
+header boundary without post-header decoding or body-token emission. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
 polynomial reduction remain exact and fail closed on malformed source bytes. The semantic layer supplies
 a total compiler from strict canonical CNF formulas to intrinsically topological NAND circuits. Its
 18 reviewed theorem pins prove codec canonicality, well-formed topological output, exact assignment
@@ -298,7 +299,7 @@ The M202 source-derived PkgC/BN6 checked-route milestone has 1 reviewed theorem 
 
 The M207 PkgC restoration coverage and exact ambient charge-coordinate descent milestone has 1 reviewed theorem pin. For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 16-declaration audit is free of project-specific axioms. The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 183 of 185.
 
-The latest M208 Uniform Cook-Levin full-schedule cursor controller milestone has 1 reviewed theorem pin. For every concrete polynomial-time verifier and raw input, the exact polynomial body-opportunity count equals the complete token schedule after the padded unary header. A semantic cursor returns the full canonical schedule and emitted formula. One deterministic finite raw machine composes the complete header, generated count and terminal-coordinate evaluators, and a fixed positive countdown table. It consumes the arbitrary body count exactly, materializes the unique terminal coordinate, accepts within an explicit input-size polynomial bound, and remains fail-closed for malformed countdown geometry, the unlaunched header endpoint, and one-step-short fuel. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 70-declaration audit is free of project-specific axioms. The semantic cursor exposes the full canonical schedule and emitted formula, but the raw countdown loop does not decode or emit the body entries it traverses. M208 is therefore a uniform control scaffold, not the complete raw Cook-Levin formula builder or its FunctionProgram.RawRefinement, and it does not package the concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport, put CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 184 of 186. All five global gates remain open.
+The latest M209 Uniform Cook-Levin arbitrary-slot header router milestone has 1 reviewed theorem pin. For every concrete polynomial-time verifier and every coordinate below its complete direct token schedule, one fixed 54-rule deterministic work machine compares the coordinate with the exact problem-derived first-body boundary. Its exact trace accepts precisely the header branch and rejects equality or the post-header branch. The semantic route is definitionally faithful to formulaTokenSlotDirect; the compiled execution is bounded by the verifier-derived polynomial 36 * terminalSlotPolynomial^2; one-step-short fuel and malformed symbols remain timeout. All 51 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 51-declaration audit is free of project-specific axioms and `Classical.choice`. M209 is the first uniform arbitrary-coordinate raw routing layer, but it routes only the top-level header boundary. It does not decode the post-header quotient and remainder into a clause and within-clause token slot, emit a body token, complete the raw formula builder or its FunctionProgram.RawRefinement, package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 185 of 187. All five global gates remain open.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

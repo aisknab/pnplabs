@@ -414,6 +414,15 @@ leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized 
 leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized = true
 leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized = true
 leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens = false
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFormalized = true
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAxiomAuditPassed = true
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAuditedDeclarationCount = 51
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterLiteralRawMachineFormalized = true
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExactRawTraceFormalized = true
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExternalInputSizePolynomialFormalized = true
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFailClosedBoundaryTimeoutFormalized = true
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterDecodesPostHeaderCoordinate = false
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterEmitsBodyTokens = false
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -423,7 +432,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 184 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 184 of 186 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Uniform Cook-Levin full-schedule cursor controller**, has this scope: For every concrete polynomial-time verifier and raw input, the exact polynomial body-opportunity count equals the complete token schedule after the padded unary header. A semantic cursor returns the full canonical schedule and emitted formula. One deterministic finite raw machine composes the complete header, generated count and terminal-coordinate evaluators, and a fixed positive countdown table. It consumes the arbitrary body count exactly, materializes the unique terminal coordinate, accepts within an explicit input-size polynomial bound, and remains fail-closed for malformed countdown geometry, the unlaunched header endpoint, and one-step-short fuel. The semantic cursor exposes the full canonical schedule and emitted formula, but the raw countdown loop does not decode or emit the body entries it traverses. M208 is therefore a uniform control scaffold, not the complete raw Cook-Levin formula builder or its FunctionProgram.RawRefinement, and it does not package the concrete PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport, put CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 185 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 185 of 187 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Uniform Cook-Levin arbitrary-slot header router**, has this scope: For every concrete polynomial-time verifier and every coordinate below its complete direct token schedule, one fixed 54-rule deterministic work machine compares the coordinate with the exact problem-derived first-body boundary. Its exact trace accepts precisely the header branch and rejects equality or the post-header branch. The semantic route is definitionally faithful to formulaTokenSlotDirect; the compiled execution is bounded by the verifier-derived polynomial 36 * terminalSlotPolynomial^2; one-step-short fuel and malformed symbols remain timeout. All 51 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice. M209 is the first uniform arbitrary-coordinate raw routing layer, but it routes only the top-level header boundary. It does not decode the post-header quotient and remainder into a clause and within-clause token slot, emit a body token, complete the raw formula builder or its FunctionProgram.RawRefinement, package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 185 of 187. All five global gates remain open. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -442,7 +451,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 150-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 151-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 
