@@ -4424,6 +4424,47 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute.id));
+
+  const pccMinCheckedPacketPkgCRestorationCoverageChargeDescent = status.formalPublicationMilestones
+    .find((row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-charge-descent");
+  assert.ok(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.earned, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.allPresent, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.allAssumptionFree, false);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.allKernelTypesMatch, true);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.sourceClosureFingerprintMatches, true);
+  assert.deepEqual(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.requiredTheorems, ["PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_charge_route_or_zeroslack_checked_complete"]);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.theoremRows.length, 1);
+  assert.equal(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.theoremRows[0].actualKernelTypeSha256, "2205a2a1ef56e31519ab2320d6ed83004a252026e1d92731de4fba539c4a9d7e");
+  assert.deepEqual(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.theoremRows[0].axioms, ["Quot.sound", "propext"]);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentFormalized, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomAuditPassed, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAuditedDeclarationCount, 16);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentEndpointProjectAssumptionFree, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentArbitraryFinite, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnsignedChargeMassDerived, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentExactPermutationRequired, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRemovedChargeStrictlyPositive, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualLedgerPreserved, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentChargeSizeStrictlyDecreases, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualRankChargeCoordinateDecreases, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRankContextParametric, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCallerSuppliedRankProofRequired, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentM206BranchesPreserved, true);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentHallRouteIsGlobalGain, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAmbientMismatchIsGlobalRoute, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentActivationMismatchIsGlobalRoute, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentComputedRemainderProvedEmpty, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteGlobalRouteCoverage, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integration, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack, false);
+  assert.equal(status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope, "arbitrary-finite-m206-restoration-coverage-ambient-embedding-with-mass-sensitive-unsigned-charge-decomposition-strict-remainder-charge-decrease-and-context-parametric-exact-terminal-residual-rank-charge-coordinate-descent-while-all-other-m206-outcomes-remain-explicit");
+  assert.equal(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageChargeDescentCheckedCompleteTheorem, "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_charge_route_or_zeroslack_checked_complete");
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageChargeDescentProjectAxiomClosure, []);
+  assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -9373,6 +9414,39 @@ test('status page has a conservative complete static fallback', async () => {
   assert.equal((html.match(/data-earned="true"/g) || []).length, index.formalPublicationMilestoneCounts.earned);
   assert.equal((html.match(/data-earned="false"/g) || []).length, index.formalPublicationMilestoneCounts.unearned);
   assert.equal(status.formalPublicationMilestones.length, index.formalPublicationMilestoneCounts.total);
+});
+
+test('status fallback preserves versioned formal-coverage snapshots', async () => {
+  const [updates, html] = await Promise.all([
+    readJson('content/milestone-updates.json'),
+    readText('status.html'),
+  ]);
+  let checkedCards = 0;
+
+  for (const entry of updates.entries) {
+    if (!entry.progressSnapshot) continue;
+    const marker = `data-milestone-id="${entry.milestoneId}"`;
+    const start = html.indexOf(marker);
+    if (start < 0) continue;
+    const end = html.indexOf('</article>', start);
+    assert.notEqual(end, -1, `unterminated milestone card: ${entry.milestoneId}`);
+    const card = html.slice(start, end);
+    const coverageMatches = [...card.matchAll(
+      /formal artefact coverage(?: at M\d+)? (?:becomes|was|is) (\d+) of (\d+)/giu,
+    )];
+    if (coverageMatches.length === 0) continue;
+
+    checkedCards += 1;
+    const expectedEarned = entry.progressSnapshot.formalArtefactCoverageEarnedRows;
+    const expectedTotal = entry.progressSnapshot.formalArtefactCoverageTotalRows;
+    assert.equal(
+      coverageMatches.some((match) => Number(match[1]) === expectedEarned && Number(match[2]) === expectedTotal),
+      true,
+      `${entry.milestoneId}: static coverage must match its versioned update snapshot`,
+    );
+  }
+
+  assert.ok(checkedCards > 0, 'expected versioned milestone coverage fallbacks');
 });
 
 test('browser runtime constants derive from the canonical current payloads', async () => {

@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-206";
-const STATUS_SHA256 = 'e4ed404086b1511186909f1ef07747af7028d14cfd65cfe1bbba5052f6c8f95a';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-206";
-const FORMAL_PUBLICATION_MAP_SHA256 = "8c5a2a14bd3199c27ff8e78619e55f58e03729d2ac4b7e7d3b8b34ceb4535bdc";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-207";
+const STATUS_SHA256 = '438f521f226f95ecfbe63d96a24063261faa84f7e903de7de44460b4f6fba140';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-207";
+const FORMAL_PUBLICATION_MAP_SHA256 = "b6bcf112fc85d6e18e676987a375f8642057ffb83291d2a0a478a4490e0a7de7";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-206";
-const INVENTORY_SHA256 = "8c5968697bbc663214dc0cbe5c290aa3f3bf770bd5d171b2e3624cab165b7996";
-const SOURCE_CLOSURE_SHA256 = "a2458a11f7babd8cb4d5996dbd6623188db2fd98fad6e2dcf8d9fc9ca2b18aba";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-207";
+const INVENTORY_SHA256 = "ba862daa1574eb21bd3f8b938c2ad0c2c476521be151e5b110abbb6d81c51b30";
+const SOURCE_CLOSURE_SHA256 = "00219f5c58c6490abf6c83a8b4b826d11cb4380b55627afa6f41a96d5f3d4265";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 31762,
-  theorems: 16126,
-  assumptionFreeTheorems: 7715,
+  declarations: 31854,
+  theorems: 16159,
+  assumptionFreeTheorems: 7718,
   excludedPrivateDeclarations: 15189,
-  modules: 326,
+  modules: 327,
   axioms: 0,
 });
 
@@ -4748,6 +4748,10 @@ const RESIDUAL_TERMINAL_PKGC_RESTORATION_COVERAGE_BN6_LEDGER_DECLARATIONS = Obje
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_bn6_bcel_route_or_zeroslack_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRoute","122d0276d734cc4012cf8ab58127d9a60a7d146f9ff4f7018bd9b40d96123ce4"],
 ]);
+
+const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATIONS = Object.freeze([
+  ["PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_charge_route_or_zeroslack_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketPkgCRestorationCoverageChargeDescent","2205a2a1ef56e31519ab2320d6ed83004a252026e1d92731de4fba539c4a9d7e"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5911,6 +5915,29 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved: false,
   leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack: false,
   leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope: null,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentFormalized: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomAuditPassed: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAuditedDeclarationCount: 0,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentEndpointProjectAssumptionFree: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentArbitraryFinite: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnsignedChargeMassDerived: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentExactPermutationRequired: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRemovedChargeStrictlyPositive: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualLedgerPreserved: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentChargeSizeStrictlyDecreases: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualRankChargeCoordinateDecreases: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRankContextParametric: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCallerSuppliedRankProofRequired: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentM206BranchesPreserved: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentHallRouteIsGlobalGain: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAmbientMismatchIsGlobalRoute: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentActivationMismatchIsGlobalRoute: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentComputedRemainderProvedEmpty: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteGlobalRouteCoverage: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integration: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack: false,
+  leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope: null,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6803,6 +6830,29 @@ leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompletePkgCBN6Integra
 leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved ?? false}
 leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack ?? false}
 leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope)}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentFormalized = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentFormalized ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomAuditPassed = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomAuditPassed ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAuditedDeclarationCount = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAuditedDeclarationCount ?? 0}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentEndpointProjectAssumptionFree = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentEndpointProjectAssumptionFree ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentArbitraryFinite = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentArbitraryFinite ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnsignedChargeMassDerived = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnsignedChargeMassDerived ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentExactPermutationRequired = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentExactPermutationRequired ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRemovedChargeStrictlyPositive = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRemovedChargeStrictlyPositive ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualLedgerPreserved = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualLedgerPreserved ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentChargeSizeStrictlyDecreases = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentChargeSizeStrictlyDecreases ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualRankChargeCoordinateDecreases = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualRankChargeCoordinateDecreases ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRankContextParametric = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRankContextParametric ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCallerSuppliedRankProofRequired = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCallerSuppliedRankProofRequired ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentM206BranchesPreserved = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentM206BranchesPreserved ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentHallRouteIsGlobalGain = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentHallRouteIsGlobalGain ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAmbientMismatchIsGlobalRoute = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAmbientMismatchIsGlobalRoute ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentActivationMismatchIsGlobalRoute = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentActivationMismatchIsGlobalRoute ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentComputedRemainderProvedEmpty = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentComputedRemainderProvedEmpty ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteGlobalRouteCoverage = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteGlobalRouteCoverage ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integration = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integration ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack ?? false}
+leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope)}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8029,6 +8079,14 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+
+  const pccMinCheckedPacketPkgCRestorationCoverageChargeDescent =
+    PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8692,6 +8750,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9201,6 +9263,10 @@ function validateStatus(status, inventory) {
 
   const pccMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route"
+  );
+
+  const pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11603,6 +11669,46 @@ function validateStatus(status, inventory) {
     && status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteCompleteEncodedPolynomialRuntimeProved === false
     && status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteUnconditionalZeroSlack === false
     && status.leanPCCMinCheckedPacketPkgCRestorationCoverageBN6BCELRouteScope === "arbitrary-finite-candidate-bound-restoration-coverage-pkgc-source-ledger-with-first-exact-hall-ambient-reduction-or-no-embedding-outcome-or-derived-bn6-cellization-entering-the-checked-sparse-bcel-route-with-source-reflected-activation-mismatch-and-conditional-zeroslack"
+
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone?.classification === "formalized-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.status === "formalized-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.scope === "For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit."
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.nonClaim === "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP."
+    && sameJson(pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.requiredTheorems, PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATIONS.map(([name]) => name))
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.theoremRows?.length === PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATIONS.length
+    && pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone.theoremRows?.every((row) => {
+      const expected = PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentFormalized === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomAuditPassed === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAuditedDeclarationCount === 16
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentEndpointProjectAssumptionFree === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentArbitraryFinite === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnsignedChargeMassDerived === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentExactPermutationRequired === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRemovedChargeStrictlyPositive === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualLedgerPreserved === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentChargeSizeStrictlyDecreases === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentResidualRankChargeCoordinateDecreases === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentRankContextParametric === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCallerSuppliedRankProofRequired === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentM206BranchesPreserved === true
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentHallRouteIsGlobalGain === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentAmbientMismatchIsGlobalRoute === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentActivationMismatchIsGlobalRoute === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentComputedRemainderProvedEmpty === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteGlobalRouteCoverage === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integration === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack === false
+    && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope === "arbitrary-finite-m206-restoration-coverage-ambient-embedding-with-mass-sensitive-unsigned-charge-decomposition-strict-remainder-charge-decrease-and-context-parametric-exact-terminal-residual-rank-charge-coordinate-descent-while-all-other-m206-outcomes-remain-explicit"
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
