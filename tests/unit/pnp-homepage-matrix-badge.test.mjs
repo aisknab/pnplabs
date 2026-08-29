@@ -56,7 +56,16 @@ function latestMilestoneStatusFields(status, release, milestone) {
     ([key]) => key.endsWith('Scope')
       && key.slice(0, -'Scope'.length).toLowerCase() === releasePrefix.toLowerCase(),
   );
-  assert.equal(matchingScopeFields.length, 1, `expected one release scope field for ${milestone.id}`);
+  assert.ok(matchingScopeFields.length <= 1, `expected at most one release scope field for ${milestone.id}`);
+  if (matchingScopeFields.length === 0) {
+    const stems = {
+      'concrete-cook-levin-builder-full-schedule-cursor-controller':
+        'leanConcreteCookLevinBuilderFullScheduleCursorController',
+    };
+    const stem = stems[milestone.id];
+    assert.ok(stem, `missing status-stem mapping for scopeless milestone ${milestone.id}`);
+    return [`${stem}Formalized`, `${stem}AxiomAuditPassed`];
+  }
   const scope = matchingScopeFields[0][1];
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,

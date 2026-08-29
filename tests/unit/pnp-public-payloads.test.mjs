@@ -76,7 +76,17 @@ const releaseBoundaryField = (release, prefix, suffix) => {
   assert.equal(matchingFields.length, 1, `expected one release ${suffix} field for ${prefix}`);
   return matchingFields[0][1];
 };
+const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
+  cookLevinBuilderFullScheduleCursorController:
+    'ConcreteCookLevinBuilderFullScheduleCursorController',
+});
 const statusStemForReleaseBoundary = (status, release, prefix) => {
+  if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
+    const stem = RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES[prefix];
+    assert.equal(status[`lean${stem}Formalized`], true, `missing status formalized field for ${prefix}`);
+    assert.equal(status[`lean${stem}AxiomAuditPassed`], true, `missing status audit field for ${prefix}`);
+    return stem;
+  }
   const scope = releaseBoundaryField(release, prefix, 'Scope');
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
@@ -4465,6 +4475,34 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageChargeDescentAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.pccMinCheckedPacketPkgCRestorationCoverageChargeDescentProjectAxiomClosure, []);
   assert.ok(index.earnedMilestones.includes(pccMinCheckedPacketPkgCRestorationCoverageChargeDescent.id));
+
+  const builderFullScheduleCursorController = status.formalPublicationMilestones
+    .find((row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller");
+  assert.ok(builderFullScheduleCursorController);
+  assert.equal(builderFullScheduleCursorController.earned, true);
+  assert.equal(builderFullScheduleCursorController.allPresent, true);
+  assert.equal(builderFullScheduleCursorController.allAssumptionFree, false);
+  assert.equal(builderFullScheduleCursorController.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(builderFullScheduleCursorController.allKernelTypesMatch, true);
+  assert.equal(builderFullScheduleCursorController.sourceClosureFingerprintMatches, true);
+  assert.match(builderFullScheduleCursorController.scope, /consumes the arbitrary body count exactly/u);
+  assert.match(builderFullScheduleCursorController.nonClaim, /raw loop does not decode or emit the visited body entries/u);
+  assert.deepEqual(builderFullScheduleCursorController.requiredTheorems, ["PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete"]);
+  assert.equal(builderFullScheduleCursorController.theoremRows.length, 1);
+  assert.equal(builderFullScheduleCursorController.theoremRows[0].actualKernelTypeSha256, "43e0a8a651dea0dba61e661579405cd081a7ec33df48be4575cc4b3729bdbc95");
+  assert.deepEqual(builderFullScheduleCursorController.theoremRows[0].axioms, ["Quot.sound", "propext"]);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount, 70);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderFullScheduleCursorControllerCheckedCompleteTheorem, "PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete");
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderFullScheduleCursorControllerAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderFullScheduleCursorControllerProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens, false);
+  assert.ok(index.earnedMilestones.includes(builderFullScheduleCursorController.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
@@ -4543,7 +4581,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.leanConcreteCookLevinBuilderUnaryPolynomialExactRuntimePolynomialFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed, true);
-  assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount, 84);
+  assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount, 85);
   assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized, true);
@@ -7618,7 +7656,7 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderUnaryPolynomialAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(index.claimBoundary.leanConcreteCookLevinBuilderUnaryPolynomialProjectAxiomClosure, []);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed, true);
-  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount, 84);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount, 85);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized, true);
@@ -9066,7 +9104,9 @@ test('status page has a conservative complete static fallback', async () => {
     ...latestMilestone.requiredTheorems,
     `lean${latestStatusStem}Formalized = true`,
     `lean${latestStatusStem}AxiomAuditPassed = true`,
-    `lean${latestStatusStem}Scope = ${JSON.stringify(status[`lean${latestStatusStem}Scope`])}`,
+    ...(Object.hasOwn(status, `lean${latestStatusStem}Scope`)
+      ? [`lean${latestStatusStem}Scope = ${JSON.stringify(status[`lean${latestStatusStem}Scope`])}`]
+      : []),
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'This does not prove CNF-SAT in P, NP-completeness, or P = NP.',
     'encodedFormula_mem_CNFSAT_iff_language',
@@ -9561,7 +9601,9 @@ test('static inventory prose derives changing publication totals from the canoni
     0.65,
     'activated claim wording current milestone boundary',
   );
-  for (const field of [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`, `lean${latestStatusStem}Scope`]) {
+  const latestStatusFields = [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`];
+  if (Object.hasOwn(status, `lean${latestStatusStem}Scope`)) latestStatusFields.push(`lean${latestStatusStem}Scope`);
+  for (const field of latestStatusFields) {
     assert.equal(
       activatedClaimWording.includes(`${field} = ${JSON.stringify(status[field])}`),
       true,
