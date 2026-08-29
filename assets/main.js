@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-208";
-const STATUS_SHA256 = '300aefb754dd66f948ad8f0d2e1f1519d729b74ccf4f41ef95a91eab59cd99e1';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-208";
-const FORMAL_PUBLICATION_MAP_SHA256 = "cef08f0831113c21cf56fc63b1a41cb5f438a0e9fff707ba942ad076793c829b";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-209";
+const STATUS_SHA256 = 'e1d76e36308ef97735a7afcbaa0cd6ca82ccc6cecd94b8c05df3fb118a9f7f70';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-209";
+const FORMAL_PUBLICATION_MAP_SHA256 = "134690fb8be00420328319155a37b50b17ad8bd311d75d1d834d3e3045eb90dc";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-208";
-const INVENTORY_SHA256 = "54a3474f3c0c2a6c66c6d890ffa9836f67989a989e3ce18334a4be97c313ab06";
-const SOURCE_CLOSURE_SHA256 = "da08e94d3a8a765bc7d1735a82178813e338f04d24832b7bad37c1a740e8adc9";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-209";
+const INVENTORY_SHA256 = "697befa21cf6f566182a14a36a17c515d65a863ad81c785d6f22b7d47182398a";
+const SOURCE_CLOSURE_SHA256 = "2672e6d41182ea8a184ad2db68efb5bd7f4f65aef305a673cfae324f36654b3b";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 31976,
-  theorems: 16246,
-  assumptionFreeTheorems: 7740,
-  excludedPrivateDeclarations: 15219,
-  modules: 328,
+  declarations: 32158,
+  theorems: 16350,
+  assumptionFreeTheorems: 7799,
+  excludedPrivateDeclarations: 15311,
+  modules: 329,
   axioms: 0,
 });
 
@@ -4755,6 +4755,10 @@ const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATION
 const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderFullScheduleCursorController", "43e0a8a651dea0dba61e661579405cd081a7ec33df48be4575cc4b3729bdbc95"],
 ]);
+
+const BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderArbitrarySlotHeaderRouter.cook_levin_arbitrary_slot_header_router_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderArbitrarySlotHeaderRouter", "6794a8f27d2587b3c7960116aa3fdd0ac582ab71f9b90f39644c3a676d2cf2bf"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5948,6 +5952,15 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized: false,
   leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized: false,
   leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFormalized: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterLiteralRawMachineFormalized: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExactRawTraceFormalized: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExternalInputSizePolynomialFormalized: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFailClosedBoundaryTimeoutFormalized: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterDecodesPostHeaderCoordinate: false,
+  leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterEmitsBodyTokens: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6870,6 +6883,15 @@ leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized 
 leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized ?? false}
 leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized ?? false}
 leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFormalized = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFormalized ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterLiteralRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterLiteralRawMachineFormalized ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExactRawTraceFormalized = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExactRawTraceFormalized ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExternalInputSizePolynomialFormalized = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExternalInputSizePolynomialFormalized ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFailClosedBoundaryTimeoutFormalized ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterDecodesPostHeaderCoordinate = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterDecodesPostHeaderCoordinate ?? false}
+leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterEmitsBodyTokens = ${payload.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterEmitsBodyTokens ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8111,6 +8133,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderArbitrarySlotHeaderRouter =
+    BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8782,6 +8811,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && builderArbitrarySlotHeaderRouter.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9299,6 +9332,10 @@ function validateStatus(status, inventory) {
 
   const builderFullScheduleCursorControllerMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller"
+  );
+
+  const builderArbitrarySlotHeaderRouterMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-arbitrary-slot-header-router"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11765,6 +11802,41 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized === true
     && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized === true
     && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens === false
+    && builderArbitrarySlotHeaderRouterMilestone?.classification === "formalized-foundation-only"
+    && builderArbitrarySlotHeaderRouterMilestone.status === "formalized-foundation-only"
+    && builderArbitrarySlotHeaderRouterMilestone.earned === true
+    && builderArbitrarySlotHeaderRouterMilestone.allPresent === true
+    && builderArbitrarySlotHeaderRouterMilestone.allAssumptionFree === false
+    && builderArbitrarySlotHeaderRouterMilestone.allKernelTypesMatch === true
+    && builderArbitrarySlotHeaderRouterMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
+    && builderArbitrarySlotHeaderRouterMilestone.sourceClosureFingerprintMatches === true
+    && builderArbitrarySlotHeaderRouterMilestone.scope === "For every concrete polynomial-time verifier and every coordinate below its complete direct token schedule, one fixed 54-rule deterministic work machine compares the coordinate with the exact problem-derived first-body boundary. Its exact trace accepts precisely the header branch and rejects equality or the post-header branch. The semantic route is definitionally faithful to formulaTokenSlotDirect; the compiled execution is bounded by the verifier-derived polynomial 36 * terminalSlotPolynomial^2; one-step-short fuel and malformed symbols remain timeout. All 51 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice."
+    && builderArbitrarySlotHeaderRouterMilestone.nonClaim === "This milestone routes only the top-level header boundary. It does not decode the post-header quotient and remainder into a clause and within-clause token slot, does not emit a body token, and is not the complete raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, or prove P = NP."
+    && sameJson(builderArbitrarySlotHeaderRouterMilestone.requiredTheorems, BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_DECLARATIONS.map(([name]) => name))
+    && builderArbitrarySlotHeaderRouterMilestone.theoremRows?.length === BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_DECLARATIONS.length
+    && builderArbitrarySlotHeaderRouterMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFormalized === true
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterAuditedDeclarationCount === 51
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterLiteralRawMachineFormalized === true
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExactRawTraceFormalized === true
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterExternalInputSizePolynomialFormalized === true
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFailClosedBoundaryTimeoutFormalized === true
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterDecodesPostHeaderCoordinate === false
+    && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterEmitsBodyTokens === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."

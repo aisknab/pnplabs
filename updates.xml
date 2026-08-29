@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-08-29T08:35:49Z</updated>
+  <updated>2026-08-29T14:10:53Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-08-29-concrete-cook-levin-builder-arbitrary-slot-header-router</id>
+    <title>Uniform Cook-Levin arbitrary-slot header router</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-08-29-concrete-cook-levin-builder-arbitrary-slot-header-router"/>
+    <published>2026-08-29T14:10:53Z</published>
+    <updated>2026-08-29T14:10:53Z</updated>
+    <summary type="text">For every concrete polynomial-time verifier and each coordinate in its complete token schedule, Lean now verifies a fixed 54-rule finite controller that compares that coordinate with the exact first-body boundary. The machine accepts exactly coordinates in the padded header, rejects the boundary and later coordinates, runs within an explicit polynomial bound derived from the verifier, and times out on malformed symbols or one-step-short fuel. This is the first uniform raw routing layer for an arbitrary token coordinate. It does not yet decode the post-header quotient and remainder into a clause and within-clause slot, emit a body token, or complete the raw formula builder and reduction. M209 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 185 of 187, and all five global gates remain open. Tracker at publication: formal artefact coverage 185 of 187; risk-weighted proof completion estimate 35 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;For every concrete polynomial-time verifier and each coordinate in its complete token schedule, Lean now verifies a fixed 54-rule finite controller that compares that coordinate with the exact first-body boundary. The machine accepts exactly coordinates in the padded header, rejects the boundary and later coordinates, runs within an explicit polynomial bound derived from the verifier, and times out on malformed symbols or one-step-short fuel.&lt;/p&gt;&lt;p&gt;This is the first uniform raw routing layer for an arbitrary token coordinate. It does not yet decode the post-header quotient and remainder into a clause and within-clause slot, emit a body token, or complete the raw formula builder and reduction. M209 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 185 of 187, and all five global gates remain open.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 185 of 187 current scoped rows earned. Risk-weighted proof completion estimate: 35%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-08-29-concrete-cook-levin-builder-arbitrary-slot-header-router&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-08-29-concrete-cook-levin-builder-full-schedule-cursor-controller</id>
     <title>Uniform Cook-Levin full-schedule cursor controller</title>

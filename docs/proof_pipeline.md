@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,148 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,149 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 31,976 public declarations;
-- 16,246 theorem-kind declarations;
-- 7,740 assumption-free theorem-kind declarations;
-- 328 source-closure modules;
-- 15,219 excluded private compiler auxiliaries;
+- 32,158 public declarations;
+- 16,350 theorem-kind declarations;
+- 7,799 assumption-free theorem-kind declarations;
+- 329 source-closure modules;
+- 15,311 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 184 earned formal artefact scopes are:
+The 185 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -234,6 +234,7 @@ The 184 earned formal artefact scopes are:
 | Candidate-bound PkgC restoration coverage and checked BN6/BCEL route | One reviewed completion-theorem pin binds M205's complete source restoration ledger to one supplied computed BCEL nucleus. It preserves the first exact Hall deficit, ambient residual reduction, or no-embedding witness; only the all-singletonized branch constructs the BN6 ledger and enters the checked sparse BN6/BCEL Packet/HB classifier, yielding conditional ZeroSlack or the first exact small-cut mismatch reflected to the source ledger. The endpoint uses only `Quot.sound` and `propext`; all 4 declarations in the focused audit are free of project-specific axioms. | The terminal problem, checked certificate, source ledger, restoration and ambient data, semantic candidates, rank and claim data, dependency table, checked HB closure, route-clear result, and selector silence remain supplied. The returned local outcomes are not complete global routes. This does not finish terminal-input derivation, complete PkgC through BN6 integration, prove unconditional ZeroSlack, construct executable polynomial PCCMin, open a global gate, or prove `P = NP`. |
 | PkgC restoration coverage and exact ambient charge-coordinate descent | One reviewed completion-theorem pin upgrades M206's successful exact ambient embedding to an exact ten-coordinate `TerminalResidualRank` transition. Unsigned charge is derived from BN4 cell masses; exact permutation splits the ambient charge into a strictly positive coverage cancellation charge plus remainder charge; the remainder therefore strictly decreases the `chargeSize` coordinate for every fixed surrounding rank context while preserving the complete residual ledger. All other M206 outcomes remain explicit. The endpoint uses only `Quot.sound` and `propext`; all 16 declarations in the focused audit are free of project-specific axioms. | The terminal problem, checked certificate, source and restoration data, ambient ledgers, semantic candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain supplied. This descent applies only to M206's successful ambient embedding. It neither proves the remainder empty nor turns the other M206 outcomes into complete global routes. It does not finish terminal-input derivation, complete PkgC through BN6 integration, prove unconditional ZeroSlack, construct executable polynomial PCCMin, open a global gate, or prove `P = NP`. |
 | Uniform Cook-Levin full-schedule cursor controller | One reviewed completion-theorem pin proves that the exact polynomial body-opportunity count equals the complete canonical schedule after the padded unary header, then composes the complete header, generated count, terminal-coordinate evaluator and a fixed positive countdown table into one deterministic finite raw controller. It consumes the arbitrary count exactly, materializes the unique terminal coordinate, accepts within an explicit input-size polynomial bound, and fails closed at the malformed, unlaunched and one-step-short boundaries. The endpoint uses only `Quot.sound` and `propext`; all 70 declarations in the focused audit are free of project-specific axioms. | The semantic cursor exposes the complete schedule and formula, but the raw countdown loop does not decode or emit each visited body token. This is not the complete raw formula builder or its `FunctionProgram.RawRefinement`, the packaged concrete Cook-Levin `PolynomialReduction`, CNFSAT NP-hardness or NP-completeness transport, CNFSAT in P, a global gate, the eligible root theorem, or `P = NP`. |
+| Uniform Cook-Levin arbitrary-slot header router | One reviewed completion-theorem pin proves that one fixed 54-rule deterministic work machine classifies every coordinate below the complete direct token schedule against the exact problem-derived first-body boundary. Its exact trace accepts precisely the header branch, rejects equality and post-header coordinates, agrees definitionally with `formulaTokenSlotDirect`, runs within `36 * terminalSlotPolynomial^2`, and remains fail-closed for one-step-short fuel and malformed symbols. The endpoint uses only `Quot.sound` and `propext`; all 51 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Top-level header routing only: no post-header quotient/remainder decoding, clause or within-clause coordinate, body-token emission, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -265,7 +266,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 150-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 151-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 

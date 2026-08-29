@@ -77,6 +77,8 @@ const latestPublishedMilestoneFieldStem = (() => {
     const stems = {
       "concrete-cook-levin-builder-full-schedule-cursor-controller":
         "ConcreteCookLevinBuilderFullScheduleCursorController",
+      "concrete-cook-levin-builder-arbitrary-slot-header-router":
+        "ConcreteCookLevinBuilderArbitrarySlotHeaderRouter",
     };
     const stem = stems[latestPublishedMilestoneId];
     assert.ok(stem, `missing status-stem mapping for scopeless milestone: ${latestPublishedMilestoneId}`);
