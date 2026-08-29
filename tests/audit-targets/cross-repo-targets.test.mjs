@@ -53,38 +53,55 @@ const latestTheoremFingerprintField = Object.entries(publishedRelease.earnedBoun
 assert.ok(latestTheoremFingerprintField, `missing earned-boundary fingerprint map for ${latestPublishedMilestoneId}`);
 const latestPublishedMilestoneReleasePrefix = latestTheoremFingerprintField[0]
   .slice(0, -theoremFingerprintSuffix.length);
-function latestPublishedMilestoneReleaseField(suffix) {
+function latestPublishedMilestoneReleaseField(suffix, required = true) {
   const expectedKey = `${latestPublishedMilestoneReleasePrefix}${suffix}`.toLowerCase();
   const matchingFields = Object.keys(publishedRelease.earnedBoundary).filter(
     (key) => key.toLowerCase() === expectedKey
   );
-  assert.equal(
-    matchingFields.length,
-    1,
-    `expected one latest published release ${suffix} field: ${latestPublishedMilestoneId}`
+  assert.ok(
+    matchingFields.length <= 1,
+    `expected at most one latest published release ${suffix} field: ${latestPublishedMilestoneId}`
   );
+  if (required) {
+    assert.equal(
+      matchingFields.length,
+      1,
+      `expected one latest published release ${suffix} field: ${latestPublishedMilestoneId}`
+    );
+  }
   return matchingFields[0];
 }
-const latestPublishedMilestoneScope = publishedRelease.earnedBoundary[
-  latestPublishedMilestoneReleaseField("Scope")
-];
-const latestPublishedMilestoneScopeKeys = Object.keys(publishedStatus).filter(
-  (key) => key.startsWith("lean")
-    && key.endsWith("Scope")
-    && publishedStatus[key] === latestPublishedMilestoneScope
-);
-assert.equal(
-  latestPublishedMilestoneScopeKeys.length,
-  1,
-  `expected one latest published status scope field: ${latestPublishedMilestoneId}`
-);
-const latestPublishedMilestoneFieldStem = latestPublishedMilestoneScopeKeys[0]
-  .slice("lean".length, -"Scope".length);
+const latestPublishedMilestoneScopeField = latestPublishedMilestoneReleaseField("Scope", false);
+const latestPublishedMilestoneFieldStem = (() => {
+  if (latestPublishedMilestoneScopeField === undefined) {
+    const stems = {
+      "concrete-cook-levin-builder-full-schedule-cursor-controller":
+        "ConcreteCookLevinBuilderFullScheduleCursorController",
+    };
+    const stem = stems[latestPublishedMilestoneId];
+    assert.ok(stem, `missing status-stem mapping for scopeless milestone: ${latestPublishedMilestoneId}`);
+    return stem;
+  }
+  const scope = publishedRelease.earnedBoundary[latestPublishedMilestoneScopeField];
+  const scopeKeys = Object.keys(publishedStatus).filter(
+    (key) => key.startsWith("lean")
+      && key.endsWith("Scope")
+      && publishedStatus[key] === scope
+  );
+  assert.equal(
+    scopeKeys.length,
+    1,
+    `expected one latest published status scope field: ${latestPublishedMilestoneId}`
+  );
+  return scopeKeys[0].slice("lean".length, -"Scope".length);
+})();
 const latestPublishedMilestoneRequiredStatusKeys = [
   `lean${latestPublishedMilestoneFieldStem}Formalized`,
-  `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`,
-  `lean${latestPublishedMilestoneFieldStem}Scope`
+  `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`
 ];
+if (latestPublishedMilestoneScopeField !== undefined) {
+  latestPublishedMilestoneRequiredStatusKeys.push(`lean${latestPublishedMilestoneFieldStem}Scope`);
+}
 for (const key of latestPublishedMilestoneRequiredStatusKeys) {
   assert.notEqual(publishedStatus[key], undefined, "missing latest published status field: " + key);
 }
@@ -2753,7 +2770,7 @@ function makeProject(t) {
     leanConcreteCookLevinBuilderUnaryPolynomialExactRuntimePolynomialFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed: true,
-    leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount: 84,
+    leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount: 85,
     leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized: true,
     leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized: true,

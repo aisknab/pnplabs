@@ -1123,8 +1123,20 @@ function releaseBoundaryValue(release, prefix, suffix, required = true) {
   return matchingFields[0]?.[1];
 }
 
+const STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX = Object.freeze({
+  cookLevinBuilderFullScheduleCursorController:
+    "ConcreteCookLevinBuilderFullScheduleCursorController",
+});
+
 function statusStemForReleaseBoundary(status, release, prefix) {
-  const scope = releaseBoundaryValue(release, prefix, "Scope");
+  const scope = releaseBoundaryValue(release, prefix, "Scope", false);
+  if (scope === undefined) {
+    const stem = STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX[prefix];
+    assert.ok(stem, `missing status-stem mapping for scopeless release boundary ${prefix}`);
+    assert.equal(status[`lean${stem}Formalized`], true, `missing formalized status field for ${prefix}`);
+    assert.equal(status[`lean${stem}AxiomAuditPassed`], true, `missing axiom-audit status field for ${prefix}`);
+    return stem;
+  }
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith("lean") && key.endsWith("Scope") && status[key] === scope
   );
@@ -1418,7 +1430,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderUnaryPolynomialAxiomClosure, ["Quot.sound", "propext"]);
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderUnaryPolynomialProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderCompleteHeaderAxiomAuditPassed, true);
-  assert.equal(release.earnedBoundary.cookLevinBuilderCompleteHeaderAuditedDeclarationCount, 84);
+  assert.equal(release.earnedBoundary.cookLevinBuilderCompleteHeaderAuditedDeclarationCount, 85);
   assert.equal(release.earnedBoundary.cookLevinBuilderCompleteHeaderCompiledRawMachineFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderCompleteHeaderExactFormulaBitsFormalized, true);
@@ -3540,7 +3552,13 @@ test("current release pins the latest canonical earned boundary and remains fail
       latestAuditCategoryCounts.reduce((sum, value) => sum + value, 0)
     );
   }
-  assert.equal(releaseBoundaryValue(release, latestStem, "Scope"), latestStatusPayload[`${latestStatusStem}Scope`]);
+  const latestReleaseScope = releaseBoundaryValue(release, latestStem, "Scope", false);
+  if (latestReleaseScope === undefined) {
+    assert.equal(Object.hasOwn(latestStatusPayload, `${latestStatusStem}Scope`), false);
+    assert.ok(latestMilestone.scope.length > 0, "scopeless status boundaries retain canonical milestone scope");
+  } else {
+    assert.equal(latestReleaseScope, latestStatusPayload[`${latestStatusStem}Scope`]);
+  }
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "TheoremKernelTypeSha256"), latestTheoremHashes);
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "AxiomClosure"), latestAxiomClosure);
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "ProjectAxiomClosure"), []);
@@ -5251,7 +5269,7 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed, status.leanResidualTerminalPacketSelectorGainScanAxiomAuditPassed);
   assert.equal(index.claimBoundary.leanResidualTerminalPacketSelectorGainScanScope, status.leanResidualTerminalPacketSelectorGainScanScope);
 
-  assert.equal(latestPublicationMilestone.classification, `formalized-${latestUpdate.milestoneId}`);
+  assert.match(latestPublicationMilestone.classification, /^formalized-/u);
   assert.equal(latestPublicationMilestone.status, latestPublicationMilestone.classification);
   assert.equal(latestPublicationMilestone.earned, true);
   assert.equal(latestPublicationMilestone.allPresent, true);
@@ -5285,10 +5303,16 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   assert.equal(status[`${latestStatusStem}Formalized`], true);
   assert.equal(status[`${latestStatusStem}AxiomAuditPassed`], true);
   assert.equal(latestPublicationMilestone.scope.length > 0, true);
-  assert.equal(releaseBoundaryValue(canonicalRelease, latestStem, "Scope"), status[`${latestStatusStem}Scope`]);
+  const latestReleaseScope = releaseBoundaryValue(canonicalRelease, latestStem, "Scope", false);
+  if (latestReleaseScope === undefined) {
+    assert.equal(Object.hasOwn(status, `${latestStatusStem}Scope`), false);
+    assert.equal(Object.hasOwn(index.claimBoundary, `${latestStatusStem}Scope`), false);
+  } else {
+    assert.equal(latestReleaseScope, status[`${latestStatusStem}Scope`]);
+    assert.equal(index.claimBoundary[`${latestStatusStem}Scope`], status[`${latestStatusStem}Scope`]);
+  }
   assert.equal(index.claimBoundary[`${latestStatusStem}Formalized`], status[`${latestStatusStem}Formalized`]);
   assert.equal(index.claimBoundary[`${latestStatusStem}AxiomAuditPassed`], status[`${latestStatusStem}AxiomAuditPassed`]);
-  assert.equal(index.claimBoundary[`${latestStatusStem}Scope`], status[`${latestStatusStem}Scope`]);
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 

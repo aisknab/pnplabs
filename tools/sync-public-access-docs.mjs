@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "ab5ed194e1420eb801dfdbf98b27a5fcc4fd4b98";
-const CORE_TREE = "edbd5b558f778238abb46b5d7d54ce662a06b9fa";
-const CORE_PUBLICATION_MAP_SHA256 = "b6bcf112fc85d6e18e676987a375f8642057ffb83291d2a0a478a4490e0a7de7";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-207";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-207";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-207";
-const CORE_SOURCE_CLOSURE_SHA256 = "00219f5c58c6490abf6c83a8b4b826d11cb4380b55627afa6f41a96d5f3d4265";
-const OLD_PDF_SHA256 = "2cd5c49d1dc142897333dac1b15a48328713852f863c4103e6618924c7a78a92";
-const OLD_TEX_SHA256 = "1eb4417eb909178f39d15afe0b38e67ce5f50b84b41c1a5e5588e7f06371c206";
+const CORE_COMMIT = "1d4e562bef4d03c54f22a01983a3842198aef0ae";
+const CORE_TREE = "3e8e049b73a1daee34d11bfbf62955b41830eb75";
+const CORE_PUBLICATION_MAP_SHA256 = "cef08f0831113c21cf56fc63b1a41cb5f438a0e9fff707ba942ad076793c829b";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-208";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-208";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-208";
+const CORE_SOURCE_CLOSURE_SHA256 = "da08e94d3a8a765bc7d1735a82178813e338f04d24832b7bad37c1a740e8adc9";
+const OLD_PDF_SHA256 = "21bbe8a6597183e68b8c7a75d0456a33a69442a169e30f680c203e8351a01e62";
+const OLD_TEX_SHA256 = "88ebe65fc9a02771aa7767885e6959f72defae7bf8ee256e09b6611d09c1246d";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -2068,6 +2068,12 @@ const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_THEOREMS = 
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_SCOPE = "arbitrary-finite-m206-restoration-coverage-ambient-embedding-with-mass-sensitive-unsigned-charge-decomposition-strict-remainder-charge-decrease-and-context-parametric-exact-terminal-residual-rank-charge-coordinate-descent-while-all-other-m206-outcomes-remain-explicit";
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_MILESTONE_SCOPE = "For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit.";
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_NON_CLAIM = "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP.";
+
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete": { hash: "43e0a8a651dea0dba61e661579405cd081a7ec33df48be4575cc4b3729bdbc95", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.CookLevinBuilderFullScheduleCursorController" }
+};
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_MILESTONE_SCOPE = "For every concrete polynomial-time verifier and raw input, the exact polynomial body-opportunity count equals the complete token schedule after the padded unary header. A semantic cursor returns the full canonical schedule and emitted formula. One deterministic finite raw machine composes the complete header, generated count and terminal-coordinate evaluators, and a fixed positive countdown table. It consumes the arbitrary body count exactly, materializes the unique terminal coordinate, accepts within an explicit input-size polynomial bound, and remains fail-closed for malformed countdown geometry, the unlaunched header endpoint, and one-step-short fuel.";
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_NON_CLAIM = "This milestone provides a uniform control scaffold for the complete input-dependent Cook-Levin token schedule, but the raw loop does not decode or emit the visited body entries. It is not the complete raw formula builder or its FunctionProgram.RawRefinement, does not package the concrete Cook-Levin PolynomialReduction, does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, does not close a global gate, and does not prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4379,32 +4385,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 601770,
-    sha256: "21bbe8a6597183e68b8c7a75d0456a33a69442a169e30f680c203e8351a01e62"
+    bytes: 603632,
+    sha256: "71b8979e15d4063d572d7fd71f355b205b2ee0eca2fbbe0c0df072bbb73da03e"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 382211,
-    sha256: "88ebe65fc9a02771aa7767885e6959f72defae7bf8ee256e09b6611d09c1246d"
+    bytes: 383598,
+    sha256: "958d6a8b5ae829e19d01592da11618d6d1176c4a3c9c865280f3b6c41bb71e4f"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2722073,
-    sha256: "438f521f226f95ecfbe63d96a24063261faa84f7e903de7de44460b4f6fba140"
+    bytes: 2726315,
+    sha256: "300aefb754dd66f948ad8f0d2e1f1519d729b74ccf4f41ef95a91eab59cd99e1"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 47306985,
-    sha256: "ba862daa1574eb21bd3f8b938c2ad0c2c476521be151e5b110abbb6d81c51b30"
+    bytes: 47348580,
+    sha256: "54a3474f3c0c2a6c66c6d890ffa9836f67989a989e3ce18334a4be97c313ab06"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 80290,
-    sha256: "44ba2647b0c9b622b76917603656a1917087834c067a32ae085fd286cd7f3efa"
+    bytes: 82534,
+    sha256: "b8f4c7188c9cc7ec51192d8f29437d353841521a1b45f433e46f5319a9f114ff"
   }
 ];
 
@@ -6494,6 +6500,21 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map PkgC restoration-coverage charge-descent boundary mismatch");
+  }
+  const builderFullScheduleCursorControllerMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller"
+  );
+  const builderFullScheduleCursorControllerNames = Object.keys(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS);
+  if (!builderFullScheduleCursorControllerMilestone
+      || builderFullScheduleCursorControllerMilestone.classification !== "formalized-foundation-only"
+      || builderFullScheduleCursorControllerMilestone.scope !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_MILESTONE_SCOPE
+      || builderFullScheduleCursorControllerMilestone.nonClaim !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_NON_CLAIM
+      || JSON.stringify(builderFullScheduleCursorControllerMilestone.requiredTheorems)
+        !== JSON.stringify(builderFullScheduleCursorControllerNames)
+      || !Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map Cook-Levin full-schedule cursor-controller boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -11101,6 +11122,45 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanPCCMinPolynomialRuntimeFormalized !== false) {
       fail("core status PkgC restoration-coverage charge-descent boundary mismatch");
     }
+    const builderFullScheduleCursorControllerMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller"
+    );
+    if (!builderFullScheduleCursorControllerMilestone
+        || builderFullScheduleCursorControllerMilestone.earned !== true
+        || builderFullScheduleCursorControllerMilestone.allPresent !== true
+        || builderFullScheduleCursorControllerMilestone.allAssumptionFree !== false
+        || builderFullScheduleCursorControllerMilestone.allKernelTypesMatch !== true
+        || builderFullScheduleCursorControllerMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || builderFullScheduleCursorControllerMilestone.sourceClosureFingerprintMatches !== true
+        || builderFullScheduleCursorControllerMilestone.classification !== "formalized-foundation-only"
+        || builderFullScheduleCursorControllerMilestone.status !== "formalized-foundation-only"
+        || builderFullScheduleCursorControllerMilestone.scope !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_MILESTONE_SCOPE
+        || builderFullScheduleCursorControllerMilestone.nonClaim !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_NON_CLAIM
+        || JSON.stringify(builderFullScheduleCursorControllerMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS))
+        || !Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS).every(([name, evidence]) => {
+          const row = builderFullScheduleCursorControllerMilestone.theoremRows?.find(
+            (candidate) => candidate.name === name
+          );
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized !== true
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed !== true
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount !== 70
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized !== true
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized !== true
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized !== true
+        || payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens !== false
+        || payload.leanConcreteCookLevinFormulaBuilderFormalized !== false
+        || payload.leanConcreteCookLevinBuilderRawRefinementFormalized !== false
+        || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
+      fail("core status Cook-Levin full-schedule cursor-controller boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -11141,7 +11201,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     const completeHeaderMilestone = payload.formalPublicationMilestones?.find((milestone) => milestone.id === "concrete-cook-levin-builder-complete-header");
     if (!completeHeaderMilestone || completeHeaderMilestone.earned !== true || completeHeaderMilestone.allPresent !== true || completeHeaderMilestone.allKernelTypesMatch !== true || completeHeaderMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || completeHeaderMilestone.requiredTheorems?.length !== 48) fail("core status Cook-Levin builder complete-header boundary mismatch");
     if (payload.leanConcreteCookLevinBuilderUnaryPolynomialFormalized !== true || payload.leanConcreteCookLevinBuilderUnaryPolynomialAxiomAuditPassed !== true || payload.leanConcreteCookLevinBuilderUnaryPolynomialAuditedDeclarationCount !== 74 || payload.leanConcreteCookLevinBuilderUnaryPolynomialCompiledRawMachineFormalized !== true || payload.leanConcreteCookLevinBuilderUnaryPolynomialExactRuntimePolynomialFormalized !== true) fail("core status Cook-Levin builder unary-polynomial evidence mismatch");
-    if (payload.leanConcreteCookLevinBuilderCompleteHeaderFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount !== 84 || payload.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderInputPrefixAppenderComposed !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized !== true || payload.leanConcreteCookLevinBuilderDynamicCursorFormalized !== false || payload.leanConcreteCookLevinBuilderRawRefinementFormalized !== false || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) fail("core status Cook-Levin builder complete-header evidence mismatch");
+    if (payload.leanConcreteCookLevinBuilderCompleteHeaderFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount !== 85 || payload.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderInputPrefixAppenderComposed !== true || payload.leanConcreteCookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized !== true || payload.leanConcreteCookLevinBuilderDynamicCursorFormalized !== false || payload.leanConcreteCookLevinBuilderRawRefinementFormalized !== false || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) fail("core status Cook-Levin builder complete-header evidence mismatch");
     const bodyStartMilestone = payload.formalPublicationMilestones?.find((milestone) => milestone.id === "concrete-cook-levin-builder-body-start-prefix");
     if (!bodyStartMilestone || bodyStartMilestone.earned !== true || bodyStartMilestone.allPresent !== true || bodyStartMilestone.allKernelTypesMatch !== true || bodyStartMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || bodyStartMilestone.requiredTheorems?.length !== 42) fail("core status Cook-Levin builder body-start-prefix boundary mismatch");
     if (payload.leanConcreteCookLevinBuilderBodyStartPrefixFormalized !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixAxiomAuditPassed !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixAuditedDeclarationCount !== 60 || payload.leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixExternalInputSizePolynomialFormalized !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixExactFormulaBitsFormalized !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixRetainedNextTokenCoordinateFormalized !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixInputPrefixAppenderComposed !== true || payload.leanConcreteCookLevinBuilderBodyStartPrefixFailClosedBoundaryTimeoutFormalized !== true || payload.leanConcreteCookLevinBuilderInputPrefixAppenderComposed !== true || payload.leanConcreteCookLevinBuilderDynamicCursorFormalized !== false || payload.leanConcreteCookLevinFormulaBuilderFormalized !== false || payload.leanConcreteCookLevinBuilderRawRefinementFormalized !== false || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) fail("core status Cook-Levin builder body-start-prefix evidence mismatch");
@@ -11910,6 +11970,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory PkgC restoration-coverage charge-descent theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory Cook-Levin full-schedule cursor-controller theorem mismatch: " + name);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {

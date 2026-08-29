@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-207";
-const STATUS_SHA256 = '438f521f226f95ecfbe63d96a24063261faa84f7e903de7de44460b4f6fba140';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-207";
-const FORMAL_PUBLICATION_MAP_SHA256 = "b6bcf112fc85d6e18e676987a375f8642057ffb83291d2a0a478a4490e0a7de7";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-208";
+const STATUS_SHA256 = '300aefb754dd66f948ad8f0d2e1f1519d729b74ccf4f41ef95a91eab59cd99e1';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-208";
+const FORMAL_PUBLICATION_MAP_SHA256 = "cef08f0831113c21cf56fc63b1a41cb5f438a0e9fff707ba942ad076793c829b";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-207";
-const INVENTORY_SHA256 = "ba862daa1574eb21bd3f8b938c2ad0c2c476521be151e5b110abbb6d81c51b30";
-const SOURCE_CLOSURE_SHA256 = "00219f5c58c6490abf6c83a8b4b826d11cb4380b55627afa6f41a96d5f3d4265";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-208";
+const INVENTORY_SHA256 = "54a3474f3c0c2a6c66c6d890ffa9836f67989a989e3ce18334a4be97c313ab06";
+const SOURCE_CLOSURE_SHA256 = "da08e94d3a8a765bc7d1735a82178813e338f04d24832b7bad37c1a740e8adc9";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 31854,
-  theorems: 16159,
-  assumptionFreeTheorems: 7718,
-  excludedPrivateDeclarations: 15189,
-  modules: 327,
+  declarations: 31976,
+  theorems: 16246,
+  assumptionFreeTheorems: 7740,
+  excludedPrivateDeclarations: 15219,
+  modules: 328,
   axioms: 0,
 });
 
@@ -4752,6 +4752,9 @@ const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_BN6_BCEL_ROUTE_DECLARATION
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_DECLARATIONS = Object.freeze([
   ["PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_charge_route_or_zeroslack_checked_complete",["Quot.sound","propext"],"PNP.PCCMinCheckedPacketPkgCRestorationCoverageChargeDescent","2205a2a1ef56e31519ab2320d6ed83004a252026e1d92731de4fba539c4a9d7e"],
 ]);
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderFullScheduleCursorController", "43e0a8a651dea0dba61e661579405cd081a7ec33df48be4575cc4b3729bdbc95"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5938,6 +5941,13 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved: false,
   leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack: false,
   leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope: null,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized: false,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized: false,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized: false,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized: false,
+  leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6853,6 +6863,13 @@ leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompletePkgCBN6Integr
 leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved ?? false}
 leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack ?? false}
 leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope = ${payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope === null ? 'null' : JSON.stringify(payload.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope)}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized ?? false}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized ?? false}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized ?? false}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized ?? false}
+leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens = ${payload.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8087,6 +8104,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderFullScheduleCursorController =
+    BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8754,6 +8778,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && builderFullScheduleCursorController.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9267,6 +9295,10 @@ function validateStatus(status, inventory) {
 
   const pccMinCheckedPacketPkgCRestorationCoverageChargeDescentMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "pccmin-checked-packet-pkgc-restoration-coverage-charge-descent"
+  );
+
+  const builderFullScheduleCursorControllerMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11709,6 +11741,30 @@ function validateStatus(status, inventory) {
     && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentCompleteEncodedPolynomialRuntimeProved === false
     && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentUnconditionalZeroSlack === false
     && status.leanPCCMinCheckedPacketPkgCRestorationCoverageChargeDescentScope === "arbitrary-finite-m206-restoration-coverage-ambient-embedding-with-mass-sensitive-unsigned-charge-decomposition-strict-remainder-charge-decrease-and-context-parametric-exact-terminal-residual-rank-charge-coordinate-descent-while-all-other-m206-outcomes-remain-explicit"
+
+    && builderFullScheduleCursorControllerMilestone?.classification === "formalized-foundation-only"
+    && builderFullScheduleCursorControllerMilestone.status === "formalized-foundation-only"
+    && builderFullScheduleCursorControllerMilestone.scope === "For every concrete polynomial-time verifier and raw input, the exact polynomial body-opportunity count equals the complete token schedule after the padded unary header. A semantic cursor returns the full canonical schedule and emitted formula. One deterministic finite raw machine composes the complete header, generated count and terminal-coordinate evaluators, and a fixed positive countdown table. It consumes the arbitrary body count exactly, materializes the unique terminal coordinate, accepts within an explicit input-size polynomial bound, and remains fail-closed for malformed countdown geometry, the unlaunched header endpoint, and one-step-short fuel."
+    && builderFullScheduleCursorControllerMilestone.nonClaim === "This milestone provides a uniform control scaffold for the complete input-dependent Cook-Levin token schedule, but the raw loop does not decode or emit the visited body entries. It is not the complete raw formula builder or its FunctionProgram.RawRefinement, does not package the concrete Cook-Levin PolynomialReduction, does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, does not close a global gate, and does not prove P = NP."
+    && sameJson(builderFullScheduleCursorControllerMilestone.requiredTheorems, BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_DECLARATIONS.map(([name]) => name))
+    && builderFullScheduleCursorControllerMilestone.theoremRows?.length === BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_DECLARATIONS.length
+    && builderFullScheduleCursorControllerMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized === true
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount === 70
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized === true
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized === true
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized === true
+    && status.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens === false
     && lockedNANDThresholdPublicationMilestone?.classification === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.status === "formalized-concrete-locked-nand-threshold"
     && lockedNANDThresholdPublicationMilestone.scope === "A uniform encoded polynomial-time SAT instance builder and the report-level locked-NAND threshold theorem linked to that builder."
@@ -11861,7 +11917,7 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderUnaryPolynomialExactRuntimePolynomialFormalized === true
     && status.leanConcreteCookLevinBuilderCompleteHeaderFormalized === true
     && status.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed === true
-    && status.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount === 84
+    && status.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount === 85
     && status.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized === true
     && status.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized === true
     && status.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized === true

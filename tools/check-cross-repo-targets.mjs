@@ -9,9 +9,9 @@ import { validateProofProgressModel } from "./proof-progress-model.mjs";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "ab5ed194e1420eb801dfdbf98b27a5fcc4fd4b98";
-const REVIEWED_CORE_TREE = "edbd5b558f778238abb46b5d7d54ce662a06b9fa";
-const REVIEWED_PROOF_COMMIT = "f1e08b76e2cfd36453e51d33f75bb7f16b54347e";
+const REVIEWED_CORE_COMMIT = "1d4e562bef4d03c54f22a01983a3842198aef0ae";
+const REVIEWED_CORE_TREE = "3e8e049b73a1daee34d11bfbf62955b41830eb75";
+const REVIEWED_PROOF_COMMIT = "981e7b2379f29a90a696a5ea6d0e5f1d3dd095dd";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -4306,6 +4306,10 @@ const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_RELEASE_IDE
   pccMinCheckedPacketPkgCRestorationCoverageChargeDescentCheckedCompleteTheorem: "PNP.DirectWire.pccmin_checked_packet_pkgc_restoration_coverage_charge_route_or_zeroslack_checked_complete"
 };
 
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_RELEASE_IDENTITIES = {
+  cookLevinBuilderFullScheduleCursorControllerCheckedCompleteTheorem: "PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -6205,6 +6209,12 @@ const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_SCOPE = "ar
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_MILESTONE_SCOPE = "For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit.";
 const PCCMIN_CHECKED_PACKET_PKGC_RESTORATION_COVERAGE_CHARGE_DESCENT_NON_CLAIM = "The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP.";
 
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderFullScheduleCursorController.cook_levin_full_schedule_cursor_controller_checked_complete": { hash: "43e0a8a651dea0dba61e661579405cd081a7ec33df48be4575cc4b3729bdbc95", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.CookLevinBuilderFullScheduleCursorController" }
+};
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_MILESTONE_SCOPE = "For every concrete polynomial-time verifier and raw input, the exact polynomial body-opportunity count equals the complete token schedule after the padded unary header. A semantic cursor returns the full canonical schedule and emitted formula. One deterministic finite raw machine composes the complete header, generated count and terminal-coordinate evaluators, and a fixed positive countdown table. It consumes the arbitrary body count exactly, materializes the unique terminal coordinate, accepts within an explicit input-size polynomial bound, and remains fail-closed for malformed countdown geometry, the unlaunched header endpoint, and one-step-short fuel.";
+const BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_NON_CLAIM = "This milestone provides a uniform control scaffold for the complete input-dependent Cook-Levin token schedule, but the raw loop does not decode or emit the visited body entries. It is not the complete raw formula builder or its FunctionProgram.RawRefinement, does not package the concrete Cook-Levin PolynomialReduction, does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, does not close a global gate, and does not prove P = NP.";
+
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
     hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591",
@@ -6628,7 +6638,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   if (JSON.stringify(earned.cookLevinBuilderUnaryPolynomialAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.cookLevinBuilderUnaryPolynomialProjectAxiomClosure) || earned.cookLevinBuilderUnaryPolynomialProjectAxiomClosure.length !== 0) failures.push("formal-publication Cook-Levin builder unary-polynomial axiom closure mismatch");
   const unaryHashes = earned.cookLevinBuilderUnaryPolynomialTheoremKernelTypeSha256;
   if (!unaryHashes || Object.keys(unaryHashes).length !== 10 || !Object.entries(BUILDER_UNARY_POLYNOMIAL_THEOREMS).every(([name, evidence]) => unaryHashes[name] === evidence.hash)) failures.push("formal-publication Cook-Levin builder unary-polynomial fingerprint mismatch");
-  if (earned.cookLevinBuilderCompleteHeaderFormalized !== true || earned.cookLevinBuilderCompleteHeaderAxiomAuditPassed !== true || earned.cookLevinBuilderCompleteHeaderAuditedDeclarationCount !== 84 || earned.cookLevinBuilderCompleteHeaderCompiledRawMachineFormalized !== true || earned.cookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized !== true || earned.cookLevinBuilderCompleteHeaderExactFormulaBitsFormalized !== true || earned.cookLevinBuilderCompleteHeaderInputPrefixAppenderComposed !== true || earned.cookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized !== true) failures.push("formal-publication Cook-Levin builder complete-header boundary mismatch");
+  if (earned.cookLevinBuilderCompleteHeaderFormalized !== true || earned.cookLevinBuilderCompleteHeaderAxiomAuditPassed !== true || earned.cookLevinBuilderCompleteHeaderAuditedDeclarationCount !== 85 || earned.cookLevinBuilderCompleteHeaderCompiledRawMachineFormalized !== true || earned.cookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized !== true || earned.cookLevinBuilderCompleteHeaderExactFormulaBitsFormalized !== true || earned.cookLevinBuilderCompleteHeaderInputPrefixAppenderComposed !== true || earned.cookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized !== true) failures.push("formal-publication Cook-Levin builder complete-header boundary mismatch");
   if (earned.cookLevinBuilderCompleteHeaderRuleCount !== "363 + BuilderUnaryPolynomial.ruleCount(widthPolynomial verifier)") failures.push("formal-publication Cook-Levin builder complete-header cost mismatch");
   if (JSON.stringify(earned.cookLevinBuilderCompleteHeaderAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"]) || !Array.isArray(earned.cookLevinBuilderCompleteHeaderProjectAxiomClosure) || earned.cookLevinBuilderCompleteHeaderProjectAxiomClosure.length !== 0) failures.push("formal-publication Cook-Levin builder complete-header axiom closure mismatch");
   const completeHeaderHashes = earned.cookLevinBuilderCompleteHeaderTheoremKernelTypeSha256;
@@ -9654,6 +9664,33 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   )) {
     failures.push("current manifest PkgC restoration-coverage charge-descent theorem identity mismatch");
   }
+  if (!(earned.cookLevinBuilderFullScheduleCursorControllerFormalized === true
+      && earned.cookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed === true
+      && earned.cookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount === 70
+      && earned.cookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized === true
+      && earned.cookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized === true
+      && earned.cookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized === true
+      && earned.cookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens === false)) {
+    failures.push("current manifest Cook-Levin full-schedule cursor-controller boundary mismatch");
+  }
+  if (JSON.stringify(earned.cookLevinBuilderFullScheduleCursorControllerAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.cookLevinBuilderFullScheduleCursorControllerProjectAxiomClosure)
+      || earned.cookLevinBuilderFullScheduleCursorControllerProjectAxiomClosure.length !== 0) {
+    failures.push("current manifest Cook-Levin full-schedule cursor-controller axiom closure mismatch");
+  }
+  const builderFullScheduleCursorControllerHashes = earned.cookLevinBuilderFullScheduleCursorControllerTheoremKernelTypeSha256;
+  if (!builderFullScheduleCursorControllerHashes
+      || Object.keys(builderFullScheduleCursorControllerHashes).length !== 1
+      || !Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS).every(
+        ([name, row]) => builderFullScheduleCursorControllerHashes[name] === row.hash
+      )) {
+    failures.push("current manifest Cook-Levin full-schedule cursor-controller fingerprint mismatch");
+  }
+  if (!Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_RELEASE_IDENTITIES).every(
+    ([field, theorem]) => earned[field] === theorem
+  )) {
+    failures.push("current manifest Cook-Levin full-schedule cursor-controller theorem identity mismatch");
+  }
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -9670,7 +9707,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent")) failures.push("current manifest earned scope omits the M207 PkgC restoration-coverage charge-descent milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller")) failures.push("current manifest earned scope omits the M208 Cook-Levin full-schedule cursor-controller milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -9758,7 +9795,7 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
     const completeHeaderMilestone = status.formalPublicationMilestones?.find((milestone) => milestone.id === "concrete-cook-levin-builder-complete-header");
     if (!completeHeaderMilestone || completeHeaderMilestone.earned !== true || completeHeaderMilestone.allPresent !== true || completeHeaderMilestone.allKernelTypesMatch !== true || completeHeaderMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || completeHeaderMilestone.requiredTheorems?.length !== 48) failures.push("public status Cook-Levin builder complete-header mismatch");
     if (status.leanConcreteCookLevinBuilderUnaryPolynomialFormalized !== true || status.leanConcreteCookLevinBuilderUnaryPolynomialAxiomAuditPassed !== true || status.leanConcreteCookLevinBuilderUnaryPolynomialAuditedDeclarationCount !== 74 || status.leanConcreteCookLevinBuilderUnaryPolynomialCompiledRawMachineFormalized !== true || status.leanConcreteCookLevinBuilderUnaryPolynomialExactRuntimePolynomialFormalized !== true) failures.push("public status Cook-Levin builder unary-polynomial evidence mismatch");
-    if (status.leanConcreteCookLevinBuilderCompleteHeaderFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed !== true || status.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount !== 84 || status.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderInputPrefixAppenderComposed !== true || status.leanConcreteCookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized !== true || status.leanConcreteCookLevinBuilderDynamicCursorFormalized !== false || status.leanConcreteCookLevinBuilderRawRefinementFormalized !== false || status.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) failures.push("public status Cook-Levin builder complete-header evidence mismatch");
+    if (status.leanConcreteCookLevinBuilderCompleteHeaderFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderAxiomAuditPassed !== true || status.leanConcreteCookLevinBuilderCompleteHeaderAuditedDeclarationCount !== 85 || status.leanConcreteCookLevinBuilderCompleteHeaderCompiledRawMachineFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderExternalInputSizePolynomialFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderExactFormulaBitsFormalized !== true || status.leanConcreteCookLevinBuilderCompleteHeaderInputPrefixAppenderComposed !== true || status.leanConcreteCookLevinBuilderCompleteHeaderFailClosedBoundaryTimeoutFormalized !== true || status.leanConcreteCookLevinBuilderDynamicCursorFormalized !== false || status.leanConcreteCookLevinBuilderRawRefinementFormalized !== false || status.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) failures.push("public status Cook-Levin builder complete-header evidence mismatch");
     const bodyStartMilestone = status.formalPublicationMilestones?.find((milestone) => milestone.id === "concrete-cook-levin-builder-body-start-prefix");
     if (!bodyStartMilestone || bodyStartMilestone.earned !== true || bodyStartMilestone.allPresent !== true || bodyStartMilestone.allKernelTypesMatch !== true || bodyStartMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true || bodyStartMilestone.requiredTheorems?.length !== 42) failures.push("public status Cook-Levin builder body-start-prefix mismatch");
     if (status.leanConcreteCookLevinBuilderBodyStartPrefixFormalized !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixAxiomAuditPassed !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixAuditedDeclarationCount !== 60 || status.leanConcreteCookLevinBuilderBodyStartPrefixCompiledRawMachineFormalized !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixExternalInputSizePolynomialFormalized !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixExactFormulaBitsFormalized !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixRetainedNextTokenCoordinateFormalized !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixInputPrefixAppenderComposed !== true || status.leanConcreteCookLevinBuilderBodyStartPrefixFailClosedBoundaryTimeoutFormalized !== true || status.leanConcreteCookLevinBuilderInputPrefixAppenderComposed !== true || status.leanConcreteCookLevinBuilderDynamicCursorFormalized !== false || status.leanConcreteCookLevinFormulaBuilderFormalized !== false || status.leanConcreteCookLevinBuilderRawRefinementFormalized !== false || status.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) failures.push("public status Cook-Levin builder body-start-prefix evidence mismatch");
@@ -14182,6 +14219,42 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       || status.leanPCCMinPolynomialRuntimeFormalized !== false) {
     failures.push("core status PkgC restoration-coverage charge-descent boundary mismatch");
   }
+  const builderFullScheduleCursorControllerMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller"
+  );
+  if (!builderFullScheduleCursorControllerMilestone
+      || builderFullScheduleCursorControllerMilestone.earned !== true
+      || builderFullScheduleCursorControllerMilestone.allPresent !== true
+      || builderFullScheduleCursorControllerMilestone.allAssumptionFree !== false
+      || builderFullScheduleCursorControllerMilestone.allKernelTypesMatch !== true
+      || builderFullScheduleCursorControllerMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || builderFullScheduleCursorControllerMilestone.sourceClosureFingerprintMatches !== true
+      || builderFullScheduleCursorControllerMilestone.classification !== "formalized-foundation-only"
+      || builderFullScheduleCursorControllerMilestone.status !== "formalized-foundation-only"
+      || builderFullScheduleCursorControllerMilestone.scope !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_MILESTONE_SCOPE
+      || builderFullScheduleCursorControllerMilestone.nonClaim !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_NON_CLAIM
+      || JSON.stringify(builderFullScheduleCursorControllerMilestone.requiredTheorems) !== JSON.stringify(Object.keys(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS))
+      || !Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS).every(([name, evidence]) => {
+        const row = builderFullScheduleCursorControllerMilestone.theoremRows?.find((candidate) => candidate.name === name);
+        return row?.present === true
+          && row.kind === "theorem"
+          && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+          && row.actualKernelTypeSha256 === evidence.hash
+          && row.expectedKernelTypeSha256 === evidence.hash
+          && row.kernelTypeFingerprintMatches === true;
+      })
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized !== true
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerAxiomAuditPassed !== true
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerAuditedDeclarationCount !== 70
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExactRawTraceFormalized !== true
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerExternalInputSizePolynomialFormalized !== true
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerFailClosedBoundaryTimeoutFormalized !== true
+      || status.leanConcreteCookLevinBuilderFullScheduleCursorControllerEmitsBodyTokens !== false
+      || status.leanConcreteCookLevinFormulaBuilderFormalized !== false
+      || status.leanConcreteCookLevinBuilderRawRefinementFormalized !== false
+      || status.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
+    failures.push("core status Cook-Levin full-schedule cursor-controller boundary mismatch");
+  }
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -15631,6 +15704,17 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         failures.push("core inventory PkgC restoration-coverage charge-descent theorem mismatch: " + name);
+      }
+    }
+
+    for (const [name, row] of Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        failures.push("core inventory Cook-Levin full-schedule cursor-controller theorem mismatch: " + name);
       }
     }
 
@@ -18667,6 +18751,30 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || pccMinCheckedPacketPkgCRestorationCoverageChargeDescentPins[name] !== row.hash) {
       failures.push("core publication map M207 theorem fingerprint mismatch: " + name);
+    }
+  }
+  const builderFullScheduleCursorControllerMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-full-schedule-cursor-controller"
+  );
+  const builderFullScheduleCursorControllerNames = Object.keys(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS);
+  if (!builderFullScheduleCursorControllerMilestone
+      || builderFullScheduleCursorControllerMilestone.classification !== "formalized-foundation-only"
+      || builderFullScheduleCursorControllerMilestone.scope !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_MILESTONE_SCOPE
+      || builderFullScheduleCursorControllerMilestone.nonClaim !== BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_NON_CLAIM
+      || JSON.stringify(builderFullScheduleCursorControllerMilestone.requiredTheorems)
+        !== JSON.stringify(builderFullScheduleCursorControllerNames)
+      || !Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    failures.push("core publication map Cook-Levin full-schedule cursor-controller boundary mismatch");
+  }
+  const builderFullScheduleCursorControllerPins =
+    releaseManifest.earnedBoundary?.cookLevinBuilderFullScheduleCursorControllerTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(BUILDER_FULL_SCHEDULE_CURSOR_CONTROLLER_THEOREMS)) {
+    if (!builderFullScheduleCursorControllerMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || builderFullScheduleCursorControllerPins[name] !== row.hash) {
+      failures.push("core publication map M208 theorem fingerprint mismatch: " + name);
     }
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(

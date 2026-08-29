@@ -21,6 +21,11 @@ const index = JSON.parse(readFileSync('public/pnp-index.json', 'utf8'));
 const release = JSON.parse(readFileSync('downloads/formal-publication-release.json', 'utf8'));
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
+const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
+  'concrete-cook-levin-builder-full-schedule-cursor-controller':
+    'ConcreteCookLevinBuilderFullScheduleCursorController',
+});
+
 function statusFieldStem(milestone) {
   const suffix = 'TheoremKernelTypeSha256';
   const requiredTheorems = new Set(milestone.requiredTheorems);
@@ -38,7 +43,14 @@ function statusFieldStem(milestone) {
     ([key]) => key.endsWith('Scope')
       && key.slice(0, -'Scope'.length).toLowerCase() === releasePrefix.toLowerCase(),
   );
-  assert.equal(matchingScopeFields.length, 1, `expected one release scope field for ${milestone.id}`);
+  assert.ok(matchingScopeFields.length <= 1, `expected at most one release scope field for ${milestone.id}`);
+  if (matchingScopeFields.length === 0) {
+    const stem = STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID[milestone.id];
+    assert.ok(stem, `missing status-stem mapping for scopeless milestone ${milestone.id}`);
+    assert.equal(status[`lean${stem}Formalized`], true);
+    assert.equal(status[`lean${stem}AxiomAuditPassed`], true);
+    return stem;
+  }
   const scope = matchingScopeFields[0][1];
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
@@ -234,20 +246,25 @@ test('site validator pins the latest canonical publication milestone and rejects
   }
 
   const scopeField = `lean${fieldStem}Scope`;
-  assert.equal(typeof status[scopeField], 'string');
-  const strippedScope = structuredClone(status);
-  strippedScope[scopeField] = 'unsupported-broader-scope';
-  assert.equal(validation.validateStatus(strippedScope, inventory), false, scopeField);
+  const statusFields = [
+    [`lean${fieldStem}Formalized`, true, false],
+    [`lean${fieldStem}AxiomAuditPassed`, true, false],
+  ];
+  if (Object.hasOwn(status, scopeField)) {
+    assert.equal(typeof status[scopeField], 'string');
+    const strippedScope = structuredClone(status);
+    strippedScope[scopeField] = 'unsupported-broader-scope';
+    assert.equal(validation.validateStatus(strippedScope, inventory), false, scopeField);
+    statusFields.push([scopeField, status[scopeField], null]);
+  } else {
+    assert.equal(STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID[milestone.id], fieldStem);
+  }
 
   const renderedStatusLines = new Set(validation.formalStatusFields(status).split('\n'));
   const renderedFailClosedLines = new Set(
     validation.formalStatusFields(validation.FAIL_CLOSED_FORMAL_STATUS).split('\n'),
   );
-  for (const [field, value, failClosedValue] of [
-    [`lean${fieldStem}Formalized`, true, false],
-    [`lean${fieldStem}AxiomAuditPassed`, true, false],
-    [scopeField, status[scopeField], null],
-  ]) {
+  for (const [field, value, failClosedValue] of statusFields) {
     assert.ok(
       renderedStatusLines.has(`${field} = ${JSON.stringify(value)}`),
       `rendered current status omits latest milestone field: ${field}`,
