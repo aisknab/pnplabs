@@ -1128,6 +1128,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX = Object.freeze({
     "ConcreteCookLevinBuilderFullScheduleCursorController",
   cookLevinBuilderArbitrarySlotHeaderRouter:
     "ConcreteCookLevinBuilderArbitrarySlotHeaderRouter",
+  cookLevinBuilderArbitrarySlotPostHeaderDecoder:
+    "ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder",
 });
 
 function statusStemForReleaseBoundary(status, release, prefix) {

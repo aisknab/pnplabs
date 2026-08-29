@@ -26,6 +26,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
     'ConcreteCookLevinBuilderFullScheduleCursorController',
   'concrete-cook-levin-builder-arbitrary-slot-header-router':
     'ConcreteCookLevinBuilderArbitrarySlotHeaderRouter',
+  'concrete-cook-levin-builder-arbitrary-slot-post-header-decoder':
+    'ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder',
 });
 
 function statusFieldStem(milestone) {

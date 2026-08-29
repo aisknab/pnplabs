@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "8529753cac12243c0a618facfca31e2287368469";
-const CORE_TREE = "e55427ff8450582ca1ec781084082896d40121e6";
-const CORE_PUBLICATION_MAP_SHA256 = "134690fb8be00420328319155a37b50b17ad8bd311d75d1d834d3e3045eb90dc";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-29-209";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-29-209";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-29-209";
-const CORE_SOURCE_CLOSURE_SHA256 = "2672e6d41182ea8a184ad2db68efb5bd7f4f65aef305a673cfae324f36654b3b";
-const OLD_PDF_SHA256 = "71b8979e15d4063d572d7fd71f355b205b2ee0eca2fbbe0c0df072bbb73da03e";
-const OLD_TEX_SHA256 = "958d6a8b5ae829e19d01592da11618d6d1176c4a3c9c865280f3b6c41bb71e4f";
+const CORE_COMMIT = "228e9d3b249870ad59fa7042656827f35a535abc";
+const CORE_TREE = "d8ea3358fee8544f797138038802836eeb88f419";
+const CORE_PUBLICATION_MAP_SHA256 = "948e7aeaf9497ee68ee1b333b16feaecb04294067251812ddd7fdfa734cd73cf";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-30-210";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-210";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-30-210";
+const CORE_SOURCE_CLOSURE_SHA256 = "15490107cc10167d19449858b9292e6c7a88353eb000a8cd02c6fe727c54823a";
+const OLD_PDF_SHA256 = "f904b6ca67bc9d7bdeca49779db5c6a4c3c9b9768ec48e601890935bbf1c6d38";
+const OLD_TEX_SHA256 = "bee62bf7eddfd29815596b722c923a20349fa793cfea9908ef0805127b42c5f8";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -2080,6 +2080,12 @@ const BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_THEOREMS = {
 };
 const BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_MILESTONE_SCOPE = "For every concrete polynomial-time verifier and every coordinate below its complete direct token schedule, one fixed 54-rule deterministic work machine compares the coordinate with the exact problem-derived first-body boundary. Its exact trace accepts precisely the header branch and rejects equality or the post-header branch. The semantic route is definitionally faithful to formulaTokenSlotDirect; the compiled execution is bounded by the verifier-derived polynomial 36 * terminalSlotPolynomial^2; one-step-short fuel and malformed symbols remain timeout. All 51 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice.";
 const BUILDER_ARBITRARY_SLOT_HEADER_ROUTER_NON_CLAIM = "This milestone routes only the top-level header boundary. It does not decode the post-header quotient and remainder into a clause and within-clause token slot, does not emit a body token, and is not the complete raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, or prove P = NP.";
+
+const BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderArbitrarySlotPostHeaderDecoder.cook_levin_arbitrary_slot_post_header_decoder_checked_complete": { hash: "56ce613c7f034579229b382e1eb985564fd443a612579191daea72381d709d9c", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.CookLevinBuilderArbitrarySlotPostHeaderDecoder" }
+};
+const BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_MILESTONE_SCOPE = "For every concrete polynomial-time verifier and every coordinate below its complete direct token schedule, the M209 outer route is refined by a structurally recursive all-coordinate post-header decoder. Every body result gives typed finite clause and within-clause coordinates that reconstruct the exact remainder; the unique Finish and out-of-range cases are characterized; and the interpreted route agrees with direct token lookup. A checked reader recovers the exact shifted remainder from every M209 raw comparison result while preserving M209's exact raw trace. All 22 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice.";
+const BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_NON_CLAIM = "This milestone adds an unbounded semantic clause/within-clause decoder and extracts the exact shifted remainder from M209's checked raw result. It does not implement raw division, raw body-token emission, the complete raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": { hash: "951ec63c09e9a096aacc26332a97607dade4a1f412229f9185aff5c7f36aa591", axioms: ["Quot.sound", "propext"], module: "PNP.Concrete.LockedNANDThresholdPublication" }
@@ -4391,32 +4397,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 605255,
-    sha256: "f904b6ca67bc9d7bdeca49779db5c6a4c3c9b9768ec48e601890935bbf1c6d38"
+    bytes: 606776,
+    sha256: "f56d1d647679a653750b54fa6767592bdb3bb1fb46533ed69837eee22d15d2b9"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 385011,
-    sha256: "bee62bf7eddfd29815596b722c923a20349fa793cfea9908ef0805127b42c5f8"
+    bytes: 386444,
+    sha256: "c2de10fa0a2bcb53729f117dab1810071f7359d40cf892fc29976271127517a9"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2730691,
-    sha256: "e1d76e36308ef97735a7afcbaa0cd6ca82ccc6cecd94b8c05df3fb118a9f7f70"
+    bytes: 2735010,
+    sha256: "64f35d2afe5611c4540e0ef4c8ead85f8ce01922e6c2f73bc7bc19b1e5d15cef"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 47417083,
-    sha256: "697befa21cf6f566182a14a36a17c515d65a863ad81c785d6f22b7d47182398a"
+    bytes: 47462884,
+    sha256: "91863a908b71fbc2e98e725f73ac9a4d76da980d6b321df1cceaf9543fc8510a"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 84732,
-    sha256: "9b453019bc0ff106a7b4d2abd23bffcb6c905303358f4f8c166f19af14811542"
+    bytes: 87170,
+    sha256: "c678ca25da0856b145619494daeccef35f93cdd6438c03fbb4cf264fc5ed3b8d"
   }
 ];
 
@@ -6536,6 +6542,21 @@ function assertPinnedCore(sourceDir) {
         ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
       )) {
     fail("pinned formal-publication map Cook-Levin arbitrary-slot header-router boundary mismatch");
+  }
+  const builderArbitrarySlotPostHeaderDecoderMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-arbitrary-slot-post-header-decoder"
+  );
+  const builderArbitrarySlotPostHeaderDecoderNames = Object.keys(BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_THEOREMS);
+  if (!builderArbitrarySlotPostHeaderDecoderMilestone
+      || builderArbitrarySlotPostHeaderDecoderMilestone.classification !== "formalized-foundation-only"
+      || builderArbitrarySlotPostHeaderDecoderMilestone.scope !== BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_MILESTONE_SCOPE
+      || builderArbitrarySlotPostHeaderDecoderMilestone.nonClaim !== BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_NON_CLAIM
+      || JSON.stringify(builderArbitrarySlotPostHeaderDecoderMilestone.requiredTheorems)
+        !== JSON.stringify(builderArbitrarySlotPostHeaderDecoderNames)
+      || !Object.entries(BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    fail("pinned formal-publication map Cook-Levin arbitrary-slot post-header-decoder boundary mismatch");
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
@@ -11223,6 +11244,47 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
         || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
       fail("core status Cook-Levin arbitrary-slot header-router boundary mismatch");
     }
+    const builderArbitrarySlotPostHeaderDecoderMilestone = payload.formalPublicationMilestones?.find(
+      (row) => row.id === "concrete-cook-levin-builder-arbitrary-slot-post-header-decoder"
+    );
+    if (!builderArbitrarySlotPostHeaderDecoderMilestone
+        || builderArbitrarySlotPostHeaderDecoderMilestone.earned !== true
+        || builderArbitrarySlotPostHeaderDecoderMilestone.allPresent !== true
+        || builderArbitrarySlotPostHeaderDecoderMilestone.allAssumptionFree !== false
+        || builderArbitrarySlotPostHeaderDecoderMilestone.allKernelTypesMatch !== true
+        || builderArbitrarySlotPostHeaderDecoderMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+        || builderArbitrarySlotPostHeaderDecoderMilestone.sourceClosureFingerprintMatches !== true
+        || builderArbitrarySlotPostHeaderDecoderMilestone.classification !== "formalized-foundation-only"
+        || builderArbitrarySlotPostHeaderDecoderMilestone.status !== "formalized-foundation-only"
+        || builderArbitrarySlotPostHeaderDecoderMilestone.scope !== BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_MILESTONE_SCOPE
+        || builderArbitrarySlotPostHeaderDecoderMilestone.nonClaim !== BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_NON_CLAIM
+        || JSON.stringify(builderArbitrarySlotPostHeaderDecoderMilestone.requiredTheorems)
+          !== JSON.stringify(Object.keys(BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_THEOREMS))
+        || !Object.entries(BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_THEOREMS).every(([name, evidence]) => {
+          const row = builderArbitrarySlotPostHeaderDecoderMilestone.theoremRows?.find(
+            (candidate) => candidate.name === name
+          );
+          return row?.present === true
+            && row.kind === "theorem"
+            && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+            && row.actualKernelTypeSha256 === evidence.hash
+            && row.expectedKernelTypeSha256 === evidence.hash
+            && row.kernelTypeFingerprintMatches === true;
+        })
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderFormalized !== true
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderAxiomAuditPassed !== true
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderAuditedDeclarationCount !== 22
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderAllCoordinateSemanticDecoderFormalized !== true
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderExactClauseWithinClauseReconstructionFormalized !== true
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderDirectBodyTokenRouteFormalized !== true
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderRawPostHeaderRemainderExtractionFormalized !== true
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderRawDivisionFormalized !== false
+        || payload.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderRawBodyTokenEmissionFormalized !== false
+        || payload.leanConcreteCookLevinFormulaBuilderFormalized !== false
+        || payload.leanConcreteCookLevinBuilderRawRefinementFormalized !== false
+        || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
+      fail("core status Cook-Levin arbitrary-slot post-header-decoder boundary mismatch");
+    }
     if (payload.concretePublicationGate?.passed !== false || payload.publicationStatusDerivedOnlyFromConcreteGate !== true) fail("core status concrete publication boundary mismatch");
     if (payload.mathematicalTheoremEstablished !== false || payload.publicTheoremEmissionAllowed !== false || payload.publicTheoremStatement !== null) fail("core status does not fail closed");
     if (payload.rootLeanTheoremPresent !== false || payload.projectSpecificAxiomsRemaining !== false || payload.projectSpecificAxiomInventory?.length !== 0 || payload.remainingBlockers?.length !== 5) fail("core status blocker boundary mismatch");
@@ -12052,6 +12114,16 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         fail("core inventory Cook-Levin arbitrary-slot header-router theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_THEOREMS)) {
+      const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        fail("core inventory Cook-Levin arbitrary-slot post-header-decoder theorem mismatch: " + name);
       }
     }
     for (const [name, row] of Object.entries(LOCKED_NAND_CARRIER_TRACE_THEOREMS)) {
