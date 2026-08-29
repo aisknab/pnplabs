@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-30-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder",
+      "milestoneId": "concrete-cook-levin-builder-arbitrary-slot-post-header-decoder",
+      "publishedAt": "2026-08-29T19:52:34Z",
+      "title": "Uniform Cook-Levin arbitrary-slot post-header decoder",
+      "plainLanguage": [
+        "For every concrete polynomial-time verifier and every coordinate in its complete token schedule, Lean now refines the previous header route with a structurally recursive decoder for every post-header position. A body result carries bounded clause and within-clause coordinates that reconstruct the exact remainder, the unique finish and out-of-range cases are characterized, and every interpreted route agrees with direct token lookup. A checked reader also recovers the exact shifted remainder from the previous raw comparison result without weakening its exact trace.",
+        "This is an unbounded semantic decoder and a checked bridge from the existing raw header comparison, not raw division or raw body-token emission. It does not complete the raw formula builder, its refinement, or the concrete reduction, establish hardness transport or put satisfiability in deterministic polynomial time, close a global gate, create the eligible root theorem, or prove P = NP. M210 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 186 of 188, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 186,
+        "formalArtefactCoverageTotalRows": 188,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "228e9d3b249870ad59fa7042656827f35a535abc",
+        "tree": "d8ea3358fee8544f797138038802836eeb88f419",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-210",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-29-concrete-cook-levin-builder-arbitrary-slot-header-router",
       "milestoneId": "concrete-cook-levin-builder-arbitrary-slot-header-router",
       "publishedAt": "2026-08-29T14:10:53Z",
