@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-30-concrete-cook-levin-builder-post-header-raw-tape-bridge",
+      "milestoneId": "concrete-cook-levin-builder-post-header-raw-tape-bridge",
+      "publishedAt": "2026-08-30T16:52:47Z",
+      "title": "Literal Cook-Levin post-header raw tape bridge",
+      "plainLanguage": [
+        "For every concrete verifier tableau problem, arbitrary exterior workspace, and in-range schedule coordinate, Lean now verifies a fixed collision-free 351-rule machine that rewrites either exact M209 post-header terminal tape into M211's shielded unary-divider input. It derives zero or the exact positive shifted remainder, copies the positive problem width, preserves the complete exterior workspace, and retains exact bridge and divider traces.",
+        "The traces recover the exact quotient and remainder, compile at six raw steps per work step, time out one step short, and fit one verifier-derived source-size polynomial. The bridge still does not select, emit, or append a body or Finish token, iterate the complete schedule, finish the raw builder or refinement, package the reduction, or close a global gate. M213 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 189 of 191, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 189,
+        "formalArtefactCoverageTotalRows": 191,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f5d42870ee50c903ebcff8a71da05a74256be59d",
+        "tree": "fdbf10651b1f160988ff0c03015c5bc0eba302f5",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-213",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-30-concrete-cook-levin-builder-post-header-raw-launch",
       "milestoneId": "concrete-cook-levin-builder-post-header-raw-launch",
       "publishedAt": "2026-08-30T09:21:33.834Z",

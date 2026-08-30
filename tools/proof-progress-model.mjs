@@ -260,7 +260,7 @@ function renderProofProgressDashboard(model, options = {}) {
     + `          <span class="section-label">Separate evidence metric</span>\n`
     + `          <h2>Formal artefact coverage</h2>\n`
     + `          <p class="coverage-number">${coverage.earnedRows} of ${coverage.totalRows}</p>\n`
-    + `          <p><strong>${coverage.percentRoundedOneDecimal}% of the current evidence ledger.</strong></p>\n`
+    + `          <p><strong>${Number(coverage.percentRoundedOneDecimal).toFixed(1)}% of the current evidence ledger.</strong></p>\n`
     + `          <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>\n`
     + `        </article>\n`
     + `        <article class="card proof-progress-gates">\n`

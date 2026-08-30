@@ -89,7 +89,7 @@ test('plain-language orientation is static and available before technical depth'
   assert.match(
     faq,
     new RegExp(
-      `Neither ${proofProgress.proofCompletion.percent}% nor ${escapeRegExp(String(proofProgress.formalArtefactCoverage.percentRoundedOneDecimal))}% is confidence that P=NP is true`,
+      `Neither ${proofProgress.proofCompletion.percent}% nor ${escapeRegExp(Number(proofProgress.formalArtefactCoverage.percentRoundedOneDecimal).toFixed(1))}% is confidence that P=NP is true`,
       'u'
     )
   );
