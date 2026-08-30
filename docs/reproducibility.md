@@ -26,15 +26,15 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 607,477 | `2a0ab6273abd04f50ac94c3c6ce571c1df490ae5821fe80c8f8d19d0429200aa` |
-| `downloads/canonical-proof-report.pdf` | 607,477 | `2a0ab6273abd04f50ac94c3c6ce571c1df490ae5821fe80c8f8d19d0429200aa` |
-| `downloads/canonical_proof_report.tex` | 387,786 | `c4dbdbf3cc33f38d8071ff863f44fc1d02c72b316a00bbd9cfd49ef57931d5a6` |
-| `downloads/canonical-proof-report.tex` | 387,786 | `c4dbdbf3cc33f38d8071ff863f44fc1d02c72b316a00bbd9cfd49ef57931d5a6` |
-| `public/pnp-status.json` | 2,739,168 | `78bd145aa88ed441bc8570b0be6b6c3916e9589d388e7e3b7b24062195b6dc5e` |
-| `public/pnp-theorem-inventory.json` | 47,532,084 | `89bdf2793a59f78d44be689145c53d6bc8804842ba0dfed3f2fd1b9736e11509` |
-| `public/pnp-proof-progress.json` | 89,524 | `95af4e3459d2d3f03529500914994f48c5ccd6ca58da3b8c47a38da84973c267` |
+| `downloads/canonical_proof_report.pdf` | 609,058 | `4c91226df78fe8bcc5d8725ea3802c7dcf1885ba7fa4d921cbf132c9681c0cc3` |
+| `downloads/canonical-proof-report.pdf` | 609,058 | `4c91226df78fe8bcc5d8725ea3802c7dcf1885ba7fa4d921cbf132c9681c0cc3` |
+| `downloads/canonical_proof_report.tex` | 389,282 | `00dbf11b1c6e7d0b7005a0ef65ecb1fda31a580de933a56bc0c3a1f79e090686` |
+| `downloads/canonical-proof-report.tex` | 389,282 | `00dbf11b1c6e7d0b7005a0ef65ecb1fda31a580de933a56bc0c3a1f79e090686` |
+| `public/pnp-status.json` | 2,743,332 | `903598c0127f0bb5c328a7868496e4e35b58ef15507fd1cc92df3cff43ff0c1a` |
+| `public/pnp-theorem-inventory.json` | 47,560,288 | `4af2321491eed5fe6c10b07d1afaf1474c877b67686baab6ceaf1db848653b6b` |
+| `public/pnp-proof-progress.json` | 92,331 | `d13229730fdf7944c29c94054859fba222196ce7876c43abfdadae25ad08c3eb` |
 
-The PDF must have 152 A4 pages. Both filename styles must be byte-identical.
+The PDF must have 153 A4 pages. Both filename styles must be byte-identical.
 
 ## Exact Cross-Repository Mirror Check
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 9f009edfa7588f47df90a338880bbdd9ce25ac93
+git -C ../pnp checkout 3d2cc2eda40f6dcaa7758e96af14b203f69c55cb
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,15 +68,14 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 32,379 public declarations, 16,494 theorem-kind declarations,
-7,858 assumption-free theorem-kind declarations, 15,453 excluded private auxiliaries, 331 modules, and
+Expected compiled inventory counts are 32,412 public declarations, 16,515 theorem-kind declarations,
+7,859 assumption-free theorem-kind declarations, 15,453 excluded private auxiliaries, 332 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. The current formula-emitting
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
 constraint; M208's separate uniform controller traverses the complete schedule without decoding or
 emitting its body tokens, M209's fixed 54-rule arbitrary-slot router classifies the top-level header
-boundary, M210 semantically decodes every post-header clause and within-clause coordinate, and M211 computes exact raw unary quotient and remainder tapes while
-recovering the exact shifted remainder. The reviewed `cook_levin_builder_post_header_raw_divider_checked_complete` theorem pin and focused 55-declaration audit use only the approved Lean-standard closure, with no project-specific axiom or `Classical.choice`. Splicing this divider into the checked router, terminal-route classification, and body-token emission remain open. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
+boundary, M210 semantically decodes every post-header clause and within-clause coordinate, M211 computes exact raw unary quotient and remainder tapes, and M212 composes M209's checked result reader with that divider for every natural coordinate while retaining both exact traces and a summed polynomial bound. The reviewed `cook_levin_builder_post_header_raw_launch_checked_complete` theorem pin and focused 24-declaration audit use only the approved Lean-standard closure, with no project-specific axiom or `Classical.choice`. A literal tape-to-tape bridge preserving the complete builder workspace, plus body and Finish-token emission, remain open. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
 polynomial reduction remain exact and fail closed on malformed source bytes. The semantic layer supplies
 a total compiler from strict canonical CNF formulas to intrinsically topological NAND circuits. Its
 18 reviewed theorem pins prove codec canonicality, well-formed topological output, exact assignment
@@ -251,7 +250,7 @@ to the complete constant equation on every nonempty proper cut. Its total classi
 two-anchor full weight, three singleton cuts, or four-plus full-span support and weight without
 enumerating carrier subsets. Accepted evidence derives constant activation and conditional ZeroSlack
 at the checked BN6/BCEL/HB boundary. The endpoint uses only Lean-standard `Quot.sound` and `propext`;
-its focused 22-declaration audit is free of project-specific axioms. Terminal data, raw cells and
+its focused 24-declaration audit is free of project-specific axioms. Terminal data, raw cells and
 payloads, tables, ranks, route-clear proof, resolvers, normalizer, blocker semantics, upstream
 construction, and complete encoded-size bounds remain supplied. Rejection is a typed structural
 diagnostic rather than a constructed gain or globally decreasing transition. The milestone does not
@@ -300,7 +299,7 @@ The M202 source-derived PkgC/BN6 checked-route milestone has 1 reviewed theorem 
 
 The M207 PkgC restoration coverage and exact ambient charge-coordinate descent milestone has 1 reviewed theorem pin. For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 16-declaration audit is free of project-specific axioms. The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 183 of 185.
 
-The latest M211 Fixed Cook-Levin post-header raw quotient/remainder divider milestone has 1 reviewed theorem pin. For every natural dividend and positive unary width, one fixed 99-rule deterministic work machine reaches the exact natural quotient and strict remainder tape, reconstructs the dividend, compiles with exactly six raw transitions per certified work step, times out one step short, and satisfies an explicit quadratic bound in the complete unary encoded input length. The zero-width dispatcher returns none. M210 body coordinates instantiate the same decoded quotient and remainder. All 55 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 22-declaration audit is free of project-specific axioms and `Classical.choice`. M211 adds a standalone raw quotient/remainder kernel with an exact compiled trace and unary encoded-size quadratic bound. It is not spliced onto M209's checked raw result, does not classify Finish or out-of-range routes, does not emit or append a Cook-Levin body token, and does not complete the raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 187 of 189. All five global gates remain open.
+The latest M212 All-coordinate Cook-Levin post-header raw launch milestone has 1 reviewed theorem pin. For every concrete verifier tableau problem and every natural coordinate, executable Lean orchestration reads the exact shifted remainder from M209's checked raw terminal configuration and conditionally launches M211's fixed positive-width divider. The exact M209 and M211 traces are retained; every M210 body, Finish, and out-of-range result is recovered; every coordinate inside the complete token schedule excludes the out-of-range post-header branch; and the summed compiled work is bounded by one verifier-derived polynomial in the source-input length. All 24 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 24-declaration audit is free of project-specific axioms and `Classical.choice`. M212 adds executable all-coordinate orchestration over the checked reader and divider. It is not a literal raw tape-to-tape bridge, does not preserve the complete builder workspace through such a rewrite, emit or append a Cook-Levin body or Finish token, or complete the raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 188 of 190. All five global gates remain open.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

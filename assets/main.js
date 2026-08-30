@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-211";
-const STATUS_SHA256 = '78bd145aa88ed441bc8570b0be6b6c3916e9589d388e7e3b7b24062195b6dc5e';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-30-211";
-const FORMAL_PUBLICATION_MAP_SHA256 = "1cce7cbcf5f09347cef556bdcd8c94659cac85dec050288e4ae1b1a60e4e7256";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-212";
+const STATUS_SHA256 = '903598c0127f0bb5c328a7868496e4e35b58ef15507fd1cc92df3cff43ff0c1a';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-30-212";
+const FORMAL_PUBLICATION_MAP_SHA256 = "d67c6bcf60771038654561bc4e003bd63ec4fe8da06dba165966ffeb2ee635b0";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-30-211";
-const INVENTORY_SHA256 = "89bdf2793a59f78d44be689145c53d6bc8804842ba0dfed3f2fd1b9736e11509";
-const SOURCE_CLOSURE_SHA256 = "4d18bf0b2d793f1686bd793001a8d5250418bd2ba874f2e8f377f975d0cba5da";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-30-212";
+const INVENTORY_SHA256 = "4af2321491eed5fe6c10b07d1afaf1474c877b67686baab6ceaf1db848653b6b";
+const SOURCE_CLOSURE_SHA256 = "ffc1653ab69ec6b9e3e1ef2c22dd6cff1b600cd57d94b0f649649bf5ca52f7bb";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 32379,
-  theorems: 16494,
-  assumptionFreeTheorems: 7858,
+  declarations: 32412,
+  theorems: 16515,
+  assumptionFreeTheorems: 7859,
   excludedPrivateDeclarations: 15453,
-  modules: 331,
+  modules: 332,
   axioms: 0,
 });
 
@@ -4766,6 +4766,9 @@ const BUILDER_ARBITRARY_SLOT_POST_HEADER_DECODER_DECLARATIONS = Object.freeze([
 const BUILDER_POST_HEADER_RAW_DIVIDER_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderPostHeaderRawDivider.cook_levin_builder_post_header_raw_divider_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderPostHeaderRawDivider", "49eafb1e2702755c9a011c7dfcb37897242ab96021b03f64ea75fa621160ea75"],
 ]);
+const BUILDER_POST_HEADER_RAW_LAUNCH_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderPostHeaderRawLaunch.cook_levin_builder_post_header_raw_launch_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderPostHeaderRawLaunch", "0361f9b8c05cea70ce199c78a74e55473765ae3e49d39565a46696915558fda1"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5987,6 +5990,14 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized: false,
   leanConcreteCookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized: false,
   leanConcreteCookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchExactHandoffFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6937,6 +6948,14 @@ leanConcreteCookLevinBuilderPostHeaderRawDividerExactQuotientRemainderDecodeForm
 leanConcreteCookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized ?? false}
 leanConcreteCookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized ?? false}
 leanConcreteCookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchExactHandoffFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchExactHandoffFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8199,6 +8218,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderPostHeaderRawLaunch =
+    BUILDER_POST_HEADER_RAW_LAUNCH_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8882,6 +8908,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && builderPostHeaderRawLaunch.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9411,6 +9441,10 @@ function validateStatus(status, inventory) {
 
   const builderPostHeaderRawDividerMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "concrete-cook-levin-builder-post-header-raw-divider"
+  );
+
+  const builderPostHeaderRawLaunchMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-post-header-raw-launch"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11978,6 +12012,40 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+
+    && builderPostHeaderRawLaunchMilestone?.classification === "formalized-foundation-only"
+    && builderPostHeaderRawLaunchMilestone.status === "formalized-foundation-only"
+    && builderPostHeaderRawLaunchMilestone.earned === true
+    && builderPostHeaderRawLaunchMilestone.allPresent === true
+    && builderPostHeaderRawLaunchMilestone.allAssumptionFree === false
+    && builderPostHeaderRawLaunchMilestone.allKernelTypesMatch === true
+    && builderPostHeaderRawLaunchMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
+    && builderPostHeaderRawLaunchMilestone.sourceClosureFingerprintMatches === true
+    && builderPostHeaderRawLaunchMilestone.scope === "For every concrete verifier tableau problem and every natural coordinate, executable Lean orchestration reads the exact shifted remainder from M209's checked raw terminal configuration and conditionally launches M211's fixed positive-width divider. The exact M209 and M211 traces are retained; every M210 body, Finish, and out-of-range result is recovered; every coordinate inside the complete token schedule excludes the out-of-range post-header branch; and the summed compiled work is bounded by one verifier-derived polynomial in the source-input length. All 24 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice."
+    && builderPostHeaderRawLaunchMilestone.nonClaim === "This milestone composes M209's checked result reader and M211's exact divider through executable Lean orchestration. It is not a literal raw tape-to-tape bridge, does not preserve the complete builder workspace through such a rewrite, does not emit or append a Cook-Levin body or Finish token, and does not complete the raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, or prove P = NP."
+    && sameJson(builderPostHeaderRawLaunchMilestone.requiredTheorems, BUILDER_POST_HEADER_RAW_LAUNCH_DECLARATIONS.map(([name]) => name))
+    && builderPostHeaderRawLaunchMilestone.theoremRows?.length === BUILDER_POST_HEADER_RAW_LAUNCH_DECLARATIONS.length
+    && builderPostHeaderRawLaunchMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_POST_HEADER_RAW_LAUNCH_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchAuditedDeclarationCount === 24
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchExactHandoffFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized === false
+    && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
     && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
