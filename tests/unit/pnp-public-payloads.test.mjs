@@ -85,6 +85,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder',
   cookLevinBuilderPostHeaderRawDivider:
     'ConcreteCookLevinBuilderPostHeaderRawDivider',
+  cookLevinBuilderPostHeaderRawLaunch:
+    'ConcreteCookLevinBuilderPostHeaderRawLaunch',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -4641,6 +4643,47 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized, false);
   assert.ok(index.earnedMilestones.includes(builderPostHeaderRawDivider.id));
+
+  const builderPostHeaderRawLaunch = status.formalPublicationMilestones
+    .find((row) => row.id === "concrete-cook-levin-builder-post-header-raw-launch");
+  assert.ok(builderPostHeaderRawLaunch);
+  assert.equal(builderPostHeaderRawLaunch.earned, true);
+  assert.equal(builderPostHeaderRawLaunch.allPresent, true);
+  assert.equal(builderPostHeaderRawLaunch.allAssumptionFree, false);
+  assert.equal(builderPostHeaderRawLaunch.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(builderPostHeaderRawLaunch.allKernelTypesMatch, true);
+  assert.equal(builderPostHeaderRawLaunch.sourceClosureFingerprintMatches, true);
+  assert.match(builderPostHeaderRawLaunch.scope, /executable Lean orchestration/u);
+  assert.match(builderPostHeaderRawLaunch.scope, /summed compiled work/u);
+  assert.match(builderPostHeaderRawLaunch.nonClaim, /not a literal raw tape-to-tape bridge/u);
+  assert.match(builderPostHeaderRawLaunch.nonClaim, /does not emit or append/u);
+  assert.deepEqual(builderPostHeaderRawLaunch.requiredTheorems, ["PNP.Concrete.CookLevin.BuilderPostHeaderRawLaunch.cook_levin_builder_post_header_raw_launch_checked_complete"]);
+  assert.equal(builderPostHeaderRawLaunch.theoremRows.length, 1);
+  assert.equal(builderPostHeaderRawLaunch.theoremRows[0].actualKernelTypeSha256, "0361f9b8c05cea70ce199c78a74e55473765ae3e49d39565a46696915558fda1");
+  assert.deepEqual(builderPostHeaderRawLaunch.theoremRows[0].axioms, ["Quot.sound", "propext"]);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchAuditedDeclarationCount, 24);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchExactHandoffFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized, false);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchCheckedCompleteTheorem, "PNP.Concrete.CookLevin.BuilderPostHeaderRawLaunch.cook_levin_builder_post_header_raw_launch_checked_complete");
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchTheoremKernelTypeSha256, {
+    "PNP.Concrete.CookLevin.BuilderPostHeaderRawLaunch.cook_levin_builder_post_header_raw_launch_checked_complete": "0361f9b8c05cea70ce199c78a74e55473765ae3e49d39565a46696915558fda1",
+  });
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchAuditedDeclarationCount, 24);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchExactHandoffFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized, false);
+  assert.ok(index.earnedMilestones.includes(builderPostHeaderRawLaunch.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
