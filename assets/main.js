@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-212";
-const STATUS_SHA256 = '903598c0127f0bb5c328a7868496e4e35b58ef15507fd1cc92df3cff43ff0c1a';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-30-212";
-const FORMAL_PUBLICATION_MAP_SHA256 = "d67c6bcf60771038654561bc4e003bd63ec4fe8da06dba165966ffeb2ee635b0";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-213";
+const STATUS_SHA256 = '8f00711ca83d5d49d4dca46d91a80ecee35d047fd99f5e7f7f33e474dd5b02d5';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-08-30-213";
+const FORMAL_PUBLICATION_MAP_SHA256 = "89accb46921ac3c1bf5e6a8dd3384f99ab7f64e78af3fcbae7685e7a148e5908";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-30-212";
-const INVENTORY_SHA256 = "4af2321491eed5fe6c10b07d1afaf1474c877b67686baab6ceaf1db848653b6b";
-const SOURCE_CLOSURE_SHA256 = "ffc1653ab69ec6b9e3e1ef2c22dd6cff1b600cd57d94b0f649649bf5ca52f7bb";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-08-30-213";
+const INVENTORY_SHA256 = "2e6ba6a92c3a0b87adcaf8a1ebcc51275e6c322ce1e79df23a89e34cf77418fb";
+const SOURCE_CLOSURE_SHA256 = "db36b8c1ffff8bb05f228e6fb4d93a3322e406ef06fa375e616324074461bb63";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 32412,
-  theorems: 16515,
-  assumptionFreeTheorems: 7859,
-  excludedPrivateDeclarations: 15453,
-  modules: 332,
+  declarations: 32557,
+  theorems: 16607,
+  assumptionFreeTheorems: 7909,
+  excludedPrivateDeclarations: 15585,
+  modules: 333,
   axioms: 0,
 });
 
@@ -4769,6 +4769,9 @@ const BUILDER_POST_HEADER_RAW_DIVIDER_DECLARATIONS = Object.freeze([
 const BUILDER_POST_HEADER_RAW_LAUNCH_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderPostHeaderRawLaunch.cook_levin_builder_post_header_raw_launch_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderPostHeaderRawLaunch", "0361f9b8c05cea70ce199c78a74e55473765ae3e49d39565a46696915558fda1"],
 ]);
+const BUILDER_POST_HEADER_RAW_TAPE_BRIDGE_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderPostHeaderRawTapeBridge.cook_levin_builder_post_header_raw_tape_bridge_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderPostHeaderRawTapeBridge", "4471f7d515cd8fc13191d7228a74e226adb6ee9fcfa4277d13f38fef26880753"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5998,6 +6001,18 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized: false,
   leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized: false,
   leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeExactRouterTapeInputsFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeLiteralTapeBridgeFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeArbitraryWorkspacePreservedFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeShieldedDividerTraceFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAllRoutesFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeCompiledSimulationFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeOneStepShortNonhaltingFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeSourceSizePolynomialBoundFormalized: false,
+  leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeRawBodyTokenEmissionFormalized: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -6956,6 +6971,18 @@ leanConcreteCookLevinBuilderPostHeaderRawLaunchAllRoutesFormalized = ${payload.l
 leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized ?? false}
 leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized ?? false}
 leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeExactRouterTapeInputsFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeExactRouterTapeInputsFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeLiteralTapeBridgeFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeLiteralTapeBridgeFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeArbitraryWorkspacePreservedFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeArbitraryWorkspacePreservedFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeShieldedDividerTraceFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeShieldedDividerTraceFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAllRoutesFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAllRoutesFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeCompiledSimulationFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeCompiledSimulationFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeOneStepShortNonhaltingFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeOneStepShortNonhaltingFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeSourceSizePolynomialBoundFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeSourceSizePolynomialBoundFormalized ?? false}
+leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeRawBodyTokenEmissionFormalized = ${payload.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeRawBodyTokenEmissionFormalized ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8225,6 +8252,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderPostHeaderRawTapeBridge =
+    BUILDER_POST_HEADER_RAW_TAPE_BRIDGE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -8912,6 +8946,10 @@ function validateInventory(inventory) {
       && row.module === module
       && sameJson(row.axioms, axioms))
 
+    && builderPostHeaderRawTapeBridge.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
+
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9445,6 +9483,10 @@ function validateStatus(status, inventory) {
 
   const builderPostHeaderRawLaunchMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "concrete-cook-levin-builder-post-header-raw-launch"
+  );
+
+  const builderPostHeaderRawTapeBridgeMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-post-header-raw-tape-bridge"
   );
 
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
@@ -11988,7 +12030,7 @@ function validateStatus(status, inventory) {
     && builderPostHeaderRawDividerMilestone.allKernelTypesMatch === true
     && builderPostHeaderRawDividerMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
     && builderPostHeaderRawDividerMilestone.sourceClosureFingerprintMatches === true
-    && builderPostHeaderRawDividerMilestone.scope === "For every natural dividend and positive unary width, one fixed 99-rule deterministic work machine reaches the exact natural quotient and strict remainder tape, reconstructs the dividend, compiles with exactly six raw transitions per certified work step, times out one step short, and satisfies an explicit quadratic bound in the complete unary encoded input length. The zero-width dispatcher returns none. M210 body coordinates instantiate the same decoded quotient and remainder. All 55 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice."
+    && builderPostHeaderRawDividerMilestone.scope === "For every natural dividend and positive unary width, one fixed 99-rule deterministic work machine reaches the exact natural quotient and strict remainder tape, reconstructs the dividend, compiles with exactly six raw transitions per certified work step, times out one step short, and satisfies an explicit quadratic bound in the complete unary encoded input length. The zero-width dispatcher returns none. M210 body coordinates instantiate the same decoded quotient and remainder. All 57 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice."
     && builderPostHeaderRawDividerMilestone.nonClaim === "This milestone proves a standalone fixed unary divider. It is not spliced onto M209's checked raw result, does not classify Finish or out-of-range routes, does not emit or append a Cook-Levin body token, and does not complete the raw formula builder or its FunctionProgram.RawRefinement. It does not package the concrete Cook-Levin PolynomialReduction, establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a global gate, or prove P = NP."
     && sameJson(builderPostHeaderRawDividerMilestone.requiredTheorems, BUILDER_POST_HEADER_RAW_DIVIDER_DECLARATIONS.map(([name]) => name))
     && builderPostHeaderRawDividerMilestone.theoremRows?.length === BUILDER_POST_HEADER_RAW_DIVIDER_DECLARATIONS.length
@@ -12004,7 +12046,7 @@ function validateStatus(status, inventory) {
     })
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerAxiomAuditPassed === true
-    && status.leanConcreteCookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount === 55
+    && status.leanConcreteCookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount === 57
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerLiteralRawMachineFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerExactRawTraceFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerCompiledRawSimulationFormalized === true
@@ -12046,6 +12088,44 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized === false
     && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+
+    && builderPostHeaderRawTapeBridgeMilestone?.classification === "formalized-foundation-only"
+    && builderPostHeaderRawTapeBridgeMilestone.status === "formalized-foundation-only"
+    && builderPostHeaderRawTapeBridgeMilestone.earned === true
+    && builderPostHeaderRawTapeBridgeMilestone.allPresent === true
+    && builderPostHeaderRawTapeBridgeMilestone.allAssumptionFree === false
+    && builderPostHeaderRawTapeBridgeMilestone.allKernelTypesMatch === true
+    && builderPostHeaderRawTapeBridgeMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
+    && builderPostHeaderRawTapeBridgeMilestone.sourceClosureFingerprintMatches === true
+    && builderPostHeaderRawTapeBridgeMilestone.scope === "For every concrete verifier tableau problem, arbitrary exterior workspace, and in-range coordinate, one fixed collision-free 351-rule bridge consumes the exact M209 equality or greater-than terminal tape, derives zero or the exact positive shifted remainder, copies the positive problem width, and reaches a shielded M211 input. Exact bridge and divider traces preserve the complete exterior, recover the exact quotient and remainder, compile at six raw steps per work step, time out one step short, and fit one verifier-derived source-size polynomial. All 78 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice."
+    && builderPostHeaderRawTapeBridgeMilestone.nonClaim === "This milestone closes the literal M209-to-M211 physical tape handoff only. It does not select, emit, or append a Cook-Levin body or Finish token, iterate the complete token schedule, complete the raw formula builder or its FunctionProgram.RawRefinement, or package the concrete Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(builderPostHeaderRawTapeBridgeMilestone.requiredTheorems, BUILDER_POST_HEADER_RAW_TAPE_BRIDGE_DECLARATIONS.map(([name]) => name))
+    && builderPostHeaderRawTapeBridgeMilestone.theoremRows?.length === BUILDER_POST_HEADER_RAW_TAPE_BRIDGE_DECLARATIONS.length
+    && builderPostHeaderRawTapeBridgeMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_POST_HEADER_RAW_TAPE_BRIDGE_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAuditedDeclarationCount === 78
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeExactRouterTapeInputsFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeLiteralTapeBridgeFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeArbitraryWorkspacePreservedFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeShieldedDividerTraceFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeAllRoutesFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeCompiledSimulationFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeOneStepShortNonhaltingFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeSourceSizePolynomialBoundFormalized === true
+    && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeRawBodyTokenEmissionFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
     && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false

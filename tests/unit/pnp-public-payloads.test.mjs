@@ -87,6 +87,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPostHeaderRawDivider',
   cookLevinBuilderPostHeaderRawLaunch:
     'ConcreteCookLevinBuilderPostHeaderRawLaunch',
+  cookLevinBuilderPostHeaderRawTapeBridge:
+    'ConcreteCookLevinBuilderPostHeaderRawTapeBridge',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -4618,7 +4620,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(builderPostHeaderRawDivider.theoremRows[0].axioms, ["Quot.sound", "propext"]);
   assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerAxiomAuditPassed, true);
-  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount, 55);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount, 57);
   assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerLiteralRawMachineFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerExactRawTraceFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerCompiledRawSimulationFormalized, true);
@@ -4634,7 +4636,7 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerProjectAxiomClosure, []);
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerAxiomAuditPassed, true);
-  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount, 55);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount, 57);
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerLiteralRawMachineFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerExactRawTraceFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerCompiledRawSimulationFormalized, true);
