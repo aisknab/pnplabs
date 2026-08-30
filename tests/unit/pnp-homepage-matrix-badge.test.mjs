@@ -65,6 +65,8 @@ function latestMilestoneStatusFields(status, release, milestone) {
         'leanConcreteCookLevinBuilderArbitrarySlotHeaderRouter',
       'concrete-cook-levin-builder-arbitrary-slot-post-header-decoder':
         'leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder',
+      'concrete-cook-levin-builder-post-header-raw-divider':
+        'leanConcreteCookLevinBuilderPostHeaderRawDivider',
     };
     const stem = stems[milestone.id];
     assert.ok(stem, `missing status-stem mapping for scopeless milestone ${milestone.id}`);

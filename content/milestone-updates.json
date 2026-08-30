@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-30-concrete-cook-levin-builder-post-header-raw-divider",
+      "milestoneId": "concrete-cook-levin-builder-post-header-raw-divider",
+      "publishedAt": "2026-08-30T03:32:48.105Z",
+      "title": "Fixed Cook-Levin post-header raw quotient/remainder divider",
+      "plainLanguage": [
+        "For every natural dividend and positive unary width, Lean now verifies a fixed 99-rule unary quotient/remainder work machine. It reaches the exact natural quotient and strict remainder, reconstructs the dividend, compiles with exactly six raw transitions per certified work step, times out one step short, and obeys an explicit quadratic bound in the complete unary encoded input length.",
+        "This is a standalone divider whose outputs agree with M210 body coordinates. It is not yet spliced onto M209's checked raw result, does not classify finish or out-of-range routes, emit or append a body token, or complete the raw formula builder, refinement, or reduction. M211 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 187 of 189, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 187,
+        "formalArtefactCoverageTotalRows": 189,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "9f009edfa7588f47df90a338880bbdd9ce25ac93",
+        "tree": "9ffe9ae07144c88164062f915f3de2addc36682b",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-30-211",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-30-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder",
       "milestoneId": "concrete-cook-levin-builder-arbitrary-slot-post-header-decoder",
       "publishedAt": "2026-08-29T19:52:34Z",

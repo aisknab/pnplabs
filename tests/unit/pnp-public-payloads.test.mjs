@@ -83,6 +83,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderArbitrarySlotHeaderRouter',
   cookLevinBuilderArbitrarySlotPostHeaderDecoder:
     'ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder',
+  cookLevinBuilderPostHeaderRawDivider:
+    'ConcreteCookLevinBuilderPostHeaderRawDivider',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -4593,6 +4595,52 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(release.earnedBoundary.cookLevinBuilderArbitrarySlotPostHeaderDecoderRawDivisionFormalized, false);
   assert.equal(release.earnedBoundary.cookLevinBuilderArbitrarySlotPostHeaderDecoderRawBodyTokenEmissionFormalized, false);
   assert.ok(index.earnedMilestones.includes(builderArbitrarySlotPostHeaderDecoder.id));
+
+  const builderPostHeaderRawDivider = status.formalPublicationMilestones
+    .find((row) => row.id === "concrete-cook-levin-builder-post-header-raw-divider");
+  assert.ok(builderPostHeaderRawDivider);
+  assert.equal(builderPostHeaderRawDivider.earned, true);
+  assert.equal(builderPostHeaderRawDivider.allPresent, true);
+  assert.equal(builderPostHeaderRawDivider.allAssumptionFree, false);
+  assert.equal(builderPostHeaderRawDivider.axiomClosureUsesOnlyLeanStandardAllowlist, true);
+  assert.equal(builderPostHeaderRawDivider.allKernelTypesMatch, true);
+  assert.equal(builderPostHeaderRawDivider.sourceClosureFingerprintMatches, true);
+  assert.match(builderPostHeaderRawDivider.scope, /fixed 99-rule deterministic work machine/u);
+  assert.match(builderPostHeaderRawDivider.scope, /explicit quadratic bound/u);
+  assert.match(builderPostHeaderRawDivider.nonClaim, /standalone fixed unary divider/u);
+  assert.match(builderPostHeaderRawDivider.nonClaim, /not spliced onto M209/u);
+  assert.match(builderPostHeaderRawDivider.nonClaim, /does not emit or append/u);
+  assert.deepEqual(builderPostHeaderRawDivider.requiredTheorems, ["PNP.Concrete.CookLevin.BuilderPostHeaderRawDivider.cook_levin_builder_post_header_raw_divider_checked_complete"]);
+  assert.equal(builderPostHeaderRawDivider.theoremRows.length, 1);
+  assert.equal(builderPostHeaderRawDivider.theoremRows[0].actualKernelTypeSha256, "49eafb1e2702755c9a011c7dfcb37897242ab96021b03f64ea75fa621160ea75");
+  assert.deepEqual(builderPostHeaderRawDivider.theoremRows[0].axioms, ["Quot.sound", "propext"]);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerAxiomAuditPassed, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount, 55);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerLiteralRawMachineFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerExactRawTraceFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerCompiledRawSimulationFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerExactQuotientRemainderDecodeFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerCheckedCompleteTheorem, "PNP.Concrete.CookLevin.BuilderPostHeaderRawDivider.cook_levin_builder_post_header_raw_divider_checked_complete");
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerTheoremKernelTypeSha256, {
+    "PNP.Concrete.CookLevin.BuilderPostHeaderRawDivider.cook_levin_builder_post_header_raw_divider_checked_complete": "49eafb1e2702755c9a011c7dfcb37897242ab96021b03f64ea75fa621160ea75",
+  });
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerAxiomClosure, ["Quot.sound", "propext"]);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerAxiomAuditPassed, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerAuditedDeclarationCount, 55);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerLiteralRawMachineFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerExactRawTraceFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerCompiledRawSimulationFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerExactQuotientRemainderDecodeFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized, false);
+  assert.ok(index.earnedMilestones.includes(builderPostHeaderRawDivider.id));
   assert.equal(status.remainingBlockers.length, 5);
   assert.equal(status.leanConcreteCNFSATMembershipFormalized, true);
   assert.equal(status.leanConcreteCNFSATMembershipTheorem, 'PNP.Concrete.FinalUniversalDesign.cnfSATInNP');
