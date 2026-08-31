@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-08-31-concrete-cook-levin-builder-post-divider-selected-token-launch",
+      "milestoneId": "concrete-cook-levin-builder-post-divider-selected-token-launch",
+      "publishedAt": "2026-08-31T03:29:51Z",
+      "title": "All-coordinate Cook-Levin selected-token launch",
+      "plainLanguage": [
+        "For every concrete verifier tableau problem and post-header schedule coordinate, Lean now derives canonical padding, the exact body token, or the unique Finish token without a supplied route or token. The result retains M214's physical classifier evidence and carries each selected entry through one executable checked orchestration.",
+        "Every populated entry runs the existing fixed 59-rule appender to reach exactly the next canonical emitted prefix. Exact work and compiled traces time out one step short and fit one verifier-derived source-size polynomial. The selection handoff is not yet a literal raw tape rewrite, and the result does not iterate the complete schedule, finish the raw builder or refinement, package the reduction, or close a global gate. M215 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 191 of 193, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 191,
+        "formalArtefactCoverageTotalRows": 193,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "76bd4815a3294b3642db76f1737ffd3e0e31266e",
+        "tree": "475421b175cab1931d913bcd59a6fc17a82dcc85",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-31-215",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-31-concrete-cook-levin-builder-post-divider-raw-route-classifier",
       "milestoneId": "concrete-cook-levin-builder-post-divider-raw-route-classifier",
       "publishedAt": "2026-08-30T23:19:48Z",
