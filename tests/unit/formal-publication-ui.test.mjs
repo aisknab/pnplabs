@@ -40,6 +40,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
     'ConcreteCookLevinBuilderPostDividerSelectedTokenLaunch',
   'concrete-cook-levin-builder-complete-schedule-iteration':
     'ConcreteCookLevinBuilderCompleteScheduleIteration',
+  'concrete-cook-levin-builder-physical-optional-token-dispatch':
+    'ConcreteCookLevinBuilderPhysicalOptionalTokenDispatch',
 });
 
 function statusFieldStem(milestone) {

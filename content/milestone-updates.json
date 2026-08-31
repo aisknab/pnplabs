@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-01-concrete-cook-levin-builder-physical-optional-token-dispatch",
+      "milestoneId": "concrete-cook-levin-builder-physical-optional-token-dispatch",
+      "publishedAt": "2026-08-31T18:26:53.067Z",
+      "title": "Physical Cook-Levin optional-token dispatch",
+      "plainLanguage": [
+        "For every raw input, arbitrary exterior workspace, emitted prefix and optional token request, Lean now verifies one fixed collision-free 64-rule machine that reads one of five physical request symbols and restores the canonical builder left boundary.",
+        "Padding accepts without changing the output, while a populated request enters the existing renamed 59-rule appender. Exact work and compiled traces, one-step-short nonhalting, malformed-request timeout, canonical all-coordinate specialization and one verifier-derived source-size polynomial are checked. The request is still supplied rather than derived from the raw coordinate classifier, and there is no literal repeated physical schedule loop, complete raw builder, refinement or packaged reduction. M217 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 193 of 195, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 193,
+        "formalArtefactCoverageTotalRows": 195,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "5278e27d3ecbfde4ef6d635552ab687c08a9b12d",
+        "tree": "42c17cda671b9a8d9edd105f1bb03b8051aacad9",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-217",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-08-31-concrete-cook-levin-builder-complete-schedule-iteration",
       "milestoneId": "concrete-cook-levin-builder-complete-schedule-iteration",
       "publishedAt": "2026-08-31T09:06:57Z",
