@@ -1136,6 +1136,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX = Object.freeze({
     "ConcreteCookLevinBuilderPostHeaderRawLaunch",
   cookLevinBuilderPostHeaderRawTapeBridge:
     "ConcreteCookLevinBuilderPostHeaderRawTapeBridge",
+  cookLevinBuilderPostDividerRawRouteClassifier:
+    "ConcreteCookLevinBuilderPostDividerRawRouteClassifier",
 });
 
 function statusStemForReleaseBoundary(status, release, prefix) {

@@ -89,6 +89,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPostHeaderRawLaunch',
   cookLevinBuilderPostHeaderRawTapeBridge:
     'ConcreteCookLevinBuilderPostHeaderRawTapeBridge',
+  cookLevinBuilderPostDividerRawRouteClassifier:
+    'ConcreteCookLevinBuilderPostDividerRawRouteClassifier',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {

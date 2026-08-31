@@ -34,6 +34,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
     'ConcreteCookLevinBuilderPostHeaderRawLaunch',
   'concrete-cook-levin-builder-post-header-raw-tape-bridge':
     'ConcreteCookLevinBuilderPostHeaderRawTapeBridge',
+  'concrete-cook-levin-builder-post-divider-raw-route-classifier':
+    'ConcreteCookLevinBuilderPostDividerRawRouteClassifier',
 });
 
 function statusFieldStem(milestone) {
