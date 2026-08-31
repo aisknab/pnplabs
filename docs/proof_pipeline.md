@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,153 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,154 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 32,557 public declarations;
-- 16,607 theorem-kind declarations;
-- 7,909 assumption-free theorem-kind declarations;
-- 333 source-closure modules;
-- 15,585 excluded private compiler auxiliaries;
+- 32,720 public declarations;
+- 16,715 theorem-kind declarations;
+- 7,949 assumption-free theorem-kind declarations;
+- 334 source-closure modules;
+- 15,690 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 189 earned formal artefact scopes are:
+The 190 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -237,7 +237,7 @@ The 189 earned formal artefact scopes are:
 | Uniform Cook-Levin arbitrary-slot post-header decoder | One reviewed completion-theorem pin proves that, for every concrete polynomial-time verifier and every coordinate below its complete direct token schedule, the M209 outer route is refined by a structurally recursive all-coordinate post-header decoder. Every body result gives typed finite clause and within-clause coordinates that reconstruct the exact remainder; the unique finish and out-of-range cases are characterized; and the interpreted route agrees with direct token lookup. A checked reader recovers the exact shifted remainder from every M209 raw comparison result while preserving M209's exact raw trace. The endpoint uses only `Quot.sound` and `propext`; all 22 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Semantic decoding and exact shifted-remainder extraction only: no raw division, raw body-token emission, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
 | Fixed Cook-Levin post-header raw quotient/remainder divider | One reviewed completion-theorem pin proves that, for every natural dividend and positive unary width, a fixed 99-rule deterministic work machine reaches the exact natural quotient and strict remainder tape, reconstructs the dividend, compiles with exactly six raw transitions per certified work step, times out one step short, and satisfies an explicit quadratic bound in the complete unary encoded input length. M210 body coordinates instantiate the same quotient and remainder. The endpoint uses only `Quot.sound` and `propext`; all 57 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Standalone unary division only: not spliced onto M209's checked raw result, no Finish or out-of-range classification, body-token emission, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-completeness, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
 | All-coordinate Cook-Levin post-header raw launch | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem and every natural coordinate, executable Lean orchestration reads the exact shifted remainder from M209's checked raw terminal configuration and conditionally launches M211's fixed positive-width divider. The exact M209 and M211 traces are retained; every M210 body, Finish, and out-of-range result is recovered; every coordinate inside the complete token schedule excludes the out-of-range post-header branch; and the summed compiled work is bounded by one verifier-derived polynomial in the source-input length. The endpoint uses only `Quot.sound` and `propext`; all 24 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Executable orchestration, not a literal raw tape-to-tape bridge: it does not preserve the complete builder workspace through such a rewrite, emit or append a body or Finish token, complete the raw formula builder or its `FunctionProgram.RawRefinement`, package the reduction, establish NP-hardness or NP-completeness transport or CNF-SAT in P, close a global gate, create the root theorem, or prove `P = NP`. |
-| Literal Cook-Levin post-header raw tape bridge | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem, arbitrary exterior workspace and in-range coordinate, one fixed collision-free 351-rule bridge consumes either exact M209 post-header terminal tape, derives zero or the exact positive shifted remainder, copies the positive problem width, and reaches M211's shielded unary-divider input. Exact bridge and divider traces preserve the complete exterior, recover the quotient and remainder, compile at six raw steps per work step, time out one step short, and fit one verifier-derived source-size polynomial. The endpoint uses only `Quot.sound` and `propext`; all 78 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Literal M209-to-M211 physical handoff only: no body or Finish-token selection or emission, complete schedule iteration, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-hardness or NP-completeness transport, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
+| Literal Cook-Levin post-divider raw route classifier | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem, arbitrary safe exterior prefix and builder workspace, and in-range coordinate, one fixed collision-free 180-rule bridge consumes the exact M213 equality or greater-than divider-terminal tape, copies the exact problem-derived clause count from a restored sidecar, preserves the complete exterior and remainder ledger, and constructs a shielded M209 comparison input from the literal quotient marks. Exact bridge and comparator traces cannot cross their boundaries, compile at six raw steps per work step, time out one step short, agree with every M210 body or Finish route, and fit one verifier-derived source-size polynomial. The endpoint uses only `Quot.sound` and `propext`; all 85 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Literal post-divider route classification only: no token inspection, selection, emission, or append, complete schedule iteration, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-hardness or NP-completeness transport, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -269,7 +269,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 153-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 154-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
