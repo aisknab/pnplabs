@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,155 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,156 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 32,762 public declarations;
-- 16,743 theorem-kind declarations;
-- 7,951 assumption-free theorem-kind declarations;
-- 335 source-closure modules;
-- 15,696 excluded private compiler auxiliaries;
+- 32,789 public declarations;
+- 16,758 theorem-kind declarations;
+- 7,952 assumption-free theorem-kind declarations;
+- 336 source-closure modules;
+- 15,699 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 191 earned formal artefact scopes are:
+The 192 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -239,6 +239,7 @@ The 191 earned formal artefact scopes are:
 | All-coordinate Cook-Levin post-header raw launch | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem and every natural coordinate, executable Lean orchestration reads the exact shifted remainder from M209's checked raw terminal configuration and conditionally launches M211's fixed positive-width divider. The exact M209 and M211 traces are retained; every M210 body, Finish, and out-of-range result is recovered; every coordinate inside the complete token schedule excludes the out-of-range post-header branch; and the summed compiled work is bounded by one verifier-derived polynomial in the source-input length. The endpoint uses only `Quot.sound` and `propext`; all 24 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Executable orchestration, not a literal raw tape-to-tape bridge: it does not preserve the complete builder workspace through such a rewrite, emit or append a body or Finish token, complete the raw formula builder or its `FunctionProgram.RawRefinement`, package the reduction, establish NP-hardness or NP-completeness transport or CNF-SAT in P, close a global gate, create the root theorem, or prove `P = NP`. |
 | Literal Cook-Levin post-divider raw route classifier | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem, arbitrary safe exterior prefix and builder workspace, and in-range coordinate, one fixed collision-free 180-rule bridge consumes the exact M213 equality or greater-than divider-terminal tape, copies the exact problem-derived clause count from a restored sidecar, preserves the complete exterior and remainder ledger, and constructs a shielded M209 comparison input from the literal quotient marks. Exact bridge and comparator traces cannot cross their boundaries, compile at six raw steps per work step, time out one step short, agree with every M210 body or Finish route, and fit one verifier-derived source-size polynomial. The endpoint uses only `Quot.sound` and `propext`; all 85 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Literal post-divider route classification only: no token inspection, selection, emission, or append, complete schedule iteration, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-hardness or NP-completeness transport, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
 | All-coordinate Cook-Levin selected-token launch | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem and every post-header schedule coordinate, the canonical schedule alone derives padding, the exact body token, or the unique Finish token without a supplied route or token. M214's physical classifier contract is retained, every populated entry runs the existing fixed 59-rule appender to the exact next emitted prefix, exact work and compiled traces time out one step short, and the combined staged work fits one verifier-derived source-size polynomial. All 30 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice. The endpoint uses only `Quot.sound` and `propext`; all 30 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Canonical selection and fixed-appender launch through executable orchestration only: the selection handoff is not a literal raw tape rewrite, and there is no complete schedule iteration, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-hardness or NP-completeness transport, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
+| Complete semantic Cook-Levin schedule iteration | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem, structural recursion consumes every verifier-derived post-header schedule opportunity without a supplied coordinate, token, route, trace, schedule, or precomputed formula. Every bounded run equals the canonical emitted prefix, the complete run equals `encodeCNFTokens` of the generated formula, every coordinate retains M215's exact classifier/appender evidence for arbitrary workspace, and the aggregate staged compiled work fits one source-size polynomial. All 12 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or `Classical.choice`. The endpoint uses only `Quot.sound` and `propext`; all 12 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M216 composes M215's proof-carrying per-coordinate stages through executable Lean recursion. It is not one literal raw-machine loop and does not prove physical tape-to-tape handoffs between successive stages, construct the complete raw formula builder or its `FunctionProgram.RawRefinement`, or package the concrete Cook-Levin `PolynomialReduction`. It does not establish CNFSAT NP-hardness or NP-completeness transport, CNFSAT in P, a fixed checkpoint, a global gate, the eligible root theorem, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
