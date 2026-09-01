@@ -99,6 +99,8 @@ const latestPublishedMilestoneFieldStem = (() => {
         "ConcreteCookLevinBuilderPhysicalDispatchSchedule",
       "concrete-cook-levin-builder-physical-finish-request":
         "ConcreteCookLevinBuilderPhysicalFinishRequest",
+      "concrete-cook-levin-builder-physical-classifier-pipeline":
+        "ConcreteCookLevinBuilderPhysicalClassifierPipeline",
     };
     const stem = stems[latestPublishedMilestoneId];
     assert.ok(stem, `missing status-stem mapping for scopeless milestone: ${latestPublishedMilestoneId}`);

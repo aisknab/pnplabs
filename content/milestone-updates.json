@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-01-concrete-cook-levin-builder-physical-classifier-pipeline",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-pipeline",
+      "publishedAt": "2026-09-01T16:00:37Z",
+      "title": "All-coordinate physical Cook-Levin classifier pipeline",
+      "plainLanguage": [
+        "Lean now composes the fixed post-header router, exact unary divider, divider-to-comparator bridge and comparator into one collision-free 711-rule machine for every canonical post-header coordinate. Three exact tape handoffs preserve the protected workspace and the final state agrees with the body-or-Finish classification.",
+        "Exact work and compiled traces, one-step-short nonhalting, component decomposition and one source-size polynomial bound are checked. Body and padding request symbols, dispatch from the classification, one repeated raw schedule loop, complete builder refinement and the packaged reduction remain open. M220 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 196 of 198, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 196,
+        "formalArtefactCoverageTotalRows": 198,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c674c21b994284cdf6df40b43bf1a22920d0ec98",
+        "tree": "e2ca8c554b0a60061ebc1532c6a6b7ea9603f171",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-220",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-01-concrete-cook-levin-builder-physical-finish-request",
       "milestoneId": "concrete-cook-levin-builder-physical-finish-request",
       "publishedAt": "2026-09-01T09:51:22.108Z",
