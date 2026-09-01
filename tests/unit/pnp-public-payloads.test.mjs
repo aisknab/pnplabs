@@ -101,6 +101,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalDispatchSchedule',
   cookLevinBuilderPhysicalFinishRequest:
     'ConcreteCookLevinBuilderPhysicalFinishRequest',
+  cookLevinBuilderPhysicalClassifierPipeline:
+    'ConcreteCookLevinBuilderPhysicalClassifierPipeline',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -9722,7 +9724,7 @@ test('browser runtime constants derive from the canonical current payloads', asy
 });
 
 test('static inventory prose derives changing publication totals from the canonical payloads', async () => {
-  const [readme, paper, faq, guide, pipeline, reproducibility, activatedClaimWording, status, index, inventory, updates, latestRelease, homePage, statusPage] = await Promise.all([
+  const [readme, paper, faq, guide, pipeline, reproducibility, activatedClaimWording, auditQuestions, sourceCheckerMap, status, index, inventory, updates, latestRelease, homePage, statusPage] = await Promise.all([
     readText('README.md'),
     readText('paper.html'),
     readText('faq.html'),
@@ -9730,6 +9732,8 @@ test('static inventory prose derives changing publication totals from the canoni
     readText('docs/proof_pipeline.md'),
     readText('docs/reproducibility.md'),
     readText('docs/activated_claim_wording.md'),
+    readText('docs/audit_questions.md'),
+    readText('docs/source_checker_map.md'),
     readJson('public/pnp-status.json'),
     readJson('public/pnp-index.json'),
     readJson('public/pnp-theorem-inventory.json'),
@@ -9795,6 +9799,22 @@ test('static inventory prose derives changing publication totals from the canoni
     currentMilestoneProse,
     0.65,
     'activated claim wording current milestone boundary',
+  );
+  assertCurrentProseCoverage(
+    sourceCheckerMap,
+    currentMilestoneProse,
+    0.65,
+    'source checker map current milestone boundary',
+  );
+  assert.equal(
+    auditQuestions.includes(`require ${reportPages} PDF pages`),
+    true,
+    'audit worksheet must derive the current report page count',
+  );
+  assert.equal(
+    sourceCheckerMap.includes(`Current ${reportPages}-page non-claiming report`),
+    true,
+    'source checker map must derive the current report page count',
   );
   const latestStatusFields = [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`];
   if (Object.hasOwn(status, `lean${latestStatusStem}Scope`)) latestStatusFields.push(`lean${latestStatusStem}Scope`);

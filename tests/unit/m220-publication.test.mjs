@@ -10,16 +10,16 @@ const index = readJson('public/pnp-index.json');
 const release = readJson('downloads/formal-publication-release.json');
 const updates = readJson('content/milestone-updates.json');
 
-const milestoneId = 'concrete-cook-levin-builder-physical-finish-request';
-const theoremName = 'PNP.Concrete.CookLevin.BuilderPhysicalFinishRequest.cook_levin_builder_physical_finish_request_checked_complete';
-const theoremHash = 'b51a29e1004e8d0713fb9a663de27dccb417fbe973ef449d6f3532e5319870b0';
-const moduleName = 'PNP.Concrete.CookLevinBuilderPhysicalFinishRequest';
-const coordinate = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-219';
+const milestoneId = 'concrete-cook-levin-builder-physical-classifier-pipeline';
+const theoremName = 'PNP.Concrete.CookLevin.BuilderPhysicalClassifierPipeline.cook_levin_builder_physical_classifier_pipeline_checked_complete';
+const theoremHash = '4bbd25d56fa38cdee8b2595274ea8897404ee4e23d832f4aa3d62f681311813d';
+const moduleName = 'PNP.Concrete.CookLevinBuilderPhysicalClassifierPipeline';
+const coordinate = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-220';
 
-test('M219 public payloads preserve the physical Finish-request handoff boundary', () => {
+test('M220 public payloads preserve the all-coordinate physical classifier boundary', () => {
   const milestone = status.formalPublicationMilestones.find((row) => row.id === milestoneId);
   assert.ok(milestone);
-  assert.equal(milestone.title, 'Physical Finish-request handoff');
+  assert.equal(milestone.title, 'All-coordinate physical classifier pipeline');
   assert.equal(milestone.classification, 'formalized-foundation-only');
   assert.equal(milestone.status, 'formalized-foundation-only');
   assert.equal(milestone.earned, true);
@@ -28,12 +28,12 @@ test('M219 public payloads preserve the physical Finish-request handoff boundary
   assert.equal(milestone.allKernelTypesMatch, true);
   assert.equal(milestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
   assert.equal(milestone.sourceClosureFingerprintMatches, true);
-  assert.match(milestone.scope, /unique final post-header coordinate is derived internally/);
-  assert.match(milestone.scope, /collision-free 137-rule composition/);
-  assert.match(milestone.scope, /six-for-one compiled and one-step-short traces/);
-  assert.match(milestone.scope, /All 49 public declarations/);
-  assert.match(milestone.nonClaim, /does not derive body-token or padding requests/);
-  assert.match(milestone.nonClaim, /does not.*connect successive schedule configurations into one literal raw-machine loop/);
+  assert.match(milestone.scope, /every canonical post-header coordinate/);
+  assert.match(milestone.scope, /collision-free 711-rule machine/);
+  assert.match(milestone.scope, /Three exact physical tape handoffs/);
+  assert.match(milestone.scope, /All 63 public declarations/);
+  assert.match(milestone.nonClaim, /does not derive body-token or padding request symbols/);
+  assert.match(milestone.nonClaim, /does not.*connect.*classification to M217's request dispatcher/);
   assert.deepEqual(milestone.requiredTheorems, [theoremName]);
   assert.equal(milestone.theoremRows.length, 1);
   assert.equal(milestone.theoremRows[0].name, theoremName);
@@ -47,42 +47,41 @@ test('M219 public payloads preserve the physical Finish-request handoff boundary
   assert.deepEqual(theorem.axioms, ['Quot.sound', 'propext']);
 });
 
-test('M219 status and release mirrors retain every load-bearing field', () => {
+test('M220 status and release mirrors retain every load-bearing field', () => {
   const pairs = [
     ['Formalized', true],
     ['AxiomAuditPassed', true],
-    ['AuditedDeclarationCount', 49],
-    ['CanonicalFinishCoordinateDerived', true],
-    ['ProtectedBuilderSuffixFormalized', true],
-    ['LiteralFinishRequestWritten', true],
-    ['FixedComposedMachineRuleCount', 137],
+    ['AuditedDeclarationCount', 63],
+    ['AllCoordinatesFormalized', true],
+    ['FixedComposedMachineRuleCount', 711],
+    ['ExactStageHandoffsFormalized', true],
+    ['RouteAgreementFormalized', true],
     ['ExactWorkTraceFormalized', true],
     ['CompiledRawMachineFormalized', true],
     ['OneStepShortNonhaltingFormalized', true],
     ['ExternalInputSizePolynomialFormalized', true],
     ['BodyOrPaddingRequestDerived', false],
-    ['PrecedingClassifierSuffixHandoffFormalized', false],
     ['LiteralRawLoopFormalized', false],
   ];
   for (const [suffix, expected] of pairs) {
-    assert.equal(status[`leanConcreteCookLevinBuilderPhysicalFinishRequest${suffix}`], expected);
-    assert.equal(release.earnedBoundary[`cookLevinBuilderPhysicalFinishRequest${suffix}`], expected);
+    assert.equal(status[`leanConcreteCookLevinBuilderPhysicalClassifierPipeline${suffix}`], expected);
+    assert.equal(release.earnedBoundary[`cookLevinBuilderPhysicalClassifierPipeline${suffix}`], expected);
   }
-  assert.equal(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestCheckedCompleteTheorem, theoremName);
-  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestTheoremKernelTypeSha256, { [theoremName]: theoremHash });
-  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestAxiomClosure, ['Quot.sound', 'propext']);
-  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestProjectAxiomClosure, []);
+  assert.equal(release.earnedBoundary.cookLevinBuilderPhysicalClassifierPipelineCheckedCompleteTheorem, theoremName);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalClassifierPipelineTheoremKernelTypeSha256, { [theoremName]: theoremHash });
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalClassifierPipelineAxiomClosure, ['Quot.sound', 'propext']);
+  assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalClassifierPipelineProjectAxiomClosure, []);
   assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, false);
   assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, false);
   assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized, false);
 });
 
-test('M219 progress snapshot remains separate and conservative', () => {
+test('M220 progress snapshot remains separate and conservative', () => {
   assert.ok(index.earnedMilestones.includes(milestoneId));
   assert.equal(progress.formalArtefactCoverage.isProofCompletionMetric, false);
   const history = progress.history.find((row) => row.asOfCoordinate === coordinate);
   assert.ok(history);
-  assert.deepEqual(history.formalArtefactCoverage, { earnedRows: 195, totalRows: 197 });
+  assert.deepEqual(history.formalArtefactCoverage, { earnedRows: 196, totalRows: 198 });
   assert.equal(history.riskWeightedProofCompletionPercent, 35);
   assert.equal(history.uncertaintyLowPercent, 20);
   assert.equal(history.uncertaintyHighPercent, 40);
@@ -109,30 +108,20 @@ test('M219 progress snapshot remains separate and conservative', () => {
   });
 });
 
-test('M219 remains historically exact after later current releases', () => {
+test('M220 active surfaces publish the classifier pipeline without overclaiming', () => {
   const currentCoverage =
     `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
   for (const file of ['README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html', 'status.html']) {
     const text = readFileSync(file, 'utf8');
     assert.match(text, new RegExp(currentCoverage.replace('/', '\\/')));
     assert.match(text, /35%/);
+    assert.match(text, /classifier pipeline/i);
+    assert.doesNotMatch(text, /M220[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
   }
   const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage, new RegExp(`data-current-milestone="${updates.entries[0].milestoneId}"`));
+  assert.match(homepage, new RegExp(`data-current-milestone="${milestoneId}"`));
   const statusPage = readFileSync('status.html', 'utf8');
   assert.match(statusPage, new RegExp(`data-milestone-id="${milestoneId}"`));
-  assert.match(statusPage, /data-milestone-id="concrete-cook-levin-builder-physical-dispatch-schedule"/);
-  const historicalUpdate = updates.entries.find((row) => row.milestoneId === milestoneId);
-  assert.ok(historicalUpdate);
-  assert.deepEqual(historicalUpdate.progressSnapshot, {
-    modelId: progress.modelId,
-    formalArtefactCoverageEarnedRows: 195,
-    formalArtefactCoverageTotalRows: 197,
-    riskWeightedProofCompletionPercent: 35,
-    uncertaintyLowPercent: 20,
-    uncertaintyHighPercent: 40,
-    globalGatesClosed: 0,
-    globalGatesAvailable: 5,
-  });
-  assert.ok(release.artifacts.report.pageCount >= 158);
+  assert.match(statusPage, /data-milestone-id="concrete-cook-levin-builder-physical-finish-request"/);
+  assert.equal(release.artifacts.report.pageCount, 159);
 });
