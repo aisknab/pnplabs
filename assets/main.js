@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-217";
-const STATUS_SHA256 = 'c413b9e0db4c6cb79c3f46c41df9d269b9fdf023964bfa822fd58fafb798fedf';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-01-217";
-const FORMAL_PUBLICATION_MAP_SHA256 = "4a7be269872cdf0c6c5d7eee488b84eacb3f6a6b50acffd8d9eba636a8c06c2b";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-218";
+const STATUS_SHA256 = '682bf708d5238a53b46dbba341354ee8d24775d35645ab28a7ed2ec9dedbbce1';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-01-218";
+const FORMAL_PUBLICATION_MAP_SHA256 = "fd6b343225eab6409275aa2f16306a8b9d3b4db16e362cf195d3bccd68bc2ab5";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-01-217";
-const INVENTORY_SHA256 = "32b0d10666309de77fc1fbb11c07cf189d7bd0e644fac35a8ff80b8b2435e55c";
-const SOURCE_CLOSURE_SHA256 = "894d9be205e87a984efbfd3bd5f3eb9438ef5c83d7bab0e36e7b91932315888d";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-01-218";
+const INVENTORY_SHA256 = "5834c927d2d68e34f99132d81a3448d30a9abde291ebce70ba88969176f78449";
+const SOURCE_CLOSURE_SHA256 = "1a011c4f4462d3996d8fed362503be2674b90855b010c9ec252595109e61a7a3";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 32849,
-  theorems: 16794,
-  assumptionFreeTheorems: 7966,
-  excludedPrivateDeclarations: 15710,
-  modules: 337,
+  declarations: 32888,
+  theorems: 16820,
+  assumptionFreeTheorems: 7967,
+  excludedPrivateDeclarations: 15713,
+  modules: 338,
   axioms: 0,
 });
 
@@ -4780,10 +4780,14 @@ const BUILDER_POST_DIVIDER_SELECTED_TOKEN_LAUNCH_DECLARATIONS = Object.freeze([
 ]);
 const BUILDER_COMPLETE_SCHEDULE_ITERATION_DECLARATIONS = Object.freeze([
 
+
   ["PNP.Concrete.CookLevin.BuilderCompleteScheduleIteration.cook_levin_builder_complete_schedule_iteration_checked_complete", ["Quot.sound", "propext"], "PNP.Concrete.CookLevinBuilderCompleteScheduleIteration", "6b6baad967bde7dafa7de704b0d87df6f5f75ce7a6d1d32b778f8c0c92f7262a"],
 ]);
 const BUILDER_PHYSICAL_OPTIONAL_TOKEN_DISPATCH_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderPhysicalOptionalTokenDispatch.cook_levin_builder_physical_optional_token_dispatch_checked_complete", ["Quot.sound","propext"], "PNP.Concrete.CookLevinBuilderPhysicalOptionalTokenDispatch", "fd4609ed040f392e53749bd5458295b60091ffe3ab897d60cad762b733714dbb"],
+]);
+const BUILDER_PHYSICAL_DISPATCH_SCHEDULE_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderPhysicalDispatchSchedule.cook_levin_builder_physical_dispatch_schedule_checked_complete", ["Quot.sound","propext"], "PNP.Concrete.CookLevinBuilderPhysicalDispatchSchedule", "a54a569b4a01cd36d1a9934d3ea1e5c832b702380b2b7507f66267dd7a6b5404"],
 ]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
@@ -6069,6 +6073,16 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchSourceSizePolynomialBoundFormalized: false,
   leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchRawCoordinateSelectorFormalized: false,
   leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchLiteralScheduleLoopFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleAllCoordinatesFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleCompleteEncodedFormulaTokensFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleExactPerCoordinateTraceFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleAggregateSourceSizePolynomialBoundFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -7082,6 +7096,16 @@ leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchOneStepShortTimeoutForm
 leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchSourceSizePolynomialBoundFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchSourceSizePolynomialBoundFormalized ?? false}
 leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchRawCoordinateSelectorFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchRawCoordinateSelectorFormalized ?? false}
 leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchLiteralScheduleLoopFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchLiteralScheduleLoopFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleAllCoordinatesFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAllCoordinatesFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleCompleteEncodedFormulaTokensFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleCompleteEncodedFormulaTokensFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleExactPerCoordinateTraceFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleExactPerCoordinateTraceFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleAggregateSourceSizePolynomialBoundFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAggregateSourceSizePolynomialBoundFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8386,6 +8410,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderPhysicalDispatchSchedule =
+    BUILDER_PHYSICAL_DISPATCH_SCHEDULE_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -9091,6 +9122,9 @@ function validateInventory(inventory) {
     && builderPhysicalOptionalTokenDispatch.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && builderPhysicalDispatchSchedule.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9643,6 +9677,9 @@ function validateStatus(status, inventory) {
 
   const builderPhysicalOptionalTokenDispatchMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "concrete-cook-levin-builder-physical-optional-token-dispatch"
+  );
+  const builderPhysicalDispatchScheduleMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-physical-dispatch-schedule"
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -12424,6 +12461,41 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchRawCoordinateSelectorFormalized === false
     && status.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchLiteralScheduleLoopFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && builderPhysicalDispatchScheduleMilestone?.classification === "formalized-foundation-only"
+    && builderPhysicalDispatchScheduleMilestone.status === "formalized-foundation-only"
+    && builderPhysicalDispatchScheduleMilestone.earned === true
+    && builderPhysicalDispatchScheduleMilestone.allPresent === true
+    && builderPhysicalDispatchScheduleMilestone.allAssumptionFree === false
+    && builderPhysicalDispatchScheduleMilestone.allKernelTypesMatch === true
+    && builderPhysicalDispatchScheduleMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
+    && builderPhysicalDispatchScheduleMilestone.sourceClosureFingerprintMatches === true
+    && builderPhysicalDispatchScheduleMilestone.scope === "For every concrete verifier problem and every canonical post-header coordinate, a total recursion applies M217 optional-token semantics, agrees at every bounded prefix with the canonical emitted token stream, and reaches the complete encoded formula. Every coordinate and arbitrary exterior retains M217 exact work, compiled and one-step-short physical traces together with M214 classifier evidence. The sum of all exact dispatch costs is bounded by the problem-derived body-slot count times M217 uniform bound, one polynomial in encoded source-input length. All 16 public declarations are axiom-audited: two have empty closure and fourteen use only propext and Quot.sound, with no project axiom or Classical.choice."
+    && builderPhysicalDispatchScheduleMilestone.nonClaim === "This milestone composes exact physical dispatch traces over every canonical request, but each request is still constructed from the Lean schedule. It does not derive a request from M214 raw classifier cells, connect successive final and initial tapes, implement one literal raw-machine loop, construct the complete raw formula builder or its FunctionProgram.RawRefinement, or package the concrete Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(builderPhysicalDispatchScheduleMilestone.requiredTheorems, BUILDER_PHYSICAL_DISPATCH_SCHEDULE_DECLARATIONS.map(([name]) => name))
+    && builderPhysicalDispatchScheduleMilestone.theoremRows?.length === BUILDER_PHYSICAL_DISPATCH_SCHEDULE_DECLARATIONS.length
+    && builderPhysicalDispatchScheduleMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_PHYSICAL_DISPATCH_SCHEDULE_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAuditedDeclarationCount === 16
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAllCoordinatesFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleCompleteEncodedFormulaTokensFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleExactPerCoordinateTraceFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleAggregateSourceSizePolynomialBoundFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived === false
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized === false
+    && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
     && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false

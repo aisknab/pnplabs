@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,157 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,158 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 32,849 public declarations;
-- 16,794 theorem-kind declarations;
-- 7,966 assumption-free theorem-kind declarations;
-- 337 source-closure modules;
-- 15,710 excluded private compiler auxiliaries;
+- 32,888 public declarations;
+- 16,820 theorem-kind declarations;
+- 7,967 assumption-free theorem-kind declarations;
+- 338 source-closure modules;
+- 15,713 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 193 earned formal artefact scopes are:
+The 194 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -241,6 +241,7 @@ The 193 earned formal artefact scopes are:
 | All-coordinate Cook-Levin selected-token launch | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem and every post-header schedule coordinate, the canonical schedule alone derives padding, the exact body token, or the unique Finish token without a supplied route or token. M214's physical classifier contract is retained, every populated entry runs the existing fixed 59-rule appender to the exact next emitted prefix, exact work and compiled traces time out one step short, and the combined staged work fits one verifier-derived source-size polynomial. All 30 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or Classical.choice. The endpoint uses only `Quot.sound` and `propext`; all 30 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | Canonical selection and fixed-appender launch through executable orchestration only: the selection handoff is not a literal raw tape rewrite, and there is no complete schedule iteration, complete raw formula builder, builder `FunctionProgram.RawRefinement`, packaged reduction, NP-hardness or NP-completeness transport, CNF-SAT in P, global gate, root theorem, or `P = NP`. |
 | Complete semantic Cook-Levin schedule iteration | One reviewed completion-theorem pin proves that, for every concrete verifier tableau problem, structural recursion consumes every verifier-derived post-header schedule opportunity without a supplied coordinate, token, route, trace, schedule, or precomputed formula. Every bounded run equals the canonical emitted prefix, the complete run equals `encodeCNFTokens` of the generated formula, every coordinate retains M215's exact classifier/appender evidence for arbitrary workspace, and the aggregate staged compiled work fits one source-size polynomial. All 12 public declarations are axiom-audited with only the approved Lean-standard closure and no project axiom or `Classical.choice`. The endpoint uses only `Quot.sound` and `propext`; all 12 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M216 composes M215's proof-carrying per-coordinate stages through executable Lean recursion. It is not one literal raw-machine loop and does not prove physical tape-to-tape handoffs between successive stages, construct the complete raw formula builder or its `FunctionProgram.RawRefinement`, or package the concrete Cook-Levin `PolynomialReduction`. It does not establish CNFSAT NP-hardness or NP-completeness transport, CNFSAT in P, a fixed checkpoint, a global gate, the eligible root theorem, or `P = NP`. |
 | Physical Cook-Levin optional-token dispatch | One reviewed completion-theorem pin proves that for every raw input, arbitrary exterior workspace, emitted prefix, and optional token request, one fixed collision-free 64-rule machine reads one of five physical request symbols, restores the canonical builder left boundary, and either accepts without changing padding output or enters the existing renamed 59-rule token appender. Exact work and six-for-one compiled traces, one-step-short nonhalting, malformed blank-request timeout, canonical scheduleEntry specialization at every post-header coordinate, and one verifier-derived source-size polynomial are proved. All 49 public declarations are axiom-audited: 23 have empty closure, 13 use only propext, and 13 use only propext and Quot.sound, with no project axiom or Classical.choice. The endpoint uses only `Quot.sound` and `propext`; all 49 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M217 physically dispatches a supplied request only. It does not derive the request from M214's raw classifier, prove the literal classifier-to-dispatcher tape handoff, iterate a physical schedule loop, complete the raw builder or its `FunctionProgram.RawRefinement`, package the concrete Cook-Levin `PolynomialReduction`, establish hardness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove `P = NP`. |
+| All-coordinate physical Cook-Levin dispatch schedule | One reviewed completion-theorem pin proves that for every concrete verifier problem and every canonical post-header coordinate, a total recursion applies M217 optional-token semantics, agrees at every bounded prefix with the canonical emitted token stream, and reaches the complete encoded formula. Every coordinate and arbitrary exterior retains M217 exact work, compiled and one-step-short physical traces together with M214 classifier evidence. The sum of all exact dispatch costs is bounded by the problem-derived body-slot count times M217 uniform bound, one polynomial in encoded source-input length. All 16 public declarations are axiom-audited: two have empty closure and fourteen use only propext and Quot.sound, with no project axiom or Classical.choice. The endpoint uses only `Quot.sound` and `propext`; all 16 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M218 composes exact physical dispatch traces over every canonical request, but the requests remain Lean schedule values rather than raw-classifier output. It does not prove successive physical tape handoffs, one literal raw loop, complete builder `RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, a fixed checkpoint or global gate, the eligible root theorem, or `P = NP`. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 
@@ -272,7 +273,7 @@ records, JSON values, checker results, or report wording cannot override it.
 | `public/pnp-theorem-inventory.json` | Byte-identical mirror of the compiled inventory |
 | `public/pnp-status.json` | Generated gate, milestone, blocker, and non-claim status |
 | `downloads/canonical_proof_report.tex` | Generated non-claiming report source |
-| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 156-page report build |
+| `downloads/canonical_proof_report.pdf` | Deterministic same-environment 157-page report build |
 | `downloads/formal-publication-release.json` | Exact merged-core commit and digest map |
 | `downloads/release-seal.json` / `SHA256SUMS` | Companion file-identity seal |
 
