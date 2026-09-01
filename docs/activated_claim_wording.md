@@ -515,6 +515,20 @@ leanConcreteCookLevinBuilderPhysicalDispatchScheduleAggregateSourceSizePolynomia
 leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived = false
 leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized = false
 leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized = false
+leanConcreteCookLevinBuilderPhysicalFinishRequestFormalized = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestAxiomAuditPassed = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestAuditedDeclarationCount = 49
+leanConcreteCookLevinBuilderPhysicalFinishRequestCanonicalFinishCoordinateDerived = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestProtectedBuilderSuffixFormalized = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralFinishRequestWritten = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestFixedComposedMachineRuleCount = 137
+leanConcreteCookLevinBuilderPhysicalFinishRequestExactWorkTraceFormalized = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestCompiledRawMachineFormalized = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestOneStepShortNonhaltingFormalized = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestExternalInputSizePolynomialFormalized = true
+leanConcreteCookLevinBuilderPhysicalFinishRequestBodyOrPaddingRequestDerived = false
+leanConcreteCookLevinBuilderPhysicalFinishRequestPrecedingClassifierSuffixHandoffFormalized = false
+leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralRawLoopFormalized = false
 leanZeroSlackPositiveSlackContradictionFormalized = false
 leanConcreteCNFSATInPFormalized = false
 leanConcreteCNFNPCompletenessFormalized = false
@@ -524,7 +538,7 @@ The short public statement is:
 
 > Formal reconstruction is in progress. The repository does not currently establish P = NP.
 
-The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 194 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 194 of 196 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **All-coordinate physical Cook-Levin dispatch schedule**, has this scope: For every concrete verifier problem and every canonical post-header coordinate, a total recursion applies M217 optional-token semantics, agrees at every bounded prefix with the canonical emitted token stream, and reaches the complete encoded formula. Every coordinate and arbitrary exterior retains M217 exact work, compiled and one-step-short physical traces together with M214 classifier evidence. The sum of all exact dispatch costs is bounded by the problem-derived body-slot count times M217 uniform bound, one polynomial in encoded source-input length. All 16 public declarations are axiom-audited: two have empty closure and fourteen use only propext and Quot.sound, with no project axiom or Classical.choice. This milestone composes exact physical dispatch traces over every canonical request, but each request is still constructed from the Lean schedule. It does not derive a request from M214 raw classifier cells, connect successive final and initial tapes, implement one literal raw-machine loop, construct the complete raw formula builder or its FunctionProgram.RawRefinement, or package the concrete Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 194 of 196. All five global gates remain open. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
+The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` library root and exports a canonical theorem inventory. 195 narrowly scoped milestones are earned from reviewed theorem types, approved axiom closures, and the complete Lean-source digest. This is formal artefact coverage of 195 of 197 current scoped rows, not proof completion. The risk-weighted proof-completion estimate remains 35%, with a current uncertainty range of 20% to 40%. It is not the probability that the route is correct and not a time estimate. The newest milestone, **Physical Cook-Levin Finish-request handoff**, has this scope: For every concrete verifier problem, the unique final post-header coordinate is derived internally and M214 proves its in-range equal-classifier result. The canonical builder workspace is protected beyond the comparator end marker; one fixed writer produces M217's tape-resident Finish request, and one collision-free 137-rule composition runs the comparator, writer and dispatcher. Exact work, six-for-one compiled and one-step-short traces hold for arbitrary classifier exterior, and one verifier-derived polynomial bounds compiled work. All 49 public declarations are axiom-audited: 23 have empty closure, six use only propext, and 20 use only propext and Quot.sound, with no project axiom or Classical.choice. This milestone physically derives only the unique canonical Finish request. It does not derive body-token or padding requests from raw coordinates, preserve the builder suffix through every preceding classifier stage, connect successive schedule configurations into one literal raw-machine loop, construct the complete raw formula builder or its FunctionProgram.RawRefinement, or package the concrete Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 195 of 197. All five global gates remain open. It earns no fixed weighted checkpoint. No project-specific axioms remain, but all five global proof gates remain open. `PNP.PEqualsNP` aliases the concrete finite-pipeline proposition, but that definition is not a proof; `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
 ## Checker wording
 
@@ -543,7 +557,7 @@ The following are preserved only for auditability:
 - digest comparison matrices and summaries;
 - the 57-page manuscript at source tag `final-pnp-proof-report-hardened-7072f8d`.
 
-Every such surface must be labelled historical or superseded. The current canonical report is instead the 157-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
+Every such surface must be labelled historical or superseded. The current canonical report is instead the 158-page inventory-derived non-claiming report. The activated-run intake is frozen. No green matrix badge is a current status signal.
 
 ## External review
 

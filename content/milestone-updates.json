@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-01-concrete-cook-levin-builder-physical-finish-request",
+      "milestoneId": "concrete-cook-levin-builder-physical-finish-request",
+      "publishedAt": "2026-09-01T09:51:22.108Z",
+      "title": "Physical Cook-Levin Finish-request handoff",
+      "plainLanguage": [
+        "Lean now derives the unique canonical Finish coordinate internally, retains M214 equal-classifier evidence, protects the builder suffix, writes M217's physical Finish request, and dispatches it through one fixed collision-free 137-rule composition.",
+        "Exact work, compiled and one-step-short traces hold for arbitrary classifier exterior, and one verifier-derived polynomial bounds the compiled work. Body and padding requests, the preceding classifier handoff, one repeated raw loop, complete builder refinement and the packaged reduction remain open. M219 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 195 of 197, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 195,
+        "formalArtefactCoverageTotalRows": 197,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "4ccb40cb06ceeb2c375f072f16826a3fd4ae945f",
+        "tree": "7f0074c44f5b21b37d313af797bf48f9c916827c",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-219",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-01-concrete-cook-levin-builder-physical-dispatch-schedule",
       "milestoneId": "concrete-cook-levin-builder-physical-dispatch-schedule",
       "publishedAt": "2026-09-01T04:28:19.071Z",
