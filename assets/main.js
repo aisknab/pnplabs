@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-218";
-const STATUS_SHA256 = '682bf708d5238a53b46dbba341354ee8d24775d35645ab28a7ed2ec9dedbbce1';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-01-218";
-const FORMAL_PUBLICATION_MAP_SHA256 = "fd6b343225eab6409275aa2f16306a8b9d3b4db16e362cf195d3bccd68bc2ab5";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-01-219";
+const STATUS_SHA256 = '1e20afd2e312c0938aa6f32c6679d653a99b136e562d121c1a304f1dca02fc02';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-01-219";
+const FORMAL_PUBLICATION_MAP_SHA256 = "1104809d34c5adbae0269099b7dcf5b23fda6e68308bb66ae06c152df4be7906";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-01-218";
-const INVENTORY_SHA256 = "5834c927d2d68e34f99132d81a3448d30a9abde291ebce70ba88969176f78449";
-const SOURCE_CLOSURE_SHA256 = "1a011c4f4462d3996d8fed362503be2674b90855b010c9ec252595109e61a7a3";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-01-219";
+const INVENTORY_SHA256 = "48442479a5b8b0b6a05a44d9c92f8306cc8baa28349432353bbd97c58118762c";
+const SOURCE_CLOSURE_SHA256 = "aa268625314c18295aa1e9272ee7a811f1e343ce99977e697ca872577166cb8a";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 32888,
-  theorems: 16820,
-  assumptionFreeTheorems: 7967,
-  excludedPrivateDeclarations: 15713,
-  modules: 338,
+  declarations: 32961,
+  theorems: 16865,
+  assumptionFreeTheorems: 7980,
+  excludedPrivateDeclarations: 15738,
+  modules: 339,
   axioms: 0,
 });
 
@@ -4789,6 +4789,9 @@ const BUILDER_PHYSICAL_OPTIONAL_TOKEN_DISPATCH_DECLARATIONS = Object.freeze([
 const BUILDER_PHYSICAL_DISPATCH_SCHEDULE_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderPhysicalDispatchSchedule.cook_levin_builder_physical_dispatch_schedule_checked_complete", ["Quot.sound","propext"], "PNP.Concrete.CookLevinBuilderPhysicalDispatchSchedule", "a54a569b4a01cd36d1a9934d3ea1e5c832b702380b2b7507f66267dd7a6b5404"],
 ]);
+const BUILDER_PHYSICAL_FINISH_REQUEST_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderPhysicalFinishRequest.cook_levin_builder_physical_finish_request_checked_complete", ["Quot.sound","propext"], "PNP.Concrete.CookLevinBuilderPhysicalFinishRequest", "b51a29e1004e8d0713fb9a663de27dccb417fbe973ef449d6f3532e5319870b0"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6083,6 +6086,20 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived: false,
   leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized: false,
   leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestCanonicalFinishCoordinateDerived: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestProtectedBuilderSuffixFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralFinishRequestWritten: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestFixedComposedMachineRuleCount: 0,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestExactWorkTraceFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestCompiledRawMachineFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestOneStepShortNonhaltingFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestExternalInputSizePolynomialFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestBodyOrPaddingRequestDerived: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestPrecedingClassifierSuffixHandoffFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralRawLoopFormalized: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -7106,6 +7123,20 @@ leanConcreteCookLevinBuilderPhysicalDispatchScheduleAggregateSourceSizePolynomia
 leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived ?? false}
 leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized ?? false}
 leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderPhysicalFinishRequestCanonicalFinishCoordinateDerived = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestCanonicalFinishCoordinateDerived ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestProtectedBuilderSuffixFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestProtectedBuilderSuffixFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralFinishRequestWritten = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralFinishRequestWritten ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestFixedComposedMachineRuleCount = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestFixedComposedMachineRuleCount ?? 0}
+leanConcreteCookLevinBuilderPhysicalFinishRequestExactWorkTraceFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestExactWorkTraceFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestCompiledRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestCompiledRawMachineFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestOneStepShortNonhaltingFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestOneStepShortNonhaltingFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestExternalInputSizePolynomialFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestExternalInputSizePolynomialFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestBodyOrPaddingRequestDerived = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestBodyOrPaddingRequestDerived ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestPrecedingClassifierSuffixHandoffFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestPrecedingClassifierSuffixHandoffFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralRawLoopFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralRawLoopFormalized ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8417,6 +8448,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderPhysicalFinishRequest =
+    BUILDER_PHYSICAL_FINISH_REQUEST_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -9125,6 +9163,9 @@ function validateInventory(inventory) {
     && builderPhysicalDispatchSchedule.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && builderPhysicalFinishRequest.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9680,6 +9721,9 @@ function validateStatus(status, inventory) {
   );
   const builderPhysicalDispatchScheduleMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "concrete-cook-levin-builder-physical-dispatch-schedule"
+  );
+  const builderPhysicalFinishRequestMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-physical-finish-request"
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -12496,6 +12540,45 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized === false
     && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && builderPhysicalFinishRequestMilestone?.classification === "formalized-foundation-only"
+    && builderPhysicalFinishRequestMilestone.status === "formalized-foundation-only"
+    && builderPhysicalFinishRequestMilestone.earned === true
+    && builderPhysicalFinishRequestMilestone.allPresent === true
+    && builderPhysicalFinishRequestMilestone.allAssumptionFree === false
+    && builderPhysicalFinishRequestMilestone.allKernelTypesMatch === true
+    && builderPhysicalFinishRequestMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
+    && builderPhysicalFinishRequestMilestone.sourceClosureFingerprintMatches === true
+    && builderPhysicalFinishRequestMilestone.scope === "For every concrete verifier problem, the unique final post-header coordinate is derived internally and M214 proves its in-range equal-classifier result. The canonical builder workspace is protected beyond the comparator end marker; one fixed writer produces M217's tape-resident Finish request, and one collision-free 137-rule composition runs the comparator, writer and dispatcher. Exact work, six-for-one compiled and one-step-short traces hold for arbitrary classifier exterior, and one verifier-derived polynomial bounds compiled work. All 49 public declarations are axiom-audited: 23 have empty closure, six use only propext, and 20 use only propext and Quot.sound, with no project axiom or Classical.choice."
+    && builderPhysicalFinishRequestMilestone.nonClaim === "This milestone physically derives only the unique canonical Finish request. It does not derive body-token or padding requests from raw coordinates, preserve the builder suffix through every preceding classifier stage, connect successive schedule configurations into one literal raw-machine loop, construct the complete raw formula builder or its FunctionProgram.RawRefinement, or package the concrete Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(builderPhysicalFinishRequestMilestone.requiredTheorems, BUILDER_PHYSICAL_FINISH_REQUEST_DECLARATIONS.map(([name]) => name))
+    && builderPhysicalFinishRequestMilestone.theoremRows?.length === BUILDER_PHYSICAL_FINISH_REQUEST_DECLARATIONS.length
+    && builderPhysicalFinishRequestMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_PHYSICAL_FINISH_REQUEST_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestAuditedDeclarationCount === 49
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestCanonicalFinishCoordinateDerived === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestProtectedBuilderSuffixFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralFinishRequestWritten === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestFixedComposedMachineRuleCount === 137
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestExactWorkTraceFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestCompiledRawMachineFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestOneStepShortNonhaltingFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestExternalInputSizePolynomialFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestBodyOrPaddingRequestDerived === false
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestPrecedingClassifierSuffixHandoffFormalized === false
+    && status.leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralRawLoopFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
     && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false

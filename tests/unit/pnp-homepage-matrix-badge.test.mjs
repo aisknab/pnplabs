@@ -81,6 +81,8 @@ function latestMilestoneStatusFields(status, release, milestone) {
         'leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatch',
       'concrete-cook-levin-builder-physical-dispatch-schedule':
         'leanConcreteCookLevinBuilderPhysicalDispatchSchedule',
+      'concrete-cook-levin-builder-physical-finish-request':
+        'leanConcreteCookLevinBuilderPhysicalFinishRequest',
     };
     const stem = stems[milestone.id];
     assert.ok(stem, `missing status-stem mapping for scopeless milestone ${milestone.id}`);

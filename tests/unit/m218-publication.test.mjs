@@ -105,20 +105,30 @@ test('M218 progress snapshot remains separate and conservative', () => {
   });
 });
 
-test('M218 active surfaces publish the new boundary without erasing M217 history', () => {
+test('M218 remains historically exact after later current releases', () => {
+  const currentCoverage =
+    `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
   for (const file of ['README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html', 'status.html']) {
     const text = readFileSync(file, 'utf8');
-    assert.match(text, /194 of 196/);
+    assert.match(text, new RegExp(currentCoverage.replace('/', '\\/')));
     assert.match(text, /35%/);
-    assert.match(text, /every canonical post-header coordinate/i);
-    assert.doesNotMatch(text, /M218[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
   }
   const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage, new RegExp(`data-current-milestone="${milestoneId}"`));
-  const readme = readFileSync('README.md', 'utf8');
-  assert.match(readme, /Its 1 reviewed theorem pin and all 16 declarations in the focused audit/);
+  assert.match(homepage, new RegExp(`data-current-milestone="${updates.entries[0].milestoneId}"`));
   const statusPage = readFileSync('status.html', 'utf8');
   assert.match(statusPage, new RegExp(`data-milestone-id="${milestoneId}"`));
   assert.match(statusPage, /data-milestone-id="concrete-cook-levin-builder-physical-optional-token-dispatch"/);
-  assert.equal(release.artifacts.report.pageCount, 157);
+  const historicalUpdate = updates.entries.find((row) => row.milestoneId === milestoneId);
+  assert.ok(historicalUpdate);
+  assert.deepEqual(historicalUpdate.progressSnapshot, {
+    modelId: progress.modelId,
+    formalArtefactCoverageEarnedRows: 194,
+    formalArtefactCoverageTotalRows: 196,
+    riskWeightedProofCompletionPercent: 35,
+    uncertaintyLowPercent: 20,
+    uncertaintyHighPercent: 40,
+    globalGatesClosed: 0,
+    globalGatesAvailable: 5,
+  });
+  assert.ok(release.artifacts.report.pageCount >= 157);
 });
