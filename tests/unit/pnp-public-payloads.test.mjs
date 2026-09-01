@@ -103,6 +103,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalFinishRequest',
   cookLevinBuilderPhysicalClassifierPipeline:
     'ConcreteCookLevinBuilderPhysicalClassifierPipeline',
+  cookLevinBuilderPhysicalClassifierFinishRequest:
+    'ConcreteCookLevinBuilderPhysicalClassifierFinishRequest',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
