@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-02-221";
-const STATUS_SHA256 = '547051bde02ac4b5cddc5a0493c1559bedace7a1631567c345992599f3e41532';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-02-221";
-const FORMAL_PUBLICATION_MAP_SHA256 = "ce7aca00ab7576bece112fff550c923fbd8ed9a940ec9c51b652c8356a413e89";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-02-222";
+const STATUS_SHA256 = 'd59e467580601cadad5fb052506749e83905f0b0f47282f70d515a2320b9bc1e';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-02-222";
+const FORMAL_PUBLICATION_MAP_SHA256 = "a7fcc9e004010ff5475710c00a23ace2de64163e573544838de39e3c429ce60c";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-02-221";
-const INVENTORY_SHA256 = "5f73c0300fe08e74588706ee2d187182e451403e72322af26327bc529fb016fa";
-const SOURCE_CLOSURE_SHA256 = "4c76442190f7b4027cfe2e4909f3f2bb3baa5026a2b2ccf9ba41489bfe819c32";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-02-222";
+const INVENTORY_SHA256 = "7da12bfffc0c62906fb4235068d327533f9052e410100bef4d5a0cb85de955ee";
+const SOURCE_CLOSURE_SHA256 = "a8c458781438a29e3ead3d90b8dba9f324eb959b9a617c7d7ebdde20d01920c1";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 33114,
-  theorems: 16960,
-  assumptionFreeTheorems: 8022,
-  excludedPrivateDeclarations: 15758,
-  modules: 341,
+  declarations: 33200,
+  theorems: 17016,
+  assumptionFreeTheorems: 8035,
+  excludedPrivateDeclarations: 15780,
+  modules: 342,
   axioms: 0,
 });
 
@@ -4798,6 +4798,9 @@ const BUILDER_PHYSICAL_CLASSIFIER_PIPELINE_DECLARATIONS = Object.freeze([
 const BUILDER_PHYSICAL_CLASSIFIER_FINISH_REQUEST_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishRequest.cook_levin_builder_physical_classifier_finish_request_checked_complete", ["Quot.sound","propext"], "PNP.Concrete.CookLevinBuilderPhysicalClassifierFinishRequest", "ca8b4f2f5712ddd7589a609fdaff3df08550d4b33e5d1e9cd374fb8f82c58bd7"],
 ]);
+const BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_DECLARATIONS = Object.freeze([
+  ["PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishWorkspaceOrientation.cook_levin_builder_physical_classifier_finish_workspace_orientation_checked_complete", ["Quot.sound","propext"], "PNP.Concrete.CookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation", "22c56aba663179d67726c01ad73acc3b73922afd6607fe16b3b0e94a887a648f"],
+]);
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -6134,6 +6137,23 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestBodyOrPaddingRequestDerived: false,
   leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestDispatcherConnected: false,
   leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestLiteralRawLoopFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAxiomAuditPassed: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAuditedDeclarationCount: 0,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFixedComposedMachineRuleCount: 0,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFinishCoordinateDerived: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixDerived: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixBlankFreeFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBlankSentinelFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationWorkspaceOrientationFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherEntryFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExactWorkTraceFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationCompiledRawMachineFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationOneStepShortNonhaltingFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExternalInputSizePolynomialFormalized: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBodyOrPaddingRequestDerived: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherExecuted: false,
+  leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationLiteralRawLoopFormalized: false,
   leanResidualTerminalRankWFFormalized: false,
   leanResidualTerminalRankWFAxiomAuditPassed: false,
   leanResidualTerminalRankWFScope: null,
@@ -7199,6 +7219,23 @@ leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestExternalInputSizePoly
 leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestBodyOrPaddingRequestDerived = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestBodyOrPaddingRequestDerived ?? false}
 leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestDispatcherConnected = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestDispatcherConnected ?? false}
 leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestLiteralRawLoopFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestLiteralRawLoopFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAxiomAuditPassed = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAxiomAuditPassed ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAuditedDeclarationCount = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAuditedDeclarationCount ?? 0}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFixedComposedMachineRuleCount = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFixedComposedMachineRuleCount ?? 0}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFinishCoordinateDerived = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFinishCoordinateDerived ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixDerived = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixDerived ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixBlankFreeFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixBlankFreeFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBlankSentinelFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBlankSentinelFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationWorkspaceOrientationFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationWorkspaceOrientationFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherEntryFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherEntryFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExactWorkTraceFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExactWorkTraceFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationCompiledRawMachineFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationCompiledRawMachineFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationOneStepShortNonhaltingFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationOneStepShortNonhaltingFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExternalInputSizePolynomialFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExternalInputSizePolynomialFormalized ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBodyOrPaddingRequestDerived = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBodyOrPaddingRequestDerived ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherExecuted = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherExecuted ?? false}
+leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationLiteralRawLoopFormalized = ${payload.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationLiteralRawLoopFormalized ?? false}
 leanResidualTerminalRankWFFormalized = ${payload.leanResidualTerminalRankWFFormalized ?? false}
 leanResidualTerminalRankWFAxiomAuditPassed = ${payload.leanResidualTerminalRankWFAxiomAuditPassed ?? false}
 leanResidualTerminalRankWFScope = ${payload.leanResidualTerminalRankWFScope === null ? 'null' : JSON.stringify(payload.leanResidualTerminalRankWFScope)}
@@ -8531,6 +8568,13 @@ function validateInventory(inventory) {
       module,
       hash,
     }));
+  const builderPhysicalClassifierFinishWorkspaceOrientation =
+    BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_DECLARATIONS.map(([name, axioms, module, hash]) => ({
+      row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
+      axioms,
+      module,
+      hash,
+    }));
   const lockedNANDThresholdPublication =
     LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS.map(([name, axioms, module]) => ({
       row: inventory.milestoneCandidates?.find((candidate) => candidate?.name === name),
@@ -9248,6 +9292,9 @@ function validateInventory(inventory) {
     && builderPhysicalClassifierFinishRequest.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
+    && builderPhysicalClassifierFinishWorkspaceOrientation.every(({ row, axioms, module }) => row?.kind === 'theorem'
+      && row.module === module
+      && sameJson(row.axioms, axioms))
     && lockedNANDThresholdPublication.every(({ row, axioms, module }) => row?.kind === 'theorem'
       && row.module === module
       && sameJson(row.axioms, axioms))
@@ -9812,6 +9859,9 @@ function validateStatus(status, inventory) {
   );
   const builderPhysicalClassifierFinishRequestMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === "concrete-cook-levin-builder-physical-classifier-finish-request"
+  );
+  const builderPhysicalClassifierFinishWorkspaceOrientationMilestone = status?.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation"
   );
   const lockedNANDThresholdPublicationMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'global-locked-nand-threshold'
@@ -12745,6 +12795,48 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestBodyOrPaddingRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestDispatcherConnected === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestLiteralRawLoopFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone?.classification === "formalized-foundation-only"
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.status === "formalized-foundation-only"
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.earned === true
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.allPresent === true
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.allAssumptionFree === false
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.allKernelTypesMatch === true
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.axiomClosureUsesOnlyLeanStandardAllowlist === true
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.sourceClosureFingerprintMatches === true
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.scope === "For every concrete verifier problem, M222 prepends one blank sentinel to the canonical builder workspace, derives the complete M220/M221 classifier prefix, proves that prefix contains no blank, and chains M221 to one fixed ten-rule left scanner. The resulting collision-free 740-rule machine crosses exactly the classifier prefix and halts at the sentinel with a tape equal to the spatial mirror of M217's canonical Finish request entry, retaining classifier evidence as exterior data. Exact work, six-for-one compiled execution, one-step-short nonhalting, a derived prefix-size bound and one source-input-size polynomial bound are proved. All 57 public declarations are axiom-audited: 27 have empty closure and 30 use only propext and Quot.sound, with no project axiom or Classical.choice."
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.nonClaim === "This milestone closes only the physical workspace-orientation edge for the unique full-classifier Finish path. Equality with a spatial mirror of M217's canonical request entry does not prove that M217's existing machine executes on the mirrored representation. It does not derive body-token or padding requests, run a mirrored dispatcher, connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP."
+    && sameJson(builderPhysicalClassifierFinishWorkspaceOrientationMilestone.requiredTheorems, BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_DECLARATIONS.map(([name]) => name))
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.theoremRows?.length === BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_DECLARATIONS.length
+    && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.theoremRows?.every((row) => {
+      const expected = BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_DECLARATIONS.find(([name]) => name === row.name);
+      return expected
+        && row.present === true
+        && row.kind === 'theorem'
+        && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3]
+        && row.expectedKernelTypeSha256 === expected[3]
+        && row.kernelTypeFingerprintMatches === true;
+    })
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAxiomAuditPassed === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAuditedDeclarationCount === 57
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFixedComposedMachineRuleCount === 740
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationFinishCoordinateDerived === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixDerived === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationClassifierPrefixBlankFreeFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBlankSentinelFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationWorkspaceOrientationFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherEntryFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExactWorkTraceFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationCompiledRawMachineFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationOneStepShortNonhaltingFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationExternalInputSizePolynomialFormalized === true
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBodyOrPaddingRequestDerived === false
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherExecuted === false
+    && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationLiteralRawLoopFormalized === false
     && status.leanConcreteCookLevinFormulaBuilderFormalized === false
     && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
     && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false

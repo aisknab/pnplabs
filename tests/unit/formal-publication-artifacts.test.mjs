@@ -1152,6 +1152,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX = Object.freeze({
     "ConcreteCookLevinBuilderPhysicalClassifierPipeline",
   cookLevinBuilderPhysicalClassifierFinishRequest:
     "ConcreteCookLevinBuilderPhysicalClassifierFinishRequest",
+  cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation:
+    "ConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation",
 });
 
 function statusStemForReleaseBoundary(status, release, prefix) {
