@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-02-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch",
+      "publishedAt": "2026-09-02T09:25:46Z",
+      "title": "Full-classifier reflected Finish dispatch",
+      "plainLanguage": [
+        "For every concrete verifier problem, M223 reflects the existing fixed 64-rule Finish dispatcher by exchanging left and right moves while preserving its queries and states. Chained after M222, the collision-free 813-rule machine runs the full classifier's unique Finish path through workspace orientation and the reflected dispatcher to an appender endpoint containing the complete canonical CNF token encoding. Exact work, compiled execution, one-step-short nonhalting and one source-input-size polynomial bound are kernel checked.",
+        "This closes only the reflected dispatcher execution for the unique Finish path. Body-token and padding requests, every other classifier route, successive schedule configurations, one repeated raw-machine builder loop, complete builder refinement and the packaged polynomial reduction remain open. M223 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 199 of 201, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 199,
+        "formalArtefactCoverageTotalRows": 201,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c789e32045c712add73d4e89ac6a13e03d4b5dd2",
+        "tree": "603a9c158a6768b8d1bf8ac711a390edda76eadd",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-02-223",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-02-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation",
       "publishedAt": "2026-09-02T04:02:11Z",

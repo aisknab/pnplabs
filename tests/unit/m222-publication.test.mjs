@@ -152,28 +152,17 @@ test('M222 progress snapshot remains separate and conservative', () => {
   });
 });
 
-test('M222 active surfaces publish workspace orientation without overclaiming', () => {
-  const currentCoverage =
-    `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
-  for (const file of [
-    'README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html',
-    'status.html',
-  ]) {
-    const text = readFileSync(file, 'utf8');
-    assert.match(text, new RegExp(currentCoverage.replace('/', '\\/')));
-    assert.match(text, /35%/);
-    assert.match(text, /workspace[- ]orientation/i);
-    assert.match(text, /M217[^\n]*(?:not|does not)[^\n]*execut/i);
-    assert.doesNotMatch(text,
-      /M222[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
-  }
-  const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage,
-    new RegExp(`data-current-milestone="${milestoneId}"`));
+test('M222 remains a versioned historical publication card after M223', () => {
   const statusPage = readFileSync('status.html', 'utf8');
+  const card = statusPage.match(
+    new RegExp(`<article class="card" data-milestone-id="${milestoneId}"[\\s\\S]*?<\\/article>`),
+  )?.[0] ?? '';
+  assert.match(card, /Finish-workspace orientation/i);
+  assert.match(card, /formal artefact coverage becomes 198 of 200/i);
+  assert.match(card, /risk-weighted estimate remains 35%/i);
+  assert.doesNotMatch(card,
+    /M222[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
   assert.match(statusPage,
-    new RegExp(`data-milestone-id="${milestoneId}"`));
-  assert.match(statusPage,
-    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-finish-request"/);
-  assert.equal(release.artifacts.report.pageCount, 161);
+    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch"/);
+  assert.ok(release.artifacts.report.pageCount >= 161);
 });
