@@ -9,8 +9,8 @@ import { validateProofProgressModel } from "./proof-progress-model.mjs";
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "e792920a9ab18bdc22fae8cd090d792255889437";
-const REVIEWED_CORE_TREE = "d0b2fbc81ac2fe417f6c2efbbb4d3fc46008d375";
+const REVIEWED_CORE_COMMIT = "c789e32045c712add73d4e89ac6a13e03d4b5dd2";
+const REVIEWED_CORE_TREE = "603a9c158a6768b8d1bf8ac711a390edda76eadd";
 const REVIEWED_PROOF_COMMIT = "4d58ea2089e807b0927dfa8d7fef44d225aceeb4";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
@@ -4363,6 +4363,10 @@ const BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_RELEASE_IDENTITIE
   cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationCheckedCompleteTheorem: "PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishWorkspaceOrientation.cook_levin_builder_physical_classifier_finish_workspace_orientation_checked_complete"
 };
 
+const BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_RELEASE_IDENTITIES = {
+  cookLevinBuilderPhysicalClassifierFinishMirroredDispatchCheckedCompleteTheorem: "PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishMirroredDispatch.cook_levin_builder_physical_classifier_finish_mirrored_dispatch_checked_complete"
+};
+
 const LOCKED_NAND_SOURCE_PARSER_SCOPE =
   "One literal nine-symbol finite work machine validates every strict version-zero source bitstring: it accepts exactly ValidEncodedCircuit, preserves valid bytes, clears invalid bytes, cannot time out within the proved compiled cubic bound, and supplies polynomial-time machine/function witnesses plus the validator's exact leaf RawRefinement.";
 const LOCKED_NAND_SOURCE_PARSER_NON_CLAIM =
@@ -6342,6 +6346,12 @@ const BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_THEOREMS = {
 };
 const BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_MILESTONE_SCOPE = "For every concrete verifier problem, M222 prepends one blank sentinel to the canonical builder workspace, derives the complete M220/M221 classifier prefix, proves that prefix contains no blank, and chains M221 to one fixed ten-rule left scanner. The resulting collision-free 740-rule machine crosses exactly the classifier prefix and halts at the sentinel with a tape equal to the spatial mirror of M217's canonical Finish request entry, retaining classifier evidence as exterior data. Exact work, six-for-one compiled execution, one-step-short nonhalting, a derived prefix-size bound and one source-input-size polynomial bound are proved. All 57 public declarations are axiom-audited: 27 have empty closure and 30 use only propext and Quot.sound, with no project axiom or Classical.choice.";
 const BUILDER_PHYSICAL_CLASSIFIER_FINISH_WORKSPACE_ORIENTATION_NON_CLAIM = "This milestone closes only the physical workspace-orientation edge for the unique full-classifier Finish path. Equality with a spatial mirror of M217's canonical request entry does not prove that M217's existing machine executes on the mirrored representation. It does not derive body-token or padding requests, run a mirrored dispatcher, connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP.";
+
+const BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishMirroredDispatch.cook_levin_builder_physical_classifier_finish_mirrored_dispatch_checked_complete": { hash: "186d7198c12399f46c5eb478ce4f355b4c0d7a5616bccdf135255a635a4cb2f3", axioms: ["Quot.sound","propext"], module: "PNP.Concrete.CookLevinBuilderPhysicalClassifierFinishMirroredDispatch" }
+};
+const BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_MILESTONE_SCOPE = "For every concrete verifier problem, M223 reflects M217's fixed 64-rule dispatcher by exchanging left and right moves while preserving rule queries and states, and proves that reflection transports exact finite-machine execution. Chained after M222, the resulting collision-free 813-rule machine executes the complete classifier's unique Finish path from raw classifier entry through workspace orientation and the reflected dispatcher to an appender endpoint containing the complete canonical CNF token encoding. Exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound are proved. All 51 public declarations are axiom-audited: 23 have empty closure, seven use only propext, and 21 use only propext and Quot.sound, with no project axiom or Classical.choice.";
+const BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_NON_CLAIM = "This milestone closes only reflected M217 execution for the unique full-classifier Finish path. It does not derive body-token or padding request symbols, connect every classifier outcome to the dispatcher, connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP.";
 
 const LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS = {
   "PNP.Main.locked_nand_threshold": {
@@ -10259,6 +10269,41 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
   )) {
     failures.push("current manifest Cook-Levin Finish-workspace orientation theorem identity mismatch");
   }
+  if (!(earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchAxiomAuditPassed === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchAuditedDeclarationCount === 51
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchFixedMirroredDispatcherRuleCount === 64
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchFixedComposedMachineRuleCount === 813
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchGenericMachineReflectionFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchFullClassifierFinishMirroredDispatcherExecuted === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchCompleteCanonicalCNFOutputFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchExactWorkTraceFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchCompiledRawMachineFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchOneStepShortNonhaltingFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchExternalInputSizePolynomialFormalized === true
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchBodyOrPaddingRequestDerived === false
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchAllClassifierRoutesConnected === false
+      && earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchLiteralRawLoopFormalized === false)) {
+    failures.push("current manifest Cook-Levin Finish-mirrored dispatch boundary mismatch");
+  }
+  if (JSON.stringify(earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchAxiomClosure) !== JSON.stringify(["Quot.sound", "propext"])
+      || !Array.isArray(earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchProjectAxiomClosure)
+      || earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchProjectAxiomClosure.length !== 0) {
+    failures.push("current manifest Cook-Levin Finish-mirrored dispatch axiom closure mismatch");
+  }
+  const builderPhysicalClassifierFinishMirroredDispatchHashes = earned.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchTheoremKernelTypeSha256;
+  if (!builderPhysicalClassifierFinishMirroredDispatchHashes
+      || Object.keys(builderPhysicalClassifierFinishMirroredDispatchHashes).length !== 1
+      || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS).every(
+        ([name, row]) => builderPhysicalClassifierFinishMirroredDispatchHashes[name] === row.hash
+      )) {
+    failures.push("current manifest Cook-Levin Finish-mirrored dispatch fingerprint mismatch");
+  }
+  if (!Object.entries(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_RELEASE_IDENTITIES).every(
+    ([field, theorem]) => earned[field] === theorem
+  )) {
+    failures.push("current manifest Cook-Levin Finish-mirrored dispatch theorem identity mismatch");
+  }
   if (!(earned.lockedNANDThresholdPublicationFormalized === true
       && earned.lockedNANDThresholdPublicationAxiomAuditPassed === true
       && earned.lockedNANDThresholdPublicationAuditedDeclarationCount === 1
@@ -10275,7 +10320,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller+plus-concrete-cook-levin-builder-arbitrary-slot-header-router+plus-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder+plus-concrete-cook-levin-builder-post-header-raw-divider+plus-concrete-cook-levin-builder-post-header-raw-launch+plus-concrete-cook-levin-builder-post-header-raw-tape-bridge+plus-concrete-cook-levin-builder-post-divider-raw-route-classifier+plus-concrete-cook-levin-builder-post-divider-selected-token-launch+plus-concrete-cook-levin-builder-complete-schedule-iteration+plus-concrete-cook-levin-builder-physical-optional-token-dispatch+plus-concrete-cook-levin-builder-physical-dispatch-schedule+plus-concrete-cook-levin-builder-physical-finish-request+plus-concrete-cook-levin-builder-physical-classifier-pipeline+plus-concrete-cook-levin-builder-physical-classifier-finish-request+plus-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation")) failures.push("current manifest earned scope omits the M222 Cook-Levin Finish-workspace orientation milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller+plus-concrete-cook-levin-builder-arbitrary-slot-header-router+plus-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder+plus-concrete-cook-levin-builder-post-header-raw-divider+plus-concrete-cook-levin-builder-post-header-raw-launch+plus-concrete-cook-levin-builder-post-header-raw-tape-bridge+plus-concrete-cook-levin-builder-post-divider-raw-route-classifier+plus-concrete-cook-levin-builder-post-divider-selected-token-launch+plus-concrete-cook-levin-builder-complete-schedule-iteration+plus-concrete-cook-levin-builder-physical-optional-token-dispatch+plus-concrete-cook-levin-builder-physical-dispatch-schedule+plus-concrete-cook-levin-builder-physical-finish-request+plus-concrete-cook-levin-builder-physical-classifier-pipeline+plus-concrete-cook-levin-builder-physical-classifier-finish-request+plus-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation+plus-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch")) failures.push("current manifest earned scope omits the M223 Cook-Levin Finish-mirrored dispatch milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false || earned.cnfSATNPCompletenessFormalized !== false || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== false || earned.cookLevinCompleteRawFormulaBuilderFormalized !== false || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== false || earned.cookLevinPolynomialReductionFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -15419,6 +15464,51 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
       || status.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
     failures.push("core status Cook-Levin Finish-workspace orientation boundary mismatch");
   }
+  const builderPhysicalClassifierFinishMirroredDispatchMilestone = status.formalPublicationMilestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch"
+  );
+  if (!builderPhysicalClassifierFinishMirroredDispatchMilestone
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.earned !== true
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.allPresent !== true
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.allAssumptionFree !== false
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.allKernelTypesMatch !== true
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.sourceClosureFingerprintMatches !== true
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.classification !== "formalized-foundation-only"
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.status !== "formalized-foundation-only"
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.scope !== BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_MILESTONE_SCOPE
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.nonClaim !== BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_NON_CLAIM
+      || JSON.stringify(builderPhysicalClassifierFinishMirroredDispatchMilestone.requiredTheorems)
+        !== JSON.stringify(Object.keys(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS))
+      || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS).every(([name, evidence]) => {
+        const row = builderPhysicalClassifierFinishMirroredDispatchMilestone.theoremRows?.find((candidate) => candidate.name === name);
+        return row?.present === true
+          && row.kind === "theorem"
+          && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+          && row.actualKernelTypeSha256 === evidence.hash
+          && row.expectedKernelTypeSha256 === evidence.hash
+          && row.kernelTypeFingerprintMatches === true;
+      })
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchAxiomAuditPassed !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchAuditedDeclarationCount !== 51
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchFixedMirroredDispatcherRuleCount !== 64
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchFixedComposedMachineRuleCount !== 813
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchGenericMachineReflectionFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchFullClassifierFinishMirroredDispatcherExecuted !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchCompleteCanonicalCNFOutputFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchExactWorkTraceFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchCompiledRawMachineFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchOneStepShortNonhaltingFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchExternalInputSizePolynomialFormalized !== true
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchBodyOrPaddingRequestDerived !== false
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchAllClassifierRoutesConnected !== false
+      || status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchLiteralRawLoopFormalized !== false
+      || status.leanConcreteCookLevinFormulaBuilderFormalized !== false
+      || status.leanConcreteCookLevinBuilderRawRefinementFormalized !== false
+      || status.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
+    failures.push("core status Cook-Levin Finish-mirrored dispatch boundary mismatch");
+  }
   const lockedNANDThresholdPublicationMilestone = status.formalPublicationMilestones?.find(
     (row) => row.id === "global-locked-nand-threshold"
   );
@@ -17021,6 +17111,16 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
           || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
           || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
         failures.push("core inventory Cook-Levin Finish-workspace orientation theorem mismatch: " + name);
+      }
+    }
+    for (const [name, row] of Object.entries(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS)) {
+      const theorem = inventory.milestoneCandidates?.find((candidate) => candidate.name === name);
+      if (!theorem
+          || theorem.kind !== "theorem"
+          || theorem.module !== row.module
+          || JSON.stringify(theorem.axioms) !== JSON.stringify(row.axioms)
+          || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== row.hash) {
+        failures.push("core inventory Cook-Levin Finish-mirrored dispatch theorem mismatch: " + name);
       }
     }
     for (const [name, evidence] of Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS)) {
@@ -20416,6 +20516,30 @@ export function validateAuditTargets(options = {}) {
         || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
         || builderPhysicalClassifierFinishWorkspaceOrientationPins[name] !== row.hash) {
       failures.push("core publication map M222 theorem fingerprint mismatch: " + name);
+    }
+  }
+  const builderPhysicalClassifierFinishMirroredDispatchMilestone = publicationMap.milestones?.find(
+    (row) => row.id === "concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch"
+  );
+  const builderPhysicalClassifierFinishMirroredDispatchNames = Object.keys(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS);
+  if (!builderPhysicalClassifierFinishMirroredDispatchMilestone
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.classification !== "formalized-foundation-only"
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.scope !== BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_MILESTONE_SCOPE
+      || builderPhysicalClassifierFinishMirroredDispatchMilestone.nonClaim !== BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_NON_CLAIM
+      || JSON.stringify(builderPhysicalClassifierFinishMirroredDispatchMilestone.requiredTheorems)
+        !== JSON.stringify(builderPhysicalClassifierFinishMirroredDispatchNames)
+      || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) {
+    failures.push("core publication map Cook-Levin Finish-mirrored dispatch boundary mismatch");
+  }
+  const builderPhysicalClassifierFinishMirroredDispatchPins =
+    releaseManifest.earnedBoundary?.cookLevinBuilderPhysicalClassifierFinishMirroredDispatchTheoremKernelTypeSha256 || {};
+  for (const [name, row] of Object.entries(BUILDER_PHYSICAL_CLASSIFIER_FINISH_MIRRORED_DISPATCH_THEOREMS)) {
+    if (!builderPhysicalClassifierFinishMirroredDispatchMilestone?.requiredTheorems?.includes(name)
+        || publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] !== row.hash
+        || builderPhysicalClassifierFinishMirroredDispatchPins[name] !== row.hash) {
+      failures.push("core publication map M223 theorem fingerprint mismatch: " + name);
     }
   }
   const lockedNANDThresholdPublicationMilestone = publicationMap.milestones?.find(
