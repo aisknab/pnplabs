@@ -91,6 +91,8 @@ function latestMilestoneStatusFields(status, release, milestone) {
         'leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation',
       'concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch':
         'leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatch',
+      'concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch':
+        'leanConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch',
     };
     const stem = stems[milestone.id];
     assert.ok(stem, `missing status-stem mapping for scopeless milestone ${milestone.id}`);
