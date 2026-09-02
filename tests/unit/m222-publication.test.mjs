@@ -11,21 +11,21 @@ const release = readJson('downloads/formal-publication-release.json');
 const updates = readJson('content/milestone-updates.json');
 
 const milestoneId =
-  'concrete-cook-levin-builder-physical-classifier-finish-request';
+  'concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation';
 const theoremName =
-  'PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishRequest.cook_levin_builder_physical_classifier_finish_request_checked_complete';
+  'PNP.Concrete.CookLevin.BuilderPhysicalClassifierFinishWorkspaceOrientation.cook_levin_builder_physical_classifier_finish_workspace_orientation_checked_complete';
 const theoremHash =
-  'ca8b4f2f5712ddd7589a609fdaff3df08550d4b33e5d1e9cd374fb8f82c58bd7';
+  '22c56aba663179d67726c01ad73acc3b73922afd6607fe16b3b0e94a887a648f';
 const moduleName =
-  'PNP.Concrete.CookLevinBuilderPhysicalClassifierFinishRequest';
-const coordinate = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-02-221';
+  'PNP.Concrete.CookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation';
+const coordinate = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-02-222';
 
-test('M221 public payloads preserve the full-classifier Finish-request boundary', () => {
+test('M222 public payloads preserve the Finish-workspace orientation boundary', () => {
   const milestone = status.formalPublicationMilestones.find(
     (row) => row.id === milestoneId,
   );
   assert.ok(milestone);
-  assert.equal(milestone.title, 'Full-classifier Finish-request cell');
+  assert.equal(milestone.title, 'Full-classifier Finish-workspace orientation');
   assert.equal(milestone.classification, 'formalized-foundation-only');
   assert.equal(milestone.status, 'formalized-foundation-only');
   assert.equal(milestone.earned, true);
@@ -34,17 +34,15 @@ test('M221 public payloads preserve the full-classifier Finish-request boundary'
   assert.equal(milestone.allKernelTypesMatch, true);
   assert.equal(milestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
   assert.equal(milestone.sourceClosureFingerprintMatches, true);
-  assert.match(milestone.scope, /canonical Finish coordinate is derived internally/);
-  assert.match(milestone.scope, /collision-free 721-rule machine/);
-  assert.match(milestone.scope, /changes exactly that focused cell/);
-  assert.match(milestone.scope, /All 36 public declarations/);
-  assert.match(milestone.nonClaim,
-    /does not derive body-token or padding request symbols/);
-  assert.match(milestone.nonClaim,
-    /orient the preserved workspace for the dispatcher/);
+  assert.match(milestone.scope, /one blank sentinel/);
+  assert.match(milestone.scope, /classifier prefix/);
+  assert.match(milestone.scope, /collision-free 740-rule machine/);
+  assert.match(milestone.scope, /spatial mirror of M217/);
+  assert.match(milestone.scope, /All 57 public declarations/);
+  assert.match(milestone.nonClaim, /does not prove that M217.*executes/);
+  assert.match(milestone.nonClaim, /does not derive body-token or padding requests/);
   assert.deepEqual(milestone.requiredTheorems, [theoremName]);
   assert.equal(milestone.theoremRows.length, 1);
-  assert.equal(milestone.theoremRows[0].name, theoremName);
   assert.deepEqual(milestone.theoremRows[0].axioms,
     ['Quot.sound', 'propext']);
   assert.equal(milestone.theoremRows[0].actualKernelTypeSha256, theoremHash);
@@ -58,54 +56,56 @@ test('M221 public payloads preserve the full-classifier Finish-request boundary'
   assert.deepEqual(theorem.axioms, ['Quot.sound', 'propext']);
 });
 
-test('M221 status and release mirrors retain every load-bearing field', () => {
+test('M222 status and release mirrors retain every load-bearing field', () => {
   const pairs = [
     ['Formalized', true],
     ['AxiomAuditPassed', true],
-    ['AuditedDeclarationCount', 36],
-    ['FixedComposedMachineRuleCount', 721],
+    ['AuditedDeclarationCount', 57],
+    ['FixedComposedMachineRuleCount', 740],
     ['FinishCoordinateDerived', true],
-    ['ClassifierVerdictSwapFormalized', true],
-    ['ExactRequestCellFormalized', true],
-    ['WorkspacePreservationFormalized', true],
+    ['ClassifierPrefixDerived', true],
+    ['ClassifierPrefixBlankFreeFormalized', true],
+    ['BlankSentinelFormalized', true],
+    ['WorkspaceOrientationFormalized', true],
+    ['MirroredDispatcherEntryFormalized', true],
     ['ExactWorkTraceFormalized', true],
     ['CompiledRawMachineFormalized', true],
     ['OneStepShortNonhaltingFormalized', true],
     ['ExternalInputSizePolynomialFormalized', true],
     ['BodyOrPaddingRequestDerived', false],
-    ['DispatcherConnected', false],
+    ['MirroredDispatcherExecuted', false],
     ['LiteralRawLoopFormalized', false],
   ];
   for (const [suffix, expected] of pairs) {
     assert.equal(
-      status[`leanConcreteCookLevinBuilderPhysicalClassifierFinishRequest${suffix}`],
+      status[`leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation${suffix}`],
       expected,
     );
     assert.equal(
       release.earnedBoundary[
-        `cookLevinBuilderPhysicalClassifierFinishRequest${suffix}`
+        `cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation${suffix}`
       ],
       expected,
     );
   }
   assert.equal(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFinishRequestCheckedCompleteTheorem,
+      .cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationCheckedCompleteTheorem,
     theoremName,
   );
   assert.deepEqual(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFinishRequestTheoremKernelTypeSha256,
+      .cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationTheoremKernelTypeSha256,
     { [theoremName]: theoremHash },
   );
   assert.deepEqual(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFinishRequestAxiomClosure,
+      .cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationAxiomClosure,
     ['Quot.sound', 'propext'],
   );
   assert.deepEqual(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFinishRequestProjectAxiomClosure,
+      .cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationProjectAxiomClosure,
     [],
   );
   assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, false);
@@ -114,7 +114,7 @@ test('M221 status and release mirrors retain every load-bearing field', () => {
     false);
 });
 
-test('M221 progress snapshot remains separate and conservative', () => {
+test('M222 progress snapshot remains separate and conservative', () => {
   assert.ok(index.earnedMilestones.includes(milestoneId));
   assert.equal(progress.formalArtefactCoverage.isProofCompletionMetric, false);
   const history = progress.history.find(
@@ -122,7 +122,7 @@ test('M221 progress snapshot remains separate and conservative', () => {
   );
   assert.ok(history);
   assert.deepEqual(history.formalArtefactCoverage,
-    { earnedRows: 197, totalRows: 199 });
+    { earnedRows: 198, totalRows: 200 });
   assert.equal(history.riskWeightedProofCompletionPercent, 35);
   assert.equal(history.uncertaintyLowPercent, 20);
   assert.equal(history.uncertaintyHighPercent, 40);
@@ -152,17 +152,28 @@ test('M221 progress snapshot remains separate and conservative', () => {
   });
 });
 
-test('M221 remains a versioned historical publication card after M222', () => {
+test('M222 active surfaces publish workspace orientation without overclaiming', () => {
+  const currentCoverage =
+    `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
+  for (const file of [
+    'README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html',
+    'status.html',
+  ]) {
+    const text = readFileSync(file, 'utf8');
+    assert.match(text, new RegExp(currentCoverage.replace('/', '\\/')));
+    assert.match(text, /35%/);
+    assert.match(text, /workspace[- ]orientation/i);
+    assert.match(text, /M217[^\n]*(?:not|does not)[^\n]*execut/i);
+    assert.doesNotMatch(text,
+      /M222[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
+  }
+  const homepage = readFileSync('index.html', 'utf8');
+  assert.match(homepage,
+    new RegExp(`data-current-milestone="${milestoneId}"`));
   const statusPage = readFileSync('status.html', 'utf8');
-  const card = statusPage.match(
-    new RegExp(`<article class="card" data-milestone-id="${milestoneId}"[\\s\\S]*?<\\/article>`),
-  )?.[0] ?? '';
-  assert.match(card, /Finish-request cell/i);
-  assert.match(card, /formal artefact coverage becomes 197 of 199/i);
-  assert.match(card, /risk-weighted estimate remains 35%/i);
-  assert.doesNotMatch(card,
-    /M221[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
   assert.match(statusPage,
-    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation"/);
-  assert.ok(release.artifacts.report.pageCount >= 160);
+    new RegExp(`data-milestone-id="${milestoneId}"`));
+  assert.match(statusPage,
+    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-finish-request"/);
+  assert.equal(release.artifacts.report.pageCount, 161);
 });
