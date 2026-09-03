@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-03-concrete-cook-levin-builder-physical-classifier-terminal-join",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-terminal-join",
+      "publishedAt": "2026-09-03T13:17:14Z",
+      "title": "All-route physical classifier terminal join",
+      "plainLanguage": [
+        "For every concrete verifier problem, every coordinate in the complete post-header schedule and arbitrary protected workspace, M226 runs the complete 711-rule classifier and joins all terminal outcomes at one continuation-ready accepting state. Body routes take no additional step; the unique Finish/reject route crosses one total nine-symbol tape-preserving redirect. The resulting collision-free 720-rule machine has kernel-checked exact work, compiled execution, one-step-short nonhalting and one source-input-size polynomial bound.",
+        "This terminal join does not synthesize, stage or dispatch a body-token request, connect successive schedule configurations, implement one repeated raw-machine builder loop, complete builder refinement or package the polynomial reduction. M226 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 202 of 204, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 202,
+        "formalArtefactCoverageTotalRows": 204,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "9a81dd86dc92260f3cdc56b6a463b78c651cfad6",
+        "tree": "4d7c4a0f8bf28a4b73a512055e65764117b88514",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-03-226",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-03-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch",
       "publishedAt": "2026-09-03T07:07:34Z",
