@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-03-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch",
+      "publishedAt": "2026-09-02T21:51:21Z",
+      "title": "First-body separator physical dispatch",
+      "plainLanguage": [
+        "For every concrete verifier problem, M224 derives the first body coordinate and separator request, runs the complete classifier through that populated-body terminal, crosses the clause-count suffix with a fixed two-rule writer, reorients the workspace with a fixed ten-rule scanner, and executes M223's reflected 64-rule dispatcher. The collision-free 814-rule machine reaches the exact canonical prefix ending in the first clause separator. Exact work, compiled execution, one-step-short nonhalting and one source-input-size polynomial bound are kernel checked.",
+        "This closes only the first populated body route. Arbitrary body-token selection, padding requests, every remaining classifier route, successive schedule configurations, one repeated raw-machine builder loop, complete builder refinement and the packaged polynomial reduction remain open. M224 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 200 of 202, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 200,
+        "formalArtefactCoverageTotalRows": 202,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "752be777ca2c366aa16bb8ff4bf9120a984f25b6",
+        "tree": "9e4247b91b927fa976a1988b901f1e56c794eb5d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-03-224",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-02-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch",
       "publishedAt": "2026-09-02T09:25:46Z",

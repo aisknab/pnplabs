@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,163 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,164 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 33,269 public declarations;
-- 17,066 theorem-kind declarations;
-- 8,055 assumption-free theorem-kind declarations;
-- 343 source-closure modules;
-- 15,796 excluded private compiler auxiliaries;
+- 33,453 public declarations;
+- 17,192 theorem-kind declarations;
+- 8,085 assumption-free theorem-kind declarations;
+- 344 source-closure modules;
+- 15,831 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 199 earned formal artefact scopes are:
+The 200 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -247,6 +247,7 @@ The 199 earned formal artefact scopes are:
 | Full-classifier Cook-Levin Finish-request cell | One reviewed completion-theorem pin proves for every concrete verifier problem and arbitrary protected builder workspace, the canonical Finish coordinate is derived internally. M220's full 711-rule classifier has its terminal verdict names swapped without changing transition semantics, then is chained through one fixed launch table to M219's one-cell writer as a collision-free 721-rule machine. The classifier reaches the end marker, the writer changes exactly that focused cell to M217's Finish request while preserving the rest of the tape, and exact work, six-for-one compiled execution, one-step-short nonhalting and one source-size polynomial bound are proved. All 36 public declarations are axiom-audited: nine have empty closure, three use only propext, and 24 use only propext and Quot.sound, with no project axiom or Classical.choice. The endpoint uses only `Quot.sound` and `propext`; all 36 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M221 changes exactly the unique canonical Finish end-marker cell into M217's request symbol without supplied coordinate, request, route or trace. It does not derive body-token or padding request symbols, orient the preserved workspace for the dispatcher, connect or run M217 from the classifier endpoint, implement one literal raw loop, complete builder `RawRefinement`, construct the concrete `PolynomialReduction`, establish hardness transport or deterministic SAT, close a fixed checkpoint or global gate, create the eligible root theorem, or prove `P = NP`. |
 | Full-classifier Cook-Levin Finish-workspace orientation | One reviewed completion-theorem pin proves that for every concrete verifier problem, one blank sentinel is prepended to the canonical builder workspace, the complete M220/M221 classifier prefix is derived and proved blank-free, and M221 is chained to one fixed ten-rule left scanner. The collision-free 740-rule machine crosses exactly that prefix and halts at the sentinel with a tape equal to the spatial mirror of M217's canonical Finish request entry, retaining classifier evidence as exterior data. Exact work, six-for-one compiled execution, one-step-short nonhalting, a derived prefix-size bound and one source-input-size polynomial bound are proved. The endpoint uses only `Quot.sound` and `propext`; all 57 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M222 closes only the physical workspace-orientation edge for the unique full-classifier Finish path. Equality with a spatial mirror does not prove that M217 executes on the mirrored representation. It does not derive body-token or padding requests, run a mirrored dispatcher, connect successive schedule configurations, implement one repeated raw-machine loop, prove builder `FunctionProgram.RawRefinement`, construct the concrete `PolynomialReduction`, establish hardness transport or deterministic SAT, close a fixed checkpoint or global gate, create the eligible root theorem, or prove `P = NP`. |
 | Full-classifier reflected Finish dispatch | One reviewed completion-theorem pin proves that for every concrete verifier problem, M217's fixed 64-rule dispatcher is reflected by exchanging left and right moves while preserving rule queries and states, and that reflection transports exact finite-machine execution. Chained after M222, the collision-free 813-rule machine executes the complete classifier's unique Finish path from raw classifier entry through workspace orientation and the reflected dispatcher to an appender endpoint containing the complete canonical CNF token encoding. Exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound are proved. The endpoint uses only `Quot.sound` and `propext`; all 51 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M223 closes only reflected M217 execution for the unique full-classifier Finish path. It does not derive body-token or padding request symbols, connect every classifier outcome to the dispatcher, connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder `FunctionProgram.RawRefinement`, construct the concrete `PolynomialReduction`, establish hardness transport or deterministic SAT, close a fixed checkpoint or global gate, create the eligible root theorem, or prove `P = NP`. |
+| First-body separator physical dispatch | One reviewed completion-theorem pin proves that for every concrete verifier problem, first-body coordinate zero and its separator request are derived internally. The complete 711-rule classifier crosses the populated-body terminal, a fixed two-rule writer records the request, a fixed ten-rule scanner reorients the workspace, and M223's reflected 64-rule dispatcher executes it. The collision-free 814-rule machine reaches the exact canonical prefix ending in the first clause separator, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 121 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M224 closes only the first populated full-classifier body route. Arbitrary body-token selection, padding requests, the remaining classifier outcomes, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

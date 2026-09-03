@@ -109,6 +109,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation',
   cookLevinBuilderPhysicalClassifierFinishMirroredDispatch:
     'ConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatch',
+  cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch:
+    'ConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -9778,7 +9780,10 @@ test('static inventory prose derives changing publication totals from the canoni
   const latestTheoremPinLabel = latestEarnedMilestone.requiredTheorems.length === 1
     ? "1 reviewed theorem pin"
     : `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`;
-  assert.equal(readme.includes(`Its ${latestTheoremPinLabel}`), true);
+  const latestReadmeTheoremPinLabel = latestEarnedMilestone.requiredTheorems.length === 1
+    ? "single reviewed theorem pin"
+    : latestTheoremPinLabel;
+  assert.equal(readme.includes(`Its ${latestReadmeTheoremPinLabel}`), true);
   assert.equal(readme.includes(latestUpdate.title), true);
   assert.equal(paper.includes(latestUpdate.title), true, 'paper page must name the current milestone');
   assert.equal(
