@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a 163-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 33,453 public declarations across 344 modules,
-including 17,192 theorem-kind declarations, 8,085 assumption-free theorem-kind declarations, and no
-project-specific axioms. Exactly 15,831 private compiler auxiliaries are excluded explicitly.
+The canonical report downloads are now a 164-page, non-claiming report generated from a compiled
+Lean theorem inventory. The inventory contains 33,570 public declarations across 345 modules,
+including 17,268 theorem-kind declarations, 8,105 assumption-free theorem-kind declarations, and no
+project-specific axioms. Exactly 15,896 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -19,7 +19,7 @@ Start with these current-authority files:
 
 - [`public/pnp-status.json`](../public/pnp-status.json): generated status, milestones, blockers, and gate;
 - [`public/pnp-theorem-inventory.json`](../public/pnp-theorem-inventory.json): byte-mirrored compiled inventory;
-- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 163-page report;
+- [`downloads/canonical_proof_report.pdf`](../downloads/canonical_proof_report.pdf): current 164-page report;
 - [`downloads/formal-publication-release.json`](../downloads/formal-publication-release.json): exact merged-core provenance and file identities.
 
 The older 57-page direct-claim manuscript remains a historical audit target only. It is located at
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,164 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,164 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 200 of 202 scoped formal milestone rows. For every concrete verifier problem, M224 derives first-body coordinate zero and its canonical separator entry, runs the complete 711-rule classifier through the populated-body terminal, crosses the positive unary clause-count suffix with a fixed two-rule request writer, reorients the protected builder workspace with a fixed ten-rule scanner, and executes M223's reflected 64-rule dispatcher. One collision-free 814-rule machine reaches the exact canonical prefix ending in the first clause separator, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. All 121 public declarations are axiom-audited: 53 have empty closure, one uses only propext, and 67 use only propext and Quot.sound, with no project axiom or Classical.choice. | Treating M224's first populated separator route as arbitrary body-token selection, padding-request derivation, connection of every classifier outcome, successive physical schedule composition, one repeated raw-machine loop, complete raw builder/refinement, or the packaged reduction; treating supplied terminal, source, restoration, ambient, BCEL, Packet/HB, rank, claim, dependency, route-clear, or selector-silence data as terminal-derived; treating a local obstruction as a verified global gain or descent; treating conditional ZeroSlack as unconditional; or treating the row as executable PCCMin, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,165 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,165 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 201 of 203 scoped formal milestone rows. For every concrete verifier problem and every coordinate in its complete clause-token body rectangle, M225 runs the complete 711-rule classifier while preserving an explicitly staged canonical optional-token request, relays that request through one fixed 14-rule scanner, and executes M223's reflected 64-rule dispatcher. One collision-free 807-rule composition covers populated and padding coordinates and reaches each exact next canonical emitted prefix, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. All 80 public declarations are axiom-audited: 32 have empty closure, nine use only propext, and 39 use only propext and Quot.sound, with no project axiom or Classical.choice. | Treating M225's explicitly staged body/padding request as raw request synthesis, a combined body-and-Finish machine, successive physical schedule composition, one repeated raw-machine loop, complete raw builder/refinement, or the packaged reduction; treating supplied terminal, source, restoration, ambient, BCEL, Packet/HB, rank, claim, dependency, route-clear, or selector-silence data as terminal-derived; treating a local obstruction as a verified global gain or descent; treating conditional ZeroSlack as unconditional; or treating the row as executable PCCMin, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,10 +62,10 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `752be777ca2c366aa16bb8ff4bf9120a984f25b6`.
+   `8a9c372156eea1b0f8bc47bd0c7b139b3a2f17b3`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
-3. Inspect every one of the 3,164 reviewed milestone declarations at its exact kernel type.
+3. Inspect every one of the 3,165 reviewed milestone declarations at its exact kernel type.
 4. Confirm that each earned milestone uses only the permitted Lean-standard axiom allowlist, has no
    project axiom, and matches the pinned complete Lean-source digest.
 5. Mutate a theorem type or source file and confirm that the corresponding milestone is revoked.
@@ -312,7 +312,7 @@ theorems; historical package acceptance does not close them.
 The source/checker, documentation, and generated-artifact refs for 7072f8d are preserved separately
 in [source_checker_map.md](source_checker_map.md). Use them only to inspect or replay the historical
 assertion-checker release. References to numbered report sections in historical worksheets refer to
-the manuscript at the pinned 7072f8d source tag, never to the current 163-page report.
+the manuscript at the pinned 7072f8d source tag, never to the current 164-page report.
 
 A historical replay can show that a named implementation produced the recorded acceptance fields.
 It cannot establish the mathematical implications encoded by those fields and cannot activate the

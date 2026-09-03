@@ -11,21 +11,21 @@ const release = readJson('downloads/formal-publication-release.json');
 const updates = readJson('content/milestone-updates.json');
 
 const milestoneId =
-  'concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch';
+  'concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch';
 const theoremName =
-  'PNP.Concrete.CookLevin.BuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch.cook_levin_builder_physical_classifier_first_body_separator_mirrored_dispatch_checked_complete';
+  'PNP.Concrete.CookLevin.BuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch.cook_levin_builder_physical_classifier_all_body_staged_request_mirrored_dispatch_checked_complete';
 const theoremHash =
-  'bda0502211f2094a01ffb98a6402a441afa5ec12ccf05c70efc050b62f558a3c';
+  '8659e14e91dc68c48367f63c0531a29845c29700e9abfbbd7a211e0dad9ab4b4';
 const moduleName =
-  'PNP.Concrete.CookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch';
-const coordinate = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-03-224';
+  'PNP.Concrete.CookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch';
+const coordinate = 'PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-03-225';
 
-test('M224 public payloads preserve the first-body separator boundary', () => {
+test('M225 public payloads preserve the all-body staged-request boundary', () => {
   const milestone = status.formalPublicationMilestones.find(
     (row) => row.id === milestoneId,
   );
   assert.ok(milestone);
-  assert.equal(milestone.title, 'First-body separator physical dispatch');
+  assert.equal(milestone.title, 'All-body staged-request physical dispatch');
   assert.equal(milestone.classification, 'formalized-foundation-only');
   assert.equal(milestone.status, 'formalized-foundation-only');
   assert.equal(milestone.earned, true);
@@ -34,17 +34,16 @@ test('M224 public payloads preserve the first-body separator boundary', () => {
   assert.equal(milestone.allKernelTypesMatch, true);
   assert.equal(milestone.axiomClosureUsesOnlyLeanStandardAllowlist, true);
   assert.equal(milestone.sourceClosureFingerprintMatches, true);
-  assert.match(milestone.scope, /first-body coordinate zero/i);
-  assert.match(milestone.scope, /fixed two-rule request writer/i);
-  assert.match(milestone.scope, /fixed ten-rule scanner/i);
+  assert.match(milestone.scope, /every coordinate/i);
+  assert.match(milestone.scope, /explicitly staged canonical optional-token request/i);
+  assert.match(milestone.scope, /fixed 14-rule scanner/i);
   assert.match(milestone.scope, /reflected 64-rule dispatcher/i);
-  assert.match(milestone.scope, /collision-free 814-rule machine/i);
-  assert.match(milestone.scope, /first clause separator/i);
-  assert.match(milestone.scope, /All 121 public declarations/);
-  assert.match(milestone.nonClaim, /only the first populated/i);
-  assert.match(milestone.nonClaim, /does not select arbitrary body tokens/i);
-  assert.match(milestone.nonClaim, /derive padding requests/i);
-  assert.match(milestone.nonClaim, /connect every classifier outcome/i);
+  assert.match(milestone.scope, /collision-free 807-rule composition/i);
+  assert.match(milestone.scope, /populated and padding coordinates/i);
+  assert.match(milestone.scope, /All 80 public declarations/);
+  assert.match(milestone.nonClaim, /stages each canonical body or padding request/i);
+  assert.match(milestone.nonClaim, /does not synthesize that request/i);
+  assert.match(milestone.nonClaim, /include the unique Finish route/i);
   assert.deepEqual(milestone.requiredTheorems, [theoremName]);
   assert.equal(milestone.theoremRows.length, 1);
   assert.deepEqual(milestone.theoremRows[0].axioms,
@@ -60,56 +59,56 @@ test('M224 public payloads preserve the first-body separator boundary', () => {
   assert.deepEqual(theorem.axioms, ['Quot.sound', 'propext']);
 });
 
-test('M224 status and release mirrors retain every load-bearing field', () => {
+test('M225 status and release mirrors retain every load-bearing field', () => {
   const pairs = [
     ['Formalized', true],
     ['AxiomAuditPassed', true],
-    ['AuditedDeclarationCount', 121],
-    ['FixedRequestWriterRuleCount', 2],
-    ['FixedOrientationRuleCount', 10],
+    ['AuditedDeclarationCount', 80],
+    ['FixedRequestRelayRuleCount', 14],
+    ['FixedClassifierRelayMachineRuleCount', 734],
     ['FixedMirroredDispatcherRuleCount', 64],
-    ['FixedComposedMachineRuleCount', 814],
-    ['FirstBodyIndexDerived', true],
-    ['SeparatorRequestDerived', true],
+    ['FixedComposedMachineRuleCount', 807],
+    ['AllBodyCoordinatesFormalized', true],
+    ['AllBodyAndPaddingRequestsStagedAndDispatched', true],
+    ['CanonicalRequestStagedOnProtectedTape', true],
+    ['RawRequestSynthesisFormalized', false],
+    ['CombinedBodyFinishLoopFormalized', false],
     ['ExactNextCanonicalPrefixFormalized', true],
     ['ExactWorkTraceFormalized', true],
     ['CompiledRawMachineFormalized', true],
     ['OneStepShortNonhaltingFormalized', true],
     ['ExternalInputSizePolynomialFormalized', true],
-    ['ArbitraryBodyOrPaddingRequestDerived', false],
-    ['AllClassifierRoutesConnected', false],
-    ['LiteralRawLoopFormalized', false],
   ];
   for (const [suffix, expected] of pairs) {
     assert.equal(
-      status[`leanConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch${suffix}`],
+      status[`leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch${suffix}`],
       expected,
     );
     assert.equal(
       release.earnedBoundary[
-        `cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch${suffix}`
+        `cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch${suffix}`
       ],
       expected,
     );
   }
   assert.equal(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchCheckedCompleteTheorem,
+      .cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchCheckedCompleteTheorem,
     theoremName,
   );
   assert.deepEqual(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchTheoremKernelTypeSha256,
+      .cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchTheoremKernelTypeSha256,
     { [theoremName]: theoremHash },
   );
   assert.deepEqual(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchAxiomClosure,
+      .cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchAxiomClosure,
     ['Quot.sound', 'propext'],
   );
   assert.deepEqual(
     release.earnedBoundary
-      .cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchProjectAxiomClosure,
+      .cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchProjectAxiomClosure,
     [],
   );
   assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, false);
@@ -118,7 +117,7 @@ test('M224 status and release mirrors retain every load-bearing field', () => {
     false);
 });
 
-test('M224 progress snapshot remains separate and conservative', () => {
+test('M225 progress snapshot remains separate and conservative', () => {
   assert.ok(index.earnedMilestones.includes(milestoneId));
   assert.equal(progress.formalArtefactCoverage.isProofCompletionMetric, false);
   const history = progress.history.find(
@@ -126,7 +125,7 @@ test('M224 progress snapshot remains separate and conservative', () => {
   );
   assert.ok(history);
   assert.deepEqual(history.formalArtefactCoverage,
-    { earnedRows: 200, totalRows: 202 });
+    { earnedRows: 201, totalRows: 203 });
   assert.equal(history.riskWeightedProofCompletionPercent, 35);
   assert.equal(history.uncertaintyLowPercent, 20);
   assert.equal(history.uncertaintyHighPercent, 40);
@@ -157,16 +156,40 @@ test('M224 progress snapshot remains separate and conservative', () => {
 });
 
 
-test('M224 remains a versioned historical publication card after M225', () => {
+
+test('M225 active surfaces publish all-body staged-request dispatch conservatively', () => {
+  const currentCoverage =
+    `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
+  for (const file of [
+    'README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html',
+    'status.html',
+  ]) {
+    const surface = readFileSync(file, 'utf8');
+    assert.match(surface, new RegExp(currentCoverage.replace('/', '\\/')));
+    assert.match(surface, new RegExp(`${progress.proofCompletion.percent}%`));
+    assert.match(surface, /all-body staged-request|every (?:coordinate|populated and padding)/i);
+    assert.match(surface, /807-rule/i);
+    assert.match(surface, /request remains explicitly staged|does not synthesize/i);
+    assert.match(surface, /No fixed weighted checkpoint changes/i);
+    assert.match(surface, /All five global gates remain open/i);
+  }
+  const homepage = readFileSync('index.html', 'utf8');
+  assert.match(homepage,
+    new RegExp(`data-current-milestone="${milestoneId}"`));
+  assert.match(homepage,
+    new RegExp(`updates\\.html#[^"']*${milestoneId}`));
   const statusPage = readFileSync('status.html', 'utf8');
-  const card = statusPage.match(
-    new RegExp(`<article class="card" data-milestone-id="${milestoneId}"[\\s\\S]*?<\\/article>`),
-  )?.[0] ?? '';
-  assert.match(card, /first-body separator/i);
-  assert.match(card, /formal artefact coverage becomes 200 of 202/i);
-  assert.match(card, /risk-weighted estimate remains 35%/i);
-  assert.match(card, /collision-free 814-rule machine/i);
   assert.match(statusPage,
-    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch"/);
-  assert.ok(release.artifacts.report.pageCount >= 163);
+    new RegExp(`data-milestone-id="${milestoneId}"`));
+  assert.match(statusPage,
+    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch"/);
+  assert.equal(release.artifacts.report.pageCount >= 164, true);
+
+  const activatedClaim = readFileSync('docs/activated_claim_wording.md', 'utf8');
+  const activatedMarker =
+    'leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFormalized = true';
+  assert.equal(activatedClaim.split(activatedMarker).length - 1, 1);
+
+  const sourceCheckerMap = readFileSync('docs/source_checker_map.md', 'utf8');
+  assert.match(sourceCheckerMap, /all-body staged-request physical dispatch/i);
 });
