@@ -19,15 +19,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "752be777ca2c366aa16bb8ff4bf9120a984f25b6";
-const CORE_TREE = "9e4247b91b927fa976a1988b901f1e56c794eb5d";
-const CORE_PUBLICATION_MAP_SHA256 = "93a6cc8087dc0cf1f3a94207c7c7f5b11be1b814686eaf58830c97bc12e5b93e";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-03-224";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-03-224";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-03-224";
-const CORE_SOURCE_CLOSURE_SHA256 = "fe19c0528de1aa463aae3f94edb13709409664819a245ab884ab5043f4f1195d";
-const OLD_PDF_SHA256 = "f14fadaadd2f3871f73f6a8fe00c82aa42a5f63f3bd67a68652e5c7ed40291b8";
-const OLD_TEX_SHA256 = "799b37e7b37a460a78ba45b0ecc2c59fb058bda50edd3a4fbbb9701879eb6681";
+const CORE_COMMIT = "8a9c372156eea1b0f8bc47bd0c7b139b3a2f17b3";
+const CORE_TREE = "9a706b16567f6a5d666fa2a4ee42e365402136e1";
+const CORE_PUBLICATION_MAP_SHA256 = "e47cd124327684e1904acfb99a4e35ca37e27971f3386f20486a317cbff0f5ef";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-03-225";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-03-225";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-03-225";
+const CORE_SOURCE_CLOSURE_SHA256 = "c261891b3344cff10925fed77bcb9b52e40ae1c28b991a2ab53b889500cdc1c0";
+const OLD_PDF_SHA256 = "c89173ac46711778371490d6380f8347b27153f9195327226ff2011191a4b017";
+const OLD_TEX_SHA256 = "f95eeadcf5c004738319513373ffee10d1036ecd8378b809751f369e70e30d98";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -2232,6 +2232,85 @@ function assertM224Inventory(payload) {
         || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)
         || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
       fail("core inventory Cook-Levin first-body separator mirrored-dispatch theorem mismatch: " + name);
+    }
+  }
+}
+
+const BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS = {
+  "PNP.Concrete.CookLevin.BuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch.cook_levin_builder_physical_classifier_all_body_staged_request_mirrored_dispatch_checked_complete": { hash: "8659e14e91dc68c48367f63c0531a29845c29700e9abfbbd7a211e0dad9ab4b4", axioms: ["Quot.sound","propext"], module: "PNP.Concrete.CookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch" }
+};
+const BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_MILESTONE_SCOPE = "For every concrete verifier problem and every coordinate in its complete clause-token body rectangle, M225 runs the complete 711-rule classifier while preserving an explicitly staged canonical optional-token request, relays that request through one fixed 14-rule scanner, and executes M223's reflected 64-rule dispatcher. One collision-free 807-rule composition covers populated and padding coordinates and reaches each exact next canonical emitted prefix, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. All 80 public declarations are axiom-audited: 32 have empty closure, nine use only propext, and 39 use only propext and Quot.sound, with no project axiom or Classical.choice.";
+const BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_NON_CLAIM = "This milestone stages each canonical body or padding request explicitly on protected tape. It does not synthesize that request from raw classifier state, include the unique Finish route in the same machine, connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP.";
+
+function assertM225PublicationMap(publicationMap) {
+  const milestone = publicationMap.milestones?.find((row) => row.id === "concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch");
+  const names = Object.keys(BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS);
+  if (!milestone
+      || milestone.classification !== "formalized-foundation-only"
+      || milestone.scope !== BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_MILESTONE_SCOPE
+      || milestone.nonClaim !== BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_NON_CLAIM
+      || JSON.stringify(milestone.requiredTheorems) !== JSON.stringify(names)
+      || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS).every(
+        ([name, row]) => publicationMap.earnedMilestoneTheoremKernelTypeSha256?.[name] === row.hash
+      )) fail("core publication map Cook-Levin all-body staged-request mirrored-dispatch boundary mismatch");
+}
+
+function assertM225Status(payload) {
+  const milestone = payload.formalPublicationMilestones?.find((row) => row.id === "concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch");
+  if (!milestone
+      || milestone.earned !== true
+      || milestone.allPresent !== true
+      || milestone.allAssumptionFree !== false
+      || milestone.allKernelTypesMatch !== true
+      || milestone.axiomClosureUsesOnlyLeanStandardAllowlist !== true
+      || milestone.sourceClosureFingerprintMatches !== true
+      || milestone.classification !== "formalized-foundation-only"
+      || milestone.status !== "formalized-foundation-only"
+      || milestone.scope !== BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_MILESTONE_SCOPE
+      || milestone.nonClaim !== BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_NON_CLAIM
+      || JSON.stringify(milestone.requiredTheorems) !== JSON.stringify(Object.keys(BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS))
+      || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS).every(([name, evidence]) => {
+        const row = milestone.theoremRows?.find((candidate) => candidate.name === name);
+        return row?.present === true
+          && row.kind === "theorem"
+          && JSON.stringify(row.axioms) === JSON.stringify(evidence.axioms)
+          && row.actualKernelTypeSha256 === evidence.hash
+          && row.expectedKernelTypeSha256 === evidence.hash
+          && row.kernelTypeFingerprintMatches === true;
+      })
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFormalized !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchAxiomAuditPassed !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchAuditedDeclarationCount !== 80
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFixedRequestRelayRuleCount !== 14
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFixedClassifierRelayMachineRuleCount !== 734
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFixedMirroredDispatcherRuleCount !== 64
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFixedComposedMachineRuleCount !== 807
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchAllBodyCoordinatesFormalized !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchAllBodyAndPaddingRequestsStagedAndDispatched !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchCanonicalRequestStagedOnProtectedTape !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchRawRequestSynthesisFormalized !== false
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchCombinedBodyFinishLoopFormalized !== false
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchExactNextCanonicalPrefixFormalized !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchExactWorkTraceFormalized !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchCompiledRawMachineFormalized !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchOneStepShortNonhaltingFormalized !== true
+      || payload.leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchExternalInputSizePolynomialFormalized !== true
+      || payload.leanConcreteCookLevinFormulaBuilderFormalized !== false
+      || payload.leanConcreteCookLevinBuilderRawRefinementFormalized !== false
+      || payload.leanConcreteCookLevinBuilderPolynomialReductionFormalized !== false) {
+    fail("core status Cook-Levin all-body staged-request mirrored-dispatch boundary mismatch");
+  }
+}
+
+function assertM225Inventory(payload) {
+  for (const [name, evidence] of Object.entries(BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS)) {
+    const theorem = payload.milestoneCandidates?.find((candidate) => candidate.name === name);
+    if (!theorem
+        || theorem.kind !== "theorem"
+        || theorem.module !== evidence.module
+        || JSON.stringify(theorem.axioms) !== JSON.stringify(evidence.axioms)
+        || milestoneTheoremKernelTypeSha256(name, theorem.kernelType) !== evidence.hash) {
+      fail("core inventory Cook-Levin all-body staged-request mirrored-dispatch theorem mismatch: " + name);
     }
   }
 }
@@ -4546,32 +4625,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 628420,
-    sha256: "c89173ac46711778371490d6380f8347b27153f9195327226ff2011191a4b017"
+    bytes: 627644,
+    sha256: "180d4ce76547adb707805beca292b61e31caee7281a8c47fd900870e9db6296c"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 408431,
-    sha256: "f95eeadcf5c004738319513373ffee10d1036ecd8378b809751f369e70e30d98"
+    bytes: 410084,
+    sha256: "28923b34ab6eabcb03c8a4469d3b5775c10c905c4ab6f5617127ee20ecd1c64c"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2804500,
-    sha256: "9a50b46fe98da2dc799ead025050cba872e7e699992495f5fb13921b0380c64f"
+    bytes: 2810672,
+    sha256: "ad47dae1d645555853d86b74ac9f108a7e0b33eaa69828450fa5211501085bed"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 47915091,
-    sha256: "625bdcdafb5f4eba2f1753e00dde4950c65104a17bece101de02c182e1372010"
+    bytes: 47954018,
+    sha256: "a7e42625944037edef9c7ed2bef3539b5b70a4a19198786d51f6faa474f52df4"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 138260,
-    sha256: "1e5e7e7c01faa963994fa91ea28a605c9c4fad103a776d5a28e6933bbff527f5"
+    bytes: 143691,
+    sha256: "a73e6c6037e41d286bcfcc7d5b38384d025865db3d85920d6241631686ed6281"
   }
 ];
 
@@ -7435,6 +7514,7 @@ function assertPinnedCore(sourceDir) {
   }
 
   assertM224PublicationMap(publicationMap);
+  assertM225PublicationMap(publicationMap);
   return publicationMap;
 }
 
@@ -7456,6 +7536,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
       fail("core proof-progress ledger identity mismatch");
     }
   } else if (sourcePath === "public/pnp-status.json") {
+    assertM225Status(payload);
     assertM224Status(payload);
     if (payload.coordinate !== CORE_STATUS_COORDINATE || payload.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("core status coordinate mismatch");
     if (payload.formalPublicationMapCoordinate !== CORE_PUBLICATION_MAP_COORDINATE || payload.formalPublicationMapSha256 !== CORE_PUBLICATION_MAP_SHA256 || payload.leanSourceClosureSha256 !== CORE_SOURCE_CLOSURE_SHA256) fail("core status source identity mismatch");
@@ -12363,6 +12444,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
 
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
+    assertM225Inventory(payload);
     assertM224Inventory(payload);
     if (payload.coordinate !== CORE_INVENTORY_COORDINATE) fail("core inventory coordinate mismatch");
     if (payload.compatibilityRootCandidate !== null || payload.concreteTargetCandidate?.name !== "PNP.Main.ConcretePEqualsNP") fail("core inventory publication boundary mismatch");

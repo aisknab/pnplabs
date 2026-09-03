@@ -7,7 +7,7 @@ permissions:
   contents: read
 
 env:
-  PNP_CORE_COMMIT: 752be777ca2c366aa16bb8ff4bf9120a984f25b6
+  PNP_CORE_COMMIT: 8a9c372156eea1b0f8bc47bd0c7b139b3a2f17b3
   PNP_SOURCE_DIR: ${{ github.workspace }}/pnp
 
 jobs:
