@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,165 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,166 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 33,570 public declarations;
-- 17,268 theorem-kind declarations;
-- 8,105 assumption-free theorem-kind declarations;
-- 345 source-closure modules;
-- 15,896 excluded private compiler auxiliaries;
+- 33,617 public declarations;
+- 17,300 theorem-kind declarations;
+- 8,121 assumption-free theorem-kind declarations;
+- 346 source-closure modules;
+- 15,910 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 201 earned formal artefact scopes are:
+The 202 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -249,6 +249,7 @@ The 201 earned formal artefact scopes are:
 | Full-classifier reflected Finish dispatch | One reviewed completion-theorem pin proves that for every concrete verifier problem, M217's fixed 64-rule dispatcher is reflected by exchanging left and right moves while preserving rule queries and states, and that reflection transports exact finite-machine execution. Chained after M222, the collision-free 813-rule machine executes the complete classifier's unique Finish path from raw classifier entry through workspace orientation and the reflected dispatcher to an appender endpoint containing the complete canonical CNF token encoding. Exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound are proved. The endpoint uses only `Quot.sound` and `propext`; all 51 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M223 closes only reflected M217 execution for the unique full-classifier Finish path. It does not derive body-token or padding request symbols, connect every classifier outcome to the dispatcher, connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder `FunctionProgram.RawRefinement`, construct the concrete `PolynomialReduction`, establish hardness transport or deterministic SAT, close a fixed checkpoint or global gate, create the eligible root theorem, or prove `P = NP`. |
 | First-body separator physical dispatch | One reviewed completion-theorem pin proves that for every concrete verifier problem, first-body coordinate zero and its separator request are derived internally. The complete 711-rule classifier crosses the populated-body terminal, a fixed two-rule writer records the request, a fixed ten-rule scanner reorients the workspace, and M223's reflected 64-rule dispatcher executes it. The collision-free 814-rule machine reaches the exact canonical prefix ending in the first clause separator, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 121 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M224 closes only the first populated full-classifier body route. Arbitrary body-token selection, padding requests, the remaining classifier outcomes, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
 | All-body staged-request physical dispatch | One reviewed completion-theorem pin proves that every coordinate in the complete clause-token body rectangle can run the 711-rule classifier while preserving an explicitly staged canonical optional-token request, relay the request through a fixed 14-rule scanner, and execute M223's reflected 64-rule dispatcher. The collision-free 807-rule composition covers populated and padding coordinates and reaches each exact next canonical emitted prefix, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 80 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M225 explicitly stages the canonical body or padding request. Raw request synthesis, the combined Finish route, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
+| All-route physical classifier terminal join | One reviewed completion-theorem pin proves that every coordinate in the complete post-header schedule runs the 711-rule classifier and reaches one continuation-ready accepting state. A total nine-symbol tape-preserving redirect adds exactly one step to the unique Finish route and no steps to body routes, giving one collision-free 720-rule machine over arbitrary protected workspace, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 34 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M226 normalizes terminal control only. Body-request synthesis, staging and dispatch, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

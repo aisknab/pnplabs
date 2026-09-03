@@ -58,6 +58,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch',
   'concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch':
     'ConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch',
+  'concrete-cook-levin-builder-physical-classifier-terminal-join':
+    'ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin',
 });
 
 function statusFieldStem(milestone) {

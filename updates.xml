@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-09-03T07:07:34Z</updated>
+  <updated>2026-09-03T13:17:14Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-09-03-concrete-cook-levin-builder-physical-classifier-terminal-join</id>
+    <title>All-route physical classifier terminal join</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-09-03-concrete-cook-levin-builder-physical-classifier-terminal-join"/>
+    <published>2026-09-03T13:17:14Z</published>
+    <updated>2026-09-03T13:17:14Z</updated>
+    <summary type="text">For every concrete verifier problem, every coordinate in the complete post-header schedule and arbitrary protected workspace, M226 runs the complete 711-rule classifier and joins all terminal outcomes at one continuation-ready accepting state. Body routes take no additional step; the unique Finish/reject route crosses one total nine-symbol tape-preserving redirect. The resulting collision-free 720-rule machine has kernel-checked exact work, compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. This terminal join does not synthesize, stage or dispatch a body-token request, connect successive schedule configurations, implement one repeated raw-machine builder loop, complete builder refinement or package the polynomial reduction. M226 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 202 of 204, and all five global gates remain open. Tracker at publication: formal artefact coverage 202 of 204; risk-weighted proof completion estimate 35 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;For every concrete verifier problem, every coordinate in the complete post-header schedule and arbitrary protected workspace, M226 runs the complete 711-rule classifier and joins all terminal outcomes at one continuation-ready accepting state. Body routes take no additional step; the unique Finish/reject route crosses one total nine-symbol tape-preserving redirect. The resulting collision-free 720-rule machine has kernel-checked exact work, compiled execution, one-step-short nonhalting and one source-input-size polynomial bound.&lt;/p&gt;&lt;p&gt;This terminal join does not synthesize, stage or dispatch a body-token request, connect successive schedule configurations, implement one repeated raw-machine builder loop, complete builder refinement or package the polynomial reduction. M226 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 202 of 204, and all five global gates remain open.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 202 of 204 current scoped rows earned. Risk-weighted proof completion estimate: 35%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-09-03-concrete-cook-levin-builder-physical-classifier-terminal-join&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-09-03-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch</id>
     <title>All-body staged-request physical dispatch</title>

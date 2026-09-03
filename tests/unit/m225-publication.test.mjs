@@ -157,39 +157,16 @@ test('M225 progress snapshot remains separate and conservative', () => {
 
 
 
-test('M225 active surfaces publish all-body staged-request dispatch conservatively', () => {
-  const currentCoverage =
-    `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
-  for (const file of [
-    'README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html',
-    'status.html',
-  ]) {
-    const surface = readFileSync(file, 'utf8');
-    assert.match(surface, new RegExp(currentCoverage.replace('/', '\\/')));
-    assert.match(surface, new RegExp(`${progress.proofCompletion.percent}%`));
-    assert.match(surface, /all-body staged-request|every (?:coordinate|populated and padding)/i);
-    assert.match(surface, /807-rule/i);
-    assert.match(surface, /request remains explicitly staged|does not synthesize/i);
-    assert.match(surface, /No fixed weighted checkpoint changes/i);
-    assert.match(surface, /All five global gates remain open/i);
-  }
-  const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage,
-    new RegExp(`data-current-milestone="${milestoneId}"`));
-  assert.match(homepage,
-    new RegExp(`updates\\.html#[^"']*${milestoneId}`));
+test('M225 remains a versioned historical publication card after M226', () => {
   const statusPage = readFileSync('status.html', 'utf8');
+  const card = statusPage.match(
+    new RegExp(`<article class="card" data-milestone-id="${milestoneId}"[\\s\\S]*?<\\/article>`),
+  )?.[0] ?? '';
+  assert.match(card, /all-body staged-request/i);
+  assert.match(card, /formal artefact coverage becomes 201 of 203/i);
+  assert.match(card, /risk-weighted estimate remains 35%/i);
+  assert.match(card, /collision-free 807-rule composition/i);
   assert.match(statusPage,
-    new RegExp(`data-milestone-id="${milestoneId}"`));
-  assert.match(statusPage,
-    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch"/);
-  assert.equal(release.artifacts.report.pageCount >= 164, true);
-
-  const activatedClaim = readFileSync('docs/activated_claim_wording.md', 'utf8');
-  const activatedMarker =
-    'leanConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchFormalized = true';
-  assert.equal(activatedClaim.split(activatedMarker).length - 1, 1);
-
-  const sourceCheckerMap = readFileSync('docs/source_checker_map.md', 'utf8');
-  assert.match(sourceCheckerMap, /all-body staged-request physical dispatch/i);
+    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-terminal-join"/);
+  assert.ok(release.artifacts.report.pageCount >= 164);
 });
