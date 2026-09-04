@@ -6,9 +6,9 @@ This checkout publishes the current formal-reconstruction status of the PNP proj
 establish `P = NP`.
 
 The canonical report downloads are now a 166-page, non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 33,617 public declarations across 346 modules,
-including 17,300 theorem-kind declarations, 8,121 assumption-free theorem-kind declarations, and no
-project-specific axioms. Exactly 15,910 private compiler auxiliaries are excluded explicitly.
+Lean theorem inventory. The inventory contains 33,722 public declarations across 347 modules,
+including 17,369 theorem-kind declarations, 8,137 assumption-free theorem-kind declarations, and no
+project-specific axioms. Exactly 15,954 private compiler auxiliaries are excluded explicitly.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -32,8 +32,8 @@ download aliases.
 
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
-| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,166 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | 3,166 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 202 of 204 scoped formal milestone rows. For every concrete verifier problem, every coordinate in its complete post-header schedule and arbitrary protected workspace, M226 injectively embeds M220's complete 711-rule classifier and adds one total nine-symbol, tape-preserving redirect from its unique Finish/reject terminal to the same continuation-ready accepting state reached by all body coordinates. The resulting collision-free 720-rule machine takes zero additional steps on body routes and exactly one redirect step on Finish, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. All 34 public declarations are axiom-audited: 22 have empty closure, three use only propext, and nine use only propext and Quot.sound, with no project axiom or Classical.choice. | Treating M226's terminal join as body-request synthesis or dispatch, successive physical schedule composition, one repeated raw-machine loop, complete raw builder/refinement, or the packaged reduction; treating supplied terminal, source, restoration, ambient, BCEL, Packet/HB, rank, claim, dependency, route-clear, or selector-silence data as terminal-derived; treating a local obstruction as a verified global gain or descent; treating conditional ZeroSlack as unconditional; or treating the row as executable PCCMin, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
+| Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for the 3,167 reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
+| Earned milestones | 3,166 reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 203 of 205 scoped formal milestone rows. For every concrete verifier problem and every coordinate in its complete post-header schedule, M227 runs M226's fixed terminal-joined classifier over a protected canonical optional-token request, proves common body-or-Finish terminal geometry, crosses the blank-free classifier prefix with M225's fixed 14-rule request relay, and executes M217's reflected fixed 64-rule dispatcher to the exact next canonical emitted prefix. The resulting collision-free 816-rule composition has exact work, six-for-one compiled, one-step-short and source-input-size polynomial evidence. All 65 public declarations are axiom-audited: 23 have empty closure, four use only propext, and 38 use only propext and Quot.sound, with no project axiom or Classical.choice. | Treating M226's terminal join as body-request synthesis or dispatch, successive physical schedule composition, one repeated raw-machine loop, complete raw builder/refinement, or the packaged reduction; treating supplied terminal, source, restoration, ambient, BCEL, Packet/HB, rank, claim, dependency, route-clear, or selector-silence data as terminal-derived; treating a local obstruction as a verified global gain or descent; treating conditional ZeroSlack as unconditional; or treating the row as executable PCCMin, polynomial runtime, a target decider, SAT hardness transport, a root theorem, or P = NP |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,7 +62,7 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `9a81dd86dc92260f3cdc56b6a463b78c651cfad6`.
+   `87495e636bb33140921cf582925cc395f10ad128`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
 3. Inspect every one of the 3,166 reviewed milestone declarations at its exact kernel type.
