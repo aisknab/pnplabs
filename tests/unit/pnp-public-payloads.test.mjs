@@ -115,6 +115,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch',
   cookLevinBuilderPhysicalClassifierTerminalJoin:
     'ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin',
+  cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch:
+    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -6897,7 +6899,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(fourthClauseSecondLiteralPrefixMilestone.earned, true);
   assert.equal(fourthClausePaddingRunMilestone.earned, true);
   assert.equal(secondConstraintFirstLiteralSignMilestone.earned, true);
-  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /PNP\.Main\.p_eq_np remain absent/u);
+  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent/u);
 
   for (const command of [
     'lake build PNP',

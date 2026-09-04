@@ -159,31 +159,16 @@ test('M226 progress snapshot remains separate and conservative', () => {
 
 
 
-test('M226 active surfaces publish the terminal join conservatively', () => {
-  const currentCoverage =
-    `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
-  for (const file of [
-    'README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html',
-    'status.html',
-  ]) {
-    const surface = readFileSync(file, 'utf8');
-    assert.match(surface, new RegExp(currentCoverage.replace('/', '\\/')));
-    assert.match(surface, new RegExp(`${progress.proofCompletion.percent}%`));
-    assert.match(surface, /all-route physical classifier terminal join|every post-header classifier route|terminal control/i);
-    assert.match(surface, /720-rule/i);
-    assert.match(surface, /does not synthesize, stage or dispatch|request synthesis and dispatch.*remain open/i);
-    assert.match(surface, /No fixed weighted checkpoint changes/i);
-    assert.match(surface, /All five global gates remain open/i);
-  }
-  const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage,
-    new RegExp(`data-current-milestone="${milestoneId}"`));
-  assert.match(homepage,
-    new RegExp(`updates\\.html#[^"']*${milestoneId}`));
+test('M226 remains a versioned historical publication card after M227', () => {
   const statusPage = readFileSync('status.html', 'utf8');
+  const card = statusPage.match(
+    new RegExp(`<article class="card" data-milestone-id="${milestoneId}"[\\s\\S]*?<\\/article>`),
+  )?.[0] ?? '';
+  assert.match(card, /physical classifier terminal join/i);
+  assert.match(card, /formal artefact coverage becomes 202 of 204/i);
+  assert.match(card, /risk-weighted estimate remains 35%/i);
+  assert.match(card, /collision-free 720-rule machine/i);
   assert.match(statusPage,
-    new RegExp(`data-milestone-id="${milestoneId}"`));
-  assert.match(statusPage,
-    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch"/);
-  assert.equal(release.artifacts.report.pageCount >= 166, true);
+    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch"/);
+  assert.ok(release.artifacts.report.pageCount >= 166);
 });

@@ -40,7 +40,7 @@ test('M225 public payloads preserve the all-body staged-request boundary', () =>
   assert.match(milestone.scope, /reflected 64-rule dispatcher/i);
   assert.match(milestone.scope, /collision-free 807-rule composition/i);
   assert.match(milestone.scope, /populated and padding coordinates/i);
-  assert.match(milestone.scope, /All 80 public declarations/);
+  assert.match(milestone.scope, /current M227 audit covers all 82 public declarations/i);
   assert.match(milestone.nonClaim, /stages each canonical body or padding request/i);
   assert.match(milestone.nonClaim, /does not synthesize that request/i);
   assert.match(milestone.nonClaim, /include the unique Finish route/i);
@@ -63,7 +63,7 @@ test('M225 status and release mirrors retain every load-bearing field', () => {
   const pairs = [
     ['Formalized', true],
     ['AxiomAuditPassed', true],
-    ['AuditedDeclarationCount', 80],
+    ['AuditedDeclarationCount', 82],
     ['FixedRequestRelayRuleCount', 14],
     ['FixedClassifierRelayMachineRuleCount', 734],
     ['FixedMirroredDispatcherRuleCount', 64],
