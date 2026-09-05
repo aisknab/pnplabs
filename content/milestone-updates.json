@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split",
+      "publishedAt": "2026-09-04T23:11:14Z",
+      "title": "All-route derived-Finish physical request split",
+      "plainLanguage": [
+        "For every concrete verifier problem and every post-header coordinate, M228 now starts from the physical body-or-Finish classifier terminal without a staged request. A fixed 20-rule relay crosses the blank-free classifier prefix, writes a collision-free body-pending marker on every body route, and derives the canonical Finish request only on the unique Finish route. A fixed 65-rule conditional reflected dispatcher rejects the body-pending marker and sends Finish to the exact next canonical emitted prefix. The collision-free 823-rule composition has kernel-checked exact work, compiled execution, one-step-short nonhalting and a source-input-size polynomial bound.",
+        "Body-token and padding requests remain unsynthesized, and successive configurations, the repeated physical builder loop, builder refinement and the packaged polynomial reduction remain open. M228 earns one formal artefact row but no fixed weighted checkpoint: the risk-weighted estimate remains 35%, formal artefact coverage becomes 204 of 206, and all five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 204,
+        "formalArtefactCoverageTotalRows": 206,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "79d36936abf796a3f306cede1b762aabc6907cd2",
+        "tree": "21ad74de9008a4bed3466407ceaab4f5f8879322",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-228",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-04-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch",
       "publishedAt": "2026-09-04T13:23:56Z",

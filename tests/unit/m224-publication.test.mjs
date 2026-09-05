@@ -168,5 +168,4 @@ test('M224 remains a versioned historical publication card after M225', () => {
   assert.match(card, /collision-free 814-rule machine/i);
   assert.match(statusPage,
     /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch"/);
-  assert.ok(release.artifacts.report.pageCount >= 163);
 });

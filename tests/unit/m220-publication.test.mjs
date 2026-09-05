@@ -119,5 +119,4 @@ test('M220 remains a versioned historical publication card after later milestone
   assert.doesNotMatch(card,
     /M220[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
   assert.match(statusPage, /data-milestone-id="concrete-cook-levin-builder-physical-finish-request"/);
-  assert.ok(release.artifacts.report.pageCount >= 159);
 });

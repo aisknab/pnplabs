@@ -62,6 +62,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin',
   'concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch':
     'ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch',
+  'concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split':
+    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit',
 });
 
 function statusFieldStem(milestone) {
@@ -4270,7 +4272,8 @@ test('static pages remain conservative and distinguish current from historical r
   );
   assert.match(statusPage, /PNP\.PEqualsNP/);
   assert.match(statusPage, /null never matches null/);
-  assert.match(reportPage, new RegExp(`current ${release.artifacts.report.pageCount}-page report is generated from the compiled Lean inventory`, 'iu'));
+  assert.match(reportPage, /the current report is generated from the compiled Lean inventory/iu);
+  assert.doesNotMatch(reportPage, /\bcurrent \d+-page report\b/iu);
   assert.match(reportPage, /Inventory first, report second/i);
   assert.doesNotMatch(reportPage, /report is the current publication-status authority/i);
   assert.match(reportPage, /57-page claim manuscript remains historical only/i);

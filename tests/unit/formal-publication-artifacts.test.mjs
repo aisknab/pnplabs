@@ -1164,6 +1164,8 @@ const STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX = Object.freeze({
     "ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin",
   cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch:
     "ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch",
+  cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit:
+    "ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit",
 });
 
 function statusStemForReleaseBoundary(status, release, prefix) {

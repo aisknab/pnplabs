@@ -164,5 +164,4 @@ test('M221 remains a versioned historical publication card after M222', () => {
     /M221[^\n]*close(?:s|d) (?:a )?(?:fixed checkpoint|global gate)/i);
   assert.match(statusPage,
     /data-milestone-id="concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation"/);
-  assert.ok(release.artifacts.report.pageCount >= 160);
 });

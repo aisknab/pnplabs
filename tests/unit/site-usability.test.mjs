@@ -21,10 +21,9 @@ function escapeRegExp(value) {
 }
 
 async function currentPublication() {
-  const [updates, index, release, status, proofProgress] = await Promise.all([
+  const [updates, index, status, proofProgress] = await Promise.all([
     readJson('content/milestone-updates.json'),
     readJson('public/pnp-index.json'),
-    readJson('downloads/formal-publication-release.json'),
     readJson('public/pnp-status.json'),
     readJson('public/pnp-proof-progress.json'),
   ]);
@@ -33,7 +32,6 @@ async function currentPublication() {
     proofProgress,
     counts: index.formalPublicationMilestoneCounts,
     milestoneRecordCount: status.formalPublicationMilestones.length,
-    reportPages: release.artifacts.report.pageCount,
   };
 }
 
@@ -66,7 +64,7 @@ test('every public HTML page offers one consistent audience-first navigation and
 });
 
 test('plain-language orientation is static and available before technical depth', async () => {
-  const { proofProgress, counts, reportPages } = await currentPublication();
+  const { proofProgress, counts } = await currentPublication();
   const [home, faq, review, paper, architecture, verify] = await Promise.all([
     read('index.html'), read('faq.html'), read('review.html'), read('paper.html'), read('architecture.html'), read('verify.html'),
   ]);
@@ -97,7 +95,8 @@ test('plain-language orientation is static and available before technical depth'
   for (const route of ['Complexity theory and mathematics', 'Lean and formal methods', 'Reproducibility and artefacts']) {
     assert.ok(review.includes(route), route);
   }
-  assert.match(paper, new RegExp(`The current ${reportPages}-page report is generated from the compiled Lean inventory`, 'u'));
+  assert.match(paper, /The current report is generated from the compiled Lean inventory/u);
+  assert.doesNotMatch(paper, /\bcurrent \d+-page report\b/iu);
   assert.match(paper, new RegExp(`${counts.earned} earned scoped milestones; ${counts.unearned} missing global milestones`, 'u'));
   assert.match(architecture, /See how Lean source becomes a public status report/u);
   assert.match(architecture, new RegExp(`Formal artefact coverage is ${counts.earned} of ${counts.total} scoped rows`, 'u'));
@@ -105,6 +104,29 @@ test('plain-language orientation is static and available before technical depth'
   assert.match(verify, /id="reproduce"/u);
 });
 
+test('current human-facing surfaces omit the volatile PDF page total', async () => {
+  const paths = [
+    'README.md',
+    'paper.html',
+    'status.html',
+    'verify.html',
+    'assets/public-source-links.js',
+    'docs/audit_questions.md',
+    'docs/reproducibility.md',
+    'docs/reviewer_guide.md',
+    'docs/source_checker_map.md',
+    'docs/terminology_crosswalk.md',
+  ];
+  for (const relativePath of paths) {
+    const surface = await read(relativePath);
+    const withoutHistoricalIdentifier = surface.replaceAll('57-page', 'historical-page-count');
+    assert.doesNotMatch(
+      withoutHistoricalIdentifier,
+      /\b\d+(?:-page| PDF pages| A4 pages)\b/u,
+      `${relativePath}: volatile current PDF page total`,
+    );
+  }
+});
 test('technical disclosures announce their controls and remain usable without JavaScript', async () => {
   const { milestoneRecordCount } = await currentPublication();
   const [home, status, updates, css] = await Promise.all([
