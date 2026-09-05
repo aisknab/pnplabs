@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
@@ -40,4 +41,20 @@ test('publication fixture stems require a companion audit field and nonempty pre
     leanExampleFormalized: true,
   }, 'example'), /missing status audit field/);
   assert.throws(() => deriveMilestoneStatusStem({}, ''), /must not be empty/);
+});
+
+test('all current publication fixture consumers use shared field derivation', () => {
+  for (const file of [
+    'tests/unit/formal-publication-artifacts.test.mjs',
+    'tests/unit/formal-publication-ui.test.mjs',
+    'tests/unit/pnp-public-payloads.test.mjs',
+    'tests/unit/pnp-homepage-matrix-badge.test.mjs',
+    'tests/audit-targets/cross-repo-targets.test.mjs',
+  ]) {
+    const source = readFileSync(file, 'utf8');
+    assert.match(source, /import \{ deriveMilestoneStatusStem \} from/);
+    assert.doesNotMatch(source,
+      /STATUS_STEM_WITHOUT_SCOPE_BY_|RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES|missing status-stem mapping/,
+      file);
+  }
 });

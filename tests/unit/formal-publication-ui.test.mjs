@@ -252,8 +252,6 @@ test('site validator pins the latest canonical publication milestone and rejects
     strippedScope[scopeField] = 'unsupported-broader-scope';
     assert.equal(validation.validateStatus(strippedScope, inventory), false, scopeField);
     statusFields.push([scopeField, status[scopeField], null]);
-  } else {
-    assert.equal(STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID[milestone.id], fieldStem);
   }
 
   const renderedStatusLines = new Set(validation.formalStatusFields(status).split('\n'));

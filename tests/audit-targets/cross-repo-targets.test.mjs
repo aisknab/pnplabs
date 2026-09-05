@@ -1,3 +1,4 @@
+import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -74,53 +75,7 @@ function latestPublishedMilestoneReleaseField(suffix, required = true) {
 const latestPublishedMilestoneScopeField = latestPublishedMilestoneReleaseField("Scope", false);
 const latestPublishedMilestoneFieldStem = (() => {
   if (latestPublishedMilestoneScopeField === undefined) {
-    const stems = {
-      "concrete-cook-levin-builder-full-schedule-cursor-controller":
-        "ConcreteCookLevinBuilderFullScheduleCursorController",
-      "concrete-cook-levin-builder-arbitrary-slot-header-router":
-        "ConcreteCookLevinBuilderArbitrarySlotHeaderRouter",
-      "concrete-cook-levin-builder-arbitrary-slot-post-header-decoder":
-        "ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder",
-      "concrete-cook-levin-builder-post-header-raw-divider":
-        "ConcreteCookLevinBuilderPostHeaderRawDivider",
-      "concrete-cook-levin-builder-post-header-raw-launch":
-        "ConcreteCookLevinBuilderPostHeaderRawLaunch",
-      "concrete-cook-levin-builder-post-header-raw-tape-bridge":
-        "ConcreteCookLevinBuilderPostHeaderRawTapeBridge",
-      "concrete-cook-levin-builder-post-divider-raw-route-classifier":
-        "ConcreteCookLevinBuilderPostDividerRawRouteClassifier",
-      "concrete-cook-levin-builder-post-divider-selected-token-launch":
-        "ConcreteCookLevinBuilderPostDividerSelectedTokenLaunch",
-      "concrete-cook-levin-builder-complete-schedule-iteration":
-        "ConcreteCookLevinBuilderCompleteScheduleIteration",
-      "concrete-cook-levin-builder-physical-optional-token-dispatch":
-        "ConcreteCookLevinBuilderPhysicalOptionalTokenDispatch",
-      "concrete-cook-levin-builder-physical-dispatch-schedule":
-        "ConcreteCookLevinBuilderPhysicalDispatchSchedule",
-      "concrete-cook-levin-builder-physical-finish-request":
-        "ConcreteCookLevinBuilderPhysicalFinishRequest",
-      "concrete-cook-levin-builder-physical-classifier-pipeline":
-        "ConcreteCookLevinBuilderPhysicalClassifierPipeline",
-      "concrete-cook-levin-builder-physical-classifier-finish-request":
-        "ConcreteCookLevinBuilderPhysicalClassifierFinishRequest",
-      "concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation":
-        "ConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation",
-      "concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch":
-        "ConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatch",
-      "concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch":
-        "ConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch",
-      "concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch":
-        "ConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch",
-      "concrete-cook-levin-builder-physical-classifier-terminal-join":
-        "ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin",
-      "concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch":
-        "ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch",
-      "concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split":
-        "ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit",
-    };
-    const stem = stems[latestPublishedMilestoneId];
-    assert.ok(stem, `missing status-stem mapping for scopeless milestone: ${latestPublishedMilestoneId}`);
-    return stem;
+    return deriveMilestoneStatusStem(publishedStatus, latestPublishedMilestoneReleasePrefix).slice("lean".length);
   }
   const scope = publishedRelease.earnedBoundary[latestPublishedMilestoneScopeField];
   const scopeKeys = Object.keys(publishedStatus).filter(
