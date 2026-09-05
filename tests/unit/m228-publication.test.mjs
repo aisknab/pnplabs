@@ -125,29 +125,13 @@ test('M228 progress snapshot remains separate and conservative', () => {
   });
 });
 
-test('M228 active surfaces publish the Finish-only derived-request boundary conservatively', () => {
-  const currentCoverage = `${progress.formalArtefactCoverage.earnedRows} of ${progress.formalArtefactCoverage.totalRows}`;
-  assert.equal(currentCoverage, '204 of 206');
-  for (const file of ['README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html', 'status.html']) {
-    const surface = readFileSync(file, 'utf8');
-    assert.match(surface, new RegExp(currentCoverage));
-    assert.match(surface, new RegExp(`${progress.proofCompletion.percent}%`));
-    assert.match(surface, /derived-Finish|body-pending marker|unique Finish request/i);
-    assert.match(surface, /823-rule/i);
-    assert.match(surface, /body-token and padding request synthesis remain open/i);
-    assert.match(surface, /No fixed weighted checkpoint changes/i);
-    assert.match(surface, /All five global gates remain open/i);
-  }
-  const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage, new RegExp(`data-current-milestone="${milestoneId}"`));
-  assert.match(homepage, new RegExp(`updates\\.html#[^"']*${milestoneId}`));
-  const statusPage = readFileSync('status.html', 'utf8');
-  assert.match(statusPage, new RegExp(`data-milestone-id="${milestoneId}"`));
-  assert.match(statusPage, /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch"/);
-
-  const activatedClaim = readFileSync('docs/activated_claim_wording.md', 'utf8');
-  const marker = 'leanConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitFormalized = true';
-  assert.equal(activatedClaim.split(marker).length - 1, 1);
-  const sourceCheckerMap = readFileSync('docs/source_checker_map.md', 'utf8');
-  assert.match(sourceCheckerMap, /all-route derived-Finish physical request split/i);
+test('M228 remains a versioned historical publication card', () => {
+  const surface = readFileSync('status.html', 'utf8');
+  const card = surface.match(new RegExp('<article\\b[^>]*data-milestone-id="' + milestoneId + '"[\\s\\S]*?<\\/article>'))?.[0] ?? '';
+  assert.match(card, /All-route derived-Finish physical request split/);
+  assert.match(card, /823-rule/);
+  assert.match(card, /body-token and padding request synthesis remain open/);
+  assert.match(card, /formal artefact coverage becomes 204 of 206/);
+  assert.match(card, /risk-weighted estimate remains 35%/);
+  assert.match(surface, new RegExp('data-milestone-id="' + updates.entries[0].milestoneId + '"'));
 });

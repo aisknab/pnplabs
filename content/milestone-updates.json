@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split",
+      "publishedAt": "2026-09-05T10:05:51Z",
+      "title": "All-route physical body-remainder split",
+      "plainLanguage": [
+        "For every concrete verifier problem and every post-header schedule coordinate, one fixed physical scanner now reads the retained body-token remainder and distinguishes zero from positive. It preserves the completed Finish endpoint without a supplied route, remainder, request or success certificate.",
+        "Clause occupancy and body-token and padding request synthesis remain open. This is a checked component of the Cook-Levin formula builder, not the repeated builder loop, a packaged polynomial reduction, a closed global gate or a proof of P = NP."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 205,
+        "formalArtefactCoverageTotalRows": 207,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "3676a3f291193221e4ee3537aaf6023fba95ace0",
+        "tree": "c3dec3c8d169780bc507ed247bd9e3aebdedd430",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-229",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split",
       "publishedAt": "2026-09-04T23:11:14Z",

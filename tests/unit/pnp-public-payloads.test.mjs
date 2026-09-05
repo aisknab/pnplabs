@@ -1,3 +1,4 @@
+import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -76,58 +77,19 @@ const releaseBoundaryField = (release, prefix, suffix) => {
   assert.equal(matchingFields.length, 1, `expected one release ${suffix} field for ${prefix}`);
   return matchingFields[0][1];
 };
-const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
-  cookLevinBuilderFullScheduleCursorController:
-    'ConcreteCookLevinBuilderFullScheduleCursorController',
-  cookLevinBuilderArbitrarySlotHeaderRouter:
-    'ConcreteCookLevinBuilderArbitrarySlotHeaderRouter',
-  cookLevinBuilderArbitrarySlotPostHeaderDecoder:
-    'ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder',
-  cookLevinBuilderPostHeaderRawDivider:
-    'ConcreteCookLevinBuilderPostHeaderRawDivider',
-  cookLevinBuilderPostHeaderRawLaunch:
-    'ConcreteCookLevinBuilderPostHeaderRawLaunch',
-  cookLevinBuilderPostHeaderRawTapeBridge:
-    'ConcreteCookLevinBuilderPostHeaderRawTapeBridge',
-  cookLevinBuilderPostDividerRawRouteClassifier:
-    'ConcreteCookLevinBuilderPostDividerRawRouteClassifier',
-  cookLevinBuilderPostDividerSelectedTokenLaunch:
-    'ConcreteCookLevinBuilderPostDividerSelectedTokenLaunch',
-  cookLevinBuilderCompleteScheduleIteration:
-    'ConcreteCookLevinBuilderCompleteScheduleIteration',
-  cookLevinBuilderPhysicalOptionalTokenDispatch:
-    'ConcreteCookLevinBuilderPhysicalOptionalTokenDispatch',
-  cookLevinBuilderPhysicalDispatchSchedule:
-    'ConcreteCookLevinBuilderPhysicalDispatchSchedule',
-  cookLevinBuilderPhysicalFinishRequest:
-    'ConcreteCookLevinBuilderPhysicalFinishRequest',
-  cookLevinBuilderPhysicalClassifierPipeline:
-    'ConcreteCookLevinBuilderPhysicalClassifierPipeline',
-  cookLevinBuilderPhysicalClassifierFinishRequest:
-    'ConcreteCookLevinBuilderPhysicalClassifierFinishRequest',
-  cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation:
-    'ConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation',
-  cookLevinBuilderPhysicalClassifierFinishMirroredDispatch:
-    'ConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatch',
-  cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch:
-    'ConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch',
-  cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch:
-    'ConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch',
-  cookLevinBuilderPhysicalClassifierTerminalJoin:
-    'ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin',
-  cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch:
-    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch',
-  cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit:
-    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit',
-});
 const statusStemForReleaseBoundary = (status, release, prefix) => {
-  if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
-    const stem = RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES[prefix];
+  const matchingScopeFields = Object.entries(release.earnedBoundary).filter(
+    ([key]) => key.endsWith('Scope')
+      && key.slice(0, -'Scope'.length).toLowerCase() === prefix.toLowerCase(),
+  );
+  assert.ok(matchingScopeFields.length <= 1, `expected at most one release scope field for ${prefix}`);
+  if (matchingScopeFields.length === 0) {
+    const stem = deriveMilestoneStatusStem(status, prefix).slice('lean'.length);
     assert.equal(status[`lean${stem}Formalized`], true, `missing status formalized field for ${prefix}`);
     assert.equal(status[`lean${stem}AxiomAuditPassed`], true, `missing status audit field for ${prefix}`);
     return stem;
   }
-  const scope = releaseBoundaryField(release, prefix, 'Scope');
+  const scope = matchingScopeFields[0][1];
   const scopeKeys = Object.keys(status).filter(
     (key) => key.startsWith('lean') && key.endsWith('Scope') && status[key] === scope,
   );

@@ -1,3 +1,4 @@
+import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { cpSync, linkSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
@@ -1123,56 +1124,11 @@ function releaseBoundaryValue(release, prefix, suffix, required = true) {
   return matchingFields[0]?.[1];
 }
 
-const STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX = Object.freeze({
-  cookLevinBuilderFullScheduleCursorController:
-    "ConcreteCookLevinBuilderFullScheduleCursorController",
-  cookLevinBuilderArbitrarySlotHeaderRouter:
-    "ConcreteCookLevinBuilderArbitrarySlotHeaderRouter",
-  cookLevinBuilderArbitrarySlotPostHeaderDecoder:
-    "ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder",
-  cookLevinBuilderPostHeaderRawDivider:
-    "ConcreteCookLevinBuilderPostHeaderRawDivider",
-  cookLevinBuilderPostHeaderRawLaunch:
-    "ConcreteCookLevinBuilderPostHeaderRawLaunch",
-  cookLevinBuilderPostHeaderRawTapeBridge:
-    "ConcreteCookLevinBuilderPostHeaderRawTapeBridge",
-  cookLevinBuilderPostDividerRawRouteClassifier:
-    "ConcreteCookLevinBuilderPostDividerRawRouteClassifier",
-  cookLevinBuilderPostDividerSelectedTokenLaunch:
-    "ConcreteCookLevinBuilderPostDividerSelectedTokenLaunch",
-  cookLevinBuilderCompleteScheduleIteration:
-    "ConcreteCookLevinBuilderCompleteScheduleIteration",
-  cookLevinBuilderPhysicalOptionalTokenDispatch:
-    "ConcreteCookLevinBuilderPhysicalOptionalTokenDispatch",
-  cookLevinBuilderPhysicalDispatchSchedule:
-    "ConcreteCookLevinBuilderPhysicalDispatchSchedule",
-  cookLevinBuilderPhysicalFinishRequest:
-    "ConcreteCookLevinBuilderPhysicalFinishRequest",
-  cookLevinBuilderPhysicalClassifierPipeline:
-    "ConcreteCookLevinBuilderPhysicalClassifierPipeline",
-  cookLevinBuilderPhysicalClassifierFinishRequest:
-    "ConcreteCookLevinBuilderPhysicalClassifierFinishRequest",
-  cookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation:
-    "ConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation",
-  cookLevinBuilderPhysicalClassifierFinishMirroredDispatch:
-    "ConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatch",
-  cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch:
-    "ConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch",
-  cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch:
-    "ConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch",
-  cookLevinBuilderPhysicalClassifierTerminalJoin:
-    "ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin",
-  cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch:
-    "ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch",
-  cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit:
-    "ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit",
-});
 
 function statusStemForReleaseBoundary(status, release, prefix) {
   const scope = releaseBoundaryValue(release, prefix, "Scope", false);
   if (scope === undefined) {
-    const stem = STATUS_STEM_WITHOUT_SCOPE_BY_RELEASE_PREFIX[prefix];
-    assert.ok(stem, `missing status-stem mapping for scopeless release boundary ${prefix}`);
+    const stem = deriveMilestoneStatusStem(status, prefix).slice("lean".length);
     assert.equal(status[`lean${stem}Formalized`], true, `missing formalized status field for ${prefix}`);
     assert.equal(status[`lean${stem}AxiomAuditPassed`], true, `missing axiom-audit status field for ${prefix}`);
     return stem;

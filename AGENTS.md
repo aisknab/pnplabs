@@ -143,6 +143,20 @@ core bytes and the publication, site, provenance, and deployment contracts.
   artefact bytes changed, the prior evidence is missing, or an identity or
   integrity check exposes a genuine conflict.
 
+### Verification ownership matrix
+
+| Change or boundary | Evidence to run | Evidence to reuse |
+| --- | --- | --- |
+| PNP proof or dependency change | Changed dependency chain, root, axiom/type inventory, relevant regressions and required core release checks | Checks whose source, inputs, toolchain and boundary are unchanged |
+| PNPLabs sync of a verified PNP commit | Exact source binding, mirrored bytes, publication contracts, links, downloads and site behavior | The core Lean build, theorem and axiom audits, and generated proof report |
+| PNPLabs presentation or documentation change | Affected site checks and required release checks | Unchanged proof and publication artifacts |
+| Verified PR and merge have the same tree | Required checks for the merge, clean checkout identity, source binding and release seals | Expensive checks of the identical tree and unchanged inputs, where the release policy permits |
+| Deployment and production | Mandatory launcher checks and independent verification of the exact production release | Prior proof compilation and unchanged development checks |
+
+Record the boundary a repeated check establishes. An unchanged check does not
+gain evidence merely by running again; a changed input or deployment environment
+can require a new check even when the source tree is identical.
+
 1. Merge the corresponding core `pnp` PR first. Fetch its `origin/main`, then
    synchronize from a clean checkout of the exact core merge commit and tree, not
    from the feature-branch tip.
@@ -235,6 +249,25 @@ core bytes and the publication, site, provenance, and deployment contracts.
   narrow deployment command. A dry run checks message shape only. The separate
   `npm run notify:test:live` command is the only live transport integration test
   and must never run in the normal test suite.
+
+### Source and expectation changes are one changeset
+
+- Before changing a producer, list each affected contract, its test/fixture and
+  workflow consumers, and the cheapest positive and negative check. Record this
+  in the existing milestone plan or review notes; do not wait for a broad failure
+  to discover consumers. Include schema fields, names, diagnostics, claim flags,
+  generated values, helper maps, shell assertions, and current public copy.
+- Update the producer and every affected expectation in the same patch. Derive
+  current values and name mappings from canonical data where possible; preserve
+  independent theorem, security, historical, and hostile-mutation invariants.
+- When a publication validator changes, reconcile all of the latest-milestone
+  mutation cases together: release flags and fingerprints, status flags and
+  claims, inventory axioms, and publication-map claims and fingerprints. Keep
+  diagnostic categories stable; do not weaken a rejection test to hide drift.
+- Run those focused positive and negative cases before the complete suite or
+  expensive cross-repository audit. A publication sync is not preflight-ready
+  until its latest-milestone mutation test passes. If a broad run reveals a stale
+  expectation, audit the entire consumer family before another broad attempt.
 
 ### Cheap-failure-first publication preflight
 

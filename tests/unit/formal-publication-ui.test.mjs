@@ -1,3 +1,4 @@
+import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -21,50 +22,6 @@ const index = JSON.parse(readFileSync('public/pnp-index.json', 'utf8'));
 const release = JSON.parse(readFileSync('downloads/formal-publication-release.json', 'utf8'));
 const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'));
 
-const STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID = Object.freeze({
-  'concrete-cook-levin-builder-full-schedule-cursor-controller':
-    'ConcreteCookLevinBuilderFullScheduleCursorController',
-  'concrete-cook-levin-builder-arbitrary-slot-header-router':
-    'ConcreteCookLevinBuilderArbitrarySlotHeaderRouter',
-  'concrete-cook-levin-builder-arbitrary-slot-post-header-decoder':
-    'ConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoder',
-  'concrete-cook-levin-builder-post-header-raw-divider':
-    'ConcreteCookLevinBuilderPostHeaderRawDivider',
-  'concrete-cook-levin-builder-post-header-raw-launch':
-    'ConcreteCookLevinBuilderPostHeaderRawLaunch',
-  'concrete-cook-levin-builder-post-header-raw-tape-bridge':
-    'ConcreteCookLevinBuilderPostHeaderRawTapeBridge',
-  'concrete-cook-levin-builder-post-divider-raw-route-classifier':
-    'ConcreteCookLevinBuilderPostDividerRawRouteClassifier',
-  'concrete-cook-levin-builder-post-divider-selected-token-launch':
-    'ConcreteCookLevinBuilderPostDividerSelectedTokenLaunch',
-  'concrete-cook-levin-builder-complete-schedule-iteration':
-    'ConcreteCookLevinBuilderCompleteScheduleIteration',
-  'concrete-cook-levin-builder-physical-optional-token-dispatch':
-    'ConcreteCookLevinBuilderPhysicalOptionalTokenDispatch',
-  'concrete-cook-levin-builder-physical-dispatch-schedule':
-    'ConcreteCookLevinBuilderPhysicalDispatchSchedule',
-  'concrete-cook-levin-builder-physical-finish-request':
-    'ConcreteCookLevinBuilderPhysicalFinishRequest',
-  'concrete-cook-levin-builder-physical-classifier-pipeline':
-    'ConcreteCookLevinBuilderPhysicalClassifierPipeline',
-  'concrete-cook-levin-builder-physical-classifier-finish-request':
-    'ConcreteCookLevinBuilderPhysicalClassifierFinishRequest',
-  'concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation':
-    'ConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientation',
-  'concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch':
-    'ConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatch',
-  'concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch':
-    'ConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatch',
-  'concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch':
-    'ConcreteCookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch',
-  'concrete-cook-levin-builder-physical-classifier-terminal-join':
-    'ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin',
-  'concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch':
-    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch',
-  'concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split':
-    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit',
-});
 
 function statusFieldStem(milestone) {
   const suffix = 'TheoremKernelTypeSha256';
@@ -85,8 +42,7 @@ function statusFieldStem(milestone) {
   );
   assert.ok(matchingScopeFields.length <= 1, `expected at most one release scope field for ${milestone.id}`);
   if (matchingScopeFields.length === 0) {
-    const stem = STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID[milestone.id];
-    assert.ok(stem, `missing status-stem mapping for scopeless milestone ${milestone.id}`);
+    const stem = deriveMilestoneStatusStem(status, releasePrefix).slice('lean'.length);
     assert.equal(status[`lean${stem}Formalized`], true);
     assert.equal(status[`lean${stem}AxiomAuditPassed`], true);
     return stem;
@@ -296,8 +252,6 @@ test('site validator pins the latest canonical publication milestone and rejects
     strippedScope[scopeField] = 'unsupported-broader-scope';
     assert.equal(validation.validateStatus(strippedScope, inventory), false, scopeField);
     statusFields.push([scopeField, status[scopeField], null]);
-  } else {
-    assert.equal(STATUS_STEM_WITHOUT_SCOPE_BY_MILESTONE_ID[milestone.id], fieldStem);
   }
 
   const renderedStatusLines = new Set(validation.formalStatusFields(status).split('\n'));

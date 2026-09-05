@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 634,779 | `8951dc5f62bd03cec174345dbdaafcadf13b1dcfe77802b0c6f93e2d098f5673` |
-| `downloads/canonical-proof-report.pdf` | 634,779 | `8951dc5f62bd03cec174345dbdaafcadf13b1dcfe77802b0c6f93e2d098f5673` |
-| `downloads/canonical_proof_report.tex` | 415,009 | `a88ed72a8cb6a7825306892613b82c0fe771fa67a294d2f05ce4cd41a868093d` |
-| `downloads/canonical-proof-report.tex` | 415,009 | `a88ed72a8cb6a7825306892613b82c0fe771fa67a294d2f05ce4cd41a868093d` |
-| `public/pnp-status.json` | 2,829,612 | `38a61b1ad252dd52021521c09d534cdb2e704fc07f8c4349be4e2dcf0563701b` |
-| `public/pnp-theorem-inventory.json` | 48,046,677 | `894f378047e23a233072d0d0439061fcf40ac4663fe0f192d5ee95a06140a450` |
-| `public/pnp-proof-progress.json` | 160,083 | `a106be94150a8b1c490f42c78781ab7801506e31c8da1e06934b41e72f8cf51a` |
+| `downloads/canonical_proof_report.pdf` | 634,471 | `6b41ef94575ce49683f49963b94a937f190053a8c7fe738a7c5449450cfd3e5a` |
+| `downloads/canonical-proof-report.pdf` | 634,471 | `6b41ef94575ce49683f49963b94a937f190053a8c7fe738a7c5449450cfd3e5a` |
+| `downloads/canonical_proof_report.tex` | 416,775 | `0f4eaa627ce71b936aba428a327f455e99b08a94456da60a243e761eb98cc34a` |
+| `downloads/canonical-proof-report.tex` | 416,775 | `0f4eaa627ce71b936aba428a327f455e99b08a94456da60a243e761eb98cc34a` |
+| `public/pnp-status.json` | 2,836,386 | `e01e0e79a27f99b282fa20a5637ef24700942eca824a8116ccbbf90cd8f08287` |
+| `public/pnp-theorem-inventory.json` | 48,081,357 | `1e4794c752a065610a470b36b304b4a18b095cfe57672695c742669e6f6e4ecd` |
+| `public/pnp-proof-progress.json` | 163,144 | `d0ccff9b87af9dbe4fd550a567e7f8236d9048c431b80f111995634475331eea` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 79d36936abf796a3f306cede1b762aabc6907cd2
+git -C ../pnp checkout 3676a3f291193221e4ee3537aaf6023fba95ace0
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,8 +68,8 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 33,856 public declarations, 17,454 theorem-kind declarations,
-8,176 assumption-free theorem-kind declarations, 15,972 excluded private auxiliaries, 348 modules, and
+Expected compiled inventory counts are 33,973 public declarations, 17,525 theorem-kind declarations,
+8,207 assumption-free theorem-kind declarations, 16,029 excluded private auxiliaries, 349 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
 NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. The literal formula-emitting raw
 Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
@@ -299,7 +299,7 @@ The M202 source-derived PkgC/BN6 checked-route milestone has 1 reviewed theorem 
 
 The M207 PkgC restoration coverage and exact ambient charge-coordinate descent milestone has 1 reviewed theorem pin. For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 16-declaration audit is free of project-specific axioms. The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 183 of 185.
 
-The latest M228 all-route derived-Finish physical request-split milestone has 1 reviewed theorem pin. For every concrete verifier problem and every coordinate in its complete post-header schedule, M228 runs M226's terminal-joined classifier without a staged request cell. A fixed 20-rule relay reads the physical body-or-Finish terminal, crosses the exact blank-free classifier prefix, writes a collision-free body-pending marker for every body route, and writes the canonical Finish request only for the unique Finish route. A fixed 65-rule conditional reflected dispatcher rejects the body-pending marker and sends Finish to the exact next canonical emitted prefix. The collision-free 823-rule composition has exact work, six-for-one compiled, one-step-short and source-input-size polynomial evidence. All 91 public declarations are axiom-audited: 50 have empty closure, 18 use only propext, and 23 use only propext and Quot.sound, with no project axiom or Classical.choice. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 91-declaration audit is free of project-specific axioms and `Classical.choice`. This milestone derives only the unique Finish request. Every body route halts at an explicit non-request pending marker; body-token and padding request synthesis remain open. It does not connect successive schedule configurations, implement one repeated raw-machine builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 204 of 206. All five global gates remain open.
+The latest M229 all-route physical body-remainder split has 1 reviewed theorem pin. For every concrete verifier problem and every coordinate in its complete post-header schedule, M229 runs M228 without a staged request, route, remainder or success certificate. It preserves the completed Finish endpoint and sends every body route through one fixed 36-rule physical scanner. The scanner crosses the retained clause-count and exterior boundaries, skips consumed-dividend marks, and distinguishes zero from positive remainder by the actual separator or unit symbol. The physical remainder equals the canonical body token coordinate. The collision-free 895-rule graph has exact work, six-for-one compiled execution, one-step-short nonhalting, and a verifier-input-size polynomial bound. All 71 public declarations are axiom-audited: 39 have empty closure, nine use only propext, and 23 use only propext and Quot.sound, with no project axiom or Classical.choice. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 71-declaration audit is free of project-specific axioms and `Classical.choice`. This milestone reads the physical body remainder but leaves clause occupancy and body-token and padding request synthesis open. Both body outcomes remain incomplete terminal configurations, distinguished by tape content. It does not connect successive schedule configurations, implement the repeated builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 205 of 207. All five global gates remain open.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.

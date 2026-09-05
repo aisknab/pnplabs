@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-09-04T23:11:14Z</updated>
+  <updated>2026-09-05T10:05:51Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split</id>
+    <title>All-route physical body-remainder split</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split"/>
+    <published>2026-09-05T10:05:51Z</published>
+    <updated>2026-09-05T10:05:51Z</updated>
+    <summary type="text">For every concrete verifier problem and every post-header schedule coordinate, one fixed physical scanner now reads the retained body-token remainder and distinguishes zero from positive. It preserves the completed Finish endpoint without a supplied route, remainder, request or success certificate. Clause occupancy and body-token and padding request synthesis remain open. This is a checked component of the Cook-Levin formula builder, not the repeated builder loop, a packaged polynomial reduction, a closed global gate or a proof of P = NP. Tracker at publication: formal artefact coverage 205 of 207; risk-weighted proof completion estimate 35 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;For every concrete verifier problem and every post-header schedule coordinate, one fixed physical scanner now reads the retained body-token remainder and distinguishes zero from positive. It preserves the completed Finish endpoint without a supplied route, remainder, request or success certificate.&lt;/p&gt;&lt;p&gt;Clause occupancy and body-token and padding request synthesis remain open. This is a checked component of the Cook-Levin formula builder, not the repeated builder loop, a packaged polynomial reduction, a closed global gate or a proof of P = NP.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 205 of 207 current scoped rows earned. Risk-weighted proof completion estimate: 35%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split</id>
     <title>All-route derived-Finish physical request split</title>
