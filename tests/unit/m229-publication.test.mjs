@@ -104,6 +104,38 @@ test('M229 rejects altered publication scope, theorem fingerprints and release a
   }
 });
 
+test('M229 rejection diagnostics retain every shared trust-layer contract', () => {
+  const releaseFlag = minimalManifest();
+  releaseFlag.earnedBoundary[M229.releasePrefix + 'Formalized'] = false;
+  assert.throws(() => assertM229Manifest(releaseFlag), /^Error: current manifest M229 .* boundary mismatch$/);
+
+  const releaseFingerprint = minimalManifest();
+  releaseFingerprint.earnedBoundary[M229.releasePrefix + 'TheoremKernelTypeSha256'] = {
+    [M229.theoremName]: '0'.repeat(64),
+  };
+  assert.throws(() => assertM229Manifest(releaseFingerprint), /^Error: current manifest M229 .* fingerprint mismatch$/);
+
+  const statusFlag = minimalStatus();
+  statusFlag[M229.statusPrefix + 'AxiomAuditPassed'] = false;
+  assert.throws(() => assertM229Status(statusFlag), /^Error: status M229 .* evidence mismatch$/);
+
+  const statusMilestone = minimalStatus();
+  statusMilestone.formalPublicationMilestones[0].nonClaim = 'unsupported-complete-global-claim';
+  assert.throws(() => assertM229Status(statusMilestone), /^Error: status M229 .* boundary mismatch$/);
+
+  const inventoryAxiom = minimalInventory();
+  inventoryAxiom.milestoneCandidates[0].axioms = ['PNP.ForgedLatestMilestoneAxiom'];
+  assert.throws(() => assertM229Inventory(inventoryAxiom), /^Error: inventory M229 .* theorem mismatch$/);
+
+  const mapMilestone = minimalMap();
+  mapMilestone.milestones[0].scope = 'unsupported-complete-global-claim';
+  assert.throws(() => assertM229PublicationMap(mapMilestone), /^Error: core publication map M229 .* boundary mismatch$/);
+
+  const mapFingerprint = minimalMap();
+  mapFingerprint.earnedMilestoneTheoremKernelTypeSha256[M229.theoremName] = '0'.repeat(64);
+  assert.throws(() => assertM229PublicationMap(mapFingerprint), /^Error: core publication map M229 .* fingerprint mismatch$/);
+});
+
 test('M229 history awards coverage without a fixed checkpoint or global-gate increase', () => {
   const history = progress.history.find(row => row.asOfCoordinate === coordinate);
   assert.ok(history);

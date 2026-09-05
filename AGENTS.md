@@ -250,6 +250,25 @@ can require a new check even when the source tree is identical.
   `npm run notify:test:live` command is the only live transport integration test
   and must never run in the normal test suite.
 
+### Source and expectation changes are one changeset
+
+- Before changing a producer, list each affected contract, its test/fixture and
+  workflow consumers, and the cheapest positive and negative check. Record this
+  in the existing milestone plan or review notes; do not wait for a broad failure
+  to discover consumers. Include schema fields, names, diagnostics, claim flags,
+  generated values, helper maps, shell assertions, and current public copy.
+- Update the producer and every affected expectation in the same patch. Derive
+  current values and name mappings from canonical data where possible; preserve
+  independent theorem, security, historical, and hostile-mutation invariants.
+- When a publication validator changes, reconcile all of the latest-milestone
+  mutation cases together: release flags and fingerprints, status flags and
+  claims, inventory axioms, and publication-map claims and fingerprints. Keep
+  diagnostic categories stable; do not weaken a rejection test to hide drift.
+- Run those focused positive and negative cases before the complete suite or
+  expensive cross-repository audit. A publication sync is not preflight-ready
+  until its latest-milestone mutation test passes. If a broad run reveals a stale
+  expectation, audit the entire consumer family before another broad attempt.
+
 ### Cheap-failure-first publication preflight
 
 - Start from the authoritative generated payload and enumerate every changed

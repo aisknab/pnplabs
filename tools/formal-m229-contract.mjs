@@ -39,54 +39,58 @@ export const M229 = Object.freeze({
 });
 
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-const requireBoundary = (ok, label) => { if (!ok) throw new Error('M229 ' + label + ' boundary mismatch'); };
+// Keep trust-layer diagnostics stable for the shared publication mutation tests.
+const requireBoundary = (ok, layer, detail, kind = 'boundary') => {
+  if (!ok) throw new Error(`${layer} M229 ${detail} ${kind} mismatch`);
+};
 const fingerprint = row => createHash('sha256').update(
   'PNP-FORMAL-PUBLICATION-FINGERPRINT-v0\nleanprover/lean4:v4.31.0\n' +
   'milestone-theorem-type:' + row.name + '\n' + row.kernelType
 ).digest('hex');
 
-function checkMilestone(row) {
+function checkMilestone(row, layer) {
   requireBoundary(row && row.classification === 'formalized-foundation-only'
     && row.scope === M229.scope && row.nonClaim === M229.nonClaim
-    && same(row.requiredTheorems, [M229.theoremName]), 'milestone');
+    && same(row.requiredTheorems, [M229.theoremName]), layer, 'milestone');
 }
 
 export function assertM229PublicationMap(map) {
-  checkMilestone(map.milestones?.find(row => row.id === M229.id));
-  requireBoundary(map.earnedMilestoneTheoremKernelTypeSha256?.[M229.theoremName] === M229.kernelTypeSha256, 'publication-map fingerprint');
+  checkMilestone(map.milestones?.find(row => row.id === M229.id), 'core publication map');
+  requireBoundary(map.earnedMilestoneTheoremKernelTypeSha256?.[M229.theoremName] === M229.kernelTypeSha256, 'core publication map', 'theorem', 'fingerprint');
 }
 
 export function assertM229Status(status) {
   const row = status.formalPublicationMilestones?.find(row => row.id === M229.id);
-  checkMilestone(row);
+  checkMilestone(row, 'status');
   requireBoundary(row.status === 'formalized-foundation-only' && row.earned === true
     && row.allPresent === true && row.allAssumptionFree === false
     && row.allKernelTypesMatch === true && row.axiomClosureUsesOnlyLeanStandardAllowlist === true
-    && row.sourceClosureFingerprintMatches === true, 'status milestone');
-  for (const [key, value] of Object.entries(M229.fields)) requireBoundary(status[key] === value, key);
+    && row.sourceClosureFingerprintMatches === true, 'status', 'milestone');
+  for (const [key, value] of Object.entries(M229.fields)) requireBoundary(status[key] === value, 'status', key, 'evidence');
   const proof = row.theoremRows?.[0];
   requireBoundary(row.theoremRows?.length === 1 && proof?.name === M229.theoremName
     && proof.present === true && proof.kind === 'theorem' && same(proof.axioms, M229.axioms)
     && proof.actualKernelTypeSha256 === M229.kernelTypeSha256
     && proof.expectedKernelTypeSha256 === M229.kernelTypeSha256
-    && proof.kernelTypeFingerprintMatches === true, 'status theorem');
+    && proof.kernelTypeFingerprintMatches === true, 'status', 'theorem');
 }
 
 export function assertM229Inventory(inventory) {
   const rows = inventory.milestoneCandidates?.filter(row => row.name === M229.theoremName);
   const row = rows?.[0];
   requireBoundary(rows?.length === 1 && row?.kind === 'theorem' && row.module === M229.module
-    && same(row.axioms, M229.axioms) && fingerprint(row) === M229.kernelTypeSha256, 'compiled inventory');
+    && same(row.axioms, M229.axioms) && fingerprint(row) === M229.kernelTypeSha256, 'inventory', 'compiled declaration', 'theorem');
 }
 
 export function assertM229Manifest(manifest) {
   const earned = manifest.earnedBoundary ?? {};
   for (const [key, value] of Object.entries(M229.fields)) {
-    requireBoundary(earned[key.replace(M229.statusPrefix, M229.releasePrefix)] === value, 'release ' + key);
+    requireBoundary(earned[key.replace(M229.statusPrefix, M229.releasePrefix)] === value, 'current manifest', key);
   }
+  requireBoundary(same(earned[M229.releasePrefix + 'TheoremKernelTypeSha256'],
+    { [M229.theoremName]: M229.kernelTypeSha256 }), 'current manifest', 'theorem', 'fingerprint');
   requireBoundary(earned[M229.releasePrefix + 'CheckedCompleteTheorem'] === M229.theoremName
-    && same(earned[M229.releasePrefix + 'TheoremKernelTypeSha256'], { [M229.theoremName]: M229.kernelTypeSha256 })
     && same(earned[M229.releasePrefix + 'AxiomClosure'], M229.axioms)
     && same(earned[M229.releasePrefix + 'ProjectAxiomClosure'], [])
-    && typeof earned.scope === 'string' && earned.scope.split('+plus-').includes(M229.id), 'release evidence');
+    && typeof earned.scope === 'string' && earned.scope.split('+plus-').includes(M229.id), 'current manifest', 'release evidence');
 }
