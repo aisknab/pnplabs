@@ -25,15 +25,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,168 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; the 3,169 reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 33,856 public declarations;
-- 17,454 theorem-kind declarations;
-- 8,176 assumption-free theorem-kind declarations;
-- 348 source-closure modules;
-- 15,972 excluded private compiler auxiliaries;
+- 33,973 public declarations;
+- 17,525 theorem-kind declarations;
+- 8,207 assumption-free theorem-kind declarations;
+- 349 source-closure modules;
+- 16,029 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,7 +49,7 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 204 earned formal artefact scopes are:
+The 205 earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
@@ -251,7 +251,7 @@ The 204 earned formal artefact scopes are:
 | All-body staged-request physical dispatch | One reviewed completion-theorem pin proves that every coordinate in the complete clause-token body rectangle can run the 711-rule classifier while preserving an explicitly staged canonical optional-token request, relay the request through a fixed 14-rule scanner, and execute M223's reflected 64-rule dispatcher. The collision-free 807-rule composition covers populated and padding coordinates and reaches each exact next canonical emitted prefix, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 82 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M225 explicitly stages the canonical body or padding request. Raw request synthesis, the combined Finish route, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
 | All-route physical classifier terminal join | One reviewed completion-theorem pin proves that every coordinate in the complete post-header schedule runs the 711-rule classifier and reaches one continuation-ready accepting state. A total nine-symbol tape-preserving redirect adds exactly one step to the unique Finish route and no steps to body routes, giving one collision-free 720-rule machine over arbitrary protected workspace, with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 34 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M226 normalizes terminal control only. Body-request synthesis, staging and dispatch, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
 | All-route staged-request physical dispatch | One reviewed completion-theorem pin proves that every coordinate in the complete post-header schedule runs M226's terminal-joined classifier over a protected canonical optional-token request, crosses the blank-free classifier prefix with one fixed 14-rule request relay, and executes the reflected fixed 64-rule dispatcher to the exact next canonical emitted prefix. The collision-free 816-rule composition covers every body and Finish route with exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 65 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M227 keeps the request explicitly staged. Raw request synthesis from classifier state, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
-| All-route derived-Finish physical request split | One reviewed completion-theorem pin proves that every coordinate in the complete post-header schedule runs M226's terminal-joined classifier without a staged request cell. A fixed 20-rule relay crosses the blank-free classifier prefix, writes a collision-free body-pending marker on every body route, and writes the canonical Finish request only on the unique Finish route. A fixed 65-rule conditional reflected dispatcher rejects body-pending and sends Finish to the exact next canonical emitted prefix. The collision-free 823-rule composition has exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 91 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M228 derives and dispatches only the unique Finish request. Body-token and padding request synthesis, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every remaining fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
+| All-route physical body-remainder split | One reviewed completion-theorem pin proves that every coordinate in the complete post-header schedule runs M226's terminal-joined classifier without a staged request cell. A fixed 20-rule relay crosses the blank-free classifier prefix, writes a collision-free body-pending marker on every body route, and writes the canonical Finish request only on the unique Finish route. A fixed 65-rule conditional reflected dispatcher rejects body-pending and sends Finish to the exact next canonical emitted prefix. The collision-free 823-rule composition has exact work, six-for-one compiled execution, one-step-short nonhalting and one source-input-size polynomial bound. The endpoint uses only `Quot.sound` and `propext`; all 91 declarations in the focused audit are free of project-specific axioms and `Classical.choice`. | M228 derives and dispatches only the unique Finish request. Body-token and padding request synthesis, successive schedule configurations, one repeated raw-machine builder loop, builder `FunctionProgram.RawRefinement`, the concrete `PolynomialReduction`, hardness transport, deterministic SAT, every remaining fixed checkpoint and global gate, the root theorem, and `P = NP` remain open. |
 | Conditional threshold boundary | Consequences of a proof-bearing six-premise candidate package | By itself, no premise instantiation or uniform encoded construction; the later semantic-threshold milestone instantiates the typed premises but not the encoded builder |
 | Explicit-list residual routes | Sound strict-gain search over one caller-supplied finite list | No global completeness or `ZeroSlack` from unresolved |
 

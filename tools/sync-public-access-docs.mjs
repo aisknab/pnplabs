@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { assertM229PublicationMap, assertM229Status, assertM229Inventory } from './formal-m229-contract.mjs';
 import { createHash, randomBytes } from "node:crypto";
 import {
   closeSync,
@@ -19,15 +20,15 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "79d36936abf796a3f306cede1b762aabc6907cd2";
-const CORE_TREE = "21ad74de9008a4bed3466407ceaab4f5f8879322";
-const CORE_PUBLICATION_MAP_SHA256 = "866dadbfcac5b744304a9442d922ad2dc65cf36cf3c6001baca3f637b94b90f5";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-05-228";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-228";
-const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-05-228";
-const CORE_SOURCE_CLOSURE_SHA256 = "16983103ff21ae11a9a2ba873fa81cca48789066ac765f598866615a8685566a";
-const OLD_PDF_SHA256 = "d2d5159005ebb2cd2f2f1da5047b68a14f778597a2a41d8c68dbf7532d4eec6e";
-const OLD_TEX_SHA256 = "291718cebc90f8f96edfeeea907dd6fda037365b92fce667cdcbba24aca5e0a2";
+const CORE_COMMIT = "3676a3f291193221e4ee3537aaf6023fba95ace0";
+const CORE_TREE = "c3dec3c8d169780bc507ed247bd9e3aebdedd430";
+const CORE_PUBLICATION_MAP_SHA256 = "fb6d002ac88615661ea88d5eff29a78ba8df3d377e7df1ecbcc1a674eb104084";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-05-229";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-229";
+const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-05-229";
+const CORE_SOURCE_CLOSURE_SHA256 = "9baa336a49724c0d61e2f13351419b6dddcb5e3262cd3a26848a6ca6496aa377";
+const OLD_PDF_SHA256 = "8951dc5f62bd03cec174345dbdaafcadf13b1dcfe77802b0c6f93e2d098f5673";
+const OLD_TEX_SHA256 = "a88ed72a8cb6a7825306892613b82c0fe771fa67a294d2f05ce4cd41a868093d";
 
 const LOCKED_NAND_CARRIER_TRACE_THEOREMS = {
   "PNP.DirectWire.LockedNANDTrace.carrierSeparation": { hash: "748fd3f6c689ac2c00886db1f78df41e470df0fcba8707cd67b557fd9211e50e", axioms: ["Quot.sound", "propext"] },
@@ -4870,32 +4871,32 @@ const CORE_FILES = [
   {
     sourcePath: "canonical_proof_report.pdf",
     targets: ["downloads/canonical_proof_report.pdf", "downloads/canonical-proof-report.pdf"],
-    bytes: 634779,
-    sha256: "8951dc5f62bd03cec174345dbdaafcadf13b1dcfe77802b0c6f93e2d098f5673"
+    bytes: 634471,
+    sha256: "6b41ef94575ce49683f49963b94a937f190053a8c7fe738a7c5449450cfd3e5a"
   },
   {
     sourcePath: "canonical_proof_report.tex",
     targets: ["downloads/canonical_proof_report.tex", "downloads/canonical-proof-report.tex"],
-    bytes: 415009,
-    sha256: "a88ed72a8cb6a7825306892613b82c0fe771fa67a294d2f05ce4cd41a868093d"
+    bytes: 416775,
+    sha256: "0f4eaa627ce71b936aba428a327f455e99b08a94456da60a243e761eb98cc34a"
   },
   {
     sourcePath: "public/pnp-status.json",
     targets: ["public/pnp-status.json"],
-    bytes: 2829612,
-    sha256: "38a61b1ad252dd52021521c09d534cdb2e704fc07f8c4349be4e2dcf0563701b"
+    bytes: 2836386,
+    sha256: "e01e0e79a27f99b282fa20a5637ef24700942eca824a8116ccbbf90cd8f08287"
   },
   {
     sourcePath: "public/pnp-theorem-inventory.json",
     targets: ["public/pnp-theorem-inventory.json"],
-    bytes: 48046677,
-    sha256: "894f378047e23a233072d0d0439061fcf40ac4663fe0f192d5ee95a06140a450"
+    bytes: 48081357,
+    sha256: "1e4794c752a065610a470b36b304b4a18b095cfe57672695c742669e6f6e4ecd"
   },
   {
     sourcePath: "status/PROOF_PROGRESS.json",
     targets: ["public/pnp-proof-progress.json"],
-    bytes: 160083,
-    sha256: "a106be94150a8b1c490f42c78781ab7801506e31c8da1e06934b41e72f8cf51a"
+    bytes: 163144,
+    sha256: "d0ccff9b87af9dbe4fd550a567e7f8236d9048c431b80f111995634475331eea"
   }
 ];
 
@@ -7761,7 +7762,8 @@ function assertPinnedCore(sourceDir) {
   assertM224PublicationMap(publicationMap);
   assertM225PublicationMap(publicationMap);
   assertM227PublicationMap(publicationMap);
-  assertM228PublicationMap(publicationMap);
+  assertM229PublicationMap(publicationMap);
+    assertM228PublicationMap(publicationMap);
   assertM226PublicationMap(publicationMap);
   return publicationMap;
 }
@@ -7785,6 +7787,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     }
   } else if (sourcePath === "public/pnp-status.json") {
     assertM227Status(payload);
+    assertM229Status(payload);
     assertM228Status(payload);
     assertM226Status(payload);
     assertM225Status(payload);
@@ -12696,6 +12699,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== false) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
     assertM227Inventory(payload);
+    assertM229Inventory(payload);
     assertM228Inventory(payload);
     assertM226Inventory(payload);
     assertM225Inventory(payload);
@@ -14540,6 +14544,30 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
   }
 }
 
+export function renderCurrentCanonicalIdentities(document, release) {
+  const rows = [
+    ["downloads/canonical_proof_report.pdf", release.artifacts.report.pdf],
+    ["downloads/canonical-proof-report.pdf", release.artifacts.report.pdf],
+    ["downloads/canonical_proof_report.tex", release.artifacts.report.tex],
+    ["downloads/canonical-proof-report.tex", release.artifacts.report.tex],
+    ["public/pnp-status.json", release.artifacts.status],
+    ["public/pnp-theorem-inventory.json", release.artifacts.theoremInventory],
+    ["public/pnp-proof-progress.json", release.artifacts.proofProgress]
+  ];
+  const lines = rows.map(([file, artifact]) => {
+    if (!Number.isSafeInteger(artifact?.bytes) || artifact.bytes <= 0
+        || !/^[0-9a-f]{64}$/.test(artifact.sha256)) {
+      fail(`invalid canonical identity for ${file}`);
+    }
+    return `| \`${file}\` | ${artifact.bytes.toLocaleString("en-US")} | \`${artifact.sha256}\` |`;
+  });
+  const table = ["Current canonical identities:", "", "| File | Bytes | SHA-256 |",
+    "| --- | ---: | --- |", ...lines].join("\n");
+  const region = /^Current canonical identities:\n\n\| File \| Bytes \| SHA-256 \|\n[\s\S]*?(?=\n\nThe PDF page count must match)/gm;
+  if ([...document.matchAll(region)].length !== 1) fail("expected one current canonical identity table");
+  return document.replace(region, () => table);
+}
+
 export function synchronizeFormalPublication(options = {}) {
   const root = path.resolve(options.root || process.cwd());
   const sourceDir = path.resolve(root, options.sourceDir || process.env.PNP_SOURCE_DIR || "../pnp");
@@ -14581,6 +14609,14 @@ export function synchronizeFormalPublication(options = {}) {
   );
   verifyReleaseSeal({ root });
   const release = JSON.parse(readFileSync(path.join(root, "downloads/formal-publication-release.json"), "utf8"));
+  const identityPath = path.join(root, "docs/reproducibility.md");
+  assertSafeMirrorTarget(root, identityPath, true);
+  const identityBefore = readFileSync(identityPath, "utf8");
+  const identityAfter = renderCurrentCanonicalIdentities(identityBefore, release);
+  if (identityBefore !== identityAfter) {
+    if (!write) fail("docs/reproducibility.md: current canonical identity table is stale");
+    writeMirrorFileAtomically(root, identityPath, Buffer.from(identityAfter));
+  }
   const expectedPageCount = release?.artifacts?.report?.pageCount;
   if (!Number.isSafeInteger(expectedPageCount) || expectedPageCount <= 0) fail("formal-publication release report page count is invalid");
   checkPdfPageCount(path.join(root, CORE_FILES[0].targets[0]), expectedPageCount);

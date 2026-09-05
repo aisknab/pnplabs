@@ -47,6 +47,32 @@
   },
   "entries": [
     {
+      "id": "2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split",
+      "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split",
+      "publishedAt": "2026-09-05T10:05:51Z",
+      "title": "All-route physical body-remainder split",
+      "plainLanguage": [
+        "For every concrete verifier problem and every coordinate in its complete post-header schedule, M229 runs M228 without a staged request, route, remainder or success certificate. It preserves the completed Finish endpoint and sends every body route through one fixed 36-rule physical scanner. The scanner crosses the retained clause-count and exterior boundaries, skips consumed-dividend marks, and distinguishes zero from positive remainder by the actual separator or unit symbol. The physical remainder equals the canonical body token coordinate. The collision-free 895-rule graph has exact work, six-for-one compiled execution, one-step-short nonhalting, and a verifier-input-size polynomial bound. All 71 public declarations are axiom-audited: 39 have empty closure, nine use only propext, and 23 use only propext and Quot.sound, with no project axiom or Classical.choice.",
+        "This milestone reads the physical body remainder but leaves clause occupancy and body-token and padding request synthesis open. Both body outcomes remain incomplete terminal configurations, distinguished by tape content. It does not connect successive schedule configurations, implement the repeated builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 205 of 207. All five global gates remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 205,
+        "formalArtefactCoverageTotalRows": 207,
+        "riskWeightedProofCompletionPercent": 35,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "3676a3f291193221e4ee3537aaf6023fba95ace0",
+        "tree": "c3dec3c8d169780bc507ed247bd9e3aebdedd430",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-229",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split",
       "publishedAt": "2026-09-04T23:11:14Z",
