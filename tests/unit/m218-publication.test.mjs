@@ -130,5 +130,4 @@ test('M218 remains historically exact after later current releases', () => {
     globalGatesClosed: 0,
     globalGatesAvailable: 5,
   });
-  assert.ok(release.artifacts.report.pageCount >= 157);
 });

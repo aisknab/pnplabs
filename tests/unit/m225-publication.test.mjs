@@ -168,5 +168,4 @@ test('M225 remains a versioned historical publication card after M226', () => {
   assert.match(card, /collision-free 807-rule composition/i);
   assert.match(statusPage,
     /data-milestone-id="concrete-cook-levin-builder-physical-classifier-terminal-join"/);
-  assert.ok(release.artifacts.report.pageCount >= 164);
 });

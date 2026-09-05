@@ -169,28 +169,19 @@ test('M227 progress snapshot remains separate and conservative', () => {
   });
 });
 
-test('M227 active surfaces publish all-route staged-request dispatch conservatively', () => {
-  const currentCoverage = `203 of 205`;
-  for (const file of ['README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html', 'status.html']) {
-    const surface = readFileSync(file, 'utf8');
-    assert.match(surface, new RegExp(currentCoverage));
-    assert.match(surface, new RegExp(`35%`));
-    assert.match(surface, /all-route staged-request|body-or-Finish|every post-header coordinate/i);
-    assert.match(surface, /816-rule/i);
-    assert.match(surface, /request remains explicitly staged|does not synthesize/i);
-    assert.match(surface, /No fixed weighted checkpoint changes/i);
-    assert.match(surface, /All five global gates remain open/i);
-  }
-  const homepage = readFileSync('index.html', 'utf8');
-  assert.match(homepage, new RegExp(`data-current-milestone="${milestoneId}"`));
-  assert.match(homepage, new RegExp(`updates\\.html#[^"']*${milestoneId}`));
+test('M227 remains a versioned historical publication card after M228', () => {
   const statusPage = readFileSync('status.html', 'utf8');
-  assert.match(statusPage, new RegExp(`data-milestone-id="${milestoneId}"`));
-  assert.match(statusPage, /data-milestone-id="concrete-cook-levin-builder-physical-classifier-terminal-join"/);
-  assert.ok(release.artifacts.report.pageCount >= 166);
-  const activatedClaim = readFileSync('docs/activated_claim_wording.md', 'utf8');
-  const marker = 'leanConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatchFormalized = true';
-  assert.equal(activatedClaim.split(marker).length - 1, 1);
-  const sourceCheckerMap = readFileSync('docs/source_checker_map.md', 'utf8');
-  assert.match(sourceCheckerMap, /all-route staged-request physical dispatch/i);
+  const card = statusPage.match(
+    new RegExp(`<article class="card" data-milestone-id="${milestoneId}"[\\s\\S]*?<\\/article>`),
+  )?.[0] ?? '';
+  assert.match(card, /all-route staged-request physical dispatch/i);
+  assert.match(card, /formal artefact coverage becomes 203 of 205/i);
+  assert.match(card, /risk-weighted estimate remains 35%/i);
+  assert.match(card, /collision-free 816-rule composition/i);
+  assert.match(card, /request explicitly staged/i);
+  assert.match(statusPage,
+    /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split"/);
+  const update = updates.entries.find((row) => row.milestoneId === milestoneId);
+  assert.ok(update);
+  assert.equal(update.source.statusCoordinate, coordinate);
 });

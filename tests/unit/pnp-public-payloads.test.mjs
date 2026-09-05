@@ -117,6 +117,8 @@ const RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES = Object.freeze({
     'ConcreteCookLevinBuilderPhysicalClassifierTerminalJoin',
   cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch:
     'ConcreteCookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch',
+  cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit:
+    'ConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplit',
 });
 const statusStemForReleaseBoundary = (status, release, prefix) => {
   if (Object.hasOwn(RELEASE_BOUNDARY_STATUS_STEM_OVERRIDES, prefix)) {
@@ -9762,7 +9764,6 @@ test('static inventory prose derives changing publication totals from the canoni
   const excludedPrivate = formatNumber(status.leanTheoremInventoryExcludedPrivateDeclarationCount);
   const sourceModules = formatNumber(status.leanTheoremInventorySourceClosureModuleCount);
   const projectAxioms = status.projectSpecificAxiomInventory.length;
-  const reportPages = latestRelease.artifacts.report.pageCount;
   assert.equal(homePage.includes(INVENTORY_SHA256), true, 'homepage must display the canonical inventory hash');
   assert.equal(statusPage.includes(INVENTORY_SHA256), true, 'status page must display the canonical inventory hash');
   assert.equal(
@@ -9823,16 +9824,26 @@ test('static inventory prose derives changing publication totals from the canoni
     0.65,
     'source checker map current milestone boundary',
   );
-  assert.equal(
-    auditQuestions.includes(`require ${reportPages} PDF pages`),
-    true,
-    'audit worksheet must derive the current report page count',
-  );
-  assert.equal(
-    sourceCheckerMap.includes(`Current ${reportPages}-page non-claiming report`),
-    true,
-    'source checker map must derive the current report page count',
-  );
+  for (const [surfaceName, surface] of Object.entries({
+    README: readme,
+    paper,
+    FAQ: faq,
+    'reviewer guide': guide,
+    'proof pipeline': pipeline,
+    reproducibility,
+    'activated claim wording': activatedClaimWording,
+    'audit questions': auditQuestions,
+    'source/checker map': sourceCheckerMap,
+    homepage: homePage,
+    'status page': statusPage,
+  })) {
+    const withoutHistoricalIdentifier = surface.replaceAll('57-page', 'historical-page-count');
+    assert.doesNotMatch(
+      withoutHistoricalIdentifier,
+      /\b\d+(?:-page| PDF pages| A4 pages)\b/u,
+      `${surfaceName} must not expose a volatile current PDF page total`,
+    );
+  }
   const latestStatusFields = [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`];
   if (Object.hasOwn(status, `lean${latestStatusStem}Scope`)) latestStatusFields.push(`lean${latestStatusStem}Scope`);
   for (const field of latestStatusFields) {
@@ -9862,7 +9873,7 @@ test('static inventory prose derives changing publication totals from the canoni
   }
   assert.equal(pipeline.includes('245 source-closure modules'), false);
   const reproducibilityCollapsed = reproducibility.replace(/\s+/gu, ' ');
-  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), `${reportPages} A4 pages`, 'fixed 135,070-rule', latestTheoremPinLabel, `focused ${latestFocusedAuditCount}-declaration audit`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), 'fixed 135,070-rule', latestTheoremPinLabel, `focused ${latestFocusedAuditCount}-declaration audit`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibilityCollapsed.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

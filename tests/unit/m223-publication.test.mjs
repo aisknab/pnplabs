@@ -164,5 +164,4 @@ test('M223 remains a versioned historical publication card after M224', () => {
   assert.match(card, /collision-free 813-rule machine/i);
   assert.match(statusPage,
     /data-milestone-id="concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch"/);
-  assert.ok(release.artifacts.report.pageCount >= 162);
 });

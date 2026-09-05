@@ -170,5 +170,4 @@ test('M226 remains a versioned historical publication card after M227', () => {
   assert.match(card, /collision-free 720-rule machine/i);
   assert.match(statusPage,
     /data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch"/);
-  assert.ok(release.artifacts.report.pageCount >= 166);
 });

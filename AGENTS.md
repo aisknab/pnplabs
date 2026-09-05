@@ -150,6 +150,12 @@ core bytes and the publication, site, provenance, and deployment contracts.
    and digests as exact generated data. Do not paraphrase or independently retype
    them in fixtures. Stabilize the source, run the generators, and record the
    values they actually emit rather than preselecting expected values.
+   Keep the current PDF page total as machine-readable release-integrity
+   metadata, not as milestone or progress copy. Do not repeat a literal current
+   page total in active website pages, README, or reviewer documentation; verify
+   the actual PDF against the canonical release manifest instead. Milestone-facing
+   numbers should be decision-relevant: formal artefact coverage, risk-weighted
+   progress and uncertainty, global gates, axioms, and publication state.
    Before running affected tests, update the publication-surface contracts to
    consume those stabilized values. Where a current value already has one
    checked-in canonical payload, derive test expectations from that payload
