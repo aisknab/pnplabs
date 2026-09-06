@@ -55,7 +55,39 @@ as a build or test machine.
 
 ## Formal-publication sync and deployment sequence
 
-Every milestone publication requires a full PNPLabs surface audit. This is a
+### Publication cadence: major milestones and batched updates
+
+Continue verifying and merging core milestones without a website cycle between
+smaller results. The agent owns the publish/defer decision. Publish a PNPLabs
+update when at least one of these materially changes the public project status:
+
+- A fixed risk-weighted checkpoint changes state.
+- A global proof gate, eligible root theorem or publication gate changes state.
+- A substantial end-to-end general capability changes the current bottom line,
+  such as a complete all-input construction, rather than another local step.
+- A previously published claim requires correction, qualification or revocation.
+
+A local lemma, finite fixture, cursor step, conditional sidecar, added evidence
+row, test improvement, refactor or accumulated milestone count alone is not a
+site-publication trigger. Do not impose an arbitrary every-N-milestones cadence.
+A major capability does not receive weighted credit unless a fixed checkpoint
+was actually earned under the canonical progress policy.
+
+Record publish/defer and its short rationale in the existing milestone plan or
+release notes. Use the core ledger/history to identify pending earned milestones;
+do not create a competing progress ledger. When publication is warranted, batch
+all pending earned results into one sync from the latest exact verified core
+merge, then perform one complete publication-surface audit and release cycle.
+While deferring, preserve the coherent published source pin, as-of coordinate and
+progress values; validate that release against its pin, not a newer unpublished
+core HEAD. Do not mix newer figures into an older published snapshot.
+
+Keep meaningful core milestone and verified submilestone notifications independent
+of website cadence. Instructions-only repository changes do not by themselves
+trigger site regeneration or deployment. Correct misleading public claims promptly
+even when there is no new positive milestone.
+
+Every publication batch requires a full PNPLabs surface audit. This is a
 workflow invariant, not a milestone-specific cleanup. Before sealing a release,
 reconcile the newest result and its boundary across the homepage (including the
 current bottom line), formal status and complete milestone ledger, FAQ and
@@ -230,7 +262,8 @@ can require a new check even when the source tree is identical.
   must not invalidate formal work, publication evidence, or a verified release.
 - Send only for a fully earned and merged milestone, a fixed checkpoint or global
   gate state change, a revoked result, an actionable blocker, a meaningful long
-  validation or release outcome, or exact root-theorem publication. Coalesce
+  validation or release outcome, a verified submilestone that meaningfully
+  advances the active plan, or exact root-theorem publication. Coalesce
   related work and deduplicate in the sending workflow.
 - Notification wording must obtain the risk-weighted proof estimate from the
   canonical fixed-checkpoint ledger and report formal artefact coverage separately.
