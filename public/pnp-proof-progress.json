@@ -2,13 +2,13 @@
   "kind": "PNPProofProgress0",
   "version": 0,
   "modelId": "fixed-risk-weighted-checkpoints-v0",
-  "asOfCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-229",
-  "lastReviewedDate": "2026-09-05",
+  "asOfCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231",
+  "lastReviewedDate": "2026-09-11",
   "proofCompletion": {
     "label": "risk-weighted proof completion estimate",
-    "pointsEarned": 35,
+    "pointsEarned": 40,
     "pointsAvailable": 100,
-    "percent": 35,
+    "percent": 40,
     "uncertaintyLowPercent": 20,
     "uncertaintyHighPercent": 40,
     "isProbabilityOfCorrectness": false,
@@ -17,8 +17,8 @@
   },
   "formalArtefactCoverage": {
     "label": "formal artefact coverage",
-    "earnedRows": 205,
-    "totalRows": 207,
+    "earnedRows": 207,
+    "totalRows": 209,
     "percentRoundedOneDecimal": 99,
     "isProofCompletionMetric": false,
     "denominatorCanGrow": true
@@ -109,7 +109,7 @@
       "id": "concrete-reductions",
       "title": "Concrete reductions and locked-NAND route",
       "pointsAvailable": 20,
-      "pointsEarned": 15,
+      "pointsEarned": 20,
       "checkpoints": [
         {
           "id": "reductions-cook-levin-semantics",
@@ -185,12 +185,12 @@
             { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch" },
             { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split" },
             { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split" },
-            { "kind": "status-field", "field": "leanConcreteCookLevinFormulaBuilderFormalized", "expected": false }
+            { "kind": "status-field", "field": "leanConcreteCookLevinFormulaBuilderFormalized", "expected": true }
           ],
           "awardedAtCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184",
-          "justification": "Many literal raw-machine prefixes are checked; M208 replaces further fixed-slot control extension with one all-input polynomial schedule-count controller, M209 adds the first uniform arbitrary-coordinate raw routing layer, M210 adds the all-coordinate semantic post-header decoder and checked raw-remainder extraction, M211 adds a fixed all-dividend positive-width raw quotient/remainder machine, M212 joins those exact interfaces through all-coordinate executable orchestration, M213 closes the physical M209-to-M211 tape handoff, M214 classifies every in-range quotient on preserved tape, M215 derives and launches every canonical selected token, M216 recursively composes all verifier-derived post-header opportunities to the complete encoded formula, M217 replaces the value-level selector-to-appender handoff with one fixed physical five-request dispatcher, M218 composes that dispatcher across every canonical coordinate, M219 physically derives the unique Finish request, M220 composes the full suffix-preserving classifier pipeline, M221 writes the exact Finish request cell after that complete classifier, M222 crosses the derived blank-free classifier prefix to a sentinel, M223 reflects M217 and executes the full-classifier Finish endpoint, M224 derives and executes the first populated separator route through one fixed 814-rule composition, M225 generalizes physical execution to every coordinate in the complete clause-token body rectangle through one fixed 807-rule composition with the canonical request explicitly staged on protected tape, M226 joins all physical classifier terminals at one continuation state with a fixed 720-rule wrapper, M227 sends every body and Finish route through one fixed 816-rule staged-request relay and mirrored-dispatch composition, and M228 removes the staged request cell, derives the unique Finish request, and marks every body route at an explicit pending boundary in one fixed 823-rule composition. The status correctly keeps body and padding request synthesis, successive-coordinate composition, one repeated schedule loop, and the full refined builder false. M229 adds the physical all-coordinate zero-versus-positive body-remainder scan with exact execution and polynomial overhead. This local dependency edge does not complete the all-input formula builder or earn further checkpoint points.",
-          "remainingLimitation": "M229 preserves Finish and physically distinguishes zero from positive body remainder using the retained divider ledger, but clause occupancy, body-token and padding request synthesis, successive-coordinate composition, the repeated builder loop, builder RawRefinement and the packaged PolynomialReduction remain open.",
-          "lastReviewedDate": "2026-09-05"
+          "justification": "The originally earned literal finite-machine builder prefixes retain their two-point baseline credit. M230 completes the general construction under the separate fixed complete-builder checkpoint; no additional prefix points are awarded.",
+          "remainingLimitation": "These prefix results alone are not the complete construction. M230 earns the separate full-builder checkpoint and M231 earns the separate concrete NP-hardness checkpoint. Neither is a deterministic SAT algorithm or a closure of residual minimization, unconditional ZeroSlack, complete polynomial PCCMin or the eligible root theorem.",
+          "lastReviewedDate": "2026-09-11"
         },
         {
           "id": "reductions-report-locked-nand-linkage",
@@ -210,7 +210,7 @@
           "id": "reductions-complete-cook-levin-builder",
           "title": "Complete all-input polynomial Cook-Levin formula builder and packaged reduction",
           "points": 3,
-          "status": "open",
+          "status": "earned",
           "evidence": [
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderFullScheduleCursorControllerFormalized", "expected": true },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFormalized", "expected": true },
@@ -344,8 +344,8 @@
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchSourceSizePolynomialBoundFormalized", "expected": true },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchRawCoordinateSelectorFormalized", "expected": false },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchLiteralScheduleLoopFormalized", "expected": false },
-            { "kind": "status-field", "field": "leanConcreteCookLevinFormulaBuilderFormalized", "expected": false },
-            { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPolynomialReductionFormalized", "expected": false },
+            { "kind": "status-field", "field": "leanConcreteCookLevinFormulaBuilderFormalized", "expected": true },
+            { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPolynomialReductionFormalized", "expected": true },
             { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch" },
             { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch" },
             { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch" },
@@ -364,8 +364,6 @@
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchBodyOrPaddingRequestDerived", "expected": false },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchAllClassifierRoutesConnected", "expected": false },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchLiteralRawLoopFormalized", "expected": false },
-            { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch" },
-            { "kind": "milestone-earned", "id": "concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch" },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchFormalized", "expected": true },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchAxiomAuditPassed", "expected": true },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchAuditedDeclarationCount", "expected": 121 },
@@ -462,26 +460,62 @@
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitExactWorkTraceFormalized", "expected": true },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitCompiledRawMachineFormalized", "expected": true },
             { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitOneStepShortNonhaltingFormalized", "expected": true },
-            { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitExternalInputSizePolynomialFormalized", "expected": true }
+            { "kind": "status-field", "field": "leanConcreteCookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitExternalInputSizePolynomialFormalized", "expected": true },
+            { "kind": "status-field", "field": "leanConcreteCookLevinBuilderDynamicCursorFormalized", "expected": true },
+            { "kind": "status-field", "field": "leanConcreteCookLevinBuilderRawRefinementFormalized", "expected": true },
+            { "kind": "milestone-earned", "id": "concrete-cook-levin-complete-builder" },
+            { "kind": "inventory-declaration", "name": "PNP.Concrete.CookLevin.formulaBuilderMachine_accept", "expectedPresent": true },
+            { "kind": "inventory-declaration", "name": "PNP.Concrete.CookLevin.formulaBuilderMachine_output", "expectedPresent": true },
+            { "kind": "inventory-declaration", "name": "PNP.Concrete.CookLevin.formulaBuilder_output", "expectedPresent": true },
+            { "kind": "inventory-declaration", "name": "PNP.Concrete.CookLevin.formulaBuilder_rawRefinement_output", "expectedPresent": true },
+            { "kind": "inventory-declaration", "name": "PNP.Concrete.CookLevin.polynomialReduction_output", "expectedPresent": true },
+            { "kind": "inventory-declaration", "name": "PNP.Concrete.CookLevin.cook_levin_formula_builder_checked_complete", "expectedPresent": true }
           ],
-          "awardedAtCoordinate": null,
-          "justification": "M208 earns a uniform all-position control scaffold, M209 the fixed-table arbitrary-coordinate outer router, M210 exact all-coordinate semantic decoding, M211 the fixed raw quotient/remainder kernel, M212 the executable composed launch, M213 the fixed literal divider tape bridge, M214 the shielded physical body-versus-Finish classifier, M215 canonical all-coordinate selected-token launch, M216 complete verifier-derived semantic schedule iteration, M217 one fixed physical five-request dispatcher, M218 exact recursive composition across every canonical coordinate, M219 the first literal Finish request branch, M220 one fixed 711-rule all-coordinate classifier pipeline, M221 one fixed 721-rule full-classifier-to-Finish-request-cell composition, M222 one fixed 740-rule Finish-workspace orientation composition, M223 one fixed 813-rule reflected Finish-dispatch composition, M224 one fixed 814-rule first populated separator-dispatch composition, M225 one fixed 807-rule all-body staged-request classifier/relay/reflected-dispatch composition, M226 one fixed 720-rule all-route classifier terminal join, M227 one fixed 816-rule all-route staged-request relay and mirrored-dispatch composition, and M228 one fixed 823-rule no-staged-request body-pending/derived-Finish composition. M228 derives and dispatches Finish from the classifier terminal but intentionally stops every body route before request synthesis. The checked status still records body and padding request synthesis, successive-coordinate composition, a repeated builder loop, complete refined builder, and packaged polynomial reduction as false. M229 adds the physical all-coordinate zero-versus-positive body-remainder scan with exact execution and polynomial overhead. This local dependency edge does not complete the all-input formula builder or earn further checkpoint points.",
-          "remainingLimitation": "M229 preserves Finish and physically distinguishes zero from positive body remainder using the retained divider ledger, but clause occupancy, body-token and padding request synthesis, successive-coordinate composition, the repeated builder loop, builder RawRefinement and the packaged PolynomialReduction remain open.",
-          "lastReviewedDate": "2026-09-05"
+          "awardedAtCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-10-230",
+          "justification": "One finite source-derived machine now constructs the complete original canonical Cook-Levin formula for every raw input, including empty and odd lengths, with total polynomial runtime and encoded-output-size bounds and exact recursive raw refinement. The compiled PolynomialReduction uses the original formula semantics without a supplied trace or correctness certificate. This retires the full builder dependency, not another prefix or finite fixture.",
+          "remainingLimitation": "M231 separately closes concrete CNFSAT NP-completeness using this complete reduction. The builder is not a deterministic SAT algorithm and does not close residual minimization, unconditional ZeroSlack, complete polynomial PCCMin or the eligible root theorem.",
+          "lastReviewedDate": "2026-09-11"
         },
         {
           "id": "reductions-concrete-np-hardness",
           "title": "Concrete NP-hardness or NP-completeness transport in the selected complexity model",
           "points": 2,
-          "status": "open",
+          "status": "earned",
           "evidence": [
-            { "kind": "status-field", "field": "leanConcreteCNFNPCompletenessFormalized", "expected": false },
-            { "kind": "status-blocker-open", "id": "Formal.ConcreteSAT" }
+            {
+              "kind": "milestone-earned",
+              "id": "concrete-cnf-np-completeness"
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFNPCompletenessFormalized",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFNPCompletenessAxiomAuditPassed",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFNPCompletenessAuditedDeclarationCount",
+              "expected": 2
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.cnfSAT_np_hard",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.cnfSAT_np_complete",
+              "expectedPresent": true
+            }
           ],
-          "awardedAtCoordinate": null,
-          "justification": "The concrete NP-completeness field is false and the concrete SAT blocker remains open.",
-          "remainingLimitation": "The selected concrete complexity model still lacks the required NP-hardness transport.",
-          "lastReviewedDate": "2026-08-23"
+          "awardedAtCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231",
+          "justification": "The complete M230 source-derived polynomial reduction now applies to every concrete NP language through its verifier witness, and existing concrete CNFSAT membership closes the exact NPComplete CNFSAT proposition. This retires the named uniform NP-hardness transport obligation rather than adding a finite instance or supplied-data implication.",
+          "remainingLimitation": "Every fixed checkpoint in the concrete-reductions track is now earned. These reduction results do not supply deterministic CNFSAT in P, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin or the eligible root theorem. The separate final complexity-transport checkpoint remains open and receives no duplicate credit.",
+          "lastReviewedDate": "2026-09-11"
         },
         {
           "id": "reductions-final-target-compatibility",
@@ -495,8 +529,8 @@
           ],
           "awardedAtCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-186",
           "justification": "The active report-facing SAT and locked-NAND endpoints are definitionally the concrete languages, and the bridge consumes the compiled all-bitstring polynomial reduction without a caller-supplied trust edge.",
-          "remainingLimitation": "The locked-NAND target still lacks a deterministic polynomial-time decider, and concrete SAT NP-hardness and CNFSAT-in-P remain open.",
-          "lastReviewedDate": "2026-08-23"
+          "remainingLimitation": "The locked-NAND target still lacks a deterministic polynomial-time decider, and CNFSAT-in-P remains open. M231 separately supplies concrete CNFSAT NP-completeness; compatibility alone does not supply the final P = NP transport or root theorem.",
+          "lastReviewedDate": "2026-09-11"
         }
       ]
     },
@@ -821,13 +855,20 @@
           "points": 1,
           "status": "open",
           "evidence": [
-            { "kind": "status-field", "field": "leanConcreteCNFNPCompletenessFormalized", "expected": false },
-            { "kind": "status-blocker-open", "id": "Formal.RootTheoremAndAxiomAudit" }
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFSATInPFormalized",
+              "expected": false
+            },
+            {
+              "kind": "status-blocker-open",
+              "id": "Formal.RootTheoremAndAxiomAudit"
+            }
           ],
           "awardedAtCoordinate": null,
-          "justification": "The concrete NP-completeness transport is not formalized and the root gate remains blocked.",
-          "remainingLimitation": "The exact concrete SAT theorem must be transported through the selected standard complexity model.",
-          "lastReviewedDate": "2026-08-23"
+          "justification": "Concrete CNFSAT NP-completeness is now proved, but the deterministic SAT theorem and its final standard-complexity linkage to the eligible P = NP root remain absent. The two-point reduction checkpoint is credited separately; it cannot also earn this final transport checkpoint.",
+          "remainingLimitation": "An exact concrete CNFSAT-in-P theorem and the remaining standard complexity transport required by the eligible root must be constructed and audited. NP-completeness alone earns no credit here.",
+          "lastReviewedDate": "2026-09-11"
         },
         {
           "id": "root-eligible-theorem",
@@ -1690,6 +1731,169 @@
       "changedCheckpointIds": [],
       "changeRecords": [],
       "rationale": "For every concrete verifier problem and every coordinate in its complete post-header schedule, M229 runs M228 without a staged request, route, remainder or success certificate. It preserves the completed Finish endpoint and sends every body route through one fixed 36-rule physical scanner. The scanner crosses the retained clause-count and exterior boundaries, skips consumed-dividend marks, and distinguishes zero from positive remainder by the actual separator or unit symbol. The physical remainder equals the canonical body token coordinate. The collision-free 895-rule graph has exact work, six-for-one compiled execution, one-step-short nonhalting, and a verifier-input-size polynomial bound. All 71 public declarations are axiom-audited: 39 have empty closure, nine use only propext, and 23 use only propext and Quot.sound, with no project axiom or Classical.choice. This milestone reads the physical body remainder but leaves clause occupancy and body-token and padding request synthesis open. Both body outcomes remain incomplete terminal configurations, distinguished by tape content. It does not connect successive schedule configurations, implement the repeated builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed checkpoint changes state. Formal artefact coverage is 205 of 207 current scoped publication rows earned. The risk-weighted proof completion estimate remains 35 percent, with an uncertainty range of 20 to 40 percent. Global gates closed: 0 of 5."
+    },
+    {
+      "kind": "milestone-review",
+      "asOfCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-10-230",
+      "formalArtefactCoverage": {
+        "earnedRows": 206,
+        "totalRows": 208
+      },
+      "riskWeightedProofCompletionPercent": 38,
+      "uncertaintyLowPercent": 20,
+      "uncertaintyHighPercent": 40,
+      "globalGatesClosed": 0,
+      "globalGatesAvailable": 5,
+      "scoreChanged": true,
+      "changedCheckpointIds": [
+        "reductions-complete-cook-levin-builder"
+      ],
+      "changeRecords": [
+        {
+          "checkpointId": "reductions-complete-cook-levin-builder",
+          "oldStatus": "open",
+          "newStatus": "earned",
+          "compiledEvidence": [
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCookLevinBuilderDynamicCursorFormalized",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCookLevinFormulaBuilderFormalized",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCookLevinBuilderRawRefinementFormalized",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCookLevinBuilderPolynomialReductionFormalized",
+              "expected": true
+            },
+            {
+              "kind": "milestone-earned",
+              "id": "concrete-cook-levin-complete-builder"
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.formulaBuilderMachine_accept",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.formulaBuilderMachine_output",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.formulaBuilder_output",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.formulaBuilder_rawRefinement_output",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.polynomialReduction_output",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.cook_levin_formula_builder_checked_complete",
+              "expectedPresent": true
+            }
+          ],
+          "sourceCoordinateOrCommit": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-10-230",
+          "loadBearingRationale": "One finite source-derived machine now constructs the complete original canonical Cook-Levin formula for every raw input, including empty and odd lengths, with total polynomial runtime and encoded-output-size bounds and exact recursive raw refinement. The compiled PolynomialReduction uses the original formula semantics without a supplied trace or correctness certificate. This retires the full builder dependency, not another prefix or finite fixture.",
+          "remainingTrackLimitations": "The separate named concrete NP-hardness or NP-completeness transport remains open. The reduction is not a deterministic SAT algorithm and does not close residual minimization, unconditional ZeroSlack, complete polynomial PCCMin or the eligible root theorem.",
+          "oldAndNewTotal": {
+            "old": 35,
+            "new": 38
+          },
+          "uncertaintyRangeDecision": {
+            "lowPercent": 20,
+            "highPercent": 40,
+            "changed": false,
+            "rationale": "Retain the existing 20-to-40-percent range. The all-input builder retires its fixed three-point obligation, but the unconditional residual core, polynomial PCCMin construction, deterministic SAT theorem and root gate still dominate unresolved mathematical risk."
+          }
+        }
+      ],
+      "rationale": "M230 completes the all-input finite-machine Cook–Levin formula builder and exact polynomial reduction to CNFSAT. Its ordinary output is the original canonical formula, with complete runtime and encoded-output bounds in the original input length. This closes only the fixed complete-builder checkpoint; deterministic SAT, unconditional ZeroSlack, full polynomial PCCMin and the eligible root theorem remain open. Formal artefact coverage: 206 of 208 current scoped publication rows earned. Risk-weighted proof completion estimate: 38%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5."
+    },
+    {
+      "kind": "milestone-review",
+      "asOfCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231",
+      "formalArtefactCoverage": {
+        "earnedRows": 207,
+        "totalRows": 209
+      },
+      "riskWeightedProofCompletionPercent": 40,
+      "uncertaintyLowPercent": 20,
+      "uncertaintyHighPercent": 40,
+      "globalGatesClosed": 0,
+      "globalGatesAvailable": 5,
+      "scoreChanged": true,
+      "changedCheckpointIds": [
+        "reductions-concrete-np-hardness"
+      ],
+      "changeRecords": [
+        {
+          "checkpointId": "reductions-concrete-np-hardness",
+          "oldStatus": "open",
+          "newStatus": "earned",
+          "compiledEvidence": [
+            {
+              "kind": "milestone-earned",
+              "id": "concrete-cnf-np-completeness"
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFNPCompletenessFormalized",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFNPCompletenessAxiomAuditPassed",
+              "expected": true
+            },
+            {
+              "kind": "status-field",
+              "field": "leanConcreteCNFNPCompletenessAuditedDeclarationCount",
+              "expected": 2
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.cnfSAT_np_hard",
+              "expectedPresent": true
+            },
+            {
+              "kind": "inventory-declaration",
+              "name": "PNP.Concrete.CookLevin.cnfSAT_np_complete",
+              "expectedPresent": true
+            }
+          ],
+          "sourceCoordinateOrCommit": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231",
+          "loadBearingRationale": "The complete M230 source-derived polynomial reduction now applies to every concrete NP language through its verifier witness, and existing concrete CNFSAT membership closes the exact NPComplete CNFSAT proposition. This retires the named uniform NP-hardness transport obligation rather than adding a finite instance or supplied-data implication.",
+          "remainingTrackLimitations": "Every fixed checkpoint in the concrete-reductions track is now earned. These reduction results do not supply deterministic CNFSAT in P, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin or the eligible root theorem. The separate final complexity-transport checkpoint remains open and receives no duplicate credit.",
+          "oldAndNewTotal": {
+            "old": 38,
+            "new": 40
+          },
+          "uncertaintyRangeDecision": {
+            "lowPercent": 20,
+            "highPercent": 40,
+            "changed": false,
+            "rationale": "Retain the reviewed 20-to-40-percent uncertainty range. Completing uniform concrete NP-hardness earns its fixed two points but does not reduce the unresolved risk in deterministic SAT, the unconditional residual core, polynomial PCCMin or the final root."
+          }
+        }
+      ],
+      "rationale": "M231 proves concrete CNF-SAT NP-hardness and the closed NP-completeness theorem using the complete M230 construction. Only the fixed two-point reductions-concrete-np-hardness checkpoint changes. No final root-transport point or global gate is awarded. Formal artefact coverage: 207 of 209 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5."
     }
   ],
   "nonClaims": [

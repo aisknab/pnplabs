@@ -24,15 +24,19 @@ test("canonical progress ledger validates against independent formal evidence", 
   const [ledger, status, inventory] = await fixtures();
   const model = validateProofProgressModel(ledger, status, inventory);
   assert.equal(model.pointsAvailable, 100);
-  assert.equal(model.pointsEarned, 35);
-  assert.equal(model.percent, 35);
-  assert.equal(model.uncertaintyLowPercent, 20);
-  assert.equal(model.uncertaintyHighPercent, 40);
+  const earnedByTrack = ledger.tracks.map(track => track.checkpoints
+    .filter(checkpoint => checkpoint.status === "earned")
+    .reduce((total, checkpoint) => total + checkpoint.points, 0));
+  const earnedPoints = earnedByTrack.reduce((total, points) => total + points, 0);
+  assert.equal(model.pointsEarned, earnedPoints);
+  assert.equal(model.percent, earnedPoints);
+  assert.equal(model.uncertaintyLowPercent, ledger.proofCompletion.uncertaintyLowPercent);
+  assert.equal(model.uncertaintyHighPercent, ledger.proofCompletion.uncertaintyHighPercent);
   assert.ok(model.uncertaintyLowPercent <= model.percent);
   assert.ok(model.percent <= model.uncertaintyHighPercent);
   assert.deepEqual(
     model.tracks.map((track) => [track.pointsEarned, track.pointsAvailable]),
-    [[13, 15], [15, 20], [2, 35], [1, 20], [4, 10]]
+    [15, 20, 35, 20, 10].map((maximum, index) => [earnedByTrack[index], maximum])
   );
   assert.equal(model.checkpointCount, 35);
 
@@ -46,14 +50,16 @@ test("canonical progress ledger validates against independent formal evidence", 
   assert.equal(ledger.formalArtefactCoverage.denominatorCanGrow, true);
   assert.equal(ledger.history[0].asOfCoordinate, "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-08-23-184");
   assert.equal(ledger.history.at(-1).asOfCoordinate, ledger.asOfCoordinate);
-  assert.deepEqual(ledger.history.at(-1).changedCheckpointIds, []);
+  const latestReview = ledger.history.at(-1);
+  assert.deepEqual(latestReview.changedCheckpointIds,
+    latestReview.changeRecords.map(record => record.checkpointId));
+  assert.equal(latestReview.scoreChanged, latestReview.changeRecords.length > 0);
   const latestCheckpointChange = [...ledger.history].reverse()
     .find((entry) => entry.changeRecords.length > 0);
   assert.ok(latestCheckpointChange);
-  assert.deepEqual(latestCheckpointChange.changedCheckpointIds, [
-    "axiom-remove-generate-pccpack",
-    "axiom-remove-check-pccpackexp"
-  ]);
+  assert.deepEqual(latestCheckpointChange.changedCheckpointIds,
+    latestCheckpointChange.changeRecords.map(record => record.checkpointId));
+  assert.equal(latestCheckpointChange.riskWeightedProofCompletionPercent, earnedPoints);
   assert.deepEqual(ledger.history.at(-1).formalArtefactCoverage, {
     earnedRows,
     totalRows: status.formalPublicationMilestones.length

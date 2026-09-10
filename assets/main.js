@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-229";
-const STATUS_SHA256 = 'e01e0e79a27f99b282fa20a5637ef24700942eca824a8116ccbbf90cd8f08287';
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-05-229";
-const FORMAL_PUBLICATION_MAP_SHA256 = "fb6d002ac88615661ea88d5eff29a78ba8df3d377e7df1ecbcc1a674eb104084";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231";
+const STATUS_SHA256 = '636d1120c7cb3fd943cb761a4feb6d7382241d75e0d4b7d29279d3dff01b602c';
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-11-231";
+const FORMAL_PUBLICATION_MAP_SHA256 = "c0fdd1f805f4672b34260d327c23d5d10f02fc239686ab9d721a3414cb38e760";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
-const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-05-229";
-const INVENTORY_SHA256 = "1e4794c752a065610a470b36b304b4a18b095cfe57672695c742669e6f6e4ecd";
-const SOURCE_CLOSURE_SHA256 = "9baa336a49724c0d61e2f13351419b6dddcb5e3262cd3a26848a6ca6496aa377";
+const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230";
+const INVENTORY_SHA256 = "29671b56dd215e7f76f893933799cf89295fbdaec9b339e68a65e36a23d1f059";
+const SOURCE_CLOSURE_SHA256 = "57b0346b3ebeb259991dfa724987a75cb3944b761fa3d4fa1a258b81adfc715c";
 
 const INVENTORY_COUNTS = Object.freeze({
-  declarations: 33973,
-  theorems: 17525,
-  assumptionFreeTheorems: 8207,
-  excludedPrivateDeclarations: 16029,
-  modules: 349,
+  declarations: 46094,
+  theorems: 25322,
+  assumptionFreeTheorems: 11029,
+  excludedPrivateDeclarations: 19720,
+  modules: 497,
   axioms: 0,
 });
 
@@ -4822,6 +4822,97 @@ const BUILDER_PHYSICAL_CLASSIFIER_ALL_ROUTE_DERIVED_FINISH_SPLIT_DECLARATIONS = 
 const BUILDER_PHYSICAL_CLASSIFIER_ALL_ROUTE_BODY_REMAINDER_SPLIT_DECLARATIONS = Object.freeze([
   ["PNP.Concrete.CookLevin.BuilderPhysicalClassifierAllRouteBodyRemainderSplit.cook_levin_builder_physical_classifier_all_route_body_remainder_split_checked_complete",["Quot.sound","propext"],"PNP.Concrete.CookLevinBuilderPhysicalClassifierAllRouteBodyRemainderSplit","5cb01b3ff8e154613151d8d131f576ce86bdc33e2d24d355793a3ca55ce7208f"],
 ]);
+const CNF_NP_COMPLETENESS_DECLARATIONS = Object.freeze([
+  [
+    "PNP.Concrete.CookLevin.cnfSAT_np_hard",
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinNPCompleteness",
+    "c2cae5f7ad14a81b32888e8405210b57552dea928200cc77e9ebb34099ec9909"
+  ],
+  [
+    "PNP.Concrete.CookLevin.cnfSAT_np_complete",
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinNPCompleteness",
+    "7b1c0556dde7066ebe7abc9706b400857b9dd41dc1d704930a1f1d6c423bbe35"
+  ]
+]);
+const CNF_NP_COMPLETENESS_SCOPE = "For every language in the concrete bounded-certificate NP class, M231 extracts its polynomial-time verifier from NP membership and applies the complete source-derived all-input Cook-Levin PolynomialReduction to CNFSAT. Together with the existing concrete CNFSAT verifier, the closed theorem proves NPComplete CNFSAT in the selected finite-machine model. No reduction, execution trace, finite-instance restriction or correctness certificate is supplied. Both complete theorem interfaces are root-built and axiom-audited; their closures contain only the Lean standard axioms Classical.choice, Quot.sound and propext.";
+const CNF_NP_COMPLETENESS_NON_CLAIM = "NP-completeness is hardness plus NP membership, not a deterministic polynomial-time SAT algorithm. This closes only the fixed concrete NP-hardness checkpoint. It does not close the separate final complexity transport to P = NP, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, or the eligible root theorem. All five global proof gates and the publication gate remain open; P = NP is not proved.";
+const CNF_NP_COMPLETENESS_FIELDS = Object.freeze({
+  "leanConcreteCNFNPCompletenessFormalized": true,
+  "leanConcreteCNFNPCompletenessAxiomAuditPassed": true,
+  "leanConcreteCNFNPCompletenessAuditedDeclarationCount": 2,
+  "leanConcreteCNFNPCompletenessTheorem": "PNP.Concrete.CookLevin.cnfSAT_np_complete",
+  "leanConcreteCNFNPCompletenessHardnessTheorem": "PNP.Concrete.CookLevin.cnfSAT_np_hard"
+});
+const COOK_LEVIN_COMPLETE_BUILDER_DECLARATIONS = Object.freeze([
+  [
+    "PNP.Concrete.CookLevin.formulaBuilderMachine_accept",
+    [
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinCompleteBuilder",
+    "f78cfac94de5b6d1c2e461b4542527ddb8490796f83741389238daf13c48f048"
+  ],
+  [
+    "PNP.Concrete.CookLevin.formulaBuilderMachine_output",
+    [
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinCompleteBuilder",
+    "51f7ea88d2b8333cb5bfefd5d7c6b122c895e90b13508d7b48a5b00952d440f3"
+  ],
+  [
+    "PNP.Concrete.CookLevin.formulaBuilder_output",
+    [
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinCompleteBuilder",
+    "9517c55b7e470350cfec99950cd933ddc6455e7d158c94f8b85eece418e28293"
+  ],
+  [
+    "PNP.Concrete.CookLevin.formulaBuilder_rawRefinement_output",
+    [
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinCompleteBuilder",
+    "5afca0de879c1ff185aab5093c5622d7bc606404c2f05361c7bfa1231aa1b06e"
+  ],
+  [
+    "PNP.Concrete.CookLevin.polynomialReduction_output",
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinCompleteBuilder",
+    "5957ea8d28eb75362bba1cfb0dba94d3840d139b2904899c2c8a61b2423698ed"
+  ],
+  [
+    "PNP.Concrete.CookLevin.cook_levin_formula_builder_checked_complete",
+    [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "PNP.Concrete.CookLevinCompleteBuilder",
+    "7c319be45d775041419206e62eec233cda9c000839b697d43f7e2bc25423b35c"
+  ]
+]);
+const COOK_LEVIN_COMPLETE_BUILDER_SCOPE = "For every concrete polynomial verifier and every ordinary raw bitstring, including empty and odd-length inputs, M230 runs the complete source-derived formula loop and physical output finalizer in one finite raw machine. Its exact ordinary output is the original canonical encoded Cook-Levin CNF formula, with total halting, runtime and output-size bounds polynomial in the original input length. The concrete PolynomialTimeFunction is a machine leaf; recursive FunctionProgram.RawRefinement preserves its output. The packaged PolynomialReduction to CNFSAT uses the already checked original formula semantics. No accepting certificate, execution trace, route, finite family, rank map or correctness certificate is supplied by the caller.";
+const COOK_LEVIN_COMPLETE_BUILDER_NON_CLAIM = "This completes the fixed all-input builder checkpoint, not a deterministic SAT algorithm. The separate named concrete NP-hardness or NP-completeness transport remains to be published. Unconditional residual minimization and ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, and the eligible root theorem remain open. No global gate closes and P = NP is not proved. Execution theorem closures use only propext and Quot.sound; reduction-facing semantic closures additionally use the already allowed Lean standard axiom Classical.choice, never a project-specific axiom.";
 const LOCKED_NAND_THRESHOLD_PUBLICATION_DECLARATIONS = Object.freeze([
   ["PNP.Main.locked_nand_threshold", ["Quot.sound", "propext"], "PNP.Concrete.LockedNANDThresholdPublication"],
 ]);
@@ -5290,6 +5381,10 @@ const GATE_SUBCHECK_KEYS = Object.freeze([
 ]);
 
 const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
+  leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
+  leanConcreteCookLevinFormulaBuilderFormalized: false,
+  leanConcreteCookLevinBuilderRawRefinementFormalized: false,
+  leanConcreteCookLevinBuilderPolynomialReductionFormalized: false,
   status: 'formal-reconstruction-in-progress',
   mathematicalTheoremEstablished: false,
   publicTheoremEmissionAllowed: false,
@@ -6450,10 +6545,16 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
   leanPCCMinPolynomialRuntimeFormalized: false,
   leanConcreteCNFSATInPFormalized: false,
   leanConcreteCNFNPCompletenessFormalized: false,
+  leanConcreteCNFNPCompletenessAxiomAuditPassed: false,
+  leanConcreteCNFNPCompletenessAuditedDeclarationCount: 0,
+  leanConcreteCNFNPCompletenessTheorem: null,
+  leanConcreteCNFNPCompletenessHardnessTheorem: null,
 });
 
 function formalStatusFields(payload) {
-  return `status = "${payload.status}"
+  const npCompletenessFields = Object.keys(CNF_NP_COMPLETENESS_FIELDS).map(field => field + " = " + JSON.stringify(payload[field] ?? FAIL_CLOSED_FORMAL_STATUS[field])).join("\n");
+  const builderFields = ["leanConcreteCookLevinBuilderDynamicCursorFormalized","leanConcreteCookLevinFormulaBuilderFormalized","leanConcreteCookLevinBuilderRawRefinementFormalized","leanConcreteCookLevinBuilderPolynomialReductionFormalized"].map(field => field + ' = ' + JSON.stringify(payload[field] ?? false)).join('\n');
+  return npCompletenessFields + '\n' + builderFields + '\n' + `status = "${payload.status}"
 mathematicalTheoremEstablished = ${payload.mathematicalTheoremEstablished}
 publicTheoremEmissionAllowed = ${payload.publicTheoremEmissionAllowed}
 publicTheoremStatement = ${payload.publicTheoremStatement === null ? 'null' : JSON.stringify(payload.publicTheoremStatement)}
@@ -7670,6 +7771,16 @@ function isSha256(value) {
 }
 
 function validateInventory(inventory) {
+  if (!CNF_NP_COMPLETENESS_DECLARATIONS.every(([name, axioms, module]) => {
+    const rows = inventory?.milestoneCandidates?.filter(row => row?.name === name);
+    return rows?.length === 1 && rows[0].kind === 'theorem'
+      && rows[0].module === module && sameJson(rows[0].axioms, axioms);
+  })) return false;
+  if (!COOK_LEVIN_COMPLETE_BUILDER_DECLARATIONS.every(([name, axioms, module]) => {
+    const rows = inventory?.milestoneCandidates?.filter(row => row?.name === name);
+    return rows?.length === 1 && rows[0].kind === 'theorem'
+      && rows[0].module === module && sameJson(rows[0].axioms, axioms);
+  })) return false;
   if (inventory?.kind !== 'PNPLeanTheoremInventory0'
     || inventory.coordinate !== INVENTORY_COORDINATE
     || inventory.environmentProbeComplete !== true
@@ -9786,6 +9897,32 @@ function validateMilestones(status, inventory) {
 }
 
 function validateStatus(status, inventory) {
+  const npRows = status?.formalPublicationMilestones?.filter(row => row.id === 'concrete-cnf-np-completeness');
+  const npComplete = npRows?.[0];
+  if (npRows?.length !== 1 || npComplete.scope !== CNF_NP_COMPLETENESS_SCOPE
+    || npComplete.nonClaim !== CNF_NP_COMPLETENESS_NON_CLAIM
+    || npComplete.classification !== 'formalized-foundation-only'
+    || !Object.entries(CNF_NP_COMPLETENESS_FIELDS).every(([key, value]) => status[key] === value)
+    || !sameJson(npComplete.requiredTheorems, CNF_NP_COMPLETENESS_DECLARATIONS.map(([name]) => name))
+    || npComplete.theoremRows?.length !== CNF_NP_COMPLETENESS_DECLARATIONS.length
+    || !npComplete.theoremRows.every(row => {
+      const expected = CNF_NP_COMPLETENESS_DECLARATIONS.find(([name]) => name === row.name);
+      return expected && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3] && row.expectedKernelTypeSha256 === expected[3];
+    })) return false;
+  const completeBuilderRows = status?.formalPublicationMilestones?.filter(row => row.id === 'concrete-cook-levin-complete-builder');
+  const completeBuilder = completeBuilderRows?.[0];
+  if (completeBuilderRows?.length !== 1
+    || completeBuilder.scope !== COOK_LEVIN_COMPLETE_BUILDER_SCOPE
+    || completeBuilder.nonClaim !== COOK_LEVIN_COMPLETE_BUILDER_NON_CLAIM
+    || completeBuilder.classification !== 'formalized-foundation-only'
+    || !sameJson(completeBuilder.requiredTheorems, COOK_LEVIN_COMPLETE_BUILDER_DECLARATIONS.map(([name]) => name))
+    || completeBuilder.theoremRows?.length !== COOK_LEVIN_COMPLETE_BUILDER_DECLARATIONS.length
+    || !completeBuilder.theoremRows.every(row => {
+      const expected = COOK_LEVIN_COMPLETE_BUILDER_DECLARATIONS.find(([name]) => name === row.name);
+      return expected && sameJson(row.axioms, expected[1])
+        && row.actualKernelTypeSha256 === expected[3] && row.expectedKernelTypeSha256 === expected[3];
+    })) return false;
   const gatePassed = status?.concretePublicationGate?.passed === true;
   const sourceParserMilestone = status?.formalPublicationMilestones?.find(
     (row) => row.id === 'concrete-locked-nand-source-parser'
@@ -12722,9 +12859,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterFailClosedBoundaryTimeoutFormalized === true
     && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterDecodesPostHeaderCoordinate === false
     && status.leanConcreteCookLevinBuilderArbitrarySlotHeaderRouterEmitsBodyTokens === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderArbitrarySlotPostHeaderDecoderMilestone?.classification === "formalized-foundation-only"
     && builderArbitrarySlotPostHeaderDecoderMilestone.status === "formalized-foundation-only"
     && builderArbitrarySlotPostHeaderDecoderMilestone.earned === true
@@ -12756,9 +12893,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderRawPostHeaderRemainderExtractionFormalized === true
     && status.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderRawDivisionFormalized === false
     && status.leanConcreteCookLevinBuilderArbitrarySlotPostHeaderDecoderRawBodyTokenEmissionFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
 
     && builderPostHeaderRawDividerMilestone?.classification === "formalized-foundation-only"
     && builderPostHeaderRawDividerMilestone.status === "formalized-foundation-only"
@@ -12792,9 +12929,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerExternalUnaryEncodedSizeQuadraticBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerFailClosedBoundaryTimeoutFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawDividerRawBodyTokenEmissionFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
 
     && builderPostHeaderRawLaunchMilestone?.classification === "formalized-foundation-only"
     && builderPostHeaderRawLaunchMilestone.status === "formalized-foundation-only"
@@ -12826,9 +12963,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchLiteralTapeBridgeFormalized === false
     && status.leanConcreteCookLevinBuilderPostHeaderRawLaunchRawBodyTokenEmissionFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
 
     && builderPostHeaderRawTapeBridgeMilestone?.classification === "formalized-foundation-only"
     && builderPostHeaderRawTapeBridgeMilestone.status === "formalized-foundation-only"
@@ -12864,9 +13001,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeOneStepShortNonhaltingFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostHeaderRawTapeBridgeRawBodyTokenEmissionFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPostDividerRawRouteClassifierMilestone?.classification === "formalized-foundation-only"
     && builderPostDividerRawRouteClassifierMilestone.status === "formalized-foundation-only"
     && builderPostDividerRawRouteClassifierMilestone.earned === true
@@ -12901,9 +13038,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostDividerRawRouteClassifierOneStepShortNonhaltingFormalized === true
     && status.leanConcreteCookLevinBuilderPostDividerRawRouteClassifierSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostDividerRawRouteClassifierRawBodyTokenEmissionFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPostDividerSelectedTokenLaunchMilestone?.classification === "formalized-foundation-only"
     && builderPostDividerSelectedTokenLaunchMilestone.status === "formalized-foundation-only"
     && builderPostDividerSelectedTokenLaunchMilestone.earned === true
@@ -12937,9 +13074,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPostDividerSelectedTokenLaunchSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPostDividerSelectedTokenLaunchLiteralRawSelectionHandoffFormalized === false
     && status.leanConcreteCookLevinBuilderPostDividerSelectedTokenLaunchScheduleIterationFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderCompleteScheduleIterationMilestone?.classification === "formalized-foundation-only"
     && builderCompleteScheduleIterationMilestone.status === "formalized-foundation-only"
     && builderCompleteScheduleIterationMilestone.earned === true
@@ -12970,9 +13107,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderCompleteScheduleIterationAggregateSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderCompleteScheduleIterationLiteralRawLoopFormalized === false
     && status.leanConcreteCookLevinBuilderCompleteScheduleIterationRawStageHandoffFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalOptionalTokenDispatchMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalOptionalTokenDispatchMilestone.status === "formalized-foundation-only"
     && builderPhysicalOptionalTokenDispatchMilestone.earned === true
@@ -13007,9 +13144,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchSourceSizePolynomialBoundFormalized === true
     && status.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchRawCoordinateSelectorFormalized === false
     && status.leanConcreteCookLevinBuilderPhysicalOptionalTokenDispatchLiteralScheduleLoopFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalDispatchScheduleMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalDispatchScheduleMilestone.status === "formalized-foundation-only"
     && builderPhysicalDispatchScheduleMilestone.earned === true
@@ -13042,9 +13179,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawCoordinateRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleLiteralRawLoopFormalized === false
     && status.leanConcreteCookLevinBuilderPhysicalDispatchScheduleRawStageHandoffFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalFinishRequestMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalFinishRequestMilestone.status === "formalized-foundation-only"
     && builderPhysicalFinishRequestMilestone.earned === true
@@ -13081,9 +13218,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalFinishRequestBodyOrPaddingRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalFinishRequestPrecedingClassifierSuffixHandoffFormalized === false
     && status.leanConcreteCookLevinBuilderPhysicalFinishRequestLiteralRawLoopFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalClassifierPipelineMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalClassifierPipelineMilestone.status === "formalized-foundation-only"
     && builderPhysicalClassifierPipelineMilestone.earned === true
@@ -13119,9 +13256,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalClassifierPipelineExternalInputSizePolynomialFormalized === true
     && status.leanConcreteCookLevinBuilderPhysicalClassifierPipelineBodyOrPaddingRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierPipelineLiteralRawLoopFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalClassifierFinishRequestMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalClassifierFinishRequestMilestone.status === "formalized-foundation-only"
     && builderPhysicalClassifierFinishRequestMilestone.earned === true
@@ -13159,9 +13296,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestBodyOrPaddingRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestDispatcherConnected === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishRequestLiteralRawLoopFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalClassifierFinishWorkspaceOrientationMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.status === "formalized-foundation-only"
     && builderPhysicalClassifierFinishWorkspaceOrientationMilestone.earned === true
@@ -13201,9 +13338,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationBodyOrPaddingRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationMirroredDispatcherExecuted === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishWorkspaceOrientationLiteralRawLoopFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalClassifierFinishMirroredDispatchMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalClassifierFinishMirroredDispatchMilestone.status === "formalized-foundation-only"
     && builderPhysicalClassifierFinishMirroredDispatchMilestone.earned === true
@@ -13241,9 +13378,9 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchBodyOrPaddingRequestDerived === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchAllClassifierRoutesConnected === false
     && status.leanConcreteCookLevinBuilderPhysicalClassifierFinishMirroredDispatchLiteralRawLoopFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && builderPhysicalClassifierFirstBodySeparatorMirroredDispatchMilestone?.classification === "formalized-foundation-only"
     && builderPhysicalClassifierFirstBodySeparatorMirroredDispatchMilestone.status === "formalized-foundation-only"
     && builderPhysicalClassifierFirstBodySeparatorMirroredDispatchMilestone.earned === true
@@ -14105,12 +14242,12 @@ function validateStatus(status, inventory) {
     && status.leanConcreteCookLevinBuilderSecondConstraintSecondPaddingOrUnaryOpportunityStepRetainedAdvancedTokenCoordinateFormalized === true
     && status.leanConcreteCookLevinBuilderSecondConstraintSecondPaddingOrUnaryOpportunityStepInputPrefixOptionalAppenderComposed === true
     && status.leanConcreteCookLevinBuilderSecondConstraintSecondPaddingOrUnaryOpportunityStepFailClosedBoundaryTimeoutFormalized === true
-    && status.leanConcreteCookLevinBuilderDynamicCursorFormalized === false
-    && status.leanConcreteCookLevinFormulaBuilderFormalized === false
-    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === false
-    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === false
+    && status.leanConcreteCookLevinBuilderDynamicCursorFormalized === true
+    && status.leanConcreteCookLevinFormulaBuilderFormalized === true
+    && status.leanConcreteCookLevinBuilderRawRefinementFormalized === true
+    && status.leanConcreteCookLevinBuilderPolynomialReductionFormalized === true
     && status.leanConcreteCNFSATInPFormalized === false
-    && status.leanConcreteCNFNPCompletenessFormalized === false
+    && status.leanConcreteCNFNPCompletenessFormalized === true
     && status.checkerAcceptanceIsMathematicalProof === false
     && status.externalReviewIsMathematicalPremise === false
     && sameJson(status.activeFinalNodeIds, [])

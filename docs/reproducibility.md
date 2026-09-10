@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 634,471 | `6b41ef94575ce49683f49963b94a937f190053a8c7fe738a7c5449450cfd3e5a` |
-| `downloads/canonical-proof-report.pdf` | 634,471 | `6b41ef94575ce49683f49963b94a937f190053a8c7fe738a7c5449450cfd3e5a` |
-| `downloads/canonical_proof_report.tex` | 416,775 | `0f4eaa627ce71b936aba428a327f455e99b08a94456da60a243e761eb98cc34a` |
-| `downloads/canonical-proof-report.tex` | 416,775 | `0f4eaa627ce71b936aba428a327f455e99b08a94456da60a243e761eb98cc34a` |
-| `public/pnp-status.json` | 2,836,386 | `e01e0e79a27f99b282fa20a5637ef24700942eca824a8116ccbbf90cd8f08287` |
-| `public/pnp-theorem-inventory.json` | 48,081,357 | `1e4794c752a065610a470b36b304b4a18b095cfe57672695c742669e6f6e4ecd` |
-| `public/pnp-proof-progress.json` | 163,144 | `d0ccff9b87af9dbe4fd550a567e7f8236d9048c431b80f111995634475331eea` |
+| `downloads/canonical_proof_report.pdf` | 643,699 | `e41d3aaf4be51ea976ebb811ae8c2cf44b2edfffb6408619c08dd411cabec8e3` |
+| `downloads/canonical-proof-report.pdf` | 643,699 | `e41d3aaf4be51ea976ebb811ae8c2cf44b2edfffb6408619c08dd411cabec8e3` |
+| `downloads/canonical_proof_report.tex` | 442,023 | `0f84b0a81488361a298e54093a16eb115c490ff490c8b67f49dc664d0bf26599` |
+| `downloads/canonical-proof-report.tex` | 442,023 | `0f84b0a81488361a298e54093a16eb115c490ff490c8b67f49dc664d0bf26599` |
+| `public/pnp-status.json` | 2,845,995 | `636d1120c7cb3fd943cb761a4feb6d7382241d75e0d4b7d29279d3dff01b602c` |
+| `public/pnp-theorem-inventory.json` | 50,322,787 | `29671b56dd215e7f76f893933799cf89295fbdaec9b339e68a65e36a23d1f059` |
+| `public/pnp-proof-progress.json` | 170,658 | `4d4dbb9f9afde04d032a88bd4802a7c1e5051f479f533dc460c17a07a4f0b946` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout 3676a3f291193221e4ee3537aaf6023fba95ace0
+git -C ../pnp checkout e4af115a66cd5a6715a9363abea7a2008238d401
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,14 +68,10 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 33,973 public declarations, 17,525 theorem-kind declarations,
-8,207 assumption-free theorem-kind declarations, 16,029 excluded private auxiliaries, 349 modules, and
+Expected compiled inventory counts are 46,094 public declarations, 25,322 theorem-kind declarations,
+11,029 assumption-free theorem-kind declarations, 19,720 excluded private auxiliaries, 497 modules, and
 no project-specific axioms. The publication gate must remain false with five blockers. The concrete
-NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. The literal formula-emitting raw
-Cook-Levin prefix still stops after the seventh padding-or-unary opportunity in the second scheduled
-constraint. M208's separate uniform controller traverses the complete schedule without decoding or
-emitting its body tokens, M209's fixed 54-rule arbitrary-slot router classifies the top-level header
-boundary, M210 semantically decodes every post-header clause and within-clause coordinate, M211 computes exact raw unary quotient and remainder tapes, M212 composes M209's checked result reader with that divider for every natural coordinate while retaining both exact traces and a summed polynomial bound, M213 closes that physical handoff with one fixed 351-rule bridge preserving arbitrary exterior workspace, M214 classifies every in-range body or Finish route, M215 derives and launches the canonical selected token, M216 structurally composes every verifier-derived post-header opportunity into the exact complete encoded token list, M217 uses one fixed 64-rule physical dispatcher to consume a supplied five-symbol request, M218 composes that dispatcher across every canonical coordinate, M219 derives the unique canonical Finish request through one fixed 137-rule comparator, writer, and dispatcher composition, M220 composes the complete suffix-preserving physical classifier pipeline for every canonical coordinate with one fixed 711-rule machine and three exact tape handoffs, M221 converts the unique canonical Finish endpoint into M217's exact request cell through one fixed 721-rule machine, M222 crosses the complete blank-free classifier prefix to the sentinel and reaches the spatial mirror of M217's canonical Finish entry, and M223 reflects M217's fixed 64-rule dispatcher and executes the unique Finish path to the complete canonical CNF appender endpoint as one collision-free 813-rule machine, M224 derives and dispatches the first populated body separator, M225 covers every populated and padding body route from an explicitly staged request, M226 joins all post-header body and Finish terminals, M227 dispatches every joined route from an explicitly staged request, and M228 removes that staged-request premise while deriving and dispatching the unique Finish request and routing every body outcome to an explicit non-request pending marker. The reviewed `cook_levin_builder_physical_classifier_all_route_derived_finish_split_checked_complete` theorem pin and focused 91-declaration audit use only the approved Lean-standard closure, with no project-specific axiom or `Classical.choice`. Body-token and padding request synthesis, successive schedule configurations, one literal raw loop, raw refinement and the packaged reduction remain open. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
+NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. M230 completes the all-input formula builder and packaged polynomial reduction to CNFSAT. Its 2 reviewed theorem pins establish the all-language hardness interface and the closed NP-completeness theorem. Both M231 theorem closures use only the existing Lean standard axioms `Classical.choice`, `Quot.sound` and `propext`. No project-specific axiom enters any pin. This constructs a formula; it does not decide SAT. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
 polynomial reduction remain exact and fail closed on malformed source bytes. The semantic layer supplies
 a total compiler from strict canonical CNF formulas to intrinsically topological NAND circuits. Its
 18 reviewed theorem pins prove codec canonicality, well-formed topological output, exact assignment
@@ -104,6 +100,8 @@ This removes `PNP.ResidualBandExactMinimization` and the caller-supplied compati
 active route. Exhaustive reference minimisation is not a polynomial-time PCCMin algorithm, and this
 milestone does not prove residual-band promise bounds, unconditional ZeroSlack, deterministic CNFSAT
 in P, SAT hardness transport, the eligible root theorem, or a global-gate closure.
+
+Historical component notes below retain the estimates recorded at their respective milestones. They are not current estimates; M230 closes the separately reported complete-builder checkpoint.
 
 The M189 proof-bearing PCCMin total-oracle milestone has 1 reviewed theorem pin. For every finite
 direct-wire implementation and explicit proof-bearing total oracle, transparent well-founded recursion
@@ -299,7 +297,10 @@ The M202 source-derived PkgC/BN6 checked-route milestone has 1 reviewed theorem 
 
 The M207 PkgC restoration coverage and exact ambient charge-coordinate descent milestone has 1 reviewed theorem pin. For every arbitrary finite exact ambient embedding returned by M206, unsigned BN4 charge is computed as the sum of cell masses. Exact permutation decomposes ambient charge into a strictly positive coverage-derived cancellation charge plus remainder charge. The remainder therefore strictly decreases the eighth chargeSize coordinate of the exact ten-coordinate TerminalResidualRank for every fixed surrounding context while preserving the complete canonical residual ledger. All other M206 outcomes remain explicit. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 16-declaration audit is free of project-specific axioms. The terminal problem, checked BCEL-ready certificate, active PkgC source cells and cuts, restoration-coordinate universes and maps, ambient BN4 ledgers, semantic full candidates, Packet ranks and claims, dependency table, checked HB closure, route-clear result, and selector silence remain explicit supplied inputs. M207 proves exact charge-coordinate descent only for M206's successful ambient embedding. It does not prove the computed remainder is empty or turn Hall deficits, ambient incompatibility, or activation mismatches into complete global routes. This milestone does not finish terminal-input derivation, complete PkgC/BN3--BN6 integration, HN/BUD/HB semantic completeness, manuscript-wide SaturatePositive or BCELReady, unconditional ZeroSlack, executable polynomial PCCMin, complete encoded-size polynomial bounds, CNFSAT in P, a global gate, the eligible root theorem, or P = NP. The fixed-weight score therefore remains 35%, while formal artefact coverage becomes 183 of 185.
 
-The latest M229 all-route physical body-remainder split has 1 reviewed theorem pin. For every concrete verifier problem and every coordinate in its complete post-header schedule, M229 runs M228 without a staged request, route, remainder or success certificate. It preserves the completed Finish endpoint and sends every body route through one fixed 36-rule physical scanner. The scanner crosses the retained clause-count and exterior boundaries, skips consumed-dividend marks, and distinguishes zero from positive remainder by the actual separator or unit symbol. The physical remainder equals the canonical body token coordinate. The collision-free 895-rule graph has exact work, six-for-one compiled execution, one-step-short nonhalting, and a verifier-input-size polynomial bound. All 71 public declarations are axiom-audited: 39 have empty closure, nine use only propext, and 23 use only propext and Quot.sound, with no project axiom or Classical.choice. The endpoint uses only Lean-standard `Quot.sound` and `propext`; its focused 71-declaration audit is free of project-specific axioms and `Classical.choice`. This milestone reads the physical body remainder but leaves clause occupancy and body-token and padding request synthesis open. Both body outcomes remain incomplete terminal configurations, distinguished by tape content. It does not connect successive schedule configurations, implement the repeated builder loop, prove builder FunctionProgram.RawRefinement, or package the Cook-Levin PolynomialReduction. It does not establish CNFSAT NP-hardness or NP-completeness transport or CNFSAT in P, close a fixed checkpoint or global gate, create the eligible root theorem, or prove P = NP. No fixed weighted checkpoint changes, so the risk-weighted estimate remains 35% while formal artefact coverage becomes 205 of 207. All five global gates remain open.
+The latest M231 concrete CNF-SAT NP-completeness result has two reviewed theorem pins. For every language in the concrete bounded-certificate NP class, M231 extracts its polynomial-time verifier from NP membership and applies the complete source-derived all-input Cook-Levin PolynomialReduction to CNFSAT. Together with the existing concrete CNFSAT verifier, the closed theorem proves NPComplete CNFSAT in the selected finite-machine model. No reduction, execution trace, finite-instance restriction or correctness certificate is supplied. Both complete theorem interfaces are root-built and axiom-audited; their closures contain only the Lean standard axioms Classical.choice, Quot.sound and propext. NP-completeness is hardness plus NP membership, not a deterministic polynomial-time SAT algorithm. This closes only the fixed concrete NP-hardness checkpoint. It does not close the separate final complexity transport to P = NP, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, or the eligible root theorem. All five global proof gates and the publication gate remain open; P = NP is not proved. Risk-weighted proof completion estimate: 40%, with uncertainty 20% to 40%. Formal artefact coverage: 207 of 209 current scoped rows. Global gates: 0 of 5 closed. No project-specific axioms remain, the eligible root is absent and the publication gate is false.
+
+The M231 result's focused 2-declaration audit covers precisely its two reviewed
+theorem interfaces; no project-specific axiom is used.
 
 The exact core merge owns Lean compilation and axiom evidence; PNPLabs verifies the pinned source
 identity and byte-exact publication artifacts and does not rebuild Lean.
@@ -317,10 +318,12 @@ execution under one external polynomial, `PolynomialTimeFunction`, literal `RawR
 `propext`-only, and 301 `propext` plus `Quot.sound` closures. It contains no project axiom or
 `Classical.choice`.
 
-This finite compiler is not a CNF-SAT decider and does not establish SAT NP-hardness or CNF-SAT
-NP-completeness. M186 now connects it to the exact report-facing concrete target and removes the
-duplicate locked-NAND project axiom. The remaining Cook-Levin formula body, complete raw builder,
-target decider, CNF-SAT in P, eligible root theorem, and `P = NP` must remain absent.
+This finite compiler alone is not a CNF-SAT decider or an NP-completeness theorem.
+M186 connects it to the exact report-facing concrete target and removes the
+duplicate locked-NAND project axiom. M230 supplies the complete all-input
+Cook-Levin formula builder and M231 supplies concrete CNF-SAT NP-completeness.
+The target decider, CNF-SAT in P, eligible root theorem, and `P = NP` remain
+unproved.
 
 The earlier typed-budget reflection milestone adds 30 reviewed theorem pins. For every arbitrary finite grouped BN6 family,
 selector-rank carrier, and domain of typed budget values with decidable equality, Lean computes
@@ -388,3 +391,10 @@ and cannot satisfy the concrete publication gate.
 | PDF page/hash mismatch | Wrong report generation environment or historical bytes returned | Reject the artefact; do not repair by copying from a historical tag |
 | Browser status is unavailable | `/public/` route or payload problem | Verify the local server routes and keep the UI fail-closed |
 | Inventory mismatch | Stale or modified compiled evidence | Re-export under the pinned Lean toolchain and investigate before publishing |
+
+
+## M231 current publication boundary
+
+M230 completes the all-input Cook-Levin formula builder. M231 combines its polynomial reduction with the concrete verifier to prove CNF-SAT NP-completeness in the finite-machine model. This is not a polynomial-time SAT algorithm. Risk-weighted proof completion estimate: 40%, with uncertainty 20% to 40%. Formal artefact coverage: 207 of 209 current scoped publication rows earned. Global gates closed: 0 of 5. Project-specific axioms remaining: 0. The eligible root theorem PNP.Main.p_eq_np remains absent and the publication gate is false.
+
+Current source: [`e4af115a66cd5a6715a9363abea7a2008238d401`](https://github.com/aisknab/pnp/tree/e4af115a66cd5a6715a9363abea7a2008238d401). The exact compiled evidence and limitation are recorded in the [NP-completeness result note](https://github.com/aisknab/pnp/blob/e4af115a66cd5a6715a9363abea7a2008238d401/docs/lean_cook_levin_np_completeness.md). Earlier named component limitations describe those components, not the now-complete M230 builder.

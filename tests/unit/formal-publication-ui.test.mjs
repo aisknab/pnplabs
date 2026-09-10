@@ -1,3 +1,5 @@
+import { M231 } from '../../tools/formal-m231-contract.mjs';
+import { M230 } from '../../tools/formal-m230-contract.mjs';
 import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -24,6 +26,7 @@ const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'
 
 
 function statusFieldStem(milestone) {
+  if (milestone.id === M230.id) return 'ConcreteCookLevinFormulaBuilder';
   const suffix = 'TheoremKernelTypeSha256';
   const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
@@ -234,18 +237,18 @@ test('site validator pins the latest canonical publication milestone and rejects
   assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
 
   const fieldStem = statusFieldStem(milestone);
-  for (const field of [`lean${fieldStem}Formalized`, `lean${fieldStem}AxiomAuditPassed`]) {
-    assert.equal(status[field], true, `missing latest milestone gate ${field}`);
+  const requiredValues = milestone.id === M230.id ? M230.fields : milestone.id === M231.id ? M231.fields
+    : { [`lean${fieldStem}Formalized`]: true, [`lean${fieldStem}AxiomAuditPassed`]: true };
+  for (const [field, value] of Object.entries(requiredValues)) {
+    assert.equal(status[field], value, `missing latest milestone field ${field}`);
     const stripped = structuredClone(status);
-    stripped[field] = false;
+    stripped[field] = typeof value === "boolean" ? !value : typeof value === "number" ? value + 1 : "forged";
     assert.equal(validation.validateStatus(stripped, inventory), false, field);
   }
 
   const scopeField = `lean${fieldStem}Scope`;
-  const statusFields = [
-    [`lean${fieldStem}Formalized`, true, false],
-    [`lean${fieldStem}AxiomAuditPassed`, true, false],
-  ];
+  const statusFields = Object.entries(requiredValues).map(([field, value]) => [field, value,
+    typeof value === "boolean" ? false : typeof value === "number" ? 0 : null]);
   if (Object.hasOwn(status, scopeField)) {
     assert.equal(typeof status[scopeField], 'string');
     const strippedScope = structuredClone(status);
@@ -1111,7 +1114,7 @@ test('secondary authority fields and blocker ledgers cannot overclaim', () => {
   }
 });
 
-test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', () => {
+test('CNF-SAT current state requires earned NP-completeness and rejects InP or P = NP', () => {
   for (const field of [
     'leanConcreteCNFSATInPFormalized',
     'leanConcreteCNFNPCompletenessFormalized',
@@ -1120,7 +1123,7 @@ test('CNF-SAT milestone cannot be widened to InP, NP-completeness, or P = NP', (
     'rootLeanTheoremPresent',
   ]) {
     const forged = structuredClone(status);
-    forged[field] = true;
+    forged[field] = !status[field];
     assert.equal(validation.validateStatus(forged, inventory), false, field);
   }
 
@@ -1174,7 +1177,7 @@ test('Cook-Levin formula-size evidence is exact and cannot be widened into a red
 
   for (const field of ['leanConcreteCNFNPCompletenessFormalized', 'leanConcreteCNFSATInPFormalized']) {
     const widenedClaim = structuredClone(status);
-    widenedClaim[field] = true;
+    widenedClaim[field] = !status[field];
     assert.equal(validation.validateStatus(widenedClaim, inventory), false, field);
   }
 });
@@ -1272,7 +1275,7 @@ test('Cook-Levin input-length builder requires all ten exact theorem rows and ca
 
   for (const field of ['leanConcreteCNFNPCompletenessFormalized', 'leanConcreteCNFSATInPFormalized']) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1317,7 +1320,7 @@ test('Cook-Levin executable builder prefix requires all fourteen exact theorem r
 
   for (const field of ['leanConcreteCNFNPCompletenessFormalized', 'leanConcreteCNFSATInPFormalized']) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1409,7 +1412,7 @@ test('Cook-Levin first-token prefix requires all twenty-eight exact theorem rows
     'leanConcreteCookLevinBuilderPolynomialReductionFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = Object.hasOwn(M230.fields, field) ? !M230.fields[field] : true;
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1467,7 +1470,7 @@ test('Cook-Levin complete header requires all forty-eight evaluator/composition 
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1524,7 +1527,7 @@ test('Cook-Levin body-start prefix requires all forty-two exact theorem rows and
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1586,7 +1589,7 @@ test('Cook-Levin first-literal prefix requires all fifty-two exact theorem rows 
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1649,7 +1652,7 @@ test('Cook-Levin first-clause prefix requires all forty-four exact theorem rows 
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1707,7 +1710,7 @@ test('Cook-Levin dynamic-token cursor step requires all thirty-one exact rows an
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1856,7 +1859,7 @@ test('Cook-Levin clause-two first literal requires all fifty-eight exact rows an
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1914,7 +1917,7 @@ test('Cook-Levin clause-two second literal requires all seventy-six exact rows a
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -1974,7 +1977,7 @@ test('Cook-Levin complete clause-two prefix requires all forty-one exact rows an
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -2034,7 +2037,7 @@ test('Cook-Levin clause-two padding run requires all thirty-nine exact rows and 
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -2092,7 +2095,7 @@ test('Cook-Levin third-clause separator step requires all forty exact rows and r
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -2334,7 +2337,7 @@ test('Cook-Levin fourth-clause separator step requires all forty exact rows and 
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -2392,7 +2395,7 @@ test('Cook-Levin fourth-clause first-literal prefix requires all seventy-six exa
     'leanConcreteCNFNPCompletenessFormalized',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -3558,7 +3561,7 @@ test('strict-v0 locked-NAND source parser requires every exact theorem and stays
     'publicTheoremEmissionAllowed',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -3629,7 +3632,7 @@ test('strict-v0 locked-NAND target emitter requires every exact theorem and stay
     'publicTheoremEmissionAllowed',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -3711,7 +3714,7 @@ test('strict-v0 locked-NAND polynomial reduction requires every exact theorem an
     'publicTheoremEmissionAllowed',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 });
@@ -3782,7 +3785,7 @@ test('CNF-to-NAND semantic compiler requires every exact theorem and rejects com
     'publicTheoremEmissionAllowed',
   ]) {
     const widened = structuredClone(status);
-    widened[field] = true;
+    widened[field] = !status[field];
     assert.equal(validation.validateStatus(widened, inventory), false, field);
   }
 

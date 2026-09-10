@@ -47,6 +47,58 @@
   },
   "entries": [
     {
+      "id": "2026-09-11-concrete-cnf-np-completeness",
+      "milestoneId": "concrete-cnf-np-completeness",
+      "publishedAt": "2026-09-10T20:09:33.844Z",
+      "title": "Concrete CNF-SAT NP-hardness and NP-completeness",
+      "plainLanguage": [
+        "Every language in the concrete bounded-certificate NP class now has a kernel-checked polynomial reduction to CNF-SAT. Combined with the concrete CNF-SAT verifier, this proves NP-completeness in the selected finite-machine model. The reduction comes from the complete all-input Cook-Levin builder, not from a supplied correctness certificate.",
+        "This earns the fixed concrete NP-hardness checkpoint: the risk-weighted proof estimate moves from 38% to 40%, with uncertainty 20% to 40%. Formal artefact coverage is separately 207 of 209 current scoped rows. All five global gates remain open. NP-completeness is not a polynomial-time SAT algorithm; unconditional residual minimization and ZeroSlack, complete polynomial PCCMin bounds, deterministic SAT and the eligible root remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 207,
+        "formalArtefactCoverageTotalRows": 209,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "e4af115a66cd5a6715a9363abea7a2008238d401",
+        "tree": "28bf3e0bb8f4afccf308859c5f42f9c27b14edbb",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-10-concrete-cook-levin-complete-builder",
+      "milestoneId": "concrete-cook-levin-complete-builder",
+      "publishedAt": "2026-09-10T14:35:38.145Z",
+      "title": "Complete all-input Cook-Levin formula builder and reduction",
+      "plainLanguage": [
+        "For every fixed polynomial-time verifier and every ordinary input bitstring, the complete finite-machine Cook-Levin builder now produces the original canonical CNF formula, with total runtime and output-size bounds polynomial in the original input length. No execution trace, route, family or correctness certificate is supplied.",
+        "This earns the fixed complete-builder checkpoint: the risk-weighted proof estimate moves from 35% to 38%, with uncertainty from 20% to 40%. Formal artefact coverage is separately 206 of 208 current scoped rows. All five global gates remain open. Constructing the formula does not decide satisfiability; the separate named NP-hardness transport, unconditional ZeroSlack, complete polynomial PCCMin bounds and eligible root remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 206,
+        "formalArtefactCoverageTotalRows": 208,
+        "riskWeightedProofCompletionPercent": 38,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "a5e6b44e1345b5b1ca124391a5e57f02f95742dd",
+        "tree": "48938071581c3242c612573da1f0eb2f2e3f967e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-10-230",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split",
       "milestoneId": "concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split",
       "publishedAt": "2026-09-05T10:05:51Z",

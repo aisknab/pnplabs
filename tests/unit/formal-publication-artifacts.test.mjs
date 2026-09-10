@@ -1,3 +1,4 @@
+import { M230, assertM230Status, assertM230Manifest } from '../../tools/formal-m230-contract.mjs';
 import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -1166,7 +1167,12 @@ test("current release pins the latest canonical earned boundary and remains fail
   );
   assert.ok(latestMilestone, "latest milestone must come from the canonical status payload");
   const latestStem = releaseBoundaryPrefixForMilestone(release, latestMilestone);
-  const latestStatusStem = `lean${statusStemForReleaseBoundary(latestStatusPayload, release, latestStem)}`;
+  const latestStatusStem = latestStem === "cookLevinCompleteBuilder" ? null
+    : `lean${statusStemForReleaseBoundary(latestStatusPayload, release, latestStem)}`;
+  if (latestStatusStem === null) {
+    assertM230Status(latestStatusPayload);
+    assertM230Manifest(release);
+  }
   const latestTheoremHashes = Object.fromEntries(
     latestMilestone.theoremRows.map((row) => [row.name, row.expectedKernelTypeSha256])
   );
@@ -3523,7 +3529,9 @@ test("current release pins the latest canonical earned boundary and remains fail
 
   assert.equal(releaseBoundaryValue(release, latestStem, "Formalized"), true);
   assert.equal(releaseBoundaryValue(release, latestStem, "AxiomAuditPassed"), true);
-  assert.ok(Number.isSafeInteger(releaseBoundaryValue(release, latestStem, "AuditedDeclarationCount")));
+  if (latestStatusStem !== null) {
+    assert.ok(Number.isSafeInteger(releaseBoundaryValue(release, latestStem, "AuditedDeclarationCount")));
+  }
   const latestAuditCategorySuffixes = [
     "EmptyAxiomDeclarationCount",
     "PropextOnlyDeclarationCount",
@@ -3549,7 +3557,9 @@ test("current release pins the latest canonical earned boundary and remains fail
     );
   }
   const latestReleaseScope = releaseBoundaryValue(release, latestStem, "Scope", false);
-  if (latestReleaseScope === undefined) {
+  if (latestStatusStem === null) {
+    assertM230Status(latestStatusPayload);
+  } else if (latestReleaseScope === undefined) {
     assert.equal(Object.hasOwn(latestStatusPayload, `${latestStatusStem}Scope`), false);
     assert.ok(latestMilestone.scope.length > 0, "scopeless status boundaries retain canonical milestone scope");
   } else {
@@ -3564,7 +3574,8 @@ test("current release pins the latest canonical earned boundary and remains fail
       && latestMilestone.requiredTheorems.includes(value))
     .map(([_key, value]) => value)
     .sort();
-  assert.deepEqual(latestReleaseTheorems, [...latestMilestone.requiredTheorems].sort());
+  assert.deepEqual(latestReleaseTheorems, latestStatusStem === null
+    ? [M230.checkedCompleteTheorem] : [...latestMilestone.requiredTheorems].sort());
 
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
@@ -3591,15 +3602,15 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.equal(release.earnedBoundary.lockedNANDDecodeLockedInstanceRoundTripTheorem, "PNP.Concrete.LockedNAND.decodeLockedInstance_encodeLockedInstance");
   assert.equal(release.earnedBoundary.lockedNANDEncodedThresholdTheorem, "PNP.Concrete.LockedNAND.encoded_fullCandidate_threshold_iff_satisfiable");
   assert.equal(release.earnedBoundary.lockedNANDBuildCorrectTheorem, "PNP.Concrete.LockedNAND.buildLockedNANDInstance_correct");
-  assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinBuilderFormulaBitsEmittedFormalized, true);
-  assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, false);
-  assert.equal(release.earnedBoundary.cookLevinCompleteRawFormulaBuilderFormalized, false);
-  assert.equal(release.earnedBoundary.cookLevinBuilderFunctionProgramRawRefinementFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinBuilderDirectCursorRawInterpretationFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinCompleteRawFormulaBuilderFormalized, true);
+  assert.equal(release.earnedBoundary.cookLevinBuilderFunctionProgramRawRefinementFormalized, true);
   assert.equal(release.earnedBoundary.cookLevinFormulaConstructionRuntimePolynomialFormalized, false);
-  assert.equal(release.earnedBoundary.cookLevinPolynomialReductionFormalized, false);
+  assert.equal(release.earnedBoundary.cookLevinPolynomialReductionFormalized, true);
   assert.equal(release.earnedBoundary.cnfSATInPFormalized, false);
-  assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, false);
+  assert.equal(release.earnedBoundary.cnfSATNPCompletenessFormalized, true);
   assert.equal(release.earnedBoundary.pEqualsNPFormalized, false);
   assert.equal(release.publicationBoundary.derivedOnlyFromConcreteGate, true);
   assert.equal(release.publicationBoundary.concreteGatePassed, false);
@@ -3623,7 +3634,8 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   );
   assert.ok(latestPublicationMilestone, `missing latest milestone ${latestUpdate.milestoneId}`);
   const latestStem = releaseBoundaryPrefixForMilestone(canonicalRelease, latestPublicationMilestone);
-  const latestStatusStem = `lean${statusStemForReleaseBoundary(status, canonicalRelease, latestStem)}`;
+  const latestStatusStem = latestStem === "cookLevinCompleteBuilder" ? null
+    : `lean${statusStemForReleaseBoundary(status, canonicalRelease, latestStem)}`;
   const latestReleaseHashes = releaseBoundaryValue(
     canonicalRelease,
     latestStem,
@@ -5296,19 +5308,30 @@ test("status and inventory publish the canonical latest earned milestone", () =>
   }
   assert.equal(latestPublicationMilestone.scope, latestPublicationMilestone.scope.trim());
   assert.match(latestPublicationMilestone.nonClaim, /P = NP/u);
-  assert.equal(status[`${latestStatusStem}Formalized`], true);
-  assert.equal(status[`${latestStatusStem}AxiomAuditPassed`], true);
+  if (latestStatusStem === null) {
+    assertM230Status(status);
+    for (const [field, value] of Object.entries(M230.fields)) {
+      assert.equal(index.claimBoundary[field], value, field);
+    }
+  } else {
+    assert.equal(status[`${latestStatusStem}Formalized`], true);
+    assert.equal(status[`${latestStatusStem}AxiomAuditPassed`], true);
+  }
   assert.equal(latestPublicationMilestone.scope.length > 0, true);
   const latestReleaseScope = releaseBoundaryValue(canonicalRelease, latestStem, "Scope", false);
-  if (latestReleaseScope === undefined) {
+  if (latestStatusStem === null) {
+    assertM230Status(status);
+  } else if (latestReleaseScope === undefined) {
     assert.equal(Object.hasOwn(status, `${latestStatusStem}Scope`), false);
     assert.equal(Object.hasOwn(index.claimBoundary, `${latestStatusStem}Scope`), false);
   } else {
     assert.equal(latestReleaseScope, status[`${latestStatusStem}Scope`]);
     assert.equal(index.claimBoundary[`${latestStatusStem}Scope`], status[`${latestStatusStem}Scope`]);
   }
-  assert.equal(index.claimBoundary[`${latestStatusStem}Formalized`], status[`${latestStatusStem}Formalized`]);
-  assert.equal(index.claimBoundary[`${latestStatusStem}AxiomAuditPassed`], status[`${latestStatusStem}AxiomAuditPassed`]);
+  if (latestStatusStem !== null) {
+    assert.equal(index.claimBoundary[`${latestStatusStem}Formalized`], status[`${latestStatusStem}Formalized`]);
+    assert.equal(index.claimBoundary[`${latestStatusStem}AxiomAuditPassed`], status[`${latestStatusStem}AxiomAuditPassed`]);
+  }
   assert.equal(status.leanSaturatePositiveFormalized, false);
   assert.equal(status.leanBCELReadyFormalized, false);
 

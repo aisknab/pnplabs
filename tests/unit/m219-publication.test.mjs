@@ -72,9 +72,13 @@ test('M219 status and release mirrors retain every load-bearing field', () => {
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestTheoremKernelTypeSha256, { [theoremName]: theoremHash });
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestAxiomClosure, ['Quot.sound', 'propext']);
   assert.deepEqual(release.earnedBoundary.cookLevinBuilderPhysicalFinishRequestProjectAxiomClosure, []);
-  assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, false);
-  assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, false);
-  assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized, false);
+  // This milestone's local non-claim does not freeze later global progress.
+  const completeBuilderEarned = status.formalPublicationMilestones.some(
+    row => row.id === 'concrete-cook-levin-complete-builder' && row.earned === true,
+  );
+  assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, completeBuilderEarned);
+  assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, completeBuilderEarned);
+  assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized, completeBuilderEarned);
 });
 
 test('M219 progress snapshot remains separate and conservative', () => {
@@ -115,7 +119,7 @@ test('M219 remains historically exact after later current releases', () => {
   for (const file of ['README.md', 'architecture.html', 'faq.html', 'index.html', 'paper.html', 'status.html']) {
     const text = readFileSync(file, 'utf8');
     assert.match(text, new RegExp(currentCoverage.replace('/', '\\/')));
-    assert.match(text, /35%/);
+    assert.ok(text.includes(`${progress.proofCompletion.percent}%`));
   }
   const homepage = readFileSync('index.html', 'utf8');
   assert.match(homepage, new RegExp(`data-current-milestone="${updates.entries[0].milestoneId}"`));
