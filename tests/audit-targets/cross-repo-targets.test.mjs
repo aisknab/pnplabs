@@ -1,3 +1,4 @@
+import { M230 } from '../../tools/formal-m230-contract.mjs';
 import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
@@ -74,6 +75,7 @@ function latestPublishedMilestoneReleaseField(suffix, required = true) {
 }
 const latestPublishedMilestoneScopeField = latestPublishedMilestoneReleaseField("Scope", false);
 const latestPublishedMilestoneFieldStem = (() => {
+  if (latestPublishedMilestoneId === M230.id) return "ConcreteCookLevinFormulaBuilder";
   if (latestPublishedMilestoneScopeField === undefined) {
     return deriveMilestoneStatusStem(publishedStatus, latestPublishedMilestoneReleasePrefix).slice("lean".length);
   }
@@ -90,7 +92,7 @@ const latestPublishedMilestoneFieldStem = (() => {
   );
   return scopeKeys[0].slice("lean".length, -"Scope".length);
 })();
-const latestPublishedMilestoneRequiredStatusKeys = [
+const latestPublishedMilestoneRequiredStatusKeys = latestPublishedMilestoneId === M230.id ? Object.keys(M230.fields) : [
   `lean${latestPublishedMilestoneFieldStem}Formalized`,
   `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`
 ];
@@ -102,7 +104,7 @@ for (const key of latestPublishedMilestoneRequiredStatusKeys) {
 }
 const latestPublishedMilestoneStatusPrefix = `lean${latestPublishedMilestoneFieldStem}`;
 const latestPublishedMilestoneStatusFields = Object.fromEntries(
-  Object.entries(publishedStatus).filter(([key]) => key.startsWith(latestPublishedMilestoneStatusPrefix))
+  Object.entries(publishedStatus).filter(([key]) => latestPublishedMilestoneId === M230.id ? Object.hasOwn(M230.fields, key) : key.startsWith(latestPublishedMilestoneStatusPrefix))
 );
 assert.ok(Object.keys(latestPublishedMilestoneStatusFields).length >= latestPublishedMilestoneRequiredStatusKeys.length);
 const publishedLeanStatusFields = Object.fromEntries(
@@ -3043,10 +3045,10 @@ function makeProject(t) {
     ...structuredClone(Object.fromEntries(Object.entries(publishedStatus).filter(
       ([name]) => name.startsWith("leanLockedNAND")
     ))),
-    leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
-    leanConcreteCookLevinFormulaBuilderFormalized: false,
-    leanConcreteCookLevinBuilderRawRefinementFormalized: false,
-    leanConcreteCookLevinBuilderPolynomialReductionFormalized: false,
+    leanConcreteCookLevinBuilderDynamicCursorFormalized: true,
+    leanConcreteCookLevinFormulaBuilderFormalized: true,
+    leanConcreteCookLevinBuilderRawRefinementFormalized: true,
+    leanConcreteCookLevinBuilderPolynomialReductionFormalized: true,
     formalPublicationMilestones: [{
       id: "concrete-cook-levin-formula-size",
       earned: true,
@@ -3361,7 +3363,7 @@ function makeProject(t) {
       ...structuredClone(PUBLISHED_RESIDUAL_TERMINAL_BN3_REQUEST_ENVELOPE_MILESTONE)
     }],
     leanConcreteCNFSATInPFormalized: false,
-    leanConcreteCNFNPCompletenessFormalized: false
+    leanConcreteCNFNPCompletenessFormalized: true
   };
   const explicitStatusMilestones = new Map(
     statusPayload.formalPublicationMilestones.map((row) => [row.id, row])
@@ -4256,8 +4258,8 @@ function makeProject(t) {
       cookLevinRawFormulaBuilderFormalized: false,
       cookLevinFormulaScheduleFunctionProgramRawRefinementFormalized: false,
       cookLevinFormulaConstructionRuntimePolynomialFormalized: false,
-      cookLevinPolynomialReductionFormalized: false,
-      cnfSATNPCompletenessFormalized: false,
+      cookLevinPolynomialReductionFormalized: true,
+      cnfSATNPCompletenessFormalized: true,
       cnfSATInPFormalized: false,
       pEqualsNPFormalized: false
     },
@@ -4642,7 +4644,7 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   expectFailure(completeHeaderRemoved, /formal-publication Cook-Levin builder complete-header boundary mismatch/);
 
   const completeHeaderOverclaim = makeProject(t);
-  completeHeaderOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = true;
+  completeHeaderOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = false;
   write(completeHeaderOverclaim.root, "downloads/formal-publication-release.json", json(completeHeaderOverclaim.release));
   expectFailure(completeHeaderOverclaim, /formal-publication overstates the Cook-Levin builder dynamic-token-cursor step/);
 
@@ -4720,7 +4722,7 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   expectFailure(firstClauseIdentity, /formal-publication Cook-Levin builder first-clause-prefix theorem identity mismatch/);
 
   const firstClauseOverclaim = makeProject(t);
-  firstClauseOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = true;
+  firstClauseOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = false;
   write(firstClauseOverclaim.root, "downloads/formal-publication-release.json", json(firstClauseOverclaim.release));
   expectFailure(firstClauseOverclaim, /formal-publication overstates the Cook-Levin builder dynamic-token-cursor step/);
 
@@ -4753,7 +4755,7 @@ test("rejects Cook-Levin formula-size/schedule identity, axiom, or construction 
   expectFailure(dynamicCursorIdentity, /formal-publication Cook-Levin builder dynamic-token-cursor-step theorem identity mismatch/);
 
   const dynamicCursorOverclaim = makeProject(t);
-  dynamicCursorOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = true;
+  dynamicCursorOverclaim.release.earnedBoundary.cookLevinBuilderDynamicCursorInterpretationFormalized = false;
   write(dynamicCursorOverclaim.root, "downloads/formal-publication-release.json", json(dynamicCursorOverclaim.release));
   expectFailure(dynamicCursorOverclaim, /formal-publication overstates the Cook-Levin builder dynamic-token-cursor step/);
 
@@ -10777,7 +10779,7 @@ test("rejects mutations of the latest canonical publication milestone across eve
   const theoremName = latestMilestone.requiredTheorems[0];
   const releaseFormalizedField = latestPublishedMilestoneReleaseField("Formalized");
   const releaseFingerprintField = latestPublishedMilestoneReleaseField("TheoremKernelTypeSha256");
-  const statusAuditField = `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`;
+  const statusAuditField = latestPublishedMilestoneId === M230.id ? "leanConcreteCookLevinBuilderRawRefinementFormalized" : `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`;
 
   const releaseFlag = makeProject(t);
   releaseFlag.release.earnedBoundary[releaseFormalizedField] = false;

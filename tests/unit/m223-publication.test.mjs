@@ -109,10 +109,13 @@ test('M223 status and release mirrors retain every load-bearing field', () => {
       .cookLevinBuilderPhysicalClassifierFinishMirroredDispatchProjectAxiomClosure,
     [],
   );
-  assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, false);
-  assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, false);
-  assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized,
-    false);
+  // This milestone's local non-claim does not freeze later global progress.
+  const completeBuilderEarned = status.formalPublicationMilestones.some(
+    row => row.id === 'concrete-cook-levin-complete-builder' && row.earned === true,
+  );
+  assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, completeBuilderEarned);
+  assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, completeBuilderEarned);
+  assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized, completeBuilderEarned);
 });
 
 test('M223 progress snapshot remains separate and conservative', () => {

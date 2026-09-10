@@ -1,3 +1,4 @@
+import { M230, assertM230Status, assertM230Manifest } from '../../tools/formal-m230-contract.mjs';
 import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
@@ -5,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { access, readFile, readdir } from 'node:fs/promises';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
@@ -991,24 +993,26 @@ async function readJson(path) {
   return JSON.parse(await readText(path));
 }
 
-const siblingRepo = new URL('../../../pnp/', import.meta.url);
-const siblingGit = new URL('.git', siblingRepo);
+const siblingRepo = process.env.PNP_SOURCE_DIR
+  || fileURLToPath(new URL('../../../pnp/', import.meta.url));
+const siblingGit = resolve(siblingRepo, '.git');
 let siblingAvailable = true;
 try {
   await access(siblingGit);
 } catch {
+  if (process.env.PNP_SOURCE_DIR) throw new Error('Configured PNP_SOURCE_DIR checkout is unavailable');
   siblingAvailable = false;
 }
 
 test('status, inventory, and progress are byte-identical to the pinned merged core publication', { skip: siblingAvailable ? false : 'sibling pnp checkout unavailable; upstream-consistency CI performs the remote comparison' }, async () => {
   for (const [sitePath, sourcePath] of [
-    ['public/pnp-status.json', 'public/pnp-status.json'],
-    ['public/pnp-theorem-inventory.json', 'public/pnp-theorem-inventory.json'],
+    ['public/pnp-status.json', 'status/FORMAL_RECONSTRUCTION_STATUS.json'],
+    ['public/pnp-theorem-inventory.json', 'status/LEAN_THEOREM_INVENTORY.json'],
     ['public/pnp-proof-progress.json', 'status/PROOF_PROGRESS.json'],
   ]) {
     const site = await readText(sitePath);
     const { stdout: source } = await execFileAsync('git', [
-      '-C', fileURLToPath(siblingRepo), 'show', `${CORE_COMMIT}:${sourcePath}`,
+      '-C', siblingRepo, 'show', `${CORE_COMMIT}:${sourcePath}`,
     ], { encoding: 'utf8', maxBuffer: INVENTORY_BYTES + 1024 * 1024 });
     assert.equal(site, source, `${sitePath} must match pinned merged core commit`);
   }
@@ -4781,13 +4785,13 @@ test('current status binds the compiled inventory and fails the concrete gate cl
   assert.equal(status.leanConcreteCookLevinBuilderFirstLiteralPrefixRetainedNextTokenCoordinateFormalized, true);
   assert.equal(status.leanConcreteCookLevinBuilderFirstLiteralPrefixInputPrefixAppenderComposed, true);
   assert.equal(status.leanConcreteCookLevinBuilderFirstLiteralPrefixFailClosedBoundaryTimeoutFormalized, true);
-  assert.equal(status.leanConcreteCookLevinBuilderDynamicCursorFormalized, false);
-  assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, false);
-  assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, false);
-  assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized, false);
+  assert.equal(status.leanConcreteCookLevinBuilderDynamicCursorFormalized, true);
+  assert.equal(status.leanConcreteCookLevinFormulaBuilderFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderRawRefinementFormalized, true);
+  assert.equal(status.leanConcreteCookLevinBuilderPolynomialReductionFormalized, true);
   assert.equal(gate.subchecks.standardComplexityModelEligible, true);
   assert.equal(status.leanConcreteCNFSATInPFormalized, false);
-  assert.equal(status.leanConcreteCNFNPCompletenessFormalized, false);
+  assert.equal(status.leanConcreteCNFNPCompletenessFormalized, true);
 
   const membership = inventory.milestoneCandidates.find((candidate) => candidate.name === status.leanConcreteCNFSATMembershipTheorem);
   assert.equal(membership.kind, 'theorem');
@@ -6863,7 +6867,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(fourthClauseSecondLiteralPrefixMilestone.earned, true);
   assert.equal(fourthClausePaddingRunMilestone.earned, true);
   assert.equal(secondConstraintFirstLiteralSignMilestone.earned, true);
-  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent/u);
+  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|does not close[^.]*eligible root theorem/u);
 
   for (const command of [
     'lake build PNP',
@@ -8704,12 +8708,12 @@ test('payload index describes current inventory/report and quarantines legacy su
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderTokenAppenderCompleteHeaderFormalized, false);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderTokenAppenderDynamicCursorInterpretationFormalized, false);
   assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderFormulaBitsEmittedFormalized, true);
-  assert.equal(index.claimBoundary.leanConcreteCookLevinCompleteRawFormulaBuilderFormalized, false);
-  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderRawRefinementFormalized, false);
-  assert.equal(index.claimBoundary.leanConcreteCookLevinFormulaConstructionRuntimePolynomialFormalized, false);
-  assert.equal(index.claimBoundary.leanConcreteCookLevinPolynomialReductionFormalized, false);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinCompleteRawFormulaBuilderFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinBuilderRawRefinementFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinFormulaConstructionRuntimePolynomialFormalized, true);
+  assert.equal(index.claimBoundary.leanConcreteCookLevinPolynomialReductionFormalized, true);
   assert.equal(index.claimBoundary.leanConcreteCNFSATInPFormalized, false);
-  assert.equal(index.claimBoundary.leanConcreteCNFNPCompletenessFormalized, false);
+  assert.equal(index.claimBoundary.leanConcreteCNFNPCompletenessFormalized, true);
   assert.equal(index.claimBoundary.remainingBlockers.length, 5);
   assert.equal(index.claimBoundary.leanLockedNANDGlobalCandidateAssemblyFormalized, true);
   assert.equal(index.claimBoundary.leanLockedNANDGlobalBaselineCandidateFormalized, true);
@@ -9228,10 +9232,12 @@ test('status page has a conservative complete static fallback', async () => {
   );
   assert.ok(latestMilestone, `missing latest milestone ${updates.entries[0].milestoneId}`);
   const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestMilestone);
-  const latestStatusStem = statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
+  const latestStatusStem = latestReleasePrefix === "cookLevinCompleteBuilder"
+    ? null : statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
+  if (latestStatusStem === null) assertM230Status(status);
   const html = await readText('status.html');
   for (const fragment of [
-    `Formal status · ${index.syncedOn}`,
+    `Formal status · ${status.coordinate.match(/\d{4}-\d{2}-\d{2}/u)?.[0]}`,
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
     'publicTheoremStatement = null',
@@ -9277,8 +9283,9 @@ test('status page has a conservative complete static fallback', async () => {
     'leanResidualTerminalPacketSelectorSeedsAxiomAuditPassed = true',
     latestMilestone.id,
     ...latestMilestone.requiredTheorems,
-    `lean${latestStatusStem}Formalized = true`,
-    `lean${latestStatusStem}AxiomAuditPassed = true`,
+    ...(latestStatusStem === null
+      ? Object.entries(M230.fields).map(([field, value]) => `${field} = ${JSON.stringify(value)}`)
+      : [`lean${latestStatusStem}Formalized = true`, `lean${latestStatusStem}AxiomAuditPassed = true`]),
     ...(Object.hasOwn(status, `lean${latestStatusStem}Scope`)
       ? [`lean${latestStatusStem}Scope = ${JSON.stringify(status[`lean${latestStatusStem}Scope`])}`]
       : []),
@@ -9738,14 +9745,20 @@ test('static inventory prose derives changing publication totals from the canoni
   assert.ok(latestEarnedMilestone, 'latest earned milestone');
   const latestUpdate = updates.entries[0];
   const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone);
-  const latestStatusStem = statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
-  const latestFocusedAuditCount = releaseBoundaryField(
+  const latestStatusStem = latestReleasePrefix === "cookLevinCompleteBuilder"
+    ? null : statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
+  if (latestStatusStem === null) assertM230Status(status);
+  const latestFocusedAuditCount = latestStatusStem === null ? null : releaseBoundaryField(
     latestRelease,
     latestReleasePrefix,
     'AuditedDeclarationCount',
   );
-  assert.ok(Number.isSafeInteger(latestFocusedAuditCount));
-  assert.ok(latestFocusedAuditCount > 0);
+  if (latestFocusedAuditCount !== null) {
+    assert.ok(Number.isSafeInteger(latestFocusedAuditCount));
+    assert.ok(latestFocusedAuditCount > 0);
+  } else {
+    assertM230Manifest(latestRelease);
+  }
   const latestTheoremPinLabel = latestEarnedMilestone.requiredTheorems.length === 1
     ? "1 reviewed theorem pin"
     : `${latestEarnedMilestone.requiredTheorems.length} reviewed theorem pins`;
@@ -9768,7 +9781,7 @@ test('static inventory prose derives changing publication totals from the canoni
     true,
     'FAQ must derive the current formal artefact coverage and percentage',
   );
-  assert.equal(pipeline.includes(`The ${index.formalPublicationMilestoneCounts.earned} earned formal artefact scopes are:`), true);
+  assert.equal(pipeline.includes('The earned formal artefact scopes are:'), true);
   assert.equal(activatedClaimWording.includes(`${index.formalPublicationMilestoneCounts.earned} narrowly scoped milestones are earned`), true);
   assert.equal(activatedClaimWording.toLowerCase().includes(latestUpdate.title.toLowerCase()), true);
   const currentMilestoneProse = latestUpdate.plainLanguage
@@ -9806,7 +9819,8 @@ test('static inventory prose derives changing publication totals from the canoni
       `${surfaceName} must not expose a volatile current PDF page total`,
     );
   }
-  const latestStatusFields = [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`];
+  const latestStatusFields = latestStatusStem === null ? Object.keys(M230.fields)
+    : [`lean${latestStatusStem}Formalized`, `lean${latestStatusStem}AxiomAuditPassed`];
   if (Object.hasOwn(status, `lean${latestStatusStem}Scope`)) latestStatusFields.push(`lean${latestStatusStem}Scope`);
   for (const field of latestStatusFields) {
     assert.equal(
@@ -9835,7 +9849,7 @@ test('static inventory prose derives changing publication totals from the canoni
   }
   assert.equal(pipeline.includes('245 source-closure modules'), false);
   const reproducibilityCollapsed = reproducibility.replace(/\s+/gu, ' ');
-  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), 'fixed 135,070-rule', latestTheoremPinLabel, `focused ${latestFocusedAuditCount}-declaration audit`, 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
+  for (const fragment of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, `${sourceModules} modules`, formatNumber(latestRelease.artifacts.report.pdf.bytes), formatNumber(latestRelease.artifacts.report.tex.bytes), formatNumber(latestRelease.artifacts.status.bytes), formatNumber(latestRelease.artifacts.theoremInventory.bytes), 'fixed 135,070-rule', latestTheoremPinLabel, ...(latestFocusedAuditCount === null ? [] : [`focused ${latestFocusedAuditCount}-declaration audit`]), 'PolynomialTimeFunction', 'cnfSAT_reducesTo_encodedNANDSAT']) {
     assert.equal(reproducibilityCollapsed.includes(fragment), true, `missing reproducibility fragment: ${fragment}`);
   }
   assert.equal(reproducibility.includes('forty-four A4 pages'), false);

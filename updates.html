@@ -28,19 +28,19 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">
-      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-05-229">
+      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231">
         <article class="card proof-progress-primary">
           <span class="eyebrow">Fixed-weight model v0</span>
           <h2 id="proof-progress-heading">Risk-weighted proof completion estimate</h2>
-          <p class="progress-number" aria-label="35 percent risk-weighted proof completion estimate">35%</p>
+          <p class="progress-number" aria-label="40 percent risk-weighted proof completion estimate">40%</p>
           <p><strong>Current uncertainty range:</strong> 20% to 40%</p>
           <p>A conservative estimate of how much of the complete formal proof burden has been retired. This is not confidence that P=NP is true, a probability of success, or a time estimate.</p>
-          <progress class="proof-progress-meter" max="100" value="35" aria-label="Risk-weighted proof completion estimate: 35 percent; uncertainty 20 to 40 percent">35%</progress>
-          <img src="assets/proof-progress.svg" width="960" height="240" alt="Risk-weighted proof completion estimate 35 percent, with uncertainty from 20 to 40 percent">
+          <progress class="proof-progress-meter" max="100" value="40" aria-label="Risk-weighted proof completion estimate: 40 percent; uncertainty 20 to 40 percent">40%</progress>
+          <img src="assets/proof-progress.svg" width="960" height="240" alt="Risk-weighted proof completion estimate 40 percent, with uncertainty from 20 to 40 percent">
           <h3>Five-track breakdown</h3>
           <ul class="progress-breakdown" aria-label="Risk-weighted proof completion track scores">
           <li><span>Formal foundations and proof infrastructure</span><strong>13 / 15</strong></li>
-          <li><span>Concrete reductions and locked-NAND route</span><strong>15 / 20</strong></li>
+          <li><span>Concrete reductions and locked-NAND route</span><strong>20 / 20</strong></li>
           <li><span>Unconditional residual core and ZeroSlack</span><strong>2 / 35</strong></li>
           <li><span>Exact PCCMin algorithm, complexity and bounds</span><strong>1 / 20</strong></li>
           <li><span>Root theorem and project-axiom elimination</span><strong>4 / 10</strong></li>
@@ -49,7 +49,7 @@
         <article class="card proof-progress-secondary">
           <span class="section-label">Separate evidence metric</span>
           <h2>Formal artefact coverage</h2>
-          <p class="coverage-number">205 of 207</p>
+          <p class="coverage-number">207 of 209</p>
           <p><strong>99.0% of the current evidence ledger.</strong></p>
           <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>
         </article>
@@ -77,6 +77,46 @@
         <p>The M184 authoritative ledger contains 160 earned rows out of 162, superseding the earlier 152 of 154 example. No named load-bearing checkpoint closed merely because additional local or supplied-data milestones were earned, so the fixed-weight baseline remains 30 percent.</p>
         <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>
         <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>
+      </article>
+
+      <article class="card" id="2026-09-11-concrete-cnf-np-completeness" data-milestone-id="concrete-cnf-np-completeness">
+        <div class="section-label"><time datetime="2026-09-10T20:09:33.844Z">2026-09-10</time> · earned milestone 207</div>
+        <h2>Concrete CNF-SAT NP-hardness and NP-completeness</h2>
+        <p>Every language in the concrete bounded-certificate NP class now has a kernel-checked polynomial reduction to CNF-SAT. Combined with the concrete CNF-SAT verifier, this proves NP-completeness in the selected finite-machine model. The reduction comes from the complete all-input Cook-Levin builder, not from a supplied correctness certificate.</p>
+        <p>This earns the fixed concrete NP-hardness checkpoint: the risk-weighted proof estimate moves from 38% to 40%, with uncertainty 20% to 40%. Formal artefact coverage is separately 207 of 209 current scoped rows. All five global gates remain open. NP-completeness is not a polynomial-time SAT algorithm; unconditional residual minimization and ZeroSlack, complete polynomial PCCMin bounds, deterministic SAT and the eligible root remain open.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at publication"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231</strong><ul><li>Formal artefact coverage: 207 of 209 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-cnf-np-completeness</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every language in the concrete bounded-certificate NP class, M231 extracts its polynomial-time verifier from NP membership and applies the complete source-derived all-input Cook-Levin PolynomialReduction to CNFSAT. Together with the existing concrete CNFSAT verifier, the closed theorem proves NPComplete CNFSAT in the selected finite-machine model. No reduction, execution trace, finite-instance restriction or correctness certificate is supplied. Both complete theorem interfaces are root-built and axiom-audited; their closures contain only the Lean standard axioms Classical.choice, Quot.sound and propext.</p>
+          <p><strong>Boundary:</strong> NP-completeness is hardness plus NP membership, not a deterministic polynomial-time SAT algorithm. This closes only the fixed concrete NP-hardness checkpoint. It does not close the separate final complexity transport to P = NP, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, or the eligible root theorem. All five global proof gates and the publication gate remain open; P = NP is not proved.</p>
+          <p><strong>Reviewed theorem pins:</strong> 2</p>
+          <p><strong>Core source:</strong> commit <code>e4af115a66cd5a6715a9363abea7a2008238d401</code>, tree <code>28bf3e0bb8f4afccf308859c5f42f9c27b14edbb</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-11-231</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
+      <article class="card" id="2026-09-10-concrete-cook-levin-complete-builder" data-milestone-id="concrete-cook-levin-complete-builder">
+        <div class="section-label"><time datetime="2026-09-10T14:35:38.145Z">2026-09-10</time> · earned milestone 206</div>
+        <h2>Complete all-input Cook-Levin formula builder and reduction</h2>
+        <p>For every fixed polynomial-time verifier and every ordinary input bitstring, the complete finite-machine Cook-Levin builder now produces the original canonical CNF formula, with total runtime and output-size bounds polynomial in the original input length. No execution trace, route, family or correctness certificate is supplied.</p>
+        <p>This earns the fixed complete-builder checkpoint: the risk-weighted proof estimate moves from 35% to 38%, with uncertainty from 20% to 40%. Formal artefact coverage is separately 206 of 208 current scoped rows. All five global gates remain open. Constructing the formula does not decide satisfiability; the separate named NP-hardness transport, unconditional ZeroSlack, complete polynomial PCCMin bounds and eligible root remain open.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at publication"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-10-230</strong><ul><li>Formal artefact coverage: 206 of 208 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 38%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>concrete-cook-levin-complete-builder</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every concrete polynomial verifier and every ordinary raw bitstring, including empty and odd-length inputs, M230 runs the complete source-derived formula loop and physical output finalizer in one finite raw machine. Its exact ordinary output is the original canonical encoded Cook-Levin CNF formula, with total halting, runtime and output-size bounds polynomial in the original input length. The concrete PolynomialTimeFunction is a machine leaf; recursive FunctionProgram.RawRefinement preserves its output. The packaged PolynomialReduction to CNFSAT uses the already checked original formula semantics. No accepting certificate, execution trace, route, finite family, rank map or correctness certificate is supplied by the caller.</p>
+          <p><strong>Boundary:</strong> This completes the fixed all-input builder checkpoint, not a deterministic SAT algorithm. The separate named concrete NP-hardness or NP-completeness transport remains to be published. Unconditional residual minimization and ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, and the eligible root theorem remain open. No global gate closes and P = NP is not proved. Execution theorem closures use only propext and Quot.sound; reduction-facing semantic closures additionally use the already allowed Lean standard axiom Classical.choice, never a project-specific axiom.</p>
+          <p><strong>Reviewed theorem pins:</strong> 6</p>
+          <p><strong>Core source:</strong> commit <code>a5e6b44e1345b5b1ca124391a5e57f02f95742dd</code>, tree <code>48938071581c3242c612573da1f0eb2f2e3f967e</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-10-230</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
       </article>
 
       <article class="card" id="2026-09-05-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split" data-milestone-id="concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split">

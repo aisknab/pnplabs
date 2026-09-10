@@ -5,6 +5,10 @@
 The repository does not establish `P = NP`. The current public surface is generated from a compiled
 Lean theorem inventory, and its concrete publication gate is false.
 
+The fixed reductions-concrete-np-hardness checkpoint earns 2 points, raising the risk-weighted estimate from 38% to 40%. Formal artefact coverage is 207 of 209 current scoped publication rows earned. All five global gates remain open.
+
+Earlier component rows retain their original limitations. M230 supplies the complete all-input builder and M231 supplies concrete CNF-SAT NP-completeness; those older rows do not negate the later results.
+
 The pipeline is deliberately one-way:
 
 ```mermaid
@@ -25,15 +29,15 @@ artefacts. None can flow backward as theorem evidence.
 
 The core repository imports the complete `PNP` module closure under the exact pinned Lean toolchain,
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
-for dependencies. Every public row records name, module, kind, and axiom closure; the 3,169 reviewed
+for dependencies. Every public row records name, module, kind, and axiom closure; reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
 canonical output records:
 
-- 33,973 public declarations;
-- 17,525 theorem-kind declarations;
-- 8,207 assumption-free theorem-kind declarations;
-- 349 source-closure modules;
-- 16,029 excluded private compiler auxiliaries;
+- 46,094 public declarations;
+- 25,322 theorem-kind declarations;
+- 11,029 assumption-free theorem-kind declarations;
+- 497 source-closure modules;
+- 19,720 excluded private compiler auxiliaries;
 - no project-specific axioms.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
@@ -49,11 +53,13 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The 205 earned formal artefact scopes are:
+The earned formal artefact scopes are:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |
-| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, one literal four-stage all-input compiler, sequential raw-machine composition, and recursive function/decision compilation into one raw finite machine with exact verdict/output/no-timeout and explicit external polynomials | This closes the concrete machine link only; CNF-SAT in P, NP-completeness, and `P = NP` remain absent |
+| Concrete CNF-SAT NP-hardness and NP-completeness | For every language in the concrete bounded-certificate NP class, M231 extracts its polynomial-time verifier from NP membership and applies the complete source-derived all-input Cook-Levin PolynomialReduction to CNFSAT. Together with the existing concrete CNFSAT verifier, the closed theorem proves NPComplete CNFSAT in the selected finite-machine model. No reduction, execution trace, finite-instance restriction or correctness certificate is supplied. Both complete theorem interfaces are root-built and axiom-audited; their closures contain only the Lean standard axioms Classical.choice, Quot.sound and propext. | NP-completeness is hardness plus NP membership, not a deterministic polynomial-time SAT algorithm. This closes only the fixed concrete NP-hardness checkpoint. It does not close the separate final complexity transport to P = NP, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, or the eligible root theorem. All five global proof gates and the publication gate remain open; P = NP is not proved. |
+| Complete all-input Cook-Levin formula builder and reduction | For every concrete polynomial verifier and every ordinary raw bitstring, including empty and odd-length inputs, M230 runs the complete source-derived formula loop and physical output finalizer in one finite raw machine. Its exact ordinary output is the original canonical encoded Cook-Levin CNF formula, with total halting, runtime and output-size bounds polynomial in the original input length. The concrete PolynomialTimeFunction is a machine leaf; recursive FunctionProgram.RawRefinement preserves its output. The packaged PolynomialReduction to CNFSAT uses the already checked original formula semantics. No accepting certificate, execution trace, route, finite family, rank map or correctness certificate is supplied by the caller. | This completes the fixed all-input builder checkpoint, not a deterministic SAT algorithm. The separate named concrete NP-hardness or NP-completeness transport remains to be published. Unconditional residual minimization and ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, and the eligible root theorem remain open. No global gate closes and P = NP is not proved. Execution theorem closures use only propext and Quot.sound; reduction-facing semantic closures additionally use the already allowed Lean standard axiom Classical.choice, never a project-specific axiom. |
+| Concrete machine and cost kernel | Executable bitstrings/codecs, finite rule-list machines, collision-free pipeline namespaces, one literal four-stage all-input compiler, sequential raw-machine composition, and recursive function/decision compilation into one raw finite machine with exact verdict/output/no-timeout and explicit external polynomials | This component closes the concrete machine link only. M231 separately supplies NP-completeness; deterministic CNF-SAT in P and `P = NP` remain open |
 | Concrete P, NP, and reductions | Finite charged pipelines, bounded certificates, polynomial reductions, the NP-complete-in-P implication, and recursively compiled exact raw-machine refinements | No concrete SAT completeness/decider or root theorem |
 | Concrete universal CNF-SAT verifier | Exact formula/assignment decoding, universal accept/reject semantics, no timeout, and `CNFSAT ∈ NP` | No CNF-SAT in P, NP-completeness, or `P = NP` |
 | Cook-Levin dimensions and layout | Executable tableau dimensions and disjoint, in-range Boolean-variable blocks | Layout alone is not a CNF reduction |

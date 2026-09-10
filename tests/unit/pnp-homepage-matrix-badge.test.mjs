@@ -1,3 +1,4 @@
+import { M230, assertM230Status, assertM230Manifest } from '../../tools/formal-m230-contract.mjs';
 import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -41,6 +42,11 @@ function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
 }
 
 function latestMilestoneStatusFields(status, release, milestone) {
+  if (milestone.id === M230.id) {
+    assertM230Status(status);
+    assertM230Manifest(release);
+    return Object.keys(M230.fields);
+  }
   const suffix = 'TheoremKernelTypeSha256';
   const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(

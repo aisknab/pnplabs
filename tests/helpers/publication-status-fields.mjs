@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 export function deriveMilestoneStatusStem(status, releasePrefix) {
   assert.equal(typeof releasePrefix, 'string');
   assert.ok(releasePrefix.length > 0, 'release prefix must not be empty');
-  const prefix = releasePrefix.toLowerCase();
+  // The release retains the CNFSAT spelling; the core field uses CNF.
+  const prefix = releasePrefix.toLowerCase().replace(/^cnfsatnpcompleteness$/, "cnfnpcompleteness");
   const stems = Object.keys(status)
     .filter((key) => key.startsWith('lean') && key.endsWith('Formalized'))
     .map((key) => key.slice(0, -'Formalized'.length))

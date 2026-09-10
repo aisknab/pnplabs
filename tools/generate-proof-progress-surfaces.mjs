@@ -2,7 +2,7 @@
 
 // Purpose: render current proof-progress values into active non-archive pages.
 // Inputs: the validated public proof-progress, status, and inventory payloads.
-// Outputs: deterministic marked regions in index.html, status.html, and faq.html.
+// Outputs: current marked regions and canonical status-date/ledger-count metadata.
 // Invariants enforced: active values come from one canonical ledger and the two
 // metrics remain explicitly separate in every generated current surface.
 // Assumptions not checked: historical archived wording outside marked current regions.
@@ -113,6 +113,28 @@ function renderFaq(model) {
     + `    </details>`;
 }
 
+function replaceStatusLedgerMetadata(source, model) {
+  const date = model.coordinate?.match(/^PNP-FORMAL-RECONSTRUCTION-STATUS-(\d{4}-\d{2}-\d{2})-\d+$/u)?.[1];
+  const rows = model.formalArtefactCoverage?.totalRows;
+  if (!date || !Number.isSafeInteger(rows) || rows <= 0) {
+    throw new Error("status.html: invalid canonical status metadata");
+  }
+  const fields = [
+    [/<span class="eyebrow">Formal status · \d{4}-\d{2}-\d{2}<\/span>/gu,
+      '<span class="eyebrow">Formal status · ' + date + '</span>'],
+    [/Show all \d+ formal milestone records/gu,
+      'Show all ' + rows + ' formal milestone records'],
+  ];
+  let result = source;
+  for (const [pattern, replacement] of fields) {
+    if ((result.match(pattern) ?? []).length !== 1) {
+      throw new Error("status.html: expected exactly one status-date and ledger-count field");
+    }
+    result = result.replace(pattern, replacement);
+  }
+  return result;
+}
+
 const SURFACES = Object.freeze([
   ["index.html", "HOME", renderHome],
   ["status.html", "STATUS", renderStatus],
@@ -124,7 +146,8 @@ async function generateProofProgressSurfaces({ root = repositoryRoot, write = fa
   for (const [relativePath, id, render] of SURFACES) {
     const target = path.join(root, relativePath);
     const actual = await readFile(target, "utf8");
-    const expected = replaceRegion(actual, id, render(model), relativePath);
+    let expected = replaceRegion(actual, id, render(model), relativePath);
+    if (relativePath === "status.html") expected = replaceStatusLedgerMetadata(expected, model);
     if (write) {
       if (expected !== actual) await writeFile(target, expected);
     } else if (expected !== actual) {
@@ -174,5 +197,6 @@ export {
   renderStatus,
   replaceCssRegion,
   replaceMinifiedCssVariables,
+  replaceStatusLedgerMetadata,
   replaceRegion
 };
