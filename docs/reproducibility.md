@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 643,699 | `e41d3aaf4be51ea976ebb811ae8c2cf44b2edfffb6408619c08dd411cabec8e3` |
-| `downloads/canonical-proof-report.pdf` | 643,699 | `e41d3aaf4be51ea976ebb811ae8c2cf44b2edfffb6408619c08dd411cabec8e3` |
-| `downloads/canonical_proof_report.tex` | 442,023 | `0f84b0a81488361a298e54093a16eb115c490ff490c8b67f49dc664d0bf26599` |
-| `downloads/canonical-proof-report.tex` | 442,023 | `0f84b0a81488361a298e54093a16eb115c490ff490c8b67f49dc664d0bf26599` |
-| `public/pnp-status.json` | 2,845,995 | `636d1120c7cb3fd943cb761a4feb6d7382241d75e0d4b7d29279d3dff01b602c` |
-| `public/pnp-theorem-inventory.json` | 50,322,787 | `29671b56dd215e7f76f893933799cf89295fbdaec9b339e68a65e36a23d1f059` |
-| `public/pnp-proof-progress.json` | 170,658 | `4d4dbb9f9afde04d032a88bd4802a7c1e5051f479f533dc460c17a07a4f0b946` |
+| `downloads/canonical_proof_report.pdf` | 703,729 | `8c6f8ae5fc05f1763363055fefe49432f0c53f0d3dda321ab3a6fc39e94507fe` |
+| `downloads/canonical-proof-report.pdf` | 703,729 | `8c6f8ae5fc05f1763363055fefe49432f0c53f0d3dda321ab3a6fc39e94507fe` |
+| `downloads/canonical_proof_report.tex` | 500,462 | `7e02d95abcfed87f83076b34454293ae32b3ffc910066d6e89018338314aff86` |
+| `downloads/canonical-proof-report.tex` | 500,462 | `7e02d95abcfed87f83076b34454293ae32b3ffc910066d6e89018338314aff86` |
+| `public/pnp-status.json` | 3,177,956 | `004af2bc499ab8715278f3df870f7d04d44b42d25ba696d579dceddfa588058e` |
+| `public/pnp-theorem-inventory.json` | 58,224,870 | `6180226112e43664173be7b5d8f8179e62eb68032499c7d7f1a848053c8d06a4` |
+| `public/pnp-proof-progress.json` | 210,069 | `5c8f0f594ce2ee06dfc595524ac91045455d47b857bc1e740f8cacbcb65bebc7` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
 
@@ -43,7 +43,7 @@ Use the exact merged core commit recorded in
 
 ```bash
 git -C ../pnp fetch origin
-git -C ../pnp checkout e4af115a66cd5a6715a9363abea7a2008238d401
+git -C ../pnp checkout 6296c6e1130fbae674548ccbf949f6e608b996c7
 PNP_SOURCE_DIR=../pnp node tools/sync-public-access-docs.mjs --check
 PNP_SOURCE_DIR=../pnp npm run test:audit-targets
 ```
@@ -68,10 +68,10 @@ npm run report:check
 The inventory check owns the Lean build. The validation and report phases exercise distinct
 contracts without a second standalone `lake build`.
 
-Expected compiled inventory counts are 46,094 public declarations, 25,322 theorem-kind declarations,
-11,029 assumption-free theorem-kind declarations, 19,720 excluded private auxiliaries, 497 modules, and
-no project-specific axioms. The publication gate must remain false with five blockers. The concrete
-NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. M230 completes the all-input formula builder and packaged polynomial reduction to CNFSAT. Its 2 reviewed theorem pins establish the all-language hardness interface and the closed NP-completeness theorem. Both M231 theorem closures use only the existing Lean standard axioms `Classical.choice`, `Quot.sound` and `propext`. No project-specific axiom enters any pin. This constructs a formula; it does not decide SAT. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
+Read expected declaration, theorem, source-module and excluded-private counts from the
+canonical inventory bound by the current manifest, and compare the reproduced bytes exactly.
+No project-specific axioms remain. The publication gate must remain false with five blockers. The concrete
+NP-membership theorem is `PNP.Concrete.FinalUniversalDesign.cnfSATInNP`. M230 completes the all-input formula builder and packaged polynomial reduction to CNFSAT. M231 establishes the all-language hardness interface and closed NP-completeness theorem, using the standard axiom closures recorded in the inventory. The M258 batch adds source-derived proper zero/unary support search with full-field-preserving replacement. None of these results constructs a polynomial-time SAT decider or the eligible root; no fixed checkpoint changes in this publication batch. The strict-v0 source parser, target emitter, and concrete `EncodedNANDSAT`-to-`EncodedLockedNANDThreshold`
 polynomial reduction remain exact and fail closed on malformed source bytes. The semantic layer supplies
 a total compiler from strict canonical CNF formulas to intrinsically topological NAND circuits. Its
 18 reviewed theorem pins prove codec canonicality, well-formed topological output, exact assignment
@@ -393,8 +393,20 @@ and cannot satisfy the concrete publication gate.
 | Inventory mismatch | Stale or modified compiled evidence | Re-export under the pinned Lean toolchain and investigate before publishing |
 
 
-## M231 current publication boundary
+<!-- CURRENT_PUBLICATION:START -->
+## M258 current publication boundary
 
-M230 completes the all-input Cook-Levin formula builder. M231 combines its polynomial reduction with the concrete verifier to prove CNF-SAT NP-completeness in the finite-machine model. This is not a polynomial-time SAT algorithm. Risk-weighted proof completion estimate: 40%, with uncertainty 20% to 40%. Formal artefact coverage: 207 of 209 current scoped publication rows earned. Global gates closed: 0 of 5. Project-specific axioms remaining: 0. The eligible root theorem PNP.Main.p_eq_np remains absent and the publication gate is false.
+**Complete search for proper constant and unary circuit gains**
 
-Current source: [`e4af115a66cd5a6715a9363abea7a2008238d401`](https://github.com/aisknab/pnp/tree/e4af115a66cd5a6715a9363abea7a2008238d401). The exact compiled evidence and limitation are recorded in the [NP-completeness result note](https://github.com/aisknab/pnp/blob/e4af115a66cd5a6715a9363abea7a2008238d401/docs/lean_cook_levin_np_completeness.md). Earlier named component limitations describe those components, not the now-complete M230 builder.
+The search now derives its candidate supports directly from the circuit and finds a strict saving whenever any proper support with zero or one incoming wire admits a smaller equivalent complete local replacement. A support is a selected set of gates; proper means some original gates remain outside it. An accepted result builds the actual replacement and preserves every ordinary output and tracked computational wire field.
+
+A negative result excludes gains only in this zero-or-one-boundary class, not larger boundaries or smaller global circuits. The candidate-count bound is not a theorem of total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier and obligation calculus, general exact minimization, unconditional ZeroSlack and the eligible P = NP root remain open; no fixed weighted checkpoint or global gate changes.
+
+Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+
+This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
+
+Current source: [`6296c6e1130fbae674548ccbf949f6e608b996c7`](https://github.com/aisknab/pnp/tree/6296c6e1130fbae674548ccbf949f6e608b996c7), tree `78648f5978d16ff5055c5b493e5bb97ff4cd7cac`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-258`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/lean_wire_unary_support_search.md), the [source-bound update](../updates.html#2026-09-13-wire-unary-support-search) and the [complete current milestone ledger](../status.html).
+
+M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
+<!-- CURRENT_PUBLICATION:END -->

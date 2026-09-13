@@ -5,10 +5,10 @@
 This checkout publishes the current formal-reconstruction status of the PNP project. It does not
 establish `P = NP`.
 
-The canonical report downloads are now a non-claiming report generated from a compiled
-Lean theorem inventory. The inventory contains 46,094 public declarations across 497 modules,
-including 25,322 theorem-kind declarations, 11,029 assumption-free theorem-kind declarations, and no
-project-specific axioms. Exactly 19,720 private compiler auxiliaries are excluded explicitly.
+The canonical report is a non-claiming presentation of the compiled Lean inventory.
+The [inventory mirror](../public/pnp-theorem-inventory.json) records the actual declarations,
+modules, theorem kinds and axiom closures, with private compiler auxiliaries excluded.
+Inventory totals are metadata rather than proof completion; no project-specific axioms remain.
 
 The concrete publication gate is false. Its concrete target is present, its compatibility-root theorem is
 absent, its reviewed activation fingerprints are intentionally unset, all five formal blockers
@@ -33,7 +33,7 @@ download aliases.
 | Layer | Current evidence | What it supports | What it cannot support |
 | --- | --- | --- | --- |
 | Compiled Lean inventory | Environment constants and `collectAxioms`, exported under the pinned Lean toolchain | Names, modules, kinds, and axiom dependencies for all public declarations; raw kernel types for reviewed milestone candidates | A theorem broader than a reviewed candidate's exact type |
-| Earned milestones | Reviewed theorem-type fingerprints, permitted axiom closures, and the complete Lean-source digest | 207 of 209 scoped formal milestone rows. For every language in the concrete bounded-certificate NP class, M231 extracts its polynomial-time verifier from NP membership and applies the complete source-derived all-input Cook-Levin PolynomialReduction to CNFSAT. Together with the existing concrete CNFSAT verifier, the closed theorem proves NPComplete CNFSAT in the selected finite-machine model. No reduction, execution trace, finite-instance restriction or correctness certificate is supplied. Both complete theorem interfaces are root-built and axiom-audited; their closures contain only the Lean standard axioms Classical.choice, Quot.sound and propext. | NP-completeness is hardness plus NP membership, not a deterministic polynomial-time SAT algorithm. This closes only the fixed concrete NP-hardness checkpoint. It does not close the separate final complexity transport to P = NP, unconditional residual minimization or ZeroSlack, complete polynomial PCCMin construction and certificate bounds, deterministic CNFSAT in P, or the eligible root theorem. All five global proof gates and the publication gate remain open; P = NP is not proved. Supplied-data residual results remain conditional and do not construct every required terminal-derived object. |
+| Earned milestones | Reviewed theorem-type fingerprints, permitted axiom closures and the complete Lean-source digest | 234 of 236 scoped rows; source-derived proper zero/unary support discovery and actual full-field-preserving replacement | Completeness covers proper physical supports with zero or one actual incoming wire. It does not cover all boundary widths, prove global minimality or unconditional ZeroSlack, or establish total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier, general obligation calculus and complete global routes remain open. Earlier supplied-data residual results remain conditional and do not construct every required terminal-derived object. |
 | Progress tracker | `public/pnp-proof-progress.json`, checked against status and compiled inventory | Formal artefact coverage is reported separately from the risk-weighted proof-completion estimate, uncertainty range, five global gates, project axioms, root theorem, and publication gate. | Treating row coverage as proof completion; awarding fixed checkpoint credit for local, finite, conditional, or supplied-data results; treating the score as probability, confidence, or schedule |
 | Concrete publication gate | Exact target/root kinds and types, non-null reviewed fingerprints, fixed Lean-standard axiom allowlist, and source closure | A fail-closed activation boundary for a future concrete theorem | Activation while any subcheck is false or unconfigured |
 | Status and report generation | Deterministic derivation from the canonical inventory and publication map | Current public wording and exact report bytes | Independent theorem evidence |
@@ -62,7 +62,7 @@ commit in the formal-methods path below.
 ## Audit Path: Formal Methods
 
 1. Reproduce the pinned Lean build in `aisknab/pnp` at merged commit
-   `e4af115a66cd5a6715a9363abea7a2008238d401`.
+   `6296c6e1130fbae674548ccbf949f6e608b996c7`.
 2. Re-export the inventory and compare it byte-for-byte with
    `public/pnp-theorem-inventory.json`.
 3. Inspect every reviewed milestone declaration at its exact kernel type.
@@ -75,23 +75,25 @@ commit in the formal-methods path below.
 
 ## Audit Path: Complexity Theory
 
-Formal artefact coverage is 207 of 209 scoped publication rows, not proof completion. The fixed reductions-concrete-np-hardness checkpoint earns 2 points, raising the risk-weighted estimate from 38% to 40%. Formal artefact coverage is 207 of 209 current scoped publication rows earned. All five global gates remain open.
+Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5. This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate.
 
 Review the latest result at its exact compiled type and keep these dependency boundaries separate:
 
 1. M230 supplies the complete all-input Cook-Levin formula builder and its polynomial reduction to CNFSAT. The source-derived finite machine covers empty and odd-length inputs as well as every other bitstring, with total runtime and output-size bounds polynomial in the original input length. It does not decide satisfiability.
 2. M231 combines the complete Cook-Levin reduction with the concrete verifier to prove CNF-SAT NP-hardness and NP-completeness in the selected finite-machine model. The CNFSAT-to-NAND-to-locked-NAND reductions are also checked. NP-completeness is not a deterministic polynomial-time SAT algorithm.
-3. The residual and Packet/HB layers retain their exact finite, local, conditional or supplied-data scopes. They do not derive every terminal family, support, payload, rank or blocker table from valid input, or supply complete globally decreasing route coverage. A local mismatch or exhaustive reference minimum is not that missing construction.
-4. Unconditional manuscript-level SaturatePositive, BCELReady and global ZeroSlack remain open. A checked positive-premise branch or supplied completeness certificate is not an unconditional theorem.
-5. Executable exact PCCMin, its complete polynomial runtime, output-size and certificate-size bounds, and deterministic CNFSAT in P remain open. Local iteration or finite-size bounds do not close those obligations.
-6. The eligible root `PNP.Main.p_eq_np` remains absent and the publication gate is false. There are no project-specific axioms, but eliminating those axioms is not itself a proof of P = NP.
+3. M232-M241 establish local observation, physical-accounting, ownership and replacement laws. Their supplied observation/request families and exhaustive reference constructions retain their exact limitations. They do not derive the full manuscript carrier or complete global route coverage.
+4. M242-M248 construct physical sharing, output pruning, constant propagation and a loop reaching common quiescence of those passes. Quiescence is not semantic minimality or complete manuscript normalization. M243 also replaces the supplied SAT-hardness edge in the active report bridge with the checked theorem, but that bridge still requires the missing minimization-loop certificate and existence premise.
+5. M249-M254 construct literal support splicing, exposed computational-field transport, paid restoration, quotient/frontier lifts and source-identity cancellation. Read each local-agreement premise and cost comparison exactly; quotient agreement is not full-frontier agreement, and a lifted-reference saving need not be an original-circuit gain.
+6. M255-M258 derive minimum constant/unary local words, successful arbitrary-support compilation in that boundary class and a complete source-derived proper-gain search. No support family, replacement, rank, order or completeness certificate is supplied to the final search. A negative answer excludes only proper zero/unary support gains, not a smaller global circuit. Candidate-count bounds do not prove total encoded-input polynomial runtime.
+7. The full manuscript carrier and obligation calculus, terminal-derived complete families, global rank-decreasing routes, unconditional SaturatePositive, BCELReady and ZeroSlack, exact general PCCMin and its complete polynomial bounds remain open. Earlier finite or supplied-data component results retain their original boundaries.
+8. Deterministic CNFSAT in P and the eligible root `PNP.Main.p_eq_np` remain absent, and the publication gate is false. Eliminating project-specific axioms is not itself a proof of P = NP.
 
 The full component scopes and historical limitations remain in the canonical milestone ledger at [formal status](../status.html) and in the [compiled status payload](../public/pnp-status.json). Historical package acceptance and matching artefact hashes cannot close these mathematical gaps.
 
 ## Audit Path: Reproducibility And Security
 
 1. Run `npm test` in this checkout.
-2. Run `npm run verify:seal` and compare the four report aliases.
+2. Inspect the seal and four-alias results already included in `npm test`; run `npm run verify:seal` separately only for focused diagnosis or a changed artifact boundary.
 3. Verify the inventory SHA-256 against `public/pnp-status.json`.
 4. Confirm that the local server exposes both `/public/pnp-status.json` and
    `/public/pnp-theorem-inventory.json` with no-cache headers.
@@ -130,8 +132,20 @@ candidate universe, polynomial exact minimization, SAT in P, or `P = NP`. The lo
 only their explicitly named file-identity, consistency, rendering, and toy-fixture properties.
 
 
-## M231 current publication boundary
+<!-- CURRENT_PUBLICATION:START -->
+## M258 current publication boundary
 
-M230 completes the all-input Cook-Levin formula builder. M231 combines its polynomial reduction with the concrete verifier to prove CNF-SAT NP-completeness in the finite-machine model. This is not a polynomial-time SAT algorithm. Risk-weighted proof completion estimate: 40%, with uncertainty 20% to 40%. Formal artefact coverage: 207 of 209 current scoped publication rows earned. Global gates closed: 0 of 5. Project-specific axioms remaining: 0. The eligible root theorem PNP.Main.p_eq_np remains absent and the publication gate is false.
+**Complete search for proper constant and unary circuit gains**
 
-Current source: [`e4af115a66cd5a6715a9363abea7a2008238d401`](https://github.com/aisknab/pnp/tree/e4af115a66cd5a6715a9363abea7a2008238d401). The exact compiled evidence and limitation are recorded in the [NP-completeness result note](https://github.com/aisknab/pnp/blob/e4af115a66cd5a6715a9363abea7a2008238d401/docs/lean_cook_levin_np_completeness.md). Earlier named component limitations describe those components, not the now-complete M230 builder.
+The search now derives its candidate supports directly from the circuit and finds a strict saving whenever any proper support with zero or one incoming wire admits a smaller equivalent complete local replacement. A support is a selected set of gates; proper means some original gates remain outside it. An accepted result builds the actual replacement and preserves every ordinary output and tracked computational wire field.
+
+A negative result excludes gains only in this zero-or-one-boundary class, not larger boundaries or smaller global circuits. The candidate-count bound is not a theorem of total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier and obligation calculus, general exact minimization, unconditional ZeroSlack and the eligible P = NP root remain open; no fixed weighted checkpoint or global gate changes.
+
+Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+
+This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
+
+Current source: [`6296c6e1130fbae674548ccbf949f6e608b996c7`](https://github.com/aisknab/pnp/tree/6296c6e1130fbae674548ccbf949f6e608b996c7), tree `78648f5978d16ff5055c5b493e5bb97ff4cd7cac`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-258`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/lean_wire_unary_support_search.md), the [source-bound update](../updates.html#2026-09-13-wire-unary-support-search) and the [complete current milestone ledger](../status.html).
+
+M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
+<!-- CURRENT_PUBLICATION:END -->

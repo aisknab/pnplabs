@@ -1,5 +1,5 @@
 import { M230, assertM230Status, assertM230Manifest } from '../../tools/formal-m230-contract.mjs';
-import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
+import { deriveMilestoneStatusStem, deriveBatchMilestoneFields, readBatchMilestoneBoundaryValue } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { cpSync, linkSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
@@ -1098,7 +1098,9 @@ function json(relativePath) {
   return JSON.parse(readFileSync(path.join(root, relativePath), "utf8"));
 }
 
-function releaseBoundaryPrefixForMilestone(release, milestone) {
+function releaseBoundaryPrefixForMilestone(release, milestone, status) {
+  const batch = deriveBatchMilestoneFields(status, release, milestone);
+  if (batch) return batch;
   const suffix = "TheoremKernelTypeSha256";
   const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
@@ -1114,6 +1116,7 @@ function releaseBoundaryPrefixForMilestone(release, milestone) {
 }
 
 function releaseBoundaryValue(release, prefix, suffix, required = true) {
+  if (typeof prefix === "object") return readBatchMilestoneBoundaryValue(release, prefix, suffix, required);
   const expectedKey = `${prefix}${suffix}`.toLowerCase();
   const matchingFields = Object.entries(release.earnedBoundary).filter(
     ([key]) => key.toLowerCase() === expectedKey
@@ -1127,6 +1130,7 @@ function releaseBoundaryValue(release, prefix, suffix, required = true) {
 
 
 function statusStemForReleaseBoundary(status, release, prefix) {
+  if (typeof prefix === "object") return prefix.statusStem.slice("lean".length);
   const scope = releaseBoundaryValue(release, prefix, "Scope", false);
   if (scope === undefined) {
     const stem = deriveMilestoneStatusStem(status, prefix).slice("lean".length);
@@ -1166,7 +1170,7 @@ test("current release pins the latest canonical earned boundary and remains fail
     (row) => row.id === latestUpdate.milestoneId
   );
   assert.ok(latestMilestone, "latest milestone must come from the canonical status payload");
-  const latestStem = releaseBoundaryPrefixForMilestone(release, latestMilestone);
+  const latestStem = releaseBoundaryPrefixForMilestone(release, latestMilestone, latestStatusPayload);
   const latestStatusStem = latestStem === "cookLevinCompleteBuilder" ? null
     : `lean${statusStemForReleaseBoundary(latestStatusPayload, release, latestStem)}`;
   if (latestStatusStem === null) {
@@ -3568,7 +3572,7 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "TheoremKernelTypeSha256"), latestTheoremHashes);
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "AxiomClosure"), latestAxiomClosure);
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "ProjectAxiomClosure"), []);
-  const latestReleaseTheorems = Object.entries(release.earnedBoundary)
+  const latestReleaseTheorems = Object.entries(typeof latestStem === "object" ? latestStem.statusFields : release.earnedBoundary)
     .filter(([key, value]) => key.endsWith("Theorem")
       && typeof value === "string"
       && latestMilestone.requiredTheorems.includes(value))
@@ -3633,7 +3637,7 @@ test("status and inventory publish the canonical latest earned milestone", () =>
     (row) => row.id === latestUpdate.milestoneId
   );
   assert.ok(latestPublicationMilestone, `missing latest milestone ${latestUpdate.milestoneId}`);
-  const latestStem = releaseBoundaryPrefixForMilestone(canonicalRelease, latestPublicationMilestone);
+  const latestStem = releaseBoundaryPrefixForMilestone(canonicalRelease, latestPublicationMilestone, status);
   const latestStatusStem = latestStem === "cookLevinCompleteBuilder" ? null
     : `lean${statusStemForReleaseBoundary(status, canonicalRelease, latestStem)}`;
   const latestReleaseHashes = releaseBoundaryValue(

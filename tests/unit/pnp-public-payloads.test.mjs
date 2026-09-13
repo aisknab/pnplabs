@@ -1,5 +1,5 @@
 import { M230, assertM230Status, assertM230Manifest } from '../../tools/formal-m230-contract.mjs';
-import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
+import { deriveMilestoneStatusStem, deriveBatchMilestoneFields, readBatchMilestoneBoundaryValue, readBrowserInventoryCounts, decodePublishedHtml, assertCanonicalStaticMilestoneCards } from '../helpers/publication-status-fields.mjs';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
@@ -57,7 +57,9 @@ const milestoneFieldStem = (milestoneId) => milestoneId
   .split('-')
   .map((part) => MILESTONE_FIELD_PARTS[part] ?? `${part[0].toUpperCase()}${part.slice(1)}`)
   .join('');
-const releaseBoundaryPrefixForMilestone = (release, milestone) => {
+const releaseBoundaryPrefixForMilestone = (release, milestone, status) => {
+  const batch = deriveBatchMilestoneFields(status, release, milestone);
+  if (batch) return batch;
   const suffix = 'TheoremKernelTypeSha256';
   const requiredTheorems = new Set(milestone.requiredTheorems);
   const matchingField = Object.entries(release.earnedBoundary).find(
@@ -72,6 +74,7 @@ const releaseBoundaryPrefixForMilestone = (release, milestone) => {
   return matchingField[0].slice(0, -suffix.length);
 };
 const releaseBoundaryField = (release, prefix, suffix) => {
+  if (typeof prefix === "object") return readBatchMilestoneBoundaryValue(release, prefix, suffix);
   const expectedKey = `${prefix}${suffix}`.toLowerCase();
   const matchingFields = Object.entries(release.earnedBoundary).filter(
     ([key]) => key.toLowerCase() === expectedKey,
@@ -80,6 +83,7 @@ const releaseBoundaryField = (release, prefix, suffix) => {
   return matchingFields[0][1];
 };
 const statusStemForReleaseBoundary = (status, release, prefix) => {
+  if (typeof prefix === "object") return prefix.statusStem.slice("lean".length);
   const matchingScopeFields = Object.entries(release.earnedBoundary).filter(
     ([key]) => key.endsWith('Scope')
       && key.slice(0, -'Scope'.length).toLowerCase() === prefix.toLowerCase(),
@@ -6867,7 +6871,7 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(fourthClauseSecondLiteralPrefixMilestone.earned, true);
   assert.equal(fourthClausePaddingRunMilestone.earned, true);
   assert.equal(secondConstraintFirstLiteralSignMilestone.earned, true);
-  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|does not close[^.]*eligible root theorem/u);
+  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|eligible root remain absent|does not close[^.]*eligible root theorem/u);
 
   for (const command of [
     'lake build PNP',
@@ -9231,12 +9235,12 @@ test('status page has a conservative complete static fallback', async () => {
     (row) => row.id === updates.entries[0].milestoneId,
   );
   assert.ok(latestMilestone, `missing latest milestone ${updates.entries[0].milestoneId}`);
-  const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestMilestone);
+  const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestMilestone, status);
   const latestStatusStem = latestReleasePrefix === "cookLevinCompleteBuilder"
     ? null : statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
   if (latestStatusStem === null) assertM230Status(status);
   const html = await readText('status.html');
-  for (const fragment of [
+  const legacyFragments = [
     `Formal status · ${status.coordinate.match(/\d{4}-\d{2}-\d{2}/u)?.[0]}`,
     'mathematicalTheoremEstablished = false',
     'publicTheoremEmissionAllowed = false',
@@ -9629,7 +9633,25 @@ test('status page has a conservative complete static fallback', async () => {
     'EncodedLockedNANDThreshold',
     'Historical 57-page manuscript',
     '7072f8d0bda6d44d240f9bb3fad624fd357e1278',
-  ]) assert.equal(html.includes(fragment), true, `missing status fragment: ${fragment}`);
+  ];
+  const currentBatch = deriveBatchMilestoneFields(status, latestRelease, latestMilestone);
+  if (currentBatch) assertCanonicalStaticMilestoneCards(html, status);
+  const fragments = currentBatch ? [
+    'Formal status · ' + status.coordinate.match(/\d{4}-\d{2}-\d{2}/u)?.[0],
+    'mathematicalTheoremEstablished = false',
+    'publicTheoremEmissionAllowed = false',
+    'publicTheoremStatement = null',
+    'concretePublicationGate.passed = false',
+    formatNumber(index.claimBoundary.leanTheoremInventoryDeclarationCount),
+    formatNumber(index.claimBoundary.leanTheoremInventoryTheoremCount),
+    formatNumber(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount),
+    '<strong>' + formatNumber(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount) + '</strong> private compiler auxiliaries excluded',
+    '<strong>' + formatNumber(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount) + '</strong> modules',
+    index.formalPublicationMilestoneCounts.earned + ' of ' + index.formalPublicationMilestoneCounts.total + ' scoped milestone rows',
+    'Show all ' + index.formalPublicationMilestoneCounts.total + ' formal milestone records',
+    ...Object.entries(currentBatch.statusFields).map(([field,value]) => field + ' = ' + JSON.stringify(value)),
+  ] : legacyFragments;
+  for (const fragment of fragments) assert.equal(decodePublishedHtml(html).includes(fragment), true, `missing status fragment: ${fragment}`);
   for (const milestone of status.formalPublicationMilestones) {
     assert.equal(html.includes(milestone.id), true, `missing canonical milestone: ${milestone.id}`);
   }
@@ -9690,15 +9712,10 @@ test('browser runtime constants derive from the canonical current payloads', asy
   assert.equal(stringConstant('INVENTORY_SHA256'), release.artifacts.theoremInventory.sha256);
   assert.equal(stringConstant('SOURCE_CLOSURE_SHA256'), release.source.leanSourceClosureSha256);
 
-  const countsStart = runtime.indexOf('const INVENTORY_COUNTS = Object.freeze({');
-  const countsEnd = runtime.indexOf('\n});', countsStart);
-  assert.notEqual(countsStart, -1, 'browser runtime inventory counts start');
-  assert.notEqual(countsEnd, -1, 'browser runtime inventory counts end');
-  const countsBlock = runtime.slice(countsStart, countsEnd);
-  const numberField = (name) => {
-    const match = countsBlock.match(new RegExp(name + ":\\s*(\\d+),"));
-    assert.ok(match, `missing browser runtime inventory count: ${name}`);
-    return Number(match[1]);
+  const counts = readBrowserInventoryCounts(runtime);
+  const numberField = name => {
+    assert.ok(Object.hasOwn(counts, name), 'missing browser inventory count: ' + name);
+    return counts[name];
   };
   assert.equal(numberField('declarations'), inventory.declarationCount);
   assert.equal(numberField('theorems'), inventory.theoremCount);
@@ -9733,6 +9750,70 @@ test('static inventory prose derives changing publication totals from the canoni
   const excludedPrivate = formatNumber(status.leanTheoremInventoryExcludedPrivateDeclarationCount);
   const sourceModules = formatNumber(status.leanTheoremInventorySourceClosureModuleCount);
   const projectAxioms = status.projectSpecificAxiomInventory.length;
+  const currentEntry = updates.entries[0];
+  const currentMilestone = status.formalPublicationMilestones.find(row => row.id === currentEntry.milestoneId);
+  const currentBatch = deriveBatchMilestoneFields(status, latestRelease, currentMilestone);
+  if (currentBatch) {
+    // Batched publication has one inventory/status authority. Reviewer prose
+    // links to it rather than duplicating changing declaration and audit totals.
+    // Retain exact identities, latest scope, separate metrics and non-claims.
+    const progress = await readJson('public/pnp-proof-progress.json');
+    const surfaces = {README:readme, paper, FAQ:faq, 'reviewer guide':guide,
+      'proof pipeline':pipeline, reproducibility, 'activated claim wording':activatedClaimWording,
+      'audit questions':auditQuestions, 'source/checker map':sourceCheckerMap,
+      homepage:homePage, 'status page':statusPage};
+    for (const [name, surface] of Object.entries(surfaces)) {
+      const current = surface.includes('<!-- CURRENT_PUBLICATION:START -->')
+        ? surface.split('<!-- CURRENT_PUBLICATION:START -->')[1].split('<!-- CURRENT_PUBLICATION:END -->')[0]
+        : surface;
+      const normalized = current.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+      if (['paper', 'FAQ', 'status page'].includes(name)) {
+        assert.ok(current.includes('data-m258-publication-summary'), name + ': current batch summary');
+        assert.ok(current.includes('updates.html#' + currentEntry.id), name + ': canonical current update');
+      } else assert.ok(current.includes(currentEntry.title), name + ': current milestone title');
+      assert.ok(normalized.includes(progress.formalArtefactCoverage.earnedRows + ' of ' + progress.formalArtefactCoverage.totalRows), name + ': current coverage');
+      assert.ok(normalized.toLowerCase().includes('risk-weighted proof completion estimate'), name + ': named proof estimate');
+      assert.ok(normalized.includes(progress.proofCompletion.percent + '%'), name + ': current estimate');
+      assert.ok(normalized.includes(progress.proofCompletion.uncertaintyLowPercent + '% to ' + progress.proofCompletion.uncertaintyHighPercent + '%'), name + ': uncertainty');
+      if (['paper', 'FAQ', 'status page'].includes(name)) {
+        const summary = current.match(/<section class="section compact" data-m258-publication-summary>[\s\S]*?<\/section>/)?.[0];
+        assert.ok(summary, name + ': current scoped summary');
+        for (const boundary of ['proper circuit supports with zero or one incoming wire',
+          'preserving ordinary outputs and all tracked computational wire fields',
+          'not global circuit minimization or a theorem of total polynomial runtime',
+          'a polynomial-time SAT decision algorithm remains open']) {
+          assert.ok(summary.includes(boundary), name + ': ' + boundary);
+        }
+      } else {
+        const displayed = decodePublishedHtml(current.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
+        for (const paragraph of currentEntry.plainLanguage) assert.ok(displayed.includes(paragraph.replace(/\s+/g, ' ')), name + ': complete canonical plain-language account');
+      }
+      if (surface.includes('<!-- CURRENT_PUBLICATION:START -->')) {
+        assert.ok(current.includes(currentEntry.source.commit), name + ': source commit');
+        assert.ok(current.includes(currentEntry.source.tree), name + ': source tree');
+        assert.ok(current.includes(currentEntry.source.statusCoordinate), name + ': review coordinate');
+      }
+      assert.doesNotMatch(surface.replaceAll('57-page', 'historical-page-count'), /\b\d+(?:-page| PDF pages| A4 pages)\b/u,
+        name + ': no volatile PDF page total');
+    }
+    assert.ok(homePage.includes(latestRelease.artifacts.theoremInventory.sha256), 'homepage inventory identity');
+    assert.ok(statusPage.includes(latestRelease.artifacts.theoremInventory.sha256), 'status inventory identity');
+    for (const value of [declarations, theorems, assumptionFreeTheorems, excludedPrivate, sourceModules]) {
+      assert.ok(statusPage.includes(value), 'canonical inventory total in formal status: ' + value);
+    }
+    for (const artifact of [latestRelease.artifacts.report.pdf, latestRelease.artifacts.report.tex,
+      latestRelease.artifacts.status, latestRelease.artifacts.theoremInventory]) {
+      assert.ok(reproducibility.includes(artifact.sha256), 'reproduction table current artifact identity');
+    }
+    assert.ok(readme.includes('public/pnp-theorem-inventory.json'), 'README canonical inventory link');
+    assert.ok(pipeline.includes('canonical inventory'), 'pipeline canonical inventory authority');
+    assert.ok(guide.includes('inventory mirror'), 'reviewer inventory authority');
+    assert.ok(activatedClaimWording.includes('Only the exact compiled types and axiom closures are theorem evidence'), 'compiled theorem authority');
+    assert.ok(pipeline.includes('selected earlier component scopes and their standalone limitations'), 'historical component boundaries');
+    assert.ok(guide.includes('global minimality') && guide.includes('polynomial runtime'), 'local and runtime non-claims');
+    return;
+  }
+
   assert.equal(homePage.includes(INVENTORY_SHA256), true, 'homepage must display the canonical inventory hash');
   assert.equal(statusPage.includes(INVENTORY_SHA256), true, 'status page must display the canonical inventory hash');
   assert.equal(
@@ -9744,7 +9825,7 @@ test('static inventory prose derives changing publication totals from the canoni
   );
   assert.ok(latestEarnedMilestone, 'latest earned milestone');
   const latestUpdate = updates.entries[0];
-  const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone);
+  const latestReleasePrefix = releaseBoundaryPrefixForMilestone(latestRelease, latestEarnedMilestone, status);
   const latestStatusStem = latestReleasePrefix === "cookLevinCompleteBuilder"
     ? null : statusStemForReleaseBoundary(status, latestRelease, latestReleasePrefix);
   if (latestStatusStem === null) assertM230Status(status);

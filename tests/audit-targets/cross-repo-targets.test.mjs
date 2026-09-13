@@ -1,5 +1,6 @@
 import { M230 } from '../../tools/formal-m230-contract.mjs';
-import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
+import { assertM258BatchPublicationMap } from '../../tools/formal-m258-batch-contract.mjs';
+import { deriveMilestoneStatusStem, deriveBatchMilestoneFields, readMilestoneReleaseField, setMilestoneReleaseField } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -42,9 +43,10 @@ const latestPublishedMilestone = publishedStatus.formalPublicationMilestones.fin
   (row) => row.id === latestPublishedMilestoneId
 );
 assert.ok(latestPublishedMilestone, `missing latest published milestone: ${latestPublishedMilestoneId}`);
+const latestBatchContract = deriveBatchMilestoneFields(publishedStatus, publishedRelease, latestPublishedMilestone);
 const theoremFingerprintSuffix = "TheoremKernelTypeSha256";
 const latestRequiredTheorems = new Set(latestPublishedMilestone.requiredTheorems);
-const latestTheoremFingerprintField = Object.entries(publishedRelease.earnedBoundary).find(
+const latestTheoremFingerprintField = latestBatchContract ? null : Object.entries(publishedRelease.earnedBoundary).find(
   ([key, value]) => key.endsWith(theoremFingerprintSuffix)
     && value !== null
     && typeof value === "object"
@@ -52,10 +54,15 @@ const latestTheoremFingerprintField = Object.entries(publishedRelease.earnedBoun
     && Object.keys(value).length === latestRequiredTheorems.size
     && [...latestRequiredTheorems].every((name) => Object.hasOwn(value, name))
 );
-assert.ok(latestTheoremFingerprintField, `missing earned-boundary fingerprint map for ${latestPublishedMilestoneId}`);
-const latestPublishedMilestoneReleasePrefix = latestTheoremFingerprintField[0]
+assert.ok(latestBatchContract || latestTheoremFingerprintField, `missing earned-boundary fingerprint map for ${latestPublishedMilestoneId}`);
+const latestPublishedMilestoneReleasePrefix = latestBatchContract ? null : latestTheoremFingerprintField[0]
   .slice(0, -theoremFingerprintSuffix.length);
 function latestPublishedMilestoneReleaseField(suffix, required = true) {
+  if (latestBatchContract) {
+    const field = latestBatchContract.releaseFields[suffix];
+    if (required) assert.ok(field, 'missing reviewed batch release field: ' + suffix);
+    return field;
+  }
   const expectedKey = `${latestPublishedMilestoneReleasePrefix}${suffix}`.toLowerCase();
   const matchingFields = Object.keys(publishedRelease.earnedBoundary).filter(
     (key) => key.toLowerCase() === expectedKey
@@ -75,6 +82,7 @@ function latestPublishedMilestoneReleaseField(suffix, required = true) {
 }
 const latestPublishedMilestoneScopeField = latestPublishedMilestoneReleaseField("Scope", false);
 const latestPublishedMilestoneFieldStem = (() => {
+  if (latestBatchContract) return latestBatchContract.statusStem.slice('lean'.length);
   if (latestPublishedMilestoneId === M230.id) return "ConcreteCookLevinFormulaBuilder";
   if (latestPublishedMilestoneScopeField === undefined) {
     return deriveMilestoneStatusStem(publishedStatus, latestPublishedMilestoneReleasePrefix).slice("lean".length);
@@ -92,19 +100,20 @@ const latestPublishedMilestoneFieldStem = (() => {
   );
   return scopeKeys[0].slice("lean".length, -"Scope".length);
 })();
-const latestPublishedMilestoneRequiredStatusKeys = latestPublishedMilestoneId === M230.id ? Object.keys(M230.fields) : [
+const latestPublishedMilestoneRequiredStatusKeys = latestBatchContract ? Object.keys(latestBatchContract.statusFields) : latestPublishedMilestoneId === M230.id ? Object.keys(M230.fields) : [
   `lean${latestPublishedMilestoneFieldStem}Formalized`,
   `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`
 ];
 if (latestPublishedMilestoneScopeField !== undefined) {
-  latestPublishedMilestoneRequiredStatusKeys.push(`lean${latestPublishedMilestoneFieldStem}Scope`);
+  const scopeKey = `lean${latestPublishedMilestoneFieldStem}Scope`;
+  if (!latestPublishedMilestoneRequiredStatusKeys.includes(scopeKey)) latestPublishedMilestoneRequiredStatusKeys.push(scopeKey);
 }
 for (const key of latestPublishedMilestoneRequiredStatusKeys) {
   assert.notEqual(publishedStatus[key], undefined, "missing latest published status field: " + key);
 }
 const latestPublishedMilestoneStatusPrefix = `lean${latestPublishedMilestoneFieldStem}`;
 const latestPublishedMilestoneStatusFields = Object.fromEntries(
-  Object.entries(publishedStatus).filter(([key]) => latestPublishedMilestoneId === M230.id ? Object.hasOwn(M230.fields, key) : key.startsWith(latestPublishedMilestoneStatusPrefix))
+  Object.entries(publishedStatus).filter(([key]) => latestBatchContract ? Object.hasOwn(latestBatchContract.statusFields, key) : latestPublishedMilestoneId === M230.id ? Object.hasOwn(M230.fields, key) : key.startsWith(latestPublishedMilestoneStatusPrefix))
 );
 assert.ok(Object.keys(latestPublishedMilestoneStatusFields).length >= latestPublishedMilestoneRequiredStatusKeys.length);
 const publishedLeanStatusFields = Object.fromEntries(
@@ -2587,14 +2596,25 @@ const RESIDUAL_TERMINAL_NEW_RELEASE_FIELDS = Object.fromEntries(
 );
 
 const PUBLISHED_FORMAL_PUBLICATION_MAP_MILESTONES = publishedStatus.formalPublicationMilestones.map(
-  ({ id, classification, scope, requiredTheorems, nonClaim }) => ({
+  ({ id, title, classification, scope, requiredTheorems, nonClaim }) => ({
     id,
+    title,
     classification,
     scope,
     requiredTheorems,
     nonClaim
   })
 );
+
+// Reject an incomplete synthetic baseline before creating any costly mutation
+// fixtures. The batch validator checks every required canonical boundary field.
+assertM258BatchPublicationMap({
+  milestones: PUBLISHED_FORMAL_PUBLICATION_MAP_MILESTONES,
+  earnedMilestoneTheoremKernelTypeSha256: Object.fromEntries(
+    publishedStatus.formalPublicationMilestones.filter(row => row.earned)
+      .flatMap(row => row.theoremRows.map(proof => [proof.name, proof.actualKernelTypeSha256]))
+  ),
+});
 
 function git(cwd, args) {
   const result = spawnSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
@@ -10782,12 +10802,12 @@ test("rejects mutations of the latest canonical publication milestone across eve
   const statusAuditField = latestPublishedMilestoneId === M230.id ? "leanConcreteCookLevinBuilderRawRefinementFormalized" : `lean${latestPublishedMilestoneFieldStem}AxiomAuditPassed`;
 
   const releaseFlag = makeProject(t);
-  releaseFlag.release.earnedBoundary[releaseFormalizedField] = false;
+  setMilestoneReleaseField(releaseFlag.release, releaseFormalizedField, false);
   write(releaseFlag.root, "downloads/formal-publication-release.json", json(releaseFlag.release));
   expectFailure(releaseFlag, /current manifest .* boundary mismatch/);
 
   const releaseFingerprint = makeProject(t);
-  releaseFingerprint.release.earnedBoundary[releaseFingerprintField][theoremName] = "0".repeat(64);
+  readMilestoneReleaseField(releaseFingerprint.release, releaseFingerprintField)[theoremName] = "0".repeat(64);
   write(releaseFingerprint.root, "downloads/formal-publication-release.json", json(releaseFingerprint.release));
   expectFailure(releaseFingerprint, /current manifest .* fingerprint mismatch/);
 

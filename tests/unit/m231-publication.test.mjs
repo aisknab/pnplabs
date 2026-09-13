@@ -1,3 +1,4 @@
+import { M258_BATCH_SCOPE_SUFFIX } from '../../tools/formal-m258-batch-contract.mjs';
 import { replaceStatusLedgerMetadata } from "../../tools/generate-proof-progress-surfaces.mjs";
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -170,9 +171,10 @@ test('M231 current surfaces separate NP-completeness, SAT decision and evidence 
 test('current scope suffix contracts include every newly published milestone', () => {
   for (const file of ['tools/verify-release-seal.mjs', 'tools/check-cross-repo-targets.mjs']) {
     const source = readFileSync(file, 'utf8');
-    const suffixes = [...source.matchAll(/earned\.scope\.endsWith\("([^"]+)"\)/g)];
+    const suffixes = [...source.matchAll(/earned\.scope\.endsWith\(("[^"]+")(\s*\+\s*M258_BATCH_SCOPE_SUFFIX)?\)/g)];
     assert.ok(suffixes.length > 0, file + ': scope contract family');
-    for (const [, suffix] of suffixes) {
+    for (const [, literal, batchSuffix] of suffixes) {
+      const suffix = JSON.parse(literal) + (batchSuffix ? M258_BATCH_SCOPE_SUFFIX : "");
       assert.ok(release.earnedBoundary.scope.endsWith(suffix), file + ': stale current scope suffix');
     }
   }

@@ -1,6 +1,6 @@
 import { M231 } from '../../tools/formal-m231-contract.mjs';
 import { M230 } from '../../tools/formal-m230-contract.mjs';
-import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
+import { deriveMilestoneStatusStem, deriveBatchMilestoneFields } from '../helpers/publication-status-fields.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -26,6 +26,8 @@ const updates = JSON.parse(readFileSync('content/milestone-updates.json', 'utf8'
 
 
 function statusFieldStem(milestone) {
+  const batch = deriveBatchMilestoneFields(status, release, milestone);
+  if (batch) return batch.statusStem.slice('lean'.length);
   if (milestone.id === M230.id) return 'ConcreteCookLevinFormulaBuilder';
   const suffix = 'TheoremKernelTypeSha256';
   const requiredTheorems = new Set(milestone.requiredTheorems);
@@ -237,7 +239,8 @@ test('site validator pins the latest canonical publication milestone and rejects
   assert.equal(validation.validateStatus(forgedFingerprint, inventory), false);
 
   const fieldStem = statusFieldStem(milestone);
-  const requiredValues = milestone.id === M230.id ? M230.fields : milestone.id === M231.id ? M231.fields
+  const batch = deriveBatchMilestoneFields(status, release, milestone);
+  const requiredValues = batch ? batch.statusFields : milestone.id === M230.id ? M230.fields : milestone.id === M231.id ? M231.fields
     : { [`lean${fieldStem}Formalized`]: true, [`lean${fieldStem}AxiomAuditPassed`]: true };
   for (const [field, value] of Object.entries(requiredValues)) {
     assert.equal(status[field], value, `missing latest milestone field ${field}`);
@@ -4200,8 +4203,14 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /finite BN5 full-shadow localization kernel/i);
   assert.match(statusPage, /strict Hall deficit/i);
   assert.match(statusPage, /PkgC separating-consumer restoration dichotomy/i);
+  for (const id of ['residual-terminal-pkgc-same-key-cancellation', 'residual-terminal-finite-bcel-packet-activation-obstruction']) {
+    const milestone = status.formalPublicationMilestones.find(row => row.id === id);
+    assert.ok(milestone, id + ': canonical title authority');
+    const title = milestone.title.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+    assert.ok(statusPage.includes(title), id + ': current canonical title');
+  }
   assert.match(statusPage, /classifyTerminalPkgCSeparatingConsumers_exhaustive/);
-  assert.match(statusPage, /PkgC typed-restoration same-key cancellation/i);
+
   assert.match(statusPage, /PkgC ambient BN4 ledger embedding/i);
   assert.match(statusPage, /PkgC ambient BN4 residual reduction/i);
   assert.match(statusPage, /classifyTerminalPkgCAmbientBN4ResidualReduction_exhaustive/);
@@ -4221,7 +4230,7 @@ test('static pages remain conservative and distinguish current from historical r
   assert.match(statusPage, /Same-candidate finite BCEL-ready and Packet carrier coherence/i);
   assert.match(statusPage, /residual-terminal-finite-bcel-packet-activation-obstruction/);
   assert.match(statusPage, /terminal_finite_bcel_packet_activation_obstruction_checked_complete/);
-  assert.match(statusPage, /Finite BCEL and Packet activation-coherence obstruction/i);
+
   assert.match(homepage, new RegExp(`data-current-milestone="${latestMilestone.id}"`, 'u'));
   assert.match(
     statusPage,
