@@ -77,7 +77,7 @@ function assertTimestamp(value, label) {
   assertNonEmptyString(value, label);
   const parsed = new Date(value);
   if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().replace(".000Z", "Z") !== value) {
-    fail(`${label}: expected a canonical RFC3339 UTC timestamp with whole seconds`);
+    fail(`${label}: expected a canonical RFC3339 UTC timestamp`);
   }
 }
 
@@ -125,7 +125,7 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
 
   const entryIds = new Set();
   const entryMilestoneIds = new Set();
-  const timestamps = new Set();
+  const timestampSources = new Map();
   let previousTimestamp = null;
   let legacyProgressReached = false;
   const validatedEntries = data.entries.map((entry, position) => {
@@ -217,15 +217,20 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
 
     if (entryIds.has(entry.id)) fail(`${label}: duplicate entry ID ${entry.id}`);
     if (entryMilestoneIds.has(entry.milestoneId)) fail(`${label}: duplicate milestone update ${entry.milestoneId}`);
-    if (timestamps.has(entry.publishedAt)) fail(`${label}: duplicate publication timestamp ${entry.publishedAt}`);
+    const sourceBinding = JSON.stringify([entry.source.commit, entry.source.tree, entry.source.publicationCoordinate]);
+    const timestampSource = timestampSources.get(entry.publishedAt);
+    if (timestampSource !== undefined && timestampSource !== sourceBinding) {
+      fail(`${label}: shared publication timestamp requires the same batch source`);
+    }
     if (baselineIds.has(entry.milestoneId)) fail(`${label}: baseline milestone cannot be republished as a tracked update`);
-    if (previousTimestamp !== null && entry.publishedAt >= previousTimestamp) {
-      fail(`${label}: entries must be strictly newest first`);
+    const timestamp = Date.parse(entry.publishedAt);
+    if (previousTimestamp !== null && timestamp > previousTimestamp) {
+      fail(`${label}: entries must be newest first`);
     }
     entryIds.add(entry.id);
     entryMilestoneIds.add(entry.milestoneId);
-    timestamps.add(entry.publishedAt);
-    previousTimestamp = entry.publishedAt;
+    timestampSources.set(entry.publishedAt, sourceBinding);
+    previousTimestamp = timestamp;
 
     const milestone = milestones.get(entry.milestoneId);
     if (!milestone || !milestoneIsEarned(milestone)) fail(`${label}: milestone is not currently earned`);
@@ -355,7 +360,7 @@ function renderUpdatesHtml(model) {
   const articles = model.entries.map((entry) => {
     const paragraphs = entry.plainLanguage.map((paragraph) => `        <p>${escaped(paragraph)}</p>`).join("\n");
     const progress = entry.progressSnapshot
-      ? `\n        <div class="update-current-metrics" aria-label="Progress tracker snapshot at publication"><strong>Tracker at ${escaped(entry.source.statusCoordinate)}</strong><ul><li>Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%</li><li>Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%</li><li>Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}</li></ul></div>`
+      ? `\n        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at ${escaped(entry.source.statusCoordinate)}</strong><ul><li>Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%</li><li>Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%</li><li>Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}</li></ul></div>`
       : entry.progressEstimatePercent === null
         ? ""
         : `\n        <p class="update-progress"><strong>Superseded scoped-row/editorial estimate at publication:</strong> ${entry.progressEstimatePercent}%. This historical figure is not the current risk-weighted proof-completion estimate and is not a probability or confidence score.</p>`;
@@ -388,6 +393,7 @@ function renderUpdatesHtml(model) {
     + `  <main id="main">\n`
     + `    <section class="page-hero updates-hero"><span class="eyebrow">Follow verified progress</span><h1>Follow each machine-checked milestone.</h1>\n`
     + `      <p class="lede">Every update begins in everyday language and assumes no mathematics background. Open its technical details only when you want the exact Lean scope, theorem pins, and limits.</p>\n`
+    + `      <p class="small">Milestones first published in one batch share a publication timestamp. Each retains its original formal-history coordinate and progress snapshot; the cited source is the batch's reviewed proof snapshot.</p>\n`
     + `      <div class="feed-box" aria-labelledby="feed-heading"><div><strong id="feed-heading">Use an RSS or Atom reader</strong><p>Your reader checks this address for new milestones. No email address or PNP Labs account is needed.</p><code id="feed-url">https://pnplabs.com.au/updates.xml</code></div><button class="btn secondary" type="button" data-copy="#feed-url">Copy feed address</button></div>\n`
     + `      <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>\n`
     + `    </section>\n`

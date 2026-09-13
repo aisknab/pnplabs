@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/3676a3f291193221e4ee3537aaf6023fba95ace0/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/3676a3f291193221e4ee3537aaf6023fba95ace0/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
@@ -31,6 +31,25 @@ Checker paths have two different statuses:
   current canonical report does not adopt those checker assertions. The mapped source paths are
   historical audit targets rather than current theorem evidence.
 - **Pinned cross-repo target**: a path assigned to `sourceRef`, `docsRef`, or `artifactRef` in [source_checker_map.md](source_checker_map.md) and [audit_targets.json](audit_targets.json). Running source/checker tests checks the package according to its implementation; it is not external mathematical acceptance.
+
+## Current computational support search
+
+The M258 publication adds the source-derived search described in the
+[compiled result note](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/lean_wire_unary_support_search.md) and [Lean source](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/lean/PNP/NANDWireUnarySupportSearch.lean).
+These definitions concern the computational carrier, not the full manuscript
+carrier or all global obligations. Current progress and source identity are in
+[formal status](../status.html); adding vocabulary does not earn progress points.
+
+| Term | Definition and standard concept | Minimal example | Enforcing interface and failure boundary |
+| --- | --- | --- | --- |
+| Proper physical support | A selected set of physical gates with a nonempty original exterior; a proper subcircuit, not the whole circuit. | Selecting one gate in a two-gate circuit leaves one exterior gate. | `candidateRecords_proper` and `GainResult.checked`; a whole-support saving is not a proper-support Package E certificate. |
+| Zero/unary incoming boundary | Zero or one distinct nonconstant wire entering the selected gates from outside the support; local circuit input arity. | A selected NOT gate reading one external input has a unary boundary. Constants do not add boundary wires. | `admissible_boundary_small`; a two-boundary support is outside this search class. This is not a restriction to one source input or one gate. |
+| Full computational fields | Every tracked computational-wire observation, in addition to ordinary circuit outputs; observational equivalence for the exposed computational interface. | Two circuits may agree on an output while disagreeing on a separately tracked internal wire. Output agreement alone does not preserve that field. | `GainResult.dischargeR7_full_value` and `findReplacement_sound`; ordinary-output or quotient agreement cannot replace the required full-field equality. |
+| Source-derived complete scoped search | A candidate family computed from the source and a search that succeeds whenever any proper zero/unary support admits a strictly smaller equivalent complete local word; completeness within a stated domain. | A duplicate depending on two boundary wires can have a smaller ambient realization while this restricted search correctly returns no gain. | `candidateFamily_complete`, `findGain_complete` and `findGain_none_excludes`; a negative result is not global minimality or unconditional ZeroSlack. Candidate-count bounds are not total encoded-input polynomial runtime, output-size or certificate-size bounds. |
+
+All interface names above are in `PNP.DirectWire.WireUnarySupportSearch`.
+The full manuscript carrier, complete global routes, unconditional ZeroSlack and
+the final polynomial-time algorithm remain open.
 
 ## Current Formal-Evidence Terms
 

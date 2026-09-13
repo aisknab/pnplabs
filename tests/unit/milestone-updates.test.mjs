@@ -226,6 +226,8 @@ test("validation rejects duplicates, source drift, unsafe prose, and schema exte
 
   const sourceDrift = structuredClone(data);
   sourceDrift.entries[0].source.commit = "a".repeat(40);
+  // Isolate the current source-pin boundary from shared batch timestamps.
+  sourceDrift.entries[0].publishedAt = new Date(Date.parse(sourceDrift.entries[0].publishedAt) + 1000).toISOString().replace(".000Z", "Z");
   assert.throws(() => validateUpdatesModel(sourceDrift, status, index), /source commit does not match/u);
 
   const unsafe = structuredClone(data);
@@ -353,4 +355,38 @@ test("CLI accepts only generate mode or read-only check mode", () => {
   assert.deepEqual(parseArguments([]), { write: true });
   assert.deepEqual(parseArguments(["--check"]), { write: false });
   assert.throws(() => parseArguments(["--write"]), /usage/u);
+});
+
+test("batched publication permits a shared timestamp only for one exact source", async () => {
+  const [data, status, index] = await fixtures();
+  const batch = structuredClone(data);
+  const first = batch.entries[0];
+  const second = batch.entries[1];
+  second.publishedAt = first.publishedAt;
+  for (const field of ["commit", "tree", "publicationCoordinate"]) second.source[field] = first.source[field];
+  const model = validateUpdatesModel(batch, status, index);
+  assert.equal(model.entries[0].publishedAt, model.entries[1].publishedAt);
+  assert.notEqual(model.entries[0].source.statusCoordinate, model.entries[1].source.statusCoordinate);
+  assert.deepEqual(model.entries[1].progressSnapshot, second.progressSnapshot);
+  assert.match(renderUpdatesHtml(model), /Milestones first published in one batch share a publication timestamp/u);
+  assert.match(renderUpdatesHtml(model), /snapshot at the original formal milestone/u);
+  for (const field of ["commit", "tree", "publicationCoordinate"]) {
+    const drift = structuredClone(batch);
+    drift.entries[1].source[field] = field === "publicationCoordinate" ? "DIFFERENT-PUBLICATION" : "b".repeat(40);
+    assert.throws(() => validateUpdatesModel(drift, status, index), /shared publication timestamp requires the same batch source/u);
+  }
+});
+
+test("timestamp order is chronological with canonical fractional seconds", async () => {
+  const [data, status, index] = await fixtures();
+  const ordered = structuredClone(data);
+  ordered.entries[0].publishedAt = "2031-01-01T00:00:00.001Z";
+  ordered.entries[1].publishedAt = "2031-01-01T00:00:00Z";
+  validateUpdatesModel(ordered, status, index);
+  const reversed = structuredClone(ordered);
+  [reversed.entries[0].publishedAt, reversed.entries[1].publishedAt] =
+    [reversed.entries[1].publishedAt, reversed.entries[0].publishedAt];
+  assert.throws(() => validateUpdatesModel(reversed, status, index), /entries must be newest first/u);
+  ordered.entries[0].publishedAt = "2031-01-01T00:00:00.000Z";
+  assert.throws(() => validateUpdatesModel(ordered, status, index), /canonical RFC3339 UTC timestamp/u);
 });

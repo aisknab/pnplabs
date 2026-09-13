@@ -1,5 +1,5 @@
 import { M230, assertM230Status, assertM230Manifest } from '../../tools/formal-m230-contract.mjs';
-import { deriveMilestoneStatusStem } from '../helpers/publication-status-fields.mjs';
+import { deriveMilestoneStatusStem, deriveBatchMilestoneFields, decodePublishedHtml } from '../helpers/publication-status-fields.mjs';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
@@ -42,6 +42,8 @@ function assertCanonicalConceptCoverage(actual, canonical, minimum, label) {
 }
 
 function latestMilestoneStatusFields(status, release, milestone) {
+  const batch = deriveBatchMilestoneFields(status, release, milestone);
+  if (batch) return Object.keys(batch.statusFields);
   if (milestone.id === M230.id) {
     assertM230Status(status);
     assertM230Manifest(release);
@@ -97,11 +99,11 @@ test('homepage leads with a plain, conservative result and the latest milestone'
   for (const field of currentStatusFields) {
     assert.ok(Object.hasOwn(status, field), `canonical status missing derived latest-milestone field: ${field}`);
     assert.ok(
-      html.includes(`${field} = ${JSON.stringify(status[field])}`),
+      decodePublishedHtml(html).includes(`${field} = ${JSON.stringify(status[field])}`),
       `homepage missing current canonical status field: ${field}`
     );
   }
-  for (const fragment of [
+  const legacyFragments = [
     'A machine-checked reconstruction of a proposed route to P = NP.',
     'Current result: P = NP is not established.',
     '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
@@ -345,12 +347,45 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     'NP: answers we can check efficiently',
     'Read the plain-language and technical update',
     'EncodedLockedNANDThreshold',
-  ]) {
+  ];
+  const currentBatch = deriveBatchMilestoneFields(status, release, latestMilestoneRecord);
+  const fragments = currentBatch ? [
+    'A machine-checked reconstruction of a proposed route to P = NP.',
+    'Current result: P = NP is not established.',
+    '<strong>P versus NP</strong> asks whether problems with answers that can be checked efficiently can also be solved efficiently.',
+    '<strong>Lean</strong> is software that checks each stated mathematical step.',
+    latest.title,
+    'mathematicalTheoremEstablished = false',
+    'publicTheoremEmissionAllowed = false',
+    'rootLeanTheoremPresent = false',
+    'projectSpecificAxiomsRemaining = false',
+    'leanSaturatePositiveFormalized = false',
+    'leanBCELReadyFormalized = false',
+    'leanPCCMinPolynomialRuntimeFormalized = false',
+    'concretePublicationGate.passed = false',
+    inventory.coordinate,
+    'updates.html#' + latest.id,
+    'Technical theorem boundary · gate closed · ' + status.remainingBlockers.length + ' blockers',
+    'Risk-weighted proof completion estimate',
+    progress.percent + '% risk-weighted estimate',
+    'uncertainty ' + progress.uncertaintyLowPercent + '% to ' + progress.uncertaintyHighPercent + '%',
+    'A conservative estimate of how much of the complete formal proof burden has been retired.',
+    coverage.earnedRows + ' of ' + coverage.totalRows,
+    'This is evidence-ledger coverage, not proof completion',
+    proofProgress.globalGates.filter(gate => gate.status === 'closed').length + ' of ' + proofProgress.globalGates.length + ' closed',
+    'Root theorem <code>' + proofProgress.rootTheorem.name + '</code>: <strong>absent</strong>',
+    'P: problems we can solve efficiently',
+    'NP: answers we can check efficiently',
+    'Read the plain-language and technical update',
+  ] : legacyFragments;
+  // The batch's complete current field set is checked above; all historical
+  // milestone scopes and theorem pins are checked on the full status ledger.
+  for (const fragment of fragments) {
     const statusField = fragment.match(/^([A-Za-z][A-Za-z0-9]+) = /u)?.[1];
     const expectedFragment = statusField && Object.hasOwn(status, statusField)
       ? `${statusField} = ${JSON.stringify(status[statusField])}`
       : fragment;
-    const fragmentPresent = html.includes(expectedFragment);
+    const fragmentPresent = decodePublishedHtml(html).includes(expectedFragment);
     assert.equal(fragmentPresent, true, `missing homepage fragment: ${expectedFragment}`);
   }
   const latestMilestone = html.match(/<article class="latest-milestone"[\s\S]*?<\/article>/u)?.[0] ?? '';
@@ -358,15 +393,25 @@ test('homepage leads with a plain, conservative result and the latest milestone'
   for (const theorem of latestMilestoneRecord.requiredTheorems.slice(-2)) {
     assert.ok(inventory.milestoneCandidates.some((candidate) => candidate.name === theorem));
   }
-  assertCanonicalConceptCoverage(latestMilestone, latestMilestoneRecord.scope, 0.65, 'homepage latest scope');
-  assertCanonicalConceptCoverage(latestMilestone, latestMilestoneRecord.nonClaim, 0.70, 'homepage latest non-claim');
-  assertCanonicalConceptCoverage(latestMilestone, latest.plainLanguage.join(' '), 0.75, 'homepage latest update');
+  if (currentBatch) {
+    const displayed = decodePublishedHtml(latestMilestone.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
+    for (const paragraph of latest.plainLanguage) assert.ok(displayed.includes(paragraph.replace(/\s+/g, ' ')), 'homepage complete canonical plain-language account');
+  } else {
+    assertCanonicalConceptCoverage(latestMilestone, latestMilestoneRecord.scope, 0.65, 'homepage latest scope');
+    assertCanonicalConceptCoverage(latestMilestone, latestMilestoneRecord.nonClaim, 0.70, 'homepage latest non-claim');
+    assertCanonicalConceptCoverage(latestMilestone, latest.plainLanguage.join(' '), 0.75, 'homepage latest update');
+  }
   assert.ok(latestMilestone.includes('P = NP'));
   const currentBottomLine = html.match(/<section class="section compact" data-current-milestone="([^"]+)">[\s\S]*?Current bottom line[\s\S]*?<\/section>/u);
   assert.ok(currentBottomLine, 'homepage must retain a current bottom-line section');
   assert.equal(currentBottomLine[1], latest.milestoneId);
-  assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.scope, 0.35, 'current bottom-line scope');
-  assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.nonClaim, 0.55, 'current bottom-line non-claim');
+  if (currentBatch) {
+    const displayed = decodePublishedHtml(currentBottomLine[0].replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
+    for (const paragraph of latest.plainLanguage) assert.ok(displayed.includes(paragraph.replace(/\s+/g, ' ')), 'bottom line complete canonical plain-language account');
+  } else {
+    assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.scope, 0.35, 'current bottom-line scope');
+    assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.nonClaim, 0.55, 'current bottom-line non-claim');
+  }
   assert.match(currentBottomLine[0], /remain open/u);
   assert.match(currentBottomLine[0], /P = NP/u);
   assert.doesNotMatch(html, />Historical report</u);

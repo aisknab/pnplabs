@@ -5,9 +5,27 @@
 The repository does not establish `P = NP`. The current public surface is generated from a compiled
 Lean theorem inventory, and its concrete publication gate is false.
 
-The fixed reductions-concrete-np-hardness checkpoint earns 2 points, raising the risk-weighted estimate from 38% to 40%. Formal artefact coverage is 207 of 209 current scoped publication rows earned. All five global gates remain open.
+Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5. This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate.
 
 Earlier component rows retain their original limitations. M230 supplies the complete all-input builder and M231 supplies concrete CNF-SAT NP-completeness; those older rows do not negate the later results.
+
+<!-- CURRENT_PUBLICATION:START -->
+## M258 current publication boundary
+
+**Complete search for proper constant and unary circuit gains**
+
+The search now derives its candidate supports directly from the circuit and finds a strict saving whenever any proper support with zero or one incoming wire admits a smaller equivalent complete local replacement. A support is a selected set of gates; proper means some original gates remain outside it. An accepted result builds the actual replacement and preserves every ordinary output and tracked computational wire field.
+
+A negative result excludes gains only in this zero-or-one-boundary class, not larger boundaries or smaller global circuits. The candidate-count bound is not a theorem of total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier and obligation calculus, general exact minimization, unconditional ZeroSlack and the eligible P = NP root remain open; no fixed weighted checkpoint or global gate changes.
+
+Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+
+This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
+
+Current source: [`6296c6e1130fbae674548ccbf949f6e608b996c7`](https://github.com/aisknab/pnp/tree/6296c6e1130fbae674548ccbf949f6e608b996c7), tree `78648f5978d16ff5055c5b493e5bb97ff4cd7cac`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-258`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/lean_wire_unary_support_search.md), the [source-bound update](../updates.html#2026-09-13-wire-unary-support-search) and the [complete current milestone ledger](../status.html).
+
+M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
+<!-- CURRENT_PUBLICATION:END -->
 
 The pipeline is deliberately one-way:
 
@@ -31,14 +49,9 @@ The core repository imports the complete `PNP` module closure under the exact pi
 walks public environment constants, classifies declaration kinds, and uses Lean's axiom collection
 for dependencies. Every public row records name, module, kind, and axiom closure; reviewed
 milestone candidates additionally record raw kernel types for publication fingerprinting. The
-canonical output records:
-
-- 46,094 public declarations;
-- 25,322 theorem-kind declarations;
-- 11,029 assumption-free theorem-kind declarations;
-- 497 source-closure modules;
-- 19,720 excluded private compiler auxiliaries;
-- no project-specific axioms.
+[canonical inventory](../public/pnp-theorem-inventory.json) records the actual declaration,
+theorem, assumption-free theorem, source-module and excluded-private counts, together with
+the project-axiom inventory. These are artifact metadata, not proof-completion measures.
 
 The source closure includes every tracked `lean/**/*.lean` source plus the toolchain and Lake build
 configuration. Symlinked sources, malformed probe output, private-row forgery, unsorted declarations,
@@ -53,7 +66,10 @@ An earned milestone requires all of the following:
 3. every declaration's exact closure contains only approved Lean-standard axioms and no project axiom;
 4. the complete Lean-source closure matches its reviewed digest.
 
-The earned formal artefact scopes are:
+The table below preserves selected earlier component scopes and their standalone limitations.
+The current M232-M258 computational batch is described above; the complete current earned
+ledger and exact theorem interfaces are in [formal status](../status.html) and its canonical payload.
+Earlier partial-builder non-claims do not override the complete M230 builder or M231 hardness:
 
 | Milestone | Exact scope | Explicit non-claim |
 | --- | --- | --- |

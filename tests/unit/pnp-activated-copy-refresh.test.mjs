@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
+import { readBrowserInventoryCounts } from '../helpers/publication-status-fields.mjs';
 
 async function readText(path) {
   return readFile(new URL(`../../${path}`, import.meta.url), 'utf8');
@@ -17,6 +18,17 @@ test('shared site script applies the compiled-inventory publication boundary', a
     readJson('public/pnp-index.json'),
   ]);
   const script = await readText('assets/main.js');
+  // Generated object-key quoting and whitespace are not publication semantics.
+  // Compare every browser count with its authoritative inventory field instead.
+  const counts = readBrowserInventoryCounts(script);
+  assert.deepEqual(counts, {
+    declarations: inventory.declarationCount,
+    theorems: inventory.theoremCount,
+    assumptionFreeTheorems: inventory.assumptionFreeTheoremCount,
+    excludedPrivateDeclarations: inventory.excludedPrivateDeclarationCount,
+    modules: inventory.sourceClosureModuleCount,
+    axioms: inventory.axiomCount,
+  }, 'all browser inventory counts match the canonical inventory');
   for (const fragment of [
     'FAIL_CLOSED_FORMAL_STATUS',
     'function isConservativeFormalStatus(status, inventory)',
@@ -27,12 +39,6 @@ test('shared site script applies the compiled-inventory publication boundary', a
     status.coordinate,
     inventory.coordinate,
     index.leanTheoremInventorySha256,
-    `declarations: ${inventory.declarationCount}`,
-    `theorems: ${inventory.theoremCount}`,
-    `assumptionFreeTheorems: ${inventory.assumptionFreeTheoremCount}`,
-    `excludedPrivateDeclarations: ${inventory.excludedPrivateDeclarationCount}`,
-    `modules: ${inventory.sourceClosureModuleCount}`,
-    `axioms: ${inventory.axiomCount}`,
     'PNP.Concrete.FinalUniversalDesign.cnfSATInNP',
     'CNF_TO_NAND_POLYNOMIAL_REDUCTION_DECLARATIONS',
     'PNP.Concrete.CNFSourceParser.allInput_exact',
@@ -705,8 +711,8 @@ test('shared site script applies the compiled-inventory publication boundary', a
     'Promise.all([',
     'compiled Lean inventory digest mismatch',
     'milestone.earned && milestone.requiredTheorems.length > 0',
-    'Reviewed theorem pins (${milestone.requiredTheorems.length}), last listed:',
-    'code.textContent = milestone.requiredTheorems.at(-1)',
+    'Reviewed theorem interfaces (${milestone.requiredTheorems.length})',
+    'code.textContent = name',
     'renderMilestones(status.formalPublicationMilestones)',
     'loadFormalPublication();',
   ]) {
