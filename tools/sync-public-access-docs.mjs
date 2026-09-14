@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { assertM231PublicationMap, assertM231Status, assertM231Inventory } from './formal-m231-contract.mjs';
 import { assertM258BatchPublicationMap, assertM258BatchStatus, assertM258BatchInventory } from './formal-m258-batch-contract.mjs';
+import { assertM262BatchPublicationMap, assertM262BatchStatus, assertM262BatchInventory } from './formal-m262-batch-contract.mjs';
 import { assertM230PublicationMap, assertM230Status, assertM230Inventory } from './formal-m230-contract.mjs';
 import { assertM229PublicationMap, assertM229Status, assertM229Inventory } from './formal-m229-contract.mjs';
 import { createHash, randomBytes } from "node:crypto";
@@ -23,13 +24,13 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "6296c6e1130fbae674548ccbf949f6e608b996c7";
-const CORE_TREE = "78648f5978d16ff5055c5b493e5bb97ff4cd7cac";
-const CORE_PUBLICATION_MAP_SHA256 = "ba8dd5956722843bd3a0b12fac82adb74679614f17578bef3ac5d6f1b8858392";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-13-258";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-258";
+const CORE_COMMIT = "c3d4d9a115a357b44ee8104d129ee15e3174ec7f";
+const CORE_TREE = "7bd3bc5854b0307330e9e405b5857de658eba54e";
+const CORE_PUBLICATION_MAP_SHA256 = "84b270e13cff65f29b62f4f5a0cd4dbb5ab87032312c49d81e74488042bf7885";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-14-262";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262";
 const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230";
-const CORE_SOURCE_CLOSURE_SHA256 = "b6af08ede52ce6edd502c71e3a4af849d6ce035ca5f6c5eb4f471aec981018f8";
+const CORE_SOURCE_CLOSURE_SHA256 = "e2ef5c0b7366cd0e28bf1539878a3aeccee506c5fd3b71b7608511dc24a32290";
 const OLD_PDF_SHA256 = "8951dc5f62bd03cec174345dbdaafcadf13b1dcfe77802b0c6f93e2d098f5673";
 const OLD_TEX_SHA256 = "a88ed72a8cb6a7825306892613b82c0fe771fa67a294d2f05ce4cd41a868093d";
 
@@ -343,13 +344,13 @@ const RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_THEOREMS = {
   "PNP.DirectWire.terminalSaturateRecords_closed": { hash: "f1b4202a9fa0e8d76c6289201eac729860a7f4735c9700c4299f71e1f1792e6d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
   "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
   "PNP.DirectWire.mem_allTerminalSupportWires": { hash: "685c10956690b6971338b1bc1b27dc7b29a585384c6fb58e725d179f71174579", axioms: [], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
-  "PNP.DirectWire.mem_terminalBoundaryPorts_iff": { hash: "96d01f7650e0584503501f4278dc196e1b1a2ea658abf237e99978715d942ef0", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.mem_terminalBoundaryPorts_iff": { hash: "96d01f7650e0584503501f4278dc196e1b1a2ea658abf237e99978715d942ef0", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.mem_terminalInterfacePorts_iff": { hash: "e8b19b45e351818396a7f70d83d1e975bdd50458ad3169fcc68e1a06f7c1c56f", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_incoming_complete": { hash: "e541fac972a4f9402aab6b47c6aa6164cdf54d5a490beb750a8ddf498719e789", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_incoming_complete": { hash: "e541fac972a4f9402aab6b47c6aa6164cdf54d5a490beb750a8ddf498719e789", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.completeTerminalPhysicalSupport_outgoing_complete": { hash: "5955b959132cd6a3f3bf734ea8f62513554f476a2ee7b46a65ff716e9a328b7a", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_records": { hash: "619c37407e969a13746611f68b4169ba34a8cac4e6d8a01d5388808eec58fe91", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
-  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" }
+  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" }
 };
 
 const RESIDUAL_TERMINAL_PHYSICAL_SUPPORT_SCOPE = "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-and-finite-seed-lists";
@@ -375,9 +376,9 @@ const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_THEOREMS = {
   "PNP.DirectWire.extractSaturatedTerminalSupport_semantics": { hash: "fddf804df49f57bab852950d3e8f3987b9cb8e273eb6cf93ee36c0633d51c529", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportExtraction" },
   "PNP.DirectWire.extractSaturatedTerminalSupport_induced": { hash: "38e1f0d81a820f97d9af5f6453c1f4e52db7893f837b07e0e72e2819975ba7e1", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportExtraction" },
   "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_incoming_complete": { hash: "e541fac972a4f9402aab6b47c6aa6164cdf54d5a490beb750a8ddf498719e789", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
-  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" }
+  "PNP.DirectWire.completeTerminalPhysicalSupport_incoming_complete": { hash: "e541fac972a4f9402aab6b47c6aa6164cdf54d5a490beb750a8ddf498719e789", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" }
 };
 
 const RESIDUAL_TERMINAL_SUPPORT_EXTRACTION_SCOPE = "all-finite-direct-wire-candidates-terminal-record-lists-boundary-valuations-and-interface-coordinates";
@@ -401,7 +402,7 @@ const RESIDUAL_TERMINAL_PROPER_SUPPORT_THEOREMS = {
   "PNP.DirectWire.TerminalProperPositiveSupport.referenceMinimum_lt_gateCount": { hash: "3c2723813d8698079c9b31f8120b34ec63d9f8d0ad9d5c19726be9ae656c52d7", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
   "PNP.DirectWire.TerminalProperPositiveSupport.minimumReplacement_size_lt": { hash: "2fc0253f766510bc57b7f490782fac0ea4fc6a1f1d05845a3299c71e8793be23", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalProperSupport" },
   "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
-  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeSaturatedTerminalPhysicalSupport_compatible": { hash: "831f8ce697624f2e413d5da6a56fde592b2157793a1dd1f4f85060154faafc58", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.extractSaturatedTerminalSupport_gateCount": { hash: "18f51c1d2f3a9ddcbf0b625bd5fdb4e48755c43a1d194ab591bd81574cadfa0c", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
   "PNP.DirectWire.extractSaturatedTerminalSupport_semantics": { hash: "fddf804df49f57bab852950d3e8f3987b9cb8e273eb6cf93ee36c0633d51c529", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
   "PNP.DirectWire.extractSaturatedTerminalSupport_induced": { hash: "38e1f0d81a820f97d9af5f6453c1f4e52db7893f837b07e0e72e2819975ba7e1", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
@@ -429,12 +430,12 @@ const RESIDUAL_TERMINAL_SUPPORT_SQUARE_THEOREMS = {
   "PNP.DirectWire.TerminalSaturatedSupportSquare.joinRecords_least": { hash: "902f681c1a3eabe125dafd498dd2832504b1c103d8679054511cdba36a03043d", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.terminalSaturateRecords_mem_congr": { hash: "0a28a7b60b3958417a6db73a790d6dc1e1ad9decd72cca332c6efac7f14d2137", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.records_congr": { hash: "e0a6da317d20f33e135e6feecb6a46a39e514484b6c4c19f8ff0844a709125cc", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
-  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.extracted_gateCount": { hash: "a99ae5f9cd9e1ddcbc3770186f6d61f4f98af03e90926a531c30376c654d65fa", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.extracted_semantics": { hash: "7f7a07fdd91014d1e2304d31b437b56984e47da385ef28b783e3049b0db0a589", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.extracted_induced": { hash: "583980a05d4a79162b2e6f8118ba306e144738330527743d60199b88ddfdda88", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.extractTerminalSupport_semantics": { hash: "9e21282b463db32c23206cdc717d1129077f7c192c813f7ee6bdf6d646970760", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
   "PNP.DirectWire.extractTerminalSupport_induced": { hash: "019211d25600c1bb6cdbb87609891df9b1bbf7076767ea8ed434a7b9cbede608", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportExtraction" },
 };
@@ -465,11 +466,11 @@ const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS = {
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff": { hash: "9736ce34b616c8b00ac7ca4ba123c3c093dc464c1f07a7a0635b5b5bbe28a9dd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_mem": { hash: "89af8357b78aece85e9130d05174823c0b21ac461e57e3decd86c3cc10f29b79", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_profile_mem": { hash: "aba462df754b833c8351179b8f7ceb65c9493ef7e982e279451065239301043b", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.terminalSaturateRecords_closed": { hash: "f1b4202a9fa0e8d76c6289201eac729860a7f4735c9700c4299f71e1f1792e6d", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
   "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.records_closed": { hash: "0fb6aed85d2c9d9f5ef89004077552853e3ffaec207f7c2884e033c73067df4f", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
-  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
 };
 
 const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_SCOPE = "all-finite-direct-wire-candidates-explicit-terminal-dependency-systems-finite-seed-lists-and-saturated-support-square-corners";
@@ -503,7 +504,7 @@ const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_THEOREMS = {
   "PNP.DirectWire.TerminalSaturatedSupportSquare.mem_meetRecords_iff": { hash: "128e80b0165ddfa2cb35006b81a9e5ebd84c910c1108b77bbb21825390b18095", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.mem_joinRecords_iff": { hash: "61300043ed1912b7e150c540f0d5ed2137c52e8bae13fe709d6ebed1204b3b51", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.records_closed": { hash: "0fb6aed85d2c9d9f5ef89004077552853e3ffaec207f7c2884e033c73067df4f", axioms: ["Quot.sound","propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
-  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff": { hash: "9736ce34b616c8b00ac7ca4ba123c3c093dc464c1f07a7a0635b5b5bbe28a9dd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
 };
 
@@ -4877,8 +4878,8 @@ const CORE_FILES = [
       "downloads/canonical_proof_report.pdf",
       "downloads/canonical-proof-report.pdf"
     ],
-    "bytes": 703729,
-    "sha256": "8c6f8ae5fc05f1763363055fefe49432f0c53f0d3dda321ab3a6fc39e94507fe"
+    "bytes": 713336,
+    "sha256": "080eb7e6a2341a9ba684e56008c5a2f4604ca0d078468968ac0e9dda5bf35885"
   },
   {
     "sourcePath": "canonical_proof_report.tex",
@@ -4886,32 +4887,32 @@ const CORE_FILES = [
       "downloads/canonical_proof_report.tex",
       "downloads/canonical-proof-report.tex"
     ],
-    "bytes": 500462,
-    "sha256": "7e02d95abcfed87f83076b34454293ae32b3ffc910066d6e89018338314aff86"
+    "bytes": 510824,
+    "sha256": "874f4fe200d50daec6705e11516097b4f98cae541adfa9c08711efa854cef74a"
   },
   {
     "sourcePath": "public/pnp-status.json",
     "targets": [
       "public/pnp-status.json"
     ],
-    "bytes": 3177956,
-    "sha256": "004af2bc499ab8715278f3df870f7d04d44b42d25ba696d579dceddfa588058e"
+    "bytes": 3261723,
+    "sha256": "e8bcf783887f344ce7f98d124b3026b1a94049c54694d5b6ad8be6956f870865"
   },
   {
     "sourcePath": "public/pnp-theorem-inventory.json",
     "targets": [
       "public/pnp-theorem-inventory.json"
     ],
-    "bytes": 58224870,
-    "sha256": "6180226112e43664173be7b5d8f8179e62eb68032499c7d7f1a848053c8d06a4"
+    "bytes": 61143784,
+    "sha256": "0849daec3584fab76c3df2b8757d8e2dd917e556ed6fa84446ec9c6bab35e66a"
   },
   {
     "sourcePath": "status/PROOF_PROGRESS.json",
     "targets": [
       "public/pnp-proof-progress.json"
     ],
-    "bytes": 210069,
-    "sha256": "5c8f0f594ce2ee06dfc595524ac91045455d47b857bc1e740f8cacbcb65bebc7"
+    "bytes": 216414,
+    "sha256": "e50fa9af27c2b29de4eb26763234241cc1142caa3ce4ad13dcff69fc6966b1ee"
   }
 ];
 
@@ -7777,7 +7778,7 @@ function assertPinnedCore(sourceDir) {
   assertM224PublicationMap(publicationMap);
   assertM225PublicationMap(publicationMap);
   assertM227PublicationMap(publicationMap);
-  assertM229PublicationMap(publicationMap); assertM230PublicationMap(publicationMap); assertM231PublicationMap(publicationMap); assertM258BatchPublicationMap(publicationMap);
+  assertM229PublicationMap(publicationMap); assertM230PublicationMap(publicationMap); assertM231PublicationMap(publicationMap); assertM258BatchPublicationMap(publicationMap); assertM262BatchPublicationMap(publicationMap);
     assertM228PublicationMap(publicationMap);
   assertM226PublicationMap(publicationMap);
   return publicationMap;
@@ -7802,7 +7803,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     }
   } else if (sourcePath === "public/pnp-status.json") {
     assertM227Status(payload);
-    assertM229Status(payload); assertM230Status(payload); assertM231Status(payload); assertM258BatchStatus(payload);
+    assertM229Status(payload); assertM230Status(payload); assertM231Status(payload); assertM258BatchStatus(payload); assertM262BatchStatus(payload);
     assertM228Status(payload);
     assertM226Status(payload);
     assertM225Status(payload);
@@ -12714,7 +12715,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== true) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
     assertM227Inventory(payload);
-    assertM229Inventory(payload); assertM230Inventory(payload); assertM231Inventory(payload); assertM258BatchInventory(payload);
+    assertM229Inventory(payload); assertM230Inventory(payload); assertM231Inventory(payload); assertM258BatchInventory(payload); assertM262BatchInventory(payload);
     assertM228Inventory(payload);
     assertM226Inventory(payload);
     assertM225Inventory(payload);
@@ -14583,6 +14584,19 @@ export function renderCurrentCanonicalIdentities(document, release) {
   return document.replace(region, () => table);
 }
 
+export function renderCurrentInventoryIdentity(document, release) {
+  const digest = release?.artifacts?.theoremInventory?.sha256;
+  if (typeof digest !== "string" || !/^[0-9a-f]{64}$/.test(digest)) {
+    fail("invalid canonical inventory identity");
+  }
+  const region = /<p class="boundary-copy" data-current-inventory-identity>[\s\S]*?<\/p>/g;
+  if ([...document.matchAll(region)].length !== 1) {
+    fail("expected one current inventory identity region");
+  }
+  return document.replace(region, () => '<p class="boundary-copy" data-current-inventory-identity><strong>Compiled inventory SHA-256:</strong> <code>'
+    + digest + '</code>. This identifies the exact inventory bytes, not theorem correctness.</p>');
+}
+
 export function synchronizeFormalPublication(options = {}) {
   const root = path.resolve(options.root || process.cwd());
   const sourceDir = path.resolve(root, options.sourceDir || process.env.PNP_SOURCE_DIR || "../pnp");
@@ -14631,6 +14645,16 @@ export function synchronizeFormalPublication(options = {}) {
   if (identityBefore !== identityAfter) {
     if (!write) fail("docs/reproducibility.md: current canonical identity table is stale");
     writeMirrorFileAtomically(root, identityPath, Buffer.from(identityAfter));
+  }
+  for (const relativePath of ["index.html", "status.html"]) {
+    const pagePath = path.join(root, relativePath);
+    assertSafeMirrorTarget(root, pagePath, true);
+    const pageBefore = readFileSync(pagePath, "utf8");
+    const pageAfter = renderCurrentInventoryIdentity(pageBefore, release);
+    if (pageBefore !== pageAfter) {
+      if (!write) fail(relativePath + ": current inventory identity is stale");
+      writeMirrorFileAtomically(root, pagePath, Buffer.from(pageAfter));
+    }
   }
   const expectedPageCount = release?.artifacts?.report?.pageCount;
   if (!Number.isSafeInteger(expectedPageCount) || expectedPageCount <= 0) fail("formal-publication release report page count is invalid");

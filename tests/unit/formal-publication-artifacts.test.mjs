@@ -344,11 +344,11 @@ const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_THEOREMS = {
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff": { hash: "9736ce34b616c8b00ac7ca4ba123c3c093dc464c1f07a7a0635b5b5bbe28a9dd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_mem": { hash: "89af8357b78aece85e9130d05174823c0b21ac461e57e3decd86c3cc10f29b79", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_required_profile_mem": { hash: "aba462df754b833c8351179b8f7ceb65c9493ef7e982e279451065239301043b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" },
-  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
+  "PNP.DirectWire.completeTerminalPhysicalSupport_compatible": { hash: "54f14acec8c40024eb7982e02373e24a80e864b0478a7815105f94362601b1fd", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalPhysicalSupportCompletion" },
   "PNP.DirectWire.terminalSaturateRecords_closed": { hash: "f1b4202a9fa0e8d76c6289201eac729860a7f4735c9700c4299f71e1f1792e6d", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
   "PNP.DirectWire.mem_terminalSaturateRecords_iff": { hash: "055750aa6beee13c31f532a3f37f67c915a0f6a20ddac7d6f83e5058869db36b", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalExecutableSaturation" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.records_closed": { hash: "0fb6aed85d2c9d9f5ef89004077552853e3ffaec207f7c2884e033c73067df4f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
-  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" }
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" }
 };
 
 const RESIDUAL_TERMINAL_GOVERNED_SUPPORT_HASHES = Object.fromEntries(
@@ -382,7 +382,7 @@ const RESIDUAL_TERMINAL_FRONTIER_PUSHOUT_THEOREMS = {
   "PNP.DirectWire.TerminalSaturatedSupportSquare.mem_meetRecords_iff": { hash: "128e80b0165ddfa2cb35006b81a9e5ebd84c910c1108b77bbb21825390b18095", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.mem_joinRecords_iff": { hash: "61300043ed1912b7e150c540f0d5ed2137c52e8bae13fe709d6ebed1204b3b51", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.records_closed": { hash: "0fb6aed85d2c9d9f5ef89004077552853e3ffaec207f7c2884e033c73067df4f", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
-  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
+  "PNP.DirectWire.TerminalSaturatedSupportSquare.physically_compatible": { hash: "2a19ccf8594f3749b91d263b915e1d2156a90ad2681ca6ed527f124de4b564f3", axioms: ["Quot.sound", "propext"], module: "PNP.ResidualTerminalSupportSquareClosure" },
   "PNP.DirectWire.TerminalSaturatedSupportSquare.governedCompleted_profile_iff": { hash: "9736ce34b616c8b00ac7ca4ba123c3c093dc464c1f07a7a0635b5b5bbe28a9dd", axioms: ["propext"], module: "PNP.ResidualTerminalGovernedSupportCompletion" }
 };
 

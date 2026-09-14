@@ -47,6 +47,110 @@
   },
   "entries": [
     {
+      "id": "2026-09-14-wire-causal-expansion",
+      "milestoneId": "wire-causal-expansion",
+      "publishedAt": "2026-09-14T15:11:57.110Z",
+      "title": "Arbitrary-width circuit expansion with explicit copy costs",
+      "plainLanguage": [
+        "The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.",
+        "Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 238,
+        "formalArtefactCoverageTotalRows": 240,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
+        "tree": "7bd3bc5854b0307330e9e405b5857de658eba54e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-14-context-aware-square-transport",
+      "milestoneId": "context-aware-square-transport",
+      "publishedAt": "2026-09-14T15:11:57.110Z",
+      "title": "Compatible local views across nested and square circuit supports",
+      "plainLanguage": [
+        "The formal construction derives the open-boundary transport between nested computational supports and checks identity, composition and agreement of the two paths around a support square. These statements cover all open boundary valuations, not only valuations induced by running the surrounding circuit.",
+        "Agreement between these computed local views does not derive arbitrary observer or profile gluing, the full manuscript carrier, the complete obligation calculus or global routing. Unconditional ZeroSlack, general exact minimization and complete polynomial execution bounds remain open. No fixed weighted checkpoint or global proof gate changes."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 237,
+        "formalArtefactCoverageTotalRows": 239,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
+        "tree": "7bd3bc5854b0307330e9e405b5857de658eba54e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-261",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-13-source-bounded-physical-boundary",
+      "milestoneId": "source-bounded-physical-boundary",
+      "publishedAt": "2026-09-14T15:11:57.110Z",
+      "title": "Physical boundaries computed from the wires the circuit actually uses",
+      "plainLanguage": [
+        "The incoming physical boundary is now computed from source wires actually consumed by the circuit, with ordering, duplicate removal and the required extraction correspondence checked. The construction avoids enumerating unused declared inputs and proves a structural boundary-length bound in terms of the original gate count.",
+        "This is a source-bounded construction and size result, not a theorem of total polynomial encoded-input runtime for the complete algorithm. The full manuscript carrier, global routes, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global proof gate changes."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 236,
+        "formalArtefactCoverageTotalRows": 238,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
+        "tree": "7bd3bc5854b0307330e9e405b5857de658eba54e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-260",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-13-wire-zero-unary-closure",
+      "milestoneId": "wire-zero-unary-closure",
+      "publishedAt": "2026-09-14T15:11:57.110Z",
+      "title": "A terminating circuit loop for constant and unary support gains",
+      "plainLanguage": [
+        "The construction now runs both the source-derived proper-support search and the whole-circuit zero/unary search inside an actual expand, normalize and restart loop. It preserves ordinary outputs and all tracked computational wire fields while proving termination and the absence of another gain in the stated search class at the returned circuit.",
+        "Stopping in this class does not prove a globally smallest circuit. Larger incoming boundaries, the full manuscript carrier and obligation calculus, unconditional ZeroSlack, general exact minimization and complete polynomial execution bounds remain open. This milestone changes artefact coverage, not a fixed weighted checkpoint or global proof gate."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 235,
+        "formalArtefactCoverageTotalRows": 237,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
+        "tree": "7bd3bc5854b0307330e9e405b5857de658eba54e",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-259",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-13-wire-unary-support-search",
       "milestoneId": "wire-unary-support-search",
       "publishedAt": "2026-09-13T12:00:22.719Z",

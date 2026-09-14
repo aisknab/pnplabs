@@ -199,8 +199,11 @@ test('M258 active site mirrors and release carry the complete reviewed batch', (
   assertM258BatchInventory(json('public/pnp-theorem-inventory.json'));
   const release = json('downloads/formal-publication-release.json');
   assertM258BatchManifest(release);
-  assert.equal(release.source.commit, M258_BATCH.reviewedSource.commit);
-  assert.equal(release.source.tree, M258_BATCH.reviewedSource.tree);
+  const currentBatch = Object.values(release.earnedBoundary)
+    .filter(value => value?.kind === 'PNPLabsCompiledMilestoneBatch0')
+    .sort((left, right) => Math.max(...left.milestones.map(row => row.number)) - Math.max(...right.milestones.map(row => row.number))).at(-1);
+  assert.equal(release.source.commit, currentBatch.reviewedSource.commit);
+  assert.equal(release.source.tree, currentBatch.reviewedSource.tree);
   const index = json('public/pnp-index.json');
   assert.equal(index.sourceCommitRef, release.source.commit);
   assert.equal(index.sourceTree, release.source.tree);
@@ -212,7 +215,7 @@ test('M258 batch contract extends every legacy scope tail without relaxing order
   assert.equal(M258_BATCH_SCOPE_SUFFIX, '+plus-' + M258_BATCH.milestones.map(row => row.id).join('+plus-'));
   for (const file of ['tools/verify-release-seal.mjs', 'tools/check-cross-repo-targets.mjs']) {
     const source = readFileSync(file, 'utf8');
-    assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
+    assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
     assert.equal(source.split('+plus-concrete-cnf-np-completeness"))').length - 1, 0, file);
   }
 });
