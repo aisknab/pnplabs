@@ -116,7 +116,9 @@ function renderFaq(model) {
 function replaceStatusLedgerMetadata(source, model) {
   const date = model.coordinate?.match(/^PNP-FORMAL-RECONSTRUCTION-STATUS-(\d{4}-\d{2}-\d{2})-\d+$/u)?.[1];
   const rows = model.formalArtefactCoverage?.totalRows;
-  if (!date || !Number.isSafeInteger(rows) || rows <= 0) {
+  const earned = model.formalArtefactCoverage?.earnedRows;
+  if (!date || !Number.isSafeInteger(rows) || rows <= 0
+      || !Number.isSafeInteger(earned) || earned < 0 || earned > rows) {
     throw new Error("status.html: invalid canonical status metadata");
   }
   const fields = [
@@ -124,6 +126,8 @@ function replaceStatusLedgerMetadata(source, model) {
       '<span class="eyebrow">Formal status · ' + date + '</span>'],
     [/Show all \d+ formal milestone records/gu,
       'Show all ' + rows + ' formal milestone records'],
+    [/<h2>\d+ scoped milestones earned; \d+ global milestones unearned<\/h2>/gu,
+      '<h2>' + earned + ' scoped milestones earned; ' + (rows - earned) + ' global milestones unearned</h2>'],
   ];
   let result = source;
   for (const [pattern, replacement] of fields) {

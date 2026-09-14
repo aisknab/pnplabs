@@ -1,4 +1,3 @@
-import { M258_BATCH_SCOPE_SUFFIX } from '../../tools/formal-m258-batch-contract.mjs';
 import { replaceStatusLedgerMetadata } from "../../tools/generate-proof-progress-surfaces.mjs";
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -169,12 +168,24 @@ test('M231 current surfaces separate NP-completeness, SAT decision and evidence 
 });
 
 test('current scope suffix contracts include every newly published milestone', () => {
+  // The reviewed batch contracts independently freeze their mathematical pins.
+  // This consumer follows their ordered current release names, not an old batch.
+  const batches = Object.values(release.earnedBoundary)
+    .filter(value => value?.kind === 'PNPLabsCompiledMilestoneBatch0')
+    .sort((left, right) => Math.max(...left.milestones.map(row => row.number)) - Math.max(...right.milestones.map(row => row.number)));
+  const suffixesByName = Object.fromEntries(batches.map(batch => [
+    'M' + Math.max(...batch.milestones.map(row => row.number)) + '_BATCH_SCOPE_SUFFIX',
+    '+plus-' + batch.milestones.map(row => row.id).join('+plus-'),
+  ]));
+  assert.ok(batches.length > 0, 'current reviewed publication batches');
   for (const file of ['tools/verify-release-seal.mjs', 'tools/check-cross-repo-targets.mjs']) {
     const source = readFileSync(file, 'utf8');
-    const suffixes = [...source.matchAll(/earned\.scope\.endsWith\(("[^"]+")(\s*\+\s*M258_BATCH_SCOPE_SUFFIX)?\)/g)];
-    assert.ok(suffixes.length > 0, file + ': scope contract family');
-    for (const [, literal, batchSuffix] of suffixes) {
-      const suffix = JSON.parse(literal) + (batchSuffix ? M258_BATCH_SCOPE_SUFFIX : "");
+    const suffixes = [...source.matchAll(/earned\.scope\.endsWith\(("[^"]+")((?:\s*\+\s*M\d+_BATCH_SCOPE_SUFFIX)*)\)/g)];
+    assert.equal(suffixes.length, 6, file + ': all six legacy scope contracts');
+    for (const [, literal, expression] of suffixes) {
+      const names = expression.match(/M\d+_BATCH_SCOPE_SUFFIX/g) ?? [];
+      assert.deepEqual(names, Object.keys(suffixesByName), file + ': complete ordered current batch tail');
+      const suffix = JSON.parse(literal) + names.map(name => suffixesByName[name]).join('');
       assert.ok(release.earnedBoundary.scope.endsWith(suffix), file + ': stale current scope suffix');
     }
   }
@@ -204,16 +215,21 @@ test('current reviewer copy avoids duplicated inventory counts and obsolete comp
 
 test('status metadata is generated from the canonical coordinate and evidence ledger', () => {
   const model = { coordinate: progress.asOfCoordinate, formalArtefactCoverage: progress.formalArtefactCoverage };
-  const source = '<span class="eyebrow">Formal status · 2000-01-01</span> Show all 1 formal milestone records';
+  const headline = '<h2>0 scoped milestones earned; 1 global milestones unearned</h2>';
+  const source = '<span class="eyebrow">Formal status · 2000-01-01</span> Show all 1 formal milestone records ' + headline;
   const rendered = replaceStatusLedgerMetadata(source, model);
   assert.ok(rendered.includes(progress.asOfCoordinate.match(/\d{4}-\d{2}-\d{2}/u)[0]));
   assert.ok(rendered.includes('Show all ' + progress.formalArtefactCoverage.totalRows + ' formal milestone records'));
+  assert.ok(rendered.includes('<h2>' + progress.formalArtefactCoverage.earnedRows + ' scoped milestones earned; ' + (progress.formalArtefactCoverage.totalRows - progress.formalArtefactCoverage.earnedRows) + ' global milestones unearned</h2>'));
   assert.equal(replaceStatusLedgerMetadata(rendered, model), rendered);
-  for (const invalid of [source + source, source.replace('Show all 1 formal milestone records', ''), source.replace('<span class="eyebrow">', '<span>')]) {
+  for (const invalid of [source + source, source + headline, source.replace(headline, ''), source.replace('Show all 1 formal milestone records', ''), source.replace('<span class="eyebrow">', '<span>')]) {
     assert.throws(() => replaceStatusLedgerMetadata(invalid, model), /exactly one/);
   }
   assert.throws(() => replaceStatusLedgerMetadata(source, { ...model, coordinate: 'invalid' }), /invalid canonical/);
   assert.throws(() => replaceStatusLedgerMetadata(source, { ...model, formalArtefactCoverage: { totalRows: 0 } }), /invalid canonical/);
+  for (const earnedRows of [-1, model.formalArtefactCoverage.totalRows + 1, 0.5]) {
+    assert.throws(() => replaceStatusLedgerMetadata(source, { ...model, formalArtefactCoverage: {...model.formalArtefactCoverage, earnedRows} }), /invalid canonical/);
+  }
   const current = readFileSync('status.html', 'utf8');
   assert.equal(replaceStatusLedgerMetadata(current, model), current);
 });

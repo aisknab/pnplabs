@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 703,729 | `8c6f8ae5fc05f1763363055fefe49432f0c53f0d3dda321ab3a6fc39e94507fe` |
-| `downloads/canonical-proof-report.pdf` | 703,729 | `8c6f8ae5fc05f1763363055fefe49432f0c53f0d3dda321ab3a6fc39e94507fe` |
-| `downloads/canonical_proof_report.tex` | 500,462 | `7e02d95abcfed87f83076b34454293ae32b3ffc910066d6e89018338314aff86` |
-| `downloads/canonical-proof-report.tex` | 500,462 | `7e02d95abcfed87f83076b34454293ae32b3ffc910066d6e89018338314aff86` |
-| `public/pnp-status.json` | 3,177,956 | `004af2bc499ab8715278f3df870f7d04d44b42d25ba696d579dceddfa588058e` |
-| `public/pnp-theorem-inventory.json` | 58,224,870 | `6180226112e43664173be7b5d8f8179e62eb68032499c7d7f1a848053c8d06a4` |
-| `public/pnp-proof-progress.json` | 210,069 | `5c8f0f594ce2ee06dfc595524ac91045455d47b857bc1e740f8cacbcb65bebc7` |
+| `downloads/canonical_proof_report.pdf` | 713,336 | `080eb7e6a2341a9ba684e56008c5a2f4604ca0d078468968ac0e9dda5bf35885` |
+| `downloads/canonical-proof-report.pdf` | 713,336 | `080eb7e6a2341a9ba684e56008c5a2f4604ca0d078468968ac0e9dda5bf35885` |
+| `downloads/canonical_proof_report.tex` | 510,824 | `874f4fe200d50daec6705e11516097b4f98cae541adfa9c08711efa854cef74a` |
+| `downloads/canonical-proof-report.tex` | 510,824 | `874f4fe200d50daec6705e11516097b4f98cae541adfa9c08711efa854cef74a` |
+| `public/pnp-status.json` | 3,261,723 | `e8bcf783887f344ce7f98d124b3026b1a94049c54694d5b6ad8be6956f870865` |
+| `public/pnp-theorem-inventory.json` | 61,143,784 | `0849daec3584fab76c3df2b8757d8e2dd917e556ed6fa84446ec9c6bab35e66a` |
+| `public/pnp-proof-progress.json` | 216,414 | `e50fa9af27c2b29de4eb26763234241cc1142caa3ce4ad13dcff69fc6966b1ee` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
 
@@ -394,19 +394,19 @@ and cannot satisfy the concrete publication gate.
 
 
 <!-- CURRENT_PUBLICATION:START -->
-## M258 current publication boundary
+## M262 current publication boundary
 
-**Complete search for proper constant and unary circuit gains**
+**Arbitrary-width circuit expansion with explicit copy costs**
 
-The search now derives its candidate supports directly from the circuit and finds a strict saving whenever any proper support with zero or one incoming wire admits a smaller equivalent complete local replacement. A support is a selected set of gates; proper means some original gates remain outside it. An accepted result builds the actual replacement and preserves every ordinary output and tracked computational wire field.
+The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.
 
-A negative result excludes gains only in this zero-or-one-boundary class, not larger boundaries or smaller global circuits. The candidate-count bound is not a theorem of total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier and obligation calculus, general exact minimization, unconditional ZeroSlack and the eligible P = NP root remain open; no fixed weighted checkpoint or global gate changes.
+Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes.
 
-Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Formal artefact coverage: 238 of 240 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Current source: [`6296c6e1130fbae674548ccbf949f6e608b996c7`](https://github.com/aisknab/pnp/tree/6296c6e1130fbae674548ccbf949f6e608b996c7), tree `78648f5978d16ff5055c5b493e5bb97ff4cd7cac`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-258`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/lean_wire_unary_support_search.md), the [source-bound update](../updates.html#2026-09-13-wire-unary-support-search) and the [complete current milestone ledger](../status.html).
+Current source: [`c3d4d9a115a357b44ee8104d129ee15e3174ec7f`](https://github.com/aisknab/pnp/tree/c3d4d9a115a357b44ee8104d129ee15e3174ec7f), tree `7bd3bc5854b0307330e9e405b5857de658eba54e`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/c3d4d9a115a357b44ee8104d129ee15e3174ec7f/docs/lean_wire_causal_expansion.md), the [source-bound update](../updates.html#2026-09-14-wire-causal-expansion) and the [complete current milestone ledger](../status.html).
 
 M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
 <!-- CURRENT_PUBLICATION:END -->

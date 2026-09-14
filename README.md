@@ -2,13 +2,15 @@
 
 This checkout is the public website, current inventory-derived report bundle, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for the PNP project.
 
-## M258 current publication
+## M262 current publication
 
-The search now derives its candidate supports directly from the circuit and finds a strict saving whenever any proper support with zero or one incoming wire admits a smaller equivalent complete local replacement. A support is a selected set of gates; proper means some original gates remain outside it. An accepted result builds the actual replacement and preserves every ordinary output and tracked computational wire field.
+**Arbitrary-width circuit expansion with explicit copy costs**
 
-A negative result excludes gains only in this zero-or-one-boundary class, not larger boundaries or smaller global circuits. The candidate-count bound is not a theorem of total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier and obligation calculus, general exact minimization, unconditional ZeroSlack and the eligible P = NP root remain open; no fixed weighted checkpoint or global gate changes.
+The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.
 
-Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes.
+
+Formal artefact coverage: 238 of 240 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 ## Current status
 
@@ -482,21 +484,21 @@ The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` libr
 
 ## Progress tracker
 
-[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-13-258` it reports separate metrics:
+[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262` it reports separate metrics:
 
-- Formal artefact coverage: **234 of 236** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
+- Formal artefact coverage: **238 of 240** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
 - Risk-weighted proof completion estimate: **40%**, with uncertainty **20% to 40%**. This is a conservative estimate of complete proof burden retired, not a probability or time estimate.
 - Global gates closed: **0 of 5**. Project-specific axioms remaining: **0**. The eligible root is absent and the publication gate is false.
 
 The fixed track scores are 13/15 for Formal foundations and proof infrastructure; 20/20 for Concrete reductions and locked-NAND route; 2/35 for Unconditional residual core and ZeroSlack; 1/20 for Exact PCCMin algorithm, complexity and bounds; 4/10 for Root theorem and project-axiom elimination. This publication batch changes no fixed weighted checkpoint and earns no extra points for its added evidence rows. The earlier M230 complete-builder and M231 concrete NP-hardness checkpoint reviews remain in the canonical history.
 
-**Complete search for proper constant and unary circuit gains**
+**Arbitrary-width circuit expansion with explicit copy costs**
 
-The search now derives its candidate supports directly from the circuit and finds a strict saving whenever any proper support with zero or one incoming wire admits a smaller equivalent complete local replacement. A support is a selected set of gates; proper means some original gates remain outside it. An accepted result builds the actual replacement and preserves every ordinary output and tracked computational wire field.
+The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.
 
-A negative result excludes gains only in this zero-or-one-boundary class, not larger boundaries or smaller global circuits. The candidate-count bound is not a theorem of total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier and obligation calculus, general exact minimization, unconditional ZeroSlack and the eligible P = NP root remain open; no fixed weighted checkpoint or global gate changes.
+Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes.
 
-The [source-bound update](updates.html#2026-09-13-wire-unary-support-search) and [complete formal ledger](status.html) give the exact theorem scope, non-claim and reviewed evidence for every earned row. The batch covers M232 through M258. Earlier finite or supplied-data results retain their own limitations; later source-derived computational constructions do not retroactively change those theorem statements.
+The [source-bound update](updates.html#2026-09-14-wire-causal-expansion) and [complete formal ledger](status.html) give the exact theorem scope, non-claim and reviewed evidence for every earned row. This publication batches M259 through M262 after the retained M232 through M258 update. Earlier finite or supplied-data results retain their own limitations; later source-derived computational constructions do not retroactively change those theorem statements.
 
 M230 and M231 establish the complete all-input Cook-Levin polynomial reduction and concrete CNF-SAT NP-completeness, not a polynomial-time SAT algorithm. M243 connects that checked hardness to the active final-report bridge, but its minimization-loop certificate and existence premises remain unconstructed. The full manuscript carrier and obligation calculus, complete globally decreasing routes, unconditional SaturatePositive, BCELReady and ZeroSlack, general exact PCCMin, and complete polynomial runtime, output and certificate bounds remain open.
 

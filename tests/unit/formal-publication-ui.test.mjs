@@ -3868,7 +3868,8 @@ test('CNF-to-NAND polynomial reduction requires all 28 pins and rejects solver o
 
 test('browser loader pins the raw status bytes before parsing', () => {
   const expectedDigest = createHash('sha256').update(statusBytes).digest('hex');
-  assert.ok(source.includes(`const STATUS_SHA256 = '${expectedDigest}'`));
+  const declaredDigest = source.match(/const STATUS_SHA256 = (['"])([0-9a-f]{64})\1;/)?.[2];
+  assert.equal(declaredDigest, expectedDigest, 'exact current status bytes, independent of quote style');
   assert.match(source, /statusResponse\.arrayBuffer\(\)/);
   assert.match(source, /if \(statusDigest !== STATUS_SHA256\) throw new Error/);
 });

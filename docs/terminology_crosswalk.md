@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/c3d4d9a115a357b44ee8104d129ee15e3174ec7f/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/c3d4d9a115a357b44ee8104d129ee15e3174ec7f/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
@@ -34,22 +34,17 @@ Checker paths have two different statuses:
 
 ## Current computational support search
 
-The M258 publication adds the source-derived search described in the
-[compiled result note](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/docs/lean_wire_unary_support_search.md) and [Lean source](https://github.com/aisknab/pnp/blob/6296c6e1130fbae674548ccbf949f6e608b996c7/lean/PNP/NANDWireUnarySupportSearch.lean).
-These definitions concern the computational carrier, not the full manuscript
-carrier or all global obligations. Current progress and source identity are in
-[formal status](../status.html); adding vocabulary does not earn progress points.
+The M259-M262 publication extends the existing scoped search with source-bounded physical boundaries, computed context transport and arbitrary-width causal expansion. See the [compiled expansion note](https://github.com/aisknab/pnp/blob/c3d4d9a115a357b44ee8104d129ee15e3174ec7f/docs/lean_wire_causal_expansion.md) and [Lean source](https://github.com/aisknab/pnp/blob/c3d4d9a115a357b44ee8104d129ee15e3174ec7f/lean/PNP/NANDWireCausalExpansion.lean). These definitions concern the computational carrier, not the full manuscript carrier or all global obligations. Current progress and source identity are in [formal status](../status.html); adding vocabulary does not earn progress points.
 
 | Term | Definition and standard concept | Minimal example | Enforcing interface and failure boundary |
 | --- | --- | --- | --- |
-| Proper physical support | A selected set of physical gates with a nonempty original exterior; a proper subcircuit, not the whole circuit. | Selecting one gate in a two-gate circuit leaves one exterior gate. | `candidateRecords_proper` and `GainResult.checked`; a whole-support saving is not a proper-support Package E certificate. |
-| Zero/unary incoming boundary | Zero or one distinct nonconstant wire entering the selected gates from outside the support; local circuit input arity. | A selected NOT gate reading one external input has a unary boundary. Constants do not add boundary wires. | `admissible_boundary_small`; a two-boundary support is outside this search class. This is not a restriction to one source input or one gate. |
-| Full computational fields | Every tracked computational-wire observation, in addition to ordinary circuit outputs; observational equivalence for the exposed computational interface. | Two circuits may agree on an output while disagreeing on a separately tracked internal wire. Output agreement alone does not preserve that field. | `GainResult.dischargeR7_full_value` and `findReplacement_sound`; ordinary-output or quotient agreement cannot replace the required full-field equality. |
-| Source-derived complete scoped search | A candidate family computed from the source and a search that succeeds whenever any proper zero/unary support admits a strictly smaller equivalent complete local word; completeness within a stated domain. | A duplicate depending on two boundary wires can have a smaller ambient realization while this restricted search correctly returns no gain. | `candidateFamily_complete`, `findGain_complete` and `findGain_none_excludes`; a negative result is not global minimality or unconditional ZeroSlack. Candidate-count bounds are not total encoded-input polynomial runtime, output-size or certificate-size bounds. |
+| Causal physical expansion | An actual source-derived NAND implementation, ordered so every gate reads available sources; a topologically compiled circuit. | An extracted support with several incoming wires is allowed; no unary-width restriction is imposed. | `graph_rank_decreases`, `compile_success` and `compiled_spec`; no caller-supplied schedule or compiler-success certificate. |
+| Complete local open-function agreement | Equality of the replacement and extracted support for every open-boundary valuation; equivalence of open circuits. | Matching only valuations reached by the surrounding circuit is insufficient. | `masked_replacement_output` and `expanded_semantics`; ordinary-output-only or quotient-only agreement does not justify full replacement. |
+| Paid physical producer copies | Every distinct retained physical producer owns one complete replacement copy; explicit duplication cost. | Two references to one producer share a copy, while equal-valued but distinct producers remain distinct. | `expanded_gate_ownership` and literal source-equality theorems; actual cost is `E + K * R`, with strict saving exactly when `K * R < S`. A local `R < S` test alone is insufficient. |
+| Full computational-field preservation | Equality of every tracked computational wire value as well as ordinary outputs. | A tracked internal wire can differ even when the ordinary output agrees. | `expandedCarrier_output` and `expandedCarrier_field`; this does not establish arbitrary implementation-dependent observer or profile preservation. |
+| Source-exact R5 binding | Rebinding an existing lost-field creation to the same field coordinate and its original full source value. | A repeated field reference retains its original source value, not just its output index. | `expandedR5Creation` and its coordinate/full-witness theorems; this is not the full R5-R8 history or obligation calculus. |
 
-All interface names above are in `PNP.DirectWire.WireUnarySupportSearch`.
-The full manuscript carrier, complete global routes, unconditional ZeroSlack and
-the final polynomial-time algorithm remain open.
+The expansion interfaces above are in `PNP.DirectWire.WireCausalExpansion`. With original gate count `G = S + E`, properness separately requires `S < G`. The retained zero/unary search and terminating closure have narrower search boundaries; their negative results are not global minimality or unconditional ZeroSlack. Structural candidate, boundary or gate-count bounds are not total encoded-input polynomial runtime, output-size or certificate-size bounds. Matched-kappa Pull/Expand, global CompatibleReplacement/SlackLaw, the full manuscript carrier, Package E, global routing, unconditional ZeroSlack and the final polynomial-time algorithm remain open.
 
 ## Current Formal-Evidence Terms
 
