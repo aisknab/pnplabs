@@ -215,7 +215,7 @@ test('M258 batch contract extends every legacy scope tail without relaxing order
   assert.equal(M258_BATCH_SCOPE_SUFFIX, '+plus-' + M258_BATCH.milestones.map(row => row.id).join('+plus-'));
   for (const file of ['tools/verify-release-seal.mjs', 'tools/check-cross-repo-targets.mjs']) {
     const source = readFileSync(file, 'utf8');
-    assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
+    assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
     assert.equal(source.split('+plus-concrete-cnf-np-completeness"))').length - 1, 0, file);
   }
 });
@@ -425,7 +425,7 @@ test('current review entrypoints use the published source and scoped computation
   assert.ok(current?.includes('<code>' + source + '</code>'), 'current source label');
   assert.ok(verify.includes('git checkout ' + source), 'current reproduction command');
   const terms = readFileSync('docs/terminology_crosswalk.md', 'utf8');
-  const introduction = terms.split('## Current computational support search')[0];
+  const introduction = terms.split(/^## /m)[0];
   const currentLinks = [...introduction.matchAll(/https:\/\/github\.com\/aisknab\/pnp\/blob\/([0-9a-f]{40})\//g)];
   assert.equal(currentLinks.length, 2);
   for (const match of currentLinks) assert.equal(match[1], source, 'current terminology source');

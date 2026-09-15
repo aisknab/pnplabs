@@ -6,14 +6,14 @@
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
-    "proofCommit": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
-    "tree": "7bd3bc5854b0307330e9e405b5857de658eba54e",
-    "ref": "c3d4d9a115a357b44ee8104d129ee15e3174ec7f",
+    "commit": "029153fc5d8bfc84c61d33858d0472bcbf3d3a73",
+    "proofCommit": "029153fc5d8bfc84c61d33858d0472bcbf3d3a73",
+    "tree": "d725f0e14d1a4625c0ce991364fa4481ef3c032a",
+    "ref": "029153fc5d8bfc84c61d33858d0472bcbf3d3a73",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
-    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-09-14-262",
-    "formalPublicationMapSha256": "84b270e13cff65f29b62f4f5a0cd4dbb5ab87032312c49d81e74488042bf7885",
-    "leanSourceClosureSha256": "e2ef5c0b7366cd0e28bf1539878a3aeccee506c5fd3b71b7608511dc24a32290",
+    "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-09-15-264",
+    "formalPublicationMapSha256": "bdc6b1a4c6ef72dc0c67d50a851dd592e70801dcff4c0ee358f5c92f4321698f",
+    "leanSourceClosureSha256": "093643eaf461f5ce34c21f746a8c7c3cba770784985e50ee97dec5b36306a633",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -21,48 +21,48 @@
     "status": {
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
-      "bytes": 3261723,
-      "sha256": "e8bcf783887f344ce7f98d124b3026b1a94049c54694d5b6ad8be6956f870865",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262"
+      "bytes": 3318235,
+      "sha256": "dc6e97b250eaddfe932cd6086fae4eb65e7070b13271b60907f9d23dc30dc7a1",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 61143784,
-      "sha256": "0849daec3584fab76c3df2b8757d8e2dd917e556ed6fa84446ec9c6bab35e66a",
+      "bytes": 62783406,
+      "sha256": "654fec11932093e475ceac8f2c3381281430d2591e01eee25ffa7529f7aac247",
       "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230",
-      "declarationCount": 48133,
-      "theoremCount": 26320,
-      "assumptionFreeTheoremCount": 11172,
+      "declarationCount": 48859,
+      "theoremCount": 26654,
+      "assumptionFreeTheoremCount": 11316,
       "projectAxiomCount": 0
     },
     "proofProgress": {
       "sourcePath": "status/PROOF_PROGRESS.json",
       "publicPath": "public/pnp-proof-progress.json",
-      "bytes": 216414,
-      "sha256": "e50fa9af27c2b29de4eb26763234241cc1142caa3ce4ad13dcff69fc6966b1ee",
-      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262",
+      "bytes": 219349,
+      "sha256": "96e19d6107e45ae6465f4e1f5888efe380be329586ddec6bbffdee0a3e5d9eb6",
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264",
       "modelId": "fixed-risk-weighted-checkpoints-v0",
       "pointsEarned": 40,
       "pointsAvailable": 100,
       "uncertaintyLowPercent": 20,
       "uncertaintyHighPercent": 40,
-      "formalArtefactCoverageEarnedRows": 238,
-      "formalArtefactCoverageTotalRows": 240,
+      "formalArtefactCoverageEarnedRows": 240,
+      "formalArtefactCoverageTotalRows": 242,
       "globalGatesClosed": 0,
       "globalGatesAvailable": 5
     },
     "report": {
-      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-09-14-262",
-      "pageCount": 204,
+      "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-09-15-264",
+      "pageCount": 206,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 713336,
-        "sha256": "080eb7e6a2341a9ba684e56008c5a2f4604ca0d078468968ac0e9dda5bf35885"
+        "bytes": 718360,
+        "sha256": "8bb3a8503e424452ed904c13a012f4cbafa41fb8b2301d376f877b845d7aa698"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -70,13 +70,13 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 510824,
-        "sha256": "874f4fe200d50daec6705e11516097b4f98cae541adfa9c08711efa854cef74a"
+        "bytes": 515794,
+        "sha256": "c708a948956417c2b94747bef4d75318e0bedb3655c45a7b55f5b947849d3208"
       }
     }
   },
   "earnedBoundary": {
-    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter-plus-locked-nand-polynomial-reduction-plus-cnf-to-nand-semantic-compiler-plus-cnf-to-nand-polynomial-reduction-plus-residual-gain-chain-bound-plus-residual-gain-stopping-specification-plus-residual-terminal-full-carrier-bridge-plus-residual-terminal-mode-firewall-plus-residual-terminal-projection-minimum-plus-residual-terminal-projection-transfer-plus-residual-terminal-saturation-closure+plus-residual-terminal-physical-support-completion+plus-residual-terminal-support-extraction+plus-residual-terminal-proper-positive-support-search+plus-residual-terminal-saturated-support-square-closure+plus-residual-terminal-governed-support-completion+plus-residual-terminal-governed-frontier-pushout+plus-residual-terminal-governed-projection-square+plus-residual-terminal-side-tight-minimum-arithmetic+plus-residual-terminal-four-corner-carrier-transport+plus-residual-terminal-four-corner-optimum-carrier-compatibility+plus-residual-terminal-four-corner-optimum-coherence-dichotomy+plus-residual-terminal-four-corner-side-tight-completion-under-local-route-silence+plus-residual-terminal-four-corner-complete-tight-basis-maximum-under-local-route-silence+plus-residual-terminal-computed-bn2-square-legitimacy-and-local-conclusion-under-route-silence+plus-residual-terminal-computed-bcel-anchor-nucleus-and-proper-cut-square-dichotomy+plus-residual-terminal-computed-saturation-positivity-firewall+plus-residual-terminal-candidate-saturation-cost-balance+plus-residual-terminal-interface-exposure-routing+plus-residual-terminal-finite-saturate-positive-composition+plus-residual-terminal-rank-wf+plus-concrete-locked-nand-threshold-publication+plus-residual-terminal-bn3-request-envelope+plus-residual-terminal-bn4-activation-cancellation+plus-residual-terminal-bn5-full-shadow-localization+plus-residual-terminal-pkgc-separating-consumers+plus-residual-terminal-v54-consumer-antichain-normal-form+plus-residual-terminal-v53-constant-cut-hypergraph-rigidity+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller+plus-concrete-cook-levin-builder-arbitrary-slot-header-router+plus-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder+plus-concrete-cook-levin-builder-post-header-raw-divider+plus-concrete-cook-levin-builder-post-header-raw-launch+plus-concrete-cook-levin-builder-post-header-raw-tape-bridge+plus-concrete-cook-levin-builder-post-divider-raw-route-classifier+plus-concrete-cook-levin-builder-post-divider-selected-token-launch+plus-concrete-cook-levin-builder-complete-schedule-iteration+plus-concrete-cook-levin-builder-physical-optional-token-dispatch+plus-concrete-cook-levin-builder-physical-dispatch-schedule+plus-concrete-cook-levin-builder-physical-finish-request+plus-concrete-cook-levin-builder-physical-classifier-pipeline+plus-concrete-cook-levin-builder-physical-classifier-finish-request+plus-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation+plus-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness+plus-residual-terminal-profile-dependency-semantics+plus-residual-terminal-profile-locality+plus-residual-terminal-saturation-trace-fidelity+plus-residual-terminal-physical-saturation-accounting+plus-residual-terminal-physical-charge-ledger+plus-residual-terminal-saturated-support-context+plus-residual-terminal-physical-gain+plus-residual-terminal-gain-profile-firewall+plus-residual-independent-materializer-cost+plus-residual-terminal-physical-ownership+plus-pccmin-constructive-nand-sharing+plus-concrete-final-report-bridge+plus-pccmin-output-cone-pruning+plus-pccmin-dead-support-context+plus-pccmin-dead-support-full-mode+plus-pccmin-constant-propagation+plus-pccmin-physical-normalization-closure+plus-arbitrary-support-splice+plus-wire-carrier-transport+plus-wire-obligation-restoration+plus-wire-quotient-lift+plus-wire-frontier-lift+plus-wire-matched-cancellation+plus-wire-unary-realization+plus-wire-unary-frontier+plus-wire-unary-arbitrary-support+plus-wire-unary-support-search+plus-wire-zero-unary-closure+plus-source-bounded-physical-boundary+plus-context-aware-square-transport+plus-wire-causal-expansion",
+    "scope": "concrete-cnf-sat-np-membership-plus-recursive-raw-machine-compilation-and-cook-levin-semantic-encoded-size-rectangular-schedule-direct-formula-cursor-complete-first-second-third-and-fourth-fixed-clauses-plus-second-third-and-fourth-clause-padding-and-empty-fifth-clause-rectangle-traversal-bounds-plus-remaining-first-constraint-padding-traversal-bounds-plus-second-constraint-separator-emission-plus-second-constraint-first-literal-positive-sign-emission-plus-second-constraint-first-literal-first-unary-unit-emission-plus-second-constraint-first-literal-second-unary-unit-emission-plus-second-constraint-first-literal-third-unary-unit-emission-plus-second-constraint-first-literal-terminator-emission-plus-second-constraint-first-literal-successor-token-emission-plus-second-constraint-second-padding-or-unary-opportunity-emission-plus-second-constraint-third-padding-or-unary-opportunity-emission-plus-second-constraint-fourth-padding-or-unary-opportunity-emission-plus-second-constraint-fifth-padding-or-terminator-opportunity-emission-plus-second-constraint-sixth-padding-or-opening-unary-opportunity-emission-plus-second-constraint-seventh-padding-or-unary-opportunity-emission-plus-locked-nand-global-carrier-and-trace-equivalence-plus-locked-nand-global-candidate-assembly-plus-locked-nand-global-baseline-distinct-plus-locked-nand-global-unsatisfiable-final-zero-plus-locked-nand-global-semantic-threshold-plus-locked-nand-encoded-semantic-reduction-plus-locked-nand-source-parser-plus-locked-nand-target-emitter-plus-locked-nand-polynomial-reduction-plus-cnf-to-nand-semantic-compiler-plus-cnf-to-nand-polynomial-reduction-plus-residual-gain-chain-bound-plus-residual-gain-stopping-specification-plus-residual-terminal-full-carrier-bridge-plus-residual-terminal-mode-firewall-plus-residual-terminal-projection-minimum-plus-residual-terminal-projection-transfer-plus-residual-terminal-saturation-closure+plus-residual-terminal-physical-support-completion+plus-residual-terminal-support-extraction+plus-residual-terminal-proper-positive-support-search+plus-residual-terminal-saturated-support-square-closure+plus-residual-terminal-governed-support-completion+plus-residual-terminal-governed-frontier-pushout+plus-residual-terminal-governed-projection-square+plus-residual-terminal-side-tight-minimum-arithmetic+plus-residual-terminal-four-corner-carrier-transport+plus-residual-terminal-four-corner-optimum-carrier-compatibility+plus-residual-terminal-four-corner-optimum-coherence-dichotomy+plus-residual-terminal-four-corner-side-tight-completion-under-local-route-silence+plus-residual-terminal-four-corner-complete-tight-basis-maximum-under-local-route-silence+plus-residual-terminal-computed-bn2-square-legitimacy-and-local-conclusion-under-route-silence+plus-residual-terminal-computed-bcel-anchor-nucleus-and-proper-cut-square-dichotomy+plus-residual-terminal-computed-saturation-positivity-firewall+plus-residual-terminal-candidate-saturation-cost-balance+plus-residual-terminal-interface-exposure-routing+plus-residual-terminal-finite-saturate-positive-composition+plus-residual-terminal-rank-wf+plus-concrete-locked-nand-threshold-publication+plus-residual-terminal-bn3-request-envelope+plus-residual-terminal-bn4-activation-cancellation+plus-residual-terminal-bn5-full-shadow-localization+plus-residual-terminal-pkgc-separating-consumers+plus-residual-terminal-v54-consumer-antichain-normal-form+plus-residual-terminal-v53-constant-cut-hypergraph-rigidity+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller+plus-concrete-cook-levin-builder-arbitrary-slot-header-router+plus-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder+plus-concrete-cook-levin-builder-post-header-raw-divider+plus-concrete-cook-levin-builder-post-header-raw-launch+plus-concrete-cook-levin-builder-post-header-raw-tape-bridge+plus-concrete-cook-levin-builder-post-divider-raw-route-classifier+plus-concrete-cook-levin-builder-post-divider-selected-token-launch+plus-concrete-cook-levin-builder-complete-schedule-iteration+plus-concrete-cook-levin-builder-physical-optional-token-dispatch+plus-concrete-cook-levin-builder-physical-dispatch-schedule+plus-concrete-cook-levin-builder-physical-finish-request+plus-concrete-cook-levin-builder-physical-classifier-pipeline+plus-concrete-cook-levin-builder-physical-classifier-finish-request+plus-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation+plus-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness+plus-residual-terminal-profile-dependency-semantics+plus-residual-terminal-profile-locality+plus-residual-terminal-saturation-trace-fidelity+plus-residual-terminal-physical-saturation-accounting+plus-residual-terminal-physical-charge-ledger+plus-residual-terminal-saturated-support-context+plus-residual-terminal-physical-gain+plus-residual-terminal-gain-profile-firewall+plus-residual-independent-materializer-cost+plus-residual-terminal-physical-ownership+plus-pccmin-constructive-nand-sharing+plus-concrete-final-report-bridge+plus-pccmin-output-cone-pruning+plus-pccmin-dead-support-context+plus-pccmin-dead-support-full-mode+plus-pccmin-constant-propagation+plus-pccmin-physical-normalization-closure+plus-arbitrary-support-splice+plus-wire-carrier-transport+plus-wire-obligation-restoration+plus-wire-quotient-lift+plus-wire-frontier-lift+plus-wire-matched-cancellation+plus-wire-unary-realization+plus-wire-unary-frontier+plus-wire-unary-arbitrary-support+plus-wire-unary-support-search+plus-wire-zero-unary-closure+plus-source-bounded-physical-boundary+plus-context-aware-square-transport+plus-wire-causal-expansion+plus-wire-obligation-history+plus-wire-history-arbitrary-support",
     "leanTheorem": "PNP.Concrete.FinalUniversalDesign.cnfSATInNP",
     "leanTheoremType": "PNP.Concrete.InNP PNP.Concrete.CNFSAT",
     "kernelTypeSha256": "c9d66c135361cf8a8b25330d2558dfac209fde120e296140c7e7cb86bf1e1937",
@@ -12132,6 +12132,487 @@
               "propext"
             ],
             "PNP.DirectWire.WireCausalExpansion.expandedR5Creation_fullWitness": [
+              "Quot.sound",
+              "propext"
+            ]
+          }
+        }
+      ]
+    },
+    "milestoneBatchM263M264": {
+      "kind": "PNPLabsCompiledMilestoneBatch0",
+      "batchId": "m263-m264",
+      "reviewedSource": {
+        "commit": "029153fc5d8bfc84c61d33858d0472bcbf3d3a73",
+        "tree": "d725f0e14d1a4625c0ce991364fa4481ef3c032a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264"
+      },
+      "milestones": [
+        {
+          "number": 263,
+          "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-263",
+          "id": "wire-obligation-history",
+          "title": "Computed dependency-ordered physical obligation histories",
+          "classification": "formalized-foundation-only",
+          "scope": "For arbitrary finite input, output, computational-field and event dimensions, M263 computes a complete dependency order from raw event identities, explicit predecessors and intrinsic creation references. Duplicate identities, missing references and cyclic graphs reject. The scheduler succeeds exactly when the actual finite dependency relation is well-founded. The history constructor executes one evolving physical carrier from the original source, without caller-supplied order, rank, state, full-value witness or charge data. R5 captures the actual pre-drop carrier; physical normalization preserves open snapshots; source-identity R6 computes a visible representative; R8 appends and charges the complete materializer from the matching creation snapshot. Full reads require an available field, and final open obligations reject. Every successful history executes every event exactly once in dependency order, every creation discharges strictly later with its full source binding, and every ordinary output and computational field retains its original value for every valuation. Final physical gates plus actual normalization removals equal initial physical gates plus all appended materializer charges.",
+          "nonClaim": "This is the computational R5/R6/R8 history component, not the complete manuscript obligation calculus or Package E. Acyclicity guarantees a computed order, not a valid lifecycle or confluence of underspecified event graphs. R5 projection alone removes no physical gates; repeated restorations receive no free cross-snapshot sharing, and restoration can increase physical size. Quotient-only agreement cannot discharge a full obligation. Full R7 and other R1-R9 semantics, all N1-N10 transports, arbitrary observers and profile histories, noncomputational carrier records, matched-kappa Pull/Expand, complete Package E, global route coverage, unconditional SaturatePositive, BCELReady and ZeroSlack, exact general PCCMin and complete encoded-input-size polynomial runtime, output and certificate bounds remain open. Runtime fixtures are regression evidence, not proof authority. No fixed weighted checkpoint or global gate closes. Deterministic CNFSAT in P and the eligible root remain absent, and P = NP is not proved.",
+          "fields": {
+            "leanWireObligationHistoryFormalized": true,
+            "leanWireObligationHistoryAxiomAuditPassed": true,
+            "leanWireObligationHistoryAuditedDeclarationCount": 46,
+            "leanWireObligationHistoryDependencySchedulerSuccessIffTheorem": "PNP.DependencyScheduler.compile_success_iff",
+            "leanWireObligationHistoryDependencySchedulerFailureIffTheorem": "PNP.DependencyScheduler.compile_failure_iff",
+            "leanWireObligationHistoryRawOrderSuccessIffTheorem": "PNP.DirectWire.WireObligationHistory.orderEvents_success_iff",
+            "leanWireObligationHistoryRawOrderFailureIffTheorem": "PNP.DirectWire.WireObligationHistory.orderEvents_failure_iff",
+            "leanWireObligationHistoryCreationSourceSnapshotTheorem": "PNP.DirectWire.WireObligationHistory.State.create_source_snapshot",
+            "leanWireObligationHistoryActualRestorationChargeTheorem": "PNP.DirectWire.WireObligationHistory.State.restore_gate_charge",
+            "leanWireObligationHistoryNormalizationBalanceTheorem": "PNP.DirectWire.WireObligationHistory.State.normalize_gate_balance",
+            "leanWireObligationHistoryMatchedDischargeBindingTheorem": "PNP.DirectWire.WireObligationHistory.Transition.dischargeRecord_binding",
+            "leanWireObligationHistoryCreationLifecycleTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.creation_lifecycle",
+            "leanWireObligationHistoryDependencyOrderTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.dependency_before",
+            "leanWireObligationHistoryExactlyOnceCountTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.executed_count",
+            "leanWireObligationHistoryUniqueEventIdentitiesTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.executed_identities_nodup",
+            "leanWireObligationHistoryFullFieldTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.full_field",
+            "leanWireObligationHistoryOrdinaryOutputTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.full_output",
+            "leanWireObligationHistoryPhysicalGateBalanceTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.gate_balance",
+            "leanWireObligationHistoryArbitraryFiniteEventGraphsCovered": true,
+            "leanWireObligationHistoryDuplicateAndMissingReferencesRejected": true,
+            "leanWireObligationHistoryIntrinsicCreationDependenciesComputed": true,
+            "leanWireObligationHistoryCyclicGraphsRejected": true,
+            "leanWireObligationHistoryActualEvolvingCarrierExecuted": true,
+            "leanWireObligationHistorySourceBoundCreationAndDischargeRecords": true,
+            "leanWireObligationHistoryCreationClosesStrictlyLater": true,
+            "leanWireObligationHistoryPhysicalNormalizationPreservesOpenSnapshots": true,
+            "leanWireObligationHistoryFullReadsRequireClosedField": true,
+            "leanWireObligationHistoryFinalOpenObligationsRejected": true,
+            "leanWireObligationHistoryComputedSourceIdentityR6": true,
+            "leanWireObligationHistoryActualCapturedMaterializerR8": true,
+            "leanWireObligationHistoryCompleteAppendedMaterializersCharged": true,
+            "leanWireObligationHistoryNoFreeCrossSnapshotSharing": true,
+            "leanWireObligationHistoryAllValuationFullOutputAndFieldPreservation": true,
+            "leanWireObligationHistoryCallerSuppliedOrderRequired": false,
+            "leanWireObligationHistoryCallerSuppliedRankRequired": false,
+            "leanWireObligationHistoryCallerSuppliedStateRequired": false,
+            "leanWireObligationHistoryCallerSuppliedFullWitnessRequired": false,
+            "leanWireObligationHistoryCallerSuppliedChargesRequired": false,
+            "leanWireObligationHistoryAcyclicityImpliesValidLifecycle": false,
+            "leanWireObligationHistoryConfluenceOfUnderspecifiedEventGraphsProved": false,
+            "leanWireObligationHistoryQuotientAgreementClosesObligation": false,
+            "leanWireObligationHistoryR5ProjectionRemovesPhysicalGates": false,
+            "leanWireObligationHistoryFullR7SemanticsProved": false,
+            "leanWireObligationHistoryAllManuscriptRewriteFamiliesProved": false,
+            "leanWireObligationHistoryAllManuscriptNormalizationFamiliesProved": false,
+            "leanWireObligationHistoryArbitraryObserverOrProfileTransportProved": false,
+            "leanWireObligationHistoryMatchedKappaPullExpandProved": false,
+            "leanWireObligationHistoryFullManuscriptCarrierProved": false,
+            "leanWireObligationHistoryCompletePackageEProved": false,
+            "leanWireObligationHistoryGlobalRouteCoverageProved": false,
+            "leanWireObligationHistoryUnconditionalSaturatePositiveProved": false,
+            "leanWireObligationHistoryUnconditionalBCELReadyProved": false,
+            "leanWireObligationHistoryUnconditionalZeroSlackProved": false,
+            "leanWireObligationHistoryExactGeneralPCCMinProved": false,
+            "leanWireObligationHistoryPolynomialRuntimeProved": false,
+            "leanWireObligationHistoryRuntimeExecutionIsProofAuthority": false,
+            "leanWireObligationHistoryScope": "arbitrary-finite-raw-event-graphs-computed-order-actual-evolving-carriers-source-bound-R5-R6-R8-full-read-records-strictly-later-matched-discharge-all-full-outputs-and-fields-exact-charged-materializer-and-normalization-gate-balance-no-complete-package-E-global-route-or-polynomial-runtime"
+          },
+          "theoremKernelTypeSha256": {
+            "PNP.DependencyScheduler.ReadyStep.remaining_lt": "44bff5d1be6c8074e99def406e7faecb346441bedc0ac3b4420e4927f5e1373f",
+            "PNP.DependencyScheduler.Schedule.at_injective": "7325e0440ba228aecb1f3ca0bfd787ab82c93ed61aeb267db5b806a17845d360",
+            "PNP.DependencyScheduler.Schedule.order_complete": "c0bc5ea38e5bef5a3db8cfb385afd687f05970189a64219461a71a0c0cdc8e98",
+            "PNP.DependencyScheduler.Schedule.order_length": "ccc28a25035f30ad731ce79d62437d84f497ca2c972ac0ef820cdfe0c6c78e83",
+            "PNP.DependencyScheduler.Schedule.order_nodup": "6fcec66236c25dbcf4e6eb74c07a06f8ffb1408eca6aaab395877ef05942d704",
+            "PNP.DependencyScheduler.Schedule.wellFounded": "ba098126abab3930ba38e3eba6155f6aec86bf83d17d1e9b8e7a7cb9ef872882",
+            "PNP.DependencyScheduler.Stop.complete_of_wellFounded": "08aae73b031ced880c4c698523e670264020780bb2299593f48647c49c8a73dc",
+            "PNP.DependencyScheduler.Stop.unresolved_predecessor": "3dc12cd45be6bcb7141fb81a8f29da69532c3374d724539d5e61f78c209193ac",
+            "PNP.DependencyScheduler.compile_failure_iff": "d49913a5214be6296ea356ed69f4002bbf3adca2218ed7a66f3e35da36f5cf6e",
+            "PNP.DependencyScheduler.compile_success_iff": "ff4041ae74888da57f525b104b237572ed7922572b4619e38611029541d78b8e",
+            "PNP.DirectWire.WireObligationHistory.State.cancel_full_value": "f39bb7ff18787f0445bbbddb90f22badc6cc0c720066e449ab0256e4bcbf73f4",
+            "PNP.DirectWire.WireObligationHistory.State.cancel_gateCount": "c6b668b242c280f4bc4e947acf75953e8b3d486f1ffa620a3357de1e42466dec",
+            "PNP.DirectWire.WireObligationHistory.State.closed_field": "aad78fb5c71f29dcc02113ec8f755d63ca8a3a2d475a3eda1f28ac90c6d3a1b2",
+            "PNP.DirectWire.WireObligationHistory.State.create_gateCount": "c5055ea4079398b0c5de5ba33fead7a9e45e2ffeb9c6b8bed34bd3c42d39cca4",
+            "PNP.DirectWire.WireObligationHistory.State.create_source_snapshot": "5e6a73008b9ba035838fc473c3ce1d8aac10e09a8a343cdb47aeeba1160583ea",
+            "PNP.DirectWire.WireObligationHistory.State.currentAgreement": "13ccc70890d2b8883766af4ec127af0c5db4d32c4f08c14df0a35b89a8338770",
+            "PNP.DirectWire.WireObligationHistory.State.normalize_gate_balance": "40935311cd19f706866b06b3b69c7931faead7274c31c7a9c0257f704b3a75ac",
+            "PNP.DirectWire.WireObligationHistory.State.restore_full_value": "dad270a9a1c3a769c62fca96c301be597773a74ece28bf44218ed6ddec8b5ac2",
+            "PNP.DirectWire.WireObligationHistory.State.restore_gate_charge": "6bb4d07dacd7838eabe2be506c785034ae0f46fb4e02fd85e72037ab5a7845bc",
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.identities_nodup": "ac8b9a9e2dfa8c944d30f4662958a5d7013379563d60c29150c23bf23dd99d46",
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.order_complete": "441646f4a5b2cb4a59e2ccfc6c8da1304a4ac9a12168930258a8dbf310937d94",
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.order_length": "20d3aff2d74b639edf50bd457633a18516b53a83e7649fb05cdf712d4ee4d7d7",
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.order_nodup": "2abfa0b890cbe1d904f1f8d6fc4896e76d8b14411f872fd45cb3b57b23e6f9fc",
+            "PNP.DirectWire.WireObligationHistory.completeReferences_iff": "355c32c56adc705ed0a0190ec224cca20c12a519c46ad7e13432214a0eaa2791",
+            "PNP.DirectWire.WireObligationHistory.graph_dependency_iff": "89f258096645cbd1c3edddcd44168ac82c80ee6061cdf7fa65a21071d2f13153",
+            "PNP.DirectWire.WireObligationHistory.orderEvents_failure_iff": "1e6aee6d2dcd4caeaed20485b311134540d383f0ff27836ad981c2c1e32de043",
+            "PNP.DirectWire.WireObligationHistory.orderEvents_success_iff": "ae1c23179eb625d7939d2c162f30ba70de98db04c30dc8e7f163195eddba6c12",
+            "PNP.DirectWire.WireObligationHistory.uniqueIDs_iff": "71bcbb813a106280cbc23056655b1e00d003abe9546142102a9252995d14ce06",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.creation_lifecycle": "931d176535e4d513f8d0c55154d78e8ceb5046c4f00de10429bcaba5e91bbc66",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.dependency_before": "eb9fd5eeb6da03880e4e567c1150d9f788db315013c32ec064dc78c0e551010d",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.executed_count": "3cd573f4f6711d7024502c0f32d4e095b2d72c472a2683dd98b6dbde45fcb37a",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.executed_identities_nodup": "c45b5bc13d7b34725e10435625feec02f58632c53a3de2870daa4b7e3b5a1707",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.full_field": "c693beecbd081a97a4cbb69a8d352963830e1ef59577d90930adbc208a3f111f",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.full_output": "b424d42f293c35731c15c87699685a7276d36f6535dc9df10d94038525f92c63",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.gate_balance": "1f6a44c3ae70e9bd68aa2f4c27ee53ca15d367bf7537504601368e758bc05207",
+            "PNP.DirectWire.WireObligationHistory.Execution.creationsClosed_of_finalClosed": "2cc26c978ca29feaab7f93495679a526a087d81e45d41e79b747581f3c2affb9",
+            "PNP.DirectWire.WireObligationHistory.Execution.pending_persists_or_discharged": "d6e413063b471ed85b88a8511c3e00cb1b8fbf74c8342ab840a87b0ef833cee2",
+            "PNP.DirectWire.WireObligationHistory.Execution.record_identities": "99998dc3a2db9727261c6aaa9f719dd7e2e7bc1f07d0b4ed2ada9ceb24736ac5",
+            "PNP.DirectWire.WireObligationHistory.Execution.total_charge": "7f1fa056790d301cbe44e1ff146522fe5a6de86a0b4f6f6ce8973ee63a100df1",
+            "PNP.DirectWire.WireObligationHistory.Execution.total_removed": "f904a4305079095ec645306a1d05def1959dce27fb56cbe806f3869f967d4230",
+            "PNP.DirectWire.WireObligationHistory.State.isClosed_sound": "1e28a1969b79445ff35e88b8ba4bfbd84dcbf8ab4a5c62dccafa824dd5cd28fa",
+            "PNP.DirectWire.WireObligationHistory.Transition.charged_eq": "e43b203250254c6888614c96da96a1969c48c462fcf2b82847f344974b2b6b83",
+            "PNP.DirectWire.WireObligationHistory.Transition.created_pending": "4946de5b4d016cfce8082bf7d22630cb7e7b37867fdc9b668d6213d1e3f3d824",
+            "PNP.DirectWire.WireObligationHistory.Transition.dischargeRecord_binding": "140da6c4f11123758ced882d33305ac808236012f726b61dbee4f11a3298b351",
+            "PNP.DirectWire.WireObligationHistory.Transition.pending_persists_or_discharged": "6b9c4958f407e0ffac3ca7d15254ed0070e775cb4b2ab2e2483e7b6a2c8ee192",
+            "PNP.DirectWire.WireObligationHistory.Transition.removed_eq": "9ec3017bd5fed872a00ee12b52b2e9b3a414623683270daed4fca66aabd839b4"
+          },
+          "theoremAxioms": {
+            "PNP.DependencyScheduler.ReadyStep.remaining_lt": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DependencyScheduler.Schedule.at_injective": [],
+            "PNP.DependencyScheduler.Schedule.order_complete": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DependencyScheduler.Schedule.order_length": [
+              "propext"
+            ],
+            "PNP.DependencyScheduler.Schedule.order_nodup": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DependencyScheduler.Schedule.wellFounded": [],
+            "PNP.DependencyScheduler.Stop.complete_of_wellFounded": [],
+            "PNP.DependencyScheduler.Stop.unresolved_predecessor": [],
+            "PNP.DependencyScheduler.compile_failure_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DependencyScheduler.compile_success_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.cancel_full_value": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.cancel_gateCount": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.closed_field": [],
+            "PNP.DirectWire.WireObligationHistory.State.create_gateCount": [
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.create_source_snapshot": [
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.currentAgreement": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.normalize_gate_balance": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.restore_full_value": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.restore_gate_charge": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.identities_nodup": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.order_complete": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.order_length": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.OrderedEvents.order_nodup": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.completeReferences_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.graph_dependency_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.orderEvents_failure_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.orderEvents_success_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.uniqueIDs_iff": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.creation_lifecycle": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.dependency_before": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.executed_count": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.executed_identities_nodup": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.full_field": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.full_output": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.gate_balance": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Execution.creationsClosed_of_finalClosed": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Execution.pending_persists_or_discharged": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Execution.record_identities": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Execution.total_charge": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Execution.total_removed": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.State.isClosed_sound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Transition.charged_eq": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Transition.created_pending": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Transition.dischargeRecord_binding": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Transition.pending_persists_or_discharged": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Transition.removed_eq": [
+              "Quot.sound",
+              "propext"
+            ]
+          }
+        },
+        {
+          "number": 264,
+          "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264",
+          "id": "wire-history-arbitrary-support",
+          "title": "Source-derived closed-history literal arbitrary-support replacement",
+          "classification": "formalized-foundation-only",
+          "scope": "For arbitrary finite candidate, support and raw-event dimensions, the constructor extracts actual computational fields with zero duplicate ordinary outputs, executes the existing closed R5/R6/R8 history, and derives literal-splice acyclicity from original gate labels and actual causal bounds. The current carrier and every pending snapshot preserve those bounds through actual normalization, source-identity cancellation and paid captured restoration. The existing literal graph compiler then succeeds for every accepted closed history without a caller-supplied replacement, rank, order or semantic certificate. All ordered original outputs are preserved; every exterior gate occurs once; final gates plus actual removals equal original gates plus all actual materializer charges. Strict gain follows when removals exceed charges. The splice stage introduces no rejection beyond the actual history compiler.",
+          "nonClaim": "This covers the existing computational R5/R6/R8 language and three-pass physical normalizer, not all manuscript R1-R9 or N1-N10 rules, full R7, arbitrary observers, noncomputational carriers, full-profile compatibility, matched-kappa Pull/Expand or complete Package E. The support records and raw history remain input data. It does not derive terminal families, a globally successful rewrite strategy, global route coverage, unconditional SaturatePositive, BCELReady or ZeroSlack, exact general PCCMin or complete encoded-input polynomial runtime/output/certificate bounds. Boolean equivalence alone is not a causal certificate. Runtime fixtures are regression evidence, not proof authority. No fixed weighted checkpoint or global gate closes; deterministic CNFSAT in P and the eligible root remain absent, and P = NP is not proved.",
+          "fields": {
+            "leanWireHistoryArbitrarySupportFormalized": true,
+            "leanWireHistoryArbitrarySupportAxiomAuditPassed": true,
+            "leanWireHistoryArbitrarySupportAuditedDeclarationCount": 24,
+            "leanWireHistoryArbitrarySupportExtractionCausalLevelsTheorem": "PNP.DirectWire.extractTerminalSupport_causal_levels",
+            "leanWireHistoryArbitrarySupportExtractionCausalIndexTheorem": "PNP.DirectWire.extractTerminalSupport_causal_index",
+            "leanWireHistoryArbitrarySupportPhysicalNormalizationCausalBoundTheorem": "PNP.DirectWire.CausalBound.physical_normalization_output_bound",
+            "leanWireHistoryArbitrarySupportCapturedRestorationCausalBoundTheorem": "PNP.DirectWire.WireObligationRestoration.join_causalBounds",
+            "leanWireHistoryArbitrarySupportClosedHistoryCausalInvariantTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.causalInvariant",
+            "leanWireHistoryArbitrarySupportClosedHistoryFieldCausalBoundTheorem": "PNP.DirectWire.WireObligationHistory.ClosedHistory.field_causal_bound",
+            "leanWireHistoryArbitrarySupportLiteralGraphRankDecreaseTheorem": "PNP.DirectWire.ArbitrarySupportSplice.graph_causal_rank_decreases",
+            "leanWireHistoryArbitrarySupportLiteralGraphWellFoundedTheorem": "PNP.DirectWire.ArbitrarySupportSplice.graph_wellFounded_of_causalInterfaceBound",
+            "leanWireHistoryArbitrarySupportClosedHistoryEquivalentTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_equivalent",
+            "leanWireHistoryArbitrarySupportDerivedInterfaceBoundTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_causalInterfaceBound",
+            "leanWireHistoryArbitrarySupportClosedHistoryCompilationTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_compiles",
+            "leanWireHistoryArbitrarySupportOrderedOutputSemanticsTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_semantics",
+            "leanWireHistoryArbitrarySupportCompletePhysicalAccountingTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_exact_accounting",
+            "leanWireHistoryArbitrarySupportStrictGainTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_strict_gain",
+            "leanWireHistoryArbitrarySupportRawConstructorCompleteTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.compile_complete",
+            "leanWireHistoryArbitrarySupportRawConstructorSoundTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.compile_sound",
+            "leanWireHistoryArbitrarySupportNoAdditionalRejectionTheorem": "PNP.DirectWire.WireHistoryArbitrarySupport.compile_none_iff",
+            "leanWireHistoryArbitrarySupportArbitraryFiniteCandidateSupportAndEventDimensionsCovered": true,
+            "leanWireHistoryArbitrarySupportZeroDuplicateOrdinaryOutputsInExtractedCarrier": true,
+            "leanWireHistoryArbitrarySupportCurrentAndPendingSnapshotCausalBoundsDerived": true,
+            "leanWireHistoryArbitrarySupportActualPhysicalNormalizerAndCapturedMaterializerUsed": true,
+            "leanWireHistoryArbitrarySupportSourceIdentityCancellationPreserved": true,
+            "leanWireHistoryArbitrarySupportLiteralOneCopySpliceAfterEveryAcceptedClosedHistory": true,
+            "leanWireHistoryArbitrarySupportEveryOrderedOriginalOutputPreserved": true,
+            "leanWireHistoryArbitrarySupportCompleteMaterializerChargesIncluded": true,
+            "leanWireHistoryArbitrarySupportStrictGainRequiresRemovalsExceedCharges": true,
+            "leanWireHistoryArbitrarySupportSpliceStageAddsNoRejection": true,
+            "leanWireHistoryArbitrarySupportCallerSuppliedReplacementRequired": false,
+            "leanWireHistoryArbitrarySupportCallerSuppliedRankOrOrderRequired": false,
+            "leanWireHistoryArbitrarySupportCallerSuppliedSemanticCertificateRequired": false,
+            "leanWireHistoryArbitrarySupportBooleanEquivalenceAloneEnsuresAcyclicity": false,
+            "leanWireHistoryArbitrarySupportSupportRecordsAndRawEventsDerivedFromEveryInput": false,
+            "leanWireHistoryArbitrarySupportFullR7SemanticsProved": false,
+            "leanWireHistoryArbitrarySupportAllManuscriptRewriteAndNormalizationFamiliesProved": false,
+            "leanWireHistoryArbitrarySupportArbitraryObserverOrFullProfileTransportProved": false,
+            "leanWireHistoryArbitrarySupportMatchedKappaPullExpandProved": false,
+            "leanWireHistoryArbitrarySupportFullManuscriptCarrierProved": false,
+            "leanWireHistoryArbitrarySupportCompletePackageEProved": false,
+            "leanWireHistoryArbitrarySupportTerminalFamiliesDerived": false,
+            "leanWireHistoryArbitrarySupportGloballySuccessfulRewriteStrategyDerived": false,
+            "leanWireHistoryArbitrarySupportGlobalRouteCoverageProved": false,
+            "leanWireHistoryArbitrarySupportUnconditionalSaturatePositiveProved": false,
+            "leanWireHistoryArbitrarySupportUnconditionalBCELReadyProved": false,
+            "leanWireHistoryArbitrarySupportUnconditionalZeroSlackProved": false,
+            "leanWireHistoryArbitrarySupportExactGeneralPCCMinProved": false,
+            "leanWireHistoryArbitrarySupportPolynomialRuntimeOutputAndCertificateBoundsProved": false,
+            "leanWireHistoryArbitrarySupportRuntimeExecutionIsProofAuthority": false,
+            "leanWireHistoryArbitrarySupportScope": "arbitrary-finite-source-extraction-closed-R5-R6-R8-history-derived-current-and-snapshot-causality-literal-one-copy-splice-all-ordered-outputs-complete-removal-charge-equation-no-additional-rejection-no-derived-terminal-family-global-route-or-polynomial-runtime"
+          },
+          "theoremKernelTypeSha256": {
+            "PNP.DirectWire.extractTerminalSupport_causal_levels": "123e68b3b62bd7450cceb874b37e9133aa7f5bef061c5fd3a7b86006ab209b36",
+            "PNP.DirectWire.extractTerminalSupport_causal_index": "266f2d202c756ac3d535808efc7288371be039b7bd6f3334471a4eb4a09126dc",
+            "PNP.DirectWire.CausalBound.physical_normalization_output_bound": "a6fb41b87c15347278653ccabf0f339b0021e1ff7f00aaf2a6ae3593f5ff8ab8",
+            "PNP.DirectWire.WireCarrier.normalize_causalBounds": "62d2b55983b9459d9c8a4ec3729e24b6757e22aa464e831b36f780edc19534c0",
+            "PNP.DirectWire.WireObligationRestoration.join_causalBounds": "96a57b1e39fa62e703469131981a9464a954c6e6ef93a968c9363130492cdfef",
+            "PNP.DirectWire.WireObligationHistory.Transition.causalInvariant": "5e8e6b3008a3ae5e6eae219e5642bd71496d4c78a6fe24cc00f06d8579bc25c1",
+            "PNP.DirectWire.WireObligationHistory.Execution.causalInvariant": "7eeda6beaebe55aefa689012673e7b2aad279c3a1f98270a8c045d149109de1d",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.causalInvariant": "d766a4d18cd18b8fc41844f5862a1db0293043ad3be6711bf2f183584391b9b7",
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.field_causal_bound": "aa051739783a3bcf78c4cfd030bda11ebb4191071367ac5a9cd09d2f63f2dcb8",
+            "PNP.DirectWire.WireObligationHistory.compileHistory_causal_bounds": "d85cb81dde3ff4b72e81c8fd56bbfd521031f13dc86cad93f30a84b5888f452e",
+            "PNP.DirectWire.ArbitrarySupportSplice.graph_causal_rank_decreases": "401cb888e0fdd3fffd02d24c5f5a46d0ec23a3370a61e1c298b3efa086a83f1a",
+            "PNP.DirectWire.ArbitrarySupportSplice.graph_wellFounded_of_causalInterfaceBound": "47cf35847af614649c6e8f5d929c8447d2a3fcd036119a9cbdb98ca5f9a12e38",
+            "PNP.DirectWire.ArbitrarySupportSplice.compile_of_causalInterfaceBound": "66036c51abd18c65462094db35c49f463b6e40944fb0f40f06bc4ecdb9a63c79",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.extractedCarrier_gateCount": "5b11e6ffa16f80744a224cc5fcaad6a3d2132ca68567e8e0a1b9aeda0e45eae2",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.extractedCarrier_fieldValue": "c4513e607a0d66901d00b788ed6c1884105fb8e2d8d6bc6d9c96df55583250c5",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_equivalent": "b949f2d62101de6687ded05b81d36f3b11b48ebdd722a7d69a8a2d4eb158124d",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_causalInterfaceBound": "bb37db6c982b6fc8e1a879a0c2c5e8a1669fec6d7939d8ff024b205dcd546903",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_compiles": "24628ba7c42242ba62325ae3a02a86c5da4afa69372ee4a8db95369cb2c54177",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_semantics": "3ff01612253857a44f687e7850d60a8c0895046ef5ab7a5bd4190dab27453031",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_exact_accounting": "ba21db1c802ed21d062b78b1a28939a1cac493aba356401f9981e460e076f323",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_strict_gain": "e6abcd11b0d7e89b0c908788f665a71b2d7576be1ff9a7396e36821647e91770",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.compile_complete": "e4dbaa109b94d8d0704c04d90f776e755c079b7c6e303cb5097cc985df6a6756",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.compile_sound": "7f2ab5eee8236bc96b3ab1f3d1a0edb44631fef986b0c8f0a67f0f7668ba3def",
+            "PNP.DirectWire.WireHistoryArbitrarySupport.compile_none_iff": "b83a398e1ac68926f820d96f95b7e9e21042f8fabcecbbd0fad685a544eeaffb"
+          },
+          "theoremAxioms": {
+            "PNP.DirectWire.extractTerminalSupport_causal_levels": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.extractTerminalSupport_causal_index": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.CausalBound.physical_normalization_output_bound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireCarrier.normalize_causalBounds": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationRestoration.join_causalBounds": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Transition.causalInvariant": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.Execution.causalInvariant": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.causalInvariant": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.ClosedHistory.field_causal_bound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireObligationHistory.compileHistory_causal_bounds": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.ArbitrarySupportSplice.graph_causal_rank_decreases": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.ArbitrarySupportSplice.graph_wellFounded_of_causalInterfaceBound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.ArbitrarySupportSplice.compile_of_causalInterfaceBound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.extractedCarrier_gateCount": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.extractedCarrier_fieldValue": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_equivalent": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_causalInterfaceBound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_compiles": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_semantics": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_exact_accounting": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.closedHistory_result_strict_gain": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.compile_complete": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.compile_sound": [
+              "Quot.sound",
+              "propext"
+            ],
+            "PNP.DirectWire.WireHistoryArbitrarySupport.compile_none_iff": [
               "Quot.sound",
               "propext"
             ]

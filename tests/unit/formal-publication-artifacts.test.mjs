@@ -3572,14 +3572,28 @@ test("current release pins the latest canonical earned boundary and remains fail
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "TheoremKernelTypeSha256"), latestTheoremHashes);
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "AxiomClosure"), latestAxiomClosure);
   assert.deepEqual(releaseBoundaryValue(release, latestStem, "ProjectAxiomClosure"), []);
-  const latestReleaseTheorems = Object.entries(typeof latestStem === "object" ? latestStem.statusFields : release.earnedBoundary)
-    .filter(([key, value]) => key.endsWith("Theorem")
-      && typeof value === "string"
-      && latestMilestone.requiredTheorems.includes(value))
-    .map(([_key, value]) => value)
-    .sort();
-  assert.deepEqual(latestReleaseTheorems, latestStatusStem === null
-    ? [M230.checkedCompleteTheorem] : [...latestMilestone.requiredTheorems].sort());
+  if (typeof latestStem === "object") {
+    // The complete fingerprint map above covers every reviewed declaration.
+    // A batch may expose only its public entry points as individual scalar links.
+    const publicLinks = Object.entries(latestStem.statusFields).filter(
+      ([key, value]) => key.endsWith("Theorem") && typeof value === "string"
+    );
+    assert.ok(publicLinks.length > 0, "latest batch must expose its public theorem entry points");
+    for (const [statusKey, name] of publicLinks) {
+      assert.ok(Object.hasOwn(latestTheoremHashes, name), "public entry point must be in the complete reviewed fingerprint map: " + statusKey);
+      const suffix = statusKey.slice(latestStem.statusStem.length);
+      assert.equal(releaseBoundaryValue(release, latestStem, suffix), name, "exact release entry point: " + statusKey);
+    }
+  } else {
+    const latestReleaseTheorems = Object.entries(release.earnedBoundary)
+      .filter(([key, value]) => key.endsWith("Theorem")
+        && typeof value === "string"
+        && latestMilestone.requiredTheorems.includes(value))
+      .map(([_key, value]) => value)
+      .sort();
+    assert.deepEqual(latestReleaseTheorems, latestStatusStem === null
+      ? [M230.checkedCompleteTheorem] : [...latestMilestone.requiredTheorems].sort());
+  }
 
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationFormalized, true);
   assert.equal(release.earnedBoundary.lockedNANDThresholdPublicationAxiomAuditPassed, true);
