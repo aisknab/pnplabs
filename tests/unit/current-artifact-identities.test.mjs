@@ -56,3 +56,32 @@ test('inventory identity generation rejects missing, duplicate and malformed inp
   changed.artifacts.theoremInventory.sha256 = 'not-a-digest';
   assert.throws(() => renderCurrentInventoryIdentity(page, changed), /invalid canonical inventory identity/);
 });
+
+
+function assertCurrentInventoryReference(page, label) {
+  const references = [...page.matchAll(/<(div|p)\b[^>]*data-current-inventory-reference[^>]*>[\s\S]*?<\/\1>/g)];
+  assert.equal(references.length, 1, label + ': one current manifest reference');
+  assert.match(references[0][0], /href="downloads\/formal-publication-release\.json"/);
+  assert.doesNotMatch(references[0][0], /\b[0-9a-f]{64}\b/i, label + ': no hand-maintained digest');
+  assert.doesNotMatch(page, /<span>Inventory SHA-256<\/span>/, label + ': no duplicate inventory digest label');
+  assert.doesNotMatch(page, /<p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-[^<]+<\/code>;\s*SHA-256/,
+    label + ': no ungenerated current inventory identity');
+}
+
+test('secondary current inventory labels link to the canonical manifest without copying its digest', () => {
+  for (const file of ['index.html', 'status.html']) {
+    const page = readFileSync(file, 'utf8');
+    assertCurrentInventoryReference(page, file);
+    assert.equal(renderCurrentInventoryIdentity(page, release), page);
+    assertCurrentInventoryReference('Historical checksum: ' + 'f'.repeat(64) + '\n' + page, file);
+  }
+});
+
+test('current inventory references reject missing links, copied digests and duplicate legacy labels', () => {
+  const page = readFileSync('index.html', 'utf8');
+  assert.throws(() => assertCurrentInventoryReference(page.replace('data-current-inventory-reference', 'data-old-inventory-reference'), 'missing'), /one current manifest reference/);
+  assert.throws(() => assertCurrentInventoryReference(page + page, 'duplicate'), /one current manifest reference/);
+  assert.throws(() => assertCurrentInventoryReference(page.replace('<div data-current-inventory-reference>', '<div data-current-inventory-reference>' + '0'.repeat(64)), 'digest'), /no hand-maintained digest/);
+  assert.throws(() => assertCurrentInventoryReference(page + '<span>Inventory SHA-256</span>', 'legacy'), /no duplicate inventory digest label/);
+  assert.throws(() => assertCurrentInventoryReference(page + '<p>Coordinate <code>PNP-LEAN-THEOREM-INVENTORY-example</code>; SHA-256</p>', 'legacy-coordinate'), /no ungenerated current inventory identity/);
+});

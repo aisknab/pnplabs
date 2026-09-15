@@ -47,6 +47,58 @@
   },
   "entries": [
     {
+      "id": "2026-09-15-wire-history-arbitrary-support",
+      "milestoneId": "wire-history-arbitrary-support",
+      "publishedAt": "2026-09-15T10:47:25.837Z",
+      "title": "Checked rewrite histories now compile into arbitrary circuit regions",
+      "plainLanguage": [
+        "For any accepted closed rewrite history on an arbitrarily selected finite circuit region, the construction now builds a literal replacement in the original circuit. It derives the required acyclic wiring from the source and actual history, preserves every ordered original output, and retains each exterior gate exactly once. No caller-supplied replacement, rank, schedule or correctness certificate is needed.",
+        "The selected region and rewrite history are still inputs. Final gates plus actual removals equal original gates plus all restoration charges, so gates are saved only when removals exceed charges. The result covers the implemented computational rewrite rules, not the complete manuscript calculus or a globally successful strategy. Unconditional ZeroSlack, exact general PCCMin and complete polynomial runtime and certificate bounds remain open. No fixed weighted checkpoint or global gate changes."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 240,
+        "formalArtefactCoverageTotalRows": 242,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "029153fc5d8bfc84c61d33858d0472bcbf3d3a73",
+        "tree": "d725f0e14d1a4625c0ce991364fa4481ef3c032a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-15-wire-obligation-history",
+      "milestoneId": "wire-obligation-history",
+      "publishedAt": "2026-09-15T10:47:25.837Z",
+      "title": "Dependency-ordered circuit rewrites with exact restoration costs",
+      "plainLanguage": [
+        "For any finite collection of physical circuit-rewrite events, the construction now computes a dependency order from event identities and required predecessors. Duplicate identities, missing references and cyclic dependencies reject. The history executes one evolving circuit, retaining the actual source snapshot whenever a tracked wire value is hidden.",
+        "A successful closed history uses the implemented hiding, source-identity cancellation and paid restoration operations, and preserves every original output and tracked computational wire value. Every restoration is charged for its complete physical circuit. A dependency order alone does not guarantee a valid lifecycle or a smaller circuit. This is not the complete manuscript rewrite calculus, a global rewrite strategy, unconditional ZeroSlack or a polynomial-time minimization algorithm. No fixed weighted checkpoint or global gate changes."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 239,
+        "formalArtefactCoverageTotalRows": 241,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "029153fc5d8bfc84c61d33858d0472bcbf3d3a73",
+        "tree": "d725f0e14d1a4625c0ce991364fa4481ef3c032a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-263",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-09-14-wire-causal-expansion",
       "milestoneId": "wire-causal-expansion",
       "publishedAt": "2026-09-14T15:11:57.110Z",

@@ -188,7 +188,7 @@ test('M262 batch contract is wired alongside the retained M258 evidence', () => 
       assert.ok(source.includes("from './formal-m" + batch + "-batch-contract.mjs'"), file);
       for (const kind of kinds) assert.match(source, new RegExp('assertM' + batch + 'Batch' + kind + '\\(\\w+\\);'), file);
     }
-    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
+    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
   }
   const browser = readFileSync('assets/main.js', 'utf8');
   assertM262BrowserDescriptor(browser);
@@ -196,7 +196,7 @@ test('M262 batch contract is wired alongside the retained M258 evidence', () => 
     const guard = 'try { FORMAL_M259_M262_VALIDATORS.' + kind + '(' + kind + '); } catch { return false; }';
     assert.ok(browser.includes(guard), kind + ': fail-closed browser validator');
   }
-  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH].flatMap(batch => batch.milestones)'));
+  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH].flatMap(batch => batch.milestones)'));
 });
 
 test('M262 current mirrors and manifest bind the exact reviewed source and independent progress fields', () => {
@@ -208,18 +208,21 @@ test('M262 current mirrors and manifest bind the exact reviewed source and indep
   assertM262BatchStatus(publishedStatus);
   assertM262BatchInventory(publishedInventory);
   assertM262BatchManifest(release);
-  assert.equal(release.source.commit, M262_BATCH.reviewedSource.commit);
-  assert.equal(release.source.tree, M262_BATCH.reviewedSource.tree);
+  const currentBatch = Object.values(release.earnedBoundary)
+    .filter(row => row?.kind === 'PNPLabsCompiledMilestoneBatch0')
+    .sort((a,b) => Math.max(...a.milestones.map(row => row.number)) - Math.max(...b.milestones.map(row => row.number))).at(-1);
+  assert.equal(release.source.commit, currentBatch.reviewedSource.commit);
+  assert.equal(release.source.tree, currentBatch.reviewedSource.tree);
   assert.equal(index.sourceCommitRef, release.source.commit);
   assert.equal(index.sourceTree, release.source.tree);
-  assert.equal(publishedStatus.coordinate, M262_BATCH.reviewedSource.statusCoordinate);
+  assert.equal(publishedStatus.coordinate, currentBatch.reviewedSource.statusCoordinate);
   assert.equal(publishedProgress.asOfCoordinate, publishedStatus.coordinate);
   assert.equal(index.formalArtefactCoverageEarnedRows, publishedProgress.formalArtefactCoverage.earnedRows);
   assert.equal(index.formalArtefactCoverageTotalRows, publishedProgress.formalArtefactCoverage.totalRows);
   assert.equal(index.proofProgressPointsEarned, publishedProgress.proofCompletion.pointsEarned);
-  assert.equal(publishedProgress.proofCompletion.percent, 40);
-  assert.equal(publishedProgress.rootTheorem.present, false);
-  assert.equal(publishedProgress.projectSpecificAxiomsRemaining.length, 0);
+  assert.equal(publishedProgress.proofCompletion.percent, progress.proofCompletion.percent);
+  assert.deepEqual(publishedProgress.rootTheorem, progress.rootTheorem);
+  assert.deepEqual(publishedProgress.projectSpecificAxiomsRemaining, progress.projectSpecificAxiomsRemaining);
   for (const [field,value] of Object.entries(M262_BATCH_FIELDS)) assert.deepEqual(index.claimBoundary[field], value, field);
 });
 
@@ -335,7 +338,7 @@ test('M262 batch history preserves original scoring coordinates and every earlie
     });
     assert.equal(entry.plainLanguage.length, 2);
   }
-  const earlier = updates.entries.filter(entry => !ids.has(entry.milestoneId));
+  const earlier = updates.entries.slice(updates.entries.findLastIndex(entry => ids.has(entry.milestoneId)) + 1);
   assert.equal(createHash('sha256').update(JSON.stringify(earlier)).digest('hex'), 'c740e4af91c4354b48ba3aefd291a6bdb82ab139a015ed555df0b02d7ded4e10');
 });
 

@@ -29,7 +29,7 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">
-      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262">
+      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264">
         <article class="card proof-progress-primary">
           <span class="eyebrow">Fixed-weight model v0</span>
           <h2 id="proof-progress-heading">Risk-weighted proof completion estimate</h2>
@@ -50,7 +50,7 @@
         <article class="card proof-progress-secondary">
           <span class="section-label">Separate evidence metric</span>
           <h2>Formal artefact coverage</h2>
-          <p class="coverage-number">238 of 240</p>
+          <p class="coverage-number">240 of 242</p>
           <p><strong>99.2% of the current evidence ledger.</strong></p>
           <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>
         </article>
@@ -78,6 +78,46 @@
         <p>The M184 authoritative ledger contains 160 earned rows out of 162, superseding the earlier 152 of 154 example. No named load-bearing checkpoint closed merely because additional local or supplied-data milestones were earned, so the fixed-weight baseline remains 30 percent.</p>
         <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>
         <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>
+      </article>
+
+      <article class="card" id="2026-09-15-wire-history-arbitrary-support" data-milestone-id="wire-history-arbitrary-support">
+        <div class="section-label"><time datetime="2026-09-15T10:47:25.837Z">2026-09-15</time> · earned milestone 240</div>
+        <h2>Checked rewrite histories now compile into arbitrary circuit regions</h2>
+        <p>For any accepted closed rewrite history on an arbitrarily selected finite circuit region, the construction now builds a literal replacement in the original circuit. It derives the required acyclic wiring from the source and actual history, preserves every ordered original output, and retains each exterior gate exactly once. No caller-supplied replacement, rank, schedule or correctness certificate is needed.</p>
+        <p>The selected region and rewrite history are still inputs. Final gates plus actual removals equal original gates plus all restoration charges, so gates are saved only when removals exceed charges. The result covers the implemented computational rewrite rules, not the complete manuscript calculus or a globally successful strategy. Unconditional ZeroSlack, exact general PCCMin and complete polynomial runtime and certificate bounds remain open. No fixed weighted checkpoint or global gate changes.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264</strong><ul><li>Formal artefact coverage: 240 of 242 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>wire-history-arbitrary-support</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For arbitrary finite candidate, support and raw-event dimensions, the constructor extracts actual computational fields with zero duplicate ordinary outputs, executes the existing closed R5/R6/R8 history, and derives literal-splice acyclicity from original gate labels and actual causal bounds. The current carrier and every pending snapshot preserve those bounds through actual normalization, source-identity cancellation and paid captured restoration. The existing literal graph compiler then succeeds for every accepted closed history without a caller-supplied replacement, rank, order or semantic certificate. All ordered original outputs are preserved; every exterior gate occurs once; final gates plus actual removals equal original gates plus all actual materializer charges. Strict gain follows when removals exceed charges. The splice stage introduces no rejection beyond the actual history compiler.</p>
+          <p><strong>Boundary:</strong> This covers the existing computational R5/R6/R8 language and three-pass physical normalizer, not all manuscript R1-R9 or N1-N10 rules, full R7, arbitrary observers, noncomputational carriers, full-profile compatibility, matched-kappa Pull/Expand or complete Package E. The support records and raw history remain input data. It does not derive terminal families, a globally successful rewrite strategy, global route coverage, unconditional SaturatePositive, BCELReady or ZeroSlack, exact general PCCMin or complete encoded-input polynomial runtime/output/certificate bounds. Boolean equivalence alone is not a causal certificate. Runtime fixtures are regression evidence, not proof authority. No fixed weighted checkpoint or global gate closes; deterministic CNFSAT in P and the eligible root remain absent, and P = NP is not proved.</p>
+          <p><strong>Reviewed theorem pins:</strong> 24</p>
+          <p><strong>Core source:</strong> commit <code>029153fc5d8bfc84c61d33858d0472bcbf3d3a73</code>, tree <code>d725f0e14d1a4625c0ce991364fa4481ef3c032a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
+      <article class="card" id="2026-09-15-wire-obligation-history" data-milestone-id="wire-obligation-history">
+        <div class="section-label"><time datetime="2026-09-15T10:47:25.837Z">2026-09-15</time> · earned milestone 239</div>
+        <h2>Dependency-ordered circuit rewrites with exact restoration costs</h2>
+        <p>For any finite collection of physical circuit-rewrite events, the construction now computes a dependency order from event identities and required predecessors. Duplicate identities, missing references and cyclic dependencies reject. The history executes one evolving circuit, retaining the actual source snapshot whenever a tracked wire value is hidden.</p>
+        <p>A successful closed history uses the implemented hiding, source-identity cancellation and paid restoration operations, and preserves every original output and tracked computational wire value. Every restoration is charged for its complete physical circuit. A dependency order alone does not guarantee a valid lifecycle or a smaller circuit. This is not the complete manuscript rewrite calculus, a global rewrite strategy, unconditional ZeroSlack or a polynomial-time minimization algorithm. No fixed weighted checkpoint or global gate changes.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-263</strong><ul><li>Formal artefact coverage: 239 of 241 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>wire-obligation-history</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For arbitrary finite input, output, computational-field and event dimensions, M263 computes a complete dependency order from raw event identities, explicit predecessors and intrinsic creation references. Duplicate identities, missing references and cyclic graphs reject. The scheduler succeeds exactly when the actual finite dependency relation is well-founded. The history constructor executes one evolving physical carrier from the original source, without caller-supplied order, rank, state, full-value witness or charge data. R5 captures the actual pre-drop carrier; physical normalization preserves open snapshots; source-identity R6 computes a visible representative; R8 appends and charges the complete materializer from the matching creation snapshot. Full reads require an available field, and final open obligations reject. Every successful history executes every event exactly once in dependency order, every creation discharges strictly later with its full source binding, and every ordinary output and computational field retains its original value for every valuation. Final physical gates plus actual normalization removals equal initial physical gates plus all appended materializer charges.</p>
+          <p><strong>Boundary:</strong> This is the computational R5/R6/R8 history component, not the complete manuscript obligation calculus or Package E. Acyclicity guarantees a computed order, not a valid lifecycle or confluence of underspecified event graphs. R5 projection alone removes no physical gates; repeated restorations receive no free cross-snapshot sharing, and restoration can increase physical size. Quotient-only agreement cannot discharge a full obligation. Full R7 and other R1-R9 semantics, all N1-N10 transports, arbitrary observers and profile histories, noncomputational carrier records, matched-kappa Pull/Expand, complete Package E, global route coverage, unconditional SaturatePositive, BCELReady and ZeroSlack, exact general PCCMin and complete encoded-input-size polynomial runtime, output and certificate bounds remain open. Runtime fixtures are regression evidence, not proof authority. No fixed weighted checkpoint or global gate closes. Deterministic CNFSAT in P and the eligible root remain absent, and P = NP is not proved.</p>
+          <p><strong>Reviewed theorem pins:</strong> 46</p>
+          <p><strong>Core source:</strong> commit <code>029153fc5d8bfc84c61d33858d0472bcbf3d3a73</code>, tree <code>d725f0e14d1a4625c0ce991364fa4481ef3c032a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-263</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
       </article>
 
       <article class="card" id="2026-09-14-wire-causal-expansion" data-milestone-id="wire-causal-expansion">

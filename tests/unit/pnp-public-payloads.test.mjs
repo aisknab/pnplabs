@@ -9782,10 +9782,11 @@ test('static inventory prose derives changing publication totals from the canoni
         const summary = current.match(/<section class="section compact" data-m[0-9]+-publication-summary>[\s\S]*?<\/section>/)?.[0];
         assert.ok(summary, name + ': current scoped summary');
         assert.ok(summary.includes(summaryMarker), name + ': exact current summary coordinate');
-        for (const boundary of ['not global circuit minimization or a theorem of total polynomial runtime',
-          'a polynomial-time SAT decision algorithm remains open']) {
-          assert.ok(summary.includes(boundary), name + ': ' + boundary);
-        }
+        assert.match(summary,
+          /not (?:global circuit minimization|a globally successful rewrite strategy) or a theorem of total polynomial runtime/,
+          name + ': no global strategy or complete runtime theorem');
+        assert.ok(summary.includes('a polynomial-time SAT decision algorithm remains open'),
+          name + ': deterministic polynomial-time SAT remains open');
       } else {
         const displayed = decodePublishedHtml(current.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
         for (const paragraph of currentEntry.plainLanguage) assert.ok(displayed.includes(paragraph.replace(/\s+/g, ' ')), name + ': complete canonical plain-language account');

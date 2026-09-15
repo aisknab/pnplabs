@@ -96,19 +96,19 @@ property and must never be summarized as proof of the target theorem.
 
 
 <!-- CURRENT_PUBLICATION:START -->
-## M262 current publication boundary
+## M264 current publication boundary
 
-**Arbitrary-width circuit expansion with explicit copy costs**
+**Checked rewrite histories now compile into arbitrary circuit regions**
 
-The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.
+For any accepted closed rewrite history on an arbitrarily selected finite circuit region, the construction now builds a literal replacement in the original circuit. It derives the required acyclic wiring from the source and actual history, preserves every ordered original output, and retains each exterior gate exactly once. No caller-supplied replacement, rank, schedule or correctness certificate is needed.
 
-Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes.
+The selected region and rewrite history are still inputs. Final gates plus actual removals equal original gates plus all restoration charges, so gates are saved only when removals exceed charges. The result covers the implemented computational rewrite rules, not the complete manuscript calculus or a globally successful strategy. Unconditional ZeroSlack, exact general PCCMin and complete polynomial runtime and certificate bounds remain open. No fixed weighted checkpoint or global gate changes.
 
-Formal artefact coverage: 238 of 240 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Formal artefact coverage: 240 of 242 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Current source: [`c3d4d9a115a357b44ee8104d129ee15e3174ec7f`](https://github.com/aisknab/pnp/tree/c3d4d9a115a357b44ee8104d129ee15e3174ec7f), tree `7bd3bc5854b0307330e9e405b5857de658eba54e`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/c3d4d9a115a357b44ee8104d129ee15e3174ec7f/docs/lean_wire_causal_expansion.md), the [source-bound update](../updates.html#2026-09-14-wire-causal-expansion) and the [complete current milestone ledger](../status.html).
+Current source: [`029153fc5d8bfc84c61d33858d0472bcbf3d3a73`](https://github.com/aisknab/pnp/tree/029153fc5d8bfc84c61d33858d0472bcbf3d3a73), tree `d725f0e14d1a4625c0ce991364fa4481ef3c032a`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264`. Inspect the [exact compiled scope and non-claim](https://github.com/aisknab/pnp/blob/029153fc5d8bfc84c61d33858d0472bcbf3d3a73/docs/lean_wire_history_arbitrary_support.md), the [source-bound update](../updates.html#2026-09-15-wire-history-arbitrary-support) and the [complete current milestone ledger](../status.html).
 
 M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
 <!-- CURRENT_PUBLICATION:END -->

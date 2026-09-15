@@ -2,15 +2,15 @@
 
 This checkout is the public website, current inventory-derived report bundle, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for the PNP project.
 
-## M262 current publication
+## M264 current publication
 
-**Arbitrary-width circuit expansion with explicit copy costs**
+**Checked rewrite histories now compile into arbitrary circuit regions**
 
-The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.
+For any accepted closed rewrite history on an arbitrarily selected finite circuit region, the construction now builds a literal replacement in the original circuit. It derives the required acyclic wiring from the source and actual history, preserves every ordered original output, and retains each exterior gate exactly once. No caller-supplied replacement, rank, schedule or correctness certificate is needed.
 
-Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes.
+The selected region and rewrite history are still inputs. Final gates plus actual removals equal original gates plus all restoration charges, so gates are saved only when removals exceed charges. The result covers the implemented computational rewrite rules, not the complete manuscript calculus or a globally successful strategy. Unconditional ZeroSlack, exact general PCCMin and complete polynomial runtime and certificate bounds remain open. No fixed weighted checkpoint or global gate changes.
 
-Formal artefact coverage: 238 of 240 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Formal artefact coverage: 240 of 242 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 ## Current status
 
@@ -484,9 +484,9 @@ The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` libr
 
 ## Progress tracker
 
-[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-14-262` it reports separate metrics:
+[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264` it reports separate metrics:
 
-- Formal artefact coverage: **238 of 240** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
+- Formal artefact coverage: **240 of 242** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
 - Risk-weighted proof completion estimate: **40%**, with uncertainty **20% to 40%**. This is a conservative estimate of complete proof burden retired, not a probability or time estimate.
 - Global gates closed: **0 of 5**. Project-specific axioms remaining: **0**. The eligible root is absent and the publication gate is false.
 
