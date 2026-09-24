@@ -1,4 +1,4 @@
-// Purpose: validate one update for every formal milestone earned after feed tracking began.
+// Purpose: validate earned-milestone updates and separately evidenced correction notices.
 // Inputs: content/milestone-updates.json and the current formal publication payloads.
 // Outputs: deterministic updates.html, Atom 1.0 updates.xml, and proof-progress.svg bytes.
 // Invariants enforced: exact schemas, complete milestone coverage, source binding, progress safety, and escaped text.
@@ -9,6 +9,7 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { renderProofProgressDashboard, validateProofProgressModel } from "./proof-progress-model.mjs";
+import { assertReviewedCorrectionEvidence, assertReviewedCorrectionRetained } from "./compatible-support-correction-contract.mjs";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = "content/milestone-updates.json";
@@ -94,9 +95,140 @@ function milestoneIsEarned(milestone) {
   return milestone.classification !== "not-formalized";
 }
 
+function sourceKey(source) {
+  return JSON.stringify([source.commit, source.tree, source.statusCoordinate, source.publicationCoordinate]);
+}
+
+function currentUpdateSource(index) {
+  return {
+    commit: index.sourceProofCommitRef,
+    tree: index.sourceTree,
+    statusCoordinate: index.statusCoordinate,
+    publicationCoordinate: index.publicSurfaceBaselineCoordinate
+  };
+}
+
+function historyProgressSnapshot(progress, coordinate, label) {
+  const history = progress.history?.find?.((row) => row?.asOfCoordinate === coordinate);
+  if (!history) fail(`${label}: source coordinate is absent from canonical progress history`);
+  return {
+    modelId: progress.modelId,
+    formalArtefactCoverageEarnedRows: history.formalArtefactCoverage?.earnedRows,
+    formalArtefactCoverageTotalRows: history.formalArtefactCoverage?.totalRows,
+    riskWeightedProofCompletionPercent: history.riskWeightedProofCompletionPercent,
+    uncertaintyLowPercent: history.uncertaintyLowPercent,
+    uncertaintyHighPercent: history.uncertaintyHighPercent,
+    globalGatesClosed: history.globalGatesClosed,
+    globalGatesAvailable: history.globalGatesAvailable
+  };
+}
+
+function validateCorrectionEvidenceShape(correction) {
+  const label = `correction ${correction.id} evidence`;
+  assertExactKeys(correction.evidence, ["nonClaim", "theorems"], label);
+  assertNonEmptyString(correction.evidence.nonClaim, `${label} nonClaim`);
+  if (!Array.isArray(correction.evidence.theorems) || correction.evidence.theorems.length === 0) {
+    fail(`${label}: at least one compiled theorem is required`);
+  }
+  const names = new Set();
+  for (const theorem of correction.evidence.theorems) {
+    assertExactKeys(theorem, ["name", "module", "axioms"], `${label} theorem`);
+    if (typeof theorem.name !== "string" || !/^PNP\.[A-Za-z0-9_.']+$/u.test(theorem.name)
+        || typeof theorem.module !== "string" || !/^PNP\.[A-Za-z0-9_.]+$/u.test(theorem.module)) {
+      fail(`${label}: unsafe theorem name or module`);
+    }
+    if (names.has(theorem.name)) fail(`${label}: duplicate theorem ${theorem.name}`);
+    names.add(theorem.name);
+    if (!Array.isArray(theorem.axioms) || new Set(theorem.axioms).size !== theorem.axioms.length
+        || theorem.axioms.some((axiom) => !["Classical.choice", "Quot.sound", "propext"].includes(axiom))) {
+      fail(`${label}: only audited standard axiom closures are permitted`);
+    }
+  }
+  try { assertReviewedCorrectionEvidence(correction); } catch (error) { fail(error.message); }
+}
+
+function validateCorrectionEvidence(correction, status, inventory) {
+  validateCorrectionEvidenceShape(correction);
+  const label = `correction ${correction.id} evidence`;
+  if (!status.nonClaims?.includes(correction.evidence.nonClaim)) {
+    fail(`${label}: non-claim is absent from the source-bound formal status`);
+  }
+  for (const theorem of correction.evidence.theorems) {
+    const rows = inventory.declarations?.filter((row) => row.name === theorem.name) ?? [];
+    if (rows.length !== 1 || rows[0].kind !== "theorem" || rows[0].module !== theorem.module
+        || JSON.stringify(rows[0].axioms) !== JSON.stringify(theorem.axioms)) {
+      fail(`${label}: compiled theorem metadata mismatch for ${theorem.name}`);
+    }
+  }
+}
+
+function validateCorrections(data, status, index, progress, inventory, entryIds, timestampSources) {
+  if (!Array.isArray(data.corrections)) fail("updates data: corrections must be an array");
+  try { assertReviewedCorrectionRetained(data.corrections, status, inventory); } catch (error) { fail(error.message); }
+  const currentSource = currentUpdateSource(index);
+  const publishedSources = new Set([sourceKey(currentSource), ...data.entries.map((entry) => sourceKey(entry.source))]);
+  let previousTimestamp = null;
+  return data.corrections.map((correction, position) => {
+    const label = `correction ${position}`;
+    assertExactKeys(correction,
+      ["id", "publishedAt", "title", "plainLanguage", "progressSnapshot", "source", "evidence"], label);
+    assertIdentifier(correction.id, `${label} id`);
+    if (entryIds.has(correction.id) || correction.id === "proof-progress-model-v0-baseline") {
+      fail(`${label}: duplicate update ID ${correction.id}`);
+    }
+    entryIds.add(correction.id);
+    assertTimestamp(correction.publishedAt, `${label} publishedAt`);
+    assertPlainLanguage(correction.title, `${label} title`);
+    if (!Array.isArray(correction.plainLanguage) || correction.plainLanguage.length !== 2) {
+      fail(`${label}: plainLanguage must contain exactly two paragraphs`);
+    }
+    correction.plainLanguage.forEach((paragraph, i) => assertPlainLanguage(paragraph, `${label} plainLanguage ${i}`));
+    assertExactKeys(correction.source, ["commit", "tree", "statusCoordinate", "publicationCoordinate"], `${label} source`);
+    assertSha(correction.source.commit, `${label} source commit`);
+    assertSha(correction.source.tree, `${label} source tree`);
+    assertSafeToken(correction.source.statusCoordinate, `${label} source statusCoordinate`);
+    assertSafeToken(correction.source.publicationCoordinate, `${label} source publicationCoordinate`);
+    if (!publishedSources.has(sourceKey(correction.source))) {
+      fail(`${label}: source binding is neither the current snapshot nor a recorded published snapshot`);
+    }
+    const snapshot = historyProgressSnapshot(progress, correction.source.statusCoordinate, label);
+    assertExactKeys(correction.progressSnapshot, Object.keys(snapshot), `${label} progressSnapshot`);
+    if (Object.keys(snapshot).some((key) => correction.progressSnapshot[key] !== snapshot[key])) {
+      fail(`${label}: progressSnapshot conflicts with canonical progress history`);
+    }
+    const timestamp = Date.parse(correction.publishedAt);
+    if (previousTimestamp !== null && timestamp > previousTimestamp) fail(`${label}: corrections must be newest first`);
+    previousTimestamp = timestamp;
+    const binding = JSON.stringify([correction.source.commit, correction.source.tree, correction.source.publicationCoordinate]);
+    const previousBinding = timestampSources.get(correction.publishedAt);
+    if (previousBinding !== undefined && previousBinding !== binding) {
+      fail(`${label}: shared publication timestamp requires the same batch source`);
+    }
+    timestampSources.set(correction.publishedAt, binding);
+    if (timestamp >= Date.parse(data.entries[0].publishedAt) && sourceKey(correction.source) !== sourceKey(currentSource)) {
+      fail(`${label}: a current correction must match the current source pin`);
+    }
+    validateCorrectionEvidenceShape(correction);
+    if (sourceKey(correction.source) === sourceKey(currentSource)) {
+      validateCorrectionEvidence(correction, status, inventory);
+    }
+    // Historical notices retain their original evidence. The source-bound audit
+    // validates it against status and inventory at the exact recorded commit.
+    return { ...correction };
+  });
+}
+
+function orderedUpdates(model) {
+  return [
+    ...model.entries.map((entry) => ({ ...entry, updateKind: "milestone" })),
+    ...model.corrections.map((entry) => ({ ...entry, updateKind: "correction" }))
+  ].sort((left, right) => Date.parse(right.publishedAt) - Date.parse(left.publishedAt)
+    || (left.updateKind === right.updateKind ? 0 : left.updateKind === "correction" ? -1 : 1));
+}
+
 function validateUpdatesModel(data, status, index, progress, inventory) {
-  assertExactKeys(data, ["kind", "version", "trackingBaseline", "entries"], "updates data");
-  if (data.kind !== "PNPLabsMilestoneUpdates3" || data.version !== 3) {
+  assertExactKeys(data, ["kind", "version", "trackingBaseline", "entries", "corrections"], "updates data");
+  if (data.kind !== "PNPLabsMilestoneUpdates4" || data.version !== 4) {
     fail("updates data: unsupported kind or version");
   }
   assertExactKeys(data.trackingBaseline, ["earnedCount", "milestoneIds"], "tracking baseline");
@@ -292,6 +424,7 @@ function validateUpdatesModel(data, status, index, progress, inventory) {
   }
   return {
     entries: orderedEntries,
+    corrections: validateCorrections(data, status, index, progress, inventory, entryIds, timestampSources),
     earnedCount: earnedIds.size,
     proofProgress
   };
@@ -334,7 +467,8 @@ function renderTechnicalDetails(entry) {
     + `          <p><strong>Milestone:</strong> <code>${escaped(entry.milestoneId)}</code></p>\n`
     + `          <p><strong>Classification:</strong> ${escaped(milestone.classification)}</p>\n`
     + `          <p><strong>Verified scope:</strong> ${escaped(milestone.scope)}</p>\n`
-    + `          <p><strong>Boundary:</strong> ${escaped(milestone.nonClaim)}</p>\n`
+    + `          <p><strong>Recorded milestone boundary:</strong> ${escaped(milestone.nonClaim)}</p>\n`
+    + `          <p>Later milestones may close obligations described as open in this recorded boundary. See the <a href="status.html#proof-progress">current proof tracker</a> and current proof boundary for today\'s project status.</p>\n`
     + `          <p><strong>Reviewed theorem pins:</strong> ${milestone.requiredTheorems.length}</p>\n`
     + `          <p><strong>Core source:</strong> commit <code>${escaped(entry.source.commit)}</code>, tree <code>${escaped(entry.source.tree)}</code>, status <code>${escaped(entry.source.statusCoordinate)}</code>.</p>\n`
     + `          <p><strong>Publication:</strong> <code>${escaped(entry.source.publicationCoordinate)}</code>.</p>\n`
@@ -356,26 +490,45 @@ function renderProgressBaselineUpdate(progress) {
     + `      </article>`;
 }
 
+function renderCorrectionDetails(entry) {
+  const evidence = entry.evidence;
+  return `        <details>\n`
+    + `          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>\n`
+    + `          <p><strong>Update type:</strong> Correction, not an earned milestone.</p>\n`
+    + `          <p><strong>Source-bound limitation:</strong> ${escaped(evidence.nonClaim)}</p>\n`
+    + `          <p><strong>Compiled correction evidence:</strong></p><ul>${evidence.theorems.map((theorem) => `<li><code>${escaped(theorem.name)}</code> in <code>${escaped(theorem.module)}</code>; audited axioms: ${theorem.axioms.length ? theorem.axioms.map(escaped).join(", ") : "none"}.</li>`).join("")}</ul>\n`
+    + `          <p><strong>Core source:</strong> commit <code>${escaped(entry.source.commit)}</code>, tree <code>${escaped(entry.source.tree)}</code>, status <code>${escaped(entry.source.statusCoordinate)}</code>.</p>\n`
+    + `          <p><strong>Publication:</strong> <code>${escaped(entry.source.publicationCoordinate)}</code>.</p>\n`
+    + `          <p>A correction does not create an earned milestone or award proof-completion credit. Any score change must come from the canonical fixed-checkpoint ledger.</p>\n`
+    + `          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record. These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>\n`
+    + `        </details>`;
+}
+
+function renderUpdateArticle(entry) {
+  const correction = entry.updateKind === "correction";
+  const paragraphs = entry.plainLanguage.map((paragraph) => `        <p>${escaped(paragraph)}</p>`).join("\n");
+  const progress = entry.progressSnapshot
+    ? `\n        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original ${correction ? "correction" : "formal milestone"}"><strong>Tracker at ${escaped(entry.source.statusCoordinate)}</strong><ul><li>Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%</li><li>Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%</li><li>Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}</li></ul></div>`
+    : entry.progressEstimatePercent === null
+      ? ""
+      : `\n        <p class="update-progress"><strong>Superseded scoped-row/editorial estimate at publication:</strong> ${entry.progressEstimatePercent}%. This historical figure is not the current risk-weighted proof-completion estimate and is not a probability or confidence score.</p>`;
+  const attribute = correction ? 'data-update-kind="correction"' : `data-milestone-id="${escaped(entry.milestoneId)}"`;
+  const label = correction ? "Correction, not an earned milestone" : `earned milestone ${entry.earnedOrdinal}`;
+  return `      <article class="card" id="${escaped(entry.id)}" ${attribute}>\n`
+    + `        <div class="section-label"><time datetime="${escaped(entry.publishedAt)}">${escaped(entry.publishedAt.slice(0, 10))}</time> · ${label}</div>\n`
+    + `        <h2>${escaped(entry.title)}</h2>\n`
+    + `${paragraphs}${progress}\n`
+    + `${correction ? renderCorrectionDetails(entry) : renderTechnicalDetails(entry)}\n`
+    + `      </article>`;
+}
+
 function renderUpdatesHtml(model) {
-  const articles = model.entries.map((entry) => {
-    const paragraphs = entry.plainLanguage.map((paragraph) => `        <p>${escaped(paragraph)}</p>`).join("\n");
-    const progress = entry.progressSnapshot
-      ? `\n        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at ${escaped(entry.source.statusCoordinate)}</strong><ul><li>Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned</li><li>Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%</li><li>Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%</li><li>Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}</li></ul></div>`
-      : entry.progressEstimatePercent === null
-        ? ""
-        : `\n        <p class="update-progress"><strong>Superseded scoped-row/editorial estimate at publication:</strong> ${entry.progressEstimatePercent}%. This historical figure is not the current risk-weighted proof-completion estimate and is not a probability or confidence score.</p>`;
-    return `      <article class="card" id="${escaped(entry.id)}" data-milestone-id="${escaped(entry.milestoneId)}">\n`
-      + `        <div class="section-label"><time datetime="${escaped(entry.publishedAt)}">${escaped(entry.publishedAt.slice(0, 10))}</time> · earned milestone ${entry.earnedOrdinal}</div>\n`
-      + `        <h2>${escaped(entry.title)}</h2>\n`
-      + `${paragraphs}${progress}\n`
-      + `${renderTechnicalDetails(entry)}\n`
-      + `      </article>`;
-  }).join("\n\n");
+  const articles = orderedUpdates(model).map(renderUpdateArticle).join("\n\n");
 
   return `<!DOCTYPE html>\n<html lang="en-AU">\n<head>\n`
     + `  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1">\n`
     + `  <title>PNP Labs | milestone updates</title>\n`
-    + `  <meta name="description" content="Plain-language and technical updates for each newly earned PNP Labs formal milestone.">\n`
+    + `  <meta name="description" content="Plain-language updates for earned formal milestones and separately evidenced corrections.">\n`
     + `  <link rel="canonical" href="${BASE_URL}/updates.html">\n`
     + `  <link rel="alternate" type="application/atom+xml" title="PNP Labs milestone updates" href="${BASE_URL}/updates.xml">\n`
     + `  <meta name="theme-color" content="#f5f6f7">\n`
@@ -391,9 +544,9 @@ function renderUpdatesHtml(model) {
     + `    <button class="menu-btn" data-menu type="button" aria-expanded="false" aria-controls="nav">Menu</button>\n`
     + `  </div></header>\n`
     + `  <main id="main">\n`
-    + `    <section class="page-hero updates-hero"><span class="eyebrow">Follow verified progress</span><h1>Follow each machine-checked milestone.</h1>\n`
+    + `    <section class="page-hero updates-hero"><span class="eyebrow">Follow verified progress</span><h1>Follow verified milestones and corrections.</h1>\n`
     + `      <p class="lede">Every update begins in everyday language and assumes no mathematics background. Open its technical details only when you want the exact Lean scope, theorem pins, and limits.</p>\n`
-    + `      <p class="small">Milestones first published in one batch share a publication timestamp. Each retains its original formal-history coordinate and progress snapshot; the cited source is the batch's reviewed proof snapshot.</p>\n`
+    + `      <p class="small">Milestones first published in one batch share a publication timestamp. Each retains its original formal-history coordinate and progress snapshot; the cited source is the batch's reviewed proof snapshot. Corrections are labelled separately and do not count as earned milestones.</p>\n`
     + `      <div class="feed-box" aria-labelledby="feed-heading"><div><strong id="feed-heading">Use an RSS or Atom reader</strong><p>Your reader checks this address for new milestones. No email address or PNP Labs account is needed.</p><code id="feed-url">https://pnplabs.com.au/updates.xml</code></div><button class="btn secondary" type="button" data-copy="#feed-url">Copy feed address</button></div>\n`
     + `      <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>\n`
     + `    </section>\n`
@@ -405,22 +558,25 @@ function renderUpdatesHtml(model) {
 }
 
 function renderAtomFeed(model) {
-  const updated = model.entries[0].publishedAt;
-  const entries = model.entries.map((entry) => {
+  const updates = orderedUpdates(model);
+  const updated = updates[0].publishedAt;
+  const entries = updates.map((entry) => {
     const url = `${BASE_URL}/updates.html#${entry.id}`;
     const progressText = entry.progressSnapshot
       ? ` Tracker at publication: formal artefact coverage ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows}; risk-weighted proof completion estimate ${entry.progressSnapshot.riskWeightedProofCompletionPercent} percent; uncertainty range ${entry.progressSnapshot.uncertaintyLowPercent} to ${entry.progressSnapshot.uncertaintyHighPercent} percent; global gates closed ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}.`
       : entry.progressEstimatePercent === null
         ? ""
         : ` Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent} percent; this historical figure is not current risk-weighted proof completion, a probability, or a confidence score.`;
-    const summary = `${entry.plainLanguage.join(" ")}${progressText}`;
+    const correctionLabel = entry.updateKind === "correction" ? "Correction, not an earned milestone. " : "";
+    const summary = `${correctionLabel}${entry.plainLanguage.join(" ")}${progressText}`;
     const progressContent = entry.progressSnapshot
       ? `<p data-proof-progress-model="${escaped(entry.progressSnapshot.modelId)}">Formal artefact coverage: ${entry.progressSnapshot.formalArtefactCoverageEarnedRows} of ${entry.progressSnapshot.formalArtefactCoverageTotalRows} current scoped rows earned. Risk-weighted proof completion estimate: ${entry.progressSnapshot.riskWeightedProofCompletionPercent}%. Uncertainty range: ${entry.progressSnapshot.uncertaintyLowPercent}% to ${entry.progressSnapshot.uncertaintyHighPercent}%. Global gates closed: ${entry.progressSnapshot.globalGatesClosed} of ${entry.progressSnapshot.globalGatesAvailable}.</p>`
       : entry.progressEstimatePercent === null
         ? ""
         : `<p data-superseded-progress-estimate-percent="${entry.progressEstimatePercent}">Superseded scoped-row/editorial estimate at publication: ${entry.progressEstimatePercent}%. This historical figure is not current risk-weighted proof completion, a probability, or a confidence score.</p>`;
-    const content = `${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
+    const content = `${correctionLabel ? "<p>"+escaped(correctionLabel.trim())+"</p>" : ""}${entry.plainLanguage.map((paragraph) => `<p>${escaped(paragraph)}</p>`).join("")}${progressContent}<p><a href="${url}">Read the technical details on PNPLabs.</a></p>`;
     return `  <entry>\n`
+      + (entry.updateKind === "correction" ? `    <category term="correction"/>\n` : "")
       + `    <id>${escaped(url)}</id>\n`
       + `    <title>${escaped(entry.title)}</title>\n`
       + `    <link rel="alternate" href="${escaped(url)}"/>\n`
@@ -434,7 +590,7 @@ function renderAtomFeed(model) {
     + `<feed xmlns="http://www.w3.org/2005/Atom">\n`
     + `  <id>${BASE_URL}/updates.html</id>\n`
     + `  <title>PNP Labs milestone updates</title>\n`
-    + `  <subtitle>Plain-language updates with source-bound technical details for newly earned formal milestones.</subtitle>\n`
+    + `  <subtitle>Plain-language updates with source-bound technical details for earned formal milestones and separately labelled corrections.</subtitle>\n`
     + `  <link rel="self" type="application/atom+xml" href="${BASE_URL}/updates.xml"/>\n`
     + `  <link rel="alternate" type="text/html" href="${BASE_URL}/updates.html"/>\n`
     + `  <updated>${escaped(updated)}</updated>\n`
@@ -490,7 +646,7 @@ function parseArguments(argv) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const result = await generateMilestoneUpdates(parseArguments(process.argv.slice(2)));
-    process.stdout.write(`milestone-updates-valid: ${result.entries.length} entries covering ${result.earnedCount} earned milestones\n`);
+    process.stdout.write(`milestone-updates-valid: ${result.entries.length} milestone updates and ${result.corrections.length} corrections covering ${result.earnedCount} earned milestones\n`);
   } catch (error) {
     process.stderr.write(`${error.name}: ${error.message}\n`);
     process.exitCode = 1;
@@ -504,5 +660,6 @@ export {
   renderAtomFeed,
   renderProgressSvg,
   renderUpdatesHtml,
+  validateCorrectionEvidence,
   validateUpdatesModel
 };

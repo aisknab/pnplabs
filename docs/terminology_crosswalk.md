@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/029153fc5d8bfc84c61d33858d0472bcbf3d3a73/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/029153fc5d8bfc84c61d33858d0472bcbf3d3a73/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/f14cb7a87004ebedfa55351f6ba20d68a333cc18/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/f14cb7a87004ebedfa55351f6ba20d68a333cc18/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
@@ -32,7 +32,7 @@ Checker paths have two different statuses:
   historical audit targets rather than current theorem evidence.
 - **Pinned cross-repo target**: a path assigned to `sourceRef`, `docsRef`, or `artifactRef` in [source_checker_map.md](source_checker_map.md) and [audit_targets.json](audit_targets.json). Running source/checker tests checks the package according to its implementation; it is not external mathematical acceptance.
 
-## Current computational history integration
+## Earlier computational history integration
 
 M263-M264 extend the earlier scoped support search and causal expansion with dependency-ordered histories and source-derived literal replacement. See the [compiled history and splice note](https://github.com/aisknab/pnp/blob/029153fc5d8bfc84c61d33858d0472bcbf3d3a73/docs/lean_wire_history_arbitrary_support.md) and [Lean source](https://github.com/aisknab/pnp/blob/029153fc5d8bfc84c61d33858d0472bcbf3d3a73/lean/PNP/NANDWireHistoryArbitrarySupport.lean). These definitions concern the computational carrier, not the full manuscript carrier. Current progress and source identity are in [formal status](../status.html); vocabulary adds no checkpoint credit.
 
@@ -44,6 +44,18 @@ M263-M264 extend the earlier scoped support search and causal expansion with dep
 | Exact history cost balance | Final gates plus actual removals equal original gates plus all actual materializer charges. | A history with charges at least as large as removals does not earn strict saving. | The reviewed gate-accounting and strict-gain theorems in the source-bound status ledger; a finite cost equation is not a total polynomial-runtime theorem. |
 
 The selected support and raw history remain input data. These results do not supply all manuscript R1-R9 or N1-N10 rules, full R7, arbitrary observers or full-profile compatibility. They do not derive terminal families or a globally successful strategy, complete Package E, global routes, unconditional SaturatePositive, BCELReady or ZeroSlack, exact general PCCMin, or complete encoded-input polynomial runtime, output and certificate bounds. The earlier paid-copy expansion and zero/unary search retain their narrower standalone interfaces.
+
+## Current admissibility boundary
+
+For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
+
+This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open.
+
+The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.
+
+This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
+
+A completed-support cost comparison is not a proof that every raw positive local witness has an admissible completion with the same saving. The next general obligation must derive that admissibility and successful routing from the source, not assume a complete family or route certificate. See the [current update](../updates.html#2026-09-24-computed-closed-support-nested-positivity) and [checked correction](../updates.html#unrestricted-compatible-support-slack-correction).
 
 ## Current Formal-Evidence Terms
 

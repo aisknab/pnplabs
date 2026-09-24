@@ -2,15 +2,23 @@
 
 This checkout is the public website, current inventory-derived report bundle, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for the PNP project.
 
-## M264 current publication
+## M280 current publication
 
-**Checked rewrite histories now compile into arbitrary circuit regions**
+**Proving cost comparisons for nested completed supports**
 
-For any accepted closed rewrite history on an arbitrarily selected finite circuit region, the construction now builds a literal replacement in the original circuit. It derives the required acyclic wiring from the source and actual history, preserves every ordered original output, and retains each exterior gate exactly once. No caller-supplied replacement, rank, schedule or correctness certificate is needed.
+For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
 
-The selected region and rewrite history are still inputs. Final gates plus actual removals equal original gates plus all restoration charges, so gates are saved only when removals exceed charges. The result covers the implemented computational rewrite rules, not the complete manuscript calculus or a globally successful strategy. Unconditional ZeroSlack, exact general PCCMin and complete polynomial runtime and certificate bounds remain open. No fixed weighted checkpoint or global gate changes.
+This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open.
 
-Formal artefact coverage: 240 of 242 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Formal artefact coverage: 256 of 258 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+
+### A verified limit on replacing parts of a circuit
+
+The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.
+
+This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
 
 ## Current status
 
@@ -484,21 +492,21 @@ The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` libr
 
 ## Progress tracker
 
-[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-15-264` it reports separate metrics:
+[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280` it reports separate metrics:
 
-- Formal artefact coverage: **240 of 242** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
+- Formal artefact coverage: **256 of 258** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
 - Risk-weighted proof completion estimate: **40%**, with uncertainty **20% to 40%**. This is a conservative estimate of complete proof burden retired, not a probability or time estimate.
 - Global gates closed: **0 of 5**. Project-specific axioms remaining: **0**. The eligible root is absent and the publication gate is false.
 
 The fixed track scores are 13/15 for Formal foundations and proof infrastructure; 20/20 for Concrete reductions and locked-NAND route; 2/35 for Unconditional residual core and ZeroSlack; 1/20 for Exact PCCMin algorithm, complexity and bounds; 4/10 for Root theorem and project-axiom elimination. This publication batch changes no fixed weighted checkpoint and earns no extra points for its added evidence rows. The earlier M230 complete-builder and M231 concrete NP-hardness checkpoint reviews remain in the canonical history.
 
-**Arbitrary-width circuit expansion with explicit copy costs**
+**Proving cost comparisons for nested completed supports**
 
-The construction now compiles an actual replacement circuit for arbitrary finite supports and incoming-boundary widths. Given complete local open-function agreement, it preserves every ordinary output and tracked computational wire field. It derives the physical dependency order and compiler success from the source rather than requiring a supplied schedule or correctness certificate.
+For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
 
-Every distinct retained physical producer pays for a complete replacement copy. The expanded circuit retains each exterior gate once and saves gates only when the total cost of all replacement copies is smaller than the selected support. A smaller local replacement alone is insufficient. This is not global circuit minimization or a theorem of total polynomial runtime; the full manuscript carrier and obligation calculus, unconditional ZeroSlack, exact general PCCMin and the eligible root remain open. No fixed weighted checkpoint or global gate changes.
+This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open.
 
-The [source-bound update](updates.html#2026-09-14-wire-causal-expansion) and [complete formal ledger](status.html) give the exact theorem scope, non-claim and reviewed evidence for every earned row. This publication batches M259 through M262 after the retained M232 through M258 update. Earlier finite or supplied-data results retain their own limitations; later source-derived computational constructions do not retroactively change those theorem statements.
+The [source-bound update](updates.html#2026-09-24-computed-closed-support-nested-positivity) and [verified correction](updates.html#unrestricted-compatible-support-slack-correction) distinguish the checked restricted results from the open general argument. This publication batches M265 through M280. Earlier records retain their original scopes and limitations.
 
 M230 and M231 establish the complete all-input Cook-Levin polynomial reduction and concrete CNF-SAT NP-completeness, not a polynomial-time SAT algorithm. M243 connects that checked hardness to the active final-report bridge, but its minimization-loop certificate and existence premises remain unconstructed. The full manuscript carrier and obligation calculus, complete globally decreasing routes, unconditional SaturatePositive, BCELReady and ZeroSlack, general exact PCCMin, and complete polynomial runtime, output and certificate bounds remain open.
 

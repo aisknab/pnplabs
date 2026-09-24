@@ -1,4 +1,5 @@
 import test from "node:test";
+import { renderStatus } from "../../tools/generate-proof-progress-surfaces.mjs";
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
@@ -70,8 +71,9 @@ test("current updates cover every milestone earned after the exact 39-milestone 
   const [data, status, index] = await fixtures();
   const model = validateUpdatesModel(data, status, index);
   assert.equal(data.trackingBaseline.earnedCount, 39);
-  assert.equal(data.kind, "PNPLabsMilestoneUpdates3");
-  assert.equal(data.version, 3);
+  assert.equal(data.kind, "PNPLabsMilestoneUpdates4");
+  assert.equal(data.version, 4);
+  assert.equal(model.corrections.length, data.corrections.length);
   assert.equal(model.earnedCount, index.formalPublicationMilestoneCounts.earned);
   assert.equal(model.entries.length, model.earnedCount - data.trackingBaseline.earnedCount);
   assert.deepEqual(
@@ -102,9 +104,11 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
-  const firstPlain = html.indexOf(escapeExpected(data.entries[0].plainLanguage[0]));
-  const secondPlain = html.indexOf(escapeExpected(data.entries[0].plainLanguage[1]));
-  const details = html.indexOf("<details>");
+  const articleStart = html.indexOf(`id="${data.entries[0].id}"`);
+  const article = html.slice(articleStart, html.indexOf("</article>", articleStart));
+  const firstPlain = article.indexOf(escapeExpected(data.entries[0].plainLanguage[0]));
+  const secondPlain = article.indexOf(escapeExpected(data.entries[0].plainLanguage[1]));
+  const details = article.indexOf("<details>");
   assert.ok(firstPlain > 0 && secondPlain > firstPlain && details > secondPlain);
   assert.match(html, /<details>\s*<summary class="disclosure-summary"><span>Technical details<\/span>/u);
   assert.doesNotMatch(html, /<details\s+open/u);
@@ -120,6 +124,36 @@ test("HTML puts two plain-language paragraphs before one collapsed source-derive
   assert.match(html, /assets\/proof-progress\.svg/u);
   assert.match(html, /release seal and deployment provenance record/u);
   assert.doesNotMatch(html, /<form\b|<script[^>]+https?:\/\//iu);
+});
+
+test("recorded milestone boundaries are contextualized without rewriting historical evidence", async () => {
+  const [data, status, index] = await fixtures();
+  const historyBefore = JSON.stringify(data);
+  const evidenceBefore = JSON.stringify(status.formalPublicationMilestones);
+  const model = validateUpdatesModel(data, status, index);
+  const entry = model.entries.find((row) => row.milestoneId === "concrete-cook-levin-complete-builder");
+  assert.ok(entry, "the historical complete-builder entry must remain present");
+  const hardness = canonicalProgress.tracks.flatMap((track) => track.checkpoints)
+    .find((checkpoint) => checkpoint.id === "reductions-concrete-np-hardness");
+  assert.equal(hardness.status, "earned");
+  assert.match(entry.milestone.nonClaim, /NP-hardness or NP-completeness transport remains to be published/u);
+  const escapeExpected = (value) => value
+    .replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;").replaceAll("'", "&#39;");
+  const html = renderUpdatesHtml(model);
+  const start = html.indexOf('id="' + entry.id + '"');
+  assert.ok(start >= 0);
+  const article = html.slice(start, html.indexOf("</article>", start));
+  assert.match(article, /<strong>Recorded milestone boundary:<\/strong>/u);
+  assert.ok(article.includes(escapeExpected(entry.milestone.nonClaim)));
+  assert.match(article, /Later milestones may close obligations described as open in this recorded boundary/u);
+  assert.match(article, /href="status.html#proof-progress">current proof tracker<\/a>/u);
+  const current = renderStatus(model.proofProgress);
+  assert.match(current, /<p data-formal-ledger-context>/u);
+  assert.match(current, /Later results may close obligations described as open in older rows/u);
+  assert.match(current, /The tracker above and current proof boundary describe today's project status/u);
+  assert.equal(JSON.stringify(data), historyBefore);
+  assert.equal(JSON.stringify(status.formalPublicationMilestones), evidenceBefore);
 });
 
 test("Atom output has stable IDs, canonical timestamps, escaped text, and no duplicated technical prose", async () => {
