@@ -185,16 +185,16 @@ test('M264 batch contract is wired alongside every retained batch', () => {
     ['tools/check-cross-repo-targets.mjs',['PublicationMap','Status','Inventory','Manifest']],
   ]) {
     const source = readFileSync(file,'utf8');
-    for (const batch of [258,262,264]) {
+    for (const batch of [258,262,264,280]) {
       assert.ok(source.includes("from './formal-m" + batch + "-batch-contract.mjs'"),file);
       for (const kind of kinds) assert.match(source,new RegExp('assertM' + batch + 'Batch' + kind + '\\(\\w+\\);'),file);
     }
-    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX)').length - 1,6,file);
+    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX)').length - 1,6,file);
   }
   const browser = readFileSync('assets/main.js','utf8');
   assertM264BrowserDescriptor(browser);
   for (const kind of ['inventory','status']) assert.ok(browser.includes('try { FORMAL_M263_M264_VALIDATORS.' + kind + '(' + kind + '); } catch { return false; }'));
-  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH].flatMap(batch => batch.milestones)'));
+  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH].flatMap(batch => batch.milestones)'));
 });
 
 test('M264 current mirrors bind the latest reviewed source and separate progress fields', () => {

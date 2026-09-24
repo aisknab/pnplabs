@@ -188,7 +188,7 @@ test('M262 batch contract is wired alongside the retained M258 evidence', () => 
       assert.ok(source.includes("from './formal-m" + batch + "-batch-contract.mjs'"), file);
       for (const kind of kinds) assert.match(source, new RegExp('assertM' + batch + 'Batch' + kind + '\\(\\w+\\);'), file);
     }
-    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
+    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
   }
   const browser = readFileSync('assets/main.js', 'utf8');
   assertM262BrowserDescriptor(browser);
@@ -196,7 +196,7 @@ test('M262 batch contract is wired alongside the retained M258 evidence', () => 
     const guard = 'try { FORMAL_M259_M262_VALIDATORS.' + kind + '(' + kind + '); } catch { return false; }';
     assert.ok(browser.includes(guard), kind + ': fail-closed browser validator');
   }
-  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH].flatMap(batch => batch.milestones)'));
+  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH].flatMap(batch => batch.milestones)'));
 });
 
 test('M262 current mirrors and manifest bind the exact reviewed source and independent progress fields', () => {

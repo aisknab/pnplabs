@@ -1,6 +1,6 @@
 {
-  "kind": "PNPLabsMilestoneUpdates3",
-  "version": 3,
+  "kind": "PNPLabsMilestoneUpdates4",
+  "version": 4,
   "trackingBaseline": {
     "earnedCount": 39,
     "milestoneIds": [
@@ -45,7 +45,599 @@
       "explicit-residual-routes"
     ]
   },
+  "corrections": [
+    {
+      "id": "unrestricted-compatible-support-slack-correction",
+      "title": "A verified limit on replacing parts of a circuit",
+      "plainLanguage": [
+        "The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.",
+        "This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving."
+      ],
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 256,
+        "formalArtefactCoverageTotalRows": 258,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      },
+      "evidence": {
+        "nonClaim": "The unrestricted raw-port-complete compatible-support slack inequality is refuted by a kernel-checked eleven-gate counterexample: the whole word is minimum with slack zero, while its actual proper nine-gate cut has independent open minimum eight and slack one. Its smaller equivalent literal splice is cyclic. This does not refute the checked acyclic framed law or a correctly restricted full/admissible-support law. Complete source-derived full-profile admissibility, first-loss routing and the global proof obligations remain open. This correction adds no earned positive publication row or fixed checkpoint credit.",
+        "theorems": [
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.formula_exact",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.baseline",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.no_output_is_first_nand",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.gate_lower_bound",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.original_is_minimum",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.original_reference_minimum",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.global_slack_zero",
+            "module": "PNP.NANDCompatibleSupportSlackMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.boundary_exact",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.interface_exact",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.selected_gate_count",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.smaller_formula_exact",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.same_open_function",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.comparison_reference_minimum",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.open_baseline",
+            "module": "PNP.NANDCompatibleSupportSlackObstruction",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.local_reference_minimum",
+            "module": "PNP.NANDCompatibleSupportSlackObstruction",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.local_slack_one",
+            "module": "PNP.NANDCompatibleSupportSlackObstruction",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.global_slack_law_violation",
+            "module": "PNP.NANDCompatibleSupportSlackObstruction",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.CompatibleSupportSlackObstruction.literal_splice_is_cyclic",
+            "module": "PNP.NANDCompatibleSupportSlackComparison",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          }
+        ]
+      }
+    }
+  ],
   "entries": [
+    {
+      "id": "2026-09-24-computed-closed-support-nested-positivity",
+      "milestoneId": "computed-closed-support-nested-positivity",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Proving cost comparisons for nested completed supports",
+      "plainLanguage": [
+        "For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.",
+        "This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 256,
+        "formalArtefactCoverageTotalRows": 258,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-computed-whole-support-minimum-bridge",
+      "milestoneId": "computed-whole-support-minimum-bridge",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Connecting two whole-circuit minimum-size models",
+      "plainLanguage": [
+        "Two independently defined minimum-size problems now agree when the selected support is the whole circuit. The proof gives concrete size-preserving translations in both directions, so the connection no longer depends on a supplied equality.",
+        "This closes a model-compatibility check. It still uses exhaustive minimisation and does not find useful smaller local supports or provide an efficient general algorithm."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 255,
+        "formalArtefactCoverageTotalRows": 257,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-279",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-computed-closed-support-full-profile-gain",
+      "milestoneId": "computed-closed-support-full-profile-gain",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Preserving a local saving when rebuilding the whole circuit",
+      "plainLanguage": [
+        "An improving replacement for a computed closed support can now be turned into a whole-circuit replacement that preserves the required outputs and fields. The construction derives the untouched part and proves the exact saving in gates and in the formal measure of remaining improvement.",
+        "This verifies the positive branch once a suitable support is available. The minimum is still obtained by exhaustive reference search, and discovering a useful proper support for every input remains an open part of the general method."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 254,
+        "formalArtefactCoverageTotalRows": 256,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-19-278",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-computed-closed-support-profile-squares",
+      "milestoneId": "computed-closed-support-profile-squares",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Checking compatibility when completed supports are combined",
+      "plainLanguage": [
+        "For the supports completed by the existing closure operation, the formal model now derives their observations and proves how requested fields are preserved when two supports are combined.",
+        "This establishes the stated compatibility of those constructed supports. It does not show how to find a proper support with a useful saving, reconstruct all ordinary outputs in this step, or complete the global proof."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 253,
+        "formalArtefactCoverageTotalRows": 255,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-19-277",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-computed-wire-profile-exact-field-cost",
+      "milestoneId": "computed-wire-profile-exact-field-cost",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Computing observation supports and an exact independent cost",
+      "plainLanguage": [
+        "The project now computes the available wire sources and the supports that preserve selected observations. It also proves an exact additional gate cost for a specified family of independent new fields, then connects that cost result to the computed model.",
+        "These are derived constructions, not supplied correctness certificates. The cost theorem applies to that independent family; it does not justify adding costs for arbitrary fields or establish the missing general routing and efficient minimisation results."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 252,
+        "formalArtefactCoverageTotalRows": 254,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-19-276",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-wire-profile-restoration-cost",
+      "milestoneId": "wire-profile-restoration-cost",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Accounting for the cost of restoring information",
+      "plainLanguage": [
+        "A concrete construction now restores requested wire information and accounts for its full cost. The resulting comparison shows exactly when the restored circuit is genuinely smaller than the original.",
+        "Restoration is not guaranteed to succeed whenever a smaller circuit exists; a checked refusal example makes that limit explicit. The result reuses established one-input construction where applicable and does not supply a general efficient minimiser."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 251,
+        "formalArtefactCoverageTotalRows": 253,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-19-275",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-wire-profile-exposure-balance",
+      "milestoneId": "wire-profile-exposure-balance",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Separating reduced observations from full replacement requirements",
+      "plainLanguage": [
+        "The project now models requested observations using actual circuit wires, including the ordinary outputs in every comparison. It proves exactly how changing which information must be preserved moves the difference between two independently defined minimum-size requirements.",
+        "This explains why an improvement under fewer requirements may stop being an improvement when all information must be restored. The reference minimisation is exhaustive, and the complete manuscript model, universally useful local families and efficient optimisation remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 250,
+        "formalArtefactCoverageTotalRows": 252,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-19-274",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-source-derived-zero-cost-exposure",
+      "milestoneId": "source-derived-zero-cost-exposure",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Identifying a precise class of cost-free exposures",
+      "plainLanguage": [
+        "Some requested information can be exposed by reusing an existing input, constant or output. For this precisely defined class, the project now derives the exposure from the source circuit and proves that it changes neither the minimum required size nor the available saving.",
+        "The recogniser is complete only for those literal reuse cases. A refusal does not establish that a positive-cost alternative exists, and adding no gates must not be confused with preserving the optimisation problem in every other situation."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 249,
+        "formalArtefactCoverageTotalRows": 251,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-18-273",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-computational-recoding-program-integration",
+      "milestoneId": "computational-recoding-program-integration",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Checking representation changes and their costs",
+      "plainLanguage": [
+        "The sequence checker now supports a checked change of computational representation using actual encoding and decoding circuits. It checks both directions, preserves pending obligations, and records the gates added and removed.",
+        "The representation change is not treated as free. Its inverse check still searches the possible observed values, so this is not a proof of efficient execution or a general strategy for solving every instance."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 248,
+        "formalArtefactCoverageTotalRows": 250,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-18-272",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-structural-open-program-integration",
+      "milestoneId": "structural-open-program-integration",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Using verified reorderings inside complete proposals",
+      "plainLanguage": [
+        "Those verified reorderings now run inside complete proposed replacement sequences, including sequences with unfinished obligations. The implementation preserves the actual observed wires, their dependency information and the ownership history.",
+        "Reordering alone creates no saving and receives no improvement certificate. Acceptance still requires the whole sequence to complete, every obligation to close and the final result to save gates; finding a successful sequence remains open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 247,
+        "formalArtefactCoverageTotalRows": 249,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-17-271",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-structural-reindexing-support-transport",
+      "milestoneId": "structural-reindexing-support-transport",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Transporting replacements through a gate reordering",
+      "plainLanguage": [
+        "A reordering of circuit gates can now be carried through a selected replacement without changing the calculation or its cost. The formal construction derives the matching inputs, outputs and ownership, instead of requiring someone to supply those correspondences.",
+        "This lets an already accepted replacement move between the two structurally equivalent arrangements. It concerns this reordering operation, not arbitrary changes of representation or a method for finding successful improvements."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 246,
+        "formalArtefactCoverageTotalRows": 248,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-17-270",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-open-obligation-programs",
+      "milestoneId": "open-obligation-programs",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Carrying unfinished obligations between circuit edits",
+      "plainLanguage": [
+        "Pending obligations can now survive changes to which part of the circuit is being edited. The checker follows the original captured information across the full sequence and only accepts after the outstanding obligations have actually been settled.",
+        "The final result must still preserve the required observations and achieve real savings after every construction cost. The sequence and support selections remain inputs; the missing general strategy, full manuscript model and efficient execution bounds are not supplied by this result."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 245,
+        "formalArtefactCoverageTotalRows": 247,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-17-269",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-proper-descendant-certificates",
+      "milestoneId": "proper-descendant-certificates",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Checking complete proposals for local improvements",
+      "plainLanguage": [
+        "The checker now builds and verifies a proposed improvement to a proper part of a circuit directly from its recorded operations. It checks the whole submitted sequence, reconstructs how it fits into the surrounding circuit, and requires a genuine final size saving.",
+        "Temporary growth is allowed, but all original outputs and the required observed values must be preserved. This verifies a proposed improvement; it does not find one for every circuit or prove that discovery and verification are efficient."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 244,
+        "formalArtefactCoverageTotalRows": 246,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-17-268",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-descendant-history-ownership",
+      "milestoneId": "descendant-history-ownership",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Keeping cost records across longer rewrite sequences",
+      "plainLanguage": [
+        "Ownership and cost records now follow a circuit through any finite sequence of accepted local rewrite stages. Earlier construction costs remain charged even if later edits remove the added gates, and a final saving is measured after the whole sequence.",
+        "This supports honest accounting across longer attempts, including temporary growth. The sequence is still supplied and each local history must close its obligations; a general successful strategy is not derived."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 243,
+        "formalArtefactCoverageTotalRows": 245,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-16-267",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-source-derived-history-ownership",
+      "milestoneId": "source-derived-history-ownership",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Tracking each change and its real cost",
+      "plainLanguage": [
+        "The project now derives which original gate or recorded operation produced each physical piece of a rewritten circuit. The construction checks the live, removed and previously created pieces against the actual execution, rather than relying on a supplied ownership ledger.",
+        "Accurate accounting prevents double-counting or treating a removed item as if its creation cost never existed. It does not establish that the chosen edits find the best circuit or finish efficiently."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 242,
+        "formalArtefactCoverageTotalRows": 244,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-16-266",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-09-24-computed-r7-history",
+      "milestoneId": "computed-r7-history",
+      "publishedAt": "2026-09-24T10:49:06.933Z",
+      "title": "Checking another kind of unfinished obligation",
+      "plainLanguage": [
+        "The checker can now recognise and settle another kind of unfinished obligation while following a proposed sequence of circuit changes. It uses the circuit state in which the obligation began, verifies the complete required result, and records the actual cost of restoring missing information.",
+        "This makes proposed sequences more dependable to check. It does not yet provide a method that finds a successful sequence for every input, and the general proof and guaranteed efficient execution remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 241,
+        "formalArtefactCoverageTotalRows": 243,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+        "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-16-265",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
     {
       "id": "2026-09-15-wire-history-arbitrary-support",
       "milestoneId": "wire-history-arbitrary-support",

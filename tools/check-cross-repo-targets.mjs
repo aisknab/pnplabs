@@ -3,6 +3,7 @@ import { assertM231PublicationMap, assertM231Status, assertM231Inventory, assert
 import { assertM258BatchPublicationMap, assertM258BatchStatus, assertM258BatchInventory, assertM258BatchManifest, M258_BATCH_SCOPE_SUFFIX } from './formal-m258-batch-contract.mjs';
 import { assertM262BatchPublicationMap, assertM262BatchStatus, assertM262BatchInventory, assertM262BatchManifest, M262_BATCH_SCOPE_SUFFIX } from './formal-m262-batch-contract.mjs';
 import { assertM264BatchPublicationMap, assertM264BatchStatus, assertM264BatchInventory, assertM264BatchManifest, M264_BATCH_SCOPE_SUFFIX } from './formal-m264-batch-contract.mjs';
+import { assertM280BatchPublicationMap, assertM280BatchStatus, assertM280BatchInventory, assertM280BatchManifest, M280_BATCH_SCOPE_SUFFIX } from './formal-m280-batch-contract.mjs';
 import { assertM230PublicationMap, assertM230Status, assertM230Inventory, assertM230Manifest } from './formal-m230-contract.mjs';
 import { assertM229PublicationMap, assertM229Status, assertM229Inventory, assertM229Manifest } from './formal-m229-contract.mjs';
 import { createHash } from "node:crypto";
@@ -11,13 +12,15 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
+import { validateCorrectionEvidence } from "./generate-milestone-updates.mjs";
+import { assertReviewedCorrectionRetained } from "./compatible-support-correction-contract.mjs";
 
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "029153fc5d8bfc84c61d33858d0472bcbf3d3a73";
-const REVIEWED_CORE_TREE = "d725f0e14d1a4625c0ce991364fa4481ef3c032a";
-const REVIEWED_PROOF_COMMIT = "029153fc5d8bfc84c61d33858d0472bcbf3d3a73";
+const REVIEWED_CORE_COMMIT = "f14cb7a87004ebedfa55351f6ba20d68a333cc18";
+const REVIEWED_CORE_TREE = "1cbaf64d8a7303b154848ec73f38e85e406defca";
+const REVIEWED_PROOF_COMMIT = "f14cb7a87004ebedfa55351f6ba20d68a333cc18";
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -6438,7 +6441,7 @@ function validateM224ReleaseBoundary(manifest, failures) {
       && Array.isArray(earned.cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchProjectAxiomClosure)
       && earned.cookLevinBuilderPhysicalClassifierFirstBodySeparatorMirroredDispatchProjectAxiomClosure.length === 0
       && typeof earned.scope === "string"
-      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M224 boundary mismatch");
+      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M224 boundary mismatch");
 }
 
 const BUILDER_PHYSICAL_CLASSIFIER_ALL_BODY_STAGED_REQUEST_MIRRORED_DISPATCH_THEOREMS = {
@@ -6522,7 +6525,7 @@ function validateM225ReleaseBoundary(manifest, failures) {
       && Array.isArray(earned.cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchProjectAxiomClosure)
       && earned.cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchProjectAxiomClosure.length === 0
       && typeof earned.scope === "string"
-      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M225 boundary mismatch");
+      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M225 boundary mismatch");
   if (earned.cookLevinBuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatchTheoremKernelTypeSha256?.["PNP.Concrete.CookLevin.BuilderPhysicalClassifierAllBodyStagedRequestMirroredDispatch.cook_levin_builder_physical_classifier_all_body_staged_request_mirrored_dispatch_checked_complete"] !== "8659e14e91dc68c48367f63c0531a29845c29700e9abfbbd7a211e0dad9ab4b4") {
     failures.push("current manifest M225 fingerprint mismatch");
   }
@@ -6611,7 +6614,7 @@ function validateM226ReleaseBoundary(manifest, failures) {
       && Array.isArray(earned.cookLevinBuilderPhysicalClassifierTerminalJoinProjectAxiomClosure)
       && earned.cookLevinBuilderPhysicalClassifierTerminalJoinProjectAxiomClosure.length === 0
       && typeof earned.scope === "string"
-      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M226 boundary mismatch");
+      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M226 boundary mismatch");
   if (earned.cookLevinBuilderPhysicalClassifierTerminalJoinTheoremKernelTypeSha256?.["PNP.Concrete.CookLevin.BuilderPhysicalClassifierTerminalJoin.cook_levin_builder_physical_classifier_terminal_join_checked_complete"] !== "9942e24e311a740e4f3fa4c4662a4d2c8809ee3cfd17a252aa3e2fb79a1eeeb0") {
     failures.push("current manifest M226 fingerprint mismatch");
   }
@@ -6700,7 +6703,7 @@ function validateM227ReleaseBoundary(manifest, failures) {
       && Array.isArray(earned.cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatchProjectAxiomClosure)
       && earned.cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatchProjectAxiomClosure.length === 0
       && typeof earned.scope === "string"
-      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M227 boundary mismatch");
+      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M227 boundary mismatch");
   if (earned.cookLevinBuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatchTheoremKernelTypeSha256?.["PNP.Concrete.CookLevin.BuilderPhysicalClassifierAllRouteStagedRequestMirroredDispatch.cook_levin_builder_physical_classifier_all_route_staged_request_mirrored_dispatch_checked_complete"] !== "f8323850eefda8fb9f731c4be6af9f85f797744e9b90c79539316bab48c11871"
       || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_ALL_ROUTE_STAGED_REQUEST_MIRRORED_DISPATCH_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest M227 fingerprint mismatch");
 }
@@ -6799,7 +6802,7 @@ function validateM228ReleaseBoundary(manifest, failures) {
       && Array.isArray(earned.cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitProjectAxiomClosure)
       && earned.cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitProjectAxiomClosure.length === 0
       && typeof earned.scope === "string"
-      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M228 boundary mismatch");
+      && earned.scope.endsWith("+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX))) failures.push("current manifest M228 boundary mismatch");
   if (earned.cookLevinBuilderPhysicalClassifierAllRouteDerivedFinishSplitTheoremKernelTypeSha256?.["PNP.Concrete.CookLevin.BuilderPhysicalClassifierAllRouteDerivedFinishSplit.cook_levin_builder_physical_classifier_all_route_derived_finish_split_checked_complete"] !== "20e0743e1b3e03452e458c24f0ef41584b837cbc6534186d9c42c7906e63f8c1"
       || !Object.entries(BUILDER_PHYSICAL_CLASSIFIER_ALL_ROUTE_DERIVED_FINISH_SPLIT_RELEASE_IDENTITIES).every(([field, theorem]) => earned[field] === theorem)) failures.push("current manifest M228 fingerprint mismatch");
 }
@@ -7127,7 +7130,7 @@ function validateTargetManifest(manifest, failures) {
 }
 
 function validateReleaseManifest(manifest, expectedIdentity, failures) {
-  try { assertM229Manifest(manifest); assertM230Manifest(manifest); assertM231Manifest(manifest); assertM258BatchManifest(manifest); assertM262BatchManifest(manifest); assertM264BatchManifest(manifest); } catch (error) { failures.push(error.message); }
+  try { assertM229Manifest(manifest); assertM230Manifest(manifest); assertM231Manifest(manifest); assertM258BatchManifest(manifest); assertM262BatchManifest(manifest); assertM264BatchManifest(manifest); assertM280BatchManifest(manifest); } catch (error) { failures.push(error.message); }
   validateM228ReleaseBoundary(manifest, failures);
   validateM227ReleaseBoundary(manifest, failures);
   validateM226ReleaseBoundary(manifest, failures);
@@ -10777,7 +10780,7 @@ function validateReleaseManifest(manifest, expectedIdentity, failures) {
       || !Object.entries(LOCKED_NAND_THRESHOLD_PUBLICATION_THEOREMS).every(([name, row]) => lockedNANDThresholdPublicationHashes[name] === row.hash)) failures.push("current manifest concrete locked-NAND threshold fingerprint mismatch");
   if (typeof earned.scope !== "string" || !earned.scope.includes("+plus-residual-terminal-bn6-hypergraph-packet+plus-residual-terminal-pkgc-typed-restoration+plus-residual-terminal-pkgc-same-key-cancellation+plus-residual-terminal-pkgc-ambient-bn4-ledger+plus-residual-terminal-pkgc-ambient-bn4-residual-reduction+plus-residual-terminal-packet-selector-seeds+plus-residual-terminal-packet-selector-universe+plus-residual-terminal-packet-selector-handles+plus-residual-terminal-packet-selector-codec+plus-residual-terminal-packet-selector-payload-realization+plus-residual-terminal-packet-selector-gain-scan+plus-residual-terminal-packet-selector-universe-gain-scan+plus-residual-terminal-packet-selector-gain-coverage+plus-residual-terminal-packet-charge-surplus+plus-residual-terminal-packet-unit-charge-blueprint-realizer+plus-residual-terminal-packet-typed-realizer-contract+plus-residual-terminal-hb-blocker-graph-acyclicity+plus-residual-terminal-hb-dependency-table-closure+plus-residual-terminal-hb-active-dependency-closure+plus-residual-terminal-hb-selector-silence-closure+plus-residual-terminal-hb-executable-selector-silence-induction+plus-residual-terminal-packet-selector-faithfulness-routing+plus-residual-terminal-packet-selector-faithfulness-table+plus-residual-terminal-packet-selector-first-route-outcome+plus-residual-terminal-packet-selector-first-route-semantics+plus-residual-terminal-packet-descent-route-reflection+plus-residual-terminal-packet-rank-route-reflection+plus-residual-terminal-packet-exact-route-reflection+plus-residual-terminal-packet-charge-route-reflection+plus-residual-terminal-packet-colour-route-reflection+plus-residual-terminal-packet-frontier-route-reflection+plus-residual-terminal-packet-bn5-obligation-route-reflection+plus-residual-terminal-packet-bn4-activation-route-reflection+plus-residual-terminal-packet-direction-route-reflection+plus-residual-terminal-packet-budget-route-reflection+plus-residual-terminal-packet-budget-hb-activity-binding+plus-residual-terminal-packet-semantic-hn-activity-binding+plus-residual-terminal-packet-descent-no-lower-binding+plus-residual-terminal-packet-no-lower-ledger+plus-residual-terminal-hresolve-coverage-ledger+plus-residual-terminal-hresolve-support-resolver+plus-residual-terminal-budget-envelope-resolver+plus-residual-terminal-budget-no-lower-ledger+plus-residual-terminal-packet-budget-no-lower-composition+plus-residual-terminal-hresolve-maximal-h-disjoint-family+plus-residual-terminal-hn-bwl-certified-path-minimum+plus-residual-terminal-hresolve-certified-path-family+plus-residual-terminal-hresolve-zeroslack-sidecar+plus-residual-terminal-budget-zeroslack-sidecar+plus-residual-terminal-selector-hb-zeroslack-sidecar+plus-residual-terminal-packet-budget-no-lower-zeroslack-sidecar+plus-residual-terminal-bcel-packet-no-lower-zeroslack-sidecar+plus-residual-terminal-zeroslack-packet-selector-hb-coherence+plus-residual-terminal-finite-bcel-ready-composition+plus-residual-terminal-finite-bcel-packet-carrier-coherence")) failures.push("current manifest earned scope omits a published residual-terminal bridge");
 
-  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller+plus-concrete-cook-levin-builder-arbitrary-slot-header-router+plus-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder+plus-concrete-cook-levin-builder-post-header-raw-divider+plus-concrete-cook-levin-builder-post-header-raw-launch+plus-concrete-cook-levin-builder-post-header-raw-tape-bridge+plus-concrete-cook-levin-builder-post-divider-raw-route-classifier+plus-concrete-cook-levin-builder-post-divider-selected-token-launch+plus-concrete-cook-levin-builder-complete-schedule-iteration+plus-concrete-cook-levin-builder-physical-optional-token-dispatch+plus-concrete-cook-levin-builder-physical-dispatch-schedule+plus-concrete-cook-levin-builder-physical-finish-request+plus-concrete-cook-levin-builder-physical-classifier-pipeline+plus-concrete-cook-levin-builder-physical-classifier-finish-request+plus-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation+plus-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX)) failures.push("current manifest earned scope omits the M225 Cook-Levin all-body staged-request mirrored-dispatch milestone");
+  if (typeof earned.scope !== "string" || !earned.scope.endsWith("+plus-residual-terminal-finite-bcel-packet-activation-obstruction+plus-concrete-legacy-locked-nand-compatibility+plus-concrete-residual-band-compatibility+plus-typed-pccpack-reflection+plus-pccmin-total-oracle-loop+plus-pccmin-normalize-oracle-composition+plus-pccmin-rank-ordered-oracle+plus-pccmin-checked-packet-ranked-selector+plus-pccmin-checked-packet-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-hb-zeroslack-bridge+plus-pccmin-checked-packet-bn6-bcel-activation-route+plus-pccmin-checked-packet-bn6-bcel-derived-family+plus-pccmin-checked-packet-bn6-bcel-canonical-grouping+plus-pccmin-checked-packet-bn6-bcel-canonical-cut-ledger+plus-pccmin-checked-packet-bn6-bcel-canonical-constant-cut-basis+plus-pccmin-checked-packet-bn6-bcel-sparse-activation-route+plus-residual-terminal-pkgc-bn6-positive-cellization+plus-pccmin-checked-packet-pkgc-bn6-bcel-source-route+plus-pccmin-checked-packet-pkgc-ambient-bn4-extraction-route+plus-residual-terminal-pkgc-restoration-coverage-ambient-route+plus-residual-terminal-pkgc-restoration-coverage-bn6-ledger+plus-pccmin-checked-packet-pkgc-restoration-coverage-bn6-bcel-route+plus-pccmin-checked-packet-pkgc-restoration-coverage-charge-descent+plus-concrete-cook-levin-builder-full-schedule-cursor-controller+plus-concrete-cook-levin-builder-arbitrary-slot-header-router+plus-concrete-cook-levin-builder-arbitrary-slot-post-header-decoder+plus-concrete-cook-levin-builder-post-header-raw-divider+plus-concrete-cook-levin-builder-post-header-raw-launch+plus-concrete-cook-levin-builder-post-header-raw-tape-bridge+plus-concrete-cook-levin-builder-post-divider-raw-route-classifier+plus-concrete-cook-levin-builder-post-divider-selected-token-launch+plus-concrete-cook-levin-builder-complete-schedule-iteration+plus-concrete-cook-levin-builder-physical-optional-token-dispatch+plus-concrete-cook-levin-builder-physical-dispatch-schedule+plus-concrete-cook-levin-builder-physical-finish-request+plus-concrete-cook-levin-builder-physical-classifier-pipeline+plus-concrete-cook-levin-builder-physical-classifier-finish-request+plus-concrete-cook-levin-builder-physical-classifier-finish-workspace-orientation+plus-concrete-cook-levin-builder-physical-classifier-finish-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-first-body-separator-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-body-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-terminal-join+plus-concrete-cook-levin-builder-physical-classifier-all-route-staged-request-mirrored-dispatch+plus-concrete-cook-levin-builder-physical-classifier-all-route-derived-finish-split+plus-concrete-cook-levin-builder-physical-classifier-all-route-body-remainder-split+plus-concrete-cook-levin-complete-builder+plus-concrete-cnf-np-completeness" + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX)) failures.push("current manifest earned scope omits the M225 Cook-Levin all-body staged-request mirrored-dispatch milestone");
   if (earned.cookLevinBuilderDynamicCursorInterpretationFormalized !== true || earned.cookLevinCompleteRawFormulaBuilderFormalized !== true || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== true || earned.cookLevinPolynomialReductionFormalized !== true || earned.cnfSATNPCompletenessFormalized !== true || earned.cnfSATInPFormalized !== false || earned.pEqualsNPFormalized !== false) failures.push("formal-publication overstates the Cook-Levin builder dynamic-token-cursor step");
   if (earned.cookLevinBuilderFormulaBitsEmittedFormalized !== true || earned.cookLevinBuilderDirectCursorRawInterpretationFormalized !== true || earned.cookLevinCompleteRawFormulaBuilderFormalized !== true || earned.cookLevinBuilderFunctionProgramRawRefinementFormalized !== true || earned.cookLevinPolynomialReductionFormalized !== true) failures.push("formal-publication overstates the Cook-Levin builder");
   if (manifest.historicalArchive?.status !== "historical-quarantined-not-current-authority" || manifest.historicalArchive?.currentArtifactEligible !== false || manifest.historicalArchive?.mayActivateTheoremPublication !== false) failures.push("formal-publication historical archive is not quarantined");
@@ -10810,13 +10813,13 @@ function validateLocalArtifactHashes(root, release, failures) {
   }
 }
 
-function validateCurrentPayloads(contents, failures, progressFailures, releaseManifest) {
+function validateCurrentPayloads(contents, failures, progressFailures, releaseManifest, corrections) {
   const statusBuffer = contents.get("public.status");
   const inventoryBuffer = contents.get("public.inventory");
   let status = null;
   if (statusBuffer) {
     status = JSON.parse(statusBuffer.toString("utf8"));
-    try { assertM229Status(status); assertM230Status(status); assertM231Status(status); assertM258BatchStatus(status); assertM262BatchStatus(status); assertM264BatchStatus(status); } catch (error) { failures.push(error.message); }
+    try { assertM229Status(status); assertM230Status(status); assertM231Status(status); assertM258BatchStatus(status); assertM262BatchStatus(status); assertM264BatchStatus(status); assertM280BatchStatus(status); } catch (error) { failures.push(error.message); }
     validateM228Status(status, failures);
     validateM227Status(status, failures);
     validateM226Status(status, failures);
@@ -16052,7 +16055,8 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
   }
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
-    try { assertM229Inventory(inventory); assertM230Inventory(inventory); assertM231Inventory(inventory); assertM258BatchInventory(inventory); assertM262BatchInventory(inventory); assertM264BatchInventory(inventory); } catch (error) { failures.push(error.message); }
+    try { assertReviewedCorrectionRetained(corrections, status, inventory); } catch (error) { failures.push(error.message); }
+    try { assertM229Inventory(inventory); assertM230Inventory(inventory); assertM231Inventory(inventory); assertM258BatchInventory(inventory); assertM262BatchInventory(inventory); assertM264BatchInventory(inventory); assertM280BatchInventory(inventory); } catch (error) { failures.push(error.message); }
     validateM228Inventory(inventory, failures);
     validateM227Inventory(inventory, failures);
     validateM226Inventory(inventory, failures);
@@ -17649,6 +17653,89 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
   }
 }
 
+export function validateCorrectionSources(sourceDir, corrections) {
+  const failures = [];
+  const snapshots = new Map();
+  let checkedCorrections = 0;
+  if (!Array.isArray(corrections)) {
+    throw new AuditTargetValidationError(["correction source audit: corrections must be an array"]);
+  }
+  for (const correction of corrections) {
+    const label = `correction ${correction?.id ?? "<missing>"} source`;
+    const source = correction?.source;
+    if (!source || !/^[0-9a-f]{40}$/u.test(source.commit) || !/^[0-9a-f]{40}$/u.test(source.tree)) {
+      failures.push(`${label}: exact commit and tree are required`);
+      continue;
+    }
+    let snapshot = snapshots.get(source.commit);
+    if (!snapshot) {
+      const before = failures.length;
+      const commit = gitText(sourceDir, ["rev-parse", "--verify", `${source.commit}^{commit}`], label, failures);
+      const tree = gitText(sourceDir, ["rev-parse", "--verify", `${source.commit}^{tree}`], label, failures);
+      const payloads = {};
+      for (const [key, target] of Object.entries({
+        status: "public/pnp-status.json",
+        inventory: "public/pnp-theorem-inventory.json",
+        progress: "status/PROOF_PROGRESS.json"
+      })) {
+        const sizeText = gitText(sourceDir, ["cat-file", "-s", `${source.commit}:${target}`], label, failures);
+        if (sizeText === null) continue;
+        const size = Number(sizeText);
+        if (!Number.isSafeInteger(size) || size < 1) {
+          failures.push(`${label}: invalid blob size for ${target}`);
+          continue;
+        }
+        const bytes = gitBlob(sourceDir, source.commit, target, label, failures, size);
+        if (bytes === null) continue;
+        try {
+          payloads[key] = JSON.parse(bytes.toString("utf8"));
+          if (key === "inventory") payloads.inventorySha256 = sha256(bytes);
+        } catch {
+          failures.push(`${label}: invalid source JSON in ${target}`);
+        }
+      }
+      if (failures.length !== before) continue;
+      snapshot = { commit, tree, ...payloads };
+      snapshots.set(source.commit, snapshot);
+    }
+    try {
+      if (snapshot.commit !== source.commit || snapshot.tree !== source.tree) throw new Error("commit/tree mismatch");
+      const { status, inventory, progress } = snapshot;
+      if (status.coordinate !== source.statusCoordinate
+          || status.publicSurfaceBaselineCoordinate !== source.publicationCoordinate
+          || progress.asOfCoordinate !== source.statusCoordinate) throw new Error("source coordinate mismatch");
+      if (status.leanTheoremInventorySha256 !== snapshot.inventorySha256
+          || status.leanTheoremInventoryCoordinate !== inventory.coordinate
+          || status.leanTheoremInventoryGeneratedFromCompiledEnvironment !== true) {
+        throw new Error("compiled inventory seal mismatch");
+      }
+      validateCorrectionEvidence(correction, status, inventory);
+      const history = progress.history?.find((row) => row.asOfCoordinate === source.statusCoordinate);
+      if (!history) throw new Error("progress history is absent at the exact source");
+      const expected = {
+        modelId: progress.modelId,
+        formalArtefactCoverageEarnedRows: history.formalArtefactCoverage?.earnedRows,
+        formalArtefactCoverageTotalRows: history.formalArtefactCoverage?.totalRows,
+        riskWeightedProofCompletionPercent: history.riskWeightedProofCompletionPercent,
+        uncertaintyLowPercent: history.uncertaintyLowPercent,
+        uncertaintyHighPercent: history.uncertaintyHighPercent,
+        globalGatesClosed: history.globalGatesClosed,
+        globalGatesAvailable: history.globalGatesAvailable
+      };
+      if (!correction.progressSnapshot
+          || JSON.stringify(Object.keys(correction.progressSnapshot).sort()) !== JSON.stringify(Object.keys(expected).sort())
+          || Object.keys(expected).some((key) => correction.progressSnapshot[key] !== expected[key])) {
+        throw new Error("progress snapshot differs from the exact source");
+      }
+      checkedCorrections += 1;
+    } catch (error) {
+      failures.push(`${label}: ${error.message}`);
+    }
+  }
+  if (failures.length) throw new AuditTargetValidationError(failures, { checkedCorrections });
+  return checkedCorrections;
+}
+
 export function validateAuditTargets(options = {}) {
   const root = path.resolve(options.root || process.cwd());
   const targetsPath = path.resolve(root, options.targetsPath || DEFAULT_TARGETS);
@@ -17662,6 +17749,10 @@ export function validateAuditTargets(options = {}) {
   const progressFailures = [];
   const result = { skipped: false, sourceDir, checkedTargets: 0, mirroredTargets: 0, refs: {} };
   const contents = new Map();
+  const updates = readJson(path.join(root, "content/milestone-updates.json"));
+  if (updates.kind !== "PNPLabsMilestoneUpdates4" || updates.version !== 4 || !Array.isArray(updates.corrections)) {
+    failures.push("correction source audit: versioned update history is required");
+  }
 
   validateTargetManifest(targetManifest, failures);
   validateReleaseManifest(releaseManifest, expectedIdentity, failures);
@@ -17683,7 +17774,7 @@ export function validateAuditTargets(options = {}) {
     result.checkedTargets += 1;
   }
 
-  validateCurrentPayloads(contents, failures, progressFailures, releaseManifest);
+  validateCurrentPayloads(contents, failures, progressFailures, releaseManifest, updates.corrections);
   if (failures.length > 0) throw new AuditTargetValidationError(failures, result);
 
   if (!existsSync(path.join(sourceDir, ".git"))) {
@@ -17692,6 +17783,13 @@ export function validateAuditTargets(options = {}) {
       throw new AuditTargetValidationError([...progressFailures, ...(requireSource ? [message] : [])], result);
     }
     return { ...result, skipped: true, skipReason: message };
+  }
+
+  try {
+    result.checkedCorrections = validateCorrectionSources(sourceDir, updates.corrections);
+  } catch (error) {
+    if (!(error instanceof AuditTargetValidationError)) throw error;
+    failures.push(...error.failures);
   }
 
   const usedRefs = new Set((targetManifest.targets || []).filter((target) => target.refClass !== "publicCheckout").map((target) => target.refClass));
@@ -17746,7 +17844,7 @@ export function validateAuditTargets(options = {}) {
   if (map && sha256(map) !== releaseManifest.source?.formalPublicationMapSha256) failures.push("core publication map digest differs from release manifest");
   if (map) {
     const publicationMap = JSON.parse(map.toString("utf8"));
-    try { assertM229PublicationMap(publicationMap); assertM230PublicationMap(publicationMap); assertM231PublicationMap(publicationMap); assertM258BatchPublicationMap(publicationMap); assertM262BatchPublicationMap(publicationMap); assertM264BatchPublicationMap(publicationMap); } catch (error) { failures.push(error.message); }
+    try { assertM229PublicationMap(publicationMap); assertM230PublicationMap(publicationMap); assertM231PublicationMap(publicationMap); assertM258BatchPublicationMap(publicationMap); assertM262BatchPublicationMap(publicationMap); assertM264BatchPublicationMap(publicationMap); assertM280BatchPublicationMap(publicationMap); } catch (error) { failures.push(error.message); }
     validateM228PublicationMap(publicationMap, releaseManifest, failures);
     validateM227PublicationMap(publicationMap, releaseManifest, failures);
     validateM226PublicationMap(publicationMap, releaseManifest, failures);

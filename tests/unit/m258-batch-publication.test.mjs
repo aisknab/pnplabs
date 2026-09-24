@@ -215,7 +215,7 @@ test('M258 batch contract extends every legacy scope tail without relaxing order
   assert.equal(M258_BATCH_SCOPE_SUFFIX, '+plus-' + M258_BATCH.milestones.map(row => row.id).join('+plus-'));
   for (const file of ['tools/verify-release-seal.mjs', 'tools/check-cross-repo-targets.mjs']) {
     const source = readFileSync(file, 'utf8');
-    assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
+    assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX)').length - 1, 6, file);
     assert.equal(source.split('+plus-concrete-cnf-np-completeness"))').length - 1, 0, file);
   }
 });

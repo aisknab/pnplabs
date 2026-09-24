@@ -87,6 +87,14 @@ of website cadence. Instructions-only repository changes do not by themselves
 trigger site regeneration or deployment. Correct misleading public claims promptly
 even when there is no new positive milestone.
 
+Record correction notices in the versioned update history's `corrections` array,
+separately from earned milestone `entries`. Corrections do not contribute to
+milestone completeness or ordinal counts. Bind their progress snapshot and
+compiled evidence to the exact published core source; any score change still
+requires the canonical fixed-checkpoint review. Preserve historical notices and
+validate their original evidence against their recorded Git commit, not a newer
+inventory. Do not manufacture a positive publication row to announce a correction.
+
 Every publication batch requires a full PNPLabs surface audit. This is a
 workflow invariant, not a milestone-specific cleanup. Before sealing a release,
 reconcile the newest result and its boundary across the homepage (including the

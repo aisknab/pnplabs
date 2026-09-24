@@ -100,6 +100,7 @@ function renderStatus(model) {
   return `    <section id="proof-progress" class="section compact proof-progress-section" aria-labelledby="status-proof-progress-heading">\n`
     + `${renderProofProgressDashboard(model, { headingId: "status-proof-progress-heading" })}\n`
     + `      <p class="progress-source-note">Current values are generated from the byte-mirrored <a href="public/pnp-proof-progress.json"><code>PNPProofProgress0</code> ledger</a> and checked against the formal reconstruction status and compiled theorem inventory.</p>\n`
+    + `      <p data-formal-ledger-context>The milestone ledger below preserves recorded scopes and boundaries. Later results may close obligations described as open in older rows. The tracker above and current proof boundary describe today\'s project status.</p>\n`
     + `    </section>`;
 }
 

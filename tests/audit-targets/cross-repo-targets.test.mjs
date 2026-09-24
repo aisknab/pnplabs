@@ -1,4 +1,5 @@
 import { M230 } from '../../tools/formal-m230-contract.mjs';
+import { COMPATIBLE_SUPPORT_CORRECTION } from "../../tools/compatible-support-correction-contract.mjs";
 import { assertM258BatchPublicationMap } from '../../tools/formal-m258-batch-contract.mjs';
 import { deriveMilestoneStatusStem, deriveBatchMilestoneFields, readMilestoneReleaseField, setMilestoneReleaseField } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
@@ -2632,11 +2633,98 @@ function json(value) {
   return `${JSON.stringify(value, null, 2)}\n`;
 }
 
-function makeProject(t) {
+const correctionSourceKey = (source) => JSON.stringify([
+  source.commit, source.tree, source.statusCoordinate, source.publicationCoordinate
+]);
+const publishedIndex = JSON.parse(readFileSync(
+  new URL("../../public/pnp-index.json", import.meta.url), "utf8"
+));
+const publishedCorrectionSource = {
+  commit: publishedIndex.sourceProofCommitRef,
+  tree: publishedIndex.sourceTree,
+  statusCoordinate: publishedIndex.statusCoordinate,
+  publicationCoordinate: publishedIndex.publicSurfaceBaselineCoordinate
+};
+
+// Historical fixture objects model source binding only. They are not compiled
+// proof evidence or retrospective claims about the real publication history.
+function prepareCorrectionHistory(sourceDir, updates) {
+  const currentKey = correctionSourceKey(publishedCorrectionSource);
+  const currentIds = new Set();
+  const historical = new Map();
+  for (const correction of updates.corrections) {
+    const key = correctionSourceKey(correction.source);
+    if (key === currentKey) {
+      currentIds.add(correction.id);
+    } else {
+      if (!historical.has(key)) historical.set(key, []);
+      historical.get(key).push(correction);
+    }
+  }
+  for (const corrections of historical.values()) {
+    const first = corrections[0], declarations = new Map();
+    for (const correction of corrections) {
+      assert.deepEqual(correction.progressSnapshot, first.progressSnapshot,
+        "one synthetic historical source must have one progress snapshot");
+      for (const theorem of correction.evidence.theorems) {
+        const declaration = { ...structuredClone(theorem), kind: "theorem" };
+        if (declarations.has(theorem.name)) assert.deepEqual(declarations.get(theorem.name), declaration);
+        declarations.set(theorem.name, declaration);
+      }
+    }
+    const inventory = {
+      coordinate: "SYNTHETIC-CORRECTION-INVENTORY",
+      declarations: [...declarations.values()]
+    };
+    const status = {
+      coordinate: first.source.statusCoordinate,
+      publicSurfaceBaselineCoordinate: first.source.publicationCoordinate,
+      nonClaims: [...new Set(corrections.map((row) => row.evidence.nonClaim))],
+      leanTheoremInventoryCoordinate: inventory.coordinate,
+      leanTheoremInventorySha256: sha256(Buffer.from(json(inventory))),
+      leanTheoremInventoryGeneratedFromCompiledEnvironment: true
+    };
+    const snapshot = first.progressSnapshot;
+    const history = {
+      asOfCoordinate: status.coordinate,
+      formalArtefactCoverage: {
+        earnedRows: snapshot.formalArtefactCoverageEarnedRows,
+        totalRows: snapshot.formalArtefactCoverageTotalRows
+      },
+      riskWeightedProofCompletionPercent: snapshot.riskWeightedProofCompletionPercent,
+      uncertaintyLowPercent: snapshot.uncertaintyLowPercent,
+      uncertaintyHighPercent: snapshot.uncertaintyHighPercent,
+      globalGatesClosed: snapshot.globalGatesClosed,
+      globalGatesAvailable: snapshot.globalGatesAvailable
+    };
+    const progress = { modelId: snapshot.modelId, asOfCoordinate: status.coordinate, history: [history] };
+    write(sourceDir, "public/pnp-status.json", json(status));
+    write(sourceDir, "public/pnp-theorem-inventory.json", json(inventory));
+    write(sourceDir, "status/PROOF_PROGRESS.json", json(progress));
+    git(sourceDir, ["add", "public/pnp-status.json", "public/pnp-theorem-inventory.json", "status/PROOF_PROGRESS.json"]);
+    git(sourceDir, ["commit", "-m", "synthetic correction source"]);
+    const identity = {
+      commit: git(sourceDir, ["rev-parse", "HEAD"]),
+      tree: git(sourceDir, ["rev-parse", "HEAD^{tree}"])
+    };
+    for (const correction of corrections) Object.assign(correction.source, identity);
+  }
+  return currentIds;
+}
+
+function bindCurrentCorrections(updates, ids, commit, tree) {
+  for (const correction of updates.corrections) {
+    if (ids.has(correction.id)) Object.assign(correction.source, { commit, tree });
+  }
+}
+
+function makeProject(t, extraCorrections = []) {
   const root = mkdtempSync(path.join(tmpdir(), "pnplabs-formal-targets-"));
   const sourceDir = path.join(root, "pnp");
   mkdirSync(sourceDir, { recursive: true });
   t.after(() => rmSync(root, { recursive: true, force: true }));
+  const updates = structuredClone(publishedUpdates);
+  updates.corrections.push(...structuredClone(extraCorrections));
 
   const statusPayload = {
     kind: "PNPFormalReconstructionStatus0",
@@ -3656,6 +3744,9 @@ function makeProject(t) {
   );
   assert.equal(inventoryPayload.milestoneCandidates.length, publishedInventory.milestoneCandidates.length, "synthetic inventory must match the published reviewed-candidate count");
   const inventory = json(inventoryPayload);
+  statusPayload.leanTheoremInventorySha256 = sha256(Buffer.from(inventory));
+  statusPayload.leanTheoremInventoryCoordinate = inventoryPayload.coordinate;
+  statusPayload.leanTheoremInventoryGeneratedFromCompiledEnvironment = publishedStatus.leanTheoremInventoryGeneratedFromCompiledEnvironment;
   const publicationMapPayload = {
     kind: "TestPublicationMap",
     coordinate: "TEST-PUBLICATION-MAP",
@@ -4000,6 +4091,7 @@ function makeProject(t) {
   git(sourceDir, ["init"]);
   git(sourceDir, ["config", "user.email", "audit@example.invalid"]);
   git(sourceDir, ["config", "user.name", "Audit Test"]);
+  const currentCorrectionIds = prepareCorrectionHistory(sourceDir, updates);
   write(sourceDir, "public/pnp-status.json", status);
   write(sourceDir, "public/pnp-theorem-inventory.json", inventory);
   write(sourceDir, "status/PROOF_PROGRESS.json", progress);
@@ -4009,6 +4101,8 @@ function makeProject(t) {
   const commit = git(sourceDir, ["rev-parse", "HEAD"]);
   const tree = git(sourceDir, ["rev-parse", "HEAD^{tree}"]);
 
+  bindCurrentCorrections(updates, currentCorrectionIds, commit, tree);
+  write(root, "content/milestone-updates.json", json(updates));
   write(root, "public/pnp-status.json", status);
   write(root, "public/pnp-theorem-inventory.json", inventory);
   write(root, "public/pnp-proof-progress.json", progress);
@@ -4317,7 +4411,7 @@ function makeProject(t) {
   };
   write(root, "docs/audit_targets.json", json(targets));
 
-  return { root, sourceDir, commit, tree, release, targets };
+  return { root, sourceDir, commit, tree, release, targets, currentCorrectionIds };
 }
 
 function rewriteCorePayload(project, relativePath, payload) {
@@ -4332,6 +4426,14 @@ function rewriteCorePayload(project, relativePath, payload) {
     write(project.root, relativePath, content);
     project.release.artifacts.theoremInventory.bytes = Buffer.byteLength(content);
     project.release.artifacts.theoremInventory.sha256 = sha256(Buffer.from(content));
+    const status = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-status.json"), "utf8"));
+    status.leanTheoremInventorySha256 = sha256(Buffer.from(content));
+    const statusContent = json(status);
+    write(project.sourceDir, "public/pnp-status.json", statusContent);
+    write(project.root, "public/pnp-status.json", statusContent);
+    project.release.artifacts.status.bytes = Buffer.byteLength(statusContent);
+    project.release.artifacts.status.sha256 = sha256(Buffer.from(statusContent));
+    git(project.sourceDir, ["add", "public/pnp-status.json"]);
   } else if (relativePath === "publication/FORMAL_PUBLICATION_MAP.json") {
     project.release.source.formalPublicationMapSha256 = sha256(Buffer.from(content));
     const status = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-status.json"), "utf8"));
@@ -4363,6 +4465,9 @@ function rewriteCorePayload(project, relativePath, payload) {
   });
   write(project.root, "downloads/formal-publication-release.json", json(project.release));
   write(project.root, "docs/audit_targets.json", json(project.targets));
+  const updates = JSON.parse(readFileSync(path.join(project.root, "content/milestone-updates.json"), "utf8"));
+  bindCurrentCorrections(updates, project.currentCorrectionIds, project.commit, project.tree);
+  write(project.root, "content/milestone-updates.json", json(updates));
 }
 
 function validate(project, overrides = {}) {
@@ -4402,12 +4507,91 @@ test("accepts exact current mirrors pinned to one core commit and tree", (t) => 
   assert.equal(result.refs.currentCoreRef.tree, project.tree);
 });
 
+function syntheticCorrection(id, historical = false) {
+  const theorem = publishedInventory.declarations.find((row) => row.kind === "theorem"
+    && latestPublishedMilestone.requiredTheorems.includes(row.name)
+    && !COMPATIBLE_SUPPORT_CORRECTION.evidence.theorems.some((reviewed) => reviewed.name === row.name));
+  const nonClaim = publishedStatus.nonClaims.find((value) =>
+    value !== COMPATIBLE_SUPPORT_CORRECTION.evidence.nonClaim);
+  assert.ok(theorem && nonClaim, "synthetic notice needs distinct current canonical evidence");
+  return {
+    id,
+    publishedAt: publishedUpdates.entries[0].publishedAt,
+    title: "Synthetic correction fixture",
+    plainLanguage: [
+      "This notice tests source binding in a synthetic repository.",
+      "It is not mathematical evidence or an earned milestone."
+    ],
+    source: historical ? {
+      commit: "0".repeat(40), tree: "0".repeat(40),
+      statusCoordinate: "SYNTHETIC-HISTORICAL-STATUS",
+      publicationCoordinate: "SYNTHETIC-HISTORICAL-PUBLICATION"
+    } : structuredClone(publishedCorrectionSource),
+    progressSnapshot: structuredClone(publishedUpdates.entries[0].progressSnapshot),
+    evidence: {
+      nonClaim,
+      theorems: [{ name: theorem.name, module: theorem.module, axioms: [...theorem.axioms] }]
+    }
+  };
+}
+
+test("accepts current and historical corrections bound to distinct synthetic source objects", (t) => {
+  const project = makeProject(t, [
+    syntheticCorrection("synthetic-current-correction"),
+    syntheticCorrection("synthetic-historical-correction", true)
+  ]);
+  const updates = JSON.parse(readFileSync(path.join(project.root, "content/milestone-updates.json"), "utf8"));
+  const current = updates.corrections.find((row) => row.id === "synthetic-current-correction");
+  const historical = updates.corrections.find((row) => row.id === "synthetic-historical-correction");
+  assert.equal(current.source.commit, project.commit);
+  assert.equal(current.source.tree, project.tree);
+  assert.notEqual(historical.source.commit, project.commit);
+  assert.equal(git(project.sourceDir, ["rev-parse", historical.source.commit + "^{tree}"]), historical.source.tree);
+  const result = validate(project, { requireSource: true });
+  assert.equal(result.checkedCorrections, publishedUpdates.corrections.length + 2);
+  assert.equal(result.mirroredTargets, 3);
+});
+
+test("current fixture rewrites reseal inventory and rebind notices without changing historical sources", (t) => {
+  const project = makeProject(t, [
+    syntheticCorrection("synthetic-current-correction"),
+    syntheticCorrection("synthetic-historical-correction", true)
+  ]);
+  const before = JSON.parse(readFileSync(path.join(project.root, "content/milestone-updates.json"), "utf8"));
+  const inventory = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  inventory.declarations.reverse();
+  rewriteCorePayload(project, "public/pnp-theorem-inventory.json", inventory);
+  const after = JSON.parse(readFileSync(path.join(project.root, "content/milestone-updates.json"), "utf8"));
+  assert.deepEqual(after.corrections.find((row) => row.id === "synthetic-historical-correction"),
+    before.corrections.find((row) => row.id === "synthetic-historical-correction"));
+  assert.equal(after.corrections.find((row) => row.id === "synthetic-current-correction").source.commit, project.commit);
+  const result = validate(project, { requireSource: true });
+  assert.equal(result.checkedCorrections, publishedUpdates.corrections.length + 2);
+  const changed = after.corrections.find((row) => row.id === "synthetic-current-correction");
+  changed.source.tree = "0".repeat(40);
+  write(project.root, "content/milestone-updates.json", json(after));
+  expectFailure(project, /commit\/tree mismatch/u);
+});
+
 test("rejects removal of the BN3 joint-realizability gap disclosure", (t) => {
   const project = makeProject(t);
   const status = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-status.json"), "utf8"));
   status.nonClaims = status.nonClaims.filter((entry) => !entry.startsWith("The BN3 joint-realizability gap"));
   rewriteCorePayload(project, "public/pnp-status.json", status);
   expectFailure(project, /status BN3 joint-realizability gap disclosure mismatch/);
+});
+
+test("rejects dropping a reviewed correction from the current publication", (t) => {
+  const project = makeProject(t);
+  const status = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-status.json"), "utf8"));
+  if (!status.nonClaims.includes(COMPATIBLE_SUPPORT_CORRECTION.evidence.nonClaim)) {
+    status.nonClaims.push(COMPATIBLE_SUPPORT_CORRECTION.evidence.nonClaim);
+  }
+  rewriteCorePayload(project, "public/pnp-status.json", status);
+  const updates = JSON.parse(readFileSync(path.join(project.root, "content/milestone-updates.json"), "utf8"));
+  updates.corrections = updates.corrections.filter((row) => row.id !== COMPATIBLE_SUPPORT_CORRECTION.id);
+  write(project.root, "content/milestone-updates.json", json(updates));
+  expectFailure(project, /requires its separately labelled correction notice/u);
 });
 
 test("rejects byte drift in a current public mirror", (t) => {
