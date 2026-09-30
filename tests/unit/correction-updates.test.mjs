@@ -22,7 +22,8 @@ function fixture() {
   const data = structuredClone(updates);
   data.corrections.unshift({
     id: "synthetic-source-bound-correction",
-    publishedAt: new Date(Date.parse(data.entries[0].publishedAt) + 1000).toISOString().replace(".000Z", "Z"),
+    publishedAt: new Date(Math.max(...[...data.entries, ...data.corrections]
+      .map((entry) => Date.parse(entry.publishedAt))) + 1000).toISOString().replace(".000Z", "Z"),
     title: "A separately recorded correction",
     plainLanguage: [
       "This synthetic fixture tests how a correction is presented separately from an earned result.",
@@ -96,11 +97,56 @@ test("Atom uses the latest correction timestamp and a separate category with esc
 
 test("a correction tied with a batch sorts first without reordering earned entries", () => {
   const data = fixture();
-  data.corrections[0].publishedAt = data.entries[0].publishedAt;
+  const correction = data.corrections[0];
+  correction.publishedAt = data.entries[0].publishedAt;
+  correction.source = structuredClone(data.entries[0].source);
+  data.corrections.sort((left, right) => Date.parse(right.publishedAt) - Date.parse(left.publishedAt));
   const model = validate(data);
   const html = renderUpdatesHtml(model);
-  assert.ok(html.indexOf('id="' + data.corrections[0].id + '"') < html.indexOf('id="' + data.entries[0].id + '"'));
+  assert.ok(html.indexOf('id="' + correction.id + '"') < html.indexOf('id="' + data.entries[0].id + '"'));
   assert.deepEqual(model.entries.map((row) => row.id), data.entries.map((row) => row.id));
+});
+
+test("successive correction-only releases preserve earned rows and each historical correction source", () => {
+  const original = validate(updates);
+  const first = fixture();
+  const firstIndex = { ...index, sourceProofCommitRef: "b".repeat(40), sourceTree: "c".repeat(40) };
+  first.corrections[0].source.commit = firstIndex.sourceProofCommitRef;
+  first.corrections[0].source.tree = firstIndex.sourceTree;
+  const firstModel = validateUpdatesModel(first, status, firstIndex, progress, inventory);
+  assert.deepEqual(firstModel.entries, original.entries);
+  assert.deepEqual(firstModel.corrections.slice(1), original.corrections);
+  assert.deepEqual(firstModel.proofProgress, original.proofProgress);
+
+  const second = structuredClone(first);
+  const next = structuredClone(first.corrections[0]);
+  next.id = "second-synthetic-correction-only-release";
+  next.publishedAt = new Date(Date.parse(next.publishedAt) + 1000).toISOString();
+  const secondIndex = { ...index, sourceProofCommitRef: "d".repeat(40), sourceTree: "e".repeat(40) };
+  next.source.commit = secondIndex.sourceProofCommitRef;
+  next.source.tree = secondIndex.sourceTree;
+  second.corrections.unshift(next);
+  const secondModel = validateUpdatesModel(second, status, secondIndex, progress, inventory);
+  assert.deepEqual(secondModel.entries, original.entries);
+  assert.deepEqual(secondModel.corrections.slice(1), firstModel.corrections);
+  assert.equal(secondModel.earnedCount, original.earnedCount);
+  assert.deepEqual(secondModel.proofProgress, original.proofProgress);
+  assert.equal(renderProgressSvg(secondModel), renderProgressSvg(original));
+});
+
+test("an advanced source pin requires a newest update bound to that exact source", () => {
+  const advancedIndex = { ...index, sourceProofCommitRef: "b".repeat(40), sourceTree: "c".repeat(40) };
+  const data = fixture();
+  // Keep the earlier publication in history, so this reaches the current-pin
+  // guard rather than failing first because a correction-only source is unknown.
+  assert.throws(() => validateUpdatesModel(data, status, advancedIndex, progress, inventory),
+    /current correction must match the current source pin/u);
+  data.corrections[0].source.commit = advancedIndex.sourceProofCommitRef;
+  data.corrections[0].source.tree = advancedIndex.sourceTree;
+  assert.doesNotThrow(() => validateUpdatesModel(data, status, advancedIndex, progress, inventory));
+  data.corrections[0].source = structuredClone(data.entries[0].source);
+  assert.throws(() => validateUpdatesModel(data, status, advancedIndex, progress, inventory),
+    /current correction must match the current source pin/u);
 });
 
 test("correction schema rejects credit fields, arbitrary fields, missing evidence and invalid collections", () => {

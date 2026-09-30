@@ -211,10 +211,13 @@ test('M262 current mirrors and manifest bind the exact reviewed source and indep
   const currentBatch = Object.values(release.earnedBoundary)
     .filter(row => row?.kind === 'PNPLabsCompiledMilestoneBatch0')
     .sort((a,b) => Math.max(...a.milestones.map(row => row.number)) - Math.max(...b.milestones.map(row => row.number))).at(-1);
-  assert.equal(release.source.commit, currentBatch.reviewedSource.commit);
-  assert.equal(release.source.tree, currentBatch.reviewedSource.tree);
+  const currentTarget = json('docs/audit_targets.json').refs.currentCoreRef;
+  assert.equal(release.source.commit, currentTarget.expectedCommit);
+  assert.equal(release.source.tree, currentTarget.expectedTree);
   assert.equal(index.sourceCommitRef, release.source.commit);
   assert.equal(index.sourceTree, release.source.tree);
+  assert.equal(index.latestEarnedMilestoneSourceCommitRef, currentBatch.reviewedSource.commit);
+  assert.equal(index.latestEarnedMilestoneSourceTree, currentBatch.reviewedSource.tree);
   assert.equal(publishedStatus.coordinate, currentBatch.reviewedSource.statusCoordinate);
   assert.equal(publishedProgress.asOfCoordinate, publishedStatus.coordinate);
   assert.equal(index.formalArtefactCoverageEarnedRows, publishedProgress.formalArtefactCoverage.earnedRows);

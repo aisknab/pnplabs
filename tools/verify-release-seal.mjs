@@ -12,9 +12,9 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 
-const CORE_COMMIT = "f14cb7a87004ebedfa55351f6ba20d68a333cc18";
-const CORE_TREE = "1cbaf64d8a7303b154848ec73f38e85e406defca";
-const PROOF_COMMIT = "f14cb7a87004ebedfa55351f6ba20d68a333cc18";
+const CORE_COMMIT = "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1";
+const CORE_TREE = "cf2b90ab65bf4f95bf27506163bd26137086c64d";
+const PROOF_COMMIT = "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1";
 const OLD_PDF_SHA256 = "53437127d4d111562689c093857de86e846c6ad4a8cf0bc0674ff0bc822e603d";
 const OLD_TEX_SHA256 = "414d2a2474291c0cc2bf1098f6c937b0bf13c53243774394516bd8def355d4c7";
 
@@ -7076,38 +7076,38 @@ const CNF_TO_NAND_POLYNOMIAL_REDUCTION_RELEASE_IDENTITIES = {
 const EXPECTED_FILES = [
   {
     "path": "downloads/canonical_proof_report.pdf",
-    "bytes": 753342,
-    "sha256": "0f5cd9cd2fb1b7f1a9201d0326d91c6099f0ac3c946a64d0ea4e43b26fa57a98",
+    "bytes": 755852,
+    "sha256": "3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35",
     "role": "current inventory-derived formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical-proof-report.pdf",
-    "bytes": 753342,
-    "sha256": "0f5cd9cd2fb1b7f1a9201d0326d91c6099f0ac3c946a64d0ea4e43b26fa57a98",
+    "bytes": 755852,
+    "sha256": "3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35",
     "role": "exact hyphenated alias of current formal-reconstruction report PDF"
   },
   {
     "path": "downloads/canonical_proof_report.tex",
-    "bytes": 557229,
-    "sha256": "a2c333180ff8415f68b30f80776a83d401f4dfe34d22c72dff5c25337457ddce",
+    "bytes": 560752,
+    "sha256": "3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799",
     "role": "current inventory-derived formal-reconstruction report TeX"
   },
   {
     "path": "downloads/canonical-proof-report.tex",
-    "bytes": 557229,
-    "sha256": "a2c333180ff8415f68b30f80776a83d401f4dfe34d22c72dff5c25337457ddce",
+    "bytes": 560752,
+    "sha256": "3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799",
     "role": "exact hyphenated alias of current formal-reconstruction report TeX"
   },
   {
     "path": "public/pnp-status.json",
     "bytes": 3939475,
-    "sha256": "07a2d3eca8a19eeb9159413ce89b0cd2527175a26fd6798e5be824012904a9b8",
+    "sha256": "325274ab9f39e9b2bdad02add1f940719c6939d96f0b73092af9b5d91533dc9e",
     "role": "exact current core formal-reconstruction status mirror"
   },
   {
     "path": "public/pnp-theorem-inventory.json",
-    "bytes": 90629835,
-    "sha256": "8b7aa5bbc065daad79691e8fda26e5e6a6db3b90c8be4e6be93baf7fb37b3f18",
+    "bytes": 90772676,
+    "sha256": "8cffec40ac5786f31bb8538967e79529423316f217bfee319e8423b81cf91bc3",
     "role": "exact current compiled Lean theorem inventory mirror"
   },
   {
@@ -7119,7 +7119,7 @@ const EXPECTED_FILES = [
   {
     "path": "downloads/formal-publication-release.json",
     "bytes": 1832138,
-    "sha256": "19a8de600f6502c9f715f0d8e7fab03fc7d68074646f8f45c6a44c7e2a14018b",
+    "sha256": "8b1576f245b959c17f4ca26940563ae3e0a4814941eee2c7652e0464fb94f0db",
     "role": "current formal-publication release identity and fail-closed boundary"
   },
   {
@@ -7200,7 +7200,7 @@ function assertFailClosedStatus(status) {
   if (status.kind !== "PNPFormalReconstructionStatus0") fail("status kind mismatch");
   if (status.coordinate !== "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280") fail("status coordinate mismatch");
   if (status.publicSurfaceBaselineCoordinate !== "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121") fail("status public-surface coordinate mismatch");
-  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-09-20-280" || status.formalPublicationMapSha256 !== "49319a055e66dbc976989822cae784a28367db38bc9f7244212953e746313d30" || status.leanSourceClosureSha256 !== "096e81bccb4196ac53f7f7bb70266b1ff7615e55742172b13a083adfe2728789") fail("status source identity mismatch");
+  if (status.formalPublicationMapCoordinate !== "PNP-FORMAL-PUBLICATION-MAP-2026-09-20-280" || status.formalPublicationMapSha256 !== "d2e1cbbe74642871116dfedac35f9b94d7a9f8a3eaead881269f8b0c1f34ff5e" || status.leanSourceClosureSha256 !== "1dff3ad84e73717273d250bb00189bf54d5feea126d1f2a1bbd56a05ab088ee6") fail("status source identity mismatch");
   const milestones = status.formalPublicationMilestones;
   if (!Array.isArray(milestones) || milestones.length < 3
       || new Set(milestones.map((row) => row.id)).size !== milestones.length

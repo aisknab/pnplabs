@@ -24,6 +24,16 @@ as a build or test machine.
   remotely.
 - Run heavy remote jobs in a user-level `systemd-run` scope under the configured
   resource limits.
+- Before fixture-heavy checks, inspect the temporary filesystem. Set
+  `TMPDIR` to a named disk-backed directory inside the verification parent.
+  RAM-backed temporary files count against the job memory limit even when
+  process memory appears low. Record and clean the exact fixture directory;
+  do not increase memory limits merely to retain large fixture copies.
+- The normal `npm run test:unit` entry point owns a disk-backed temporary
+  directory and bounds test-file concurrency. Preserve that protection for
+  `npm test` and deployment staging. Direct fixture-heavy test commands still
+  need an explicit disk-backed `TMPDIR`; do not rely on a privileged launcher
+  preserving the caller's environment or restore unbounded worker fan-out.
 - Never silently fall back to local processing when the remote builder is
   unavailable. Diagnose the connection, notify the user when the stall is
   actionable, and wait or pursue only lightweight source work.
@@ -94,6 +104,18 @@ compiled evidence to the exact published core source; any score change still
 requires the canonical fixed-checkpoint review. Preserve historical notices and
 validate their original evidence against their recorded Git commit, not a newer
 inventory. Do not manufacture a positive publication row to announce a correction.
+
+Generate marked current correction summaries from the reviewed update ledger with
+`npm run updates:generate`; `npm run updates:check` rejects stale summaries. Keep
+all configured primary-page, homepage-bottom-line and current-document regions.
+Do not retype correction prose into those regions or alter historical update
+objects to refresh a current explanation.
+
+A correction-only publication can advance the current core source without changing
+the source that earned the latest milestone. Keep those pins separate. Identify
+the current publication batch by the newest overall update, not only the newest
+earned milestone. Preserve earlier correction-only snapshots even when they have
+no earned row, and verify their evidence against their original Git objects.
 
 Every publication batch requires a full PNPLabs surface audit. This is a
 workflow invariant, not a milestone-specific cleanup. Before sealing a release,

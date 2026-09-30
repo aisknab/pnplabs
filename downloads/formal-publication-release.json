@@ -6,14 +6,14 @@
   "authority": "current",
   "source": {
     "repo": "aisknab/pnp",
-    "commit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
-    "proofCommit": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
-    "tree": "1cbaf64d8a7303b154848ec73f38e85e406defca",
-    "ref": "f14cb7a87004ebedfa55351f6ba20d68a333cc18",
+    "commit": "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1",
+    "proofCommit": "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1",
+    "tree": "cf2b90ab65bf4f95bf27506163bd26137086c64d",
+    "ref": "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1",
     "formalPublicationMapPath": "publication/FORMAL_PUBLICATION_MAP.json",
     "formalPublicationMapCoordinate": "PNP-FORMAL-PUBLICATION-MAP-2026-09-20-280",
-    "formalPublicationMapSha256": "49319a055e66dbc976989822cae784a28367db38bc9f7244212953e746313d30",
-    "leanSourceClosureSha256": "096e81bccb4196ac53f7f7bb70266b1ff7615e55742172b13a083adfe2728789",
+    "formalPublicationMapSha256": "d2e1cbbe74642871116dfedac35f9b94d7a9f8a3eaead881269f8b0c1f34ff5e",
+    "leanSourceClosureSha256": "1dff3ad84e73717273d250bb00189bf54d5feea126d1f2a1bbd56a05ab088ee6",
     "coordinateAloneIsAuthority": false,
     "identityRequiresCommitTreeAndArtifactHashes": true
   },
@@ -22,18 +22,18 @@
       "sourcePath": "public/pnp-status.json",
       "publicPath": "public/pnp-status.json",
       "bytes": 3939475,
-      "sha256": "07a2d3eca8a19eeb9159413ce89b0cd2527175a26fd6798e5be824012904a9b8",
+      "sha256": "325274ab9f39e9b2bdad02add1f940719c6939d96f0b73092af9b5d91533dc9e",
       "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280"
     },
     "theoremInventory": {
       "sourcePath": "public/pnp-theorem-inventory.json",
       "publicPath": "public/pnp-theorem-inventory.json",
-      "bytes": 90629835,
-      "sha256": "8b7aa5bbc065daad79691e8fda26e5e6a6db3b90c8be4e6be93baf7fb37b3f18",
+      "bytes": 90772676,
+      "sha256": "8cffec40ac5786f31bb8538967e79529423316f217bfee319e8423b81cf91bc3",
       "coordinate": "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230",
-      "declarationCount": 51586,
-      "theoremCount": 28180,
-      "assumptionFreeTheoremCount": 11734,
+      "declarationCount": 52539,
+      "theoremCount": 28788,
+      "assumptionFreeTheoremCount": 11841,
       "projectAxiomCount": 0
     },
     "proofProgress": {
@@ -54,15 +54,15 @@
     },
     "report": {
       "coordinate": "PNP-CANONICAL-FORMAL-RECONSTRUCTION-REPORT-2026-09-20-280",
-      "pageCount": 222,
+      "pageCount": 223,
       "pdf": {
         "sourcePath": "canonical_proof_report.pdf",
         "publicPaths": [
           "downloads/canonical_proof_report.pdf",
           "downloads/canonical-proof-report.pdf"
         ],
-        "bytes": 753342,
-        "sha256": "0f5cd9cd2fb1b7f1a9201d0326d91c6099f0ac3c946a64d0ea4e43b26fa57a98"
+        "bytes": 755852,
+        "sha256": "3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35"
       },
       "tex": {
         "sourcePath": "canonical_proof_report.tex",
@@ -70,8 +70,8 @@
           "downloads/canonical_proof_report.tex",
           "downloads/canonical-proof-report.tex"
         ],
-        "bytes": 557229,
-        "sha256": "a2c333180ff8415f68b30f80776a83d401f4dfe34d22c72dff5c25337457ddce"
+        "bytes": 560752,
+        "sha256": "3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799"
       }
     }
   },

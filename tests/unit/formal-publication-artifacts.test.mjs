@@ -5452,6 +5452,9 @@ test("exported verification helpers import without a script argv path", () => {
 test("automation invokes read-only sync and contains no commit or push step", () => {
   const workflow = readFileSync(path.join(root, ".github/workflows/sync-public-access-report.yml"), "utf8");
   const synchronizer = readFileSync(path.join(root, "tools/sync-public-access-docs.mjs"), "utf8");
+  const timeoutMinutes = Number(workflow.match(/^\s+timeout-minutes:\s*(\d+)\s*$/mu)?.[1]);
+  assert.ok(Number.isInteger(timeoutMinutes) && timeoutMinutes >= 90,
+    "artifact verification requires at least 90 minutes of runtime headroom");
   assert.match(workflow, /permissions:\n  contents: read/);
   assert.match(workflow, /sync-public-access-docs\.mjs --check/);
   assert.match(synchronizer, /verifyReleaseSeal\(\{ root \}\)/);

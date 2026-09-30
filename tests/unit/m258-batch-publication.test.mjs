@@ -202,11 +202,14 @@ test('M258 active site mirrors and release carry the complete reviewed batch', (
   const currentBatch = Object.values(release.earnedBoundary)
     .filter(value => value?.kind === 'PNPLabsCompiledMilestoneBatch0')
     .sort((left, right) => Math.max(...left.milestones.map(row => row.number)) - Math.max(...right.milestones.map(row => row.number))).at(-1);
-  assert.equal(release.source.commit, currentBatch.reviewedSource.commit);
-  assert.equal(release.source.tree, currentBatch.reviewedSource.tree);
+  const currentTarget = json('docs/audit_targets.json').refs.currentCoreRef;
+  assert.equal(release.source.commit, currentTarget.expectedCommit);
+  assert.equal(release.source.tree, currentTarget.expectedTree);
   const index = json('public/pnp-index.json');
   assert.equal(index.sourceCommitRef, release.source.commit);
   assert.equal(index.sourceTree, release.source.tree);
+  assert.equal(index.latestEarnedMilestoneSourceCommitRef, currentBatch.reviewedSource.commit);
+  assert.equal(index.latestEarnedMilestoneSourceTree, currentBatch.reviewedSource.tree);
   for (const [field, value] of Object.entries(M258_BATCH_FIELDS))
     assert.deepEqual(index.claimBoundary[field], value, field);
 });
@@ -418,7 +421,7 @@ test('M258 reviewer updates preserve the explicit historical worksheets and comp
 
 test('current review entrypoints use the published source and scoped computational vocabulary', () => {
   const latest = json('content/milestone-updates.json').entries[0];
-  const source = latest.source.commit;
+  const source = json('downloads/formal-publication-release.json').source.commit;
   const verify = readFileSync('verify.html', 'utf8');
   const current = verify.match(/<tr data-current-source>([\s\S]*?)<\/tr>/)?.[1];
   assert.ok(current?.includes('https://github.com/aisknab/pnp/tree/' + source), 'current source link');
@@ -442,7 +445,7 @@ test('current review entrypoints use the published source and scoped computation
 });
 
 test('current publication workflows check the canonical published core commit', () => {
-  const source = json('content/milestone-updates.json').entries[0].source.commit;
+  const source = json('downloads/formal-publication-release.json').source.commit;
   for (const file of [".github/workflows/pnp-upstream-status-consistency.yml",".github/workflows/sync-public-access-report.yml"]) {
     const text = readFileSync(file, 'utf8');
     const pins = [...text.matchAll(/^  PNP_CORE_COMMIT: ([0-9a-f]{40})$/gm)];

@@ -8,20 +8,20 @@ const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
 const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280";
-const STATUS_SHA256 = "07a2d3eca8a19eeb9159413ce89b0cd2527175a26fd6798e5be824012904a9b8";
+const STATUS_SHA256 = "325274ab9f39e9b2bdad02add1f940719c6939d96f0b73092af9b5d91533dc9e";
 const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-20-280";
-const FORMAL_PUBLICATION_MAP_SHA256 = "49319a055e66dbc976989822cae784a28367db38bc9f7244212953e746313d30";
+const FORMAL_PUBLICATION_MAP_SHA256 = "d2e1cbbe74642871116dfedac35f9b94d7a9f8a3eaead881269f8b0c1f34ff5e";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
 const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230";
-const INVENTORY_SHA256 = "8b7aa5bbc065daad79691e8fda26e5e6a6db3b90c8be4e6be93baf7fb37b3f18";
-const SOURCE_CLOSURE_SHA256 = "096e81bccb4196ac53f7f7bb70266b1ff7615e55742172b13a083adfe2728789";
+const INVENTORY_SHA256 = "8cffec40ac5786f31bb8538967e79529423316f217bfee319e8423b81cf91bc3";
+const SOURCE_CLOSURE_SHA256 = "1dff3ad84e73717273d250bb00189bf54d5feea126d1f2a1bbd56a05ab088ee6";
 
 const INVENTORY_COUNTS = Object.freeze({
-  "declarations": 51586,
-  "theorems": 28180,
-  "assumptionFreeTheorems": 11734,
-  "excludedPrivateDeclarations": 21142,
-  "modules": 614,
+  "declarations": 52539,
+  "theorems": 28788,
+  "assumptionFreeTheorems": 11841,
+  "excludedPrivateDeclarations": 21622,
+  "modules": 643,
   "axioms": 0
 });
 

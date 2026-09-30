@@ -26,12 +26,12 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 753,342 | `0f5cd9cd2fb1b7f1a9201d0326d91c6099f0ac3c946a64d0ea4e43b26fa57a98` |
-| `downloads/canonical-proof-report.pdf` | 753,342 | `0f5cd9cd2fb1b7f1a9201d0326d91c6099f0ac3c946a64d0ea4e43b26fa57a98` |
-| `downloads/canonical_proof_report.tex` | 557,229 | `a2c333180ff8415f68b30f80776a83d401f4dfe34d22c72dff5c25337457ddce` |
-| `downloads/canonical-proof-report.tex` | 557,229 | `a2c333180ff8415f68b30f80776a83d401f4dfe34d22c72dff5c25337457ddce` |
-| `public/pnp-status.json` | 3,939,475 | `07a2d3eca8a19eeb9159413ce89b0cd2527175a26fd6798e5be824012904a9b8` |
-| `public/pnp-theorem-inventory.json` | 90,629,835 | `8b7aa5bbc065daad79691e8fda26e5e6a6db3b90c8be4e6be93baf7fb37b3f18` |
+| `downloads/canonical_proof_report.pdf` | 755,852 | `3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35` |
+| `downloads/canonical-proof-report.pdf` | 755,852 | `3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35` |
+| `downloads/canonical_proof_report.tex` | 560,752 | `3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799` |
+| `downloads/canonical-proof-report.tex` | 560,752 | `3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799` |
+| `public/pnp-status.json` | 3,939,475 | `325274ab9f39e9b2bdad02add1f940719c6939d96f0b73092af9b5d91533dc9e` |
+| `public/pnp-theorem-inventory.json` | 90,772,676 | `8cffec40ac5786f31bb8538967e79529423316f217bfee319e8423b81cf91bc3` |
 | `public/pnp-proof-progress.json` | 265,418 | `a4bb525a4cfa07c672053b74e563d8593f1ee8292ac7a605e79ff965475cbbaf` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
@@ -394,7 +394,35 @@ and cannot satisfy the concrete publication gate.
 
 
 <!-- CURRENT_PUBLICATION:START -->
-## M280 current publication
+## Current proof boundary
+
+<!-- CURRENT_CORRECTIONS:SUMMARY:START -->
+### Why a complete local search can still miss a global improvement
+
+Correction, not an earned milestone. Published 2026-09-30.
+
+The project has verified a limit of the implemented circuit search: no fixed cap on the number of gates checked together makes it a complete test for global minimality. For every such cap, a circuit can be made smaller even though the complete bounded search finds no accepted improvement. Every proper selected part, including disconnected selections, is already minimal when its boundary inputs are treated as independent.
+
+The result rules out using this fixed-size local search alone to certify that an entire circuit is minimal. It does not settle P versus NP or rule out growing windows or transformations that use the surrounding circuit. A corrected route must still prove global coverage and polynomial runtime for the complete construction. This correction does not earn a positive milestone or increase the proof-completion estimate.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
+
+[Read the verified correction and its limits](../updates.html#fixed-window-global-minimum-correction).
+
+### A verified limit on replacing parts of a circuit
+
+Correction, not an earned milestone. Published 2026-09-24.
+
+The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.
+
+This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
+
+[Read the verified correction and its limits](../updates.html#unrestricted-compatible-support-slack-correction).
+<!-- CURRENT_CORRECTIONS:SUMMARY:END -->
+
+### Latest earned milestone: M280
 
 **Proving cost comparisons for nested completed supports**
 
@@ -404,17 +432,15 @@ This establishes the enlargement step for already-completed supports. It does no
 
 Formal artefact coverage: 256 of 258 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
-### A verified limit on replacing parts of a circuit
 
-The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.
 
-This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
+This publication changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-This correction adds no earned positive publication row or fixed checkpoint credit.
+Current release source: [`0c98b51d6eb1a14f51cc612a69a1705c30a78ad1`](https://github.com/aisknab/pnp/tree/0c98b51d6eb1a14f51cc612a69a1705c30a78ad1), tree `cf2b90ab65bf4f95bf27506163bd26137086c64d`.
 
-This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
+Original latest-earned source: [`f14cb7a87004ebedfa55351f6ba20d68a333cc18`](https://github.com/aisknab/pnp/tree/f14cb7a87004ebedfa55351f6ba20d68a333cc18), tree `1cbaf64d8a7303b154848ec73f38e85e406defca`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280`.
 
-Current source: [`f14cb7a87004ebedfa55351f6ba20d68a333cc18`](https://github.com/aisknab/pnp/tree/f14cb7a87004ebedfa55351f6ba20d68a333cc18), tree `1cbaf64d8a7303b154848ec73f38e85e406defca`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280`. Inspect the [source-bound update](../updates.html#2026-09-24-computed-closed-support-nested-positivity), the [verified correction](../updates.html#unrestricted-compatible-support-slack-correction) and the [complete current milestone ledger](../status.html).
+Inspect the [latest earned update](../updates.html#2026-09-24-computed-closed-support-nested-positivity), the [current correction](../updates.html#fixed-window-global-minimum-correction) and the [complete current milestone ledger](../status.html).
 
 M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
 <!-- CURRENT_PUBLICATION:END -->

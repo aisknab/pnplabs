@@ -9755,7 +9755,7 @@ test('static inventory prose derives changing publication totals from the canoni
   const currentBatch = deriveBatchMilestoneFields(status, latestRelease, currentMilestone);
   const currentNumber = currentEntry.source.statusCoordinate.match(/-(\d+)$/)?.[1];
   assert.ok(currentNumber, 'current milestone coordinate');
-  const summaryMarker = 'data-m' + currentNumber + '-publication-summary';
+  const summaryMarker = 'data-current-publication-summary';
   if (currentBatch) {
     // Batched publication has one inventory/status authority. Reviewer prose
     // links to it rather than duplicating changing declaration and audit totals.
@@ -9779,9 +9779,10 @@ test('static inventory prose derives changing publication totals from the canoni
       assert.ok(normalized.includes(progress.proofCompletion.percent + '%'), name + ': current estimate');
       assert.ok(normalized.includes(progress.proofCompletion.uncertaintyLowPercent + '% to ' + progress.proofCompletion.uncertaintyHighPercent + '%'), name + ': uncertainty');
       if (['paper', 'FAQ', 'status page'].includes(name)) {
-        const summary = current.match(/<section class="section compact" data-m[0-9]+-publication-summary>[\s\S]*?<\/section>/)?.[0];
+        const summary = current.match(/<section class="section compact" data-current-publication-summary>[\s\S]*?<\/section>/)?.[0];
         assert.ok(summary, name + ': current scoped summary');
-        assert.ok(summary.includes(summaryMarker), name + ': exact current summary coordinate');
+        assert.ok(summary.includes(summaryMarker), name + ': current publication summary');
+        assert.ok(summary.includes('Latest earned milestone: M'+currentNumber), name + ': separate latest earned milestone');
         assert.match(summary,
           /not (?:global circuit minimization|a globally successful rewrite strategy) or a theorem of total polynomial runtime/,
           name + ': no global strategy or complete runtime theorem');
