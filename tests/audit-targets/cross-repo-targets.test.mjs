@@ -1,5 +1,6 @@
 import { M230 } from '../../tools/formal-m230-contract.mjs';
 import { COMPATIBLE_SUPPORT_CORRECTION } from "../../tools/compatible-support-correction-contract.mjs";
+import { FIXED_WINDOW_CORRECTION } from "../../tools/fixed-window-correction-contract.mjs";
 import { assertM258BatchPublicationMap } from '../../tools/formal-m258-batch-contract.mjs';
 import { deriveMilestoneStatusStem, deriveBatchMilestoneFields, readMilestoneReleaseField, setMilestoneReleaseField } from '../helpers/publication-status-fields.mjs';
 import test from "node:test";
@@ -4579,6 +4580,20 @@ test("rejects removal of the BN3 joint-realizability gap disclosure", (t) => {
   status.nonClaims = status.nonClaims.filter((entry) => !entry.startsWith("The BN3 joint-realizability gap"));
   rewriteCorePayload(project, "public/pnp-status.json", status);
   expectFailure(project, /status BN3 joint-realizability gap disclosure mismatch/);
+});
+
+test("rejects dropping the fixed-window correction required by the compiled finding", (t) => {
+  const project = makeProject(t);
+  const inventory = JSON.parse(readFileSync(path.join(project.sourceDir, "public/pnp-theorem-inventory.json"), "utf8"));
+  if (!inventory.declarations.some((row) => row.name === FIXED_WINDOW_CORRECTION.evidence.theorems[0].name)) {
+    // Synthetic adapter marker before source sync, not compiled proof authority.
+    inventory.declarations.push({ ...structuredClone(FIXED_WINDOW_CORRECTION.evidence.theorems[0]), kind: "theorem" });
+    rewriteCorePayload(project, "public/pnp-theorem-inventory.json", inventory);
+  }
+  const updates = JSON.parse(readFileSync(path.join(project.root, "content/milestone-updates.json"), "utf8"));
+  updates.corrections = updates.corrections.filter((row) => row.id !== FIXED_WINDOW_CORRECTION.id);
+  write(project.root, "content/milestone-updates.json", json(updates));
+  expectFailure(project, /fixed-window correction: the source-bound finding requires its separately labelled correction notice/u);
 });
 
 test("rejects dropping a reviewed correction from the current publication", (t) => {

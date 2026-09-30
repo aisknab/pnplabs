@@ -33,6 +33,17 @@ const minimalManifest = () => ({earnedBoundary: {
 }});
 const rejection = /^Error: (?:status|inventory|core publication map|current manifest) M\d+ .* mismatch$/;
 
+function assertSeparatePublicationAndEarnedSources(release, index, latestBatch, currentTarget) {
+  assert.equal(release.source.commit, currentTarget.expectedCommit);
+  assert.equal(release.source.proofCommit, currentTarget.expectedCommit);
+  assert.equal(release.source.tree, currentTarget.expectedTree);
+  assert.equal(index.sourceCommitRef, release.source.commit);
+  assert.equal(index.sourceProofCommitRef, release.source.proofCommit);
+  assert.equal(index.sourceTree, release.source.tree);
+  assert.equal(index.latestEarnedMilestoneSourceCommitRef, latestBatch.reviewedSource.commit);
+  assert.equal(index.latestEarnedMilestoneSourceTree, latestBatch.reviewedSource.tree);
+}
+
 test('M280 batch contract accepts the exact reviewed 16-row compiled batch', () => {
   assert.deepEqual(M280_BATCH.milestones.map(row => row.number), Array.from({length:16}, (_, i) => 265 + i));
   assert.equal(M280_BATCH.reviewedSource.commit, 'f14cb7a87004ebedfa55351f6ba20d68a333cc18');
@@ -208,16 +219,39 @@ test('M280 current mirrors bind the latest reviewed source and separate progress
   assertM280BatchManifest(release);
   const latest = Object.values(release.earnedBoundary).filter(row => row?.kind === 'PNPLabsCompiledMilestoneBatch0')
     .sort((a,b) => Math.max(...a.milestones.map(row => row.number)) - Math.max(...b.milestones.map(row => row.number))).at(-1);
-  assert.equal(release.source.commit,latest.reviewedSource.commit);
-  assert.equal(release.source.tree,latest.reviewedSource.tree);
+  assertSeparatePublicationAndEarnedSources(release, index, latest, json('docs/audit_targets.json').refs.currentCoreRef);
   assert.equal(publishedStatus.coordinate,latest.reviewedSource.statusCoordinate);
   assert.equal(publishedProgress.asOfCoordinate,publishedStatus.coordinate);
-  assert.equal(index.sourceCommitRef,release.source.commit);
-  assert.equal(index.sourceTree,release.source.tree);
+  // A later correction can advance the current source without republishing M280.
   assert.equal(index.formalArtefactCoverageEarnedRows,publishedProgress.formalArtefactCoverage.earnedRows);
   assert.equal(index.formalArtefactCoverageTotalRows,publishedProgress.formalArtefactCoverage.totalRows);
   assert.equal(index.proofProgressPointsEarned,publishedProgress.proofCompletion.pointsEarned);
   for (const [field,value] of Object.entries(M280_BATCH_FIELDS)) assert.deepEqual(index.claimBoundary[field],value,field);
+});
+
+test('correction-only publication can advance the current source without moving the earned source', () => {
+  const release = structuredClone(json('downloads/formal-publication-release.json'));
+  const index = structuredClone(json('public/pnp-index.json'));
+  const latest = Object.values(release.earnedBoundary).filter(row => row?.kind === 'PNPLabsCompiledMilestoneBatch0')
+    .sort((a,b) => Math.max(...a.milestones.map(row => row.number)) - Math.max(...b.milestones.map(row => row.number))).at(-1);
+  const historical = structuredClone(latest.reviewedSource);
+  const currentTarget = {expectedCommit: 'a'.repeat(40), expectedTree: 'b'.repeat(40)};
+  Object.assign(release.source, {commit: currentTarget.expectedCommit, proofCommit: currentTarget.expectedCommit,
+    tree: currentTarget.expectedTree});
+  Object.assign(index, {sourceCommitRef: currentTarget.expectedCommit, sourceProofCommitRef: currentTarget.expectedCommit,
+    sourceTree: currentTarget.expectedTree});
+  assertSeparatePublicationAndEarnedSources(release, index, latest, currentTarget);
+  assert.deepEqual(latest.reviewedSource, historical);
+  for (const field of ['commit','proofCommit','tree']) {
+    const stale = structuredClone(release);
+    stale.source[field] = field === 'tree' ? historical.tree : historical.commit;
+    assert.throws(() => assertSeparatePublicationAndEarnedSources(stale, index, latest, currentTarget));
+  }
+  for (const field of ['latestEarnedMilestoneSourceCommitRef','latestEarnedMilestoneSourceTree']) {
+    const rewritten = structuredClone(index);
+    rewritten[field] = field.endsWith('Tree') ? currentTarget.expectedTree : currentTarget.expectedCommit;
+    assert.throws(() => assertSeparatePublicationAndEarnedSources(release, rewritten, latest, currentTarget));
+  }
 });
 
 test('M280 publication preserves every earlier update and each milestone scoring coordinate', () => {
@@ -280,8 +314,11 @@ test('M280 current primary surfaces expose the restricted result and separate co
   assert.ok(correction);
   for (const file of ['index.html','status.html','faq.html','paper.html','architecture.html']) {
     const html = readFileSync(file,'utf8');
-    const summary = decodePublishedHtml(html.match(/<section class="section compact" data-m280-publication-summary>[\s\S]*?<\/section>/)?.[0] ?? '');
+    const summary = decodePublishedHtml(html.match(/<section class="section compact" data-current-publication-summary>[\s\S]*?<\/section>/)?.[0] ?? '');
     assert.ok(summary,file + ': current summary');
+    assert.ok(summary.includes('Current findings and proof limits'));
+    assert.ok(summary.includes('Latest earned milestone: M'+latest.source.statusCoordinate.split('-').at(-1)));
+    assert.doesNotMatch(summary,/data-m280-publication-summary/);
     for (const paragraph of [...latest.plainLanguage,...correction.plainLanguage]) assert.ok(summary.includes(paragraph),file + ': reviewed copy');
     for (const id of [latest.id,correction.id]) assert.ok(summary.includes('updates.html#'+id),file + ': current record');
     assert.ok(summary.includes('Formal artefact coverage: '+progress.formalArtefactCoverage.earnedRows+' of '+progress.formalArtefactCoverage.totalRows));
@@ -335,14 +372,45 @@ test('M280 current documentation keeps the correction distinct from earned progr
   const correction=updates.corrections.find(row=>row.id==='unrestricted-compatible-support-slack-correction');
   for (const file of ['docs/activated_claim_wording.md','docs/audit_questions.md','docs/one_command_verify_upload.md','docs/proof_pipeline.md','docs/reproducibility.md','docs/reviewer_guide.md','docs/source_checker_map.md','docs/trust_model.md']) {
     const block=readFileSync(file,'utf8').split('<!-- CURRENT_PUBLICATION:START -->')[1]?.split('<!-- CURRENT_PUBLICATION:END -->')[0] ?? '';
+    const normalized=block.replace(/\s+/gu,' ');
     for (const value of [latest.title,...latest.plainLanguage,...correction.plainLanguage,latest.source.commit,latest.source.tree,latest.source.statusCoordinate])
-      assert.ok(block.includes(value),file+': current reviewed source and copy');
+      assert.ok(normalized.includes(value.replace(/\s+/gu,' ')),file+': reviewed source and copy');
+    assert.ok(block.includes('## Current proof boundary'));
+    assert.ok(block.includes('### Latest earned milestone: M'+latest.source.statusCoordinate.split('-').at(-1)));
+    assertCurrentDocumentSourceRoles(block,json('downloads/formal-publication-release.json').source,latest.source);
     assert.ok(block.includes('This correction adds no earned positive publication row or fixed checkpoint credit.'));
     assert.ok(block.includes('changes no fixed weighted checkpoint'));
     assert.doesNotMatch(block,/M264 current publication|\b\d+[- ]pages?\b/);
   }
   const readme=readFileSync('README.md','utf8');
-  assert.ok(readme.includes('## M280 current publication'));
+  assert.ok(readme.includes('## Current proof boundary'));
+  assert.ok(readme.includes('### Latest earned milestone: M'+latest.source.statusCoordinate.split('-').at(-1)));
+  assertCurrentDocumentSourceRoles(readme,json('downloads/formal-publication-release.json').source,latest.source);
   for (const paragraph of [...latest.plainLanguage,...correction.plainLanguage]) assert.ok(readme.includes(paragraph));
   assert.ok(readme.includes(json('public/pnp-proof-progress.json').asOfCoordinate));
+});
+
+function assertCurrentDocumentSourceRoles(content,current,earned) {
+  const flat=content.replace(/\s+/gu,' ');
+  const currentText=flat.split('Current release source: ')[1]?.split('Original latest-earned source: ')[0] ?? '';
+  const earnedText=flat.split('Original latest-earned source: ')[1]?.split('Original latest-earned review coordinate: ')[0] ?? '';
+  assert.ok(currentText.includes(current.commit),'current release commit must be labelled as current');
+  assert.ok(currentText.includes(current.tree),'current release tree must be labelled as current');
+  assert.ok(earnedText.includes(earned.commit),'original earned commit must remain historical');
+  assert.ok(earnedText.includes(earned.tree),'original earned tree must remain historical');
+}
+
+test('current document source roles reject stale releases and rewritten earned history', () => {
+  const current={commit:'current-commit-fixture',tree:'current-tree-fixture'};
+  const earned={commit:'earned-commit-fixture',tree:'earned-tree-fixture'};
+  const fixture='Current release source: '+current.commit+' '+current.tree+'\n'
+    +'Original latest-earned source: '+earned.commit+' '+earned.tree+'\n'
+    +'Original latest-earned review coordinate: preserved';
+  assertCurrentDocumentSourceRoles(fixture,current,earned);
+  for (const key of ['commit','tree']) {
+    assert.throws(()=>assertCurrentDocumentSourceRoles(fixture.replace(current[key],earned[key]),current,earned),/current release/);
+    assert.throws(()=>assertCurrentDocumentSourceRoles(fixture.replace(earned[key],current[key]),current,earned),/original earned/);
+  }
+  assert.throws(()=>assertCurrentDocumentSourceRoles(fixture.replace('Current release source:','Source:'),current,earned),/current release/);
+  assert.throws(()=>assertCurrentDocumentSourceRoles(fixture.replace('Original latest-earned source:','Source:'),current,earned),/original earned/);
 });

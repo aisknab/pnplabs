@@ -20,7 +20,7 @@ The practical rules are:
 | --- | --- | --- | --- |
 | Compiled inventory | Lean 4.31.0 kernel/environment and the small export probe | Name/module/kind/axiom closure for every public declaration; raw type for each reviewed milestone candidate | Toolchain/kernel trust; no widening beyond reviewed exact types |
 | Source closure | SHA-256 implementation and complete tracked path set | Every Lean source plus pinned build configuration | Hash identity is not semantics |
-| Milestone map | Reviewed theorem-name/type pins and fixed source digest | Presence, theorem kind, exact type and approved axiom closure with no project axiom, source match | Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5. Completeness covers proper physical supports with zero or one actual incoming wire. It does not cover all boundary widths, prove global minimality or unconditional ZeroSlack, or establish total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier, general obligation calculus and complete global routes remain open. This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. |
+| Milestone map | Reviewed theorem-name/type pins and fixed source digest | Presence, theorem kind, exact type and approved axiom closure with no project axiom, source match | Formal artefact coverage: 234 of 236 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5. Completeness covers proper physical supports with zero or one actual incoming wire. It does not cover all boundary widths, prove global minimality or unconditional ZeroSlack, or establish total polynomial encoded-input runtime, output size or certificate size. The full manuscript carrier, general obligation calculus and complete global routes remain open. This publication changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. |
 | Concrete gate | Fixed gate logic, reviewed non-null fingerprints, immutable axiom allowlist | Exact concrete target/root/value/type/source/axiom conditions | Gate is false in this release |
 | Generated status/report | Deterministic generator and template | Publication output is a function of inventory/map/gate | Publication is downstream evidence presentation |
 | Companion mirror | Exact cross-repository byte comparison without proof-tool invocation | Status, inventory, TeX, PDF, aliases, manifest, seal | Mirroring does not add theorem evidence or repeat the core Lean build |
@@ -96,7 +96,35 @@ property and must never be summarized as proof of the target theorem.
 
 
 <!-- CURRENT_PUBLICATION:START -->
-## M280 current publication
+## Current proof boundary
+
+<!-- CURRENT_CORRECTIONS:SUMMARY:START -->
+### Why a complete local search can still miss a global improvement
+
+Correction, not an earned milestone. Published 2026-09-30.
+
+The project has verified a limit of the implemented circuit search: no fixed cap on the number of gates checked together makes it a complete test for global minimality. For every such cap, a circuit can be made smaller even though the complete bounded search finds no accepted improvement. Every proper selected part, including disconnected selections, is already minimal when its boundary inputs are treated as independent.
+
+The result rules out using this fixed-size local search alone to certify that an entire circuit is minimal. It does not settle P versus NP or rule out growing windows or transformations that use the surrounding circuit. A corrected route must still prove global coverage and polynomial runtime for the complete construction. This correction does not earn a positive milestone or increase the proof-completion estimate.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
+
+[Read the verified correction and its limits](../updates.html#fixed-window-global-minimum-correction).
+
+### A verified limit on replacing parts of a circuit
+
+Correction, not an earned milestone. Published 2026-09-24.
+
+The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.
+
+This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
+
+[Read the verified correction and its limits](../updates.html#unrestricted-compatible-support-slack-correction).
+<!-- CURRENT_CORRECTIONS:SUMMARY:END -->
+
+### Latest earned milestone: M280
 
 **Proving cost comparisons for nested completed supports**
 
@@ -106,17 +134,15 @@ This establishes the enlargement step for already-completed supports. It does no
 
 Formal artefact coverage: 256 of 258 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
-### A verified limit on replacing parts of a circuit
 
-The project has verified a counterexample to an unrestricted reading of the original report's replacement claim. The checked example has a smaller replacement for one part, but inserting it would create a circular dependency; the whole circuit was already minimal.
-
-This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
-
-This correction adds no earned positive publication row or fixed checkpoint credit.
 
 This batch changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Current source: [`f14cb7a87004ebedfa55351f6ba20d68a333cc18`](https://github.com/aisknab/pnp/tree/f14cb7a87004ebedfa55351f6ba20d68a333cc18), tree `1cbaf64d8a7303b154848ec73f38e85e406defca`. Original current review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280`. Inspect the [source-bound update](../updates.html#2026-09-24-computed-closed-support-nested-positivity), the [verified correction](../updates.html#unrestricted-compatible-support-slack-correction) and the [complete current milestone ledger](../status.html).
+Current release source: [`0c98b51d6eb1a14f51cc612a69a1705c30a78ad1`](https://github.com/aisknab/pnp/tree/0c98b51d6eb1a14f51cc612a69a1705c30a78ad1), tree `cf2b90ab65bf4f95bf27506163bd26137086c64d`.
+
+Original latest-earned source: [`f14cb7a87004ebedfa55351f6ba20d68a333cc18`](https://github.com/aisknab/pnp/tree/f14cb7a87004ebedfa55351f6ba20d68a333cc18), tree `1cbaf64d8a7303b154848ec73f38e85e406defca`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280`.
+
+Inspect the [latest earned update](../updates.html#2026-09-24-computed-closed-support-nested-positivity), the [current correction](../updates.html#fixed-window-global-minimum-correction) and the [complete current milestone ledger](../status.html).
 
 M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
 <!-- CURRENT_PUBLICATION:END -->

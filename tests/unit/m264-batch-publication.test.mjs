@@ -208,12 +208,15 @@ test('M264 current mirrors bind the latest reviewed source and separate progress
   assertM264BatchManifest(release);
   const latest = Object.values(release.earnedBoundary).filter(row => row?.kind === 'PNPLabsCompiledMilestoneBatch0')
     .sort((a,b) => Math.max(...a.milestones.map(row => row.number)) - Math.max(...b.milestones.map(row => row.number))).at(-1);
-  assert.equal(release.source.commit,latest.reviewedSource.commit);
-  assert.equal(release.source.tree,latest.reviewedSource.tree);
+  const currentTarget = json('docs/audit_targets.json').refs.currentCoreRef;
+  assert.equal(release.source.commit,currentTarget.expectedCommit);
+  assert.equal(release.source.tree,currentTarget.expectedTree);
   assert.equal(publishedStatus.coordinate,latest.reviewedSource.statusCoordinate);
   assert.equal(publishedProgress.asOfCoordinate,publishedStatus.coordinate);
   assert.equal(index.sourceCommitRef,release.source.commit);
   assert.equal(index.sourceTree,release.source.tree);
+  assert.equal(index.latestEarnedMilestoneSourceCommitRef,latest.reviewedSource.commit);
+  assert.equal(index.latestEarnedMilestoneSourceTree,latest.reviewedSource.tree);
   assert.equal(index.formalArtefactCoverageEarnedRows,publishedProgress.formalArtefactCoverage.earnedRows);
   assert.equal(index.formalArtefactCoverageTotalRows,publishedProgress.formalArtefactCoverage.totalRows);
   assert.equal(index.proofProgressPointsEarned,publishedProgress.proofCompletion.pointsEarned);

@@ -14,13 +14,14 @@ import { pathToFileURL } from "node:url";
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { validateCorrectionEvidence } from "./generate-milestone-updates.mjs";
 import { assertReviewedCorrectionRetained } from "./compatible-support-correction-contract.mjs";
+import { assertReviewedFixedWindowCorrectionRetained } from "./fixed-window-correction-contract.mjs";
 
 const DEFAULT_TARGETS = "docs/audit_targets.json";
 const DEFAULT_RELEASE_MANIFEST = "downloads/formal-publication-release.json";
 const DEFAULT_SOURCE_DIR = "../pnp";
-const REVIEWED_CORE_COMMIT = "f14cb7a87004ebedfa55351f6ba20d68a333cc18";
-const REVIEWED_CORE_TREE = "1cbaf64d8a7303b154848ec73f38e85e406defca";
-const REVIEWED_PROOF_COMMIT = "f14cb7a87004ebedfa55351f6ba20d68a333cc18";
+const REVIEWED_CORE_COMMIT = "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1";
+const REVIEWED_CORE_TREE = "cf2b90ab65bf4f95bf27506163bd26137086c64d";
+const REVIEWED_PROOF_COMMIT = REVIEWED_CORE_COMMIT;
 
 const FORMULA_CURSOR_THEOREM_HASHES = {
   "PNP.Concrete.CookLevin.VerifierTableauProblem.formulaConstraintSlotDirect_eq": "46a46409172b2443dcc6eb4dccf939737ce3fb25583a957acfdfb34dde7c0edc",
@@ -16055,7 +16056,10 @@ function validateCurrentPayloads(contents, failures, progressFailures, releaseMa
   }
   if (inventoryBuffer) {
     const inventory = JSON.parse(inventoryBuffer.toString("utf8"));
-    try { assertReviewedCorrectionRetained(corrections, status, inventory); } catch (error) { failures.push(error.message); }
+    try {
+      assertReviewedCorrectionRetained(corrections, status, inventory);
+      assertReviewedFixedWindowCorrectionRetained(corrections, status, inventory);
+    } catch (error) { failures.push(error.message); }
     try { assertM229Inventory(inventory); assertM230Inventory(inventory); assertM231Inventory(inventory); assertM258BatchInventory(inventory); assertM262BatchInventory(inventory); assertM264BatchInventory(inventory); assertM280BatchInventory(inventory); } catch (error) { failures.push(error.message); }
     validateM228Inventory(inventory, failures);
     validateM227Inventory(inventory, failures);

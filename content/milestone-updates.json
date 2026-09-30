@@ -47,6 +47,140 @@
   },
   "corrections": [
     {
+      "id": "fixed-window-global-minimum-correction",
+      "title": "Why a complete local search can still miss a global improvement",
+      "plainLanguage": [
+        "The project has verified a limit of the implemented circuit search: no fixed cap on the number of gates checked together makes it a complete test for global minimality. For every such cap, a circuit can be made smaller even though the complete bounded search finds no accepted improvement. Every proper selected part, including disconnected selections, is already minimal when its boundary inputs are treated as independent.",
+        "The result rules out using this fixed-size local search alone to certify that an entire circuit is minimal. It does not settle P versus NP or rule out growing windows or transformations that use the surrounding circuit. A corrected route must still prove global coverage and polynomial runtime for the complete construction. This correction does not earn a positive milestone or increase the proof-completion estimate."
+      ],
+      "publishedAt": "2026-09-30T09:19:45.289Z",
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 256,
+        "formalArtefactCoverageTotalRows": 258,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "0c98b51d6eb1a14f51cc612a69a1705c30a78ad1",
+        "tree": "cf2b90ab65bf4f95bf27506163bd26137086c64d",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      },
+      "evidence": {
+        "nonClaim": "The global stopping theorem uses the exhaustive semantic reference minimum as a mathematical witness and requires a proof of global no-gain at a chain endpoint. It does not generate a route, derive global absence from a finite scan, construct the report ZeroSlack certificate, or establish polynomial runtime.",
+        "theorems": [
+          {
+            "name": "PNP.DirectWire.JointAsymmetricBound.zero_budget_read_once",
+            "module": "PNP.NANDJointAsymmetricBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.JointAsymmetricBound.asymmetric_bound",
+            "module": "PNP.NANDJointAsymmetricBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.JointAsymmetricBound.two_positions_permutation",
+            "module": "PNP.NANDJointAsymmetricBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.JointAsymmetricBound.two_output_positions_bound",
+            "module": "PNP.NANDJointAsymmetricBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineSupportMinimum.first_only_minimum",
+            "module": "PNP.NANDGuardedSpineSupportMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineSupportMinimum.both_ends_minimum",
+            "module": "PNP.NANDGuardedSpineSupportMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineSupportMinimum.proper_minimum",
+            "module": "PNP.NANDGuardedSpineSupportMinimum",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineBoundedQuiet.proper_of_small_support",
+            "module": "PNP.NANDGuardedSpineBoundedQuiet",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineBoundedQuiet.bounded_quiet",
+            "module": "PNP.NANDGuardedSpineBoundedQuiet",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineBoundedQuiet.scan_none",
+            "module": "PNP.NANDGuardedSpineBoundedQuiet",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineBoundedQuiet.quiet_with_strict_gain",
+            "module": "PNP.NANDGuardedSpineBoundedQuiet",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineBoundedQuiet.quiet_nonminimum_exists",
+            "module": "PNP.NANDGuardedSpineBoundedQuiet",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GuardedSpineBoundedQuiet.no_uniform_zero_slack_limit",
+            "module": "PNP.NANDGuardedSpineBoundedQuiet",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "unrestricted-compatible-support-slack-correction",
       "title": "A verified limit on replacing parts of a circuit",
       "plainLanguage": [

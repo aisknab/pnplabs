@@ -1,6 +1,6 @@
 // Purpose: validate earned-milestone updates and separately evidenced correction notices.
 // Inputs: content/milestone-updates.json and the current formal publication payloads.
-// Outputs: deterministic updates.html, Atom 1.0 updates.xml, and proof-progress.svg bytes.
+// Outputs: deterministic update/feed/progress bytes and marked current correction summaries.
 // Invariants enforced: exact schemas, complete milestone coverage, source binding, progress safety, and escaped text.
 // Assumptions not checked: the executive clarity of the reviewed plain-language prose.
 
@@ -10,6 +10,7 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { renderProofProgressDashboard, validateProofProgressModel } from "./proof-progress-model.mjs";
 import { assertReviewedCorrectionEvidence, assertReviewedCorrectionRetained } from "./compatible-support-correction-contract.mjs";
+import { FIXED_WINDOW_CORRECTION, assertReviewedFixedWindowCorrectionEvidence, assertReviewedFixedWindowCorrectionRetained } from "./fixed-window-correction-contract.mjs";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = "content/milestone-updates.json";
@@ -144,7 +145,10 @@ function validateCorrectionEvidenceShape(correction) {
       fail(`${label}: only audited standard axiom closures are permitted`);
     }
   }
-  try { assertReviewedCorrectionEvidence(correction); } catch (error) { fail(error.message); }
+  try {
+    assertReviewedCorrectionEvidence(correction);
+    assertReviewedFixedWindowCorrectionEvidence(correction);
+  } catch (error) { fail(error.message); }
 }
 
 function validateCorrectionEvidence(correction, status, inventory) {
@@ -164,11 +168,25 @@ function validateCorrectionEvidence(correction, status, inventory) {
 
 function validateCorrections(data, status, index, progress, inventory, entryIds, timestampSources) {
   if (!Array.isArray(data.corrections)) fail("updates data: corrections must be an array");
-  try { assertReviewedCorrectionRetained(data.corrections, status, inventory); } catch (error) { fail(error.message); }
+  try {
+    assertReviewedCorrectionRetained(data.corrections, status, inventory);
+    assertReviewedFixedWindowCorrectionRetained(data.corrections, status, inventory);
+  } catch (error) { fail(error.message); }
   const currentSource = currentUpdateSource(index);
-  const publishedSources = new Set([sourceKey(currentSource), ...data.entries.map((entry) => sourceKey(entry.source))]);
+  const publicationTimes = [...data.entries, ...data.corrections]
+    .map((entry) => Date.parse(entry?.publishedAt)).filter(Number.isFinite);
+  const latestPublicationTime = Math.max(...publicationTimes);
+  // A correction-only release need not add an earned row. Older correction
+  // notices are publication records too; the mandatory cross-repository audit
+  // verifies their evidence against their exact original Git objects.
+  const publishedSources = new Set([
+    sourceKey(currentSource),
+    ...data.entries.map((entry) => sourceKey(entry.source)),
+    ...data.corrections.filter((entry) => Date.parse(entry?.publishedAt) < latestPublicationTime
+      && entry?.source).map((entry) => sourceKey(entry.source))
+  ]);
   let previousTimestamp = null;
-  return data.corrections.map((correction, position) => {
+  const corrections = data.corrections.map((correction, position) => {
     const label = `correction ${position}`;
     assertExactKeys(correction,
       ["id", "publishedAt", "title", "plainLanguage", "progressSnapshot", "source", "evidence"], label);
@@ -205,7 +223,7 @@ function validateCorrections(data, status, index, progress, inventory, entryIds,
       fail(`${label}: shared publication timestamp requires the same batch source`);
     }
     timestampSources.set(correction.publishedAt, binding);
-    if (timestamp >= Date.parse(data.entries[0].publishedAt) && sourceKey(correction.source) !== sourceKey(currentSource)) {
+    if (timestamp === latestPublicationTime && sourceKey(correction.source) !== sourceKey(currentSource)) {
       fail(`${label}: a current correction must match the current source pin`);
     }
     validateCorrectionEvidenceShape(correction);
@@ -216,6 +234,12 @@ function validateCorrections(data, status, index, progress, inventory, entryIds,
     // validates it against status and inventory at the exact recorded commit.
     return { ...correction };
   });
+  const latestBatch = [...data.entries, ...corrections]
+    .filter((entry) => Date.parse(entry.publishedAt) === latestPublicationTime);
+  if (!latestBatch.some((entry) => sourceKey(entry.source) === sourceKey(currentSource))) {
+    fail("latest update: source binding does not match the current publication pin");
+  }
+  return corrections;
 }
 
 function orderedUpdates(model) {
@@ -598,6 +622,82 @@ function renderAtomFeed(model) {
     + `${entries}\n</feed>\n`;
 }
 
+const CURRENT_CORRECTION_SURFACES = Object.freeze([
+  ["index.html", "html", ["SUMMARY", "BOTTOM_LINE"]],
+  ["status.html", "html", ["SUMMARY"]],
+  ["faq.html", "html", ["SUMMARY"]],
+  ["paper.html", "html", ["SUMMARY"]],
+  ["architecture.html", "html", ["SUMMARY"]],
+  ["README.md", "markdown", ["SUMMARY"]],
+  ...[
+    "activated_claim_wording", "audit_questions", "one_command_verify_upload",
+    "proof_pipeline", "reproducibility", "reviewer_guide", "source_checker_map", "trust_model"
+  ].map((name) => ["docs/" + name + ".md", "markdown", ["SUMMARY"]])
+].map(([file, format, regions]) => Object.freeze([file, format, Object.freeze(regions)])));
+
+function escapedMarkdown(value) {
+  return value.replaceAll("&", "&amp;")
+    .replace(/([\\\x60*_[\]<>~])/gu, (character) => "\\" + character)
+    .replace(/\r\n?|\n/gu, " ");
+}
+
+// The model is validated before rendering. Current summaries retain every
+// recorded correction and link to its original source-bound update.
+function renderCurrentCorrections(model, { format = "html", updatesPath = "updates.html" } = {}) {
+  if (!["html", "markdown"].includes(format)) fail("unsupported correction summary format");
+  if (!["updates.html", "../updates.html"].includes(updatesPath)) fail("unsupported correction summary link");
+  return model.corrections.map((entry) => {
+    const label = "Correction, not an earned milestone";
+    const credit = "This correction adds no earned positive publication row or fixed checkpoint credit.";
+    if (format === "markdown") {
+      return "### " + escapedMarkdown(entry.title) + "\n\n"
+        + label + ". Published " + entry.publishedAt.slice(0, 10) + ".\n\n"
+        + entry.plainLanguage.map(escapedMarkdown).join("\n\n") + "\n\n"
+        + credit + "\n\n"
+        + "[Read the verified correction and its limits](" + updatesPath + "#" + entry.id + ").";
+    }
+    return '<div data-progress-correction="' + escaped(entry.id) + '">'
+      + '<div class="section-label">' + label + ' · <time datetime="'
+      + escaped(entry.publishedAt) + '">' + escaped(entry.publishedAt.slice(0, 10)) + "</time></div>"
+      + "<h3>" + escaped(entry.title) + "</h3>"
+      + entry.plainLanguage.map((paragraph) => "<p>" + escaped(paragraph) + "</p>").join("")
+      + "<p>" + credit + ' <a href="' + updatesPath + "#" + escaped(entry.id)
+      + '">Read the verified correction and its limits</a>.</p></div>';
+  }).join("\n\n");
+}
+
+function currentCorrectionOutputs(model, sources) {
+  const required = model.corrections.some((entry) => entry.id === FIXED_WINDOW_CORRECTION.id);
+  const outputs = new Map();
+  for (const [relativePath, format, regions] of CURRENT_CORRECTION_SURFACES) {
+    const actual = sources.get(relativePath);
+    if (actual === undefined) {
+      if (required) fail(relativePath + ": missing current correction surface");
+      continue;
+    }
+    let expected = actual, marked = false;
+    const rendered = renderCurrentCorrections(model, {
+      format, updatesPath: path.posix.relative(path.posix.dirname(relativePath), "updates.html")
+    });
+    for (const region of regions) {
+      const start = "<!-- CURRENT_CORRECTIONS:" + region + ":START -->";
+      const end = "<!-- CURRENT_CORRECTIONS:" + region + ":END -->";
+      const startAt = expected.indexOf(start), endAt = expected.indexOf(end);
+      if (!required && startAt === -1 && endAt === -1) continue;
+      if (startAt === -1 || endAt < startAt) fail(relativePath + ": missing or misordered " + region + " correction markers");
+      if (expected.indexOf(start, startAt + start.length) !== -1
+          || expected.indexOf(end, endAt + end.length) !== -1) {
+        fail(relativePath + ": duplicate " + region + " correction markers");
+      }
+      expected = expected.slice(0, startAt) + start + "\n" + rendered + "\n"
+        + expected.slice(endAt);
+      marked = true;
+    }
+    if (marked) outputs.set(relativePath, expected);
+  }
+  return outputs;
+}
+
 async function readJson(root, relativePath) {
   try {
     return JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
@@ -620,6 +720,17 @@ async function generateMilestoneUpdates({ root = repositoryRoot, write = false }
     [FEED_PATH, renderAtomFeed(model)],
     [PROGRESS_SVG_PATH, renderProgressSvg(model)]
   ]);
+  const sources = new Map(await Promise.all(CURRENT_CORRECTION_SURFACES.map(async ([relativePath]) => {
+    try {
+      return [relativePath, await readFile(path.join(root, relativePath), "utf8")];
+    } catch (error) {
+      if (error.code === "ENOENT") return [relativePath, undefined];
+      fail(relativePath + ": cannot read current correction surface (" + error.code + ")");
+    }
+  })));
+  for (const [relativePath, expected] of currentCorrectionOutputs(model, sources)) {
+    outputs.set(relativePath, expected);
+  }
   for (const [relativePath, expected] of outputs) {
     const target = path.join(root, relativePath);
     if (write) {
@@ -654,7 +765,10 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
 }
 
 export {
+  CURRENT_CORRECTION_SURFACES,
   MilestoneUpdatesError,
+  currentCorrectionOutputs,
+  renderCurrentCorrections,
   generateMilestoneUpdates,
   parseArguments,
   renderAtomFeed,
