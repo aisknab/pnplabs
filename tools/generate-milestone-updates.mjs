@@ -1,6 +1,6 @@
 // Purpose: validate earned-milestone updates and separately evidenced correction notices.
 // Inputs: content/milestone-updates.json and the current formal publication payloads.
-// Outputs: deterministic update/feed/progress bytes and marked current correction summaries.
+// Outputs: deterministic update/feed/progress bytes, current publication summaries, static evidence and correction regions.
 // Invariants enforced: exact schemas, complete milestone coverage, source binding, progress safety, and escaped text.
 // Assumptions not checked: the executive clarity of the reviewed plain-language prose.
 
@@ -9,8 +9,10 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { renderProofProgressDashboard, validateProofProgressModel } from "./proof-progress-model.mjs";
+import { currentPublicationOutputs } from "./render-current-publication.mjs";
 import { assertReviewedCorrectionEvidence, assertReviewedCorrectionRetained } from "./compatible-support-correction-contract.mjs";
 import { FIXED_WINDOW_CORRECTION, assertReviewedFixedWindowCorrectionEvidence, assertReviewedFixedWindowCorrectionRetained } from "./fixed-window-correction-contract.mjs";
+import { GROWING_WINDOW_CORRECTION, assertReviewedGrowingWindowCorrectionEvidence, assertReviewedGrowingWindowCorrectionRetained } from "./growing-window-correction-contract.mjs";
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_PATH = "content/milestone-updates.json";
@@ -148,6 +150,7 @@ function validateCorrectionEvidenceShape(correction) {
   try {
     assertReviewedCorrectionEvidence(correction);
     assertReviewedFixedWindowCorrectionEvidence(correction);
+    assertReviewedGrowingWindowCorrectionEvidence(correction);
   } catch (error) { fail(error.message); }
 }
 
@@ -171,6 +174,7 @@ function validateCorrections(data, status, index, progress, inventory, entryIds,
   try {
     assertReviewedCorrectionRetained(data.corrections, status, inventory);
     assertReviewedFixedWindowCorrectionRetained(data.corrections, status, inventory);
+    assertReviewedGrowingWindowCorrectionRetained(data.corrections, status, inventory);
   } catch (error) { fail(error.message); }
   const currentSource = currentUpdateSource(index);
   const publicationTimes = [...data.entries, ...data.corrections]
@@ -667,7 +671,8 @@ function renderCurrentCorrections(model, { format = "html", updatesPath = "updat
 }
 
 function currentCorrectionOutputs(model, sources) {
-  const required = model.corrections.some((entry) => entry.id === FIXED_WINDOW_CORRECTION.id);
+  const required = model.corrections.some((entry) =>
+    entry.id === FIXED_WINDOW_CORRECTION.id || entry.id === GROWING_WINDOW_CORRECTION.id);
   const outputs = new Map();
   for (const [relativePath, format, regions] of CURRENT_CORRECTION_SURFACES) {
     const actual = sources.get(relativePath);
@@ -728,6 +733,11 @@ async function generateMilestoneUpdates({ root = repositoryRoot, write = false }
       fail(relativePath + ": cannot read current correction surface (" + error.code + ")");
     }
   })));
+  sources.set("assets/main.js", await readFile(path.join(root, "assets/main.js"), "utf8"));
+  for (const [relativePath, expected] of currentPublicationOutputs(model, sources, { status, index, progress, inventory })) {
+    sources.set(relativePath, expected);
+    outputs.set(relativePath, expected);
+  }
   for (const [relativePath, expected] of currentCorrectionOutputs(model, sources)) {
     outputs.set(relativePath, expected);
   }

@@ -4,6 +4,7 @@ import {
   CURRENT_CORRECTION_SURFACES, currentCorrectionOutputs, renderCurrentCorrections
 } from "../../tools/generate-milestone-updates.mjs";
 import { FIXED_WINDOW_CORRECTION } from "../../tools/fixed-window-correction-contract.mjs";
+import { GROWING_WINDOW_CORRECTION } from "../../tools/growing-window-correction-contract.mjs";
 
 const marker = (region, side) => "<!-- CURRENT_CORRECTIONS:" + region + ":" + side + " -->";
 const fixture = () => ({
@@ -113,16 +114,19 @@ test("marked current regions regenerate from the ledger and preserve surrounding
   assert.deepEqual(sources, beforeSources);
 });
 
-test("a published fixed-window correction requires every configured page and every region", () => {
+test("either reviewed search-limit correction requires every configured page and every region", () => {
+  for (const id of [FIXED_WINDOW_CORRECTION.id, GROWING_WINDOW_CORRECTION.id])
   for (const [file, _format, regions] of CURRENT_CORRECTION_SURFACES) {
+    const model = fixture();
+    model.corrections[0].id = id;
     const missingFile = surfaceFixture();
     missingFile.delete(file);
-    assert.throws(() => currentCorrectionOutputs(fixture(), missingFile), /missing current correction surface/u, file);
+    assert.throws(() => currentCorrectionOutputs(model, missingFile), /missing current correction surface/u, file);
     for (const region of regions) {
       const missingRegion = surfaceFixture();
       missingRegion.set(file, missingRegion.get(file)
         .replace(marker(region, "START"), "").replace(marker(region, "END"), ""));
-      assert.throws(() => currentCorrectionOutputs(fixture(), missingRegion), /missing or misordered/u, file + ":" + region);
+      assert.throws(() => currentCorrectionOutputs(model, missingRegion), /missing or misordered/u, file + ":" + region);
     }
   }
 });

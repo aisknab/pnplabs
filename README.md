@@ -2,9 +2,22 @@
 
 This checkout is the public website, current inventory-derived report bundle, checksum manifest, reviewer documentation, minimal fixture harness, and smoke-test package for the PNP project.
 
+<!-- CURRENT_PUBLICATION:START -->
 ## Current proof boundary
 
 <!-- CURRENT_CORRECTIONS:SUMMARY:START -->
+### Why expanding an exhaustive search does not fix its size problem
+
+Correction, not an earned milestone. Published 2026-10-13.
+
+A checked family of circuit examples shows a limit of expanding the existing exhaustive search. For these inputs, any accepted improvement needs a complete candidate list that eventually exceeds every polynomial bound in the encoded input length.
+
+This rules out a polynomial-size guarantee for that fully materialized enumeration strategy, not every possible solver. It does not bound how many candidates a selective search must visit, rule out compressed or lazy methods, or claim that these examples arise from the SAT reduction. It does not settle P versus NP or earn additional proof-completion credit.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
+
+[Read the verified correction and its limits](updates.html#growing-window-enumeration-size-correction).
+
 ### Why a complete local search can still miss a global improvement
 
 Correction, not an earned milestone. Published 2026-09-30.
@@ -30,21 +43,24 @@ This correction adds no earned positive publication row or fixed checkpoint cred
 [Read the verified correction and its limits](updates.html#unrestricted-compatible-support-slack-correction).
 <!-- CURRENT_CORRECTIONS:SUMMARY:END -->
 
-### Latest earned milestone: M280
+### Latest earned milestone: M281
 
-**Proving cost comparisons for nested completed supports**
+**Building the complete remaining problem efficiently**
 
-For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
+For every input, the project now has a checked program that builds and encodes the full remaining problem. The program preserves whether the original problem has a solution, and both its running time and output size have proved polynomial bounds in the length of the encoded input.
 
-This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open.
+This completes the construction step, not the solver. It does not find the required answers or certify that no answer exists for every input; the full solution method and its polynomial runtime remain open.
 
-Current release source: [`0c98b51d6eb1a14f51cc612a69a1705c30a78ad1`](https://github.com/aisknab/pnp/tree/0c98b51d6eb1a14f51cc612a69a1705c30a78ad1), tree `cf2b90ab65bf4f95bf27506163bd26137086c64d`.
+Formal artefact coverage: 257 of 259 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
-Original latest-earned source: [`f14cb7a87004ebedfa55351f6ba20d68a333cc18`](https://github.com/aisknab/pnp/tree/f14cb7a87004ebedfa55351f6ba20d68a333cc18), tree `1cbaf64d8a7303b154848ec73f38e85e406defca`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280`.
+This publication changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Formal artefact coverage: 256 of 258 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Current release source: [`f8270c12d163bdd8457131d42bf6dcd3ccea3a28`](https://github.com/aisknab/pnp/tree/f8270c12d163bdd8457131d42bf6dcd3ccea3a28), tree `d72c0698e791605c92438a9fd4daf59406a2e75a`.
 
+Original latest-earned source: [`f8270c12d163bdd8457131d42bf6dcd3ccea3a28`](https://github.com/aisknab/pnp/tree/f8270c12d163bdd8457131d42bf6dcd3ccea3a28), tree `d72c0698e791605c92438a9fd4daf59406a2e75a`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281`.
 
+Inspect the [latest earned update](updates.html#2026-10-13-complete-serialized-source-normalizer) and the [complete current milestone ledger](status.html). The separately labelled corrections above preserve their original publication records.
+<!-- CURRENT_PUBLICATION:END -->
 
 ## Current status
 
@@ -518,21 +534,9 @@ The pinned `leanprover/lean4:v4.31.0` toolchain compiles the explicit `PNP` libr
 
 ## Progress tracker
 
-[`public/pnp-proof-progress.json`](public/pnp-proof-progress.json) is the exact public mirror of the canonical core `status/PROOF_PROGRESS.json` ledger. At coordinate `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280` it reports separate metrics:
+The generated current proof boundary above reports formal artefact coverage and the risk-weighted proof-completion estimate separately. The [canonical progress mirror](public/pnp-proof-progress.json) records every fixed checkpoint, track score, uncertainty range and historical review; the [public tracker](status.html#proof-progress) renders those values. Evidence rows are not equal units of mathematical difficulty, and their denominator can grow without changing the fixed-weight estimate.
 
-- Formal artefact coverage: **256 of 258** current scoped publication rows earned (**99.2%** of the current evidence ledger). The denominator can grow, and this is not proof completion.
-- Risk-weighted proof completion estimate: **40%**, with uncertainty **20% to 40%**. This is a conservative estimate of complete proof burden retired, not a probability or time estimate.
-- Global gates closed: **0 of 5**. Project-specific axioms remaining: **0**. The eligible root is absent and the publication gate is false.
-
-The fixed track scores are 13/15 for Formal foundations and proof infrastructure; 20/20 for Concrete reductions and locked-NAND route; 2/35 for Unconditional residual core and ZeroSlack; 1/20 for Exact PCCMin algorithm, complexity and bounds; 4/10 for Root theorem and project-axiom elimination. This publication batch changes no fixed weighted checkpoint and earns no extra points for its added evidence rows. The earlier M230 complete-builder and M231 concrete NP-hardness checkpoint reviews remain in the canonical history.
-
-**Proving cost comparisons for nested completed supports**
-
-For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
-
-This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open.
-
-The [source-bound update](updates.html#2026-09-24-computed-closed-support-nested-positivity) and [verified correction](updates.html#unrestricted-compatible-support-slack-correction) distinguish the checked restricted results from the open general argument. This publication batches M265 through M280. Earlier records retain their original scopes and limitations.
+The [update history](updates.html) separates earned construction results from checked corrections and preserves their original source coordinates. The new construction does not solve the complete remaining problem or close a global proof gate.
 
 M230 and M231 establish the complete all-input Cook-Levin polynomial reduction and concrete CNF-SAT NP-completeness, not a polynomial-time SAT algorithm. M243 connects that checked hardness to the active final-report bridge, but its minimization-loop certificate and existence premises remain unconstructed. The full manuscript carrier and obligation calculus, complete globally decreasing routes, unconditional SaturatePositive, BCELReady and ZeroSlack, general exact PCCMin, and complete polynomial runtime, output and certificate bounds remain open.
 
@@ -551,7 +555,7 @@ Use the source repository for the current formal reconstruction:
 ```bash
 git clone https://github.com/aisknab/pnp.git
 cd pnp
-git checkout e4af115a66cd5a6715a9363abea7a2008238d401
+git checkout f8270c12d163bdd8457131d42bf6dcd3ccea3a28
 npm ci
 npm run formal:progress
 npm run formal:inventory:check

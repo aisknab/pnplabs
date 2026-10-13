@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 755,852 | `3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35` |
-| `downloads/canonical-proof-report.pdf` | 755,852 | `3626ffc4f5a0de4989b0b8de61d6924c800109fee1d2468428762f1c13327f35` |
-| `downloads/canonical_proof_report.tex` | 560,752 | `3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799` |
-| `downloads/canonical-proof-report.tex` | 560,752 | `3d83a9cceee456734338c135c7770c83bf8b157776d1dcb03cfacf5537707799` |
-| `public/pnp-status.json` | 3,939,475 | `325274ab9f39e9b2bdad02add1f940719c6939d96f0b73092af9b5d91533dc9e` |
-| `public/pnp-theorem-inventory.json` | 90,772,676 | `8cffec40ac5786f31bb8538967e79529423316f217bfee319e8423b81cf91bc3` |
-| `public/pnp-proof-progress.json` | 265,418 | `a4bb525a4cfa07c672053b74e563d8593f1ee8292ac7a605e79ff965475cbbaf` |
+| `downloads/canonical_proof_report.pdf` | 770,456 | `3887940642ee0ed325d6cbf0f6b755e1ffd93a69c9f1e62983cb01c79726414c` |
+| `downloads/canonical-proof-report.pdf` | 770,456 | `3887940642ee0ed325d6cbf0f6b755e1ffd93a69c9f1e62983cb01c79726414c` |
+| `downloads/canonical_proof_report.tex` | 614,987 | `5f8be18c11b569a400f742fc6b6e1b46529cda32e83e28b645385d6ccb8b9f75` |
+| `downloads/canonical-proof-report.tex` | 614,987 | `5f8be18c11b569a400f742fc6b6e1b46529cda32e83e28b645385d6ccb8b9f75` |
+| `public/pnp-status.json` | 3,950,789 | `8100d23e34f3fb366526c43d3cc8383325b563f6646da6ff6aafd135d17dacce` |
+| `public/pnp-theorem-inventory.json` | 93,310,447 | `49cfcf6de14f560842766adef7fe9e54437ce57ac2a6c4ace650308164be890a` |
+| `public/pnp-proof-progress.json` | 266,675 | `bf35d7d0795267037daf558e4e47ded80d3673424b77866658bec37da224703e` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
 
@@ -397,6 +397,18 @@ and cannot satisfy the concrete publication gate.
 ## Current proof boundary
 
 <!-- CURRENT_CORRECTIONS:SUMMARY:START -->
+### Why expanding an exhaustive search does not fix its size problem
+
+Correction, not an earned milestone. Published 2026-10-13.
+
+A checked family of circuit examples shows a limit of expanding the existing exhaustive search. For these inputs, any accepted improvement needs a complete candidate list that eventually exceeds every polynomial bound in the encoded input length.
+
+This rules out a polynomial-size guarantee for that fully materialized enumeration strategy, not every possible solver. It does not bound how many candidates a selective search must visit, rule out compressed or lazy methods, or claim that these examples arise from the SAT reduction. It does not settle P versus NP or earn additional proof-completion credit.
+
+This correction adds no earned positive publication row or fixed checkpoint credit.
+
+[Read the verified correction and its limits](../updates.html#growing-window-enumeration-size-correction).
+
 ### Why a complete local search can still miss a global improvement
 
 Correction, not an earned milestone. Published 2026-09-30.
@@ -422,25 +434,21 @@ This correction adds no earned positive publication row or fixed checkpoint cred
 [Read the verified correction and its limits](../updates.html#unrestricted-compatible-support-slack-correction).
 <!-- CURRENT_CORRECTIONS:SUMMARY:END -->
 
-### Latest earned milestone: M280
+### Latest earned milestone: M281
 
-**Proving cost comparisons for nested completed supports**
+**Building the complete remaining problem efficiently**
 
-For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
+For every input, the project now has a checked program that builds and encodes the full remaining problem. The program preserves whether the original problem has a solution, and both its running time and output size have proved polynomial bounds in the length of the encoded input.
 
-This establishes the enlargement step for already-completed supports. It does not show that every raw local witness can be completed without losing its saving, and the complete admissibility and global routing arguments remain open.
+This completes the construction step, not the solver. It does not find the required answers or certify that no answer exists for every input; the full solution method and its polynomial runtime remain open.
 
-Formal artefact coverage: 256 of 258 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
-
-
+Formal artefact coverage: 257 of 259 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 This publication changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Current release source: [`0c98b51d6eb1a14f51cc612a69a1705c30a78ad1`](https://github.com/aisknab/pnp/tree/0c98b51d6eb1a14f51cc612a69a1705c30a78ad1), tree `cf2b90ab65bf4f95bf27506163bd26137086c64d`.
+Current release source: [`f8270c12d163bdd8457131d42bf6dcd3ccea3a28`](https://github.com/aisknab/pnp/tree/f8270c12d163bdd8457131d42bf6dcd3ccea3a28), tree `d72c0698e791605c92438a9fd4daf59406a2e75a`.
 
-Original latest-earned source: [`f14cb7a87004ebedfa55351f6ba20d68a333cc18`](https://github.com/aisknab/pnp/tree/f14cb7a87004ebedfa55351f6ba20d68a333cc18), tree `1cbaf64d8a7303b154848ec73f38e85e406defca`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280`.
+Original latest-earned source: [`f8270c12d163bdd8457131d42bf6dcd3ccea3a28`](https://github.com/aisknab/pnp/tree/f8270c12d163bdd8457131d42bf6dcd3ccea3a28), tree `d72c0698e791605c92438a9fd4daf59406a2e75a`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281`.
 
-Inspect the [latest earned update](../updates.html#2026-09-24-computed-closed-support-nested-positivity), the [current correction](../updates.html#fixed-window-global-minimum-correction) and the [complete current milestone ledger](../status.html).
-
-M230 and M231 close complete Cook-Levin emission/refinement and concrete CNF-SAT NP-completeness. NP-completeness is not a deterministic polynomial-time SAT algorithm. M243 consumes that checked hardness in the still-conditional report bridge; the complete minimization-loop certificate and its existence premise remain unconstructed. Earlier named component limitations describe those standalone components and do not negate later earned results.
+Inspect the [latest earned update](../updates.html#2026-10-13-complete-serialized-source-normalizer) and the [complete current milestone ledger](../status.html). The separately labelled corrections above preserve their original publication records.
 <!-- CURRENT_PUBLICATION:END -->

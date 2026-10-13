@@ -304,7 +304,7 @@ test("checked generation rejects stale public HTML or XML bytes", async (t) => {
     "public/pnp-status.json",
     "public/pnp-index.json",
     "public/pnp-proof-progress.json",
-    "public/pnp-theorem-inventory.json",
+    "public/pnp-theorem-inventory.json", "assets/main.js",
     ...CURRENT_CORRECTION_SURFACES.map(([file]) => file)
   ]) {
     let bytes = await readFile(path.join(repositoryRoot, relativePath));

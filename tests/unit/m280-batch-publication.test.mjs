@@ -196,16 +196,16 @@ test('M280 batch contract is wired alongside every retained batch', () => {
     ['tools/check-cross-repo-targets.mjs',['PublicationMap','Status','Inventory','Manifest']],
   ]) {
     const source = readFileSync(file,'utf8');
-    for (const batch of [258,262,264,280]) {
+    for (const batch of [258,262,264,280,281]) {
       assert.ok(source.includes("from './formal-m" + batch + "-batch-contract.mjs'"),file);
       for (const kind of kinds) assert.match(source,new RegExp('assertM' + batch + 'Batch' + kind + '\\(\\w+\\);'),file);
     }
-    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX)').length - 1,6,file);
+    if (kinds.includes('Manifest')) assert.equal(source.split(' + M258_BATCH_SCOPE_SUFFIX + M262_BATCH_SCOPE_SUFFIX + M264_BATCH_SCOPE_SUFFIX + M280_BATCH_SCOPE_SUFFIX + M281_BATCH_SCOPE_SUFFIX)').length - 1,6,file);
   }
   const browser = readFileSync('assets/main.js','utf8');
   assertM280BrowserDescriptor(browser);
   for (const kind of ['inventory','status']) assert.ok(browser.includes('try { FORMAL_M265_M280_VALIDATORS.' + kind + '(' + kind + '); } catch { return false; }'));
-  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH].flatMap(batch => batch.milestones)'));
+  assert.ok(browser.includes('[FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH].flatMap(batch => batch.milestones)'));
 });
 
 test('M280 current mirrors bind the latest reviewed source and separate progress fields', () => {
@@ -326,7 +326,7 @@ test('M280 current primary surfaces expose the restricted result and separate co
     assert.ok(summary.includes('uncertainty '+progress.proofCompletion.uncertaintyLowPercent+'% to '+progress.proofCompletion.uncertaintyHighPercent+'%'));
     assert.ok(summary.includes('Global gates closed: '+progress.globalGates.filter(row=>row.status==='closed').length+' of '+progress.globalGates.length));
     assert.ok(summary.includes('This correction adds no earned positive publication row or fixed checkpoint credit.'));
-    assert.ok(summary.includes('This is not a globally successful rewrite strategy or a theorem of total polynomial runtime.'));
+    assert.doesNotMatch(summary, /P\s*=\s*NP (?:is|has been) (?:established|proved)/u);
     assert.ok(summary.includes('PNP.Main.p_eq_np remains absent and the publication gate is false.'));
     assert.doesNotMatch(html,/data-m(?:258|262|264)-publication-summary/);
   }
@@ -334,7 +334,9 @@ test('M280 current primary surfaces expose the restricted result and separate co
   assert.ok(bottom.includes('data-current-milestone="'+latest.milestoneId+'"'));
   for (const paragraph of [...latest.plainLanguage,...correction.plainLanguage]) assert.ok(bottom.includes(paragraph));
   const faq = decodePublishedHtml(readFileSync('faq.html','utf8'));
-  for (const text of [M280_BATCH.milestones.at(-1).scope,M280_BATCH.milestones.at(-1).nonClaim]) assert.ok(faq.includes(text));
+  const currentMilestone = json('public/pnp-status.json').formalPublicationMilestones.find(row => row.id === latest.milestoneId);
+  assert.ok(currentMilestone);
+  for (const text of [currentMilestone.scope,currentMilestone.nonClaim]) assert.ok(faq.includes(text));
   const classifier=decodePublishedHtml(readFileSync('architecture.html','utf8').match(/<article class="card"><h3>Scoped milestone classifier<\/h3>[\s\S]*?<\/article>/)?.[0] ?? '');
   assert.ok(classifier.includes(progress.formalArtefactCoverage.earnedRows+' of '+progress.formalArtefactCoverage.totalRows+' scoped rows'));
   for (const paragraph of latest.plainLanguage) assert.ok(classifier.includes(paragraph));
