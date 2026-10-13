@@ -105,6 +105,14 @@ requires the canonical fixed-checkpoint review. Preserve historical notices and
 validate their original evidence against their recorded Git commit, not a newer
 inventory. Do not manufacture a positive publication row to announce a correction.
 
+Generate current milestone summaries, the homepage bottom line and technical
+boundary, FAQ, static status ledger and marked current-document sections with
+`npm run updates:generate`. They share the validated update ledger and canonical
+status inputs through `tools/render-current-publication.mjs`; do not maintain
+separate copies of latest-result prose or progress values. Preserve historical
+annotations, source roles and correction-generator ownership. Update the focused
+renderer and consumer tests in the same change as any new generated region.
+
 Generate marked current correction summaries from the reviewed update ledger with
 `npm run updates:generate`; `npm run updates:check` rejects stale summaries. Keep
 all configured primary-page, homepage-bottom-line and current-document regions.

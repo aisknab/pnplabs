@@ -29,7 +29,7 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">
-      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280">
+      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281">
         <article class="card proof-progress-primary">
           <span class="eyebrow">Fixed-weight model v0</span>
           <h2 id="proof-progress-heading">Risk-weighted proof completion estimate</h2>
@@ -50,7 +50,7 @@
         <article class="card proof-progress-secondary">
           <span class="section-label">Separate evidence metric</span>
           <h2>Formal artefact coverage</h2>
-          <p class="coverage-number">256 of 258</p>
+          <p class="coverage-number">257 of 259</p>
           <p><strong>99.2% of the current evidence ledger.</strong></p>
           <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>
         </article>
@@ -78,6 +78,45 @@
         <p>The M184 authoritative ledger contains 160 earned rows out of 162, superseding the earlier 152 of 154 example. No named load-bearing checkpoint closed merely because additional local or supplied-data milestones were earned, so the fixed-weight baseline remains 30 percent.</p>
         <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>
         <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>
+      </article>
+
+      <article class="card" id="growing-window-enumeration-size-correction" data-update-kind="correction">
+        <div class="section-label"><time datetime="2026-10-13T00:01:18.447Z">2026-10-13</time> · Correction, not an earned milestone</div>
+        <h2>Why expanding an exhaustive search does not fix its size problem</h2>
+        <p>A checked family of circuit examples shows a limit of expanding the existing exhaustive search. For these inputs, any accepted improvement needs a complete candidate list that eventually exceeds every polynomial bound in the encoded input length.</p>
+        <p>This rules out a polynomial-size guarantee for that fully materialized enumeration strategy, not every possible solver. It does not bound how many candidates a selective search must visit, rule out compressed or lazy methods, or claim that these examples arise from the SAT reduction. It does not settle P versus NP or earn additional proof-completion credit.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original correction"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281</strong><ul><li>Formal artefact coverage: 257 of 259 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Update type:</strong> Correction, not an earned milestone.</p>
+          <p><strong>Source-bound limitation:</strong> The global stopping theorem uses the exhaustive semantic reference minimum as a mathematical witness and requires a proof of global no-gain at a chain endpoint. It does not generate a route, derive global absence from a finite scan, construct the report ZeroSlack certificate, or establish polynomial runtime.</p>
+          <p><strong>Compiled correction evidence:</strong></p><ul><li><code>PNP.DirectWire.GrowingWindowUniverseBound.programs_tail_length_le</code> in <code>PNP.NANDGrowingWindowUniverseBound</code>; audited axioms: Quot.sound, propext.</li><li><code>PNP.DirectWire.GrowingWindowUniverseBound.smallerCandidates_exceeds_polynomial</code> in <code>PNP.NANDGrowingWindowUniverseBound</code>; audited axioms: Quot.sound, propext.</li><li><code>PNP.DirectWire.GrowingWindowUniverseBound.query_length_le</code> in <code>PNP.NANDGrowingWindowUniverseBound</code>; audited axioms: Quot.sound, propext.</li><li><code>PNP.DirectWire.GrowingWindowUniverseBound.valid_requires_full_budget</code> in <code>PNP.NANDGrowingWindowUniverseBound</code>; audited axioms: Quot.sound, propext.</li><li><code>PNP.DirectWire.GrowingWindowUniverseBound.valid_universe_exceeds_encoded_polynomial</code> in <code>PNP.NANDGrowingWindowUniverseBound</code>; audited axioms: Quot.sound, propext.</li><li><code>PNP.DirectWire.GrowingWindowUniverseBound.no_uniform_polynomial_complete_universe</code> in <code>PNP.NANDGrowingWindowUniverseBound</code>; audited axioms: Quot.sound, propext.</li></ul>
+          <p><strong>Core source:</strong> commit <code>f8270c12d163bdd8457131d42bf6dcd3ccea3a28</code>, tree <code>d72c0698e791605c92438a9fd4daf59406a2e75a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>A correction does not create an earned milestone or award proof-completion credit. Any score change must come from the canonical fixed-checkpoint ledger.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record. These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
+      <article class="card" id="2026-10-13-complete-serialized-source-normalizer" data-milestone-id="complete-serialized-source-normalizer">
+        <div class="section-label"><time datetime="2026-10-13T00:01:18.447Z">2026-10-13</time> · earned milestone 257</div>
+        <h2>Building the complete remaining problem efficiently</h2>
+        <p>For every input, the project now has a checked program that builds and encodes the full remaining problem. The program preserves whether the original problem has a solution, and both its running time and output size have proved polynomial bounds in the length of the encoded input.</p>
+        <p>This completes the construction step, not the solver. It does not find the required answers or certify that no answer exists for every input; the full solution method and its polynomial runtime remain open.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281</strong><ul><li>Formal artefact coverage: 257 of 259 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>complete-serialized-source-normalizer</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every source bitstring, a concrete finite-machine refinement computes the complete source-derived serialized normalization packet and halts within a polynomial in the encoded input length. The packet has a polynomial encoded-size bound, strict decode roundtrip and malformed-input convention. Its encoded certificate language is equivalent to CNFSAT on that same input; satisfiable inputs have a certificate of at most 30 times the input length plus 12 bits. Every system packet retains all residual equations, and every model packet yields a satisfying source assignment. The packaged polynomial reduction uses the actual serialized machine output. No construction, completeness or correctness certificate is supplied by a caller.</p>
+          <p><strong>Recorded milestone boundary:</strong> This constructs and encodes an equivalent residual problem; a system packet is not an unsatisfiability verdict. Short certificate existence does not provide certificate discovery. The result does not implement the manuscript NormalizeOrGain minimizer, solve all residual systems, establish global route coverage or unconditional ZeroSlack, or prove exact polynomial PCCMin. Its polynomial bounds cover the complete normalizer, not a complete SAT solver. Deterministic CNFSAT membership in P and the eligible root theorem remain absent; P = NP is not proved.</p>
+          <p>Later milestones may close obligations described as open in this recorded boundary. See the <a href="status.html#proof-progress">current proof tracker</a> and current proof boundary for today's project status.</p>
+          <p><strong>Reviewed theorem pins:</strong> 12</p>
+          <p><strong>Core source:</strong> commit <code>f8270c12d163bdd8457131d42bf6dcd3ccea3a28</code>, tree <code>d72c0698e791605c92438a9fd4daf59406a2e75a</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
       </article>
 
       <article class="card" id="fixed-window-global-minimum-correction" data-update-kind="correction">

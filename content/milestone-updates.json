@@ -47,6 +47,84 @@
   },
   "corrections": [
     {
+      "id": "growing-window-enumeration-size-correction",
+      "title": "Why expanding an exhaustive search does not fix its size problem",
+      "plainLanguage": [
+        "A checked family of circuit examples shows a limit of expanding the existing exhaustive search. For these inputs, any accepted improvement needs a complete candidate list that eventually exceeds every polynomial bound in the encoded input length.",
+        "This rules out a polynomial-size guarantee for that fully materialized enumeration strategy, not every possible solver. It does not bound how many candidates a selective search must visit, rule out compressed or lazy methods, or claim that these examples arise from the SAT reduction. It does not settle P versus NP or earn additional proof-completion credit."
+      ],
+      "publishedAt": "2026-10-13T00:01:18.447Z",
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 257,
+        "formalArtefactCoverageTotalRows": 259,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f8270c12d163bdd8457131d42bf6dcd3ccea3a28",
+        "tree": "d72c0698e791605c92438a9fd4daf59406a2e75a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      },
+      "evidence": {
+        "nonClaim": "The global stopping theorem uses the exhaustive semantic reference minimum as a mathematical witness and requires a proof of global no-gain at a chain endpoint. It does not generate a route, derive global absence from a finite scan, construct the report ZeroSlack certificate, or establish polynomial runtime.",
+        "theorems": [
+          {
+            "name": "PNP.DirectWire.GrowingWindowUniverseBound.programs_tail_length_le",
+            "module": "PNP.NANDGrowingWindowUniverseBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GrowingWindowUniverseBound.smallerCandidates_exceeds_polynomial",
+            "module": "PNP.NANDGrowingWindowUniverseBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GrowingWindowUniverseBound.query_length_le",
+            "module": "PNP.NANDGrowingWindowUniverseBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GrowingWindowUniverseBound.valid_requires_full_budget",
+            "module": "PNP.NANDGrowingWindowUniverseBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GrowingWindowUniverseBound.valid_universe_exceeds_encoded_polynomial",
+            "module": "PNP.NANDGrowingWindowUniverseBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          },
+          {
+            "name": "PNP.DirectWire.GrowingWindowUniverseBound.no_uniform_polynomial_complete_universe",
+            "module": "PNP.NANDGrowingWindowUniverseBound",
+            "axioms": [
+              "Quot.sound",
+              "propext"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "id": "fixed-window-global-minimum-correction",
       "title": "Why a complete local search can still miss a global improvement",
       "plainLanguage": [
@@ -356,6 +434,32 @@
     }
   ],
   "entries": [
+    {
+      "id": "2026-10-13-complete-serialized-source-normalizer",
+      "milestoneId": "complete-serialized-source-normalizer",
+      "publishedAt": "2026-10-13T00:01:18.447Z",
+      "title": "Building the complete remaining problem efficiently",
+      "plainLanguage": [
+        "For every input, the project now has a checked program that builds and encodes the full remaining problem. The program preserves whether the original problem has a solution, and both its running time and output size have proved polynomial bounds in the length of the encoded input.",
+        "This completes the construction step, not the solver. It does not find the required answers or certify that no answer exists for every input; the full solution method and its polynomial runtime remain open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 257,
+        "formalArtefactCoverageTotalRows": 259,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f8270c12d163bdd8457131d42bf6dcd3ccea3a28",
+        "tree": "d72c0698e791605c92438a9fd4daf59406a2e75a",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
     {
       "id": "2026-09-24-computed-closed-support-nested-positivity",
       "milestoneId": "computed-closed-support-nested-positivity",

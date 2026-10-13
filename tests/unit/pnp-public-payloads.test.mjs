@@ -9647,7 +9647,8 @@ test('status page has a conservative complete static fallback', async () => {
     formatNumber(index.claimBoundary.leanTheoremInventoryAssumptionFreeTheoremCount),
     '<strong>' + formatNumber(index.claimBoundary.leanTheoremInventoryExcludedPrivateDeclarationCount) + '</strong> private compiler auxiliaries excluded',
     '<strong>' + formatNumber(index.claimBoundary.leanTheoremInventorySourceClosureModuleCount) + '</strong> modules',
-    index.formalPublicationMilestoneCounts.earned + ' of ' + index.formalPublicationMilestoneCounts.total + ' scoped milestone rows',
+    'Formal artefact coverage: ' + index.formalPublicationMilestoneCounts.earned + ' of '
+      + index.formalPublicationMilestoneCounts.total + ' current scoped publication rows earned',
     'Show all ' + index.formalPublicationMilestoneCounts.total + ' formal milestone records',
     ...Object.entries(currentBatch.statusFields).map(([field,value]) => field + ' = ' + JSON.stringify(value)),
   ] : legacyFragments;
@@ -9783,15 +9784,14 @@ test('static inventory prose derives changing publication totals from the canoni
         assert.ok(summary, name + ': current scoped summary');
         assert.ok(summary.includes(summaryMarker), name + ': current publication summary');
         assert.ok(summary.includes('Latest earned milestone: M'+currentNumber), name + ': separate latest earned milestone');
-        assert.match(summary,
-          /not (?:global circuit minimization|a globally successful rewrite strategy) or a theorem of total polynomial runtime/,
-          name + ': no global strategy or complete runtime theorem');
-        assert.ok(summary.includes('a polynomial-time SAT decision algorithm remains open'),
-          name + ': deterministic polynomial-time SAT remains open');
+        const displayed = decodePublishedHtml(summary.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
+        for (const paragraph of currentEntry.plainLanguage) assert.ok(displayed.includes(paragraph.replace(/\s+/g, ' ')), name + ': complete canonical plain-language account');
       } else {
         const displayed = decodePublishedHtml(current.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ');
         for (const paragraph of currentEntry.plainLanguage) assert.ok(displayed.includes(paragraph.replace(/\s+/g, ' ')), name + ': complete canonical plain-language account');
       }
+      if (!progress.publicationGate.passed) assert.ok(normalized.includes('publication gate is false'),
+        name + ': final theorem publication remains blocked');
       if (surface.includes('<!-- CURRENT_PUBLICATION:START -->')) {
         assert.ok(current.includes(currentEntry.source.commit), name + ': source commit');
         assert.ok(current.includes(currentEntry.source.tree), name + ': source tree');

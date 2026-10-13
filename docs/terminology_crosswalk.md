@@ -3,8 +3,8 @@
 > **Current status:** Formal reconstruction is in progress. The repository does not currently
 > establish `P = NP`, and no historical checker release is current theorem authority. See the
 > authoritative [`../public/pnp-status.json`](../public/pnp-status.json), upstream
-> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/0c98b51d6eb1a14f51cc612a69a1705c30a78ad1/status/FORMAL_RECONSTRUCTION_STATUS.json),
-> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/0c98b51d6eb1a14f51cc612a69a1705c30a78ad1/docs/FORMAL_RECONSTRUCTION.md).
+> [`status/FORMAL_RECONSTRUCTION_STATUS.json`](https://github.com/aisknab/pnp/blob/f8270c12d163bdd8457131d42bf6dcd3ccea3a28/status/FORMAL_RECONSTRUCTION_STATUS.json),
+> and [`docs/FORMAL_RECONSTRUCTION.md`](https://github.com/aisknab/pnp/blob/f8270c12d163bdd8457131d42bf6dcd3ccea3a28/docs/FORMAL_RECONSTRUCTION.md).
 
 This crosswalk translates current formal-reconstruction terms and historical assertion-checker terms
 into more standard complexity-theory, proof-engineering, and formal-methods vocabulary. The current
@@ -45,7 +45,11 @@ M263-M264 extend the earlier scoped support search and causal expansion with dep
 
 The selected support and raw history remain input data. These results do not supply all manuscript R1-R9 or N1-N10 rules, full R7, arbitrary observers or full-profile compatibility. They do not derive terminal families or a globally successful strategy, complete Package E, global routes, unconditional SaturatePositive, BCELReady or ZeroSlack, exact general PCCMin, or complete encoded-input polynomial runtime, output and certificate bounds. The earlier paid-copy expansion and zero/unary search retain their narrower standalone interfaces.
 
-## Current admissibility boundary
+## Current construction and limits
+
+The [latest construction update](../updates.html#2026-10-13-complete-serialized-source-normalizer) describes the complete input-to-residual construction and its boundary. Building that remaining problem efficiently is not solving it. The [current formal status](../status.html) and [separately recorded corrections](../updates.html) identify the still-open mathematical obligations.
+
+## Earlier completed-support admissibility boundary
 
 For nested supports that have already been completed by the existing construction, the project now builds the comparison circuits needed to prove cost and positive-saving bounds. The bounds follow from those physical constructions instead of being assumptions.
 
@@ -55,7 +59,7 @@ The project has verified a counterexample to an unrestricted reading of the orig
 
 This does not invalidate the checked replacement results that enforce the necessary restrictions, and it does not settle P versus NP. It identifies a central obligation for the next research: derive the admissible replacements and show that the general method can use them without losing the required saving.
 
-A completed-support cost comparison is not a proof that every raw positive local witness has an admissible completion with the same saving. The next general obligation must derive that admissibility and successful routing from the source, not assume a complete family or route certificate. See the [current update](../updates.html#2026-09-24-computed-closed-support-nested-positivity) and [checked correction](../updates.html#unrestricted-compatible-support-slack-correction).
+A completed-support cost comparison is not a proof that every raw positive local witness has an admissible completion with the same saving. The next general obligation must derive that admissibility and successful routing from the source, not assume a complete family or route certificate. See the [original completed-support update](../updates.html#2026-09-24-computed-closed-support-nested-positivity) and [checked correction](../updates.html#unrestricted-compatible-support-slack-correction).
 
 ## Current Formal-Evidence Terms
 

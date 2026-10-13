@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-09-20-280";
-const STATUS_SHA256 = "325274ab9f39e9b2bdad02add1f940719c6939d96f0b73092af9b5d91533dc9e";
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-09-20-280";
-const FORMAL_PUBLICATION_MAP_SHA256 = "d2e1cbbe74642871116dfedac35f9b94d7a9f8a3eaead881269f8b0c1f34ff5e";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281";
+const STATUS_SHA256 = "8100d23e34f3fb366526c43d3cc8383325b563f6646da6ff6aafd135d17dacce";
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-10-13-281";
+const FORMAL_PUBLICATION_MAP_SHA256 = "df6630f534b9832214e55ca2e95ffc81e142bc028d145392389b1d60e068226b";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
 const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230";
-const INVENTORY_SHA256 = "8cffec40ac5786f31bb8538967e79529423316f217bfee319e8423b81cf91bc3";
-const SOURCE_CLOSURE_SHA256 = "1dff3ad84e73717273d250bb00189bf54d5feea126d1f2a1bbd56a05ab088ee6";
+const INVENTORY_SHA256 = "49cfcf6de14f560842766adef7fe9e54437ce57ac2a6c4ace650308164be890a";
+const SOURCE_CLOSURE_SHA256 = "74e468b5d0b56a3eeb98794e81848300677a8412a2fc6d58733f856e452702ed";
 
 const INVENTORY_COUNTS = Object.freeze({
-  "declarations": 52539,
-  "theorems": 28788,
-  "assumptionFreeTheorems": 11841,
-  "excludedPrivateDeclarations": 21622,
-  "modules": 643,
+  "declarations": 68079,
+  "theorems": 37662,
+  "assumptionFreeTheorems": 13972,
+  "excludedPrivateDeclarations": 23202,
+  "modules": 1110,
   "axioms": 0
 });
 
@@ -19314,8 +19314,225 @@ return Object.freeze({status: assertM280BatchStatus, inventory: assertM280BatchI
 })();
 // M265-M280-BATCH-DESCRIPTOR:END
 
+// M281-BATCH-DESCRIPTOR:BEGIN
+const FORMAL_M281_BATCH = Object.freeze({
+  "kind": "PNPLabsReviewedMilestoneBatch0",
+  "version": 0,
+  "batchId": "m281",
+  "reviewedSource": {
+    "commit": "f8270c12d163bdd8457131d42bf6dcd3ccea3a28",
+    "tree": "d72c0698e791605c92438a9fd4daf59406a2e75a",
+    "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281"
+  },
+  "milestones": [
+    {
+      "number": 281,
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281",
+      "id": "complete-serialized-source-normalizer",
+      "title": "Complete polynomial source-derived serialized normalizer",
+      "classification": "formalized-foundation-only",
+      "scope": "For every source bitstring, a concrete finite-machine refinement computes the complete source-derived serialized normalization packet and halts within a polynomial in the encoded input length. The packet has a polynomial encoded-size bound, strict decode roundtrip and malformed-input convention. Its encoded certificate language is equivalent to CNFSAT on that same input; satisfiable inputs have a certificate of at most 30 times the input length plus 12 bits. Every system packet retains all residual equations, and every model packet yields a satisfying source assignment. The packaged polynomial reduction uses the actual serialized machine output. No construction, completeness or correctness certificate is supplied by a caller.",
+      "nonClaim": "This constructs and encodes an equivalent residual problem; a system packet is not an unsatisfiability verdict. Short certificate existence does not provide certificate discovery. The result does not implement the manuscript NormalizeOrGain minimizer, solve all residual systems, establish global route coverage or unconditional ZeroSlack, or prove exact polynomial PCCMin. Its polynomial bounds cover the complete normalizer, not a complete SAT solver. Deterministic CNFSAT membership in P and the eligible root theorem remain absent; P = NP is not proved.",
+      "fields": {
+        "leanSerializedNormalizerFormalized": true,
+        "leanSerializedNormalizerAxiomAuditPassed": true,
+        "leanSerializedNormalizerAuditedDeclarationCount": 12,
+        "leanSerializedNormalizerExactMachineOutputTheorem": "PNP.Concrete.SerializedNormalizer.output_eq",
+        "leanSerializedNormalizerPolynomialHaltingTheorem": "PNP.Concrete.SerializedNormalizer.halts",
+        "leanSerializedNormalizerOutputSizeTheorem": "PNP.Concrete.SerializedNormalizer.output_size",
+        "leanSerializedNormalizerSparseEncodedSizeTheorem": "PNP.Concrete.SerializedNormalizer.sparse_output_size",
+        "leanSerializedNormalizerStrictPacketRoundtripTheorem": "PNP.Concrete.SerializedNormalizer.decode_output",
+        "leanSerializedNormalizerSatisfiabilityTheorem": "PNP.Concrete.SerializedNormalizer.satisfiability_iff",
+        "leanSerializedNormalizerShortCertificateTheorem": "PNP.Concrete.SerializedNormalizer.certificate_bound",
+        "leanSerializedNormalizerMalformedInputsTheorem": "PNP.Concrete.SerializedNormalizer.malformed_output",
+        "leanSerializedNormalizerCompleteSystemTheorem": "PNP.Concrete.SerializedNormalizer.residual_system_iff",
+        "leanSerializedNormalizerSourceModelTheorem": "PNP.Concrete.SerializedNormalizer.model_sound",
+        "leanSerializedNormalizerReductionMachineCorrespondenceTheorem": "PNP.Concrete.SerializedNormalizer.reduction_output",
+        "leanSerializedNormalizerConcreteReductionTheorem": "PNP.Concrete.SerializedNormalizer.reduction_correct",
+        "leanSerializedNormalizerAllSourceBitstringsCovered": true,
+        "leanSerializedNormalizerDataDerivedFromSource": true,
+        "leanSerializedNormalizerCompletePacketSerialized": true,
+        "leanSerializedNormalizerLiteralFiniteMachineRefinement": true,
+        "leanSerializedNormalizerEncodedInputPolynomialRuntimeProved": true,
+        "leanSerializedNormalizerEncodedOutputBoundProved": true,
+        "leanSerializedNormalizerShortCertificateExistenceProved": true,
+        "leanSerializedNormalizerCertificateDiscoveryAlgorithmProved": false,
+        "leanSerializedNormalizerCallerSuppliedConstructionOrCorrectnessRequired": false,
+        "leanSerializedNormalizerGeneralResidualSolverProved": false,
+        "leanSerializedNormalizerManuscriptResidualMinimizerProved": false,
+        "leanSerializedNormalizerUnconditionalZeroSlackProved": false,
+        "leanSerializedNormalizerExactPolynomialPCCMinProved": false,
+        "leanSerializedNormalizerConcreteCNFSATInPProved": false,
+        "leanSerializedNormalizerRuntimeExecutionIsProofAuthority": false,
+        "leanSerializedNormalizerScope": "all-source-bitstrings-complete-derived-serialized-packet-literal-machine-encoded-polynomial-runtime-output-bound-exact-sat-certificate-language-no-certificate-discovery-residual-solver-manuscript-minimization-or-p-equals-np"
+      },
+      "theorems": {
+        "PNP.Concrete.SerializedNormalizer.certificate_bound": {
+          "hash": "656bbbe55cd7255d0872c586a6ed36d5d109df6f392dd3c116ffa4b39822b7d1",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.decode_output": {
+          "hash": "7f3dafa95c79e7c7022025d22e6cac37279dacc0204185bdfca7b98d161cad52",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.halts": {
+          "hash": "fd65f0cfea9b32bc1c710a159344869e569f5bd15233efbdd77aaaa700ab7361",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.malformed_output": {
+          "hash": "3a8ae268d526f5b8135f3f7fed8e416b65552d98396d566907d9558066469437",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.model_sound": {
+          "hash": "096788fa93b78b5c9c56ff979747ad8507c4f346f9d948916d7b454e876c85b3",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.output_eq": {
+          "hash": "bbc924774cc8542e63b4d46ace598eb0029f00bc423a10f5830419f2f00de860",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.output_size": {
+          "hash": "da55366f36cef5ad1bb917c377e7a68b4e9497773c544be2fe2ee74e9697d7fa",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.reduction_correct": {
+          "hash": "5085e9b0fc9be9894b78e6c84da5c2995d40d7352edeabb12857d999199bc078",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.reduction_output": {
+          "hash": "50cd8db031d4e01f16259750f15a0b685d520cc1328415f3bc7e33e0ad411777",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.residual_system_iff": {
+          "hash": "9b037e351a17b5d6fd8b1f3e6bd053bacd98602314cd717778555ceeb2ee064b",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.satisfiability_iff": {
+          "hash": "936aa81b54397bb6a89b928b28c67babaca208f1334687c25f599c68721f72ce",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        },
+        "PNP.Concrete.SerializedNormalizer.sparse_output_size": {
+          "hash": "847c715bb6396f60bf652a09c127becc897d5b25f6280e0228fa6e217c86ac00",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.SerializedNormalizer"
+        }
+      },
+      "verification": {
+        "status": "formalized-foundation-only",
+        "earned": true,
+        "allPresent": true,
+        "allAssumptionFree": false,
+        "allKernelTypesMatch": true,
+        "axiomClosureUsesOnlyLeanStandardAllowlist": true,
+        "sourceClosureFingerprintMatches": true
+      }
+    }
+  ]
+});
+const FORMAL_M281_VALIDATORS = (() => {
+const M281_BATCH = FORMAL_M281_BATCH;
+const same0 = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+const require0 = (condition, layer, milestone, detail, kind = 'boundary') => {
+  if (!condition) throw new Error(`${layer} M${milestone.number} ${detail} ${kind} mismatch`);
+};
+function checkMilestone0(actual, expected, layer) {
+  require0(actual && actual.id === expected.id
+    && actual.title === expected.title && actual.classification === expected.classification
+    && actual.scope === expected.scope && actual.nonClaim === expected.nonClaim
+    && same0(actual.requiredTheorems, Object.keys(expected.theorems)),
+  layer, expected, 'milestone');
+}
+function assertM281BatchStatus(status) {
+  for (const expected of M281_BATCH.milestones) {
+    const rows = status?.formalPublicationMilestones?.filter(row => row?.id === expected.id);
+    require0(rows?.length === 1, 'status', expected, 'milestone count');
+    const row = rows[0];
+    checkMilestone0(row, expected, 'status');
+    for (const [key, value] of Object.entries(expected.verification))
+      require0(same0(row[key], value), 'status', expected, key);
+    for (const [key, value] of Object.entries(expected.fields))
+      require0(same0(status[key], value), 'status', expected, key, 'evidence');
+    require0(same0(row.theoremRows?.map(proof => proof.name), Object.keys(expected.theorems)),
+      'status', expected, 'theorem set');
+    for (const proof of row.theoremRows) {
+      const specification = expected.theorems[proof.name];
+      require0(proof.present === true && proof.kind === 'theorem'
+        && same0(proof.axioms, specification.axioms)
+        && proof.actualKernelTypeSha256 === specification.hash
+        && proof.expectedKernelTypeSha256 === specification.hash
+        && proof.kernelTypeFingerprintMatches === true,
+      'status', expected, proof.name, 'theorem');
+    }
+  }
+}
+function assertM281BatchInventoryMetadata0(inventory) {
+  const byName = new Map();
+  for (const row of inventory?.milestoneCandidates ?? []) {
+    if (!byName.has(row?.name)) byName.set(row?.name, []);
+    byName.get(row?.name).push(row);
+  }
+  for (const milestone of M281_BATCH.milestones)
+    for (const [name, expected] of Object.entries(milestone.theorems)) {
+      const rows = byName.get(name), row = rows?.[0];
+      require0(rows?.length === 1 && row.kind === 'theorem'
+        && row.module === expected.module && same0(row.axioms, expected.axioms)
+        && typeof row.kernelType === 'string',
+      'inventory', milestone, name, 'theorem');
+    }
+}
+return Object.freeze({status: assertM281BatchStatus, inventory: assertM281BatchInventoryMetadata0});
+})();
+// M281-BATCH-DESCRIPTOR:END
+
 const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
-  ...Object.fromEntries([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH].flatMap(batch => batch.milestones).flatMap(row =>
+  ...Object.fromEntries([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH].flatMap(batch => batch.milestones).flatMap(row =>
     Object.entries(row.fields).map(([key, value]) => [key,
       typeof value === 'boolean' ? false : typeof value === 'number' ? 0 : null]))),
   leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
@@ -20489,7 +20706,7 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
 });
 
 function formalStatusFields(payload) {
-  const batchFields = [...new Set([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH].flatMap(batch => batch.milestones).flatMap(row => Object.keys(row.fields)))];
+  const batchFields = [...new Set([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH].flatMap(batch => batch.milestones).flatMap(row => Object.keys(row.fields)))];
   const batchText = batchFields.map(field => field + ' = ' +
     JSON.stringify(payload[field] ?? FAIL_CLOSED_FORMAL_STATUS[field])).join('\n');
   const npCompletenessFields = Object.keys(CNF_NP_COMPLETENESS_FIELDS).map(field => field + " = " + JSON.stringify(payload[field] ?? FAIL_CLOSED_FORMAL_STATUS[field])).join("\n");
@@ -21715,6 +21932,7 @@ function validateInventory(inventory) {
   try { FORMAL_M259_M262_VALIDATORS.inventory(inventory); } catch { return false; }
   try { FORMAL_M263_M264_VALIDATORS.inventory(inventory); } catch { return false; }
   try { FORMAL_M265_M280_VALIDATORS.inventory(inventory); } catch { return false; }
+  try { FORMAL_M281_VALIDATORS.inventory(inventory); } catch { return false; }
   if (!CNF_NP_COMPLETENESS_DECLARATIONS.every(([name, axioms, module]) => {
     const rows = inventory?.milestoneCandidates?.filter(row => row?.name === name);
     return rows?.length === 1 && rows[0].kind === 'theorem'
@@ -23845,6 +24063,7 @@ function validateStatus(status, inventory) {
   try { FORMAL_M259_M262_VALIDATORS.status(status); } catch { return false; }
   try { FORMAL_M263_M264_VALIDATORS.status(status); } catch { return false; }
   try { FORMAL_M265_M280_VALIDATORS.status(status); } catch { return false; }
+  try { FORMAL_M281_VALIDATORS.status(status); } catch { return false; }
   const npRows = status?.formalPublicationMilestones?.filter(row => row.id === 'concrete-cnf-np-completeness');
   const npComplete = npRows?.[0];
   if (npRows?.length !== 1 || npComplete.scope !== CNF_NP_COMPLETENESS_SCOPE
