@@ -7,21 +7,21 @@ document.querySelectorAll('link[data-deferred-style]').forEach((link) => {
 const menuButton = document.querySelector('[data-menu]');
 const nav = document.querySelector('[data-nav]');
 
-const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281";
-const STATUS_SHA256 = "8100d23e34f3fb366526c43d3cc8383325b563f6646da6ff6aafd135d17dacce";
-const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-10-13-281";
-const FORMAL_PUBLICATION_MAP_SHA256 = "df6630f534b9832214e55ca2e95ffc81e142bc028d145392389b1d60e068226b";
+const STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282";
+const STATUS_SHA256 = "3eb229e2bb879e586a25c93420be80b70c7e484d900dc6f6dfb75e0c4666f2bc";
+const FORMAL_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-10-15-282";
+const FORMAL_PUBLICATION_MAP_SHA256 = "003c567dc6361069e74ec48398eb1c75464c1fc788704cb78cd56968f000defd";
 const PUBLIC_SURFACE_COORDINATE = 'PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121';
 const INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230";
-const INVENTORY_SHA256 = "49cfcf6de14f560842766adef7fe9e54437ce57ac2a6c4ace650308164be890a";
-const SOURCE_CLOSURE_SHA256 = "74e468b5d0b56a3eeb98794e81848300677a8412a2fc6d58733f856e452702ed";
+const INVENTORY_SHA256 = "cdb856c37a386ca99570dcdb1ade8f406fd21bf60d93dbdfb886086446d42fa1";
+const SOURCE_CLOSURE_SHA256 = "dd9ab2ab8b625b8542b3f05a4f95602d80f00ce9d65574d8735d51a33b1c58ef";
 
 const INVENTORY_COUNTS = Object.freeze({
-  "declarations": 68079,
-  "theorems": 37662,
-  "assumptionFreeTheorems": 13972,
-  "excludedPrivateDeclarations": 23202,
-  "modules": 1110,
+  "declarations": 69490,
+  "theorems": 38440,
+  "assumptionFreeTheorems": 14185,
+  "excludedPrivateDeclarations": 23401,
+  "modules": 1151,
   "axioms": 0
 });
 
@@ -19531,8 +19531,264 @@ return Object.freeze({status: assertM281BatchStatus, inventory: assertM281BatchI
 })();
 // M281-BATCH-DESCRIPTOR:END
 
+// M282-BATCH-DESCRIPTOR:BEGIN
+const FORMAL_M282_BATCH = Object.freeze({
+  "kind": "PNPLabsReviewedMilestoneBatch0",
+  "version": 0,
+  "batchId": "m282",
+  "reviewedSource": {
+    "commit": "7f57cbda41e5911970c838697e87d51706c79e3c",
+    "tree": "2c61c88e30b8c32a7d7fce126fa4cb8036a9246f",
+    "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282"
+  },
+  "milestones": [
+    {
+      "number": 282,
+      "coordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282",
+      "id": "source-bound-partial-residual-reducer",
+      "title": "Source-bound partial residual reduction and certificate recovery",
+      "classification": "formalized-foundation-only",
+      "scope": "For every native sparse residual system, a computed translation retains all positive, linear and product constraints, including duplicate-term parity and coordinate order. A dimension-decreasing source-derived chain preserves models, links every step to its preceding residual, preserves the row count, and supplies inverse parameter and satisfying-source maps. For every original bitstring whose actual serialized normalizer output decodes to a system, the remaining core is satisfiable exactly when that original input is in CNFSAT; a remaining model reconstructs a correctly sized encoded certificate accepted by the actual output checker. The original-input partial verdict is sound for both true and false answers and returns unknown when positive dimension remains. At most 30 times the source bitstring length plus 12 reductions occur; this bounds steps, not execution work. No chosen contraction, family, route coverage certificate or correctness premise is supplied by a caller.",
+      "nonClaim": "Stopping exhausts the computed finite affine/line/plane selector menu, not the whole class of possible contractions. An unknown core can be satisfiable or unsatisfiable; useful reduction on every instance and all-input decision are not proved. The chain-length bound is not a polynomial bound on total encoded construction, storage or runtime. This is not the completed manuscript residual-band minimizer, unconditional SaturatePositive, BCELReady or ZeroSlack, exact polynomial PCCMin, deterministic CNFSAT membership in P, or the eligible root theorem. P = NP is not proved.",
+      "fields": {
+        "leanSourceBoundResidualReducerFormalized": true,
+        "leanSourceBoundResidualReducerAxiomAuditPassed": true,
+        "leanSourceBoundResidualReducerAuditedDeclarationCount": 16,
+        "leanSourceBoundResidualReducerCompleteSystemTheorem": "PNP.Concrete.ResidualReducer.source_family_iff",
+        "leanSourceBoundResidualReducerSourceRowCountTheorem": "PNP.Concrete.ResidualReducer.source_family_rows",
+        "leanSourceBoundResidualReducerResidualRowCountTheorem": "PNP.Concrete.ResidualReducer.result_rows",
+        "leanSourceBoundResidualReducerModelPreservationTheorem": "PNP.Concrete.ResidualReducer.model_preservation",
+        "leanSourceBoundResidualReducerParameterInverseTheorem": "PNP.Concrete.ResidualReducer.parameter_roundtrip",
+        "leanSourceBoundResidualReducerSourceModelInverseTheorem": "PNP.Concrete.ResidualReducer.source_model_roundtrip",
+        "leanSourceBoundResidualReducerLinkedTraceTheorem": "PNP.Concrete.ResidualReducer.trace_linked",
+        "leanSourceBoundResidualReducerDimensionAccountingTheorem": "PNP.Concrete.ResidualReducer.dimension_accounting",
+        "leanSourceBoundResidualReducerSelectorStoppingTheorem": "PNP.Concrete.ResidualReducer.terminal",
+        "leanSourceBoundResidualReducerSourceSatisfiabilityTheorem": "PNP.Concrete.ResidualReducer.residual_source_iff",
+        "leanSourceBoundResidualReducerEncodedCertificateRecoveryTheorem": "PNP.Concrete.ResidualReducer.recover_certificate",
+        "leanSourceBoundResidualReducerSourceStepBoundTheorem": "PNP.Concrete.ResidualReducer.step_bound",
+        "leanSourceBoundResidualReducerActualPacketDecisionTheorem": "PNP.Concrete.ResidualReducer.decision_packet",
+        "leanSourceBoundResidualReducerTrueSoundnessTheorem": "PNP.Concrete.ResidualReducer.decision_true_sound",
+        "leanSourceBoundResidualReducerFalseSoundnessTheorem": "PNP.Concrete.ResidualReducer.decision_false_sound",
+        "leanSourceBoundResidualReducerUnknownTheorem": "PNP.Concrete.ResidualReducer.decision_unknown",
+        "leanSourceBoundResidualReducerAllSourceBitstringsCovered": true,
+        "leanSourceBoundResidualReducerCompleteNativeConstraintsRetained": true,
+        "leanSourceBoundResidualReducerDataDerivedFromSource": true,
+        "leanSourceBoundResidualReducerLinkedRepeatedReductionProved": true,
+        "leanSourceBoundResidualReducerSatisfyingModelCertificateRecoveryProved": true,
+        "leanSourceBoundResidualReducerSourceEncodedStepCountBoundProved": true,
+        "leanSourceBoundResidualReducerCallerSuppliedConstructionOrCorrectnessRequired": false,
+        "leanSourceBoundResidualReducerPositiveDimensionRemainsUnknown": true,
+        "leanSourceBoundResidualReducerWholeContractionClassCompletenessProved": false,
+        "leanSourceBoundResidualReducerAllInputResidualDecisionProved": false,
+        "leanSourceBoundResidualReducerGeneralPolynomialRuntimeProved": false,
+        "leanSourceBoundResidualReducerGeneralEncodedSizeBoundProved": false,
+        "leanSourceBoundResidualReducerManuscriptResidualMinimizerProved": false,
+        "leanSourceBoundResidualReducerGlobalRouteCoverageProved": false,
+        "leanSourceBoundResidualReducerUnconditionalZeroSlackProved": false,
+        "leanSourceBoundResidualReducerExactPolynomialPCCMinProved": false,
+        "leanSourceBoundResidualReducerConcreteCNFSATInPProved": false,
+        "leanSourceBoundResidualReducerRuntimeExecutionIsProofAuthority": false,
+        "leanSourceBoundResidualReducerScope": "all-source-bitstrings-complete-native-constraints-source-derived-model-preserving-chain-linked-history-certificate-recovery-sound-partial-verdict-explicit-unknown-source-step-count-only-no-complete-residual-decision-whole-class-coverage-or-polynomial-runtime"
+      },
+      "theorems": {
+        "PNP.Concrete.ResidualReducer.decision_false_sound": {
+          "hash": "7659aa89dcd884cfd824bf2068bf0457f81331e8c03eda0942448fde04a63b5b",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.decision_packet": {
+          "hash": "bd6c2ff99b86af77f392a8664964622be25c76f1dbc3e1f3dbd691a939ba1c62",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.decision_true_sound": {
+          "hash": "063c912d84958f6e49e7dad9c9c8db6a91135a26bc341908fa1ec3f578b556a5",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.decision_unknown": {
+          "hash": "b715ecc4a0aabab250a2bd5c4742fbc4678d625d4abbfc81aaca9861605c8cdb",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.dimension_accounting": {
+          "hash": "80b578136995d510d349ab0fbc21e90108d2c3c7e374bb3a97db88e51d761e9d",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.model_preservation": {
+          "hash": "3fb80e01e0a01c66c4230d3650fc5153ef9b1648c68ceab5b5753e78dcfab7ec",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.parameter_roundtrip": {
+          "hash": "038ddd83c7cabd1af77ffbbbdbf4eb564f52a16c9a2dc47ed5c478234c5b10db",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.recover_certificate": {
+          "hash": "644da333dc86f56baab0e379a0addbdba57d7a48b52a7650ba813720fd78872b",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.residual_source_iff": {
+          "hash": "8c126421d3ceaf637cb0581d8fb3a6547f8e3cb190a4a19b60bc3b4772efecb0",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.result_rows": {
+          "hash": "bc62e431ee82348ea56998d66e35ba11dc58aa8ba04b4d51377cb9a4f3777f81",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.source_family_iff": {
+          "hash": "258e2dd888772eb844d2a8a589b48d91e3890ca9ce11d4e581312c5c6c4d2139",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.source_family_rows": {
+          "hash": "8557f69a67b37eee88c41368dd399d3bd4005c07627de2b7adee007ea331fd9c",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.source_model_roundtrip": {
+          "hash": "4cb8f56cc8b6c1b7fc7465a82da6c3c87722e35cda3572f252f72152dd6d65b5",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.step_bound": {
+          "hash": "901e5420db235aa2c64892dd1748387c48cd4579adf5f8ac86aca4b8a77a4775",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.terminal": {
+          "hash": "62c8f8b85053c98535224719e82641fcd018fd23f59bee77ae5676dd94c9328b",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        },
+        "PNP.Concrete.ResidualReducer.trace_linked": {
+          "hash": "2da8089f4b90238d8f535053f1bbf75f371eb358643e22a85d740cf735956797",
+          "axioms": [
+            "Quot.sound",
+            "propext"
+          ],
+          "module": "PNP.Concrete.ResidualReducer"
+        }
+      },
+      "verification": {
+        "status": "formalized-foundation-only",
+        "earned": true,
+        "allPresent": true,
+        "allAssumptionFree": false,
+        "allKernelTypesMatch": true,
+        "axiomClosureUsesOnlyLeanStandardAllowlist": true,
+        "sourceClosureFingerprintMatches": true
+      }
+    }
+  ]
+});
+const FORMAL_M282_VALIDATORS = (() => {
+const M282_BATCH = FORMAL_M282_BATCH;
+const same0 = (left, right) => JSON.stringify(left) === JSON.stringify(right);
+const require0 = (condition, layer, milestone, detail, kind = 'boundary') => {
+  if (!condition) throw new Error(`${layer} M${milestone.number} ${detail} ${kind} mismatch`);
+};
+function checkMilestone0(actual, expected, layer) {
+  require0(actual && actual.id === expected.id
+    && actual.title === expected.title && actual.classification === expected.classification
+    && actual.scope === expected.scope && actual.nonClaim === expected.nonClaim
+    && same0(actual.requiredTheorems, Object.keys(expected.theorems)),
+  layer, expected, 'milestone');
+}
+function assertM282BatchStatus(status) {
+  for (const expected of M282_BATCH.milestones) {
+    const rows = status?.formalPublicationMilestones?.filter(row => row?.id === expected.id);
+    require0(rows?.length === 1, 'status', expected, 'milestone count');
+    const row = rows[0];
+    checkMilestone0(row, expected, 'status');
+    for (const [key, value] of Object.entries(expected.verification))
+      require0(same0(row[key], value), 'status', expected, key);
+    for (const [key, value] of Object.entries(expected.fields))
+      require0(same0(status[key], value), 'status', expected, key, 'evidence');
+    require0(same0(row.theoremRows?.map(proof => proof.name), Object.keys(expected.theorems)),
+      'status', expected, 'theorem set');
+    for (const proof of row.theoremRows) {
+      const specification = expected.theorems[proof.name];
+      require0(proof.present === true && proof.kind === 'theorem'
+        && same0(proof.axioms, specification.axioms)
+        && proof.actualKernelTypeSha256 === specification.hash
+        && proof.expectedKernelTypeSha256 === specification.hash
+        && proof.kernelTypeFingerprintMatches === true,
+      'status', expected, proof.name, 'theorem');
+    }
+  }
+}
+function assertM282BatchInventoryMetadata0(inventory) {
+  const byName = new Map();
+  for (const row of inventory?.milestoneCandidates ?? []) {
+    if (!byName.has(row?.name)) byName.set(row?.name, []);
+    byName.get(row?.name).push(row);
+  }
+  for (const milestone of M282_BATCH.milestones)
+    for (const [name, expected] of Object.entries(milestone.theorems)) {
+      const rows = byName.get(name), row = rows?.[0];
+      require0(rows?.length === 1 && row.kind === 'theorem'
+        && row.module === expected.module && same0(row.axioms, expected.axioms)
+        && typeof row.kernelType === 'string',
+      'inventory', milestone, name, 'theorem');
+    }
+}
+return Object.freeze({status: assertM282BatchStatus, inventory: assertM282BatchInventoryMetadata0});
+})();
+// M282-BATCH-DESCRIPTOR:END
+
 const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
-  ...Object.fromEntries([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH].flatMap(batch => batch.milestones).flatMap(row =>
+  ...Object.fromEntries([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH, FORMAL_M282_BATCH].flatMap(batch => batch.milestones).flatMap(row =>
     Object.entries(row.fields).map(([key, value]) => [key,
       typeof value === 'boolean' ? false : typeof value === 'number' ? 0 : null]))),
   leanConcreteCookLevinBuilderDynamicCursorFormalized: false,
@@ -20706,7 +20962,7 @@ const FAIL_CLOSED_FORMAL_STATUS = Object.freeze({
 });
 
 function formalStatusFields(payload) {
-  const batchFields = [...new Set([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH].flatMap(batch => batch.milestones).flatMap(row => Object.keys(row.fields)))];
+  const batchFields = [...new Set([FORMAL_M232_M258_BATCH, FORMAL_M259_M262_BATCH, FORMAL_M263_M264_BATCH, FORMAL_M265_M280_BATCH, FORMAL_M281_BATCH, FORMAL_M282_BATCH].flatMap(batch => batch.milestones).flatMap(row => Object.keys(row.fields)))];
   const batchText = batchFields.map(field => field + ' = ' +
     JSON.stringify(payload[field] ?? FAIL_CLOSED_FORMAL_STATUS[field])).join('\n');
   const npCompletenessFields = Object.keys(CNF_NP_COMPLETENESS_FIELDS).map(field => field + " = " + JSON.stringify(payload[field] ?? FAIL_CLOSED_FORMAL_STATUS[field])).join("\n");
@@ -21933,6 +22189,7 @@ function validateInventory(inventory) {
   try { FORMAL_M263_M264_VALIDATORS.inventory(inventory); } catch { return false; }
   try { FORMAL_M265_M280_VALIDATORS.inventory(inventory); } catch { return false; }
   try { FORMAL_M281_VALIDATORS.inventory(inventory); } catch { return false; }
+  try { FORMAL_M282_VALIDATORS.inventory(inventory); } catch { return false; }
   if (!CNF_NP_COMPLETENESS_DECLARATIONS.every(([name, axioms, module]) => {
     const rows = inventory?.milestoneCandidates?.filter(row => row?.name === name);
     return rows?.length === 1 && rows[0].kind === 'theorem'
@@ -24064,6 +24321,7 @@ function validateStatus(status, inventory) {
   try { FORMAL_M263_M264_VALIDATORS.status(status); } catch { return false; }
   try { FORMAL_M265_M280_VALIDATORS.status(status); } catch { return false; }
   try { FORMAL_M281_VALIDATORS.status(status); } catch { return false; }
+  try { FORMAL_M282_VALIDATORS.status(status); } catch { return false; }
   const npRows = status?.formalPublicationMilestones?.filter(row => row.id === 'concrete-cnf-np-completeness');
   const npComplete = npRows?.[0];
   if (npRows?.length !== 1 || npComplete.scope !== CNF_NP_COMPLETENESS_SCOPE

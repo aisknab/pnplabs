@@ -5,6 +5,7 @@ import { assertM262BatchPublicationMap, assertM262BatchStatus, assertM262BatchIn
 import { assertM264BatchPublicationMap, assertM264BatchStatus, assertM264BatchInventory } from './formal-m264-batch-contract.mjs';
 import { assertM280BatchPublicationMap, assertM280BatchStatus, assertM280BatchInventory } from './formal-m280-batch-contract.mjs';
 import { assertM281BatchPublicationMap, assertM281BatchStatus, assertM281BatchInventory } from './formal-m281-batch-contract.mjs';
+import { assertM282BatchPublicationMap, assertM282BatchStatus, assertM282BatchInventory } from './formal-m282-batch-contract.mjs';
 import { assertM230PublicationMap, assertM230Status, assertM230Inventory } from './formal-m230-contract.mjs';
 import { assertM229PublicationMap, assertM229Status, assertM229Inventory } from './formal-m229-contract.mjs';
 import { createHash, randomBytes } from "node:crypto";
@@ -27,13 +28,13 @@ import { checkBrowserReportIntegrity } from "./check-browser-report-integrity.mj
 import { validateProofProgressModel } from "./proof-progress-model.mjs";
 import { verifyReleaseSeal } from "./verify-release-seal.mjs";
 
-const CORE_COMMIT = "f8270c12d163bdd8457131d42bf6dcd3ccea3a28";
-const CORE_TREE = "d72c0698e791605c92438a9fd4daf59406a2e75a";
-const CORE_PUBLICATION_MAP_SHA256 = "df6630f534b9832214e55ca2e95ffc81e142bc028d145392389b1d60e068226b";
-const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-10-13-281";
-const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281";
+const CORE_COMMIT = "7f57cbda41e5911970c838697e87d51706c79e3c";
+const CORE_TREE = "2c61c88e30b8c32a7d7fce126fa4cb8036a9246f";
+const CORE_PUBLICATION_MAP_SHA256 = "003c567dc6361069e74ec48398eb1c75464c1fc788704cb78cd56968f000defd";
+const CORE_PUBLICATION_MAP_COORDINATE = "PNP-FORMAL-PUBLICATION-MAP-2026-10-15-282";
+const CORE_STATUS_COORDINATE = "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282";
 const CORE_INVENTORY_COORDINATE = "PNP-LEAN-THEOREM-INVENTORY-2026-09-10-230";
-const CORE_SOURCE_CLOSURE_SHA256 = "74e468b5d0b56a3eeb98794e81848300677a8412a2fc6d58733f856e452702ed";
+const CORE_SOURCE_CLOSURE_SHA256 = "dd9ab2ab8b625b8542b3f05a4f95602d80f00ce9d65574d8735d51a33b1c58ef";
 const OLD_PDF_SHA256 = "8951dc5f62bd03cec174345dbdaafcadf13b1dcfe77802b0c6f93e2d098f5673";
 const OLD_TEX_SHA256 = "a88ed72a8cb6a7825306892613b82c0fe771fa67a294d2f05ce4cd41a868093d";
 
@@ -4881,8 +4882,8 @@ const CORE_FILES = [
       "downloads/canonical_proof_report.pdf",
       "downloads/canonical-proof-report.pdf"
     ],
-    "bytes": 770456,
-    "sha256": "3887940642ee0ed325d6cbf0f6b755e1ffd93a69c9f1e62983cb01c79726414c"
+    "bytes": 773518,
+    "sha256": "e70c6ea5562284bcf369cf6a29cdd68bbf2153289c049aea33dcad7c45b1bb17"
   },
   {
     "sourcePath": "canonical_proof_report.tex",
@@ -4890,32 +4891,32 @@ const CORE_FILES = [
       "downloads/canonical_proof_report.tex",
       "downloads/canonical-proof-report.tex"
     ],
-    "bytes": 614987,
-    "sha256": "5f8be18c11b569a400f742fc6b6e1b46529cda32e83e28b645385d6ccb8b9f75"
+    "bytes": 622401,
+    "sha256": "25c8884984efce1ae01b88c2f05cb3a185cb7243635d0f692d7366910242052a"
   },
   {
     "sourcePath": "public/pnp-status.json",
     "targets": [
       "public/pnp-status.json"
     ],
-    "bytes": 3950789,
-    "sha256": "8100d23e34f3fb366526c43d3cc8383325b563f6646da6ff6aafd135d17dacce"
+    "bytes": 3965329,
+    "sha256": "3eb229e2bb879e586a25c93420be80b70c7e484d900dc6f6dfb75e0c4666f2bc"
   },
   {
     "sourcePath": "public/pnp-theorem-inventory.json",
     "targets": [
       "public/pnp-theorem-inventory.json"
     ],
-    "bytes": 93310447,
-    "sha256": "49cfcf6de14f560842766adef7fe9e54437ce57ac2a6c4ace650308164be890a"
+    "bytes": 93636441,
+    "sha256": "cdb856c37a386ca99570dcdb1ade8f406fd21bf60d93dbdfb886086446d42fa1"
   },
   {
     "sourcePath": "status/PROOF_PROGRESS.json",
     "targets": [
       "public/pnp-proof-progress.json"
     ],
-    "bytes": 266675,
-    "sha256": "bf35d7d0795267037daf558e4e47ded80d3673424b77866658bec37da224703e"
+    "bytes": 268030,
+    "sha256": "3fa1c90c13baee4b81fa59d7f9c7948000c4d78b2ef07a6b8466e65e45767082"
   }
 ];
 
@@ -7781,7 +7782,7 @@ function assertPinnedCore(sourceDir) {
   assertM224PublicationMap(publicationMap);
   assertM225PublicationMap(publicationMap);
   assertM227PublicationMap(publicationMap);
-  assertM229PublicationMap(publicationMap); assertM230PublicationMap(publicationMap); assertM231PublicationMap(publicationMap); assertM258BatchPublicationMap(publicationMap); assertM262BatchPublicationMap(publicationMap); assertM264BatchPublicationMap(publicationMap); assertM280BatchPublicationMap(publicationMap); assertM281BatchPublicationMap(publicationMap);
+  assertM229PublicationMap(publicationMap); assertM230PublicationMap(publicationMap); assertM231PublicationMap(publicationMap); assertM258BatchPublicationMap(publicationMap); assertM262BatchPublicationMap(publicationMap); assertM264BatchPublicationMap(publicationMap); assertM280BatchPublicationMap(publicationMap); assertM281BatchPublicationMap(publicationMap); assertM282BatchPublicationMap(publicationMap);
     assertM228PublicationMap(publicationMap);
   assertM226PublicationMap(publicationMap);
   return publicationMap;
@@ -7806,7 +7807,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     }
   } else if (sourcePath === "public/pnp-status.json") {
     assertM227Status(payload);
-    assertM229Status(payload); assertM230Status(payload); assertM231Status(payload); assertM258BatchStatus(payload); assertM262BatchStatus(payload); assertM264BatchStatus(payload); assertM280BatchStatus(payload); assertM281BatchStatus(payload);
+    assertM229Status(payload); assertM230Status(payload); assertM231Status(payload); assertM258BatchStatus(payload); assertM262BatchStatus(payload); assertM264BatchStatus(payload); assertM280BatchStatus(payload); assertM281BatchStatus(payload); assertM282BatchStatus(payload);
     assertM228Status(payload);
     assertM226Status(payload);
     assertM225Status(payload);
@@ -12718,7 +12719,7 @@ function assertCorePayloadBoundary(sourcePath, buffer, publicationMap) {
     if (payload.leanConcreteCNFSATInPFormalized !== false || payload.leanConcreteCNFNPCompletenessFormalized !== true) fail("core status overstates the CNF-SAT result");
   } else if (sourcePath === "public/pnp-theorem-inventory.json") {
     assertM227Inventory(payload);
-    assertM229Inventory(payload); assertM230Inventory(payload); assertM231Inventory(payload); assertM258BatchInventory(payload); assertM262BatchInventory(payload); assertM264BatchInventory(payload); assertM280BatchInventory(payload); assertM281BatchInventory(payload);
+    assertM229Inventory(payload); assertM230Inventory(payload); assertM231Inventory(payload); assertM258BatchInventory(payload); assertM262BatchInventory(payload); assertM264BatchInventory(payload); assertM280BatchInventory(payload); assertM281BatchInventory(payload); assertM282BatchInventory(payload);
     assertM228Inventory(payload);
     assertM226Inventory(payload);
     assertM225Inventory(payload);

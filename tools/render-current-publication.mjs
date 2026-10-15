@@ -21,6 +21,51 @@ function replaceOne(source, pattern, rendered, label) {
   return source.replace(pattern, () => rendered);
 }
 
+export const CURRENT_SOURCE_PIN_PAGES = Object.freeze([
+  'README.md', 'verify.html', 'docs/terminology_crosswalk.md',
+]);
+
+// Only current reproduction/link regions are rewritten; historical coordinates are preserved.
+export function currentSourcePinOutputs(sources, index) {
+  const commit = index?.sourceCommitRef;
+  if (typeof commit !== 'string' || commit.length !== 40 || !/^[0-9a-f]{40}$/u.test(commit)) {
+    fail('current source pin must be a full commit');
+  }
+  const outputs = new Map();
+  for (const file of CURRENT_SOURCE_PIN_PAGES) {
+    let source = sources.get(file);
+    if (typeof source !== 'string') fail(file + ': current source-pin surface missing');
+    if (file === 'README.md') {
+      source = replaceOne(source,
+        /```bash\ngit clone https:\/\/github\.com\/aisknab\/pnp\.git\ncd pnp\ngit checkout [0-9a-f]{40}\n(?:npm ci\n)?(?=npm run formal:progress\n)/gu,
+        '```bash\ngit clone https://github.com/aisknab/pnp.git\ncd pnp\ngit checkout ' + commit + '\n',
+        file + ': current reproduction checkout');
+    } else if (file === 'verify.html') {
+      source = replaceOne(source, /<tr data-current-source>[\s\S]*?<\/tr>/gu,
+        '<tr data-current-source><td><strong>Current public source</strong></td><td>'
+          + '<a href="https://github.com/aisknab/pnp/tree/' + commit + '"><code>' + commit
+          + '</code></a></td></tr>', file + ': current source row');
+      source = replaceOne(source,
+        /<pre id="regen-code">git clone https:\/\/github\.com\/aisknab\/pnp\.git pnp-review\ncd pnp-review\ngit checkout [0-9a-f]{40}\n(?:npm ci\n)?(?=npm run formal:progress\n)/gu,
+        '<pre id="regen-code">git clone https://github.com/aisknab/pnp.git pnp-review\ncd pnp-review\ngit checkout '
+          + commit + '\n', file + ': current reproduction checkout');
+    } else {
+      for (const target of ['status/FORMAL_RECONSTRUCTION_STATUS.json', 'docs/FORMAL_RECONSTRUCTION.md']) {
+        const escaped = target.replace(/[.*+?^{}()|[\]\\$]/gu, character => '\\' + character);
+        const pattern = new RegExp('> (?:and )?\\[' + String.fromCharCode(96) + escaped
+          + String.fromCharCode(96) + '\\]\\(https://github\\.com/aisknab/pnp/blob/[0-9a-f]{40}/'
+          + escaped + '\\)', 'gu');
+        const matches = [...source.matchAll(pattern)];
+        const rendered = matches.length === 1
+          ? matches[0][0].replace(/\/blob\/[0-9a-f]{40}\//u, '/blob/' + commit + '/') : '';
+        source = replaceOne(source, pattern, rendered, file + ': current upstream ' + target);
+      }
+    }
+    outputs.set(file, source);
+  }
+  return outputs;
+}
+
 function correctionRegion(source, region, label) {
   const start = '<!-- CURRENT_CORRECTIONS:' + region + ':START -->';
   const end = '<!-- CURRENT_CORRECTIONS:' + region + ':END -->';

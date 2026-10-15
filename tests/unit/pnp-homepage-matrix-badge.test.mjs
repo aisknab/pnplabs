@@ -412,8 +412,9 @@ test('homepage leads with a plain, conservative result and the latest milestone'
     assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.scope, 0.35, 'current bottom-line scope');
     assertCanonicalConceptCoverage(currentBottomLine[0], latestMilestoneRecord.nonClaim, 0.55, 'current bottom-line non-claim');
   }
-  assert.match(currentBottomLine[0], /remain open/u);
-  assert.match(currentBottomLine[0], /P = NP/u);
+  // Canonical paragraphs above carry the current limitations; retain an independent non-claim.
+  assert.match(currentBottomLine[0], /P = NP is not established\./u);
+  assert.ok(currentBottomLine[0].includes('publication gate is ' + proofProgress.publicationGate.passed + '.'));
   assert.doesNotMatch(html, />Historical report</u);
 });
 

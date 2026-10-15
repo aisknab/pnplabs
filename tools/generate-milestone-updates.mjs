@@ -9,7 +9,7 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { renderProofProgressDashboard, validateProofProgressModel } from "./proof-progress-model.mjs";
-import { currentPublicationOutputs } from "./render-current-publication.mjs";
+import { CURRENT_SOURCE_PIN_PAGES, currentPublicationOutputs, currentSourcePinOutputs } from "./render-current-publication.mjs";
 import { assertReviewedCorrectionEvidence, assertReviewedCorrectionRetained } from "./compatible-support-correction-contract.mjs";
 import { FIXED_WINDOW_CORRECTION, assertReviewedFixedWindowCorrectionEvidence, assertReviewedFixedWindowCorrectionRetained } from "./fixed-window-correction-contract.mjs";
 import { GROWING_WINDOW_CORRECTION, assertReviewedGrowingWindowCorrectionEvidence, assertReviewedGrowingWindowCorrectionRetained } from "./growing-window-correction-contract.mjs";
@@ -725,16 +725,21 @@ async function generateMilestoneUpdates({ root = repositoryRoot, write = false }
     [FEED_PATH, renderAtomFeed(model)],
     [PROGRESS_SVG_PATH, renderProgressSvg(model)]
   ]);
-  const sources = new Map(await Promise.all(CURRENT_CORRECTION_SURFACES.map(async ([relativePath]) => {
+  const sourcePaths = [...new Set([...CURRENT_CORRECTION_SURFACES.map(([file]) => file), ...CURRENT_SOURCE_PIN_PAGES])];
+  const sources = new Map(await Promise.all(sourcePaths.map(async (relativePath) => {
     try {
       return [relativePath, await readFile(path.join(root, relativePath), "utf8")];
     } catch (error) {
       if (error.code === "ENOENT") return [relativePath, undefined];
-      fail(relativePath + ": cannot read current correction surface (" + error.code + ")");
+      fail(relativePath + ": cannot read current publication surface (" + error.code + ")");
     }
   })));
   sources.set("assets/main.js", await readFile(path.join(root, "assets/main.js"), "utf8"));
   for (const [relativePath, expected] of currentPublicationOutputs(model, sources, { status, index, progress, inventory })) {
+    sources.set(relativePath, expected);
+    outputs.set(relativePath, expected);
+  }
+  for (const [relativePath, expected] of currentSourcePinOutputs(sources, index)) {
     sources.set(relativePath, expected);
     outputs.set(relativePath, expected);
   }

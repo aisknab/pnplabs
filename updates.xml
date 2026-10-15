@@ -5,8 +5,17 @@
   <subtitle>Plain-language updates with source-bound technical details for earned formal milestones and separately labelled corrections.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-10-13T00:01:18.447Z</updated>
+  <updated>2026-10-15T15:32:12.117Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-10-15-source-bound-partial-residual-reducer</id>
+    <title>Safely simplifying the remaining problem</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-10-15-source-bound-partial-residual-reducer"/>
+    <published>2026-10-15T15:32:12.117Z</published>
+    <updated>2026-10-15T15:32:12.117Z</updated>
+    <summary type="text">The project now has a checked method that repeatedly simplifies the remaining problem without losing or inventing solutions. A solution of the reduced problem can be translated back into a valid answer for the original input; when the method returns yes or no, that answer is proved sound. This is still a partial method: it can stop with an unknown result rather than decide every input. The proved bound counts reduction steps only, not their total running time. A complete polynomial-time solver and the remaining global proof obligations are still open. Tracker at publication: formal artefact coverage 258 of 260; risk-weighted proof completion estimate 40 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;The project now has a checked method that repeatedly simplifies the remaining problem without losing or inventing solutions. A solution of the reduced problem can be translated back into a valid answer for the original input; when the method returns yes or no, that answer is proved sound.&lt;/p&gt;&lt;p&gt;This is still a partial method: it can stop with an unknown result rather than decide every input. The proved bound counts reduction steps only, not their total running time. A complete polynomial-time solver and the remaining global proof obligations are still open.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 258 of 260 current scoped rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-10-15-source-bound-partial-residual-reducer&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <category term="correction"/>
     <id>https://pnplabs.com.au/updates.html#growing-window-enumeration-size-correction</id>

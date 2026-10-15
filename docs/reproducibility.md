@@ -26,13 +26,13 @@ Current canonical identities:
 
 | File | Bytes | SHA-256 |
 | --- | ---: | --- |
-| `downloads/canonical_proof_report.pdf` | 770,456 | `3887940642ee0ed325d6cbf0f6b755e1ffd93a69c9f1e62983cb01c79726414c` |
-| `downloads/canonical-proof-report.pdf` | 770,456 | `3887940642ee0ed325d6cbf0f6b755e1ffd93a69c9f1e62983cb01c79726414c` |
-| `downloads/canonical_proof_report.tex` | 614,987 | `5f8be18c11b569a400f742fc6b6e1b46529cda32e83e28b645385d6ccb8b9f75` |
-| `downloads/canonical-proof-report.tex` | 614,987 | `5f8be18c11b569a400f742fc6b6e1b46529cda32e83e28b645385d6ccb8b9f75` |
-| `public/pnp-status.json` | 3,950,789 | `8100d23e34f3fb366526c43d3cc8383325b563f6646da6ff6aafd135d17dacce` |
-| `public/pnp-theorem-inventory.json` | 93,310,447 | `49cfcf6de14f560842766adef7fe9e54437ce57ac2a6c4ace650308164be890a` |
-| `public/pnp-proof-progress.json` | 266,675 | `bf35d7d0795267037daf558e4e47ded80d3673424b77866658bec37da224703e` |
+| `downloads/canonical_proof_report.pdf` | 773,518 | `e70c6ea5562284bcf369cf6a29cdd68bbf2153289c049aea33dcad7c45b1bb17` |
+| `downloads/canonical-proof-report.pdf` | 773,518 | `e70c6ea5562284bcf369cf6a29cdd68bbf2153289c049aea33dcad7c45b1bb17` |
+| `downloads/canonical_proof_report.tex` | 622,401 | `25c8884984efce1ae01b88c2f05cb3a185cb7243635d0f692d7366910242052a` |
+| `downloads/canonical-proof-report.tex` | 622,401 | `25c8884984efce1ae01b88c2f05cb3a185cb7243635d0f692d7366910242052a` |
+| `public/pnp-status.json` | 3,965,329 | `3eb229e2bb879e586a25c93420be80b70c7e484d900dc6f6dfb75e0c4666f2bc` |
+| `public/pnp-theorem-inventory.json` | 93,636,441 | `cdb856c37a386ca99570dcdb1ade8f406fd21bf60d93dbdfb886086446d42fa1` |
+| `public/pnp-proof-progress.json` | 268,030 | `3fa1c90c13baee4b81fa59d7f9c7948000c4d78b2ef07a6b8466e65e45767082` |
 
 The PDF page count must match the canonical release manifest. Both filename styles must be byte-identical.
 
@@ -434,21 +434,21 @@ This correction adds no earned positive publication row or fixed checkpoint cred
 [Read the verified correction and its limits](../updates.html#unrestricted-compatible-support-slack-correction).
 <!-- CURRENT_CORRECTIONS:SUMMARY:END -->
 
-### Latest earned milestone: M281
+### Latest earned milestone: M282
 
-**Building the complete remaining problem efficiently**
+**Safely simplifying the remaining problem**
 
-For every input, the project now has a checked program that builds and encodes the full remaining problem. The program preserves whether the original problem has a solution, and both its running time and output size have proved polynomial bounds in the length of the encoded input.
+The project now has a checked method that repeatedly simplifies the remaining problem without losing or inventing solutions. A solution of the reduced problem can be translated back into a valid answer for the original input; when the method returns yes or no, that answer is proved sound.
 
-This completes the construction step, not the solver. It does not find the required answers or certify that no answer exists for every input; the full solution method and its polynomial runtime remain open.
+This is still a partial method: it can stop with an unknown result rather than decide every input. The proved bound counts reduction steps only, not their total running time. A complete polynomial-time solver and the remaining global proof obligations are still open.
 
-Formal artefact coverage: 257 of 259 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Formal artefact coverage: 258 of 260 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 This publication changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Current release source: [`f8270c12d163bdd8457131d42bf6dcd3ccea3a28`](https://github.com/aisknab/pnp/tree/f8270c12d163bdd8457131d42bf6dcd3ccea3a28), tree `d72c0698e791605c92438a9fd4daf59406a2e75a`.
+Current release source: [`7f57cbda41e5911970c838697e87d51706c79e3c`](https://github.com/aisknab/pnp/tree/7f57cbda41e5911970c838697e87d51706c79e3c), tree `2c61c88e30b8c32a7d7fce126fa4cb8036a9246f`.
 
-Original latest-earned source: [`f8270c12d163bdd8457131d42bf6dcd3ccea3a28`](https://github.com/aisknab/pnp/tree/f8270c12d163bdd8457131d42bf6dcd3ccea3a28), tree `d72c0698e791605c92438a9fd4daf59406a2e75a`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281`.
+Original latest-earned source: [`7f57cbda41e5911970c838697e87d51706c79e3c`](https://github.com/aisknab/pnp/tree/7f57cbda41e5911970c838697e87d51706c79e3c), tree `2c61c88e30b8c32a7d7fce126fa4cb8036a9246f`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282`.
 
-Inspect the [latest earned update](../updates.html#2026-10-13-complete-serialized-source-normalizer) and the [complete current milestone ledger](../status.html). The separately labelled corrections above preserve their original publication records.
+Inspect the [latest earned update](../updates.html#2026-10-15-source-bound-partial-residual-reducer) and the [complete current milestone ledger](../status.html). The separately labelled corrections above preserve their original publication records.
 <!-- CURRENT_PUBLICATION:END -->
