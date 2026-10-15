@@ -6871,7 +6871,10 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(fourthClauseSecondLiteralPrefixMilestone.earned, true);
   assert.equal(fourthClausePaddingRunMilestone.earned, true);
   assert.equal(secondConstraintFirstLiteralSignMilestone.earned, true);
-  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|eligible root(?: theorem)? remains? absent|does not close[^.]*eligible root theorem/u);
+  // The reviewed M282 disclaimer explicitly excludes the root within a list of results.
+  const rootNonClaimPattern = /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|eligible root(?: theorem)? remains? absent|does not close[^.]*eligible root theorem|(?:^|\.\s+)This is not [^.]* or the eligible root theorem\./u;
+  assert.match(status.formalPublicationMilestones.at(-1).nonClaim, rootNonClaimPattern);
+  assert.doesNotMatch('This is the completed minimizer or the eligible root theorem.', rootNonClaimPattern);
 
   for (const command of [
     'lake build PNP',

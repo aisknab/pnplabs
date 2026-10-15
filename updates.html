@@ -29,7 +29,7 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">
-      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-13-281">
+      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282">
         <article class="card proof-progress-primary">
           <span class="eyebrow">Fixed-weight model v0</span>
           <h2 id="proof-progress-heading">Risk-weighted proof completion estimate</h2>
@@ -50,7 +50,7 @@
         <article class="card proof-progress-secondary">
           <span class="section-label">Separate evidence metric</span>
           <h2>Formal artefact coverage</h2>
-          <p class="coverage-number">257 of 259</p>
+          <p class="coverage-number">258 of 260</p>
           <p><strong>99.2% of the current evidence ledger.</strong></p>
           <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>
         </article>
@@ -78,6 +78,27 @@
         <p>The M184 authoritative ledger contains 160 earned rows out of 162, superseding the earlier 152 of 154 example. No named load-bearing checkpoint closed merely because additional local or supplied-data milestones were earned, so the fixed-weight baseline remains 30 percent.</p>
         <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>
         <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>
+      </article>
+
+      <article class="card" id="2026-10-15-source-bound-partial-residual-reducer" data-milestone-id="source-bound-partial-residual-reducer">
+        <div class="section-label"><time datetime="2026-10-15T15:32:12.117Z">2026-10-15</time> · earned milestone 258</div>
+        <h2>Safely simplifying the remaining problem</h2>
+        <p>The project now has a checked method that repeatedly simplifies the remaining problem without losing or inventing solutions. A solution of the reduced problem can be translated back into a valid answer for the original input; when the method returns yes or no, that answer is proved sound.</p>
+        <p>This is still a partial method: it can stop with an unknown result rather than decide every input. The proved bound counts reduction steps only, not their total running time. A complete polynomial-time solver and the remaining global proof obligations are still open.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282</strong><ul><li>Formal artefact coverage: 258 of 260 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>source-bound-partial-residual-reducer</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every native sparse residual system, a computed translation retains all positive, linear and product constraints, including duplicate-term parity and coordinate order. A dimension-decreasing source-derived chain preserves models, links every step to its preceding residual, preserves the row count, and supplies inverse parameter and satisfying-source maps. For every original bitstring whose actual serialized normalizer output decodes to a system, the remaining core is satisfiable exactly when that original input is in CNFSAT; a remaining model reconstructs a correctly sized encoded certificate accepted by the actual output checker. The original-input partial verdict is sound for both true and false answers and returns unknown when positive dimension remains. At most 30 times the source bitstring length plus 12 reductions occur; this bounds steps, not execution work. No chosen contraction, family, route coverage certificate or correctness premise is supplied by a caller.</p>
+          <p><strong>Recorded milestone boundary:</strong> Stopping exhausts the computed finite affine/line/plane selector menu, not the whole class of possible contractions. An unknown core can be satisfiable or unsatisfiable; useful reduction on every instance and all-input decision are not proved. The chain-length bound is not a polynomial bound on total encoded construction, storage or runtime. This is not the completed manuscript residual-band minimizer, unconditional SaturatePositive, BCELReady or ZeroSlack, exact polynomial PCCMin, deterministic CNFSAT membership in P, or the eligible root theorem. P = NP is not proved.</p>
+          <p>Later milestones may close obligations described as open in this recorded boundary. See the <a href="status.html#proof-progress">current proof tracker</a> and current proof boundary for today's project status.</p>
+          <p><strong>Reviewed theorem pins:</strong> 16</p>
+          <p><strong>Core source:</strong> commit <code>7f57cbda41e5911970c838697e87d51706c79e3c</code>, tree <code>2c61c88e30b8c32a7d7fce126fa4cb8036a9246f</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
       </article>
 
       <article class="card" id="growing-window-enumeration-size-correction" data-update-kind="correction">

@@ -435,6 +435,32 @@
   ],
   "entries": [
     {
+      "id": "2026-10-15-source-bound-partial-residual-reducer",
+      "milestoneId": "source-bound-partial-residual-reducer",
+      "publishedAt": "2026-10-15T15:32:12.117Z",
+      "title": "Safely simplifying the remaining problem",
+      "plainLanguage": [
+        "The project now has a checked method that repeatedly simplifies the remaining problem without losing or inventing solutions. A solution of the reduced problem can be translated back into a valid answer for the original input; when the method returns yes or no, that answer is proved sound.",
+        "This is still a partial method: it can stop with an unknown result rather than decide every input. The proved bound counts reduction steps only, not their total running time. A complete polynomial-time solver and the remaining global proof obligations are still open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 258,
+        "formalArtefactCoverageTotalRows": 260,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "7f57cbda41e5911970c838697e87d51706c79e3c",
+        "tree": "2c61c88e30b8c32a7d7fce126fa4cb8036a9246f",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-10-13-complete-serialized-source-normalizer",
       "milestoneId": "complete-serialized-source-normalizer",
       "publishedAt": "2026-10-13T00:01:18.447Z",
