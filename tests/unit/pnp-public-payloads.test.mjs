@@ -6871,10 +6871,11 @@ assert.match(secondConstraintFirstLiteralSuccessorMilestone.nonClaim, /does not 
   assert.equal(fourthClauseSecondLiteralPrefixMilestone.earned, true);
   assert.equal(fourthClausePaddingRunMilestone.earned, true);
   assert.equal(secondConstraintFirstLiteralSignMilestone.earned, true);
-  // The reviewed M282 disclaimer explicitly excludes the root within a list of results.
-  const rootNonClaimPattern = /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|eligible root(?: theorem)? remains? absent|does not close[^.]*eligible root theorem|(?:^|\.\s+)This is not [^.]* or the eligible root theorem\./u;
+  // Reviewed milestone disclaimers must explicitly exclude the eligible root.
+  const rootNonClaimPattern = /create the eligible root theorem|PNP\.Main\.p_eq_np remain absent|eligible root theorem remain open|eligible root(?: theorem)? remains? absent|does not close[^.]*eligible root theorem|(?:^|\.\s+)This is not [^.]* or the eligible root theorem\.|(?:^|\.\s+)These are polynomial source-construction and witness-replay endpoints, not [^.]* or eligible root theorem\./u;
   assert.match(status.formalPublicationMilestones.at(-1).nonClaim, rootNonClaimPattern);
   assert.doesNotMatch('This is the completed minimizer or the eligible root theorem.', rootNonClaimPattern);
+  assert.doesNotMatch('These are polynomial source-construction and witness-replay endpoints, a complete residual decision procedure or eligible root theorem.', rootNonClaimPattern);
 
   for (const command of [
     'lake build PNP',

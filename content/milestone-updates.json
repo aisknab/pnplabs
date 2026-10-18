@@ -435,6 +435,58 @@
   ],
   "entries": [
     {
+      "id": "2026-10-18-source-contraction-phase-polynomial-runtime-and-witness-replay",
+      "milestoneId": "source-contraction-phase-polynomial-runtime-and-witness-replay",
+      "publishedAt": "2026-10-18T02:51:44Z",
+      "title": "Bounding the work needed to simplify an input",
+      "plainLanguage": [
+        "The project now proves a polynomial bound for the complete machine that reads an input and produces its reduced problem. It also proves that the machine for replaying the recorded simplifications can recover a valid original answer from a genuine solution of that reduced problem, within a polynomial bound.",
+        "This closes the running-time gap for these two defined phases, not for a complete solver. The remaining problem can still be unresolved, and this work does not find its solution. The replay bound starts with its encoded request; an additional machine to assemble that request is not claimed. The overall proof estimate is unchanged."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 260,
+        "formalArtefactCoverageTotalRows": 262,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "28a194ab7876f4ac59c172b784c28d8868947d24",
+        "tree": "5f0f97b5a47433847ae77223dfdd5523263f3080",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-18-284",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
+      "id": "2026-10-16-source-scalar-quadratic-contraction-class-completeness",
+      "milestoneId": "source-scalar-quadratic-contraction-class-completeness",
+      "publishedAt": "2026-10-16T16:13:10Z",
+      "title": "Making one class of simplifications complete",
+      "plainLanguage": [
+        "The project now proves that its simplification search finds a step whenever one exists in a precisely defined class built from the original equations. This replaces a finite menu of checked examples with a general guarantee for that class.",
+        "The guarantee does not cover every possible simplification, and it does not show that a useful step always exists. When this search stops, the remaining problem can still have a solution. Deciding that remaining problem and proving a complete polynomial-time solver are still open."
+      ],
+      "progressSnapshot": {
+        "modelId": "fixed-risk-weighted-checkpoints-v0",
+        "formalArtefactCoverageEarnedRows": 259,
+        "formalArtefactCoverageTotalRows": 261,
+        "riskWeightedProofCompletionPercent": 40,
+        "uncertaintyLowPercent": 20,
+        "uncertaintyHighPercent": 40,
+        "globalGatesClosed": 0,
+        "globalGatesAvailable": 5
+      },
+      "source": {
+        "commit": "f56c338a9fa76db1b176e518551edd8d0df78e2f",
+        "tree": "21f34a99d53b0fc508276223788eaee7b6eb61e3",
+        "statusCoordinate": "PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-16-283",
+        "publicationCoordinate": "PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121"
+      }
+    },
+    {
       "id": "2026-10-15-source-bound-partial-residual-reducer",
       "milestoneId": "source-bound-partial-residual-reducer",
       "publishedAt": "2026-10-15T15:32:12.117Z",

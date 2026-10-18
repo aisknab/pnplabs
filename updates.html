@@ -29,7 +29,7 @@
       <div class="hero-actions"><a class="btn primary" href="updates.xml" type="application/atom+xml">Open the update feed</a><a class="btn secondary" href="status.html">View formal status</a></div>
     </section>
     <section class="section compact proof-progress-section" aria-labelledby="proof-progress-heading">
-      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282">
+      <div class="proof-progress-dashboard" data-proof-progress-model="fixed-risk-weighted-checkpoints-v0" data-proof-progress-coordinate="PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-18-284">
         <article class="card proof-progress-primary">
           <span class="eyebrow">Fixed-weight model v0</span>
           <h2 id="proof-progress-heading">Risk-weighted proof completion estimate</h2>
@@ -50,7 +50,7 @@
         <article class="card proof-progress-secondary">
           <span class="section-label">Separate evidence metric</span>
           <h2>Formal artefact coverage</h2>
-          <p class="coverage-number">258 of 260</p>
+          <p class="coverage-number">260 of 262</p>
           <p><strong>99.2% of the current evidence ledger.</strong></p>
           <p>This measures coverage of the current scoped publication ledger. It is not proof completion, and the denominator can grow as new formal dependencies are discovered.</p>
         </article>
@@ -78,6 +78,48 @@
         <p>The M184 authoritative ledger contains 160 earned rows out of 162, superseding the earlier 152 of 154 example. No named load-bearing checkpoint closed merely because additional local or supplied-data milestones were earned, so the fixed-weight baseline remains 30 percent.</p>
         <p>The earlier scoped-row percentage remains visible only as formal artefact coverage or as clearly labelled historical context. Neither metric is confidence that P=NP is true.</p>
         <p><a href="public/pnp-proof-progress.json">Inspect the canonical machine-readable checkpoint ledger</a>.</p>
+      </article>
+
+      <article class="card" id="2026-10-18-source-contraction-phase-polynomial-runtime-and-witness-replay" data-milestone-id="source-contraction-phase-polynomial-runtime-and-witness-replay">
+        <div class="section-label"><time datetime="2026-10-18T02:51:44Z">2026-10-18</time> · earned milestone 260</div>
+        <h2>Bounding the work needed to simplify an input</h2>
+        <p>The project now proves a polynomial bound for the complete machine that reads an input and produces its reduced problem. It also proves that the machine for replaying the recorded simplifications can recover a valid original answer from a genuine solution of that reduced problem, within a polynomial bound.</p>
+        <p>This closes the running-time gap for these two defined phases, not for a complete solver. The remaining problem can still be unresolved, and this work does not find its solution. The replay bound starts with its encoded request; an additional machine to assemble that request is not claimed. The overall proof estimate is unchanged.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-18-284</strong><ul><li>Formal artefact coverage: 260 of 262 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>source-contraction-phase-polynomial-runtime-and-witness-replay</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every raw input bitstring, the closed source-construction finite machine halts within its encoded-input polynomial bound and emits exactly the canonical source-derived contraction packet, with polynomial output size. On a decoded source system, the actual remaining core is satisfiable exactly when the original input is in CNFSAT. A separate closed finite-machine replay endpoint returns the exact canonical optional answer on every raw request. For the history generated from the actual source system, it lifts any genuine remaining-core model to a certificate accepted by the original source checker, with physical replay time bounded polynomially in the original input length. Projection and recovery preserve original models; source-generated history is not a caller-supplied correctness certificate.</p>
+          <p><strong>Recorded milestone boundary:</strong> A genuine model of the remaining core is still required for certificate recovery; this work does not find that model. A positive-dimensional stopped core remains unknown and may be satisfiable or unsatisfiable. The replay runtime bound starts from the canonical encoded request; a further finite-machine request assembler is not claimed. These are polynomial source-construction and witness-replay endpoints, not a complete residual decision procedure, manuscript residual-band minimizer, unconditional SaturatePositive, BCELReady or ZeroSlack, exact polynomial PCCMin, concrete CNFSAT membership in P, or eligible root theorem. P = NP is not proved.</p>
+          <p>Later milestones may close obligations described as open in this recorded boundary. See the <a href="status.html#proof-progress">current proof tracker</a> and current proof boundary for today's project status.</p>
+          <p><strong>Reviewed theorem pins:</strong> 14</p>
+          <p><strong>Core source:</strong> commit <code>28a194ab7876f4ac59c172b784c28d8868947d24</code>, tree <code>5f0f97b5a47433847ae77223dfdd5523263f3080</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-18-284</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
+      </article>
+
+      <article class="card" id="2026-10-16-source-scalar-quadratic-contraction-class-completeness" data-milestone-id="source-scalar-quadratic-contraction-class-completeness">
+        <div class="section-label"><time datetime="2026-10-16T16:13:10Z">2026-10-16</time> · earned milestone 259</div>
+        <h2>Making one class of simplifications complete</h2>
+        <p>The project now proves that its simplification search finds a step whenever one exists in a precisely defined class built from the original equations. This replaces a finite menu of checked examples with a general guarantee for that class.</p>
+        <p>The guarantee does not cover every possible simplification, and it does not show that a useful step always exists. When this search stops, the remaining problem can still have a solution. Deciding that remaining problem and proving a complete polynomial-time solver are still open.</p>
+        <div class="update-current-metrics" aria-label="Progress tracker snapshot at the original formal milestone"><strong>Tracker at PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-16-283</strong><ul><li>Formal artefact coverage: 259 of 261 current scoped rows earned</li><li>Risk-weighted proof completion estimate: 40%</li><li>Uncertainty range: 20% to 40%</li><li>Global gates closed: 0 of 5</li></ul></div>
+        <details>
+          <summary class="disclosure-summary"><span>Technical details</span><span class="disclosure-control" aria-hidden="true"><span class="disclosure-closed">Show</span><span class="disclosure-open">Hide</span><span class="disclosure-chevron">⌄</span></span></summary>
+          <p><strong>Milestone:</strong> <code>source-scalar-quadratic-contraction-class-completeness</code></p>
+          <p><strong>Classification:</strong> formalized-foundation-only</p>
+          <p><strong>Verified scope:</strong> For every finite family of factored Boolean source equations in every positive dimension, every balanced selected-source-scalar translation whose pullback preserves quadratic degree on every source row implies that the actual affine/line/plane selector returns a step; the existing checked step-soundness contract applies. Semantic quadratic closure is equivalent to the exact coefficient obstruction criterion and to quadratic closure through the computed quotient decoder. The actual decoder composed with the encoder equals the balanced source retraction on every ambient point. A stopped selector has no contraction in this precisely defined class; no finite-menu membership or caller-supplied coverage premise is required.</p>
+          <p><strong>Recorded milestone boundary:</strong> Contraction existence remains a premise. This class consists only of balanced translations by a fixed direction with scalar equal to an XOR of selected source equations and with quadratic pullbacks of all rows. It does not include arbitrary contraction maps, higher-degree transformations or general residual decision procedures. A stopped core may still be satisfiable. No useful contraction on every input, complete residual solver, polynomial encoded construction or runtime, manuscript residual-band minimizer, unconditional SaturatePositive, BCELReady or ZeroSlack, exact polynomial PCCMin, concrete CNFSAT membership in P, or eligible root theorem is proved. P = NP is not proved.</p>
+          <p>Later milestones may close obligations described as open in this recorded boundary. See the <a href="status.html#proof-progress">current proof tracker</a> and current proof boundary for today's project status.</p>
+          <p><strong>Reviewed theorem pins:</strong> 10</p>
+          <p><strong>Core source:</strong> commit <code>f56c338a9fa76db1b176e518551edd8d0df78e2f</code>, tree <code>21f34a99d53b0fc508276223788eaee7b6eb61e3</code>, status <code>PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-16-283</code>.</p>
+          <p><strong>Publication:</strong> <code>PUBLIC-SURFACE-BASELINE-2026-08-10-CONCRETE-LOCKED-NAND-THRESHOLD-121</code>.</p>
+          <p>Site release and live deployment identity are verified separately by the release seal and deployment provenance record.</p>
+          <p>These coordinates and hashes establish artefact identity only; they do not establish theorem correctness.</p>
+        </details>
       </article>
 
       <article class="card" id="2026-10-15-source-bound-partial-residual-reducer" data-milestone-id="source-bound-partial-residual-reducer">
