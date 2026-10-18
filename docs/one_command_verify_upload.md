@@ -77,21 +77,21 @@ This correction adds no earned positive publication row or fixed checkpoint cred
 [Read the verified correction and its limits](../updates.html#unrestricted-compatible-support-slack-correction).
 <!-- CURRENT_CORRECTIONS:SUMMARY:END -->
 
-### Latest earned milestone: M282
+### Latest earned milestone: M284
 
-**Safely simplifying the remaining problem**
+**Bounding the work needed to simplify an input**
 
-The project now has a checked method that repeatedly simplifies the remaining problem without losing or inventing solutions. A solution of the reduced problem can be translated back into a valid answer for the original input; when the method returns yes or no, that answer is proved sound.
+The project now proves a polynomial bound for the complete machine that reads an input and produces its reduced problem. It also proves that the machine for replaying the recorded simplifications can recover a valid original answer from a genuine solution of that reduced problem, within a polynomial bound.
 
-This is still a partial method: it can stop with an unknown result rather than decide every input. The proved bound counts reduction steps only, not their total running time. A complete polynomial-time solver and the remaining global proof obligations are still open.
+This closes the running-time gap for these two defined phases, not for a complete solver. The remaining problem can still be unresolved, and this work does not find its solution. The replay bound starts with its encoded request; an additional machine to assemble that request is not claimed. The overall proof estimate is unchanged.
 
-Formal artefact coverage: 258 of 260 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
+Formal artefact coverage: 260 of 262 current scoped publication rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.
 
 This publication changes no fixed weighted checkpoint. Added publication rows do not mechanically increase the proof-completion estimate, which is neither a probability of correctness nor a time estimate. Project-specific axioms remaining: 0. The eligible root `PNP.Main.p_eq_np` is absent and the publication gate is false.
 
-Current release source: [`7f57cbda41e5911970c838697e87d51706c79e3c`](https://github.com/aisknab/pnp/tree/7f57cbda41e5911970c838697e87d51706c79e3c), tree `2c61c88e30b8c32a7d7fce126fa4cb8036a9246f`.
+Current release source: [`28a194ab7876f4ac59c172b784c28d8868947d24`](https://github.com/aisknab/pnp/tree/28a194ab7876f4ac59c172b784c28d8868947d24), tree `5f0f97b5a47433847ae77223dfdd5523263f3080`.
 
-Original latest-earned source: [`7f57cbda41e5911970c838697e87d51706c79e3c`](https://github.com/aisknab/pnp/tree/7f57cbda41e5911970c838697e87d51706c79e3c), tree `2c61c88e30b8c32a7d7fce126fa4cb8036a9246f`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-15-282`.
+Original latest-earned source: [`28a194ab7876f4ac59c172b784c28d8868947d24`](https://github.com/aisknab/pnp/tree/28a194ab7876f4ac59c172b784c28d8868947d24), tree `5f0f97b5a47433847ae77223dfdd5523263f3080`. Original latest-earned review coordinate: `PNP-FORMAL-RECONSTRUCTION-STATUS-2026-10-18-284`.
 
-Inspect the [latest earned update](../updates.html#2026-10-15-source-bound-partial-residual-reducer) and the [complete current milestone ledger](../status.html). The separately labelled corrections above preserve their original publication records.
+Inspect the [latest earned update](../updates.html#2026-10-18-source-contraction-phase-polynomial-runtime-and-witness-replay) and the [complete current milestone ledger](../status.html). The separately labelled corrections above preserve their original publication records.
 <!-- CURRENT_PUBLICATION:END -->

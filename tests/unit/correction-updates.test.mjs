@@ -107,33 +107,40 @@ test("a correction tied with a batch sorts first without reordering earned entri
   assert.deepEqual(model.entries.map((row) => row.id), data.entries.map((row) => row.id));
 });
 
-test("successive correction-only releases preserve earned rows and each historical correction source", () => {
-  const original = validate(updates);
-  const first = fixture();
-  const firstIndex = { ...index, sourceProofCommitRef: "b".repeat(40), sourceTree: "c".repeat(40) };
-  first.corrections[0].source.commit = firstIndex.sourceProofCommitRef;
-  first.corrections[0].source.tree = firstIndex.sourceTree;
-  const firstModel = validateUpdatesModel(first, status, firstIndex, progress, inventory);
-  assert.deepEqual(firstModel.entries, original.entries);
-  assert.deepEqual(firstModel.corrections.slice(1), original.corrections);
-  assert.deepEqual(firstModel.proofProgress, original.proofProgress);
+for (const milliseconds of [0, 117]) {
+  test("successive correction-only releases preserve historical sources with " +
+    (milliseconds === 0 ? "whole-second" : "fractional-second") + " timestamps", () => {
+    const original = validate(updates);
+    const first = fixture();
+    const fixtureTime = Date.parse(first.corrections[0].publishedAt);
+    first.corrections[0].publishedAt = new Date(
+      fixtureTime - fixtureTime % 1000 + milliseconds
+    ).toISOString().replace(".000Z", "Z");
+    const firstIndex = { ...index, sourceProofCommitRef: "b".repeat(40), sourceTree: "c".repeat(40) };
+    first.corrections[0].source.commit = firstIndex.sourceProofCommitRef;
+    first.corrections[0].source.tree = firstIndex.sourceTree;
+    const firstModel = validateUpdatesModel(first, status, firstIndex, progress, inventory);
+    assert.deepEqual(firstModel.entries, original.entries);
+    assert.deepEqual(firstModel.corrections.slice(1), original.corrections);
+    assert.deepEqual(firstModel.proofProgress, original.proofProgress);
 
-  const second = structuredClone(first);
-  const next = structuredClone(first.corrections[0]);
-  next.id = "second-synthetic-correction-only-release";
-  next.publishedAt = new Date(Date.parse(next.publishedAt) + 1000).toISOString();
-  const secondIndex = { ...index, sourceProofCommitRef: "d".repeat(40), sourceTree: "e".repeat(40) };
-  next.source.commit = secondIndex.sourceProofCommitRef;
-  next.source.tree = secondIndex.sourceTree;
-  second.corrections.unshift(next);
-  const secondModel = validateUpdatesModel(second, status, secondIndex, progress, inventory);
-  assert.deepEqual(secondModel.entries, original.entries);
-  assert.deepEqual(secondModel.corrections.slice(1), firstModel.corrections);
-  assert.equal(secondModel.earnedCount, original.earnedCount);
-  assert.deepEqual(secondModel.proofProgress, original.proofProgress);
-  assert.equal(renderProgressSvg(secondModel), renderProgressSvg(original));
-});
+    const second = structuredClone(first);
+    const next = structuredClone(first.corrections[0]);
+    next.id = "second-synthetic-correction-only-release";
+    next.publishedAt = new Date(Date.parse(next.publishedAt) + 1000).toISOString().replace(".000Z", "Z");
+    const secondIndex = { ...index, sourceProofCommitRef: "d".repeat(40), sourceTree: "e".repeat(40) };
+    next.source.commit = secondIndex.sourceProofCommitRef;
+    next.source.tree = secondIndex.sourceTree;
+    second.corrections.unshift(next);
+    const secondModel = validateUpdatesModel(second, status, secondIndex, progress, inventory);
+    assert.deepEqual(secondModel.entries, original.entries);
+    assert.deepEqual(secondModel.corrections.slice(1), firstModel.corrections);
+    assert.equal(secondModel.earnedCount, original.earnedCount);
+    assert.deepEqual(secondModel.proofProgress, original.proofProgress);
+    assert.equal(renderProgressSvg(secondModel), renderProgressSvg(original));
+  });
 
+}
 test("an advanced source pin requires a newest update bound to that exact source", () => {
   const advancedIndex = { ...index, sourceProofCommitRef: "b".repeat(40), sourceTree: "c".repeat(40) };
   const data = fixture();

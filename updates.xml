@@ -5,8 +5,26 @@
   <subtitle>Plain-language updates with source-bound technical details for earned formal milestones and separately labelled corrections.</subtitle>
   <link rel="self" type="application/atom+xml" href="https://pnplabs.com.au/updates.xml"/>
   <link rel="alternate" type="text/html" href="https://pnplabs.com.au/updates.html"/>
-  <updated>2026-10-15T15:32:12.117Z</updated>
+  <updated>2026-10-18T02:51:44Z</updated>
   <author><name>PNP Labs</name></author>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-10-18-source-contraction-phase-polynomial-runtime-and-witness-replay</id>
+    <title>Bounding the work needed to simplify an input</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-10-18-source-contraction-phase-polynomial-runtime-and-witness-replay"/>
+    <published>2026-10-18T02:51:44Z</published>
+    <updated>2026-10-18T02:51:44Z</updated>
+    <summary type="text">The project now proves a polynomial bound for the complete machine that reads an input and produces its reduced problem. It also proves that the machine for replaying the recorded simplifications can recover a valid original answer from a genuine solution of that reduced problem, within a polynomial bound. This closes the running-time gap for these two defined phases, not for a complete solver. The remaining problem can still be unresolved, and this work does not find its solution. The replay bound starts with its encoded request; an additional machine to assemble that request is not claimed. The overall proof estimate is unchanged. Tracker at publication: formal artefact coverage 260 of 262; risk-weighted proof completion estimate 40 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;The project now proves a polynomial bound for the complete machine that reads an input and produces its reduced problem. It also proves that the machine for replaying the recorded simplifications can recover a valid original answer from a genuine solution of that reduced problem, within a polynomial bound.&lt;/p&gt;&lt;p&gt;This closes the running-time gap for these two defined phases, not for a complete solver. The remaining problem can still be unresolved, and this work does not find its solution. The replay bound starts with its encoded request; an additional machine to assemble that request is not claimed. The overall proof estimate is unchanged.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 260 of 262 current scoped rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-10-18-source-contraction-phase-polynomial-runtime-and-witness-replay&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <id>https://pnplabs.com.au/updates.html#2026-10-16-source-scalar-quadratic-contraction-class-completeness</id>
+    <title>Making one class of simplifications complete</title>
+    <link rel="alternate" href="https://pnplabs.com.au/updates.html#2026-10-16-source-scalar-quadratic-contraction-class-completeness"/>
+    <published>2026-10-16T16:13:10Z</published>
+    <updated>2026-10-16T16:13:10Z</updated>
+    <summary type="text">The project now proves that its simplification search finds a step whenever one exists in a precisely defined class built from the original equations. This replaces a finite menu of checked examples with a general guarantee for that class. The guarantee does not cover every possible simplification, and it does not show that a useful step always exists. When this search stops, the remaining problem can still have a solution. Deciding that remaining problem and proving a complete polynomial-time solver are still open. Tracker at publication: formal artefact coverage 259 of 261; risk-weighted proof completion estimate 40 percent; uncertainty range 20 to 40 percent; global gates closed 0 of 5.</summary>
+    <content type="html">&lt;p&gt;The project now proves that its simplification search finds a step whenever one exists in a precisely defined class built from the original equations. This replaces a finite menu of checked examples with a general guarantee for that class.&lt;/p&gt;&lt;p&gt;The guarantee does not cover every possible simplification, and it does not show that a useful step always exists. When this search stops, the remaining problem can still have a solution. Deciding that remaining problem and proving a complete polynomial-time solver are still open.&lt;/p&gt;&lt;p data-proof-progress-model=&quot;fixed-risk-weighted-checkpoints-v0&quot;&gt;Formal artefact coverage: 259 of 261 current scoped rows earned. Risk-weighted proof completion estimate: 40%. Uncertainty range: 20% to 40%. Global gates closed: 0 of 5.&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://pnplabs.com.au/updates.html#2026-10-16-source-scalar-quadratic-contraction-class-completeness&quot;&gt;Read the technical details on PNPLabs.&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <id>https://pnplabs.com.au/updates.html#2026-10-15-source-bound-partial-residual-reducer</id>
     <title>Safely simplifying the remaining problem</title>
